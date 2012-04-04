@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Resource XML</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+
+<h1>Resource XML</h1>
+
+<p>
+In this specification, resources are described in a simple
+XML format. This page documents how the XML content for resources is described
+and controlled. The XML may be validated by schema, and schemas are provided, but 
+validation is not required in operational systems (though the XML must always be 
+valid against this specification). In addition, W3C Schema and UML models are 
+provided that may be a useful aid for system implementation.
+<p>
+
+<h2>XML Content Models</h2>
+<p>
+All the content model definitions provided in this specification follow the same general pattern:
+</p>
+<pre>
+ &lt;<b>name</b> xmlns="..."&gt;  <font color="Gray">&lt;!-- Cardinality --&gt;</font>
+   &lt;<b>nameA</b> <font color="red">opt</font> <font color="Darkgreen">type="?"</font>&gt; <font color="Navy">description of content</font> &lt;name&gt;
+   &lt;<b>nameBs</b> <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+     &lt;<b>nameB</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font>&lt;/link&gt;
+   &lt;/nameBs&gt;
+ &lt;name&gt;
+</pre>
+<p>
+Notes:
+</p>
+<ul>
+ <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
+ <li>All the XML is in the namespace http://www.hl7.org/fhir, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
+ <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
+ <li>In addition, each element has a control flag shown in red, that specifies whether it must be present, is optional or may be marked as not present. This is explained below. The control flags are linked to their definitions.</li>
+ <li>While the content model shows the control flag (i.e. "opt") and type of the element (i.e. type="?") as attributes, they do not appear in the actual XML content that is exchanged.</li>
+ <li>The "nameBs" element itself can only appear once. If it appears it may have Zero or more "nameB" elements as children. Each "nameB" element itself is mandatory (i.e. if it appears, it must have valid content) unless specified as optional.</li>
+ <li>Each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats.</li>
+ <li>Any of the XML elements may have an xml id attribute to serve as the target of an reference.</li>
+</ul>
+<a name="metadata"></a>
+<p>
+Every resource contains the following common elements:
+</p>
+<pre>
+&lt;<b>[Name]</b> xmlns="http://www.hl7.org/fhir"&gt;
+  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;!-- Other content specific to the resource --&gt;
+  &lt;<b>extensions</b>&gt; <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<b>text</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="Narrative.htm#Narrative">Narrative</a>"</font>&gt;<font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
+&lt;/[Name]&gt;</pre>
+<p>
+todo: when do you change the id.
+</p>
+<p>
+The <i>id</i> element is always mandatory except in the case that a resource is posted to a server to create it, 
+and the id of the resource is not yet known. In this case, the id element is absent. The use of the id 
+element is <a href="#Resource">discussed further below</a>. The use of the <i>extensions</i> element is 
+<a href="extensibility.htm">discussed under "Extensibility"</a>. The text ("Narrative") is <a href="#Narrative">discussed below</a>. 
+In addition to these data elements, there are several pieces of metadata about a resource that are not part of the resource
+content, but are delegated to the infrastructure:
+</p>
+<table class="grid">
+  <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
+  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (see below). Can be used to ensure that updates are based on the latest version of the resource</td></tr>
+  <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Change each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content</td></tr>
+  <tr><td>Master Location</td><td><a href="datatypes.htm#uri">uri</a></td><td>Reports the location of the master for the resource. Useful when a resource is re-used by another system - it can report the location of the master should any system need to know this.</td></tr>
+</table>
+<p>
+In any environment where the resources are used, the technical details of the delegation will have to be resolved. For further details, see <a href="implementation.htm">Implementation Details</a>.
+</p>
+
+
+<a name="dataAbsentReason"></a>
+<h2>dataAbsentReason &amp; Control Flags </h2>
+<p>
+Data Quality - or the lack thereof- is a ubiquitious issue in healthcare. In order to handle this, 
+every element defined as part of a resource (except the text narrative) may have a dataAbsentReason 
+attribute, which is used to specify why the normally expected content of the data element is missing. 
+The dataAbsentReason attribute may also appear in a few specific places inside the data types.
+</p>
+<p>
+<pre>
+ &lt;<b>x</b> dataAbsentReason=""/&gt;
+</pre> 
+</p>
+<p>
+ The <i>dataAbsentReason</i> attribute can have one of the following values:
+</p>
+<table class="codes">
+ <tr><td>unknown</td><td>The value is not known</td></tr>
+ <tr><td>&nbsp;&nbsp;asked</td><td>The source human does not know the value</td></tr>
+ <tr><td>&nbsp;&nbsp;temp</td><td>There is reason to expect (from the workflow) that the value may become known</td></tr>
+ <tr><td>&nbsp;&nbsp;notasked</td><td>The workflow didn't lead to this value being known</td></tr>
+ <tr><td>masked </td><td>The information is not available due to security, privacy or related reasons</td></tr>
+ <tr><td>unsupported  </td><td>The source system wasn't capable of supporting this element</td></tr>
+ <tr><td>astext  </td><td>The content of the data is represented as text (see below)</td></tr>
+ <tr><td>error        </td><td>Some system or workflow process error means that the information is not available</td></tr>
+</table>
+<p> 
+Notes: 
+</p>
+<ul>
+<li>Using "masked" may be breach of security or confidentiality, but there are times when it's use
+   is required to support alternate workflows for gaining access to denied information.</li>
+<li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from it's definition. Usually this is where the contained elements define what data is missing.</li>
+<li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present, except as described in their <a href="constraint.htm">conformance statement</a>.</li>   
+</ul>
+<a name="Control"></a>
+<p> 
+Every element has a control flags which is used to control the degree to which missing or poor quality data
+is tolerated on a per element basis. The control flag must have one of the following values:
+</p>
+<table class="codes">
+ <tr><td><font color="red">mand</font></td><td>The element must be present, and must be populated with correct data. i.e. Resource.id. No <i>dataAbsentReason</i> is allowed.</td></tr>
+ <tr><td><font color="red">req</font></td><td>The element must be present, but may have a <i>dataAbsentReason</i> (todo: when would this be used?)</td></tr>
+ <tr><td><font color="red">cond</font></td><td>The element may not be present, but if it is, may not have a dataAbsentReason. The condition must be explained in the notes that follow the definition</td></tr>
+ <tr><td><font color="red">opt</font></td><td>The element doesn't have to be present. If it is present, it might have a dataAbsentReason. If the normal structure can be replaced with text, it might be.</td></tr>
+</table> 
+<hr/>
+
+<img src="base.png"/>
+<a name="Narrative"/></a>
+<h2>Narrative</h2>
+<p>
+Every resource includes a human readable narrative that contains a summary of the resource, 
+and may be used to represent the content of the resource to a human. The narrative need 
+not encode all the structured data, but is required to contain sufficient detail to make 
+it "clinically safe" for a human to just read the narrative. Each resource will define 
+what content must be represented in the narrative to ensure clinical safety
+</p>
+<p>
+The narrative for a resource is allowed to contain additional information that is not in 
+the structured data, including human edited content. Such additional information must be 
+in the scope of the definition of the resource.
+</p>
+<p>
+Each narrative has a flag that specifies the relationship of the narrative from the 
+structured data, which may have one of the following codes:
+</p>
+<table class="codes">
+ <tr><td><font>generated</font></td><td>The contents of the narrative are entirely generated from the structured data in the resource.</td></tr>
+ <tr><td><font>extensions</font></td><td>The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions</td></tr>
+ <tr><td><font>additional</font></td><td>The contents of the narrative contain additional information not found in the structured data</td></tr>
+</table> 
+<p>
+In addition to this general flag that specifies the status of the narrative, there is an optional mapping between the 
+narrative and the structured data. Each mapping has narrative id, and structured data id which map to xml:id attributes 
+found in the narrative and the structured data respectively, and a flag for whether the text was generated from the 
+data, or the data was generated from the text (by some form of retrospective processing, whether human or computer), 
+or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason
+of "astext"; this means that the value of the text could not be properly represented in the data type.
+</p>
+<p>
+The narrative is an xhtml fragment that also includes images if appropriate:
+</p>
+<pre>
+  &lt;<b>narrative</b> <font color="red">mand</font>&gt;
+    &lt;<b>status</b> <font color="red">cond</font> <font color="darkgreen">type="code"</font>&gt;generated | extensions | additional&lt;/plain&gt;
+    &lt;<b>xhtml:html</b> <font color="red">mand</font> <font color="darkgreen">type="xhtml"</font>&gt;limited xhtml content&lt;/xhtml:html&gt;
+    &lt;<b>image<b> xml:id="[id]" <font color="darkgreen">type="list"</font>&gt;  &lt;!-- Zero+ --&gt;
+      &lt;<b>mimeType</b> <font color="red">mand</font> type=&quot;code&quot;&gt;mime type of image&lt;/mimeType&gt;
+      &lt;<b>content</b> <font color="red">mand</font> type=&quot;base64Binary&quot;&gt;base64 image data&lt;/data&gt;
+    &lt;/image&gt;
+    &lt;<b>map</b> <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+      &lt;<b>text</b> <font color="red">mand</font> <font color="darkgreen">type="id"</font>&gt;Narrative source (xml:id)&lt;/text&gt;
+      &lt;<b>data</b> <font color="red">mand</font> <font color="darkgreen">type="id"</font>&gt;Data source (xml:id)&lt;/data&gt;
+      &lt;<b>source</b> <font color="red">mand</font> <font color="darkgreen">type="code"</font>&gt;text | data&lt;/source&gt;
+    &lt;/map&gt; 
+  &lt;/narrative&gt;
+</pre>
+<p>
+The status is required when the narrative is the full resource narrative, but not required in resource references (see below).
+</p>
+<p>
+The contents of the <i>html</i> 
+element are an XHTML fragment containing only the basic html formatting elements described in 
+chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
+images, and internally contained stylesheets. The XHTML content may not contain
+a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes,
+and objects. Technically, the content of the text element is a union of the XHTML Schema types "block", "inline" and "misc", with
+the additional rules applied.
+</p>
+<div class="example">
+<pre>
+  &lt;narrative&gt;
+    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple example with only plain text&lt;/html&gt;
+  &lt;/narrative&gt;
+   
+  &lt;narrative&gt;
+   &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+     &lt;p&gt;
+       This is an &lt;i&gt;example&lt;/i&gt; with some &lt;b&gt;xhtml&lt;/b&gt; formatting.
+     &lt;/p&gt;
+   &lt;/html&gt;
+  &lt;narrative&gt;
+</pre>
+</div>
+<p>
+An additional address scheme is defined for use within the xhtml for image location:
+</p>
+<pre>
+  &lt;img src="fhir:#45"/&gt;
+</pre>
+<p>
+This is a reference to an id attribute on an element in the same resource, either in the image attachments on the text element 
+directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</a>".
+</p>
+<div class="example">
+<pre>
+  &lt;narrative&gt;
+   &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+     &lt;p&gt;
+       &lt;img src=&quot;fhir:#a1/&gt;.
+     &lt;/p&gt;
+   &lt;/html&gt;
+   &lt;image id=&quot;a1&quot;&gt;
+     &lt;mimeType&gt;image/png&lt;/mimeType&gt;
+     &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
+   &lt;/image&gt;
+  &lt;narrative&gt;
+</pre>
+</div>
+
+<p>
+Applications processing the html should always be able to strip external images
+(images not using the alternative "fhir" scheme above), and still be able to present 
+the information correctly to a human reader (since these images are not part of the 
+resource, their presence cannot be assured). Additionally, applications processing 
+the html should always be able to strip the HTML tags completely (correcting for 
+implicit paragraph elements such as headers) and still be clinically safe (so where internal
+images are used, they must include an appropriate caption).
+</p>
+<p>
+The <i>dataAbsentReason</i> is not used on the narrative element, or any elements 
+contained in it. The xhtml element must have non-whitespace content.
+</p>
+<a name="Resource"/></a>
+<h2>Resource References</h2>
+<p>
+The "Resource" type indicates a reference from one resource to another.
+Since each resource is identified by a master id that never changes,
+references are done by id.
+</p>
+<pre>
+  &lt;x&gt;
+    &lt;<b>type</b> <a href="xml.htm#Control" class="cf"/>cond</a> <font color="darkgreen">type="resourceType"</font>&gt;<font color="navy">Resource Type</font>&lt;/type&gt;
+    &lt;<b>id</b> <a href="xml.htm#Control" class="cf"/>cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Id of the reference</font>&lt;/id&gt;
+    &lt;<b>version</b> <a href="xml.htm#Control" class="cf"/>opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
+    &lt;<b>text</b> <a href="xml.htm#Control" class="cf"/>opt</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Text alternative for the resource</font>&lt;/text&gt;
+  &lt;/x&gt;
+</pre>
+<p>
+The resourceType type is the name of one of the resources defined in this specification, such as "Patient". Whether or not the type of 
+the resource is fixed for a particular element, the reference includes the resource type (this is to assist with future prooting 
+the specification).
+</p>
+<p>
+A specific version of the resource may be referenced by specifying a version Id in addition to the resource identifier. The 
+version identifier is only known to be unique in the context of a given resource, so the resource Id is always required. 
+Note that locating and retrieving a particular version of a resource is implementation specific, like accessing the latest version of the resource.
+</p>
+
+<div class="example">
+<pre>
+  &lt;id&gt;
+    &lt;type&gt;Patient&lt;/type&gt;
+    &lt;id&gt;034AB16&lt;/id&gt;
+  &lt;id&gt;
+</pre>
+</div>
+<p>
+The <a href="datatypes.htm#id">id</a> type can take one of the following forms:
+</p>
+<table class="list">
+  <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex</td></tr>
+  <tr><td>A uuid (guid) (in lowercase, without wrapping with the characters "{}[]" which sometimes occur)</td></tr>
+  <tr><td>An ISO OID (reference)</td></tr>
+  <tr><td>Any other combination of letters, numerals, "-" and "."</td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+<p>
+Resource ids must be represented in lowercase. Ids are always opaque, and systems should not and need not attempt to determine 
+their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
+</p>
+<p>
+Some narrative may be provided that describes the resource in addition to the resource reference (or in place of, unless the 
+resource reference is mandatory).
+</p>
+<div class="example">
+<pre>
+  &lt;id&gt;
+    &lt;type&gt;Organisation&lt;/type&gt;
+    &lt;id&gt;1234&lt;/id&gt;
+    &lt;text&gt;HL7, Inc&lt;/text&gt;
+  &lt;id&gt;
+</pre>
+</div>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the resource reference element has a dataAbsentReason flag, it must contain 
+a valid <i>type</i> and <i>id</i>, or, if it is not mandatory, a text alternative. 
+</p>
+</div>
+
+<h2>Inter-version Compatibility</h2>
+<p>
+There is no explicit version marker in the XML. Subsequent versions
+of this specification may introduce new elements at any point in the 
+content models, but the meaning of existing data elements will not be 
+changed. 
+</p>
+<p>Given that in a typical scenario, mixed versions may need to exist, 
+applications would best ignore elements that they do not recognize. However in 
+a healthcare context, many application vendors are unwilling to 
+consider this approach because of concerns about clinical risk. 
+Applications are not required to ignore unknown elements, but must
+declare whether they will do so in their conformance statements.</p>
+<p>
+
+<h2>XML Schema</h2>
+<p>
+This specification provides schema definitions for all the content models described here. 
+The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and defines all the 
+datatypes and also the base infrastructure types described on this page. In addition, there 
+is a schema for each resource, and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a>
+that includes all the resource schemas.
+</p>
+<p>
+XML that is exchanged must be valid against the schema, though there is no requirement to
+validate instances against the schema, nor is being valid against the schema sufficient 
+to be a conformant instance (this specification makes many rules that cannot be checked 
+by schema). Exchanged content must not specify the schema or even the schema instance 
+namespace in the resource XML. 
+</p>
+<p>
+Should schema based validation or code generation be of interest, applications can define their own
+schemas that more closely match the working content mode given their conformance statement. These 
+schemas can eliminate elements not used by the application, and explicitly define extensions that 
+are used. However the xml format they describe must be consistent with the XML and rules 
+defined in this specification. 
+</p>
+
+<a name="objects"></a>
+<h2>Object Models</h2>
+<p>
+In addition to the schema, this specification also provides object
+models defined in UML that may be of assistance in defining systems 
+that work with the resources defined here.
+</p>
+<p>
+Although the UML models provided express the same contents as the 
+xml formats, because of the wide variation in how different architectures and 
+tools map from UML to XML, there should be no expectation that any particular
+tool will produce compatible XML from these UML diagrams. Systems are welcome
+to use these object models as a basis for serialization internally, or even
+between trading partner systems, with any form of exchange technology (including 
+JSON). Systems that use this form of exchange cannot claim to be conformant 
+with this specification, but can describe themselves as using "FHIR consistent
+object models".
+</p>
+
+<%footer%>
+
+<%/maindiv%>    
+</body>
+</html>

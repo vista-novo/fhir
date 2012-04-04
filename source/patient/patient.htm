@@ -1,0 +1,63 @@
+
+<p>
+Notes:
+</p>
+<ul>
+<li>Links: linking patient records is an assertion that they both are about the same actual person. If any patient record is linked to another, then the other must be linked back to the source record.</li>
+<li>The patient may be a person or an animal (in order to support vetinary medicine). Either a person or an animal resource link must be provided. but not both.</li> 
+<li>The dietary restrictions are not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</li>
+</ul>
+
+<h2>Managing Patient Registration</h2>
+<p>
+Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
+mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
+data is accumulated. In other cases, substantial amounts of data may accumulate. For these and other 
+reasons, the identifiers associated with a patient may change over time.
+</p>
+<p>
+The master identifier for the Patient Resource can never change. For this reason the identifiers with 
+which humans are concerned (often called MRN - Medical Record Number, or UR - Unit Record) should not 
+be used as the master identifier. Instead they should be represented in the <i>Patient.identifier</i> 
+list where they can be managed. This is also useful for the case of institutions that have acquired 
+multiple numbers because of mergers of patient record systems over time.
+</p>
+<p>
+In this specification, patient records are never merged. If multiple patient records are found to be 
+duplicates, they are linked. In a RESTful context, this is done using the "link patients" transaction
+described below. In other contexts, equivalent functionality will be needed. When patient resources 
+are linked, one may be chosen as the "master" - the correct record. In this case, the active status 
+of all the other resources is set to false, and all the content is moved to the active record by updating
+it directly. 
+</p>
+<p>
+Patient records may only be in one of two statuses: active and retired. A normal record is active 
+- it is in use. The status retired is used when a record is created in error. Once the error is 
+discovered, it can either be retired or deleted. A record does not need to be linked to be retired.
+</p>
+<h2>RESTful Transactions</h2>
+<p>
+The patient resource type defines one special transaction provided by the patient manager: "Link" for 
+linking resources. The reason is that linking records is effectively a transaction that involves at 
+least two resources, and all or none must change. Since the transaction involves multiple resources, 
+it is implemented on the resource manager as a POST to [todo]
+</p>
+<p>
+There is no content model for the response, except for an HTTP status code.
+</p>
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for person:
+</p>
+<table class="list">
+  <tr><td>person      </td><td>The identity of a person</td></tr>
+  <tr><td>provider    </td><td>The identity of an organization</td></tr>
+  <tr><td>id          </td><td>search id in any patient identifiers</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+

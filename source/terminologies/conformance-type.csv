@@ -1,0 +1,5 @@
+Code,Definition
+Mandatory ,The element is or must always be present without a dataAbsentReason
+Conditional ,The element may need to be present (with no dataAbsentReasons) depending on the condition
+Optional ,The element may or may not be present
+Prohibited ,The element can not present or will be rejected if received

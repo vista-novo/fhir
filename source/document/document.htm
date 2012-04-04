@@ -1,0 +1,59 @@
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The Document resource can be used in a <a href="http.htm">RESTful framework</a> as a stand-alone resource, or as the basis for a full document in <a href="documents.htm">the document framework</a>.</li>
+<li>The author and the authenticator are often the same person, but this may not be the case in many clinical workflows</li>
+<li>The attestor attests to the collated narrative portions of the resources</li>
+<li>The author, subject, enterer, and informant features are inherited in contained sections, and need not be repeated. Specifying any of these in a section replaces the inherited value</li>
+<li>The custodian is responsible for the maintainance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
+</ul>  
+
+<h2>Displaying a document</h2>
+<p>
+The human display of the Document is the collated narrative portions of following resources (in order):</p>
+<ol>
+ <li>The Document itself</li>
+ <li>The subject resource</li>
+ <li>Resources referenced in the <i>section.content</i>
+</ol>
+<p>
+The document narrative should summarise the important parts of the document header that are required 
+to establish clinical context for the document (other than the subject, which is displayed in it's own 
+right). To actually build the combined narrative, simply append all the narratives using html &lt;div&gt;
+elements around each narrative section. The viewer program can provide it's own stylesheet (.css) for
+the combined html of the narrative, but cannot change any styles specified internally in the existing
+narratives.
+</p>
+
+<h3>Originator Responsibilities<h3>
+<p>
+A document originator is an application that creates a document resource. The originator may create 
+new content resources or assemble already existing content resources while doing so. A document originator 
+has the following responsibilities:
+</p>
+<ul>
+ <li>Build a document that conforms to the Document rules, and links to content resources that also conform to the rules for the resources</li>
+ <li>Ensure that the content of the document is frozen and easily reproducible, either by <a href="implementation.htm#Aggregation">aggregating the document</a>, 
+ or using version specific resource references in a FHIR conformant <a href="http.htm">RESTful framework</a></li>
+ <li>Ensure that the content of the documend and other resources conforms to any applicable conformance statements and declared clinical patterns.</li>
+</ul>
+<p>
+
+<h3>Recipient Responsibilities<h3>
+<p>
+A document recipient is an application that receives documents from a document originator or document management system. 
+The document recipient is responsible for ensuring that received CDA documents are processed and/or rendered in accordance 
+to this specification. A document recipient has the following responsibilities:
+</p>
+<ul>
+ <li>Assume default values where they are defined in the FHIR specification (see the <a href="implementation.htm#defaults">list here</a>)</li>
+ <li>Render the document following the rules described above</li>
+ <li>A recipient is allowed to extract resources or data from the document, but doing so voids the attestation, and the recipient 
+ should always ensure that the user can access the original document when displaying extracted data</li>
+ <li>Warn users when a superceded document is displayed, and either withdraw data extracted from superceded documents, or warn users when they view it</li>
+</ul>
+ 
+ 
+</li>

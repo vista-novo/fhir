@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Terminologies</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+
+
+<%maindiv%>
+
+
+<h1>Terminologies</h1>
+
+<p>
+Throughout the FHIR specification, many elements are assigned a type of either <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a>, or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
+These elements are bound to a "Concept Domain", which defines the set of concepts that may be associated with the element. Each Concept Domain has a formal definition, and a binding type that may define a particular
+set of acceptable concepts:
+</p>
+<table class="grid">
+ <tr><td>Code List</td><td>The concept is directly bound to a code list defined in this specification (mostly used with elements of type "code"). In some circumstances, other additional codes may be used (not for elements with type "code")</td></tr>
+ <tr><td>External</td><td>The possible list of codes (concepts) is defined by an external specification, usually ISO or W3C. A reference is provided </td></tr>
+ <tr><td>Preferred</td><td>The concept domain is bound directly to an external coding system, and values from this coding system must be use if appropriate values exist</td></tr>
+ <tr><td>Unbound</td><td>
+   The FHIR specification does not bind the concept domain to any particular set of concepts (a value set).
+   Instead, jurisdictions, Institions, projects or applications bind the concept domain.<br/><br/>
+   Within the unbound concept domains, FHIR may recommend a particular value set (or coding system), or 
+   suggest values as illustrative
+	</td></tr>
+</table>
+<p>
+Note that this approach is based on the framework defined in the HL7 V3 core principles in section 5.1. Also note that when a CodeableConcept has a concept domain, this means that one of the codes in the coding list meet the binding of the concept domain, and all the codes must conform to the definition of the concept domain.
+</p>
+<a name="codesystems"/></a>
+<h2>Named Systems List</h2>
+<p>
+This specification defines the following names (URIs) as fiexed names that may 
+be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>,
+<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept"></a> data types. 
+</p>
+
+<table class="grid">
+ <tr>
+   <th width="150">URI</th>
+   <th>Source</th>
+   <th>Comment</th>
+ </tr>
+
+ <tr style="background-color: #FEFEFE">
+   <td colspan="3">Code Systems</td>
+ </tr>
+
+ <tr>
+   <td>http://snomed.info</td>
+   <td>SNOMED-CT: (<a href="http://ihtsdo.org">IHTSDO</a>)</td>
+   <td>The version, module etc may be appended to this uri following the IHTSDO specifications<br/>OID=2.16.840.1.113883.6.96</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/loinc</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       The LOINC sid can also be used to indicate a LOINC property value by append one of the following values to the URL:</p>
+       <table class="codes">
+         <tr><td>/property</td><td>PROPERTY</td></tr>
+         <tr><td>/time-aspect</td><td>TIME_ASPCT</td></tr>
+         <tr><td>/system</td><td>SYSTEM</td></tr>
+         <tr><td>/scale</td><td>SCALE_TYPE</td></tr>
+         <tr><td>/method</td><td>METHOD_TYPE</td></tr>
+         <tr><td>/class</td><td>CLASS</td></tr>
+       </table>
+       <p>The acceptable values for these URLs are the literal values found in the definition of LOINC for the given column name. <br/><br/>
+       The version of LOINC may be appended to this uri like so: urn:hl7-org:sid/loinc?v=2.36<br/><br/>OID=2.16.840.1.113883.6.1.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/ucum</td>
+   <td>UCUM: (<a href="http://unitsofmeasure.org">UnitsOfMeasure.org</a>)</td>
+   <td>Generally used in the Quantity Data Type<br/>OID=2.16.840.1.113883.6.8</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/icd-10</td>
+   <td>ICD-10 International (<a href="http://www.who.int/classifications/icd/en/">WHO</a>)</td>
+   <td><br/>OID=2.16.840.1.113883.6.3 </td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/icd-9</td>
+   <td>ICD-9 USA (<a href="http://www.cdc.gov/nchs/icd/icd9.htm">CDC</a>)</td>
+   <td><br/>OID=2.16.840.1.113883.6.42 </td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/v2-[X]</td>
+   <td>Version 2 table code</td>
+   <td>[X] is the 4 digit identifier for a table. i.e. urn:hl7-org:sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/iso-639</td>
+   <td>Language Codes as defined in (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>)</td>
+   <td>3 letter codes known as 639-3 <br/>OID=1.0.639.3</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/iso-4217</td>
+   <td>Currency Codes as defined in (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
+   <td>3 digit currency designators<br/>OID=1.0.4217</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/atc</td>
+   <td>Anatomical Therapeutic Chemical Classification System (<a href="http://www.whocc.no/atc/structure_and_principles/">WHO</a>)</td>
+   <td><br/>OID=2.16.840.1.113883.6.73</td>
+ </tr> 
+ 
+ <tr style="background-color: #FEFEFE">
+   <td colspan="3">Identifier Systems</td>
+ </tr>
+
+ <tr>
+   <td>urn:hl7-org:sid/uri</td>
+   <td>URIs (<a href="http://www.w3.org">W3C</a>)</td>
+   <td>As defined by various applicable RFCs including X<br/>No OID</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/oid</td>
+   <td>OIDs</td>
+   <td>The identifier is an OID itself</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/uuid</td>
+   <td>UUIDs</td>
+   <td>Also called GUIDs<br/>No OID</td>
+ </tr>
+ <tr>
+   <td>urn:hl7-org:sid/us-ssn</td>
+   <td>SSN (<a href="http://www.w3.org">W3C</a>)</td>
+   <td>SSN for USA. Represented with dashes removed<br/>OID=2.16.840.1.113883.4.1</td>
+ </tr>
+ 
+ 
+</table>
+<a name="localsystems"/>
+<h2>Internal Code Systems</h2>
+<p>
+In addition to this, a number of code sytems are defined informally through 
+the specification. This table enumerates them, and assigns sid and OID values 
+for them, though these are not generally used directly in this specification:
+<table class="list">
+ <tr>
+  <td><a href="#specialvalues">Special Values</a></td>
+  <td>urn:hl7-org:sid/fhir/special-values</td>
+  <td>2.16.840.1.113883.6.305</td>
+ </td>
+ <tr>
+  <td><a href="#resourcetypes">Resource Types</a></td>
+  <td>urn:hl7-org:sid/fhir/resources</td>
+  <td>2.16.840.1.113883.6.306</td>
+ </td>
+ <tr>
+  <td><a href="http.htm#interactions">Logical Interactions</a> (RESTful framework)</td>
+  <td>urn:hl7-org:sid/fhir/interactions</td>
+  <td>2.16.840.1.113883.6.308</td>
+ </td>
+ <tr>
+  <td><a href="messaging.htm#Events">Message Events</a> (Messaging framework)</td>
+  <td>urn:hl7-org:sid/fhir/message-events</td>
+  <td>2.16.840.1.113883.6.307</td>
+ </td>
+ <tr>
+  <td><a href="xml.htm#dataAbsentReason">Data Absent Reason</a></td>
+  <td>urn:hl7-org:sid/fhir/data-absent-reason</td>
+  <td>2.16.840.1.113883.6.309</td>
+ </td>
+</table>
+<p>
+Note that all the codes in these code systems are case sensitive, and must be used in lowercase.
+</p>
+<a name="specialvalues"/>
+<h2>Special Values</h2>
+<p>
+Internally defined codes useful throughout the specification where <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> is used.
+These are defined by the code system "urn:hl7-org:sid/fhir/special-values" which has OID 2.16.840.1.113883.6.305. 
+</p>
+<table class="codes">
+  <tr><td>true</td><td>Boolean true</td></tr>
+  <tr><td>false</td><td>Boolean false</td></tr>
+  <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified (used in formulations)</td></tr>
+  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' The null flavor would be used to express the quantity of water. )</td></tr>
+  <tr><td>withdrawn</td><td>The correct value is no longer available</td></tr>
+</table>
+
+<a name="resourcetypes"/>
+<a name="ResourceType"/>
+<h2>Resource Types</h2>
+<p>
+In several places, the resource types themselves are used as codes, with the sid, where required, of "urn:hl7-org:sid/fhir/resource-types". This is a formal list of such codes: 
+</p>
+<table class="codes">
+<%resourcecodes%>
+</table>
+
+
+
+
+
+<%footer%>
+
+
+
+<%/maindiv%>
+    
+</body>
+</html&gt;

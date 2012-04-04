@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Conformance xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\conformance.xsd">
+  <id>6cb96d2f-cfa5-4da9-a5a6-d1a087da0baf</id>
+  <date>2012-01-04</date>
+  <publisher>
+    <name>ACME Corporation</name>
+    <contacts>
+      <contact>
+        <system>email</system>
+        <value>wile@acme.org</value>
+      </contact>
+    </contacts>
+  </publisher>
+  <software>
+    <name>EHR</name>
+    <version>0.00.020.2134</version>
+  </software>
+  <mode>server</mode>
+  <resource>
+    <type>Patient</type>
+  </resource>
+  <operation>
+    <read>true</read>
+    <vread>true</vread>
+    <update>true</update>
+    <delete>false</delete>
+    <validate>false</validate>
+    <history>true</history>
+    <transaction>
+      <names>
+        <name>link</name>
+      </names>
+    </transaction>
+    <search>
+      <params>
+        <param>name</param>
+        <param>gender</param>
+      </params>
+    </search>
+    <create>
+      <id>server</id>
+    </create>
+    <updates>true</updates>
+    <schema>false</schema>
+  </operation>
+  
+
+	<text>
+    <status>generated</status>
+    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+      <p>The EHR Server supports the following transactions for the resource "Patient": read, vread, update, history, transaction(link), search(name,gender), create(server-id only), and updates</p>
+    </xhtml>
+  </text>
+</Conformance>

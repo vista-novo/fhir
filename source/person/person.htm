@@ -1,0 +1,30 @@
+
+<p>
+Notes:
+</p>
+<ul>
+<li>There are various types of people of interest - patients, employees, etc. Different types of people might come from different service end points.</li>
+<li>The administrative gender of the patient is that one that matters for the record. This may match the gendor of birth or the current socially-reported gender.</li>
+<li>Qualifications covers both formal education gained in the past, and ongoing certification and accreditation often associated with healthcare providers.</li>
+<li>Various jurisdictions define their own qualification and/or codes, and some care about this more than others.</li>
+<li>The organization references are all optional, so can be replaced by simple text rather than a full resource reference</li>
+<li>A related person can be either reference to another resource using the id, or can provide what is known about the person directly</li>
+</ul>
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for person:
+</p>
+<table class="list">
+  <tr><td>name       </td><td>a portion of name in any name part</td></tr>
+  <tr><td>phonetic   </td><td>a portion of name using some kind of phonetic matching algorithm</td></tr>
+  <tr><td>algorithm  </td><td>specify which phonetic matching algorithm applies </td></tr>
+  <tr><td>id         </td><td>search id in any identifiers</td></tr>
+  <tr><td>contact    </td><td>the value in any kind of contact</td></tr>
+  <tr><td>address    </td><td>an address in any kind of address/part</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>

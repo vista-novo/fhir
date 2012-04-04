@@ -1,0 +1,5 @@
+Code,Definition
+home,A communication address at a home.
+work,An office address. First choice for business related contacts during business hours.
+temp,A temporary address. The period can provide more detailed information.
+old,"This address is no longer in use (or was never correct, but retained for records)"

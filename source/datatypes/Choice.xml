@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Grahame</Author>
+  <LastAuthor>Grahame</LastAuthor>
+  <Created>2012-03-19T11:25:03Z</Created>
+  <Version>14.00</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>10905</WindowHeight>
+  <WindowWidth>26595</WindowWidth>
+  <WindowTopX>1680</WindowTopX>
+  <WindowTopY>1515</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Data Elements">
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="46.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="77.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
+   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Element</Data></Cell>
+    <Cell><Data ss:Type="String">Card.</Data></Cell>
+    <Cell><Data ss:Type="String">Conf.</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">Short Name</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+    <Cell><Data ss:Type="String">Example</Data></Cell>
+    <Cell><Data ss:Type="String">Requirements</Data></Cell>
+    <Cell><Data ss:Type="String">Condition</Data></Cell>
+    <Cell><Data ss:Type="String">Comments</Data></Cell>
+    <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
+    <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
+    <Cell><Data ss:Type="String">To Do</Data></Cell>
+    <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="255">
+    <Cell><Data ss:Type="String">Choice</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A code taken from a short list of codes that are not defined in a formal code system</Data></Cell>
+    <Cell><Data ss:Type="String">A code taken from a short list of codes that are not defined in a formal code system</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Questionnaires and the like - assessment scales. There's no formal terminology underlying them, yet the possible choices affect the interpretation of the code. Because the choice can be quite dynamic, the price of setting up formal infrastructure to carry the choices out of band is expensive </Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Choice is generally used for things like pain scales, questionnaires or formally defined assessment indexes. The possible codes may be ordered with some arbitrarily defined scale. Choice does not fit all assessment scales - the more combinatorial the value is, the less likely that Choice will be an appropriate data type</Data></Cell>
+    <Cell><Data ss:Type="String">Maps to an observation</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="105">
+    <Cell><Data ss:Type="String">Choice.code</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Conditional</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">Selected code</Data></Cell>
+    <Cell><Data ss:Type="String">The code or value that the user selected from the list of possible codes</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">+</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Must have a code unless a dataAbsentReason exists</Data></Cell>
+    <Cell><Data ss:Type="String">The &quot;code&quot; might be a numerical choice in a pain scale, for instance, 1 where the choices are 1-5 with associated words for severity of pain</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.value (CD)</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Choice.value</Data></Cell>
+    <Cell><Data ss:Type="String">1..*</Data></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">A list of possible values for the code</Data></Cell>
+    <Cell><Data ss:Type="String">A list of possible values for the code</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Need to know the possible codes the user could have chosen</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Choice.value.code</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">Possible code</Data></Cell>
+    <Cell><Data ss:Type="String">A possible code or value that the user could have chosen</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">&#45;-, -, +, ++</Data></Cell>
+    <Cell><Data ss:Type="String">Need to know the possible codes the user could have chosen</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Choice.value.display</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Display for the code</Data></Cell>
+    <Cell><Data ss:Type="String">A set of words associated with the code to give it meaning, if any exist</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Sometimes the codes have associated words that give it more more meaning</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">The code itself may convey sufficient meaning</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Choice.isOrdered</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">If the order of the values has meaning</Data></Cell>
+    <Cell><Data ss:Type="String">Whether the order of the values has an assigned meaning</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The Choice may come from an ordered scale such as a pain scale or a an assessment scale, or it may be hust a random set of choices that have no particular order</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>6</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Invariants">
+  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="162.75"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="322.5"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="357.75"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="313.5"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">English</Data></Cell>
+    <Cell><Data ss:Type="String">OCL</Data></Cell>
+    <Cell><Data ss:Type="String">Schematron</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Must Have a code</Data></Cell>
+    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Choice element has a dataAbsentReason flag, it must contain a </Font><I><Font
+        html:Color="#000000">code</Font></I></ss:Data></Cell>
+    <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or code.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or data or url</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">code Must contain at least one char</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">If a code element is provided, it must be least one character long</Data></Cell>
+    <Cell><Data ss:Type="String">code.oclIsDefined implies code.size &gt; 0</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">value.code must contain at least one char</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">the value.code elemennts must contain at least one character</Data></Cell>
+    <Cell><Data ss:Type="String">value.code.size &gt; 0</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">display must contain at least one char</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">If a value.display element is provided, it must be least one character long</Data></Cell>
+    <Cell><Data ss:Type="String">value.display.oclIsDefined implies value.display.size &gt; 0</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2" ss:StyleID="Default"/>
+    <Cell ss:Index="4" ss:StyleID="Default"/>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

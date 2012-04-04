@@ -1,0 +1,680 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+
+list from Kevin:
+OPERATE
+CREATE
+READ
+UPDATE
+APPEND
+ANNOTATE
+DELETE
+PURGE
+EXECUTE
+REPRODUCE
+COPY
+BACKUP
+RESTORE
+EXPORT
+PRINT
+DERIVE
+CONVERT
+EXCERPT
+TRANSLATE
+MOVE
+ARCHIVE
+REPLACE
+FORWARD
+TRANSFER
+SIGN
+VERIFY
+--------
+RESTRICT
+IMPORT
+OBSOLETE
+ABORT
+COMPLETE
+CANCEL
+RELEASE
+SUSPEND
+RESUME
+ACTIVATE
+REACTIVATE
+NULLIFY
+HOLD
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>HTTP/RESTful Framework</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+<%maindiv%>
+<h1>RESTful HTTP Details</h1>
+
+<p>
+In addition to defining a set of base resources, FHIR also provides a RESTful implementation using HTTP. 
+Each resource type has the same set of interactions defined that can be used to manage the resources 
+in a highly granular fashion. Applications claiming conformance to this framework
+claim to be conformant to "RESTful FHIR".
+</p>
+<p>
+Note that this RESTful framework adheres as closely as possible to the REST principles. Transactions 
+are performed directly on the server resource using an HTTP request/response. The HTTP calls may be
+authenticated against a single user account, but this doesn't cater for common transaction metadata
+such as multiple users, responsible party, reasons, consents etc that is commonly encountered in healthcare. Instead, it is assumed that appropriate
+security and logs are managed by the client (perhaps through using ATNA), and the server trusts the client to maintain
+these. One implication of this is that this RESTful framework is only suitable for use where such 
+trust relationships exist (e.g. in a single institution), and not suitable where such trust does not exist 
+(e.g. state & national EHR systems, and general internet-based ecosystems). Instead, these type of usages
+should consider a <a href="messaging.html">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a>.  or profiled REST
+</p>
+<p>
+The following logical interactions are supported:
+</p>
+<a name="interactions"></a>
+<table class="list"> 
+  <tr><td><b>Instance</b></td><td></td></tr>
+  <tr><td>read</td><td>Read the current state of the resource</td></tr>
+  <tr><td>vread</td><td>A version specific read of the resource</td></tr>
+  <tr><td>update</td><td>Update an existing resource by it's id</td></tr>
+  <tr><td>delete</td><td>Delete a resource</td></tr>
+  <tr><td>validate</td><td>Check that the content would be acceptable as an update</td></tr>
+  <tr><td>history</td><td>Retrieve the update history for the resource</td></tr>
+  <tr><td>transaction</td><td>Support for specific transactions defined on the resource</td></tr>
+  <tr><td colspan="2"><b>Manager</b></td></tr>
+  <tr><td>search</td><td>Search the resource type based on some filter criteria</td></tr>
+  <tr><td>create</td><td>Create a new resource. The id may be assigned by client or server</td></tr>
+  <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
+  <tr><td>transaction</td><td>Support for specific transactions defined on the resource type</td></tr>
+  <tr><td>conformance</td><td>Get a conformance statement for support of this resource type</td></tr>
+  <tr><td>schema</td><td>Get the XML schema for this resource</td></tr>
+</table>
+
+<p>
+Note that while these same logical interactions are defined on all
+resources, applications are not required to implement all of them. 
+An application's <a href="conformance.htm">conformance statement</a> must say what logical interactions 
+are supported.
+</p>
+
+
+<h2>Base URL</h2>
+<p>
+Each resource lives at a specific location with a known URL 
+which is automatically determined from the id, the resource 
+type, and the base url of the system.
+</p>
+<p>
+The concept of the base URL is defined because because this specification 
+defines an interface rather than any particular system. The base URL 
+is the address at which all the resources defined by this 
+interface are found. The base URL takes the form of 
+</p>
+<pre>
+http(s)://server/path
+</pre>
+<p>
+The path may end with a trailing slash or not. Each 
+resource defined in this specification has a manager
+that lives at the address "/[type name]" where type 
+name is the name of the type in lower case and plural. 
+So, for instance, the resource manager for the type 
+"Patient" will live at:
+</p>
+<pre>
+http://server/path/patients
+</pre>
+<p>
+Note that applications may need to remove the trailing
+slash from the base URL when appending the resource 
+address. All the logical operations are provided 
+relative to the address of the resource and defined in 
+these terms below. Note that this 
+means that given the address of any one resource on a
+system, the correct address for all the other resources 
+may be determined.
+
+However since application URLs may change, and because local configuration
+may dictate that the provider of a resource is different
+to that claimed by any particular provider or consumer, 
+applications should be adroit at replacing base URLs.
+</p>
+
+
+<h2>HTTP Status Codes</h2>
+<p>
+For all interactions, if the requested resource is returned as requested, the HTTP status 200 OK 
+should be used (except for "create" where the status code should be 201). 
+If the resource is not known, the server should return an HTTP status code 404 Not Found. 
+Other HTTP errors may be returned as appropriate. 
+</p>
+<p>
+An HTTP redirect should not be used to indicate that the master id has changed. This is because 
+the ids are treated as stable references elsewhere and used for matching. Changing an id will 
+cause problems with this matching. Redirects may be issued to redirect to a new base URL, or
+to a master system for a given resource.  
+</p>
+
+<h2>Resource Metadata &amp; Versioning</h2>
+<p>
+Each resource has an associated set of <a href="xml.htm#metadata">resource metadata</a>. These map to the http request and response using the following fields:
+</p>
+<table class="grid">
+  <tr><th>Metadata Item</th><th>HTTP Response Header</th></tr>
+  <tr><td>Version Id</td><td>ETag</td></tr>
+  <tr><td>Last Modified Date</td><td>Last-Modified</td></tr>
+  <tr><td>Master Location</td><td>Content-Location</td></tr>
+</table>
+
+
+<h2>Security</h2>
+<p>
+For this specification, normal HTTP security and authentication
+rules apply. The base URL will specify whether SSL is 
+required. HTTP authentication, including possibly the requirement for 
+client certificates, may be required by the provider. 
+It is a matter of application requirements and local 
+configuration whether all interactions run under the account of 
+a trusted system user, or whether each interaction runs under the 
+account of the individual user. 
+</p>
+
+<h2>read</h2>
+<p>
+The read interaction accesses the current contents of a resource. The interaction
+is performed by an HTTP GET operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/{id}.xml
+</pre>
+<p>
+This returns a single instance with the content that which is specified for the resource type.
+This url may be accessed by a browser.
+The possible values for the id itself are discussed in the <a href="xml.htm#Resource">Resource Type</a>.
+The http headers ETag, and Last-Modified must be returned by the server, and the Content-Location should be 
+returned. 
+</p>
+
+<h2>vread</h2>
+<p>
+The vread interaction preforms a version specific read of the resource. The interaction
+is performed by an HTTP GET operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/{id}/version-{vid}.xml
+</pre>
+<p>
+This returns a single instance with the content that which is specified for the resource type.
+This url may be accessed by a browser. The http headers ETag, and Last-Modified, must be returned by the server, and are the values that apply for this version of the resource.
+</p>
+<p>
+The version id is an opaque identifier that conforms to the same format requirements as 
+a resource id. The id may be found by performing a history operation (see below), by recording the 
+ETag return with a normal fetch operation, or from a version specific reference in a content model. 
+The vread interaction should succeed even after a resource is deleted as long as a correct version 
+identifier is provided. 
+</p>
+
+<h2>update</h2>
+<p>
+The update interaction changes an existing resource. The interaction
+is performed by an HTTP PUT operation as shown:
+</p>
+<pre>
+  PUT [baseurl]/[resourcetype]/{id}.xml
+</pre>
+<p>
+To get a copy of the 
+newly updated resource (which may not be the same as that submitted) returned with the acknowledgement , use ?reload=true 
+on the request.
+</p>
+<p>
+Servers may choose to require version checking, and only accept submitted updates that have an If-Match header that
+contains a matching version id for the current version of the resource. According to the http specification, it's 
+up to the client to decide whether to provide an If-Match header, and if it does, the server must observe it. 
+On normal update operations the client should not provide an If-Match header, and if the server wishes to receive it,
+it should return a 412 error with the words "If-Match" in the response text. Upon receiving this error, the client
+should resubmit with the If-Match header, if it is able. The Last-Modified dateTime is not suitable for concurrency
+checking as it only has a resolution limit of per-second, and there are other problems with dates as well.</p>
+
+<h2>delete</h2>
+<p>
+The delete interaction removes an existing resource. The interaction
+is performed by an HTTP DELETE operation as shown:
+</p>
+<pre>
+  DELETE [baseurl]/[resourcetype]/{id}.xml
+</pre>
+<p>
+Servers may refuse to delete a resource depending on the resource, and on audit requirements. If a server refuses 
+to delete a resource on principle, then it should return the status code 405 method not allowed. 
+If the server refuses to delete a resource because of reasons specific to that resource, such as 
+referential integrity, it should return the status code 412 Expectation Failed.
+</p>
+
+<h2>validate</h2>
+<p>
+The validate interaction checks whether the attached content would be acceptable as an 
+update to an existing resource. The interaction is performed by an HTTP POST operation as shown:
+</p>
+<pre>
+  POST [baseurl]/[resourcetype]/validation
+  POST [baseurl]/[resourcetype]/validation/{id}
+</pre>
+<p>
+In the first case, the content is checked against the general specification and against 
+the conformance profile that applies to the application. In the second case, additional
+instance specific things such as referential integrity and update rules are applied as well.
+In the second case, a transaction section may be required to trigger the correct update rules.
+The return content has status 200 OK if the content validates ok, or 412 Precondition Failed,
+with the following content:
+</p>
+<pre>
+ &lt;<b>validation</b> xmlns="http://www.hl7.org/fhir">
+   &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">General error message</font>&lt;/errror&gt;  
+   &lt;<b>messages</b> <font color="darkgreen">type="list"</font>>   <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+     &lt;<b>message</b>&gt;
+       &lt;<b>path</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font><font color="navy">xpath to the issue</font>&lt;/path&gt;
+       &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Description of the problem</font>&lt;/error&gt;
+     &lt;/message&gt;
+   &lt;messages&gt;
+ &lt;/validation&gt;
+</pre>
+
+<h2>history</h2>
+<p>
+The history interaction retrieves the history of the resource. The interaction is performed by an HTTP Get operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/{id}.xml?view=history
+</pre>
+<p>
+The return content is an <a href="implementation.htm#Aggregation">Atom feed aggregration</a> containing the version history for that 
+resource, sorted with oldest versions first.
+</p>
+<a name="search"></a>
+<h2>search</h2>
+<p>
+This interaction searches the resource type based on some filter criteria. The interaction is performed by an HTTP Get operation as shown:
+<p>
+<pre>
+  GET [baseurl]/[resourcetype]/search.xml
+</pre>
+<p>
+The return content has the following content:
+</p>
+<pre>
+ &lt;[resourcetype] xmlns="http://www.hl7.org/fhir"  <font color="darkgreen">type="list"</font>>   <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+   &lt;<b>[resource]</b>&gt;
+     <font color="Gray">&lt;!-- Content for resource --&gt;</font>
+   &lt;/[resource]&gt;
+ &lt;/[resourcetype]&gt;
+</pre>
+<p>
+For example, with patient, the response would look like this:
+</p>
+<pre>
+ &lt;Patients xmlns="http://www.hl7.org/fhir">
+   &lt;<b>Patient</b>&gt;
+     <font color="Gray">&lt;!-- Content for patient --&gt;</font>
+   &lt;/Patient&gt;
+ &lt;Patients&gt;
+</pre>
+<p>
+The search results are divided into a number of pages using offsets. 
+It is at the discretion of the server how many results to return, though
+the client may request a particular number of a <i>count</i> parameter. If
+the client wishes for more results, it should use the <i>n</i> parameter.
+More generally, the client uses parameters to narrow the search and 
+increase it's usefulness. The following table summarises ths search parameters:
+<p>
+<table class="list">
+  <tr><td>n</td><td>Starting offset of the first record to return in the search set</td></tr>
+  <tr><td>count</td><td>Number of return records requested. The server is not bound to conform.</td></tr>
+  <tr><td>[path]</td><td>a value to match in the content model.</td></tr>
+</table>
+<p>
+The path is a reference to an element in the content model. The general form is [name].[name] etc. 
+So to search by a patient telephone number, the parameter would be contacts.contact.value, and the 
+value of the parameter would be tel:[#]. Which parameters to support is at the discretion of the server.
+Additional parameters are defined for individual resource types.
+</p>
+
+<h2>create</h2>
+<p>
+The create interaction creates a new resource. The interaction
+is performed by an HTTP POST operation as shown:
+</p>
+<pre>
+  POST [baseurl]/[resourcetype].xml
+</pre>
+<p>
+To get a copy of the newly created resource (which may not be the same as that submitted) 
+returned with the acknowledgement, use ?reload=true on the request.
+</p>
+<p>
+If the client does not provide an ID, the server will assign an id, and return it 
+in the HTTP location header:
+<p>
+<pre>
+ Location: [baseurl]/[resourcetype]/{new-id}.xml
+</pre>
+<p> 
+in addition to returning the id in the xml content if requested.
+</p>
+<p>The client can also submit the content with an id included. If it does, 
+the server must either honor the requested id, or return a 409 Conflict if
+a resource already exists by that id, or a 403 Forbidden if it will not 
+honor client ids at all</p>
+
+<h2>updates</h2>
+<p>
+The updates interaction retrieves a list of changes to the resource type. The interaction is performed by an HTTP Get operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/updates.xml
+</pre>
+<p>
+The return content is an <a href="implementation.htm#Aggregation">Atom feed aggregration</a> containing the update history for that 
+resource type, sorted with oldest updates first.
+</p>
+<p>
+The client can use parameters to narrow the search and 
+increase it's usefulness. The following table summarises ths search parameters:
+<p>
+<table class="list">
+  <tr><td>since</td><td>The time from which to return new updates</td></tr>
+  <tr><td>[path]</td><td>a value to match in the content model.</td></tr>
+</table>
+<p>
+See search above for details of the [path]. 
+</p>
+
+<h2>transaction</h2>
+<p>
+The transaction interaction provides support for specific transactions defined against the resource
+by this specification. The transaction interaction is supported on both individual resources and the type:
+</p>
+<pre>
+  POST [baseurl]/[resourcetype]/transaction
+  POST [baseurl]/[resourcetype]/transaction/{id}
+</pre>
+<p>
+The content model of the request and response will be specified when the possible transactions 
+are defined throughout this specification.
+</p>
+
+<h2>conformance</h2>
+<p>
+The conformance interaction retrieves the application's conformance statement for the resource. The interaction is performed by an HTTP Get operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/conformance.xml
+</pre>
+<p>
+For the return content, see the <a href="conformance.htm">Conformance Resource</a>. If a 404 Unknown is returned, the resource is not supported, and no other interactions are implemented.
+</p>
+
+<h2>schema</h2>
+<p>
+The schema interaction retrieves a w3c schema for the resource. The interaction is performed by an HTTP Get operation as shown:
+</p>
+<pre>
+  GET [baseurl]/[resourcetype]/schema.xsd
+</pre>
+<p>
+The return content is a W3C schema that describes the resource. The schema does not have to be the one defined 
+with this specification; it can eliminate elements not supported by the server, and explicitly define 
+extensions supported by the server. However the xml format it describes must be consistent with the 
+rules defined in this specification.
+</p>
+
+<h2>Intermediaries</h2>
+<p>
+The HTTP protocol may be routed through an HTTP proxy such as 
+squid. Such proxies are transparent to the applications, though
+implementors should be alert to the effects of rogue caching.
+</p>
+<p>
+Interface engines may also be placed between the consumer and
+the provider; these differ from proxies because they actively
+change the content and/or destination of the HTTP exchange.
+Such agents are allowed, but are bound to the conform to 
+this specification. In order to assist with troubleshooting,
+any agent that modifies an HTTP request or Response content must add 
+a stamp to the HTTP headers like this:
+</p>
+<pre>
+  request-modified-[identity]: [purpose]
+  response-modified-[identity]: [purpose]
+</pre>
+<p>
+The identity must a single token defined by the administrator of the agent
+that will sufficiently identify the agent in the context of use. The header
+must specify the agents purpose in modifying the content. End point systems must
+not use this header for any purpose; it's aim is to assist with 
+system troubleshooting.
+</p>
+
+
+<%footer%>
+
+
+<%/maindiv%>    
+</body>
+</html>
+
+<!--
+This specification creates the possibility of many different interactions, but applications
+are not required to support any of them. To manage this complexity, each application must 
+make a conformance statement. The conformance statement describes, on a per resource basis:
+</p>
+<ul>
+ <li>The purpose of supporting the resource</li>
+ <li>Which interactions are supported</li>
+ <li>How the content model is supported and extended</li>
+ <li>What transaction are supported</li>
+ <li>When transaction elements are required, and what parts are required</li>
+ <li>What parameters are supported for searching and updates</li>
+ <li>digital signature support</li>
+</ul>
+<p>
+To meet these requirements, this page defines a fixed xml format to represent
+the conformance statemnt. The conformance statement may be used at run time to
+assist with application to application negotiation, or it may be used at 
+design time or even purchase time to assist implementers to understand the 
+capabilities of the system.
+</p>
+<p>
+There is also an aggregated form of the conformance statement to gather the 
+conformance statements for each resource type into a single XML document. 
+</p>
+<h2>Content Model</h2>
+
+ 
+<pre>
+ &lt;<b>conformance</b> xmlns="..."&gt;
+   &lt;<b>application</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Identity of the application (incl. version)</font>&lt;application&gt;
+   &lt;<b>type</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Client|Server</font>&lt;type&gt;
+   &lt;<b>resource</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Formal Name of the resource type</font>&lt;resource&gt;
+   &lt;<b>purpose</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">General human readable reason for supporting the resource</font>&lt;/purpose&gt;
+   &lt;<b>interactions</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">space separated list of interactions supported</font>&lt;/interactions&gt;
+   
+   <font color="Gray">&lt;!--
+     Content models. There is a content model for each transaction. In 
+     addition, there is a general content model that applies if no transaction specific model is 
+     specified. Sections are optional, but a content model must be defined for each transaction 
+     listed above. 
+   --&gt;</font>
+   &lt;<b>default</b> <font color="red">opt</font>&gt;
+     &lt;<b>content</b> <font color="red">opt</font>&gt; 
+       &lt;<b>element</b>&gt; 
+         &lt;<b>name</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Name of the element as specified in RfH</font>&lt;/name&gt
+         <font color="Gray">&lt;!-- read and write status must both be specified --&gt;</font>
+         &lt;<b>read</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">One of: Required | Ignored | Rejected | Optional </font>&lt;/read&gt
+         &lt;<b>write</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">One of: Always | Never | Sometimes </font>&lt;/write&gt
+         &lt;<b>minOccurs</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;integer&quot;</font>&gt;<font color="Navy">Minimum number (if present)</font>&lt;/minOccurs&gt
+         &lt;<b>maxOccurs</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;integer|string&quot;</font>&gt;<font color="Navy">Maximum number or "*" (if present)</font>&lt;/maxOccurs&gt
+         &lt;<b>text</b> <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">One of: Data | Text | Either </font>&lt;/text&gt
+         &lt;<b>valueSet</b> <font color="red">opt</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Value set id (if coded)</font>&lt;/valueSet&gt
+         &lt;<b>filter</b> <font color="red">opt</font> <font color="Darkgreen">type=&quot;boolean&quot;</font>&gt;<font color="Navy">true if can use as filter in URLs</font>&lt;/filter&gt
+         &lt;<b>fixedValue</b> <font color="red">opt</font> &gt;
+           &lt;<b>[type]</b> <font color="red">mand</font>&gt;[as defined for type]&lt;/[type]&gt
+         &lt;/fixedValue&gt
+		 
+         &lt;<b>element</b>&gt; 
+           <font color="Gray">&lt;!-- nested elements - same content model --&gt;</font>
+         &lt;/element&gt;
+       &lt;/element&gt;
+     &lt;/content&gt;
+     &lt;<b>transaction</b>&gt;
+       <font color="Gray">&lt;!-- 
+         Defines the content model of the transaction element, if there is one. The default transaction 
+         definition applies to create/update/delete and other transactions unless overridden. The 
+         content is the same as the content model above (nested element definitions)
+       --&gt;</font>
+     &lt;/transaction&gt;
+   &lt;/default&gt;
+   &lt;<b>interactions</b>&gt;
+     &lt;<b>interaction</b>&gt;
+       &lt;<b>name <font color="red">mand</font> <font color="Darkgreen">type=&quot;string&quot;</font>&gt;<font color="Navy">Name of the interaction</font>&lt;/name&gt
+       <font color="Gray">&lt;!-- 
+         Content model same as for default element: a 
+		 content and optionally a transaction element
+       --&gt;</font>
+     &lt;/interaction
+   &lt;interactions&gt;
+ &lt;/conformance&gt;
+</pre>
+<p>
+Notes:
+</p>
+<ul>
+<li>A server will always return the type "Server". "Client" conformance profiles are published manually</li>
+</ul>
+<p>
+The aggregated form is the takes the same form as that conformance statement above, but where the 
+elements represent the aggregated form.
+</p>
+
+<h2>Example</h2>
+<p>
+(To Do) Note: the details in the example have not been sychronised with the latest specification as found above.
+</p>
+<p>
+Example: patient support for a laboratory reporting application. Simple, just enough to support the reporting functionality.
+</p>
+
+<pre>
+ &lt;statement xmlns="..."&gt;
+   &lt;type&gt;Server&lt;type&gt;
+   &lt;resource&gt;Patient&lt;resource&gt;
+   &lt;purpose&gt;In support of laboratory report provision functionality&lt;/purpose&gt;
+   &lt;interactions&gt;read search updates conformance&lt;/interactions&gt;
+   &lt;!-- basic search support, just by MRN and name --&gt;
+   &lt;search&gt;
+     &lt;param name="identifiers.identifier.identifier.id"/&gt;
+     &lt;param name="names.name.part.value"/&gt;
+     &lt;param name="name"/&gt;
+     &lt;param name="n"/&gt;
+     &lt;param name="count"/&gt;
+   &lt;/search&gt;
+   &lt;!-- only support filtering updates since last date --&gt;
+   &lt;filter&gt;
+     &lt;param name="date"/&gt;
+     &lt;param name="n"/&gt;
+     &lt;param name="count"/&gt;
+   &lt;/filter&gt;
+   &lt;write&gt;
+     &lt;!-- there is no read for this application; it only writes - note 
+         that would mean it gets the patient details by e.g. HL7 v2 --&gt;
+     &lt;element name="patient" state="always"&gt; &lt;!-- root is always always --&gt;
+       &lt;element name="id" state="always"/&gt; 
+       &lt;element name="created" state="always"/&gt;
+       &lt;element name="updated" state="always"/&gt;
+       &lt;element name="status" state="always" fixed="active"/&gt;
+       &lt;!-- this application doesn't support linking patients. 
+                That may be an issue for potential users of the application... --&gt;
+       &lt;element name="links" state="never"/&gt; !!! as text !!!
+       &lt;!-- always one identifier: the institutions MRN --&gt;
+       &lt;element name="identifiers" state="always"&gt;
+         &lt;element name="identifier" state="always" max="1" min="1"&gt;
+	   &lt;element name="use" state="never"/&gt;
+           &lt;element name="type" state="always" fixed="mrn"/&gt;
+           &lt;element name="identifier" state="always"&gt;
+             &lt;element name="system" state="always" fixed="patient master URL"/&gt;
+             &lt;element name="id" state="always"/&gt;
+             &lt;element name="quality" state="always" fixed="checked"/&gt;
+             &lt;element name="period" state="never"/&gt;
+             &lt;element name="assigner" state="never"/&gt;
+	   &lt;/element&gt;
+	 &lt;/element&gt;
+       &lt;/element&gt;
+       &lt;element name="institution" state="never"/&gt;
+       &lt;!-- always one name - family, and possibly one given --&gt;
+       &lt;element name="names state="always"&gt;
+         &lt;element name="name" state="always" min="1" max="1"&gt;
+           &lt;element name="use" state="never"/&gt;
+           &lt;element name="part" min="1" max="2"&gt;
+             &lt;element name="use" state="never"/&gt;
+             &lt;element name="type" state="always" values="given family"/&gt;
+             &lt;element name="value" state="always" search="true" filter="true"/&gt;
+             &lt;element name="code" state="never"/&gt;
+             &lt;element name="system" state="never"/&gt;
+	   &lt;/element&gt;
+           &lt;element name="period" state="never"/&gt;
+	 &lt;/element&gt;
+       &lt;/element&gt;
+       &lt;!-- always one Address. two address lines + suburb --&gt;
+       &lt;element name="addresses state="always"&gt;
+         &lt;element name="address" state="always" min="1" max="1"&gt;
+           &lt;element name="use" state="never"/&gt;
+           &lt;element name="part" min="3" max="5"&gt;
+             &lt;element name="use" state="never"/&gt;
+             &lt;element name="type" state="always" values="addressline suburb zip state"/&gt;
+             &lt;element name="value" state="always" search="true" filter="true"/&gt;
+             &lt;element name="code" state="never"/&gt;
+             &lt;element name="system" state="never"/&gt;
+	   &lt;/element&gt;
+           &lt;element name="period" state="never"/&gt;
+	 &lt;/element&gt;
+       &lt;/element&gt;
+       &lt;element name="contacts state="never"/&gt;
+       &lt;!-- maybe a date of birth --&gt;
+       &lt;element name="dob" state="sometimes" precision="8"/     &gt;
+       &lt;!-- none of the rest of the model --&gt;
+       &lt;element name="dod" state="never"/&gt;
+       &lt;element name="birthplace" state="never"/&gt;
+       &lt;element name="languages" state="never"/&gt;
+       &lt;element name="citizenships" state="never"/&gt;
+       &lt;element name="employments" state="never"/&gt;
+       &lt;element name="student" state="never"/&gt;
+       &lt;element name="qualification" state="never"/&gt;
+     &lt;/element&gt;
+   &lt;/write&gt;
+ &lt;/statement&gt;
+</pre>
+
+
+<table class="list">
+ <tr><td colspan="2"><b>When Providing:</td></tr>
+ <tr><td>structure</td><td>Only structure will be produced</td></tr>
+ <tr><td>generated</td><td>Structure is produced, and a generated narrative is provided</td></tr>
+ <tr><td>narrative</td><td>Only narrative will be produced</td></tr>
+ <tr><td>both</td><td>Either structure or narrative may be provided</td></tr>
+ <tr><td colspan="2"><b>When Consuming:</td></tr>
+ <tr><td>structure</td><td>Only structure will be processed. Narrative will be ignored</td></tr>
+ <tr><td>narrative</td><td>Only narrative will be processed. Structure will be ignored</td></tr>
+ <tr><td>both</td><td>Either structure or narrative is acceptable</td></tr>
+</table>
+<p>
+TODO: grab control over images and formatting or not? capture the notion of only in error or not? extend the XML descriptive syntax to say which can be texted?
+</p>
+-->

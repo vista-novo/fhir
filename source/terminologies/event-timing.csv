@@ -1,0 +1,11 @@
+Code,Definition
+HS,event occurs duration before the hour of sleep (or trying to)
+WAKE,event occurs duration after waking
+AC,event occurs duration before a meal (from the latin ante cibus)
+ACM,event occurs duration before breakfast (from the latin ante cibus matutinus)
+ACD,event occurs duration before lunch (from the latin ante cibus diurnus)
+ACV,event occurs duration before dinner (from the latin ante cibus vespertinus)
+PC,event occurs duration after a meal (from the latin post cibus)
+PCM,event occurs duration after breakfast (from the latin post cibus matutinus)
+PCD,event occurs duration after lunch (from the latin post cibus diurnus)
+PCV,event occurs duration after dinner (from the latin post cibus vespertinus) 

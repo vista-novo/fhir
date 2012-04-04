@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>UML Models and dataAbsentReason</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+
+
+<h1>UML Models and dataAbsentReason</h1>
+
+<p>
+This specification describes the use of the <i>dataAbsentReason</i> attribute, 
+which is used throughout the content models on elements of any type to
+indicate missing data. The <i>dataAbsentReason</i> attribute "may appear on any element in a resource other 
+than those marked mandatory".
+<p>
+In Object-Orientated paradigms, the <i>dataAbsentReason</i> is a mixin. 
+The <a href="http://en.wikipedia.org/wiki/Mixin#">definition of a mix-in</a> is that 
+it is an abstract class that provides functionality that is not inherited by specialization but rather by collecting functionality.
+A mixin can be thought of as a generic class that specializes it's parameter class:
+</p>
+<p><img src="mixin-pure.png"/></a></p>
+<p>
+This shows a mixin called "DataQualityAspect" which expresses the attribute "dataAbsentReason". The 
+two derived classes, DataQualityAspectQuantity which inherits both Quantity and DataQualityAspect
+and DataQualityAspect(Quantity), which binds Quantity to the paramter T on the DataQualityAspect mixin
+both have the same semantics (are identical other than their type derivation). 
+</p>
+<p>
+The problem with this approach is that not only is the &lt;&lt;mixin&gt;&gt; stereotype
+not a recognised standard UML sytnax, but most mainstream programming languages cannot 
+implement multiple inheritence in this form. There is two alternative approaches for 
+implementing this in these platforms. The first is using a wrapper class:
+</p>
+<p><img src="mixin-wrapper.png"/></a></p>
+<p>
+The problem with this variation is that Quantity and DataQualityAspect(Quantity) are 
+no longer both types of Quantity, as with a pure mixin, and this will have a series of 
+knock on effects in implementations. The other alternative is simply to make DataQualityAspect
+a base class:
+</p>
+<p><img src="mixin-base.png"/></a></p>
+<p>
+This is the simplest approach, but has the disadvantage that all instances of 
+the Quantity data type carry the dataAbsentReason attribute, whether it is
+appropriate or not. 
+</p>
+<p>
+Implementors that use these objects in an environment where mixins are not supported
+must choose either of these two approaches. For simplicity, the object models defined
+in this specification simply bind the target type directly to the specified data type,
+and ignore the issue of the dataAbsentReason mixin.</p>
+<p>
+Note that the dataAbsentReason may also be associated with primitive 
+types as well.
+</p>
+
+
+<%footer%>
+<%/maindiv%>    
+</body>
+</html>

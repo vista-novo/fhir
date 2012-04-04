@@ -1,0 +1,4 @@
+Code,Definition
+generated,The contents of the narrative are entirely generated from the structured data in the resource.
+extensions,"The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions"
+additional,The contents of the narrative contain additional information not found in the structured data

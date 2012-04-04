@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Conformance</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+todo: conformance and realms
+
+<h1>Conformance</h1>
+<p>
+This specification describes a set of base resources that are used in many different
+contexts in healthcare. In order to make this manageable, applications need to be
+able to provide a structured statement of which elements of a resource are used, 
+and how. In addition the existing elements, the use of extensions also needs to
+be described. These structured statements are actually constraint statements that
+describe a pattern of usage. As a general tool, they find use in several different
+contexts:
+</p>
+<ul>
+ <li>Describing testable conformance rules for applications that read and write FHIR resources</li>
+ <li>Making rules about how information is represented in jurisdictions and institutions</li>
+ <li>Describing common clinical patterns of use of general resources</li>
+</ul>
+<p>
+The final form of these conformance descriptions is a constraint statement, which may 
+be used at run time to assist with application to application negotiation, or it may 
+be used at design time or even purchase time to assist implementers to understand the 
+capabilities of the system. A constraint statement is embeded inside a full conformance statement, which is made with regard to 
+a particular <a href="implementation.htm">exchange implementation</a>. This specification defines
+three full conformance statements, for use with the <a href="conformance.htm">RESTful framework</a>, with <a href="messageconformance.htm">messaging</a>, and with <a href="documentconformance.htm">documents</a>.
+</p>
+<p>
+The constraint statement is a fixed XML format that is used to represent the core part of 
+the conformance statement description that describes the contents of a resource. This 
+resource-specific constraint statement is gathered into a full conformance statement elsewhere.
+</p>
+<a name="Constraint"></a>
+<h2>Constraint Statement</h2>
+
+<p>
+Note that the context of appearing will make it clear whether this resource constraint specification
+is written from the context of the resource instance, a writing or a reading application
+</p>
+<p>
+<img src="constraint.png"/>
+</p>
+
+<%dt Constraint%>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Resource.type is bound to the codes for <a href="terminologies.htm#ResourceType">ResourceType</a></li>
+  <li>Element.type is bound to the concept domain "FHIR data types", and has one of the values used throughout this specification ({type[param{|param}]})</li>
+  <li>Element.conformance is bound to the concept domain "FHIR conformance types":
+    <table class="codes">
+      <tr> <td>Mandatory</td> <td>The element is or must always be present without a <a href="xml.htm#dataAbsentReason">dataAbsentReason</a></td> </tr>
+      <tr> <td>Conditional</td> <td>The element may need to be present (with no dataAbsentReasons) depending on the condition</td> </tr>
+      <tr> <td>Optional</td> <td>The element may or may not be present</td> </tr>
+      <tr> <td>Prohibited</td> <td>The element is not present or will be rejected if received</td> </tr>
+    </table>
+   </li>
+</ul>
+    
+<p>
+Notes:
+</p>
+<ul>
+<li>The constraint statement has a flat list of elements. The path element provides the overall structure and matches the value in the formal definitions exactly</li>
+<li>The condition element must be present if the conformance value is conditional. There is no formal computable grammar for the condition</li>
+<li>The type of the element is mostly fixed in the underlying resource definitions, so it can be left out of the constraint specification. 
+However when the type is open (resource link to a choice, or a link to any resource, or a choice of data types), then
+  this field can be used to pick a narrower set of types</li>
+<li>Definition is provided so that the constraint statement can provide a more specific definition for the field in a specific context. 
+  For instance, the underlying resource definition might be "Result value", and the more specific resource definition could be "Plasma Cholesterol Test Value".
+  The meaning needs to be consistent with the underlying definition, but narrower - a constraint on it. If no definition is provided, the inherited definition
+  still applies</li>
+<li>There can be more than one definition for each element path. The constraint specification can define multiple different constraints for any element, and 
+  then use them in different places. In practice, this is useful for elements in a list, and the differently named constraint profiles are invoked using the 
+  <i>values</i> element. The name of the element constraint must be unique within the constraint specification for that resource</li>
+<li>For an element with a maximum cardinality of 1, there can only be one entry in the value list, which is either a literal fixed type (with an element name matching the type of the fixed value), or a name,
+  which is a reference to a named constraint pattern. If the element has a type of "list", then there can be multiple values - again, either fixed values with a type, or a named constraint. 
+  Each of these appears in the list with the order and cardinality specified. By this means, a list may be "unrolled" into a series of different components</li>
+<li>The extensions element can be unrolled using this mechanism</li>
+<li>The examples has a demonstration of using named constraints in action</li>
+</ul>
+<p>
+TODO: Is any control over narrative required?
+</p>
+
+  
+<h2>Clinical Templates</h2>
+
+<p>
+To be done: an explanation of how to use the constraint statement above to define clinical templates per CIMI. 
+</p>
+
+
+<%footer%>
+
+<%/maindiv%>    
+</body>
+</html>

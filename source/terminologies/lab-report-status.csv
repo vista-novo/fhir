@@ -1,0 +1,7 @@
+Code,Definition
+registered,"The existence of the result is registered, but there is no result yet available"
+interim,This is an initial or interim result: data may be missing or verification not been performed
+final,The result is complete and verified by the responsible pathologist
+amended,"The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist"
+cancelled,"The result is unavailable because the test was not started or not completed (also sometimes called ""aborted"")"
+withdrawn,The result has been withdrawn following previous Final release

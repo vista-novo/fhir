@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Traditional Messaging Framework</title>
+    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+
+<h1>Traditional Messaging Framework</h1>
+
+<p>
+This page describes how  FHIR Resources can be used in a traditional messaging 
+context, much like HL7 v2. Applications claiming conformance to this framework
+claim to be conformant to "FHIR messaging". 
+</p>
+<p>
+In FHIR messaging, a "request message" is sent from a source application to a destination
+application when an event happens. Events mostly correspond to things that happen in the 
+real world. The request application consists of an <a href="implementation.htm#Aggregation">aggregation</a>
+of resources, with the first resource in the aggregation being a <a href="message.htm">Message</a> resource
+that identifies the nature of the request message and carries additional request metadata. The other 
+resources in the aggregation depend on the request. The events supported in FHIR, along
+with the resources included in them, are defined below. The destination application processes
+the request, and returns one or more response messages which are also an <a href="implementation.htm#Aggregation">aggregation</a>
+of resources, with the first resource in the aggregation being a <a href="message.htm">Message</a> resource with a response
+section that reports the outcome of the transaction and any additional response resources required.
+</p>
+<h2>Basic Messaging Assumptions</h2>
+<p>
+This specification assumes that content will be delivered from one application
+to another by some delivery mechanism, and then a response will be returned 
+to the source application. The exact mechanism of transfer is irrelevant to
+this specification, but may include file transfer, http based transfer, LLP
+(HL7 minimal lower layer protocol), MQ series messaging, or anything else. 
+The only requirement for the transfer layer is that requests are sent to 
+a known location, and responses are returned to the source of the request. 
+This specification considers the source and destination applications as logical
+entites, and the mapping from logical source and destination to implementation
+specific addresses is outside the scope of this specification.
+</p>
+<p>
+In principle, source applications are not required to wait for a response to a transaction before 
+issuing a new transaction. However in some case, the transactions in a given stream are dependent
+on each other, and must be sent in order. In addition, some transfer options may require sequential
+delivery of messages.
+</p>
+<p>
+This specification ignores the existence of interface engines and message transfer agents that 
+lie between the <i>source</i> and <i>destination</i>. Either they are transparent to the message/transaction 
+content, and irrelevant to this specification, or they are actively involved in manipulating the 
+message content. If these middleware agents are modifying the message content, then they become
+responsible for honoring the contract described below in both directions.
+</p>
+<h3>Absence of Reliable Messaging</h3>
+<p>
+Some of the message delivery mechanisms mentioned above are reliable delivery
+systems - the message is always delivered, or an appropriate error is returned
+to the source. However in most implementations, reliable messaging cannot be 
+assumed, and either the request or the response can get lost in transit.
+FHIR messaging describes a simple approach to handle this that applications 
+must conform to, whether messaging appears to be reliable or not.
+</p>
+<p>
+A message receiver must always check the incoming aggregation package ids,
+and check them against a store of previously received messages (going back a reasonable period in time). If it receives
+a duplicate message id that it has already responded to, it should assume that 
+it's original response was lost, and resend the original response in a new 
+aggregation package with Message.response.duplicate set to true. 
+If the source application gets no response to it's request from the destination application, the 
+source application should resend the same aggregation with the same aggregation package id. 
+</p>
+<h2>Message Format</h2>
+<p>
+A message is just an <a href="implementation.htm#Aggregation">aggregation</a> built using the
+Atom feed format (ref). The first resource of a message is a <a href="message.htm">Message</a> 
+resource. This resource identifies 
+the message event and links to the additional focal resource associated with the message, if any. The list
+of additional resources which must be included in a given message is provided
+below. Other resources that are identified in the message resource or included resources may either be left 
+as references that are located/resolved outside the scope of the aggregation, or they may also be included
+in the aggregation.
+</p>
+<A name="Events"></a>
+<h2>Event List</h2>
+
+<table clas="grid">
+ <tr><th>Code</th><th>Description</th><th>Request Resources</th><th>Response Resources</th><th>Further messages</th></tr>
+ <tr><td>admin-create</td><td>Create an Administrative resource </td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>admin-update</td><td>Update an administrative resource. Noe that there is no delete, since administrative resources are never really deleted - 
+   some have status or period elements for this use</td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>patient-link</td><td>Link two or patients</td><td>Two or more patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>provide-lab-report</td><td>Send a lab report</td><td>Primary: LabReport<br/>Aggregated: Patient+Person/Animal, Any specimens, Any resource linked in clinical information</td><td>(none)</td><td>N/A</td></tr>
+<!--
+ <tr><td>Code</td><td>Name / Description</td><td>Request Resources</td><td>Response Resources</td><td>Further transactions</td></tr>
+ -->
+ </table>
+<p>
+
+</p>
+<h2>Conformance Statement</h2>
+<p>
+Applications claiming to be conformant to "FHIR messaging" may choose to publish a conformance statement that
+lists all the message events they support, either as sender or listener, and for each event, which resources
+are aggregated (sender), or are required to be aggregated (listener), and the conformance statements for the 
+information content of the individual resources. The conformance statement is a <a href="messageconformance.htm">resource with the name "MessageConformance"</a>.
+</p>
+
+<%footer%>
+<%/maindiv%>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Document.xsd">
+  <id>1cbdfb97-5859-48a4-8301-d54eab818d68</id>
+  <instant>2012-01-04T09:10:14Z</instant>
+  <type>
+    <coding>
+      <code>11488-4</code>
+      <system>urn:hl7-org:sid/loinc</system>
+      <display>Consultation note</display>    
+    </coding>
+  </type>
+  <setId>2.16.840.1.113883.19.7.bb35</setId>
+  <version>2</version>
+  <subject>
+    <type>Patient</type>
+    <id>12.123.451.23.1.23</id>
+    <text>Henry Levin the 7th</text>
+  </subject>
+  <authors>
+    <author>
+      <party>
+        <type>Person</type>
+        <id>233123</id>
+        <text>Robert Dolin MD</text>
+      </party>
+    </author>
+  </authors>
+  <attestors>
+    <attestor>
+      <mode>legal</mode>    
+      <party>
+        <type>Person</type>
+        <id>233123</id>
+        <text>Robert Dolin MD</text>
+      </party>
+    </attestor>
+  </attestors>
+  <custodian>
+    <type>Organization</type>
+    <id>2.16.840.1.113883.19.5</id>
+    <text>Good Health Clinic</text>
+  </custodian>
+  <sections>
+    <section>
+      <type>
+        <coding>
+          <code>10164-2</code>
+          <system>urn:hl7-org:sid/loinc</system>
+        </coding>
+      </type>
+      <content dataAbsentReason="error">
+        <!-- <type>ClinicalNote</type> -->
+        <id>34124</id>
+      </content>
+    </section>
+  </sections>
+	<text>
+    <status>generated</status>
+    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+      <p>Consultation note for Henry Levin the 7th</p>
+    </xhtml>
+  </text>
+</Document>

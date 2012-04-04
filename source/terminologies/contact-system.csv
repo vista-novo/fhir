@@ -1,0 +1,5 @@
+Code,Definition
+phone,the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+fax,the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+email,the value is an email address
+url,"The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses"
