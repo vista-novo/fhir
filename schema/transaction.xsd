@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Transaction" type="Transaction">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Transaction">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>always first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instant" type="dateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When the transaction actually occurred at the source system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="type" type="code" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Code that identifies the intent of the transction, and the other resources included with it</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="source" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The source application from which this transaction originated</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="destination" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The destination application with the transaction is intended for</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enterer" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The person or device that performd the data entry leading to this transaction</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="author" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The logical author of the transaction - the person or device that decided it should happen</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="responsible" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The person or organization that accepts overall responsbility for the transaction</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="effective" type="Interval_humanDate" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The effective time - the real world time for the transaction.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="data" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The actual data of the transaction</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

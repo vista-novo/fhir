@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Animal" type="Animal">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Animal">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="HumanId" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="names" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="HumanName" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A name associated with the animal. The use code maiden does not apply.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dob" type="dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The birth date for the animal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="species" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Species for the animal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="strain" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Strain for the animal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gender" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Gender for the Animal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedEntities" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="relatedEntity" type="Animal.RelatedEntity" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Kin, owner, care giver etc</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Animal.RelatedEntity">
+    <xs:sequence>
+      <xs:element name="id" type="HumanId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier for the entity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="role" type="CodeableConcept" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Type of relationship</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="HumanName" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of the related entity</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>An address (usually human, but may be kin)</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Contact details (usually for humans)</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

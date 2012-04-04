@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01
+-->
+<xs:schema xmlns="http://www.hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+<!--  <xs:include schemaLocation="fhir-base.xsd"/> -->
+  <xs:include schemaLocation="definitions.xsd"/>
+    <xs:include schemaLocation="Conformance.xsd"/>
+  <xs:include schemaLocation="Document.xsd"/>
+  <xs:include schemaLocation="Message.xsd"/>
+  <xs:include schemaLocation="MessageConformance.xsd"/>
+  <xs:include schemaLocation="Agent.xsd"/>
+  <xs:include schemaLocation="Animal.xsd"/>
+  <xs:include schemaLocation="Prescription.xsd"/>
+  <xs:include schemaLocation="Patient.xsd"/>
+  <xs:include schemaLocation="Organization.xsd"/>
+  <xs:include schemaLocation="DocumentConformance.xsd"/>
+  <xs:include schemaLocation="LabReport.xsd"/>
+  <xs:include schemaLocation="Person.xsd"/>
+
+</xs:schema>

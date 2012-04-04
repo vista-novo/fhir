@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Patient" type="Patient">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Patient">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="links" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="link" type="ResourceReference" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="active" type="boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Whether the patient record is in use, or has been removed from active use</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="person" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The person that this patient record is about</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="animal" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The animal that this patient record is about</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="provider" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The provider for whom this is a patient record</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="HumanId" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>An identifier that applies to this person as a patient</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="diet" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Dietary restrictions for the patient</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="confidentiality" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Confidentiality of the patient records</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recordLocation" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The location of the paper record for the patient, if there is one</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of person, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

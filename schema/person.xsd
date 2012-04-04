@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Person" type="Person">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="HumanId" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="names" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="HumanName" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A name associated with the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>An address for the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A contact detail for the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="dob" type="dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The birth date for the person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gender" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Administrative Gender</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="religion" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The religious denomination to which a person professes affiliation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="qualifications" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="qualification" type="Person.Qualification" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="languages" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="language" type="Person.Language" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A language spoken by the person, with proficiency</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="relatedPeople" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="relatedPerson" type="Person.RelatedPerson" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of person, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Person.RelatedPerson">
+    <xs:sequence>
+      <xs:element name="id" type="HumanId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier the related person - may be a full link to a Person resource, or some other kind of identifier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="role" type="CodeableConcept" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Code that specifies how this person is related to the subject. A code is required.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="name" type="HumanName" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A name should be specified for the related person</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Contact details (phone, email etc) should be provided for the person</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Person.Language">
+    <xs:sequence>
+      <xs:element name="code" type="code" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A code that identifies the language</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="use" type="LanguageUse" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A code the describes how well the language is spoken</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Person.Qualification">
+    <xs:sequence>
+      <xs:element name="id" type="Identifier" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The identifier of a qualification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="code" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of the qualification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="institution" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The organisation that confered/confers the qualification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="period" type="Interval_Date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The period for which a qualification is held</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LanguageUse">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>The person does not speak the language at all</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="poor">
+        <xs:annotation>
+          <xs:documentation>The person has minimal functional capability in the language</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="useable">
+        <xs:annotation>
+          <xs:documentation>The person can use the language, but may not be full conversant, particularly with regards to health concepts</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fluent">
+        <xs:annotation>
+          <xs:documentation>The person is fully capable of using the language</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

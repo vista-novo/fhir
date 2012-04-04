@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Prescription" type="Prescription">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Prescription">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="identifier" type="HumanId" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>A identifier used in an external system and associated with this medication</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="status" type="PrescriptionStatus" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Actual status of the prescription</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="patient" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The patient the prescription is prescribing medicine for</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prescriber" type="ResourceReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The clinician or doctor prescribing the medication</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prescribed" type="dateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date/time on which the prescription was written</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dispense" type="Prescription.Dispense" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Details of the dispense as requested by the prescriber</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="medicine" type="Prescription.Medicine" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The one single medicatine, vaccine or therapeutic good prescribed in this prescription.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="administrationRequest" type="Prescription.AdministrationRequest" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reason" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Diagnosis which is the reason for prescribing this medicine</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of the prescription, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.Dispense">
+    <xs:sequence>
+      <xs:element name="repeats" type="integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Requested number of repeats</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantity" type="Quantity" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Requested quantity per repeat</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dispenser" type="ResourceReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Person to fullfil the requested dispense</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.AdministrationRequest">
+    <xs:sequence>
+      <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Textual description of the use of the medication.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="totalPeriodicDosis" type="Ratio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="start" type="dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>First moment on which medication should be taken</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="end" type="dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Last moment on which medication should be taken</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="duration" type="Quantity" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Total duration of administration</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfAdministrations" type="integer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Maximum number of separate administrations before the instruction ends.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dosageInstructions" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="dosageInstruction" type="Prescription.DosageInstruction" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Specification of dose and schedule for administration</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.DosageInstruction">
+    <xs:sequence>
+      <xs:element name="preconditions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="precondition" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Precondition for starting the administration specified in this instruction</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="prn" type="BooleanYesNo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalInstructions" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="additionalInstruction" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Additional details to guide administration. Especially relevant for medicine administered by patient</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="route" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Route of administration (oral, nasal, intravenous)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:annotation>
+          <xs:documentation>Dose per administration, expressed in units of the (prepared) product</xs:documentation>
+        </xs:annotation>
+        <xs:element name="doseQuantity" type="Quantity"/>
+        <xs:element name="doseInterval" type="Interval_Quantity"/>
+      </xs:choice>
+      <xs:element name="rate" type="Quantity" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flow-rate for IV</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="schedules" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="schedule" type="Schedule" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Schedule for administration. If multiple are given, they are considered to be active in parrallel</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.Medicine">
+    <xs:sequence>
+      <xs:element name="productCode" type="Coding" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Coded representation of medicine</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="description" type="string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Textual description of medicine, including strength and ingredients</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="activeIngredients" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="activeIngredient" type="Prescription.ActiveIngredient" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="inactiveIngredients" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="inactiveIngredient" type="Prescription.InactiveIngredient" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Ingredients in the medication that are not active</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.InactiveIngredient">
+    <xs:sequence>
+      <xs:element name="productCode" type="Coding" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Coded representation of the inactive ingredient</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantity" type="Ratio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantity of inactive ingredient expressed in relation to the whole of the prepared medicine</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Prescription.ActiveIngredient">
+    <xs:sequence>
+      <xs:element name="productCode" type="Coding" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Coded representation of active ingredient</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quantity" type="Ratio" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Quantity of active ingredient expressed in relation to the whole of the prepared medicine</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PrescriptionStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation>Patient is using the prescribed medicin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="completed">
+        <xs:annotation>
+          <xs:documentation>Prescription is no longer current</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="BooleanYesNo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="yes">
+        <xs:annotation>
+          <xs:documentation>TRUE</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation>
+          <xs:documentation>FALSE</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

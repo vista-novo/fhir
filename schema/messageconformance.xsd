@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="MessageConformance" type="MessageConformance">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="MessageConformance">
+    <xs:sequence>
+      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Globally unique Conformance Statement Id (Must be a UUID)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="dateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date that the conformance statement is published</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publisher" type="MessageConformance.Publisher" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The organization that publishes this conformance statement</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="software" type="MessageConformance.Software" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The software that is covered by this conformance statement</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="events" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="event" type="MessageConformance.Event" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>An event supported by the application</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageConformance.Event">
+    <xs:sequence>
+      <xs:element name="code" type="code" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The code for the event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="resource" type="code" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The focal resource for the event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mode" type="MessageConformanceEventMode" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The mode of this event declaration - whether application is sender or receiver</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="request" type="MessageConformance.Request" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Information about the request for this event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="response" type="MessageConformance.Response" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Information about the response for this event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageConformance.Response">
+    <xs:sequence>
+      <xs:element name="resources" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resource" type="Constraint" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Constraint on a resource used in the event response</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageConformance.Publisher">
+    <xs:sequence>
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of Organization</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Address of Organization</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Contacts for Organization</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageConformance.Request">
+    <xs:sequence>
+      <xs:element name="resources" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="resource" type="Constraint" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Constraint on a resource used in the event request</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MessageConformance.Software">
+    <xs:sequence>
+      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name software is known by</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="string" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Version covered by this statement</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="releaseDate" type="dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date this version released</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="MessageConformanceEventMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="sender">
+        <xs:annotation>
+          <xs:documentation>The application sends requests and receives responses</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="receiver">
+        <xs:annotation>
+          <xs:documentation>The application receives requests and sends responses</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
