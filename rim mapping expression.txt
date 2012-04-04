@@ -1,0 +1,44 @@
+mapping :== (conditional-mapping)* map (exists in context of FHIR element)
+conditional mapping :== "?" conditionlist ":" map
+condition :== path "=" literal
+conditionlist = conditionExpr (, operation conditionExpr)
+operation = and | or 
+conditionExpr :== (not ) condition | "(" conditionList ")"
+condition = path "=" value | function
+value :== "" or number or OID
+function :== name "(" param ")"     (functions : drawnFromValueSet, memberOfConceptDomain, isSubsumedBy, "sub" (Substring), "cell" (CellFromString))
+param = value | path   
+path (in FHIR) :== node(.node)+
+node :== [name | ".."]   "(" conditionlist ")" 
+map (in RIM) :== 
+
+
+map = path
+
+
+
+condition :== path == literal
+node :== name {[path]}
+
+
+setting multiple values
+-----------------------
+
+
+
+context: [path]
+
+(n = .[path])
+
+path: node(.node)+
+
+element - data type mapping - all attributes
+
+1 FHIR element can create multiple data type properties on RIM Attributes on different paths
+
+
+
+
+(CodeableConcept)  = .code(code = .coding[1].code, codeSystem = codeSystem(.coding[1].system), displayName = .coding[1].display, 
+  translation[n = .coding(2..n)](code = .coding[n].code, codeSystem = codeSystem(.coding[n].system), displayName = .coding[n].display,
+  originalText(@value = .text) )
