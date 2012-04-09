@@ -1,0 +1,387 @@
+package org.hl7.fhir.definitions.generators.implementations;
+
+import java.io.*;
+import java.util.*;
+
+import org.hl7.fhir.definitions.model.*;
+import org.hl7.fhir.instance.model.Ordered;
+import org.hl7.fhir.utilities.Utilities;
+
+public class JavaResourceGenerator extends JavaBaseGenerator {
+
+	public enum JavaGenClass { Structure, Type, Resource, Constraint }
+  private JavaGenClass clss;
+
+  public JavaResourceGenerator(OutputStream out) throws UnsupportedEncodingException {
+		super(out);
+	}
+
+	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
+  private List<String> typeNameStrings = new ArrayList<String>();
+
+	private List<ElementDefn> enums = new ArrayList<ElementDefn>();
+	private List<String> enumNames = new ArrayList<String>();
+	private List<ElementDefn> strucs  = new ArrayList<ElementDefn>();
+	
+	
+	public Map<ElementDefn, String> getTypeNames() {
+		return typeNames;
+	}
+
+	public void generate(ElementDefn root, Map<String, ConceptDomain> conceptDomains, JavaGenClass clss, DefinedCode cd) throws Exception {
+		typeNames.clear();
+		typeNameStrings.clear();
+		enums.clear();
+		strucs.clear();
+		enumNames.clear();
+		this.clss = clss;
+		
+		write("package org.hl7.fhir.instance.model;\r\n");
+		write("\r\n");
+		if (hasList(root)) {
+			write("import java.util.*;\r\n");
+			write("\r\n");
+		}
+		
+    write("/**\r\n");
+    write(" * "+root.getDefinition()+"\r\n");
+    write(" */\r\n");
+    if (clss == JavaGenClass.Resource)
+      write("public class "+upFirst(root.getName())+" extends Resource {\r\n");
+    else if (clss == JavaGenClass.Structure)
+      write("public class "+upFirst(root.getName())+" extends Element {\r\n");
+    else if (clss == JavaGenClass.Constraint)
+      write("public class "+upFirst(cd.getCode())+" extends "+upFirst(root.getName())+" {\r\n");
+    else  if (root.typeCode().equals("GenericType"))
+      write("public class "+upFirst(root.getName())+"<T extends Ordered> extends Type {\r\n");
+    else if (root.getName().equals("Quantity"))
+      write("public class "+upFirst(root.getName())+" extends Ordered {\r\n");
+    else
+      write("public class "+upFirst(root.getName())+" extends Type {\r\n");
+		write("\r\n");
+
+		if (clss != JavaGenClass.Constraint) {
+		  for (ElementDefn e : root.getElements()) {
+		    if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+		      scanNestedTypes(root, root.getName(), e, conceptDomains);
+		  }
+		  for (ElementDefn e : enums) {
+		    generateEnum(e, conceptDomains);
+		  }
+		  for (ElementDefn e : strucs) {
+		    generateType(e);
+		  }
+
+		  for (ElementDefn e : root.getElements()) {
+		    if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+		      generateField(root, e, "    ");
+		  }
+
+		  for (ElementDefn e : root.getElements()) {
+		    if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+		      generateAccessors(root, e, "    ");
+		  }
+		}
+		
+//		generateSetters(root, "    ");
+		
+		write("\r\n");
+		write("}\r\n");
+		write("\r\n");
+		flush();
+
+	}
+
+private String upFirst(String name) {
+    return name.substring(0,1).toUpperCase()+name.substring(1);
+  }
+
+//	private void generateSetters(ElementDefn root, String indent) throws Exception {
+//		boolean first = true;
+//		if (root.getElements().size() == 0)
+//			return;
+//		
+//		boolean generics = false;
+//		for (ElementDefn e : root.getElements()) 
+//			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) 
+//				if (typeNames.get(e).contains("<"))
+//					generics = true;
+//
+//		if (generics)
+//			write(indent+"@SuppressWarnings(\"unchecked\")\r\n");
+//		write(indent+"public void setProperty(String name, Object value) throws Exception {\r\n");
+//		for (ElementDefn e : root.getElements()) {
+//			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) {
+//				if (first)
+//					write(indent+"    if (\""+e.getName()+"\".equals(name))\r\n");
+//				else
+//					write(indent+"    else if (\""+e.getName()+"\".equals(name))\r\n");
+//				first = false;
+//				if (e.unbounded())
+//					write(indent+"        get"+getTitle(getElementName(e.getName()))+"().add(("+typeNames.get(e)+") value);\r\n");
+//				else
+//					write(indent+"        set"+getTitle(getElementName(e.getName()))+"(("+typeNames.get(e)+") value);\r\n");
+//			}
+//		}
+//		write(indent+"    else\r\n");
+//		write(indent+"        super.setProperty(name, value);\r\n");
+//		write(indent+"}\r\n");
+//		write("\r\n");
+//	}
+	
+	
+
+	private boolean hasList(ElementDefn root) {
+		for (ElementDefn e : root.getElements()) {
+			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) {
+				if (e.unbounded() || hasListInner(e))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean hasListInner(ElementDefn e) {
+		for (ElementDefn c : e.getElements()) {
+			if (c.unbounded() || hasListInner(c))
+				return true;
+		}
+
+		return false;
+	}
+
+	private void generateEnum(ElementDefn e, Map<String, ConceptDomain> conceptDomains) throws Exception {
+		String tn = typeNames.get(e);
+		ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+		
+		write("    public enum "+tn+" {\r\n");
+		int l = cd.getCodes().size();
+		int i = 0;
+		for (DefinedCode c : cd.getCodes()) {
+			i++;
+			String cc = c.getCode();
+			if (Utilities.isJavaReservedWord(cc))
+				cc = cc + "_";
+			if (cc.equals("<"))
+			  cc = "lessThan";
+			else if (cc.equals("<="))
+        cc = "lessOrEqual";
+      else if (cc.equals(">"))
+        cc = "greaterThan";
+      else if (cc.equals(">="))
+        cc = "greaterOrEqual";
+      else
+        cc = cc.replace("-", "Minus").replace("+", "Plus");
+			if (i == l)
+				write("        "+cc+"; // "+c.getDefinition()+"\r\n");
+			else
+				write("        "+cc+", // "+c.getDefinition()+"\r\n");
+		}
+		
+		
+        write("        public static "+tn+" fromCode(String code) throws Exception {\r\n");
+		write("            if (code == null || \"\".equals(code))\r\n");
+		write("                return null;\r\n");
+		for (DefinedCode c : cd.getCodes()) {
+			String cc = c.getCode();
+			if (Utilities.isJavaReservedWord(cc))
+				cc = cc + "_";
+      if (cc.equals("<"))
+        cc = "lessThan";
+      else if (cc.equals("<="))
+        cc = "lessOrEqual";
+      else if (cc.equals(">"))
+        cc = "greaterThan";
+      else if (cc.equals(">="))
+        cc = "greaterOrEqual";
+      else
+        cc = cc.replace("-", "Minus").replace("+", "Plus");
+			write("        if (\""+c.getCode()+"\".equals(code))\r\n");
+			write("          return "+cc+";\r\n");
+		}		
+		write("        throw new Exception(\"Unknown "+tn+" code '\"+code+\"'\");\r\n");
+		write("        }\r\n");	
+
+		write("    }\r\n");
+		write("\r\n");
+	
+	}
+
+	private void generateType(ElementDefn e) throws Exception {
+		String tn = typeNames.get(e);
+		
+		write("    public class "+tn+" extends Element {\r\n");
+		for (ElementDefn c : e.getElements()) {
+			generateField(e, c, "        ");
+		}
+		for (ElementDefn c : e.getElements()) {
+				generateAccessors(e, c, "        ");
+		}
+		write("    }\r\n");
+		write("\r\n");
+		
+	}
+
+	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, ConceptDomain> conceptDomains) throws Exception {
+		String tn = null;
+		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
+			ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+			if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+				tn = getCodeListType(cd.getBinding());
+				if (!enumNames.contains(tn)) {
+					enumNames.add(tn);
+					enums.add(e);
+				}
+				typeNames.put(e,  tn);
+			}
+		}
+		if (tn == null) {
+			if (e.getTypes().size() > 0) {
+			  tn = e.typeCode();
+			  if (clss != JavaGenClass.Resource) {
+          if (tn.equals("boolean")) tn = "boolean";
+          else if (tn.equals("integer")) tn = "int";
+          else if (tn.equals("decimal")) tn = "java.math.BigDecimal";
+          else if (tn.equals("base64Binary")) tn = "byte[]";
+          else if (tn.equals("instant")) tn = "java.util.Date";
+          else if (tn.equals("string")) tn = "String";
+          else if (tn.equals("uri")) tn = "java.net.URI";
+          else if (tn.equals("code")) tn = "String";
+          else if (tn.equals("oid")) tn = "String";
+          else if (tn.equals("uuid")) tn = "String";
+          else if (tn.equals("sid")) tn = "String";
+          else if (tn.equals("id")) tn = "String";
+          else if (tn.equals("date")) tn = "String";
+          else if (tn.equals("dateTime")) tn = "String";
+          else 
+            tn = getTypeName(e);
+        } else 
+          tn = getTypeName(e);
+				if (tn.equals("[param]"))
+				  tn = "T";
+				else if (tn.equalsIgnoreCase("xml:ID"))
+				  tn ="String";
+				else if (tn.equalsIgnoreCase("Xhtml")) 
+				  tn = "char[]";
+				else if (tn.equalsIgnoreCase("*"))
+          tn ="Type";
+				
+				typeNames.put(e,  tn);
+			} else {
+				if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
+					tn = typeNames.get(getElementForPath(root, e.getElements().get(0).typeCode().substring(1)));
+					typeNames.put(e,  tn);
+				} else {
+					tn = getTitle(e.getName());
+					if (tn.equals("Element"))
+					  tn = "Element_";
+					strucs.add(e);
+					if (typeNameStrings.contains(tn)) {
+					  char i = 'A';
+					  while (typeNameStrings.contains(tn+i))
+					    i++;
+					  tn = tn + i;
+					}
+					typeNames.put(e,  tn);
+					typeNameStrings.add(tn);
+					for (ElementDefn c : e.getElements()) {
+						scanNestedTypes(root, path+getTitle(e.getName()), c, conceptDomains);
+					}
+				}
+			}
+		}
+	}
+
+	private Object getElementForPath(ElementDefn root, String pathname) throws Exception {
+		String[] path = pathname.split("\\.");
+		if (!path[0].equals(root.getName()))
+			throw new Exception("Element Path '"+pathname+"' is not legal in this context");
+		ElementDefn res = root;
+		for (int i = 1; i < path.length; i++)
+		{
+			String en = path[i];
+			if (en.length() == 0)
+				throw new Exception("Improper path "+pathname);
+			ElementDefn t = res.getElementByName(en);
+			if (t == null) {
+				throw new Exception("unable to resolve "+pathname);
+			}
+			res = t; 
+		}
+		return res;
+
+	}
+
+	private String getCodeListType(String binding) {
+		StringBuilder b = new StringBuilder();
+		boolean up = true;
+		for (char ch: binding.toCharArray()) {
+			if (ch == '-')
+				up = true;
+			else if (up) {
+				b.append(Character.toUpperCase(ch));
+				up = false;
+			}
+			else				
+				b.append(ch);
+		}
+		return b.toString();
+	}
+
+	private ConceptDomain getConceptDomain(Map<String, ConceptDomain> conceptDomains, String conceptDomain) {
+		for (ConceptDomain cd : conceptDomains.values())
+			if (cd.getName().equals(conceptDomain))
+				return cd;
+		return null;
+	}
+
+	private void generateField(ElementDefn root, ElementDefn e, String indent) throws Exception {
+		String tn = typeNames.get(e);
+
+		if (e.unbounded()) {
+			write(indent+"/**\r\n");
+			write(indent+" * "+e.getDefinition()+"\r\n");
+			write(indent+" */\r\n");
+			if (tn == null && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
+			  write(indent+"private List<"+root.getName()+"> "+getElementName(e.getName())+" = new ArrayList<"+root.getName()+">();\r\n");
+			else
+			  write(indent+"private List<"+tn+"> "+getElementName(e.getName())+" = new ArrayList<"+tn+">();\r\n");
+			write("\r\n");
+		} else {
+			write(indent+"/**\r\n");
+			write(indent+" * "+e.getDefinition()+"\r\n");
+			write(indent+" */\r\n");
+			write(indent+"private "+tn+" "+getElementName(e.getName())+";\r\n");
+			write("\r\n");
+		}
+
+	}
+
+
+
+	private void generateAccessors(ElementDefn root, ElementDefn e, String indent) throws Exception {
+		String tn = typeNames.get(e);
+
+		if (e.unbounded()) {
+      if (tn == null && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
+        write(indent+"public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
+      else
+        write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
+			write(indent+"  return this."+getElementName(e.getName())+";\r\n");
+			write(indent+"}\r\n");
+			write("\r\n");
+		} else {
+			write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName()))+"() { \r\n");
+			write(indent+"  return this."+getElementName(e.getName())+";\r\n");
+			write(indent+"}\r\n");
+			write("\r\n");
+			write(indent+"public void set"+getTitle(getElementName(e.getName()))+"("+tn+" value) { \r\n");
+			write(indent+"  this."+getElementName(e.getName())+" = value;\r\n");
+			write(indent+"}\r\n");
+			write("\r\n");
+		}
+
+	}
+
+
+}
