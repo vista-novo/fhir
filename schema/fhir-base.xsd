@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 07:19 Apr 5, 2012 for FHIR v0.01 
+  Generated on 07:54 Apr 6, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
@@ -1372,7 +1372,7 @@
           <xs:documentation>The use of this address</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="text" type="Narrative" minOccurs="0" maxOccurs="1">
+      <xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>a full text representation of the address</xs:documentation>
         </xs:annotation>

@@ -136,7 +136,7 @@
     <Cell><Data ss:Type="String">Address.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
-    <Cell><Data ss:Type="String">Narrative</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">a full text representation of the address</Data></Cell>
@@ -206,8 +206,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

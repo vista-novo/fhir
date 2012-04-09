@@ -56,14 +56,11 @@ Every resource contains the following common elements:
 </p>
 <pre>
 &lt;<b>[Name]</b> xmlns="http://www.hl7.org/fhir"&gt;
-  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Resource Id, always first in all resources. This never changes once the resource is created.</font>&lt;/id&gt;
   &lt;!-- Other content specific to the resource --&gt;
   &lt;<b>extensions</b>&gt; <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
   &lt;<b>text</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="Narrative.htm#Narrative">Narrative</a>"</font>&gt;<font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
 &lt;/[Name]&gt;</pre>
-<p>
-todo: when do you change the id.
-</p>
 <p>
 The <i>id</i> element is always mandatory except in the case that a resource is posted to a server to create it, 
 and the id of the resource is not yet known. In this case, the id element is absent. The use of the id 
@@ -87,9 +84,8 @@ In any environment where the resources are used, the technical details of the de
 <h2>dataAbsentReason &amp; Control Flags </h2>
 <p>
 Data Quality - or the lack thereof- is a ubiquitious issue in healthcare. In order to handle this, 
-every element defined as part of a resource (except the text narrative) may have a dataAbsentReason 
+every element defined as part of a resource data structure may have a dataAbsentReason 
 attribute, which is used to specify why the normally expected content of the data element is missing. 
-The dataAbsentReason attribute may also appear in a few specific places inside the data types.
 </p>
 <p>
 <pre>
@@ -117,6 +113,7 @@ Notes:
    is required to support alternate workflows for gaining access to denied information.</li>
 <li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from it's definition. Usually this is where the contained elements define what data is missing.</li>
 <li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present, except as described in their <a href="constraint.htm">conformance statement</a>.</li>   
+<li>The <i>dataAbsentReason</i> attribute cannot be used inside the data types, nor can it be used in the <i>text</i> portion of a resource, nor inside an <i>extension</i> block (with the exception of the <i>value</i> of the extension)</li>
 </ul>
 <a name="Control"></a>
 <p> 
@@ -161,7 +158,9 @@ narrative and the structured data. Each mapping has narrative id, and structured
 found in the narrative and the structured data respectively, and a flag for whether the text was generated from the 
 data, or the data was generated from the text (by some form of retrospective processing, whether human or computer), 
 or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason
-of "astext"; this means that the value of the text could not be properly represented in the data type.
+of "astext"; this means that the value of the text could not be properly represented in the data type. Any data type,
+or any repeating element inside a data type, may carry an id attribute to serve as the target of a narrative map. When using xml:id attributes, 
+<a href="implementation.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind.
 </p>
 <p>
 The narrative is an xhtml fragment that also includes images if appropriate:
@@ -251,7 +250,7 @@ contained in it. The xhtml element must have non-whitespace content.
 <h2>Resource References</h2>
 <p>
 The "Resource" type indicates a reference from one resource to another.
-Since each resource is identified by a master id that never changes,
+Since each resource is identified by a master id that never changes (a different id implies a different resource),
 references are done by id.
 </p>
 <pre>
