@@ -1,0 +1,9508 @@
+unit FHIRParser;
+
+interface
+
+// FHIR v0.01 generated 10:56 Apr 10, 2012
+
+uses
+  SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
+
+Type
+
+  TFHIRXmlParser = class (TFHIRXmlParserBase)
+  protected
+    function ParseExtension(element : IXmlDomElement) : TExtension;
+    function ParseConstraintElement(element : IXmlDomElement) : TConstraintElement;
+    function ParseConstraintElementMapping(element : IXmlDomElement) : TConstraintElementMapping;
+    function ParseConstraintElementAggregation(element : IXmlDomElement) : TConstraintElementAggregation;
+    function ParseConstraintElementValue(element : IXmlDomElement) : TConstraintElementValue;
+    function ParseConstraint(element : IXmlDomElement) : TConstraint;
+    function ParseNarrativeImage(element : IXmlDomElement) : TNarrativeImage;
+    function ParseNarrativeMap(element : IXmlDomElement) : TNarrativeMap;
+    function ParseNarrative(element : IXmlDomElement) : TNarrative;
+    function ParseCoding(element : IXmlDomElement) : TCoding;
+    function ParseInterval_Quantity(element : IXmlDomElement) : TInterval_Quantity;
+    function ParseInterval_DateTime(element : IXmlDomElement) : TInterval_DateTime;
+    function ParseInterval_Date(element : IXmlDomElement) : TInterval_Date;
+    function ParseQuantity(element : IXmlDomElement) : TQuantity;
+    function ParseChoiceValue(element : IXmlDomElement) : TChoiceValue;
+    function ParseChoice(element : IXmlDomElement) : TChoice;
+    function ParseAttachment(element : IXmlDomElement) : TAttachment;
+    function ParseRatio(element : IXmlDomElement) : TRatio;
+    function ParseCodeableConceptCoding(element : IXmlDomElement) : TCodeableConceptCoding;
+    function ParseCodeableConcept(element : IXmlDomElement) : TCodeableConcept;
+    function ParseIdentifier(element : IXmlDomElement) : TIdentifier;
+    function ParseScheduleRepeat(element : IXmlDomElement) : TScheduleRepeat;
+    function ParseSchedule(element : IXmlDomElement) : TSchedule;
+    function ParseContact(element : IXmlDomElement) : TContact;
+    function ParseAddressPart(element : IXmlDomElement) : TAddressPart;
+    function ParseAddress(element : IXmlDomElement) : TAddress;
+    function ParseHumanNamePart(element : IXmlDomElement) : THumanNamePart;
+    function ParseHumanName(element : IXmlDomElement) : THumanName;
+    function ParseHumanId(element : IXmlDomElement) : THumanId;
+    function ParseConformancePublisher(element : IXmlDomElement) : TConformancePublisher;
+    function ParseConformanceSoftware(element : IXmlDomElement) : TConformanceSoftware;
+    function ParseConformanceOperation(element : IXmlDomElement) : TConformanceOperation;
+    function ParseConformanceOperationTransaction(element : IXmlDomElement) : TConformanceOperationTransaction;
+    function ParseConformanceOperationSearch(element : IXmlDomElement) : TConformanceOperationSearch;
+    function ParseConformanceOperationCreate(element : IXmlDomElement) : TConformanceOperationCreate;
+    function ParseConformance(element : IXmlDomElement) : TConformance;
+    function ParseDocumentAuthor(element : IXmlDomElement) : TDocumentAuthor;
+    function ParseDocumentAttestor(element : IXmlDomElement) : TDocumentAttestor;
+    function ParseDocumentSection(element : IXmlDomElement) : TDocumentSection;
+    function ParseDocumentSectionAuthor(element : IXmlDomElement) : TDocumentSectionAuthor;
+    function ParseDocument(element : IXmlDomElement) : TDocument;
+    function ParseMessageResponse(element : IXmlDomElement) : TMessageResponse;
+    function ParseMessage(element : IXmlDomElement) : TMessage;
+    function ParseMessageConformancePublisher(element : IXmlDomElement) : TMessageConformancePublisher;
+    function ParseMessageConformanceSoftware(element : IXmlDomElement) : TMessageConformanceSoftware;
+    function ParseMessageConformanceEvent(element : IXmlDomElement) : TMessageConformanceEvent;
+    function ParseMessageConformanceEventRequest(element : IXmlDomElement) : TMessageConformanceEventRequest;
+    function ParseMessageConformanceEventResponse(element : IXmlDomElement) : TMessageConformanceEventResponse;
+    function ParseMessageConformance(element : IXmlDomElement) : TMessageConformance;
+    function ParseAgent(element : IXmlDomElement) : TAgent;
+    function ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
+    function ParseAnimal(element : IXmlDomElement) : TAnimal;
+    function ParsePrescriptionDispense(element : IXmlDomElement) : TPrescriptionDispense;
+    function ParsePrescriptionMedicine(element : IXmlDomElement) : TPrescriptionMedicine;
+    function ParsePrescriptionMedicineActiveIngredient(element : IXmlDomElement) : TPrescriptionMedicineActiveIngredient;
+    function ParsePrescriptionMedicineInactiveIngredient(element : IXmlDomElement) : TPrescriptionMedicineInactiveIngredient;
+    function ParsePrescriptionAdministrationRequest(element : IXmlDomElement) : TPrescriptionAdministrationRequest;
+    function ParsePrescriptionAdministrationRequestDosageInstruction(element : IXmlDomElement) : TPrescriptionAdministrationRequestDosageInstruction;
+    function ParsePrescription(element : IXmlDomElement) : TPrescription;
+    function ParsePatient(element : IXmlDomElement) : TPatient;
+    function ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
+    function ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
+    function ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
+    function ParseOrganization(element : IXmlDomElement) : TOrganization;
+    function ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
+    function ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
+    function ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
+    function ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
+    function ParseLabReportRequestDetail(element : IXmlDomElement) : TLabReportRequestDetail;
+    function ParseLabReportResultGroup(element : IXmlDomElement) : TLabReportResultGroup;
+    function ParseLabReportResultGroupResult(element : IXmlDomElement) : TLabReportResultGroupResult;
+    function ParseLabReportResultGroupResultReferenceRange(element : IXmlDomElement) : TLabReportResultGroupResultReferenceRange;
+    function ParseLabReport(element : IXmlDomElement) : TLabReport;
+    function ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
+    function ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
+    function ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
+    function ParsePerson(element : IXmlDomElement) : TPerson;
+    function ParseResource(element : IxmlDomElement) : TFHIRResource; override;
+  end;
+
+  TFHIRXmlSerialiser = class (TFHIRXmlSerialiserBase)
+  protected
+    procedure SerialiseExtension(name : string; elem : TExtension);
+    procedure SerialiseConstraintElement(name : string; elem : TConstraintElement);
+    procedure SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+    procedure SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+    procedure SerialiseConstraint(name : string; elem : TConstraint);
+    procedure SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+    procedure SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+    procedure SerialiseNarrative(name : string; elem : TNarrative);
+    procedure SerialiseCoding(name : string; elem : TCoding);
+    procedure SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+    procedure SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+    procedure SerialiseInterval_Date(name : string; elem : TInterval_Date);
+    procedure SerialiseQuantity(name : string; elem : TQuantity);
+    procedure SerialiseChoiceValue(name : string; elem : TChoiceValue);
+    procedure SerialiseChoice(name : string; elem : TChoice);
+    procedure SerialiseAttachment(name : string; elem : TAttachment);
+    procedure SerialiseRatio(name : string; elem : TRatio);
+    procedure SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+    procedure SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+    procedure SerialiseIdentifier(name : string; elem : TIdentifier);
+    procedure SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+    procedure SerialiseSchedule(name : string; elem : TSchedule);
+    procedure SerialiseContact(name : string; elem : TContact);
+    procedure SerialiseAddressPart(name : string; elem : TAddressPart);
+    procedure SerialiseAddress(name : string; elem : TAddress);
+    procedure SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+    procedure SerialiseHumanName(name : string; elem : THumanName);
+    procedure SerialiseHumanId(name : string; elem : THumanId);
+    procedure SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+    procedure SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+    procedure SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+    procedure SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+    procedure SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+    procedure SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+    procedure SerialiseConformance(name : string; elem : TConformance);
+    procedure SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+    procedure SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+    procedure SerialiseDocumentSection(name : string; elem : TDocumentSection);
+    procedure SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+    procedure SerialiseDocument(name : string; elem : TDocument);
+    procedure SerialiseMessageResponse(name : string; elem : TMessageResponse);
+    procedure SerialiseMessage(name : string; elem : TMessage);
+    procedure SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+    procedure SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+    procedure SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+    procedure SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+    procedure SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+    procedure SerialiseMessageConformance(name : string; elem : TMessageConformance);
+    procedure SerialiseAgent(name : string; elem : TAgent);
+    procedure SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure SerialiseAnimal(name : string; elem : TAnimal);
+    procedure SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+    procedure SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+    procedure SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+    procedure SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+    procedure SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+    procedure SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+    procedure SerialisePrescription(name : string; elem : TPrescription);
+    procedure SerialisePatient(name : string; elem : TPatient);
+    procedure SerialiseOrganizationName(name : string; elem : TOrganizationName);
+    procedure SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure SerialiseOrganization(name : string; elem : TOrganization);
+    procedure SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+    procedure SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+    procedure SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+    procedure SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+    procedure SerialiseLabReport(name : string; elem : TLabReport);
+    procedure SerialisePersonQualification(name : string; elem : TPersonQualification);
+    procedure SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure SerialisePerson(name : string; elem : TPerson);
+    procedure SerialiseResource(resource : TFHIRResource); override;
+  end;
+
+  TFHIRJsonParser = class (TFHIRJsonParserBase)
+  protected
+    function ParseExtension : TExtension;
+    function ParseConstraintElement : TConstraintElement;
+    function ParseConstraintElementMapping : TConstraintElementMapping;
+    function ParseConstraintElementAggregation : TConstraintElementAggregation;
+    function ParseConstraintElementValue : TConstraintElementValue;
+    function ParseConstraint : TConstraint;
+    function ParseNarrativeImage : TNarrativeImage;
+    function ParseNarrativeMap : TNarrativeMap;
+    function ParseNarrative : TNarrative;
+    function ParseCoding : TCoding;
+    function ParseInterval_Quantity : TInterval_Quantity;
+    function ParseInterval_DateTime : TInterval_DateTime;
+    function ParseInterval_Date : TInterval_Date;
+    function ParseQuantity : TQuantity;
+    function ParseChoiceValue : TChoiceValue;
+    function ParseChoice : TChoice;
+    function ParseAttachment : TAttachment;
+    function ParseRatio : TRatio;
+    function ParseCodeableConceptCoding : TCodeableConceptCoding;
+    function ParseCodeableConcept : TCodeableConcept;
+    function ParseIdentifier : TIdentifier;
+    function ParseScheduleRepeat : TScheduleRepeat;
+    function ParseSchedule : TSchedule;
+    function ParseContact : TContact;
+    function ParseAddressPart : TAddressPart;
+    function ParseAddress : TAddress;
+    function ParseHumanNamePart : THumanNamePart;
+    function ParseHumanName : THumanName;
+    function ParseHumanId : THumanId;
+    function ParseConformancePublisher : TConformancePublisher;
+    function ParseConformanceSoftware : TConformanceSoftware;
+    function ParseConformanceOperation : TConformanceOperation;
+    function ParseConformanceOperationTransaction : TConformanceOperationTransaction;
+    function ParseConformanceOperationSearch : TConformanceOperationSearch;
+    function ParseConformanceOperationCreate : TConformanceOperationCreate;
+    function ParseConformance : TConformance;
+    function ParseDocumentAuthor : TDocumentAuthor;
+    function ParseDocumentAttestor : TDocumentAttestor;
+    function ParseDocumentSection : TDocumentSection;
+    function ParseDocumentSectionAuthor : TDocumentSectionAuthor;
+    function ParseDocument : TDocument;
+    function ParseMessageResponse : TMessageResponse;
+    function ParseMessage : TMessage;
+    function ParseMessageConformancePublisher : TMessageConformancePublisher;
+    function ParseMessageConformanceSoftware : TMessageConformanceSoftware;
+    function ParseMessageConformanceEvent : TMessageConformanceEvent;
+    function ParseMessageConformanceEventRequest : TMessageConformanceEventRequest;
+    function ParseMessageConformanceEventResponse : TMessageConformanceEventResponse;
+    function ParseMessageConformance : TMessageConformance;
+    function ParseAgent : TAgent;
+    function ParseAnimalRelatedEntity : TAnimalRelatedEntity;
+    function ParseAnimal : TAnimal;
+    function ParsePrescriptionDispense : TPrescriptionDispense;
+    function ParsePrescriptionMedicine : TPrescriptionMedicine;
+    function ParsePrescriptionMedicineActiveIngredient : TPrescriptionMedicineActiveIngredient;
+    function ParsePrescriptionMedicineInactiveIngredient : TPrescriptionMedicineInactiveIngredient;
+    function ParsePrescriptionAdministrationRequest : TPrescriptionAdministrationRequest;
+    function ParsePrescriptionAdministrationRequestDosageInstruction : TPrescriptionAdministrationRequestDosageInstruction;
+    function ParsePrescription : TPrescription;
+    function ParsePatient : TPatient;
+    function ParseOrganizationName : TOrganizationName;
+    function ParseOrganizationAccreditation : TOrganizationAccreditation;
+    function ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+    function ParseOrganization : TOrganization;
+    function ParseDocumentConformancePublisher : TDocumentConformancePublisher;
+    function ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
+    function ParseDocumentConformanceDocument : TDocumentConformanceDocument;
+    function ParseDocumentConformance : TDocumentConformance;
+    function ParseLabReportRequestDetail : TLabReportRequestDetail;
+    function ParseLabReportResultGroup : TLabReportResultGroup;
+    function ParseLabReportResultGroupResult : TLabReportResultGroupResult;
+    function ParseLabReportResultGroupResultReferenceRange : TLabReportResultGroupResultReferenceRange;
+    function ParseLabReport : TLabReport;
+    function ParsePersonQualification : TPersonQualification;
+    function ParsePersonLanguage : TPersonLanguage;
+    function ParsePersonRelatedPerson : TPersonRelatedPerson;
+    function ParsePerson : TPerson;
+    function ParseResource : TFHIRResource; override;
+  end;
+
+  TFHIRJsonSerialiser = class (TFHIRJsonSerialiserBase)
+  protected
+    procedure SerialiseExtension(name : string; elem : TExtension);
+    procedure SerialiseConstraintElement(name : string; elem : TConstraintElement);
+    procedure SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+    procedure SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+    procedure SerialiseConstraint(name : string; elem : TConstraint);
+    procedure SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+    procedure SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+    procedure SerialiseNarrative(name : string; elem : TNarrative);
+    procedure SerialiseCoding(name : string; elem : TCoding);
+    procedure SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+    procedure SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+    procedure SerialiseInterval_Date(name : string; elem : TInterval_Date);
+    procedure SerialiseQuantity(name : string; elem : TQuantity);
+    procedure SerialiseChoiceValue(name : string; elem : TChoiceValue);
+    procedure SerialiseChoice(name : string; elem : TChoice);
+    procedure SerialiseAttachment(name : string; elem : TAttachment);
+    procedure SerialiseRatio(name : string; elem : TRatio);
+    procedure SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+    procedure SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+    procedure SerialiseIdentifier(name : string; elem : TIdentifier);
+    procedure SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+    procedure SerialiseSchedule(name : string; elem : TSchedule);
+    procedure SerialiseContact(name : string; elem : TContact);
+    procedure SerialiseAddressPart(name : string; elem : TAddressPart);
+    procedure SerialiseAddress(name : string; elem : TAddress);
+    procedure SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+    procedure SerialiseHumanName(name : string; elem : THumanName);
+    procedure SerialiseHumanId(name : string; elem : THumanId);
+    procedure SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+    procedure SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+    procedure SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+    procedure SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+    procedure SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+    procedure SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+    procedure SerialiseConformance(name : string; elem : TConformance);
+    procedure SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+    procedure SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+    procedure SerialiseDocumentSection(name : string; elem : TDocumentSection);
+    procedure SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+    procedure SerialiseDocument(name : string; elem : TDocument);
+    procedure SerialiseMessageResponse(name : string; elem : TMessageResponse);
+    procedure SerialiseMessage(name : string; elem : TMessage);
+    procedure SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+    procedure SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+    procedure SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+    procedure SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+    procedure SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+    procedure SerialiseMessageConformance(name : string; elem : TMessageConformance);
+    procedure SerialiseAgent(name : string; elem : TAgent);
+    procedure SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure SerialiseAnimal(name : string; elem : TAnimal);
+    procedure SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+    procedure SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+    procedure SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+    procedure SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+    procedure SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+    procedure SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+    procedure SerialisePrescription(name : string; elem : TPrescription);
+    procedure SerialisePatient(name : string; elem : TPatient);
+    procedure SerialiseOrganizationName(name : string; elem : TOrganizationName);
+    procedure SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure SerialiseOrganization(name : string; elem : TOrganization);
+    procedure SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+    procedure SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+    procedure SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+    procedure SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+    procedure SerialiseLabReport(name : string; elem : TLabReport);
+    procedure SerialisePersonQualification(name : string; elem : TPersonQualification);
+    procedure SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure SerialisePerson(name : string; elem : TPerson);
+    procedure SerialiseResource(resource : TFHIRResource); override;
+  end;
+
+
+implementation
+
+{ TFHIRXmlParser }
+
+function TFHIRXmlParser.ParseExtension(element : IXmlDomElement) : TExtension;
+var
+  child : IXMLDOMElement;
+begin
+  result := TExtension.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'definition') then
+        result.definition := child.text
+      else if (child.nodeName = 'ref') then
+        result.ref := child.text
+      else if (child.nodeName = 'state') then
+        result.state := TExtensionState(ParseEnum(CODES_TExtensionState, child))
+      else if (child.nodeName = 'valueSid') then
+        result.value := ParseSid(child)
+      else if (child.nodeName = 'valueDateTime') then
+        result.value := ParseDateTime(child)
+      else if (child.nodeName = 'valueInteger') then
+        result.value := ParseInteger(child)
+      else if (child.nodeName = 'valueCode') then
+        result.value := ParseCode(child)
+      else if (child.nodeName = 'valueDate') then
+        result.value := ParseDate(child)
+      else if (child.nodeName = 'valueDecimal') then
+        result.value := ParseDecimal(child)
+      else if (child.nodeName = 'valueUri') then
+        result.value := ParseUri(child)
+      else if (child.nodeName = 'valueId') then
+        result.value := ParseId(child)
+      else if (child.nodeName = 'valueBase64Binary') then
+        result.value := ParseBase64Binary(child)
+      else if (child.nodeName = 'valueOid') then
+        result.value := ParseOid(child)
+      else if (child.nodeName = 'valueString') then
+        result.value := ParseString(child)
+      else if (child.nodeName = 'valueBoolean') then
+        result.value := ParseBoolean(child)
+      else if (child.nodeName = 'valueUuid') then
+        result.value := ParseUuid(child)
+      else if (child.nodeName = 'valueInstant') then
+        result.value := ParseInstant(child)
+      else if (child.nodeName = 'valueCoding') then
+        result.value := ParseCoding(child)
+      else if (child.nodeName = 'valueInterval_Quantity') then
+        result.value := ParseInterval_Quantity(child)
+      else if (child.nodeName = 'valueInterval_DateTime') then
+        result.value := ParseInterval_DateTime(child)
+      else if (child.nodeName = 'valueInterval_Date') then
+        result.value := ParseInterval_Date(child)
+      else if (child.nodeName = 'valueQuantity') then
+        result.value := ParseQuantity(child)
+      else if (child.nodeName = 'valueChoice') then
+        result.value := ParseChoice(child)
+      else if (child.nodeName = 'valueAttachment') then
+        result.value := ParseAttachment(child)
+      else if (child.nodeName = 'valueRatio') then
+        result.value := ParseRatio(child)
+      else if (child.nodeName = 'valueCodeableConcept') then
+        result.value := ParseCodeableConcept(child)
+      else if (child.nodeName = 'valueIdentifier') then
+        result.value := ParseIdentifier(child)
+      else if (child.nodeName = 'valueSchedule') then
+        result.value := ParseSchedule(child)
+      else if (child.nodeName = 'valueContact') then
+        result.value := ParseContact(child)
+      else if (child.nodeName = 'valueAddress') then
+        result.value := ParseAddress(child)
+      else if (child.nodeName = 'valueHumanName') then
+        result.value := ParseHumanName(child)
+      else if (child.nodeName = 'valueHumanId') then
+        result.value := ParseHumanId(child)
+      else if (child.nodeName = 'extension') then
+        result.Extension.Add(ParseExtension(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseExtension(name : string; elem : TExtension);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('definition',elem.definition);
+  Text('ref',elem.ref);
+  Text('state',CODES_TExtensionState[elem.state]);
+  if elem.value is TFHIRTypeString then
+    SerialiseString('valueSid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueDateTime', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeInteger then
+    SerialiseInteger('valueInteger', TFHIRTypeInteger(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueCode', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueDate', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDecimal then
+    SerialiseDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueUri', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueId', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBytes then
+    SerialiseBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueOid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueString', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBoolean then
+    SerialiseBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueUuid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDateTime then
+    SerialiseDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TCoding then
+    SerialiseCoding('valueCoding', TCoding(elem.value))
+  else if elem.value is TInterval_Quantity then
+    SerialiseInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TInterval_Date then
+    SerialiseInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
+  else if elem.value is TQuantity then
+    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('valueChoice', TChoice(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('valueRatio', TRatio(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TIdentifier then
+    SerialiseIdentifier('valueIdentifier', TIdentifier(elem.value))
+  else if elem.value is TSchedule then
+    SerialiseSchedule('valueSchedule', TSchedule(elem.value))
+  else if elem.value is TContact then
+    SerialiseContact('valueContact', TContact(elem.value))
+  else if elem.value is TAddress then
+    SerialiseAddress('valueAddress', TAddress(elem.value))
+  else if elem.value is THumanName then
+    SerialiseHumanName('valueHumanName', THumanName(elem.value))
+  else if elem.value is THumanId then
+    SerialiseHumanId('valueHumanId', THumanId(elem.value));
+  for i := 0 to elem.Extension.Count - 1 do
+    SerialiseExtension('extension', elem.Extension[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseExtension : TExtension;
+begin
+  result := TExtension.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'definition') then
+        result.definition := FJson.itemValue
+      else if (FJson.ItemName = 'ref') then
+        result.ref := FJson.itemValue
+      else if (FJson.ItemName = 'state') then
+        result.state := TExtensionState(ParseEnum(CODES_TExtensionState))
+      else if (FJson.ItemName = 'valueSid') then
+        result.value := ParseSid
+      else if (FJson.ItemName = 'valueDateTime') then
+        result.value := ParseDateTime
+      else if (FJson.ItemName = 'valueInteger') then
+        result.value := ParseInteger
+      else if (FJson.ItemName = 'valueCode') then
+        result.value := ParseCode
+      else if (FJson.ItemName = 'valueDate') then
+        result.value := ParseDate
+      else if (FJson.ItemName = 'valueDecimal') then
+        result.value := ParseDecimal
+      else if (FJson.ItemName = 'valueUri') then
+        result.value := ParseUri
+      else if (FJson.ItemName = 'valueId') then
+        result.value := ParseId
+      else if (FJson.ItemName = 'valueBase64Binary') then
+        result.value := ParseBase64Binary
+      else if (FJson.ItemName = 'valueOid') then
+        result.value := ParseOid
+      else if (FJson.ItemName = 'valueString') then
+        result.value := ParseString
+      else if (FJson.ItemName = 'valueBoolean') then
+        result.value := ParseBoolean
+      else if (FJson.ItemName = 'valueUuid') then
+        result.value := ParseUuid
+      else if (FJson.ItemName = 'valueInstant') then
+        result.value := ParseInstant
+      else if (FJson.ItemName = 'valueCoding') then
+        result.value := ParseCoding
+      else if (FJson.ItemName = 'valueInterval_Quantity') then
+        result.value := ParseInterval_Quantity
+      else if (FJson.ItemName = 'valueInterval_DateTime') then
+        result.value := ParseInterval_DateTime
+      else if (FJson.ItemName = 'valueInterval_Date') then
+        result.value := ParseInterval_Date
+      else if (FJson.ItemName = 'valueQuantity') then
+        result.value := ParseQuantity
+      else if (FJson.ItemName = 'valueChoice') then
+        result.value := ParseChoice
+      else if (FJson.ItemName = 'valueAttachment') then
+        result.value := ParseAttachment
+      else if (FJson.ItemName = 'valueRatio') then
+        result.value := ParseRatio
+      else if (FJson.ItemName = 'valueCodeableConcept') then
+        result.value := ParseCodeableConcept
+      else if (FJson.ItemName = 'valueIdentifier') then
+        result.value := ParseIdentifier
+      else if (FJson.ItemName = 'valueSchedule') then
+        result.value := ParseSchedule
+      else if (FJson.ItemName = 'valueContact') then
+        result.value := ParseContact
+      else if (FJson.ItemName = 'valueAddress') then
+        result.value := ParseAddress
+      else if (FJson.ItemName = 'valueHumanName') then
+        result.value := ParseHumanName
+      else if (FJson.ItemName = 'valueHumanId') then
+        result.value := ParseHumanId
+      else if (FJson.ItemName = 'extensions') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Extension.Add(ParseExtension);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseExtension(name : string; elem : TExtension);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('definition',elem.definition);
+  Prop('ref',elem.ref);
+  Prop('state',CODES_TExtensionState[elem.state]);
+  if elem.value is TFHIRTypeString then
+    SerialiseString('valueSid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueDateTime', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeInteger then
+    SerialiseInteger('valueInteger', TFHIRTypeInteger(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueCode', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueDate', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDecimal then
+    SerialiseDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueUri', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueId', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBytes then
+    SerialiseBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueOid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueString', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBoolean then
+    SerialiseBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('valueUuid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDateTime then
+    SerialiseDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TCoding then
+    SerialiseCoding('valueCoding', TCoding(elem.value))
+  else if elem.value is TInterval_Quantity then
+    SerialiseInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TInterval_Date then
+    SerialiseInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
+  else if elem.value is TQuantity then
+    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('valueChoice', TChoice(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('valueRatio', TRatio(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TIdentifier then
+    SerialiseIdentifier('valueIdentifier', TIdentifier(elem.value))
+  else if elem.value is TSchedule then
+    SerialiseSchedule('valueSchedule', TSchedule(elem.value))
+  else if elem.value is TContact then
+    SerialiseContact('valueContact', TContact(elem.value))
+  else if elem.value is TAddress then
+    SerialiseAddress('valueAddress', TAddress(elem.value))
+  else if elem.value is THumanName then
+    SerialiseHumanName('valueHumanName', THumanName(elem.value))
+  else if elem.value is THumanId then
+    SerialiseHumanId('valueHumanId', THumanId(elem.value));
+  if elem.Extension.Count > 0 then
+  begin
+    FJson.valueObject('extensions');
+    for i := 0 to elem.Extension.Count - 1 do
+      SerialiseExtension('extension',elem.Extension[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConstraintElement(element : IXmlDomElement) : TConstraintElement;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TConstraintElement.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'path') then
+        result.path := child.text
+      else if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'purpose') then
+        result.purpose := child.text
+      else if (child.nodeName = 'min') then
+        result.min := StringToInteger32(child.text)
+      else if (child.nodeName = 'max') then
+        result.max := child.text
+      else if (child.nodeName = 'type') then
+        result.type_ := child.text
+      else if (child.nodeName = 'conformance') then
+        result.conformance := TConformanceType(ParseEnum(CODES_TConformanceType, child))
+      else if (child.nodeName = 'condition') then
+        result.condition := child.text
+      else if (child.nodeName = 'mustSupport') then
+        result.mustSupport := StringToBoolean(child.text)
+      else if (child.nodeName = 'mustUnderstand') then
+        result.mustUnderstand := StringToBoolean(child.text)
+      else if (child.nodeName = 'definition') then
+        result.definition := child.text
+      else if (child.nodeName = 'mappings') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'mapping') Then
+            result.Mapping.Add(ParseConstraintElementMapping(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'aggregation') then
+        result.aggregation := ParseConstraintElementAggregation(child)
+      else if (child.nodeName = 'valueSet') then
+        result.valueSet := child.text
+      else if (child.nodeName = 'values') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'value') Then
+            result.Value.Add(ParseConstraintElementValue(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConstraintElement(name : string; elem : TConstraintElement);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('path',elem.path);
+  Text('name',elem.name);
+  Text('purpose',elem.purpose);
+  Text('min',IntegerToString(elem.min));
+  Text('max',elem.max);
+  Text('type',elem.type_);
+  Text('conformance',CODES_TConformanceType[elem.conformance]);
+  Text('condition',elem.condition);
+  Text('mustSupport',BooleanToString(elem.mustSupport));
+  Text('mustUnderstand',BooleanToString(elem.mustUnderstand));
+  Text('definition',elem.definition);
+  if elem.Mapping.Count > 0 then
+  begin
+    FXml.open('mappings');
+    for i := 0 to elem.Mapping.Count - 1 do
+      SerialiseConstraintElementMapping('mapping',elem.Mapping[i]);
+    FXml.Close('mappings');
+  end;
+  SerialiseConstraintElementAggregation('aggregation', elem.aggregation);
+  Text('valueSet',elem.valueSet);
+  if elem.Value.Count > 0 then
+  begin
+    FXml.open('values');
+    for i := 0 to elem.Value.Count - 1 do
+      SerialiseConstraintElementValue('value',elem.Value[i]);
+    FXml.Close('values');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConstraintElement : TConstraintElement;
+begin
+  result := TConstraintElement.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'path') then
+        result.path := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'purpose') then
+        result.purpose := FJson.itemValue
+      else if (FJson.ItemName = 'min') then
+        result.min := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'max') then
+        result.max := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := FJson.itemValue
+      else if (FJson.ItemName = 'conformance') then
+        result.conformance := TConformanceType(ParseEnum(CODES_TConformanceType))
+      else if (FJson.ItemName = 'condition') then
+        result.condition := FJson.itemValue
+      else if (FJson.ItemName = 'mustSupport') then
+        result.mustSupport := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'mustUnderstand') then
+        result.mustUnderstand := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'definition') then
+        result.definition := FJson.itemValue
+      else if (FJson.ItemName = 'mappings') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Mapping.Add(ParseConstraintElementMapping);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'aggregation') then
+        result.aggregation := ParseConstraintElementAggregation
+      else if (FJson.ItemName = 'valueSet') then
+        result.valueSet := FJson.itemValue
+      else if (FJson.ItemName = 'values') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Value.Add(ParseConstraintElementValue);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConstraintElement(name : string; elem : TConstraintElement);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('path',elem.path);
+  Prop('name',elem.name);
+  Prop('purpose',elem.purpose);
+  Prop('min',IntegerToString(elem.min));
+  Prop('max',elem.max);
+  Prop('type',elem.type_);
+  Prop('conformance',CODES_TConformanceType[elem.conformance]);
+  Prop('condition',elem.condition);
+  Prop('mustSupport',BooleanToString(elem.mustSupport));
+  Prop('mustUnderstand',BooleanToString(elem.mustUnderstand));
+  Prop('definition',elem.definition);
+  if elem.Mapping.Count > 0 then
+  begin
+    FJson.valueObject('mappings');
+    for i := 0 to elem.Mapping.Count - 1 do
+      SerialiseConstraintElementMapping('mapping',elem.Mapping[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseConstraintElementAggregation('aggregation', elem.aggregation);
+  Prop('valueSet',elem.valueSet);
+  if elem.Value.Count > 0 then
+  begin
+    FJson.valueObject('values');
+    for i := 0 to elem.Value.Count - 1 do
+      SerialiseConstraintElementValue('value',elem.Value[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConstraintElementMapping(element : IXmlDomElement) : TConstraintElementMapping;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConstraintElementMapping.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'target') then
+        result.target := child.text
+      else if (child.nodeName = 'map') then
+        result.map := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('target',elem.target);
+  Text('map',elem.map);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConstraintElementMapping : TConstraintElementMapping;
+begin
+  result := TConstraintElementMapping.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'target') then
+        result.target := FJson.itemValue
+      else if (FJson.ItemName = 'map') then
+        result.map := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('target',elem.target);
+  Prop('map',elem.map);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConstraintElementAggregation(element : IXmlDomElement) : TConstraintElementAggregation;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConstraintElementAggregation.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'aggregated') then
+        result.aggregated := StringToBoolean(child.text)
+      else if (child.nodeName = 'name') then
+        result.name := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('aggregated',BooleanToString(elem.aggregated));
+  Text('name',elem.name);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConstraintElementAggregation : TConstraintElementAggregation;
+begin
+  result := TConstraintElementAggregation.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'aggregated') then
+        result.aggregated := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('aggregated',BooleanToString(elem.aggregated));
+  Prop('name',elem.name);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConstraintElementValue(element : IXmlDomElement) : TConstraintElementValue;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConstraintElementValue.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'Sid') then
+        result.value := ParseSid(child)
+      else if (child.nodeName = 'DateTime') then
+        result.value := ParseDateTime(child)
+      else if (child.nodeName = 'Integer') then
+        result.value := ParseInteger(child)
+      else if (child.nodeName = 'Code') then
+        result.value := ParseCode(child)
+      else if (child.nodeName = 'Date') then
+        result.value := ParseDate(child)
+      else if (child.nodeName = 'Decimal') then
+        result.value := ParseDecimal(child)
+      else if (child.nodeName = 'Uri') then
+        result.value := ParseUri(child)
+      else if (child.nodeName = 'Id') then
+        result.value := ParseId(child)
+      else if (child.nodeName = 'Base64Binary') then
+        result.value := ParseBase64Binary(child)
+      else if (child.nodeName = 'Oid') then
+        result.value := ParseOid(child)
+      else if (child.nodeName = 'String') then
+        result.value := ParseString(child)
+      else if (child.nodeName = 'Boolean') then
+        result.value := ParseBoolean(child)
+      else if (child.nodeName = 'Uuid') then
+        result.value := ParseUuid(child)
+      else if (child.nodeName = 'Instant') then
+        result.value := ParseInstant(child)
+      else if (child.nodeName = 'Coding') then
+        result.value := ParseCoding(child)
+      else if (child.nodeName = 'Interval_Quantity') then
+        result.value := ParseInterval_Quantity(child)
+      else if (child.nodeName = 'Interval_DateTime') then
+        result.value := ParseInterval_DateTime(child)
+      else if (child.nodeName = 'Interval_Date') then
+        result.value := ParseInterval_Date(child)
+      else if (child.nodeName = 'Quantity') then
+        result.value := ParseQuantity(child)
+      else if (child.nodeName = 'Choice') then
+        result.value := ParseChoice(child)
+      else if (child.nodeName = 'Attachment') then
+        result.value := ParseAttachment(child)
+      else if (child.nodeName = 'Ratio') then
+        result.value := ParseRatio(child)
+      else if (child.nodeName = 'CodeableConcept') then
+        result.value := ParseCodeableConcept(child)
+      else if (child.nodeName = 'Identifier') then
+        result.value := ParseIdentifier(child)
+      else if (child.nodeName = 'Schedule') then
+        result.value := ParseSchedule(child)
+      else if (child.nodeName = 'Contact') then
+        result.value := ParseContact(child)
+      else if (child.nodeName = 'Address') then
+        result.value := ParseAddress(child)
+      else if (child.nodeName = 'HumanName') then
+        result.value := ParseHumanName(child)
+      else if (child.nodeName = 'HumanId') then
+        result.value := ParseHumanId(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  if elem.value is TFHIRTypeString then
+    SerialiseString('Sid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('DateTime', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeInteger then
+    SerialiseInteger('Integer', TFHIRTypeInteger(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Code', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Date', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDecimal then
+    SerialiseDecimal('Decimal', TFHIRTypeDecimal(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Uri', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Id', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBytes then
+    SerialiseBytes('Base64Binary', TFHIRTypeBytes(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Oid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('String', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBoolean then
+    SerialiseBoolean('Boolean', TFHIRTypeBoolean(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Uuid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDateTime then
+    SerialiseDateTime('Instant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TCoding then
+    SerialiseCoding('Coding', TCoding(elem.value))
+  else if elem.value is TInterval_Quantity then
+    SerialiseInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TInterval_Date then
+    SerialiseInterval_Date('Interval_Date', TInterval_Date(elem.value))
+  else if elem.value is TQuantity then
+    SerialiseQuantity('Quantity', TQuantity(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('Choice', TChoice(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('Attachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('Ratio', TRatio(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TIdentifier then
+    SerialiseIdentifier('Identifier', TIdentifier(elem.value))
+  else if elem.value is TSchedule then
+    SerialiseSchedule('Schedule', TSchedule(elem.value))
+  else if elem.value is TContact then
+    SerialiseContact('Contact', TContact(elem.value))
+  else if elem.value is TAddress then
+    SerialiseAddress('Address', TAddress(elem.value))
+  else if elem.value is THumanName then
+    SerialiseHumanName('HumanName', THumanName(elem.value))
+  else if elem.value is THumanId then
+    SerialiseHumanId('HumanId', THumanId(elem.value));
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConstraintElementValue : TConstraintElementValue;
+begin
+  result := TConstraintElementValue.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'Sid') then
+        result.value := ParseSid
+      else if (FJson.ItemName = 'DateTime') then
+        result.value := ParseDateTime
+      else if (FJson.ItemName = 'Integer') then
+        result.value := ParseInteger
+      else if (FJson.ItemName = 'Code') then
+        result.value := ParseCode
+      else if (FJson.ItemName = 'Date') then
+        result.value := ParseDate
+      else if (FJson.ItemName = 'Decimal') then
+        result.value := ParseDecimal
+      else if (FJson.ItemName = 'Uri') then
+        result.value := ParseUri
+      else if (FJson.ItemName = 'Id') then
+        result.value := ParseId
+      else if (FJson.ItemName = 'Base64Binary') then
+        result.value := ParseBase64Binary
+      else if (FJson.ItemName = 'Oid') then
+        result.value := ParseOid
+      else if (FJson.ItemName = 'String') then
+        result.value := ParseString
+      else if (FJson.ItemName = 'Boolean') then
+        result.value := ParseBoolean
+      else if (FJson.ItemName = 'Uuid') then
+        result.value := ParseUuid
+      else if (FJson.ItemName = 'Instant') then
+        result.value := ParseInstant
+      else if (FJson.ItemName = 'Coding') then
+        result.value := ParseCoding
+      else if (FJson.ItemName = 'Interval_Quantity') then
+        result.value := ParseInterval_Quantity
+      else if (FJson.ItemName = 'Interval_DateTime') then
+        result.value := ParseInterval_DateTime
+      else if (FJson.ItemName = 'Interval_Date') then
+        result.value := ParseInterval_Date
+      else if (FJson.ItemName = 'Quantity') then
+        result.value := ParseQuantity
+      else if (FJson.ItemName = 'Choice') then
+        result.value := ParseChoice
+      else if (FJson.ItemName = 'Attachment') then
+        result.value := ParseAttachment
+      else if (FJson.ItemName = 'Ratio') then
+        result.value := ParseRatio
+      else if (FJson.ItemName = 'CodeableConcept') then
+        result.value := ParseCodeableConcept
+      else if (FJson.ItemName = 'Identifier') then
+        result.value := ParseIdentifier
+      else if (FJson.ItemName = 'Schedule') then
+        result.value := ParseSchedule
+      else if (FJson.ItemName = 'Contact') then
+        result.value := ParseContact
+      else if (FJson.ItemName = 'Address') then
+        result.value := ParseAddress
+      else if (FJson.ItemName = 'HumanName') then
+        result.value := ParseHumanName
+      else if (FJson.ItemName = 'HumanId') then
+        result.value := ParseHumanId
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  if elem.value is TFHIRTypeString then
+    SerialiseString('Sid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('DateTime', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeInteger then
+    SerialiseInteger('Integer', TFHIRTypeInteger(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Code', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Date', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDecimal then
+    SerialiseDecimal('Decimal', TFHIRTypeDecimal(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Uri', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Id', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBytes then
+    SerialiseBytes('Base64Binary', TFHIRTypeBytes(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Oid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('String', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeBoolean then
+    SerialiseBoolean('Boolean', TFHIRTypeBoolean(elem.value))
+  else if elem.value is TFHIRTypeString then
+    SerialiseString('Uuid', TFHIRTypeString(elem.value))
+  else if elem.value is TFHIRTypeDateTime then
+    SerialiseDateTime('Instant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TCoding then
+    SerialiseCoding('Coding', TCoding(elem.value))
+  else if elem.value is TInterval_Quantity then
+    SerialiseInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TInterval_Date then
+    SerialiseInterval_Date('Interval_Date', TInterval_Date(elem.value))
+  else if elem.value is TQuantity then
+    SerialiseQuantity('Quantity', TQuantity(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('Choice', TChoice(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('Attachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('Ratio', TRatio(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TIdentifier then
+    SerialiseIdentifier('Identifier', TIdentifier(elem.value))
+  else if elem.value is TSchedule then
+    SerialiseSchedule('Schedule', TSchedule(elem.value))
+  else if elem.value is TContact then
+    SerialiseContact('Contact', TContact(elem.value))
+  else if elem.value is TAddress then
+    SerialiseAddress('Address', TAddress(elem.value))
+  else if elem.value is THumanName then
+    SerialiseHumanName('HumanName', THumanName(elem.value))
+  else if elem.value is THumanId then
+    SerialiseHumanId('HumanId', THumanId(elem.value));
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConstraint(element : IXmlDomElement) : TConstraint;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConstraint.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'type') then
+        result.type_ := child.text
+      else if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'purpose') then
+        result.purpose := child.text
+      else if (child.nodeName = 'element') then
+        result.Element.Add(ParseConstraintElement(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConstraint(name : string; elem : TConstraint);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('type',elem.type_);
+  Text('name',elem.name);
+  Text('purpose',elem.purpose);
+  for i := 0 to elem.Element.Count - 1 do
+    SerialiseConstraintElement('element', elem.Element[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConstraint : TConstraint;
+begin
+  result := TConstraint.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'purpose') then
+        result.purpose := FJson.itemValue
+      else if (FJson.ItemName = 'elements') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Element.Add(ParseConstraintElement);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConstraint(name : string; elem : TConstraint);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('type',elem.type_);
+  Prop('name',elem.name);
+  Prop('purpose',elem.purpose);
+  if elem.Element.Count > 0 then
+  begin
+    FJson.valueObject('elements');
+    for i := 0 to elem.Element.Count - 1 do
+      SerialiseConstraintElement('element',elem.Element[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseNarrativeImage(element : IXmlDomElement) : TNarrativeImage;
+var
+  child : IXMLDOMElement;
+begin
+  result := TNarrativeImage.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'mimeType') then
+        result.mimeType := child.text
+      else if (child.nodeName = 'content') then
+        result.content := ParseAdvBuffer(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('mimeType',elem.mimeType);
+  SerialiseAdvBuffer('content', elem.content);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseNarrativeImage : TNarrativeImage;
+begin
+  result := TNarrativeImage.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'mimeType') then
+        result.mimeType := FJson.itemValue
+      else if (FJson.ItemName = 'content') then
+        result.content := ParseAdvBuffer
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('mimeType',elem.mimeType);
+  SerialiseAdvBuffer('content', elem.content);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseNarrativeMap(element : IXmlDomElement) : TNarrativeMap;
+var
+  child : IXMLDOMElement;
+begin
+  result := TNarrativeMap.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'text') then
+        result.text := child.text
+      else if (child.nodeName = 'data') then
+        result.data := child.text
+      else if (child.nodeName = 'source') then
+        result.source := TNarrativeMapSource(ParseEnum(CODES_TNarrativeMapSource, child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('text',elem.text);
+  Text('data',elem.data);
+  Text('source',CODES_TNarrativeMapSource[elem.source]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseNarrativeMap : TNarrativeMap;
+begin
+  result := TNarrativeMap.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'text') then
+        result.text := FJson.itemValue
+      else if (FJson.ItemName = 'data') then
+        result.data := FJson.itemValue
+      else if (FJson.ItemName = 'source') then
+        result.source := TNarrativeMapSource(ParseEnum(CODES_TNarrativeMapSource))
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('text',elem.text);
+  Prop('data',elem.data);
+  Prop('source',CODES_TNarrativeMapSource[elem.source]);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseNarrative(element : IXmlDomElement) : TNarrative;
+var
+  child : IXMLDOMElement;
+begin
+  result := TNarrative.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'status') then
+        result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus, child))
+      else if (child.nodeName = 'html') then
+        result.html := ParseXHtml(child)
+      else if (child.nodeName = 'image') then
+        result.Image.Add(ParseNarrativeImage(child))
+      else if (child.nodeName = 'map') then
+        result.Map.Add(ParseNarrativeMap(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseNarrative(name : string; elem : TNarrative);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('status',CODES_TNarrativeStatus[elem.status]);
+  SerialiseXHtml('html', elem.html);
+  for i := 0 to elem.Image.Count - 1 do
+    SerialiseNarrativeImage('image', elem.Image[i]);
+  for i := 0 to elem.Map.Count - 1 do
+    SerialiseNarrativeMap('map', elem.Map[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseNarrative : TNarrative;
+begin
+  result := TNarrative.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'status') then
+        result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus))
+      else if (FJson.ItemName = 'html') then
+        result.html := ParseXHtml
+      else if (FJson.ItemName = 'images') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Image.Add(ParseNarrativeImage);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'maps') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Map.Add(ParseNarrativeMap);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseNarrative(name : string; elem : TNarrative);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('status',CODES_TNarrativeStatus[elem.status]);
+  SerialiseXHtml('html', elem.html);
+  if elem.Image.Count > 0 then
+  begin
+    FJson.valueObject('images');
+    for i := 0 to elem.Image.Count - 1 do
+      SerialiseNarrativeImage('image',elem.Image[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Map.Count > 0 then
+  begin
+    FJson.valueObject('maps');
+    for i := 0 to elem.Map.Count - 1 do
+      SerialiseNarrativeMap('map',elem.Map[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseCoding(element : IXmlDomElement) : TCoding;
+var
+  child : IXMLDOMElement;
+begin
+  result := TCoding.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'system') then
+        result.system := child.text
+      else if (child.nodeName = 'display') then
+        result.display := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseCoding(name : string; elem : TCoding);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('system',elem.system);
+  Text('display',elem.display);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseCoding : TCoding;
+begin
+  result := TCoding.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'system') then
+        result.system := FJson.itemValue
+      else if (FJson.ItemName = 'display') then
+        result.display := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseCoding(name : string; elem : TCoding);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('system',elem.system);
+  Prop('display',elem.display);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseInterval_Quantity(element : IXmlDomElement) : TInterval_Quantity;
+var
+  child : IXMLDOMElement;
+begin
+  result := TInterval_Quantity.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'low') then
+        result.low := ParseQuantity(child)
+      else if (child.nodeName = 'high') then
+        result.high := ParseQuantity(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseQuantity('low', elem.low);
+  SerialiseQuantity('high', elem.high);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseInterval_Quantity : TInterval_Quantity;
+begin
+  result := TInterval_Quantity.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'low') then
+        result.low := ParseQuantity
+      else if (FJson.ItemName = 'high') then
+        result.high := ParseQuantity
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseQuantity('low', elem.low);
+  SerialiseQuantity('high', elem.high);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseInterval_DateTime(element : IXmlDomElement) : TInterval_DateTime;
+var
+  child : IXMLDOMElement;
+begin
+  result := TInterval_DateTime.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'low') then
+        result.low := child.text
+      else if (child.nodeName = 'high') then
+        result.high := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('low',elem.low);
+  Text('high',elem.high);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseInterval_DateTime : TInterval_DateTime;
+begin
+  result := TInterval_DateTime.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'low') then
+        result.low := FJson.itemValue
+      else if (FJson.ItemName = 'high') then
+        result.high := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('low',elem.low);
+  Prop('high',elem.high);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseInterval_Date(element : IXmlDomElement) : TInterval_Date;
+var
+  child : IXMLDOMElement;
+begin
+  result := TInterval_Date.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'low') then
+        result.low := child.text
+      else if (child.nodeName = 'high') then
+        result.high := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseInterval_Date(name : string; elem : TInterval_Date);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('low',elem.low);
+  Text('high',elem.high);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseInterval_Date : TInterval_Date;
+begin
+  result := TInterval_Date.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'low') then
+        result.low := FJson.itemValue
+      else if (FJson.ItemName = 'high') then
+        result.high := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseInterval_Date(name : string; elem : TInterval_Date);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('low',elem.low);
+  Prop('high',elem.high);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseQuantity(element : IXmlDomElement) : TQuantity;
+var
+  child : IXMLDOMElement;
+begin
+  result := TQuantity.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'value') then
+        result.value := ParseSmartDecimal(child)
+      else if (child.nodeName = 'status') then
+        result.status := TQuantityStatus(ParseEnum(CODES_TQuantityStatus, child))
+      else if (child.nodeName = 'units') then
+        result.units := child.text
+      else if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'system') then
+        result.system := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseQuantity(name : string; elem : TQuantity);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseSmartDecimal('value', elem.value);
+  Text('status',CODES_TQuantityStatus[elem.status]);
+  Text('units',elem.units);
+  Text('code',elem.code);
+  Text('system',elem.system);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseQuantity : TQuantity;
+begin
+  result := TQuantity.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'value') then
+        result.value := ParseSmartDecimal
+      else if (FJson.ItemName = 'status') then
+        result.status := TQuantityStatus(ParseEnum(CODES_TQuantityStatus))
+      else if (FJson.ItemName = 'units') then
+        result.units := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'system') then
+        result.system := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseQuantity(name : string; elem : TQuantity);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseSmartDecimal('value', elem.value);
+  Prop('status',CODES_TQuantityStatus[elem.status]);
+  Prop('units',elem.units);
+  Prop('code',elem.code);
+  Prop('system',elem.system);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseChoiceValue(element : IXmlDomElement) : TChoiceValue;
+var
+  child : IXMLDOMElement;
+begin
+  result := TChoiceValue.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'display') then
+        result.display := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseChoiceValue(name : string; elem : TChoiceValue);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('display',elem.display);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseChoiceValue : TChoiceValue;
+begin
+  result := TChoiceValue.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'display') then
+        result.display := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseChoiceValue(name : string; elem : TChoiceValue);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('display',elem.display);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseChoice(element : IXmlDomElement) : TChoice;
+var
+  child : IXMLDOMElement;
+begin
+  result := TChoice.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'value') then
+        result.Value.Add(ParseChoiceValue(child))
+      else if (child.nodeName = 'isOrdered') then
+        result.isOrdered := StringToBoolean(child.text)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseChoice(name : string; elem : TChoice);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  for i := 0 to elem.Value.Count - 1 do
+    SerialiseChoiceValue('value', elem.Value[i]);
+  Text('isOrdered',BooleanToString(elem.isOrdered));
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseChoice : TChoice;
+begin
+  result := TChoice.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'values') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Value.Add(ParseChoiceValue);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'isOrdered') then
+        result.isOrdered := StringToBoolean(FJson.itemValue)
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseChoice(name : string; elem : TChoice);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  if elem.Value.Count > 0 then
+  begin
+    FJson.valueObject('values');
+    for i := 0 to elem.Value.Count - 1 do
+      SerialiseChoiceValue('value',elem.Value[i]);
+    FJson.FinishObject;
+  end;
+  Prop('isOrdered',BooleanToString(elem.isOrdered));
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAttachment(element : IXmlDomElement) : TAttachment;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAttachment.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'mimeType') then
+        result.mimeType := child.text
+      else if (child.nodeName = 'data') then
+        result.data := ParseAdvBuffer(child)
+      else if (child.nodeName = 'url') then
+        result.url := child.text
+      else if (child.nodeName = 'hash') then
+        result.hash := ParseAdvBuffer(child)
+      else if (child.nodeName = 'lang') then
+        result.lang := child.text
+      else if (child.nodeName = 'title') then
+        result.title := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAttachment(name : string; elem : TAttachment);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('mimeType',elem.mimeType);
+  SerialiseAdvBuffer('data', elem.data);
+  Text('url',elem.url);
+  SerialiseAdvBuffer('hash', elem.hash);
+  Text('lang',elem.lang);
+  Text('title',elem.title);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAttachment : TAttachment;
+begin
+  result := TAttachment.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'mimeType') then
+        result.mimeType := FJson.itemValue
+      else if (FJson.ItemName = 'data') then
+        result.data := ParseAdvBuffer
+      else if (FJson.ItemName = 'url') then
+        result.url := FJson.itemValue
+      else if (FJson.ItemName = 'hash') then
+        result.hash := ParseAdvBuffer
+      else if (FJson.ItemName = 'lang') then
+        result.lang := FJson.itemValue
+      else if (FJson.ItemName = 'title') then
+        result.title := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAttachment(name : string; elem : TAttachment);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('mimeType',elem.mimeType);
+  SerialiseAdvBuffer('data', elem.data);
+  Prop('url',elem.url);
+  SerialiseAdvBuffer('hash', elem.hash);
+  Prop('lang',elem.lang);
+  Prop('title',elem.title);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseRatio(element : IXmlDomElement) : TRatio;
+var
+  child : IXMLDOMElement;
+begin
+  result := TRatio.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'numerator') then
+        result.numerator := ParseQuantity(child)
+      else if (child.nodeName = 'denominator') then
+        result.denominator := ParseQuantity(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseRatio(name : string; elem : TRatio);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseQuantity('numerator', elem.numerator);
+  SerialiseQuantity('denominator', elem.denominator);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseRatio : TRatio;
+begin
+  result := TRatio.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'numerator') then
+        result.numerator := ParseQuantity
+      else if (FJson.ItemName = 'denominator') then
+        result.denominator := ParseQuantity
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseRatio(name : string; elem : TRatio);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseQuantity('numerator', elem.numerator);
+  SerialiseQuantity('denominator', elem.denominator);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseCodeableConceptCoding(element : IXmlDomElement) : TCodeableConceptCoding;
+var
+  child : IXMLDOMElement;
+begin
+  result := TCodeableConceptCoding.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'system') then
+        result.system := child.text
+      else if (child.nodeName = 'display') then
+        result.display := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('system',elem.system);
+  Text('display',elem.display);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseCodeableConceptCoding : TCodeableConceptCoding;
+begin
+  result := TCodeableConceptCoding.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'system') then
+        result.system := FJson.itemValue
+      else if (FJson.ItemName = 'display') then
+        result.display := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('system',elem.system);
+  Prop('display',elem.display);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseCodeableConcept(element : IXmlDomElement) : TCodeableConcept;
+var
+  child : IXMLDOMElement;
+begin
+  result := TCodeableConcept.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'coding') then
+        result.Coding.Add(ParseCodeableConceptCoding(child))
+      else if (child.nodeName = 'text') then
+        result.text := child.text
+      else if (child.nodeName = 'primary') then
+        result.primary := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  for i := 0 to elem.Coding.Count - 1 do
+    SerialiseCodeableConceptCoding('coding', elem.Coding[i]);
+  Text('text',elem.text);
+  Text('primary',elem.primary);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseCodeableConcept : TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'codings') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Coding.Add(ParseCodeableConceptCoding);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'text') then
+        result.text := FJson.itemValue
+      else if (FJson.ItemName = 'primary') then
+        result.primary := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Coding.Count > 0 then
+  begin
+    FJson.valueObject('codings');
+    for i := 0 to elem.Coding.Count - 1 do
+      SerialiseCodeableConceptCoding('coding',elem.Coding[i]);
+    FJson.FinishObject;
+  end;
+  Prop('text',elem.text);
+  Prop('primary',elem.primary);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseIdentifier(element : IXmlDomElement) : TIdentifier;
+var
+  child : IXMLDOMElement;
+begin
+  result := TIdentifier.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'system') then
+        result.system := child.text
+      else if (child.nodeName = 'id') then
+        result.id := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseIdentifier(name : string; elem : TIdentifier);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('system',elem.system);
+  Text('id',elem.id);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseIdentifier : TIdentifier;
+begin
+  result := TIdentifier.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'system') then
+        result.system := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseIdentifier(name : string; elem : TIdentifier);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('system',elem.system);
+  Prop('id',elem.id);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseScheduleRepeat(element : IXmlDomElement) : TScheduleRepeat;
+var
+  child : IXMLDOMElement;
+begin
+  result := TScheduleRepeat.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'frequency') then
+        result.frequency := StringToInteger32(child.text)
+      else if (child.nodeName = 'when') then
+        result.when := TEventTiming(ParseEnum(CODES_TEventTiming, child))
+      else if (child.nodeName = 'duration') then
+        result.duration := ParseQuantity(child)
+      else if (child.nodeName = 'count') then
+        result.count := StringToInteger32(child.text)
+      else if (child.nodeName = 'end') then
+        result.end_ := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('frequency',IntegerToString(elem.frequency));
+  Text('when',CODES_TEventTiming[elem.when]);
+  SerialiseQuantity('duration', elem.duration);
+  Text('count',IntegerToString(elem.count));
+  Text('end',elem.end_);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseScheduleRepeat : TScheduleRepeat;
+begin
+  result := TScheduleRepeat.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'frequency') then
+        result.frequency := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'when') then
+        result.when := TEventTiming(ParseEnum(CODES_TEventTiming))
+      else if (FJson.ItemName = 'duration') then
+        result.duration := ParseQuantity
+      else if (FJson.ItemName = 'count') then
+        result.count := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'end') then
+        result.end_ := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('frequency',IntegerToString(elem.frequency));
+  Prop('when',CODES_TEventTiming[elem.when]);
+  SerialiseQuantity('duration', elem.duration);
+  Prop('count',IntegerToString(elem.count));
+  Prop('end',elem.end_);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseSchedule(element : IXmlDomElement) : TSchedule;
+var
+  child : IXMLDOMElement;
+begin
+  result := TSchedule.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'event') then
+        result.Event.Add(ParseInterval_dateTime(child))
+      else if (child.nodeName = 'repeat') then
+        result.repeat_ := ParseScheduleRepeat(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseSchedule(name : string; elem : TSchedule);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  for i := 0 to elem.Event.Count - 1 do
+    SerialiseInterval_dateTime('event', elem.Event[i]);
+  SerialiseScheduleRepeat('repeat', elem.repeat_);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseSchedule : TSchedule;
+begin
+  result := TSchedule.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'events') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Event.Add(ParseInterval_dateTime);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'repeat') then
+        result.repeat_ := ParseScheduleRepeat
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseSchedule(name : string; elem : TSchedule);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Event.Count > 0 then
+  begin
+    FJson.valueObject('events');
+    for i := 0 to elem.Event.Count - 1 do
+      SerialiseInterval_dateTime('event',elem.Event[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseScheduleRepeat('repeat', elem.repeat_);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseContact(element : IXmlDomElement) : TContact;
+var
+  child : IXMLDOMElement;
+begin
+  result := TContact.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'system') then
+        result.system := TContactSystem(ParseEnum(CODES_TContactSystem, child))
+      else if (child.nodeName = 'value') then
+        result.value := child.text
+      else if (child.nodeName = 'use') then
+        result.use := TContactUse(ParseEnum(CODES_TContactUse, child))
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseContact(name : string; elem : TContact);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('system',CODES_TContactSystem[elem.system]);
+  Text('value',elem.value);
+  Text('use',CODES_TContactUse[elem.use]);
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseContact : TContact;
+begin
+  result := TContact.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'system') then
+        result.system := TContactSystem(ParseEnum(CODES_TContactSystem))
+      else if (FJson.ItemName = 'value') then
+        result.value := FJson.itemValue
+      else if (FJson.ItemName = 'use') then
+        result.use := TContactUse(ParseEnum(CODES_TContactUse))
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseContact(name : string; elem : TContact);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('system',CODES_TContactSystem[elem.system]);
+  Prop('value',elem.value);
+  Prop('use',CODES_TContactUse[elem.use]);
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAddressPart(element : IXmlDomElement) : TAddressPart;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAddressPart.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'type') then
+        result.type_ := TAddressPartType(ParseEnum(CODES_TAddressPartType, child))
+      else if (child.nodeName = 'value') then
+        result.value := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAddressPart(name : string; elem : TAddressPart);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('type',CODES_TAddressPartType[elem.type_]);
+  Text('value',elem.value);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAddressPart : TAddressPart;
+begin
+  result := TAddressPart.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := TAddressPartType(ParseEnum(CODES_TAddressPartType))
+      else if (FJson.ItemName = 'value') then
+        result.value := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAddressPart(name : string; elem : TAddressPart);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('type',CODES_TAddressPartType[elem.type_]);
+  Prop('value',elem.value);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAddress(element : IXmlDomElement) : TAddress;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAddress.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'use') then
+        result.use := TAddressUse(ParseEnum(CODES_TAddressUse, child))
+      else if (child.nodeName = 'text') then
+        result.text := child.text
+      else if (child.nodeName = 'part') then
+        result.Part.Add(ParseAddressPart(child))
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAddress(name : string; elem : TAddress);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('use',CODES_TAddressUse[elem.use]);
+  Text('text',elem.text);
+  for i := 0 to elem.Part.Count - 1 do
+    SerialiseAddressPart('part', elem.Part[i]);
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAddress : TAddress;
+begin
+  result := TAddress.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'use') then
+        result.use := TAddressUse(ParseEnum(CODES_TAddressUse))
+      else if (FJson.ItemName = 'text') then
+        result.text := FJson.itemValue
+      else if (FJson.ItemName = 'parts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Part.Add(ParseAddressPart);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAddress(name : string; elem : TAddress);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('use',CODES_TAddressUse[elem.use]);
+  Prop('text',elem.text);
+  if elem.Part.Count > 0 then
+  begin
+    FJson.valueObject('parts');
+    for i := 0 to elem.Part.Count - 1 do
+      SerialiseAddressPart('part',elem.Part[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseHumanNamePart(element : IXmlDomElement) : THumanNamePart;
+var
+  child : IXMLDOMElement;
+begin
+  result := THumanNamePart.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'type') then
+        result.type_ := TNamePartType(ParseEnum(CODES_TNamePartType, child))
+      else if (child.nodeName = 'value') then
+        result.value := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('type',CODES_TNamePartType[elem.type_]);
+  Text('value',elem.value);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseHumanNamePart : THumanNamePart;
+begin
+  result := THumanNamePart.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := TNamePartType(ParseEnum(CODES_TNamePartType))
+      else if (FJson.ItemName = 'value') then
+        result.value := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('type',CODES_TNamePartType[elem.type_]);
+  Prop('value',elem.value);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseHumanName(element : IXmlDomElement) : THumanName;
+var
+  child : IXMLDOMElement;
+begin
+  result := THumanName.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'use') then
+        result.use := TNameUse(ParseEnum(CODES_TNameUse, child))
+      else if (child.nodeName = 'text') then
+        result.text := child.text
+      else if (child.nodeName = 'part') then
+        result.Part.Add(ParseHumanNamePart(child))
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseHumanName(name : string; elem : THumanName);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('use',CODES_TNameUse[elem.use]);
+  Text('text',elem.text);
+  for i := 0 to elem.Part.Count - 1 do
+    SerialiseHumanNamePart('part', elem.Part[i]);
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseHumanName : THumanName;
+begin
+  result := THumanName.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'use') then
+        result.use := TNameUse(ParseEnum(CODES_TNameUse))
+      else if (FJson.ItemName = 'text') then
+        result.text := FJson.itemValue
+      else if (FJson.ItemName = 'parts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Part.Add(ParseHumanNamePart);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseHumanName(name : string; elem : THumanName);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('use',CODES_TNameUse[elem.use]);
+  Prop('text',elem.text);
+  if elem.Part.Count > 0 then
+  begin
+    FJson.valueObject('parts');
+    for i := 0 to elem.Part.Count - 1 do
+      SerialiseHumanNamePart('part',elem.Part[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseHumanId(element : IXmlDomElement) : THumanId;
+var
+  child : IXMLDOMElement;
+begin
+  result := THumanId.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'type') then
+        result.type_ := ParseCoding(child)
+      else if (child.nodeName = 'identifier') then
+        result.identifier := ParseIdentifier(child)
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else if (child.nodeName = 'assigner') then
+        result.assigner := ParseFHIRResourceReference{TOrganization}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseHumanId(name : string; elem : THumanId);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCoding('type', elem.type_);
+  SerialiseIdentifier('identifier', elem.identifier);
+  SerialiseInterval_dateTime('period', elem.period);
+  SerialiseFHIRResourceReference{TOrganization}('assigner', elem.assigner);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseHumanId : THumanId;
+begin
+  result := THumanId.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := ParseCoding
+      else if (FJson.ItemName = 'identifier') then
+        result.identifier := ParseIdentifier
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else if (FJson.ItemName = 'assigner') then
+        result.assigner := ParseFHIRResourceReference{TOrganization}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseHumanId(name : string; elem : THumanId);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCoding('type', elem.type_);
+  SerialiseIdentifier('identifier', elem.identifier);
+  SerialiseInterval_dateTime('period', elem.period);
+  SerialiseFHIRResourceReference{TOrganization}('assigner', elem.assigner);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformancePublisher(element : IXmlDomElement) : TConformancePublisher;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TConformancePublisher.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformancePublisher : TConformancePublisher;
+begin
+  result := TConformancePublisher.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformanceSoftware(element : IXmlDomElement) : TConformanceSoftware;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConformanceSoftware.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'version') then
+        result.version := child.text
+      else if (child.nodeName = 'releaseDate') then
+        result.releaseDate := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('version',elem.version);
+  Text('releaseDate',elem.releaseDate);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformanceSoftware : TConformanceSoftware;
+begin
+  result := TConformanceSoftware.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'version') then
+        result.version := FJson.itemValue
+      else if (FJson.ItemName = 'releaseDate') then
+        result.releaseDate := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('version',elem.version);
+  Prop('releaseDate',elem.releaseDate);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformanceOperation(element : IXmlDomElement) : TConformanceOperation;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConformanceOperation.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'read') then
+        result.read := StringToBoolean(child.text)
+      else if (child.nodeName = 'vread') then
+        result.vread := StringToBoolean(child.text)
+      else if (child.nodeName = 'update') then
+        result.update := StringToBoolean(child.text)
+      else if (child.nodeName = 'delete') then
+        result.delete := StringToBoolean(child.text)
+      else if (child.nodeName = 'validate') then
+        result.validate := StringToBoolean(child.text)
+      else if (child.nodeName = 'history') then
+        result.history := StringToBoolean(child.text)
+      else if (child.nodeName = 'transaction') then
+        result.transaction := ParseConformanceOperationTransaction(child)
+      else if (child.nodeName = 'search') then
+        result.search := ParseConformanceOperationSearch(child)
+      else if (child.nodeName = 'create') then
+        result.create_ := ParseConformanceOperationCreate(child)
+      else if (child.nodeName = 'updates') then
+        result.updates := StringToBoolean(child.text)
+      else if (child.nodeName = 'schema') then
+        result.schema := StringToBoolean(child.text)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('read',BooleanToString(elem.read));
+  Text('vread',BooleanToString(elem.vread));
+  Text('update',BooleanToString(elem.update));
+  Text('delete',BooleanToString(elem.delete));
+  Text('validate',BooleanToString(elem.validate));
+  Text('history',BooleanToString(elem.history));
+  SerialiseConformanceOperationTransaction('transaction', elem.transaction);
+  SerialiseConformanceOperationSearch('search', elem.search);
+  SerialiseConformanceOperationCreate('create', elem.create_);
+  Text('updates',BooleanToString(elem.updates));
+  Text('schema',BooleanToString(elem.schema));
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformanceOperation : TConformanceOperation;
+begin
+  result := TConformanceOperation.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'read') then
+        result.read := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'vread') then
+        result.vread := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'update') then
+        result.update := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'delete') then
+        result.delete := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'validate') then
+        result.validate := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'history') then
+        result.history := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'transaction') then
+        result.transaction := ParseConformanceOperationTransaction
+      else if (FJson.ItemName = 'search') then
+        result.search := ParseConformanceOperationSearch
+      else if (FJson.ItemName = 'create') then
+        result.create_ := ParseConformanceOperationCreate
+      else if (FJson.ItemName = 'updates') then
+        result.updates := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'schema') then
+        result.schema := StringToBoolean(FJson.itemValue)
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('read',BooleanToString(elem.read));
+  Prop('vread',BooleanToString(elem.vread));
+  Prop('update',BooleanToString(elem.update));
+  Prop('delete',BooleanToString(elem.delete));
+  Prop('validate',BooleanToString(elem.validate));
+  Prop('history',BooleanToString(elem.history));
+  SerialiseConformanceOperationTransaction('transaction', elem.transaction);
+  SerialiseConformanceOperationSearch('search', elem.search);
+  SerialiseConformanceOperationCreate('create', elem.create_);
+  Prop('updates',BooleanToString(elem.updates));
+  Prop('schema',BooleanToString(elem.schema));
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformanceOperationTransaction(element : IXmlDomElement) : TConformanceOperationTransaction;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TConformanceOperationTransaction.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'names') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'name') Then
+            result.Name.Add(item.text)
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  if elem.Name.Count > 0 then
+  begin
+    FXml.open('names');
+    for i := 0 to elem.Name.Count - 1 do
+      Text('name',elem.Name[i]);
+    FXml.Close('names');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformanceOperationTransaction : TConformanceOperationTransaction;
+begin
+  result := TConformanceOperationTransaction.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'names') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Name.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Name.Count > 0 then
+  begin
+    FJson.valueObject('names');
+    for i := 0 to elem.Name.Count - 1 do
+      Prop('name',elem.Name[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformanceOperationSearch(element : IXmlDomElement) : TConformanceOperationSearch;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TConformanceOperationSearch.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'params') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'param') Then
+            result.Param.Add(item.text)
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  if elem.Param.Count > 0 then
+  begin
+    FXml.open('params');
+    for i := 0 to elem.Param.Count - 1 do
+      Text('param',elem.Param[i]);
+    FXml.Close('params');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformanceOperationSearch : TConformanceOperationSearch;
+begin
+  result := TConformanceOperationSearch.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'params') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Param.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Param.Count > 0 then
+  begin
+    FJson.valueObject('params');
+    for i := 0 to elem.Param.Count - 1 do
+      Prop('param',elem.Param[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformanceOperationCreate(element : IXmlDomElement) : TConformanceOperationCreate;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConformanceOperationCreate.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id',elem.id);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformanceOperationCreate : TConformanceOperationCreate;
+begin
+  result := TConformanceOperationCreate.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id',elem.id);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseConformance(element : IXmlDomElement) : TConformance;
+var
+  child : IXMLDOMElement;
+begin
+  result := TConformance.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'date') then
+        result.date := child.text
+      else if (child.nodeName = 'publisher') then
+        result.publisher := ParseConformancePublisher(child)
+      else if (child.nodeName = 'software') then
+        result.software := ParseConformanceSoftware(child)
+      else if (child.nodeName = 'mode') then
+        result.mode := TRestfulConformanceMode(ParseEnum(CODES_TRestfulConformanceMode, child))
+      else if (child.nodeName = 'resource') then
+        result.resource := ParseConstraint(child)
+      else if (child.nodeName = 'operation') then
+        result.operation := ParseConformanceOperation(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseConformance(name : string; elem : TConformance);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('date',elem.date);
+  SerialiseConformancePublisher('publisher', elem.publisher);
+  SerialiseConformanceSoftware('software', elem.software);
+  Text('mode',CODES_TRestfulConformanceMode[elem.mode]);
+  SerialiseConstraint('resource', elem.resource);
+  SerialiseConformanceOperation('operation', elem.operation);
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseConformance : TConformance;
+begin
+  result := TConformance.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'date') then
+        result.date := FJson.itemValue
+      else if (FJson.ItemName = 'publisher') then
+        result.publisher := ParseConformancePublisher
+      else if (FJson.ItemName = 'software') then
+        result.software := ParseConformanceSoftware
+      else if (FJson.ItemName = 'mode') then
+        result.mode := TRestfulConformanceMode(ParseEnum(CODES_TRestfulConformanceMode))
+      else if (FJson.ItemName = 'resource') then
+        result.resource := ParseConstraint
+      else if (FJson.ItemName = 'operation') then
+        result.operation := ParseConformanceOperation
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseConformance(name : string; elem : TConformance);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('date',elem.date);
+  SerialiseConformancePublisher('publisher', elem.publisher);
+  SerialiseConformanceSoftware('software', elem.software);
+  Prop('mode',CODES_TRestfulConformanceMode[elem.mode]);
+  SerialiseConstraint('resource', elem.resource);
+  SerialiseConformanceOperation('operation', elem.operation);
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentAuthor(element : IXmlDomElement) : TDocumentAuthor;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentAuthor.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'time') then
+        result.time := child.text
+      else if (child.nodeName = 'party') then
+        result.party := ParseFHIRResourceReference{Resource}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('time',elem.time);
+  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentAuthor : TDocumentAuthor;
+begin
+  result := TDocumentAuthor.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'time') then
+        result.time := FJson.itemValue
+      else if (FJson.ItemName = 'party') then
+        result.party := ParseFHIRResourceReference{Resource}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('time',elem.time);
+  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentAttestor(element : IXmlDomElement) : TDocumentAttestor;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentAttestor.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'mode') then
+        result.mode := TDocumentAuthenticationMode(ParseEnum(CODES_TDocumentAuthenticationMode, child))
+      else if (child.nodeName = 'time') then
+        result.time := child.text
+      else if (child.nodeName = 'party') then
+        result.party := ParseFHIRResourceReference{TPerson}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
+  Text('time',elem.time);
+  SerialiseFHIRResourceReference{TPerson}('party', elem.party);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentAttestor : TDocumentAttestor;
+begin
+  result := TDocumentAttestor.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'mode') then
+        result.mode := TDocumentAuthenticationMode(ParseEnum(CODES_TDocumentAuthenticationMode))
+      else if (FJson.ItemName = 'time') then
+        result.time := FJson.itemValue
+      else if (FJson.ItemName = 'party') then
+        result.party := ParseFHIRResourceReference{TPerson}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
+  Prop('time',elem.time);
+  SerialiseFHIRResourceReference{TPerson}('party', elem.party);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentSection(element : IXmlDomElement) : TDocumentSection;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TDocumentSection.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'type') then
+        result.type_ := ParseCodeableConcept(child)
+      else if (child.nodeName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(child.text)
+      else if (child.nodeName = 'author') then
+        result.author := ParseDocumentSectionAuthor(child)
+      else if (child.nodeName = 'enterer') then
+        result.enterer := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'subject') then
+        result.subject := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'informant') then
+        result.informant := ParseFHIRResourceReference{TPerson}(child)
+      else if (child.nodeName = 'content') then
+        result.content := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'sections') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'section') Then
+            result.Section.Add(ParseDocumentSection(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentSection(name : string; elem : TDocumentSection);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCodeableConcept('type', elem.type_);
+  Text('instant',DateTimeToXMLDateTimeString(elem.instant));
+  SerialiseDocumentSectionAuthor('author', elem.author);
+  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
+  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  SerialiseFHIRResourceReference{TPerson}('informant', elem.informant);
+  SerialiseFHIRResourceReference{Resource}('content', elem.content);
+  if elem.Section.Count > 0 then
+  begin
+    FXml.open('sections');
+    for i := 0 to elem.Section.Count - 1 do
+      SerialiseDocumentSection('section',elem.Section[i]);
+    FXml.Close('sections');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentSection : TDocumentSection;
+begin
+  result := TDocumentSection.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := ParseCodeableConcept
+      else if (FJson.ItemName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(FJson.itemValue)
+      else if (FJson.ItemName = 'author') then
+        result.author := ParseDocumentSectionAuthor
+      else if (FJson.ItemName = 'enterer') then
+        result.enterer := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'subject') then
+        result.subject := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'informant') then
+        result.informant := ParseFHIRResourceReference{TPerson}
+      else if (FJson.ItemName = 'content') then
+        result.content := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'sections') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Section.Add(ParseDocumentSection);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentSection(name : string; elem : TDocumentSection);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCodeableConcept('type', elem.type_);
+  Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
+  SerialiseDocumentSectionAuthor('author', elem.author);
+  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
+  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  SerialiseFHIRResourceReference{TPerson}('informant', elem.informant);
+  SerialiseFHIRResourceReference{Resource}('content', elem.content);
+  if elem.Section.Count > 0 then
+  begin
+    FJson.valueObject('sections');
+    for i := 0 to elem.Section.Count - 1 do
+      SerialiseDocumentSection('section',elem.Section[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentSectionAuthor(element : IXmlDomElement) : TDocumentSectionAuthor;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentSectionAuthor.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'time') then
+        result.time := child.text
+      else if (child.nodeName = 'party') then
+        result.party := ParseFHIRResourceReference{Resource}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('time',elem.time);
+  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentSectionAuthor : TDocumentSectionAuthor;
+begin
+  result := TDocumentSectionAuthor.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'time') then
+        result.time := FJson.itemValue
+      else if (FJson.ItemName = 'party') then
+        result.party := ParseFHIRResourceReference{Resource}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('time',elem.time);
+  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocument(element : IXmlDomElement) : TDocument;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TDocument.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(child.text)
+      else if (child.nodeName = 'type') then
+        result.type_ := ParseCodeableConcept(child)
+      else if (child.nodeName = 'title') then
+        result.title := child.text
+      else if (child.nodeName = 'setId') then
+        result.setId := child.text
+      else if (child.nodeName = 'version') then
+        result.version := StringToInteger32(child.text)
+      else if (child.nodeName = 'replaces') then
+        result.replaces := child.text
+      else if (child.nodeName = 'subject') then
+        result.subject := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'authors') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'author') Then
+            result.Author.Add(ParseDocumentAuthor(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'attestors') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'attestor') Then
+            result.Attestor.Add(ParseDocumentAttestor(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'recipients') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'recipient') Then
+            result.Recipient.Add(ParseFHIRResourceReference{Resource}(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'custodian') then
+        result.custodian := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'event') then
+        result.event := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'encounter') then
+        result.encounter := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'sections') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'section') Then
+            result.Section.Add(ParseDocumentSection(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocument(name : string; elem : TDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('instant',DateTimeToXMLDateTimeString(elem.instant));
+  SerialiseCodeableConcept('type', elem.type_);
+  Text('title',elem.title);
+  Text('setId',elem.setId);
+  Text('version',IntegerToString(elem.version));
+  Text('replaces',elem.replaces);
+  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  if elem.Author.Count > 0 then
+  begin
+    FXml.open('authors');
+    for i := 0 to elem.Author.Count - 1 do
+      SerialiseDocumentAuthor('author',elem.Author[i]);
+    FXml.Close('authors');
+  end;
+  if elem.Attestor.Count > 0 then
+  begin
+    FXml.open('attestors');
+    for i := 0 to elem.Attestor.Count - 1 do
+      SerialiseDocumentAttestor('attestor',elem.Attestor[i]);
+    FXml.Close('attestors');
+  end;
+  if elem.Recipient.Count > 0 then
+  begin
+    FXml.open('recipients');
+    for i := 0 to elem.Recipient.Count - 1 do
+      SerialiseFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
+    FXml.Close('recipients');
+  end;
+  SerialiseFHIRResourceReference{TOrganization}('custodian', elem.custodian);
+  SerialiseFHIRResourceReference{Resource}('event', elem.event);
+  SerialiseFHIRResourceReference{Resource}('encounter', elem.encounter);
+  if elem.Section.Count > 0 then
+  begin
+    FXml.open('sections');
+    for i := 0 to elem.Section.Count - 1 do
+      SerialiseDocumentSection('section',elem.Section[i]);
+    FXml.Close('sections');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocument : TDocument;
+begin
+  result := TDocument.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(FJson.itemValue)
+      else if (FJson.ItemName = 'type') then
+        result.type_ := ParseCodeableConcept
+      else if (FJson.ItemName = 'title') then
+        result.title := FJson.itemValue
+      else if (FJson.ItemName = 'setId') then
+        result.setId := FJson.itemValue
+      else if (FJson.ItemName = 'version') then
+        result.version := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'replaces') then
+        result.replaces := FJson.itemValue
+      else if (FJson.ItemName = 'subject') then
+        result.subject := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'authors') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Author.Add(ParseDocumentAuthor);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'attestors') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Attestor.Add(ParseDocumentAttestor);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'recipients') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Recipient.Add(ParseFHIRResourceReference{Resource});
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'custodian') then
+        result.custodian := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'event') then
+        result.event := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'encounter') then
+        result.encounter := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'sections') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Section.Add(ParseDocumentSection);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocument(name : string; elem : TDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
+  SerialiseCodeableConcept('type', elem.type_);
+  Prop('title',elem.title);
+  Prop('setId',elem.setId);
+  Prop('version',IntegerToString(elem.version));
+  Prop('replaces',elem.replaces);
+  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  if elem.Author.Count > 0 then
+  begin
+    FJson.valueObject('authors');
+    for i := 0 to elem.Author.Count - 1 do
+      SerialiseDocumentAuthor('author',elem.Author[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Attestor.Count > 0 then
+  begin
+    FJson.valueObject('attestors');
+    for i := 0 to elem.Attestor.Count - 1 do
+      SerialiseDocumentAttestor('attestor',elem.Attestor[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Recipient.Count > 0 then
+  begin
+    FJson.valueObject('recipients');
+    for i := 0 to elem.Recipient.Count - 1 do
+      SerialiseFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseFHIRResourceReference{TOrganization}('custodian', elem.custodian);
+  SerialiseFHIRResourceReference{Resource}('event', elem.event);
+  SerialiseFHIRResourceReference{Resource}('encounter', elem.encounter);
+  if elem.Section.Count > 0 then
+  begin
+    FJson.valueObject('sections');
+    for i := 0 to elem.Section.Count - 1 do
+      SerialiseDocumentSection('section',elem.Section[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageResponse(element : IXmlDomElement) : TMessageResponse;
+var
+  child : IXMLDOMElement;
+begin
+  result := TMessageResponse.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'code') then
+        result.code := TResponseCode(ParseEnum(CODES_TResponseCode, child))
+      else if (child.nodeName = 'duplicate') then
+        result.duplicate := StringToBoolean(child.text)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageResponse(name : string; elem : TMessageResponse);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id',elem.id);
+  Text('code',CODES_TResponseCode[elem.code]);
+  Text('duplicate',BooleanToString(elem.duplicate));
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageResponse : TMessageResponse;
+begin
+  result := TMessageResponse.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := TResponseCode(ParseEnum(CODES_TResponseCode))
+      else if (FJson.ItemName = 'duplicate') then
+        result.duplicate := StringToBoolean(FJson.itemValue)
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageResponse(name : string; elem : TMessageResponse);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id',elem.id);
+  Prop('code',CODES_TResponseCode[elem.code]);
+  Prop('duplicate',BooleanToString(elem.duplicate));
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessage(element : IXmlDomElement) : TMessage;
+var
+  child : IXMLDOMElement;
+begin
+  result := TMessage.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'threadId') then
+        result.threadId := child.text
+      else if (child.nodeName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(child.text)
+      else if (child.nodeName = 'event') then
+        result.event := child.text
+      else if (child.nodeName = 'response') then
+        result.response := ParseMessageResponse(child)
+      else if (child.nodeName = 'source') then
+        result.source := ParseFHIRResourceReference{TDevice}(child)
+      else if (child.nodeName = 'destination') then
+        result.destination := ParseFHIRResourceReference{TDevice}(child)
+      else if (child.nodeName = 'enterer') then
+        result.enterer := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'author') then
+        result.author := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'responsible') then
+        result.responsible := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'effective') then
+        result.effective := ParseInterval_dateTime(child)
+      else if (child.nodeName = 'reason') then
+        result.reason := ParseCodeableConcept(child)
+      else if (child.nodeName = 'data') then
+        result.data := ParseFHIRResourceReference{Resource}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessage(name : string; elem : TMessage);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('threadId',elem.threadId);
+  Text('instant',DateTimeToXMLDateTimeString(elem.instant));
+  Text('event',elem.event);
+  SerialiseMessageResponse('response', elem.response);
+  SerialiseFHIRResourceReference{TDevice}('source', elem.source);
+  SerialiseFHIRResourceReference{TDevice}('destination', elem.destination);
+  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
+  SerialiseFHIRResourceReference{Resource}('author', elem.author);
+  SerialiseFHIRResourceReference{Resource}('responsible', elem.responsible);
+  SerialiseInterval_dateTime('effective', elem.effective);
+  SerialiseCodeableConcept('reason', elem.reason);
+  SerialiseFHIRResourceReference{Resource}('data', elem.data);
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessage : TMessage;
+begin
+  result := TMessage.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'threadId') then
+        result.threadId := FJson.itemValue
+      else if (FJson.ItemName = 'instant') then
+        result.instant := XMLDateTimeStringToDateTime(FJson.itemValue)
+      else if (FJson.ItemName = 'event') then
+        result.event := FJson.itemValue
+      else if (FJson.ItemName = 'response') then
+        result.response := ParseMessageResponse
+      else if (FJson.ItemName = 'source') then
+        result.source := ParseFHIRResourceReference{TDevice}
+      else if (FJson.ItemName = 'destination') then
+        result.destination := ParseFHIRResourceReference{TDevice}
+      else if (FJson.ItemName = 'enterer') then
+        result.enterer := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'author') then
+        result.author := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'responsible') then
+        result.responsible := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'effective') then
+        result.effective := ParseInterval_dateTime
+      else if (FJson.ItemName = 'reason') then
+        result.reason := ParseCodeableConcept
+      else if (FJson.ItemName = 'data') then
+        result.data := ParseFHIRResourceReference{Resource}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessage(name : string; elem : TMessage);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('threadId',elem.threadId);
+  Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
+  Prop('event',elem.event);
+  SerialiseMessageResponse('response', elem.response);
+  SerialiseFHIRResourceReference{TDevice}('source', elem.source);
+  SerialiseFHIRResourceReference{TDevice}('destination', elem.destination);
+  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
+  SerialiseFHIRResourceReference{Resource}('author', elem.author);
+  SerialiseFHIRResourceReference{Resource}('responsible', elem.responsible);
+  SerialiseInterval_dateTime('effective', elem.effective);
+  SerialiseCodeableConcept('reason', elem.reason);
+  SerialiseFHIRResourceReference{Resource}('data', elem.data);
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformancePublisher(element : IXmlDomElement) : TMessageConformancePublisher;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TMessageConformancePublisher.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformancePublisher : TMessageConformancePublisher;
+begin
+  result := TMessageConformancePublisher.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformanceSoftware(element : IXmlDomElement) : TMessageConformanceSoftware;
+var
+  child : IXMLDOMElement;
+begin
+  result := TMessageConformanceSoftware.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'version') then
+        result.version := child.text
+      else if (child.nodeName = 'releaseDate') then
+        result.releaseDate := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('version',elem.version);
+  Text('releaseDate',elem.releaseDate);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformanceSoftware : TMessageConformanceSoftware;
+begin
+  result := TMessageConformanceSoftware.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'version') then
+        result.version := FJson.itemValue
+      else if (FJson.ItemName = 'releaseDate') then
+        result.releaseDate := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('version',elem.version);
+  Prop('releaseDate',elem.releaseDate);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformanceEvent(element : IXmlDomElement) : TMessageConformanceEvent;
+var
+  child : IXMLDOMElement;
+begin
+  result := TMessageConformanceEvent.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'resource') then
+        result.resource := child.text
+      else if (child.nodeName = 'mode') then
+        result.mode := TMessageConformanceEventMode(ParseEnum(CODES_TMessageConformanceEventMode, child))
+      else if (child.nodeName = 'request') then
+        result.request := ParseMessageConformanceEventRequest(child)
+      else if (child.nodeName = 'response') then
+        result.response := ParseMessageConformanceEventResponse(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('resource',elem.resource);
+  Text('mode',CODES_TMessageConformanceEventMode[elem.mode]);
+  SerialiseMessageConformanceEventRequest('request', elem.request);
+  SerialiseMessageConformanceEventResponse('response', elem.response);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformanceEvent : TMessageConformanceEvent;
+begin
+  result := TMessageConformanceEvent.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'resource') then
+        result.resource := FJson.itemValue
+      else if (FJson.ItemName = 'mode') then
+        result.mode := TMessageConformanceEventMode(ParseEnum(CODES_TMessageConformanceEventMode))
+      else if (FJson.ItemName = 'request') then
+        result.request := ParseMessageConformanceEventRequest
+      else if (FJson.ItemName = 'response') then
+        result.response := ParseMessageConformanceEventResponse
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('resource',elem.resource);
+  Prop('mode',CODES_TMessageConformanceEventMode[elem.mode]);
+  SerialiseMessageConformanceEventRequest('request', elem.request);
+  SerialiseMessageConformanceEventResponse('response', elem.response);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformanceEventRequest(element : IXmlDomElement) : TMessageConformanceEventRequest;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TMessageConformanceEventRequest.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'resources') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'resource') Then
+            result.Resource.Add(ParseConstraint(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  if elem.Resource.Count > 0 then
+  begin
+    FXml.open('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FXml.Close('resources');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformanceEventRequest : TMessageConformanceEventRequest;
+begin
+  result := TMessageConformanceEventRequest.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'resources') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Resource.Add(ParseConstraint);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Resource.Count > 0 then
+  begin
+    FJson.valueObject('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformanceEventResponse(element : IXmlDomElement) : TMessageConformanceEventResponse;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TMessageConformanceEventResponse.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'resources') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'resource') Then
+            result.Resource.Add(ParseConstraint(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  if elem.Resource.Count > 0 then
+  begin
+    FXml.open('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FXml.Close('resources');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformanceEventResponse : TMessageConformanceEventResponse;
+begin
+  result := TMessageConformanceEventResponse.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'resources') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Resource.Add(ParseConstraint);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Resource.Count > 0 then
+  begin
+    FJson.valueObject('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseMessageConformance(element : IXmlDomElement) : TMessageConformance;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TMessageConformance.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'date') then
+        result.date := child.text
+      else if (child.nodeName = 'publisher') then
+        result.publisher := ParseMessageConformancePublisher(child)
+      else if (child.nodeName = 'software') then
+        result.software := ParseMessageConformanceSoftware(child)
+      else if (child.nodeName = 'events') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'event') Then
+            result.Event.Add(ParseMessageConformanceEvent(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseMessageConformance(name : string; elem : TMessageConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('date',elem.date);
+  SerialiseMessageConformancePublisher('publisher', elem.publisher);
+  SerialiseMessageConformanceSoftware('software', elem.software);
+  if elem.Event.Count > 0 then
+  begin
+    FXml.open('events');
+    for i := 0 to elem.Event.Count - 1 do
+      SerialiseMessageConformanceEvent('event',elem.Event[i]);
+    FXml.Close('events');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseMessageConformance : TMessageConformance;
+begin
+  result := TMessageConformance.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'date') then
+        result.date := FJson.itemValue
+      else if (FJson.ItemName = 'publisher') then
+        result.publisher := ParseMessageConformancePublisher
+      else if (FJson.ItemName = 'software') then
+        result.software := ParseMessageConformanceSoftware
+      else if (FJson.ItemName = 'events') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Event.Add(ParseMessageConformanceEvent);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseMessageConformance(name : string; elem : TMessageConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('date',elem.date);
+  SerialiseMessageConformancePublisher('publisher', elem.publisher);
+  SerialiseMessageConformanceSoftware('software', elem.software);
+  if elem.Event.Count > 0 then
+  begin
+    FJson.valueObject('events');
+    for i := 0 to elem.Event.Count - 1 do
+      SerialiseMessageConformanceEvent('event',elem.Event[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAgent(element : IXmlDomElement) : TAgent;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TAgent.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}(child)
+      else if (child.nodeName = 'organization') then
+        result.organization := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'roles') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'role') Then
+            result.Role.Add(ParseCodeableConcept(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAgent(name : string; elem : TAgent);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
+  SerialiseFHIRResourceReference{TOrganization}('organization', elem.organization);
+  if elem.Role.Count > 0 then
+  begin
+    FXml.open('roles');
+    for i := 0 to elem.Role.Count - 1 do
+      SerialiseCodeableConcept('role',elem.Role[i]);
+    FXml.Close('roles');
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAgent : TAgent;
+begin
+  result := TAgent.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}
+      else if (FJson.ItemName = 'organization') then
+        result.organization := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'roles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Role.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAgent(name : string; elem : TAgent);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
+  SerialiseFHIRResourceReference{TOrganization}('organization', elem.organization);
+  if elem.Role.Count > 0 then
+  begin
+    FJson.valueObject('roles');
+    for i := 0 to elem.Role.Count - 1 do
+      SerialiseCodeableConcept('role',elem.Role[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseHumanId(child)
+      else if (child.nodeName = 'role') then
+        result.role := ParseCodeableConcept(child)
+      else if (child.nodeName = 'name') then
+        result.name := ParseHumanName(child)
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('role', elem.role);
+  SerialiseHumanName('name', elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAnimalRelatedEntity : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseHumanId
+      else if (FJson.ItemName = 'role') then
+        result.role := ParseCodeableConcept
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseHumanName
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('role', elem.role);
+  SerialiseHumanName('name', elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAnimal(element : IXmlDomElement) : TAnimal;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TAnimal.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'names') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'name') Then
+            result.Name.Add(ParseHumanName(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'dob') then
+        result.dob := child.text
+      else if (child.nodeName = 'species') then
+        result.species := ParseCodeableConcept(child)
+      else if (child.nodeName = 'strain') then
+        result.strain := ParseCodeableConcept(child)
+      else if (child.nodeName = 'gender') then
+        result.gender := ParseCodeableConcept(child)
+      else if (child.nodeName = 'relatedEntities') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'relatedEntity') Then
+            result.RelatedEntity.Add(ParseAnimalRelatedEntity(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseAnimal(name : string; elem : TAnimal);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FXml.open('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseHumanName('name',elem.Name[i]);
+    FXml.Close('names');
+  end;
+  Text('dob',elem.dob);
+  SerialiseCodeableConcept('species', elem.species);
+  SerialiseCodeableConcept('strain', elem.strain);
+  SerialiseCodeableConcept('gender', elem.gender);
+  if elem.RelatedEntity.Count > 0 then
+  begin
+    FXml.open('relatedEntities');
+    for i := 0 to elem.RelatedEntity.Count - 1 do
+      SerialiseAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+    FXml.Close('relatedEntities');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAnimal : TAnimal;
+begin
+  result := TAnimal.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'names') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Name.Add(ParseHumanName);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'dob') then
+        result.dob := FJson.itemValue
+      else if (FJson.ItemName = 'species') then
+        result.species := ParseCodeableConcept
+      else if (FJson.ItemName = 'strain') then
+        result.strain := ParseCodeableConcept
+      else if (FJson.ItemName = 'gender') then
+        result.gender := ParseCodeableConcept
+      else if (FJson.ItemName = 'relatedEntities') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedEntity.Add(ParseAnimalRelatedEntity);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseAnimal(name : string; elem : TAnimal);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FJson.valueObject('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseHumanName('name',elem.Name[i]);
+    FJson.FinishObject;
+  end;
+  Prop('dob',elem.dob);
+  SerialiseCodeableConcept('species', elem.species);
+  SerialiseCodeableConcept('strain', elem.strain);
+  SerialiseCodeableConcept('gender', elem.gender);
+  if elem.RelatedEntity.Count > 0 then
+  begin
+    FJson.valueObject('relatedEntities');
+    for i := 0 to elem.RelatedEntity.Count - 1 do
+      SerialiseAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionDispense(element : IXmlDomElement) : TPrescriptionDispense;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPrescriptionDispense.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'repeats') then
+        result.repeats := StringToInteger32(child.text)
+      else if (child.nodeName = 'quantity') then
+        result.quantity := ParseQuantity(child)
+      else if (child.nodeName = 'dispenser') then
+        result.dispenser := ParseFHIRResourceReference{Resource}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('repeats',IntegerToString(elem.repeats));
+  SerialiseQuantity('quantity', elem.quantity);
+  SerialiseFHIRResourceReference{Resource}('dispenser', elem.dispenser);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionDispense : TPrescriptionDispense;
+begin
+  result := TPrescriptionDispense.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'repeats') then
+        result.repeats := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'quantity') then
+        result.quantity := ParseQuantity
+      else if (FJson.ItemName = 'dispenser') then
+        result.dispenser := ParseFHIRResourceReference{Resource}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('repeats',IntegerToString(elem.repeats));
+  SerialiseQuantity('quantity', elem.quantity);
+  SerialiseFHIRResourceReference{Resource}('dispenser', elem.dispenser);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionMedicine(element : IXmlDomElement) : TPrescriptionMedicine;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPrescriptionMedicine.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'productCode') then
+        result.productCode := ParseCoding(child)
+      else if (child.nodeName = 'description') then
+        result.description := child.text
+      else if (child.nodeName = 'activeIngredients') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'activeIngredient') Then
+            result.ActiveIngredient.Add(ParsePrescriptionMedicineActiveIngredient(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'inactiveIngredients') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'inactiveIngredient') Then
+            result.InactiveIngredient.Add(ParsePrescriptionMedicineInactiveIngredient(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCoding('productCode', elem.productCode);
+  Text('description',elem.description);
+  if elem.ActiveIngredient.Count > 0 then
+  begin
+    FXml.open('activeIngredients');
+    for i := 0 to elem.ActiveIngredient.Count - 1 do
+      SerialisePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
+    FXml.Close('activeIngredients');
+  end;
+  if elem.InactiveIngredient.Count > 0 then
+  begin
+    FXml.open('inactiveIngredients');
+    for i := 0 to elem.InactiveIngredient.Count - 1 do
+      SerialisePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
+    FXml.Close('inactiveIngredients');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionMedicine : TPrescriptionMedicine;
+begin
+  result := TPrescriptionMedicine.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'productCode') then
+        result.productCode := ParseCoding
+      else if (FJson.ItemName = 'description') then
+        result.description := FJson.itemValue
+      else if (FJson.ItemName = 'activeIngredients') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.ActiveIngredient.Add(ParsePrescriptionMedicineActiveIngredient);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'inactiveIngredients') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.InactiveIngredient.Add(ParsePrescriptionMedicineInactiveIngredient);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCoding('productCode', elem.productCode);
+  Prop('description',elem.description);
+  if elem.ActiveIngredient.Count > 0 then
+  begin
+    FJson.valueObject('activeIngredients');
+    for i := 0 to elem.ActiveIngredient.Count - 1 do
+      SerialisePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
+    FJson.FinishObject;
+  end;
+  if elem.InactiveIngredient.Count > 0 then
+  begin
+    FJson.valueObject('inactiveIngredients');
+    for i := 0 to elem.InactiveIngredient.Count - 1 do
+      SerialisePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionMedicineActiveIngredient(element : IXmlDomElement) : TPrescriptionMedicineActiveIngredient;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPrescriptionMedicineActiveIngredient.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'productCode') then
+        result.productCode := ParseCoding(child)
+      else if (child.nodeName = 'quantity') then
+        result.quantity := ParseRatio(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCoding('productCode', elem.productCode);
+  SerialiseRatio('quantity', elem.quantity);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionMedicineActiveIngredient : TPrescriptionMedicineActiveIngredient;
+begin
+  result := TPrescriptionMedicineActiveIngredient.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'productCode') then
+        result.productCode := ParseCoding
+      else if (FJson.ItemName = 'quantity') then
+        result.quantity := ParseRatio
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCoding('productCode', elem.productCode);
+  SerialiseRatio('quantity', elem.quantity);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionMedicineInactiveIngredient(element : IXmlDomElement) : TPrescriptionMedicineInactiveIngredient;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPrescriptionMedicineInactiveIngredient.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'productCode') then
+        result.productCode := ParseCoding(child)
+      else if (child.nodeName = 'quantity') then
+        result.quantity := ParseRatio(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCoding('productCode', elem.productCode);
+  SerialiseRatio('quantity', elem.quantity);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionMedicineInactiveIngredient : TPrescriptionMedicineInactiveIngredient;
+begin
+  result := TPrescriptionMedicineInactiveIngredient.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'productCode') then
+        result.productCode := ParseCoding
+      else if (FJson.ItemName = 'quantity') then
+        result.quantity := ParseRatio
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCoding('productCode', elem.productCode);
+  SerialiseRatio('quantity', elem.quantity);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionAdministrationRequest(element : IXmlDomElement) : TPrescriptionAdministrationRequest;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPrescriptionAdministrationRequest.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'description') then
+        result.description := child.text
+      else if (child.nodeName = 'totalPeriodicDosis') then
+        result.totalPeriodicDosis := ParseRatio(child)
+      else if (child.nodeName = 'start') then
+        result.start := child.text
+      else if (child.nodeName = 'end') then
+        result.end_ := child.text
+      else if (child.nodeName = 'duration') then
+        result.duration := ParseQuantity(child)
+      else if (child.nodeName = 'numberOfAdministrations') then
+        result.numberOfAdministrations := StringToInteger32(child.text)
+      else if (child.nodeName = 'dosageInstructions') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'dosageInstruction') Then
+            result.DosageInstruction.Add(ParsePrescriptionAdministrationRequestDosageInstruction(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('description',elem.description);
+  SerialiseRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
+  Text('start',elem.start);
+  Text('end',elem.end_);
+  SerialiseQuantity('duration', elem.duration);
+  Text('numberOfAdministrations',IntegerToString(elem.numberOfAdministrations));
+  if elem.DosageInstruction.Count > 0 then
+  begin
+    FXml.open('dosageInstructions');
+    for i := 0 to elem.DosageInstruction.Count - 1 do
+      SerialisePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
+    FXml.Close('dosageInstructions');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionAdministrationRequest : TPrescriptionAdministrationRequest;
+begin
+  result := TPrescriptionAdministrationRequest.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'description') then
+        result.description := FJson.itemValue
+      else if (FJson.ItemName = 'totalPeriodicDosis') then
+        result.totalPeriodicDosis := ParseRatio
+      else if (FJson.ItemName = 'start') then
+        result.start := FJson.itemValue
+      else if (FJson.ItemName = 'end') then
+        result.end_ := FJson.itemValue
+      else if (FJson.ItemName = 'duration') then
+        result.duration := ParseQuantity
+      else if (FJson.ItemName = 'numberOfAdministrations') then
+        result.numberOfAdministrations := StringToInteger32(FJson.itemValue)
+      else if (FJson.ItemName = 'dosageInstructions') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.DosageInstruction.Add(ParsePrescriptionAdministrationRequestDosageInstruction);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('description',elem.description);
+  SerialiseRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
+  Prop('start',elem.start);
+  Prop('end',elem.end_);
+  SerialiseQuantity('duration', elem.duration);
+  Prop('numberOfAdministrations',IntegerToString(elem.numberOfAdministrations));
+  if elem.DosageInstruction.Count > 0 then
+  begin
+    FJson.valueObject('dosageInstructions');
+    for i := 0 to elem.DosageInstruction.Count - 1 do
+      SerialisePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescriptionAdministrationRequestDosageInstruction(element : IXmlDomElement) : TPrescriptionAdministrationRequestDosageInstruction;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstruction.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'preconditions') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'precondition') Then
+            result.Precondition.Add(ParseCodeableConcept(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'prn') then
+        result.prn := TBooleanYesNo(ParseEnum(CODES_TBooleanYesNo, child))
+      else if (child.nodeName = 'additionalInstructions') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'additionalInstruction') Then
+            result.AdditionalInstruction.Add(ParseCodeableConcept(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'route') then
+        result.route := ParseCodeableConcept(child)
+      else if (child.nodeName = 'doseQuantity') then
+        result.dose := ParseQuantity(child)
+      else if (child.nodeName = 'doseInterval_Quantity') then
+        result.dose := ParseInterval_Quantity(child)
+      else if (child.nodeName = 'rate') then
+        result.rate := ParseQuantity(child)
+      else if (child.nodeName = 'schedules') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'schedule') Then
+            result.Schedule.Add(ParseSchedule(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  if elem.Precondition.Count > 0 then
+  begin
+    FXml.open('preconditions');
+    for i := 0 to elem.Precondition.Count - 1 do
+      SerialiseCodeableConcept('precondition',elem.Precondition[i]);
+    FXml.Close('preconditions');
+  end;
+  Text('prn',CODES_TBooleanYesNo[elem.prn]);
+  if elem.AdditionalInstruction.Count > 0 then
+  begin
+    FXml.open('additionalInstructions');
+    for i := 0 to elem.AdditionalInstruction.Count - 1 do
+      SerialiseCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
+    FXml.Close('additionalInstructions');
+  end;
+  SerialiseCodeableConcept('route', elem.route);
+  if elem.dose is TQuantity then
+    SerialiseQuantity('doseQuantity', TQuantity(elem.dose))
+  else if elem.dose is TInterval_Quantity then
+    SerialiseInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
+  SerialiseQuantity('rate', elem.rate);
+  if elem.Schedule.Count > 0 then
+  begin
+    FXml.open('schedules');
+    for i := 0 to elem.Schedule.Count - 1 do
+      SerialiseSchedule('schedule',elem.Schedule[i]);
+    FXml.Close('schedules');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescriptionAdministrationRequestDosageInstruction : TPrescriptionAdministrationRequestDosageInstruction;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstruction.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'preconditions') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Precondition.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'prn') then
+        result.prn := TBooleanYesNo(ParseEnum(CODES_TBooleanYesNo))
+      else if (FJson.ItemName = 'additionalInstructions') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.AdditionalInstruction.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'route') then
+        result.route := ParseCodeableConcept
+      else if (FJson.ItemName = 'doseQuantity') then
+        result.dose := ParseQuantity
+      else if (FJson.ItemName = 'doseInterval_Quantity') then
+        result.dose := ParseInterval_Quantity
+      else if (FJson.ItemName = 'rate') then
+        result.rate := ParseQuantity
+      else if (FJson.ItemName = 'schedules') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Schedule.Add(ParseSchedule);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  if elem.Precondition.Count > 0 then
+  begin
+    FJson.valueObject('preconditions');
+    for i := 0 to elem.Precondition.Count - 1 do
+      SerialiseCodeableConcept('precondition',elem.Precondition[i]);
+    FJson.FinishObject;
+  end;
+  Prop('prn',CODES_TBooleanYesNo[elem.prn]);
+  if elem.AdditionalInstruction.Count > 0 then
+  begin
+    FJson.valueObject('additionalInstructions');
+    for i := 0 to elem.AdditionalInstruction.Count - 1 do
+      SerialiseCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseCodeableConcept('route', elem.route);
+  if elem.dose is TQuantity then
+    SerialiseQuantity('doseQuantity', TQuantity(elem.dose))
+  else if elem.dose is TInterval_Quantity then
+    SerialiseInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
+  SerialiseQuantity('rate', elem.rate);
+  if elem.Schedule.Count > 0 then
+  begin
+    FJson.valueObject('schedules');
+    for i := 0 to elem.Schedule.Count - 1 do
+      SerialiseSchedule('schedule',elem.Schedule[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePrescription(element : IXmlDomElement) : TPrescription;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPrescription.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'status') then
+        result.status := TPrescriptionStatus(ParseEnum(CODES_TPrescriptionStatus, child))
+      else if (child.nodeName = 'patient') then
+        result.patient := ParseFHIRResourceReference{TPatient}(child)
+      else if (child.nodeName = 'prescriber') then
+        result.prescriber := ParseFHIRResourceReference{TAgent}(child)
+      else if (child.nodeName = 'prescribed') then
+        result.prescribed := child.text
+      else if (child.nodeName = 'dispense') then
+        result.dispense := ParsePrescriptionDispense(child)
+      else if (child.nodeName = 'medicine') then
+        result.medicine := ParsePrescriptionMedicine(child)
+      else if (child.nodeName = 'administrationRequest') then
+        result.administrationRequest := ParsePrescriptionAdministrationRequest(child)
+      else if (child.nodeName = 'reason') then
+        result.reason := ParseCodeableConcept(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePrescription(name : string; elem : TPrescription);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  Text('status',CODES_TPrescriptionStatus[elem.status]);
+  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
+  SerialiseFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
+  Text('prescribed',elem.prescribed);
+  SerialisePrescriptionDispense('dispense', elem.dispense);
+  SerialisePrescriptionMedicine('medicine', elem.medicine);
+  SerialisePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
+  SerialiseCodeableConcept('reason', elem.reason);
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePrescription : TPrescription;
+begin
+  result := TPrescription.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'status') then
+        result.status := TPrescriptionStatus(ParseEnum(CODES_TPrescriptionStatus))
+      else if (FJson.ItemName = 'patient') then
+        result.patient := ParseFHIRResourceReference{TPatient}
+      else if (FJson.ItemName = 'prescriber') then
+        result.prescriber := ParseFHIRResourceReference{TAgent}
+      else if (FJson.ItemName = 'prescribed') then
+        result.prescribed := FJson.itemValue
+      else if (FJson.ItemName = 'dispense') then
+        result.dispense := ParsePrescriptionDispense
+      else if (FJson.ItemName = 'medicine') then
+        result.medicine := ParsePrescriptionMedicine
+      else if (FJson.ItemName = 'administrationRequest') then
+        result.administrationRequest := ParsePrescriptionAdministrationRequest
+      else if (FJson.ItemName = 'reason') then
+        result.reason := ParseCodeableConcept
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePrescription(name : string; elem : TPrescription);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  Prop('status',CODES_TPrescriptionStatus[elem.status]);
+  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
+  SerialiseFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
+  Prop('prescribed',elem.prescribed);
+  SerialisePrescriptionDispense('dispense', elem.dispense);
+  SerialisePrescriptionMedicine('medicine', elem.medicine);
+  SerialisePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
+  SerialiseCodeableConcept('reason', elem.reason);
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePatient(element : IXmlDomElement) : TPatient;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPatient.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'links') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'link') Then
+            result.Link_.Add(ParseFHIRResourceReference{TPatient}(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'active') then
+        result.active := StringToBoolean(child.text)
+      else if (child.nodeName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}(child)
+      else if (child.nodeName = 'animal') then
+        result.animal := ParseFHIRResourceReference{TAnimal}(child)
+      else if (child.nodeName = 'provider') then
+        result.provider := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'diet') then
+        result.diet := ParseCodeableConcept(child)
+      else if (child.nodeName = 'confidentiality') then
+        result.confidentiality := ParseCodeableConcept(child)
+      else if (child.nodeName = 'recordLocation') then
+        result.recordLocation := ParseCodeableConcept(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePatient(name : string; elem : TPatient);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  if elem.Link_.Count > 0 then
+  begin
+    FXml.open('links');
+    for i := 0 to elem.Link_.Count - 1 do
+      SerialiseFHIRResourceReference{TPatient}('link',elem.Link_[i]);
+    FXml.Close('links');
+  end;
+  Text('active',BooleanToString(elem.active));
+  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
+  SerialiseFHIRResourceReference{TAnimal}('animal', elem.animal);
+  SerialiseFHIRResourceReference{TOrganization}('provider', elem.provider);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  SerialiseCodeableConcept('diet', elem.diet);
+  SerialiseCodeableConcept('confidentiality', elem.confidentiality);
+  SerialiseCodeableConcept('recordLocation', elem.recordLocation);
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePatient : TPatient;
+begin
+  result := TPatient.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'links') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Link_.Add(ParseFHIRResourceReference{TPatient});
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'active') then
+        result.active := StringToBoolean(FJson.itemValue)
+      else if (FJson.ItemName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}
+      else if (FJson.ItemName = 'animal') then
+        result.animal := ParseFHIRResourceReference{TAnimal}
+      else if (FJson.ItemName = 'provider') then
+        result.provider := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'diet') then
+        result.diet := ParseCodeableConcept
+      else if (FJson.ItemName = 'confidentiality') then
+        result.confidentiality := ParseCodeableConcept
+      else if (FJson.ItemName = 'recordLocation') then
+        result.recordLocation := ParseCodeableConcept
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePatient(name : string; elem : TPatient);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  if elem.Link_.Count > 0 then
+  begin
+    FJson.valueObject('links');
+    for i := 0 to elem.Link_.Count - 1 do
+      SerialiseFHIRResourceReference{TPatient}('link',elem.Link_[i]);
+    FJson.FinishObject;
+  end;
+  Prop('active',BooleanToString(elem.active));
+  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
+  SerialiseFHIRResourceReference{TAnimal}('animal', elem.animal);
+  SerialiseFHIRResourceReference{TOrganization}('provider', elem.provider);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseCodeableConcept('diet', elem.diet);
+  SerialiseCodeableConcept('confidentiality', elem.confidentiality);
+  SerialiseCodeableConcept('recordLocation', elem.recordLocation);
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
+var
+  child : IXMLDOMElement;
+begin
+  result := TOrganizationName.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'value') then
+        result.value := child.text
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseOrganizationName(name : string; elem : TOrganizationName);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('value',elem.value);
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseOrganizationName : TOrganizationName;
+begin
+  result := TOrganizationName.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'value') then
+        result.value := FJson.itemValue
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseOrganizationName(name : string; elem : TOrganizationName);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('value',elem.value);
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
+var
+  child : IXMLDOMElement;
+begin
+  result := TOrganizationAccreditation.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseIdentifier(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseIdentifier('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseOrganizationAccreditation : TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseIdentifier
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseIdentifier('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseHumanId(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_dateTime(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  Text('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseHumanId
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_dateTime
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  Prop('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseInterval_dateTime('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseOrganization(element : IXmlDomElement) : TOrganization;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TOrganization.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'industryCode') then
+        result.industryCode := ParseCodeableConcept(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'names') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'name') Then
+            result.Name.Add(ParseOrganizationName(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'accreditations') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'accreditation') Then
+            result.Accreditation.Add(ParseOrganizationAccreditation(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'relatedOrganizations') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'relatedOrganization') Then
+            result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseOrganization(name : string; elem : TOrganization);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseCodeableConcept('industryCode', elem.industryCode);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FXml.open('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseOrganizationName('name',elem.Name[i]);
+    FXml.Close('names');
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  if elem.Accreditation.Count > 0 then
+  begin
+    FXml.open('accreditations');
+    for i := 0 to elem.Accreditation.Count - 1 do
+      SerialiseOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+    FXml.Close('accreditations');
+  end;
+  if elem.RelatedOrganization.Count > 0 then
+  begin
+    FXml.open('relatedOrganizations');
+    for i := 0 to elem.RelatedOrganization.Count - 1 do
+      SerialiseOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
+    FXml.Close('relatedOrganizations');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseOrganization : TOrganization;
+begin
+  result := TOrganization.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'industryCode') then
+        result.industryCode := ParseCodeableConcept
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'names') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Name.Add(ParseOrganizationName);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'accreditations') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Accreditation.Add(ParseOrganizationAccreditation);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'relatedOrganizations') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseOrganization(name : string; elem : TOrganization);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseCodeableConcept('industryCode', elem.industryCode);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FJson.valueObject('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseOrganizationName('name',elem.Name[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Accreditation.Count > 0 then
+  begin
+    FJson.valueObject('accreditations');
+    for i := 0 to elem.Accreditation.Count - 1 do
+      SerialiseOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+    FJson.FinishObject;
+  end;
+  if elem.RelatedOrganization.Count > 0 then
+  begin
+    FJson.valueObject('relatedOrganizations');
+    for i := 0 to elem.RelatedOrganization.Count - 1 do
+      SerialiseOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TDocumentConformancePublisher.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformancePublisher : TDocumentConformancePublisher;
+begin
+  result := TDocumentConformancePublisher.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentConformanceSoftware.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'version') then
+        result.version := child.text
+      else if (child.nodeName = 'releaseDate') then
+        result.releaseDate := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('version',elem.version);
+  Text('releaseDate',elem.releaseDate);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
+begin
+  result := TDocumentConformanceSoftware.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'version') then
+        result.version := FJson.itemValue
+      else if (FJson.ItemName = 'releaseDate') then
+        result.releaseDate := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('version',elem.version);
+  Prop('releaseDate',elem.releaseDate);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'purpose') then
+        result.purpose := child.text
+      else if (child.nodeName = 'resources') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'resource') Then
+            result.Resource.Add(ParseConstraint(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('purpose',elem.purpose);
+  if elem.Resource.Count > 0 then
+  begin
+    FXml.open('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FXml.Close('resources');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformanceDocument : TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'purpose') then
+        result.purpose := FJson.itemValue
+      else if (FJson.ItemName = 'resources') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Resource.Add(ParseConstraint);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('purpose',elem.purpose);
+  if elem.Resource.Count > 0 then
+  begin
+    FJson.valueObject('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      SerialiseConstraint('resource',elem.Resource[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TDocumentConformance.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'date') then
+        result.date := child.text
+      else if (child.nodeName = 'publisher') then
+        result.publisher := ParseDocumentConformancePublisher(child)
+      else if (child.nodeName = 'software') then
+        result.software := ParseDocumentConformanceSoftware(child)
+      else if (child.nodeName = 'documents') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'document') Then
+            result.Document.Add(ParseDocumentConformanceDocument(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('date',elem.date);
+  SerialiseDocumentConformancePublisher('publisher', elem.publisher);
+  SerialiseDocumentConformanceSoftware('software', elem.software);
+  if elem.Document.Count > 0 then
+  begin
+    FXml.open('documents');
+    for i := 0 to elem.Document.Count - 1 do
+      SerialiseDocumentConformanceDocument('document',elem.Document[i]);
+    FXml.Close('documents');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformance : TDocumentConformance;
+begin
+  result := TDocumentConformance.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'date') then
+        result.date := FJson.itemValue
+      else if (FJson.ItemName = 'publisher') then
+        result.publisher := ParseDocumentConformancePublisher
+      else if (FJson.ItemName = 'software') then
+        result.software := ParseDocumentConformanceSoftware
+      else if (FJson.ItemName = 'documents') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Document.Add(ParseDocumentConformanceDocument);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('date',elem.date);
+  SerialiseDocumentConformancePublisher('publisher', elem.publisher);
+  SerialiseDocumentConformanceSoftware('software', elem.software);
+  if elem.Document.Count > 0 then
+  begin
+    FJson.valueObject('documents');
+    for i := 0 to elem.Document.Count - 1 do
+      SerialiseDocumentConformanceDocument('document',elem.Document[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseLabReportRequestDetail(element : IXmlDomElement) : TLabReportRequestDetail;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TLabReportRequestDetail.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'requestOrderId') then
+        result.requestOrderId := ParseIdentifier(child)
+      else if (child.nodeName = 'receiverOrderId') then
+        result.receiverOrderId := ParseIdentifier(child)
+      else if (child.nodeName = 'requestTests') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'requestTest') Then
+            result.RequestTest.Add(ParseCodeableConcept(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'requester') then
+        result.requester := ParseFHIRResourceReference{Resource}(child)
+      else if (child.nodeName = 'clinicalInfo') then
+        result.clinicalInfo := ParseFHIRResourceReference{Resource}(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseIdentifier('requestOrderId', elem.requestOrderId);
+  SerialiseIdentifier('receiverOrderId', elem.receiverOrderId);
+  if elem.RequestTest.Count > 0 then
+  begin
+    FXml.open('requestTests');
+    for i := 0 to elem.RequestTest.Count - 1 do
+      SerialiseCodeableConcept('requestTest',elem.RequestTest[i]);
+    FXml.Close('requestTests');
+  end;
+  SerialiseFHIRResourceReference{Resource}('requester', elem.requester);
+  SerialiseFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLabReportRequestDetail : TLabReportRequestDetail;
+begin
+  result := TLabReportRequestDetail.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'requestOrderId') then
+        result.requestOrderId := ParseIdentifier
+      else if (FJson.ItemName = 'receiverOrderId') then
+        result.receiverOrderId := ParseIdentifier
+      else if (FJson.ItemName = 'requestTests') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RequestTest.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'requester') then
+        result.requester := ParseFHIRResourceReference{Resource}
+      else if (FJson.ItemName = 'clinicalInfo') then
+        result.clinicalInfo := ParseFHIRResourceReference{Resource}
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseIdentifier('requestOrderId', elem.requestOrderId);
+  SerialiseIdentifier('receiverOrderId', elem.receiverOrderId);
+  if elem.RequestTest.Count > 0 then
+  begin
+    FJson.valueObject('requestTests');
+    for i := 0 to elem.RequestTest.Count - 1 do
+      SerialiseCodeableConcept('requestTest',elem.RequestTest[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseFHIRResourceReference{Resource}('requester', elem.requester);
+  SerialiseFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseLabReportResultGroup(element : IXmlDomElement) : TLabReportResultGroup;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TLabReportResultGroup.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := ParseCodeableConcept(child)
+      else if (child.nodeName = 'specimen') then
+        result.specimen := ParseFHIRResourceReference{TSpecimen}(child)
+      else if (child.nodeName = 'results') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'result') Then
+            result.Result.Add(ParseLabReportResultGroupResult(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCodeableConcept('name', elem.name);
+  SerialiseFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
+  if elem.Result.Count > 0 then
+  begin
+    FXml.open('results');
+    for i := 0 to elem.Result.Count - 1 do
+      SerialiseLabReportResultGroupResult('result',elem.Result[i]);
+    FXml.Close('results');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLabReportResultGroup : TLabReportResultGroup;
+begin
+  result := TLabReportResultGroup.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseCodeableConcept
+      else if (FJson.ItemName = 'specimen') then
+        result.specimen := ParseFHIRResourceReference{TSpecimen}
+      else if (FJson.ItemName = 'results') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Result.Add(ParseLabReportResultGroupResult);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCodeableConcept('name', elem.name);
+  SerialiseFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
+  if elem.Result.Count > 0 then
+  begin
+    FJson.valueObject('results');
+    for i := 0 to elem.Result.Count - 1 do
+      SerialiseLabReportResultGroupResult('result',elem.Result[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseLabReportResultGroupResult(element : IXmlDomElement) : TLabReportResultGroupResult;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TLabReportResultGroupResult.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := ParseCodeableConcept(child)
+      else if (child.nodeName = 'valueQuantity') then
+        result.value := ParseQuantity(child)
+      else if (child.nodeName = 'valueCodeableConcept') then
+        result.value := ParseCodeableConcept(child)
+      else if (child.nodeName = 'valueAttachment') then
+        result.value := ParseAttachment(child)
+      else if (child.nodeName = 'valueRatio') then
+        result.value := ParseRatio(child)
+      else if (child.nodeName = 'valueChoice') then
+        result.value := ParseChoice(child)
+      else if (child.nodeName = 'valueInterval_DateTime') then
+        result.value := ParseInterval_DateTime(child)
+      else if (child.nodeName = 'valueString') then
+        result.value := ParseString(child)
+      else if (child.nodeName = 'flag') then
+        result.flag := TLabResultFlag(ParseEnum(CODES_TLabResultFlag, child))
+      else if (child.nodeName = 'status') then
+        result.status := TLabReportStatus(ParseEnum(CODES_TLabReportStatus, child))
+      else if (child.nodeName = 'comments') then
+        result.comments := child.text
+      else if (child.nodeName = 'referenceRanges') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'referenceRange') Then
+            result.ReferenceRange.Add(ParseLabReportResultGroupResultReferenceRange(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCodeableConcept('name', elem.name);
+  if elem.value is TQuantity then
+    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('valueRatio', TRatio(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('valueChoice', TChoice(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TFHIRTypeString then
+    Text('valueString', TFHIRTypeString(elem.value).value);
+  Text('flag',CODES_TLabResultFlag[elem.flag]);
+  Text('status',CODES_TLabReportStatus[elem.status]);
+  Text('comments',elem.comments);
+  if elem.ReferenceRange.Count > 0 then
+  begin
+    FXml.open('referenceRanges');
+    for i := 0 to elem.ReferenceRange.Count - 1 do
+      SerialiseLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
+    FXml.Close('referenceRanges');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLabReportResultGroupResult : TLabReportResultGroupResult;
+begin
+  result := TLabReportResultGroupResult.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseCodeableConcept
+      else if (FJson.ItemName = 'valueQuantity') then
+        result.value := ParseQuantity
+      else if (FJson.ItemName = 'valueCodeableConcept') then
+        result.value := ParseCodeableConcept
+      else if (FJson.ItemName = 'valueAttachment') then
+        result.value := ParseAttachment
+      else if (FJson.ItemName = 'valueRatio') then
+        result.value := ParseRatio
+      else if (FJson.ItemName = 'valueChoice') then
+        result.value := ParseChoice
+      else if (FJson.ItemName = 'valueInterval_DateTime') then
+        result.value := ParseInterval_DateTime
+      else if (FJson.ItemName = 'valueString') then
+        result.value := ParseString
+      else if (FJson.ItemName = 'flag') then
+        result.flag := TLabResultFlag(ParseEnum(CODES_TLabResultFlag))
+      else if (FJson.ItemName = 'status') then
+        result.status := TLabReportStatus(ParseEnum(CODES_TLabReportStatus))
+      else if (FJson.ItemName = 'comments') then
+        result.comments := FJson.itemValue
+      else if (FJson.ItemName = 'referenceRanges') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.ReferenceRange.Add(ParseLabReportResultGroupResultReferenceRange);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCodeableConcept('name', elem.name);
+  if elem.value is TQuantity then
+    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+  else if elem.value is TCodeableConcept then
+    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+  else if elem.value is TAttachment then
+    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+  else if elem.value is TRatio then
+    SerialiseRatio('valueRatio', TRatio(elem.value))
+  else if elem.value is TChoice then
+    SerialiseChoice('valueChoice', TChoice(elem.value))
+  else if elem.value is TInterval_DateTime then
+    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+  else if elem.value is TFHIRTypeString then
+    Prop('valueString', TFHIRTypeString(elem.value).value);
+  Prop('flag',CODES_TLabResultFlag[elem.flag]);
+  Prop('status',CODES_TLabReportStatus[elem.status]);
+  Prop('comments',elem.comments);
+  if elem.ReferenceRange.Count > 0 then
+  begin
+    FJson.valueObject('referenceRanges');
+    for i := 0 to elem.ReferenceRange.Count - 1 do
+      SerialiseLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseLabReportResultGroupResultReferenceRange(element : IXmlDomElement) : TLabReportResultGroupResultReferenceRange;
+var
+  child : IXMLDOMElement;
+begin
+  result := TLabReportResultGroupResultReferenceRange.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'meaning') then
+        result.meaning := ParseCodeableConcept(child)
+      else if (child.nodeName = 'rangeQuantity') then
+        result.range := ParseQuantity(child)
+      else if (child.nodeName = 'rangeInterval_Quantity') then
+        result.range := ParseInterval_Quantity(child)
+      else if (child.nodeName = 'rangeString') then
+        result.range := ParseString(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseCodeableConcept('meaning', elem.meaning);
+  if elem.range is TQuantity then
+    SerialiseQuantity('rangeQuantity', TQuantity(elem.range))
+  else if elem.range is TInterval_Quantity then
+    SerialiseInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
+  else if elem.range is TFHIRTypeString then
+    Text('rangeString', TFHIRTypeString(elem.range).value);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLabReportResultGroupResultReferenceRange : TLabReportResultGroupResultReferenceRange;
+begin
+  result := TLabReportResultGroupResultReferenceRange.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'meaning') then
+        result.meaning := ParseCodeableConcept
+      else if (FJson.ItemName = 'rangeQuantity') then
+        result.range := ParseQuantity
+      else if (FJson.ItemName = 'rangeInterval_Quantity') then
+        result.range := ParseInterval_Quantity
+      else if (FJson.ItemName = 'rangeString') then
+        result.range := ParseString
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseCodeableConcept('meaning', elem.meaning);
+  if elem.range is TQuantity then
+    SerialiseQuantity('rangeQuantity', TQuantity(elem.range))
+  else if elem.range is TInterval_Quantity then
+    SerialiseInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
+  else if elem.range is TFHIRTypeString then
+    Prop('rangeString', TFHIRTypeString(elem.range).value);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseLabReport(element : IXmlDomElement) : TLabReport;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TLabReport.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'status') then
+        result.status := TLabReportStatus(ParseEnum(CODES_TLabReportStatus, child))
+      else if (child.nodeName = 'issued') then
+        result.issued := XMLDateTimeStringToDateTime(child.text)
+      else if (child.nodeName = 'patient') then
+        result.patient := ParseFHIRResourceReference{TPatient}(child)
+      else if (child.nodeName = 'admission') then
+        result.admission := ParseFHIRResourceReference{TAdmission}(child)
+      else if (child.nodeName = 'laboratory') then
+        result.laboratory := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'reportId') then
+        result.reportId := child.text
+      else if (child.nodeName = 'requestDetails') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'requestDetail') Then
+            result.RequestDetail.Add(ParseLabReportRequestDetail(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'reportName') then
+        result.reportName := ParseCodeableConcept(child)
+      else if (child.nodeName = 'service') then
+        result.service := ParseCodeableConcept(child)
+      else if (child.nodeName = 'diagnosticTime') then
+        result.diagnosticTime := child.text
+      else if (child.nodeName = 'specimen') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'specimen') Then
+            result.Specimen.Add(ParseFHIRResourceReference{TSpecimen}(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'resultGroups') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'resultGroup') Then
+            result.ResultGroup.Add(ParseLabReportResultGroup(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'conclusion') then
+        result.conclusion := ParseNarrative(child)
+      else if (child.nodeName = 'codedDiagnoses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'codedDiagnosis') Then
+            result.CodedDiagnosis.Add(ParseCodeableConcept(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'representations') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'representation') Then
+            result.Representation.Add(ParseAttachment(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseLabReport(name : string; elem : TLabReport);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('status',CODES_TLabReportStatus[elem.status]);
+  Text('issued',DateTimeToXMLDateTimeString(elem.issued));
+  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
+  SerialiseFHIRResourceReference{TAdmission}('admission', elem.admission);
+  SerialiseFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
+  Text('reportId',elem.reportId);
+  if elem.RequestDetail.Count > 0 then
+  begin
+    FXml.open('requestDetails');
+    for i := 0 to elem.RequestDetail.Count - 1 do
+      SerialiseLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
+    FXml.Close('requestDetails');
+  end;
+  SerialiseCodeableConcept('reportName', elem.reportName);
+  SerialiseCodeableConcept('service', elem.service);
+  Text('diagnosticTime',elem.diagnosticTime);
+  if elem.Specimen.Count > 0 then
+  begin
+    FXml.open('specimen');
+    for i := 0 to elem.Specimen.Count - 1 do
+      SerialiseFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
+    FXml.Close('specimen');
+  end;
+  if elem.ResultGroup.Count > 0 then
+  begin
+    FXml.open('resultGroups');
+    for i := 0 to elem.ResultGroup.Count - 1 do
+      SerialiseLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
+    FXml.Close('resultGroups');
+  end;
+  SerialiseNarrative('conclusion', elem.conclusion);
+  if elem.CodedDiagnosis.Count > 0 then
+  begin
+    FXml.open('codedDiagnoses');
+    for i := 0 to elem.CodedDiagnosis.Count - 1 do
+      SerialiseCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
+    FXml.Close('codedDiagnoses');
+  end;
+  if elem.Representation.Count > 0 then
+  begin
+    FXml.open('representations');
+    for i := 0 to elem.Representation.Count - 1 do
+      SerialiseAttachment('representation',elem.Representation[i]);
+    FXml.Close('representations');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLabReport : TLabReport;
+begin
+  result := TLabReport.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'status') then
+        result.status := TLabReportStatus(ParseEnum(CODES_TLabReportStatus))
+      else if (FJson.ItemName = 'issued') then
+        result.issued := XMLDateTimeStringToDateTime(FJson.itemValue)
+      else if (FJson.ItemName = 'patient') then
+        result.patient := ParseFHIRResourceReference{TPatient}
+      else if (FJson.ItemName = 'admission') then
+        result.admission := ParseFHIRResourceReference{TAdmission}
+      else if (FJson.ItemName = 'laboratory') then
+        result.laboratory := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'reportId') then
+        result.reportId := FJson.itemValue
+      else if (FJson.ItemName = 'requestDetails') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RequestDetail.Add(ParseLabReportRequestDetail);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'reportName') then
+        result.reportName := ParseCodeableConcept
+      else if (FJson.ItemName = 'service') then
+        result.service := ParseCodeableConcept
+      else if (FJson.ItemName = 'diagnosticTime') then
+        result.diagnosticTime := FJson.itemValue
+      else if (FJson.ItemName = 'specimen') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Specimen.Add(ParseFHIRResourceReference{TSpecimen});
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'resultGroups') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.ResultGroup.Add(ParseLabReportResultGroup);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'conclusion') then
+        result.conclusion := ParseNarrative
+      else if (FJson.ItemName = 'codedDiagnoses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.CodedDiagnosis.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'representations') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Representation.Add(ParseAttachment);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseLabReport(name : string; elem : TLabReport);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('status',CODES_TLabReportStatus[elem.status]);
+  Prop('issued',DateTimeToXMLDateTimeString(elem.issued));
+  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
+  SerialiseFHIRResourceReference{TAdmission}('admission', elem.admission);
+  SerialiseFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
+  Prop('reportId',elem.reportId);
+  if elem.RequestDetail.Count > 0 then
+  begin
+    FJson.valueObject('requestDetails');
+    for i := 0 to elem.RequestDetail.Count - 1 do
+      SerialiseLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseCodeableConcept('reportName', elem.reportName);
+  SerialiseCodeableConcept('service', elem.service);
+  Prop('diagnosticTime',elem.diagnosticTime);
+  if elem.Specimen.Count > 0 then
+  begin
+    FJson.valueObject('specimen');
+    for i := 0 to elem.Specimen.Count - 1 do
+      SerialiseFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
+    FJson.FinishObject;
+  end;
+  if elem.ResultGroup.Count > 0 then
+  begin
+    FJson.valueObject('resultGroups');
+    for i := 0 to elem.ResultGroup.Count - 1 do
+      SerialiseLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('conclusion', elem.conclusion);
+  if elem.CodedDiagnosis.Count > 0 then
+  begin
+    FJson.valueObject('codedDiagnoses');
+    for i := 0 to elem.CodedDiagnosis.Count - 1 do
+      SerialiseCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Representation.Count > 0 then
+  begin
+    FJson.valueObject('representations');
+    for i := 0 to elem.Representation.Count - 1 do
+      SerialiseAttachment('representation',elem.Representation[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPersonQualification.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseIdentifier(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_date(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePersonQualification(name : string; elem : TPersonQualification);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseIdentifier('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
+  SerialiseInterval_date('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePersonQualification : TPersonQualification;
+begin
+  result := TPersonQualification.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseIdentifier
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_date
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePersonQualification(name : string; elem : TPersonQualification);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseIdentifier('id', elem.id);
+  SerialiseCodeableConcept('code', elem.code);
+  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
+  SerialiseInterval_date('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPersonLanguage.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'use') then
+        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse, child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('code',elem.code);
+  Text('use',CODES_TLanguageUse[elem.use]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePersonLanguage : TPersonLanguage;
+begin
+  result := TPersonLanguage.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'code') then
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'use') then
+        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse))
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('use',CODES_TLanguageUse[elem.use]);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseHumanId(child)
+      else if (child.nodeName = 'role') then
+        result.role := ParseCodeableConcept(child)
+      else if (child.nodeName = 'name') then
+        result.name := ParseHumanName(child)
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('role', elem.role);
+  SerialiseHumanName('name', elem.name);
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePersonRelatedPerson : TPersonRelatedPerson;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseHumanId
+      else if (FJson.ItemName = 'role') then
+        result.role := ParseCodeableConcept
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseHumanName
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  SerialiseHumanId('id', elem.id);
+  SerialiseCodeableConcept('role', elem.role);
+  SerialiseHumanName('name', elem.name);
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePerson(element : IXmlDomElement) : TPerson;
+var
+  child : IXMLDOMElement;
+  item : IXMLDOMElement;
+begin
+  result := TPerson.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'identifiers') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'identifier') Then
+            result.Identifier.Add(ParseHumanId(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'names') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'name') Then
+            result.Name.Add(ParseHumanName(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'addresses') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'address') Then
+            result.Address.Add(ParseAddress(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'contacts') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'contact') Then
+            result.Contact.Add(ParseContact(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'dob') then
+        result.dob := child.text
+      else if (child.nodeName = 'gender') then
+        result.gender := ParseCodeableConcept(child)
+      else if (child.nodeName = 'religion') then
+        result.religion := ParseCodeableConcept(child)
+      else if (child.nodeName = 'qualifications') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'qualification') Then
+            result.Qualification.Add(ParsePersonQualification(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'languages') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'language') Then
+            result.Language.Add(ParsePersonLanguage(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'relatedPeople') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'relatedPerson') Then
+            result.RelatedPerson.Add(ParsePersonRelatedPerson(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlSerialiser.SerialisePerson(name : string; elem : TPerson);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FXml.open('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FXml.Close('identifiers');
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FXml.open('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseHumanName('name',elem.Name[i]);
+    FXml.Close('names');
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FXml.open('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FXml.Close('addresses');
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FXml.open('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FXml.Close('contacts');
+  end;
+  Text('dob',elem.dob);
+  SerialiseCodeableConcept('gender', elem.gender);
+  SerialiseCodeableConcept('religion', elem.religion);
+  if elem.Qualification.Count > 0 then
+  begin
+    FXml.open('qualifications');
+    for i := 0 to elem.Qualification.Count - 1 do
+      SerialisePersonQualification('qualification',elem.Qualification[i]);
+    FXml.Close('qualifications');
+  end;
+  if elem.Language.Count > 0 then
+  begin
+    FXml.open('languages');
+    for i := 0 to elem.Language.Count - 1 do
+      SerialisePersonLanguage('language',elem.Language[i]);
+    FXml.Close('languages');
+  end;
+  if elem.RelatedPerson.Count > 0 then
+  begin
+    FXml.open('relatedPeople');
+    for i := 0 to elem.RelatedPerson.Count - 1 do
+      SerialisePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
+    FXml.Close('relatedPeople');
+  end;
+  SerialiseNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePerson : TPerson;
+begin
+  result := TPerson.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'names') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Name.Add(ParseHumanName);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'dob') then
+        result.dob := FJson.itemValue
+      else if (FJson.ItemName = 'gender') then
+        result.gender := ParseCodeableConcept
+      else if (FJson.ItemName = 'religion') then
+        result.religion := ParseCodeableConcept
+      else if (FJson.ItemName = 'qualifications') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Qualification.Add(ParsePersonQualification);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'languages') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Language.Add(ParsePersonLanguage);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'relatedPeople') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedPerson.Add(ParsePersonRelatedPerson);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonSerialiser.SerialisePerson(name : string; elem : TPerson);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      SerialiseHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FJson.valueObject('names');
+    for i := 0 to elem.Name.Count - 1 do
+      SerialiseHumanName('name',elem.Name[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      SerialiseAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      SerialiseContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  Prop('dob',elem.dob);
+  SerialiseCodeableConcept('gender', elem.gender);
+  SerialiseCodeableConcept('religion', elem.religion);
+  if elem.Qualification.Count > 0 then
+  begin
+    FJson.valueObject('qualifications');
+    for i := 0 to elem.Qualification.Count - 1 do
+      SerialisePersonQualification('qualification',elem.Qualification[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Language.Count > 0 then
+  begin
+    FJson.valueObject('languages');
+    for i := 0 to elem.Language.Count - 1 do
+      SerialisePersonLanguage('language',elem.Language[i]);
+    FJson.FinishObject;
+  end;
+  if elem.RelatedPerson.Count > 0 then
+  begin
+    FJson.valueObject('relatedPeople');
+    for i := 0 to elem.RelatedPerson.Count - 1 do
+      SerialisePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
+    FJson.FinishObject;
+  end;
+  SerialiseNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseResource(element : IXmlDomElement) : TFHIRResource;
+begin
+  if (element = nil) Then
+    Raise Exception.Create('error - element is nil')
+  else if element.NodeName = 'Conformance' Then
+    result := ParseConformance(element)
+  else if element.NodeName = 'Document' Then
+    result := ParseDocument(element)
+  else if element.NodeName = 'Message' Then
+    result := ParseMessage(element)
+  else if element.NodeName = 'MessageConformance' Then
+    result := ParseMessageConformance(element)
+  else if element.NodeName = 'Agent' Then
+    result := ParseAgent(element)
+  else if element.NodeName = 'Animal' Then
+    result := ParseAnimal(element)
+  else if element.NodeName = 'Prescription' Then
+    result := ParsePrescription(element)
+  else if element.NodeName = 'Patient' Then
+    result := ParsePatient(element)
+  else if element.NodeName = 'Organization' Then
+    result := ParseOrganization(element)
+  else if element.NodeName = 'DocumentConformance' Then
+    result := ParseDocumentConformance(element)
+  else if element.NodeName = 'LabReport' Then
+    result := ParseLabReport(element)
+  else if element.NodeName = 'Person' Then
+    result := ParsePerson(element)
+  else
+    raise Exception.create('Error: the element '+element.NodeName+' is not recognised as a valid resource name');
+end;
+
+procedure TFHIRXmlSerialiser.SerialiseResource(resource: TFHIRResource);
+begin
+  if (resource = nil) Then
+    Raise Exception.Create('error - resource is nil');
+  Case resource.ResourceType of
+    frtConformance: SerialiseConformance('Conformance', TConformance(resource));
+    frtDocument: SerialiseDocument('Document', TDocument(resource));
+    frtMessage: SerialiseMessage('Message', TMessage(resource));
+    frtMessageConformance: SerialiseMessageConformance('MessageConformance', TMessageConformance(resource));
+    frtAgent: SerialiseAgent('Agent', TAgent(resource));
+    frtAnimal: SerialiseAnimal('Animal', TAnimal(resource));
+    frtPrescription: SerialisePrescription('Prescription', TPrescription(resource));
+    frtPatient: SerialisePatient('Patient', TPatient(resource));
+    frtOrganization: SerialiseOrganization('Organization', TOrganization(resource));
+    frtDocumentConformance: SerialiseDocumentConformance('DocumentConformance', TDocumentConformance(resource));
+    frtLabReport: SerialiseLabReport('LabReport', TLabReport(resource));
+    frtPerson: SerialisePerson('Person', TPerson(resource));
+  else
+    raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
+  end;
+end;
+
+function TFHIRJsonParser.ParseResource : TFHIRResource;
+begin
+  if FJson.ItemName = 'Conformance' Then
+    result := ParseConformance
+  else if FJson.ItemName = 'Document' Then
+    result := ParseDocument
+  else if FJson.ItemName = 'Message' Then
+    result := ParseMessage
+  else if FJson.ItemName = 'MessageConformance' Then
+    result := ParseMessageConformance
+  else if FJson.ItemName = 'Agent' Then
+    result := ParseAgent
+  else if FJson.ItemName = 'Animal' Then
+    result := ParseAnimal
+  else if FJson.ItemName = 'Prescription' Then
+    result := ParsePrescription
+  else if FJson.ItemName = 'Patient' Then
+    result := ParsePatient
+  else if FJson.ItemName = 'Organization' Then
+    result := ParseOrganization
+  else if FJson.ItemName = 'DocumentConformance' Then
+    result := ParseDocumentConformance
+  else if FJson.ItemName = 'LabReport' Then
+    result := ParseLabReport
+  else if FJson.ItemName = 'Person' Then
+    result := ParsePerson
+  else
+    raise Exception.create('error: the element '+FJson.itemName+' is not a valid resource name');
+end;
+
+procedure TFHIRJsonSerialiser.SerialiseResource(resource: TFHIRResource);
+begin
+  if (resource = nil) Then
+    Raise Exception.Create('error - resource is nil');
+  Case resource.ResourceType of
+    frtConformance: SerialiseConformance('Conformance', TConformance(resource));
+    frtDocument: SerialiseDocument('Document', TDocument(resource));
+    frtMessage: SerialiseMessage('Message', TMessage(resource));
+    frtMessageConformance: SerialiseMessageConformance('MessageConformance', TMessageConformance(resource));
+    frtAgent: SerialiseAgent('Agent', TAgent(resource));
+    frtAnimal: SerialiseAnimal('Animal', TAnimal(resource));
+    frtPrescription: SerialisePrescription('Prescription', TPrescription(resource));
+    frtPatient: SerialisePatient('Patient', TPatient(resource));
+    frtOrganization: SerialiseOrganization('Organization', TOrganization(resource));
+    frtDocumentConformance: SerialiseDocumentConformance('DocumentConformance', TDocumentConformance(resource));
+    frtLabReport: SerialiseLabReport('LabReport', TLabReport(resource));
+    frtPerson: SerialisePerson('Person', TPerson(resource));
+  else
+    raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
+  end;
+end;
+
+
+end.
+

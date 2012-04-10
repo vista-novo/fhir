@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   © HL7 (http://www.hl7.org)
-  Generated on 07:54 Apr 6, 2012 for FHIR v0.01
+  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
   xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" 

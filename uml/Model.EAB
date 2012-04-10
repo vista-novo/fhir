@@ -1,0 +1,9 @@
+<BranchVCSpec>
+	<PkgGUID>{F7C00181-2701-4d3f-8A3F-77C506DD9CC2}</PkgGUID>
+	<XMLPath>ea7\77C506DD9CC2.xml</XMLPath>
+	<Config>
+		<GUID>org.hl7.fhir</GUID>
+		<LocalPath>%org.hl7.fhir%</LocalPath>
+		<Type>2</Type>
+	</Config>
+</BranchVCSpec>

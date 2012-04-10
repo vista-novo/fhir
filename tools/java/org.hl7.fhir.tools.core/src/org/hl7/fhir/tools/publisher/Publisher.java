@@ -11,12 +11,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.hl7.fhir.definitions.generators.implementations.CSharpGenerator;
-import org.hl7.fhir.definitions.generators.implementations.DelphiGenerator;
-import org.hl7.fhir.definitions.generators.implementations.JavaGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
-import org.hl7.fhir.definitions.generators.specification.ECoreOclGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
@@ -24,6 +20,11 @@ import org.hl7.fhir.definitions.model.*;
 import org.hl7.fhir.definitions.parsers.*;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.tools.core.xml.*;
+import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
+import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
+import org.hl7.fhir.tools.publisher.implementations.ECoreOclFormatGenerator;
+import org.hl7.fhir.tools.publisher.implementations.ECoreOclGenerator;
+import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -40,9 +41,8 @@ import org.xml.sax.SAXParseException;
  *   Check that everything we expect to find is found
  *   Load the definitions
  *   Produce the specification
- *     1. java reference implementation
- *     2. c# reference implementation
- *     3. schemas
+ *     1. reference implementations
+ *     2. schemas
  *     4. final specification
  *   Validate the XML
  *   
@@ -50,51 +50,15 @@ import org.xml.sax.SAXParseException;
  *
  */
 public class Publisher implements Logger {
-  public class FolderManager {
-
-    
-    public FolderManager(String root) {
-      super();
-      char sl = File.separatorChar;
-      rootDir = root+sl;
-      srcDir = root+sl+"source"+sl;
-      termDir = srcDir+"terminologies"+sl;
-      dtDir = srcDir+"datatypes"+sl;
-      imgDir = root+sl+"images"+sl;
-      xsdDir = root+sl+"schema"+sl;
-      tmpResDir = xsdDir+"datatypes"+sl;
-      dstDir = root+sl+"publish"+sl;
-      umlDir = root+sl+"uml"+sl;
-      javaDir       =  root+sl+"tools"+sl+"java"+sl+"org.hl7.fhir.tools.core"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
-      javaParserDir =  root+sl+"tools"+sl+"java"+sl+"org.hl7.fhir.tools.core"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
-      cSharpDir      = root+sl+"tools"+sl+"csharp"+sl+"FHIR"+sl+"FHIR"+sl;
-      delphiDir      = root+sl+"tools"+sl+"delphi"+sl;
-    }
-    
-    public String srcDir;
-    public String imgDir;
-    public String xsdDir;
-    public String dstDir;
-    public String javaDir;
-    public String javaParserDir;
-    public String cSharpDir;
-    public String delphiDir;
-    public String umlDir;
-    public String rootDir;
-    public String termDir;
-    public String dtDir;
-    public String tmpResDir;
-    
-  }
+  public String version;
+  public Date genDate;
 
   private FolderManager folders;
 	private IniFile ini;
 
 	private Definitions definitions;
   private SourceParser prsr;
-  public String version;
-  public String genDateFull;
-  public String genDate;
+  private List<PlatformGenerator> referenceImplementations = new ArrayList<PlatformGenerator>();
 
 
 	public static void main(String[] args) throws Exception {
@@ -104,6 +68,8 @@ public class Publisher implements Logger {
 	public void execute(String folder) throws Exception {
 	  log("Publish FHIR in folder "+folder);
 
+	  registerReferencePlatforms();
+	  
 		if (initialize(folder)) {
 	    prsr.parse();
 			validate();
@@ -112,6 +78,13 @@ public class Publisher implements Logger {
 			System.out.println("Finished publishing FHIR");
 		}
 	}
+
+  private void registerReferencePlatforms() {
+    referenceImplementations.add(new DelphiGenerator());
+    referenceImplementations.add(new JavaGenerator());
+    referenceImplementations.add(new CSharpGenerator());
+    referenceImplementations.add(new ECoreOclGenerator());
+  }
 
   private boolean	initialize(String folder) throws Exception {
 	  definitions = new Definitions();
@@ -125,16 +98,14 @@ public class Publisher implements Logger {
 	  if (Utilities.checkFile("required", folders.rootDir, "publish.ini", errors)) {
 	    ini = new IniFile(folders.rootDir+ "publish.ini");
 	    version = ini.getStringProperty("FHIR", "version");
-      genDate = new SimpleDateFormat("EEE, MMM d, yyyy").format(new Date());
-      genDateFull = new SimpleDateFormat("HH:mm MMM d, yyyy").format(new Date());
+      genDate = new Date(); // new SimpleDateFormat("EEE, MMM d, yyyy").format();  full = genDateFull = new SimpleDateFormat("HH:mm MMM d, yyyy").format(new Date());
 	    
 	    prsr = new SourceParser((Logger) this, folder, definitions);
 	    prsr.checkConditions(errors);
 
 	    Utilities.checkFolder(folders.xsdDir, errors);
-	    Utilities.checkFolder(folders.javaDir, errors);
-	    Utilities.checkFolder(folders.javaParserDir, errors);
-	    Utilities.checkFolder(folders.cSharpDir, errors);
+	    for (PlatformGenerator gen : referenceImplementations) 
+	      Utilities.checkFolder(folders.implDir(gen.getName()), errors);
 	    Utilities.checkFolder(folders.umlDir, errors);
 	    Utilities.checkFile("required", folders.srcDir, "fhir-all.xsd", errors);
       Utilities.checkFile("required", folders.srcDir, "header.htm", errors);
@@ -177,17 +148,15 @@ public class Publisher implements Logger {
 	}
 
   private void produceSpecification() throws Exception {
-    log("Produce Delphi Reference Implementation");
-    new DelphiGenerator().generate(definitions, folders.delphiDir, folders.dstDir, version, genDateFull);
-    log("Produce Java Reference Implementation");
-    new JavaGenerator().generate(definitions, folders.javaDir, folders.javaParserDir, folders.tmpResDir, folders.dstDir, version, genDateFull);
-    log("Produce C# Reference Implementation");
-    new CSharpGenerator().generate(definitions, folders.cSharpDir, folders.dstDir, version, genDateFull);
+    for (PlatformGenerator gen : referenceImplementations)
+    {
+      log("Produce "+gen.getName()+" Reference Implementation");
+      gen.generate(definitions, folders.dstDir, folders.implDir(gen.getName()), version, genDate, this);
+    }
     log("Produce Schemas");
-    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, genDateFull); 
-    log("Produce ECore");
-    new ECoreOclGenerator(new FileOutputStream(folders.dstDir+File.separatorChar+"fhir.ecore")).generate(definitions, version, genDateFull); 
     log("Produce Specification");
+    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)); 
+    log("Produce ECore");
     produceSpec(); 
   }
 
@@ -533,8 +502,10 @@ public class Publisher implements Logger {
 				src = s1+"</div>"+s3;
 			else if (com[0].equals("resourcecodes"))
 				src = s1 + genResCodes() + s3;
-			else if (com[0].equals("resimplall"))
-				src = s1 + genResImplList() + s3;
+      else if (com[0].equals("resimplall"))
+        src = s1 + genResImplList() + s3;
+      else if (com[0].equals("impllist"))
+        src = s1 + genReferenceImplList() + s3;
 
 			else 
 				throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
@@ -542,6 +513,22 @@ public class Publisher implements Logger {
 		return src;
 	}
 
+	private String genReferenceImplList() {
+	  StringBuilder s = new StringBuilder();
+	  for (PlatformGenerator gen : referenceImplementations) {
+	    s.append("<li><b><a href=\""+gen.getName()+".zip\">"+gen.getTitle()+"</a></b>: "+Utilities.escapeXml(gen.getDescription())+"</li>\r\n");
+	  }
+    return s.toString();
+  }
+
+  /*
+	 .
+</p>
+<p>
+<b><a href="csharp.zip">C#</a></b>: Resource definitions (+ more todo) 
+</p>
+
+	 */
 
 	private String processPageIncludesForPrinting(String file, String src) throws Exception {
 		while (src.contains("<%"))
@@ -580,7 +567,8 @@ public class Publisher implements Logger {
 				src = s1 + genResCodes() + s3;
 			else if (com[0].equals("resimplall"))
 				src = s1 + genResImplList() + s3;
-
+      else if (com[0].equals("impllist"))
+        src = s1 + genReferenceImplList() + s3;
 			else 
 				throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
 		}

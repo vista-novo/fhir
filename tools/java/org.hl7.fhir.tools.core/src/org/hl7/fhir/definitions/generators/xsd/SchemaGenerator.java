@@ -3,13 +3,10 @@ package org.hl7.fhir.definitions.generators.xsd;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Collection;
-import java.util.Date;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Utilities;
 

@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Ontology1332210692273 "http://www.Accenture.com/ontologies/Ontology1332210692273.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.Accenture.com/ontologies/Ontology1332210692273.owl#"
+     xml:base="http://www.Accenture.com/ontologies/Ontology1332210692273.owl"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:Ontology1332210692273="http://www.Accenture.com/ontologies/Ontology1332210692273.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://www.Accenture.com/ontologies/Ontology1332210692273.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#hasExtension -->
+
+    <owl:ObjectProperty rdf:about="&Ontology1332210692273;hasExtension">
+        <rdfs:label>Extension</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#hasOrganization -->
+
+    <owl:ObjectProperty rdf:about="&Ontology1332210692273;hasOrganization">
+        <rdfs:label>Organization</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#hasPerson -->
+
+    <owl:ObjectProperty rdf:about="&Ontology1332210692273;hasPerson">
+        <rdfs:label>Person</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#hasRole -->
+
+    <owl:ObjectProperty rdf:about="&Ontology1332210692273;hasRole">
+        <rdfs:label>Role</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#isConnectedToAgent -->
+
+    <owl:ObjectProperty rdf:about="&Ontology1332210692273;isConnectedToAgent">
+        <rdfs:label>Related Agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#address -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;address"/>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#contact -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;contact"/>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#id -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;id"/>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#identifier -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;identifier">
+        <rdfs:subPropertyOf rdf:resource="&owl;topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#period -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;period"/>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#text -->
+
+    <owl:DatatypeProperty rdf:about="&Ontology1332210692273;text"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#Agent -->
+
+    <owl:Class rdf:about="&Ontology1332210692273;Agent">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&Ontology1332210692273;hasExtension"/>
+                <owl:onClass rdf:resource="&Ontology1332210692273;Extensions"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&Ontology1332210692273;hasPerson"/>
+                <owl:onClass rdf:resource="&Ontology1332210692273;Person"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&Ontology1332210692273;hasRole"/>
+                <owl:allValuesFrom rdf:resource="&Ontology1332210692273;Role"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&Ontology1332210692273;hasOrganization"/>
+                <owl:onClass rdf:resource="&Ontology1332210692273;Organization"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="aus">A person who represents an organisation, and is authorised to perform actions on it&#39;s behalf.</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">A person who represents an organization, and is authorized to perform actions on it&#39;s behalf.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#Extensions -->
+
+    <owl:Class rdf:about="&Ontology1332210692273;Extensions">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#Organization -->
+
+    <owl:Class rdf:about="&Ontology1332210692273;Organization">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:isDefinedBy xml:lang="en">The organisation that is being represented</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#Person -->
+
+    <owl:Class rdf:about="&Ontology1332210692273;Person">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:isDefinedBy xml:lang="en">The person who acts as the agent</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.Accenture.com/ontologies/Ontology1332210692273.owl#Role -->
+
+    <owl:Class rdf:about="&Ontology1332210692273;Role">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:isDefinedBy xml:lang="aus">The way in which the person represents the organisation - what role do they have?</rdfs:isDefinedBy>
+        <rdfs:isDefinedBy xml:lang="en">The way in which the person represents the organization - what role do they have?</rdfs:isDefinedBy>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+

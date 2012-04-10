@@ -4,10 +4,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.hl7.fhir.definitions.model.*;
-import org.hl7.fhir.definitions.parsers.TypeParser;
+import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.DefinedStringPattern;
+import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.PrimitiveType;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XSDBaseGenerator extends OutputStreamWriter {
