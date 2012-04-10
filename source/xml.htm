@@ -158,39 +158,58 @@ narrative and the structured data. Each mapping has narrative id, and structured
 found in the narrative and the structured data respectively, and a flag for whether the text was generated from the 
 data, or the data was generated from the text (by some form of retrospective processing, whether human or computer), 
 or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason
-of "astext"; this means that the value of the text could not be properly represented in the data type. Any data type,
-or any repeating element inside a data type, may carry an id attribute to serve as the target of a narrative map. When using xml:id attributes, 
+of "astext"; this means that the value of the text could not be properly represented in the data type. Any element defined as part of the resource content,
+or any repeating element inside a data type, may carry an id attribute to serve as the target of a narrative mapping. When using xml:id attributes, 
 <a href="implementation.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind.
 </p>
 <p>
 The narrative is an xhtml fragment that also includes images if appropriate:
 </p>
 <pre>
-  &lt;<b>narrative</b> <font color="red">mand</font>&gt;
-    &lt;<b>status</b> <font color="red">cond</font> <font color="darkgreen">type="code"</font>&gt;generated | extensions | additional&lt;/plain&gt;
-    &lt;<b>xhtml:html</b> <font color="red">mand</font> <font color="darkgreen">type="xhtml"</font>&gt;limited xhtml content&lt;/xhtml:html&gt;
-    &lt;<b>image<b> xml:id="[id]" <font color="darkgreen">type="list"</font>&gt;  &lt;!-- Zero+ --&gt;
-      &lt;<b>mimeType</b> <font color="red">mand</font> type=&quot;code&quot;&gt;mime type of image&lt;/mimeType&gt;
-      &lt;<b>content</b> <font color="red">mand</font> type=&quot;base64Binary&quot;&gt;base64 image data&lt;/data&gt;
-    &lt;/image&gt;
-    &lt;<b>map</b> <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-      &lt;<b>text</b> <font color="red">mand</font> <font color="darkgreen">type="id"</font>&gt;Narrative source (xml:id)&lt;/text&gt;
-      &lt;<b>data</b> <font color="red">mand</font> <font color="darkgreen">type="id"</font>&gt;Data source (xml:id)&lt;/data&gt;
-      &lt;<b>source</b> <font color="red">mand</font> <font color="darkgreen">type="code"</font>&gt;text | data&lt;/source&gt;
-    &lt;/map&gt; 
-  &lt;/narrative&gt;
+&lt;<b>x</b></a> xmlns="http://www.hl7.org/fhir"&gt;
+  &lt;<b>status</b></a>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">generated | extensions | additional</font>&lt;/status&gt;
+  &lt;<b>html</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">xhtml</font> <font color="navy">limited xhtml content</font>&lt;/html&gt;
+  &lt;images <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+   &lt;<b>image</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
+    &lt;<b>mimeType</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">mime type of image</font>&lt;/mimeType&gt;
+    &lt;<b>content</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">base64 image data</font>&lt;/content&gt;
+   &lt;/image&gt;
+  &lt;/images&gt;
+  &lt;maps <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+   &lt;<b>map</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
+    &lt;<b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Narrative source (xml:id)</font>&lt;/text&gt;
+    &lt;<b>data</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Data source (xml:id)</font>&lt;/data&gt;
+    &lt;<b>source</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">text | data</font>&lt;/source&gt;
+   &lt;/map&gt;
+  &lt;/maps&gt;
+&lt;/x&gt;
 </pre>
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Narrative.status is  bound to the concept domain <i>NarrativeStatus</i>: "The status of a resource narrative". Possible values:
+    <table class="codes">
+    <tr><td>generated</td><td colspan="2">The contents of the narrative are entirely generated from the structured data in the resource.</td></tr>    <tr><td>extensions</td><td colspan="2">The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions</td></tr>    <tr><td>additional</td><td colspan="2">The contents of the narrative contain additional information not found in the structured data</td></tr>    </table>
+  </li>
+  <li>Narrative.image.mimeType is  bound to the concept domain <i>MediaType</i>: "The mime type of an attachment". The possible values are those specified in <a href="http://www.rfc-editor.org/bcp/bcp13.txt" target="_blank">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</a></li>
+  <li>Narrative.map.source is  bound to the concept domain <i>NarrativeMapSource</i>: "Which is the source in a Narrative &lt;-> Data mapping". Possible values:
+    <table class="codes">
+    <tr><td>text</td><td colspan="2">The text is the original data</td></tr>    <tr><td>data</td><td colspan="2">The data is the original data</td></tr>    </table>
+  </li>
+</ul>
+
 <p>
 The status is required when the narrative is the full resource narrative, but not required in resource references (see below).
 </p>
 <p>
-The contents of the <i>html</i> 
+The contents of the <i>xhtml</i> 
 element are an XHTML fragment containing only the basic html formatting elements described in 
-chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
+chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
 images, and internally contained stylesheets. The XHTML content may not contain
-a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes,
-and objects. Technically, the content of the text element is a union of the XHTML Schema types "block", "inline" and "misc", with
-the additional rules applied.
+a head, a body element, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes,
+and objects. Technically, the content of the text element is a union of the XHTML Schema types "block", and "inline", with
+the additional rules above applied.
 </p>
 <div class="example">
 <pre>
@@ -225,10 +244,12 @@ directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</
        &lt;img src=&quot;fhir:#a1/&gt;.
      &lt;/p&gt;
    &lt;/html&gt;
-   &lt;image id=&quot;a1&quot;&gt;
-     &lt;mimeType&gt;image/png&lt;/mimeType&gt;
-     &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
-   &lt;/image&gt;
+   &lt;images&gt;
+     &lt;image id=&quot;a1&quot;&gt;
+       &lt;mimeType&gt;image/png&lt;/mimeType&gt;
+       &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
+     &lt;/image&gt;
+   &lt;/images&gt;
   &lt;narrative&gt;
 </pre>
 </div>
