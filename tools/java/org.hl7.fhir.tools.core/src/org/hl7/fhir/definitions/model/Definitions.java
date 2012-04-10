@@ -1,6 +1,9 @@
 package org.hl7.fhir.definitions.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This class is the root to all the definitions in FHIR. There are the

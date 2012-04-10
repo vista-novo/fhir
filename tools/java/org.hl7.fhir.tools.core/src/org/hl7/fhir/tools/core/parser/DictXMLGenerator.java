@@ -4,9 +4,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
 
-import org.hl7.fhir.tools.core.model.*;
+import org.hl7.fhir.tools.core.model.BindingType;
+import org.hl7.fhir.tools.core.model.ConceptDomain;
+import org.hl7.fhir.tools.core.model.Conformance;
+import org.hl7.fhir.tools.core.model.DefinedCode;
+import org.hl7.fhir.tools.core.model.ElementDefn;
+import org.hl7.fhir.tools.core.model.TypeDefn;
 import org.hl7.fhir.tools.core.utilities.Utilities;
 
 public class DictXMLGenerator  extends OutputStreamWriter {

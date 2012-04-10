@@ -1,6 +1,7 @@
 package org.hl7.fhir.tools.core.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ElementDefn {
 	private List<TypeDefn> types = new ArrayList<TypeDefn>();

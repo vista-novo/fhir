@@ -1,7 +1,10 @@
 package org.hl7.fhir.tools.core.parser;
 
-import java.io.*;
-import java.util.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class JavaParserFactoryGenerator extends OutputStreamWriter {

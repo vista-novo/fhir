@@ -1,8 +1,11 @@
 package org.hl7.fhir.definitions.generators.specification;
 
-import java.io.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 
-import org.hl7.fhir.definitions.model.*;
+import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {

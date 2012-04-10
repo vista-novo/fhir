@@ -1,7 +1,10 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
-import java.io.*;
-import java.util.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class JavaFactoryGenerator extends OutputStreamWriter {
@@ -39,7 +42,11 @@ public class JavaFactoryGenerator extends OutputStreamWriter {
     write("    public static Element createType(String name) throws Exception {\r\n");
     for (String name : types.keySet()) {
       write("        if (\""+name+"\".equals(name))\r\n");
-      write("            return new "+types.get(name)+"();\r\n");
+      String t = types.get(name);
+      if (t.contains("<"))
+        write("            return new "+t+"(\""+t.substring(t.indexOf('<')+1).replace(">", "")+"\");\r\n");
+      else
+        write("            return new "+t+"();\r\n");
     }    
     write("        else\r\n");
     write("            throw new Exception(\"Unknown Type Name '\"+name+\"'\");\r\n");

@@ -1,11 +1,17 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
-import java.io.*;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.hl7.fhir.definitions.model.*;
-import org.hl7.fhir.instance.model.Ordered;
+import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JavaResourceGenerator extends JavaBaseGenerator {
@@ -39,10 +45,13 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		
 		write("package org.hl7.fhir.instance.model;\r\n");
 		write("\r\n");
-    write("// © HL7 (http://www.hl7.org)  Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
+    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
     write("\r\n");
-		if (hasList(root)) {
-			write("import java.util.*;\r\n");
+		if (hasList(root) || hasXhtml(root)) {
+		  if (hasList(root))
+		    write("import java.util.*;\r\n");
+		  if (hasXhtml(root))
+		    write("import org.hl7.fhir.instance.xhtml.XhtmlNode;\r\n");
 			write("\r\n");
 		}
 		
@@ -55,9 +64,19 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
       write("public class "+upFirst(root.getName())+" extends Element {\r\n");
     else if (clss == JavaGenClass.Constraint)
       write("public class "+upFirst(cd.getCode())+" extends "+upFirst(root.getName())+" {\r\n");
-    else  if (root.typeCode().equals("GenericType"))
+    else  if (root.typeCode().equals("GenericType")) {
       write("public class "+upFirst(root.getName())+"<T extends Ordered> extends Type {\r\n");
-    else if (root.getName().equals("Quantity"))
+      write("  private String type;\r\n");
+      write("  public String getType() {\r\n");
+      write("    return type;\r\n");
+      write("  };\r\n");
+      write("\r\n");
+      write("  public Interval(String type) {\r\n");
+      write("    super();\r\n");
+      write("    this.type = type;\r\n");
+      write("  };\r\n");
+      write("  \r\n");
+    } else if (root.getName().equals("Quantity"))
       write("public class "+upFirst(root.getName())+" extends Ordered {\r\n");
     else
       write("public class "+upFirst(root.getName())+" extends Type {\r\n");
@@ -144,6 +163,14 @@ private String upFirst(String name) {
 		return false;
 	}
 
+  private boolean hasXhtml(ElementDefn root) {
+    for (ElementDefn e : root.getElements()) {
+      if (e.typeCode().equals("xhtml") || hasXhtmlInner(e))
+        return true;
+    }
+    return false;
+  }
+
 	private boolean hasListInner(ElementDefn e) {
 		for (ElementDefn c : e.getElements()) {
 			if (c.unbounded() || hasListInner(c))
@@ -152,6 +179,15 @@ private String upFirst(String name) {
 
 		return false;
 	}
+
+  private boolean hasXhtmlInner(ElementDefn e) {
+    for (ElementDefn c : e.getElements()) {
+      if (c.typeCode().equals("xhtml") || hasXhtmlInner(c))
+        return true;
+    }
+
+    return false;
+  }
 
 	private void generateEnum(ElementDefn e, Map<String, ConceptDomain> conceptDomains) throws Exception {
 		String tn = typeNames.get(e);
@@ -182,7 +218,7 @@ private String upFirst(String name) {
 		}
 		
 		
-        write("        public static "+tn+" fromCode(String code) throws Exception {\r\n");
+    write("        public static "+tn+" fromCode(String code) throws Exception {\r\n");
 		write("            if (code == null || \"\".equals(code))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getCodes()) {
@@ -204,6 +240,28 @@ private String upFirst(String name) {
 		}		
 		write("        throw new Exception(\"Unknown "+tn+" code '\"+code+\"'\");\r\n");
 		write("        }\r\n");	
+
+    write("        public String toCode() {\r\n");
+    write("          switch (this) {\r\n");
+    for (DefinedCode c : cd.getCodes()) {
+      String cc = c.getCode();
+      if (Utilities.isJavaReservedWord(cc))
+        cc = cc + "_";
+      if (cc.equals("<"))
+        cc = "lessThan";
+      else if (cc.equals("<="))
+        cc = "lessOrEqual";
+      else if (cc.equals(">"))
+        cc = "greaterThan";
+      else if (cc.equals(">="))
+        cc = "greaterOrEqual";
+      else
+        cc = cc.replace("-", "Minus").replace("+", "Plus");
+      write("            case "+cc+": return \""+c.getCode()+"\";\r\n");
+    }   
+    write("            default: return \"?\";\r\n");
+    write("          }\r\n"); 
+    write("        }\r\n"); 
 
 		write("    }\r\n");
 		write("\r\n");
@@ -265,7 +323,7 @@ private String upFirst(String name) {
 				else if (tn.equalsIgnoreCase("xml:ID"))
 				  tn ="String";
 				else if (tn.equalsIgnoreCase("Xhtml")) 
-				  tn = "char[]";
+				  tn = "XhtmlNode";
 				else if (tn.equalsIgnoreCase("*"))
           tn ="Type";
 				

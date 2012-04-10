@@ -87,45 +87,11 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
     
     JavaParserXmlGenerator jParserGen = new JavaParserXmlGenerator(new FileOutputStream(javaParserDir+"XmlParser.java"));
-    jParserGen.generate(definitions, version, genDate);
-    
-    // scratch directory from here on, to help with maintaining the reference model (these parts are maintained by hand) 
-//    for (String n : ini.getPropertyNames("patterns")) { 
-//      TypeDefn t = new TypeParser().parse(n).get(0);
-//      ElementDefn el = definitions.getDefinedResources().get(t.getName());
-//
-//      JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(tmpResDir+t.getName()+".java"));
-//      jgen.generate(el, definitions.getConceptDomains());
-//      JavaParserGenerator jpgen = new JavaParserGenerator(new FileOutputStream(tmpResDir+t.getName()+"Parser.java"));
-//      jpgen.setTypeNames(jgen.getTypeNames());
-//      jpgen.generate(el, definitions.getConceptDomains());
-//    }
-//    for (String n : ini.getPropertyNames("types")) { 
-//      TypeDefn t = new TypeParser().parse(n).get(0);
-//      ElementDefn el = definitions.getDefinedResources().get(t.getName());
-//      if (el != null) {
-//        JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(tmpResDir+t.getName()+".java"));
-//        jgen.generate(el, definitions.getConceptDomains());
-//        JavaParserGenerator jpgen = new JavaParserGenerator(new FileOutputStream(tmpResDir+t.getName()+"Parser.java"));
-//        jpgen.setTypeNames(jgen.getTypeNames());
-//        jpgen.generate(el, definitions.getConceptDomains());
-//      } 
-//    }
-//    for (String n : ini.getPropertyNames("datatypes")) {
-//      TypeDefn t = new TypeParser().parse(n).get(0);
-//      ElementDefn el = definitions.getDefinedResources().get(t.getName());
-//      if (el != null) {
-//        JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(tmpResDir+t.getName()+".java"));
-//        jgen.generate(el, definitions.getConceptDomains());
-//        JavaParserGenerator jpgen = new JavaParserGenerator(new FileOutputStream(tmpResDir+t.getName()+"Parser.java"));
-//        jpgen.setTypeNames(jgen.getTypeNames());
-//        jpgen.generate(el, definitions.getConceptDomains());
-//      } 
-//    }
-    
+    jParserGen.generate(definitions, version, genDate);    
+    JavaComposerXmlGenerator jComposerGen = new JavaComposerXmlGenerator(new FileOutputStream(javaParserDir+"XmlComposer.java"));
+    jComposerGen.generate(definitions, version, genDate);    
     jFactoryGen.generate();
-//    jParserFactoryGen.generate();
-    zipFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl, new String[] {"model", "formats"}, destDir+"java.zip");      
+    zipFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl, new String[] {"model", "formats", "xhtml"}, destDir+"java.zip");      
   }
 
   private String getTitle(String n) {

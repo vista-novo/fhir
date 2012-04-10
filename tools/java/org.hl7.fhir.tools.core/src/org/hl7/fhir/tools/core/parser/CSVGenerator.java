@@ -5,7 +5,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
-import org.hl7.fhir.tools.core.model.*;
+import org.hl7.fhir.tools.core.model.ElementDefn;
+import org.hl7.fhir.tools.core.model.TypeDefn;
 
 public class CSVGenerator extends OutputStreamWriter {
 

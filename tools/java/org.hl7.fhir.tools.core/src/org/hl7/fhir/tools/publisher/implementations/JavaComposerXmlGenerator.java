@@ -18,7 +18,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
-public class JavaParserXmlGenerator extends OutputStreamWriter {
+public class JavaComposerXmlGenerator extends OutputStreamWriter {
   public enum JavaGenClass { Structure, Type, Resource, Constraint }
 
   private Definitions definitions;
@@ -36,7 +36,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private StringBuilder regn = new StringBuilder();
   private String genparam;
   
-  public JavaParserXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
+  public JavaComposerXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
     super(out, "UTF-8");
   }
 
@@ -56,45 +56,47 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         for (TypeDefn td : definitions.getKnownTypes()) {
           if (td.getName().equals(n.getName()) && td.hasParams()) {
             for (String pt : td.getParams()) {
-              genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt);
-              regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"_"+upFirst(pt)+"\"))\r\n      return parse"+n.getName()+"_"+upFirst(pt)+"(xpp);\r\n");
-              regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"_"+upFirst(pt)+"\"))\r\n      return true;\r\n");
+              genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt, false);
+              regt.append("    else if (type instanceof "+n.getName()+" && (("+n.getName()+"<Ordered>) type).getType().equals(\""+upFirst(pt)+"\"))\r\n");
+              regt.append("      compose"+n.getName()+"_"+upFirst(pt)+"(prefix+\""+n.getName()+"_"+upFirst(pt)+"\", ("+n.getName()+"<"+upFirst(pt)+">) type);\r\n");
+//              regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"_"+upFirst(pt)+"\"))\r\n      return true;\r\n");
             }
           }
         }
       } else {
         generate(n, true, false, false);
-        regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+        regt.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+//        regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
       }
     }
 
     for (DefinedCode n : definitions.getConstraints().values()) {
       generateConstraint(n, true, false, false);
-      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return parse"+n.getCode()+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
+      regt.append("    else if (type instanceof "+n.getCode()+")\r\n       compose"+n.getCode()+"(prefix+\""+n.getCode()+"\", ("+n.getCode()+") type);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getCode()+"\"))\r\n      return true;\r\n");
     }
     for (ElementDefn n : definitions.getStructures().values()) {
       generate(n, true, false, false);
-      regt.append("    else if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+      regt.append("    else if (type instanceof "+n.getName()+")\r\n       compose"+n.getName()+"(prefix+\""+n.getName()+"\", ("+n.getName()+") type);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
     for (ElementDefn n : definitions.getResources().values()) {
       generate(n, false, true, true);
-      reg.append("    else if (xpp.getName().equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
+      reg.append("    else if (resource instanceof "+n.getName()+")\r\n      compose"+n.getName()+"(\""+n.getName()+"\", ("+n.getName()+")resource);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
     for (DefinedCode cd : definitions.getPrimitives().values()) {
       String n = upFirst(cd.getCode());
       String t = n;
-      if (n.equals("String"))
+      if (n.equals("String")) 
         t = "String_";
-      if (n.equals("Uri"))
-        t = "URI";
-      regt.append("    else if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return parse"+t+"(xpp);\r\n");
-      regn.append("    if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return true;\r\n");
+      
+//      if (n.equals("Uri"))
+//        t = "Uri";
+      regt.append("    else if (type instanceof "+t+")\r\n       compose"+t+"(prefix+\""+n+"\", ("+t+") type);\r\n");
+//      regn.append("    if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return true;\r\n");
     }
     
     finish();
@@ -111,14 +113,15 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
     write("\r\n");
     write("import org.hl7.fhir.instance.model.*;\r\n");
-    write("import org.xmlpull.v1.*;\r\n");
+    write("import org.hl7.fhir.instance.model.Integer;\r\n");
+    write("import org.hl7.fhir.instance.model.Boolean;\r\n");
   //  write("import java.util.*;\r\n");
     write("\r\n");
-    write("public class XmlParser extends XmlParserBase {\r\n");
+    write("public class XmlComposer extends XmlComposerBase {\r\n");
     write("\r\n");
   }
 
-  private void genGeneric(ElementDefn n, String tn, String pt) throws Exception {
+  private void genGeneric(ElementDefn n, String tn, String pt, boolean listsAreWrapped) throws Exception {
     typeNames.clear();
     typeNameStrings.clear();
     enums.clear();
@@ -132,10 +135,10 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
 //    write("  protected "+tn+" parse"+tn.replace("<", "_").replace(">", "")+"(XmlPullParser xpp) throws Exception {\r\n");
     context = n.getName();
 
-    genInner(n, true, false, false);
+    genInner(n, true, false, listsAreWrapped);
     
     for (ElementDefn e : strucs) {
-      genInner(e, true, false, false);
+      genInner(e, true, false, listsAreWrapped);
     }
 
   }
@@ -185,36 +188,18 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
 
   private void genInner(ElementDefn n, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws IOException, Exception {
     String tn = typeNames.containsKey(n) ? typeNames.get(n) : n.getName();
-    boolean bUseOwner = false;
     
-    String pn = tn.contains("<") ? "\""+tn.substring(tn.indexOf('<')+1).replace(">", "") + "\"" : "";
-    
-    if (tn.contains(".")) {
-      write("  private "+tn+" parse"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(XmlPullParser xpp, "+pathClass(tn)+" owner) throws Exception {\r\n");
-      write("    "+tn+" res = owner.new "+pathNode(tn)+"("+pn+");\r\n");
-      bUseOwner = true;
-    } else {
-      write("  private "+tn+" parse"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(XmlPullParser xpp) throws Exception {\r\n");
-      write("    "+tn+" res = new "+tn+"("+pn+");\r\n");
-    }
+    write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
+    write("    if (element != null) {\r\n");
     if (hasDataAbsentReason && !tn.contains("."))
-      write("    parseTypeAttributes(xpp, res);\r\n");
+      write("      composeTypeAttributes(element);\r\n");
     else
-      write("    parseElementAttributes(xpp, res);\r\n");
-    write("    int eventType = nextNoWhitespace(xpp);\r\n");
-    write("    while (eventType != XmlPullParser.END_TAG) {\r\n");
-    boolean first = true;
-    for (ElementDefn e : n.getElements()) {
-//      if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text"))) {
-        genElement(n, e, first, contentsHaveDataAbsentReason, bUseOwner, listsAreWrapped);
-        first = false;
-      //}
-    }
-    write("      } else\r\n");
-    write("        unknownContent(xpp);\r\n");
-    write("      eventType = nextNoWhitespace(xpp);\r\n");
-    write("    }\r\n");
-    write("    return res;\r\n");
+      write("      composeElementAttributes(element);\r\n");
+    write("      xml.open(FHIR_NS, name);\r\n");
+    for (ElementDefn e : n.getElements()) 
+      genElement(n, e, contentsHaveDataAbsentReason, listsAreWrapped);
+    write("      xml.close(FHIR_NS, name);\r\n");
+    write("    }\r\n");    
     write("  }\r\n\r\n");    
   }
 
@@ -226,69 +211,67 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     return tn.substring(tn.indexOf('.')+1);
   }
 
-  private void genElement(ElementDefn root, ElementDefn e, boolean first, boolean contentsHaveDataAbsentReason, boolean bUseOwner, boolean listsAreWrapped) throws Exception {
+  private void genElement(ElementDefn root, ElementDefn e, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws Exception {
     String name = e.getName();
     if (name.endsWith("[x]") || name.equals("[type]")) {
       String en = name.endsWith("[x]") ? name.replace("[x]", "") : "value";
       String pfx = name.endsWith("[x]") ? name.replace("[x]", "") : "";
-      write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && nameIsTypeName(xpp, \""+pfx+"\")) {\r\n");
-      write("        res.set"+upFirst(en)+"(parseType(\""+en+"\", xpp));\r\n");
+      write("      composeType(\""+pfx+"\", element.get"+upFirst(en)+"());\r\n");
     } else {
-      String prsr = null;
+      String comp = null;
+      String en = null;
       ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
+      String tn = typeName(root, e, !contentsHaveDataAbsentReason, false);
       if (e.typeCode().equals("code") && cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-        String en = typeNames.get(e); // getCodeListType(cd.getBinding());
-        prsr = en+".fromCode(parseString(xpp))";
+        en = typeNames.get(e); // getCodeListType(cd.getBinding());
+        comp = null;
       } else {   
-        String tn = typeName(root, e, !contentsHaveDataAbsentReason, false).replace(".", "");
         if (name.equals("extensions")) {
           name = "extension";
           tn = "Extension";
         }
         if (tn.equals("char[]"))
           tn = "xhtml";
-        if (tn.contains("Resource<"))
-          prsr = "parseResourceReference(xpp)";
-        else if (tn.contains("<"))
-          prsr = "parse"+PrepGenericName(tn)+"(xpp)";
+        else if (tn.equals("code")) {
+          tn = "Code";
+          comp = "composeCode";
+        }
+        if (tn.contains("Resource<")) {
+          comp = "composeResourceReference";
+          tn = "ResourceReference";
+        } else if (tn.contains("<"))
+          comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
-          if (bUseOwner)
-            prsr = "parse"+upFirst(tn)+"(xpp, owner)";
-          else
-            prsr = "parse"+upFirst(tn)+"(xpp, res)";
+          comp = "compose"+upFirst(tn).replace(".", "");
         } else
-          prsr = "parse"+upFirst(tn)+"(xpp)";
+          comp = "compose"+upFirst(tn).replace(".", "");
       }
       
       if (name.equals("extension")) {
-        write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extensions\")) {\r\n");
-        write("        eventType = nextNoWhitespace(xpp);\r\n");
-        write("        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) {\r\n");
-        if (contentsHaveDataAbsentReason) 
-          write("          res.getExtensions().add(parseExtension(xpp));\r\n");
-        else
-          write("          res.getExtension().add(parseExtension(xpp));\r\n");
-        write("          eventType = nextNoWhitespace(xpp);\r\n");
-        write("        }\r\n");
-        write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralize(name)+"\"))\r\n");
-        write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
+        String s = contentsHaveDataAbsentReason ? "Extensions" : "Extension"; 
+        write("      if (element.get"+s+"().size() > 0) {\r\n");
+        write("        xml.open(FHIR_NS, \"extensions\");\r\n");
+        write("        for (Extension e : element.get"+s+"()) \r\n");
+        write("          composeExtension(\"extension\", e);\r\n");
+        write("        xml.close(FHIR_NS, \"extensions\");\r\n");
+        write("      }\r\n");
       } else if (e.unbounded()) {
         if (listsAreWrapped) {          
-          write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+Utilities.pluralize(name)+"\")) {\r\n");
-          write("        eventType = nextNoWhitespace(xpp);\r\n");
-          write("        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
-          write("          res.get"+upFirst(name)+"().add("+prsr+");\r\n");
-          write("          eventType = nextNoWhitespace(xpp);\r\n");
-          write("        }\r\n");
-          write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralize(name)+"\"))\r\n");
-          write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
+          write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
+          write("        xml.open(FHIR_NS, \""+Utilities.pluralize(name)+"\");\r\n");
+          write("        for ("+tn+" e : element.get"+upFirst(name)+"()) \r\n");
+          write("          "+comp+"(\""+name+"\", e);\r\n");
+          write("        xml.close(FHIR_NS, \""+Utilities.pluralize(name)+"\");\r\n");
+          write("      }\r\n");
         } else {
-          write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
-          write("        res.get"+upFirst(name)+"().add("+prsr+");\r\n");
+          write("      for ("+tn+" e : element.get"+upFirst(name)+"()) \r\n");
+          write("        "+comp+"(\""+name+"\", e);\r\n");
         }
+      } else if (en != null) {
+        write("      if (element.get"+upFirst(name)+"() != null)\r\n");
+        write("        composeString(\""+name+"\", element.get"+upFirst(name)+"().toCode());\r\n");        
       } else {
-        write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
-        write("        res.set"+upFirst(name)+"("+prsr+");\r\n");
+        write("      "+comp+"(\""+name+"\", element.get"+upFirst(name)+"());\r\n");
       }
     }
   }
@@ -331,20 +314,25 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   
   private void finish() throws Exception {
     write("  @Override\r\n");
-    write("  protected Resource parseResource(XmlPullParser xpp) throws Exception {\r\n");
+    write("  protected void composeResource(Resource resource) throws Exception {\r\n");
     write("    "+reg.toString().substring(9));
-    write("    return null;\r\n");
+    write("    else\r\n");
+    write("      throw new Exception(\"Unhanded resource type\");\r\n");
     write("  }\r\n\r\n");
-    write("  protected Type parseType(String prefix, XmlPullParser xpp) throws Exception {\r\n");
-    write("    "+regt.toString().substring(9));
-    write("    throw new Exception(\"Unknown type \"+xpp.getName());\r\n");
+    write("  @SuppressWarnings(\"unchecked\")\r\n");
+    write("  protected void composeType(String prefix, Type type) throws Exception {\r\n");
+    write("    if (type == null)\r\n");
+    write("      ;\r\n");
+    write(regt.toString());
+    write("    else\r\n");
+    write("      throw new Exception(\"Unhanded type\");\r\n");
     write("  }\r\n\r\n");
-
-    write("  private boolean nameIsTypeName(XmlPullParser xpp, String prefix) {\r\n");
-    write("    "+regn.toString());
-    write("    return false;\r\n");
-    write("  }\r\n");
-    
+//
+//    write("  private boolean nameIsTypeName(XmlPullParser xpp, String prefix) {\r\n");
+//    write("    "+regn.toString());
+//    write("    return false;\r\n");
+//    write("  }\r\n");
+//    
     
     write("}\r\n");
     write("\r\n");
@@ -393,6 +381,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           tn ="Type";
         else if (tn.equals("string"))
           tn = "String_";
+        if (tn.contains("<"))
+          tn = tn.substring(0, tn.indexOf('<')+1)+tn.substring(tn.indexOf('<')+1, tn.indexOf('<')+2).toUpperCase()+tn.substring(tn.indexOf('<')+2);
         typeNames.put(e,  tn);
       } else {
         if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {

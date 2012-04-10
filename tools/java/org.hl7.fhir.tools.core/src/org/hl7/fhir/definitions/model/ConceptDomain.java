@@ -1,6 +1,7 @@
 package org.hl7.fhir.definitions.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A concept domain - a use of terminology in FHIR.

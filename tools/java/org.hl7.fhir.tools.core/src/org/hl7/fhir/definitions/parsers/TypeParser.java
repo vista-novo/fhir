@@ -1,6 +1,7 @@
 package org.hl7.fhir.definitions.parsers;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hl7.fhir.definitions.model.TypeDefn;
 

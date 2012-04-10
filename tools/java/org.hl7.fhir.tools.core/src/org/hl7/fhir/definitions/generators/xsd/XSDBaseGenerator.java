@@ -193,10 +193,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
         generateAny(elem, e);
-    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
-    generateElement(elem, e, null);
-  else
-    generateWrapperElement(elem, e);
+      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+        generateElement(elem, e, null);
+      else
+        generateWrapperElement(elem, e);
     }
     write("    </xs:sequence>\r\n");
     write("  </xs:complexType>\r\n");
@@ -477,7 +477,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
 			else if ("html".equals(e.getName()))
-        write("<xs:element ref=\"xhtml:xhtml\" ");
+        write("<xs:element ref=\"xhtml:html\" ");
 			else if (types.size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
 				throw new Exception("not implemented");
 			else if (types.size() == 0 && e.getElements().size() > 0)

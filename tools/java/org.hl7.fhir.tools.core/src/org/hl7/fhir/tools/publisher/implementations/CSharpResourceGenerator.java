@@ -1,9 +1,17 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
-import java.io.*;
-import java.util.*;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.hl7.fhir.definitions.model.*;
+import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 public class CSharpResourceGenerator extends OutputStreamWriter {

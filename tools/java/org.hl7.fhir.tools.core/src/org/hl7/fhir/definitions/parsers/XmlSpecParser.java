@@ -1,6 +1,7 @@
 package org.hl7.fhir.definitions.parsers;
 
-import java.io.*;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class XmlSpecParser extends InputStreamReader {
 	

@@ -7,10 +7,6 @@ import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.model.ConceptDomain.BindingType;
-import org.hl7.fhir.definitions.model.ElementDefn.BindingStrength;
-import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
-import org.hl7.fhir.definitions.parsers.TypeParser;
 
 public class ModelValidator {
 

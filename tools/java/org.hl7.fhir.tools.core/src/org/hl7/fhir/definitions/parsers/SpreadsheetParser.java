@@ -1,8 +1,9 @@
 package org.hl7.fhir.definitions.parsers;
 
 import java.io.InputStream;
+
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.parsers.XLSXmlParser.*;
+import org.hl7.fhir.definitions.parsers.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.Utilities;
 
 

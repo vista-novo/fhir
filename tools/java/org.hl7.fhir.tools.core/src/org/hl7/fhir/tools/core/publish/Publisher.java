@@ -1,9 +1,19 @@
 package org.hl7.fhir.tools.core.publish;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.channels.FileChannel;
-import java.util.*;
-import java.util.zip.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -12,10 +22,30 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.hl7.fhir.tools.core.model.*;
-import org.hl7.fhir.tools.core.parser.*;
+import org.hl7.fhir.tools.core.model.BindingType;
+import org.hl7.fhir.tools.core.model.ConceptDomain;
+import org.hl7.fhir.tools.core.model.DefinedCode;
+import org.hl7.fhir.tools.core.model.ElementDefn;
+import org.hl7.fhir.tools.core.model.ModelValidator;
+import org.hl7.fhir.tools.core.model.TypeDefn;
+import org.hl7.fhir.tools.core.parser.CSVParser;
+import org.hl7.fhir.tools.core.parser.CSharpResourceGenerator;
+import org.hl7.fhir.tools.core.parser.CodeListParser;
+import org.hl7.fhir.tools.core.parser.ConceptDomainsParser;
+import org.hl7.fhir.tools.core.parser.DictHTMLGenerator;
+import org.hl7.fhir.tools.core.parser.DictXMLGenerator;
+import org.hl7.fhir.tools.core.parser.JavaFactoryGenerator;
+import org.hl7.fhir.tools.core.parser.JavaParserFactoryGenerator;
+import org.hl7.fhir.tools.core.parser.JavaParserGenerator;
+import org.hl7.fhir.tools.core.parser.JavaResourceGenerator;
+import org.hl7.fhir.tools.core.parser.SchemaGenerator;
+import org.hl7.fhir.tools.core.parser.TxSpecGenerator;
+import org.hl7.fhir.tools.core.parser.TypeParser;
+import org.hl7.fhir.tools.core.parser.XmlSpecGenerator;
 import org.hl7.fhir.tools.core.utilities.Utilities;
-import org.hl7.fhir.tools.core.xml.*;
+import org.hl7.fhir.tools.core.xml.JsonGenerator;
+import org.hl7.fhir.tools.core.xml.XhtmlGenerator;
+import org.hl7.fhir.tools.core.xml.XmlGenerator;
 import org.w3c.dom.Document;
 
 
