@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
@@ -25,6 +25,15 @@ public class Contact extends Type {
           return url;
         throw new Exception("Unknown ContactSystem code '"+code+"'");
         }
+        public String toCode() {
+          switch (this) {
+            case phone: return "phone";
+            case fax: return "fax";
+            case email: return "email";
+            case url: return "url";
+            default: return "?";
+          }
+        }
     }
 
     public enum ContactUse {
@@ -47,6 +56,16 @@ public class Contact extends Type {
         if ("mobile".equals(code))
           return mobile;
         throw new Exception("Unknown ContactUse code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case home: return "home";
+            case work: return "work";
+            case temp: return "temp";
+            case old: return "old";
+            case mobile: return "mobile";
+            default: return "?";
+          }
         }
     }
 

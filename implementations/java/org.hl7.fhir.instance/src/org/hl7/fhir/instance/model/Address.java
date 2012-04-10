@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -26,6 +26,15 @@ public class Address extends Type {
         if ("old".equals(code))
           return old;
         throw new Exception("Unknown AddressUse code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case home: return "home";
+            case work: return "work";
+            case temp: return "temp";
+            case old: return "old";
+            default: return "?";
+          }
         }
     }
 
@@ -55,6 +64,18 @@ public class Address extends Type {
         if ("dpid".equals(code))
           return dpid;
         throw new Exception("Unknown AddressPartType code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case part: return "part";
+            case line: return "line";
+            case city: return "city";
+            case state: return "state";
+            case country: return "country";
+            case zip: return "zip";
+            case dpid: return "dpid";
+            default: return "?";
+          }
         }
     }
 

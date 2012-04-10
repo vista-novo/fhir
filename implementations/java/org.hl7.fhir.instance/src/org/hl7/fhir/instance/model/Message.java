@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 /**
  * A message that contains FHIR resources
@@ -27,6 +27,16 @@ public class Message extends Resource {
         if ("undeliverable".equals(code))
           return undeliverable;
         throw new Exception("Unknown ResponseCode code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case ok: return "ok";
+            case error: return "error";
+            case rejection: return "rejection";
+            case rules: return "rules";
+            case undeliverable: return "undeliverable";
+            default: return "?";
+          }
         }
     }
 

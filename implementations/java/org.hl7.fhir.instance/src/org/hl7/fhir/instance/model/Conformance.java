@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -20,6 +20,13 @@ public class Conformance extends Resource {
         if ("server".equals(code))
           return server;
         throw new Exception("Unknown RestfulConformanceMode code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case client: return "client";
+            case server: return "server";
+            default: return "?";
+          }
         }
     }
 

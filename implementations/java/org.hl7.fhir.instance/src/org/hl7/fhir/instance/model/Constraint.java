@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -26,6 +26,15 @@ public class Constraint extends Element {
         if ("Prohibited".equals(code))
           return Prohibited;
         throw new Exception("Unknown ConformanceType code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case Mandatory: return "Mandatory";
+            case Conditional: return "Conditional";
+            case Optional: return "Optional";
+            case Prohibited: return "Prohibited";
+            default: return "?";
+          }
         }
     }
 

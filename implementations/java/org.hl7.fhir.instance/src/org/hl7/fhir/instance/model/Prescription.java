@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -21,6 +21,13 @@ public class Prescription extends Resource {
           return completed;
         throw new Exception("Unknown PrescriptionStatus code '"+code+"'");
         }
+        public String toCode() {
+          switch (this) {
+            case active: return "active";
+            case completed: return "completed";
+            default: return "?";
+          }
+        }
     }
 
     public enum BooleanYesNo {
@@ -34,6 +41,13 @@ public class Prescription extends Resource {
         if ("no".equals(code))
           return no;
         throw new Exception("Unknown BooleanYesNo code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case yes: return "yes";
+            case no: return "no";
+            default: return "?";
+          }
         }
     }
 

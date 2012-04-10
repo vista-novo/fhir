@@ -33,4 +33,18 @@ public enum DataAbsentReason {
 			return error;
 		throw new Exception("Unknown dataAbsentReason code '"+code+"'");
 	}
+	
+	public String toCode() {
+	  switch (this) {
+	  case unknown: return "unknown";
+	  case asked: return "asked";
+	  case temp: return "temp";
+	  case notasked: return "notasked";
+	  case masked: return "masked";
+	  case unsupported: return "unsupported";
+	  case astext: return "astext";
+	  case error: return "error";
+	  default: return "?";
+	  }
+	}
 }

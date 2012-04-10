@@ -2,7 +2,7 @@ unit FHIRParser;
 
 interface
 
-// FHIR v0.01 generated 10:56 Apr 10, 2012
+// FHIR v0.01 generated 23:50 Apr 10, 2012
 
 uses
   SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
@@ -91,86 +91,86 @@ Type
     function ParseResource(element : IxmlDomElement) : TFHIRResource; override;
   end;
 
-  TFHIRXmlSerialiser = class (TFHIRXmlSerialiserBase)
+  TFHIRXmlComposer = class (TFHIRXmlComposerBase)
   protected
-    procedure SerialiseExtension(name : string; elem : TExtension);
-    procedure SerialiseConstraintElement(name : string; elem : TConstraintElement);
-    procedure SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
-    procedure SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
-    procedure SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
-    procedure SerialiseConstraint(name : string; elem : TConstraint);
-    procedure SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
-    procedure SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
-    procedure SerialiseNarrative(name : string; elem : TNarrative);
-    procedure SerialiseCoding(name : string; elem : TCoding);
-    procedure SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
-    procedure SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
-    procedure SerialiseInterval_Date(name : string; elem : TInterval_Date);
-    procedure SerialiseQuantity(name : string; elem : TQuantity);
-    procedure SerialiseChoiceValue(name : string; elem : TChoiceValue);
-    procedure SerialiseChoice(name : string; elem : TChoice);
-    procedure SerialiseAttachment(name : string; elem : TAttachment);
-    procedure SerialiseRatio(name : string; elem : TRatio);
-    procedure SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
-    procedure SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
-    procedure SerialiseIdentifier(name : string; elem : TIdentifier);
-    procedure SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
-    procedure SerialiseSchedule(name : string; elem : TSchedule);
-    procedure SerialiseContact(name : string; elem : TContact);
-    procedure SerialiseAddressPart(name : string; elem : TAddressPart);
-    procedure SerialiseAddress(name : string; elem : TAddress);
-    procedure SerialiseHumanNamePart(name : string; elem : THumanNamePart);
-    procedure SerialiseHumanName(name : string; elem : THumanName);
-    procedure SerialiseHumanId(name : string; elem : THumanId);
-    procedure SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
-    procedure SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
-    procedure SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
-    procedure SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
-    procedure SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
-    procedure SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
-    procedure SerialiseConformance(name : string; elem : TConformance);
-    procedure SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
-    procedure SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
-    procedure SerialiseDocumentSection(name : string; elem : TDocumentSection);
-    procedure SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
-    procedure SerialiseDocument(name : string; elem : TDocument);
-    procedure SerialiseMessageResponse(name : string; elem : TMessageResponse);
-    procedure SerialiseMessage(name : string; elem : TMessage);
-    procedure SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
-    procedure SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
-    procedure SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
-    procedure SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
-    procedure SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
-    procedure SerialiseMessageConformance(name : string; elem : TMessageConformance);
-    procedure SerialiseAgent(name : string; elem : TAgent);
-    procedure SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
-    procedure SerialiseAnimal(name : string; elem : TAnimal);
-    procedure SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
-    procedure SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
-    procedure SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
-    procedure SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
-    procedure SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
-    procedure SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
-    procedure SerialisePrescription(name : string; elem : TPrescription);
-    procedure SerialisePatient(name : string; elem : TPatient);
-    procedure SerialiseOrganizationName(name : string; elem : TOrganizationName);
-    procedure SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
-    procedure SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
-    procedure SerialiseOrganization(name : string; elem : TOrganization);
-    procedure SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-    procedure SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-    procedure SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-    procedure SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
-    procedure SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
-    procedure SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
-    procedure SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
-    procedure SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
-    procedure SerialiseLabReport(name : string; elem : TLabReport);
-    procedure SerialisePersonQualification(name : string; elem : TPersonQualification);
-    procedure SerialisePersonLanguage(name : string; elem : TPersonLanguage);
-    procedure SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-    procedure SerialisePerson(name : string; elem : TPerson);
-    procedure SerialiseResource(resource : TFHIRResource); override;
+    procedure ComposeExtension(name : string; elem : TExtension);
+    procedure ComposeConstraintElement(name : string; elem : TConstraintElement);
+    procedure ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+    procedure ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
+    procedure ComposeConstraint(name : string; elem : TConstraint);
+    procedure ComposeNarrativeImage(name : string; elem : TNarrativeImage);
+    procedure ComposeNarrativeMap(name : string; elem : TNarrativeMap);
+    procedure ComposeNarrative(name : string; elem : TNarrative);
+    procedure ComposeCoding(name : string; elem : TCoding);
+    procedure ComposeInterval_Quantity(name : string; elem : TInterval_Quantity);
+    procedure ComposeInterval_DateTime(name : string; elem : TInterval_DateTime);
+    procedure ComposeInterval_Date(name : string; elem : TInterval_Date);
+    procedure ComposeQuantity(name : string; elem : TQuantity);
+    procedure ComposeChoiceValue(name : string; elem : TChoiceValue);
+    procedure ComposeChoice(name : string; elem : TChoice);
+    procedure ComposeAttachment(name : string; elem : TAttachment);
+    procedure ComposeRatio(name : string; elem : TRatio);
+    procedure ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+    procedure ComposeCodeableConcept(name : string; elem : TCodeableConcept);
+    procedure ComposeIdentifier(name : string; elem : TIdentifier);
+    procedure ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
+    procedure ComposeSchedule(name : string; elem : TSchedule);
+    procedure ComposeContact(name : string; elem : TContact);
+    procedure ComposeAddressPart(name : string; elem : TAddressPart);
+    procedure ComposeAddress(name : string; elem : TAddress);
+    procedure ComposeHumanNamePart(name : string; elem : THumanNamePart);
+    procedure ComposeHumanName(name : string; elem : THumanName);
+    procedure ComposeHumanId(name : string; elem : THumanId);
+    procedure ComposeConformancePublisher(name : string; elem : TConformancePublisher);
+    procedure ComposeConformanceSoftware(name : string; elem : TConformanceSoftware);
+    procedure ComposeConformanceOperation(name : string; elem : TConformanceOperation);
+    procedure ComposeConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+    procedure ComposeConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+    procedure ComposeConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+    procedure ComposeConformance(name : string; elem : TConformance);
+    procedure ComposeDocumentAuthor(name : string; elem : TDocumentAuthor);
+    procedure ComposeDocumentAttestor(name : string; elem : TDocumentAttestor);
+    procedure ComposeDocumentSection(name : string; elem : TDocumentSection);
+    procedure ComposeDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+    procedure ComposeDocument(name : string; elem : TDocument);
+    procedure ComposeMessageResponse(name : string; elem : TMessageResponse);
+    procedure ComposeMessage(name : string; elem : TMessage);
+    procedure ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+    procedure ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+    procedure ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+    procedure ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+    procedure ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+    procedure ComposeMessageConformance(name : string; elem : TMessageConformance);
+    procedure ComposeAgent(name : string; elem : TAgent);
+    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+    procedure ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+    procedure ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+    procedure ComposePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+    procedure ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+    procedure ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+    procedure ComposePrescription(name : string; elem : TPrescription);
+    procedure ComposePatient(name : string; elem : TPatient);
+    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
+    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure ComposeOrganization(name : string; elem : TOrganization);
+    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+    procedure ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+    procedure ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+    procedure ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+    procedure ComposeLabReport(name : string; elem : TLabReport);
+    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
+    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure ComposePerson(name : string; elem : TPerson);
+    procedure ComposeResource(resource : TFHIRResource); override;
   end;
 
   TFHIRJsonParser = class (TFHIRJsonParserBase)
@@ -255,86 +255,86 @@ Type
     function ParseResource : TFHIRResource; override;
   end;
 
-  TFHIRJsonSerialiser = class (TFHIRJsonSerialiserBase)
+  TFHIRJsonComposer = class (TFHIRJsonComposerBase)
   protected
-    procedure SerialiseExtension(name : string; elem : TExtension);
-    procedure SerialiseConstraintElement(name : string; elem : TConstraintElement);
-    procedure SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
-    procedure SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
-    procedure SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
-    procedure SerialiseConstraint(name : string; elem : TConstraint);
-    procedure SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
-    procedure SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
-    procedure SerialiseNarrative(name : string; elem : TNarrative);
-    procedure SerialiseCoding(name : string; elem : TCoding);
-    procedure SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
-    procedure SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
-    procedure SerialiseInterval_Date(name : string; elem : TInterval_Date);
-    procedure SerialiseQuantity(name : string; elem : TQuantity);
-    procedure SerialiseChoiceValue(name : string; elem : TChoiceValue);
-    procedure SerialiseChoice(name : string; elem : TChoice);
-    procedure SerialiseAttachment(name : string; elem : TAttachment);
-    procedure SerialiseRatio(name : string; elem : TRatio);
-    procedure SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
-    procedure SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
-    procedure SerialiseIdentifier(name : string; elem : TIdentifier);
-    procedure SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
-    procedure SerialiseSchedule(name : string; elem : TSchedule);
-    procedure SerialiseContact(name : string; elem : TContact);
-    procedure SerialiseAddressPart(name : string; elem : TAddressPart);
-    procedure SerialiseAddress(name : string; elem : TAddress);
-    procedure SerialiseHumanNamePart(name : string; elem : THumanNamePart);
-    procedure SerialiseHumanName(name : string; elem : THumanName);
-    procedure SerialiseHumanId(name : string; elem : THumanId);
-    procedure SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
-    procedure SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
-    procedure SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
-    procedure SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
-    procedure SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
-    procedure SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
-    procedure SerialiseConformance(name : string; elem : TConformance);
-    procedure SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
-    procedure SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
-    procedure SerialiseDocumentSection(name : string; elem : TDocumentSection);
-    procedure SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
-    procedure SerialiseDocument(name : string; elem : TDocument);
-    procedure SerialiseMessageResponse(name : string; elem : TMessageResponse);
-    procedure SerialiseMessage(name : string; elem : TMessage);
-    procedure SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
-    procedure SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
-    procedure SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
-    procedure SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
-    procedure SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
-    procedure SerialiseMessageConformance(name : string; elem : TMessageConformance);
-    procedure SerialiseAgent(name : string; elem : TAgent);
-    procedure SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
-    procedure SerialiseAnimal(name : string; elem : TAnimal);
-    procedure SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
-    procedure SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
-    procedure SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
-    procedure SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
-    procedure SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
-    procedure SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
-    procedure SerialisePrescription(name : string; elem : TPrescription);
-    procedure SerialisePatient(name : string; elem : TPatient);
-    procedure SerialiseOrganizationName(name : string; elem : TOrganizationName);
-    procedure SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
-    procedure SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
-    procedure SerialiseOrganization(name : string; elem : TOrganization);
-    procedure SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-    procedure SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-    procedure SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-    procedure SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
-    procedure SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
-    procedure SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
-    procedure SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
-    procedure SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
-    procedure SerialiseLabReport(name : string; elem : TLabReport);
-    procedure SerialisePersonQualification(name : string; elem : TPersonQualification);
-    procedure SerialisePersonLanguage(name : string; elem : TPersonLanguage);
-    procedure SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-    procedure SerialisePerson(name : string; elem : TPerson);
-    procedure SerialiseResource(resource : TFHIRResource); override;
+    procedure ComposeExtension(name : string; elem : TExtension);
+    procedure ComposeConstraintElement(name : string; elem : TConstraintElement);
+    procedure ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+    procedure ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
+    procedure ComposeConstraint(name : string; elem : TConstraint);
+    procedure ComposeNarrativeImage(name : string; elem : TNarrativeImage);
+    procedure ComposeNarrativeMap(name : string; elem : TNarrativeMap);
+    procedure ComposeNarrative(name : string; elem : TNarrative);
+    procedure ComposeCoding(name : string; elem : TCoding);
+    procedure ComposeInterval_Quantity(name : string; elem : TInterval_Quantity);
+    procedure ComposeInterval_DateTime(name : string; elem : TInterval_DateTime);
+    procedure ComposeInterval_Date(name : string; elem : TInterval_Date);
+    procedure ComposeQuantity(name : string; elem : TQuantity);
+    procedure ComposeChoiceValue(name : string; elem : TChoiceValue);
+    procedure ComposeChoice(name : string; elem : TChoice);
+    procedure ComposeAttachment(name : string; elem : TAttachment);
+    procedure ComposeRatio(name : string; elem : TRatio);
+    procedure ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+    procedure ComposeCodeableConcept(name : string; elem : TCodeableConcept);
+    procedure ComposeIdentifier(name : string; elem : TIdentifier);
+    procedure ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
+    procedure ComposeSchedule(name : string; elem : TSchedule);
+    procedure ComposeContact(name : string; elem : TContact);
+    procedure ComposeAddressPart(name : string; elem : TAddressPart);
+    procedure ComposeAddress(name : string; elem : TAddress);
+    procedure ComposeHumanNamePart(name : string; elem : THumanNamePart);
+    procedure ComposeHumanName(name : string; elem : THumanName);
+    procedure ComposeHumanId(name : string; elem : THumanId);
+    procedure ComposeConformancePublisher(name : string; elem : TConformancePublisher);
+    procedure ComposeConformanceSoftware(name : string; elem : TConformanceSoftware);
+    procedure ComposeConformanceOperation(name : string; elem : TConformanceOperation);
+    procedure ComposeConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+    procedure ComposeConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+    procedure ComposeConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+    procedure ComposeConformance(name : string; elem : TConformance);
+    procedure ComposeDocumentAuthor(name : string; elem : TDocumentAuthor);
+    procedure ComposeDocumentAttestor(name : string; elem : TDocumentAttestor);
+    procedure ComposeDocumentSection(name : string; elem : TDocumentSection);
+    procedure ComposeDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+    procedure ComposeDocument(name : string; elem : TDocument);
+    procedure ComposeMessageResponse(name : string; elem : TMessageResponse);
+    procedure ComposeMessage(name : string; elem : TMessage);
+    procedure ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+    procedure ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+    procedure ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+    procedure ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+    procedure ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+    procedure ComposeMessageConformance(name : string; elem : TMessageConformance);
+    procedure ComposeAgent(name : string; elem : TAgent);
+    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+    procedure ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+    procedure ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+    procedure ComposePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+    procedure ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+    procedure ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+    procedure ComposePrescription(name : string; elem : TPrescription);
+    procedure ComposePatient(name : string; elem : TPatient);
+    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
+    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure ComposeOrganization(name : string; elem : TOrganization);
+    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+    procedure ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+    procedure ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+    procedure ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+    procedure ComposeLabReport(name : string; elem : TLabReport);
+    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
+    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure ComposePerson(name : string; elem : TPerson);
+    procedure ComposeResource(resource : TFHIRResource); override;
   end;
 
 
@@ -345,6 +345,7 @@ implementation
 function TFHIRXmlParser.ParseExtension(element : IXmlDomElement) : TExtension;
 var
   child : IXMLDOMElement;
+  item : IXMLDOMElement;
 begin
   result := TExtension.create;
   try
@@ -418,8 +419,18 @@ begin
         result.value := ParseHumanName(child)
       else if (child.nodeName = 'valueHumanId') then
         result.value := ParseHumanId(child)
-      else if (child.nodeName = 'extension') then
-        result.Extension.Add(ParseExtension(child))
+      else if (child.nodeName = 'extensions') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'extension') Then
+            result.Extension.Add(ParseExtension(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -431,7 +442,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseExtension(name : string; elem : TExtension);
+procedure TFHIRXmlComposer.ComposeExtension(name : string; elem : TExtension);
 var
   i : integer;
 begin
@@ -444,65 +455,70 @@ begin
   Text('ref',elem.ref);
   Text('state',CODES_TExtensionState[elem.state]);
   if elem.value is TFHIRTypeString then
-    SerialiseString('valueSid', TFHIRTypeString(elem.value))
+    ComposeString('valueSid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueDateTime', TFHIRTypeString(elem.value))
+    ComposeString('valueDateTime', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeInteger then
-    SerialiseInteger('valueInteger', TFHIRTypeInteger(elem.value))
+    ComposeInteger('valueInteger', TFHIRTypeInteger(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueCode', TFHIRTypeString(elem.value))
+    ComposeString('valueCode', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueDate', TFHIRTypeString(elem.value))
+    ComposeString('valueDate', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDecimal then
-    SerialiseDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
+    ComposeDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueUri', TFHIRTypeString(elem.value))
+    ComposeString('valueUri', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueId', TFHIRTypeString(elem.value))
+    ComposeString('valueId', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBytes then
-    SerialiseBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
+    ComposeBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueOid', TFHIRTypeString(elem.value))
+    ComposeString('valueOid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueString', TFHIRTypeString(elem.value))
+    ComposeString('valueString', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBoolean then
-    SerialiseBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
+    ComposeBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueUuid', TFHIRTypeString(elem.value))
+    ComposeString('valueUuid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDateTime then
-    SerialiseDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+    ComposeDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
   else if elem.value is TCoding then
-    SerialiseCoding('valueCoding', TCoding(elem.value))
+    ComposeCoding('valueCoding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
-    SerialiseInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
+    ComposeInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TInterval_Date then
-    SerialiseInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
+    ComposeInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
   else if elem.value is TQuantity then
-    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+    ComposeQuantity('valueQuantity', TQuantity(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('valueChoice', TChoice(elem.value))
+    ComposeChoice('valueChoice', TChoice(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+    ComposeAttachment('valueAttachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('valueRatio', TRatio(elem.value))
+    ComposeRatio('valueRatio', TRatio(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TIdentifier then
-    SerialiseIdentifier('valueIdentifier', TIdentifier(elem.value))
+    ComposeIdentifier('valueIdentifier', TIdentifier(elem.value))
   else if elem.value is TSchedule then
-    SerialiseSchedule('valueSchedule', TSchedule(elem.value))
+    ComposeSchedule('valueSchedule', TSchedule(elem.value))
   else if elem.value is TContact then
-    SerialiseContact('valueContact', TContact(elem.value))
+    ComposeContact('valueContact', TContact(elem.value))
   else if elem.value is TAddress then
-    SerialiseAddress('valueAddress', TAddress(elem.value))
+    ComposeAddress('valueAddress', TAddress(elem.value))
   else if elem.value is THumanName then
-    SerialiseHumanName('valueHumanName', THumanName(elem.value))
+    ComposeHumanName('valueHumanName', THumanName(elem.value))
   else if elem.value is THumanId then
-    SerialiseHumanId('valueHumanId', THumanId(elem.value));
-  for i := 0 to elem.Extension.Count - 1 do
-    SerialiseExtension('extension', elem.Extension[i]);
+    ComposeHumanId('valueHumanId', THumanId(elem.value));
+  if elem.Extension.Count > 0 then
+  begin
+    FXml.open('extensions');
+    for i := 0 to elem.Extension.Count - 1 do
+      ComposeExtension('extension',elem.Extension[i]);
+    FXml.Close('extensions');
+  end;
   FXml.close(name);
 end;
 
@@ -598,7 +614,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseExtension(name : string; elem : TExtension);
+procedure TFHIRJsonComposer.ComposeExtension(name : string; elem : TExtension);
 var
   i : integer;
 begin
@@ -611,68 +627,68 @@ begin
   Prop('ref',elem.ref);
   Prop('state',CODES_TExtensionState[elem.state]);
   if elem.value is TFHIRTypeString then
-    SerialiseString('valueSid', TFHIRTypeString(elem.value))
+    ComposeString('valueSid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueDateTime', TFHIRTypeString(elem.value))
+    ComposeString('valueDateTime', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeInteger then
-    SerialiseInteger('valueInteger', TFHIRTypeInteger(elem.value))
+    ComposeInteger('valueInteger', TFHIRTypeInteger(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueCode', TFHIRTypeString(elem.value))
+    ComposeString('valueCode', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueDate', TFHIRTypeString(elem.value))
+    ComposeString('valueDate', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDecimal then
-    SerialiseDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
+    ComposeDecimal('valueDecimal', TFHIRTypeDecimal(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueUri', TFHIRTypeString(elem.value))
+    ComposeString('valueUri', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueId', TFHIRTypeString(elem.value))
+    ComposeString('valueId', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBytes then
-    SerialiseBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
+    ComposeBytes('valueBase64Binary', TFHIRTypeBytes(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueOid', TFHIRTypeString(elem.value))
+    ComposeString('valueOid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueString', TFHIRTypeString(elem.value))
+    ComposeString('valueString', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBoolean then
-    SerialiseBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
+    ComposeBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('valueUuid', TFHIRTypeString(elem.value))
+    ComposeString('valueUuid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDateTime then
-    SerialiseDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+    ComposeDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
   else if elem.value is TCoding then
-    SerialiseCoding('valueCoding', TCoding(elem.value))
+    ComposeCoding('valueCoding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
-    SerialiseInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
+    ComposeInterval_Quantity('valueInterval_Quantity', TInterval_Quantity(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TInterval_Date then
-    SerialiseInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
+    ComposeInterval_Date('valueInterval_Date', TInterval_Date(elem.value))
   else if elem.value is TQuantity then
-    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+    ComposeQuantity('valueQuantity', TQuantity(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('valueChoice', TChoice(elem.value))
+    ComposeChoice('valueChoice', TChoice(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+    ComposeAttachment('valueAttachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('valueRatio', TRatio(elem.value))
+    ComposeRatio('valueRatio', TRatio(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TIdentifier then
-    SerialiseIdentifier('valueIdentifier', TIdentifier(elem.value))
+    ComposeIdentifier('valueIdentifier', TIdentifier(elem.value))
   else if elem.value is TSchedule then
-    SerialiseSchedule('valueSchedule', TSchedule(elem.value))
+    ComposeSchedule('valueSchedule', TSchedule(elem.value))
   else if elem.value is TContact then
-    SerialiseContact('valueContact', TContact(elem.value))
+    ComposeContact('valueContact', TContact(elem.value))
   else if elem.value is TAddress then
-    SerialiseAddress('valueAddress', TAddress(elem.value))
+    ComposeAddress('valueAddress', TAddress(elem.value))
   else if elem.value is THumanName then
-    SerialiseHumanName('valueHumanName', THumanName(elem.value))
+    ComposeHumanName('valueHumanName', THumanName(elem.value))
   else if elem.value is THumanId then
-    SerialiseHumanId('valueHumanId', THumanId(elem.value));
+    ComposeHumanId('valueHumanId', THumanId(elem.value));
   if elem.Extension.Count > 0 then
   begin
     FJson.valueObject('extensions');
     for i := 0 to elem.Extension.Count - 1 do
-      SerialiseExtension('extension',elem.Extension[i]);
+      ComposeExtension('extension',elem.Extension[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -750,7 +766,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConstraintElement(name : string; elem : TConstraintElement);
+procedure TFHIRXmlComposer.ComposeConstraintElement(name : string; elem : TConstraintElement);
 var
   i : integer;
 begin
@@ -773,16 +789,16 @@ begin
   begin
     FXml.open('mappings');
     for i := 0 to elem.Mapping.Count - 1 do
-      SerialiseConstraintElementMapping('mapping',elem.Mapping[i]);
+      ComposeConstraintElementMapping('mapping',elem.Mapping[i]);
     FXml.Close('mappings');
   end;
-  SerialiseConstraintElementAggregation('aggregation', elem.aggregation);
+  ComposeConstraintElementAggregation('aggregation', elem.aggregation);
   Text('valueSet',elem.valueSet);
   if elem.Value.Count > 0 then
   begin
     FXml.open('values');
     for i := 0 to elem.Value.Count - 1 do
-      SerialiseConstraintElementValue('value',elem.Value[i]);
+      ComposeConstraintElementValue('value',elem.Value[i]);
     FXml.Close('values');
   end;
   FXml.close(name);
@@ -848,7 +864,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConstraintElement(name : string; elem : TConstraintElement);
+procedure TFHIRJsonComposer.ComposeConstraintElement(name : string; elem : TConstraintElement);
 var
   i : integer;
 begin
@@ -871,16 +887,16 @@ begin
   begin
     FJson.valueObject('mappings');
     for i := 0 to elem.Mapping.Count - 1 do
-      SerialiseConstraintElementMapping('mapping',elem.Mapping[i]);
+      ComposeConstraintElementMapping('mapping',elem.Mapping[i]);
     FJson.FinishObject;
   end;
-  SerialiseConstraintElementAggregation('aggregation', elem.aggregation);
+  ComposeConstraintElementAggregation('aggregation', elem.aggregation);
   Prop('valueSet',elem.valueSet);
   if elem.Value.Count > 0 then
   begin
     FJson.valueObject('values');
     for i := 0 to elem.Value.Count - 1 do
-      SerialiseConstraintElementValue('value',elem.Value[i]);
+      ComposeConstraintElementValue('value',elem.Value[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -911,7 +927,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+procedure TFHIRXmlComposer.ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
 begin
   if (elem = nil) then
     exit;
@@ -944,7 +960,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConstraintElementMapping(name : string; elem : TConstraintElementMapping);
+procedure TFHIRJsonComposer.ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
 begin
   if (elem = nil) then
     exit;
@@ -980,7 +996,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+procedure TFHIRXmlComposer.ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
 begin
   if (elem = nil) then
     exit;
@@ -1013,7 +1029,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+procedure TFHIRJsonComposer.ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
 begin
   if (elem = nil) then
     exit;
@@ -1105,7 +1121,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+procedure TFHIRXmlComposer.ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
 begin
   if (elem = nil) then
     exit;
@@ -1113,63 +1129,63 @@ begin
   FXml.open(name);
   Text('name',elem.name);
   if elem.value is TFHIRTypeString then
-    SerialiseString('Sid', TFHIRTypeString(elem.value))
+    ComposeString('Sid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('DateTime', TFHIRTypeString(elem.value))
+    ComposeString('DateTime', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeInteger then
-    SerialiseInteger('Integer', TFHIRTypeInteger(elem.value))
+    ComposeInteger('Integer', TFHIRTypeInteger(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Code', TFHIRTypeString(elem.value))
+    ComposeString('Code', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Date', TFHIRTypeString(elem.value))
+    ComposeString('Date', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDecimal then
-    SerialiseDecimal('Decimal', TFHIRTypeDecimal(elem.value))
+    ComposeDecimal('Decimal', TFHIRTypeDecimal(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Uri', TFHIRTypeString(elem.value))
+    ComposeString('Uri', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Id', TFHIRTypeString(elem.value))
+    ComposeString('Id', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBytes then
-    SerialiseBytes('Base64Binary', TFHIRTypeBytes(elem.value))
+    ComposeBytes('Base64Binary', TFHIRTypeBytes(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Oid', TFHIRTypeString(elem.value))
+    ComposeString('Oid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('String', TFHIRTypeString(elem.value))
+    ComposeString('String', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBoolean then
-    SerialiseBoolean('Boolean', TFHIRTypeBoolean(elem.value))
+    ComposeBoolean('Boolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Uuid', TFHIRTypeString(elem.value))
+    ComposeString('Uuid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDateTime then
-    SerialiseDateTime('Instant', TFHIRTypeDateTime(elem.value))
+    ComposeDateTime('Instant', TFHIRTypeDateTime(elem.value))
   else if elem.value is TCoding then
-    SerialiseCoding('Coding', TCoding(elem.value))
+    ComposeCoding('Coding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
-    SerialiseInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
+    ComposeInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TInterval_Date then
-    SerialiseInterval_Date('Interval_Date', TInterval_Date(elem.value))
+    ComposeInterval_Date('Interval_Date', TInterval_Date(elem.value))
   else if elem.value is TQuantity then
-    SerialiseQuantity('Quantity', TQuantity(elem.value))
+    ComposeQuantity('Quantity', TQuantity(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('Choice', TChoice(elem.value))
+    ComposeChoice('Choice', TChoice(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('Attachment', TAttachment(elem.value))
+    ComposeAttachment('Attachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('Ratio', TRatio(elem.value))
+    ComposeRatio('Ratio', TRatio(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TIdentifier then
-    SerialiseIdentifier('Identifier', TIdentifier(elem.value))
+    ComposeIdentifier('Identifier', TIdentifier(elem.value))
   else if elem.value is TSchedule then
-    SerialiseSchedule('Schedule', TSchedule(elem.value))
+    ComposeSchedule('Schedule', TSchedule(elem.value))
   else if elem.value is TContact then
-    SerialiseContact('Contact', TContact(elem.value))
+    ComposeContact('Contact', TContact(elem.value))
   else if elem.value is TAddress then
-    SerialiseAddress('Address', TAddress(elem.value))
+    ComposeAddress('Address', TAddress(elem.value))
   else if elem.value is THumanName then
-    SerialiseHumanName('HumanName', THumanName(elem.value))
+    ComposeHumanName('HumanName', THumanName(elem.value))
   else if elem.value is THumanId then
-    SerialiseHumanId('HumanId', THumanId(elem.value));
+    ComposeHumanId('HumanId', THumanId(elem.value));
   FXml.close(name);
 end;
 
@@ -1251,7 +1267,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConstraintElementValue(name : string; elem : TConstraintElementValue);
+procedure TFHIRJsonComposer.ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
 begin
   if (elem = nil) then
     exit;
@@ -1259,69 +1275,70 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('name',elem.name);
   if elem.value is TFHIRTypeString then
-    SerialiseString('Sid', TFHIRTypeString(elem.value))
+    ComposeString('Sid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('DateTime', TFHIRTypeString(elem.value))
+    ComposeString('DateTime', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeInteger then
-    SerialiseInteger('Integer', TFHIRTypeInteger(elem.value))
+    ComposeInteger('Integer', TFHIRTypeInteger(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Code', TFHIRTypeString(elem.value))
+    ComposeString('Code', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Date', TFHIRTypeString(elem.value))
+    ComposeString('Date', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDecimal then
-    SerialiseDecimal('Decimal', TFHIRTypeDecimal(elem.value))
+    ComposeDecimal('Decimal', TFHIRTypeDecimal(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Uri', TFHIRTypeString(elem.value))
+    ComposeString('Uri', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Id', TFHIRTypeString(elem.value))
+    ComposeString('Id', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBytes then
-    SerialiseBytes('Base64Binary', TFHIRTypeBytes(elem.value))
+    ComposeBytes('Base64Binary', TFHIRTypeBytes(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Oid', TFHIRTypeString(elem.value))
+    ComposeString('Oid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('String', TFHIRTypeString(elem.value))
+    ComposeString('String', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeBoolean then
-    SerialiseBoolean('Boolean', TFHIRTypeBoolean(elem.value))
+    ComposeBoolean('Boolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
-    SerialiseString('Uuid', TFHIRTypeString(elem.value))
+    ComposeString('Uuid', TFHIRTypeString(elem.value))
   else if elem.value is TFHIRTypeDateTime then
-    SerialiseDateTime('Instant', TFHIRTypeDateTime(elem.value))
+    ComposeDateTime('Instant', TFHIRTypeDateTime(elem.value))
   else if elem.value is TCoding then
-    SerialiseCoding('Coding', TCoding(elem.value))
+    ComposeCoding('Coding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
-    SerialiseInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
+    ComposeInterval_Quantity('Interval_Quantity', TInterval_Quantity(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('Interval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TInterval_Date then
-    SerialiseInterval_Date('Interval_Date', TInterval_Date(elem.value))
+    ComposeInterval_Date('Interval_Date', TInterval_Date(elem.value))
   else if elem.value is TQuantity then
-    SerialiseQuantity('Quantity', TQuantity(elem.value))
+    ComposeQuantity('Quantity', TQuantity(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('Choice', TChoice(elem.value))
+    ComposeChoice('Choice', TChoice(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('Attachment', TAttachment(elem.value))
+    ComposeAttachment('Attachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('Ratio', TRatio(elem.value))
+    ComposeRatio('Ratio', TRatio(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('CodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TIdentifier then
-    SerialiseIdentifier('Identifier', TIdentifier(elem.value))
+    ComposeIdentifier('Identifier', TIdentifier(elem.value))
   else if elem.value is TSchedule then
-    SerialiseSchedule('Schedule', TSchedule(elem.value))
+    ComposeSchedule('Schedule', TSchedule(elem.value))
   else if elem.value is TContact then
-    SerialiseContact('Contact', TContact(elem.value))
+    ComposeContact('Contact', TContact(elem.value))
   else if elem.value is TAddress then
-    SerialiseAddress('Address', TAddress(elem.value))
+    ComposeAddress('Address', TAddress(elem.value))
   else if elem.value is THumanName then
-    SerialiseHumanName('HumanName', THumanName(elem.value))
+    ComposeHumanName('HumanName', THumanName(elem.value))
   else if elem.value is THumanId then
-    SerialiseHumanId('HumanId', THumanId(elem.value));
+    ComposeHumanId('HumanId', THumanId(elem.value));
   FJson.finishObject;
 end;
 
 function TFHIRXmlParser.ParseConstraint(element : IXmlDomElement) : TConstraint;
 var
   child : IXMLDOMElement;
+  item : IXMLDOMElement;
 begin
   result := TConstraint.create;
   try
@@ -1335,8 +1352,18 @@ begin
         result.name := child.text
       else if (child.nodeName = 'purpose') then
         result.purpose := child.text
-      else if (child.nodeName = 'element') then
-        result.Element.Add(ParseConstraintElement(child))
+      else if (child.nodeName = 'elements') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'element') Then
+            result.Element.Add(ParseConstraintElement(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -1348,7 +1375,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConstraint(name : string; elem : TConstraint);
+procedure TFHIRXmlComposer.ComposeConstraint(name : string; elem : TConstraint);
 var
   i : integer;
 begin
@@ -1359,8 +1386,13 @@ begin
   Text('type',elem.type_);
   Text('name',elem.name);
   Text('purpose',elem.purpose);
-  for i := 0 to elem.Element.Count - 1 do
-    SerialiseConstraintElement('element', elem.Element[i]);
+  if elem.Element.Count > 0 then
+  begin
+    FXml.open('elements');
+    for i := 0 to elem.Element.Count - 1 do
+      ComposeConstraintElement('element',elem.Element[i]);
+    FXml.Close('elements');
+  end;
   FXml.close(name);
 end;
 
@@ -1396,7 +1428,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConstraint(name : string; elem : TConstraint);
+procedure TFHIRJsonComposer.ComposeConstraint(name : string; elem : TConstraint);
 var
   i : integer;
 begin
@@ -1411,7 +1443,7 @@ begin
   begin
     FJson.valueObject('elements');
     for i := 0 to elem.Element.Count - 1 do
-      SerialiseConstraintElement('element',elem.Element[i]);
+      ComposeConstraintElement('element',elem.Element[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -1442,14 +1474,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+procedure TFHIRXmlComposer.ComposeNarrativeImage(name : string; elem : TNarrativeImage);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('mimeType',elem.mimeType);
-  SerialiseAdvBuffer('content', elem.content);
+  ComposeAdvBuffer('content', elem.content);
   FXml.close(name);
 end;
 
@@ -1475,14 +1507,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseNarrativeImage(name : string; elem : TNarrativeImage);
+procedure TFHIRJsonComposer.ComposeNarrativeImage(name : string; elem : TNarrativeImage);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('mimeType',elem.mimeType);
-  SerialiseAdvBuffer('content', elem.content);
+  ComposeAdvBuffer('content', elem.content);
   FJson.finishObject;
 end;
 
@@ -1513,7 +1545,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+procedure TFHIRXmlComposer.ComposeNarrativeMap(name : string; elem : TNarrativeMap);
 begin
   if (elem = nil) then
     exit;
@@ -1549,7 +1581,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseNarrativeMap(name : string; elem : TNarrativeMap);
+procedure TFHIRJsonComposer.ComposeNarrativeMap(name : string; elem : TNarrativeMap);
 begin
   if (elem = nil) then
     exit;
@@ -1564,6 +1596,7 @@ end;
 function TFHIRXmlParser.ParseNarrative(element : IXmlDomElement) : TNarrative;
 var
   child : IXMLDOMElement;
+  item : IXMLDOMElement;
 begin
   result := TNarrative.create;
   try
@@ -1573,12 +1606,32 @@ begin
     begin
       if (child.nodeName = 'status') then
         result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus, child))
-      else if (child.nodeName = 'html') then
-        result.html := ParseXHtml(child)
-      else if (child.nodeName = 'image') then
-        result.Image.Add(ParseNarrativeImage(child))
-      else if (child.nodeName = 'map') then
-        result.Map.Add(ParseNarrativeMap(child))
+      else if (child.nodeName = 'xhtml') then
+        result.xhtml := ParseXhtml(child)
+      else if (child.nodeName = 'images') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'image') Then
+            result.Image.Add(ParseNarrativeImage(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
+      else if (child.nodeName = 'maps') then
+      begin
+        item := TMsXmlParser.FirstChild(child);
+        while (item <> nil) do
+        begin
+          if (item.nodeName = 'map') Then
+            result.Map.Add(ParseNarrativeMap(item))
+          else
+            UnknownContent(item);
+          item := TMsXmlParser.NextSibling(item);
+        end;
+      end
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -1590,7 +1643,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseNarrative(name : string; elem : TNarrative);
+procedure TFHIRXmlComposer.ComposeNarrative(name : string; elem : TNarrative);
 var
   i : integer;
 begin
@@ -1599,11 +1652,21 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('status',CODES_TNarrativeStatus[elem.status]);
-  SerialiseXHtml('html', elem.html);
-  for i := 0 to elem.Image.Count - 1 do
-    SerialiseNarrativeImage('image', elem.Image[i]);
-  for i := 0 to elem.Map.Count - 1 do
-    SerialiseNarrativeMap('map', elem.Map[i]);
+  ComposeXHtml('xhtml',elem.xhtml);
+  if elem.Image.Count > 0 then
+  begin
+    FXml.open('images');
+    for i := 0 to elem.Image.Count - 1 do
+      ComposeNarrativeImage('image',elem.Image[i]);
+    FXml.Close('images');
+  end;
+  if elem.Map.Count > 0 then
+  begin
+    FXml.open('maps');
+    for i := 0 to elem.Map.Count - 1 do
+      ComposeNarrativeMap('map',elem.Map[i]);
+    FXml.Close('maps');
+  end;
   FXml.close(name);
 end;
 
@@ -1617,8 +1680,8 @@ begin
         result.xmlId := FJson.itemValue
       else if (FJson.ItemName = 'status') then
         result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus))
-      else if (FJson.ItemName = 'html') then
-        result.html := ParseXHtml
+      else if (FJson.ItemName = 'xhtml') then
+        result.xhtml := ParseXhtml()
       else if (FJson.ItemName = 'images') then
       begin
         FJson.checkState(jpitArray);
@@ -1645,7 +1708,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseNarrative(name : string; elem : TNarrative);
+procedure TFHIRJsonComposer.ComposeNarrative(name : string; elem : TNarrative);
 var
   i : integer;
 begin
@@ -1654,19 +1717,19 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('status',CODES_TNarrativeStatus[elem.status]);
-  SerialiseXHtml('html', elem.html);
+  ComposeXHtml('xhtml',elem.xhtml);
   if elem.Image.Count > 0 then
   begin
     FJson.valueObject('images');
     for i := 0 to elem.Image.Count - 1 do
-      SerialiseNarrativeImage('image',elem.Image[i]);
+      ComposeNarrativeImage('image',elem.Image[i]);
     FJson.FinishObject;
   end;
   if elem.Map.Count > 0 then
   begin
     FJson.valueObject('maps');
     for i := 0 to elem.Map.Count - 1 do
-      SerialiseNarrativeMap('map',elem.Map[i]);
+      ComposeNarrativeMap('map',elem.Map[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -1699,7 +1762,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseCoding(name : string; elem : TCoding);
+procedure TFHIRXmlComposer.ComposeCoding(name : string; elem : TCoding);
 begin
   if (elem = nil) then
     exit;
@@ -1735,7 +1798,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseCoding(name : string; elem : TCoding);
+procedure TFHIRJsonComposer.ComposeCoding(name : string; elem : TCoding);
 begin
   if (elem = nil) then
     exit;
@@ -1772,14 +1835,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+procedure TFHIRXmlComposer.ComposeInterval_Quantity(name : string; elem : TInterval_Quantity);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseQuantity('low', elem.low);
-  SerialiseQuantity('high', elem.high);
+  ComposeQuantity('low', elem.low);
+  ComposeQuantity('high', elem.high);
   FXml.close(name);
 end;
 
@@ -1805,14 +1868,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseInterval_Quantity(name : string; elem : TInterval_Quantity);
+procedure TFHIRJsonComposer.ComposeInterval_Quantity(name : string; elem : TInterval_Quantity);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseQuantity('low', elem.low);
-  SerialiseQuantity('high', elem.high);
+  ComposeQuantity('low', elem.low);
+  ComposeQuantity('high', elem.high);
   FJson.finishObject;
 end;
 
@@ -1841,7 +1904,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+procedure TFHIRXmlComposer.ComposeInterval_DateTime(name : string; elem : TInterval_DateTime);
 begin
   if (elem = nil) then
     exit;
@@ -1874,7 +1937,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseInterval_DateTime(name : string; elem : TInterval_DateTime);
+procedure TFHIRJsonComposer.ComposeInterval_DateTime(name : string; elem : TInterval_DateTime);
 begin
   if (elem = nil) then
     exit;
@@ -1910,7 +1973,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseInterval_Date(name : string; elem : TInterval_Date);
+procedure TFHIRXmlComposer.ComposeInterval_Date(name : string; elem : TInterval_Date);
 begin
   if (elem = nil) then
     exit;
@@ -1943,7 +2006,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseInterval_Date(name : string; elem : TInterval_Date);
+procedure TFHIRJsonComposer.ComposeInterval_Date(name : string; elem : TInterval_Date);
 begin
   if (elem = nil) then
     exit;
@@ -1985,13 +2048,13 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseQuantity(name : string; elem : TQuantity);
+procedure TFHIRXmlComposer.ComposeQuantity(name : string; elem : TQuantity);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseSmartDecimal('value', elem.value);
+  ComposeSmartDecimal('value', elem.value);
   Text('status',CODES_TQuantityStatus[elem.status]);
   Text('units',elem.units);
   Text('code',elem.code);
@@ -2027,13 +2090,13 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseQuantity(name : string; elem : TQuantity);
+procedure TFHIRJsonComposer.ComposeQuantity(name : string; elem : TQuantity);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseSmartDecimal('value', elem.value);
+  ComposeSmartDecimal('value', elem.value);
   Prop('status',CODES_TQuantityStatus[elem.status]);
   Prop('units',elem.units);
   Prop('code',elem.code);
@@ -2066,7 +2129,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseChoiceValue(name : string; elem : TChoiceValue);
+procedure TFHIRXmlComposer.ComposeChoiceValue(name : string; elem : TChoiceValue);
 begin
   if (elem = nil) then
     exit;
@@ -2099,7 +2162,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseChoiceValue(name : string; elem : TChoiceValue);
+procedure TFHIRJsonComposer.ComposeChoiceValue(name : string; elem : TChoiceValue);
 begin
   if (elem = nil) then
     exit;
@@ -2137,7 +2200,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseChoice(name : string; elem : TChoice);
+procedure TFHIRXmlComposer.ComposeChoice(name : string; elem : TChoice);
 var
   i : integer;
 begin
@@ -2147,7 +2210,7 @@ begin
   FXml.open(name);
   Text('code',elem.code);
   for i := 0 to elem.Value.Count - 1 do
-    SerialiseChoiceValue('value', elem.Value[i]);
+    ComposeChoiceValue('value', elem.Value[i]);
   Text('isOrdered',BooleanToString(elem.isOrdered));
   FXml.close(name);
 end;
@@ -2182,7 +2245,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseChoice(name : string; elem : TChoice);
+procedure TFHIRJsonComposer.ComposeChoice(name : string; elem : TChoice);
 var
   i : integer;
 begin
@@ -2195,7 +2258,7 @@ begin
   begin
     FJson.valueObject('values');
     for i := 0 to elem.Value.Count - 1 do
-      SerialiseChoiceValue('value',elem.Value[i]);
+      ComposeChoiceValue('value',elem.Value[i]);
     FJson.FinishObject;
   end;
   Prop('isOrdered',BooleanToString(elem.isOrdered));
@@ -2235,16 +2298,16 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAttachment(name : string; elem : TAttachment);
+procedure TFHIRXmlComposer.ComposeAttachment(name : string; elem : TAttachment);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('mimeType',elem.mimeType);
-  SerialiseAdvBuffer('data', elem.data);
+  ComposeAdvBuffer('data', elem.data);
   Text('url',elem.url);
-  SerialiseAdvBuffer('hash', elem.hash);
+  ComposeAdvBuffer('hash', elem.hash);
   Text('lang',elem.lang);
   Text('title',elem.title);
   FXml.close(name);
@@ -2280,16 +2343,16 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAttachment(name : string; elem : TAttachment);
+procedure TFHIRJsonComposer.ComposeAttachment(name : string; elem : TAttachment);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('mimeType',elem.mimeType);
-  SerialiseAdvBuffer('data', elem.data);
+  ComposeAdvBuffer('data', elem.data);
   Prop('url',elem.url);
-  SerialiseAdvBuffer('hash', elem.hash);
+  ComposeAdvBuffer('hash', elem.hash);
   Prop('lang',elem.lang);
   Prop('title',elem.title);
   FJson.finishObject;
@@ -2320,14 +2383,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseRatio(name : string; elem : TRatio);
+procedure TFHIRXmlComposer.ComposeRatio(name : string; elem : TRatio);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseQuantity('numerator', elem.numerator);
-  SerialiseQuantity('denominator', elem.denominator);
+  ComposeQuantity('numerator', elem.numerator);
+  ComposeQuantity('denominator', elem.denominator);
   FXml.close(name);
 end;
 
@@ -2353,14 +2416,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseRatio(name : string; elem : TRatio);
+procedure TFHIRJsonComposer.ComposeRatio(name : string; elem : TRatio);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseQuantity('numerator', elem.numerator);
-  SerialiseQuantity('denominator', elem.denominator);
+  ComposeQuantity('numerator', elem.numerator);
+  ComposeQuantity('denominator', elem.denominator);
   FJson.finishObject;
 end;
 
@@ -2391,7 +2454,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+procedure TFHIRXmlComposer.ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
 begin
   if (elem = nil) then
     exit;
@@ -2427,7 +2490,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
+procedure TFHIRJsonComposer.ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
 begin
   if (elem = nil) then
     exit;
@@ -2466,7 +2529,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+procedure TFHIRXmlComposer.ComposeCodeableConcept(name : string; elem : TCodeableConcept);
 var
   i : integer;
 begin
@@ -2475,7 +2538,7 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   for i := 0 to elem.Coding.Count - 1 do
-    SerialiseCodeableConceptCoding('coding', elem.Coding[i]);
+    ComposeCodeableConceptCoding('coding', elem.Coding[i]);
   Text('text',elem.text);
   Text('primary',elem.primary);
   FXml.close(name);
@@ -2511,7 +2574,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseCodeableConcept(name : string; elem : TCodeableConcept);
+procedure TFHIRJsonComposer.ComposeCodeableConcept(name : string; elem : TCodeableConcept);
 var
   i : integer;
 begin
@@ -2523,7 +2586,7 @@ begin
   begin
     FJson.valueObject('codings');
     for i := 0 to elem.Coding.Count - 1 do
-      SerialiseCodeableConceptCoding('coding',elem.Coding[i]);
+      ComposeCodeableConceptCoding('coding',elem.Coding[i]);
     FJson.FinishObject;
   end;
   Prop('text',elem.text);
@@ -2556,7 +2619,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseIdentifier(name : string; elem : TIdentifier);
+procedure TFHIRXmlComposer.ComposeIdentifier(name : string; elem : TIdentifier);
 begin
   if (elem = nil) then
     exit;
@@ -2589,7 +2652,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseIdentifier(name : string; elem : TIdentifier);
+procedure TFHIRJsonComposer.ComposeIdentifier(name : string; elem : TIdentifier);
 begin
   if (elem = nil) then
     exit;
@@ -2631,7 +2694,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+procedure TFHIRXmlComposer.ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
 begin
   if (elem = nil) then
     exit;
@@ -2639,7 +2702,7 @@ begin
   FXml.open(name);
   Text('frequency',IntegerToString(elem.frequency));
   Text('when',CODES_TEventTiming[elem.when]);
-  SerialiseQuantity('duration', elem.duration);
+  ComposeQuantity('duration', elem.duration);
   Text('count',IntegerToString(elem.count));
   Text('end',elem.end_);
   FXml.close(name);
@@ -2673,7 +2736,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseScheduleRepeat(name : string; elem : TScheduleRepeat);
+procedure TFHIRJsonComposer.ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
 begin
   if (elem = nil) then
     exit;
@@ -2681,7 +2744,7 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('frequency',IntegerToString(elem.frequency));
   Prop('when',CODES_TEventTiming[elem.when]);
-  SerialiseQuantity('duration', elem.duration);
+  ComposeQuantity('duration', elem.duration);
   Prop('count',IntegerToString(elem.count));
   Prop('end',elem.end_);
   FJson.finishObject;
@@ -2712,7 +2775,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseSchedule(name : string; elem : TSchedule);
+procedure TFHIRXmlComposer.ComposeSchedule(name : string; elem : TSchedule);
 var
   i : integer;
 begin
@@ -2721,8 +2784,8 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   for i := 0 to elem.Event.Count - 1 do
-    SerialiseInterval_dateTime('event', elem.Event[i]);
-  SerialiseScheduleRepeat('repeat', elem.repeat_);
+    ComposeInterval_dateTime('event', elem.Event[i]);
+  ComposeScheduleRepeat('repeat', elem.repeat_);
   FXml.close(name);
 end;
 
@@ -2754,7 +2817,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseSchedule(name : string; elem : TSchedule);
+procedure TFHIRJsonComposer.ComposeSchedule(name : string; elem : TSchedule);
 var
   i : integer;
 begin
@@ -2766,10 +2829,10 @@ begin
   begin
     FJson.valueObject('events');
     for i := 0 to elem.Event.Count - 1 do
-      SerialiseInterval_dateTime('event',elem.Event[i]);
+      ComposeInterval_dateTime('event',elem.Event[i]);
     FJson.FinishObject;
   end;
-  SerialiseScheduleRepeat('repeat', elem.repeat_);
+  ComposeScheduleRepeat('repeat', elem.repeat_);
   FJson.finishObject;
 end;
 
@@ -2802,7 +2865,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseContact(name : string; elem : TContact);
+procedure TFHIRXmlComposer.ComposeContact(name : string; elem : TContact);
 begin
   if (elem = nil) then
     exit;
@@ -2811,7 +2874,7 @@ begin
   Text('system',CODES_TContactSystem[elem.system]);
   Text('value',elem.value);
   Text('use',CODES_TContactUse[elem.use]);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -2841,7 +2904,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseContact(name : string; elem : TContact);
+procedure TFHIRJsonComposer.ComposeContact(name : string; elem : TContact);
 begin
   if (elem = nil) then
     exit;
@@ -2850,7 +2913,7 @@ begin
   Prop('system',CODES_TContactSystem[elem.system]);
   Prop('value',elem.value);
   Prop('use',CODES_TContactUse[elem.use]);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -2879,7 +2942,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAddressPart(name : string; elem : TAddressPart);
+procedure TFHIRXmlComposer.ComposeAddressPart(name : string; elem : TAddressPart);
 begin
   if (elem = nil) then
     exit;
@@ -2912,7 +2975,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAddressPart(name : string; elem : TAddressPart);
+procedure TFHIRJsonComposer.ComposeAddressPart(name : string; elem : TAddressPart);
 begin
   if (elem = nil) then
     exit;
@@ -2952,7 +3015,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAddress(name : string; elem : TAddress);
+procedure TFHIRXmlComposer.ComposeAddress(name : string; elem : TAddress);
 var
   i : integer;
 begin
@@ -2963,8 +3026,8 @@ begin
   Text('use',CODES_TAddressUse[elem.use]);
   Text('text',elem.text);
   for i := 0 to elem.Part.Count - 1 do
-    SerialiseAddressPart('part', elem.Part[i]);
-  SerialiseInterval_dateTime('period', elem.period);
+    ComposeAddressPart('part', elem.Part[i]);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -3000,7 +3063,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAddress(name : string; elem : TAddress);
+procedure TFHIRJsonComposer.ComposeAddress(name : string; elem : TAddress);
 var
   i : integer;
 begin
@@ -3014,10 +3077,10 @@ begin
   begin
     FJson.valueObject('parts');
     for i := 0 to elem.Part.Count - 1 do
-      SerialiseAddressPart('part',elem.Part[i]);
+      ComposeAddressPart('part',elem.Part[i]);
     FJson.FinishObject;
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -3046,7 +3109,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+procedure TFHIRXmlComposer.ComposeHumanNamePart(name : string; elem : THumanNamePart);
 begin
   if (elem = nil) then
     exit;
@@ -3079,7 +3142,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseHumanNamePart(name : string; elem : THumanNamePart);
+procedure TFHIRJsonComposer.ComposeHumanNamePart(name : string; elem : THumanNamePart);
 begin
   if (elem = nil) then
     exit;
@@ -3119,7 +3182,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseHumanName(name : string; elem : THumanName);
+procedure TFHIRXmlComposer.ComposeHumanName(name : string; elem : THumanName);
 var
   i : integer;
 begin
@@ -3130,8 +3193,8 @@ begin
   Text('use',CODES_TNameUse[elem.use]);
   Text('text',elem.text);
   for i := 0 to elem.Part.Count - 1 do
-    SerialiseHumanNamePart('part', elem.Part[i]);
-  SerialiseInterval_dateTime('period', elem.period);
+    ComposeHumanNamePart('part', elem.Part[i]);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -3167,7 +3230,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseHumanName(name : string; elem : THumanName);
+procedure TFHIRJsonComposer.ComposeHumanName(name : string; elem : THumanName);
 var
   i : integer;
 begin
@@ -3181,10 +3244,10 @@ begin
   begin
     FJson.valueObject('parts');
     for i := 0 to elem.Part.Count - 1 do
-      SerialiseHumanNamePart('part',elem.Part[i]);
+      ComposeHumanNamePart('part',elem.Part[i]);
     FJson.FinishObject;
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -3217,16 +3280,16 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseHumanId(name : string; elem : THumanId);
+procedure TFHIRXmlComposer.ComposeHumanId(name : string; elem : THumanId);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCoding('type', elem.type_);
-  SerialiseIdentifier('identifier', elem.identifier);
-  SerialiseInterval_dateTime('period', elem.period);
-  SerialiseFHIRResourceReference{TOrganization}('assigner', elem.assigner);
+  ComposeCoding('type', elem.type_);
+  ComposeIdentifier('identifier', elem.identifier);
+  ComposeInterval_dateTime('period', elem.period);
+  ComposeFHIRResourceReference{TOrganization}('assigner', elem.assigner);
   FXml.close(name);
 end;
 
@@ -3256,16 +3319,16 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseHumanId(name : string; elem : THumanId);
+procedure TFHIRJsonComposer.ComposeHumanId(name : string; elem : THumanId);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCoding('type', elem.type_);
-  SerialiseIdentifier('identifier', elem.identifier);
-  SerialiseInterval_dateTime('period', elem.period);
-  SerialiseFHIRResourceReference{TOrganization}('assigner', elem.assigner);
+  ComposeCoding('type', elem.type_);
+  ComposeIdentifier('identifier', elem.identifier);
+  ComposeInterval_dateTime('period', elem.period);
+  ComposeFHIRResourceReference{TOrganization}('assigner', elem.assigner);
   FJson.finishObject;
 end;
 
@@ -3317,7 +3380,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+procedure TFHIRXmlComposer.ComposeConformancePublisher(name : string; elem : TConformancePublisher);
 var
   i : integer;
 begin
@@ -3330,14 +3393,14 @@ begin
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   FXml.close(name);
@@ -3379,7 +3442,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformancePublisher(name : string; elem : TConformancePublisher);
+procedure TFHIRJsonComposer.ComposeConformancePublisher(name : string; elem : TConformancePublisher);
 var
   i : integer;
 begin
@@ -3392,14 +3455,14 @@ begin
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -3432,7 +3495,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+procedure TFHIRXmlComposer.ComposeConformanceSoftware(name : string; elem : TConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -3468,7 +3531,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformanceSoftware(name : string; elem : TConformanceSoftware);
+procedure TFHIRJsonComposer.ComposeConformanceSoftware(name : string; elem : TConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -3523,7 +3586,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+procedure TFHIRXmlComposer.ComposeConformanceOperation(name : string; elem : TConformanceOperation);
 begin
   if (elem = nil) then
     exit;
@@ -3535,9 +3598,9 @@ begin
   Text('delete',BooleanToString(elem.delete));
   Text('validate',BooleanToString(elem.validate));
   Text('history',BooleanToString(elem.history));
-  SerialiseConformanceOperationTransaction('transaction', elem.transaction);
-  SerialiseConformanceOperationSearch('search', elem.search);
-  SerialiseConformanceOperationCreate('create', elem.create_);
+  ComposeConformanceOperationTransaction('transaction', elem.transaction);
+  ComposeConformanceOperationSearch('search', elem.search);
+  ComposeConformanceOperationCreate('create', elem.create_);
   Text('updates',BooleanToString(elem.updates));
   Text('schema',BooleanToString(elem.schema));
   FXml.close(name);
@@ -3583,7 +3646,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformanceOperation(name : string; elem : TConformanceOperation);
+procedure TFHIRJsonComposer.ComposeConformanceOperation(name : string; elem : TConformanceOperation);
 begin
   if (elem = nil) then
     exit;
@@ -3595,9 +3658,9 @@ begin
   Prop('delete',BooleanToString(elem.delete));
   Prop('validate',BooleanToString(elem.validate));
   Prop('history',BooleanToString(elem.history));
-  SerialiseConformanceOperationTransaction('transaction', elem.transaction);
-  SerialiseConformanceOperationSearch('search', elem.search);
-  SerialiseConformanceOperationCreate('create', elem.create_);
+  ComposeConformanceOperationTransaction('transaction', elem.transaction);
+  ComposeConformanceOperationSearch('search', elem.search);
+  ComposeConformanceOperationCreate('create', elem.create_);
   Prop('updates',BooleanToString(elem.updates));
   Prop('schema',BooleanToString(elem.schema));
   FJson.finishObject;
@@ -3637,7 +3700,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+procedure TFHIRXmlComposer.ComposeConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
 var
   i : integer;
 begin
@@ -3681,7 +3744,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
+procedure TFHIRJsonComposer.ComposeConformanceOperationTransaction(name : string; elem : TConformanceOperationTransaction);
 var
   i : integer;
 begin
@@ -3733,7 +3796,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+procedure TFHIRXmlComposer.ComposeConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
 var
   i : integer;
 begin
@@ -3777,7 +3840,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
+procedure TFHIRJsonComposer.ComposeConformanceOperationSearch(name : string; elem : TConformanceOperationSearch);
 var
   i : integer;
 begin
@@ -3818,7 +3881,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+procedure TFHIRXmlComposer.ComposeConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
 begin
   if (elem = nil) then
     exit;
@@ -3848,7 +3911,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
+procedure TFHIRJsonComposer.ComposeConformanceOperationCreate(name : string; elem : TConformanceOperationCreate);
 begin
   if (elem = nil) then
     exit;
@@ -3895,7 +3958,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseConformance(name : string; elem : TConformance);
+procedure TFHIRXmlComposer.ComposeConformance(name : string; elem : TConformance);
 begin
   if (elem = nil) then
     exit;
@@ -3903,12 +3966,12 @@ begin
   FXml.open(name);
   Text('id', elem.id);
   Text('date',elem.date);
-  SerialiseConformancePublisher('publisher', elem.publisher);
-  SerialiseConformanceSoftware('software', elem.software);
+  ComposeConformancePublisher('publisher', elem.publisher);
+  ComposeConformanceSoftware('software', elem.software);
   Text('mode',CODES_TRestfulConformanceMode[elem.mode]);
-  SerialiseConstraint('resource', elem.resource);
-  SerialiseConformanceOperation('operation', elem.operation);
-  SerialiseNarrative('text', elem.text);
+  ComposeConstraint('resource', elem.resource);
+  ComposeConformanceOperation('operation', elem.operation);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -3942,7 +4005,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseConformance(name : string; elem : TConformance);
+procedure TFHIRJsonComposer.ComposeConformance(name : string; elem : TConformance);
 begin
   if (elem = nil) then
     exit;
@@ -3950,12 +4013,12 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
   Prop('date',elem.date);
-  SerialiseConformancePublisher('publisher', elem.publisher);
-  SerialiseConformanceSoftware('software', elem.software);
+  ComposeConformancePublisher('publisher', elem.publisher);
+  ComposeConformanceSoftware('software', elem.software);
   Prop('mode',CODES_TRestfulConformanceMode[elem.mode]);
-  SerialiseConstraint('resource', elem.resource);
-  SerialiseConformanceOperation('operation', elem.operation);
-  SerialiseNarrative('text', elem.text);
+  ComposeConstraint('resource', elem.resource);
+  ComposeConformanceOperation('operation', elem.operation);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -3984,14 +4047,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+procedure TFHIRXmlComposer.ComposeDocumentAuthor(name : string; elem : TDocumentAuthor);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('time',elem.time);
-  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FXml.close(name);
 end;
 
@@ -4017,14 +4080,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentAuthor(name : string; elem : TDocumentAuthor);
+procedure TFHIRJsonComposer.ComposeDocumentAuthor(name : string; elem : TDocumentAuthor);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('time',elem.time);
-  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FJson.finishObject;
 end;
 
@@ -4055,7 +4118,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+procedure TFHIRXmlComposer.ComposeDocumentAttestor(name : string; elem : TDocumentAttestor);
 begin
   if (elem = nil) then
     exit;
@@ -4063,7 +4126,7 @@ begin
   FXml.open(name);
   Text('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
   Text('time',elem.time);
-  SerialiseFHIRResourceReference{TPerson}('party', elem.party);
+  ComposeFHIRResourceReference{TPerson}('party', elem.party);
   FXml.close(name);
 end;
 
@@ -4091,7 +4154,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentAttestor(name : string; elem : TDocumentAttestor);
+procedure TFHIRJsonComposer.ComposeDocumentAttestor(name : string; elem : TDocumentAttestor);
 begin
   if (elem = nil) then
     exit;
@@ -4099,7 +4162,7 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
   Prop('time',elem.time);
-  SerialiseFHIRResourceReference{TPerson}('party', elem.party);
+  ComposeFHIRResourceReference{TPerson}('party', elem.party);
   FJson.finishObject;
 end;
 
@@ -4151,7 +4214,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentSection(name : string; elem : TDocumentSection);
+procedure TFHIRXmlComposer.ComposeDocumentSection(name : string; elem : TDocumentSection);
 var
   i : integer;
 begin
@@ -4159,18 +4222,18 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCodeableConcept('type', elem.type_);
+  ComposeCodeableConcept('type', elem.type_);
   Text('instant',DateTimeToXMLDateTimeString(elem.instant));
-  SerialiseDocumentSectionAuthor('author', elem.author);
-  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
-  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
-  SerialiseFHIRResourceReference{TPerson}('informant', elem.informant);
-  SerialiseFHIRResourceReference{Resource}('content', elem.content);
+  ComposeDocumentSectionAuthor('author', elem.author);
+  ComposeFHIRResourceReference{Resource}('enterer', elem.enterer);
+  ComposeFHIRResourceReference{Resource}('subject', elem.subject);
+  ComposeFHIRResourceReference{TPerson}('informant', elem.informant);
+  ComposeFHIRResourceReference{Resource}('content', elem.content);
   if elem.Section.Count > 0 then
   begin
     FXml.open('sections');
     for i := 0 to elem.Section.Count - 1 do
-      SerialiseDocumentSection('section',elem.Section[i]);
+      ComposeDocumentSection('section',elem.Section[i]);
     FXml.Close('sections');
   end;
   FXml.close(name);
@@ -4216,7 +4279,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentSection(name : string; elem : TDocumentSection);
+procedure TFHIRJsonComposer.ComposeDocumentSection(name : string; elem : TDocumentSection);
 var
   i : integer;
 begin
@@ -4224,18 +4287,18 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCodeableConcept('type', elem.type_);
+  ComposeCodeableConcept('type', elem.type_);
   Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
-  SerialiseDocumentSectionAuthor('author', elem.author);
-  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
-  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
-  SerialiseFHIRResourceReference{TPerson}('informant', elem.informant);
-  SerialiseFHIRResourceReference{Resource}('content', elem.content);
+  ComposeDocumentSectionAuthor('author', elem.author);
+  ComposeFHIRResourceReference{Resource}('enterer', elem.enterer);
+  ComposeFHIRResourceReference{Resource}('subject', elem.subject);
+  ComposeFHIRResourceReference{TPerson}('informant', elem.informant);
+  ComposeFHIRResourceReference{Resource}('content', elem.content);
   if elem.Section.Count > 0 then
   begin
     FJson.valueObject('sections');
     for i := 0 to elem.Section.Count - 1 do
-      SerialiseDocumentSection('section',elem.Section[i]);
+      ComposeDocumentSection('section',elem.Section[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -4266,14 +4329,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+procedure TFHIRXmlComposer.ComposeDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('time',elem.time);
-  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FXml.close(name);
 end;
 
@@ -4299,14 +4362,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
+procedure TFHIRJsonComposer.ComposeDocumentSectionAuthor(name : string; elem : TDocumentSectionAuthor);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('time',elem.time);
-  SerialiseFHIRResourceReference{Resource}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FJson.finishObject;
 end;
 
@@ -4404,7 +4467,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocument(name : string; elem : TDocument);
+procedure TFHIRXmlComposer.ComposeDocument(name : string; elem : TDocument);
 var
   i : integer;
 begin
@@ -4414,44 +4477,44 @@ begin
   FXml.open(name);
   Text('id', elem.id);
   Text('instant',DateTimeToXMLDateTimeString(elem.instant));
-  SerialiseCodeableConcept('type', elem.type_);
+  ComposeCodeableConcept('type', elem.type_);
   Text('title',elem.title);
   Text('setId',elem.setId);
   Text('version',IntegerToString(elem.version));
   Text('replaces',elem.replaces);
-  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  ComposeFHIRResourceReference{Resource}('subject', elem.subject);
   if elem.Author.Count > 0 then
   begin
     FXml.open('authors');
     for i := 0 to elem.Author.Count - 1 do
-      SerialiseDocumentAuthor('author',elem.Author[i]);
+      ComposeDocumentAuthor('author',elem.Author[i]);
     FXml.Close('authors');
   end;
   if elem.Attestor.Count > 0 then
   begin
     FXml.open('attestors');
     for i := 0 to elem.Attestor.Count - 1 do
-      SerialiseDocumentAttestor('attestor',elem.Attestor[i]);
+      ComposeDocumentAttestor('attestor',elem.Attestor[i]);
     FXml.Close('attestors');
   end;
   if elem.Recipient.Count > 0 then
   begin
     FXml.open('recipients');
     for i := 0 to elem.Recipient.Count - 1 do
-      SerialiseFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
+      ComposeFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
     FXml.Close('recipients');
   end;
-  SerialiseFHIRResourceReference{TOrganization}('custodian', elem.custodian);
-  SerialiseFHIRResourceReference{Resource}('event', elem.event);
-  SerialiseFHIRResourceReference{Resource}('encounter', elem.encounter);
+  ComposeFHIRResourceReference{TOrganization}('custodian', elem.custodian);
+  ComposeFHIRResourceReference{Resource}('event', elem.event);
+  ComposeFHIRResourceReference{Resource}('encounter', elem.encounter);
   if elem.Section.Count > 0 then
   begin
     FXml.open('sections');
     for i := 0 to elem.Section.Count - 1 do
-      SerialiseDocumentSection('section',elem.Section[i]);
+      ComposeDocumentSection('section',elem.Section[i]);
     FXml.Close('sections');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -4525,7 +4588,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocument(name : string; elem : TDocument);
+procedure TFHIRJsonComposer.ComposeDocument(name : string; elem : TDocument);
 var
   i : integer;
 begin
@@ -4535,44 +4598,44 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
   Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
-  SerialiseCodeableConcept('type', elem.type_);
+  ComposeCodeableConcept('type', elem.type_);
   Prop('title',elem.title);
   Prop('setId',elem.setId);
   Prop('version',IntegerToString(elem.version));
   Prop('replaces',elem.replaces);
-  SerialiseFHIRResourceReference{Resource}('subject', elem.subject);
+  ComposeFHIRResourceReference{Resource}('subject', elem.subject);
   if elem.Author.Count > 0 then
   begin
     FJson.valueObject('authors');
     for i := 0 to elem.Author.Count - 1 do
-      SerialiseDocumentAuthor('author',elem.Author[i]);
+      ComposeDocumentAuthor('author',elem.Author[i]);
     FJson.FinishObject;
   end;
   if elem.Attestor.Count > 0 then
   begin
     FJson.valueObject('attestors');
     for i := 0 to elem.Attestor.Count - 1 do
-      SerialiseDocumentAttestor('attestor',elem.Attestor[i]);
+      ComposeDocumentAttestor('attestor',elem.Attestor[i]);
     FJson.FinishObject;
   end;
   if elem.Recipient.Count > 0 then
   begin
     FJson.valueObject('recipients');
     for i := 0 to elem.Recipient.Count - 1 do
-      SerialiseFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
+      ComposeFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
     FJson.FinishObject;
   end;
-  SerialiseFHIRResourceReference{TOrganization}('custodian', elem.custodian);
-  SerialiseFHIRResourceReference{Resource}('event', elem.event);
-  SerialiseFHIRResourceReference{Resource}('encounter', elem.encounter);
+  ComposeFHIRResourceReference{TOrganization}('custodian', elem.custodian);
+  ComposeFHIRResourceReference{Resource}('event', elem.event);
+  ComposeFHIRResourceReference{Resource}('encounter', elem.encounter);
   if elem.Section.Count > 0 then
   begin
     FJson.valueObject('sections');
     for i := 0 to elem.Section.Count - 1 do
-      SerialiseDocumentSection('section',elem.Section[i]);
+      ComposeDocumentSection('section',elem.Section[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -4603,7 +4666,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageResponse(name : string; elem : TMessageResponse);
+procedure TFHIRXmlComposer.ComposeMessageResponse(name : string; elem : TMessageResponse);
 begin
   if (elem = nil) then
     exit;
@@ -4639,7 +4702,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageResponse(name : string; elem : TMessageResponse);
+procedure TFHIRJsonComposer.ComposeMessageResponse(name : string; elem : TMessageResponse);
 begin
   if (elem = nil) then
     exit;
@@ -4700,7 +4763,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessage(name : string; elem : TMessage);
+procedure TFHIRXmlComposer.ComposeMessage(name : string; elem : TMessage);
 begin
   if (elem = nil) then
     exit;
@@ -4710,16 +4773,16 @@ begin
   Text('threadId',elem.threadId);
   Text('instant',DateTimeToXMLDateTimeString(elem.instant));
   Text('event',elem.event);
-  SerialiseMessageResponse('response', elem.response);
-  SerialiseFHIRResourceReference{TDevice}('source', elem.source);
-  SerialiseFHIRResourceReference{TDevice}('destination', elem.destination);
-  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
-  SerialiseFHIRResourceReference{Resource}('author', elem.author);
-  SerialiseFHIRResourceReference{Resource}('responsible', elem.responsible);
-  SerialiseInterval_dateTime('effective', elem.effective);
-  SerialiseCodeableConcept('reason', elem.reason);
-  SerialiseFHIRResourceReference{Resource}('data', elem.data);
-  SerialiseNarrative('text', elem.text);
+  ComposeMessageResponse('response', elem.response);
+  ComposeFHIRResourceReference{TDevice}('source', elem.source);
+  ComposeFHIRResourceReference{TDevice}('destination', elem.destination);
+  ComposeFHIRResourceReference{Resource}('enterer', elem.enterer);
+  ComposeFHIRResourceReference{Resource}('author', elem.author);
+  ComposeFHIRResourceReference{Resource}('responsible', elem.responsible);
+  ComposeInterval_dateTime('effective', elem.effective);
+  ComposeCodeableConcept('reason', elem.reason);
+  ComposeFHIRResourceReference{Resource}('data', elem.data);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -4765,7 +4828,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessage(name : string; elem : TMessage);
+procedure TFHIRJsonComposer.ComposeMessage(name : string; elem : TMessage);
 begin
   if (elem = nil) then
     exit;
@@ -4775,16 +4838,16 @@ begin
   Prop('threadId',elem.threadId);
   Prop('instant',DateTimeToXMLDateTimeString(elem.instant));
   Prop('event',elem.event);
-  SerialiseMessageResponse('response', elem.response);
-  SerialiseFHIRResourceReference{TDevice}('source', elem.source);
-  SerialiseFHIRResourceReference{TDevice}('destination', elem.destination);
-  SerialiseFHIRResourceReference{Resource}('enterer', elem.enterer);
-  SerialiseFHIRResourceReference{Resource}('author', elem.author);
-  SerialiseFHIRResourceReference{Resource}('responsible', elem.responsible);
-  SerialiseInterval_dateTime('effective', elem.effective);
-  SerialiseCodeableConcept('reason', elem.reason);
-  SerialiseFHIRResourceReference{Resource}('data', elem.data);
-  SerialiseNarrative('text', elem.text);
+  ComposeMessageResponse('response', elem.response);
+  ComposeFHIRResourceReference{TDevice}('source', elem.source);
+  ComposeFHIRResourceReference{TDevice}('destination', elem.destination);
+  ComposeFHIRResourceReference{Resource}('enterer', elem.enterer);
+  ComposeFHIRResourceReference{Resource}('author', elem.author);
+  ComposeFHIRResourceReference{Resource}('responsible', elem.responsible);
+  ComposeInterval_dateTime('effective', elem.effective);
+  ComposeCodeableConcept('reason', elem.reason);
+  ComposeFHIRResourceReference{Resource}('data', elem.data);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -4836,7 +4899,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+procedure TFHIRXmlComposer.ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
 var
   i : integer;
 begin
@@ -4849,14 +4912,14 @@ begin
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   FXml.close(name);
@@ -4898,7 +4961,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
+procedure TFHIRJsonComposer.ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
 var
   i : integer;
 begin
@@ -4911,14 +4974,14 @@ begin
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -4951,7 +5014,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+procedure TFHIRXmlComposer.ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -4987,7 +5050,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
+procedure TFHIRJsonComposer.ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -5030,7 +5093,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+procedure TFHIRXmlComposer.ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
 begin
   if (elem = nil) then
     exit;
@@ -5039,8 +5102,8 @@ begin
   Text('code',elem.code);
   Text('resource',elem.resource);
   Text('mode',CODES_TMessageConformanceEventMode[elem.mode]);
-  SerialiseMessageConformanceEventRequest('request', elem.request);
-  SerialiseMessageConformanceEventResponse('response', elem.response);
+  ComposeMessageConformanceEventRequest('request', elem.request);
+  ComposeMessageConformanceEventResponse('response', elem.response);
   FXml.close(name);
 end;
 
@@ -5072,7 +5135,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
+procedure TFHIRJsonComposer.ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
 begin
   if (elem = nil) then
     exit;
@@ -5081,8 +5144,8 @@ begin
   Prop('code',elem.code);
   Prop('resource',elem.resource);
   Prop('mode',CODES_TMessageConformanceEventMode[elem.mode]);
-  SerialiseMessageConformanceEventRequest('request', elem.request);
-  SerialiseMessageConformanceEventResponse('response', elem.response);
+  ComposeMessageConformanceEventRequest('request', elem.request);
+  ComposeMessageConformanceEventResponse('response', elem.response);
   FJson.finishObject;
 end;
 
@@ -5120,7 +5183,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+procedure TFHIRXmlComposer.ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
 var
   i : integer;
 begin
@@ -5132,7 +5195,7 @@ begin
   begin
     FXml.open('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FXml.Close('resources');
   end;
   FXml.close(name);
@@ -5164,7 +5227,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
+procedure TFHIRJsonComposer.ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
 var
   i : integer;
 begin
@@ -5176,7 +5239,7 @@ begin
   begin
     FJson.valueObject('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -5216,7 +5279,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+procedure TFHIRXmlComposer.ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
 var
   i : integer;
 begin
@@ -5228,7 +5291,7 @@ begin
   begin
     FXml.open('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FXml.Close('resources');
   end;
   FXml.close(name);
@@ -5260,7 +5323,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
+procedure TFHIRJsonComposer.ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
 var
   i : integer;
 begin
@@ -5272,7 +5335,7 @@ begin
   begin
     FJson.valueObject('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -5322,7 +5385,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseMessageConformance(name : string; elem : TMessageConformance);
+procedure TFHIRXmlComposer.ComposeMessageConformance(name : string; elem : TMessageConformance);
 var
   i : integer;
 begin
@@ -5332,16 +5395,16 @@ begin
   FXml.open(name);
   Text('id', elem.id);
   Text('date',elem.date);
-  SerialiseMessageConformancePublisher('publisher', elem.publisher);
-  SerialiseMessageConformanceSoftware('software', elem.software);
+  ComposeMessageConformancePublisher('publisher', elem.publisher);
+  ComposeMessageConformanceSoftware('software', elem.software);
   if elem.Event.Count > 0 then
   begin
     FXml.open('events');
     for i := 0 to elem.Event.Count - 1 do
-      SerialiseMessageConformanceEvent('event',elem.Event[i]);
+      ComposeMessageConformanceEvent('event',elem.Event[i]);
     FXml.Close('events');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -5377,7 +5440,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseMessageConformance(name : string; elem : TMessageConformance);
+procedure TFHIRJsonComposer.ComposeMessageConformance(name : string; elem : TMessageConformance);
 var
   i : integer;
 begin
@@ -5387,16 +5450,16 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
   Prop('date',elem.date);
-  SerialiseMessageConformancePublisher('publisher', elem.publisher);
-  SerialiseMessageConformanceSoftware('software', elem.software);
+  ComposeMessageConformancePublisher('publisher', elem.publisher);
+  ComposeMessageConformanceSoftware('software', elem.software);
   if elem.Event.Count > 0 then
   begin
     FJson.valueObject('events');
     for i := 0 to elem.Event.Count - 1 do
-      SerialiseMessageConformanceEvent('event',elem.Event[i]);
+      ComposeMessageConformanceEvent('event',elem.Event[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -5480,7 +5543,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAgent(name : string; elem : TAgent);
+procedure TFHIRXmlComposer.ComposeAgent(name : string; elem : TAgent);
 var
   i : integer;
 begin
@@ -5489,38 +5552,38 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
-  SerialiseFHIRResourceReference{TOrganization}('organization', elem.organization);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
   if elem.Role.Count > 0 then
   begin
     FXml.open('roles');
     for i := 0 to elem.Role.Count - 1 do
-      SerialiseCodeableConcept('role',elem.Role[i]);
+      ComposeCodeableConcept('role',elem.Role[i]);
     FXml.Close('roles');
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   if elem.Identifier.Count > 0 then
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
   if elem.Address.Count > 0 then
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -5580,7 +5643,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAgent(name : string; elem : TAgent);
+procedure TFHIRJsonComposer.ComposeAgent(name : string; elem : TAgent);
 var
   i : integer;
 begin
@@ -5589,38 +5652,38 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
-  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
-  SerialiseFHIRResourceReference{TOrganization}('organization', elem.organization);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
   if elem.Role.Count > 0 then
   begin
     FJson.valueObject('roles');
     for i := 0 to elem.Role.Count - 1 do
-      SerialiseCodeableConcept('role',elem.Role[i]);
+      ComposeCodeableConcept('role',elem.Role[i]);
     FJson.FinishObject;
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   if elem.Identifier.Count > 0 then
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -5676,7 +5739,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+procedure TFHIRXmlComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
 var
   i : integer;
 begin
@@ -5684,21 +5747,21 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('role', elem.role);
-  SerialiseHumanName('name', elem.name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
   if elem.Address.Count > 0 then
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   FXml.close(name);
@@ -5744,7 +5807,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+procedure TFHIRJsonComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
 var
   i : integer;
 begin
@@ -5752,21 +5815,21 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('role', elem.role);
-  SerialiseHumanName('name', elem.name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -5842,7 +5905,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseAnimal(name : string; elem : TAnimal);
+procedure TFHIRXmlComposer.ComposeAnimal(name : string; elem : TAnimal);
 var
   i : integer;
 begin
@@ -5855,28 +5918,28 @@ begin
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
   if elem.Name.Count > 0 then
   begin
     FXml.open('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseHumanName('name',elem.Name[i]);
+      ComposeHumanName('name',elem.Name[i]);
     FXml.Close('names');
   end;
   Text('dob',elem.dob);
-  SerialiseCodeableConcept('species', elem.species);
-  SerialiseCodeableConcept('strain', elem.strain);
-  SerialiseCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('species', elem.species);
+  ComposeCodeableConcept('strain', elem.strain);
+  ComposeCodeableConcept('gender', elem.gender);
   if elem.RelatedEntity.Count > 0 then
   begin
     FXml.open('relatedEntities');
     for i := 0 to elem.RelatedEntity.Count - 1 do
-      SerialiseAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+      ComposeAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
     FXml.Close('relatedEntities');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -5930,7 +5993,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseAnimal(name : string; elem : TAnimal);
+procedure TFHIRJsonComposer.ComposeAnimal(name : string; elem : TAnimal);
 var
   i : integer;
 begin
@@ -5943,28 +6006,28 @@ begin
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
   if elem.Name.Count > 0 then
   begin
     FJson.valueObject('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseHumanName('name',elem.Name[i]);
+      ComposeHumanName('name',elem.Name[i]);
     FJson.FinishObject;
   end;
   Prop('dob',elem.dob);
-  SerialiseCodeableConcept('species', elem.species);
-  SerialiseCodeableConcept('strain', elem.strain);
-  SerialiseCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('species', elem.species);
+  ComposeCodeableConcept('strain', elem.strain);
+  ComposeCodeableConcept('gender', elem.gender);
   if elem.RelatedEntity.Count > 0 then
   begin
     FJson.valueObject('relatedEntities');
     for i := 0 to elem.RelatedEntity.Count - 1 do
-      SerialiseAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+      ComposeAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -5995,15 +6058,15 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+procedure TFHIRXmlComposer.ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('repeats',IntegerToString(elem.repeats));
-  SerialiseQuantity('quantity', elem.quantity);
-  SerialiseFHIRResourceReference{Resource}('dispenser', elem.dispenser);
+  ComposeQuantity('quantity', elem.quantity);
+  ComposeFHIRResourceReference{Resource}('dispenser', elem.dispenser);
   FXml.close(name);
 end;
 
@@ -6031,15 +6094,15 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionDispense(name : string; elem : TPrescriptionDispense);
+procedure TFHIRJsonComposer.ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('repeats',IntegerToString(elem.repeats));
-  SerialiseQuantity('quantity', elem.quantity);
-  SerialiseFHIRResourceReference{Resource}('dispenser', elem.dispenser);
+  ComposeQuantity('quantity', elem.quantity);
+  ComposeFHIRResourceReference{Resource}('dispenser', elem.dispenser);
   FJson.finishObject;
 end;
 
@@ -6093,7 +6156,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+procedure TFHIRXmlComposer.ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
 var
   i : integer;
 begin
@@ -6101,20 +6164,20 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCoding('productCode', elem.productCode);
+  ComposeCoding('productCode', elem.productCode);
   Text('description',elem.description);
   if elem.ActiveIngredient.Count > 0 then
   begin
     FXml.open('activeIngredients');
     for i := 0 to elem.ActiveIngredient.Count - 1 do
-      SerialisePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
+      ComposePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
     FXml.Close('activeIngredients');
   end;
   if elem.InactiveIngredient.Count > 0 then
   begin
     FXml.open('inactiveIngredients');
     for i := 0 to elem.InactiveIngredient.Count - 1 do
-      SerialisePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
+      ComposePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
     FXml.Close('inactiveIngredients');
   end;
   FXml.close(name);
@@ -6158,7 +6221,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
+procedure TFHIRJsonComposer.ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
 var
   i : integer;
 begin
@@ -6166,20 +6229,20 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCoding('productCode', elem.productCode);
+  ComposeCoding('productCode', elem.productCode);
   Prop('description',elem.description);
   if elem.ActiveIngredient.Count > 0 then
   begin
     FJson.valueObject('activeIngredients');
     for i := 0 to elem.ActiveIngredient.Count - 1 do
-      SerialisePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
+      ComposePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
     FJson.FinishObject;
   end;
   if elem.InactiveIngredient.Count > 0 then
   begin
     FJson.valueObject('inactiveIngredients');
     for i := 0 to elem.InactiveIngredient.Count - 1 do
-      SerialisePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
+      ComposePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -6210,14 +6273,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+procedure TFHIRXmlComposer.ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCoding('productCode', elem.productCode);
-  SerialiseRatio('quantity', elem.quantity);
+  ComposeCoding('productCode', elem.productCode);
+  ComposeRatio('quantity', elem.quantity);
   FXml.close(name);
 end;
 
@@ -6243,14 +6306,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
+procedure TFHIRJsonComposer.ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCoding('productCode', elem.productCode);
-  SerialiseRatio('quantity', elem.quantity);
+  ComposeCoding('productCode', elem.productCode);
+  ComposeRatio('quantity', elem.quantity);
   FJson.finishObject;
 end;
 
@@ -6279,14 +6342,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+procedure TFHIRXmlComposer.ComposePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCoding('productCode', elem.productCode);
-  SerialiseRatio('quantity', elem.quantity);
+  ComposeCoding('productCode', elem.productCode);
+  ComposeRatio('quantity', elem.quantity);
   FXml.close(name);
 end;
 
@@ -6312,14 +6375,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
+procedure TFHIRJsonComposer.ComposePrescriptionMedicineInactiveIngredient(name : string; elem : TPrescriptionMedicineInactiveIngredient);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCoding('productCode', elem.productCode);
-  SerialiseRatio('quantity', elem.quantity);
+  ComposeCoding('productCode', elem.productCode);
+  ComposeRatio('quantity', elem.quantity);
   FJson.finishObject;
 end;
 
@@ -6369,7 +6432,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+procedure TFHIRXmlComposer.ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
 var
   i : integer;
 begin
@@ -6378,16 +6441,16 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('description',elem.description);
-  SerialiseRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
+  ComposeRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
   Text('start',elem.start);
   Text('end',elem.end_);
-  SerialiseQuantity('duration', elem.duration);
+  ComposeQuantity('duration', elem.duration);
   Text('numberOfAdministrations',IntegerToString(elem.numberOfAdministrations));
   if elem.DosageInstruction.Count > 0 then
   begin
     FXml.open('dosageInstructions');
     for i := 0 to elem.DosageInstruction.Count - 1 do
-      SerialisePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
+      ComposePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
     FXml.Close('dosageInstructions');
   end;
   FXml.close(name);
@@ -6431,7 +6494,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
+procedure TFHIRJsonComposer.ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
 var
   i : integer;
 begin
@@ -6440,16 +6503,16 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('description',elem.description);
-  SerialiseRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
+  ComposeRatio('totalPeriodicDosis', elem.totalPeriodicDosis);
   Prop('start',elem.start);
   Prop('end',elem.end_);
-  SerialiseQuantity('duration', elem.duration);
+  ComposeQuantity('duration', elem.duration);
   Prop('numberOfAdministrations',IntegerToString(elem.numberOfAdministrations));
   if elem.DosageInstruction.Count > 0 then
   begin
     FJson.valueObject('dosageInstructions');
     for i := 0 to elem.DosageInstruction.Count - 1 do
-      SerialisePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
+      ComposePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -6523,7 +6586,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+procedure TFHIRXmlComposer.ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
 var
   i : integer;
 begin
@@ -6535,7 +6598,7 @@ begin
   begin
     FXml.open('preconditions');
     for i := 0 to elem.Precondition.Count - 1 do
-      SerialiseCodeableConcept('precondition',elem.Precondition[i]);
+      ComposeCodeableConcept('precondition',elem.Precondition[i]);
     FXml.Close('preconditions');
   end;
   Text('prn',CODES_TBooleanYesNo[elem.prn]);
@@ -6543,20 +6606,20 @@ begin
   begin
     FXml.open('additionalInstructions');
     for i := 0 to elem.AdditionalInstruction.Count - 1 do
-      SerialiseCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
+      ComposeCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
     FXml.Close('additionalInstructions');
   end;
-  SerialiseCodeableConcept('route', elem.route);
+  ComposeCodeableConcept('route', elem.route);
   if elem.dose is TQuantity then
-    SerialiseQuantity('doseQuantity', TQuantity(elem.dose))
+    ComposeQuantity('doseQuantity', TQuantity(elem.dose))
   else if elem.dose is TInterval_Quantity then
-    SerialiseInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
-  SerialiseQuantity('rate', elem.rate);
+    ComposeInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
+  ComposeQuantity('rate', elem.rate);
   if elem.Schedule.Count > 0 then
   begin
     FXml.open('schedules');
     for i := 0 to elem.Schedule.Count - 1 do
-      SerialiseSchedule('schedule',elem.Schedule[i]);
+      ComposeSchedule('schedule',elem.Schedule[i]);
     FXml.Close('schedules');
   end;
   FXml.close(name);
@@ -6614,7 +6677,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
+procedure TFHIRJsonComposer.ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
 var
   i : integer;
 begin
@@ -6626,7 +6689,7 @@ begin
   begin
     FJson.valueObject('preconditions');
     for i := 0 to elem.Precondition.Count - 1 do
-      SerialiseCodeableConcept('precondition',elem.Precondition[i]);
+      ComposeCodeableConcept('precondition',elem.Precondition[i]);
     FJson.FinishObject;
   end;
   Prop('prn',CODES_TBooleanYesNo[elem.prn]);
@@ -6634,20 +6697,20 @@ begin
   begin
     FJson.valueObject('additionalInstructions');
     for i := 0 to elem.AdditionalInstruction.Count - 1 do
-      SerialiseCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
+      ComposeCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
     FJson.FinishObject;
   end;
-  SerialiseCodeableConcept('route', elem.route);
+  ComposeCodeableConcept('route', elem.route);
   if elem.dose is TQuantity then
-    SerialiseQuantity('doseQuantity', TQuantity(elem.dose))
+    ComposeQuantity('doseQuantity', TQuantity(elem.dose))
   else if elem.dose is TInterval_Quantity then
-    SerialiseInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
-  SerialiseQuantity('rate', elem.rate);
+    ComposeInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
+  ComposeQuantity('rate', elem.rate);
   if elem.Schedule.Count > 0 then
   begin
     FJson.valueObject('schedules');
     for i := 0 to elem.Schedule.Count - 1 do
-      SerialiseSchedule('schedule',elem.Schedule[i]);
+      ComposeSchedule('schedule',elem.Schedule[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -6707,7 +6770,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePrescription(name : string; elem : TPrescription);
+procedure TFHIRXmlComposer.ComposePrescription(name : string; elem : TPrescription);
 var
   i : integer;
 begin
@@ -6720,18 +6783,18 @@ begin
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
   Text('status',CODES_TPrescriptionStatus[elem.status]);
-  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
-  SerialiseFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
+  ComposeFHIRResourceReference{TPatient}('patient', elem.patient);
+  ComposeFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
   Text('prescribed',elem.prescribed);
-  SerialisePrescriptionDispense('dispense', elem.dispense);
-  SerialisePrescriptionMedicine('medicine', elem.medicine);
-  SerialisePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
-  SerialiseCodeableConcept('reason', elem.reason);
-  SerialiseNarrative('text', elem.text);
+  ComposePrescriptionDispense('dispense', elem.dispense);
+  ComposePrescriptionMedicine('medicine', elem.medicine);
+  ComposePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
+  ComposeCodeableConcept('reason', elem.reason);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -6777,7 +6840,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePrescription(name : string; elem : TPrescription);
+procedure TFHIRJsonComposer.ComposePrescription(name : string; elem : TPrescription);
 var
   i : integer;
 begin
@@ -6790,18 +6853,18 @@ begin
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
   Prop('status',CODES_TPrescriptionStatus[elem.status]);
-  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
-  SerialiseFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
+  ComposeFHIRResourceReference{TPatient}('patient', elem.patient);
+  ComposeFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
   Prop('prescribed',elem.prescribed);
-  SerialisePrescriptionDispense('dispense', elem.dispense);
-  SerialisePrescriptionMedicine('medicine', elem.medicine);
-  SerialisePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
-  SerialiseCodeableConcept('reason', elem.reason);
-  SerialiseNarrative('text', elem.text);
+  ComposePrescriptionDispense('dispense', elem.dispense);
+  ComposePrescriptionMedicine('medicine', elem.medicine);
+  ComposePrescriptionAdministrationRequest('administrationRequest', elem.administrationRequest);
+  ComposeCodeableConcept('reason', elem.reason);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -6869,7 +6932,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePatient(name : string; elem : TPatient);
+procedure TFHIRXmlComposer.ComposePatient(name : string; elem : TPatient);
 var
   i : integer;
 begin
@@ -6882,24 +6945,24 @@ begin
   begin
     FXml.open('links');
     for i := 0 to elem.Link_.Count - 1 do
-      SerialiseFHIRResourceReference{TPatient}('link',elem.Link_[i]);
+      ComposeFHIRResourceReference{TPatient}('link',elem.Link_[i]);
     FXml.Close('links');
   end;
   Text('active',BooleanToString(elem.active));
-  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
-  SerialiseFHIRResourceReference{TAnimal}('animal', elem.animal);
-  SerialiseFHIRResourceReference{TOrganization}('provider', elem.provider);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TAnimal}('animal', elem.animal);
+  ComposeFHIRResourceReference{TOrganization}('provider', elem.provider);
   if elem.Identifier.Count > 0 then
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
-  SerialiseCodeableConcept('diet', elem.diet);
-  SerialiseCodeableConcept('confidentiality', elem.confidentiality);
-  SerialiseCodeableConcept('recordLocation', elem.recordLocation);
-  SerialiseNarrative('text', elem.text);
+  ComposeCodeableConcept('diet', elem.diet);
+  ComposeCodeableConcept('confidentiality', elem.confidentiality);
+  ComposeCodeableConcept('recordLocation', elem.recordLocation);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -6951,7 +7014,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePatient(name : string; elem : TPatient);
+procedure TFHIRJsonComposer.ComposePatient(name : string; elem : TPatient);
 var
   i : integer;
 begin
@@ -6964,24 +7027,24 @@ begin
   begin
     FJson.valueObject('links');
     for i := 0 to elem.Link_.Count - 1 do
-      SerialiseFHIRResourceReference{TPatient}('link',elem.Link_[i]);
+      ComposeFHIRResourceReference{TPatient}('link',elem.Link_[i]);
     FJson.FinishObject;
   end;
   Prop('active',BooleanToString(elem.active));
-  SerialiseFHIRResourceReference{TPerson}('person', elem.person);
-  SerialiseFHIRResourceReference{TAnimal}('animal', elem.animal);
-  SerialiseFHIRResourceReference{TOrganization}('provider', elem.provider);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TAnimal}('animal', elem.animal);
+  ComposeFHIRResourceReference{TOrganization}('provider', elem.provider);
   if elem.Identifier.Count > 0 then
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
-  SerialiseCodeableConcept('diet', elem.diet);
-  SerialiseCodeableConcept('confidentiality', elem.confidentiality);
-  SerialiseCodeableConcept('recordLocation', elem.recordLocation);
-  SerialiseNarrative('text', elem.text);
+  ComposeCodeableConcept('diet', elem.diet);
+  ComposeCodeableConcept('confidentiality', elem.confidentiality);
+  ComposeCodeableConcept('recordLocation', elem.recordLocation);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -7010,14 +7073,14 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseOrganizationName(name : string; elem : TOrganizationName);
+procedure TFHIRXmlComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('value',elem.value);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7043,14 +7106,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseOrganizationName(name : string; elem : TOrganizationName);
+procedure TFHIRJsonComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('value',elem.value);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -7083,16 +7146,16 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+procedure TFHIRXmlComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseIdentifier('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7122,16 +7185,16 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+procedure TFHIRJsonComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseIdentifier('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -7189,7 +7252,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+procedure TFHIRXmlComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
 var
   i : integer;
 begin
@@ -7197,24 +7260,24 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
   Text('name',elem.name);
   if elem.Address.Count > 0 then
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7260,7 +7323,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+procedure TFHIRJsonComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
 var
   i : integer;
 begin
@@ -7268,24 +7331,24 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
   Prop('name',elem.name);
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  SerialiseInterval_dateTime('period', elem.period);
+  ComposeInterval_dateTime('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -7391,7 +7454,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseOrganization(name : string; elem : TOrganization);
+procedure TFHIRXmlComposer.ComposeOrganization(name : string; elem : TOrganization);
 var
   i : integer;
 begin
@@ -7400,51 +7463,51 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseCodeableConcept('industryCode', elem.industryCode);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeCodeableConcept('industryCode', elem.industryCode);
   if elem.Identifier.Count > 0 then
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
   if elem.Name.Count > 0 then
   begin
     FXml.open('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseOrganizationName('name',elem.Name[i]);
+      ComposeOrganizationName('name',elem.Name[i]);
     FXml.Close('names');
   end;
   if elem.Address.Count > 0 then
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   if elem.Accreditation.Count > 0 then
   begin
     FXml.open('accreditations');
     for i := 0 to elem.Accreditation.Count - 1 do
-      SerialiseOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+      ComposeOrganizationAccreditation('accreditation',elem.Accreditation[i]);
     FXml.Close('accreditations');
   end;
   if elem.RelatedOrganization.Count > 0 then
   begin
     FXml.open('relatedOrganizations');
     for i := 0 to elem.RelatedOrganization.Count - 1 do
-      SerialiseOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
+      ComposeOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
     FXml.Close('relatedOrganizations');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -7518,7 +7581,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseOrganization(name : string; elem : TOrganization);
+procedure TFHIRJsonComposer.ComposeOrganization(name : string; elem : TOrganization);
 var
   i : integer;
 begin
@@ -7527,51 +7590,51 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseCodeableConcept('industryCode', elem.industryCode);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeCodeableConcept('industryCode', elem.industryCode);
   if elem.Identifier.Count > 0 then
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
   if elem.Name.Count > 0 then
   begin
     FJson.valueObject('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseOrganizationName('name',elem.Name[i]);
+      ComposeOrganizationName('name',elem.Name[i]);
     FJson.FinishObject;
   end;
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   if elem.Accreditation.Count > 0 then
   begin
     FJson.valueObject('accreditations');
     for i := 0 to elem.Accreditation.Count - 1 do
-      SerialiseOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+      ComposeOrganizationAccreditation('accreditation',elem.Accreditation[i]);
     FJson.FinishObject;
   end;
   if elem.RelatedOrganization.Count > 0 then
   begin
     FJson.valueObject('relatedOrganizations');
     for i := 0 to elem.RelatedOrganization.Count - 1 do
-      SerialiseOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
+      ComposeOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -7623,7 +7686,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+procedure TFHIRXmlComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
 var
   i : integer;
 begin
@@ -7636,14 +7699,14 @@ begin
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   FXml.close(name);
@@ -7685,7 +7748,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+procedure TFHIRJsonComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
 var
   i : integer;
 begin
@@ -7698,14 +7761,14 @@ begin
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -7738,7 +7801,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+procedure TFHIRXmlComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -7774,7 +7837,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+procedure TFHIRJsonComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
 begin
   if (elem = nil) then
     exit;
@@ -7824,7 +7887,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+procedure TFHIRXmlComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
 var
   i : integer;
 begin
@@ -7838,7 +7901,7 @@ begin
   begin
     FXml.open('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FXml.Close('resources');
   end;
   FXml.close(name);
@@ -7874,7 +7937,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+procedure TFHIRJsonComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
 var
   i : integer;
 begin
@@ -7888,7 +7951,7 @@ begin
   begin
     FJson.valueObject('resources');
     for i := 0 to elem.Resource.Count - 1 do
-      SerialiseConstraint('resource',elem.Resource[i]);
+      ComposeConstraint('resource',elem.Resource[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -7938,7 +8001,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+procedure TFHIRXmlComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
 var
   i : integer;
 begin
@@ -7948,16 +8011,16 @@ begin
   FXml.open(name);
   Text('id', elem.id);
   Text('date',elem.date);
-  SerialiseDocumentConformancePublisher('publisher', elem.publisher);
-  SerialiseDocumentConformanceSoftware('software', elem.software);
+  ComposeDocumentConformancePublisher('publisher', elem.publisher);
+  ComposeDocumentConformanceSoftware('software', elem.software);
   if elem.Document.Count > 0 then
   begin
     FXml.open('documents');
     for i := 0 to elem.Document.Count - 1 do
-      SerialiseDocumentConformanceDocument('document',elem.Document[i]);
+      ComposeDocumentConformanceDocument('document',elem.Document[i]);
     FXml.Close('documents');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -7993,7 +8056,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseDocumentConformance(name : string; elem : TDocumentConformance);
+procedure TFHIRJsonComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
 var
   i : integer;
 begin
@@ -8003,16 +8066,16 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
   Prop('date',elem.date);
-  SerialiseDocumentConformancePublisher('publisher', elem.publisher);
-  SerialiseDocumentConformanceSoftware('software', elem.software);
+  ComposeDocumentConformancePublisher('publisher', elem.publisher);
+  ComposeDocumentConformanceSoftware('software', elem.software);
   if elem.Document.Count > 0 then
   begin
     FJson.valueObject('documents');
     for i := 0 to elem.Document.Count - 1 do
-      SerialiseDocumentConformanceDocument('document',elem.Document[i]);
+      ComposeDocumentConformanceDocument('document',elem.Document[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -8058,7 +8121,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+procedure TFHIRXmlComposer.ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
 var
   i : integer;
 begin
@@ -8066,17 +8129,17 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseIdentifier('requestOrderId', elem.requestOrderId);
-  SerialiseIdentifier('receiverOrderId', elem.receiverOrderId);
+  ComposeIdentifier('requestOrderId', elem.requestOrderId);
+  ComposeIdentifier('receiverOrderId', elem.receiverOrderId);
   if elem.RequestTest.Count > 0 then
   begin
     FXml.open('requestTests');
     for i := 0 to elem.RequestTest.Count - 1 do
-      SerialiseCodeableConcept('requestTest',elem.RequestTest[i]);
+      ComposeCodeableConcept('requestTest',elem.RequestTest[i]);
     FXml.Close('requestTests');
   end;
-  SerialiseFHIRResourceReference{Resource}('requester', elem.requester);
-  SerialiseFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
+  ComposeFHIRResourceReference{Resource}('requester', elem.requester);
+  ComposeFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
   FXml.close(name);
 end;
 
@@ -8114,7 +8177,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
+procedure TFHIRJsonComposer.ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
 var
   i : integer;
 begin
@@ -8122,17 +8185,17 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseIdentifier('requestOrderId', elem.requestOrderId);
-  SerialiseIdentifier('receiverOrderId', elem.receiverOrderId);
+  ComposeIdentifier('requestOrderId', elem.requestOrderId);
+  ComposeIdentifier('receiverOrderId', elem.receiverOrderId);
   if elem.RequestTest.Count > 0 then
   begin
     FJson.valueObject('requestTests');
     for i := 0 to elem.RequestTest.Count - 1 do
-      SerialiseCodeableConcept('requestTest',elem.RequestTest[i]);
+      ComposeCodeableConcept('requestTest',elem.RequestTest[i]);
     FJson.FinishObject;
   end;
-  SerialiseFHIRResourceReference{Resource}('requester', elem.requester);
-  SerialiseFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
+  ComposeFHIRResourceReference{Resource}('requester', elem.requester);
+  ComposeFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
   FJson.finishObject;
 end;
 
@@ -8174,7 +8237,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+procedure TFHIRXmlComposer.ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
 var
   i : integer;
 begin
@@ -8182,13 +8245,13 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCodeableConcept('name', elem.name);
-  SerialiseFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
+  ComposeCodeableConcept('name', elem.name);
+  ComposeFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
   if elem.Result.Count > 0 then
   begin
     FXml.open('results');
     for i := 0 to elem.Result.Count - 1 do
-      SerialiseLabReportResultGroupResult('result',elem.Result[i]);
+      ComposeLabReportResultGroupResult('result',elem.Result[i]);
     FXml.Close('results');
   end;
   FXml.close(name);
@@ -8224,7 +8287,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroup(name : string; elem : TLabReportResultGroup);
+procedure TFHIRJsonComposer.ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
 var
   i : integer;
 begin
@@ -8232,13 +8295,13 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCodeableConcept('name', elem.name);
-  SerialiseFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
+  ComposeCodeableConcept('name', elem.name);
+  ComposeFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
   if elem.Result.Count > 0 then
   begin
     FJson.valueObject('results');
     for i := 0 to elem.Result.Count - 1 do
-      SerialiseLabReportResultGroupResult('result',elem.Result[i]);
+      ComposeLabReportResultGroupResult('result',elem.Result[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -8300,7 +8363,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+procedure TFHIRXmlComposer.ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
 var
   i : integer;
 begin
@@ -8308,19 +8371,19 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCodeableConcept('name', elem.name);
+  ComposeCodeableConcept('name', elem.name);
   if elem.value is TQuantity then
-    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+    ComposeQuantity('valueQuantity', TQuantity(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+    ComposeAttachment('valueAttachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('valueRatio', TRatio(elem.value))
+    ComposeRatio('valueRatio', TRatio(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('valueChoice', TChoice(elem.value))
+    ComposeChoice('valueChoice', TChoice(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TFHIRTypeString then
     Text('valueString', TFHIRTypeString(elem.value).value);
   Text('flag',CODES_TLabResultFlag[elem.flag]);
@@ -8330,7 +8393,7 @@ begin
   begin
     FXml.open('referenceRanges');
     for i := 0 to elem.ReferenceRange.Count - 1 do
-      SerialiseLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
+      ComposeLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
     FXml.Close('referenceRanges');
   end;
   FXml.close(name);
@@ -8384,7 +8447,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
+procedure TFHIRJsonComposer.ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
 var
   i : integer;
 begin
@@ -8392,19 +8455,19 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCodeableConcept('name', elem.name);
+  ComposeCodeableConcept('name', elem.name);
   if elem.value is TQuantity then
-    SerialiseQuantity('valueQuantity', TQuantity(elem.value))
+    ComposeQuantity('valueQuantity', TQuantity(elem.value))
   else if elem.value is TCodeableConcept then
-    SerialiseCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
+    ComposeCodeableConcept('valueCodeableConcept', TCodeableConcept(elem.value))
   else if elem.value is TAttachment then
-    SerialiseAttachment('valueAttachment', TAttachment(elem.value))
+    ComposeAttachment('valueAttachment', TAttachment(elem.value))
   else if elem.value is TRatio then
-    SerialiseRatio('valueRatio', TRatio(elem.value))
+    ComposeRatio('valueRatio', TRatio(elem.value))
   else if elem.value is TChoice then
-    SerialiseChoice('valueChoice', TChoice(elem.value))
+    ComposeChoice('valueChoice', TChoice(elem.value))
   else if elem.value is TInterval_DateTime then
-    SerialiseInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
+    ComposeInterval_DateTime('valueInterval_DateTime', TInterval_DateTime(elem.value))
   else if elem.value is TFHIRTypeString then
     Prop('valueString', TFHIRTypeString(elem.value).value);
   Prop('flag',CODES_TLabResultFlag[elem.flag]);
@@ -8414,7 +8477,7 @@ begin
   begin
     FJson.valueObject('referenceRanges');
     for i := 0 to elem.ReferenceRange.Count - 1 do
-      SerialiseLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
+      ComposeLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -8449,17 +8512,17 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+procedure TFHIRXmlComposer.ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseCodeableConcept('meaning', elem.meaning);
+  ComposeCodeableConcept('meaning', elem.meaning);
   if elem.range is TQuantity then
-    SerialiseQuantity('rangeQuantity', TQuantity(elem.range))
+    ComposeQuantity('rangeQuantity', TQuantity(elem.range))
   else if elem.range is TInterval_Quantity then
-    SerialiseInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
+    ComposeInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
   else if elem.range is TFHIRTypeString then
     Text('rangeString', TFHIRTypeString(elem.range).value);
   FXml.close(name);
@@ -8491,17 +8554,17 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
+procedure TFHIRJsonComposer.ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseCodeableConcept('meaning', elem.meaning);
+  ComposeCodeableConcept('meaning', elem.meaning);
   if elem.range is TQuantity then
-    SerialiseQuantity('rangeQuantity', TQuantity(elem.range))
+    ComposeQuantity('rangeQuantity', TQuantity(elem.range))
   else if elem.range is TInterval_Quantity then
-    SerialiseInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
+    ComposeInterval_Quantity('rangeInterval_Quantity', TInterval_Quantity(elem.range))
   else if elem.range is TFHIRTypeString then
     Prop('rangeString', TFHIRTypeString(elem.range).value);
   FJson.finishObject;
@@ -8613,7 +8676,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseLabReport(name : string; elem : TLabReport);
+procedure TFHIRXmlComposer.ComposeLabReport(name : string; elem : TLabReport);
 var
   i : integer;
 begin
@@ -8624,50 +8687,50 @@ begin
   Text('id', elem.id);
   Text('status',CODES_TLabReportStatus[elem.status]);
   Text('issued',DateTimeToXMLDateTimeString(elem.issued));
-  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
-  SerialiseFHIRResourceReference{TAdmission}('admission', elem.admission);
-  SerialiseFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
+  ComposeFHIRResourceReference{TPatient}('patient', elem.patient);
+  ComposeFHIRResourceReference{TAdmission}('admission', elem.admission);
+  ComposeFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
   Text('reportId',elem.reportId);
   if elem.RequestDetail.Count > 0 then
   begin
     FXml.open('requestDetails');
     for i := 0 to elem.RequestDetail.Count - 1 do
-      SerialiseLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
+      ComposeLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
     FXml.Close('requestDetails');
   end;
-  SerialiseCodeableConcept('reportName', elem.reportName);
-  SerialiseCodeableConcept('service', elem.service);
+  ComposeCodeableConcept('reportName', elem.reportName);
+  ComposeCodeableConcept('service', elem.service);
   Text('diagnosticTime',elem.diagnosticTime);
   if elem.Specimen.Count > 0 then
   begin
     FXml.open('specimen');
     for i := 0 to elem.Specimen.Count - 1 do
-      SerialiseFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
+      ComposeFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
     FXml.Close('specimen');
   end;
   if elem.ResultGroup.Count > 0 then
   begin
     FXml.open('resultGroups');
     for i := 0 to elem.ResultGroup.Count - 1 do
-      SerialiseLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
+      ComposeLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
     FXml.Close('resultGroups');
   end;
-  SerialiseNarrative('conclusion', elem.conclusion);
+  ComposeNarrative('conclusion', elem.conclusion);
   if elem.CodedDiagnosis.Count > 0 then
   begin
     FXml.open('codedDiagnoses');
     for i := 0 to elem.CodedDiagnosis.Count - 1 do
-      SerialiseCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
+      ComposeCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
     FXml.Close('codedDiagnoses');
   end;
   if elem.Representation.Count > 0 then
   begin
     FXml.open('representations');
     for i := 0 to elem.Representation.Count - 1 do
-      SerialiseAttachment('representation',elem.Representation[i]);
+      ComposeAttachment('representation',elem.Representation[i]);
     FXml.Close('representations');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -8749,7 +8812,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseLabReport(name : string; elem : TLabReport);
+procedure TFHIRJsonComposer.ComposeLabReport(name : string; elem : TLabReport);
 var
   i : integer;
 begin
@@ -8760,50 +8823,50 @@ begin
   Prop('id', elem.id);
   Prop('status',CODES_TLabReportStatus[elem.status]);
   Prop('issued',DateTimeToXMLDateTimeString(elem.issued));
-  SerialiseFHIRResourceReference{TPatient}('patient', elem.patient);
-  SerialiseFHIRResourceReference{TAdmission}('admission', elem.admission);
-  SerialiseFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
+  ComposeFHIRResourceReference{TPatient}('patient', elem.patient);
+  ComposeFHIRResourceReference{TAdmission}('admission', elem.admission);
+  ComposeFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
   Prop('reportId',elem.reportId);
   if elem.RequestDetail.Count > 0 then
   begin
     FJson.valueObject('requestDetails');
     for i := 0 to elem.RequestDetail.Count - 1 do
-      SerialiseLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
+      ComposeLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
     FJson.FinishObject;
   end;
-  SerialiseCodeableConcept('reportName', elem.reportName);
-  SerialiseCodeableConcept('service', elem.service);
+  ComposeCodeableConcept('reportName', elem.reportName);
+  ComposeCodeableConcept('service', elem.service);
   Prop('diagnosticTime',elem.diagnosticTime);
   if elem.Specimen.Count > 0 then
   begin
     FJson.valueObject('specimen');
     for i := 0 to elem.Specimen.Count - 1 do
-      SerialiseFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
+      ComposeFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
     FJson.FinishObject;
   end;
   if elem.ResultGroup.Count > 0 then
   begin
     FJson.valueObject('resultGroups');
     for i := 0 to elem.ResultGroup.Count - 1 do
-      SerialiseLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
+      ComposeLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('conclusion', elem.conclusion);
+  ComposeNarrative('conclusion', elem.conclusion);
   if elem.CodedDiagnosis.Count > 0 then
   begin
     FJson.valueObject('codedDiagnoses');
     for i := 0 to elem.CodedDiagnosis.Count - 1 do
-      SerialiseCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
+      ComposeCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
     FJson.FinishObject;
   end;
   if elem.Representation.Count > 0 then
   begin
     FJson.valueObject('representations');
     for i := 0 to elem.Representation.Count - 1 do
-      SerialiseAttachment('representation',elem.Representation[i]);
+      ComposeAttachment('representation',elem.Representation[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -8836,16 +8899,16 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePersonQualification(name : string; elem : TPersonQualification);
+procedure TFHIRXmlComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseIdentifier('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
-  SerialiseInterval_date('period', elem.period);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_date('period', elem.period);
   FXml.close(name);
 end;
 
@@ -8875,16 +8938,16 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePersonQualification(name : string; elem : TPersonQualification);
+procedure TFHIRJsonComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseIdentifier('id', elem.id);
-  SerialiseCodeableConcept('code', elem.code);
-  SerialiseFHIRResourceReference{TOrganization}('institution', elem.institution);
-  SerialiseInterval_date('period', elem.period);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -8913,7 +8976,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+procedure TFHIRXmlComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
 begin
   if (elem = nil) then
     exit;
@@ -8946,7 +9009,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePersonLanguage(name : string; elem : TPersonLanguage);
+procedure TFHIRJsonComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
 begin
   if (elem = nil) then
     exit;
@@ -8997,7 +9060,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+procedure TFHIRXmlComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
 var
   i : integer;
 begin
@@ -9005,14 +9068,14 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('role', elem.role);
-  SerialiseHumanName('name', elem.name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   FXml.close(name);
@@ -9050,7 +9113,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+procedure TFHIRJsonComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
 var
   i : integer;
 begin
@@ -9058,14 +9121,14 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  SerialiseHumanId('id', elem.id);
-  SerialiseCodeableConcept('role', elem.role);
-  SerialiseHumanName('name', elem.name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   FJson.finishObject;
@@ -9187,7 +9250,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlSerialiser.SerialisePerson(name : string; elem : TPerson);
+procedure TFHIRXmlComposer.ComposePerson(name : string; elem : TPerson);
 var
   i : integer;
 begin
@@ -9200,55 +9263,55 @@ begin
   begin
     FXml.open('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FXml.Close('identifiers');
   end;
   if elem.Name.Count > 0 then
   begin
     FXml.open('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseHumanName('name',elem.Name[i]);
+      ComposeHumanName('name',elem.Name[i]);
     FXml.Close('names');
   end;
   if elem.Address.Count > 0 then
   begin
     FXml.open('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FXml.Close('addresses');
   end;
   if elem.Contact.Count > 0 then
   begin
     FXml.open('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FXml.Close('contacts');
   end;
   Text('dob',elem.dob);
-  SerialiseCodeableConcept('gender', elem.gender);
-  SerialiseCodeableConcept('religion', elem.religion);
+  ComposeCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('religion', elem.religion);
   if elem.Qualification.Count > 0 then
   begin
     FXml.open('qualifications');
     for i := 0 to elem.Qualification.Count - 1 do
-      SerialisePersonQualification('qualification',elem.Qualification[i]);
+      ComposePersonQualification('qualification',elem.Qualification[i]);
     FXml.Close('qualifications');
   end;
   if elem.Language.Count > 0 then
   begin
     FXml.open('languages');
     for i := 0 to elem.Language.Count - 1 do
-      SerialisePersonLanguage('language',elem.Language[i]);
+      ComposePersonLanguage('language',elem.Language[i]);
     FXml.Close('languages');
   end;
   if elem.RelatedPerson.Count > 0 then
   begin
     FXml.open('relatedPeople');
     for i := 0 to elem.RelatedPerson.Count - 1 do
-      SerialisePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
+      ComposePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
     FXml.Close('relatedPeople');
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
@@ -9332,7 +9395,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonSerialiser.SerialisePerson(name : string; elem : TPerson);
+procedure TFHIRJsonComposer.ComposePerson(name : string; elem : TPerson);
 var
   i : integer;
 begin
@@ -9345,55 +9408,55 @@ begin
   begin
     FJson.valueObject('identifiers');
     for i := 0 to elem.Identifier.Count - 1 do
-      SerialiseHumanId('identifier',elem.Identifier[i]);
+      ComposeHumanId('identifier',elem.Identifier[i]);
     FJson.FinishObject;
   end;
   if elem.Name.Count > 0 then
   begin
     FJson.valueObject('names');
     for i := 0 to elem.Name.Count - 1 do
-      SerialiseHumanName('name',elem.Name[i]);
+      ComposeHumanName('name',elem.Name[i]);
     FJson.FinishObject;
   end;
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
     for i := 0 to elem.Address.Count - 1 do
-      SerialiseAddress('address',elem.Address[i]);
+      ComposeAddress('address',elem.Address[i]);
     FJson.FinishObject;
   end;
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
     for i := 0 to elem.Contact.Count - 1 do
-      SerialiseContact('contact',elem.Contact[i]);
+      ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
   Prop('dob',elem.dob);
-  SerialiseCodeableConcept('gender', elem.gender);
-  SerialiseCodeableConcept('religion', elem.religion);
+  ComposeCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('religion', elem.religion);
   if elem.Qualification.Count > 0 then
   begin
     FJson.valueObject('qualifications');
     for i := 0 to elem.Qualification.Count - 1 do
-      SerialisePersonQualification('qualification',elem.Qualification[i]);
+      ComposePersonQualification('qualification',elem.Qualification[i]);
     FJson.FinishObject;
   end;
   if elem.Language.Count > 0 then
   begin
     FJson.valueObject('languages');
     for i := 0 to elem.Language.Count - 1 do
-      SerialisePersonLanguage('language',elem.Language[i]);
+      ComposePersonLanguage('language',elem.Language[i]);
     FJson.FinishObject;
   end;
   if elem.RelatedPerson.Count > 0 then
   begin
     FJson.valueObject('relatedPeople');
     for i := 0 to elem.RelatedPerson.Count - 1 do
-      SerialisePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
+      ComposePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
     FJson.FinishObject;
   end;
-  SerialiseNarrative('text', elem.text);
+  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
@@ -9429,23 +9492,23 @@ begin
     raise Exception.create('Error: the element '+element.NodeName+' is not recognised as a valid resource name');
 end;
 
-procedure TFHIRXmlSerialiser.SerialiseResource(resource: TFHIRResource);
+procedure TFHIRXmlComposer.ComposeResource(resource: TFHIRResource);
 begin
   if (resource = nil) Then
     Raise Exception.Create('error - resource is nil');
   Case resource.ResourceType of
-    frtConformance: SerialiseConformance('Conformance', TConformance(resource));
-    frtDocument: SerialiseDocument('Document', TDocument(resource));
-    frtMessage: SerialiseMessage('Message', TMessage(resource));
-    frtMessageConformance: SerialiseMessageConformance('MessageConformance', TMessageConformance(resource));
-    frtAgent: SerialiseAgent('Agent', TAgent(resource));
-    frtAnimal: SerialiseAnimal('Animal', TAnimal(resource));
-    frtPrescription: SerialisePrescription('Prescription', TPrescription(resource));
-    frtPatient: SerialisePatient('Patient', TPatient(resource));
-    frtOrganization: SerialiseOrganization('Organization', TOrganization(resource));
-    frtDocumentConformance: SerialiseDocumentConformance('DocumentConformance', TDocumentConformance(resource));
-    frtLabReport: SerialiseLabReport('LabReport', TLabReport(resource));
-    frtPerson: SerialisePerson('Person', TPerson(resource));
+    frtConformance: ComposeConformance('Conformance', TConformance(resource));
+    frtDocument: ComposeDocument('Document', TDocument(resource));
+    frtMessage: ComposeMessage('Message', TMessage(resource));
+    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
+    frtAgent: ComposeAgent('Agent', TAgent(resource));
+    frtAnimal: ComposeAnimal('Animal', TAnimal(resource));
+    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
+    frtPatient: ComposePatient('Patient', TPatient(resource));
+    frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
+    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
+    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtPerson: ComposePerson('Person', TPerson(resource));
   else
     raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
   end;
@@ -9481,23 +9544,23 @@ begin
     raise Exception.create('error: the element '+FJson.itemName+' is not a valid resource name');
 end;
 
-procedure TFHIRJsonSerialiser.SerialiseResource(resource: TFHIRResource);
+procedure TFHIRJsonComposer.ComposeResource(resource: TFHIRResource);
 begin
   if (resource = nil) Then
     Raise Exception.Create('error - resource is nil');
   Case resource.ResourceType of
-    frtConformance: SerialiseConformance('Conformance', TConformance(resource));
-    frtDocument: SerialiseDocument('Document', TDocument(resource));
-    frtMessage: SerialiseMessage('Message', TMessage(resource));
-    frtMessageConformance: SerialiseMessageConformance('MessageConformance', TMessageConformance(resource));
-    frtAgent: SerialiseAgent('Agent', TAgent(resource));
-    frtAnimal: SerialiseAnimal('Animal', TAnimal(resource));
-    frtPrescription: SerialisePrescription('Prescription', TPrescription(resource));
-    frtPatient: SerialisePatient('Patient', TPatient(resource));
-    frtOrganization: SerialiseOrganization('Organization', TOrganization(resource));
-    frtDocumentConformance: SerialiseDocumentConformance('DocumentConformance', TDocumentConformance(resource));
-    frtLabReport: SerialiseLabReport('LabReport', TLabReport(resource));
-    frtPerson: SerialisePerson('Person', TPerson(resource));
+    frtConformance: ComposeConformance('Conformance', TConformance(resource));
+    frtDocument: ComposeDocument('Document', TDocument(resource));
+    frtMessage: ComposeMessage('Message', TMessage(resource));
+    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
+    frtAgent: ComposeAgent('Agent', TAgent(resource));
+    frtAnimal: ComposeAnimal('Animal', TAnimal(resource));
+    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
+    frtPatient: ComposePatient('Patient', TPatient(resource));
+    frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
+    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
+    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtPerson: ComposePerson('Person', TPerson(resource));
   else
     raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
   end;

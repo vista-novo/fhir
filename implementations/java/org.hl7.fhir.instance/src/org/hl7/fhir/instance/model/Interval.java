@@ -1,11 +1,21 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 /**
  * A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
  */
 public class Interval<T extends Ordered> extends Type {
+  private String type;
+  public String getType() {
+    return type;
+  };
+
+  public Interval(String type) {
+    super();
+    this.type = type;
+  };
+  
 
     /**
      * The low value. The boundary is inclusive.

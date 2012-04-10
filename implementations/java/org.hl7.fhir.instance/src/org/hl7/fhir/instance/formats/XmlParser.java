@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -48,8 +48,14 @@ public class XmlParser extends XmlParserBase {
         res.setName(parseString(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("purpose")) {
         res.setPurpose(parseString(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("element")) {
-        res.getElement().add(parseConstraintElement_(xpp, res));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("elements")) {
+        eventType = nextNoWhitespace(xpp);
+        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals("element")) {
+          res.getElement().add(parseConstraintElement_(xpp, res));
+          eventType = nextNoWhitespace(xpp);
+        }
+        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals("elements"))
+          throw new Exception("XML Error in requestDetails");
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -84,14 +90,26 @@ public class XmlParser extends XmlParserBase {
         res.setMustUnderstand(parseBool(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("definition")) {
         res.setDefinition(parseString(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mapping")) {
-        res.getMapping().add(parseConstraintMapping(xpp, owner));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mappings")) {
+        eventType = nextNoWhitespace(xpp);
+        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mapping")) {
+          res.getMapping().add(parseConstraintMapping(xpp, owner));
+          eventType = nextNoWhitespace(xpp);
+        }
+        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals("mappings"))
+          throw new Exception("XML Error in requestDetails");
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("aggregation")) {
         res.setAggregation(parseConstraintAggregation(xpp, owner));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("valueSet")) {
         res.setValueSet(parseString(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
-        res.getValue().add(parseConstraintValue(xpp, owner));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("values")) {
+        eventType = nextNoWhitespace(xpp);
+        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
+          res.getValue().add(parseConstraintValue(xpp, owner));
+          eventType = nextNoWhitespace(xpp);
+        }
+        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals("values"))
+          throw new Exception("XML Error in requestDetails");
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -154,12 +172,24 @@ public class XmlParser extends XmlParserBase {
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("status")) {
         res.setStatus(Narrative.NarrativeStatus.fromCode(parseString(xpp)));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("html")) {
-        res.setHtml(parseXhtml(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("image")) {
-        res.getImage().add(parseNarrativeImage(xpp, res));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("map")) {
-        res.getMap().add(parseNarrativeMap(xpp, res));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("xhtml")) {
+        res.setXhtml(parseXhtml(xpp));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("images")) {
+        eventType = nextNoWhitespace(xpp);
+        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals("image")) {
+          res.getImage().add(parseNarrativeImage(xpp, res));
+          eventType = nextNoWhitespace(xpp);
+        }
+        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals("images"))
+          throw new Exception("XML Error in requestDetails");
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("maps")) {
+        eventType = nextNoWhitespace(xpp);
+        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals("map")) {
+          res.getMap().add(parseNarrativeMap(xpp, res));
+          eventType = nextNoWhitespace(xpp);
+        }
+        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals("maps"))
+          throw new Exception("XML Error in requestDetails");
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -220,7 +250,7 @@ public class XmlParser extends XmlParserBase {
   }
 
   private Interval<Quantity> parseInterval_Quantity(XmlPullParser xpp) throws Exception {
-    Interval<Quantity> res = new Interval<Quantity>();
+    Interval<Quantity> res = new Interval<Quantity>("Quantity");
     parseTypeAttributes(xpp, res);
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
@@ -236,7 +266,7 @@ public class XmlParser extends XmlParserBase {
   }
 
   private Interval<DateTime> parseInterval_DateTime(XmlPullParser xpp) throws Exception {
-    Interval<DateTime> res = new Interval<DateTime>();
+    Interval<DateTime> res = new Interval<DateTime>("DateTime");
     parseTypeAttributes(xpp, res);
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
@@ -252,7 +282,7 @@ public class XmlParser extends XmlParserBase {
   }
 
   private Interval<Date> parseInterval_Date(XmlPullParser xpp) throws Exception {
-    Interval<Date> res = new Interval<Date>();
+    Interval<Date> res = new Interval<Date>("Date");
     parseTypeAttributes(xpp, res);
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {

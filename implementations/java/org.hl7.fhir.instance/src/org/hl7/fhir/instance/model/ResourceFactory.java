@@ -61,7 +61,7 @@ public class ResourceFactory {
         if ("Constraint".equals(name))
             return new Constraint();
         if ("Interval<Quantity>".equals(name))
-            return new Interval<Quantity>();
+            return new Interval<Quantity>("Quantity");
         if ("HumanId".equals(name))
             return new HumanId();
         if ("Schedule".equals(name))
@@ -79,13 +79,13 @@ public class ResourceFactory {
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
         if ("Interval<Date>".equals(name))
-            return new Interval<Date>();
+            return new Interval<Date>("Date");
         if ("Identifier".equals(name))
             return new Identifier();
         if ("Narrative".equals(name))
             return new Narrative();
         if ("Interval<DateTime>".equals(name))
-            return new Interval<DateTime>();
+            return new Interval<DateTime>("DateTime");
         else
             throw new Exception("Unknown Type Name '"+name+"'");
     }

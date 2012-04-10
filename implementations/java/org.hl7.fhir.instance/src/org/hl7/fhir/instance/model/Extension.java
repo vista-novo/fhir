@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -20,6 +20,13 @@ public class Extension extends Element {
         if ("superceded".equals(code))
           return superceded;
         throw new Exception("Unknown ExtensionState code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case mustMinusunderstand: return "must-understand";
+            case superceded: return "superceded";
+            default: return "?";
+          }
         }
     }
 

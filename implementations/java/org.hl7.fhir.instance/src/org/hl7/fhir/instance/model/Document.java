@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -23,6 +23,14 @@ public class Document extends Resource {
         if ("legal".equals(code))
           return legal;
         throw new Exception("Unknown DocumentAuthenticationMode code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case personal: return "personal";
+            case professional: return "professional";
+            case legal: return "legal";
+            default: return "?";
+          }
         }
     }
 

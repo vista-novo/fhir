@@ -1,8 +1,9 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
+import org.hl7.fhir.instance.xhtml.XhtmlNode;
 
 /**
  * A human readable formatted text, including images
@@ -24,6 +25,14 @@ public class Narrative extends Element {
           return additional;
         throw new Exception("Unknown NarrativeStatus code '"+code+"'");
         }
+        public String toCode() {
+          switch (this) {
+            case generated: return "generated";
+            case extensions: return "extensions";
+            case additional: return "additional";
+            default: return "?";
+          }
+        }
     }
 
     public enum NarrativeMapSource {
@@ -37,6 +46,13 @@ public class Narrative extends Element {
         if ("data".equals(code))
           return data;
         throw new Exception("Unknown NarrativeMapSource code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case text: return "text";
+            case data: return "data";
+            default: return "?";
+          }
         }
     }
 
@@ -119,7 +135,7 @@ public class Narrative extends Element {
     /**
      * The actual narrative content, a stripped down version of XHTML
      */
-    private char[] html;
+    private XhtmlNode xhtml;
 
     /**
      * An image referred to directly in the xhtml
@@ -139,12 +155,12 @@ public class Narrative extends Element {
       this.status = value;
     }
 
-    public char[] getHtml() { 
-      return this.html;
+    public XhtmlNode getXhtml() { 
+      return this.xhtml;
     }
 
-    public void setHtml(char[] value) { 
-      this.html = value;
+    public void setXhtml(XhtmlNode value) { 
+      this.xhtml = value;
     }
 
     public List<Image> getImage() { 

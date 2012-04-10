@@ -2,7 +2,7 @@ unit FHIRResources;
 
 interface
 
-// FHIR v0.01 generated 10:56 Apr 10, 2012
+// FHIR v0.01 generated 23:50 Apr 10, 2012
 
 uses
   FHIRBase, AdvBuffers, DecimalSupport, Classes;
@@ -901,11 +901,11 @@ Type
   TNarrative = class (TFHIRElement)
   private
     FStatus : TNarrativeStatus;
-    FHtml : TXHtml;
+    FXhtml : TFhirXHtmlNode;
     FImage : TNarrativeImageList;
     FMap : TNarrativeMapList;
     Procedure SetStatus(value : TNarrativeStatus);
-    Procedure SetHtml(value : TXHtml);
+    Procedure SetXhtml(value : TFhirXHtmlNode);
   public
     constructor Create; Override;
     destructor Destroy; override;
@@ -917,10 +917,10 @@ Type
     }
     property status : TNarrativeStatus read FStatus write SetStatus;
 
-    {@member html
+    {@member xhtml
       The actual narrative content, a stripped down version of XHTML
     }
-    property html : TXHtml read FHtml write SetHtml;
+    property xhtml : TFhirXHtmlNode read FXhtml write SetXhtml;
 
     {@member Image
       An image referred to directly in the xhtml
@@ -5318,7 +5318,6 @@ end;
 
 destructor TNarrative.Destroy;
 begin
-  FHtml.free;
   FImage.Free;
   FMap.Free;
   inherited;
@@ -5328,7 +5327,7 @@ procedure TNarrative.Assign(oSource : TAdvObject);
 begin
   inherited;
   FStatus := TNarrative(oSource).FStatus;
-  html := TNarrative(oSource).html.Clone;
+  FXhtml := TNarrative(oSource).FXhtml;
   FImage.Assign(TNarrative(oSource).FImage);
   FMap.Assign(TNarrative(oSource).FMap);
 end;
@@ -5350,10 +5349,9 @@ begin
   FStatus := value;
 end;
 
-Procedure TNarrative.SetHtml(value : TXHtml);
+Procedure TNarrative.SetXhtml(value : TFhirXHtmlNode);
 begin
-  FHtml.free;
-  FHtml := value;
+  FXhtml := value;
 end;
 
 

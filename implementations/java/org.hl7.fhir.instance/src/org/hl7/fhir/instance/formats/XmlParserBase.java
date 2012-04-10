@@ -1,5 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URI;
@@ -11,11 +12,13 @@ import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
+import org.hl7.fhir.instance.xhtml.XhtmlNode;
+import org.hl7.fhir.instance.xhtml.XhtmlParser;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
-public abstract class XmlParserBase {
+public abstract class XmlParserBase extends XmlBase {
 
-  private static final String FHIR_NS = "http://www.hl7.org/fhir";
 
   private boolean allowUnknownContent;
   public boolean isAllowUnknownContent() {
@@ -29,12 +32,19 @@ public abstract class XmlParserBase {
 
   /** -- worker routines --------------------------------------------------- */
   
-  private Element resolveElement(String id) {
-    return idMap.get(id);
-  }
+//  private Element resolveElement(String id) {
+//    return idMap.get(id);
+//  }
 
-  private XmlPullParser loadXml(InputStream input) {
-    return null;
+  private XmlPullParser loadXml(InputStream stream) throws Exception {
+    BufferedInputStream input = new BufferedInputStream(stream);
+    XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+    factory.setNamespaceAware(true);
+    XmlPullParser xpp = factory.newPullParser();
+    xpp.setInput(input, null);
+    xpp.next();
+    
+    return xpp;
   }
  
   protected void parseTypeAttributes(XmlPullParser xpp, Type t) throws Exception {
@@ -63,12 +73,7 @@ public abstract class XmlParserBase {
 
 
   private String pathForLocation(XmlPullParser xpp) {
-    String result = "";
-//    while (node != null) {
-//      result = node.getNodeName() + "/" + result;
-//      node = node.getParentNode();
-//    }
-    return result.substring(0, result.length()-1);
+    return xpp.getPositionDescription();
   }
   
   abstract protected Resource parseResource(XmlPullParser xpp) throws Exception;
@@ -137,9 +142,9 @@ public abstract class XmlParserBase {
     return new URI(parseString(xpp));
   }
   
-  protected char[] parseXhtml(XmlPullParser xpp) {
-    // TODO Auto-generated method stub
-    return null;
+  protected XhtmlNode parseXhtml(XmlPullParser xpp) throws Exception {
+    XhtmlParser prsr = new XhtmlParser(xpp);
+    return prsr.parseHtmlNode();
   }
 
 
@@ -203,7 +208,7 @@ public abstract class XmlParserBase {
         res.setText(parseString(xpp));
       else
         throw new Exception("Bad Xml parsing Agent");
-          eventType = nextNoWhitespace(xpp);
+      eventType = nextNoWhitespace(xpp);
     }
 
     return res;

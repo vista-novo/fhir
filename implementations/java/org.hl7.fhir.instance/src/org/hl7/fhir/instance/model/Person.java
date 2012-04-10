@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -26,6 +26,15 @@ public class Person extends Resource {
         if ("fluent".equals(code))
           return fluent;
         throw new Exception("Unknown LanguageUse code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case none: return "none";
+            case poor: return "poor";
+            case useable: return "useable";
+            case fluent: return "fluent";
+            default: return "?";
+          }
         }
     }
 

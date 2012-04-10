@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -44,6 +44,21 @@ public class Schedule extends Type {
         if ("PCV".equals(code))
           return PCV;
         throw new Exception("Unknown EventTiming code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case HS: return "HS";
+            case WAKE: return "WAKE";
+            case AC: return "AC";
+            case ACM: return "ACM";
+            case ACD: return "ACD";
+            case ACV: return "ACV";
+            case PC: return "PC";
+            case PCM: return "PCM";
+            case PCD: return "PCD";
+            case PCV: return "PCV";
+            default: return "?";
+          }
         }
     }
 

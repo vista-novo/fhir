@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -33,6 +33,17 @@ public class LabReport extends Resource {
           return withdrawn;
         throw new Exception("Unknown LabReportStatus code '"+code+"'");
         }
+        public String toCode() {
+          switch (this) {
+            case registered: return "registered";
+            case interim: return "interim";
+            case final_: return "final";
+            case amended: return "amended";
+            case cancelled: return "cancelled";
+            case withdrawn: return "withdrawn";
+            default: return "?";
+          }
+        }
     }
 
     public enum LabResultFlag {
@@ -58,6 +69,17 @@ public class LabReport extends Resource {
         if ("+++".equals(code))
           return PlusPlusPlus;
         throw new Exception("Unknown LabResultFlag code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case Minus: return "-";
+            case MinusMinus: return "--";
+            case MinusMinusMinus: return "---";
+            case Plus: return "+";
+            case PlusPlus: return "++";
+            case PlusPlusPlus: return "+++";
+            default: return "?";
+          }
         }
     }
 

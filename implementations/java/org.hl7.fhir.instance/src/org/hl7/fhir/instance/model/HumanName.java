@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// © HL7 (http://www.hl7.org)  Generated on 10:56 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -33,6 +33,17 @@ public class HumanName extends Type {
           return maiden;
         throw new Exception("Unknown NameUse code '"+code+"'");
         }
+        public String toCode() {
+          switch (this) {
+            case usual: return "usual";
+            case official: return "official";
+            case temp: return "temp";
+            case anonymous: return "anonymous";
+            case old: return "old";
+            case maiden: return "maiden";
+            default: return "?";
+          }
+        }
     }
 
     public enum NamePartType {
@@ -49,6 +60,14 @@ public class HumanName extends Type {
         if ("title".equals(code))
           return title;
         throw new Exception("Unknown NamePartType code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case family: return "family";
+            case given: return "given";
+            case title: return "title";
+            default: return "?";
+          }
         }
     }
 
