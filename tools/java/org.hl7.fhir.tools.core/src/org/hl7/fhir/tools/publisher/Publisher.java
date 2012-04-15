@@ -8,10 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -32,9 +35,7 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
-import org.hl7.fhir.tools.core.xml.JsonGenerator;
-import org.hl7.fhir.tools.core.xml.XhtmlGenerator;
-import org.hl7.fhir.tools.core.xml.XmlGenerator;
+import org.hl7.fhir.tools.publisher.implementations.BaseGenerator;
 import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
 import org.hl7.fhir.tools.publisher.implementations.ECoreOclGenerator;
@@ -42,6 +43,14 @@ import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xhtml.NodeType;
+import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
+import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+import org.hl7.fhir.utilities.xml.JsonGenerator;
+import org.hl7.fhir.utilities.xml.XhtmlGenerator;
+import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Document;
 import org.w3c.dom.ls.LSInput;
 import org.w3c.dom.ls.LSResourceResolver;
@@ -73,6 +82,7 @@ public class Publisher implements Logger {
 	private Definitions definitions;
   private SourceParser prsr;
   private List<PlatformGenerator> referenceImplementations = new ArrayList<PlatformGenerator>();
+  private Map<String, XhtmlDocument> pages = new HashMap<String, XhtmlDocument>();
 
 
 	public static void main(String[] args) throws Exception {
@@ -168,9 +178,8 @@ public class Publisher implements Logger {
       gen.generate(definitions, folders.dstDir, folders.implDir(gen.getName()), version, genDate, this);
     }
     log("Produce Schemas");
-    log("Produce Specification");
     new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)); 
-    log("Produce ECore");
+    log("Produce Specification");
     produceSpec(); 
   }
 
@@ -181,25 +190,244 @@ public class Publisher implements Logger {
 		for (String n : ini.getPropertyNames("images")) 
 			Utilities.copyFile(new File(folders.imgDir + n), new File(folders.dstDir + n));
 
-//		for (String n : ini.getPropertyNames("patterns")) 
-//			producePattern(n);
-//		for (String n : ini.getPropertyNames("types")) 
-//			produceDataType(n);
-//		for (String n : ini.getPropertyNames("datatypes")) 
-//			produceDataType(n);
 		for (ElementDefn n : definitions.getDefinedResources().values())
 			produceResource(n);
-//		for (DefinedCode n : definitions.getFutureResources().values())
-//			produceFutureResource(n);
 		for (String n : ini.getPropertyNames("pages"))
 			producePage(n);
 
 		produceCombinedDictionary();
 		Utilities.copyFile(new File(folders.umlDir + "fhir.eap"), new File(folders.dstDir + "fhir.eap"));
 		Utilities.copyFile(new File(folders.umlDir + "fhir.xmi"), new File(folders.dstDir + "fhir.xmi"));
+		
+		produceZip();
+		produceBookForm();
 	}
 
 
+
+  private class SectionEntry {
+    private String name;
+    private String title;
+  }
+  
+	private class Section {
+	  private String name;
+	  private List<SectionEntry> contents = new ArrayList<SectionEntry>();
+	}
+	
+	private void produceBookForm() throws FileNotFoundException, Exception {
+	  List<Section> sections = new ArrayList<Section>();
+	  
+	  parseSidebar(sections);
+	  XhtmlDocument doc = new XhtmlParser().parse(new FileInputStream(folders.srcDir+"book.htm"));
+	  XhtmlNode body = doc.getElement("html").getElement("body");
+	  addTOC(sections, body);	  
+	  addContent(sections, body);
+	  addReferenceIds(body);
+	  new XhtmlComposer().compose(new FileOutputStream(folders.dstDir+"fhir-book.htm"), doc); 
+	}
+
+	private class RefTarget {
+	  XhtmlNode parent;
+	  int index;
+	}
+  private void addReferenceIds(XhtmlNode body) {
+    Map<String, RefTarget> tgts = new HashMap<String, Publisher.RefTarget>();
+    List<XhtmlNode> refs = new ArrayList<XhtmlNode>();
+    buildIndex(refs, tgts, body, false);
+    for (XhtmlNode a : refs) {
+      if (a.getAttributes().get("href").startsWith("#")) {
+        RefTarget r = tgts.get(a.getAttributes().get("href").substring(1));
+        if (r != null) {
+          int n = r.index + 1;
+          while (n < r.parent.getChildNodes().size() && r.parent.getChildNodes().get(n).getNodeType() != NodeType.Element)
+            n++;
+          if (n < r.parent.getChildNodes().size()) {
+            XhtmlNode h = r.parent.getChildNodes().get(n);
+            if (h.getName().startsWith("h")) {
+              String s = h.allText();
+              if (s.contains(":"))
+                a.addText(" (§"+s.substring(0, s.indexOf(':'))+")");
+            }
+            
+          }
+        }        
+      }
+    }    
+  }
+
+  private void buildIndex(List<XhtmlNode> refs, Map<String, RefTarget> tgts, XhtmlNode focus, boolean started) {
+    int i = 0;
+    for (XhtmlNode child : focus.getChildNodes()) {
+      if (started) {
+        if ("a".equals(child.getName()) && child.getAttributes().containsKey("name")) {
+          RefTarget r = new RefTarget();
+          r.parent = focus;
+          r.index = i;
+          tgts.put(child.getAttributes().get("name"), r);
+        }
+        if ("a".equals(child.getName()) && child.getAttributes().containsKey("href")) 
+          refs.add(child);
+
+        if (child.getNodeType() == NodeType.Element && !child.getName().equals("pre"))
+          buildIndex(refs, tgts, child, true);
+      } else if ("hr".equals(child.getName()))
+        started = true;
+      i++;
+    }
+    
+  }
+
+  private void addContent(List<Section> sections, XhtmlNode body) {
+    XhtmlNode e = body.getElement("contents");
+    XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
+    body.getChildNodes().remove(e);
+
+    int i1 = 0;
+    for (Section s : sections) {
+      i1++;
+      XhtmlNode divS = div.addTag("div");
+      divS.attribute("class", "section");
+      XhtmlNode h1 = divS.addTag("h1");
+      h1.addText(Integer.toString(i1)+": "+s.name);
+
+      int i2 = 0;
+      int i3 = 0;
+      int i4 = 0;
+      for (SectionEntry n : s.contents) {
+        i2++;
+        i3 = 0;
+        i4 = 0;
+        XhtmlNode divT = divS.addTag("div");
+        XhtmlNode a = divT.addTag("a");
+        a.attribute("name", n.name);
+        a.addText(" "); // work around for a browser bug
+
+        boolean first = true;
+        XhtmlDocument page = pages.get(n.name+".htm");
+        XhtmlNode pageBody = page.getElement("html").getElement("body");
+        for (XhtmlNode child : pageBody.getChildNodes()) {
+          if (child.getNodeType() == NodeType.Element) {
+            fixReferences(child, n.name);
+          }
+          if ("h1".equals(child.getName())) {
+            if (!first)
+              throw new Error("?? ("+n.name+".h1 repeated) ");
+            first = false;
+            child.setName("h2");
+            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+          } else if ("h2".equals(child.getName())) {
+            i3++;
+            i4 = 0;
+            child.setName("h3");
+            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+"."+Integer.toString(i3)+": ");
+          } else if ("h3".equals(child.getName())) {
+            i4++;
+            child.setName("h4");
+            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+"."+Integer.toString(i3)+"."+Integer.toString(i4)+": ");
+          } else if ("h4".equals(child.getName())) {
+            child.setName("h5");
+          }
+        }
+        divT.getChildNodes().addAll(pageBody.getChildNodes());
+      }
+    }
+
+  }
+
+  
+  private void fixReferences(XhtmlNode node, String name) {
+    for (XhtmlNode child : node.getChildNodes()) {
+      if (child.getNodeType() == NodeType.Element) {
+        fixReferences(child, name);
+      }    
+    }
+    if (node.getName().equals("a")) {
+      
+      if (node.getAttributes().containsKey("name")) {
+        node.getAttributes().put("name", name+"."+node.getAttributes().get("name"));
+      } else { 
+        String s = node.getAttributes().get("href");
+        if (s == null || s.length() == 0)
+          throw new Error("empty a tag");
+        if (s.startsWith("#")) {
+          s = "#"+name+"."+s.substring(1);
+        } else if (s.startsWith("http:")) {
+          s = s;
+        } else {
+          int i = s.indexOf('.');
+          if (i == -1)
+            throw new Error("unable to understand ref");
+
+          if (s.contains("#")) {
+            int j = s.indexOf('#');
+            s = "#"+s.substring(0, i)+"."+s.substring(j+1);
+          } else {
+            s = "#"+s.substring(0, i);
+          }
+          
+        }
+        node.getAttributes().put("href", s);
+      }
+    }
+  }
+
+  private void addTOC(List<Section> sections, XhtmlNode body) {
+    XhtmlNode e = body.getElement("index");
+    XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
+    body.getChildNodes().remove(e);
+	  div.attribute("class", "toc");
+	  div.addText("\r\n  ");
+	  int i1 = 0;
+    XhtmlNode p = div.addTag("p");
+    p.addText("\r\n    ");
+    for (Section s : sections) {
+      i1++;
+      p.addText(Integer.toString(i1)+": "+s.name);
+      p.addTag("br");
+      p.addText("\r\n      ");
+      int i2 = 0;
+      for (SectionEntry n : s.contents) {
+        i2++;
+        p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+
+        XhtmlNode a = p.addTag("a");
+        a.attribute("href", "#"+n.name);
+        a.addText(n.title);
+        p.addTag("br");
+        p.addText("\r\n     ");
+      }
+    }
+    div.addText("\r\n  ");
+  }
+
+  private void parseSidebar(List<Section> sections) throws Exception,
+      FileNotFoundException {
+    XhtmlNode doc = new XhtmlParser().parseFragment(new FileInputStream(folders.srcDir+"sidebar.htm"));
+	  int i = 0;
+	  Section sect = null;
+	  while (i < doc.getChildNodes().size()) {
+	    XhtmlNode n = doc.getChildNodes().get(i);
+	    if ("h2".equals(n.getName())) {
+	      sect = new Section();
+	      sections.add(sect);
+	      sect.name = n.allText();
+	    } else if ("ul".equals(n.getName())) {
+	      for (XhtmlNode g : n.getChildNodes()) {
+	        if (g.getNodeType() == NodeType.Element && g.getName().equals("li") && g.getChildNodes().size() == 1) {
+	          XhtmlNode a = g.getElement("a");
+	          if (a != null) {
+	            SectionEntry e = new SectionEntry();
+	            e.name = a.getAttributes().get("href").replace(".htm", "");
+	            e.title = a.allText();
+	            sect.contents.add(e);
+	          }
+	        }
+	      }
+	    }
+      i++;
+	  }
+  }
 
 //	private void producePattern(String n) throws Exception {
 //    // this output is produced into a scratch directry. It is only produced to allow them to manually merged back into the appropriate source page
@@ -216,7 +444,16 @@ public class Publisher implements Logger {
 //			Utilities.stringToFile(xmlForDt(n)+tsForDt(n), folders.tmpResDir+t.getName()+".htm");
 //	}
 
-	private void produceResource(ElementDefn root) throws Exception {
+	private void produceZip() throws Exception {
+	  String filename = folders.dstDir+"fhir-spec.zip";
+	  File f = new File(filename);
+	  if (f.exists())
+	    f.delete();
+    BaseGenerator base = new BaseGenerator();
+    base.zipFiles(folders.dstDir, filename);
+  }
+
+  private void produceResource(ElementDefn root) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		String n = root.getName().toLowerCase();
 	
@@ -246,6 +483,9 @@ public class Publisher implements Logger {
 		src = processResourceIncludes(n, root, xml, tx, dict, src);
 		Utilities.stringToFile(src, folders.dstDir + "print-"+n+".htm");
 		Utilities.copyFile(umlf, new File(folders.dstDir+n+".png"));				
+    src = Utilities.fileToString(folders.srcDir + "template-book.htm");
+    src = processResourceIncludes(n, root, xml, tx, dict, src);
+    cachePage(n+".htm", src);
 
 		// xml to xhtml of xml
 		// first pass is to strip the xsi: stuff. seems to need double processing in order to delete namespace crap
@@ -266,6 +506,7 @@ public class Publisher implements Logger {
 		jsongen.generate(new File(folders.dstDir+n+".xml"), new File(folders.dstDir+n+".json"));
 
 		tmp.delete();
+		
 	}
 
 
@@ -282,9 +523,22 @@ public class Publisher implements Logger {
 		src = Utilities.fileToString(folders.srcDir + file);
 		src = processPageIncludesForPrinting(file, src);
 		Utilities.stringToFile(src, folders.dstDir + "print-"+file);
+		
+    src = Utilities.fileToString(folders.srcDir + file);
+    src = processPageIncludesForBook(file, src);
+		cachePage(file, src);
 	}
 
-	public class MyErrorHandler implements ErrorHandler {
+	private void cachePage(String filename, String source) throws Exception {
+	  try {
+	    // log("parse "+filename);
+	    pages.put(filename,  new XhtmlParser().parse(source));
+	  } catch (Exception e) {
+	    throw new Exception("error parsing page "+filename+": "+e.getMessage());
+	  }
+  }
+
+  public class MyErrorHandler implements ErrorHandler {
 
 	  private boolean trackErrors;
 	  private List<String> errors = new ArrayList<String>();
@@ -588,6 +842,51 @@ public class Publisher implements Logger {
 		}
 		return src;
 	}	
+
+  private String processPageIncludesForBook(String file, String src) throws Exception {
+    while (src.contains("<%"))
+    {
+      int i1 = src.indexOf("<%");
+      int i2 = src.indexOf("%>");
+      String s1 = src.substring(0, i1);
+      String s2 = src.substring(i1 + 2, i2).trim();
+      String s3 = src.substring(i2+2);
+      String name = file.substring(0,file.indexOf(".")); 
+
+      String[] com = s2.split(" ");
+      if (com.length == 2 && com[0].equals("dt"))
+        src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
+      else if (com.length != 1)
+        throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
+      else if (com[0].equals("header"))
+        src = s1+s3;
+      else if (com[0].equals("footer"))
+        src = s1+s3;
+      else if (com[0].equals("sidebar"))
+        src = s1+s3;
+      else if (com[0].equals("title"))
+        src = s1+name.toUpperCase().substring(0, 1)+name.substring(1)+s3;
+      else if (com[0].equals("name"))
+        src = s1+name+s3;
+      else if (com[0].equals("version"))
+        src = s1+ini.getStringProperty("FHIR", "version")+s3;
+      else if (com[0].equals("gendate"))
+        src = s1+new SimpleDateFormat("EEE, MMM d, yyyy").format(new Date())+s3;
+      else if (com[0].equals("maindiv"))
+        src = s1+s3;
+      else if (com[0].equals("/maindiv"))
+        src = s1+s3;
+      else if (com[0].equals("resourcecodes"))
+        src = s1 + genResCodes() + s3;
+      else if (com[0].equals("resimplall"))
+        src = s1 + genResImplList() + s3;
+      else if (com[0].equals("impllist"))
+        src = s1 + genReferenceImplList() + s3;
+      else 
+        throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
+    }
+    return src;
+  } 
 
 
 

@@ -113,11 +113,11 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 
 				for (DefinedCode c : cd.getCodes()) {
 					if (hasComment)
-						write("    <tr><td>"+c.getCode()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+						write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
 					else if (hasDefinition)
-						write("    <tr><td>"+c.getCode()+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+						write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
 					else
-						write("    <tr><td colspan=\"3\">"+c.getCode()+"</td></tr>");
+						write("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
 				}
 				write("    </table>\r\n");
 				write("  </li>\r\n");

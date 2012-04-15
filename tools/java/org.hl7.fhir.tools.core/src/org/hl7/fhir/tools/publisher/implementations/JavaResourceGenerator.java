@@ -51,7 +51,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		  if (hasList(root))
 		    write("import java.util.*;\r\n");
 		  if (hasXhtml(root))
-		    write("import org.hl7.fhir.instance.xhtml.XhtmlNode;\r\n");
+		    write("import org.hl7.fhir.utilities.xhtml.XhtmlNode;\r\n");
 			write("\r\n");
 		}
 		

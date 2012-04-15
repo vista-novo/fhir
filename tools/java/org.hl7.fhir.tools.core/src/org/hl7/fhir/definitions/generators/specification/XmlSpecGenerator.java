@@ -29,12 +29,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (rn == null || "x".equals(rn))
 			write("<b>");
 		else
-			write("<a href=\"#"+root.getName()+"\" title=\""+root.getDefinition()+"\" class=\"dict\"><b>");
+			write("<a href=\"#"+root.getName()+"\" title=\""+Utilities.escapeXml(root.getDefinition())+"\" class=\"dict\"><b>");
 		write(rn);
-		if (rn != null)
-			write("</b></a>");
+    if (rn == null || "x".equals(rn))
+      write("</b>");
 		else
-			write("</b>");
+      write("</b></a>");
 			
 		write(" xmlns=\"http://www.hl7.org/fhir\"&gt;\r\n");
 		
@@ -93,10 +93,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		else
 			write("&lt;<a href=\"#"+pathName+"."+elem.getName()+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\"><b>");
 		write(elem.getName());
-		if (rootName != null)
-			write("</b></a>");
+		if (rootName == null || "x".equals(rootName))
+      write("</b>");
 		else
-			write("</b>");
+      write("</b></a>");
 		if (elem.getId() != null)
 		{
 			write(" id=\""+elem.getId()+"\"");
