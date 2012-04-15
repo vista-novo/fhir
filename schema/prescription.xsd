@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 23:50 Apr 10, 2012 for FHIR v0.01 
+  Generated on 21:27 Apr 15, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:include schemaLocation="fhir-base.xsd"/>
@@ -159,7 +159,7 @@
       </xs:element>
       <xs:element name="prn" type="BooleanYesNo" minOccurs="0" maxOccurs="1">
         <xs:annotation>
-          <xs:documentation>Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient</xs:documentation>
+          <xs:documentation>Pro re nate, &quot;If necessary&quot;: Specifies whether administration depens on the state and symptoms of the patient</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="additionalInstructions" minOccurs="0" maxOccurs="1">
