@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
-import org.hl7.fhir.instance.xhtml.*;
-import org.hl7.fhir.tools.core.xml.*;
+import org.hl7.fhir.utilities.xhtml.*;
+import org.hl7.fhir.utilities.xml.*;
 
 public abstract class XmlComposerBase extends XmlBase {
   

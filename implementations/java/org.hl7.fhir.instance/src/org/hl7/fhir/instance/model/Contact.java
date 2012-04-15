@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc

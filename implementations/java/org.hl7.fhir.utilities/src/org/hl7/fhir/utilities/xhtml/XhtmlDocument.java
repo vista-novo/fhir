@@ -1,4 +1,4 @@
-package org.hl7.fhir.instance.xhtml;
+package org.hl7.fhir.utilities.xhtml;
 
 public class XhtmlDocument extends XhtmlNode {
 

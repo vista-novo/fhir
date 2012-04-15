@@ -1,9 +1,9 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 23:50 Apr 10, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
 
 import java.util.*;
-import org.hl7.fhir.instance.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 /**
  * A human readable formatted text, including images

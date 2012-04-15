@@ -12,8 +12,8 @@ import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
-import org.hl7.fhir.instance.xhtml.XhtmlNode;
-import org.hl7.fhir.instance.xhtml.XhtmlParser;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
@@ -143,8 +143,8 @@ public abstract class XmlParserBase extends XmlBase {
   }
   
   protected XhtmlNode parseXhtml(XmlPullParser xpp) throws Exception {
-    XhtmlParser prsr = new XhtmlParser(xpp);
-    return prsr.parseHtmlNode();
+    XhtmlParser prsr = new XhtmlParser();
+    return prsr.parseHtmlNode(xpp);
   }
 
 
