@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>UML Models and dataAbsentReason</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -22,13 +22,14 @@ This specification describes the use of the <i>dataAbsentReason</i> attribute,
 which is used throughout the content models on elements of any type to
 indicate missing data. The <i>dataAbsentReason</i> attribute "may appear on any element in a resource other 
 than those marked mandatory".
+</p>
 <p>
 In Object-Orientated paradigms, the <i>dataAbsentReason</i> is a mixin. 
 The <a href="http://en.wikipedia.org/wiki/Mixin#">definition of a mix-in</a> is that 
 it is an abstract class that provides functionality that is not inherited by specialization but rather by collecting functionality.
 A mixin can be thought of as a generic class that specializes it's parameter class:
 </p>
-<p><img src="mixin-pure.png"/></a></p>
+<p><img src="mixin-pure.png"/></p>
 <p>
 This shows a mixin called "DataQualityAspect" which expresses the attribute "dataAbsentReason". The 
 two derived classes, DataQualityAspectQuantity which inherits both Quantity and DataQualityAspect
@@ -41,14 +42,14 @@ not a recognised standard UML sytnax, but most mainstream programming languages 
 implement multiple inheritence in this form. There is two alternative approaches for 
 implementing this in these platforms. The first is using a wrapper class:
 </p>
-<p><img src="mixin-wrapper.png"/></a></p>
+<p><img src="mixin-wrapper.png"/></p>
 <p>
 The problem with this variation is that Quantity and DataQualityAspect(Quantity) are 
 no longer both types of Quantity, as with a pure mixin, and this will have a series of 
 knock on effects in implementations. The other alternative is simply to make DataQualityAspect
 a base class:
 </p>
-<p><img src="mixin-base.png"/></a></p>
+<p><img src="mixin-base.png"/></p>
 <p>
 This is the simplest approach, but has the disadvantage that all instances of 
 the Quantity data type carry the dataAbsentReason attribute, whether it is

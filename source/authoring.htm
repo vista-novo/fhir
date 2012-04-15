@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Resource Authoring Methdology</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -35,7 +35,7 @@ committee must consider the following things:
 </p>
 <ul>
  <li>Is the resource scope well described?</li>
- <li>What is the scope of the resource? The scope should ideally broad enough to meet the potential needs of a wide spectrum of users (inpatient + community, individual & public health, human & veterinary, all countries & realms).  If covering such a broad spectrum is not possible, the space needs to be segregated such that multiple non-overlapping resources can cover the space</li>
+ <li>What is the scope of the resource? The scope should ideally broad enough to meet the potential needs of a wide spectrum of users (inpatient + community, individual &amp; public health, human &amp; veterinary, all countries &amp; realms).  If covering such a broad spectrum is not possible, the space needs to be segregated such that multiple non-overlapping resources can cover the space</li>
  <li>What other resources will it depend on? What is not in scope for the resource?</li>
  <li>Will other resources are envisaged to depend on it?</li>
  <li>Does the resource overlap with other resources? (i.e. cover the same elements or be associated with the same extensions as)</li>
@@ -118,7 +118,7 @@ columns that define the content of the resource.
  <tr><td>Card.</td><td>Minimum and maximum Cardinality. Elements that have a max cardinality > 1 should still 
    have a singular name. Note that the usual cardinality combinations are 0..1, 1..1, 0..* and 1..*. Other values 
    for both the lower and upper limit are allowed, but should be based on genuine limits, not arbitrary conformance-type limits.</td></tr>
- <tr><td>Conf.</td><td>Conformance (see <href="xml.htm#Control">Control Codes</a>). conformance which is tightly tied to the cardinality. Note that an element with a 0..1 cardinality shouldn't be mandatory, while an element with 0..* cardinality may be optional, conditional, or mandatory</td></tr>
+ <tr><td>Conf.</td><td>Conformance (see <a href="xml.htm#Control">Control Codes</a>). conformance which is tightly tied to the cardinality. Note that an element with a 0..1 cardinality shouldn't be mandatory, while an element with 0..* cardinality may be optional, conditional, or mandatory</td></tr>
  <tr><td>Type</td><td>[Conditional] The type of a data element - may be from the <a href="datatypes.htm">data types</a>, or 
     a <a href="xml.htm#Resource">Resource</a> reference, a <a href="xml.htm#Narrative">Narrative</a> (though this 
     is unusual). <br/><br/>
@@ -215,7 +215,7 @@ the following guidelines apply to defining resources:
         <li>CDA, Consolidated CDA story and other implementation guides (and IHE specifications)</li>
         <li>v2 segments</li>
         <li>openEHR Archetypes on http://www.openher.org/ckm</li>
-	<li>National repository definitions (possible sources: S&I (including the CEDD), UK NHS, Canada Health Infoway, Singapore LIMs, NEHTA (Australia)) - beware of local variations</li>
+	<li>National repository definitions (possible sources: S&amp;I (including the CEDD), UK NHS, Canada Health Infoway, Singapore LIMs, NEHTA (Australia)) - beware of local variations</li>
       </ul>
   </li>
   <li>Conciseness is a Primary virtue. Every word must count, since everyone has to read it.</li>
@@ -224,7 +224,7 @@ the following guidelines apply to defining resources:
      if they challenge a missing or unclear requirements.</li>
   <li>All elements and extensions defined by HL7 committees must have a genuine RIM mapping.</li>
   <li>Structural re-arrangements to the resources are very difficult if not impossible (including cardinality - see below). Path based navigation must not be changed (=broken)).  Therefore, considerable thought should go into data structure.  Specific considerations are listed below</li>
-  <li>Event data that goes in the resource: enduring semantically significant event metadata i.e. pathologist approving lab report, prescriber of medication - need to be maintained in band with the data, not somewhere else</a>
+  <li>Event data that goes in the resource: enduring semantically significant event metadata i.e. pathologist approving lab report, prescriber of medication - need to be maintained in band with the data, not somewhere else</li>
   <li>todo : status, request/fulfillment (there will be other "pointer" resources for request/fulfillment, +  pattern for event history on resources that have events (and usually status)</li>
 </ul>
 <p>
@@ -345,3 +345,5 @@ in source/messaging.htm.
 </ul>
 
 <%footer%>
+</body>
+</html>

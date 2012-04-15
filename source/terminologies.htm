@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Terminologies</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 
@@ -39,7 +39,7 @@ set of acceptable concepts:
 <p>
 Note that this approach is based on the framework defined in the HL7 V3 core principles in section 5.1. Also note that when a CodeableConcept has a concept domain, this means that one of the codes in the coding list meet the binding of the concept domain, and all the codes must conform to the definition of the concept domain.
 </p>
-<a name="codesystems"/></a>
+<a name="codesystems"></a>
 <h2>Named Systems List</h2>
 <p>
 This specification defines the following names (URIs) as fiexed names that may 
@@ -149,32 +149,33 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
 In addition to this, a number of code sytems are defined informally through 
 the specification. This table enumerates them, and assigns sid and OID values 
 for them, though these are not generally used directly in this specification:
+</p>
 <table class="list">
  <tr>
   <td><a href="#specialvalues">Special Values</a></td>
   <td>urn:hl7-org:sid/fhir/special-values</td>
   <td>2.16.840.1.113883.6.305</td>
- </td>
+ </tr>
  <tr>
   <td><a href="#resourcetypes">Resource Types</a></td>
   <td>urn:hl7-org:sid/fhir/resources</td>
   <td>2.16.840.1.113883.6.306</td>
- </td>
+ </tr>
  <tr>
   <td><a href="http.htm#interactions">Logical Interactions</a> (RESTful framework)</td>
   <td>urn:hl7-org:sid/fhir/interactions</td>
   <td>2.16.840.1.113883.6.308</td>
- </td>
+ </tr>
  <tr>
   <td><a href="messaging.htm#Events">Message Events</a> (Messaging framework)</td>
   <td>urn:hl7-org:sid/fhir/message-events</td>
   <td>2.16.840.1.113883.6.307</td>
- </td>
+ </tr>
  <tr>
   <td><a href="xml.htm#dataAbsentReason">Data Absent Reason</a></td>
   <td>urn:hl7-org:sid/fhir/data-absent-reason</td>
   <td>2.16.840.1.113883.6.309</td>
- </td>
+ </tr>
 </table>
 <p>
 Note that all the codes in these code systems are case sensitive, and must be used in lowercase.
@@ -214,4 +215,4 @@ In several places, the resource types themselves are used as codes, with the sid
 <%/maindiv%>
     
 </body>
-</html&gt;
+</html>

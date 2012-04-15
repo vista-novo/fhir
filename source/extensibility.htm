@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Extensibility</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -54,11 +55,11 @@ Each resource includes the optional extensions element before the narrative elem
 <pre>
  &lt;extensions <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
   &lt;<b>extension</b>&gt; 
-   &lt;<b>code</b></a> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Code that identifies the meaning of the extension</font>&lt;/code&gt;
-   &lt;<b>definition</b></a> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Source of the definition for the code</font>&lt;/definition&gt;
-   &lt;<b>ref</b></a> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Internal reference to context of the extension (xml:id)</font>&lt;/ref&gt;
-   &lt;<b>state</b></a> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#code">code</a>"</font>&gt;<font color="navy">must-understand | superceded</font>&lt;/state&gt;
-   &lt;<b>value[x]</b></a> <a href="xml.htm#Control" class="cf">cond</a>&gt;<font color="navy">Value of extension</font>&lt;/value[x]&gt;
+   &lt;<b>code</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Code that identifies the meaning of the extension</font>&lt;/code&gt;
+   &lt;<b>definition</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Source of the definition for the code</font>&lt;/definition&gt;
+   &lt;<b>ref</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Internal reference to context of the extension (xml:id)</font>&lt;/ref&gt;
+   &lt;<b>state</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#code">code</a>"</font>&gt;<font color="navy">must-understand | superceded</font>&lt;/state&gt;
+   &lt;<b>value[x]</b> <a href="xml.htm#Control" class="cf">cond</a>&gt;<font color="navy">Value of extension</font>&lt;/value[x]&gt;
    &lt;extensions <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
     <font color="Gray">&lt;!-- Nested Extensions --&gt;</font>
    &lt;/extensions&gt;
@@ -98,6 +99,7 @@ value element. Instead, the state of the extension is "superceded", and the ref 
 Note that it must always be safe to show the narrative to humans; any extension that is labelled as must-understand must be represented in the narrative.
 Applications are encouraged to ignore un-required extensions that they do not recognise. Applications that do not accept unknown extensions should declare 
 this in their conformance statement.
+</p>
 <p>
 The <i>[type]</i> element has the name of one of the defined types, and the contents as defined for that type, or another extension. Specifically, the element name may be one of the following:
 </p>
@@ -141,7 +143,7 @@ the question is whether an extension could ever alter the interpretation of some
 -->
 <p>
 Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself. 
-<p>
+</p>
 <p>
 Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
@@ -151,7 +153,7 @@ Extensions are always defined against some particular context. The following are
  <li>A set of elements across one or more resources</li>
  <li>a particular context in one of the mapped reference models</li>
  <li>Another extension</li>
-<ul>
+</ul>
 <p>
 In addition, an element definition might apply additional constraints with 
 regards to particular element values of the target that make it's use suitable.
@@ -178,7 +180,7 @@ Each extension is defined using the following fields:
 <p>
 Notes:
 </p>
-<ull>
+<ul>
  <li>Mappings are not expected to be computable (i.e. executable logic). Mappings to other specifications can also be provided.</li>
  <li>Either a path of a target Type should be provided</li>
 </ul>
@@ -198,7 +200,7 @@ definitions from FHIR itself also use the same format).
 </p>
 <p>
 
-Todo: extension packs & metadata
+Todo: extension packs &amp; metadata
 
 
 Control

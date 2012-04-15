@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Resource XML</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -23,7 +24,7 @@ and controlled. The XML may be validated by schema, and schemas are provided, bu
 validation is not required in operational systems (though the XML must always be 
 valid against this specification). In addition, W3C Schema and UML models are 
 provided that may be a useful aid for system implementation.
-<p>
+</p>
 
 <h2>XML Content Models</h2>
 <p>
@@ -129,7 +130,7 @@ is tolerated on a per element basis. The control flag must have one of the follo
 <hr/>
 
 <img src="base.png"/>
-<a name="Narrative"/></a>
+<a name="Narrative"></a>
 <h2>Narrative</h2>
 <p>
 Every resource includes a human readable narrative that contains a summary of the resource, 
@@ -166,20 +167,20 @@ or any repeating element inside a data type, may carry an id attribute to serve 
 The narrative is an xhtml fragment that also includes images if appropriate:
 </p>
 <pre>
-&lt;<b>x</b></a> xmlns="http://www.hl7.org/fhir"&gt;
-  &lt;<b>status</b></a>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">generated | extensions | additional</font>&lt;/status&gt;
-  &lt;<b>html</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">xhtml</font> <font color="navy">limited xhtml content</font>&lt;/html&gt;
+&lt;<b>x</b> xmlns="http://www.hl7.org/fhir"&gt;
+  &lt;<b>status</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">generated | extensions | additional</font>&lt;/status&gt;
+  &lt;<b>html</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">xhtml</font> <font color="navy">limited xhtml content</font>&lt;/html&gt;
   &lt;images <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-   &lt;<b>image</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
-    &lt;<b>mimeType</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">mime type of image</font>&lt;/mimeType&gt;
-    &lt;<b>content</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">base64 image data</font>&lt;/content&gt;
+   &lt;<b>image</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
+    &lt;<b>mimeType</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">mime type of image</font>&lt;/mimeType&gt;
+    &lt;<b>content</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">base64 image data</font>&lt;/content&gt;
    &lt;/image&gt;
   &lt;/images&gt;
   &lt;maps <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-   &lt;<b>map</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
-    &lt;<b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Narrative source (xml:id)</font>&lt;/text&gt;
-    &lt;<b>data</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Data source (xml:id)</font>&lt;/data&gt;
-    &lt;<b>source</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">text | data</font>&lt;/source&gt;
+   &lt;<b>map</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
+    &lt;<b>text</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Narrative source (xml:id)</font>&lt;/text&gt;
+    &lt;<b>data</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Data source (xml:id)</font>&lt;/data&gt;
+    &lt;<b>source</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">text | data</font>&lt;/source&gt;
    &lt;/map&gt;
   &lt;/maps&gt;
 &lt;/x&gt;
@@ -267,7 +268,7 @@ images are used, they must include an appropriate caption).
 The <i>dataAbsentReason</i> is not used on the narrative element, or any elements 
 contained in it. The xhtml element must have non-whitespace content.
 </p>
-<a name="Resource"/></a>
+<a name="Resource"></a>
 <h2>Resource References</h2>
 <p>
 The "Resource" type indicates a reference from one resource to another.
@@ -276,10 +277,10 @@ references are done by id.
 </p>
 <pre>
   &lt;x&gt;
-    &lt;<b>type</b> <a href="xml.htm#Control" class="cf"/>cond</a> <font color="darkgreen">type="resourceType"</font>&gt;<font color="navy">Resource Type</font>&lt;/type&gt;
-    &lt;<b>id</b> <a href="xml.htm#Control" class="cf"/>cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Id of the reference</font>&lt;/id&gt;
-    &lt;<b>version</b> <a href="xml.htm#Control" class="cf"/>opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
-    &lt;<b>text</b> <a href="xml.htm#Control" class="cf"/>opt</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Text alternative for the resource</font>&lt;/text&gt;
+    &lt;<b>type</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="resourceType"</font>&gt;<font color="navy">Resource Type</font>&lt;/type&gt;
+    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Id of the reference</font>&lt;/id&gt;
+    &lt;<b>version</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
+    &lt;<b>text</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Text alternative for the resource</font>&lt;/text&gt;
   &lt;/x&gt;
 </pre>
 <p>
@@ -348,8 +349,8 @@ applications would best ignore elements that they do not recognize. However in
 a healthcare context, many application vendors are unwilling to 
 consider this approach because of concerns about clinical risk. 
 Applications are not required to ignore unknown elements, but must
-declare whether they will do so in their conformance statements.</p>
-<p>
+declare whether they will do so in their conformance statements.
+</p>
 
 <h2>XML Schema</h2>
 <p>

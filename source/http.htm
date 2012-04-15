@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
@@ -48,7 +49,7 @@ HOLD
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>HTTP/RESTful Framework</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -72,7 +73,7 @@ such as multiple users, responsible party, reasons, consents etc that is commonl
 security and logs are managed by the client (perhaps through using ATNA), and the server trusts the client to maintain
 these. One implication of this is that this RESTful framework is only suitable for use where such 
 trust relationships exist (e.g. in a single institution), and not suitable where such trust does not exist 
-(e.g. state & national EHR systems, and general internet-based ecosystems). Instead, these type of usages
+(e.g. state &amp; national EHR systems, and general internet-based ecosystems). Instead, these type of usages
 should consider a <a href="messaging.html">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a>.  or profiled REST
 </p>
 <p>
@@ -303,7 +304,7 @@ resource, sorted with oldest versions first.
 <h2>search</h2>
 <p>
 This interaction searches the resource type based on some filter criteria. The interaction is performed by an HTTP Get operation as shown:
-<p>
+</p>
 <pre>
   GET [baseurl]/[resourcetype]/search.xml
 </pre>
@@ -324,8 +325,8 @@ For example, with patient, the response would look like this:
  &lt;Patients xmlns="http://www.hl7.org/fhir">
    &lt;<b>Patient</b>&gt;
      <font color="Gray">&lt;!-- Content for patient --&gt;</font>
-   &lt;/Patient&gt;
  &lt;Patients&gt;
+   &lt;/Patient&gt;
 </pre>
 <p>
 The search results are divided into a number of pages using offsets. 
@@ -333,8 +334,8 @@ It is at the discretion of the server how many results to return, though
 the client may request a particular number of a <i>count</i> parameter. If
 the client wishes for more results, it should use the <i>n</i> parameter.
 More generally, the client uses parameters to narrow the search and 
-increase it's usefulness. The following table summarises ths search parameters:
-<p>
+increase it's usefulness. The following table summarises the search parameters:
+</p>
 <table class="list">
   <tr><td>n</td><td>Starting offset of the first record to return in the search set</td></tr>
   <tr><td>count</td><td>Number of return records requested. The server is not bound to conform.</td></tr>
@@ -362,7 +363,7 @@ returned with the acknowledgement, use ?reload=true on the request.
 <p>
 If the client does not provide an ID, the server will assign an id, and return it 
 in the HTTP location header:
-<p>
+</p>
 <pre>
  Location: [baseurl]/[resourcetype]/{new-id}.xml
 </pre>
@@ -388,7 +389,7 @@ resource type, sorted with oldest updates first.
 <p>
 The client can use parameters to narrow the search and 
 increase it's usefulness. The following table summarises ths search parameters:
-<p>
+</p>
 <table class="list">
   <tr><td>since</td><td>The time from which to return new updates</td></tr>
   <tr><td>[path]</td><td>a value to match in the content model.</td></tr>

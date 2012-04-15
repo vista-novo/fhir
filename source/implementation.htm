@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Implementation Details</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -23,7 +23,7 @@ straight <a href="messaging.htm">messaging based implementation framework</a> fo
 as well as documenting how <a href="hdata.htm">FHIR resources are used with hData</a>.
 </p>
 <a name="SOA"></a>
-<h3>SOA</h3>
+<h2>SOA</h2>
 <p>
 Alternatively, it is not necessary to use any of these approaches; resources can be exchanged or persisted
 using any technical means that is appropriate to the context at hand. A common use of FHIR 
@@ -61,7 +61,7 @@ There are many ways to use resources to build working systems:
 
 
 
-<a name="Aggregation"/></a>
+<a name="Aggregation"></a>
 <h2>Aggregation</h2>
 <p>
 One basic operation performed with resources is to aggregate a group of resources into a single XML document. 
@@ -157,7 +157,7 @@ organization is in the feed, it would look like this:
 It would also be possible to locate the resouce by the url (todo: explanation of this method).
 </p>
 <a name="Ids"></a>
-<h3>XML Ids in resources</h3>
+<h2>XML Ids in resources</h2>
 <p>
 FHIR resources make use of XML id attributes as targets for pointers elsewhere in the document. XML id attributes must be unique 
 in the context of a single XML document, and the atom feed is a single XML document. it can be difficult and time consuming - or
@@ -166,7 +166,7 @@ For this reason, it is highly recommended that all XML id attributes are prefixe
 this: [Type]_[master id]_id (e.g. Person_23442_1). 
 </p>
 <a name="endpoint"></a>
-<h3>RESTful support for Aggregations</h3>
+<h2>RESTful support for Aggregations</h2>
 <p>
 The standard RESTful endpoints (such as [baseurl]/people/#{id}.xml for a Person resource, or [baseurl]/documents/#{id}.xml) handle
 the individual resources, and not aggregations (though they may serve up aggregations for the history and update operations). 
@@ -206,7 +206,7 @@ or a SOA implementation.
 <h2>Useful Resources</h2>
 <p>
 General Resources:
-<p>
+</p>
 <ul>
  <li><a href="fhir-all.xsd.zip">All schemas as a .zip</a> (includes base schemas, resource schemas, and metadata schemas)</li>
  <li><a href="fhir.dict.xml">Single combined definitions, including data types</a> (or as <a href="csv.zip">CSV source</a>)</li>

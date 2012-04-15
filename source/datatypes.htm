@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Data Types</title>
-    <link rel="Stylesheet" href="test.css" type="text/css" media="screen" />
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -28,7 +29,7 @@ There is no functional difference betweent the two categories, and systems are n
 any differently. This table summarises the types:
 </p>
 <table class="grid">
-<tr><td colspan="3">Core Types</a></td><td colspan="2">Structures</td></tr>
+<tr><td colspan="3">Core Types</td><td colspan="2">Structures</td></tr>
 <tr><td><a href="#Attachment">Attachment</a></td>             <td><a href="#Identifier">Identifier</a></td>  <td><a href="#Interval">Interval</a></td> <td><a href="#HumanId">HumanId</a></td> <td><a href="#Contact">Contact</a></td></tr>
 <tr><td><a href="#CodeableConcept">CodeableConcept</a></td>       <td><a href="#Quantity">Quantity</a></td>  <td><a href="#Ratio">Ratio</a></td>   <td><a href="#HumanName">HumanName</a></td>       <td></td></tr>
 <tr><td><a href="#Coding">Coding</a></td> <td><a href="#Choice">Choice</a></td>    <td></td>                   <td><a href="#Address">Address</a></td> <td><a href="#Schedule">Schedule</a></td></tr>
@@ -41,15 +42,15 @@ any differently. This table summarises the types:
 <p>
 The following table summarises the primitive types that 
 are used in the exchange specifications. The posssible values for these types are those specified in the W3C Schema specification part 2.
-<p>
+</p>
 <table class="list">
- <tr><td><a name="boolean"/></a>boolean</td><td>values can be true or false</td></tr>
- <tr><td><a name="integer"/></a>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td></tr>
- <tr><td><a name="decimal"/></a>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td></tr>
- <tr><td><a name="base64Binary"/></a>base64Binary</td><td>A stream of bytes, base64 encoded</td></tr>
- <tr><td><a name="instant"/></a>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td></tr>
- <tr><td><a name="string"/></a>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td></tr>
- <tr><td><a name="uri"/></a>uri</td><td>Ref to W3C spec</td></tr>
+ <tr><td><a name="boolean"></a>boolean</td><td>values can be true or false</td></tr>
+ <tr><td><a name="integer"></a>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td></tr>
+ <tr><td><a name="decimal"></a>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td></tr>
+ <tr><td><a name="base64Binary"></a>base64Binary</td><td>A stream of bytes, base64 encoded</td></tr>
+ <tr><td><a name="instant"></a>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td></tr>
+ <tr><td><a name="string"></a>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td></tr>
+ <tr><td><a name="uri"></a>uri</td><td>Ref to W3C spec</td></tr>
  <tr><td></td><td></td></tr>
 </table>
 <p>
@@ -63,16 +64,16 @@ JSON or some object based notation will have to find equivalent types.
 In addition to these assumed primitive types, this specification define a few simple
 string patterns that are commonly used:
 </p>
-<p>
+
 <table class="list">
- <tr><td><a name="code"/></a>code</td><td>a string which has at least one character and no whitespace</td></tr>
- <tr><td><a name="oid"/></a>oid</td><td>An ISO oid [ref ISO std]</td></tr>
- <tr><td><a name="uuid"/></a>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
- <tr><td><a name="sid"/></a>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a></td></tr>
- <tr><td><a name="id"/></a>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
- <tr><td><a name="date"/></a>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
+ <tr><td><a name="code"></a>code</td><td>a string which has at least one character and no whitespace</td></tr>
+ <tr><td><a name="oid"></a>oid</td><td>An ISO oid [ref ISO std]</td></tr>
+ <tr><td><a name="uuid"></a>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
+ <tr><td><a name="sid"></a>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a></td></tr>
+ <tr><td><a name="id"></a>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
+ <tr><td><a name="date"></a>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
    The format is a union of the schema types gYear, gYearMonth, and date.</td></tr>
- <tr><td><a name="dateTime"/></a>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
+ <tr><td><a name="dateTime"></a>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
    populated if hours and minutes are specified. The format is a union of the schema types gYear, gYearMonth, date, and dateTime. Seconds may be provided but may also be ignored.</td></tr>
 </table>
 
@@ -89,7 +90,7 @@ string patterns that are commonly used:
 <p>
 <img src="dt2.png"/>
 </p>
-<a name="Attachment"/></a>
+<a name="Attachment"></a>
 <h2>
 Attachment
 </h2>
@@ -155,7 +156,7 @@ The context of use may frequently make rules about the kind of attachment
 </pre>
 </div>
 
-<a name="Identifier"/></a>
+<a name="Identifier"></a>
 <h2>
 Identifier
 </h2>
@@ -219,7 +220,7 @@ to some organisation to further sub-allocate):</p>
 </div>
 
 
-<a name="CodeableConcept"/></a>
+<a name="CodeableConcept"></a>
 <h2>
 CodeableConcept
 </h2>
@@ -289,7 +290,7 @@ concept in the context in which it used. As a consequence, the
 though it is never required to use it. The meaing of <i>valueSetVersion</i> 
 is defined by the definition of the value set.
 </p>
---->
+-->
 <div class="use">
 <p><b>Use</b></p>
 <p>
@@ -301,10 +302,8 @@ Each <i>coding</i> must contain a <i>system</i> element, and should contain a <i
 The context of use may frequently make rules about what codings are allowed or required.
 </p>
 </div>
-<a name="Coding"/></a>
-<h3>
-"Coding" Data Type
-</h3>
+<a name="Coding"></a>
+<h3>"Coding" Data Type</h3>
 <p>
 The CodeableConcept data type represents a commonly encountered pattern around the use of coding, with multiple codings and a text. 
 In some circumstances, the resources and/or models that use these data types may be more prescriptive about the use of 
@@ -350,7 +349,7 @@ in the <i>CodeableConcept</i> data type.
 </pre>
 </div>
 
-<a name="Choice"/></a>
+<a name="Choice"></a>
 <h2>
 Choice
 </h2>
@@ -403,7 +402,7 @@ The Choice element must always contain at least one possible value.
 </pre>
 </div>
 
-<a name="Quantity"/></a>
+<a name="Quantity"></a>
 <h2>
 Quantity
 </h2>
@@ -500,7 +499,7 @@ These are used as types in resource content models, but they are really just Qua
 
 
 
-<a name="Interval"/></a>
+<a name="Interval"></a>
 <h2>
 Interval
 </h2>
@@ -526,7 +525,7 @@ it means that the interval is current and ongoing.
 </p>
 <p>
 If the interval applies to the <a href="#Quantity">Quantity</a> type, the <i>status</i> flag on 
-the quantity cannot have the values <, <=, =>, or >. Note that the Interval type should not be 
+the quantity cannot have the values &lt;, &lt;=, =&gt;, or &gt;. Note that the Interval type should not be 
 used to represent measurements where the status flag might be used instead.
 </p>
 <p>
@@ -577,7 +576,7 @@ a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
 </pre>
 </div>
 
-<a name="Ratio"/></a>
+<a name="Ratio"></a>
 <h2>
 Ratio
 </h2>
@@ -635,7 +634,7 @@ particular types of Quantity for the numerator or denominator.
 <p>
 <img src="dt3.png"/>
 </p>
-<a name="HumanId"/></a>
+<a name="HumanId"></a>
 <h2>HumanId</h2>
 
 
@@ -722,7 +721,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
 </pre>
 </div>
 
-<a name="HumanName"/></a>
+<a name="HumanName"></a>
 <h2>
 HumanName
 </h2>
@@ -775,7 +774,7 @@ flag is provided on the name element.
 </pre>
 <p>See <a href="examples-datatypes.htm">further examples</a></p>
 </div>
-<a name="Address"/></a>
+<a name="Address"></a>
 <h2>
 Address
 </h2>
@@ -827,7 +826,7 @@ flag is provided on the address element.
 </pre>
 <p>See <a href="examples-datatypes.htm">further examples</a></p>
 </div>
-<a name="Contact"/></a>
+<a name="Contact"></a>
 <h2>
 Contact
 </h2>
@@ -856,7 +855,7 @@ flag is provided on the contact element. A <i>system</i> is required if a <i>val
 <p>See <a href="examples-datatypes.htm">further examples</a></p>
 </div>
 <!-- 
-<a name="Location"/></a>
+<a name="Location"></a>
 <h2>Location</h2>
 <p>
 A physical location based on geospatial co-ordinates.
@@ -886,7 +885,7 @@ A physical location based on geospatial co-ordinates.
 TODO: what should this be - ?  (google KML)
 </p>
 -->
-<a name="Schedule"/></a>
+<a name="Schedule"></a>
 <h2>
 Schedule
 </h2>
