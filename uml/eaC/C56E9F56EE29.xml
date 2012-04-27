@@ -34,12 +34,12 @@
 				</UML:Package>
 			</UML:Namespace.ownedElement>
 		</UML:Model>
-		<UML:DiagramElement geometry="Left=14;Top=1004;Right=555;Bottom=1232;" subject="EAID_9CC5C109_2B8A_47f6_82EB_C56E9F56EE29" seqno="41" style="DUID=EBC656DC;">
+		<UML:DiagramElement geometry="Left=14;Top=1004;Right=556;Bottom=1338;" subject="EAID_9CC5C109_2B8A_47f6_82EB_C56E9F56EE29" seqno="43" style="DUID=EBC656DC;">
 			<UML:ModelElement.taggedValue>
 				<UML:TaggedValue tag="diagram_guid" value="EAID_78708013_EF18_46c4_8C0E_72EE105603DE"/>
 			</UML:ModelElement.taggedValue>
 		</UML:DiagramElement>
-		<UML:DiagramElement geometry="Left=17;Top=9;Right=558;Bottom=253;" subject="EAID_9CC5C109_2B8A_47f6_82EB_C56E9F56EE29" seqno="7" style="DUID=14C46049;NSL=0;">
+		<UML:DiagramElement geometry="Left=3;Top=9;Right=547;Bottom=361;" subject="EAID_9CC5C109_2B8A_47f6_82EB_C56E9F56EE29" seqno="8" style="DUID=14C46049;NSL=0;">
 			<UML:ModelElement.taggedValue>
 				<UML:TaggedValue tag="diagram_guid" value="EAID_B14F247E_0D2D_4ae3_A8DB_80416B2F23DF"/>
 			</UML:ModelElement.taggedValue>
