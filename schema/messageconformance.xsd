@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 21:27 Apr 15, 2012 for FHIR v0.01 
+  Generated on 22:50 Apr 29, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:include schemaLocation="fhir-base.xsd"/>
@@ -12,15 +12,29 @@
   </xs:element>
   <xs:complexType name="MessageConformance">
     <xs:sequence>
-      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Globally unique Conformance Statement Id (Must be a UUID)</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="date" type="dateTime" minOccurs="1" maxOccurs="1">
+      <xs:element name="date" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Date that the conformance statement is published</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="publisher" type="MessageConformance.Publisher" minOccurs="1" maxOccurs="1">
         <xs:annotation>
@@ -32,16 +46,10 @@
           <xs:documentation>The software that is covered by this conformance statement</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="events" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="event" type="MessageConformance.Event" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>An event supported by the application</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="event" type="MessageConformance.Event" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An event supported by the application</xs:documentation>
+        </xs:annotation>
       </xs:element>
       <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
         <xs:annotation>
@@ -57,20 +65,41 @@
   </xs:complexType>
   <xs:complexType name="MessageConformance.Event">
     <xs:sequence>
-      <xs:element name="code" type="code" minOccurs="1" maxOccurs="1">
+      <xs:element name="code" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The code for the event</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="code">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="resource" type="code" minOccurs="0" maxOccurs="1">
+      <xs:element name="resource" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The focal resource for the event</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="code">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="mode" type="MessageConformanceEventMode" minOccurs="1" maxOccurs="1">
+      <xs:element name="mode" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The mode of this event declaration - whether application is sender or receiver</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="MessageConformanceEventMode">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="request" type="MessageConformance.Request" minOccurs="0" maxOccurs="1">
         <xs:annotation>
@@ -86,96 +115,130 @@
   </xs:complexType>
   <xs:complexType name="MessageConformance.Response">
     <xs:sequence>
-      <xs:element name="resources" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="resource" type="Constraint" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Constraint on a resource used in the event response</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Constraint on a resource used in the event response</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Constraint">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MessageConformance.Publisher">
     <xs:sequence>
-      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="name" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Name of Organization</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Address of Organization</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Address of Organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Address">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Contacts for Organization</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Contacts for Organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Contact">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MessageConformance.Request">
     <xs:sequence>
-      <xs:element name="resources" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="resource" type="Constraint" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Constraint on a resource used in the event request</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Constraint on a resource used in the event request</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Constraint">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="MessageConformance.Software">
     <xs:sequence>
-      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="name" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Name software is known by</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="version" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="version" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Version covered by this statement</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="releaseDate" type="dateTime" minOccurs="0" maxOccurs="1">
+      <xs:element name="releaseDate" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Date this version released</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="MessageConformanceEventMode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="sender">
-        <xs:annotation>
-          <xs:documentation>The application sends requests and receives responses</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="receiver">
-        <xs:annotation>
-          <xs:documentation>The application receives requests and sends responses</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:complexType name="MessageConformanceEventMode">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="sender">
+          <xs:annotation>
+            <xs:documentation>The application sends requests and receives responses</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="receiver">
+          <xs:annotation>
+            <xs:documentation>The application receives requests and sends responses</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
 </xs:schema>

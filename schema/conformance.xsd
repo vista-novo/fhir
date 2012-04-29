@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 21:27 Apr 15, 2012 for FHIR v0.01 
+  Generated on 22:50 Apr 29, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:include schemaLocation="fhir-base.xsd"/>
@@ -12,15 +12,29 @@
   </xs:element>
   <xs:complexType name="Conformance">
     <xs:sequence>
-      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Globally unique Conformance Statement Id (Must be a UUID)</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="date" type="dateTime" minOccurs="1" maxOccurs="1">
+      <xs:element name="date" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Date that the conformance statement is published</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="publisher" type="Conformance.Publisher" minOccurs="1" maxOccurs="1">
         <xs:annotation>
@@ -32,17 +46,32 @@
           <xs:documentation>The software that is covered by this conformance statement</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="mode" type="RestfulConformanceMode" minOccurs="1" maxOccurs="1">
+      <xs:element name="mode" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>client | server</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="RestfulConformanceMode">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="resource" type="Constraint" minOccurs="1" maxOccurs="1">
+      <xs:element name="resource" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Resource Type with constraints</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Constraint">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="operation" type="Conformance.Operation" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="operation" type="Conformance.Operation" minOccurs="0" maxOccurs="1">
+      </xs:element>
       <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>See Extensions</xs:documentation>
@@ -57,35 +86,77 @@
   </xs:complexType>
   <xs:complexType name="Conformance.Operation">
     <xs:sequence>
-      <xs:element name="read" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="read" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="vread" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="vread" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="update" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="update" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="delete" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="delete" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="validate" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="validate" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="history" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="history" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="transaction" type="Conformance.Transaction" minOccurs="0" maxOccurs="1">
         <xs:annotation>
@@ -102,119 +173,195 @@
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="updates" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="updates" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="schema" type="boolean" minOccurs="0" maxOccurs="1">
+      <xs:element name="schema" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>if supported</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Conformance.Create">
     <xs:sequence>
-      <xs:element name="id" type="code" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>source of id: client | server | either</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceIdSource">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Conformance.Software">
     <xs:sequence>
-      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="name" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Name software is known by</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="version" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="version" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Version covered by this statement</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="releaseDate" type="dateTime" minOccurs="0" maxOccurs="1">
+      <xs:element name="releaseDate" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Date this version released</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Conformance.Publisher">
     <xs:sequence>
-      <xs:element name="name" type="string" minOccurs="1" maxOccurs="1">
+      <xs:element name="name" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Name of Organization</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Address of Organization</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Address of Organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Address">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>Contacts for Organization</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Contacts for Organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Contact">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Conformance.Transaction">
     <xs:sequence>
-      <xs:element name="names" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="name" type="code" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>transaction names supported</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="name" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>transaction names supported</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="code">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="Conformance.Search">
     <xs:sequence>
-      <xs:element name="params" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="param" type="string" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>search params supported</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="param" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>search params supported</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="RestfulConformanceMode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="client">
-        <xs:annotation>
-          <xs:documentation>The application acts as a server for this resource</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="server">
-        <xs:annotation>
-          <xs:documentation>The application acts as a client for this resource</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:complexType name="RestfulConformanceMode">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="client">
+          <xs:annotation>
+            <xs:documentation>The application acts as a server for this resource</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="server">
+          <xs:annotation>
+            <xs:documentation>The application acts as a client for this resource</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="ResourceIdSource">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="client">
+          <xs:annotation>
+            <xs:documentation>The client must provide a unique resource id</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="server">
+          <xs:annotation>
+            <xs:documentation>The server defines the id and will reject any client attempt to define it</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="either">
+          <xs:annotation>
+            <xs:documentation>The client can provide a unique resource id, or the server will define it instead</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
 </xs:schema>

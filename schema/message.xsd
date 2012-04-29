@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 21:27 Apr 15, 2012 for FHIR v0.01 
+  Generated on 22:50 Apr 29, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:include schemaLocation="fhir-base.xsd"/>
@@ -12,70 +12,154 @@
   </xs:element>
   <xs:complexType name="Message">
     <xs:sequence>
-      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Unique Id for this message</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="threadId" type="id" minOccurs="0" maxOccurs="1">
+      <xs:element name="threadId" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Id of the thread - a series of messages that pertain to the same logical sequence, and are all identified by the same thread identifier</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="instant" type="instant" minOccurs="1" maxOccurs="1">
+      <xs:element name="instant" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Instant the message was sent</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="instant">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="event" type="code" minOccurs="1" maxOccurs="1">
+      <xs:element name="event" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="code">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="response" type="Message.Response" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Information about the the message that this message is a response to - if it is a response</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="source" type="ResourceReference" minOccurs="1" maxOccurs="1">
+      <xs:element name="source" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The source application from which this message originated</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="destination" type="ResourceReference" minOccurs="1" maxOccurs="1">
+      <xs:element name="destination" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The destination application which the message is intended for</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="enterer" type="ResourceReference" minOccurs="0" maxOccurs="1">
+      <xs:element name="enterer" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The person or device that performd the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="author" type="ResourceReference" minOccurs="0" maxOccurs="1">
+      <xs:element name="author" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The logical author of the message - the person or device that decided it should happen. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="responsible" type="ResourceReference" minOccurs="0" maxOccurs="1">
+      <xs:element name="responsible" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The person or organization that accepts overall responsbility for the contents of the message. The implication is that the message event happened under the policies of the responsible party</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="effective" type="Interval_DateTime" minOccurs="0" maxOccurs="1">
+      <xs:element name="effective" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The effective time - the real world time of the even that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Interval_DateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="reason" type="CodeableConcept" minOccurs="0" maxOccurs="1">
+      <xs:element name="reason" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The cause of the event - a reason for why this message is being sent</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="data" type="ResourceReference" minOccurs="0" maxOccurs="1">
+      <xs:element name="data" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The actual data of the message - a reference to the focus class of the message. </xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
         <xs:annotation>
@@ -91,50 +175,73 @@
   </xs:complexType>
   <xs:complexType name="Message.Response">
     <xs:sequence>
-      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The id of the message that this a response to</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="code" type="ResponseCode" minOccurs="1" maxOccurs="1">
+      <xs:element name="code" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResponseCode">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="duplicate" type="boolean" minOccurs="1" maxOccurs="1">
+      <xs:element name="duplicate" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>True if this is not the first response, because the request message has been received more than once</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="ResponseCode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="ok">
-        <xs:annotation>
-          <xs:documentation>The message was accepted and processed without error</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="error">
-        <xs:annotation>
-          <xs:documentation>Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="rejection">
-        <xs:annotation>
-          <xs:documentation>The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="rules">
-        <xs:annotation>
-          <xs:documentation>The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="undeliverable">
-        <xs:annotation>
-          <xs:documentation>A middleware agent was unable to deliver the message to it's supposed destination</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:complexType name="ResponseCode">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="ok">
+          <xs:annotation>
+            <xs:documentation>The message was accepted and processed without error</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="error">
+          <xs:annotation>
+            <xs:documentation>Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="rejection">
+          <xs:annotation>
+            <xs:documentation>The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="rules">
+          <xs:annotation>
+            <xs:documentation>The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="undeliverable">
+          <xs:annotation>
+            <xs:documentation>A middleware agent was unable to deliver the message to it's supposed destination</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
 </xs:schema>

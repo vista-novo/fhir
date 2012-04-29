@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 21:27 Apr 15, 2012 for FHIR v0.01 
+  Generated on 22:50 Apr 29, 2012 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:include schemaLocation="fhir-base.xsd"/>
@@ -12,69 +12,101 @@
   </xs:element>
   <xs:complexType name="Agent">
     <xs:sequence>
-      <xs:element name="id" type="id" minOccurs="1" maxOccurs="1">
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="person" type="ResourceReference" minOccurs="1" maxOccurs="1">
+      <xs:element name="person" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The person who acts as the agent</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="organization" type="ResourceReference" minOccurs="1" maxOccurs="1">
+      <xs:element name="organization" minOccurs="1" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The organisation that is being represented</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="roles" minOccurs="1" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="role" type="CodeableConcept" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>The way in which the person represents the organisation - what role do they have?</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="role" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The way in which the person represents the organisation - what role do they have?</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="period" type="Interval_DateTime" minOccurs="0" maxOccurs="1">
+      <xs:element name="period" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>The time period during which the agent was/is authorised to represent the organisation.</xs:documentation>
         </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Interval_Date">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="identifiers" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="identifier" type="HumanId" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>An identifier that applies to this person in this role</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An identifier that applies to this person in this role</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="HumanId">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="addresses" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="address" type="Address" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>A postal address for this person playing this role</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A postal address for this person playing this role</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Address">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
-      <xs:element name="contacts" minOccurs="0" maxOccurs="1">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="contact" type="Contact" minOccurs="0" maxOccurs="unbounded">
-              <xs:annotation>
-                <xs:documentation>A contact detail address for this person playing this role</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
+      <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A contact detail address for this person playing this role</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Contact">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
       </xs:element>
       <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
         <xs:annotation>
