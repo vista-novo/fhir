@@ -68,7 +68,7 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute name : code;                   -- transaction names supported
   }
 
-  class Document extends Resource            -- A document that contains FHIR resources
+  class Document extends Resource            -- A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole
   {
     attribute id : id;                       -- the unique id of a clinical document
     attribute instant : instant;             -- the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
@@ -77,11 +77,11 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute setId : id;                    -- Represents an identifier that is common across all document revisions
     attribute version : integer;             -- used to version successive replacement documents
     attribute replaces : id;                 -- If this document replaces another
-    attribute subject : Resource;            -- the patient or group the document is about
+    attribute subject : Resource;            -- who the document is about
     attribute author : Document_author;      -- Author (contributed content to document)
     attribute attestor : Document_attestor;  -- a participant who has attested to the accuracy of the document
-    attribute recipient : Resource;          -- should receive a copy of the document
-    attribute custodian : Resource;          -- organization which maintains the document.
+    attribute recipient : Resource;          -- expected to receive a copy 
+    attribute custodian : Resource;          -- org which maintains the document.
     attribute event : Resource;              -- the main Act, such as a colonoscopy or an appendectomy, being documented
     attribute encounter : Resource;          -- context of the document
     attribute section : Document_section;    -- Document is broken into sections
@@ -93,13 +93,13 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
   {
     attribute mode : code;                   -- The type of attestation the authenticator offers
     attribute time : dateTime;               -- When document attested
-    attribute party : Resource;              -- the person who attested the document
+    attribute party : Resource;              -- who attested the document
   }
 
   class Document_author                      -- Author (contributed content to document)
   {
     attribute time : dateTime;               -- When authoring happened
-    attribute party : Resource;              -- person|device that authored the document
+    attribute party : Resource;              -- who/what authored the final document
   }
 
   class Document_section                     -- Document is broken into sections
@@ -117,7 +117,7 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
   class Document_section_author              -- if section author different to document
   {
     attribute time : dateTime;               -- When authoring happened
-    attribute party : Resource;              -- person|device that authored the section
+    attribute party : Resource;              -- who/what authored the section
   }
 
   class Message extends Resource             -- A message that contains FHIR resources
@@ -311,12 +311,12 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
   class Organization extends Resource        -- For any organization/institution/government department that has relevance to the care process
   {
     attribute id : id;                       -- Master Resource Id, always first in all resources
-    attribute code : CodeableConcept;        -- The kind of organization that this is
-    attribute industryCode : CodeableConcept; -- The industry that this organization is involved in
     attribute identifier : HumanId;          -- Identifier for the organization that is used to identify the organization across multiple disparate systems
     attribute name : Organization_name;      -- A name associated with the organization
     attribute address : Address;             -- An address for the organization
     attribute contact : Contact;             -- A contact detail for the organization
+    attribute code : CodeableConcept;        -- The kind of organization that this is
+    attribute industryCode : CodeableConcept; -- The industry that this organization is involved in
     attribute accreditation : Organization_accreditation; -- The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
     attribute relatedOrganization : Organization_relatedOrganization; -- Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
     attribute extensions : Extensions;       -- See Extensions
