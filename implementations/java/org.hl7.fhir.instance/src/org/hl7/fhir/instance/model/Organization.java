@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -18,7 +18,7 @@ public class Organization extends Resource {
         /**
          * The period that this name was in use by the organization
          */
-        private Interval<DateTime> period;
+        private Interval<Date> period;
 
         public String_ getValue() { 
           return this.value;
@@ -28,11 +28,11 @@ public class Organization extends Resource {
           this.value = value;
         }
 
-        public Interval<DateTime> getPeriod() { 
+        public Interval<Date> getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<DateTime> value) { 
+        public void setPeriod(Interval<Date> value) { 
           this.period = value;
         }
 
@@ -57,7 +57,7 @@ public class Organization extends Resource {
         /**
          * The period for which the accreditation is held
          */
-        private Interval<DateTime> period;
+        private Interval<Date> period;
 
         public Identifier getId() { 
           return this.id;
@@ -83,11 +83,11 @@ public class Organization extends Resource {
           this.institution = value;
         }
 
-        public Interval<DateTime> getPeriod() { 
+        public Interval<Date> getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<DateTime> value) { 
+        public void setPeriod(Interval<Date> value) { 
           this.period = value;
         }
 
@@ -122,7 +122,7 @@ public class Organization extends Resource {
         /**
          * The period during which the organizations were related in this fashion
          */
-        private Interval<DateTime> period;
+        private Interval<Date> period;
 
         public HumanId getId() { 
           return this.id;
@@ -156,25 +156,15 @@ public class Organization extends Resource {
           return this.contact;
         }
 
-        public Interval<DateTime> getPeriod() { 
+        public Interval<Date> getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<DateTime> value) { 
+        public void setPeriod(Interval<Date> value) { 
           this.period = value;
         }
 
     }
-
-    /**
-     * The kind of organization that this is
-     */
-    private CodeableConcept code;
-
-    /**
-     * The industry that this organization is involved in
-     */
-    private CodeableConcept industryCode;
 
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems
@@ -197,6 +187,16 @@ public class Organization extends Resource {
     private List<Contact> contact = new ArrayList<Contact>();
 
     /**
+     * The kind of organization that this is
+     */
+    private CodeableConcept code;
+
+    /**
+     * The industry that this organization is involved in
+     */
+    private CodeableConcept industryCode;
+
+    /**
      * The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
      */
     private List<Accreditation> accreditation = new ArrayList<Accreditation>();
@@ -205,22 +205,6 @@ public class Organization extends Resource {
      * Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
      */
     private List<RelatedOrganization> relatedOrganization = new ArrayList<RelatedOrganization>();
-
-    public CodeableConcept getCode() { 
-      return this.code;
-    }
-
-    public void setCode(CodeableConcept value) { 
-      this.code = value;
-    }
-
-    public CodeableConcept getIndustryCode() { 
-      return this.industryCode;
-    }
-
-    public void setIndustryCode(CodeableConcept value) { 
-      this.industryCode = value;
-    }
 
     public List<HumanId> getIdentifier() { 
       return this.identifier;
@@ -236,6 +220,22 @@ public class Organization extends Resource {
 
     public List<Contact> getContact() { 
       return this.contact;
+    }
+
+    public CodeableConcept getCode() { 
+      return this.code;
+    }
+
+    public void setCode(CodeableConcept value) { 
+      this.code = value;
+    }
+
+    public CodeableConcept getIndustryCode() { 
+      return this.industryCode;
+    }
+
+    public void setIndustryCode(CodeableConcept value) { 
+      this.industryCode = value;
     }
 
     public List<Accreditation> getAccreditation() { 

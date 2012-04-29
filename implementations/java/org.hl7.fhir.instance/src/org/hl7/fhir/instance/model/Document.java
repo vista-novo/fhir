@@ -1,18 +1,19 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
 
 import java.util.*;
 
 /**
- * A document that contains FHIR resources
+ * A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole
  */
 public class Document extends Resource {
 
     public enum DocumentAuthenticationMode {
         personal, // The person authenticated the document in their personal capacity
         professional, // The person authenticated the document in their professional capacity
-        legal; // The person authenticated the document and accepted legal responsibility for it's content
+        legal, // The person authenticated the document and accepted legal responsibility for it's content
+        official; // The organization authenticated the document as consistent with their policies and procedures
         public static DocumentAuthenticationMode fromCode(String code) throws Exception {
             if (code == null || "".equals(code))
                 return null;
@@ -22,6 +23,8 @@ public class Document extends Resource {
           return professional;
         if ("legal".equals(code))
           return legal;
+        if ("official".equals(code))
+          return official;
         throw new Exception("Unknown DocumentAuthenticationMode code '"+code+"'");
         }
         public String toCode() {
@@ -29,6 +32,7 @@ public class Document extends Resource {
             case personal: return "personal";
             case professional: return "professional";
             case legal: return "legal";
+            case official: return "official";
             default: return "?";
           }
         }
@@ -41,7 +45,7 @@ public class Document extends Resource {
         private DateTime time;
 
         /**
-         * person|device that authored the document
+         * who/what authored the final document
          */
         private ResourceReference party;
 
@@ -75,7 +79,7 @@ public class Document extends Resource {
         private DateTime time;
 
         /**
-         * the person who attested the document
+         * who attested the document
          */
         private ResourceReference party;
 
@@ -215,7 +219,7 @@ public class Document extends Resource {
         private DateTime time;
 
         /**
-         * person|device that authored the section
+         * who/what authored the section
          */
         private ResourceReference party;
 
@@ -268,7 +272,7 @@ public class Document extends Resource {
     private Id replaces;
 
     /**
-     * the patient or group the document is about
+     * who the document is about
      */
     private ResourceReference subject;
 
@@ -283,12 +287,12 @@ public class Document extends Resource {
     private List<Attestor> attestor = new ArrayList<Attestor>();
 
     /**
-     * should receive a copy of the document
+     * expected to receive a copy 
      */
     private List<ResourceReference> recipient = new ArrayList<ResourceReference>();
 
     /**
-     * organization which maintains the document.
+     * org which maintains the document.
      */
     private ResourceReference custodian;
 

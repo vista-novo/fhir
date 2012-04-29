@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -27,7 +27,7 @@ public class Agent extends Resource {
     /**
      * The time period during which the agent was/is authorised to represent the organisation.
      */
-    private Interval<DateTime> period;
+    private Interval<Date> period;
 
     /**
      * An identifier that applies to this person in this role
@@ -64,11 +64,11 @@ public class Agent extends Resource {
       return this.role;
     }
 
-    public Interval<DateTime> getPeriod() { 
+    public Interval<Date> getPeriod() { 
       return this.period;
     }
 
-    public void setPeriod(Interval<DateTime> value) { 
+    public void setPeriod(Interval<Date> value) { 
       this.period = value;
     }
 

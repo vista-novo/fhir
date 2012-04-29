@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -25,6 +25,31 @@ public class Conformance extends Resource {
           switch (this) {
             case client: return "client";
             case server: return "server";
+            default: return "?";
+          }
+        }
+    }
+
+    public enum ResourceIdSource {
+        client, // The client must provide a unique resource id
+        server, // The server defines the id and will reject any client attempt to define it
+        either; // The client can provide a unique resource id, or the server will define it instead
+        public static ResourceIdSource fromCode(String code) throws Exception {
+            if (code == null || "".equals(code))
+                return null;
+        if ("client".equals(code))
+          return client;
+        if ("server".equals(code))
+          return server;
+        if ("either".equals(code))
+          return either;
+        throw new Exception("Unknown ResourceIdSource code '"+code+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case client: return "client";
+            case server: return "server";
+            case either: return "either";
             default: return "?";
           }
         }
@@ -280,13 +305,13 @@ public class Conformance extends Resource {
         /**
          * source of id: client | server | either
          */
-        private Code id;
+        private ResourceIdSource id;
 
-        public Code getId() { 
+        public ResourceIdSource getId() { 
           return this.id;
         }
 
-        public void setId(Code value) { 
+        public void setId(ResourceIdSource value) { 
           this.id = value;
         }
 

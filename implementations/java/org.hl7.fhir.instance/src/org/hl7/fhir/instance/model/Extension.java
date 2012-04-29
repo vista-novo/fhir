@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 21:27 Apr 15, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ import java.util.*;
 public class Extension extends Element {
 
     public enum ExtensionState {
-        mustMinusunderstand, // The extension contains information that qualifies or negates another element, and must be understood by an application process the resource
+        mustMinusunderstand, // The extension contains information that qualifies or negates another element, and must be understood by an application processing the resource
         superceded; // The extension has been promoted into the main content of the resource, and the content is found at the reference. The extension continues to be defined for backward compatibility
         public static ExtensionState fromCode(String code) throws Exception {
             if (code == null || "".equals(code))
