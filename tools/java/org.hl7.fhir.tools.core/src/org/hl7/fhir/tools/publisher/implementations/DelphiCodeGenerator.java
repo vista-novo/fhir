@@ -12,6 +12,7 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
   public String name;
   public List<String> uses = new ArrayList<String>();
   public List<String> comments = new ArrayList<String>();
+  public List<String> precomments = new ArrayList<String>();
   public List<String> enumDefs = new ArrayList<String>();
 	public List<String> enumConsts = new ArrayList<String>();
   public List<String> classFwds = new ArrayList<String>();
@@ -19,6 +20,7 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
 	public List<String> classImpls = new ArrayList<String>();
   public List<String> inits = new ArrayList<String>();
   public List<String> procs = new ArrayList<String>();
+  public List<String> procsPub = new ArrayList<String>();
 	
 	public DelphiCodeGenerator(OutputStream out) throws UnsupportedEncodingException {
 		super(out, "ASCII");
@@ -28,13 +30,25 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
 	}
 
 	public void finish() throws Exception {
+	  if (precomments.size() > 0) {
+	    for (int i = 0; i < precomments.size(); i++) {
+	      if (precomments.get(i).charAt(0) == '!')
+	        write("{"+precomments.get(i)+"}\r\n");
+	      else
+	        write("// "+precomments.get(i)+"\r\n");
+	    }
+	    write("\r\n");
+	  }
     write("unit "+name+";\r\n");
     write("\r\n");
     write("interface\r\n");
     write("\r\n");
 
     for (int i = 0; i < comments.size(); i++) {
-      write("// "+comments.get(i)+"\r\n");
+      if (comments.get(i).charAt(0) == '!')
+        write("{"+comments.get(i)+"}\r\n");
+      else
+        write("// "+comments.get(i)+"\r\n");
     }
     write("\r\n");
     
@@ -72,6 +86,12 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
         write(s+"\r\n");
       }
     }
+    if (procsPub.size() > 0) {
+      for (String s : procsPub) {
+        write(s);
+      }
+      write("\r\n");
+    }
     write("implementation\r\n");
     write("\r\n");
     for (String s : classImpls) {
@@ -79,7 +99,7 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
     }
 
     for (String s : procs) {
-      write("  "+s+"\r\n");
+      write(s+"\r\n");
     }
 
     if (inits.size() > 0) {

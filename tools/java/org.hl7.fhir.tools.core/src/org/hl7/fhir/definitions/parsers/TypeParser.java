@@ -27,7 +27,7 @@ public class TypeParser {
 				p = tkn.next();
 			}
 			if (!p.equals("|") && !p.equals(""))
-				throw new Exception("Unexpected token '\"+p+\"' in type "+n);
+				throw new Exception("Unexpected token '"+p+"' in type "+n);
 			a.add(t);
 		}
 		

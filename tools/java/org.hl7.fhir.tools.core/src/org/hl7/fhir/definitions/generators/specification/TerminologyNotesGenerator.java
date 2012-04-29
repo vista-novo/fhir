@@ -136,7 +136,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 				else if (cd.getName().equals("ResourceType"))
 					write("  <li>"+path+" bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
 				else 
-					write("  <li>"+path+" bound to the concept domain <i>DataType</i> which has the allowed values of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#resource\">Resource</a>)</li>\r\n");
+					write("  <li>"+path+" bound to the concept domain <i>DataType</i> which has the allowed values of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
 				
 			} 
 		}

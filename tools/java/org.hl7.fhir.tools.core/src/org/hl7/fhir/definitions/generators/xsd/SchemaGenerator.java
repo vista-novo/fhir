@@ -19,6 +19,12 @@ public class SchemaGenerator {
     this.genDate = genDate;
     this.version = version;
     
+    File dir = new File(xsdDir);
+    for (File f : dir.listFiles()) {
+      if (!f.isDirectory())
+        f.delete();
+    }
+    
     XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new File(xsdDir+"fhir-base.xsd")));
     xsdb.setDefinitions(definitions);
     xsdb.generate(version, genDate);
@@ -28,26 +34,27 @@ public class SchemaGenerator {
       sgen.setDataTypes(definitions.getKnownTypes());
       sgen.generate(root, definitions.getConceptDomains(), version, genDate);
 
-      sgen = new XSDGenerator(new FileOutputStream(new File(dstDir+root.getName()+".xsd")));
-      sgen.setDataTypes(definitions.getKnownTypes());
-      sgen.generate(root, definitions.getConceptDomains(), version, genDate);
     }
 
     for (String n : ini.getPropertyNames("schema")) {
         String xsd = Utilities.fileToString(srcDir + n);
         xsd = processSchemaIncludes(definitions, n, xsd);
-        Utilities.stringToFile(xsd, dstDir + n);
-        Utilities.stringToFile(xsd, xsdDir + n);  
+        Utilities.stringToFile(xsd, xsdDir + n);
+    }
+    produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
+
+    dir = new File(xsdDir);
+    for (File f : dir.listFiles()) {
+      if (!f.isDirectory())
+        Utilities.copyFile(f, new File(dstDir+f.getName()));
     }
     
-    produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
     
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
     String src = Utilities.fileToString(srcDir + "fhir-all.xsd");
     src = processSchemaIncludes(definitions, "fhir-all.xsd", src);
-    Utilities.stringToFile(src, dstDir + "fhir-all.xsd");
     Utilities.stringToFile(src, xsdDir + "fhir-all.xsd");
   }
 

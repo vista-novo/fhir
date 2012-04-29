@@ -43,6 +43,7 @@ import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
@@ -178,7 +179,8 @@ public class Publisher implements Logger {
       gen.generate(definitions, folders.dstDir, folders.implDir(gen.getName()), version, genDate, this);
     }
     log("Produce Schemas");
-    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)); 
+    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate));
+    produceSchemaZip();
     log("Produce Specification");
     produceSpec(); 
   }
@@ -219,7 +221,9 @@ public class Publisher implements Logger {
 	  List<Section> sections = new ArrayList<Section>();
 	  
 	  parseSidebar(sections);
-	  XhtmlDocument doc = new XhtmlParser().parse(new FileInputStream(folders.srcDir+"book.htm"));
+	  String src = Utilities.fileToString(folders.srcDir+"book.htm");
+	  src = processPageIncludes(folders.srcDir+"book.htm", src);
+	  XhtmlDocument doc = new XhtmlParser().parse(src);
 	  XhtmlNode body = doc.getElement("html").getElement("body");
 	  addTOC(sections, body);	  
 	  addContent(sections, body);
@@ -251,7 +255,9 @@ public class Publisher implements Logger {
             }
             
           }
-        }        
+        }
+        else
+          log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on "+a.allText());
       }
     }    
   }
@@ -266,8 +272,10 @@ public class Publisher implements Logger {
           r.index = i;
           tgts.put(child.getAttributes().get("name"), r);
         }
-        if ("a".equals(child.getName()) && child.getAttributes().containsKey("href")) 
+        if ("a".equals(child.getName()) && child.getAttributes().containsKey("href")) {
+          //System.out.println("found "+child.getAttributes().get("href"));
           refs.add(child);
+        }
 
         if (child.getNodeType() == NodeType.Element && !child.getName().equals("pre"))
           buildIndex(refs, tgts, child, true);
@@ -345,14 +353,16 @@ public class Publisher implements Logger {
     if (node.getName().equals("a")) {
       
       if (node.getAttributes().containsKey("name")) {
-        node.getAttributes().put("name", name+"."+node.getAttributes().get("name"));
+        String lname = node.getAttributes().get("name");
+        node.getAttributes().put("name", name+"."+lname);
+        //System.out.println("found anchor "+name+"."+lname);
       } else { 
         String s = node.getAttributes().get("href");
         if (s == null || s.length() == 0)
-          throw new Error("empty a tag");
+          throw new Error("empty \"a\" tag");
         if (s.startsWith("#")) {
           s = "#"+name+"."+s.substring(1);
-        } else if (s.startsWith("http:")) {
+        } else if (s.startsWith("http:") || s.startsWith("https:")) {
           s = s;
         } else {
           int i = s.indexOf('.');
@@ -362,12 +372,17 @@ public class Publisher implements Logger {
           if (s.contains("#")) {
             int j = s.indexOf('#');
             s = "#"+s.substring(0, i)+"."+s.substring(j+1);
-          } else {
+          } else if (s.endsWith(".htm")) {
             s = "#"+s.substring(0, i);
+          } else {
+            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi"))
+              System.out.println("odd ref: "+s+" in "+node.allText());
+            s = s;
           }
-          
+
         }
         node.getAttributes().put("href", s);
+        //System.out.println("reference to "+s); 
       }
     }
   }
@@ -445,14 +460,25 @@ public class Publisher implements Logger {
 //	}
 
 	private void produceZip() throws Exception {
-	  String filename = folders.dstDir+"fhir-spec.zip";
-	  File f = new File(filename);
+	  File f = new File(folders.dstDir+"fhir-spec.zip");
 	  if (f.exists())
 	    f.delete();
-    BaseGenerator base = new BaseGenerator();
-    base.zipFiles(folders.dstDir, filename);
+    ZipGenerator zip = new ZipGenerator(folders.tmpResDir+"fhir-spec.zip");
+    zip.addFiles(folders.dstDir, "", null);
+    zip.close();
+    Utilities.copyFile(new File(folders.tmpResDir+"fhir-spec.zip"), f);
   }
 
+	private void produceSchemaZip() throws Exception {
+    File f = new File(folders.dstDir+"fhir-all-xsd.zip");
+    if (f.exists())
+      f.delete();
+    ZipGenerator zip = new ZipGenerator(folders.tmpResDir+"fhir-all-xsd.zip");
+    zip.addFiles(folders.dstDir, "", ".xsd");
+    zip.close();
+    Utilities.copyFile(new File(folders.tmpResDir+"fhir-all-xsd.zip"), f);
+  }
+	
   private void produceResource(ElementDefn root) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		String n = root.getName().toLowerCase();
@@ -716,7 +742,8 @@ public class Publisher implements Logger {
 		schemaFactory.setResourceResolver(new MyResourceResolver(folders.dstDir));
 		Schema schema = schemaFactory.newSchema(sources);	
 
-		for (String n : ini.getPropertyNames("resources")) {
+		for (String n : definitions.getDefinedResources().keySet()) {
+		  log("Validate "+n);
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setNamespaceAware(true);
 			factory.setValidating(false);
@@ -923,7 +950,7 @@ public class Publisher implements Logger {
 			else if (com[0].equals("tx"))
 				src = s1+tx+s3;
 			else if (com[0].equals("plural"))
-				src = s1+Utilities.pluralize(name)+s3;
+				src = s1+Utilities.pluralizeMe(name)+s3;
 			else if (com[0].equals("notes"))
 				src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+".htm")+s3;
 			else if (com[0].equals("dictionary"))
@@ -932,7 +959,7 @@ public class Publisher implements Logger {
 				if (isSpecial(name))
 					src = s1+"This special resource has no associated URL"+s3;
 				else
-					src = s1+"The relative url is /"+Utilities.pluralize(name)+s3;
+					src = s1+"The relative url is /"+Utilities.pluralizeMe(name)+s3;
 			} else 
 				throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
 

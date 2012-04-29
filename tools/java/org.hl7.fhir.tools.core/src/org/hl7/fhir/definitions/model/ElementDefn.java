@@ -270,12 +270,18 @@ public class ElementDefn {
 	}
 	
 	public String textForCardinality() {
-		if (maxCardinality != null)
-			return "??";
-	if (minCardinality == 0)
-		return "Zero+";
-	else
-		return "One+";
+	  if (maxCardinality != null) {
+	    if (maxCardinality == 1)
+	      if (minCardinality == 0)
+	        return "?One";
+	      else
+	        return "One";
+	    else
+	      return "??";
+	  } else if (minCardinality == 0)
+	    return "Zero+";
+	  else
+	    return "One+";
 	}
 
 	public boolean hasDefinition() {
@@ -311,7 +317,7 @@ public class ElementDefn {
 			first = false;
 			tn.append(t.getName());
 			if (t.hasParams()) {
-        tn.append("<");
+        tn.append("(");
 				boolean f = true;
 				for (String s : t.getParams()) {
 					if (!f)
@@ -319,7 +325,7 @@ public class ElementDefn {
 					f = false;
 					tn.append(s);
 				}
-        tn.append(">");
+        tn.append(")");
 			}
 		}
 		return tn.toString();

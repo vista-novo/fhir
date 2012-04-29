@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -105,7 +106,6 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   }
 
   private void start(String version, Date genDate) throws Exception {
-
     write("package org.hl7.fhir.instance.formats;\r\n");
     write("\r\n");
     write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
@@ -247,9 +247,9 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         }
         if (tn.equals("char[]"))
           tn = "xhtml";
-        if (tn.contains("Resource<"))
+        if (tn.contains("Resource("))
           prsr = "parseResourceReference(xpp)";
-        else if (tn.contains("<"))
+        else if (tn.contains("("))
           prsr = "parse"+PrepGenericName(tn)+"(xpp)";
         else if (tn.startsWith(context) && !tn.equals(context)) {
           if (bUseOwner)
@@ -270,17 +270,17 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           write("          res.getExtension().add(parseExtension(xpp));\r\n");
         write("          eventType = nextNoWhitespace(xpp);\r\n");
         write("        }\r\n");
-        write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralize(name)+"\"))\r\n");
+        write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralizeMe(name)+"\"))\r\n");
         write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
       } else if (e.unbounded()) {
-        if (listsAreWrapped) {          
-          write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+Utilities.pluralize(name)+"\")) {\r\n");
+        if (listsAreWrapped && !Config.SUPPRESS_WRAPPER_ELEMENTS) {          
+          write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+Utilities.pluralizeMe(name)+"\")) {\r\n");
           write("        eventType = nextNoWhitespace(xpp);\r\n");
           write("        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
           write("          res.get"+upFirst(name)+"().add("+prsr+");\r\n");
           write("          eventType = nextNoWhitespace(xpp);\r\n");
           write("        }\r\n");
-          write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralize(name)+"\"))\r\n");
+          write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralizeMe(name)+"\"))\r\n");
           write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
         } else {
           write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
@@ -294,8 +294,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   }
 
   private String PrepGenericName(String tn) {
-    int i = tn.indexOf('<');
-    return tn.substring(0, i)+"_"+upFirst(tn.substring(i+1).replace(">", ""));
+    int i = tn.indexOf('(');
+    return tn.substring(0, i)+"_"+upFirst(tn.substring(i+1).replace(")", ""));
   }
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {

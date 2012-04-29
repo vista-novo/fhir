@@ -11,6 +11,7 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.ZipGenerator;
 
 public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
@@ -24,7 +25,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
   @Override
   public String getDescription() {
-    return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull and the Apache Commons Codec library.";
+    return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull (http://www.xmlpull.org/) and the Apache Commons Codec library (http://commons.apache.org/codec/).";
   }
 
   @Override
@@ -91,7 +92,13 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     JavaComposerXmlGenerator jComposerGen = new JavaComposerXmlGenerator(new FileOutputStream(javaParserDir+"XmlComposer.java"));
     jComposerGen.generate(definitions, version, genDate);    
     jFactoryGen.generate();
-    zipFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl, new String[] {"model", "formats"}, destDir+"java.zip");      
+    ZipGenerator zip = new ZipGenerator(destDir+"java.zip");
+    zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, ".java");
+    zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, ".java");
+    zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl, ".java");
+    zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xhtml"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xhtml"+sl, ".java");
+    zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xml"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xml"+sl, ".java");
+    zip.close();
   }
 
   private String getTitle(String n) {

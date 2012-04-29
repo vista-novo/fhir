@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
@@ -42,7 +43,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://www.hl7.org/fhir\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\" "+
        "targetNamespace=\"http://www.hl7.org/fhir\" elementFormDefault=\"qualified\">\r\n");
     write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\"/>\r\n");
-    write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml.xsd\"/>\r\n");
+    write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml1-strict.xsd\"/>\r\n");
 
     genPrimitives();
     genDataAbsentReason();
@@ -112,7 +113,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     write("        </xs:annotation>\r\n");
     write("      </xs:element>\r\n");
     write("    </xs:sequence>\r\n");
-    write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//    write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
     write("    <xs:attribute ref=\"xml:id\"/>\r\n");
     write("  </xs:complexType>\r\n");
   }
@@ -126,14 +127,15 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     ElementDefn elem = definitions.getTypes().get(cd.getComment());
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
-        generateAny(elem, e);
-      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+        generateAny(elem, e, null);
+      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
         generateElement(elem, e, null);
       else
         generateWrapperElement(elem, e);
     }
     write("        </xs:sequence>\r\n");
 
+    write("        <xs:attribute ref=\"xml:id\"/>\r\n");
     write("      </xs:restriction>\r\n");
     write("    </xs:complexContent>\r\n");
     write("  </xs:complexType>\r\n");
@@ -148,7 +150,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
         write("  <xs:complexType name=\""+pt.getCode()+"\">\r\n");
         write("    <xs:simpleContent>\r\n");
         write("      <xs:extension base=\"xs:"+pt.getSchemaType()+"\">\r\n");
-        write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//        write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
         write("        <xs:attribute ref=\"xml:id\"/>\r\n");
         write("      </xs:extension>\r\n");
         write("    </xs:simpleContent>\r\n");
@@ -163,7 +165,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
         write("  <xs:complexType name=\""+sp.getCode()+"\">\r\n");
         write("    <xs:simpleContent>\r\n");
         write("      <xs:extension base=\""+sp.getCode()+"-simple\">\r\n");
-        write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//        write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
         write("        <xs:attribute ref=\"xml:id\"/>\r\n");
         write("      </xs:extension>\r\n");
         write("    </xs:simpleContent>\r\n");
@@ -192,8 +194,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
-        generateAny(elem, e);
-      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+        generateAny(elem, e, null);
+      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
         generateElement(elem, e, null);
       else
         generateWrapperElement(elem, e);
@@ -216,27 +218,28 @@ public class XSDBaseGenerator extends OutputStreamWriter {
   private void genType(ElementDefn elem) throws Exception {
     enums.clear();
     String name = elem.getName();
-    write("  <xs:complexType name=\"Core"+name+"\">\r\n");
+    write("  <xs:complexType name=\""+name+"\">\r\n");
     write("    <xs:sequence>\r\n");
 
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
-        generateAny(elem, e);
-    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+        generateAny(elem, e, null);
+    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
     generateElement(elem, e, null);
   else
     generateWrapperElement(elem, e);
     }
     write("    </xs:sequence>\r\n");
+    write("    <xs:attribute ref=\"xml:id\"/>\r\n");
     write("  </xs:complexType>\r\n");
-    write("  <xs:complexType name=\""+name+"\">\r\n");
-    write("    <xs:complexContent>\r\n");
-    write("      <xs:extension base=\"Core"+name+"\">\r\n");
-    write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-    write("        <xs:attribute ref=\"xml:id\"/>\r\n");
-    write("      </xs:extension>\r\n");
-    write("    </xs:complexContent>\r\n");
-    write("  </xs:complexType>\r\n");
+//    write("  <xs:complexType name=\""+name+"\">\r\n");
+//    write("    <xs:complexContent>\r\n");
+//    write("      <xs:extension base=\"Core"+name+"\">\r\n");
+//    write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//    write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+//    write("      </xs:extension>\r\n");
+//    write("    </xs:complexContent>\r\n");
+//    write("  </xs:complexType>\r\n");
 
   
     while (!structures.isEmpty())
@@ -260,14 +263,14 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
-        generateAny(elem, e);
-    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+        generateAny(elem, e, null);
+    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
     generateElement(elem, e, null);
   else
     generateWrapperElement(elem, e);
     }
     write("    </xs:sequence>\r\n");
-    write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//    write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
     write("    <xs:attribute ref=\"xml:id\"/>\r\n");
     write("  </xs:complexType>\r\n");
   
@@ -291,27 +294,28 @@ public class XSDBaseGenerator extends OutputStreamWriter {
         for (String pt : td.getParams()) {
 
           String name = elem.getName()+"_"+upFirst(pt);
-          write("  <xs:complexType name=\"Core"+name+"\">\r\n");
+          write("  <xs:complexType name=\""+name+"\">\r\n");
           write("    <xs:sequence>\r\n");
 
           for (ElementDefn e : elem.getElements()) {
             if (e.getName().equals("[type]"))
-              generateAny(elem, e);
-            else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+              generateAny(elem, e, null);
+            else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
               generateElement(elem, e, pt);
             else
               generateWrapperElement(elem, e);
           }
           write("    </xs:sequence>\r\n");
+          write("    <xs:attribute ref=\"xml:id\"/>\r\n");
           write("  </xs:complexType>\r\n");
-          write("  <xs:complexType name=\""+name+"\">\r\n");
-          write("    <xs:complexContent>\r\n");
-          write("      <xs:extension base=\"Core"+name+"\">\r\n");
-          write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-          write("        <xs:attribute ref=\"xml:id\"/>\r\n");
-          write("      </xs:extension>\r\n");
-          write("    </xs:complexContent>\r\n");
-          write("  </xs:complexType>\r\n");
+//          write("  <xs:complexType name=\""+name+"\">\r\n");
+//          write("    <xs:complexContent>\r\n");
+//          write("      <xs:extension base=\"Core"+name+"\">\r\n");
+//          write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+//          write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+//          write("      </xs:extension>\r\n");
+//          write("    </xs:complexContent>\r\n");
+//          write("  </xs:complexType>\r\n");
 
 
           while (!structures.isEmpty())
@@ -349,17 +353,18 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
-				generateAny(root, e);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+				generateAny(root, e, null);
+			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
 				generateElement(root, e, null);
 			else
 				generateWrapperElement(root, e);
 		}
 		write("    </xs:sequence>\r\n");
+    write("    <xs:attribute ref=\"xml:id\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
-	private void generateAny(ElementDefn root, ElementDefn e) throws Exception {
+	private void generateAny(ElementDefn root, ElementDefn e, String prefix) throws Exception {
 		write("      <xs:choice minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\"1\">\r\n");
 		if (e.hasDefinition()) {
 			write("        <xs:annotation>\r\n");
@@ -367,23 +372,48 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			write("        </xs:annotation>\r\n");
 		}
 		for (TypeDefn t : definitions.getKnownTypes()) {
-		  if (!definitions.getInfrastructure().containsKey(t.getName())) {
-		    if (t.getName().equals("Resource"))
-		      write("       <xs:element name=\"Resource\" type=\"ResourceReference\"/>\r\n");				
-		    else if (t.hasParams()) {
+		  if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
+		    String en = prefix != null ? prefix + upFirst(t.getName()) : t.getName();
+		    if (t.hasParams()) {
 		      for (String p : t.getParams()) {
-		        write("       <xs:element name=\""+t.getName()+"_"+upFirst(p)+"\" type=\""+t.getName()+"_"+upFirst(p)+"\"/>\r\n");				
+		        write("       <xs:element name=\""+en+"_"+upFirst(p)+"\">\r\n");				
+		        write("         <xs:complexType>\r\n");
+		        write("           <xs:complexContent>\r\n");
+		        write("             <xs:extension base=\""+t.getName()+"_"+upFirst(p)+"\">\r\n");
+		        write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+		        write("             </xs:extension>\r\n");
+		        write("           </xs:complexContent>\r\n");
+		        write("         </xs:complexType>\r\n");
+		        write("       </xs:element>\r\n");        
 		      }
 		    } else {
-		      write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");				
+          //write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");        
+          write("       <xs:element name=\""+en+"\">\r\n");
+          write("         <xs:complexType>\r\n");
+          write("           <xs:complexContent>\r\n");
+          write("             <xs:extension base=\""+t.getName()+"\">\r\n");
+          write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+          write("             </xs:extension>\r\n");
+          write("           </xs:complexContent>\r\n");
+          write("         </xs:complexType>\r\n");
+          write("       </xs:element>\r\n");        
 		    }
 		  }
 		}
+    write("       <xs:element name=\""+(prefix == null ? "" : prefix)+"Resource\">\r\n");       
+    write("         <xs:complexType>\r\n");
+    write("           <xs:complexContent>\r\n");
+    write("             <xs:extension base=\"ResourceReference\">\r\n");
+    write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+    write("             </xs:extension>\r\n");
+    write("           </xs:complexContent>\r\n");
+    write("         </xs:complexType>\r\n");
+    write("       </xs:element>\r\n");        
 		write("      </xs:choice>\r\n");
 	}
 
 	private void generateWrapperElement(ElementDefn root, ElementDefn e) throws Exception {
-		write("      <xs:element name=\""+Utilities.pluralize(e.getName())+"\" minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\"1\">\r\n");
+		write("      <xs:element name=\""+Utilities.pluralizeMe(e.getName())+"\" minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\"1\">\r\n");
 		write("        <xs:complexType>\r\n");
 		write("          <xs:sequence>\r\n");
 		write("            ");
@@ -410,10 +440,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			{
 				int i = 0;
 				String tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				while (typenames.contains(tn)) {
-					i++;
-					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				}
+//				while (typenames.contains(tn)) {
+//					i++;
+//					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
+//				}
 				write("<xs:element name=\""+e.getName()+"\" type=\""+tn+"\" ");
 				structures.put(tn, e);
 				typenames.add(tn);
@@ -443,51 +473,52 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	}
 
 	private void generateElement(ElementDefn root, ElementDefn e, String paramType) throws Exception {
-		write("      ");
 		List<TypeDefn> types = e.getTypes();
 		if (types.size() > 1 || (types.size() == 1 && types.get(0).getName().equals("*"))) {
 			if (!e.getName().contains("[x]"))
 				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
-			write("<xs:choice>\r\n");
-			if (e.hasDefinition()) {
-				write("        <xs:annotation>\r\n");
-				write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
-				write("        </xs:annotation>\r\n");
-			}
-			if (types.size() == 1)
-			  types = definitions.getKnownTypes();			
-			for (TypeDefn t : types) {
-			  if (!definitions.getInfrastructure().containsKey(t.getName())) {
-			    if (t.hasParams()) {
-			      for (String p : t.getParams()) {
-			        String tn = t.getName()+"_"+upFirst(p);
-			        String n = e.getName().replace("[x]", upFirst(tn));
-			        write("        <xs:element name=\""+n+"\" type=\""+tn+"\"/>\r\n");
-
-			      }			    
-			    } else {
-			      String tn = encodeType(e, t, false);
-			      String n = e.getName().replace("[x]", upFirst(tn));
-			      write("        <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
-			    }
-			  }
-			}
-			write("      </xs:choice>\r\n");
+      generateAny(root, e, e.getName().replace("[x]", ""));
+//			write("<xs:choice>\r\n");
+//			if (e.hasDefinition()) {
+//				write("        <xs:annotation>\r\n");
+//				write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
+//				write("        </xs:annotation>\r\n");
+//			}
+//			if (types.size() == 1)
+//			  types = definitions.getKnownTypes();			
+//			for (TypeDefn t : types) {
+//			  if (!definitions.getInfrastructure().containsKey(t.getName())) {
+//			    if (t.hasParams()) {
+//			      for (String p : t.getParams()) {
+//			        String tn = t.getName()+"_"+upFirst(p);
+//			        String n = e.getName().replace("[x]", upFirst(tn));
+//			        write("        <xs:element name=\""+n+"\" type=\""+tn+"\"/>\r\n");
+//
+//			      }			    
+//			    } else {
+//			      String tn = encodeType(e, t, false);
+//			      String n = e.getName().replace("[x]", upFirst(tn));
+//			      write("        <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
+//			    }
+//			  }
+//			}
+//			write("      </xs:choice>\r\n");
 		} else {
+	    write("      ");
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
-			else if ("html".equals(e.getName()))
-        write("<xs:element ref=\"xhtml:html\" ");
+			else if ("xhtml".equals(e.getName()))
+        write("<xs:element ref=\"xhtml:div\" ");
 			else if (types.size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-				throw new Exception("not implemented");
+        write("<xs:element name=\""+e.getName()+"\" type=\""+e.getElements().get(0).getTypes().get(0).getName().substring(1)+"\" ");
 			else if (types.size() == 0 && e.getElements().size() > 0)
 			{
 				int i = 0;
 				String tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				while (typenames.contains(tn)) {
-					i++;
-					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
-				}
+//				while (typenames.contains(tn)) {
+//					i++;
+//					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
+//				}
 				write("<xs:element name=\""+e.getName()+"\" type=\""+tn+"\" ");
 			  structures.put(tn, e);
 				typenames.add(tn);
@@ -528,7 +559,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		if ("Resource".equals(type.getName()))
 			return "ResourceReference";
 		else if ("xml:ID".equalsIgnoreCase(type.getName())) 
-		  return "id";
+		  return "id-simple";
 		else if (params && definitions.getPrimitives().containsKey(type.getName()) && definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)
 		  return "xs:"+((PrimitiveType) definitions.getPrimitives().get(type.getName())).getSchemaType();
 		else if (type.getName().equals("code")) {
@@ -541,11 +572,14 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 					return en;
 				}
 			}
-			return "code";
+			return "code-simple";
 
-		} else if (!type.hasParams() || !params)
-			return type.getName();
-		else if (type.getParams().size() > 1)
+		} else if (!type.hasParams() || !params) {
+		  if (params && definitions.getPrimitives().containsKey(type.getName()) && !e.unbounded())
+	      return type.getName()+"-simple";
+		  else
+		    return type.getName();
+		} else if (type.getParams().size() > 1)
 			throw new Exception("multiple type parameters are only supported on resource ("+type.summary()+")");
 		else
 			return type.getName()+"_"+upFirst(type.getParams().get(0));

@@ -8,6 +8,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.ZipGenerator;
 
 public class CSharpGenerator extends BaseGenerator implements PlatformGenerator {
 
@@ -24,7 +25,9 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
       cSharpGen.generate(e, definitions.getConceptDomains());
     }
     cSharpGen.finish();
-    zipFiles(implDir, destDir+"CSharp.zip");    
+    ZipGenerator zip = new ZipGenerator(destDir+"CSharp.zip");
+    zip.addFiles(implDir, "", ".cs");
+    zip.close();    
   }
 
   @Override

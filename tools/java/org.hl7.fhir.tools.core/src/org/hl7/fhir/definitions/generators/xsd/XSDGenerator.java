@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -69,17 +70,19 @@ public class XSDGenerator extends OutputStreamWriter {
 	}
 
 	private void generateEnum(String en) throws IOException {
-		write("  <xs:simpleType name=\""+en+"\">\r\n");
-		write("    <xs:restriction base=\"xs:string\">\r\n");
+		write("  <xs:complexType name=\""+en+"\">\r\n");
+    write("    <xs:simpleContent>\r\n");
+		write("      <xs:restriction base=\"code\">\r\n");
 		for (DefinedCode c : enums.get(en)) {
-			write("      <xs:enumeration value=\""+c.getCode()+"\">\r\n");
-			write("        <xs:annotation>\r\n");
-			write("          <xs:documentation>"+Utilities.escapeXml(c.getDefinition())+"</xs:documentation>\r\n");
-			write("        </xs:annotation>\r\n");
-			write("      </xs:enumeration>\r\n");
+			write("        <xs:enumeration value=\""+c.getCode()+"\">\r\n");
+			write("          <xs:annotation>\r\n");
+			write("            <xs:documentation>"+Utilities.escapeXml(c.getDefinition())+"</xs:documentation>\r\n");
+			write("          </xs:annotation>\r\n");
+			write("        </xs:enumeration>\r\n");
 		}
-		write("    </xs:restriction>\r\n");
-		write("  </xs:simpleType>\r\n");
+		write("      </xs:restriction>\r\n");
+    write("    </xs:simpleContent>\r\n");
+    write("  </xs:complexType>\r\n");
 	}
 
 	private void generateType(ElementDefn root, String name, ElementDefn struc) throws IOException, Exception {
@@ -89,7 +92,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(root, e);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist())
+			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
 				generateElement(root, e);
 			else
 				generateWrapperElement(root, e);
@@ -121,7 +124,7 @@ public class XSDGenerator extends OutputStreamWriter {
 	}
 
 	private void generateWrapperElement(ElementDefn root, ElementDefn e) throws Exception {
-		write("      <xs:element name=\""+Utilities.pluralize(e.getName())+"\" minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\"1\">\r\n");
+		write("      <xs:element name=\""+Utilities.pluralizeMe(e.getName())+"\" minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\"1\">\r\n");
 		write("        <xs:complexType>\r\n");
 		write("          <xs:sequence>\r\n");
 		write("            ");
@@ -185,7 +188,8 @@ public class XSDGenerator extends OutputStreamWriter {
 		if (e.getTypes().size() > 1) {
 			if (!e.getName().contains("[x]"))
 				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
-			write("<xs:choice>\r\n");
+			write("<xs:choice minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\""+(e.unbounded() ? "unbounded" : "1")+"\" ");
+			write(">\r\n");
 			if (e.hasDefinition()) {
 				write("        <xs:annotation>\r\n");
 				write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
@@ -194,18 +198,27 @@ public class XSDGenerator extends OutputStreamWriter {
 			for (TypeDefn t : e.getTypes()) {
 				String tn = encodeType(e, t, false);
 				String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
-				write("        <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
+				write("        <xs:element name=\""+n+"\" >\r\n");
+        write("          <xs:complexType>\r\n");
+        write("            <xs:complexContent>\r\n");
+        write("              <xs:extension base=\""+encodeType(e, t, true)+"\">\r\n");
+        write("                <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+        write("              </xs:extension>\r\n");
+        write("            </xs:complexContent>\r\n");
+        write("          </xs:complexType>\r\n");
+        write("        </xs:element>\r\n");
 			}
 			write("      </xs:choice>\r\n");
 		} else {
+		  String tn = null;
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-				throw new Exception("test");
+        write("<xs:element name=\""+e.getName()+"\" type=\""+e.getElements().get(0).getTypes().get(0).getName().substring(1)+"\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() > 0)
 			{
 				int i = 0;
-				String tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
+				tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
 				while (typenames.contains(tn)) {
 					i++;
 					tn = root.getName()+"."+upFirst(e.getName())+ (i == 0 ? "" : Integer.toString(i));
@@ -213,25 +226,39 @@ public class XSDGenerator extends OutputStreamWriter {
 				write("<xs:element name=\""+e.getName()+"\" type=\""+tn+"\" ");
 				structures.put(tn, e);
 				typenames.add(tn);
+				tn = null;
 			}
-			else if (e.getTypes().size() == 1)
-				write("<xs:element name=\""+e.getName()+"\" type=\""+encodeType(e, e.getTypes().get(0), true)+"\" ");
-			else
+			else if (e.getTypes().size() == 1) {
+				write("<xs:element name=\""+e.getName()+"\" ");
+				tn = encodeType(e, e.getTypes().get(0), true);
+				if (tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e)) 
+	        write("type=\""+tn+"\" ");
+			} else
 				throw new Exception("how do we get here? "+e.getName()+" in "+root.getName()+" "+Integer.toString(e.getTypes().size()));
 			
 			write("minOccurs=\""+e.getMinCardinality().toString()+"\"");
-			write(" maxOccurs=\"1\"");
+      if (e.unbounded())
+        write(" maxOccurs=\"unbounded\"");
+      else
+        write(" maxOccurs=\"1\"");
 
+      
+      write(">\r\n");
 			if (e.hasDefinition()) {
-				write(">\r\n");
 				write("        <xs:annotation>\r\n");
 				write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 				write("        </xs:annotation>\r\n");
-				write("      </xs:element>\r\n");
 			}
-			else {
-				write("/>\r\n");
+			if (tn != null && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) {
+			  write("         <xs:complexType>\r\n");
+			  write("           <xs:complexContent>\r\n");
+			  write("             <xs:extension base=\""+tn+"\">\r\n");
+			  write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+			  write("             </xs:extension>\r\n");
+			  write("           </xs:complexContent>\r\n");
+			  write("         </xs:complexType>\r\n");
 			}
+			write("      </xs:element>\r\n");
 		}
 	}
 

@@ -4,6 +4,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
@@ -52,129 +53,143 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	}
 
 	private void generateElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {
-		if ((!elem.unbounded() && 1 == elem.getMaxCardinality()) || elem.isNolist())
+//		if ((!elem.unbounded() && 1 == elem.getMaxCardinality()) || elem.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
 			generateCoreElem(elem, indent, rootName, pathName);
-		else
-			generateWrapperElem(elem, indent, rootName, pathName);
+//		else
+//			generateWrapperElem(elem, indent, rootName, pathName);
 		
 	}
 	
-	private void generateWrapperElem(ElementDefn elem, int indent, String rootName,	String pathName) throws Exception {
-		for (int i= 0; i < indent; i++)
-		{
-		  write(" ");
-		}
-		write("&lt;"+Utilities.pluralize(elem.getName()));
-		write(" <font color=\"darkgreen\">type=\"list\"</font>&gt;  <font color=\"Gray\">&lt;!-- "+elem.textForCardinality()+" --&gt;</font>\r\n");
-		
-		generateCoreElem(elem, indent+1, rootName, pathName);
-		
-		for (int i= 0; i < indent; i++)
-		{
-		  write(" ");
-		}
-		write("&lt;/"+Utilities.pluralize(elem.getName())+"&gt;\r\n");
-	}
+//	private void generateWrapperElem(ElementDefn elem, int indent, String rootName,	String pathName) throws Exception {
+//		for (int i= 0; i < indent; i++)
+//		{
+//		  write(" ");
+//		}
+//		write("&lt;"+Utilities.pluralizeMe(elem.getName()));
+//		write(" <font color=\"darkgreen\">type=\"list\"</font>&gt;  <font color=\"Gray\">&lt;!-- "+elem.textForCardinality()+" --&gt;</font>\r\n");
+//		
+//		generateCoreElem(elem, indent+1, rootName, pathName);
+//		
+//		for (int i= 0; i < indent; i++)
+//		{
+//		  write(" ");
+//		}
+//		write("&lt;/"+Utilities.pluralizeMe(elem.getName())+"&gt;\r\n");
+//	}
 
 
 	private void generateCoreElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {
-		for (int i= 0; i < indent; i++)
+		boolean listed = false;
+	  for (int i= 0; i < indent; i++)
 		{
 		  write(" ");
 		}
+    if (elem.getName().equals("#"))
+    {
+       write(" <font color=\"Gray\">&lt;!-- Content as for "+elem.typeCode().substring(1)+" --&gt;</font>\r\n");
+      return;
+    }
 		
-		if (elem.getName().equals("#"))
-		{
-			write("<font color=\"Gray\">&lt;!-- <a style=\"color: grey;\" href=\""+getSrcFile(elem.getTypes().get(0).getName().substring(1))+".htm"+elem.getTypes().get(0).getName()+"\">"+Utilities.escapeXml(elem.getShortDefn())+"</a> --&gt;</font>\r\n");
-			return;
-		}
 		if (rootName == null || "x".equals(rootName))
 		    write("&lt;<b>");
 		else
 			write("&lt;<a href=\"#"+pathName+"."+elem.getName()+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\"><b>");
-		write(elem.getName());
-		if (rootName == null || "x".equals(rootName))
-      write("</b>");
-		else
-      write("</b></a>");
-		if (elem.getId() != null)
-		{
-			write(" id=\""+elem.getId()+"\"");
-		}
-		write("&gt;");
-		if (elem.getConformance() != ElementDefn.Conformance.Unstated)
-		{
-			write(" ");
-			write("<a href=\"xml.htm#Control\" class=\"cf\">" + elem.getConformance().code() + "</a>");
-		}
-		
-		if (!elem.getTypes().isEmpty() && !(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
-		{
-			write(" <font color=\"darkgreen\">");
-			int i = 0;
-			int d = elem.getTypes().size() / 2;
-			for (TypeDefn t : elem.getTypes())
-			{
-				if (i > 0)
-					write("|");
-				if (elem.getTypes().size() > 5 && i == d)
-					write("\r\n              ");
-				if (t.getName().equals("xhtml") || t.getName().equals("list"))
-					write(t.getName());
-				else
-				  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">"+t.getName()+"</a>");
-				if (t.hasParams()) 
-				{
-					write("(");
-					boolean firstp = true;
-					for (String p : t.getParams()) {
-						if (!firstp)
-							write("|");
-						write("<a href=\""+getSrcFile(p)+".htm#"+p+"\">"+p+"</a>");
-						firstp = false;
-					}
-					write(")");
-				}
-				i++;
-			}
-			write("</font>");
-		}
-		
-		write(" ");
-		if (elem.getElements().isEmpty())
-		{
-			if ("See Extensions".equals(elem.getShortDefn()))
-				write(" <a href=\"extensibility.htm\"><font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font></a> ");
-			else
-			write("<font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>");
-			write("&lt;/");
-			write(elem.getName());
-			write("&gt;\r\n");
-		}
-		else
-		{
-			if (elem.isNolist()) {
-				if (elem.hasShortDefn())
-					write("  <font color=\"Gray\">&lt;!-- "+elem.textForCardinality()+" "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
-				else
-					write("  <font color=\"Gray\">&lt;!-- "+elem.textForCardinality()+" --&gt;</font>");
-			} else if (elem.hasShortDefn())
-				write("  <font color=\"Gray\">&lt;!-- "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
-			write("\r\n");
+		if (elem.typeCode().equals("xhtml")) {
+      write("div</b> xmlns=\"http://www.w3.org/1999/xhtml\"<a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>&lt;/div&gt;\r\n");
+		  
+		} else {
+		  write(elem.getName());
+		  if (rootName == null || "x".equals(rootName))
+		    write("</b>");
+		  else
+		    write("</b></a>");
+		  if (elem.getId() != null)
+		  {
+		    write(" id=\""+elem.getId()+"\"");
+		  }
+		  write("&gt;");
+		  if (elem.getConformance() != ElementDefn.Conformance.Unstated)
+		  {
+		    write(" ");
+		    write("<a href=\"xml.htm#Control\" class=\"cf\">" + elem.getConformance().code() + "</a>");
+		  }
 
-			for (ElementDefn child : elem.getElements())
-			{
-				generateElem(child, indent + 1, rootName, pathName+"."+elem.getName());
-			}
-			
-			for (int i= 0; i < indent; i++)
-			{
-			  write(" ");
-			}
-			write("&lt;/");
-			write(elem.getName());
-			write("&gt;\r\n");
+		  if (!elem.getTypes().isEmpty() && !(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
+		  {
+		    if (elem.unbounded() || Config.SHOW_SINGLE_CARDINALITIES) {
+		      write(" <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font>");
+		      listed = true;
+		    }
+		    write(" <font color=\"darkgreen\">");
+		    int i = 0;
+		    int d = elem.getTypes().size() / 2;
+		    for (TypeDefn t : elem.getTypes())
+		    {
+		      if (i > 0)
+		        write("|");
+		      if (elem.getTypes().size() > 5 && i == d)
+		        write("\r\n              ");
+		      if (t.getName().equals("xhtml") || t.getName().equals("list"))
+		        write(t.getName());
+		      else if (!t.getName().equals("Resource"))
+//            write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">-></a>");
+//		      else
+		        write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">"+t.getName()+"</a>");
+		      if (t.hasParams()) 
+		      {
+		        write("(");
+		        boolean firstp = true;
+		        for (String p : t.getParams()) {
+		          if (!firstp)
+		            write("|");
+		          write("<a href=\""+getSrcFile(p)+".htm#"+p+"\">"+p+"</a>");
+		          firstp = false;
+		        }
+		        write(")");
+		      }
+		      i++;
+		    }
+		    write("</font>");
+		  }
 
+		  write(" ");
+		  if (elem.getElements().isEmpty())
+		  {
+		    if ("See Extensions".equals(elem.getShortDefn()))
+		      write(" <a href=\"extensibility.htm\"><font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font></a> ");
+		    else {
+		      write("<font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>");
+		    }
+		    write("&lt;/");
+		    write(elem.getName());
+		    write("&gt;\r\n");
+		  }
+		  else
+		  {
+		    if (elem.unbounded() && !listed) { // isNolist()) {
+		      if (elem.getElements().size() == 1 && elem.getElements().get(0).getName().equals("#"))
+            write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+		      else if (elem.hasShortDefn())
+		        write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+		      else
+		        write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> --&gt;</font>");
+		    } else if (elem.hasShortDefn())
+		      write(" <font color=\"Gray\">&lt;!-- "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+		    write("\r\n");
+
+		    for (ElementDefn child : elem.getElements())
+		    {
+		      generateElem(child, indent + 1, rootName, pathName+"."+elem.getName());
+		    }
+
+		    for (int i= 0; i < indent; i++)
+		    {
+		      write(" ");
+		    }
+		    write("&lt;/");
+		    write(elem.getName());
+		    write("&gt;\r\n");
+		  }
 		}
 	}
 

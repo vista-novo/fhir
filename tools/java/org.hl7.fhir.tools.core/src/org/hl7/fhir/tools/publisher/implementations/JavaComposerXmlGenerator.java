@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -236,10 +237,10 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
           tn = "Code";
           comp = "composeCode";
         }
-        if (tn.contains("Resource<")) {
+        if (tn.contains("Resource(")) {
           comp = "composeResourceReference";
           tn = "ResourceReference";
-        } else if (tn.contains("<"))
+        } else if (tn.contains("("))
           comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
           comp = "compose"+upFirst(tn).replace(".", "");
@@ -256,15 +257,15 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         write("        xml.close(FHIR_NS, \"extensions\");\r\n");
         write("      }\r\n");
       } else if (e.unbounded()) {
-        if (listsAreWrapped) {          
+        if (listsAreWrapped && !Config.SUPPRESS_WRAPPER_ELEMENTS) {          
           write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
-          write("        xml.open(FHIR_NS, \""+Utilities.pluralize(name)+"\");\r\n");
+          write("        xml.open(FHIR_NS, \""+Utilities.pluralizeMe(name)+"\");\r\n");
           write("        for ("+tn+" e : element.get"+upFirst(name)+"()) \r\n");
           write("          "+comp+"(\""+name+"\", e);\r\n");
-          write("        xml.close(FHIR_NS, \""+Utilities.pluralize(name)+"\");\r\n");
+          write("        xml.close(FHIR_NS, \""+Utilities.pluralizeMe(name)+"\");\r\n");
           write("      }\r\n");
         } else {
-          write("      for ("+tn+" e : element.get"+upFirst(name)+"()) \r\n");
+          write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(name)+"()) \r\n");
           write("        "+comp+"(\""+name+"\", e);\r\n");
         }
       } else if (en != null) {
@@ -276,9 +277,14 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     }
   }
 
+  private String PrepGenericTypeName(String tn) {
+    int i = tn.indexOf('(');
+    return tn.substring(0, i)+"<"+upFirst(tn.substring(i+1).replace(")", ">"));
+  }
+
   private String PrepGenericName(String tn) {
-    int i = tn.indexOf('<');
-    return tn.substring(0, i)+"_"+upFirst(tn.substring(i+1).replace(">", ""));
+    int i = tn.indexOf('(');
+    return tn.substring(0, i)+"_"+upFirst(tn.substring(i+1).replace(")", ""));
   }
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
