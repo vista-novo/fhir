@@ -12,6 +12,13 @@ namespace org.hl7.fhir.instance.model
       server // The application acts as a client for this resource
     }
 
+    public enum ResourceIdSource
+    {
+      client, // The client must provide a unique resource id
+      server, // The server defines the id and will reject any client attempt to define it
+      either // The client can provide a unique resource id, or the server will define it instead
+    }
+
     public class ConformancePublisher : Element
     {
       public ConformancePublisher()
@@ -148,7 +155,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * source of id: client | server | either
        */
-      public Code id { get; set; }
+      public ResourceIdSource id { get; set; }
 
     }
 
@@ -191,7 +198,8 @@ namespace org.hl7.fhir.instance.model
     {
       personal, // The person authenticated the document in their personal capacity
       professional, // The person authenticated the document in their professional capacity
-      legal // The person authenticated the document and accepted legal responsibility for it's content
+      legal, // The person authenticated the document and accepted legal responsibility for it's content
+      official // The organization authenticated the document as consistent with their policies and procedures
     }
 
     public class DocumentAuthor : Element
@@ -202,7 +210,7 @@ namespace org.hl7.fhir.instance.model
       public DateTime time { get; set; }
 
       /**
-       * person|device that authored the document
+       * who/what authored the final document
        */
       public ResourceReference<Resource> party { get; set; }
 
@@ -221,9 +229,9 @@ namespace org.hl7.fhir.instance.model
       public DateTime time { get; set; }
 
       /**
-       * the person who attested the document
+       * who attested the document
        */
-      public ResourceReference<Person> party { get; set; }
+      public ResourceReference<Resource> party { get; set; }
 
     }
 
@@ -284,7 +292,7 @@ namespace org.hl7.fhir.instance.model
       public DateTime time { get; set; }
 
       /**
-       * person|device that authored the section
+       * who/what authored the section
        */
       public ResourceReference<Resource> party { get; set; }
 
@@ -321,7 +329,7 @@ namespace org.hl7.fhir.instance.model
     public Id replaces { get; set; }
 
     /**
-     * the patient or group the document is about
+     * who the document is about
      */
     public ResourceReference<Resource> subject { get; set; }
 
@@ -336,12 +344,12 @@ namespace org.hl7.fhir.instance.model
     public List<DocumentAttestor> attestor { get; private set; }
 
     /**
-     * should receive a copy of the document
+     * expected to receive a copy 
      */
     public List<ResourceReference<Resource>> recipient { get; private set; }
 
     /**
-     * organization which maintains the document.
+     * org which maintains the document.
      */
     public ResourceReference<Organization> custodian { get; set; }
 
@@ -608,7 +616,7 @@ namespace org.hl7.fhir.instance.model
     /**
      * The time period during which the agent was/is authorised to represent the organisation.
      */
-    public Interval<DateTime> period { get; set; }
+    public Interval<Date> period { get; set; }
 
     /**
      * An identifier that applies to this person in this role
@@ -994,7 +1002,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * The period that this name was in use by the organization
        */
-      public Interval<DateTime> period { get; set; }
+      public Interval<Date> period { get; set; }
 
     }
 
@@ -1018,7 +1026,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * The period for which the accreditation is held
        */
-      public Interval<DateTime> period { get; set; }
+      public Interval<Date> period { get; set; }
 
     }
 
@@ -1058,19 +1066,9 @@ namespace org.hl7.fhir.instance.model
       /**
        * The period during which the organizations were related in this fashion
        */
-      public Interval<DateTime> period { get; set; }
+      public Interval<Date> period { get; set; }
 
     }
-
-    /**
-     * The kind of organization that this is
-     */
-    public CodeableConcept code { get; set; }
-
-    /**
-     * The industry that this organization is involved in
-     */
-    public CodeableConcept industryCode { get; set; }
 
     /**
      * Identifier for the organization that is used to identify the organization across multiple disparate systems
@@ -1091,6 +1089,16 @@ namespace org.hl7.fhir.instance.model
      * A contact detail for the organization
      */
     public List<Contact> contact { get; private set; }
+
+    /**
+     * The kind of organization that this is
+     */
+    public CodeableConcept code { get; set; }
+
+    /**
+     * The industry that this organization is involved in
+     */
+    public CodeableConcept industryCode { get; set; }
 
     /**
      * The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
