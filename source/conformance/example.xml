@@ -4,12 +4,10 @@
   <date>2012-01-04</date>
   <publisher>
     <name>ACME Corporation</name>
-    <contacts>
-      <contact>
-        <system>email</system>
-        <value>wile@acme.org</value>
-      </contact>
-    </contacts>
+    <contact>
+      <system>email</system>
+      <value>wile@acme.org</value>
+    </contact>
   </publisher>
   <software>
     <name>EHR</name>
@@ -27,15 +25,11 @@
     <validate>false</validate>
     <history>true</history>
     <transaction>
-      <names>
-        <name>link</name>
-      </names>
+      <name>link</name>
     </transaction>
     <search>
-      <params>
-        <param>name</param>
-        <param>gender</param>
-      </params>
+      <param>name</param>
+      <param>gender</param>
     </search>
     <create>
       <id>server</id>
@@ -47,8 +41,8 @@
 
 	<text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>The EHR Server supports the following transactions for the resource "Patient": read, vread, update, history, transaction(link), search(name,gender), create(server-id only), and updates</p>
-    </xhtml>
+    </div>
   </text>
 </Conformance>

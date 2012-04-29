@@ -26,8 +26,8 @@
   </data>
 	<text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Update Person resource for Peter James CHALMERS ("Jim"), MRN: 12345 (Acme Healthcare)</p>
-    </xhtml>
+    </div>
   </text>
 </Message>

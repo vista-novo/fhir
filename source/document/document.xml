@@ -9,6 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:20:02Z</Created>
+  <LastSaved>2012-04-29T09:25:18Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -91,7 +92,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">A document that contains resources</Data></Cell>
-    <Cell><Data ss:Type="String">A document that contains FHIR resources</Data></Cell>
+    <Cell><Data ss:Type="String">A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole</Data></Cell>
     <Cell><Data ss:Type="String">For document based framework</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Confidentiality? Language? Consent? Signatures</Data></Cell>
    </Row>
@@ -169,7 +170,7 @@
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Patient|Group)</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">the patient or group the document is about</Data></Cell>
+    <Cell><Data ss:Type="String">who the document is about</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Document.author</Data></Cell>
@@ -190,7 +191,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person|Device)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">person|device that authored the document</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">who/what authored the final document</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Document.attestor</Data></Cell>
@@ -205,7 +206,7 @@
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">DocumentAuthenticationMode</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">personal | professional | legal</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">personal | professional | legal | official</Data></Cell>
     <Cell><Data ss:Type="String">The type of attestation the authenticator offers</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -220,22 +221,22 @@
     <Cell><Data ss:Type="String">Document.attestor.party</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Person)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">the person who attested the document</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Person|Organisation)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">who attested the document</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Document.recipient</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person|Organization)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">should receive a copy of the document</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">expected to receive a copy </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Document.custodian</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">organization which maintains the document.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">org which maintains the document.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Document.event</Data></Cell>
@@ -294,7 +295,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person|Device)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">person|device that authored the section</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">who/what authored the section</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Document.section.enterer</Data></Cell>
@@ -365,11 +366,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>21</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>27</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -66,6 +66,7 @@ table.dict td.structure {
 	font-weight: bold;
 	padding: 3px;
 	vertical-align: top;
+	border-bottom: 1px silver solid;
   background: #EFEFEF
 }
 
@@ -127,8 +128,11 @@ ul {
 	padding: 0 0 0 25px;
 }
 
+.dense li {
+	margin: 0 0 0 0;
+}
 li {
-	margin: 0;
+	margin: 0 0 5px 0;
 }
 
 h1 {

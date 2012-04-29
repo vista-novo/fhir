@@ -16,48 +16,42 @@
     <id>12.123.451.23.1.23</id>
     <text>Henry Levin the 7th</text>
   </subject>
-  <authors>
-    <author>
-      <party>
-        <type>Person</type>
-        <id>233123</id>
-        <text>Robert Dolin MD</text>
-      </party>
-    </author>
-  </authors>
-  <attestors>
-    <attestor>
-      <mode>legal</mode>    
-      <party>
-        <type>Person</type>
-        <id>233123</id>
-        <text>Robert Dolin MD</text>
-      </party>
-    </attestor>
-  </attestors>
+  <author>
+    <party>
+      <type>Person</type>
+      <id>233123</id>
+      <text>Robert Dolin MD</text>
+    </party>
+  </author>
+  <attestor>
+    <mode>legal</mode>    
+    <party>
+      <type>Person</type>
+      <id>233123</id>
+      <text>Robert Dolin MD</text>
+    </party>
+  </attestor>
   <custodian>
     <type>Organization</type>
     <id>2.16.840.1.113883.19.5</id>
     <text>Good Health Clinic</text>
   </custodian>
-  <sections>
-    <section>
-      <type>
-        <coding>
-          <code>10164-2</code>
-          <system>urn:hl7-org:sid/loinc</system>
-        </coding>
-      </type>
-      <content dataAbsentReason="error">
-        <!-- <type>ClinicalNote</type> -->
-        <id>34124</id>
-      </content>
-    </section>
-  </sections>
+  <section>
+    <type>
+      <coding>
+        <code>10164-2</code>
+        <system>urn:hl7-org:sid/loinc</system>
+      </coding>
+    </type>
+    <content dataAbsentReason="error">
+      <!-- <type>ClinicalNote</type> -->
+      <id>34124</id>
+    </content>
+  </section>
 	<text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Consultation note for Henry Levin the 7th</p>
-    </xhtml>
+    </div>
   </text>
 </Document>

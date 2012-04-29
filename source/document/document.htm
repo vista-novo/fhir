@@ -4,7 +4,7 @@ Notes:
 </p>
 <ul>
 <li>The Document resource can be used in a <a href="http.htm">RESTful framework</a> as a stand-alone resource, or as the basis for a full document in <a href="documents.htm">the document framework</a>.</li>
-<li>The author and the authenticator are often the same person, but this may not be the case in many clinical workflows</li>
+<li>The author and the attestor are often the same person, but this may not be the case in many clinical workflows</li>
 <li>The attestor attests to the collated narrative portions of the resources</li>
 <li>The author, subject, enterer, and informant features are inherited in contained sections, and need not be repeated. Specifying any of these in a section replaces the inherited value</li>
 <li>The custodian is responsible for the maintainance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
@@ -21,10 +21,9 @@ The human display of the Document is the collated narrative portions of followin
 <p>
 The document narrative should summarise the important parts of the document header that are required 
 to establish clinical context for the document (other than the subject, which is displayed in it's own 
-right). To actually build the combined narrative, simply append all the narratives using html &lt;div&gt;
-elements around each narrative section. The viewer program can provide it's own stylesheet (.css) for
-the combined html of the narrative, but cannot change any styles specified internally in the existing
-narratives.
+right). To actually build the combined narrative, simply append all the narratives xhtml fragments. 
+The viewer program can provide it's own stylesheet (.css) for the combined html of the narrative, 
+but cannot change any styles specified internally in the existing narratives.
 </p>
 
 <h3>Originator Responsibilities</h3>
@@ -35,7 +34,7 @@ has the following responsibilities:
 </p>
 <ul>
  <li>Build a document that conforms to the Document rules, and links to content resources that also conform to the rules for the resources</li>
- <li>Ensure that the content of the document is frozen and easily reproducible, either by <a href="implementation.htm#Aggregation">aggregating the document</a>, 
+ <li>Ensure that the content of the document is frozen and easily reproducible, either by <a href="atom.htm#Aggregation">aggregating the document</a>, 
  or using version specific resource references in a FHIR conformant <a href="http.htm">RESTful framework</a></li>
  <li>Ensure that the content of the documend and other resources conforms to any applicable conformance statements and declared clinical patterns.</li>
 </ul>

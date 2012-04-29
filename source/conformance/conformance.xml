@@ -269,6 +269,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceIdSource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">source of id: client | server | either</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -314,12 +315,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>15</TopRowVisible>
+   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>27</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

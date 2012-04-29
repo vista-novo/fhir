@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Traditional Messaging Framework</title>
+    <title>Traditional Messaging Framework - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -25,12 +25,12 @@ claim to be conformant to "FHIR messaging".
 <p>
 In FHIR messaging, a "request message" is sent from a source application to a destination
 application when an event happens. Events mostly correspond to things that happen in the 
-real world. The request application consists of an <a href="implementation.htm#Aggregation">aggregation</a>
+real world. The request application consists of an <a href="atom.htm#Aggregation">aggregation</a>
 of resources, with the first resource in the aggregation being a <a href="message.htm">Message</a> resource
 that identifies the nature of the request message and carries additional request metadata. The other 
 resources in the aggregation depend on the request. The events supported in FHIR, along
 with the resources included in them, are defined below. The destination application processes
-the request, and returns one or more response messages which are also an <a href="implementation.htm#Aggregation">aggregation</a>
+the request, and returns one or more response messages which are also an <a href="atom.htm#Aggregation">aggregation</a>
 of resources, with the first resource in the aggregation being a <a href="message.htm">Message</a> resource with a response
 section that reports the outcome of the transaction and any additional response resources required.
 </p>
@@ -80,7 +80,7 @@ source application should resend the same aggregation with the same aggregation 
 </p>
 <h2>Message Format</h2>
 <p>
-A message is just an <a href="implementation.htm#Aggregation">aggregation</a> built using the
+A message is just an <a href="atom.htm#Aggregation">aggregation</a> built using the
 Atom feed format (ref). The first resource of a message is a <a href="message.htm">Message</a> 
 resource. This resource identifies 
 the message event and links to the additional focal resource associated with the message, if any. The list

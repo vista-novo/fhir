@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Data Types</title>
+    <title>Data Types - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -206,7 +206,6 @@ to some organisation to further sub-allocate):</p>
   &lt;x&gt;
    &lt;system&gt;http://pas-server/xxx/patients&lt;/system&gt;
    &lt;id&gt;443556&lt;/id&gt;
-   &lt;quality&gt;checked&lt;/quality&gt;
   &lt;/x&gt;
 </pre>
 <p>A guid:</p>
@@ -214,7 +213,6 @@ to some organisation to further sub-allocate):</p>
   &lt;x&gt;
    &lt;system&gt;urn:hl7-org:sid/uuid&lt;/system&gt;
    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
-   &lt;quality&gt;checked&lt;/quality&gt;
   &lt;/x&gt;
 </pre>
 </div>
@@ -266,31 +264,7 @@ may be flagged as the primary - the code that the user actually chose directly.
 If present, the value of the primary element is an ID that must match an xml:id 
 on one of the codings. 
 </p>
-<!--
-<p><b>Value Set</b></p>
-<p>
-The <i>valueSet</i> is the set of concepts that the Concept is allowed to 
-represent in a particular context. Every data item represented by a Concept
-is bound to a value set by the time it is used. Binding can occur in the 
-following ways:
-</p>
-<ul>
-<li>This specification binds to a value set directly</li>
-<li>This specification binds to a Concept Domain, which is bound to a value set by a realm</li>
-<li>This specification binds to a Concept Domain, which is bound to a value set in the conformance statement</li>
-<li>None of the specification, realm, or conformance statement bind to a value set; the application must do so</li>
-</ul>
-<p>
-The value set specifies a set of acceptable concepts and their representation
-as codes. The codes may come from multiple different systems. Because
-a user (or language processing robot) must choose a code from
-the value set, the value set may influence the meaning of the 
-concept in the context in which it used. As a consequence, the 
-<i>valueSet</i> may be specified in the Concept as an aid to interpretation,
-though it is never required to use it. The meaing of <i>valueSetVersion</i> 
-is defined by the definition of the value set.
-</p>
--->
+
 <div class="use">
 <p><b>Use</b></p>
 <p>
@@ -380,23 +354,21 @@ The Choice element must always contain at least one possible value.
 <pre>
   &lt;x&gt;
     &lt;code&gt;+&lt;/code&gt;
-    &lt;values&gt;
-      &lt;value&gt;
-	    &lt;code&gt;neg&lt;/code&gt;
-      &lt;/value&gt;
-      &lt;value&gt;
-	    &lt;code&gt;trace&lt;/code&gt;
-      &lt;/value&gt;
-      &lt;value&gt;
-	    &lt;code&gt;+&lt;/code&gt;
-      &lt;/value&gt;
-      &lt;value&gt;
-	    &lt;code&gt;++&lt;/code&gt;
-      &lt;/value&gt;
-      &lt;value&gt;
-	    &lt;code&gt;+++&lt;/code&gt;
-      &lt;/value&gt;
-    &lt;/values&gt;
+    &lt;value&gt;
+      &lt;code&gt;neg&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;trace&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;+&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;++&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;+++&lt;/code&gt;
+    &lt;/value&gt;
     &lt;isOrdered&gt;true&lt;/isOrdered&gt;
   &lt;/x&gt;
 </pre>
@@ -713,9 +685,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
       &lt;id&gt;2356&lt;/id&gt;
     &lt;/identifier&gt;
    &lt;period&gt;
-     &lt;low&gt;
-       &lt;date&gt;2009-06-05&lt;/date&gt;
-     &lt;/low&gt;
+     &lt;low&gt;2009-06-05&lt;/low&gt;
    &lt;/period&gt;
   &lt;/x&gt;
 </pre>
@@ -806,8 +776,9 @@ flag is provided on the address element.
   &lt;x&gt;
    &lt;use&gt;work primary&lt;/use&gt;
    &lt;text&gt;
-     &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-       1050 W Wishard Blvd&lt;br/&gt;RG 5th floor&lt;br/&gt;Indianapolis, IN 46240
+       1050 W Wishard Blvd
+       RG 5th floor
+       Indianapolis, IN 46240
      &lt;/html&gt;
    &lt;/text&gt;
    &lt;part&gt; 
@@ -834,7 +805,11 @@ Contact
 All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.
 </p>
 <%dt Contact%>
-
+<p>
+The value should be a properly formatted telephone number according to 
+<a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>, 
+but this is frequently not possible due to legacy data and/or recording methods.
+</p>
 <div class="use">
 <p><b>Use</b></p>
 <p>
@@ -931,20 +906,18 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
 <p>A series of appointments for radiotherapy:</p>
 <pre>
   &lt;x&gt;
-   &lt;events&gt;
-     &lt;event&gt;
-       &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
-       &lt;high&gt;2012-01-07T13:00&lt;/high&gt;
-     &lt;/event&gt;
-     &lt;event&gt;
-       &lt;low&gt;2012-01-14T09:00&lt;/low&gt;
-       &lt;high&gt;2012-01-14T13:00&lt;/high&gt;
-     &lt;/event&gt;
-     &lt;event&gt;
-       &lt;low&gt;2012-01-22T11:00&lt;/low&gt;
-       &lt;high&gt;2012-01-22T15:00&lt;/high&gt;
-     &lt;/event&gt;
-   &lt;/events&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
+      &lt;high&gt;2012-01-07T13:00&lt;/high&gt;
+    &lt;/event&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-14T09:00&lt;/low&gt;
+      &lt;high&gt;2012-01-14T13:00&lt;/high&gt;
+    &lt;/event&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-22T11:00&lt;/low&gt;
+      &lt;high&gt;2012-01-22T15:00&lt;/high&gt;
+    &lt;/event&gt;
   &lt;/x&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
@@ -964,21 +937,19 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
 <pre>
   &lt;x&gt;
-   &lt;events&gt;
-     &lt;event&gt;
-       &lt;low&gt;2011-12-23&lt;/low&gt;
-     &lt;/event&gt;
-   &lt;/events&gt;
-   &lt;repeat&gt;
-     &lt;when&gt;ACM&lt;/when&gt;
-     &lt;duration&gt;
-       &lt;value&gt;30&lt;/value&gt;
-       &lt;units&gt;min&lt;/units&gt;
-       &lt;code&gt;min&lt;/code&gt;
-       &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
-     &lt;/duration&gt;
-     &lt;end&gt;2012-01-02&lt;/end&gt;
-   &lt;/repeat&gt;
+    &lt;event&gt;
+      &lt;low&gt;2011-12-23&lt;/low&gt;
+    &lt;/event&gt;
+    &lt;repeat&gt;
+      &lt;when&gt;ACM&lt;/when&gt;
+      &lt;duration&gt;
+        &lt;value&gt;30&lt;/value&gt;
+        &lt;units&gt;min&lt;/units&gt;
+        &lt;code&gt;min&lt;/code&gt;
+        &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;/duration&gt;
+      &lt;end&gt;2012-01-02&lt;/end&gt;
+    &lt;/repeat&gt;
   &lt;/x&gt;
 </pre>
 <p>

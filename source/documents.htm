@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Document Framework</title>
+    <title>Document Framework - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -24,7 +24,7 @@ claim to be conformant to "FHIR documents".
 <p>
 Documents are a collections of resources that a fixed in scope and frozen in time, 
 and authored and/or attested by a collection or humans, orgnisations and devices,
-and gathered together into a <a href="implementation.htm#Aggregation">single aggregation using an atom feed</a>.
+and gathered together into a <a href="atom.htm#Aggregation">single aggregation using an atom feed</a>.
 Documents built in this fashion may be exchanged between systems, and also persisted in document
 storage and management systems, including systems such as IHE XDS.
 </p>
@@ -73,7 +73,7 @@ built into a single aggregation.
 Note that the standard /document end point defined with the Document resource handles
 individual Document resources, not full documents that are aggregations. Using this resource
 directly is mostly confined to the process of constructing a document using the RESTful framework.
-The RESTful end point for full aggregated documents is <a href="implementation.htm#endpoint">/aggregations</a>
+The RESTful end point for full aggregated documents is <a href="atom.htm#endpoint">/aggregations</a>
 </p>
 <p>
 Applications that handle and process documents are not required to make the individual constituent

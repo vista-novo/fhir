@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Implementers Landing Page - FHIR v<%version%></title>
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
+</head>
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+<h1>Welcome to FHIR</h1>
+<!--
+Lloyd:
+To put it another way, if you're binding to specific vocabularies, you're no longer in the "conceptual' space, you're starting to get into the logical/implementable space.  If your intention is to create a logical/implementable UML model, that's ok, but it's not appropriate to call the model a DAM.  On the other hand, if you're planning to produce a v3 specification, your logical/implementable model is required to be a RIM-based model and thus vocabulary binding should only happen there.
+
+-->
+
+<table border="0" cellspacing="0" cellpadding="5">
+<tr>
+<td><img src="flame128.png"/></td>
+<td>
+Fast Healthcare Interoperability Resources (FHIR) defines a set of "resources" for health.
+These resources represent granular clinical concepts that can be exchanged in order to 
+quickly and effectively solve problems in healthcare and related process. 
+The resources cover the basic elements of healthcare - patients, admissions, diagnostic
+reports, medications, and problem lists, with their typical participants, and also support
+a range of richer and more complex clinical models. 
+The simple direct definitions of the resources are based on 
+thorough requirements gathering, formal analysis and extensive 
+cross-mapping to other relevant standards. 
+</td></tr></table>
+<p>
+This is the default landing page for FHIR.
+</p>
+<h2>Useful Links</h2>
+<ul>
+ <li><a href="introduction.htm">The FHIR specification</a></li>
+ <li><a href="fhir-book.htm">The specifications in a single book</a></li>
+ <li><a href="fhir-spec.zip">A Zip of the whole specification for offline use</a></li>
+ <li><a href="fhir-all.xsd.zip">FHIR Schemas</a></li>
+ <li><a href="implementation.htm#Use">Reference Implementations</a></li>
+ <li><a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing">Publicly Available Test Servers</a></li>
+</ul>
+
+
+
+<%footer%>
+<%/maindiv%> 
+    
+    
+</body>
+</html>

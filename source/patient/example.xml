@@ -2,12 +2,11 @@
 <Patient xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Patient.xsd">
   <id>1.2.36.146595217.4.19.1</id>
 
-  <links>  
-    <link>
-      <type>Patient</type>
-      <id>25bd34</id>
-    </link>
-  </links>
+  <link>
+    <type>Patient</type>
+    <id>25bd34</id>
+  </link>
+
   <active>true</active>
 	
   <person>
@@ -20,24 +19,22 @@
     <id>3</id>  
     <text>ACME Healthcare, Inc</text>
   </provider> 
- <identifiers>
+  <identifier>
+    <type>
+      <code>MR</code>
+      <system>urn:hl7-org:sid/v2-0203</system>
+    </type>
     <identifier>
-      <type>
-        <code>MR</code>
-        <system>urn:hl7-org:sid/v2-0203</system>
-      </type>
-      <identifier>
-        <system>oid:0.1.2.3.4.5.6.7</system>
-        <id>123456</id>
-      </identifier>
+      <system>oid:0.1.2.3.4.5.6.7</system>
+      <id>123456</id>
     </identifier>
-  </identifiers>
+  </identifier>
 
   <text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 123456</p>
-    </xhtml>
+    </div>
   </text>
 </Patient>
 

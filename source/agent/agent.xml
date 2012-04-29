@@ -141,7 +141,7 @@
     <Cell><Data ss:Type="String">Agent.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Interval(dateTime)</Data></Cell>
+    <Cell><Data ss:Type="String">Interval(date)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The period for which this agency applies</Data></Cell>
     <Cell><Data ss:Type="String">The time period during which the agent was/is authorised to represent the organisation.</Data></Cell>
     <Cell><Data ss:Type="String">Agencies are often for a limited period of time, and can be revoked. Even after the agencies is revoked, the fact that it existed must still be recorded</Data></Cell>
@@ -202,7 +202,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>

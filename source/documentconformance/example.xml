@@ -4,12 +4,10 @@
   <date>2012-01-04</date>
   <publisher>
     <name>ACME Corporation</name>
-    <contacts>
-      <contact>
-        <system>email</system>
-        <value>wile@acme.org</value>
-      </contact>
-    </contacts>
+    <contact>
+      <system>email</system>
+      <value>wile@acme.org</value>
+    </contact>
   </publisher>
   <software>
     <name>EHR</name>
@@ -17,132 +15,125 @@
   </software>
   
   <!-- 1 document profile. -->
-  <documents>
-    <document>
-      <name>General</name>
-      <purpose>Basic rules for all documents in the EHR system</purpose>
-      <resources>
-        <resource>
-          <!-- document resource first, as required -->
-          <type>Document</type>
-          <elements>
-            <element>
-              <path>Document.id</path>
-              <min>1</min>
-              <max>1</max>
-              <type>id</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.instant</path>
-              <min>1</min>
-              <max>1</max>
-              <type>dateTime</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.type</path>
-              <min>1</min>
-              <max>1</max>
-              <type>CodeableConcept</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.title</path>
-              <min>1</min>
-              <max>1</max>
-              <type>string</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.setId</path>
-              <purpose>All EHR documents must be versioned using setId/Version</purpose>              
-              <min>1</min>
-              <max>1</max>
-              <type>id</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.version</path>
-              <min>1</min>
-              <max>1</max>
-              <type>integer</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.replaces</path>
-              <min>0</min>
-              <max>0</max>
-              <type>id</type>
-              <conformance>Prohibited</conformance>            
-            </element>
-            <element>
-              <path>subject</path>
-              <purpose>Only individual humans in the EHR</purpose>
-              <min>1</min>
-              <max>1</max>
-              <type>Resource(Patient)</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.author</path>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Doument.author.time</path>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.author.party</path>
-              <purpose>Only humans author documents</purpose>
-              <min>1</min>
-              <max>1</max>
-              <type>Resource(Person)</type>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.attestor</path>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Doument.attestor.mode</path>
-              <purpose>Only legal authentication</purpose>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-              <values>
-                <value>
-                 <code>legal</code>
-                </value>
-              </values>
-            </element>
-            <element>
-              <path>Doument.attestor.time</path>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-            </element>
-            <element>
-              <path>Document.attestor.party</path>
-              <min>1</min>
-              <max>1</max>
-              <conformance>Mandatory</conformance>            
-            </element>
-          </elements>
-          <!-- etc, though stopping here simply means, no rules made about the other elements -->
-        </resource>
-      </resources>    
-    </document>
-  </documents>
+  <document>
+    <name>General</name>
+    <purpose>Basic rules for all documents in the EHR system</purpose>
+    <resource>
+      <!-- document resource first, as required -->
+      <type>Document</type>
+      <element>
+        <path>Document.id</path>
+        <min>1</min>
+        <max>1</max>
+        <type>id</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.instant</path>
+        <min>1</min>
+        <max>1</max>
+        <type>dateTime</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.type</path>
+        <min>1</min>
+        <max>1</max>
+        <type>CodeableConcept</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.title</path>
+        <min>1</min>
+        <max>1</max>
+        <type>string</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.setId</path>
+        <purpose>All EHR documents must be versioned using setId/Version</purpose>              
+        <min>1</min>
+        <max>1</max>
+        <type>id</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.version</path>
+        <min>1</min>
+        <max>1</max>
+        <type>integer</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.replaces</path>
+        <min>0</min>
+        <max>0</max>
+        <type>id</type>
+        <conformance>Prohibited</conformance>            
+      </element>
+      <element>
+        <path>subject</path>
+        <purpose>Only individual humans in the EHR</purpose>
+        <min>1</min>
+        <max>1</max>
+        <type>Resource(Patient)</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.author</path>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Doument.author.time</path>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.author.party</path>
+        <purpose>Only humans author documents</purpose>
+        <min>1</min>
+        <max>1</max>
+        <type>Resource(Person)</type>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.attestor</path>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Doument.attestor.mode</path>
+        <purpose>Only legal authentication</purpose>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+        <value>
+         <code>legal</code>
+        </value>
+      </element>
+      <element>
+        <path>Doument.attestor.time</path>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <element>
+        <path>Document.attestor.party</path>
+        <min>1</min>
+        <max>1</max>
+        <conformance>Mandatory</conformance>            
+      </element>
+      <!-- etc, though stopping here simply means, no rules made about the other elements -->
+    </resource>
+  </document>
+
 	<text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>General EHR Document rules (Acme Healthcare): </p>
       <ul>
         <li>EHR documents must be versioned using setId</li>
@@ -150,6 +141,6 @@
         <li>Only humans author documents</li>
         <li>Only legal authentication</li>
       </ul>
-    </xhtml>
+    </div>
   </text>
 </DocumentConformance>

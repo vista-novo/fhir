@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Resource XML</title>
+    <title>Resource XML - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -31,11 +31,12 @@ provided that may be a useful aid for system implementation.
 All the content model definitions provided in this specification follow the same general pattern:
 </p>
 <pre>
- &lt;<b>name</b> xmlns="..."&gt;  <font color="Gray">&lt;!-- Cardinality --&gt;</font>
-   &lt;<b>nameA</b> <font color="red">opt</font> <font color="Darkgreen">type="?"</font>&gt; <font color="Navy">description of content</font> &lt;name&gt;
-   &lt;<b>nameBs</b> <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-     &lt;<b>nameB</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font>&lt;/link&gt;
-   &lt;/nameBs&gt;
+ &lt;<b>name</b> xmlns="..."&gt; 
+   &lt;<b>nameA</b>&gt; <font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> &lt;nameA&gt;
+   &lt;<b>nameB</b>&gt; <font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> &lt;/nameB&gt;
+   &lt;<b>nameC</b>&gt; <font color="Brown">&lt;!-- <b>One+</b> --&gt;</font>
+     &lt;<b>nameD</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> &lt;/nameD&gt;
+   &lt;/nameC&gt;
  &lt;name&gt;
 </pre>
 <p>
@@ -45,10 +46,9 @@ Notes:
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
  <li>All the XML is in the namespace http://www.hl7.org/fhir, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
  <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
- <li>In addition, each element has a control flag shown in red, that specifies whether it must be present, is optional or may be marked as not present. This is explained below. The control flags are linked to their definitions.</li>
- <li>While the content model shows the control flag (i.e. "opt") and type of the element (i.e. type="?") as attributes, they do not appear in the actual XML content that is exchanged.</li>
- <li>The "nameBs" element itself can only appear once. If it appears it may have Zero or more "nameB" elements as children. Each "nameB" element itself is mandatory (i.e. if it appears, it must have valid content) unless specified as optional.</li>
- <li>Each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats.</li>
+ <li>In addition, elements have a control flag shown in red, that specifies whether the element must be present, is optional or may be marked as not present. This is explained below. The control flags are hyperlinked to their definitions.</li>
+ <li>Unless specified otherwise, by the appearance of Zero+ or One+, an element can only appear once. If an element that can repeat is labelled as <font color="Brown"><b>Zero+</b></font> <font color="red">mand</font>, that means that any element that appears is mandatory </li>
+ <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats.</li>
  <li>Any of the XML elements may have an xml id attribute to serve as the target of an reference.</li>
 </ul>
 <a name="metadata"></a>
@@ -56,12 +56,13 @@ Notes:
 Every resource contains the following common elements:
 </p>
 <pre>
-&lt;<b>[Name]</b> xmlns="http://www.hl7.org/fhir"&gt;
-  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Resource Id, always first in all resources. This never changes once the resource is created.</font>&lt;/id&gt;
-  &lt;!-- Other content specific to the resource --&gt;
-  &lt;<b>extensions</b>&gt; <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
-  &lt;<b>text</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="Narrative.htm#Narrative">Narrative</a>"</font>&gt;<font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
-&lt;/[Name]&gt;</pre>
+&lt;<a href="#Resource" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://www.hl7.org/fhir"&gt;
+  &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> 
+<font color="navy">Master Resource Id, always first. Never changes after creation</font>&lt;/id&gt;
+  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a>  <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
+&lt;/[Name]&gt;
+</pre>
 <p>
 The <i>id</i> element is always mandatory except in the case that a resource is posted to a server to create it, 
 and the id of the resource is not yet known. In this case, the id element is absent. The use of the id 
@@ -161,44 +162,13 @@ data, or the data was generated from the text (by some form of retrospective pro
 or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason
 of "astext"; this means that the value of the text could not be properly represented in the data type. Any element defined as part of the resource content,
 or any repeating element inside a data type, may carry an id attribute to serve as the target of a narrative mapping. When using xml:id attributes, 
-<a href="implementation.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind.
+<a href="atom.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind.
 </p>
 <p>
 The narrative is an xhtml fragment that also includes images if appropriate:
 </p>
-<pre>
-&lt;<b>x</b> xmlns="http://www.hl7.org/fhir"&gt;
-  &lt;<b>status</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">generated | extensions | additional</font>&lt;/status&gt;
-  &lt;<b>html</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">xhtml</font> <font color="navy">limited xhtml content</font>&lt;/html&gt;
-  &lt;images <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-   &lt;<b>image</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
-    &lt;<b>mimeType</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">mime type of image</font>&lt;/mimeType&gt;
-    &lt;<b>content</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">base64 image data</font>&lt;/content&gt;
-   &lt;/image&gt;
-  &lt;/images&gt;
-  &lt;maps <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-   &lt;<b>map</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> 
-    &lt;<b>text</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Narrative source (xml:id)</font>&lt;/text&gt;
-    &lt;<b>data</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Data source (xml:id)</font>&lt;/data&gt;
-    &lt;<b>source</b>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">text | data</font>&lt;/source&gt;
-   &lt;/map&gt;
-  &lt;/maps&gt;
-&lt;/x&gt;
-</pre>
-<p>
-Terminology Bindings
-</p>
-<ul>
-  <li>Narrative.status is  bound to the concept domain <i>NarrativeStatus</i>: "The status of a resource narrative". Possible values:
-    <table class="codes">
-    <tr><td>generated</td><td colspan="2">The contents of the narrative are entirely generated from the structured data in the resource.</td></tr>    <tr><td>extensions</td><td colspan="2">The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions</td></tr>    <tr><td>additional</td><td colspan="2">The contents of the narrative contain additional information not found in the structured data</td></tr>    </table>
-  </li>
-  <li>Narrative.image.mimeType is  bound to the concept domain <i>MediaType</i>: "The mime type of an attachment". The possible values are those specified in <a href="http://www.rfc-editor.org/bcp/bcp13.txt" target="_blank">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</a></li>
-  <li>Narrative.map.source is  bound to the concept domain <i>NarrativeMapSource</i>: "Which is the source in a Narrative &lt;-> Data mapping". Possible values:
-    <table class="codes">
-    <tr><td>text</td><td colspan="2">The text is the original data</td></tr>    <tr><td>data</td><td colspan="2">The data is the original data</td></tr>    </table>
-  </li>
-</ul>
+<%dt Narrative%>
+
 
 <p>
 The status is required when the narrative is the full resource narrative, but not required in resource references (see below).
@@ -215,15 +185,16 @@ the additional rules above applied.
 <div class="example">
 <pre>
   &lt;narrative&gt;
-    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple example with only plain text&lt;/html&gt;
+    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple 
+          example with only plain text&lt;/div&gt;
   &lt;/narrative&gt;
    
   &lt;narrative&gt;
-   &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+   &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;
      &lt;p&gt;
        This is an &lt;i&gt;example&lt;/i&gt; with some &lt;b&gt;xhtml&lt;/b&gt; formatting.
      &lt;/p&gt;
-   &lt;/html&gt;
+   &lt;/div&gt;
   &lt;narrative&gt;
 </pre>
 </div>
@@ -240,17 +211,15 @@ directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</
 <div class="example">
 <pre>
   &lt;narrative&gt;
-   &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
-     &lt;p&gt;
-       &lt;img src=&quot;fhir:#a1/&gt;.
-     &lt;/p&gt;
-   &lt;/html&gt;
-   &lt;images&gt;
-     &lt;image id=&quot;a1&quot;&gt;
-       &lt;mimeType&gt;image/png&lt;/mimeType&gt;
-       &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
-     &lt;/image&gt;
-   &lt;/images&gt;
+    &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+      &lt;p&gt;
+        &lt;img src=&quot;fhir:#a1/&gt;.
+      &lt;/p&gt;
+    &lt;/html&gt;
+    &lt;image id=&quot;a1&quot;&gt;
+      &lt;mimeType&gt;image/png&lt;/mimeType&gt;
+      &lt;data&gt;MEKH....SD/Z&lt;/data&gt;
+    &lt;/image&gt;
   &lt;narrative&gt;
 </pre>
 </div>
@@ -266,7 +235,7 @@ images are used, they must include an appropriate caption).
 </p>
 <p>
 The <i>dataAbsentReason</i> is not used on the narrative element, or any elements 
-contained in it. The xhtml element must have non-whitespace content.
+contained in it. The xhtml element must have some non-whitespace content.
 </p>
 <a name="Resource"></a>
 <h2>Resource References</h2>
@@ -277,10 +246,10 @@ references are done by id.
 </p>
 <pre>
   &lt;x&gt;
-    &lt;<b>type</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="resourceType"</font>&gt;<font color="navy">Resource Type</font>&lt;/type&gt;
-    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Id of the reference</font>&lt;/id&gt;
-    &lt;<b>version</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
-    &lt;<b>text</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Text alternative for the resource</font>&lt;/text&gt;
+    &lt;<b>type</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="terminologies.htm#resourcetypes">ResourceType</a></font> <font color="navy">Resource Type</font>&lt;/type&gt;
+    &lt;<b>id</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Id of the reference</font>&lt;/id&gt;
+    &lt;<b>version</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a> </font><font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
+    &lt;<b>text</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Text alternative for the resource</font>&lt;/text&gt;
   &lt;/x&gt;
 </pre>
 <p>
@@ -341,7 +310,7 @@ a valid <i>type</i> and <i>id</i>, or, if it is not mandatory, a text alternativ
 <p>
 There is no explicit version marker in the XML. Subsequent versions
 of this specification may introduce new elements at any point in the 
-content models, but the meaning of existing data elements will not be 
+content models, but the path or meaning of existing data elements will not be 
 changed. 
 </p>
 <p>Given that in a typical scenario, mixed versions may need to exist, 
@@ -374,6 +343,50 @@ schemas can eliminate elements not used by the application, and explicitly defin
 are used. However the xml format they describe must be consistent with the XML and rules 
 defined in this specification. 
 </p>
+
+<a name="json"></a>
+<h2>JSON Format</h2>
+<p>
+Though the formal representation of the resources is in XML, many systems wish to use JSON to exchange the resources, and it is useful to standardise a single JSON format for this use. 
+The JSON format for the resources follows the standard XML format closely:
+</p>
+<pre>
+ &lt;<b>name</b> xmlns="..."&gt; 
+   &lt;<b>nameA</b>&gt; <font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> &lt;nameA&gt;
+   &lt;<b>nameB</b>&gt; <font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> &lt;/nameB&gt;
+   &lt;<b>nameC</b>&gt; <font color="Brown">&lt;!-- <b>One+</b> --&gt;</font>
+     &lt;<b>nameD</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> &lt;/nameD&gt;
+   &lt;/nameC&gt;
+ &lt;name&gt;
+</pre>
+<p>
+is represented in JSON as 
+</p>
+<pre>
+{"name":
+  "nameA" : {...},
+  "nameB" : 
+    [
+      {...},
+      {...}
+    ],
+  "nameC" :  
+    [
+      { "nameD" : {...} }
+    }
+}
+</pre>
+<p>Notes:</p>
+<ul>
+ <li>There is no namespaces in the JSON representation</li>
+ <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form can also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
+ <li>The xml attributes <i>id</i> (xml:id) and <i>dataAbsentReason</i> become JSON object attributes with the names "id" and "dataAbsentReason"; they come in that order before other defined elements</li>
+ <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form</li>
+ <li>Items that can repeat are represented as arrays even if they do not repeat in the actual instance</li>
+ <li>JSON property attributes never have empty values; omit a value if it is empty (same as for the xml)</li>
+ <li>The XHTML &lt;div&gt; element is represented as a single escaped string of XHTML</li>
+ <li>The last two items means that a generic XML -> JSON converter will not be able to perform a correct conversion. The reference platforms provide XML &lt;--&gt; JSON conversion functionalty</li>
+</ul>
 
 <a name="objects"></a>
 <h2>Object Models</h2>

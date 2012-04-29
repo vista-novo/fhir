@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Introduction</title>
+    <title>Introduction - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 <body>
@@ -42,7 +42,7 @@ resources are defined to support an HTTP based RESTful infrastructure, it is
 not necessary to use such an infrastructure when using the resources. This specification 
 also defines <a href="messaging.htm">a class messaging based framework</a> and 
 <a href="documents.htm">way to use the resources to build clinical documents</a>. In 
-addition, <a href="implementation.html#SOA">the resources can be used in a SOA-based solution</a>.
+addition, <a href="implementation.htm#SOA">the resources can be used in a SOA-based solution</a>.
 This flexibility offers coherent solutions for a range of interoperability problems. 
 </p>
 <h2>Roadmap</h2>
@@ -50,9 +50,9 @@ This flexibility offers coherent solutions for a range of interoperability probl
 This specification has the following parts: 
 </p>
 <ul>
-<li>Background: foundation infrastructure for implementing resources (<a href="xml.htm">XML rules</a>, <a href="datatypes.htm">data types</a>, <a href="terminology.htm">terminology basics</a>,
+<li>Background: foundation infrastructure for implementing resources (<a href="xml.htm">XML rules</a>, <a href="datatypes.htm">data types</a>, <a href="terminologies.htm">terminology basics</a>,
    <a href="extensibility.htm">extensibility rules</a>, and a <a href="constraint.htm">conformance infrastructure</a>). </li>
-<li>Exchange: actual schemes for exchanging resources  (<a href=http.htm">HTTP RESTful protocol</a>, <a href="mssaging.htm">Messaging</a> and <a href="documents.htm">Documents</a>, along with a <a href="implementation.htm">general implementation resources page</a>)</li>
+<li>Exchange: actual schemes for exchanging resources  (<a href="http.htm">HTTP RESTful protocol</a>, <a href="messaging.htm">Messaging</a> and <a href="documents.htm">Documents</a>, along with a <a href="implementation.htm">general implementation resources page</a>)</li>
 <li>Administrative Resources: basic resources encountered throughout the healthcare process </li>
 <li>Basic Clinical Components: Core reusable clinical resources that are encountered in most clincal practice</li>
 <li>etc</li>
@@ -63,7 +63,7 @@ This specification has the following parts:
 <p>
 All resources have the following parts:
 </p>
-<ul>
+<ul class="dense">
  <li>A master id that is never changed</li>
  <li>Structured Data - the formal representation of the resource in a computable fashion</li>
  <li>Extensibility section - additional data not defined by HL7</li>
@@ -86,7 +86,7 @@ some common data patterns used across all the resources (called "<a href="dataty
 <p>
 For each resource, this specification defines 
 </p>
-<ul>
+<ul class="dense">
 <li> scope and meaning of the resource </li>
 <li> semantics and business implications of the resource</li>
 <li> the XML content model of the resource (as XML, UML, and schema)</li>
@@ -108,7 +108,7 @@ a mapping to the v3 RIM, and an indicative v2 mapping.
 <p>
 In addition, for each resource, some RESTful specific features are described:
 </p>
-<ul>
+<ul class="dense">
 <li> the relative URL for RESTful implementations derived from the id, the type, and
 a local base URL</li>
 <li> transactions specfically associated with the resource</li>

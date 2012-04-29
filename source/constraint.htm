@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Conformance</title>
+    <title>Conformance - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -15,7 +15,7 @@
 <%maindiv%>
 todo: conformance and realms
 
-<h1>Conformance</h1>
+<h1>Constraint</h1>
 <p>
 This specification describes a set of base resources that are used in many different
 contexts in healthcare. In order to make this manageable, applications need to be
@@ -25,7 +25,7 @@ be described. These structured statements are actually constraint statements tha
 describe a pattern of usage. As a general tool, they find use in several different
 contexts:
 </p>
-<ul>
+<ul class="dense">
  <li>Describing testable conformance rules for applications that read and write FHIR resources</li>
  <li>Making rules about how information is represented in jurisdictions and institutions</li>
  <li>Describing common clinical patterns of use of general resources</li>
@@ -56,22 +56,7 @@ is written from the context of the resource instance, a writing or a reading app
 
 <%dt Constraint%>
 
-<p>
-Terminology Bindings
-</p>
-<ul>
-  <li>Resource.type is bound to the codes for <a href="terminologies.htm#ResourceType">ResourceType</a></li>
-  <li>Element.type is bound to the concept domain "FHIR data types", and has one of the values used throughout this specification ({type[param{|param}]})</li>
-  <li>Element.conformance is bound to the concept domain "FHIR conformance types":
-    <table class="codes">
-      <tr> <td>Mandatory</td> <td>The element is or must always be present without a <a href="xml.htm#dataAbsentReason">dataAbsentReason</a></td> </tr>
-      <tr> <td>Conditional</td> <td>The element may need to be present (with no dataAbsentReasons) depending on the condition</td> </tr>
-      <tr> <td>Optional</td> <td>The element may or may not be present</td> </tr>
-      <tr> <td>Prohibited</td> <td>The element is not present or will be rejected if received</td> </tr>
-    </table>
-   </li>
-</ul>
-    
+
 <p>
 Notes:
 </p>

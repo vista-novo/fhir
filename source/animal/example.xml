@@ -3,35 +3,31 @@
   <id>wer234fwde234</id>
 	
   <!-- Dog tag, under Maroondah City council -->
-  <identifiers>
+  <identifier>
+    <type>
+      <code>microchip</code>
+      <system>urn:hl7-org:sid/fhir/identifier-type</system>
+    </type>
     <identifier>
-	    <type>
-	      <code>microchip</code>
-	      <system>urn:hl7-org:sid/fhir/identifier-type</system>
-	    </type>
-	    <identifier>
-	      <system>http://http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
-	      <id>1234123123312332</id>	    
-	    </identifier>
-	    <period>
-	      <low>2010-05-31</low>
-	    </period>
-	    <assigner>
-	      <text>Maroondah City Council</text>
-	    </assigner>
+      <system>http://http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
+      <id>1234123123312332</id>	    
     </identifier>
-	</identifiers>
+    <period>
+      <low>2010-05-31</low>
+    </period>
+    <assigner>
+      <text>Maroondah City Council</text>
+    </assigner>
+  </identifier>
 
   <!-- Dog's name: Kenzi -->
-  <names> 
-    <name>
-      <use>usual</use>
-      <part>
-        <type>given</type>
-        <value>Kenzi</value>
-      </part>
-    </name>
-  </names>
+  <name>
+    <use>usual</use>
+    <part>
+      <type>given</type>
+      <value>Kenzi</value>
+    </part>
+  </name>
     
   <dob>2010-03-23</dob> 
   <!-- todo: how do you code a species? -->
@@ -56,67 +52,61 @@
   </gender>
 	
   <!-- owner -->
-  <relatedEntities>
-    <relatedEntity>
-      <role>
-        <coding>
-          <code>OWN</code>
-          <system>urn:hl7-org:sid/v2-0063</system>
-          <display>Owner</display>
-        </coding>
-      </role>
-      <name>
-        <use>official</use>
-        <part>
-          <type>given</type>
-          <value>Peter</value>
-        </part>
-        <part>
-          <type>given</type>
-          <value>James</value>
-        </part>
-        <part>
-          <type>family</type>
-          <value>Chalmers</value>
-        </part>
-      </name>
-      <addresses>  
-        <address>
-          <use>home</use>
-          <part>
-            <type>line</type>
-            <value>534 Erewhon St</value>
-          </part>
-          <part>
-            <type>city</type>
-            <value>PleasantVille</value>
-          </part>
-          <part>
-            <type>state</type>
-            <value>Vic</value>
-          </part>
-          <part>
-            <type>zip</type>
-            <value>3999</value>
-          </part>
-        </address>
-      </addresses>
-      <contacts>
-        <contact dataAbsentReason="unknown" >
-          <use>home</use>
-        </contact>
-        <contact>
-          <system>phone</system>
-          <value>(03) 5555 6473</value>
-          <use>work</use>
-        </contact>
-      </contacts> 
-    </relatedEntity>
-  </relatedEntities>
+  <relatedEntity>
+    <role>
+      <coding>
+        <code>OWN</code>
+        <system>urn:hl7-org:sid/v2-0063</system>
+        <display>Owner</display>
+      </coding>
+    </role>
+    <name>
+      <use>official</use>
+      <part>
+        <type>given</type>
+        <value>Peter</value>
+      </part>
+      <part>
+        <type>given</type>
+        <value>James</value>
+      </part>
+      <part>
+        <type>family</type>
+        <value>Chalmers</value>
+      </part>
+    </name>
+    <address>
+      <use>home</use>
+      <part>
+        <type>line</type>
+        <value>534 Erewhon St</value>
+      </part>
+      <part>
+        <type>city</type>
+        <value>PleasantVille</value>
+      </part>
+      <part>
+        <type>state</type>
+        <value>Vic</value>
+      </part>
+      <part>
+        <type>zip</type>
+        <value>3999</value>
+      </part>
+    </address>
+    <contact dataAbsentReason="unknown" >
+      <use>home</use>
+    </contact>
+    <contact>
+      <system>phone</system>
+      <value>(03) 5555 6473</value>
+      <use>work</use>
+    </contact>
+  </relatedEntity>
    
 	<text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <table>
         <tbody>
           <tr>
@@ -137,7 +127,7 @@
           </tr>
         </tbody>
       </table>
-    </xhtml>
+    </div>
   </text>
 </Animal>
 

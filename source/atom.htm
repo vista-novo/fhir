@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Aggregations - FHIR v<%version%></title>
+    <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
+</head>
+
+<body>
+<%header%>
+<%sidebar%>
+
+
+<%maindiv%>
+
+
+<a name="Aggregation"></a>
+<h1>Aggregation</h1>
+<p>
+One basic operation performed with resources is to aggregate a group of resources into a single XML document. 
+This is performed in many of the implementation frameworks. Aggregated resources are useful for grouping 
+resources together for a variety of different reasons, including:
+</p>
+<ul>
+  <li>Listing a set of resources that have changed since a given instant in time </li>
+  <li>Exchanging a set of resources as a single batch</li>
+  <li>Grouping a self contained set of resources to act as an exchangeable and persistable group with clinical integrity (i.e. a clinical document)</li>
+</ul>
+<p>
+Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
+</p>
+<pre>
+&lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
+  &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
+  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">when aggregation happened</font>&lt;/updated&gt;
+  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">unique id for this aggregation</font>&lt;/id&gt;
+  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="via" href="<font color="navy">aggregating application url</font>"/&gt;
+
+  &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- One+ --&gt;</font>
+    &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
+    &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">Master Location for Resource</font>"/&gt;
+    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Id for this resource</font>&lt;/id&gt;
+    &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
+    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Time resource sourced for aggregation</font>&lt;/updated&gt;
+    &lt;<b>author</b>&gt;
+      &lt;<b>name</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
+      &lt;<b>uri</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
+    &lt;/author>
+    &lt;<b>category</b> term="<font color="navy">[Resource Type]</font>" scheme="urn:hl7-org:sid/fhir/resource-types"/&gt;  
+    &lt;<b>content</b> <a href="xml.htm#Control" class="cf">mand</a> type="text/xml">
+      &lt;<b>[ResourceName]</b> xmlns="http://www.hl7.org/fhir">
+         &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Resource Id (i.e. normal resource content)</font>&lt;/id&gt;
+         &lt;!-- Content for the resource --&gt;
+      &lt;/[ResourceName]>
+    &lt;/content>
+    &lt;<b>summary</b> <a href="xml.htm#Control" class="cf">opt</a> type="xhtml">
+         <font color="Gray">&lt;!-- Narrative from resource for a browser. Must be wrapped in a &lt;div&gt; --&gt;</font>
+    &lt;/summary>
+    &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <a href="xml.htm#Control" class="cf">opt</a>&gt;
+         <font color="Gray">&lt;!-- Enveloped Digital Signature (see Atom section 5.1) --&gt;</font>
+    &lt;/Signature&gt;
+  &lt;/entry&gt;
+&lt;/feed&gt;
+</pre>
+<p>Notes:</p>
+<ul>
+ <li>Logically, an aggregation is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
+ <li>The title for the feed and the entry are arbitary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
+ <li>Every aggregation must have a unique id, which must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
+ <li>The link elements are mandatory in the atom feed format.</li>
+ <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom type, not a FHIR type)</li>
+ <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Version Id, Last Updated, and Master Location</li>
+ <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author, or a device. The uri is a link to the resource for the author</li>
+ <li>In a RESTful implementation, the Master Location is the URL of the resource on a system that is the master for that resource. In the absence of a known master, or a RESTful implementation, some other location may be used.</li>
+ <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
+ <li>The aggregation can be signed with a single Enveloped Digital Signature as described in the Atom specification</li>
+</ul>
+
+<p>
+Readers of the aggregated resources should always look through the resources in the 
+atom feed when a <a href="xml.htm#Resource">resource reference</a> is encountered. 
+The resource reference will have the resource type and the id of the target, like this:
+</p>
+<div class="example">
+<pre>
+  &lt;institution&gt;
+    &lt;type&gt;Organization&lt;/type&gt;
+    &lt;id&gt;1145c09c-73d0-4297-9835-620e4afa9deb&lt;/id&gt;
+  &lt;/institution&gt;
+</pre>
+</div>
+<p>
+A reader trying to find this institution should always look through the entries in 
+the atom feed prior to looking anywhere else for the institution. If that 
+organization is in the feed, it would look like this:
+</p>
+<div class="example">
+<pre>
+   .. feed ..
+  &lt;entry>
+    .. 
+    &lt;id>1145c09c-73d0-4297-9835-620e4afa9deb&lt;id>
+    .. 
+    &lt;category term="Organization" scheme="urn:hl7-org:sid/fhir/resource-types"/>
+
+    &lt;content type="text/xml">
+      &lt;Organization xmlns="http://www.hl7.org/fhir">
+         &lt;id&gt;1145c09c-73d0-4297-9835-620e4afa9deb&lt;/id&gt;
+         &lt;!-- other Content for the resource --&gt;
+      &lt;/Organization>
+    &lt;/content>
+  ... feed ...
+</pre>
+</div>
+<p>
+It would also be possible to locate the resouce by the url (todo: explanation of this method).
+</p>
+<a name="Ids"></a>
+<h2>XML Ids in resources</h2>
+<p>
+FHIR resources make use of XML id attributes as targets for pointers elsewhere in the document. XML id attributes must be unique 
+in the context of a single XML document, and the atom feed is a single XML document. it can be difficult and time consuming - or
+impossible in the presence of a digital signature - to fix the id attributes so they are unique when aggregating resources.
+For this reason, it is highly recommended that all XML id attributes are prefixed with the type and master id of the resource, like
+this: [Type]_[master id]_id (e.g. Person_23442_1). 
+</p>
+<a name="json"></a>
+<h2>JSON Format</h2>
+<p>
+For the <a href="xml.htm#json">same reasons as resources</a>, it is useful to define a standard JSON representation of the atom format. Several existing JSON 
+representations of the atom feed are in general use; this specification adopts the <a href="https://developers.google.com/gdata/docs/json">Google GData representation</a>.
+</p>
+<blockquote>
+<p>Note: All of the existing JSON representations of Atom are lacking in simplicity. The Google conversion is at least algorithmic.</p>
+</blockquote>
+
+<a name="endpoint"></a>
+<h2>RESTful support for Aggregations</h2>
+<p>
+The standard RESTful endpoints (such as [baseurl]/people/#{id}.xml for a Person resource, or [baseurl]/documents/#{id}.xml) handle
+the individual resources, and not aggregations (though, per the restful spec, they may serve up aggregations for the <a href="http.htm#history">history</a> and <a href="http.htm#update">update</a> operations). 
+There is a special end-point for aggregations at the relative url "/assemblies", which supports the following operations:
+</p>
+<table class="list"> 
+  <tr><td><b>Instance</b></td><td></td></tr>
+  <tr><td>read</td><td>Retrieve an aggregation</td></tr>
+  <tr><td>vread</td><td>Not supported - aggregations have no version history</td></tr>
+  <tr><td>update</td><td>Not supported - aggregations never change</td></tr>
+  <tr><td>delete</td><td>Delete an aggregation</td></tr>
+  <tr><td>validate</td><td>Check that the content would be acceptable as an update</td></tr>
+  <tr><td>history</td><td>Not supported - aggregations never change</td></tr>
+  <tr><td>transaction</td><td>Not supported</td></tr>
+  <tr><td colspan="2"><b>Manager</b></td></tr>
+  <tr><td>search</td><td>Search the aggregations based on some filter criteria. Supported search parameters<br/>
+              <ul>
+	        <li>Document.id - an id of a document. There should only be one aggregation for each document (optional, for systems that support documents)</li>
+	        <li>Message.id - an id of a message. There is usually only one aggregation per message. (optional, for systems that archive messages and make them available in this fashion)</li>
+		<li>[ResourceType].id - an id of a resource that may be brought into an aggregation. Multiple aggregations should be expected in the response. (also optional)</li>
+	      </ul>
+	      </td></tr>
+  <tr><td>create</td><td>Create an aggregation (i.e. post to the server. The ID is assigned by the client)</td></tr>
+  <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
+  <tr><td>transaction</td><td>Not supported</td></tr>
+  <tr><td>conformance</td><td>Not supported (no conformance statement for aggregations directly)</td></tr>
+  <tr><td>schema</td><td>Not supported (no schema for FHIR atom directly)</td></tr>
+</table>
+<p>
+For all these resources, the id (as used in the <a href="http.htm">RESTful transactions</a>) is the 
+unique id of the aggregation. Note that creating an aggregation does not mean that any apparent 
+implied transactions in the resources found in the aggregation should be applied to the server resources and/or 
+executed by any system - specific transaction are required, either using the RESTful or messaging frameworks, 
+or a SOA implementation.
+</p>
+
+
+<%footer%>
+<%/maindiv%>    
+</body>
+</html>

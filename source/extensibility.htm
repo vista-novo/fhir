@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Extensibility</title>
+    <title>Extensibility - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -52,29 +52,8 @@ that must be met as part of the definition of the extension.
 <p>
 Each resource includes the optional extensions element before the narrative element at the end of the resource.
 </p>
-<pre>
- &lt;extensions <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-  &lt;<b>extension</b>&gt; 
-   &lt;<b>code</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Code that identifies the meaning of the extension</font>&lt;/code&gt;
-   &lt;<b>definition</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Source of the definition for the code</font>&lt;/definition&gt;
-   &lt;<b>ref</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Internal reference to context of the extension (xml:id)</font>&lt;/ref&gt;
-   &lt;<b>state</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#code">code</a>"</font>&gt;<font color="navy">must-understand | superceded</font>&lt;/state&gt;
-   &lt;<b>value[x]</b> <a href="xml.htm#Control" class="cf">cond</a>&gt;<font color="navy">Value of extension</font>&lt;/value[x]&gt;
-   &lt;extensions <font color="darkgreen">type="list"</font>&gt;  <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-    <font color="Gray">&lt;!-- Nested Extensions --&gt;</font>
-   &lt;/extensions&gt;
-  &lt;/extension&gt;
- &lt;/extensions&gt;
-</pre>
-<p>
-Terminology Bindings
-</p>
-<ul>
-  <li>Extension.state is  bound to the concept domain <i>ExtensionState</i>: "The state of an extension". Possible values:
-    <table class="codes">
-    <tr><td>must-understand</td><td colspan="2">The extension contains information that qualifies or negates another element, and must be understood by an application process the resource</td></tr>    <tr><td>superceded</td><td colspan="2">The extension has been promoted into the main content of the resource, and the content is found at the reference. The extension continues to be defined for backward compatibility</td></tr>    </table>
-  </li>
-</ul>
+<%dt Extensions%>
+
 <p>
 Notes:
 </p>
@@ -83,9 +62,9 @@ Notes:
  <li>The source of the definition must be declared using the <i>definition</i> element. The <i>definition</i> may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.</li>
  <li>If present, the id in the <i>ref</i> element identifies a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource</li>
  <li>The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</li>
- <li>When using xml:id attributes, <a href="implementation.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind</li>
+ <li>When using xml:id attributes, <a href="atom.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind</li>
  <li>Any element defined as part of the resource content, or any repeating element inside a data type, may carry an id attribute to serve as the target of an extension</li>
- <li>An extension may have a value, or nested extensions, but not both</li>
+ <li>An extension may have a value, or nested extensions, but not both. The actual name of the value element has the type added to it in place of the [x], such as valueQuantity</li>
 </ul>
 <p>
 As well as providing additional undescribed information, extensions may be used to qualify the meaning of other elements in a way that makes them 
@@ -95,15 +74,16 @@ value element. Instead, the state of the extension is "superceded", and the ref 
 </p>
 <p>
 <b>Any application processing the data of a resource must check for extensions with state="must-understand".</b> If the application does not recognise the code on an extension that is labeled
-"must-understand", it SHALL either refuse to process the data, or carry a warning concerning the data along with any action or output that results from processing the data. 
+"must-understand", and where the extension either has no internal reference, or the reference is data processed by the application, it SHALL either refuse to process the data, 
+or carry a warning concerning the data along with any action or output that results from processing the data. 
 Note that it must always be safe to show the narrative to humans; any extension that is labelled as must-understand must be represented in the narrative.
 Applications are encouraged to ignore un-required extensions that they do not recognise. Applications that do not accept unknown extensions should declare 
 this in their conformance statement.
 </p>
 <p>
-The <i>[type]</i> element has the name of one of the defined types, and the contents as defined for that type, or another extension. Specifically, the element name may be one of the following:
+The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
 </p>
-<ul>
+<ul class="dense">
  <li>dateTime</li>
  <li>string</li>
  <li>uri</li>
@@ -123,7 +103,7 @@ The <i>[type]</i> element has the name of one of the defined types, and the cont
  <li>Contact</li>
 </ul>
 <p>
-Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the codes make rules about it. Extensions can never have a default value.
+Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extension codes make rules about it. Extensions can never have a default value.
 </p>
 
 <h2>Defining Extensions</h2>
@@ -147,8 +127,8 @@ Extensions may be defined by any project or jurisdication, up to and including i
 <p>
 Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
-<ul>
- <li>A particular element in a resource</li>
+<ul class="dense">
+ <li>A particular element in a single resource</li>
  <li>Anywhere a particular data type is used</li>
  <li>A set of elements across one or more resources</li>
  <li>a particular context in one of the mapped reference models</li>
@@ -156,7 +136,8 @@ Extensions are always defined against some particular context. The following are
 </ul>
 <p>
 In addition, an element definition might apply additional constraints with 
-regards to particular element values of the target that make it's use suitable.
+regards to particular element values of the target that make it's use appropriate.
+Extensions SHALL only be used in the contect against which they are defined.
 </p>
 <p>
 Each extension is defined using the following fields:
@@ -164,7 +145,7 @@ Each extension is defined using the following fields:
 <p>todo: metadata, context</p>
 <table class="codes">
  <tr><td>Code</td><td>Required</td><td>The code that is used in a resource to identify this extension</td></tr>
- <tr><td>Path</td><td>Optional</td><td>The path in the resource that this extension relates to, if relevant</td></tr>
+ <tr><td>Context</td><td>Required</td><td>The context of this extension. See below</td></tr>
  <tr><td>TargetType</td><td>Optional</td><td>The type of the path to which this applies, if it matters. This must be a valid FHIR data type as described above</td></tr>
  <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conform to the set of extensions containing this extension, it must be included in the resource</td></tr>
  <tr><td>Conformance</td><td>Required</td><td>Whether the use of the extension is mandatory, conditional, optional, or prohibited. If the extension is conditional, the conditions must be described in the comments field. This field overlaps with the cardinality, and must be consistent with it.</td></tr>
@@ -181,8 +162,7 @@ Each extension is defined using the following fields:
 Notes:
 </p>
 <ul>
- <li>Mappings are not expected to be computable (i.e. executable logic). Mappings to other specifications can also be provided.</li>
- <li>Either a path of a target Type should be provided</li>
+ <li>Mappings are not required to be computable (i.e. executable logic). Mappings to other specifications can also be provided.</li>
 </ul>
 <p>
 Whenever resources containing extensions are exchanged, the definitions of the extensions must be available to all the parties that share the resources. 

@@ -2,3 +2,4 @@ Code,Definition
 personal,The person authenticated the document in their personal capacity
 professional,The person authenticated the document in their professional capacity
 legal,The person authenticated the document and accepted legal responsibility for it's content
+official,The organization authenticated the document as consistent with their policies and procedures

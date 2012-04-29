@@ -3,18 +3,16 @@
   xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Prescription.xsd">
   <id>1.2.36.146595217.4.19.1.3141</id>
 
-  <identifiers>
+  <identifier>
+    <type>
+      <code>MR</code>
+      <system>urn:hl7-org:sid/v2-0203</system>
+    </type>
     <identifier>
-      <type>
-        <code>MR</code>
-        <system>urn:hl7-org:sid/v2-0203</system>
-      </type>
-      <identifier>
-        <system>oid:0.1.2.3.4.5.6.7</system>
-        <id>123456</id>
-      </identifier>
+      <system>oid:0.1.2.3.4.5.6.7</system>
+      <id>123456</id>
     </identifier>
-  </identifiers>
+  </identifier>
 
   <status>active</status>
 
@@ -44,43 +42,39 @@
 
   <medicine>
     <description>Penicillin VK oral suspension, 125mg/5ml</description>
-    <activeIngredients>
-      <activeIngredient>
-        <productCode>
-          <code>XXXXX</code>
-          <system>urn:hl7.org:sid/atc</system>
-          <display>Penicillin</display>
-        </productCode>
-        <quantity>
-          <numerator>
-            <value>125</value>
-            <code>mg</code>
-            <system>urn:hl7-org:sid/ucum</system>
-          </numerator>
-          <denominator>
-            <value>5</value>
-            <code>ml</code>
-            <system>urn:hl7-org:sid/ucum</system>
-          </denominator>
-        </quantity>
-      </activeIngredient>
-    </activeIngredients>
-    <inactiveIngredients>
-      <inactiveIngredient>
-        <productCode>
-          <code>YYYYY</code>
-          <system>urn:hl7.org:sid/atc</system>
-          <display>Water</display>
-        </productCode>
-        <quantity>
-          <numerator>
-            <value>5</value>
-            <code>ml</code>
-            <system>urn:hl7-org:sid/ucum</system>
-          </numerator>
-        </quantity>
-      </inactiveIngredient>
-    </inactiveIngredients>
+    <activeIngredient>
+      <productCode>
+        <code>XXXXX</code>
+        <system>urn:hl7.org:sid/atc</system>
+        <display>Penicillin</display>
+      </productCode>
+      <quantity>
+        <numerator>
+          <value>125</value>
+          <code>mg</code>
+          <system>urn:hl7-org:sid/ucum</system>
+        </numerator>
+        <denominator>
+          <value>5</value>
+          <code>ml</code>
+          <system>urn:hl7-org:sid/ucum</system>
+        </denominator>
+      </quantity>
+    </activeIngredient>
+    <inactiveIngredient>
+      <productCode>
+        <code>YYYYY</code>
+        <system>urn:hl7.org:sid/atc</system>
+        <display>Water</display>
+      </productCode>
+      <quantity>
+        <numerator>
+          <value>5</value>
+          <code>ml</code>
+          <system>urn:hl7-org:sid/ucum</system>
+        </numerator>
+      </quantity>
+    </inactiveIngredient>
   </medicine>
 
   <administrationRequest>
@@ -105,35 +99,31 @@
       <system>urn:hl7-org:sid/ucum</system>
     </duration>
     
-    <dosageInstructions>
-      <dosageInstruction>
-        <route>
-          <coding>
-            <code>363743006</code>
-            <system>http://snomed.info</system>
-            <display>oral administration of treatment</display>
-          </coding>          
-        </route>
-        <doseQuantity>
-          <value>250</value>
-          <code>mg</code>
-          <system>urn:hl7-org:sid/ucum</system>
-        </doseQuantity>
-        <schedules>
-          <schedule>
-            <repeat>
-              <frequency>3</frequency>
-              <duration>
-                <value>1</value>
-                <units>day</units>
-                <code>d</code>
-                <system>urn:hl7-org:sid/ucum</system>
-              </duration>
-            </repeat>
-          </schedule>
-        </schedules>
-      </dosageInstruction>
-    </dosageInstructions>
+    <dosageInstruction>
+      <route>
+        <coding>
+          <code>363743006</code>
+          <system>http://snomed.info</system>
+          <display>oral administration of treatment</display>
+        </coding>          
+      </route>
+      <doseQuantity>
+        <value>250</value>
+        <code>mg</code>
+        <system>urn:hl7-org:sid/ucum</system>
+      </doseQuantity>
+      <schedule>
+        <repeat>
+          <frequency>3</frequency>
+          <duration>
+            <value>1</value>
+            <units>day</units>
+            <code>d</code>
+            <system>urn:hl7-org:sid/ucum</system>
+          </duration>
+        </repeat>
+      </schedule>
+    </dosageInstruction>
   </administrationRequest>
 
   <reason>
@@ -146,8 +136,8 @@
   
   <text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Penicillin VK oral suspension, 125mg/5ml, 250 mg po tid x 10 days</p>
-    </xhtml>
+    </div>
   </text>
 </Prescription>

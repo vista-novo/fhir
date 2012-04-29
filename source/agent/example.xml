@@ -12,34 +12,30 @@
   </organization> 
 
   <!-- Referring Provider for the first 3 months of 2012 -->
-  <roles>  
-    <role>
-      <coding>
-        <code>RP</code>
-        <system>urn:hl7-org:sid/v2-0286</system>
-      </coding>
-    </role>
-  </roles>
+  <role>
+    <coding>
+      <code>RP</code>
+      <system>urn:hl7-org:sid/v2-0286</system>
+    </coding>
+  </role>
   
   <period>
     <low>2012-01-01</low>
     <high>2012-03-31</high>
   </period>
   
-  <identifiers>
-    <identifier>
-      <identifier>  
-        <system>htp://www.acme.org/providers</system>
-        <id>23</id>
-      </identifier>
+  <identifier>
+    <identifier>  
+      <system>htp://www.acme.org/providers</system>
+      <id>23</id>
     </identifier>
-  </identifiers>
+  </identifier>
 
   <text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</p>
-    </xhtml>
+    </div>
   </text>
 </Agent>
 
