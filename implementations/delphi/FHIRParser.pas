@@ -2,7 +2,7 @@ unit FHIRParser;
 
 interface
 
-// FHIR v0.01 generated 21:27 Apr 15, 2012
+// FHIR v0.01 generated 22:50 Apr 29, 2012
 
 uses
   SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
@@ -29,7 +29,6 @@ Type
     function ParseChoice(element : IXmlDomElement) : TChoice;
     function ParseAttachment(element : IXmlDomElement) : TAttachment;
     function ParseRatio(element : IXmlDomElement) : TRatio;
-    function ParseCodeableConceptCoding(element : IXmlDomElement) : TCodeableConceptCoding;
     function ParseCodeableConcept(element : IXmlDomElement) : TCodeableConcept;
     function ParseIdentifier(element : IXmlDomElement) : TIdentifier;
     function ParseScheduleRepeat(element : IXmlDomElement) : TScheduleRepeat;
@@ -111,7 +110,6 @@ Type
     procedure ComposeChoice(name : string; elem : TChoice);
     procedure ComposeAttachment(name : string; elem : TAttachment);
     procedure ComposeRatio(name : string; elem : TRatio);
-    procedure ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
     procedure ComposeCodeableConcept(name : string; elem : TCodeableConcept);
     procedure ComposeIdentifier(name : string; elem : TIdentifier);
     procedure ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
@@ -193,7 +191,6 @@ Type
     function ParseChoice : TChoice;
     function ParseAttachment : TAttachment;
     function ParseRatio : TRatio;
-    function ParseCodeableConceptCoding : TCodeableConceptCoding;
     function ParseCodeableConcept : TCodeableConcept;
     function ParseIdentifier : TIdentifier;
     function ParseScheduleRepeat : TScheduleRepeat;
@@ -275,7 +272,6 @@ Type
     procedure ComposeChoice(name : string; elem : TChoice);
     procedure ComposeAttachment(name : string; elem : TAttachment);
     procedure ComposeRatio(name : string; elem : TRatio);
-    procedure ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
     procedure ComposeCodeableConcept(name : string; elem : TCodeableConcept);
     procedure ComposeIdentifier(name : string; elem : TIdentifier);
     procedure ComposeScheduleRepeat(name : string; elem : TScheduleRepeat);
@@ -345,7 +341,6 @@ implementation
 function TFHIRXmlParser.ParseExtension(element : IXmlDomElement) : TExtension;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TExtension.create;
   try
@@ -419,18 +414,8 @@ begin
         result.value := ParseHumanName(child)
       else if (child.nodeName = 'valueHumanId') then
         result.value := ParseHumanId(child)
-      else if (child.nodeName = 'extensions') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'extension') Then
-            result.Extension.Add(ParseExtension(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'extension') then
+        result.Extension.Add(ParseExtension(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -480,8 +465,8 @@ begin
     ComposeBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
     ComposeString('valueUuid', TFHIRTypeString(elem.value))
-  else if elem.value is TFHIRTypeDateTime then
-    ComposeDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TFHIRTypeInstant then
+    ComposeInstant('valueInstant', TFHIRTypeInstant(elem.value))
   else if elem.value is TCoding then
     ComposeCoding('valueCoding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
@@ -512,13 +497,8 @@ begin
     ComposeHumanName('valueHumanName', THumanName(elem.value))
   else if elem.value is THumanId then
     ComposeHumanId('valueHumanId', THumanId(elem.value));
-  if elem.Extension.Count > 0 then
-  begin
-    FXml.open('extensions');
-    for i := 0 to elem.Extension.Count - 1 do
-      ComposeExtension('extension',elem.Extension[i]);
-    FXml.Close('extensions');
-  end;
+  for i := 0 to elem.Extension.Count - 1 do
+    ComposeExtension('extension', elem.Extension[i]);
   FXml.close(name);
 end;
 
@@ -652,8 +632,8 @@ begin
     ComposeBoolean('valueBoolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
     ComposeString('valueUuid', TFHIRTypeString(elem.value))
-  else if elem.value is TFHIRTypeDateTime then
-    ComposeDateTime('valueInstant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TFHIRTypeInstant then
+    ComposeInstant('valueInstant', TFHIRTypeInstant(elem.value))
   else if elem.value is TCoding then
     ComposeCoding('valueCoding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
@@ -697,7 +677,6 @@ end;
 function TFHIRXmlParser.ParseConstraintElement(element : IXmlDomElement) : TConstraintElement;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TConstraintElement.create;
   try
@@ -727,34 +706,14 @@ begin
         result.mustUnderstand := StringToBoolean(child.text)
       else if (child.nodeName = 'definition') then
         result.definition := child.text
-      else if (child.nodeName = 'mappings') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'mapping') Then
-            result.Mapping.Add(ParseConstraintElementMapping(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'mapping') then
+        result.Mapping.Add(ParseConstraintElementMapping(child))
       else if (child.nodeName = 'aggregation') then
         result.aggregation := ParseConstraintElementAggregation(child)
       else if (child.nodeName = 'valueSet') then
         result.valueSet := child.text
-      else if (child.nodeName = 'values') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'value') Then
-            result.Value.Add(ParseConstraintElementValue(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'value') then
+        result.Value.Add(ParseConstraintElementValue(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -785,22 +744,12 @@ begin
   Text('mustSupport',BooleanToString(elem.mustSupport));
   Text('mustUnderstand',BooleanToString(elem.mustUnderstand));
   Text('definition',elem.definition);
-  if elem.Mapping.Count > 0 then
-  begin
-    FXml.open('mappings');
-    for i := 0 to elem.Mapping.Count - 1 do
-      ComposeConstraintElementMapping('mapping',elem.Mapping[i]);
-    FXml.Close('mappings');
-  end;
+  for i := 0 to elem.Mapping.Count - 1 do
+    ComposeConstraintElementMapping('mapping', elem.Mapping[i]);
   ComposeConstraintElementAggregation('aggregation', elem.aggregation);
   Text('valueSet',elem.valueSet);
-  if elem.Value.Count > 0 then
-  begin
-    FXml.open('values');
-    for i := 0 to elem.Value.Count - 1 do
-      ComposeConstraintElementValue('value',elem.Value[i]);
-    FXml.Close('values');
-  end;
+  for i := 0 to elem.Value.Count - 1 do
+    ComposeConstraintElementValue('value', elem.Value[i]);
   FXml.close(name);
 end;
 
@@ -1154,8 +1103,8 @@ begin
     ComposeBoolean('Boolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
     ComposeString('Uuid', TFHIRTypeString(elem.value))
-  else if elem.value is TFHIRTypeDateTime then
-    ComposeDateTime('Instant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TFHIRTypeInstant then
+    ComposeInstant('Instant', TFHIRTypeInstant(elem.value))
   else if elem.value is TCoding then
     ComposeCoding('Coding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
@@ -1300,8 +1249,8 @@ begin
     ComposeBoolean('Boolean', TFHIRTypeBoolean(elem.value))
   else if elem.value is TFHIRTypeString then
     ComposeString('Uuid', TFHIRTypeString(elem.value))
-  else if elem.value is TFHIRTypeDateTime then
-    ComposeDateTime('Instant', TFHIRTypeDateTime(elem.value))
+  else if elem.value is TFHIRTypeInstant then
+    ComposeInstant('Instant', TFHIRTypeInstant(elem.value))
   else if elem.value is TCoding then
     ComposeCoding('Coding', TCoding(elem.value))
   else if elem.value is TInterval_Quantity then
@@ -1338,7 +1287,6 @@ end;
 function TFHIRXmlParser.ParseConstraint(element : IXmlDomElement) : TConstraint;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TConstraint.create;
   try
@@ -1352,18 +1300,8 @@ begin
         result.name := child.text
       else if (child.nodeName = 'purpose') then
         result.purpose := child.text
-      else if (child.nodeName = 'elements') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'element') Then
-            result.Element.Add(ParseConstraintElement(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'element') then
+        result.Element.Add(ParseConstraintElement(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -1386,13 +1324,8 @@ begin
   Text('type',elem.type_);
   Text('name',elem.name);
   Text('purpose',elem.purpose);
-  if elem.Element.Count > 0 then
-  begin
-    FXml.open('elements');
-    for i := 0 to elem.Element.Count - 1 do
-      ComposeConstraintElement('element',elem.Element[i]);
-    FXml.Close('elements');
-  end;
+  for i := 0 to elem.Element.Count - 1 do
+    ComposeConstraintElement('element', elem.Element[i]);
   FXml.close(name);
 end;
 
@@ -1596,7 +1529,6 @@ end;
 function TFHIRXmlParser.ParseNarrative(element : IXmlDomElement) : TNarrative;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TNarrative.create;
   try
@@ -1607,31 +1539,11 @@ begin
       if (child.nodeName = 'status') then
         result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus, child))
       else if (child.nodeName = 'xhtml') then
-        result.xhtml := ParseXhtml(child)
-      else if (child.nodeName = 'images') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'image') Then
-            result.Image.Add(ParseNarrativeImage(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'maps') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'map') Then
-            result.Map.Add(ParseNarrativeMap(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+        result.xhtml := ParseFhirXHtmlNode(child)
+      else if (child.nodeName = 'image') then
+        result.Image.Add(ParseNarrativeImage(child))
+      else if (child.nodeName = 'map') then
+        result.Map.Add(ParseNarrativeMap(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -1652,21 +1564,11 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('status',CODES_TNarrativeStatus[elem.status]);
-  ComposeXHtml('xhtml',elem.xhtml);
-  if elem.Image.Count > 0 then
-  begin
-    FXml.open('images');
-    for i := 0 to elem.Image.Count - 1 do
-      ComposeNarrativeImage('image',elem.Image[i]);
-    FXml.Close('images');
-  end;
-  if elem.Map.Count > 0 then
-  begin
-    FXml.open('maps');
-    for i := 0 to elem.Map.Count - 1 do
-      ComposeNarrativeMap('map',elem.Map[i]);
-    FXml.Close('maps');
-  end;
+  ComposeFhirXHtmlNode('xhtml', elem.xhtml);
+  for i := 0 to elem.Image.Count - 1 do
+    ComposeNarrativeImage('image', elem.Image[i]);
+  for i := 0 to elem.Map.Count - 1 do
+    ComposeNarrativeMap('map', elem.Map[i]);
   FXml.close(name);
 end;
 
@@ -1681,7 +1583,7 @@ begin
       else if (FJson.ItemName = 'status') then
         result.status := TNarrativeStatus(ParseEnum(CODES_TNarrativeStatus))
       else if (FJson.ItemName = 'xhtml') then
-        result.xhtml := ParseXhtml()
+        result.xhtml := ParseFhirXHtmlNode
       else if (FJson.ItemName = 'images') then
       begin
         FJson.checkState(jpitArray);
@@ -1717,7 +1619,7 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('status',CODES_TNarrativeStatus[elem.status]);
-  ComposeXHtml('xhtml',elem.xhtml);
+  ComposeFhirXHtmlNode('xhtml', elem.xhtml);
   if elem.Image.Count > 0 then
   begin
     FJson.valueObject('images');
@@ -2427,81 +2329,6 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseCodeableConceptCoding(element : IXmlDomElement) : TCodeableConceptCoding;
-var
-  child : IXMLDOMElement;
-begin
-  result := TCodeableConceptCoding.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'code') then
-        result.code := child.text
-      else if (child.nodeName = 'system') then
-        result.system := child.text
-      else if (child.nodeName = 'display') then
-        result.display := child.text
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('code',elem.code);
-  Text('system',elem.system);
-  Text('display',elem.display);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseCodeableConceptCoding : TCodeableConceptCoding;
-begin
-  result := TCodeableConceptCoding.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'code') then
-        result.code := FJson.itemValue
-      else if (FJson.ItemName = 'system') then
-        result.system := FJson.itemValue
-      else if (FJson.ItemName = 'display') then
-        result.display := FJson.itemValue
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeCodeableConceptCoding(name : string; elem : TCodeableConceptCoding);
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('code',elem.code);
-  Prop('system',elem.system);
-  Prop('display',elem.display);
-  FJson.finishObject;
-end;
-
 function TFHIRXmlParser.ParseCodeableConcept(element : IXmlDomElement) : TCodeableConcept;
 var
   child : IXMLDOMElement;
@@ -2513,7 +2340,7 @@ begin
     while (child <> nil) do
     begin
       if (child.nodeName = 'coding') then
-        result.Coding.Add(ParseCodeableConceptCoding(child))
+        result.Coding.Add(ParseCoding(child))
       else if (child.nodeName = 'text') then
         result.text := child.text
       else if (child.nodeName = 'primary') then
@@ -2538,7 +2365,7 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   for i := 0 to elem.Coding.Count - 1 do
-    ComposeCodeableConceptCoding('coding', elem.Coding[i]);
+    ComposeCoding('coding', elem.Coding[i]);
   Text('text',elem.text);
   Text('primary',elem.primary);
   FXml.close(name);
@@ -2557,7 +2384,7 @@ begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.Coding.Add(ParseCodeableConceptCoding);
+          result.Coding.Add(ParseCoding);
         FJson.Next;
       end
       else if (FJson.ItemName = 'text') then
@@ -2586,7 +2413,7 @@ begin
   begin
     FJson.valueObject('codings');
     for i := 0 to elem.Coding.Count - 1 do
-      ComposeCodeableConceptCoding('coding',elem.Coding[i]);
+      ComposeCoding('coding',elem.Coding[i]);
     FJson.FinishObject;
   end;
   Prop('text',elem.text);
@@ -3335,7 +3162,6 @@ end;
 function TFHIRXmlParser.ParseConformancePublisher(element : IXmlDomElement) : TConformancePublisher;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TConformancePublisher.create;
   try
@@ -3345,30 +3171,10 @@ begin
     begin
       if (child.nodeName = 'name') then
         result.name := child.text
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -3389,20 +3195,10 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('name',elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   FXml.close(name);
 end;
 
@@ -3669,7 +3465,6 @@ end;
 function TFHIRXmlParser.ParseConformanceOperationTransaction(element : IXmlDomElement) : TConformanceOperationTransaction;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TConformanceOperationTransaction.create;
   try
@@ -3677,18 +3472,8 @@ begin
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'names') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'name') Then
-            result.Name.Add(item.text)
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      if (child.nodeName = 'name') then
+        result.Name.Add(child.text)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -3708,13 +3493,8 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  if elem.Name.Count > 0 then
-  begin
-    FXml.open('names');
-    for i := 0 to elem.Name.Count - 1 do
-      Text('name',elem.Name[i]);
-    FXml.Close('names');
-  end;
+  for i := 0 to elem.Name.Count - 1 do
+    Text('name', elem.Name[i]);
   FXml.close(name);
 end;
 
@@ -3765,7 +3545,6 @@ end;
 function TFHIRXmlParser.ParseConformanceOperationSearch(element : IXmlDomElement) : TConformanceOperationSearch;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TConformanceOperationSearch.create;
   try
@@ -3773,18 +3552,8 @@ begin
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'params') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'param') Then
-            result.Param.Add(item.text)
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      if (child.nodeName = 'param') then
+        result.Param.Add(child.text)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -3804,13 +3573,8 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  if elem.Param.Count > 0 then
-  begin
-    FXml.open('params');
-    for i := 0 to elem.Param.Count - 1 do
-      Text('param',elem.Param[i]);
-    FXml.Close('params');
-  end;
+  for i := 0 to elem.Param.Count - 1 do
+    Text('param', elem.Param[i]);
   FXml.close(name);
 end;
 
@@ -3869,7 +3633,7 @@ begin
     while (child <> nil) do
     begin
       if (child.nodeName = 'id') then
-        result.id := child.text
+        result.id := TResourceIdSource(ParseEnum(CODES_TResourceIdSource, child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -3887,7 +3651,7 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  Text('id',elem.id);
+  Text('id',CODES_TResourceIdSource[elem.id]);
   FXml.close(name);
 end;
 
@@ -3900,7 +3664,7 @@ begin
       if (FJson.ItemName = 'xmlId') then
         result.xmlId := FJson.itemValue
       else if (FJson.ItemName = 'id') then
-        result.id := FJson.itemValue
+        result.id := TResourceIdSource(ParseEnum(CODES_TResourceIdSource))
       else
          UnknownContent;
     end;
@@ -3917,7 +3681,7 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  Prop('id',elem.id);
+  Prop('id',CODES_TResourceIdSource[elem.id]);
   FJson.finishObject;
 end;
 
@@ -4106,7 +3870,7 @@ begin
       else if (child.nodeName = 'time') then
         result.time := child.text
       else if (child.nodeName = 'party') then
-        result.party := ParseFHIRResourceReference{TPerson}(child)
+        result.party := ParseFHIRResourceReference{Resource}(child)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -4126,7 +3890,7 @@ begin
   FXml.open(name);
   Text('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
   Text('time',elem.time);
-  ComposeFHIRResourceReference{TPerson}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FXml.close(name);
 end;
 
@@ -4143,7 +3907,7 @@ begin
       else if (FJson.ItemName = 'time') then
         result.time := FJson.itemValue
       else if (FJson.ItemName = 'party') then
-        result.party := ParseFHIRResourceReference{TPerson}
+        result.party := ParseFHIRResourceReference{Resource}
       else
          UnknownContent;
     end;
@@ -4162,14 +3926,13 @@ begin
   Prop('xmlId', elem.xmlId);
   Prop('mode',CODES_TDocumentAuthenticationMode[elem.mode]);
   Prop('time',elem.time);
-  ComposeFHIRResourceReference{TPerson}('party', elem.party);
+  ComposeFHIRResourceReference{Resource}('party', elem.party);
   FJson.finishObject;
 end;
 
 function TFHIRXmlParser.ParseDocumentSection(element : IXmlDomElement) : TDocumentSection;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TDocumentSection.create;
   try
@@ -4191,18 +3954,8 @@ begin
         result.informant := ParseFHIRResourceReference{TPerson}(child)
       else if (child.nodeName = 'content') then
         result.content := ParseFHIRResourceReference{Resource}(child)
-      else if (child.nodeName = 'sections') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'section') Then
-            result.Section.Add(ParseDocumentSection(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'section') then
+        result.Section.Add(ParseDocumentSection(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -4229,13 +3982,8 @@ begin
   ComposeFHIRResourceReference{Resource}('subject', elem.subject);
   ComposeFHIRResourceReference{TPerson}('informant', elem.informant);
   ComposeFHIRResourceReference{Resource}('content', elem.content);
-  if elem.Section.Count > 0 then
-  begin
-    FXml.open('sections');
-    for i := 0 to elem.Section.Count - 1 do
-      ComposeDocumentSection('section',elem.Section[i]);
-    FXml.Close('sections');
-  end;
+  for i := 0 to elem.Section.Count - 1 do
+    ComposeDocumentSection('section', elem.Section[i]);
   FXml.close(name);
 end;
 
@@ -4376,7 +4124,6 @@ end;
 function TFHIRXmlParser.ParseDocument(element : IXmlDomElement) : TDocument;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TDocument.create;
   try
@@ -4402,60 +4149,20 @@ begin
         result.replaces := child.text
       else if (child.nodeName = 'subject') then
         result.subject := ParseFHIRResourceReference{Resource}(child)
-      else if (child.nodeName = 'authors') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'author') Then
-            result.Author.Add(ParseDocumentAuthor(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'attestors') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'attestor') Then
-            result.Attestor.Add(ParseDocumentAttestor(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'recipients') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'recipient') Then
-            result.Recipient.Add(ParseFHIRResourceReference{Resource}(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'author') then
+        result.Author.Add(ParseDocumentAuthor(child))
+      else if (child.nodeName = 'attestor') then
+        result.Attestor.Add(ParseDocumentAttestor(child))
+      else if (child.nodeName = 'recipient') then
+        result.Recipient.Add(ParseFHIRResourceReference{Resource}(child))
       else if (child.nodeName = 'custodian') then
         result.custodian := ParseFHIRResourceReference{TOrganization}(child)
       else if (child.nodeName = 'event') then
         result.event := ParseFHIRResourceReference{Resource}(child)
       else if (child.nodeName = 'encounter') then
         result.encounter := ParseFHIRResourceReference{Resource}(child)
-      else if (child.nodeName = 'sections') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'section') Then
-            result.Section.Add(ParseDocumentSection(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'section') then
+        result.Section.Add(ParseDocumentSection(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -4483,37 +4190,17 @@ begin
   Text('version',IntegerToString(elem.version));
   Text('replaces',elem.replaces);
   ComposeFHIRResourceReference{Resource}('subject', elem.subject);
-  if elem.Author.Count > 0 then
-  begin
-    FXml.open('authors');
-    for i := 0 to elem.Author.Count - 1 do
-      ComposeDocumentAuthor('author',elem.Author[i]);
-    FXml.Close('authors');
-  end;
-  if elem.Attestor.Count > 0 then
-  begin
-    FXml.open('attestors');
-    for i := 0 to elem.Attestor.Count - 1 do
-      ComposeDocumentAttestor('attestor',elem.Attestor[i]);
-    FXml.Close('attestors');
-  end;
-  if elem.Recipient.Count > 0 then
-  begin
-    FXml.open('recipients');
-    for i := 0 to elem.Recipient.Count - 1 do
-      ComposeFHIRResourceReference{Resource}('recipient',elem.Recipient[i]);
-    FXml.Close('recipients');
-  end;
+  for i := 0 to elem.Author.Count - 1 do
+    ComposeDocumentAuthor('author', elem.Author[i]);
+  for i := 0 to elem.Attestor.Count - 1 do
+    ComposeDocumentAttestor('attestor', elem.Attestor[i]);
+  for i := 0 to elem.Recipient.Count - 1 do
+    ComposeFHIRResourceReference{Resource}('recipient', elem.Recipient[i]);
   ComposeFHIRResourceReference{TOrganization}('custodian', elem.custodian);
   ComposeFHIRResourceReference{Resource}('event', elem.event);
   ComposeFHIRResourceReference{Resource}('encounter', elem.encounter);
-  if elem.Section.Count > 0 then
-  begin
-    FXml.open('sections');
-    for i := 0 to elem.Section.Count - 1 do
-      ComposeDocumentSection('section',elem.Section[i]);
-    FXml.Close('sections');
-  end;
+  for i := 0 to elem.Section.Count - 1 do
+    ComposeDocumentSection('section', elem.Section[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -4854,7 +4541,6 @@ end;
 function TFHIRXmlParser.ParseMessageConformancePublisher(element : IXmlDomElement) : TMessageConformancePublisher;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TMessageConformancePublisher.create;
   try
@@ -4864,30 +4550,10 @@ begin
     begin
       if (child.nodeName = 'name') then
         result.name := child.text
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -4908,20 +4574,10 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('name',elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   FXml.close(name);
 end;
 
@@ -5152,7 +4808,6 @@ end;
 function TFHIRXmlParser.ParseMessageConformanceEventRequest(element : IXmlDomElement) : TMessageConformanceEventRequest;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TMessageConformanceEventRequest.create;
   try
@@ -5160,18 +4815,8 @@ begin
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'resources') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'resource') Then
-            result.Resource.Add(ParseConstraint(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      if (child.nodeName = 'resource') then
+        result.Resource.Add(ParseConstraint(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5191,13 +4836,8 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  if elem.Resource.Count > 0 then
-  begin
-    FXml.open('resources');
-    for i := 0 to elem.Resource.Count - 1 do
-      ComposeConstraint('resource',elem.Resource[i]);
-    FXml.Close('resources');
-  end;
+  for i := 0 to elem.Resource.Count - 1 do
+    ComposeConstraint('resource', elem.Resource[i]);
   FXml.close(name);
 end;
 
@@ -5248,7 +4888,6 @@ end;
 function TFHIRXmlParser.ParseMessageConformanceEventResponse(element : IXmlDomElement) : TMessageConformanceEventResponse;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TMessageConformanceEventResponse.create;
   try
@@ -5256,18 +4895,8 @@ begin
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'resources') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'resource') Then
-            result.Resource.Add(ParseConstraint(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      if (child.nodeName = 'resource') then
+        result.Resource.Add(ParseConstraint(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5287,13 +4916,8 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  if elem.Resource.Count > 0 then
-  begin
-    FXml.open('resources');
-    for i := 0 to elem.Resource.Count - 1 do
-      ComposeConstraint('resource',elem.Resource[i]);
-    FXml.Close('resources');
-  end;
+  for i := 0 to elem.Resource.Count - 1 do
+    ComposeConstraint('resource', elem.Resource[i]);
   FXml.close(name);
 end;
 
@@ -5344,7 +4968,6 @@ end;
 function TFHIRXmlParser.ParseMessageConformance(element : IXmlDomElement) : TMessageConformance;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TMessageConformance.create;
   try
@@ -5362,18 +4985,8 @@ begin
         result.publisher := ParseMessageConformancePublisher(child)
       else if (child.nodeName = 'software') then
         result.software := ParseMessageConformanceSoftware(child)
-      else if (child.nodeName = 'events') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'event') Then
-            result.Event.Add(ParseMessageConformanceEvent(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'event') then
+        result.Event.Add(ParseMessageConformanceEvent(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5397,13 +5010,8 @@ begin
   Text('date',elem.date);
   ComposeMessageConformancePublisher('publisher', elem.publisher);
   ComposeMessageConformanceSoftware('software', elem.software);
-  if elem.Event.Count > 0 then
-  begin
-    FXml.open('events');
-    for i := 0 to elem.Event.Count - 1 do
-      ComposeMessageConformanceEvent('event',elem.Event[i]);
-    FXml.Close('events');
-  end;
+  for i := 0 to elem.Event.Count - 1 do
+    ComposeMessageConformanceEvent('event', elem.Event[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -5466,7 +5074,6 @@ end;
 function TFHIRXmlParser.ParseAgent(element : IXmlDomElement) : TAgent;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TAgent.create;
   try
@@ -5482,56 +5089,16 @@ begin
         result.person := ParseFHIRResourceReference{TPerson}(child)
       else if (child.nodeName = 'organization') then
         result.organization := ParseFHIRResourceReference{TOrganization}(child)
-      else if (child.nodeName = 'roles') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'role') Then
-            result.Role.Add(ParseCodeableConcept(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'role') then
+        result.Role.Add(ParseCodeableConcept(child))
       else if (child.nodeName = 'period') then
-        result.period := ParseInterval_dateTime(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+        result.period := ParseInterval_date(child)
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5554,35 +5121,15 @@ begin
   Text('id', elem.id);
   ComposeFHIRResourceReference{TPerson}('person', elem.person);
   ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
-  if elem.Role.Count > 0 then
-  begin
-    FXml.open('roles');
-    for i := 0 to elem.Role.Count - 1 do
-      ComposeCodeableConcept('role',elem.Role[i]);
-    FXml.Close('roles');
-  end;
-  ComposeInterval_dateTime('period', elem.period);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Role.Count - 1 do
+    ComposeCodeableConcept('role', elem.Role[i]);
+  ComposeInterval_date('period', elem.period);
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -5608,7 +5155,7 @@ begin
         FJson.Next;
       end
       else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_dateTime
+        result.period := ParseInterval_date
       else if (FJson.ItemName = 'identifiers') then
       begin
         FJson.checkState(jpitArray);
@@ -5661,7 +5208,7 @@ begin
       ComposeCodeableConcept('role',elem.Role[i]);
     FJson.FinishObject;
   end;
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   if elem.Identifier.Count > 0 then
   begin
     FJson.valueObject('identifiers');
@@ -5690,7 +5237,6 @@ end;
 function TFHIRXmlParser.ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TAnimalRelatedEntity.create;
   try
@@ -5704,30 +5250,10 @@ begin
         result.role := ParseCodeableConcept(child)
       else if (child.nodeName = 'name') then
         result.name := ParseHumanName(child)
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5750,20 +5276,10 @@ begin
   ComposeHumanId('id', elem.id);
   ComposeCodeableConcept('role', elem.role);
   ComposeHumanName('name', elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   FXml.close(name);
 end;
 
@@ -5838,7 +5354,6 @@ end;
 function TFHIRXmlParser.ParseAnimal(element : IXmlDomElement) : TAnimal;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TAnimal.create;
   try
@@ -5850,30 +5365,10 @@ begin
         result.id := child.text
       else if (child.nodeName = 'text') then
         result.text := ParseNarrative(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'names') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'name') Then
-            result.Name.Add(ParseHumanName(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'name') then
+        result.Name.Add(ParseHumanName(child))
       else if (child.nodeName = 'dob') then
         result.dob := child.text
       else if (child.nodeName = 'species') then
@@ -5882,18 +5377,8 @@ begin
         result.strain := ParseCodeableConcept(child)
       else if (child.nodeName = 'gender') then
         result.gender := ParseCodeableConcept(child)
-      else if (child.nodeName = 'relatedEntities') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'relatedEntity') Then
-            result.RelatedEntity.Add(ParseAnimalRelatedEntity(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'relatedEntity') then
+        result.RelatedEntity.Add(ParseAnimalRelatedEntity(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5914,31 +5399,16 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
-  if elem.Name.Count > 0 then
-  begin
-    FXml.open('names');
-    for i := 0 to elem.Name.Count - 1 do
-      ComposeHumanName('name',elem.Name[i]);
-    FXml.Close('names');
-  end;
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Name.Count - 1 do
+    ComposeHumanName('name', elem.Name[i]);
   Text('dob',elem.dob);
   ComposeCodeableConcept('species', elem.species);
   ComposeCodeableConcept('strain', elem.strain);
   ComposeCodeableConcept('gender', elem.gender);
-  if elem.RelatedEntity.Count > 0 then
-  begin
-    FXml.open('relatedEntities');
-    for i := 0 to elem.RelatedEntity.Count - 1 do
-      ComposeAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
-    FXml.Close('relatedEntities');
-  end;
+  for i := 0 to elem.RelatedEntity.Count - 1 do
+    ComposeAnimalRelatedEntity('relatedEntity', elem.RelatedEntity[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -6109,7 +5579,6 @@ end;
 function TFHIRXmlParser.ParsePrescriptionMedicine(element : IXmlDomElement) : TPrescriptionMedicine;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPrescriptionMedicine.create;
   try
@@ -6121,30 +5590,10 @@ begin
         result.productCode := ParseCoding(child)
       else if (child.nodeName = 'description') then
         result.description := child.text
-      else if (child.nodeName = 'activeIngredients') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'activeIngredient') Then
-            result.ActiveIngredient.Add(ParsePrescriptionMedicineActiveIngredient(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'inactiveIngredients') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'inactiveIngredient') Then
-            result.InactiveIngredient.Add(ParsePrescriptionMedicineInactiveIngredient(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'activeIngredient') then
+        result.ActiveIngredient.Add(ParsePrescriptionMedicineActiveIngredient(child))
+      else if (child.nodeName = 'inactiveIngredient') then
+        result.InactiveIngredient.Add(ParsePrescriptionMedicineInactiveIngredient(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -6166,20 +5615,10 @@ begin
   FXml.open(name);
   ComposeCoding('productCode', elem.productCode);
   Text('description',elem.description);
-  if elem.ActiveIngredient.Count > 0 then
-  begin
-    FXml.open('activeIngredients');
-    for i := 0 to elem.ActiveIngredient.Count - 1 do
-      ComposePrescriptionMedicineActiveIngredient('activeIngredient',elem.ActiveIngredient[i]);
-    FXml.Close('activeIngredients');
-  end;
-  if elem.InactiveIngredient.Count > 0 then
-  begin
-    FXml.open('inactiveIngredients');
-    for i := 0 to elem.InactiveIngredient.Count - 1 do
-      ComposePrescriptionMedicineInactiveIngredient('inactiveIngredient',elem.InactiveIngredient[i]);
-    FXml.Close('inactiveIngredients');
-  end;
+  for i := 0 to elem.ActiveIngredient.Count - 1 do
+    ComposePrescriptionMedicineActiveIngredient('activeIngredient', elem.ActiveIngredient[i]);
+  for i := 0 to elem.InactiveIngredient.Count - 1 do
+    ComposePrescriptionMedicineInactiveIngredient('inactiveIngredient', elem.InactiveIngredient[i]);
   FXml.close(name);
 end;
 
@@ -6389,7 +5828,6 @@ end;
 function TFHIRXmlParser.ParsePrescriptionAdministrationRequest(element : IXmlDomElement) : TPrescriptionAdministrationRequest;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPrescriptionAdministrationRequest.create;
   try
@@ -6409,18 +5847,8 @@ begin
         result.duration := ParseQuantity(child)
       else if (child.nodeName = 'numberOfAdministrations') then
         result.numberOfAdministrations := StringToInteger32(child.text)
-      else if (child.nodeName = 'dosageInstructions') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'dosageInstruction') Then
-            result.DosageInstruction.Add(ParsePrescriptionAdministrationRequestDosageInstruction(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'dosageInstruction') then
+        result.DosageInstruction.Add(ParsePrescriptionAdministrationRequestDosageInstruction(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -6446,13 +5874,8 @@ begin
   Text('end',elem.end_);
   ComposeQuantity('duration', elem.duration);
   Text('numberOfAdministrations',IntegerToString(elem.numberOfAdministrations));
-  if elem.DosageInstruction.Count > 0 then
-  begin
-    FXml.open('dosageInstructions');
-    for i := 0 to elem.DosageInstruction.Count - 1 do
-      ComposePrescriptionAdministrationRequestDosageInstruction('dosageInstruction',elem.DosageInstruction[i]);
-    FXml.Close('dosageInstructions');
-  end;
+  for i := 0 to elem.DosageInstruction.Count - 1 do
+    ComposePrescriptionAdministrationRequestDosageInstruction('dosageInstruction', elem.DosageInstruction[i]);
   FXml.close(name);
 end;
 
@@ -6521,7 +5944,6 @@ end;
 function TFHIRXmlParser.ParsePrescriptionAdministrationRequestDosageInstruction(element : IXmlDomElement) : TPrescriptionAdministrationRequestDosageInstruction;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPrescriptionAdministrationRequestDosageInstruction.create;
   try
@@ -6529,32 +5951,12 @@ begin
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'preconditions') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'precondition') Then
-            result.Precondition.Add(ParseCodeableConcept(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      if (child.nodeName = 'precondition') then
+        result.Precondition.Add(ParseCodeableConcept(child))
       else if (child.nodeName = 'prn') then
         result.prn := TBooleanYesNo(ParseEnum(CODES_TBooleanYesNo, child))
-      else if (child.nodeName = 'additionalInstructions') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'additionalInstruction') Then
-            result.AdditionalInstruction.Add(ParseCodeableConcept(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'additionalInstruction') then
+        result.AdditionalInstruction.Add(ParseCodeableConcept(child))
       else if (child.nodeName = 'route') then
         result.route := ParseCodeableConcept(child)
       else if (child.nodeName = 'doseQuantity') then
@@ -6563,18 +5965,8 @@ begin
         result.dose := ParseInterval_Quantity(child)
       else if (child.nodeName = 'rate') then
         result.rate := ParseQuantity(child)
-      else if (child.nodeName = 'schedules') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'schedule') Then
-            result.Schedule.Add(ParseSchedule(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'schedule') then
+        result.Schedule.Add(ParseSchedule(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -6594,34 +5986,19 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  if elem.Precondition.Count > 0 then
-  begin
-    FXml.open('preconditions');
-    for i := 0 to elem.Precondition.Count - 1 do
-      ComposeCodeableConcept('precondition',elem.Precondition[i]);
-    FXml.Close('preconditions');
-  end;
+  for i := 0 to elem.Precondition.Count - 1 do
+    ComposeCodeableConcept('precondition', elem.Precondition[i]);
   Text('prn',CODES_TBooleanYesNo[elem.prn]);
-  if elem.AdditionalInstruction.Count > 0 then
-  begin
-    FXml.open('additionalInstructions');
-    for i := 0 to elem.AdditionalInstruction.Count - 1 do
-      ComposeCodeableConcept('additionalInstruction',elem.AdditionalInstruction[i]);
-    FXml.Close('additionalInstructions');
-  end;
+  for i := 0 to elem.AdditionalInstruction.Count - 1 do
+    ComposeCodeableConcept('additionalInstruction', elem.AdditionalInstruction[i]);
   ComposeCodeableConcept('route', elem.route);
   if elem.dose is TQuantity then
     ComposeQuantity('doseQuantity', TQuantity(elem.dose))
   else if elem.dose is TInterval_Quantity then
     ComposeInterval_Quantity('doseInterval_Quantity', TInterval_Quantity(elem.dose));
   ComposeQuantity('rate', elem.rate);
-  if elem.Schedule.Count > 0 then
-  begin
-    FXml.open('schedules');
-    for i := 0 to elem.Schedule.Count - 1 do
-      ComposeSchedule('schedule',elem.Schedule[i]);
-    FXml.Close('schedules');
-  end;
+  for i := 0 to elem.Schedule.Count - 1 do
+    ComposeSchedule('schedule', elem.Schedule[i]);
   FXml.close(name);
 end;
 
@@ -6719,7 +6096,6 @@ end;
 function TFHIRXmlParser.ParsePrescription(element : IXmlDomElement) : TPrescription;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPrescription.create;
   try
@@ -6731,18 +6107,8 @@ begin
         result.id := child.text
       else if (child.nodeName = 'text') then
         result.text := ParseNarrative(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
       else if (child.nodeName = 'status') then
         result.status := TPrescriptionStatus(ParseEnum(CODES_TPrescriptionStatus, child))
       else if (child.nodeName = 'patient') then
@@ -6779,13 +6145,8 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
   Text('status',CODES_TPrescriptionStatus[elem.status]);
   ComposeFHIRResourceReference{TPatient}('patient', elem.patient);
   ComposeFHIRResourceReference{TAgent}('prescriber', elem.prescriber);
@@ -6871,7 +6232,6 @@ end;
 function TFHIRXmlParser.ParsePatient(element : IXmlDomElement) : TPatient;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPatient.create;
   try
@@ -6883,18 +6243,8 @@ begin
         result.id := child.text
       else if (child.nodeName = 'text') then
         result.text := ParseNarrative(child)
-      else if (child.nodeName = 'links') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'link') Then
-            result.Link_.Add(ParseFHIRResourceReference{TPatient}(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'link') then
+        result.Link_.Add(ParseFHIRResourceReference{TPatient}(child))
       else if (child.nodeName = 'active') then
         result.active := StringToBoolean(child.text)
       else if (child.nodeName = 'person') then
@@ -6903,18 +6253,8 @@ begin
         result.animal := ParseFHIRResourceReference{TAnimal}(child)
       else if (child.nodeName = 'provider') then
         result.provider := ParseFHIRResourceReference{TOrganization}(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
       else if (child.nodeName = 'diet') then
         result.diet := ParseCodeableConcept(child)
       else if (child.nodeName = 'confidentiality') then
@@ -6941,24 +6281,14 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  if elem.Link_.Count > 0 then
-  begin
-    FXml.open('links');
-    for i := 0 to elem.Link_.Count - 1 do
-      ComposeFHIRResourceReference{TPatient}('link',elem.Link_[i]);
-    FXml.Close('links');
-  end;
+  for i := 0 to elem.Link_.Count - 1 do
+    ComposeFHIRResourceReference{TPatient}('link', elem.Link_[i]);
   Text('active',BooleanToString(elem.active));
   ComposeFHIRResourceReference{TPerson}('person', elem.person);
   ComposeFHIRResourceReference{TAnimal}('animal', elem.animal);
   ComposeFHIRResourceReference{TOrganization}('provider', elem.provider);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
   ComposeCodeableConcept('diet', elem.diet);
   ComposeCodeableConcept('confidentiality', elem.confidentiality);
   ComposeCodeableConcept('recordLocation', elem.recordLocation);
@@ -7061,7 +6391,7 @@ begin
       if (child.nodeName = 'value') then
         result.value := child.text
       else if (child.nodeName = 'period') then
-        result.period := ParseInterval_dateTime(child)
+        result.period := ParseInterval_date(child)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7080,7 +6410,7 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('value',elem.value);
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7095,7 +6425,7 @@ begin
       else if (FJson.ItemName = 'value') then
         result.value := FJson.itemValue
       else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_dateTime
+        result.period := ParseInterval_date
       else
          UnknownContent;
     end;
@@ -7113,7 +6443,7 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('value',elem.value);
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
@@ -7134,7 +6464,7 @@ begin
       else if (child.nodeName = 'institution') then
         result.institution := ParseFHIRResourceReference{TOrganization}(child)
       else if (child.nodeName = 'period') then
-        result.period := ParseInterval_dateTime(child)
+        result.period := ParseInterval_date(child)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7155,7 +6485,7 @@ begin
   ComposeIdentifier('id', elem.id);
   ComposeCodeableConcept('code', elem.code);
   ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7174,7 +6504,7 @@ begin
       else if (FJson.ItemName = 'institution') then
         result.institution := ParseFHIRResourceReference{TOrganization}
       else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_dateTime
+        result.period := ParseInterval_date
       else
          UnknownContent;
     end;
@@ -7194,14 +6524,13 @@ begin
   ComposeIdentifier('id', elem.id);
   ComposeCodeableConcept('code', elem.code);
   ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
 function TFHIRXmlParser.ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TOrganizationRelatedOrganization.create;
   try
@@ -7215,32 +6544,12 @@ begin
         result.code := ParseCodeableConcept(child)
       else if (child.nodeName = 'name') then
         result.name := child.text
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else if (child.nodeName = 'period') then
-        result.period := ParseInterval_dateTime(child)
+        result.period := ParseInterval_date(child)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7263,21 +6572,11 @@ begin
   ComposeHumanId('id', elem.id);
   ComposeCodeableConcept('code', elem.code);
   Text('name',elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
-  ComposeInterval_dateTime('period', elem.period);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
+  ComposeInterval_date('period', elem.period);
   FXml.close(name);
 end;
 
@@ -7312,7 +6611,7 @@ begin
         FJson.Next;
       end
       else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_dateTime
+        result.period := ParseInterval_date
       else
          UnknownContent;
     end;
@@ -7348,14 +6647,13 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  ComposeInterval_dateTime('period', elem.period);
+  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
 function TFHIRXmlParser.ParseOrganization(element : IXmlDomElement) : TOrganization;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TOrganization.create;
   try
@@ -7367,82 +6665,22 @@ begin
         result.id := child.text
       else if (child.nodeName = 'text') then
         result.text := ParseNarrative(child)
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'name') then
+        result.Name.Add(ParseOrganizationName(child))
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else if (child.nodeName = 'code') then
         result.code := ParseCodeableConcept(child)
       else if (child.nodeName = 'industryCode') then
         result.industryCode := ParseCodeableConcept(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'names') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'name') Then
-            result.Name.Add(ParseOrganizationName(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'accreditations') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'accreditation') Then
-            result.Accreditation.Add(ParseOrganizationAccreditation(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'relatedOrganizations') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'relatedOrganization') Then
-            result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'accreditation') then
+        result.Accreditation.Add(ParseOrganizationAccreditation(child))
+      else if (child.nodeName = 'relatedOrganization') then
+        result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7463,50 +6701,20 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Name.Count - 1 do
+    ComposeOrganizationName('name', elem.Name[i]);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   ComposeCodeableConcept('code', elem.code);
   ComposeCodeableConcept('industryCode', elem.industryCode);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
-  if elem.Name.Count > 0 then
-  begin
-    FXml.open('names');
-    for i := 0 to elem.Name.Count - 1 do
-      ComposeOrganizationName('name',elem.Name[i]);
-    FXml.Close('names');
-  end;
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
-  if elem.Accreditation.Count > 0 then
-  begin
-    FXml.open('accreditations');
-    for i := 0 to elem.Accreditation.Count - 1 do
-      ComposeOrganizationAccreditation('accreditation',elem.Accreditation[i]);
-    FXml.Close('accreditations');
-  end;
-  if elem.RelatedOrganization.Count > 0 then
-  begin
-    FXml.open('relatedOrganizations');
-    for i := 0 to elem.RelatedOrganization.Count - 1 do
-      ComposeOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
-    FXml.Close('relatedOrganizations');
-  end;
+  for i := 0 to elem.Accreditation.Count - 1 do
+    ComposeOrganizationAccreditation('accreditation', elem.Accreditation[i]);
+  for i := 0 to elem.RelatedOrganization.Count - 1 do
+    ComposeOrganizationRelatedOrganization('relatedOrganization', elem.RelatedOrganization[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -7519,10 +6727,6 @@ begin
     begin
       if (FJson.ItemName = 'xmlId') then
         result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'code') then
-        result.code := ParseCodeableConcept
-      else if (FJson.ItemName = 'industryCode') then
-        result.industryCode := ParseCodeableConcept
       else if (FJson.ItemName = 'identifiers') then
       begin
         FJson.checkState(jpitArray);
@@ -7555,6 +6759,10 @@ begin
           result.Contact.Add(ParseContact);
         FJson.Next;
       end
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'industryCode') then
+        result.industryCode := ParseCodeableConcept
       else if (FJson.ItemName = 'accreditations') then
       begin
         FJson.checkState(jpitArray);
@@ -7590,8 +6798,6 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('id', elem.id);
-  ComposeCodeableConcept('code', elem.code);
-  ComposeCodeableConcept('industryCode', elem.industryCode);
   if elem.Identifier.Count > 0 then
   begin
     FJson.valueObject('identifiers');
@@ -7620,6 +6826,8 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
+  ComposeCodeableConcept('code', elem.code);
+  ComposeCodeableConcept('industryCode', elem.industryCode);
   if elem.Accreditation.Count > 0 then
   begin
     FJson.valueObject('accreditations');
@@ -7641,7 +6849,6 @@ end;
 function TFHIRXmlParser.ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TDocumentConformancePublisher.create;
   try
@@ -7651,30 +6858,10 @@ begin
     begin
       if (child.nodeName = 'name') then
         result.name := child.text
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7695,20 +6882,10 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('name',elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   FXml.close(name);
 end;
 
@@ -7852,7 +7029,6 @@ end;
 function TFHIRXmlParser.ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TDocumentConformanceDocument.create;
   try
@@ -7864,18 +7040,8 @@ begin
         result.name := child.text
       else if (child.nodeName = 'purpose') then
         result.purpose := child.text
-      else if (child.nodeName = 'resources') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'resource') Then
-            result.Resource.Add(ParseConstraint(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'resource') then
+        result.Resource.Add(ParseConstraint(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -7897,13 +7063,8 @@ begin
   FXml.open(name);
   Text('name',elem.name);
   Text('purpose',elem.purpose);
-  if elem.Resource.Count > 0 then
-  begin
-    FXml.open('resources');
-    for i := 0 to elem.Resource.Count - 1 do
-      ComposeConstraint('resource',elem.Resource[i]);
-    FXml.Close('resources');
-  end;
+  for i := 0 to elem.Resource.Count - 1 do
+    ComposeConstraint('resource', elem.Resource[i]);
   FXml.close(name);
 end;
 
@@ -7960,7 +7121,6 @@ end;
 function TFHIRXmlParser.ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TDocumentConformance.create;
   try
@@ -7978,18 +7138,8 @@ begin
         result.publisher := ParseDocumentConformancePublisher(child)
       else if (child.nodeName = 'software') then
         result.software := ParseDocumentConformanceSoftware(child)
-      else if (child.nodeName = 'documents') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'document') Then
-            result.Document.Add(ParseDocumentConformanceDocument(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'document') then
+        result.Document.Add(ParseDocumentConformanceDocument(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -8013,13 +7163,8 @@ begin
   Text('date',elem.date);
   ComposeDocumentConformancePublisher('publisher', elem.publisher);
   ComposeDocumentConformanceSoftware('software', elem.software);
-  if elem.Document.Count > 0 then
-  begin
-    FXml.open('documents');
-    for i := 0 to elem.Document.Count - 1 do
-      ComposeDocumentConformanceDocument('document',elem.Document[i]);
-    FXml.Close('documents');
-  end;
+  for i := 0 to elem.Document.Count - 1 do
+    ComposeDocumentConformanceDocument('document', elem.Document[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -8082,7 +7227,6 @@ end;
 function TFHIRXmlParser.ParseLabReportRequestDetail(element : IXmlDomElement) : TLabReportRequestDetail;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TLabReportRequestDetail.create;
   try
@@ -8094,18 +7238,8 @@ begin
         result.requestOrderId := ParseIdentifier(child)
       else if (child.nodeName = 'receiverOrderId') then
         result.receiverOrderId := ParseIdentifier(child)
-      else if (child.nodeName = 'requestTests') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'requestTest') Then
-            result.RequestTest.Add(ParseCodeableConcept(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'requestTest') then
+        result.RequestTest.Add(ParseCodeableConcept(child))
       else if (child.nodeName = 'requester') then
         result.requester := ParseFHIRResourceReference{Resource}(child)
       else if (child.nodeName = 'clinicalInfo') then
@@ -8131,13 +7265,8 @@ begin
   FXml.open(name);
   ComposeIdentifier('requestOrderId', elem.requestOrderId);
   ComposeIdentifier('receiverOrderId', elem.receiverOrderId);
-  if elem.RequestTest.Count > 0 then
-  begin
-    FXml.open('requestTests');
-    for i := 0 to elem.RequestTest.Count - 1 do
-      ComposeCodeableConcept('requestTest',elem.RequestTest[i]);
-    FXml.Close('requestTests');
-  end;
+  for i := 0 to elem.RequestTest.Count - 1 do
+    ComposeCodeableConcept('requestTest', elem.RequestTest[i]);
   ComposeFHIRResourceReference{Resource}('requester', elem.requester);
   ComposeFHIRResourceReference{Resource}('clinicalInfo', elem.clinicalInfo);
   FXml.close(name);
@@ -8202,7 +7331,6 @@ end;
 function TFHIRXmlParser.ParseLabReportResultGroup(element : IXmlDomElement) : TLabReportResultGroup;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TLabReportResultGroup.create;
   try
@@ -8214,18 +7342,8 @@ begin
         result.name := ParseCodeableConcept(child)
       else if (child.nodeName = 'specimen') then
         result.specimen := ParseFHIRResourceReference{TSpecimen}(child)
-      else if (child.nodeName = 'results') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'result') Then
-            result.Result.Add(ParseLabReportResultGroupResult(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'result') then
+        result.Result.Add(ParseLabReportResultGroupResult(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -8247,13 +7365,8 @@ begin
   FXml.open(name);
   ComposeCodeableConcept('name', elem.name);
   ComposeFHIRResourceReference{TSpecimen}('specimen', elem.specimen);
-  if elem.Result.Count > 0 then
-  begin
-    FXml.open('results');
-    for i := 0 to elem.Result.Count - 1 do
-      ComposeLabReportResultGroupResult('result',elem.Result[i]);
-    FXml.Close('results');
-  end;
+  for i := 0 to elem.Result.Count - 1 do
+    ComposeLabReportResultGroupResult('result', elem.Result[i]);
   FXml.close(name);
 end;
 
@@ -8310,7 +7423,6 @@ end;
 function TFHIRXmlParser.ParseLabReportResultGroupResult(element : IXmlDomElement) : TLabReportResultGroupResult;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TLabReportResultGroupResult.create;
   try
@@ -8340,18 +7452,8 @@ begin
         result.status := TLabReportStatus(ParseEnum(CODES_TLabReportStatus, child))
       else if (child.nodeName = 'comments') then
         result.comments := child.text
-      else if (child.nodeName = 'referenceRanges') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'referenceRange') Then
-            result.ReferenceRange.Add(ParseLabReportResultGroupResultReferenceRange(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'referenceRange') then
+        result.ReferenceRange.Add(ParseLabReportResultGroupResultReferenceRange(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -8389,13 +7491,8 @@ begin
   Text('flag',CODES_TLabResultFlag[elem.flag]);
   Text('status',CODES_TLabReportStatus[elem.status]);
   Text('comments',elem.comments);
-  if elem.ReferenceRange.Count > 0 then
-  begin
-    FXml.open('referenceRanges');
-    for i := 0 to elem.ReferenceRange.Count - 1 do
-      ComposeLabReportResultGroupResultReferenceRange('referenceRange',elem.ReferenceRange[i]);
-    FXml.Close('referenceRanges');
-  end;
+  for i := 0 to elem.ReferenceRange.Count - 1 do
+    ComposeLabReportResultGroupResultReferenceRange('referenceRange', elem.ReferenceRange[i]);
   FXml.close(name);
 end;
 
@@ -8573,7 +7670,6 @@ end;
 function TFHIRXmlParser.ParseLabReport(element : IXmlDomElement) : TLabReport;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TLabReport.create;
   try
@@ -8597,18 +7693,8 @@ begin
         result.laboratory := ParseFHIRResourceReference{TOrganization}(child)
       else if (child.nodeName = 'reportId') then
         result.reportId := child.text
-      else if (child.nodeName = 'requestDetails') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'requestDetail') Then
-            result.RequestDetail.Add(ParseLabReportRequestDetail(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'requestDetail') then
+        result.RequestDetail.Add(ParseLabReportRequestDetail(child))
       else if (child.nodeName = 'reportName') then
         result.reportName := ParseCodeableConcept(child)
       else if (child.nodeName = 'service') then
@@ -8616,55 +7702,15 @@ begin
       else if (child.nodeName = 'diagnosticTime') then
         result.diagnosticTime := child.text
       else if (child.nodeName = 'specimen') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'specimen') Then
-            result.Specimen.Add(ParseFHIRResourceReference{TSpecimen}(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'resultGroups') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'resultGroup') Then
-            result.ResultGroup.Add(ParseLabReportResultGroup(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+        result.Specimen.Add(ParseFHIRResourceReference{TSpecimen}(child))
+      else if (child.nodeName = 'resultGroup') then
+        result.ResultGroup.Add(ParseLabReportResultGroup(child))
       else if (child.nodeName = 'conclusion') then
         result.conclusion := ParseNarrative(child)
-      else if (child.nodeName = 'codedDiagnoses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'codedDiagnosis') Then
-            result.CodedDiagnosis.Add(ParseCodeableConcept(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'representations') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'representation') Then
-            result.Representation.Add(ParseAttachment(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'codedDiagnosis') then
+        result.CodedDiagnosis.Add(ParseCodeableConcept(child))
+      else if (child.nodeName = 'representation') then
+        result.Representation.Add(ParseAttachment(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -8691,45 +7737,20 @@ begin
   ComposeFHIRResourceReference{TAdmission}('admission', elem.admission);
   ComposeFHIRResourceReference{TOrganization}('laboratory', elem.laboratory);
   Text('reportId',elem.reportId);
-  if elem.RequestDetail.Count > 0 then
-  begin
-    FXml.open('requestDetails');
-    for i := 0 to elem.RequestDetail.Count - 1 do
-      ComposeLabReportRequestDetail('requestDetail',elem.RequestDetail[i]);
-    FXml.Close('requestDetails');
-  end;
+  for i := 0 to elem.RequestDetail.Count - 1 do
+    ComposeLabReportRequestDetail('requestDetail', elem.RequestDetail[i]);
   ComposeCodeableConcept('reportName', elem.reportName);
   ComposeCodeableConcept('service', elem.service);
   Text('diagnosticTime',elem.diagnosticTime);
-  if elem.Specimen.Count > 0 then
-  begin
-    FXml.open('specimen');
-    for i := 0 to elem.Specimen.Count - 1 do
-      ComposeFHIRResourceReference{TSpecimen}('specimen',elem.Specimen[i]);
-    FXml.Close('specimen');
-  end;
-  if elem.ResultGroup.Count > 0 then
-  begin
-    FXml.open('resultGroups');
-    for i := 0 to elem.ResultGroup.Count - 1 do
-      ComposeLabReportResultGroup('resultGroup',elem.ResultGroup[i]);
-    FXml.Close('resultGroups');
-  end;
+  for i := 0 to elem.Specimen.Count - 1 do
+    ComposeFHIRResourceReference{TSpecimen}('specimen', elem.Specimen[i]);
+  for i := 0 to elem.ResultGroup.Count - 1 do
+    ComposeLabReportResultGroup('resultGroup', elem.ResultGroup[i]);
   ComposeNarrative('conclusion', elem.conclusion);
-  if elem.CodedDiagnosis.Count > 0 then
-  begin
-    FXml.open('codedDiagnoses');
-    for i := 0 to elem.CodedDiagnosis.Count - 1 do
-      ComposeCodeableConcept('codedDiagnosis',elem.CodedDiagnosis[i]);
-    FXml.Close('codedDiagnoses');
-  end;
-  if elem.Representation.Count > 0 then
-  begin
-    FXml.open('representations');
-    for i := 0 to elem.Representation.Count - 1 do
-      ComposeAttachment('representation',elem.Representation[i]);
-    FXml.Close('representations');
-  end;
+  for i := 0 to elem.CodedDiagnosis.Count - 1 do
+    ComposeCodeableConcept('codedDiagnosis', elem.CodedDiagnosis[i]);
+  for i := 0 to elem.Representation.Count - 1 do
+    ComposeAttachment('representation', elem.Representation[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
@@ -9023,7 +8044,6 @@ end;
 function TFHIRXmlParser.ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPersonRelatedPerson.create;
   try
@@ -9037,18 +8057,8 @@ begin
         result.role := ParseCodeableConcept(child)
       else if (child.nodeName = 'name') then
         result.name := ParseHumanName(child)
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -9071,13 +8081,8 @@ begin
   ComposeHumanId('id', elem.id);
   ComposeCodeableConcept('role', elem.role);
   ComposeHumanName('name', elem.name);
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   FXml.close(name);
 end;
 
@@ -9137,7 +8142,6 @@ end;
 function TFHIRXmlParser.ParsePerson(element : IXmlDomElement) : TPerson;
 var
   child : IXMLDOMElement;
-  item : IXMLDOMElement;
 begin
   result := TPerson.create;
   try
@@ -9149,96 +8153,26 @@ begin
         result.id := child.text
       else if (child.nodeName = 'text') then
         result.text := ParseNarrative(child)
-      else if (child.nodeName = 'identifiers') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'identifier') Then
-            result.Identifier.Add(ParseHumanId(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'names') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'name') Then
-            result.Name.Add(ParseHumanName(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'addresses') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'address') Then
-            result.Address.Add(ParseAddress(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'contacts') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'contact') Then
-            result.Contact.Add(ParseContact(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'name') then
+        result.Name.Add(ParseHumanName(child))
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
       else if (child.nodeName = 'dob') then
         result.dob := child.text
       else if (child.nodeName = 'gender') then
         result.gender := ParseCodeableConcept(child)
       else if (child.nodeName = 'religion') then
         result.religion := ParseCodeableConcept(child)
-      else if (child.nodeName = 'qualifications') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'qualification') Then
-            result.Qualification.Add(ParsePersonQualification(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'languages') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'language') Then
-            result.Language.Add(ParsePersonLanguage(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
-      else if (child.nodeName = 'relatedPeople') then
-      begin
-        item := TMsXmlParser.FirstChild(child);
-        while (item <> nil) do
-        begin
-          if (item.nodeName = 'relatedPerson') Then
-            result.RelatedPerson.Add(ParsePersonRelatedPerson(item))
-          else
-            UnknownContent(item);
-          item := TMsXmlParser.NextSibling(item);
-        end;
-      end
+      else if (child.nodeName = 'qualification') then
+        result.Qualification.Add(ParsePersonQualification(child))
+      else if (child.nodeName = 'language') then
+        result.Language.Add(ParsePersonLanguage(child))
+      else if (child.nodeName = 'relatedPerson') then
+        result.RelatedPerson.Add(ParsePersonRelatedPerson(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -9259,58 +8193,23 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('id', elem.id);
-  if elem.Identifier.Count > 0 then
-  begin
-    FXml.open('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FXml.Close('identifiers');
-  end;
-  if elem.Name.Count > 0 then
-  begin
-    FXml.open('names');
-    for i := 0 to elem.Name.Count - 1 do
-      ComposeHumanName('name',elem.Name[i]);
-    FXml.Close('names');
-  end;
-  if elem.Address.Count > 0 then
-  begin
-    FXml.open('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FXml.Close('addresses');
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FXml.open('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FXml.Close('contacts');
-  end;
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Name.Count - 1 do
+    ComposeHumanName('name', elem.Name[i]);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
   Text('dob',elem.dob);
   ComposeCodeableConcept('gender', elem.gender);
   ComposeCodeableConcept('religion', elem.religion);
-  if elem.Qualification.Count > 0 then
-  begin
-    FXml.open('qualifications');
-    for i := 0 to elem.Qualification.Count - 1 do
-      ComposePersonQualification('qualification',elem.Qualification[i]);
-    FXml.Close('qualifications');
-  end;
-  if elem.Language.Count > 0 then
-  begin
-    FXml.open('languages');
-    for i := 0 to elem.Language.Count - 1 do
-      ComposePersonLanguage('language',elem.Language[i]);
-    FXml.Close('languages');
-  end;
-  if elem.RelatedPerson.Count > 0 then
-  begin
-    FXml.open('relatedPeople');
-    for i := 0 to elem.RelatedPerson.Count - 1 do
-      ComposePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
-    FXml.Close('relatedPeople');
-  end;
+  for i := 0 to elem.Qualification.Count - 1 do
+    ComposePersonQualification('qualification', elem.Qualification[i]);
+  for i := 0 to elem.Language.Count - 1 do
+    ComposePersonLanguage('language', elem.Language[i]);
+  for i := 0 to elem.RelatedPerson.Count - 1 do
+    ComposePersonRelatedPerson('relatedPerson', elem.RelatedPerson[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;

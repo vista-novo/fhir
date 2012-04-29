@@ -1,8 +1,10 @@
+{!Wrapper uses FHIRBase_Wrapper}
+
 unit FHIRResources;
 
 interface
 
-// FHIR v0.01 generated 21:27 Apr 15, 2012
+// FHIR v0.01 generated 22:50 Apr 29, 2012
 
 uses
   FHIRBase, AdvBuffers, DecimalSupport, Classes;
@@ -13,7 +15,7 @@ Type
   }
   TFHIRResourceType = (
     frtConformance, {@enum.value A conformance statement returned by request in an RESTful framework }
-    frtDocument, {@enum.value A document that contains FHIR resources }
+    frtDocument, {@enum.value A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole }
     frtMessage, {@enum.value A message that contains FHIR resources }
     frtMessageConformance, {@enum.value A conformance statement about how an application uses FHIR messaging }
     frtAgent, {@enum.value A person who represents an organisation, and is authorised to perform actions on it's behalf }
@@ -29,216 +31,249 @@ Type
     The state of an extension
   }
   TExtensionState = (
-    tesMustMinusunderstand, {@enum.value The extension contains information that qualifies or negates another element, and must be understood by an application process the resource }
-    tesSuperceded); {@enum.value The extension has been promoted into the main content of the resource, and the content is found at the reference. The extension continues to be defined for backward compatibility }
+    tesUnknown,  {@enum.value tesUnknown Value is unknown }
+    tesMustMinusunderstand, {@enum.value tesMustMinusunderstand The extension contains information that qualifies or negates another element, and must be understood by an application processing the resource }
+    tesSuperceded); {@enum.value tesSuperceded The extension has been promoted into the main content of the resource, and the content is found at the reference. The extension continues to be defined for backward compatibility }
 
   {@Enum TConformanceType
     The conformance value for an element
   }
   TConformanceType = (
-    tctMandatory, {@enum.value The element is or must always be present without a dataAbsentReason }
-    tctConditional, {@enum.value The element may need to be present (with no dataAbsentReasons) depending on the condition }
-    tctOptional, {@enum.value The element may or may not be present }
-    tctProhibited); {@enum.value The element can not present or will be rejected if received }
+    tctUnknown,  {@enum.value tctUnknown Value is unknown }
+    tctMandatory, {@enum.value tctMandatory The element is or must always be present without a dataAbsentReason }
+    tctConditional, {@enum.value tctConditional The element may need to be present (with no dataAbsentReasons) depending on the condition }
+    tctOptional, {@enum.value tctOptional The element may or may not be present }
+    tctProhibited); {@enum.value tctProhibited The element can not present or will be rejected if received }
 
   {@Enum TNarrativeStatus
     The status of a resource narrative
   }
   TNarrativeStatus = (
-    tnsGenerated, {@enum.value The contents of the narrative are entirely generated from the structured data in the resource. }
-    tnsExtensions, {@enum.value The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions }
-    tnsAdditional); {@enum.value The contents of the narrative contain additional information not found in the structured data }
+    tnsUnknown,  {@enum.value tnsUnknown Value is unknown }
+    tnsGenerated, {@enum.value tnsGenerated The contents of the narrative are entirely generated from the structured data in the resource. }
+    tnsExtensions, {@enum.value tnsExtensions The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions }
+    tnsAdditional); {@enum.value tnsAdditional The contents of the narrative contain additional information not found in the structured data }
 
   {@Enum TNarrativeMapSource
     Which is the source in a Narrative <-> Data mapping
   }
   TNarrativeMapSource = (
-    tnmsText, {@enum.value The text is the original data }
-    tnmsData); {@enum.value The data is the original data }
+    tnmsUnknown,  {@enum.value tnmsUnknown Value is unknown }
+    tnmsText, {@enum.value tnmsText The text is the original data }
+    tnmsData); {@enum.value tnmsData The data is the original data }
 
   {@Enum TQuantityStatus
     how the Quantity should be understood and represented
   }
   TQuantityStatus = (
-    tqsLessThan, {@enum.value The actual value is less than the given value }
-    tqsLessOrEquals, {@enum.value The actual value is less than or equal to the given value }
-    tqsGreaterOrEquals, {@enum.value The actual value is greater than or equal to the given value }
-    tqsGreaterThan); {@enum.value The actual value is greater than the given value }
+    tqsUnknown,  {@enum.value tqsUnknown Value is unknown }
+    tqsLessThan, {@enum.value tqsLessThan The actual value is less than the given value }
+    tqsLessOrEquals, {@enum.value tqsLessOrEquals The actual value is less than or equal to the given value }
+    tqsGreaterOrEquals, {@enum.value tqsGreaterOrEquals The actual value is greater than or equal to the given value }
+    tqsGreaterThan); {@enum.value tqsGreaterThan The actual value is greater than the given value }
 
   {@Enum TEventTiming
     A real world event that a schedule is related to
   }
   TEventTiming = (
-    tetHS, {@enum.value event occurs duration before the hour of sleep (or trying to) }
-    tetWAKE, {@enum.value event occurs duration after waking }
-    tetAC, {@enum.value event occurs duration before a meal (from the latin ante cibus) }
-    tetACM, {@enum.value event occurs duration before breakfast (from the latin ante cibus matutinus) }
-    tetACD, {@enum.value event occurs duration before lunch (from the latin ante cibus diurnus) }
-    tetACV, {@enum.value event occurs duration before dinner (from the latin ante cibus vespertinus) }
-    tetPC, {@enum.value event occurs duration after a meal (from the latin post cibus) }
-    tetPCM, {@enum.value event occurs duration after breakfast (from the latin post cibus matutinus) }
-    tetPCD, {@enum.value event occurs duration after lunch (from the latin post cibus diurnus) }
-    tetPCV); {@enum.value event occurs duration after dinner (from the latin post cibus vespertinus) }
+    tetUnknown,  {@enum.value tetUnknown Value is unknown }
+    tetHS, {@enum.value tetHS event occurs duration before the hour of sleep (or trying to) }
+    tetWAKE, {@enum.value tetWAKE event occurs duration after waking }
+    tetAC, {@enum.value tetAC event occurs duration before a meal (from the latin ante cibus) }
+    tetACM, {@enum.value tetACM event occurs duration before breakfast (from the latin ante cibus matutinus) }
+    tetACD, {@enum.value tetACD event occurs duration before lunch (from the latin ante cibus diurnus) }
+    tetACV, {@enum.value tetACV event occurs duration before dinner (from the latin ante cibus vespertinus) }
+    tetPC, {@enum.value tetPC event occurs duration after a meal (from the latin post cibus) }
+    tetPCM, {@enum.value tetPCM event occurs duration after breakfast (from the latin post cibus matutinus) }
+    tetPCD, {@enum.value tetPCD event occurs duration after lunch (from the latin post cibus diurnus) }
+    tetPCV); {@enum.value tetPCV event occurs duration after dinner (from the latin post cibus vespertinus) }
 
   {@Enum TContactSystem
     What kind of contact this is
   }
   TContactSystem = (
-    tcsPhone, {@enum.value the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required. }
-    tcsFax, {@enum.value the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required. }
-    tcsEmail, {@enum.value the value is an email address }
-    tcsUrl); {@enum.value The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses }
+    tcsUnknown,  {@enum.value tcsUnknown Value is unknown }
+    tcsPhone, {@enum.value tcsPhone the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required. }
+    tcsFax, {@enum.value tcsFax the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required. }
+    tcsEmail, {@enum.value tcsEmail the value is an email address }
+    tcsUrl); {@enum.value tcsUrl The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses }
 
   {@Enum TContactUse
     How to use this address
   }
   TContactUse = (
-    tcuHome, {@enum.value A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available. }
-    tcuWork, {@enum.value An office contact. First choice for business related contacts during business hours. }
-    tcuTemp, {@enum.value A temporary contact. The period can provide more detailed information. }
-    tcuOld, {@enum.value This contact is no longer in use (or was never correct, but retained for records) }
-    tcuMobile); {@enum.value A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business }
+    tcuUnknown,  {@enum.value tcuUnknown Value is unknown }
+    tcuHome, {@enum.value tcuHome A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available. }
+    tcuWork, {@enum.value tcuWork An office contact. First choice for business related contacts during business hours. }
+    tcuTemp, {@enum.value tcuTemp A temporary contact. The period can provide more detailed information. }
+    tcuOld, {@enum.value tcuOld This contact is no longer in use (or was never correct, but retained for records) }
+    tcuMobile); {@enum.value tcuMobile A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business }
 
   {@Enum TAddressUse
     The use of an address
   }
   TAddressUse = (
-    tauHome, {@enum.value A communication address at a home. }
-    tauWork, {@enum.value An office address. First choice for business related contacts during business hours. }
-    tauTemp, {@enum.value A temporary address. The period can provide more detailed information. }
-    tauOld); {@enum.value This address is no longer in use (or was never correct, but retained for records) }
+    tauUnknown,  {@enum.value tauUnknown Value is unknown }
+    tauHome, {@enum.value tauHome A communication address at a home. }
+    tauWork, {@enum.value tauWork An office address. First choice for business related contacts during business hours. }
+    tauTemp, {@enum.value tauTemp A temporary address. The period can provide more detailed information. }
+    tauOld); {@enum.value tauOld This address is no longer in use (or was never correct, but retained for records) }
 
   {@Enum TAddressPartType
     Type of address part
   }
   TAddressPartType = (
-    taptPart, {@enum.value Part of an address line (typically used with an extension that further defines the meaning of the part). }
-    taptLine, {@enum.value A line of an address (typically used for street names & numbers, unit details, delivery hints etc) . }
-    taptCity, {@enum.value The name of the city, town, village, or other community or delivery centre. }
-    taptState, {@enum.value sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes). }
-    taptCountry, {@enum.value Country. ISO 3166 3 letter codes can be used in place of a full country name. }
-    taptZip, {@enum.value A postal code designating a region defined by the postal service. }
-    taptDpid); {@enum.value A value that uniquely identifies the postal address. (often used in barcodes). }
+    taptUnknown,  {@enum.value taptUnknown Value is unknown }
+    taptPart, {@enum.value taptPart Part of an address line (typically used with an extension that further defines the meaning of the part). }
+    taptLine, {@enum.value taptLine A line of an address (typically used for street names & numbers, unit details, delivery hints etc) . }
+    taptCity, {@enum.value taptCity The name of the city, town, village, or other community or delivery centre. }
+    taptState, {@enum.value taptState sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes). }
+    taptCountry, {@enum.value taptCountry Country. ISO 3166 3 letter codes can be used in place of a full country name. }
+    taptZip, {@enum.value taptZip A postal code designating a region defined by the postal service. }
+    taptDpid); {@enum.value taptDpid A value that uniquely identifies the postal address. (often used in barcodes). }
 
   {@Enum TNameUse
     The use of a human name
   }
   TNameUse = (
-    tnuUsual, {@enum.value Known as/conventional/the one you normally use }
-    tnuOfficial, {@enum.value The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called legal name. }
-    tnuTemp, {@enum.value A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations. }
-    tnuAnonymous, {@enum.value Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons) }
-    tnuOld, {@enum.value This name is no longer in use (or was never correct, but retained for records) }
-    tnuMaiden); {@enum.value A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store maiden names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person?s name, nor should the maiden name be determined algorithmically }
+    tnuUnknown,  {@enum.value tnuUnknown Value is unknown }
+    tnuUsual, {@enum.value tnuUsual Known as/conventional/the one you normally use }
+    tnuOfficial, {@enum.value tnuOfficial The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called legal name. }
+    tnuTemp, {@enum.value tnuTemp A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations. }
+    tnuAnonymous, {@enum.value tnuAnonymous Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons) }
+    tnuOld, {@enum.value tnuOld This name is no longer in use (or was never correct, but retained for records) }
+    tnuMaiden); {@enum.value tnuMaiden A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store maiden names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person?s name, nor should the maiden name be determined algorithmically }
 
   {@Enum TNamePartType
     Type of a part of a human name
   }
   TNamePartType = (
-    tnptFamily, {@enum.value Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father. }
-    tnptGiven, {@enum.value Given name. NOTE Not to be called first name since given names do not always come first. . }
-    tnptTitle); {@enum.value Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. }
+    tnptUnknown,  {@enum.value tnptUnknown Value is unknown }
+    tnptFamily, {@enum.value tnptFamily Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father. }
+    tnptGiven, {@enum.value tnptGiven Given name. NOTE Not to be called first name since given names do not always come first. . }
+    tnptTitle); {@enum.value tnptTitle Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. }
 
   {@Enum TRestfulConformanceMode
     The mode of a restful conformance statement
   }
   TRestfulConformanceMode = (
-    trcmClient, {@enum.value The application acts as a server for this resource }
-    trcmServer); {@enum.value The application acts as a client for this resource }
+    trcmUnknown,  {@enum.value trcmUnknown Value is unknown }
+    trcmClient, {@enum.value trcmClient The application acts as a server for this resource }
+    trcmServer); {@enum.value trcmServer The application acts as a client for this resource }
+
+  {@Enum TResourceIdSource
+    The system responsible for the provision of a resource unique id
+  }
+  TResourceIdSource = (
+    trisUnknown,  {@enum.value trisUnknown Value is unknown }
+    trisClient, {@enum.value trisClient The client must provide a unique resource id }
+    trisServer, {@enum.value trisServer The server defines the id and will reject any client attempt to define it }
+    trisEither); {@enum.value trisEither The client can provide a unique resource id, or the server will define it instead }
 
   {@Enum TDocumentAuthenticationMode
     The way in which a person authenticated a document
   }
   TDocumentAuthenticationMode = (
-    tdamPersonal, {@enum.value The person authenticated the document in their personal capacity }
-    tdamProfessional, {@enum.value The person authenticated the document in their professional capacity }
-    tdamLegal); {@enum.value The person authenticated the document and accepted legal responsibility for it's content }
+    tdamUnknown,  {@enum.value tdamUnknown Value is unknown }
+    tdamPersonal, {@enum.value tdamPersonal The person authenticated the document in their personal capacity }
+    tdamProfessional, {@enum.value tdamProfessional The person authenticated the document in their professional capacity }
+    tdamLegal, {@enum.value tdamLegal The person authenticated the document and accepted legal responsibility for it's content }
+    tdamOfficial); {@enum.value tdamOfficial The organization authenticated the document as consistent with their policies and procedures }
 
   {@Enum TResponseCode
     The kind of response to a message
   }
   TResponseCode = (
-    trcOk, {@enum.value The message was accepted and processed without error }
-    trcError, {@enum.value Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required }
-    trcRejection, {@enum.value The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is }
-    trcRules, {@enum.value The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition }
-    trcUndeliverable); {@enum.value A middleware agent was unable to deliver the message to it's supposed destination }
+    trcUnknown,  {@enum.value trcUnknown Value is unknown }
+    trcOk, {@enum.value trcOk The message was accepted and processed without error }
+    trcError, {@enum.value trcError Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required }
+    trcRejection, {@enum.value trcRejection The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is }
+    trcRules, {@enum.value trcRules The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition }
+    trcUndeliverable); {@enum.value trcUndeliverable A middleware agent was unable to deliver the message to it's supposed destination }
 
   {@Enum TMessageConformanceEventMode
     The mode of a message conformance statement
   }
   TMessageConformanceEventMode = (
-    tmcemSender, {@enum.value The application sends requests and receives responses }
-    tmcemReceiver); {@enum.value The application receives requests and sends responses }
+    tmcemUnknown,  {@enum.value tmcemUnknown Value is unknown }
+    tmcemSender, {@enum.value tmcemSender The application sends requests and receives responses }
+    tmcemReceiver); {@enum.value tmcemReceiver The application receives requests and sends responses }
 
   {@Enum TPrescriptionStatus
     The status of a prescription
   }
   TPrescriptionStatus = (
-    tpsActive, {@enum.value Patient is using the prescribed medicin }
-    tpsCompleted); {@enum.value Prescription is no longer current }
+    tpsUnknown,  {@enum.value tpsUnknown Value is unknown }
+    tpsActive, {@enum.value tpsActive Patient is using the prescribed medicin }
+    tpsCompleted); {@enum.value tpsCompleted Prescription is no longer current }
 
   {@Enum TBooleanYesNo
     Either yes or no, true or false
   }
   TBooleanYesNo = (
-    tbynYes, {@enum.value TRUE }
-    tbynNo); {@enum.value FALSE }
+    tbynUnknown,  {@enum.value tbynUnknown Value is unknown }
+    tbynYes, {@enum.value tbynYes TRUE }
+    tbynNo); {@enum.value tbynNo FALSE }
 
   {@Enum TLabReportStatus
     The status of a report or result item
   }
   TLabReportStatus = (
-    tlrsRegistered, {@enum.value The existence of the result is registered, but there is no result yet available }
-    tlrsInterim, {@enum.value This is an initial or interim result: data may be missing or verification not been performed }
-    tlrsFinal, {@enum.value The result is complete and verified by the responsible pathologist }
-    tlrsAmended, {@enum.value The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist }
-    tlrsCancelled, {@enum.value The result is unavailable because the test was not started or not completed (also sometimes called aborted) }
-    tlrsWithdrawn); {@enum.value The result has been withdrawn following previous Final release }
+    tlrsUnknown,  {@enum.value tlrsUnknown Value is unknown }
+    tlrsRegistered, {@enum.value tlrsRegistered The existence of the result is registered, but there is no result yet available }
+    tlrsInterim, {@enum.value tlrsInterim This is an initial or interim result: data may be missing or verification not been performed }
+    tlrsFinal, {@enum.value tlrsFinal The result is complete and verified by the responsible pathologist }
+    tlrsAmended, {@enum.value tlrsAmended The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist }
+    tlrsCancelled, {@enum.value tlrsCancelled The result is unavailable because the test was not started or not completed (also sometimes called aborted) }
+    tlrsWithdrawn); {@enum.value tlrsWithdrawn The result has been withdrawn following previous Final release }
 
   {@Enum TLabResultFlag
     codes for result flags
   }
   TLabResultFlag = (
-    tlrfMinus, {@enum.value  }
-    tlrfMinusMinus, {@enum.value  }
-    tlrfMinusMinusMinus, {@enum.value  }
-    tlrfPlus, {@enum.value  }
-    tlrfPlusPlus, {@enum.value  }
-    tlrfPlusPlusPlus); {@enum.value  }
+    tlrfUnknown,  {@enum.value tlrfUnknown Value is unknown }
+    tlrfMinus, {@enum.value tlrfMinus  }
+    tlrfMinusMinus, {@enum.value tlrfMinusMinus  }
+    tlrfMinusMinusMinus, {@enum.value tlrfMinusMinusMinus  }
+    tlrfPlus, {@enum.value tlrfPlus  }
+    tlrfPlusPlus, {@enum.value tlrfPlusPlus  }
+    tlrfPlusPlusPlus); {@enum.value tlrfPlusPlusPlus  }
 
   {@Enum TLanguageUse
     How well a person speaks a language
   }
   TLanguageUse = (
-    tluNone, {@enum.value The person does not speak the language at all }
-    tluPoor, {@enum.value The person has minimal functional capability in the language }
-    tluUseable, {@enum.value The person can use the language, but may not be full conversant, particularly with regards to health concepts }
-    tluFluent); {@enum.value The person is fully capable of using the language }
+    tluUnknown,  {@enum.value tluUnknown Value is unknown }
+    tluNone, {@enum.value tluNone The person does not speak the language at all }
+    tluPoor, {@enum.value tluPoor The person has minimal functional capability in the language }
+    tluUseable, {@enum.value tluUseable The person can use the language, but may not be full conversant, particularly with regards to health concepts }
+    tluFluent); {@enum.value tluFluent The person is fully capable of using the language }
 
 Const
   CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('Conformance', 'Document', 'Message', 'MessageConformance', 'Agent', 'Animal', 'Prescription', 'Patient', 'Organization', 'DocumentConformance', 'LabReport', 'Person');
-  CODES_TExtensionState : Array[TExtensionState] of String = ('must-understand', 'superceded');
-  CODES_TConformanceType : Array[TConformanceType] of String = ('Mandatory', 'Conditional', 'Optional', 'Prohibited');
-  CODES_TNarrativeStatus : Array[TNarrativeStatus] of String = ('generated', 'extensions', 'additional');
-  CODES_TNarrativeMapSource : Array[TNarrativeMapSource] of String = ('text', 'data');
-  CODES_TQuantityStatus : Array[TQuantityStatus] of String = ('<', '<=', '>=', '>');
-  CODES_TEventTiming : Array[TEventTiming] of String = ('HS', 'WAKE', 'AC', 'ACM', 'ACD', 'ACV', 'PC', 'PCM', 'PCD', 'PCV');
-  CODES_TContactSystem : Array[TContactSystem] of String = ('phone', 'fax', 'email', 'url');
-  CODES_TContactUse : Array[TContactUse] of String = ('home', 'work', 'temp', 'old', 'mobile');
-  CODES_TAddressUse : Array[TAddressUse] of String = ('home', 'work', 'temp', 'old');
-  CODES_TAddressPartType : Array[TAddressPartType] of String = ('part', 'line', 'city', 'state', 'country', 'zip', 'dpid');
-  CODES_TNameUse : Array[TNameUse] of String = ('usual', 'official', 'temp', 'anonymous', 'old', 'maiden');
-  CODES_TNamePartType : Array[TNamePartType] of String = ('family', 'given', 'title');
-  CODES_TRestfulConformanceMode : Array[TRestfulConformanceMode] of String = ('client', 'server');
-  CODES_TDocumentAuthenticationMode : Array[TDocumentAuthenticationMode] of String = ('personal', 'professional', 'legal');
-  CODES_TResponseCode : Array[TResponseCode] of String = ('ok', 'error', 'rejection', 'rules', 'undeliverable');
-  CODES_TMessageConformanceEventMode : Array[TMessageConformanceEventMode] of String = ('sender', 'receiver');
-  CODES_TPrescriptionStatus : Array[TPrescriptionStatus] of String = ('active', 'completed');
-  CODES_TBooleanYesNo : Array[TBooleanYesNo] of String = ('yes', 'no');
-  CODES_TLabReportStatus : Array[TLabReportStatus] of String = ('registered', 'interim', 'final', 'amended', 'cancelled', 'withdrawn');
-  CODES_TLabResultFlag : Array[TLabResultFlag] of String = ('-', '--', '---', '+', '++', '+++');
-  CODES_TLanguageUse : Array[TLanguageUse] of String = ('none', 'poor', 'useable', 'fluent');
+  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('conformances', 'documents', 'messages', 'messageconformances', 'agents', 'animals', 'prescriptions', 'patients', 'organizations', 'documentconformances', 'labreports', 'people');
+  CODES_TExtensionState : Array[TExtensionState] of String = ('', 'must-understand', 'superceded');
+  CODES_TConformanceType : Array[TConformanceType] of String = ('', 'Mandatory', 'Conditional', 'Optional', 'Prohibited');
+  CODES_TNarrativeStatus : Array[TNarrativeStatus] of String = ('', 'generated', 'extensions', 'additional');
+  CODES_TNarrativeMapSource : Array[TNarrativeMapSource] of String = ('', 'text', 'data');
+  CODES_TQuantityStatus : Array[TQuantityStatus] of String = ('', '<', '<=', '>=', '>');
+  CODES_TEventTiming : Array[TEventTiming] of String = ('', 'HS', 'WAKE', 'AC', 'ACM', 'ACD', 'ACV', 'PC', 'PCM', 'PCD', 'PCV');
+  CODES_TContactSystem : Array[TContactSystem] of String = ('', 'phone', 'fax', 'email', 'url');
+  CODES_TContactUse : Array[TContactUse] of String = ('', 'home', 'work', 'temp', 'old', 'mobile');
+  CODES_TAddressUse : Array[TAddressUse] of String = ('', 'home', 'work', 'temp', 'old');
+  CODES_TAddressPartType : Array[TAddressPartType] of String = ('', 'part', 'line', 'city', 'state', 'country', 'zip', 'dpid');
+  CODES_TNameUse : Array[TNameUse] of String = ('', 'usual', 'official', 'temp', 'anonymous', 'old', 'maiden');
+  CODES_TNamePartType : Array[TNamePartType] of String = ('', 'family', 'given', 'title');
+  CODES_TRestfulConformanceMode : Array[TRestfulConformanceMode] of String = ('', 'client', 'server');
+  CODES_TResourceIdSource : Array[TResourceIdSource] of String = ('', 'client', 'server', 'either');
+  CODES_TDocumentAuthenticationMode : Array[TDocumentAuthenticationMode] of String = ('', 'personal', 'professional', 'legal', 'official');
+  CODES_TResponseCode : Array[TResponseCode] of String = ('', 'ok', 'error', 'rejection', 'rules', 'undeliverable');
+  CODES_TMessageConformanceEventMode : Array[TMessageConformanceEventMode] of String = ('', 'sender', 'receiver');
+  CODES_TPrescriptionStatus : Array[TPrescriptionStatus] of String = ('', 'active', 'completed');
+  CODES_TBooleanYesNo : Array[TBooleanYesNo] of String = ('', 'yes', 'no');
+  CODES_TLabReportStatus : Array[TLabReportStatus] of String = ('', 'registered', 'interim', 'final', 'amended', 'cancelled', 'withdrawn');
+  CODES_TLabResultFlag : Array[TLabResultFlag] of String = ('', '-', '--', '---', '+', '++', '+++');
+  CODES_TLanguageUse : Array[TLanguageUse] of String = ('', 'none', 'poor', 'useable', 'fluent');
   FHIR_GENERATED_VERSION = '0.01';
 
 
@@ -269,8 +304,7 @@ Type
   TChoice = class;
   TAttachment = class;
   TRatio = class;
-  TCodeableConceptCoding = class;
-  TCodeableConceptCodingList = class;
+  TCodingList = class;
   TCodeableConcept = class;
   TIdentifier = class;
   TScheduleRepeat = class;
@@ -360,9 +394,10 @@ Type
   TPersonRelatedPersonList = class;
   TPerson = class;
 
-  {@Class TFHIRResource
+  {@Class TFHIRResource : TFHIRElement
     Base Resource Definition - id, extensions, narrative
   }
+  {!.Net HL7Connect.FHIR.Resource}
   TFHIRResource = {abstract} class (TFHIRElement)
   private
     FId : String;
@@ -374,12 +409,15 @@ Type
   public
     constructor Create; override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TFHIRResource; overload;
     function Clone : TFHIRResource; overload;
+    {!script show}
+  published
     Property ResourceType : TFHIRResourceType read GetResourceType;
 
-    {@member code
+    {@member id
       The code that identifies the meaning of the extension by reference to the definitions
     }
     property id : String read FId write SetResourceId;
@@ -392,32 +430,84 @@ Type
 
 
   {@Class TExtensionList
-    A list of Author
+    A list of Extension
   }
   {!.Net HL7Connect.FHIR.ExtensionList}
   TExtensionList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TExtension;
+    function GetItemN(index : Integer) : TExtension;
+    procedure SetItemN(index : Integer; value : TExtension);
   public
+    {!script hide}
+    function Link : TExtensionList; Overload;
+    function Clone : TExtensionList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Extension to the end of the list.
+    }
+    function Append : TExtension;
+    
+    {@member AddItem
+      Add an already existing Extension to the end of the list.
+    }
+    procedure AddItem(value : TExtension);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TExtension) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TExtension;
+    function IndexOf(value : TExtension) : Integer;
+    
+    {@member Insert
+      Insert Extension before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TExtension;
+    
+    {@member InsertItem
+       Insert an existing Extension before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TExtension);
+    
+    {@member Item
+       Get the iIndexth Extension. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Extension. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TExtension);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TExtension read GetItemN; default;
+    function Item(index : Integer) : TExtension;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Extensions[index : Integer] : TExtension read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TExtension
+  {@Class TExtension : TFHIRElement
     Optional Extensions Element - found in all resources
   }
+  {!.Net HL7Connect.FHIR.Extension}
   TExtension = class (TFHIRElement)
   private
     FCode : String;
@@ -434,9 +524,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TExtension; overload;
     function Clone : TExtension; overload;
+    {!script show}
+  published
     {@member code
       The code that identifies the meaning of the extension by reference to the definitions
     }
@@ -471,56 +564,159 @@ Type
 
 
   {@Class TConstraintElementMappingList
-    A list of Author
+    A list of ConstraintElementMapping
   }
   {!.Net HL7Connect.FHIR.ConstraintElementMappingList}
   TConstraintElementMappingList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TConstraintElementMapping;
+    function GetItemN(index : Integer) : TConstraintElementMapping;
+    procedure SetItemN(index : Integer; value : TConstraintElementMapping);
   public
+    {!script hide}
+    function Link : TConstraintElementMappingList; Overload;
+    function Clone : TConstraintElementMappingList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ConstraintElementMapping to the end of the list.
+    }
+    function Append : TConstraintElementMapping;
+    
+    {@member AddItem
+      Add an already existing ConstraintElementMapping to the end of the list.
+    }
+    procedure AddItem(value : TConstraintElementMapping);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TConstraintElementMapping) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TConstraintElementMapping;
+    function IndexOf(value : TConstraintElementMapping) : Integer;
+    
+    {@member Insert
+      Insert ConstraintElementMapping before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TConstraintElementMapping;
+    
+    {@member InsertItem
+       Insert an existing ConstraintElementMapping before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TConstraintElementMapping);
+    
+    {@member Item
+       Get the iIndexth ConstraintElementMapping. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ConstraintElementMapping. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TConstraintElementMapping);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TConstraintElementMapping read GetItemN; default;
+    function Item(index : Integer) : TConstraintElementMapping;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ConstraintElementMappings[index : Integer] : TConstraintElementMapping read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TConstraintElementValueList
-    A list of Author
+    A list of ConstraintElementValue
   }
   {!.Net HL7Connect.FHIR.ConstraintElementValueList}
   TConstraintElementValueList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TConstraintElementValue;
+    function GetItemN(index : Integer) : TConstraintElementValue;
+    procedure SetItemN(index : Integer; value : TConstraintElementValue);
   public
+    {!script hide}
+    function Link : TConstraintElementValueList; Overload;
+    function Clone : TConstraintElementValueList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ConstraintElementValue to the end of the list.
+    }
+    function Append : TConstraintElementValue;
+    
+    {@member AddItem
+      Add an already existing ConstraintElementValue to the end of the list.
+    }
+    procedure AddItem(value : TConstraintElementValue);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TConstraintElementValue) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TConstraintElementValue;
+    function IndexOf(value : TConstraintElementValue) : Integer;
+    
+    {@member Insert
+      Insert ConstraintElementValue before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TConstraintElementValue;
+    
+    {@member InsertItem
+       Insert an existing ConstraintElementValue before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TConstraintElementValue);
+    
+    {@member Item
+       Get the iIndexth ConstraintElementValue. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ConstraintElementValue. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TConstraintElementValue);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TConstraintElementValue read GetItemN; default;
+    function Item(index : Integer) : TConstraintElementValue;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ConstraintElementValues[index : Integer] : TConstraintElementValue read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TConstraintElement
+  {@Class TConstraintElement : TFHIRElement
     
   }
+  {!.Net HL7Connect.FHIR.ConstraintElement}
   TConstraintElement = class (TFHIRElement)
   private
     FPath : String;
@@ -554,9 +750,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConstraintElement; overload;
     function Clone : TConstraintElement; overload;
+    {!script show}
+  published
     {@member path
       The path of the element (see the formal definitions)
     }
@@ -635,9 +834,10 @@ Type
   end;
 
 
-  {@Class TConstraintElementMapping
+  {@Class TConstraintElementMapping : TFHIRElement
     
   }
+  {!.Net HL7Connect.FHIR.ConstraintElementMapping}
   TConstraintElementMapping = class (TFHIRElement)
   private
     FTarget : String;
@@ -647,9 +847,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConstraintElementMapping; overload;
     function Clone : TConstraintElementMapping; overload;
+    {!script show}
+  published
     {@member target
       Which mapping this is (v2, CDA, openEHR, etc)
     }
@@ -663,9 +866,10 @@ Type
   end;
 
 
-  {@Class TConstraintElementAggregation
+  {@Class TConstraintElementAggregation : TFHIRElement
     If context includes aggregation and type=Resource()
   }
+  {!.Net HL7Connect.FHIR.ConstraintElementAggregation}
   TConstraintElementAggregation = class (TFHIRElement)
   private
     FAggregated : Boolean;
@@ -675,9 +879,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConstraintElementAggregation; overload;
     function Clone : TConstraintElementAggregation; overload;
+    {!script show}
+  published
     {@member aggregated
       Whether this resource is aggregated
     }
@@ -691,9 +898,10 @@ Type
   end;
 
 
-  {@Class TConstraintElementValue
+  {@Class TConstraintElementValue : TFHIRElement
     
   }
+  {!.Net HL7Connect.FHIR.ConstraintElementValue}
   TConstraintElementValue = class (TFHIRElement)
   private
     FName : String;
@@ -703,9 +911,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConstraintElementValue; overload;
     function Clone : TConstraintElementValue; overload;
+    {!script show}
+  published
     {@member name
       Reference to another element by element.name
     }
@@ -720,32 +931,84 @@ Type
 
 
   {@Class TConstraintElementList
-    A list of Author
+    A list of ConstraintElement
   }
   {!.Net HL7Connect.FHIR.ConstraintElementList}
   TConstraintElementList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TConstraintElement;
+    function GetItemN(index : Integer) : TConstraintElement;
+    procedure SetItemN(index : Integer; value : TConstraintElement);
   public
+    {!script hide}
+    function Link : TConstraintElementList; Overload;
+    function Clone : TConstraintElementList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ConstraintElement to the end of the list.
+    }
+    function Append : TConstraintElement;
+    
+    {@member AddItem
+      Add an already existing ConstraintElement to the end of the list.
+    }
+    procedure AddItem(value : TConstraintElement);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TConstraintElement) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TConstraintElement;
+    function IndexOf(value : TConstraintElement) : Integer;
+    
+    {@member Insert
+      Insert ConstraintElement before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TConstraintElement;
+    
+    {@member InsertItem
+       Insert an existing ConstraintElement before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TConstraintElement);
+    
+    {@member Item
+       Get the iIndexth ConstraintElement. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ConstraintElement. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TConstraintElement);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TConstraintElement read GetItemN; default;
+    function Item(index : Integer) : TConstraintElement;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ConstraintElements[index : Integer] : TConstraintElement read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TConstraint
+  {@Class TConstraint : TFHIRElement
     
   }
+  {!.Net HL7Connect.FHIR.Constraint}
   TConstraint = class (TFHIRElement)
   private
     FType_ : String;
@@ -758,9 +1021,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConstraint; overload;
     function Clone : TConstraint; overload;
+    {!script show}
+  published
     {@member type_
       The Type of the resource being described
     }
@@ -784,9 +1050,10 @@ Type
   end;
 
 
-  {@Class TNarrativeImage
+  {@Class TNarrativeImage : TFHIRElement
     An image referred to directly in the xhtml
   }
+  {!.Net HL7Connect.FHIR.NarrativeImage}
   TNarrativeImage = class (TFHIRElement)
   private
     FMimeType : String;
@@ -796,9 +1063,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TNarrativeImage; overload;
     function Clone : TNarrativeImage; overload;
+    {!script show}
+  published
     {@member mimeType
       mime type of image
     }
@@ -812,9 +1082,10 @@ Type
   end;
 
 
-  {@Class TNarrativeMap
+  {@Class TNarrativeMap : TFHIRElement
     A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes
   }
+  {!.Net HL7Connect.FHIR.NarrativeMap}
   TNarrativeMap = class (TFHIRElement)
   private
     FText : String;
@@ -826,9 +1097,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TNarrativeMap; overload;
     function Clone : TNarrativeMap; overload;
+    {!script show}
+  published
     {@member text
       The narrative end of the mapping
     }
@@ -848,56 +1122,159 @@ Type
 
 
   {@Class TNarrativeImageList
-    A list of Author
+    A list of NarrativeImage
   }
   {!.Net HL7Connect.FHIR.NarrativeImageList}
   TNarrativeImageList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TNarrativeImage;
+    function GetItemN(index : Integer) : TNarrativeImage;
+    procedure SetItemN(index : Integer; value : TNarrativeImage);
   public
+    {!script hide}
+    function Link : TNarrativeImageList; Overload;
+    function Clone : TNarrativeImageList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a NarrativeImage to the end of the list.
+    }
+    function Append : TNarrativeImage;
+    
+    {@member AddItem
+      Add an already existing NarrativeImage to the end of the list.
+    }
+    procedure AddItem(value : TNarrativeImage);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TNarrativeImage) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TNarrativeImage;
+    function IndexOf(value : TNarrativeImage) : Integer;
+    
+    {@member Insert
+      Insert NarrativeImage before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TNarrativeImage;
+    
+    {@member InsertItem
+       Insert an existing NarrativeImage before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TNarrativeImage);
+    
+    {@member Item
+       Get the iIndexth NarrativeImage. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth NarrativeImage. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TNarrativeImage);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TNarrativeImage read GetItemN; default;
+    function Item(index : Integer) : TNarrativeImage;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property NarrativeImages[index : Integer] : TNarrativeImage read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TNarrativeMapList
-    A list of Author
+    A list of NarrativeMap
   }
   {!.Net HL7Connect.FHIR.NarrativeMapList}
   TNarrativeMapList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TNarrativeMap;
+    function GetItemN(index : Integer) : TNarrativeMap;
+    procedure SetItemN(index : Integer; value : TNarrativeMap);
   public
+    {!script hide}
+    function Link : TNarrativeMapList; Overload;
+    function Clone : TNarrativeMapList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a NarrativeMap to the end of the list.
+    }
+    function Append : TNarrativeMap;
+    
+    {@member AddItem
+      Add an already existing NarrativeMap to the end of the list.
+    }
+    procedure AddItem(value : TNarrativeMap);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TNarrativeMap) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TNarrativeMap;
+    function IndexOf(value : TNarrativeMap) : Integer;
+    
+    {@member Insert
+      Insert NarrativeMap before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TNarrativeMap;
+    
+    {@member InsertItem
+       Insert an existing NarrativeMap before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TNarrativeMap);
+    
+    {@member Item
+       Get the iIndexth NarrativeMap. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth NarrativeMap. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TNarrativeMap);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TNarrativeMap read GetItemN; default;
+    function Item(index : Integer) : TNarrativeMap;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property NarrativeMaps[index : Integer] : TNarrativeMap read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TNarrative
+  {@Class TNarrative : TFHIRElement
     A human readable formatted text, including images
   }
+  {!.Net HL7Connect.FHIR.Narrative}
   TNarrative = class (TFHIRElement)
   private
     FStatus : TNarrativeStatus;
@@ -909,9 +1286,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TNarrative; overload;
     function Clone : TNarrative; overload;
+    {!script show}
+  published
     {@member status
       The status of the narrative - whether it is entirely generated (from just the defined data or the extensions too), or whether a human authored it, and it may contain additional data
     }
@@ -935,9 +1315,10 @@ Type
   end;
 
 
-  {@Class TCoding
+  {@Class TCoding : TFHIRType
     A reference to a code defined by a terminology system 
   }
+  {!.Net HL7Connect.FHIR.Coding}
   TCoding = class (TFHIRType)
   private
     FCode : String;
@@ -949,9 +1330,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TCoding; overload;
     function Clone : TCoding; overload;
+    {!script show}
+  published
     {@member code
       A symbol in syntax defined by the system. The symbol may be a predefined code, or an expression in a syntax defined by the coding system
     }
@@ -970,9 +1354,10 @@ Type
   end;
 
 
-  {@Class TInterval_Quantity
+  {@Class TInterval_Quantity : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
+  {!.Net HL7Connect.FHIR.Interval_Quantity}
   TInterval_Quantity = class (TFHIRType)
   private
     FLow : TQuantity;
@@ -982,9 +1367,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TInterval_Quantity; overload;
     function Clone : TInterval_Quantity; overload;
+    {!script show}
+  published
     {@member low
       The low value. The boundary is inclusive.
     }
@@ -998,9 +1386,10 @@ Type
   end;
 
 
-  {@Class TInterval_DateTime
+  {@Class TInterval_DateTime : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
+  {!.Net HL7Connect.FHIR.Interval_DateTime}
   TInterval_DateTime = class (TFHIRType)
   private
     FLow : String;
@@ -1010,9 +1399,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TInterval_DateTime; overload;
     function Clone : TInterval_DateTime; overload;
+    {!script show}
+  published
     {@member low
       The low value. The boundary is inclusive.
     }
@@ -1026,9 +1418,10 @@ Type
   end;
 
 
-  {@Class TInterval_Date
+  {@Class TInterval_Date : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
+  {!.Net HL7Connect.FHIR.Interval_Date}
   TInterval_Date = class (TFHIRType)
   private
     FLow : String;
@@ -1038,9 +1431,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TInterval_Date; overload;
     function Clone : TInterval_Date; overload;
+    {!script show}
+  published
     {@member low
       The low value. The boundary is inclusive.
     }
@@ -1054,9 +1450,10 @@ Type
   end;
 
 
-  {@Class TQuantity
+  {@Class TQuantity : TFHIRType
     A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units, and floating currencies
   }
+  {!.Net HL7Connect.FHIR.Quantity}
   TQuantity = class (TFHIRType)
   private
     FValue : TSmartDecimal;
@@ -1072,9 +1469,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TQuantity; overload;
     function Clone : TQuantity; overload;
+    {!script show}
+  published
     {@member value
       The value of the measured amount. The value includes an implicit precision in the presentation of the value
     }
@@ -1103,9 +1503,10 @@ Type
   end;
 
 
-  {@Class TChoiceValue
+  {@Class TChoiceValue : TFHIRElement
     A list of possible values for the code
   }
+  {!.Net HL7Connect.FHIR.ChoiceValue}
   TChoiceValue = class (TFHIRElement)
   private
     FCode : String;
@@ -1115,9 +1516,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TChoiceValue; overload;
     function Clone : TChoiceValue; overload;
+    {!script show}
+  published
     {@member code
       A possible code or value that the user could have chosen
     }
@@ -1132,32 +1536,84 @@ Type
 
 
   {@Class TChoiceValueList
-    A list of Author
+    A list of ChoiceValue
   }
   {!.Net HL7Connect.FHIR.ChoiceValueList}
   TChoiceValueList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TChoiceValue;
+    function GetItemN(index : Integer) : TChoiceValue;
+    procedure SetItemN(index : Integer; value : TChoiceValue);
   public
+    {!script hide}
+    function Link : TChoiceValueList; Overload;
+    function Clone : TChoiceValueList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ChoiceValue to the end of the list.
+    }
+    function Append : TChoiceValue;
+    
+    {@member AddItem
+      Add an already existing ChoiceValue to the end of the list.
+    }
+    procedure AddItem(value : TChoiceValue);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TChoiceValue) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TChoiceValue;
+    function IndexOf(value : TChoiceValue) : Integer;
+    
+    {@member Insert
+      Insert ChoiceValue before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TChoiceValue;
+    
+    {@member InsertItem
+       Insert an existing ChoiceValue before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TChoiceValue);
+    
+    {@member Item
+       Get the iIndexth ChoiceValue. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ChoiceValue. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TChoiceValue);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TChoiceValue read GetItemN; default;
+    function Item(index : Integer) : TChoiceValue;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ChoiceValues[index : Integer] : TChoiceValue read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TChoice
+  {@Class TChoice : TFHIRType
     A code taken from a short list of codes that are not defined in a formal code system
   }
+  {!.Net HL7Connect.FHIR.Choice}
   TChoice = class (TFHIRType)
   private
     FCode : String;
@@ -1168,9 +1624,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TChoice; overload;
     function Clone : TChoice; overload;
+    {!script show}
+  published
     {@member code
       The code or value that the user selected from the list of possible codes
     }
@@ -1189,9 +1648,10 @@ Type
   end;
 
 
-  {@Class TAttachment
+  {@Class TAttachment : TFHIRType
     For referring to data content defined in other formats.
   }
+  {!.Net HL7Connect.FHIR.Attachment}
   TAttachment = class (TFHIRType)
   private
     FMimeType : String;
@@ -1209,9 +1669,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAttachment; overload;
     function Clone : TAttachment; overload;
+    {!script show}
+  published
     {@member mimeType
       Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data
     }
@@ -1245,9 +1708,10 @@ Type
   end;
 
 
-  {@Class TRatio
+  {@Class TRatio : TFHIRType
     A ratio of two Quantity values - a numerator and a denominator. 
   }
+  {!.Net HL7Connect.FHIR.Ratio}
   TRatio = class (TFHIRType)
   private
     FNumerator : TQuantity;
@@ -1257,9 +1721,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TRatio; overload;
     function Clone : TRatio; overload;
+    {!script show}
+  published
     {@member numerator
       The numerator
     }
@@ -1273,71 +1740,88 @@ Type
   end;
 
 
-  {@Class TCodeableConceptCoding
-    A reference to a code defined by a terminology system 
+  {@Class TCodingList
+    A list of Coding
   }
-  TCodeableConceptCoding = class (TFHIRElement)
+  {!.Net HL7Connect.FHIR.CodingList}
+  TCodingList = class (THL7FHIRObjectList)
   private
-    FCode : String;
-    FSystem : String;
-    FDisplay : String;
-    Procedure SetCode(value : String);
-    Procedure SetSystem(value : String);
-    Procedure SetDisplay(value : String);
+    function GetItemN(index : Integer) : TCoding;
+    procedure SetItemN(index : Integer; value : TCoding);
   public
-    constructor Create; Override;
-    destructor Destroy; override;
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TCodeableConceptCoding; overload;
-    function Clone : TCodeableConceptCoding; overload;
-    {@member code
-      A symbol in syntax defined by the system. The symbol may be a predefined code, or an expression in a syntax defined by the coding system
+    {!script hide}
+    function Link : TCodingList; Overload;
+    function Clone : TCodingList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Coding to the end of the list.
     }
-    property code : String read FCode write SetCode;
-
-    {@member system
-      The identification of the system that defines the meaning of the symbol in the code. Can be a simple list of enumerations, a list of codes with meanings, or all the way to a complex semantic web such as SNOMED-CT, whether classification, terminology, or ontology
+    function Append : TCoding;
+    
+    {@member AddItem
+      Add an already existing Coding to the end of the list.
     }
-    property system : String read FSystem write SetSystem;
-
-    {@member display
-      A representation of the meaning of the code in the system, following the rules laid out by the system. 
-    }
-    property display : String read FDisplay write SetDisplay;
-
-  end;
-
-
-  {@Class TCodeableConceptCodingList
-    A list of Author
-  }
-  {!.Net HL7Connect.FHIR.CodeableConceptCodingList}
-  TCodeableConceptCodingList = class (THL7FHIRObjectList)
-  private
-    Function GetItemN(index : Integer) : TCodeableConceptCoding;
-  public
+    procedure AddItem(value : TCoding);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TCodeableConceptCoding) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TCodeableConceptCoding;
+    function IndexOf(value : TCoding) : Integer;
+    
+    {@member Insert
+      Insert Coding before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TCoding;
+    
+    {@member InsertItem
+       Insert an existing Coding before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TCoding);
+    
+    {@member Item
+       Get the iIndexth Coding. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Coding. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TCoding);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TCodeableConceptCoding read GetItemN; default;
+    function Item(index : Integer) : TCoding;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Codings[index : Integer] : TCoding read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TCodeableConcept
+  {@Class TCodeableConcept : TFHIRType
     A concept that may be defined by a formal reference to a terminology or ontology, or may be provided by text
   }
+  {!.Net HL7Connect.FHIR.CodeableConcept}
   TCodeableConcept = class (TFHIRType)
   private
-    FCoding : TCodeableConceptCodingList;
+    FCoding : TCodingList;
     FText : String;
     FPrimary : String;
     Procedure SetText(value : String);
@@ -1345,13 +1829,16 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TCodeableConcept; overload;
     function Clone : TCodeableConcept; overload;
+    {!script show}
+  published
     {@member Coding
       A reference to a code defined by a terminology system 
     }
-    property Coding : TCodeableConceptCodingList read FCoding;
+    property Coding : TCodingList read FCoding;
 
     {@member text
       A human language representation of the concept as seen/selected/uttered by the user who entered the data, and/or which represents the intended meaning of the user or concept
@@ -1366,9 +1853,10 @@ Type
   end;
 
 
-  {@Class TIdentifier
+  {@Class TIdentifier : TFHIRType
     A technical identifier - identifies some entity uniquely and unambiguously
   }
+  {!.Net HL7Connect.FHIR.Identifier}
   TIdentifier = class (TFHIRType)
   private
     FSystem : String;
@@ -1378,9 +1866,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TIdentifier; overload;
     function Clone : TIdentifier; overload;
+    {!script show}
+  published
     {@member system
       Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data
     }
@@ -1394,9 +1885,10 @@ Type
   end;
 
 
-  {@Class TScheduleRepeat
+  {@Class TScheduleRepeat : TFHIRElement
     Only if there is none or one event
   }
+  {!.Net HL7Connect.FHIR.ScheduleRepeat}
   TScheduleRepeat = class (TFHIRElement)
   private
     FFrequency : Integer;
@@ -1412,9 +1904,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TScheduleRepeat; overload;
     function Clone : TScheduleRepeat; overload;
+    {!script show}
+  published
     {@member frequency
       Event occurs frequency times per duration
     }
@@ -1444,32 +1939,84 @@ Type
 
 
   {@Class TInterval_dateTimeList
-    A list of Author
+    A list of Interval_dateTime
   }
   {!.Net HL7Connect.FHIR.Interval_dateTimeList}
   TInterval_dateTimeList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TInterval_dateTime;
+    function GetItemN(index : Integer) : TInterval_dateTime;
+    procedure SetItemN(index : Integer; value : TInterval_dateTime);
   public
+    {!script hide}
+    function Link : TInterval_dateTimeList; Overload;
+    function Clone : TInterval_dateTimeList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Interval_dateTime to the end of the list.
+    }
+    function Append : TInterval_dateTime;
+    
+    {@member AddItem
+      Add an already existing Interval_dateTime to the end of the list.
+    }
+    procedure AddItem(value : TInterval_dateTime);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TInterval_dateTime) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TInterval_dateTime;
+    function IndexOf(value : TInterval_dateTime) : Integer;
+    
+    {@member Insert
+      Insert Interval_dateTime before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TInterval_dateTime;
+    
+    {@member InsertItem
+       Insert an existing Interval_dateTime before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TInterval_dateTime);
+    
+    {@member Item
+       Get the iIndexth Interval_dateTime. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Interval_dateTime. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TInterval_dateTime);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TInterval_dateTime read GetItemN; default;
+    function Item(index : Integer) : TInterval_dateTime;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Interval_dateTimes[index : Integer] : TInterval_dateTime read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TSchedule
+  {@Class TSchedule : TFHIRType
     A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
   }
+  {!.Net HL7Connect.FHIR.Schedule}
   TSchedule = class (TFHIRType)
   private
     FEvent : TInterval_dateTimeList;
@@ -1478,9 +2025,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TSchedule; overload;
     function Clone : TSchedule; overload;
+    {!script show}
+  published
     {@member Event
       When the event occurs
     }
@@ -1494,9 +2044,10 @@ Type
   end;
 
 
-  {@Class TContact
+  {@Class TContact : TFHIRType
     All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
   }
+  {!.Net HL7Connect.FHIR.Contact}
   TContact = class (TFHIRType)
   private
     FSystem : TContactSystem;
@@ -1510,9 +2061,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TContact; overload;
     function Clone : TContact; overload;
+    {!script show}
+  published
     {@member system
       What kind of contact this is - what communications system is required to make use of the contact
     }
@@ -1536,9 +2090,10 @@ Type
   end;
 
 
-  {@Class TAddressPart
+  {@Class TAddressPart : TFHIRElement
     A part of an address
   }
+  {!.Net HL7Connect.FHIR.AddressPart}
   TAddressPart = class (TFHIRElement)
   private
     FType_ : TAddressPartType;
@@ -1548,9 +2103,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAddressPart; overload;
     function Clone : TAddressPart; overload;
+    {!script show}
+  published
     {@member type_
       Type of address part (see below)
     }
@@ -1565,32 +2123,84 @@ Type
 
 
   {@Class TAddressPartList
-    A list of Author
+    A list of AddressPart
   }
   {!.Net HL7Connect.FHIR.AddressPartList}
   TAddressPartList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TAddressPart;
+    function GetItemN(index : Integer) : TAddressPart;
+    procedure SetItemN(index : Integer; value : TAddressPart);
   public
+    {!script hide}
+    function Link : TAddressPartList; Overload;
+    function Clone : TAddressPartList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a AddressPart to the end of the list.
+    }
+    function Append : TAddressPart;
+    
+    {@member AddItem
+      Add an already existing AddressPart to the end of the list.
+    }
+    procedure AddItem(value : TAddressPart);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TAddressPart) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TAddressPart;
+    function IndexOf(value : TAddressPart) : Integer;
+    
+    {@member Insert
+      Insert AddressPart before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TAddressPart;
+    
+    {@member InsertItem
+       Insert an existing AddressPart before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TAddressPart);
+    
+    {@member Item
+       Get the iIndexth AddressPart. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth AddressPart. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TAddressPart);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TAddressPart read GetItemN; default;
+    function Item(index : Integer) : TAddressPart;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property AddressParts[index : Integer] : TAddressPart read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TAddress
+  {@Class TAddress : TFHIRType
     There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for addresses all around the world 
   }
+  {!.Net HL7Connect.FHIR.Address}
   TAddress = class (TFHIRType)
   private
     FUse : TAddressUse;
@@ -1603,9 +2213,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAddress; overload;
     function Clone : TAddress; overload;
+    {!script show}
+  published
     {@member use
       The use of this address
     }
@@ -1629,9 +2242,10 @@ Type
   end;
 
 
-  {@Class THumanNamePart
+  {@Class THumanNamePart : TFHIRElement
     A part of a name
   }
+  {!.Net HL7Connect.FHIR.HumanNamePart}
   THumanNamePart = class (TFHIRElement)
   private
     FType_ : TNamePartType;
@@ -1641,9 +2255,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : THumanNamePart; overload;
     function Clone : THumanNamePart; overload;
+    {!script show}
+  published
     {@member type_
       Type of name part
     }
@@ -1658,32 +2275,84 @@ Type
 
 
   {@Class THumanNamePartList
-    A list of Author
+    A list of HumanNamePart
   }
   {!.Net HL7Connect.FHIR.HumanNamePartList}
   THumanNamePartList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : THumanNamePart;
+    function GetItemN(index : Integer) : THumanNamePart;
+    procedure SetItemN(index : Integer; value : THumanNamePart);
   public
+    {!script hide}
+    function Link : THumanNamePartList; Overload;
+    function Clone : THumanNamePartList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a HumanNamePart to the end of the list.
+    }
+    function Append : THumanNamePart;
+    
+    {@member AddItem
+      Add an already existing HumanNamePart to the end of the list.
+    }
+    procedure AddItem(value : THumanNamePart);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : THumanNamePart) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : THumanNamePart;
+    function IndexOf(value : THumanNamePart) : Integer;
+    
+    {@member Insert
+      Insert HumanNamePart before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : THumanNamePart;
+    
+    {@member InsertItem
+       Insert an existing HumanNamePart before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : THumanNamePart);
+    
+    {@member Item
+       Get the iIndexth HumanNamePart. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth HumanNamePart. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : THumanNamePart);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : THumanNamePart read GetItemN; default;
+    function Item(index : Integer) : THumanNamePart;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property HumanNameParts[index : Integer] : THumanNamePart read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class THumanName
+  {@Class THumanName : TFHIRType
     A name of a human, or a name given to an animal by a human.
   }
+  {!.Net HL7Connect.FHIR.HumanName}
   THumanName = class (TFHIRType)
   private
     FUse : TNameUse;
@@ -1696,9 +2365,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : THumanName; overload;
     function Clone : THumanName; overload;
+    {!script show}
+  published
     {@member use
       The use of this name
     }
@@ -1722,9 +2394,10 @@ Type
   end;
 
 
-  {@Class THumanId
+  {@Class THumanId : TFHIRType
     An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
   }
+  {!.Net HL7Connect.FHIR.HumanId}
   THumanId = class (TFHIRType)
   private
     FType_ : TCoding;
@@ -1738,9 +2411,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : THumanId; overload;
     function Clone : THumanId; overload;
+    {!script show}
+  published
     {@member type_
       The type of the identifier - to allow a particular identifier to be picked elsewhere
     }
@@ -1765,56 +2441,159 @@ Type
 
 
   {@Class TAddressList
-    A list of Author
+    A list of Address
   }
   {!.Net HL7Connect.FHIR.AddressList}
   TAddressList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TAddress;
+    function GetItemN(index : Integer) : TAddress;
+    procedure SetItemN(index : Integer; value : TAddress);
   public
+    {!script hide}
+    function Link : TAddressList; Overload;
+    function Clone : TAddressList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Address to the end of the list.
+    }
+    function Append : TAddress;
+    
+    {@member AddItem
+      Add an already existing Address to the end of the list.
+    }
+    procedure AddItem(value : TAddress);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TAddress) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TAddress;
+    function IndexOf(value : TAddress) : Integer;
+    
+    {@member Insert
+      Insert Address before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TAddress;
+    
+    {@member InsertItem
+       Insert an existing Address before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TAddress);
+    
+    {@member Item
+       Get the iIndexth Address. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Address. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TAddress);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TAddress read GetItemN; default;
+    function Item(index : Integer) : TAddress;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Addresses[index : Integer] : TAddress read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TContactList
-    A list of Author
+    A list of Contact
   }
   {!.Net HL7Connect.FHIR.ContactList}
   TContactList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TContact;
+    function GetItemN(index : Integer) : TContact;
+    procedure SetItemN(index : Integer; value : TContact);
   public
+    {!script hide}
+    function Link : TContactList; Overload;
+    function Clone : TContactList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Contact to the end of the list.
+    }
+    function Append : TContact;
+    
+    {@member AddItem
+      Add an already existing Contact to the end of the list.
+    }
+    procedure AddItem(value : TContact);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TContact) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TContact;
+    function IndexOf(value : TContact) : Integer;
+    
+    {@member Insert
+      Insert Contact before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TContact;
+    
+    {@member InsertItem
+       Insert an existing Contact before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TContact);
+    
+    {@member Item
+       Get the iIndexth Contact. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Contact. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TContact);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TContact read GetItemN; default;
+    function Item(index : Integer) : TContact;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Contacts[index : Integer] : TContact read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TConformancePublisher
+  {@Class TConformancePublisher : TFHIRElement
     The organization that publishes this conformance statement
   }
+  {!.Net HL7Connect.FHIR.ConformancePublisher}
   TConformancePublisher = class (TFHIRElement)
   private
     FName : String;
@@ -1824,9 +2603,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformancePublisher; overload;
     function Clone : TConformancePublisher; overload;
+    {!script show}
+  published
     {@member name
       Name of Organization
     }
@@ -1845,9 +2627,10 @@ Type
   end;
 
 
-  {@Class TConformanceSoftware
+  {@Class TConformanceSoftware : TFHIRElement
     The software that is covered by this conformance statement
   }
+  {!.Net HL7Connect.FHIR.ConformanceSoftware}
   TConformanceSoftware = class (TFHIRElement)
   private
     FName : String;
@@ -1859,9 +2642,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformanceSoftware; overload;
     function Clone : TConformanceSoftware; overload;
+    {!script show}
+  published
     {@member name
       Name software is known by
     }
@@ -1880,9 +2666,10 @@ Type
   end;
 
 
-  {@Class TConformanceOperation
+  {@Class TConformanceOperation : TFHIRElement
     
   }
+  {!.Net HL7Connect.FHIR.ConformanceOperation}
   TConformanceOperation = class (TFHIRElement)
   private
     FRead : Boolean;
@@ -1910,9 +2697,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformanceOperation; overload;
     function Clone : TConformanceOperation; overload;
+    {!script show}
+  published
     {@member read
       if supported
     }
@@ -1971,18 +2761,22 @@ Type
   end;
 
 
-  {@Class TConformanceOperationTransaction
+  {@Class TConformanceOperationTransaction : TFHIRElement
     only if supported
   }
+  {!.Net HL7Connect.FHIR.ConformanceOperationTransaction}
   TConformanceOperationTransaction = class (TFHIRElement)
   private
     FName : TStringList;
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformanceOperationTransaction; overload;
     function Clone : TConformanceOperationTransaction; overload;
+    {!script show}
+  published
     {@member Name
       transaction names supported
     }
@@ -1991,18 +2785,22 @@ Type
   end;
 
 
-  {@Class TConformanceOperationSearch
+  {@Class TConformanceOperationSearch : TFHIRElement
     only if supported
   }
+  {!.Net HL7Connect.FHIR.ConformanceOperationSearch}
   TConformanceOperationSearch = class (TFHIRElement)
   private
     FParam : TStringList;
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformanceOperationSearch; overload;
     function Clone : TConformanceOperationSearch; overload;
+    {!script show}
+  published
     {@member Param
       search params supported
     }
@@ -2011,30 +2809,35 @@ Type
   end;
 
 
-  {@Class TConformanceOperationCreate
+  {@Class TConformanceOperationCreate : TFHIRElement
     if supported
   }
+  {!.Net HL7Connect.FHIR.ConformanceOperationCreate}
   TConformanceOperationCreate = class (TFHIRElement)
   private
-    FId : String;
-    Procedure SetId(value : String);
+    FId : TResourceIdSource;
+    Procedure SetId(value : TResourceIdSource);
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformanceOperationCreate; overload;
     function Clone : TConformanceOperationCreate; overload;
+    {!script show}
+  published
     {@member id
       source of id: client | server | either
     }
-    property id : String read FId write SetId;
+    property id : TResourceIdSource read FId write SetId;
 
   end;
 
 
-  {@Class TConformance
+  {@Class TConformance : TFHIRResource
     A conformance statement returned by request in an RESTful framework
   }
+  {!.Net HL7Connect.FHIR.Conformance}
   TConformance = class (TFHIRResource)
   private
     FDate : String;
@@ -2054,9 +2857,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TConformance; overload;
     function Clone : TConformance; overload;
+    {!script show}
+  published
     {@member date
       Date that the conformance statement is published
     }
@@ -2090,9 +2896,10 @@ Type
   end;
 
 
-  {@Class TDocumentAuthor
+  {@Class TDocumentAuthor : TFHIRElement
     Author (contributed content to document)
   }
+  {!.Net HL7Connect.FHIR.DocumentAuthor}
   TDocumentAuthor = class (TFHIRElement)
   private
     FTime : String;
@@ -2102,39 +2909,46 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentAuthor; overload;
     function Clone : TDocumentAuthor; overload;
+    {!script show}
+  published
     {@member time
       When authoring happened
     }
     property time : String read FTime write SetTime;
 
     {@member party
-      person|device that authored the document
+      who/what authored the final document
     }
     property party : TFHIRResourceReference{Resource} read FParty write SetParty;
 
   end;
 
 
-  {@Class TDocumentAttestor
+  {@Class TDocumentAttestor : TFHIRElement
     a participant who has attested to the accuracy of the document
   }
+  {!.Net HL7Connect.FHIR.DocumentAttestor}
   TDocumentAttestor = class (TFHIRElement)
   private
     FMode : TDocumentAuthenticationMode;
     FTime : String;
-    FParty : TFHIRResourceReference{TPerson};
+    FParty : TFHIRResourceReference{Resource};
     Procedure SetMode(value : TDocumentAuthenticationMode);
     Procedure SetTime(value : String);
-    Procedure SetParty(value : TFHIRResourceReference{TPerson});
+    Procedure SetParty(value : TFHIRResourceReference{Resource});
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentAttestor; overload;
     function Clone : TDocumentAttestor; overload;
+    {!script show}
+  published
     {@member mode
       The type of attestation the authenticator offers
     }
@@ -2146,40 +2960,92 @@ Type
     property time : String read FTime write SetTime;
 
     {@member party
-      the person who attested the document
+      who attested the document
     }
-    property party : TFHIRResourceReference{TPerson} read FParty write SetParty;
+    property party : TFHIRResourceReference{Resource} read FParty write SetParty;
 
   end;
 
 
   {@Class TDocumentSectionList
-    A list of Author
+    A list of DocumentSection
   }
   {!.Net HL7Connect.FHIR.DocumentSectionList}
   TDocumentSectionList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TDocumentSection;
+    function GetItemN(index : Integer) : TDocumentSection;
+    procedure SetItemN(index : Integer; value : TDocumentSection);
   public
+    {!script hide}
+    function Link : TDocumentSectionList; Overload;
+    function Clone : TDocumentSectionList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a DocumentSection to the end of the list.
+    }
+    function Append : TDocumentSection;
+    
+    {@member AddItem
+      Add an already existing DocumentSection to the end of the list.
+    }
+    procedure AddItem(value : TDocumentSection);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TDocumentSection) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TDocumentSection;
+    function IndexOf(value : TDocumentSection) : Integer;
+    
+    {@member Insert
+      Insert DocumentSection before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TDocumentSection;
+    
+    {@member InsertItem
+       Insert an existing DocumentSection before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TDocumentSection);
+    
+    {@member Item
+       Get the iIndexth DocumentSection. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth DocumentSection. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TDocumentSection);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TDocumentSection read GetItemN; default;
+    function Item(index : Integer) : TDocumentSection;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property DocumentSections[index : Integer] : TDocumentSection read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TDocumentSection
+  {@Class TDocumentSection : TFHIRElement
     Document is broken into sections
   }
+  {!.Net HL7Connect.FHIR.DocumentSection}
   TDocumentSection = class (TFHIRElement)
   private
     FType_ : TCodeableConcept;
@@ -2200,9 +3066,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentSection; overload;
     function Clone : TDocumentSection; overload;
+    {!script show}
+  published
     {@member type_
       type of section (recommended)
     }
@@ -2246,9 +3115,10 @@ Type
   end;
 
 
-  {@Class TDocumentSectionAuthor
+  {@Class TDocumentSectionAuthor : TFHIRElement
     if section author different to document
   }
+  {!.Net HL7Connect.FHIR.DocumentSectionAuthor}
   TDocumentSectionAuthor = class (TFHIRElement)
   private
     FTime : String;
@@ -2258,16 +3128,19 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentSectionAuthor; overload;
     function Clone : TDocumentSectionAuthor; overload;
+    {!script show}
+  published
     {@member time
       When authoring happened
     }
     property time : String read FTime write SetTime;
 
     {@member party
-      person|device that authored the section
+      who/what authored the section
     }
     property party : TFHIRResourceReference{Resource} read FParty write SetParty;
 
@@ -2275,56 +3148,159 @@ Type
 
 
   {@Class TDocumentAuthorList
-    A list of Author
+    A list of DocumentAuthor
   }
   {!.Net HL7Connect.FHIR.DocumentAuthorList}
   TDocumentAuthorList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TDocumentAuthor;
+    function GetItemN(index : Integer) : TDocumentAuthor;
+    procedure SetItemN(index : Integer; value : TDocumentAuthor);
   public
+    {!script hide}
+    function Link : TDocumentAuthorList; Overload;
+    function Clone : TDocumentAuthorList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a DocumentAuthor to the end of the list.
+    }
+    function Append : TDocumentAuthor;
+    
+    {@member AddItem
+      Add an already existing DocumentAuthor to the end of the list.
+    }
+    procedure AddItem(value : TDocumentAuthor);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TDocumentAuthor) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TDocumentAuthor;
+    function IndexOf(value : TDocumentAuthor) : Integer;
+    
+    {@member Insert
+      Insert DocumentAuthor before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TDocumentAuthor;
+    
+    {@member InsertItem
+       Insert an existing DocumentAuthor before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TDocumentAuthor);
+    
+    {@member Item
+       Get the iIndexth DocumentAuthor. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth DocumentAuthor. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TDocumentAuthor);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TDocumentAuthor read GetItemN; default;
+    function Item(index : Integer) : TDocumentAuthor;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property DocumentAuthors[index : Integer] : TDocumentAuthor read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TDocumentAttestorList
-    A list of Author
+    A list of DocumentAttestor
   }
   {!.Net HL7Connect.FHIR.DocumentAttestorList}
   TDocumentAttestorList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TDocumentAttestor;
+    function GetItemN(index : Integer) : TDocumentAttestor;
+    procedure SetItemN(index : Integer; value : TDocumentAttestor);
   public
+    {!script hide}
+    function Link : TDocumentAttestorList; Overload;
+    function Clone : TDocumentAttestorList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a DocumentAttestor to the end of the list.
+    }
+    function Append : TDocumentAttestor;
+    
+    {@member AddItem
+      Add an already existing DocumentAttestor to the end of the list.
+    }
+    procedure AddItem(value : TDocumentAttestor);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TDocumentAttestor) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TDocumentAttestor;
+    function IndexOf(value : TDocumentAttestor) : Integer;
+    
+    {@member Insert
+      Insert DocumentAttestor before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TDocumentAttestor;
+    
+    {@member InsertItem
+       Insert an existing DocumentAttestor before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TDocumentAttestor);
+    
+    {@member Item
+       Get the iIndexth DocumentAttestor. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth DocumentAttestor. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TDocumentAttestor);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TDocumentAttestor read GetItemN; default;
+    function Item(index : Integer) : TDocumentAttestor;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property DocumentAttestors[index : Integer] : TDocumentAttestor read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TDocument
-    A document that contains FHIR resources
+  {@Class TDocument : TFHIRResource
+    A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole
   }
+  {!.Net HL7Connect.FHIR.Document}
   TDocument = class (TFHIRResource)
   private
     FInstant : TDateTime;
@@ -2356,9 +3332,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocument; overload;
     function Clone : TDocument; overload;
+    {!script show}
+  published
     {@member instant
       the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
     }
@@ -2390,7 +3369,7 @@ Type
     property replaces : String read FReplaces write SetReplaces;
 
     {@member subject
-      the patient or group the document is about
+      who the document is about
     }
     property subject : TFHIRResourceReference{Resource} read FSubject write SetSubject;
 
@@ -2405,12 +3384,12 @@ Type
     property Attestor : TDocumentAttestorList read FAttestor;
 
     {@member Recipient
-      should receive a copy of the document
+      expected to receive a copy 
     }
     property Recipient : TFHIRResourceReferenceList{Resource} read FRecipient;
 
     {@member custodian
-      organization which maintains the document.
+      org which maintains the document.
     }
     property custodian : TFHIRResourceReference{TOrganization} read FCustodian write SetCustodian;
 
@@ -2432,9 +3411,10 @@ Type
   end;
 
 
-  {@Class TMessageResponse
+  {@Class TMessageResponse : TFHIRElement
     Information about the the message that this message is a response to - if it is a response
   }
+  {!.Net HL7Connect.FHIR.MessageResponse}
   TMessageResponse = class (TFHIRElement)
   private
     FId : String;
@@ -2446,9 +3426,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageResponse; overload;
     function Clone : TMessageResponse; overload;
+    {!script show}
+  published
     {@member id
       The id of the message that this a response to
     }
@@ -2467,9 +3450,10 @@ Type
   end;
 
 
-  {@Class TMessage
+  {@Class TMessage : TFHIRResource
     A message that contains FHIR resources
   }
+  {!.Net HL7Connect.FHIR.Message}
   TMessage = class (TFHIRResource)
   private
     FThreadId : String;
@@ -2501,9 +3485,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessage; overload;
     function Clone : TMessage; overload;
+    {!script show}
+  published
     {@member threadId
       Id of the thread - a series of messages that pertain to the same logical sequence, and are all identified by the same thread identifier
     }
@@ -2567,9 +3554,10 @@ Type
   end;
 
 
-  {@Class TMessageConformancePublisher
+  {@Class TMessageConformancePublisher : TFHIRElement
     The organization that publishes this conformance statement
   }
+  {!.Net HL7Connect.FHIR.MessageConformancePublisher}
   TMessageConformancePublisher = class (TFHIRElement)
   private
     FName : String;
@@ -2579,9 +3567,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformancePublisher; overload;
     function Clone : TMessageConformancePublisher; overload;
+    {!script show}
+  published
     {@member name
       Name of Organization
     }
@@ -2600,9 +3591,10 @@ Type
   end;
 
 
-  {@Class TMessageConformanceSoftware
+  {@Class TMessageConformanceSoftware : TFHIRElement
     The software that is covered by this conformance statement
   }
+  {!.Net HL7Connect.FHIR.MessageConformanceSoftware}
   TMessageConformanceSoftware = class (TFHIRElement)
   private
     FName : String;
@@ -2614,9 +3606,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformanceSoftware; overload;
     function Clone : TMessageConformanceSoftware; overload;
+    {!script show}
+  published
     {@member name
       Name software is known by
     }
@@ -2635,9 +3630,10 @@ Type
   end;
 
 
-  {@Class TMessageConformanceEvent
+  {@Class TMessageConformanceEvent : TFHIRElement
     An event supported by the application
   }
+  {!.Net HL7Connect.FHIR.MessageConformanceEvent}
   TMessageConformanceEvent = class (TFHIRElement)
   private
     FCode : String;
@@ -2653,9 +3649,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformanceEvent; overload;
     function Clone : TMessageConformanceEvent; overload;
+    {!script show}
+  published
     {@member code
       The code for the event
     }
@@ -2685,41 +3684,96 @@ Type
 
 
   {@Class TConstraintList
-    A list of Author
+    A list of Constraint
   }
   {!.Net HL7Connect.FHIR.ConstraintList}
   TConstraintList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TConstraint;
+    function GetItemN(index : Integer) : TConstraint;
+    procedure SetItemN(index : Integer; value : TConstraint);
   public
+    {!script hide}
+    function Link : TConstraintList; Overload;
+    function Clone : TConstraintList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Constraint to the end of the list.
+    }
+    function Append : TConstraint;
+    
+    {@member AddItem
+      Add an already existing Constraint to the end of the list.
+    }
+    procedure AddItem(value : TConstraint);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TConstraint) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TConstraint;
+    function IndexOf(value : TConstraint) : Integer;
+    
+    {@member Insert
+      Insert Constraint before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TConstraint;
+    
+    {@member InsertItem
+       Insert an existing Constraint before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TConstraint);
+    
+    {@member Item
+       Get the iIndexth Constraint. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Constraint. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TConstraint);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TConstraint read GetItemN; default;
+    function Item(index : Integer) : TConstraint;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Constraints[index : Integer] : TConstraint read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TMessageConformanceEventRequest
+  {@Class TMessageConformanceEventRequest : TFHIRElement
     Information about the request for this event
   }
+  {!.Net HL7Connect.FHIR.MessageConformanceEventRequest}
   TMessageConformanceEventRequest = class (TFHIRElement)
   private
     FResource : TConstraintList;
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformanceEventRequest; overload;
     function Clone : TMessageConformanceEventRequest; overload;
+    {!script show}
+  published
     {@member Resource
       Constraint on a resource used in the event request
     }
@@ -2728,18 +3782,22 @@ Type
   end;
 
 
-  {@Class TMessageConformanceEventResponse
+  {@Class TMessageConformanceEventResponse : TFHIRElement
     Information about the response for this event
   }
+  {!.Net HL7Connect.FHIR.MessageConformanceEventResponse}
   TMessageConformanceEventResponse = class (TFHIRElement)
   private
     FResource : TConstraintList;
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformanceEventResponse; overload;
     function Clone : TMessageConformanceEventResponse; overload;
+    {!script show}
+  published
     {@member Resource
       Constraint on a resource used in the event response
     }
@@ -2749,32 +3807,84 @@ Type
 
 
   {@Class TMessageConformanceEventList
-    A list of Author
+    A list of MessageConformanceEvent
   }
   {!.Net HL7Connect.FHIR.MessageConformanceEventList}
   TMessageConformanceEventList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TMessageConformanceEvent;
+    function GetItemN(index : Integer) : TMessageConformanceEvent;
+    procedure SetItemN(index : Integer; value : TMessageConformanceEvent);
   public
+    {!script hide}
+    function Link : TMessageConformanceEventList; Overload;
+    function Clone : TMessageConformanceEventList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a MessageConformanceEvent to the end of the list.
+    }
+    function Append : TMessageConformanceEvent;
+    
+    {@member AddItem
+      Add an already existing MessageConformanceEvent to the end of the list.
+    }
+    procedure AddItem(value : TMessageConformanceEvent);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TMessageConformanceEvent) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TMessageConformanceEvent;
+    function IndexOf(value : TMessageConformanceEvent) : Integer;
+    
+    {@member Insert
+      Insert MessageConformanceEvent before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TMessageConformanceEvent;
+    
+    {@member InsertItem
+       Insert an existing MessageConformanceEvent before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TMessageConformanceEvent);
+    
+    {@member Item
+       Get the iIndexth MessageConformanceEvent. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth MessageConformanceEvent. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TMessageConformanceEvent);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TMessageConformanceEvent read GetItemN; default;
+    function Item(index : Integer) : TMessageConformanceEvent;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property MessageConformanceEvents[index : Integer] : TMessageConformanceEvent read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TMessageConformance
+  {@Class TMessageConformance : TFHIRResource
     A conformance statement about how an application uses FHIR messaging
   }
+  {!.Net HL7Connect.FHIR.MessageConformance}
   TMessageConformance = class (TFHIRResource)
   private
     FDate : String;
@@ -2789,9 +3899,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TMessageConformance; overload;
     function Clone : TMessageConformance; overload;
+    {!script show}
+  published
     {@member date
       Date that the conformance statement is published
     }
@@ -2816,76 +3929,182 @@ Type
 
 
   {@Class TCodeableConceptList
-    A list of Author
+    A list of CodeableConcept
   }
   {!.Net HL7Connect.FHIR.CodeableConceptList}
   TCodeableConceptList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TCodeableConcept;
+    function GetItemN(index : Integer) : TCodeableConcept;
+    procedure SetItemN(index : Integer; value : TCodeableConcept);
   public
+    {!script hide}
+    function Link : TCodeableConceptList; Overload;
+    function Clone : TCodeableConceptList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a CodeableConcept to the end of the list.
+    }
+    function Append : TCodeableConcept;
+    
+    {@member AddItem
+      Add an already existing CodeableConcept to the end of the list.
+    }
+    procedure AddItem(value : TCodeableConcept);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TCodeableConcept) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TCodeableConcept;
+    function IndexOf(value : TCodeableConcept) : Integer;
+    
+    {@member Insert
+      Insert CodeableConcept before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TCodeableConcept;
+    
+    {@member InsertItem
+       Insert an existing CodeableConcept before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TCodeableConcept);
+    
+    {@member Item
+       Get the iIndexth CodeableConcept. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth CodeableConcept. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TCodeableConcept);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TCodeableConcept read GetItemN; default;
+    function Item(index : Integer) : TCodeableConcept;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property CodeableConcepts[index : Integer] : TCodeableConcept read GetItemN write SetItemN; default;
   End;
 
 
   {@Class THumanIdList
-    A list of Author
+    A list of HumanId
   }
   {!.Net HL7Connect.FHIR.HumanIdList}
   THumanIdList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : THumanId;
+    function GetItemN(index : Integer) : THumanId;
+    procedure SetItemN(index : Integer; value : THumanId);
   public
+    {!script hide}
+    function Link : THumanIdList; Overload;
+    function Clone : THumanIdList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a HumanId to the end of the list.
+    }
+    function Append : THumanId;
+    
+    {@member AddItem
+      Add an already existing HumanId to the end of the list.
+    }
+    procedure AddItem(value : THumanId);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : THumanId) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : THumanId;
+    function IndexOf(value : THumanId) : Integer;
+    
+    {@member Insert
+      Insert HumanId before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : THumanId;
+    
+    {@member InsertItem
+       Insert an existing HumanId before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : THumanId);
+    
+    {@member Item
+       Get the iIndexth HumanId. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth HumanId. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : THumanId);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : THumanId read GetItemN; default;
+    function Item(index : Integer) : THumanId;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property HumanIds[index : Integer] : THumanId read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TAgent
+  {@Class TAgent : TFHIRResource
     A person who represents an organisation, and is authorised to perform actions on it's behalf
   }
+  {!.Net HL7Connect.FHIR.Agent}
   TAgent = class (TFHIRResource)
   private
     FPerson : TFHIRResourceReference{TPerson};
     FOrganization : TFHIRResourceReference{TOrganization};
     FRole : TCodeableConceptList;
-    FPeriod : TInterval_dateTime;
+    FPeriod : TInterval_date;
     FIdentifier : THumanIdList;
     FAddress : TAddressList;
     FContact : TContactList;
     Procedure SetPerson(value : TFHIRResourceReference{TPerson});
     Procedure SetOrganization(value : TFHIRResourceReference{TOrganization});
-    Procedure SetPeriod(value : TInterval_dateTime);
+    Procedure SetPeriod(value : TInterval_date);
   protected
     function GetResourceType : TFHIRResourceType; override;
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAgent; overload;
     function Clone : TAgent; overload;
+    {!script show}
+  published
     {@member person
       The person who acts as the agent
     }
@@ -2904,7 +4123,7 @@ Type
     {@member period
       The time period during which the agent was/is authorised to represent the organisation.
     }
-    property period : TInterval_dateTime read FPeriod write SetPeriod;
+    property period : TInterval_date read FPeriod write SetPeriod;
 
     {@member Identifier
       An identifier that applies to this person in this role
@@ -2924,9 +4143,10 @@ Type
   end;
 
 
-  {@Class TAnimalRelatedEntity
+  {@Class TAnimalRelatedEntity : TFHIRElement
     Kin, owner, care giver etc
   }
+  {!.Net HL7Connect.FHIR.AnimalRelatedEntity}
   TAnimalRelatedEntity = class (TFHIRElement)
   private
     FId : THumanId;
@@ -2940,9 +4160,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAnimalRelatedEntity; overload;
     function Clone : TAnimalRelatedEntity; overload;
+    {!script show}
+  published
     {@member id
       Identifier for the entity
     }
@@ -2972,56 +4195,159 @@ Type
 
 
   {@Class THumanNameList
-    A list of Author
+    A list of HumanName
   }
   {!.Net HL7Connect.FHIR.HumanNameList}
   THumanNameList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : THumanName;
+    function GetItemN(index : Integer) : THumanName;
+    procedure SetItemN(index : Integer; value : THumanName);
   public
+    {!script hide}
+    function Link : THumanNameList; Overload;
+    function Clone : THumanNameList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a HumanName to the end of the list.
+    }
+    function Append : THumanName;
+    
+    {@member AddItem
+      Add an already existing HumanName to the end of the list.
+    }
+    procedure AddItem(value : THumanName);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : THumanName) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : THumanName;
+    function IndexOf(value : THumanName) : Integer;
+    
+    {@member Insert
+      Insert HumanName before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : THumanName;
+    
+    {@member InsertItem
+       Insert an existing HumanName before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : THumanName);
+    
+    {@member Item
+       Get the iIndexth HumanName. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth HumanName. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : THumanName);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : THumanName read GetItemN; default;
+    function Item(index : Integer) : THumanName;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property HumanNames[index : Integer] : THumanName read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TAnimalRelatedEntityList
-    A list of Author
+    A list of AnimalRelatedEntity
   }
   {!.Net HL7Connect.FHIR.AnimalRelatedEntityList}
   TAnimalRelatedEntityList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TAnimalRelatedEntity;
+    function GetItemN(index : Integer) : TAnimalRelatedEntity;
+    procedure SetItemN(index : Integer; value : TAnimalRelatedEntity);
   public
+    {!script hide}
+    function Link : TAnimalRelatedEntityList; Overload;
+    function Clone : TAnimalRelatedEntityList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a AnimalRelatedEntity to the end of the list.
+    }
+    function Append : TAnimalRelatedEntity;
+    
+    {@member AddItem
+      Add an already existing AnimalRelatedEntity to the end of the list.
+    }
+    procedure AddItem(value : TAnimalRelatedEntity);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TAnimalRelatedEntity) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TAnimalRelatedEntity;
+    function IndexOf(value : TAnimalRelatedEntity) : Integer;
+    
+    {@member Insert
+      Insert AnimalRelatedEntity before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TAnimalRelatedEntity;
+    
+    {@member InsertItem
+       Insert an existing AnimalRelatedEntity before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TAnimalRelatedEntity);
+    
+    {@member Item
+       Get the iIndexth AnimalRelatedEntity. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth AnimalRelatedEntity. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TAnimalRelatedEntity);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TAnimalRelatedEntity read GetItemN; default;
+    function Item(index : Integer) : TAnimalRelatedEntity;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property AnimalRelatedEntities[index : Integer] : TAnimalRelatedEntity read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TAnimal
+  {@Class TAnimal : TFHIRResource
     An animal that has relevance to the care process -usually this is for animals that are patients.
   }
+  {!.Net HL7Connect.FHIR.Animal}
   TAnimal = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
@@ -3040,9 +4366,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TAnimal; overload;
     function Clone : TAnimal; overload;
+    {!script show}
+  published
     {@member Identifier
       Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person
     }
@@ -3081,9 +4410,10 @@ Type
   end;
 
 
-  {@Class TPrescriptionDispense
+  {@Class TPrescriptionDispense : TFHIRElement
     Details of the dispense as requested by the prescriber
   }
+  {!.Net HL7Connect.FHIR.PrescriptionDispense}
   TPrescriptionDispense = class (TFHIRElement)
   private
     FRepeats : Integer;
@@ -3095,9 +4425,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionDispense; overload;
     function Clone : TPrescriptionDispense; overload;
+    {!script show}
+  published
     {@member repeats
       Requested number of repeats
     }
@@ -3117,56 +4450,159 @@ Type
 
 
   {@Class TPrescriptionMedicineActiveIngredientList
-    A list of Author
+    A list of PrescriptionMedicineActiveIngredient
   }
   {!.Net HL7Connect.FHIR.PrescriptionMedicineActiveIngredientList}
   TPrescriptionMedicineActiveIngredientList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPrescriptionMedicineActiveIngredient;
+    function GetItemN(index : Integer) : TPrescriptionMedicineActiveIngredient;
+    procedure SetItemN(index : Integer; value : TPrescriptionMedicineActiveIngredient);
   public
+    {!script hide}
+    function Link : TPrescriptionMedicineActiveIngredientList; Overload;
+    function Clone : TPrescriptionMedicineActiveIngredientList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PrescriptionMedicineActiveIngredient to the end of the list.
+    }
+    function Append : TPrescriptionMedicineActiveIngredient;
+    
+    {@member AddItem
+      Add an already existing PrescriptionMedicineActiveIngredient to the end of the list.
+    }
+    procedure AddItem(value : TPrescriptionMedicineActiveIngredient);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPrescriptionMedicineActiveIngredient) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPrescriptionMedicineActiveIngredient;
+    function IndexOf(value : TPrescriptionMedicineActiveIngredient) : Integer;
+    
+    {@member Insert
+      Insert PrescriptionMedicineActiveIngredient before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPrescriptionMedicineActiveIngredient;
+    
+    {@member InsertItem
+       Insert an existing PrescriptionMedicineActiveIngredient before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPrescriptionMedicineActiveIngredient);
+    
+    {@member Item
+       Get the iIndexth PrescriptionMedicineActiveIngredient. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PrescriptionMedicineActiveIngredient. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPrescriptionMedicineActiveIngredient);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPrescriptionMedicineActiveIngredient read GetItemN; default;
+    function Item(index : Integer) : TPrescriptionMedicineActiveIngredient;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PrescriptionMedicineActiveIngredients[index : Integer] : TPrescriptionMedicineActiveIngredient read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TPrescriptionMedicineInactiveIngredientList
-    A list of Author
+    A list of PrescriptionMedicineInactiveIngredient
   }
   {!.Net HL7Connect.FHIR.PrescriptionMedicineInactiveIngredientList}
   TPrescriptionMedicineInactiveIngredientList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPrescriptionMedicineInactiveIngredient;
+    function GetItemN(index : Integer) : TPrescriptionMedicineInactiveIngredient;
+    procedure SetItemN(index : Integer; value : TPrescriptionMedicineInactiveIngredient);
   public
+    {!script hide}
+    function Link : TPrescriptionMedicineInactiveIngredientList; Overload;
+    function Clone : TPrescriptionMedicineInactiveIngredientList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PrescriptionMedicineInactiveIngredient to the end of the list.
+    }
+    function Append : TPrescriptionMedicineInactiveIngredient;
+    
+    {@member AddItem
+      Add an already existing PrescriptionMedicineInactiveIngredient to the end of the list.
+    }
+    procedure AddItem(value : TPrescriptionMedicineInactiveIngredient);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPrescriptionMedicineInactiveIngredient) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPrescriptionMedicineInactiveIngredient;
+    function IndexOf(value : TPrescriptionMedicineInactiveIngredient) : Integer;
+    
+    {@member Insert
+      Insert PrescriptionMedicineInactiveIngredient before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPrescriptionMedicineInactiveIngredient;
+    
+    {@member InsertItem
+       Insert an existing PrescriptionMedicineInactiveIngredient before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPrescriptionMedicineInactiveIngredient);
+    
+    {@member Item
+       Get the iIndexth PrescriptionMedicineInactiveIngredient. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PrescriptionMedicineInactiveIngredient. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPrescriptionMedicineInactiveIngredient);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPrescriptionMedicineInactiveIngredient read GetItemN; default;
+    function Item(index : Integer) : TPrescriptionMedicineInactiveIngredient;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PrescriptionMedicineInactiveIngredients[index : Integer] : TPrescriptionMedicineInactiveIngredient read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TPrescriptionMedicine
+  {@Class TPrescriptionMedicine : TFHIRElement
     The one single medicatine, vaccine or therapeutic good prescribed in this prescription.
   }
+  {!.Net HL7Connect.FHIR.PrescriptionMedicine}
   TPrescriptionMedicine = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -3178,9 +4614,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionMedicine; overload;
     function Clone : TPrescriptionMedicine; overload;
+    {!script show}
+  published
     {@member productCode
       Coded representation of medicine
     }
@@ -3204,9 +4643,10 @@ Type
   end;
 
 
-  {@Class TPrescriptionMedicineActiveIngredient
+  {@Class TPrescriptionMedicineActiveIngredient : TFHIRElement
     The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect
   }
+  {!.Net HL7Connect.FHIR.PrescriptionMedicineActiveIngredient}
   TPrescriptionMedicineActiveIngredient = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -3216,9 +4656,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionMedicineActiveIngredient; overload;
     function Clone : TPrescriptionMedicineActiveIngredient; overload;
+    {!script show}
+  published
     {@member productCode
       Coded representation of active ingredient
     }
@@ -3232,9 +4675,10 @@ Type
   end;
 
 
-  {@Class TPrescriptionMedicineInactiveIngredient
+  {@Class TPrescriptionMedicineInactiveIngredient : TFHIRElement
     Ingredients in the medication that are not active
   }
+  {!.Net HL7Connect.FHIR.PrescriptionMedicineInactiveIngredient}
   TPrescriptionMedicineInactiveIngredient = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -3244,9 +4688,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionMedicineInactiveIngredient; overload;
     function Clone : TPrescriptionMedicineInactiveIngredient; overload;
+    {!script show}
+  published
     {@member productCode
       Coded representation of the inactive ingredient
     }
@@ -3261,32 +4708,84 @@ Type
 
 
   {@Class TPrescriptionAdministrationRequestDosageInstructionList
-    A list of Author
+    A list of PrescriptionAdministrationRequestDosageInstruction
   }
   {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequestDosageInstructionList}
   TPrescriptionAdministrationRequestDosageInstructionList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
+    function GetItemN(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
+    procedure SetItemN(index : Integer; value : TPrescriptionAdministrationRequestDosageInstruction);
   public
+    {!script hide}
+    function Link : TPrescriptionAdministrationRequestDosageInstructionList; Overload;
+    function Clone : TPrescriptionAdministrationRequestDosageInstructionList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PrescriptionAdministrationRequestDosageInstruction to the end of the list.
+    }
+    function Append : TPrescriptionAdministrationRequestDosageInstruction;
+    
+    {@member AddItem
+      Add an already existing PrescriptionAdministrationRequestDosageInstruction to the end of the list.
+    }
+    procedure AddItem(value : TPrescriptionAdministrationRequestDosageInstruction);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPrescriptionAdministrationRequestDosageInstruction) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
+    function IndexOf(value : TPrescriptionAdministrationRequestDosageInstruction) : Integer;
+    
+    {@member Insert
+      Insert PrescriptionAdministrationRequestDosageInstruction before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
+    
+    {@member InsertItem
+       Insert an existing PrescriptionAdministrationRequestDosageInstruction before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPrescriptionAdministrationRequestDosageInstruction);
+    
+    {@member Item
+       Get the iIndexth PrescriptionAdministrationRequestDosageInstruction. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PrescriptionAdministrationRequestDosageInstruction. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPrescriptionAdministrationRequestDosageInstruction);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPrescriptionAdministrationRequestDosageInstruction read GetItemN; default;
+    function Item(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PrescriptionAdministrationRequestDosageInstructions[index : Integer] : TPrescriptionAdministrationRequestDosageInstruction read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TPrescriptionAdministrationRequest
+  {@Class TPrescriptionAdministrationRequest : TFHIRElement
     Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.
   }
+  {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequest}
   TPrescriptionAdministrationRequest = class (TFHIRElement)
   private
     FDescription : String;
@@ -3305,9 +4804,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionAdministrationRequest; overload;
     function Clone : TPrescriptionAdministrationRequest; overload;
+    {!script show}
+  published
     {@member description
       Textual description of the use of the medication.
     }
@@ -3347,32 +4849,84 @@ Type
 
 
   {@Class TScheduleList
-    A list of Author
+    A list of Schedule
   }
   {!.Net HL7Connect.FHIR.ScheduleList}
   TScheduleList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TSchedule;
+    function GetItemN(index : Integer) : TSchedule;
+    procedure SetItemN(index : Integer; value : TSchedule);
   public
+    {!script hide}
+    function Link : TScheduleList; Overload;
+    function Clone : TScheduleList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Schedule to the end of the list.
+    }
+    function Append : TSchedule;
+    
+    {@member AddItem
+      Add an already existing Schedule to the end of the list.
+    }
+    procedure AddItem(value : TSchedule);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TSchedule) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TSchedule;
+    function IndexOf(value : TSchedule) : Integer;
+    
+    {@member Insert
+      Insert Schedule before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TSchedule;
+    
+    {@member InsertItem
+       Insert an existing Schedule before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TSchedule);
+    
+    {@member Item
+       Get the iIndexth Schedule. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Schedule. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TSchedule);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TSchedule read GetItemN; default;
+    function Item(index : Integer) : TSchedule;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Schedules[index : Integer] : TSchedule read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TPrescriptionAdministrationRequestDosageInstruction
+  {@Class TPrescriptionAdministrationRequestDosageInstruction : TFHIRElement
     Specification of dose and schedule for administration
   }
+  {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequestDosageInstruction}
   TPrescriptionAdministrationRequestDosageInstruction = class (TFHIRElement)
   private
     FPrecondition : TCodeableConceptList;
@@ -3389,9 +4943,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescriptionAdministrationRequestDosageInstruction; overload;
     function Clone : TPrescriptionAdministrationRequestDosageInstruction; overload;
+    {!script show}
+  published
     {@member Precondition
       Precondition for starting the administration specified in this instruction
     }
@@ -3430,9 +4987,10 @@ Type
   end;
 
 
-  {@Class TPrescription
+  {@Class TPrescription : TFHIRResource
     Directions provided by a prescribing practitioner for a specific medication to be administered to an individual
   }
+  {!.Net HL7Connect.FHIR.Prescription}
   TPrescription = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
@@ -3457,9 +5015,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPrescription; overload;
     function Clone : TPrescription; overload;
+    {!script show}
+  published
     {@member Identifier
       A identifier used in an external system and associated with this medication
     }
@@ -3508,9 +5069,10 @@ Type
   end;
 
 
-  {@Class TPatient
+  {@Class TPatient : TFHIRResource
     A patient is a person or animal that is receiving care
   }
+  {!.Net HL7Connect.FHIR.Patient}
   TPatient = class (TFHIRResource)
   private
     FLink_ : TFHIRResourceReferenceList{TPatient};
@@ -3534,9 +5096,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPatient; overload;
     function Clone : TPatient; overload;
+    {!script show}
+  published
     {@member Link_
       A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.
     }
@@ -3585,21 +5150,25 @@ Type
   end;
 
 
-  {@Class TOrganizationName
+  {@Class TOrganizationName : TFHIRElement
     A name associated with the organization
   }
+  {!.Net HL7Connect.FHIR.OrganizationName}
   TOrganizationName = class (TFHIRElement)
   private
     FValue : String;
-    FPeriod : TInterval_dateTime;
+    FPeriod : TInterval_date;
     Procedure SetValue(value : String);
-    Procedure SetPeriod(value : TInterval_dateTime);
+    Procedure SetPeriod(value : TInterval_date);
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TOrganizationName; overload;
     function Clone : TOrganizationName; overload;
+    {!script show}
+  published
     {@member value
       The actual name of the organization
     }
@@ -3608,30 +5177,34 @@ Type
     {@member period
       The period that this name was in use by the organization
     }
-    property period : TInterval_dateTime read FPeriod write SetPeriod;
+    property period : TInterval_date read FPeriod write SetPeriod;
 
   end;
 
 
-  {@Class TOrganizationAccreditation
+  {@Class TOrganizationAccreditation : TFHIRElement
     The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
   }
+  {!.Net HL7Connect.FHIR.OrganizationAccreditation}
   TOrganizationAccreditation = class (TFHIRElement)
   private
     FId : TIdentifier;
     FCode : TCodeableConcept;
     FInstitution : TFHIRResourceReference{TOrganization};
-    FPeriod : TInterval_dateTime;
+    FPeriod : TInterval_date;
     Procedure SetId(value : TIdentifier);
     Procedure SetCode(value : TCodeableConcept);
     Procedure SetInstitution(value : TFHIRResourceReference{TOrganization});
-    Procedure SetPeriod(value : TInterval_dateTime);
+    Procedure SetPeriod(value : TInterval_date);
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TOrganizationAccreditation; overload;
     function Clone : TOrganizationAccreditation; overload;
+    {!script show}
+  published
     {@member id
       The identifier of the accreditation
     }
@@ -3650,14 +5223,15 @@ Type
     {@member period
       The period for which the accreditation is held
     }
-    property period : TInterval_dateTime read FPeriod write SetPeriod;
+    property period : TInterval_date read FPeriod write SetPeriod;
 
   end;
 
 
-  {@Class TOrganizationRelatedOrganization
+  {@Class TOrganizationRelatedOrganization : TFHIRElement
     Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
   }
+  {!.Net HL7Connect.FHIR.OrganizationRelatedOrganization}
   TOrganizationRelatedOrganization = class (TFHIRElement)
   private
     FId : THumanId;
@@ -3665,17 +5239,20 @@ Type
     FName : String;
     FAddress : TAddressList;
     FContact : TContactList;
-    FPeriod : TInterval_dateTime;
+    FPeriod : TInterval_date;
     Procedure SetId(value : THumanId);
     Procedure SetCode(value : TCodeableConcept);
     Procedure SetName(value : String);
-    Procedure SetPeriod(value : TInterval_dateTime);
+    Procedure SetPeriod(value : TInterval_date);
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TOrganizationRelatedOrganization; overload;
     function Clone : TOrganizationRelatedOrganization; overload;
+    {!script show}
+  published
     {@member id
       Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
     }
@@ -3704,94 +5281,248 @@ Type
     {@member period
       The period during which the organizations were related in this fashion
     }
-    property period : TInterval_dateTime read FPeriod write SetPeriod;
+    property period : TInterval_date read FPeriod write SetPeriod;
 
   end;
 
 
   {@Class TOrganizationNameList
-    A list of Author
+    A list of OrganizationName
   }
   {!.Net HL7Connect.FHIR.OrganizationNameList}
   TOrganizationNameList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TOrganizationName;
+    function GetItemN(index : Integer) : TOrganizationName;
+    procedure SetItemN(index : Integer; value : TOrganizationName);
   public
+    {!script hide}
+    function Link : TOrganizationNameList; Overload;
+    function Clone : TOrganizationNameList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationName to the end of the list.
+    }
+    function Append : TOrganizationName;
+    
+    {@member AddItem
+      Add an already existing OrganizationName to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationName);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TOrganizationName) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TOrganizationName;
+    function IndexOf(value : TOrganizationName) : Integer;
+    
+    {@member Insert
+      Insert OrganizationName before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationName;
+    
+    {@member InsertItem
+       Insert an existing OrganizationName before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationName);
+    
+    {@member Item
+       Get the iIndexth OrganizationName. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationName. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationName);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TOrganizationName read GetItemN; default;
+    function Item(index : Integer) : TOrganizationName;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationNames[index : Integer] : TOrganizationName read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TOrganizationAccreditationList
-    A list of Author
+    A list of OrganizationAccreditation
   }
   {!.Net HL7Connect.FHIR.OrganizationAccreditationList}
   TOrganizationAccreditationList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TOrganizationAccreditation;
+    function GetItemN(index : Integer) : TOrganizationAccreditation;
+    procedure SetItemN(index : Integer; value : TOrganizationAccreditation);
   public
+    {!script hide}
+    function Link : TOrganizationAccreditationList; Overload;
+    function Clone : TOrganizationAccreditationList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationAccreditation to the end of the list.
+    }
+    function Append : TOrganizationAccreditation;
+    
+    {@member AddItem
+      Add an already existing OrganizationAccreditation to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationAccreditation);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TOrganizationAccreditation) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TOrganizationAccreditation;
+    function IndexOf(value : TOrganizationAccreditation) : Integer;
+    
+    {@member Insert
+      Insert OrganizationAccreditation before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationAccreditation;
+    
+    {@member InsertItem
+       Insert an existing OrganizationAccreditation before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationAccreditation);
+    
+    {@member Item
+       Get the iIndexth OrganizationAccreditation. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationAccreditation. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationAccreditation);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TOrganizationAccreditation read GetItemN; default;
+    function Item(index : Integer) : TOrganizationAccreditation;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationAccreditations[index : Integer] : TOrganizationAccreditation read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TOrganizationRelatedOrganizationList
-    A list of Author
+    A list of OrganizationRelatedOrganization
   }
   {!.Net HL7Connect.FHIR.OrganizationRelatedOrganizationList}
   TOrganizationRelatedOrganizationList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TOrganizationRelatedOrganization;
+    function GetItemN(index : Integer) : TOrganizationRelatedOrganization;
+    procedure SetItemN(index : Integer; value : TOrganizationRelatedOrganization);
   public
+    {!script hide}
+    function Link : TOrganizationRelatedOrganizationList; Overload;
+    function Clone : TOrganizationRelatedOrganizationList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationRelatedOrganization to the end of the list.
+    }
+    function Append : TOrganizationRelatedOrganization;
+    
+    {@member AddItem
+      Add an already existing OrganizationRelatedOrganization to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationRelatedOrganization);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TOrganizationRelatedOrganization) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TOrganizationRelatedOrganization;
+    function IndexOf(value : TOrganizationRelatedOrganization) : Integer;
+    
+    {@member Insert
+      Insert OrganizationRelatedOrganization before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationRelatedOrganization;
+    
+    {@member InsertItem
+       Insert an existing OrganizationRelatedOrganization before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationRelatedOrganization);
+    
+    {@member Item
+       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationRelatedOrganization);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TOrganizationRelatedOrganization read GetItemN; default;
+    function Item(index : Integer) : TOrganizationRelatedOrganization;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationRelatedOrganizations[index : Integer] : TOrganizationRelatedOrganization read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TOrganization
+  {@Class TOrganization : TFHIRResource
     For any organization/institution/government department that has relevance to the care process
   }
+  {!.Net HL7Connect.FHIR.Organization}
   TOrganization = class (TFHIRResource)
   private
-    FCode : TCodeableConcept;
-    FIndustryCode : TCodeableConcept;
     FIdentifier : THumanIdList;
     FName : TOrganizationNameList;
     FAddress : TAddressList;
     FContact : TContactList;
+    FCode : TCodeableConcept;
+    FIndustryCode : TCodeableConcept;
     FAccreditation : TOrganizationAccreditationList;
     FRelatedOrganization : TOrganizationRelatedOrganizationList;
     Procedure SetCode(value : TCodeableConcept);
@@ -3801,19 +5532,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TOrganization; overload;
     function Clone : TOrganization; overload;
-    {@member code
-      The kind of organization that this is
-    }
-    property code : TCodeableConcept read FCode write SetCode;
-
-    {@member industryCode
-      The industry that this organization is involved in
-    }
-    property industryCode : TCodeableConcept read FIndustryCode write SetIndustryCode;
-
+    {!script show}
+  published
     {@member Identifier
       Identifier for the organization that is used to identify the organization across multiple disparate systems
     }
@@ -3834,6 +5558,16 @@ Type
     }
     property Contact : TContactList read FContact;
 
+    {@member code
+      The kind of organization that this is
+    }
+    property code : TCodeableConcept read FCode write SetCode;
+
+    {@member industryCode
+      The industry that this organization is involved in
+    }
+    property industryCode : TCodeableConcept read FIndustryCode write SetIndustryCode;
+
     {@member Accreditation
       The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
     }
@@ -3847,9 +5581,10 @@ Type
   end;
 
 
-  {@Class TDocumentConformancePublisher
+  {@Class TDocumentConformancePublisher : TFHIRElement
     The organization that publishes this conformance statement
   }
+  {!.Net HL7Connect.FHIR.DocumentConformancePublisher}
   TDocumentConformancePublisher = class (TFHIRElement)
   private
     FName : String;
@@ -3859,9 +5594,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentConformancePublisher; overload;
     function Clone : TDocumentConformancePublisher; overload;
+    {!script show}
+  published
     {@member name
       Name of Organization
     }
@@ -3880,9 +5618,10 @@ Type
   end;
 
 
-  {@Class TDocumentConformanceSoftware
+  {@Class TDocumentConformanceSoftware : TFHIRElement
     The software that is covered by this conformance statement
   }
+  {!.Net HL7Connect.FHIR.DocumentConformanceSoftware}
   TDocumentConformanceSoftware = class (TFHIRElement)
   private
     FName : String;
@@ -3894,9 +5633,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentConformanceSoftware; overload;
     function Clone : TDocumentConformanceSoftware; overload;
+    {!script show}
+  published
     {@member name
       Name software is known by
     }
@@ -3915,9 +5657,10 @@ Type
   end;
 
 
-  {@Class TDocumentConformanceDocument
+  {@Class TDocumentConformanceDocument : TFHIRElement
     A document definition
   }
+  {!.Net HL7Connect.FHIR.DocumentConformanceDocument}
   TDocumentConformanceDocument = class (TFHIRElement)
   private
     FName : String;
@@ -3928,9 +5671,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentConformanceDocument; overload;
     function Clone : TDocumentConformanceDocument; overload;
+    {!script show}
+  published
     {@member name
       Name for this particular document profile
     }
@@ -3950,32 +5696,84 @@ Type
 
 
   {@Class TDocumentConformanceDocumentList
-    A list of Author
+    A list of DocumentConformanceDocument
   }
   {!.Net HL7Connect.FHIR.DocumentConformanceDocumentList}
   TDocumentConformanceDocumentList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TDocumentConformanceDocument;
+    function GetItemN(index : Integer) : TDocumentConformanceDocument;
+    procedure SetItemN(index : Integer; value : TDocumentConformanceDocument);
   public
+    {!script hide}
+    function Link : TDocumentConformanceDocumentList; Overload;
+    function Clone : TDocumentConformanceDocumentList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a DocumentConformanceDocument to the end of the list.
+    }
+    function Append : TDocumentConformanceDocument;
+    
+    {@member AddItem
+      Add an already existing DocumentConformanceDocument to the end of the list.
+    }
+    procedure AddItem(value : TDocumentConformanceDocument);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TDocumentConformanceDocument) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TDocumentConformanceDocument;
+    function IndexOf(value : TDocumentConformanceDocument) : Integer;
+    
+    {@member Insert
+      Insert DocumentConformanceDocument before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TDocumentConformanceDocument;
+    
+    {@member InsertItem
+       Insert an existing DocumentConformanceDocument before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TDocumentConformanceDocument);
+    
+    {@member Item
+       Get the iIndexth DocumentConformanceDocument. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth DocumentConformanceDocument. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TDocumentConformanceDocument);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TDocumentConformanceDocument read GetItemN; default;
+    function Item(index : Integer) : TDocumentConformanceDocument;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property DocumentConformanceDocuments[index : Integer] : TDocumentConformanceDocument read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TDocumentConformance
+  {@Class TDocumentConformance : TFHIRResource
     A conformance statement about how one or more FHIR documents
   }
+  {!.Net HL7Connect.FHIR.DocumentConformance}
   TDocumentConformance = class (TFHIRResource)
   private
     FDate : String;
@@ -3990,9 +5788,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TDocumentConformance; overload;
     function Clone : TDocumentConformance; overload;
+    {!script show}
+  published
     {@member date
       Date that this conformance statement is published
     }
@@ -4016,9 +5817,10 @@ Type
   end;
 
 
-  {@Class TLabReportRequestDetail
+  {@Class TLabReportRequestDetail : TFHIRElement
     Details concerning a single pathology test requested.
   }
+  {!.Net HL7Connect.FHIR.LabReportRequestDetail}
   TLabReportRequestDetail = class (TFHIRElement)
   private
     FRequestOrderId : TIdentifier;
@@ -4033,9 +5835,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TLabReportRequestDetail; overload;
     function Clone : TLabReportRequestDetail; overload;
+    {!script show}
+  published
     {@member requestOrderId
       The local ID assigned to the order by the order requester.
     }
@@ -4065,32 +5870,84 @@ Type
 
 
   {@Class TLabReportResultGroupResultList
-    A list of Author
+    A list of LabReportResultGroupResult
   }
   {!.Net HL7Connect.FHIR.LabReportResultGroupResultList}
   TLabReportResultGroupResultList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TLabReportResultGroupResult;
+    function GetItemN(index : Integer) : TLabReportResultGroupResult;
+    procedure SetItemN(index : Integer; value : TLabReportResultGroupResult);
   public
+    {!script hide}
+    function Link : TLabReportResultGroupResultList; Overload;
+    function Clone : TLabReportResultGroupResultList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a LabReportResultGroupResult to the end of the list.
+    }
+    function Append : TLabReportResultGroupResult;
+    
+    {@member AddItem
+      Add an already existing LabReportResultGroupResult to the end of the list.
+    }
+    procedure AddItem(value : TLabReportResultGroupResult);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TLabReportResultGroupResult) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TLabReportResultGroupResult;
+    function IndexOf(value : TLabReportResultGroupResult) : Integer;
+    
+    {@member Insert
+      Insert LabReportResultGroupResult before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TLabReportResultGroupResult;
+    
+    {@member InsertItem
+       Insert an existing LabReportResultGroupResult before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TLabReportResultGroupResult);
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroupResult. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroupResult. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TLabReportResultGroupResult);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TLabReportResultGroupResult read GetItemN; default;
+    function Item(index : Integer) : TLabReportResultGroupResult;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property LabReportResultGroupResults[index : Integer] : TLabReportResultGroupResult read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TLabReportResultGroup
+  {@Class TLabReportResultGroup : TFHIRElement
     A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.
   }
+  {!.Net HL7Connect.FHIR.LabReportResultGroup}
   TLabReportResultGroup = class (TFHIRElement)
   private
     FName : TCodeableConcept;
@@ -4101,9 +5958,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TLabReportResultGroup; overload;
     function Clone : TLabReportResultGroup; overload;
+    {!script show}
+  published
     {@member name
       A code or name that describes the group of results
     }
@@ -4123,32 +5983,84 @@ Type
 
 
   {@Class TLabReportResultGroupResultReferenceRangeList
-    A list of Author
+    A list of LabReportResultGroupResultReferenceRange
   }
   {!.Net HL7Connect.FHIR.LabReportResultGroupResultReferenceRangeList}
   TLabReportResultGroupResultReferenceRangeList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TLabReportResultGroupResultReferenceRange;
+    function GetItemN(index : Integer) : TLabReportResultGroupResultReferenceRange;
+    procedure SetItemN(index : Integer; value : TLabReportResultGroupResultReferenceRange);
   public
+    {!script hide}
+    function Link : TLabReportResultGroupResultReferenceRangeList; Overload;
+    function Clone : TLabReportResultGroupResultReferenceRangeList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a LabReportResultGroupResultReferenceRange to the end of the list.
+    }
+    function Append : TLabReportResultGroupResultReferenceRange;
+    
+    {@member AddItem
+      Add an already existing LabReportResultGroupResultReferenceRange to the end of the list.
+    }
+    procedure AddItem(value : TLabReportResultGroupResultReferenceRange);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TLabReportResultGroupResultReferenceRange) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TLabReportResultGroupResultReferenceRange;
+    function IndexOf(value : TLabReportResultGroupResultReferenceRange) : Integer;
+    
+    {@member Insert
+      Insert LabReportResultGroupResultReferenceRange before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TLabReportResultGroupResultReferenceRange;
+    
+    {@member InsertItem
+       Insert an existing LabReportResultGroupResultReferenceRange before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TLabReportResultGroupResultReferenceRange);
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroupResultReferenceRange. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroupResultReferenceRange. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TLabReportResultGroupResultReferenceRange);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TLabReportResultGroupResultReferenceRange read GetItemN; default;
+    function Item(index : Integer) : TLabReportResultGroupResultReferenceRange;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property LabReportResultGroupResultReferenceRanges[index : Integer] : TLabReportResultGroupResultReferenceRange read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TLabReportResultGroupResult
+  {@Class TLabReportResultGroupResult : TFHIRElement
     Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.
   }
+  {!.Net HL7Connect.FHIR.LabReportResultGroupResult}
   TLabReportResultGroupResult = class (TFHIRElement)
   private
     FName : TCodeableConcept;
@@ -4165,9 +6077,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TLabReportResultGroupResult; overload;
     function Clone : TLabReportResultGroupResult; overload;
+    {!script show}
+  published
     {@member name
       Identifies the meaning of the value
     }
@@ -4201,9 +6116,10 @@ Type
   end;
 
 
-  {@Class TLabReportResultGroupResultReferenceRange
+  {@Class TLabReportResultGroupResultReferenceRange : TFHIRElement
     Guidance on how to interpret the value by comparison to a normal or recommended range
   }
+  {!.Net HL7Connect.FHIR.LabReportResultGroupResultReferenceRange}
   TLabReportResultGroupResultReferenceRange = class (TFHIRElement)
   private
     FMeaning : TCodeableConcept;
@@ -4213,9 +6129,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TLabReportResultGroupResultReferenceRange; overload;
     function Clone : TLabReportResultGroupResultReferenceRange; overload;
+    {!script show}
+  published
     {@member meaning
       Code for the meaning of the reference range
     }
@@ -4230,80 +6149,234 @@ Type
 
 
   {@Class TLabReportRequestDetailList
-    A list of Author
+    A list of LabReportRequestDetail
   }
   {!.Net HL7Connect.FHIR.LabReportRequestDetailList}
   TLabReportRequestDetailList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TLabReportRequestDetail;
+    function GetItemN(index : Integer) : TLabReportRequestDetail;
+    procedure SetItemN(index : Integer; value : TLabReportRequestDetail);
   public
+    {!script hide}
+    function Link : TLabReportRequestDetailList; Overload;
+    function Clone : TLabReportRequestDetailList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a LabReportRequestDetail to the end of the list.
+    }
+    function Append : TLabReportRequestDetail;
+    
+    {@member AddItem
+      Add an already existing LabReportRequestDetail to the end of the list.
+    }
+    procedure AddItem(value : TLabReportRequestDetail);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TLabReportRequestDetail) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TLabReportRequestDetail;
+    function IndexOf(value : TLabReportRequestDetail) : Integer;
+    
+    {@member Insert
+      Insert LabReportRequestDetail before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TLabReportRequestDetail;
+    
+    {@member InsertItem
+       Insert an existing LabReportRequestDetail before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TLabReportRequestDetail);
+    
+    {@member Item
+       Get the iIndexth LabReportRequestDetail. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth LabReportRequestDetail. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TLabReportRequestDetail);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TLabReportRequestDetail read GetItemN; default;
+    function Item(index : Integer) : TLabReportRequestDetail;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property LabReportRequestDetails[index : Integer] : TLabReportRequestDetail read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TLabReportResultGroupList
-    A list of Author
+    A list of LabReportResultGroup
   }
   {!.Net HL7Connect.FHIR.LabReportResultGroupList}
   TLabReportResultGroupList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TLabReportResultGroup;
+    function GetItemN(index : Integer) : TLabReportResultGroup;
+    procedure SetItemN(index : Integer; value : TLabReportResultGroup);
   public
+    {!script hide}
+    function Link : TLabReportResultGroupList; Overload;
+    function Clone : TLabReportResultGroupList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a LabReportResultGroup to the end of the list.
+    }
+    function Append : TLabReportResultGroup;
+    
+    {@member AddItem
+      Add an already existing LabReportResultGroup to the end of the list.
+    }
+    procedure AddItem(value : TLabReportResultGroup);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TLabReportResultGroup) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TLabReportResultGroup;
+    function IndexOf(value : TLabReportResultGroup) : Integer;
+    
+    {@member Insert
+      Insert LabReportResultGroup before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TLabReportResultGroup;
+    
+    {@member InsertItem
+       Insert an existing LabReportResultGroup before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TLabReportResultGroup);
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroup. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth LabReportResultGroup. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TLabReportResultGroup);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TLabReportResultGroup read GetItemN; default;
+    function Item(index : Integer) : TLabReportResultGroup;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property LabReportResultGroups[index : Integer] : TLabReportResultGroup read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TAttachmentList
-    A list of Author
+    A list of Attachment
   }
   {!.Net HL7Connect.FHIR.AttachmentList}
   TAttachmentList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TAttachment;
+    function GetItemN(index : Integer) : TAttachment;
+    procedure SetItemN(index : Integer; value : TAttachment);
   public
+    {!script hide}
+    function Link : TAttachmentList; Overload;
+    function Clone : TAttachmentList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Attachment to the end of the list.
+    }
+    function Append : TAttachment;
+    
+    {@member AddItem
+      Add an already existing Attachment to the end of the list.
+    }
+    procedure AddItem(value : TAttachment);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TAttachment) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TAttachment;
+    function IndexOf(value : TAttachment) : Integer;
+    
+    {@member Insert
+      Insert Attachment before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TAttachment;
+    
+    {@member InsertItem
+       Insert an existing Attachment before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TAttachment);
+    
+    {@member Item
+       Get the iIndexth Attachment. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Attachment. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TAttachment);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TAttachment read GetItemN; default;
+    function Item(index : Integer) : TAttachment;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Attachments[index : Integer] : TAttachment read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TLabReport
+  {@Class TLabReport : TFHIRResource
     The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care
   }
+  {!.Net HL7Connect.FHIR.LabReport}
   TLabReport = class (TFHIRResource)
   private
     FStatus : TLabReportStatus;
@@ -4336,9 +6409,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TLabReport; overload;
     function Clone : TLabReport; overload;
+    {!script show}
+  published
     {@member status
       The status of the pathology test result as a whole
     }
@@ -4417,9 +6493,10 @@ Type
   end;
 
 
-  {@Class TPersonQualification
+  {@Class TPersonQualification : TFHIRElement
     The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
   }
+  {!.Net HL7Connect.FHIR.PersonQualification}
   TPersonQualification = class (TFHIRElement)
   private
     FId : TIdentifier;
@@ -4433,9 +6510,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPersonQualification; overload;
     function Clone : TPersonQualification; overload;
+    {!script show}
+  published
     {@member id
       The identifier of a qualification
     }
@@ -4459,9 +6539,10 @@ Type
   end;
 
 
-  {@Class TPersonLanguage
+  {@Class TPersonLanguage : TFHIRElement
     A language spoken by the person, with proficiency
   }
+  {!.Net HL7Connect.FHIR.PersonLanguage}
   TPersonLanguage = class (TFHIRElement)
   private
     FCode : String;
@@ -4471,9 +6552,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPersonLanguage; overload;
     function Clone : TPersonLanguage; overload;
+    {!script show}
+  published
     {@member code
       A code that identifies the language
     }
@@ -4487,9 +6571,10 @@ Type
   end;
 
 
-  {@Class TPersonRelatedPerson
+  {@Class TPersonRelatedPerson : TFHIRElement
     Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
   }
+  {!.Net HL7Connect.FHIR.PersonRelatedPerson}
   TPersonRelatedPerson = class (TFHIRElement)
   private
     FId : THumanId;
@@ -4502,9 +6587,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPersonRelatedPerson; overload;
     function Clone : TPersonRelatedPerson; overload;
+    {!script show}
+  published
     {@member id
       Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
     }
@@ -4529,80 +6617,234 @@ Type
 
 
   {@Class TPersonQualificationList
-    A list of Author
+    A list of PersonQualification
   }
   {!.Net HL7Connect.FHIR.PersonQualificationList}
   TPersonQualificationList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPersonQualification;
+    function GetItemN(index : Integer) : TPersonQualification;
+    procedure SetItemN(index : Integer; value : TPersonQualification);
   public
+    {!script hide}
+    function Link : TPersonQualificationList; Overload;
+    function Clone : TPersonQualificationList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PersonQualification to the end of the list.
+    }
+    function Append : TPersonQualification;
+    
+    {@member AddItem
+      Add an already existing PersonQualification to the end of the list.
+    }
+    procedure AddItem(value : TPersonQualification);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPersonQualification) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPersonQualification;
+    function IndexOf(value : TPersonQualification) : Integer;
+    
+    {@member Insert
+      Insert PersonQualification before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPersonQualification;
+    
+    {@member InsertItem
+       Insert an existing PersonQualification before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPersonQualification);
+    
+    {@member Item
+       Get the iIndexth PersonQualification. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PersonQualification. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPersonQualification);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPersonQualification read GetItemN; default;
+    function Item(index : Integer) : TPersonQualification;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PersonQualifications[index : Integer] : TPersonQualification read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TPersonLanguageList
-    A list of Author
+    A list of PersonLanguage
   }
   {!.Net HL7Connect.FHIR.PersonLanguageList}
   TPersonLanguageList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPersonLanguage;
+    function GetItemN(index : Integer) : TPersonLanguage;
+    procedure SetItemN(index : Integer; value : TPersonLanguage);
   public
+    {!script hide}
+    function Link : TPersonLanguageList; Overload;
+    function Clone : TPersonLanguageList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PersonLanguage to the end of the list.
+    }
+    function Append : TPersonLanguage;
+    
+    {@member AddItem
+      Add an already existing PersonLanguage to the end of the list.
+    }
+    procedure AddItem(value : TPersonLanguage);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPersonLanguage) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPersonLanguage;
+    function IndexOf(value : TPersonLanguage) : Integer;
+    
+    {@member Insert
+      Insert PersonLanguage before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPersonLanguage;
+    
+    {@member InsertItem
+       Insert an existing PersonLanguage before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPersonLanguage);
+    
+    {@member Item
+       Get the iIndexth PersonLanguage. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PersonLanguage. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPersonLanguage);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPersonLanguage read GetItemN; default;
+    function Item(index : Integer) : TPersonLanguage;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PersonLanguages[index : Integer] : TPersonLanguage read GetItemN write SetItemN; default;
   End;
 
 
   {@Class TPersonRelatedPersonList
-    A list of Author
+    A list of PersonRelatedPerson
   }
   {!.Net HL7Connect.FHIR.PersonRelatedPersonList}
   TPersonRelatedPersonList = class (THL7FHIRObjectList)
   private
-    Function GetItemN(index : Integer) : TPersonRelatedPerson;
+    function GetItemN(index : Integer) : TPersonRelatedPerson;
+    procedure SetItemN(index : Integer; value : TPersonRelatedPerson);
   public
+    {!script hide}
+    function Link : TPersonRelatedPersonList; Overload;
+    function Clone : TPersonRelatedPersonList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a PersonRelatedPerson to the end of the list.
+    }
+    function Append : TPersonRelatedPerson;
+    
+    {@member AddItem
+      Add an already existing PersonRelatedPerson to the end of the list.
+    }
+    procedure AddItem(value : TPersonRelatedPerson);
+    
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    Function IndexOf(value : TPersonRelatedPerson) : Integer;
-    {@member Item
-       Get the iIndexth Author. (0 = first item)
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
     }
-    Function Item(index : Integer) : TPersonRelatedPerson;
+    function IndexOf(value : TPersonRelatedPerson) : Integer;
+    
+    {@member Insert
+      Insert PersonRelatedPerson before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TPersonRelatedPerson;
+    
+    {@member InsertItem
+       Insert an existing PersonRelatedPerson before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TPersonRelatedPerson);
+    
+    {@member Item
+       Get the iIndexth PersonRelatedPerson. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth PersonRelatedPerson. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TPersonRelatedPerson);
+    
     {@member Count
       The number of items in the collection
     }
-    Function Count : Integer; Overload;
-    Property Segments[index : Integer] : TPersonRelatedPerson read GetItemN; default;
+    function Item(index : Integer) : TPersonRelatedPerson;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property PersonRelatedPeople[index : Integer] : TPersonRelatedPerson read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TPerson
+  {@Class TPerson : TFHIRResource
     A person who is involved in the healthcare process
   }
+  {!.Net HL7Connect.FHIR.Person}
   TPerson = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
@@ -4623,9 +6865,12 @@ Type
   public
     constructor Create; Override;
     destructor Destroy; override;
+    {!script hide}
     procedure Assign(oSource : TAdvObject); override;
     function Link : TPerson; overload;
     function Clone : TPerson; overload;
+    {!script show}
+  published
     {@member Identifier
       Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
     }
@@ -4679,6 +6924,390 @@ Type
   end;
 
 
+ TFHIRResourceFactory = class (TFHIRBaseFactory)
+  public
+    {@member newExtension
+      create a new Extension
+    }
+    {!script nolink}
+    function newExtension : TExtension;
+    {@member newConstraintElement
+      create a new element
+    }
+    {!script nolink}
+    function newConstraintElement : TConstraintElement;
+    {@member newConstraintElementMapping
+      create a new mapping
+    }
+    {!script nolink}
+    function newConstraintElementMapping : TConstraintElementMapping;
+    {@member newConstraintElementAggregation
+      create a new aggregation
+    }
+    {!script nolink}
+    function newConstraintElementAggregation : TConstraintElementAggregation;
+    {@member newConstraintElementValue
+      create a new value
+    }
+    {!script nolink}
+    function newConstraintElementValue : TConstraintElementValue;
+    {@member newConstraint
+      create a new Constraint
+    }
+    {!script nolink}
+    function newConstraint : TConstraint;
+    {@member newNarrativeImage
+      create a new image
+    }
+    {!script nolink}
+    function newNarrativeImage : TNarrativeImage;
+    {@member newNarrativeMap
+      create a new map
+    }
+    {!script nolink}
+    function newNarrativeMap : TNarrativeMap;
+    {@member newNarrative
+      create a new Narrative
+    }
+    {!script nolink}
+    function newNarrative : TNarrative;
+    {@member newCoding
+      create a new Coding
+    }
+    {!script nolink}
+    function newCoding : TCoding;
+    {@member newInterval_Quantity
+      create a new Interval
+    }
+    {!script nolink}
+    function newInterval_Quantity : TInterval_Quantity;
+    {@member newInterval_DateTime
+      create a new Interval
+    }
+    {!script nolink}
+    function newInterval_DateTime : TInterval_DateTime;
+    {@member newInterval_Date
+      create a new Interval
+    }
+    {!script nolink}
+    function newInterval_Date : TInterval_Date;
+    {@member newQuantity
+      create a new Quantity
+    }
+    {!script nolink}
+    function newQuantity : TQuantity;
+    {@member newChoiceValue
+      create a new value
+    }
+    {!script nolink}
+    function newChoiceValue : TChoiceValue;
+    {@member newChoice
+      create a new Choice
+    }
+    {!script nolink}
+    function newChoice : TChoice;
+    {@member newAttachment
+      create a new Attachment
+    }
+    {!script nolink}
+    function newAttachment : TAttachment;
+    {@member newRatio
+      create a new Ratio
+    }
+    {!script nolink}
+    function newRatio : TRatio;
+    {@member newCodeableConcept
+      create a new CodeableConcept
+    }
+    {!script nolink}
+    function newCodeableConcept : TCodeableConcept;
+    {@member newIdentifier
+      create a new Identifier
+    }
+    {!script nolink}
+    function newIdentifier : TIdentifier;
+    {@member newScheduleRepeat
+      create a new repeat
+    }
+    {!script nolink}
+    function newScheduleRepeat : TScheduleRepeat;
+    {@member newSchedule
+      create a new Schedule
+    }
+    {!script nolink}
+    function newSchedule : TSchedule;
+    {@member newContact
+      create a new Contact
+    }
+    {!script nolink}
+    function newContact : TContact;
+    {@member newAddressPart
+      create a new part
+    }
+    {!script nolink}
+    function newAddressPart : TAddressPart;
+    {@member newAddress
+      create a new Address
+    }
+    {!script nolink}
+    function newAddress : TAddress;
+    {@member newHumanNamePart
+      create a new part
+    }
+    {!script nolink}
+    function newHumanNamePart : THumanNamePart;
+    {@member newHumanName
+      create a new HumanName
+    }
+    {!script nolink}
+    function newHumanName : THumanName;
+    {@member newHumanId
+      create a new HumanId
+    }
+    {!script nolink}
+    function newHumanId : THumanId;
+    {@member newConformancePublisher
+      create a new publisher
+    }
+    {!script nolink}
+    function newConformancePublisher : TConformancePublisher;
+    {@member newConformanceSoftware
+      create a new software
+    }
+    {!script nolink}
+    function newConformanceSoftware : TConformanceSoftware;
+    {@member newConformanceOperation
+      create a new operation
+    }
+    {!script nolink}
+    function newConformanceOperation : TConformanceOperation;
+    {@member newConformanceOperationTransaction
+      create a new transaction
+    }
+    {!script nolink}
+    function newConformanceOperationTransaction : TConformanceOperationTransaction;
+    {@member newConformanceOperationSearch
+      create a new search
+    }
+    {!script nolink}
+    function newConformanceOperationSearch : TConformanceOperationSearch;
+    {@member newConformanceOperationCreate
+      create a new create
+    }
+    {!script nolink}
+    function newConformanceOperationCreate : TConformanceOperationCreate;
+    {@member newConformance
+      create a new Conformance
+    }
+    {!script nolink}
+    function newConformance : TConformance;
+    {@member newDocumentAuthor
+      create a new author
+    }
+    {!script nolink}
+    function newDocumentAuthor : TDocumentAuthor;
+    {@member newDocumentAttestor
+      create a new attestor
+    }
+    {!script nolink}
+    function newDocumentAttestor : TDocumentAttestor;
+    {@member newDocumentSection
+      create a new section
+    }
+    {!script nolink}
+    function newDocumentSection : TDocumentSection;
+    {@member newDocumentSectionAuthor
+      create a new author
+    }
+    {!script nolink}
+    function newDocumentSectionAuthor : TDocumentSectionAuthor;
+    {@member newDocument
+      create a new Document
+    }
+    {!script nolink}
+    function newDocument : TDocument;
+    {@member newMessageResponse
+      create a new response
+    }
+    {!script nolink}
+    function newMessageResponse : TMessageResponse;
+    {@member newMessage
+      create a new Message
+    }
+    {!script nolink}
+    function newMessage : TMessage;
+    {@member newMessageConformancePublisher
+      create a new publisher
+    }
+    {!script nolink}
+    function newMessageConformancePublisher : TMessageConformancePublisher;
+    {@member newMessageConformanceSoftware
+      create a new software
+    }
+    {!script nolink}
+    function newMessageConformanceSoftware : TMessageConformanceSoftware;
+    {@member newMessageConformanceEvent
+      create a new event
+    }
+    {!script nolink}
+    function newMessageConformanceEvent : TMessageConformanceEvent;
+    {@member newMessageConformanceEventRequest
+      create a new request
+    }
+    {!script nolink}
+    function newMessageConformanceEventRequest : TMessageConformanceEventRequest;
+    {@member newMessageConformanceEventResponse
+      create a new response
+    }
+    {!script nolink}
+    function newMessageConformanceEventResponse : TMessageConformanceEventResponse;
+    {@member newMessageConformance
+      create a new MessageConformance
+    }
+    {!script nolink}
+    function newMessageConformance : TMessageConformance;
+    {@member newAgent
+      create a new Agent
+    }
+    {!script nolink}
+    function newAgent : TAgent;
+    {@member newAnimalRelatedEntity
+      create a new relatedEntity
+    }
+    {!script nolink}
+    function newAnimalRelatedEntity : TAnimalRelatedEntity;
+    {@member newAnimal
+      create a new Animal
+    }
+    {!script nolink}
+    function newAnimal : TAnimal;
+    {@member newPrescriptionDispense
+      create a new dispense
+    }
+    {!script nolink}
+    function newPrescriptionDispense : TPrescriptionDispense;
+    {@member newPrescriptionMedicine
+      create a new medicine
+    }
+    {!script nolink}
+    function newPrescriptionMedicine : TPrescriptionMedicine;
+    {@member newPrescriptionMedicineActiveIngredient
+      create a new activeIngredient
+    }
+    {!script nolink}
+    function newPrescriptionMedicineActiveIngredient : TPrescriptionMedicineActiveIngredient;
+    {@member newPrescriptionMedicineInactiveIngredient
+      create a new inactiveIngredient
+    }
+    {!script nolink}
+    function newPrescriptionMedicineInactiveIngredient : TPrescriptionMedicineInactiveIngredient;
+    {@member newPrescriptionAdministrationRequest
+      create a new administrationRequest
+    }
+    {!script nolink}
+    function newPrescriptionAdministrationRequest : TPrescriptionAdministrationRequest;
+    {@member newPrescriptionAdministrationRequestDosageInstruction
+      create a new dosageInstruction
+    }
+    {!script nolink}
+    function newPrescriptionAdministrationRequestDosageInstruction : TPrescriptionAdministrationRequestDosageInstruction;
+    {@member newPrescription
+      create a new Prescription
+    }
+    {!script nolink}
+    function newPrescription : TPrescription;
+    {@member newPatient
+      create a new Patient
+    }
+    {!script nolink}
+    function newPatient : TPatient;
+    {@member newOrganizationName
+      create a new name
+    }
+    {!script nolink}
+    function newOrganizationName : TOrganizationName;
+    {@member newOrganizationAccreditation
+      create a new accreditation
+    }
+    {!script nolink}
+    function newOrganizationAccreditation : TOrganizationAccreditation;
+    {@member newOrganizationRelatedOrganization
+      create a new relatedOrganization
+    }
+    {!script nolink}
+    function newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+    {@member newOrganization
+      create a new Organization
+    }
+    {!script nolink}
+    function newOrganization : TOrganization;
+    {@member newDocumentConformancePublisher
+      create a new publisher
+    }
+    {!script nolink}
+    function newDocumentConformancePublisher : TDocumentConformancePublisher;
+    {@member newDocumentConformanceSoftware
+      create a new software
+    }
+    {!script nolink}
+    function newDocumentConformanceSoftware : TDocumentConformanceSoftware;
+    {@member newDocumentConformanceDocument
+      create a new document
+    }
+    {!script nolink}
+    function newDocumentConformanceDocument : TDocumentConformanceDocument;
+    {@member newDocumentConformance
+      create a new DocumentConformance
+    }
+    {!script nolink}
+    function newDocumentConformance : TDocumentConformance;
+    {@member newLabReportRequestDetail
+      create a new requestDetail
+    }
+    {!script nolink}
+    function newLabReportRequestDetail : TLabReportRequestDetail;
+    {@member newLabReportResultGroup
+      create a new resultGroup
+    }
+    {!script nolink}
+    function newLabReportResultGroup : TLabReportResultGroup;
+    {@member newLabReportResultGroupResult
+      create a new result
+    }
+    {!script nolink}
+    function newLabReportResultGroupResult : TLabReportResultGroupResult;
+    {@member newLabReportResultGroupResultReferenceRange
+      create a new referenceRange
+    }
+    {!script nolink}
+    function newLabReportResultGroupResultReferenceRange : TLabReportResultGroupResultReferenceRange;
+    {@member newLabReport
+      create a new LabReport
+    }
+    {!script nolink}
+    function newLabReport : TLabReport;
+    {@member newPersonQualification
+      create a new qualification
+    }
+    {!script nolink}
+    function newPersonQualification : TPersonQualification;
+    {@member newPersonLanguage
+      create a new language
+    }
+    {!script nolink}
+    function newPersonLanguage : TPersonLanguage;
+    {@member newPersonRelatedPerson
+      create a new relatedPerson
+    }
+    {!script nolink}
+    function newPersonRelatedPerson : TPersonRelatedPerson;
+    {@member newPerson
+      create a new Person
+    }
+    {!script nolink}
+    function newPerson : TPerson;
+  end;
+
 implementation
 
 { TFHIRResource }
@@ -4724,6 +7353,33 @@ end;
 
 
 { TExtensionList }
+{ TExtensionList }
+procedure TExtensionList.AddItem(value: TExtension);
+begin
+  assert(value.ClassName = 'TExtension', 'Attempt to add an item of type '+value.ClassName+' to a List of TExtension');
+  add(value);
+end;
+
+function TExtensionList.Append: TExtension;
+begin
+  result := TExtension.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TExtensionList.ClearItems;
+begin
+  Clear;
+end;
+
+function TExtensionList.Clone: TExtensionList;
+begin
+  result := TExtensionList(inherited Clone);
+end;
+
 function TExtensionList.Count: Integer;
 begin
   result := Inherited Count;
@@ -4739,11 +7395,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TExtensionList.Insert(index: Integer): TExtension;
+begin
+  result := TExtension.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TExtensionList.InsertItem(index: Integer; value: TExtension);
+begin
+  assert(value is TExtension);
+  Inherited Insert(index, value);
+end;
+
 function TExtensionList.Item(index: Integer): TExtension;
 begin
   result := TExtension(ObjectByIndex[index]);
 end;
 
+function TExtensionList.Link: TExtensionList;
+begin
+  result := TExtensionList(inherited Link);
+end;
+
+procedure TExtensionList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TExtensionList.SetItemByIndex(index: Integer; value: TExtension);
+begin
+  assert(value is TExtension);
+  Extensions[index] := value;
+end;
+
+procedure TExtensionList.SetItemN(index: Integer; value: TExtension);
+begin
+  assert(value is TExtension);
+  ObjectByIndex[index] := value;
+end;
 
 { TExtension }
 
@@ -4811,6 +7504,33 @@ end;
 
 
 { TConstraintElementMappingList }
+{ TConstraintElementMappingList }
+procedure TConstraintElementMappingList.AddItem(value: TConstraintElementMapping);
+begin
+  assert(value.ClassName = 'TConstraintElementMapping', 'Attempt to add an item of type '+value.ClassName+' to a List of TConstraintElementMapping');
+  add(value);
+end;
+
+function TConstraintElementMappingList.Append: TConstraintElementMapping;
+begin
+  result := TConstraintElementMapping.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementMappingList.ClearItems;
+begin
+  Clear;
+end;
+
+function TConstraintElementMappingList.Clone: TConstraintElementMappingList;
+begin
+  result := TConstraintElementMappingList(inherited Clone);
+end;
+
 function TConstraintElementMappingList.Count: Integer;
 begin
   result := Inherited Count;
@@ -4826,13 +7546,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TConstraintElementMappingList.Insert(index: Integer): TConstraintElementMapping;
+begin
+  result := TConstraintElementMapping.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementMappingList.InsertItem(index: Integer; value: TConstraintElementMapping);
+begin
+  assert(value is TConstraintElementMapping);
+  Inherited Insert(index, value);
+end;
+
 function TConstraintElementMappingList.Item(index: Integer): TConstraintElementMapping;
 begin
   result := TConstraintElementMapping(ObjectByIndex[index]);
 end;
 
+function TConstraintElementMappingList.Link: TConstraintElementMappingList;
+begin
+  result := TConstraintElementMappingList(inherited Link);
+end;
+
+procedure TConstraintElementMappingList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TConstraintElementMappingList.SetItemByIndex(index: Integer; value: TConstraintElementMapping);
+begin
+  assert(value is TConstraintElementMapping);
+  ConstraintElementMappings[index] := value;
+end;
+
+procedure TConstraintElementMappingList.SetItemN(index: Integer; value: TConstraintElementMapping);
+begin
+  assert(value is TConstraintElementMapping);
+  ObjectByIndex[index] := value;
+end;
 
 { TConstraintElementValueList }
+{ TConstraintElementValueList }
+procedure TConstraintElementValueList.AddItem(value: TConstraintElementValue);
+begin
+  assert(value.ClassName = 'TConstraintElementValue', 'Attempt to add an item of type '+value.ClassName+' to a List of TConstraintElementValue');
+  add(value);
+end;
+
+function TConstraintElementValueList.Append: TConstraintElementValue;
+begin
+  result := TConstraintElementValue.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementValueList.ClearItems;
+begin
+  Clear;
+end;
+
+function TConstraintElementValueList.Clone: TConstraintElementValueList;
+begin
+  result := TConstraintElementValueList(inherited Clone);
+end;
+
 function TConstraintElementValueList.Count: Integer;
 begin
   result := Inherited Count;
@@ -4848,11 +7632,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TConstraintElementValueList.Insert(index: Integer): TConstraintElementValue;
+begin
+  result := TConstraintElementValue.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementValueList.InsertItem(index: Integer; value: TConstraintElementValue);
+begin
+  assert(value is TConstraintElementValue);
+  Inherited Insert(index, value);
+end;
+
 function TConstraintElementValueList.Item(index: Integer): TConstraintElementValue;
 begin
   result := TConstraintElementValue(ObjectByIndex[index]);
 end;
 
+function TConstraintElementValueList.Link: TConstraintElementValueList;
+begin
+  result := TConstraintElementValueList(inherited Link);
+end;
+
+procedure TConstraintElementValueList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TConstraintElementValueList.SetItemByIndex(index: Integer; value: TConstraintElementValue);
+begin
+  assert(value is TConstraintElementValue);
+  ConstraintElementValues[index] := value;
+end;
+
+procedure TConstraintElementValueList.SetItemN(index: Integer; value: TConstraintElementValue);
+begin
+  assert(value is TConstraintElementValue);
+  ObjectByIndex[index] := value;
+end;
 
 { TConstraintElement }
 
@@ -5099,6 +7920,33 @@ end;
 
 
 { TConstraintElementList }
+{ TConstraintElementList }
+procedure TConstraintElementList.AddItem(value: TConstraintElement);
+begin
+  assert(value.ClassName = 'TConstraintElement', 'Attempt to add an item of type '+value.ClassName+' to a List of TConstraintElement');
+  add(value);
+end;
+
+function TConstraintElementList.Append: TConstraintElement;
+begin
+  result := TConstraintElement.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementList.ClearItems;
+begin
+  Clear;
+end;
+
+function TConstraintElementList.Clone: TConstraintElementList;
+begin
+  result := TConstraintElementList(inherited Clone);
+end;
+
 function TConstraintElementList.Count: Integer;
 begin
   result := Inherited Count;
@@ -5114,11 +7962,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TConstraintElementList.Insert(index: Integer): TConstraintElement;
+begin
+  result := TConstraintElement.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintElementList.InsertItem(index: Integer; value: TConstraintElement);
+begin
+  assert(value is TConstraintElement);
+  Inherited Insert(index, value);
+end;
+
 function TConstraintElementList.Item(index: Integer): TConstraintElement;
 begin
   result := TConstraintElement(ObjectByIndex[index]);
 end;
 
+function TConstraintElementList.Link: TConstraintElementList;
+begin
+  result := TConstraintElementList(inherited Link);
+end;
+
+procedure TConstraintElementList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TConstraintElementList.SetItemByIndex(index: Integer; value: TConstraintElement);
+begin
+  assert(value is TConstraintElement);
+  ConstraintElements[index] := value;
+end;
+
+procedure TConstraintElementList.SetItemN(index: Integer; value: TConstraintElement);
+begin
+  assert(value is TConstraintElement);
+  ObjectByIndex[index] := value;
+end;
 
 { TConstraint }
 
@@ -5264,6 +8149,33 @@ end;
 
 
 { TNarrativeImageList }
+{ TNarrativeImageList }
+procedure TNarrativeImageList.AddItem(value: TNarrativeImage);
+begin
+  assert(value.ClassName = 'TNarrativeImage', 'Attempt to add an item of type '+value.ClassName+' to a List of TNarrativeImage');
+  add(value);
+end;
+
+function TNarrativeImageList.Append: TNarrativeImage;
+begin
+  result := TNarrativeImage.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TNarrativeImageList.ClearItems;
+begin
+  Clear;
+end;
+
+function TNarrativeImageList.Clone: TNarrativeImageList;
+begin
+  result := TNarrativeImageList(inherited Clone);
+end;
+
 function TNarrativeImageList.Count: Integer;
 begin
   result := Inherited Count;
@@ -5279,13 +8191,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TNarrativeImageList.Insert(index: Integer): TNarrativeImage;
+begin
+  result := TNarrativeImage.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TNarrativeImageList.InsertItem(index: Integer; value: TNarrativeImage);
+begin
+  assert(value is TNarrativeImage);
+  Inherited Insert(index, value);
+end;
+
 function TNarrativeImageList.Item(index: Integer): TNarrativeImage;
 begin
   result := TNarrativeImage(ObjectByIndex[index]);
 end;
 
+function TNarrativeImageList.Link: TNarrativeImageList;
+begin
+  result := TNarrativeImageList(inherited Link);
+end;
+
+procedure TNarrativeImageList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TNarrativeImageList.SetItemByIndex(index: Integer; value: TNarrativeImage);
+begin
+  assert(value is TNarrativeImage);
+  NarrativeImages[index] := value;
+end;
+
+procedure TNarrativeImageList.SetItemN(index: Integer; value: TNarrativeImage);
+begin
+  assert(value is TNarrativeImage);
+  ObjectByIndex[index] := value;
+end;
 
 { TNarrativeMapList }
+{ TNarrativeMapList }
+procedure TNarrativeMapList.AddItem(value: TNarrativeMap);
+begin
+  assert(value.ClassName = 'TNarrativeMap', 'Attempt to add an item of type '+value.ClassName+' to a List of TNarrativeMap');
+  add(value);
+end;
+
+function TNarrativeMapList.Append: TNarrativeMap;
+begin
+  result := TNarrativeMap.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TNarrativeMapList.ClearItems;
+begin
+  Clear;
+end;
+
+function TNarrativeMapList.Clone: TNarrativeMapList;
+begin
+  result := TNarrativeMapList(inherited Clone);
+end;
+
 function TNarrativeMapList.Count: Integer;
 begin
   result := Inherited Count;
@@ -5301,11 +8277,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TNarrativeMapList.Insert(index: Integer): TNarrativeMap;
+begin
+  result := TNarrativeMap.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TNarrativeMapList.InsertItem(index: Integer; value: TNarrativeMap);
+begin
+  assert(value is TNarrativeMap);
+  Inherited Insert(index, value);
+end;
+
 function TNarrativeMapList.Item(index: Integer): TNarrativeMap;
 begin
   result := TNarrativeMap(ObjectByIndex[index]);
 end;
 
+function TNarrativeMapList.Link: TNarrativeMapList;
+begin
+  result := TNarrativeMapList(inherited Link);
+end;
+
+procedure TNarrativeMapList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TNarrativeMapList.SetItemByIndex(index: Integer; value: TNarrativeMap);
+begin
+  assert(value is TNarrativeMap);
+  NarrativeMaps[index] := value;
+end;
+
+procedure TNarrativeMapList.SetItemN(index: Integer; value: TNarrativeMap);
+begin
+  assert(value is TNarrativeMap);
+  ObjectByIndex[index] := value;
+end;
 
 { TNarrative }
 
@@ -5318,6 +8331,7 @@ end;
 
 destructor TNarrative.Destroy;
 begin
+  FXhtml.free;
   FImage.Free;
   FMap.Free;
   inherited;
@@ -5327,7 +8341,7 @@ procedure TNarrative.Assign(oSource : TAdvObject);
 begin
   inherited;
   FStatus := TNarrative(oSource).FStatus;
-  FXhtml := TNarrative(oSource).FXhtml;
+  xhtml := TNarrative(oSource).xhtml.Clone;
   FImage.Assign(TNarrative(oSource).FImage);
   FMap.Assign(TNarrative(oSource).FMap);
 end;
@@ -5351,6 +8365,7 @@ end;
 
 Procedure TNarrative.SetXhtml(value : TFhirXHtmlNode);
 begin
+  FXhtml.free;
   FXhtml := value;
 end;
 
@@ -5632,6 +8647,33 @@ end;
 
 
 { TChoiceValueList }
+{ TChoiceValueList }
+procedure TChoiceValueList.AddItem(value: TChoiceValue);
+begin
+  assert(value.ClassName = 'TChoiceValue', 'Attempt to add an item of type '+value.ClassName+' to a List of TChoiceValue');
+  add(value);
+end;
+
+function TChoiceValueList.Append: TChoiceValue;
+begin
+  result := TChoiceValue.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TChoiceValueList.ClearItems;
+begin
+  Clear;
+end;
+
+function TChoiceValueList.Clone: TChoiceValueList;
+begin
+  result := TChoiceValueList(inherited Clone);
+end;
+
 function TChoiceValueList.Count: Integer;
 begin
   result := Inherited Count;
@@ -5647,11 +8689,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TChoiceValueList.Insert(index: Integer): TChoiceValue;
+begin
+  result := TChoiceValue.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TChoiceValueList.InsertItem(index: Integer; value: TChoiceValue);
+begin
+  assert(value is TChoiceValue);
+  Inherited Insert(index, value);
+end;
+
 function TChoiceValueList.Item(index: Integer): TChoiceValue;
 begin
   result := TChoiceValue(ObjectByIndex[index]);
 end;
 
+function TChoiceValueList.Link: TChoiceValueList;
+begin
+  result := TChoiceValueList(inherited Link);
+end;
+
+procedure TChoiceValueList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TChoiceValueList.SetItemByIndex(index: Integer; value: TChoiceValue);
+begin
+  assert(value is TChoiceValue);
+  ChoiceValues[index] := value;
+end;
+
+procedure TChoiceValueList.SetItemN(index: Integer; value: TChoiceValue);
+begin
+  assert(value is TChoiceValue);
+  ObjectByIndex[index] := value;
+end;
 
 { TChoice }
 
@@ -5814,82 +8893,98 @@ begin
 end;
 
 
-{ TCodeableConceptCoding }
-
-constructor TCodeableConceptCoding.Create;
+{ TCodingList }
+{ TCodingList }
+procedure TCodingList.AddItem(value: TCoding);
 begin
-  inherited;
+  assert(value.ClassName = 'TCoding', 'Attempt to add an item of type '+value.ClassName+' to a List of TCoding');
+  add(value);
 end;
 
-destructor TCodeableConceptCoding.Destroy;
+function TCodingList.Append: TCoding;
 begin
-  inherited;
+  result := TCoding.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
 end;
 
-procedure TCodeableConceptCoding.Assign(oSource : TAdvObject);
+procedure TCodingList.ClearItems;
 begin
-  inherited;
-  FCode := TCodeableConceptCoding(oSource).FCode;
-  FSystem := TCodeableConceptCoding(oSource).FSystem;
-  FDisplay := TCodeableConceptCoding(oSource).FDisplay;
+  Clear;
 end;
 
-function TCodeableConceptCoding.Link : TCodeableConceptCoding;
+function TCodingList.Clone: TCodingList;
 begin
-  result := TCodeableConceptCoding(inherited Link);
+  result := TCodingList(inherited Clone);
 end;
 
-function TCodeableConceptCoding.Clone : TCodeableConceptCoding;
-begin
-  result := TCodeableConceptCoding(inherited Clone);
-end;
-
-{ TCodeableConceptCoding }
-
-Procedure TCodeableConceptCoding.SetCode(value : String);
-begin
-  FCode := value;
-end;
-
-Procedure TCodeableConceptCoding.SetSystem(value : String);
-begin
-  FSystem := value;
-end;
-
-Procedure TCodeableConceptCoding.SetDisplay(value : String);
-begin
-  FDisplay := value;
-end;
-
-
-{ TCodeableConceptCodingList }
-function TCodeableConceptCodingList.Count: Integer;
+function TCodingList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TCodeableConceptCodingList.GetItemN(index: Integer): TCodeableConceptCoding;
+function TCodingList.GetItemN(index: Integer): TCoding;
 begin
-  result := TCodeableConceptCoding(ObjectByIndex[index]);
+  result := TCoding(ObjectByIndex[index]);
 end;
 
-function TCodeableConceptCodingList.IndexOf(value: TCodeableConceptCoding): Integer;
+function TCodingList.IndexOf(value: TCoding): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TCodeableConceptCodingList.Item(index: Integer): TCodeableConceptCoding;
+function TCodingList.Insert(index: Integer): TCoding;
 begin
-  result := TCodeableConceptCoding(ObjectByIndex[index]);
+  result := TCoding.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
 end;
 
+procedure TCodingList.InsertItem(index: Integer; value: TCoding);
+begin
+  assert(value is TCoding);
+  Inherited Insert(index, value);
+end;
+
+function TCodingList.Item(index: Integer): TCoding;
+begin
+  result := TCoding(ObjectByIndex[index]);
+end;
+
+function TCodingList.Link: TCodingList;
+begin
+  result := TCodingList(inherited Link);
+end;
+
+procedure TCodingList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TCodingList.SetItemByIndex(index: Integer; value: TCoding);
+begin
+  assert(value is TCoding);
+  Codings[index] := value;
+end;
+
+procedure TCodingList.SetItemN(index: Integer; value: TCoding);
+begin
+  assert(value is TCoding);
+  ObjectByIndex[index] := value;
+end;
 
 { TCodeableConcept }
 
 constructor TCodeableConcept.Create;
 begin
   inherited;
-  FCoding := TCodeableConceptCodingList.Create;
+  FCoding := TCodingList.Create;
 end;
 
 destructor TCodeableConcept.Destroy;
@@ -6034,6 +9129,33 @@ end;
 
 
 { TInterval_dateTimeList }
+{ TInterval_dateTimeList }
+procedure TInterval_dateTimeList.AddItem(value: TInterval_dateTime);
+begin
+  assert(value.ClassName = 'TInterval_dateTime', 'Attempt to add an item of type '+value.ClassName+' to a List of TInterval_dateTime');
+  add(value);
+end;
+
+function TInterval_dateTimeList.Append: TInterval_dateTime;
+begin
+  result := TInterval_dateTime.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TInterval_dateTimeList.ClearItems;
+begin
+  Clear;
+end;
+
+function TInterval_dateTimeList.Clone: TInterval_dateTimeList;
+begin
+  result := TInterval_dateTimeList(inherited Clone);
+end;
+
 function TInterval_dateTimeList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6049,11 +9171,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TInterval_dateTimeList.Insert(index: Integer): TInterval_dateTime;
+begin
+  result := TInterval_dateTime.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TInterval_dateTimeList.InsertItem(index: Integer; value: TInterval_dateTime);
+begin
+  assert(value is TInterval_dateTime);
+  Inherited Insert(index, value);
+end;
+
 function TInterval_dateTimeList.Item(index: Integer): TInterval_dateTime;
 begin
   result := TInterval_dateTime(ObjectByIndex[index]);
 end;
 
+function TInterval_dateTimeList.Link: TInterval_dateTimeList;
+begin
+  result := TInterval_dateTimeList(inherited Link);
+end;
+
+procedure TInterval_dateTimeList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TInterval_dateTimeList.SetItemByIndex(index: Integer; value: TInterval_dateTime);
+begin
+  assert(value is TInterval_dateTime);
+  Interval_dateTimes[index] := value;
+end;
+
+procedure TInterval_dateTimeList.SetItemN(index: Integer; value: TInterval_dateTime);
+begin
+  assert(value is TInterval_dateTime);
+  ObjectByIndex[index] := value;
+end;
 
 { TSchedule }
 
@@ -6195,6 +9354,33 @@ end;
 
 
 { TAddressPartList }
+{ TAddressPartList }
+procedure TAddressPartList.AddItem(value: TAddressPart);
+begin
+  assert(value.ClassName = 'TAddressPart', 'Attempt to add an item of type '+value.ClassName+' to a List of TAddressPart');
+  add(value);
+end;
+
+function TAddressPartList.Append: TAddressPart;
+begin
+  result := TAddressPart.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAddressPartList.ClearItems;
+begin
+  Clear;
+end;
+
+function TAddressPartList.Clone: TAddressPartList;
+begin
+  result := TAddressPartList(inherited Clone);
+end;
+
 function TAddressPartList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6210,11 +9396,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TAddressPartList.Insert(index: Integer): TAddressPart;
+begin
+  result := TAddressPart.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAddressPartList.InsertItem(index: Integer; value: TAddressPart);
+begin
+  assert(value is TAddressPart);
+  Inherited Insert(index, value);
+end;
+
 function TAddressPartList.Item(index: Integer): TAddressPart;
 begin
   result := TAddressPart(ObjectByIndex[index]);
 end;
 
+function TAddressPartList.Link: TAddressPartList;
+begin
+  result := TAddressPartList(inherited Link);
+end;
+
+procedure TAddressPartList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TAddressPartList.SetItemByIndex(index: Integer; value: TAddressPart);
+begin
+  assert(value is TAddressPart);
+  AddressParts[index] := value;
+end;
+
+procedure TAddressPartList.SetItemN(index: Integer; value: TAddressPart);
+begin
+  assert(value is TAddressPart);
+  ObjectByIndex[index] := value;
+end;
 
 { TAddress }
 
@@ -6312,6 +9535,33 @@ end;
 
 
 { THumanNamePartList }
+{ THumanNamePartList }
+procedure THumanNamePartList.AddItem(value: THumanNamePart);
+begin
+  assert(value.ClassName = 'THumanNamePart', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanNamePart');
+  add(value);
+end;
+
+function THumanNamePartList.Append: THumanNamePart;
+begin
+  result := THumanNamePart.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNamePartList.ClearItems;
+begin
+  Clear;
+end;
+
+function THumanNamePartList.Clone: THumanNamePartList;
+begin
+  result := THumanNamePartList(inherited Clone);
+end;
+
 function THumanNamePartList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6327,11 +9577,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function THumanNamePartList.Insert(index: Integer): THumanNamePart;
+begin
+  result := THumanNamePart.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNamePartList.InsertItem(index: Integer; value: THumanNamePart);
+begin
+  assert(value is THumanNamePart);
+  Inherited Insert(index, value);
+end;
+
 function THumanNamePartList.Item(index: Integer): THumanNamePart;
 begin
   result := THumanNamePart(ObjectByIndex[index]);
 end;
 
+function THumanNamePartList.Link: THumanNamePartList;
+begin
+  result := THumanNamePartList(inherited Link);
+end;
+
+procedure THumanNamePartList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure THumanNamePartList.SetItemByIndex(index: Integer; value: THumanNamePart);
+begin
+  assert(value is THumanNamePart);
+  HumanNameParts[index] := value;
+end;
+
+procedure THumanNamePartList.SetItemN(index: Integer; value: THumanNamePart);
+begin
+  assert(value is THumanNamePart);
+  ObjectByIndex[index] := value;
+end;
 
 { THumanName }
 
@@ -6449,6 +9736,33 @@ end;
 
 
 { TAddressList }
+{ TAddressList }
+procedure TAddressList.AddItem(value: TAddress);
+begin
+  assert(value.ClassName = 'TAddress', 'Attempt to add an item of type '+value.ClassName+' to a List of TAddress');
+  add(value);
+end;
+
+function TAddressList.Append: TAddress;
+begin
+  result := TAddress.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAddressList.ClearItems;
+begin
+  Clear;
+end;
+
+function TAddressList.Clone: TAddressList;
+begin
+  result := TAddressList(inherited Clone);
+end;
+
 function TAddressList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6464,13 +9778,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TAddressList.Insert(index: Integer): TAddress;
+begin
+  result := TAddress.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAddressList.InsertItem(index: Integer; value: TAddress);
+begin
+  assert(value is TAddress);
+  Inherited Insert(index, value);
+end;
+
 function TAddressList.Item(index: Integer): TAddress;
 begin
   result := TAddress(ObjectByIndex[index]);
 end;
 
+function TAddressList.Link: TAddressList;
+begin
+  result := TAddressList(inherited Link);
+end;
+
+procedure TAddressList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TAddressList.SetItemByIndex(index: Integer; value: TAddress);
+begin
+  assert(value is TAddress);
+  Addresses[index] := value;
+end;
+
+procedure TAddressList.SetItemN(index: Integer; value: TAddress);
+begin
+  assert(value is TAddress);
+  ObjectByIndex[index] := value;
+end;
 
 { TContactList }
+{ TContactList }
+procedure TContactList.AddItem(value: TContact);
+begin
+  assert(value.ClassName = 'TContact', 'Attempt to add an item of type '+value.ClassName+' to a List of TContact');
+  add(value);
+end;
+
+function TContactList.Append: TContact;
+begin
+  result := TContact.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TContactList.ClearItems;
+begin
+  Clear;
+end;
+
+function TContactList.Clone: TContactList;
+begin
+  result := TContactList(inherited Clone);
+end;
+
 function TContactList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6486,11 +9864,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TContactList.Insert(index: Integer): TContact;
+begin
+  result := TContact.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TContactList.InsertItem(index: Integer; value: TContact);
+begin
+  assert(value is TContact);
+  Inherited Insert(index, value);
+end;
+
 function TContactList.Item(index: Integer): TContact;
 begin
   result := TContact(ObjectByIndex[index]);
 end;
 
+function TContactList.Link: TContactList;
+begin
+  result := TContactList(inherited Link);
+end;
+
+procedure TContactList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TContactList.SetItemByIndex(index: Integer; value: TContact);
+begin
+  assert(value is TContact);
+  Contacts[index] := value;
+end;
+
+procedure TContactList.SetItemN(index: Integer; value: TContact);
+begin
+  assert(value is TContact);
+  ObjectByIndex[index] := value;
+end;
 
 { TConformancePublisher }
 
@@ -6780,7 +10195,7 @@ end;
 
 { TConformanceOperationCreate }
 
-Procedure TConformanceOperationCreate.SetId(value : String);
+Procedure TConformanceOperationCreate.SetId(value : TResourceIdSource);
 begin
   FId := value;
 end;
@@ -6952,7 +10367,7 @@ begin
   FTime := value;
 end;
 
-Procedure TDocumentAttestor.SetParty(value : TFHIRResourceReference{TPerson});
+Procedure TDocumentAttestor.SetParty(value : TFHIRResourceReference{Resource});
 begin
   FParty.free;
   FParty := value;
@@ -6960,6 +10375,33 @@ end;
 
 
 { TDocumentSectionList }
+{ TDocumentSectionList }
+procedure TDocumentSectionList.AddItem(value: TDocumentSection);
+begin
+  assert(value.ClassName = 'TDocumentSection', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentSection');
+  add(value);
+end;
+
+function TDocumentSectionList.Append: TDocumentSection;
+begin
+  result := TDocumentSection.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentSectionList.ClearItems;
+begin
+  Clear;
+end;
+
+function TDocumentSectionList.Clone: TDocumentSectionList;
+begin
+  result := TDocumentSectionList(inherited Clone);
+end;
+
 function TDocumentSectionList.Count: Integer;
 begin
   result := Inherited Count;
@@ -6975,11 +10417,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TDocumentSectionList.Insert(index: Integer): TDocumentSection;
+begin
+  result := TDocumentSection.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentSectionList.InsertItem(index: Integer; value: TDocumentSection);
+begin
+  assert(value is TDocumentSection);
+  Inherited Insert(index, value);
+end;
+
 function TDocumentSectionList.Item(index: Integer): TDocumentSection;
 begin
   result := TDocumentSection(ObjectByIndex[index]);
 end;
 
+function TDocumentSectionList.Link: TDocumentSectionList;
+begin
+  result := TDocumentSectionList(inherited Link);
+end;
+
+procedure TDocumentSectionList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TDocumentSectionList.SetItemByIndex(index: Integer; value: TDocumentSection);
+begin
+  assert(value is TDocumentSection);
+  DocumentSections[index] := value;
+end;
+
+procedure TDocumentSectionList.SetItemN(index: Integer; value: TDocumentSection);
+begin
+  assert(value is TDocumentSection);
+  ObjectByIndex[index] := value;
+end;
 
 { TDocumentSection }
 
@@ -7113,6 +10592,33 @@ end;
 
 
 { TDocumentAuthorList }
+{ TDocumentAuthorList }
+procedure TDocumentAuthorList.AddItem(value: TDocumentAuthor);
+begin
+  assert(value.ClassName = 'TDocumentAuthor', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentAuthor');
+  add(value);
+end;
+
+function TDocumentAuthorList.Append: TDocumentAuthor;
+begin
+  result := TDocumentAuthor.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentAuthorList.ClearItems;
+begin
+  Clear;
+end;
+
+function TDocumentAuthorList.Clone: TDocumentAuthorList;
+begin
+  result := TDocumentAuthorList(inherited Clone);
+end;
+
 function TDocumentAuthorList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7128,13 +10634,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TDocumentAuthorList.Insert(index: Integer): TDocumentAuthor;
+begin
+  result := TDocumentAuthor.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentAuthorList.InsertItem(index: Integer; value: TDocumentAuthor);
+begin
+  assert(value is TDocumentAuthor);
+  Inherited Insert(index, value);
+end;
+
 function TDocumentAuthorList.Item(index: Integer): TDocumentAuthor;
 begin
   result := TDocumentAuthor(ObjectByIndex[index]);
 end;
 
+function TDocumentAuthorList.Link: TDocumentAuthorList;
+begin
+  result := TDocumentAuthorList(inherited Link);
+end;
+
+procedure TDocumentAuthorList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TDocumentAuthorList.SetItemByIndex(index: Integer; value: TDocumentAuthor);
+begin
+  assert(value is TDocumentAuthor);
+  DocumentAuthors[index] := value;
+end;
+
+procedure TDocumentAuthorList.SetItemN(index: Integer; value: TDocumentAuthor);
+begin
+  assert(value is TDocumentAuthor);
+  ObjectByIndex[index] := value;
+end;
 
 { TDocumentAttestorList }
+{ TDocumentAttestorList }
+procedure TDocumentAttestorList.AddItem(value: TDocumentAttestor);
+begin
+  assert(value.ClassName = 'TDocumentAttestor', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentAttestor');
+  add(value);
+end;
+
+function TDocumentAttestorList.Append: TDocumentAttestor;
+begin
+  result := TDocumentAttestor.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentAttestorList.ClearItems;
+begin
+  Clear;
+end;
+
+function TDocumentAttestorList.Clone: TDocumentAttestorList;
+begin
+  result := TDocumentAttestorList(inherited Clone);
+end;
+
 function TDocumentAttestorList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7150,11 +10720,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TDocumentAttestorList.Insert(index: Integer): TDocumentAttestor;
+begin
+  result := TDocumentAttestor.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentAttestorList.InsertItem(index: Integer; value: TDocumentAttestor);
+begin
+  assert(value is TDocumentAttestor);
+  Inherited Insert(index, value);
+end;
+
 function TDocumentAttestorList.Item(index: Integer): TDocumentAttestor;
 begin
   result := TDocumentAttestor(ObjectByIndex[index]);
 end;
 
+function TDocumentAttestorList.Link: TDocumentAttestorList;
+begin
+  result := TDocumentAttestorList(inherited Link);
+end;
+
+procedure TDocumentAttestorList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TDocumentAttestorList.SetItemByIndex(index: Integer; value: TDocumentAttestor);
+begin
+  assert(value is TDocumentAttestor);
+  DocumentAttestors[index] := value;
+end;
+
+procedure TDocumentAttestorList.SetItemN(index: Integer; value: TDocumentAttestor);
+begin
+  assert(value is TDocumentAttestor);
+  ObjectByIndex[index] := value;
+end;
 
 { TDocument }
 
@@ -7601,6 +11208,33 @@ end;
 
 
 { TConstraintList }
+{ TConstraintList }
+procedure TConstraintList.AddItem(value: TConstraint);
+begin
+  assert(value.ClassName = 'TConstraint', 'Attempt to add an item of type '+value.ClassName+' to a List of TConstraint');
+  add(value);
+end;
+
+function TConstraintList.Append: TConstraint;
+begin
+  result := TConstraint.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintList.ClearItems;
+begin
+  Clear;
+end;
+
+function TConstraintList.Clone: TConstraintList;
+begin
+  result := TConstraintList(inherited Clone);
+end;
+
 function TConstraintList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7616,11 +11250,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TConstraintList.Insert(index: Integer): TConstraint;
+begin
+  result := TConstraint.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TConstraintList.InsertItem(index: Integer; value: TConstraint);
+begin
+  assert(value is TConstraint);
+  Inherited Insert(index, value);
+end;
+
 function TConstraintList.Item(index: Integer): TConstraint;
 begin
   result := TConstraint(ObjectByIndex[index]);
 end;
 
+function TConstraintList.Link: TConstraintList;
+begin
+  result := TConstraintList(inherited Link);
+end;
+
+procedure TConstraintList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TConstraintList.SetItemByIndex(index: Integer; value: TConstraint);
+begin
+  assert(value is TConstraint);
+  Constraints[index] := value;
+end;
+
+procedure TConstraintList.SetItemN(index: Integer; value: TConstraint);
+begin
+  assert(value is TConstraint);
+  ObjectByIndex[index] := value;
+end;
 
 { TMessageConformanceEventRequest }
 
@@ -7689,6 +11360,33 @@ end;
 
 
 { TMessageConformanceEventList }
+{ TMessageConformanceEventList }
+procedure TMessageConformanceEventList.AddItem(value: TMessageConformanceEvent);
+begin
+  assert(value.ClassName = 'TMessageConformanceEvent', 'Attempt to add an item of type '+value.ClassName+' to a List of TMessageConformanceEvent');
+  add(value);
+end;
+
+function TMessageConformanceEventList.Append: TMessageConformanceEvent;
+begin
+  result := TMessageConformanceEvent.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TMessageConformanceEventList.ClearItems;
+begin
+  Clear;
+end;
+
+function TMessageConformanceEventList.Clone: TMessageConformanceEventList;
+begin
+  result := TMessageConformanceEventList(inherited Clone);
+end;
+
 function TMessageConformanceEventList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7704,11 +11402,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TMessageConformanceEventList.Insert(index: Integer): TMessageConformanceEvent;
+begin
+  result := TMessageConformanceEvent.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TMessageConformanceEventList.InsertItem(index: Integer; value: TMessageConformanceEvent);
+begin
+  assert(value is TMessageConformanceEvent);
+  Inherited Insert(index, value);
+end;
+
 function TMessageConformanceEventList.Item(index: Integer): TMessageConformanceEvent;
 begin
   result := TMessageConformanceEvent(ObjectByIndex[index]);
 end;
 
+function TMessageConformanceEventList.Link: TMessageConformanceEventList;
+begin
+  result := TMessageConformanceEventList(inherited Link);
+end;
+
+procedure TMessageConformanceEventList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TMessageConformanceEventList.SetItemByIndex(index: Integer; value: TMessageConformanceEvent);
+begin
+  assert(value is TMessageConformanceEvent);
+  MessageConformanceEvents[index] := value;
+end;
+
+procedure TMessageConformanceEventList.SetItemN(index: Integer; value: TMessageConformanceEvent);
+begin
+  assert(value is TMessageConformanceEvent);
+  ObjectByIndex[index] := value;
+end;
 
 { TMessageConformance }
 
@@ -7771,6 +11506,33 @@ end;
 
 
 { TCodeableConceptList }
+{ TCodeableConceptList }
+procedure TCodeableConceptList.AddItem(value: TCodeableConcept);
+begin
+  assert(value.ClassName = 'TCodeableConcept', 'Attempt to add an item of type '+value.ClassName+' to a List of TCodeableConcept');
+  add(value);
+end;
+
+function TCodeableConceptList.Append: TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TCodeableConceptList.ClearItems;
+begin
+  Clear;
+end;
+
+function TCodeableConceptList.Clone: TCodeableConceptList;
+begin
+  result := TCodeableConceptList(inherited Clone);
+end;
+
 function TCodeableConceptList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7786,13 +11548,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TCodeableConceptList.Insert(index: Integer): TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TCodeableConceptList.InsertItem(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  Inherited Insert(index, value);
+end;
+
 function TCodeableConceptList.Item(index: Integer): TCodeableConcept;
 begin
   result := TCodeableConcept(ObjectByIndex[index]);
 end;
 
+function TCodeableConceptList.Link: TCodeableConceptList;
+begin
+  result := TCodeableConceptList(inherited Link);
+end;
+
+procedure TCodeableConceptList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TCodeableConceptList.SetItemByIndex(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  CodeableConcepts[index] := value;
+end;
+
+procedure TCodeableConceptList.SetItemN(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  ObjectByIndex[index] := value;
+end;
 
 { THumanIdList }
+{ THumanIdList }
+procedure THumanIdList.AddItem(value: THumanId);
+begin
+  assert(value.ClassName = 'THumanId', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanId');
+  add(value);
+end;
+
+function THumanIdList.Append: THumanId;
+begin
+  result := THumanId.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanIdList.ClearItems;
+begin
+  Clear;
+end;
+
+function THumanIdList.Clone: THumanIdList;
+begin
+  result := THumanIdList(inherited Clone);
+end;
+
 function THumanIdList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7808,11 +11634,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function THumanIdList.Insert(index: Integer): THumanId;
+begin
+  result := THumanId.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanIdList.InsertItem(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  Inherited Insert(index, value);
+end;
+
 function THumanIdList.Item(index: Integer): THumanId;
 begin
   result := THumanId(ObjectByIndex[index]);
 end;
 
+function THumanIdList.Link: THumanIdList;
+begin
+  result := THumanIdList(inherited Link);
+end;
+
+procedure THumanIdList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure THumanIdList.SetItemByIndex(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  HumanIds[index] := value;
+end;
+
+procedure THumanIdList.SetItemN(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  ObjectByIndex[index] := value;
+end;
 
 { TAgent }
 
@@ -7878,7 +11741,7 @@ begin
   FOrganization := value;
 end;
 
-Procedure TAgent.SetPeriod(value : TInterval_dateTime);
+Procedure TAgent.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
@@ -7946,6 +11809,33 @@ end;
 
 
 { THumanNameList }
+{ THumanNameList }
+procedure THumanNameList.AddItem(value: THumanName);
+begin
+  assert(value.ClassName = 'THumanName', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanName');
+  add(value);
+end;
+
+function THumanNameList.Append: THumanName;
+begin
+  result := THumanName.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNameList.ClearItems;
+begin
+  Clear;
+end;
+
+function THumanNameList.Clone: THumanNameList;
+begin
+  result := THumanNameList(inherited Clone);
+end;
+
 function THumanNameList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7961,13 +11851,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function THumanNameList.Insert(index: Integer): THumanName;
+begin
+  result := THumanName.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNameList.InsertItem(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  Inherited Insert(index, value);
+end;
+
 function THumanNameList.Item(index: Integer): THumanName;
 begin
   result := THumanName(ObjectByIndex[index]);
 end;
 
+function THumanNameList.Link: THumanNameList;
+begin
+  result := THumanNameList(inherited Link);
+end;
+
+procedure THumanNameList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure THumanNameList.SetItemByIndex(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  HumanNames[index] := value;
+end;
+
+procedure THumanNameList.SetItemN(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  ObjectByIndex[index] := value;
+end;
 
 { TAnimalRelatedEntityList }
+{ TAnimalRelatedEntityList }
+procedure TAnimalRelatedEntityList.AddItem(value: TAnimalRelatedEntity);
+begin
+  assert(value.ClassName = 'TAnimalRelatedEntity', 'Attempt to add an item of type '+value.ClassName+' to a List of TAnimalRelatedEntity');
+  add(value);
+end;
+
+function TAnimalRelatedEntityList.Append: TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAnimalRelatedEntityList.ClearItems;
+begin
+  Clear;
+end;
+
+function TAnimalRelatedEntityList.Clone: TAnimalRelatedEntityList;
+begin
+  result := TAnimalRelatedEntityList(inherited Clone);
+end;
+
 function TAnimalRelatedEntityList.Count: Integer;
 begin
   result := Inherited Count;
@@ -7983,11 +11937,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TAnimalRelatedEntityList.Insert(index: Integer): TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAnimalRelatedEntityList.InsertItem(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  Inherited Insert(index, value);
+end;
+
 function TAnimalRelatedEntityList.Item(index: Integer): TAnimalRelatedEntity;
 begin
   result := TAnimalRelatedEntity(ObjectByIndex[index]);
 end;
 
+function TAnimalRelatedEntityList.Link: TAnimalRelatedEntityList;
+begin
+  result := TAnimalRelatedEntityList(inherited Link);
+end;
+
+procedure TAnimalRelatedEntityList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TAnimalRelatedEntityList.SetItemByIndex(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  AnimalRelatedEntities[index] := value;
+end;
+
+procedure TAnimalRelatedEntityList.SetItemN(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  ObjectByIndex[index] := value;
+end;
 
 { TAnimal }
 
@@ -8116,6 +12107,33 @@ end;
 
 
 { TPrescriptionMedicineActiveIngredientList }
+{ TPrescriptionMedicineActiveIngredientList }
+procedure TPrescriptionMedicineActiveIngredientList.AddItem(value: TPrescriptionMedicineActiveIngredient);
+begin
+  assert(value.ClassName = 'TPrescriptionMedicineActiveIngredient', 'Attempt to add an item of type '+value.ClassName+' to a List of TPrescriptionMedicineActiveIngredient');
+  add(value);
+end;
+
+function TPrescriptionMedicineActiveIngredientList.Append: TPrescriptionMedicineActiveIngredient;
+begin
+  result := TPrescriptionMedicineActiveIngredient.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionMedicineActiveIngredientList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPrescriptionMedicineActiveIngredientList.Clone: TPrescriptionMedicineActiveIngredientList;
+begin
+  result := TPrescriptionMedicineActiveIngredientList(inherited Clone);
+end;
+
 function TPrescriptionMedicineActiveIngredientList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8131,13 +12149,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPrescriptionMedicineActiveIngredientList.Insert(index: Integer): TPrescriptionMedicineActiveIngredient;
+begin
+  result := TPrescriptionMedicineActiveIngredient.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionMedicineActiveIngredientList.InsertItem(index: Integer; value: TPrescriptionMedicineActiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineActiveIngredient);
+  Inherited Insert(index, value);
+end;
+
 function TPrescriptionMedicineActiveIngredientList.Item(index: Integer): TPrescriptionMedicineActiveIngredient;
 begin
   result := TPrescriptionMedicineActiveIngredient(ObjectByIndex[index]);
 end;
 
+function TPrescriptionMedicineActiveIngredientList.Link: TPrescriptionMedicineActiveIngredientList;
+begin
+  result := TPrescriptionMedicineActiveIngredientList(inherited Link);
+end;
+
+procedure TPrescriptionMedicineActiveIngredientList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPrescriptionMedicineActiveIngredientList.SetItemByIndex(index: Integer; value: TPrescriptionMedicineActiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineActiveIngredient);
+  PrescriptionMedicineActiveIngredients[index] := value;
+end;
+
+procedure TPrescriptionMedicineActiveIngredientList.SetItemN(index: Integer; value: TPrescriptionMedicineActiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineActiveIngredient);
+  ObjectByIndex[index] := value;
+end;
 
 { TPrescriptionMedicineInactiveIngredientList }
+{ TPrescriptionMedicineInactiveIngredientList }
+procedure TPrescriptionMedicineInactiveIngredientList.AddItem(value: TPrescriptionMedicineInactiveIngredient);
+begin
+  assert(value.ClassName = 'TPrescriptionMedicineInactiveIngredient', 'Attempt to add an item of type '+value.ClassName+' to a List of TPrescriptionMedicineInactiveIngredient');
+  add(value);
+end;
+
+function TPrescriptionMedicineInactiveIngredientList.Append: TPrescriptionMedicineInactiveIngredient;
+begin
+  result := TPrescriptionMedicineInactiveIngredient.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionMedicineInactiveIngredientList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPrescriptionMedicineInactiveIngredientList.Clone: TPrescriptionMedicineInactiveIngredientList;
+begin
+  result := TPrescriptionMedicineInactiveIngredientList(inherited Clone);
+end;
+
 function TPrescriptionMedicineInactiveIngredientList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8153,11 +12235,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPrescriptionMedicineInactiveIngredientList.Insert(index: Integer): TPrescriptionMedicineInactiveIngredient;
+begin
+  result := TPrescriptionMedicineInactiveIngredient.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionMedicineInactiveIngredientList.InsertItem(index: Integer; value: TPrescriptionMedicineInactiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineInactiveIngredient);
+  Inherited Insert(index, value);
+end;
+
 function TPrescriptionMedicineInactiveIngredientList.Item(index: Integer): TPrescriptionMedicineInactiveIngredient;
 begin
   result := TPrescriptionMedicineInactiveIngredient(ObjectByIndex[index]);
 end;
 
+function TPrescriptionMedicineInactiveIngredientList.Link: TPrescriptionMedicineInactiveIngredientList;
+begin
+  result := TPrescriptionMedicineInactiveIngredientList(inherited Link);
+end;
+
+procedure TPrescriptionMedicineInactiveIngredientList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPrescriptionMedicineInactiveIngredientList.SetItemByIndex(index: Integer; value: TPrescriptionMedicineInactiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineInactiveIngredient);
+  PrescriptionMedicineInactiveIngredients[index] := value;
+end;
+
+procedure TPrescriptionMedicineInactiveIngredientList.SetItemN(index: Integer; value: TPrescriptionMedicineInactiveIngredient);
+begin
+  assert(value is TPrescriptionMedicineInactiveIngredient);
+  ObjectByIndex[index] := value;
+end;
 
 { TPrescriptionMedicine }
 
@@ -8302,6 +12421,33 @@ end;
 
 
 { TPrescriptionAdministrationRequestDosageInstructionList }
+{ TPrescriptionAdministrationRequestDosageInstructionList }
+procedure TPrescriptionAdministrationRequestDosageInstructionList.AddItem(value: TPrescriptionAdministrationRequestDosageInstruction);
+begin
+  assert(value.ClassName = 'TPrescriptionAdministrationRequestDosageInstruction', 'Attempt to add an item of type '+value.ClassName+' to a List of TPrescriptionAdministrationRequestDosageInstruction');
+  add(value);
+end;
+
+function TPrescriptionAdministrationRequestDosageInstructionList.Append: TPrescriptionAdministrationRequestDosageInstruction;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstruction.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionAdministrationRequestDosageInstructionList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPrescriptionAdministrationRequestDosageInstructionList.Clone: TPrescriptionAdministrationRequestDosageInstructionList;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstructionList(inherited Clone);
+end;
+
 function TPrescriptionAdministrationRequestDosageInstructionList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8317,11 +12463,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPrescriptionAdministrationRequestDosageInstructionList.Insert(index: Integer): TPrescriptionAdministrationRequestDosageInstruction;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstruction.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPrescriptionAdministrationRequestDosageInstructionList.InsertItem(index: Integer; value: TPrescriptionAdministrationRequestDosageInstruction);
+begin
+  assert(value is TPrescriptionAdministrationRequestDosageInstruction);
+  Inherited Insert(index, value);
+end;
+
 function TPrescriptionAdministrationRequestDosageInstructionList.Item(index: Integer): TPrescriptionAdministrationRequestDosageInstruction;
 begin
   result := TPrescriptionAdministrationRequestDosageInstruction(ObjectByIndex[index]);
 end;
 
+function TPrescriptionAdministrationRequestDosageInstructionList.Link: TPrescriptionAdministrationRequestDosageInstructionList;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstructionList(inherited Link);
+end;
+
+procedure TPrescriptionAdministrationRequestDosageInstructionList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPrescriptionAdministrationRequestDosageInstructionList.SetItemByIndex(index: Integer; value: TPrescriptionAdministrationRequestDosageInstruction);
+begin
+  assert(value is TPrescriptionAdministrationRequestDosageInstruction);
+  PrescriptionAdministrationRequestDosageInstructions[index] := value;
+end;
+
+procedure TPrescriptionAdministrationRequestDosageInstructionList.SetItemN(index: Integer; value: TPrescriptionAdministrationRequestDosageInstruction);
+begin
+  assert(value is TPrescriptionAdministrationRequestDosageInstruction);
+  ObjectByIndex[index] := value;
+end;
 
 { TPrescriptionAdministrationRequest }
 
@@ -8397,6 +12580,33 @@ end;
 
 
 { TScheduleList }
+{ TScheduleList }
+procedure TScheduleList.AddItem(value: TSchedule);
+begin
+  assert(value.ClassName = 'TSchedule', 'Attempt to add an item of type '+value.ClassName+' to a List of TSchedule');
+  add(value);
+end;
+
+function TScheduleList.Append: TSchedule;
+begin
+  result := TSchedule.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TScheduleList.ClearItems;
+begin
+  Clear;
+end;
+
+function TScheduleList.Clone: TScheduleList;
+begin
+  result := TScheduleList(inherited Clone);
+end;
+
 function TScheduleList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8412,11 +12622,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TScheduleList.Insert(index: Integer): TSchedule;
+begin
+  result := TSchedule.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TScheduleList.InsertItem(index: Integer; value: TSchedule);
+begin
+  assert(value is TSchedule);
+  Inherited Insert(index, value);
+end;
+
 function TScheduleList.Item(index: Integer): TSchedule;
 begin
   result := TSchedule(ObjectByIndex[index]);
 end;
 
+function TScheduleList.Link: TScheduleList;
+begin
+  result := TScheduleList(inherited Link);
+end;
+
+procedure TScheduleList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TScheduleList.SetItemByIndex(index: Integer; value: TSchedule);
+begin
+  assert(value is TSchedule);
+  Schedules[index] := value;
+end;
+
+procedure TScheduleList.SetItemN(index: Integer; value: TSchedule);
+begin
+  assert(value is TSchedule);
+  ObjectByIndex[index] := value;
+end;
 
 { TPrescriptionAdministrationRequestDosageInstruction }
 
@@ -8717,7 +12964,7 @@ begin
   FValue := value;
 end;
 
-Procedure TOrganizationName.SetPeriod(value : TInterval_dateTime);
+Procedure TOrganizationName.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
@@ -8779,7 +13026,7 @@ begin
   FInstitution := value;
 end;
 
-Procedure TOrganizationAccreditation.SetPeriod(value : TInterval_dateTime);
+Procedure TOrganizationAccreditation.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
@@ -8845,7 +13092,7 @@ begin
   FName := value;
 end;
 
-Procedure TOrganizationRelatedOrganization.SetPeriod(value : TInterval_dateTime);
+Procedure TOrganizationRelatedOrganization.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
@@ -8853,6 +13100,33 @@ end;
 
 
 { TOrganizationNameList }
+{ TOrganizationNameList }
+procedure TOrganizationNameList.AddItem(value: TOrganizationName);
+begin
+  assert(value.ClassName = 'TOrganizationName', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationName');
+  add(value);
+end;
+
+function TOrganizationNameList.Append: TOrganizationName;
+begin
+  result := TOrganizationName.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationNameList.ClearItems;
+begin
+  Clear;
+end;
+
+function TOrganizationNameList.Clone: TOrganizationNameList;
+begin
+  result := TOrganizationNameList(inherited Clone);
+end;
+
 function TOrganizationNameList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8868,13 +13142,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TOrganizationNameList.Insert(index: Integer): TOrganizationName;
+begin
+  result := TOrganizationName.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationNameList.InsertItem(index: Integer; value: TOrganizationName);
+begin
+  assert(value is TOrganizationName);
+  Inherited Insert(index, value);
+end;
+
 function TOrganizationNameList.Item(index: Integer): TOrganizationName;
 begin
   result := TOrganizationName(ObjectByIndex[index]);
 end;
 
+function TOrganizationNameList.Link: TOrganizationNameList;
+begin
+  result := TOrganizationNameList(inherited Link);
+end;
+
+procedure TOrganizationNameList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TOrganizationNameList.SetItemByIndex(index: Integer; value: TOrganizationName);
+begin
+  assert(value is TOrganizationName);
+  OrganizationNames[index] := value;
+end;
+
+procedure TOrganizationNameList.SetItemN(index: Integer; value: TOrganizationName);
+begin
+  assert(value is TOrganizationName);
+  ObjectByIndex[index] := value;
+end;
 
 { TOrganizationAccreditationList }
+{ TOrganizationAccreditationList }
+procedure TOrganizationAccreditationList.AddItem(value: TOrganizationAccreditation);
+begin
+  assert(value.ClassName = 'TOrganizationAccreditation', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationAccreditation');
+  add(value);
+end;
+
+function TOrganizationAccreditationList.Append: TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationAccreditationList.ClearItems;
+begin
+  Clear;
+end;
+
+function TOrganizationAccreditationList.Clone: TOrganizationAccreditationList;
+begin
+  result := TOrganizationAccreditationList(inherited Clone);
+end;
+
 function TOrganizationAccreditationList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8890,13 +13228,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TOrganizationAccreditationList.Insert(index: Integer): TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationAccreditationList.InsertItem(index: Integer; value: TOrganizationAccreditation);
+begin
+  assert(value is TOrganizationAccreditation);
+  Inherited Insert(index, value);
+end;
+
 function TOrganizationAccreditationList.Item(index: Integer): TOrganizationAccreditation;
 begin
   result := TOrganizationAccreditation(ObjectByIndex[index]);
 end;
 
+function TOrganizationAccreditationList.Link: TOrganizationAccreditationList;
+begin
+  result := TOrganizationAccreditationList(inherited Link);
+end;
+
+procedure TOrganizationAccreditationList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TOrganizationAccreditationList.SetItemByIndex(index: Integer; value: TOrganizationAccreditation);
+begin
+  assert(value is TOrganizationAccreditation);
+  OrganizationAccreditations[index] := value;
+end;
+
+procedure TOrganizationAccreditationList.SetItemN(index: Integer; value: TOrganizationAccreditation);
+begin
+  assert(value is TOrganizationAccreditation);
+  ObjectByIndex[index] := value;
+end;
 
 { TOrganizationRelatedOrganizationList }
+{ TOrganizationRelatedOrganizationList }
+procedure TOrganizationRelatedOrganizationList.AddItem(value: TOrganizationRelatedOrganization);
+begin
+  assert(value.ClassName = 'TOrganizationRelatedOrganization', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationRelatedOrganization');
+  add(value);
+end;
+
+function TOrganizationRelatedOrganizationList.Append: TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationRelatedOrganizationList.ClearItems;
+begin
+  Clear;
+end;
+
+function TOrganizationRelatedOrganizationList.Clone: TOrganizationRelatedOrganizationList;
+begin
+  result := TOrganizationRelatedOrganizationList(inherited Clone);
+end;
+
 function TOrganizationRelatedOrganizationList.Count: Integer;
 begin
   result := Inherited Count;
@@ -8912,11 +13314,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TOrganizationRelatedOrganizationList.Insert(index: Integer): TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationRelatedOrganizationList.InsertItem(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  Inherited Insert(index, value);
+end;
+
 function TOrganizationRelatedOrganizationList.Item(index: Integer): TOrganizationRelatedOrganization;
 begin
   result := TOrganizationRelatedOrganization(ObjectByIndex[index]);
 end;
 
+function TOrganizationRelatedOrganizationList.Link: TOrganizationRelatedOrganizationList;
+begin
+  result := TOrganizationRelatedOrganizationList(inherited Link);
+end;
+
+procedure TOrganizationRelatedOrganizationList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TOrganizationRelatedOrganizationList.SetItemByIndex(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  OrganizationRelatedOrganizations[index] := value;
+end;
+
+procedure TOrganizationRelatedOrganizationList.SetItemN(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  ObjectByIndex[index] := value;
+end;
 
 { TOrganization }
 
@@ -8933,12 +13372,12 @@ end;
 
 destructor TOrganization.Destroy;
 begin
-  FCode.free;
-  FIndustryCode.free;
   FIdentifier.Free;
   FName.Free;
   FAddress.Free;
   FContact.Free;
+  FCode.free;
+  FIndustryCode.free;
   FAccreditation.Free;
   FRelatedOrganization.Free;
   inherited;
@@ -8952,12 +13391,12 @@ end;
 procedure TOrganization.Assign(oSource : TAdvObject);
 begin
   inherited;
-  code := TOrganization(oSource).code.Clone;
-  industryCode := TOrganization(oSource).industryCode.Clone;
   FIdentifier.Assign(TOrganization(oSource).FIdentifier);
   FName.Assign(TOrganization(oSource).FName);
   FAddress.Assign(TOrganization(oSource).FAddress);
   FContact.Assign(TOrganization(oSource).FContact);
+  code := TOrganization(oSource).code.Clone;
+  industryCode := TOrganization(oSource).industryCode.Clone;
   FAccreditation.Assign(TOrganization(oSource).FAccreditation);
   FRelatedOrganization.Assign(TOrganization(oSource).FRelatedOrganization);
 end;
@@ -9123,6 +13562,33 @@ end;
 
 
 { TDocumentConformanceDocumentList }
+{ TDocumentConformanceDocumentList }
+procedure TDocumentConformanceDocumentList.AddItem(value: TDocumentConformanceDocument);
+begin
+  assert(value.ClassName = 'TDocumentConformanceDocument', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentConformanceDocument');
+  add(value);
+end;
+
+function TDocumentConformanceDocumentList.Append: TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentConformanceDocumentList.ClearItems;
+begin
+  Clear;
+end;
+
+function TDocumentConformanceDocumentList.Clone: TDocumentConformanceDocumentList;
+begin
+  result := TDocumentConformanceDocumentList(inherited Clone);
+end;
+
 function TDocumentConformanceDocumentList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9138,11 +13604,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TDocumentConformanceDocumentList.Insert(index: Integer): TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TDocumentConformanceDocumentList.InsertItem(index: Integer; value: TDocumentConformanceDocument);
+begin
+  assert(value is TDocumentConformanceDocument);
+  Inherited Insert(index, value);
+end;
+
 function TDocumentConformanceDocumentList.Item(index: Integer): TDocumentConformanceDocument;
 begin
   result := TDocumentConformanceDocument(ObjectByIndex[index]);
 end;
 
+function TDocumentConformanceDocumentList.Link: TDocumentConformanceDocumentList;
+begin
+  result := TDocumentConformanceDocumentList(inherited Link);
+end;
+
+procedure TDocumentConformanceDocumentList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TDocumentConformanceDocumentList.SetItemByIndex(index: Integer; value: TDocumentConformanceDocument);
+begin
+  assert(value is TDocumentConformanceDocument);
+  DocumentConformanceDocuments[index] := value;
+end;
+
+procedure TDocumentConformanceDocumentList.SetItemN(index: Integer; value: TDocumentConformanceDocument);
+begin
+  assert(value is TDocumentConformanceDocument);
+  ObjectByIndex[index] := value;
+end;
 
 { TDocumentConformance }
 
@@ -9270,6 +13773,33 @@ end;
 
 
 { TLabReportResultGroupResultList }
+{ TLabReportResultGroupResultList }
+procedure TLabReportResultGroupResultList.AddItem(value: TLabReportResultGroupResult);
+begin
+  assert(value.ClassName = 'TLabReportResultGroupResult', 'Attempt to add an item of type '+value.ClassName+' to a List of TLabReportResultGroupResult');
+  add(value);
+end;
+
+function TLabReportResultGroupResultList.Append: TLabReportResultGroupResult;
+begin
+  result := TLabReportResultGroupResult.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupResultList.ClearItems;
+begin
+  Clear;
+end;
+
+function TLabReportResultGroupResultList.Clone: TLabReportResultGroupResultList;
+begin
+  result := TLabReportResultGroupResultList(inherited Clone);
+end;
+
 function TLabReportResultGroupResultList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9285,11 +13815,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TLabReportResultGroupResultList.Insert(index: Integer): TLabReportResultGroupResult;
+begin
+  result := TLabReportResultGroupResult.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupResultList.InsertItem(index: Integer; value: TLabReportResultGroupResult);
+begin
+  assert(value is TLabReportResultGroupResult);
+  Inherited Insert(index, value);
+end;
+
 function TLabReportResultGroupResultList.Item(index: Integer): TLabReportResultGroupResult;
 begin
   result := TLabReportResultGroupResult(ObjectByIndex[index]);
 end;
 
+function TLabReportResultGroupResultList.Link: TLabReportResultGroupResultList;
+begin
+  result := TLabReportResultGroupResultList(inherited Link);
+end;
+
+procedure TLabReportResultGroupResultList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TLabReportResultGroupResultList.SetItemByIndex(index: Integer; value: TLabReportResultGroupResult);
+begin
+  assert(value is TLabReportResultGroupResult);
+  LabReportResultGroupResults[index] := value;
+end;
+
+procedure TLabReportResultGroupResultList.SetItemN(index: Integer; value: TLabReportResultGroupResult);
+begin
+  assert(value is TLabReportResultGroupResult);
+  ObjectByIndex[index] := value;
+end;
 
 { TLabReportResultGroup }
 
@@ -9341,6 +13908,33 @@ end;
 
 
 { TLabReportResultGroupResultReferenceRangeList }
+{ TLabReportResultGroupResultReferenceRangeList }
+procedure TLabReportResultGroupResultReferenceRangeList.AddItem(value: TLabReportResultGroupResultReferenceRange);
+begin
+  assert(value.ClassName = 'TLabReportResultGroupResultReferenceRange', 'Attempt to add an item of type '+value.ClassName+' to a List of TLabReportResultGroupResultReferenceRange');
+  add(value);
+end;
+
+function TLabReportResultGroupResultReferenceRangeList.Append: TLabReportResultGroupResultReferenceRange;
+begin
+  result := TLabReportResultGroupResultReferenceRange.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupResultReferenceRangeList.ClearItems;
+begin
+  Clear;
+end;
+
+function TLabReportResultGroupResultReferenceRangeList.Clone: TLabReportResultGroupResultReferenceRangeList;
+begin
+  result := TLabReportResultGroupResultReferenceRangeList(inherited Clone);
+end;
+
 function TLabReportResultGroupResultReferenceRangeList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9356,11 +13950,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TLabReportResultGroupResultReferenceRangeList.Insert(index: Integer): TLabReportResultGroupResultReferenceRange;
+begin
+  result := TLabReportResultGroupResultReferenceRange.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupResultReferenceRangeList.InsertItem(index: Integer; value: TLabReportResultGroupResultReferenceRange);
+begin
+  assert(value is TLabReportResultGroupResultReferenceRange);
+  Inherited Insert(index, value);
+end;
+
 function TLabReportResultGroupResultReferenceRangeList.Item(index: Integer): TLabReportResultGroupResultReferenceRange;
 begin
   result := TLabReportResultGroupResultReferenceRange(ObjectByIndex[index]);
 end;
 
+function TLabReportResultGroupResultReferenceRangeList.Link: TLabReportResultGroupResultReferenceRangeList;
+begin
+  result := TLabReportResultGroupResultReferenceRangeList(inherited Link);
+end;
+
+procedure TLabReportResultGroupResultReferenceRangeList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TLabReportResultGroupResultReferenceRangeList.SetItemByIndex(index: Integer; value: TLabReportResultGroupResultReferenceRange);
+begin
+  assert(value is TLabReportResultGroupResultReferenceRange);
+  LabReportResultGroupResultReferenceRanges[index] := value;
+end;
+
+procedure TLabReportResultGroupResultReferenceRangeList.SetItemN(index: Integer; value: TLabReportResultGroupResultReferenceRange);
+begin
+  assert(value is TLabReportResultGroupResultReferenceRange);
+  ObjectByIndex[index] := value;
+end;
 
 { TLabReportResultGroupResult }
 
@@ -9476,6 +14107,33 @@ end;
 
 
 { TLabReportRequestDetailList }
+{ TLabReportRequestDetailList }
+procedure TLabReportRequestDetailList.AddItem(value: TLabReportRequestDetail);
+begin
+  assert(value.ClassName = 'TLabReportRequestDetail', 'Attempt to add an item of type '+value.ClassName+' to a List of TLabReportRequestDetail');
+  add(value);
+end;
+
+function TLabReportRequestDetailList.Append: TLabReportRequestDetail;
+begin
+  result := TLabReportRequestDetail.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportRequestDetailList.ClearItems;
+begin
+  Clear;
+end;
+
+function TLabReportRequestDetailList.Clone: TLabReportRequestDetailList;
+begin
+  result := TLabReportRequestDetailList(inherited Clone);
+end;
+
 function TLabReportRequestDetailList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9491,13 +14149,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TLabReportRequestDetailList.Insert(index: Integer): TLabReportRequestDetail;
+begin
+  result := TLabReportRequestDetail.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportRequestDetailList.InsertItem(index: Integer; value: TLabReportRequestDetail);
+begin
+  assert(value is TLabReportRequestDetail);
+  Inherited Insert(index, value);
+end;
+
 function TLabReportRequestDetailList.Item(index: Integer): TLabReportRequestDetail;
 begin
   result := TLabReportRequestDetail(ObjectByIndex[index]);
 end;
 
+function TLabReportRequestDetailList.Link: TLabReportRequestDetailList;
+begin
+  result := TLabReportRequestDetailList(inherited Link);
+end;
+
+procedure TLabReportRequestDetailList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TLabReportRequestDetailList.SetItemByIndex(index: Integer; value: TLabReportRequestDetail);
+begin
+  assert(value is TLabReportRequestDetail);
+  LabReportRequestDetails[index] := value;
+end;
+
+procedure TLabReportRequestDetailList.SetItemN(index: Integer; value: TLabReportRequestDetail);
+begin
+  assert(value is TLabReportRequestDetail);
+  ObjectByIndex[index] := value;
+end;
 
 { TLabReportResultGroupList }
+{ TLabReportResultGroupList }
+procedure TLabReportResultGroupList.AddItem(value: TLabReportResultGroup);
+begin
+  assert(value.ClassName = 'TLabReportResultGroup', 'Attempt to add an item of type '+value.ClassName+' to a List of TLabReportResultGroup');
+  add(value);
+end;
+
+function TLabReportResultGroupList.Append: TLabReportResultGroup;
+begin
+  result := TLabReportResultGroup.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupList.ClearItems;
+begin
+  Clear;
+end;
+
+function TLabReportResultGroupList.Clone: TLabReportResultGroupList;
+begin
+  result := TLabReportResultGroupList(inherited Clone);
+end;
+
 function TLabReportResultGroupList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9513,13 +14235,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TLabReportResultGroupList.Insert(index: Integer): TLabReportResultGroup;
+begin
+  result := TLabReportResultGroup.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TLabReportResultGroupList.InsertItem(index: Integer; value: TLabReportResultGroup);
+begin
+  assert(value is TLabReportResultGroup);
+  Inherited Insert(index, value);
+end;
+
 function TLabReportResultGroupList.Item(index: Integer): TLabReportResultGroup;
 begin
   result := TLabReportResultGroup(ObjectByIndex[index]);
 end;
 
+function TLabReportResultGroupList.Link: TLabReportResultGroupList;
+begin
+  result := TLabReportResultGroupList(inherited Link);
+end;
+
+procedure TLabReportResultGroupList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TLabReportResultGroupList.SetItemByIndex(index: Integer; value: TLabReportResultGroup);
+begin
+  assert(value is TLabReportResultGroup);
+  LabReportResultGroups[index] := value;
+end;
+
+procedure TLabReportResultGroupList.SetItemN(index: Integer; value: TLabReportResultGroup);
+begin
+  assert(value is TLabReportResultGroup);
+  ObjectByIndex[index] := value;
+end;
 
 { TAttachmentList }
+{ TAttachmentList }
+procedure TAttachmentList.AddItem(value: TAttachment);
+begin
+  assert(value.ClassName = 'TAttachment', 'Attempt to add an item of type '+value.ClassName+' to a List of TAttachment');
+  add(value);
+end;
+
+function TAttachmentList.Append: TAttachment;
+begin
+  result := TAttachment.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAttachmentList.ClearItems;
+begin
+  Clear;
+end;
+
+function TAttachmentList.Clone: TAttachmentList;
+begin
+  result := TAttachmentList(inherited Clone);
+end;
+
 function TAttachmentList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9535,11 +14321,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TAttachmentList.Insert(index: Integer): TAttachment;
+begin
+  result := TAttachment.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAttachmentList.InsertItem(index: Integer; value: TAttachment);
+begin
+  assert(value is TAttachment);
+  Inherited Insert(index, value);
+end;
+
 function TAttachmentList.Item(index: Integer): TAttachment;
 begin
   result := TAttachment(ObjectByIndex[index]);
 end;
 
+function TAttachmentList.Link: TAttachmentList;
+begin
+  result := TAttachmentList(inherited Link);
+end;
+
+procedure TAttachmentList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TAttachmentList.SetItemByIndex(index: Integer; value: TAttachment);
+begin
+  assert(value is TAttachment);
+  Attachments[index] := value;
+end;
+
+procedure TAttachmentList.SetItemN(index: Integer; value: TAttachment);
+begin
+  assert(value is TAttachment);
+  ObjectByIndex[index] := value;
+end;
 
 { TLabReport }
 
@@ -9825,6 +14648,33 @@ end;
 
 
 { TPersonQualificationList }
+{ TPersonQualificationList }
+procedure TPersonQualificationList.AddItem(value: TPersonQualification);
+begin
+  assert(value.ClassName = 'TPersonQualification', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonQualification');
+  add(value);
+end;
+
+function TPersonQualificationList.Append: TPersonQualification;
+begin
+  result := TPersonQualification.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonQualificationList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPersonQualificationList.Clone: TPersonQualificationList;
+begin
+  result := TPersonQualificationList(inherited Clone);
+end;
+
 function TPersonQualificationList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9840,13 +14690,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPersonQualificationList.Insert(index: Integer): TPersonQualification;
+begin
+  result := TPersonQualification.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonQualificationList.InsertItem(index: Integer; value: TPersonQualification);
+begin
+  assert(value is TPersonQualification);
+  Inherited Insert(index, value);
+end;
+
 function TPersonQualificationList.Item(index: Integer): TPersonQualification;
 begin
   result := TPersonQualification(ObjectByIndex[index]);
 end;
 
+function TPersonQualificationList.Link: TPersonQualificationList;
+begin
+  result := TPersonQualificationList(inherited Link);
+end;
+
+procedure TPersonQualificationList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPersonQualificationList.SetItemByIndex(index: Integer; value: TPersonQualification);
+begin
+  assert(value is TPersonQualification);
+  PersonQualifications[index] := value;
+end;
+
+procedure TPersonQualificationList.SetItemN(index: Integer; value: TPersonQualification);
+begin
+  assert(value is TPersonQualification);
+  ObjectByIndex[index] := value;
+end;
 
 { TPersonLanguageList }
+{ TPersonLanguageList }
+procedure TPersonLanguageList.AddItem(value: TPersonLanguage);
+begin
+  assert(value.ClassName = 'TPersonLanguage', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonLanguage');
+  add(value);
+end;
+
+function TPersonLanguageList.Append: TPersonLanguage;
+begin
+  result := TPersonLanguage.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonLanguageList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPersonLanguageList.Clone: TPersonLanguageList;
+begin
+  result := TPersonLanguageList(inherited Clone);
+end;
+
 function TPersonLanguageList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9862,13 +14776,77 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPersonLanguageList.Insert(index: Integer): TPersonLanguage;
+begin
+  result := TPersonLanguage.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonLanguageList.InsertItem(index: Integer; value: TPersonLanguage);
+begin
+  assert(value is TPersonLanguage);
+  Inherited Insert(index, value);
+end;
+
 function TPersonLanguageList.Item(index: Integer): TPersonLanguage;
 begin
   result := TPersonLanguage(ObjectByIndex[index]);
 end;
 
+function TPersonLanguageList.Link: TPersonLanguageList;
+begin
+  result := TPersonLanguageList(inherited Link);
+end;
+
+procedure TPersonLanguageList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPersonLanguageList.SetItemByIndex(index: Integer; value: TPersonLanguage);
+begin
+  assert(value is TPersonLanguage);
+  PersonLanguages[index] := value;
+end;
+
+procedure TPersonLanguageList.SetItemN(index: Integer; value: TPersonLanguage);
+begin
+  assert(value is TPersonLanguage);
+  ObjectByIndex[index] := value;
+end;
 
 { TPersonRelatedPersonList }
+{ TPersonRelatedPersonList }
+procedure TPersonRelatedPersonList.AddItem(value: TPersonRelatedPerson);
+begin
+  assert(value.ClassName = 'TPersonRelatedPerson', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonRelatedPerson');
+  add(value);
+end;
+
+function TPersonRelatedPersonList.Append: TPersonRelatedPerson;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonRelatedPersonList.ClearItems;
+begin
+  Clear;
+end;
+
+function TPersonRelatedPersonList.Clone: TPersonRelatedPersonList;
+begin
+  result := TPersonRelatedPersonList(inherited Clone);
+end;
+
 function TPersonRelatedPersonList.Count: Integer;
 begin
   result := Inherited Count;
@@ -9884,11 +14862,48 @@ begin
   result := IndexByReference(value);
 end;
 
+function TPersonRelatedPersonList.Insert(index: Integer): TPersonRelatedPerson;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TPersonRelatedPersonList.InsertItem(index: Integer; value: TPersonRelatedPerson);
+begin
+  assert(value is TPersonRelatedPerson);
+  Inherited Insert(index, value);
+end;
+
 function TPersonRelatedPersonList.Item(index: Integer): TPersonRelatedPerson;
 begin
   result := TPersonRelatedPerson(ObjectByIndex[index]);
 end;
 
+function TPersonRelatedPersonList.Link: TPersonRelatedPersonList;
+begin
+  result := TPersonRelatedPersonList(inherited Link);
+end;
+
+procedure TPersonRelatedPersonList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TPersonRelatedPersonList.SetItemByIndex(index: Integer; value: TPersonRelatedPerson);
+begin
+  assert(value is TPersonRelatedPerson);
+  PersonRelatedPeople[index] := value;
+end;
+
+procedure TPersonRelatedPersonList.SetItemN(index: Integer; value: TPersonRelatedPerson);
+begin
+  assert(value is TPersonRelatedPerson);
+  ObjectByIndex[index] := value;
+end;
 
 { TPerson }
 
@@ -9965,6 +14980,387 @@ Procedure TPerson.SetReligion(value : TCodeableConcept);
 begin
   FReligion.free;
   FReligion := value;
+end;
+
+
+function TFHIRResourceFactory.newExtension : TExtension;
+begin
+  result := TExtension.create;
+end;
+
+function TFHIRResourceFactory.newConstraintElement : TConstraintElement;
+begin
+  result := TConstraintElement.create;
+end;
+
+function TFHIRResourceFactory.newConstraintElementMapping : TConstraintElementMapping;
+begin
+  result := TConstraintElementMapping.create;
+end;
+
+function TFHIRResourceFactory.newConstraintElementAggregation : TConstraintElementAggregation;
+begin
+  result := TConstraintElementAggregation.create;
+end;
+
+function TFHIRResourceFactory.newConstraintElementValue : TConstraintElementValue;
+begin
+  result := TConstraintElementValue.create;
+end;
+
+function TFHIRResourceFactory.newConstraint : TConstraint;
+begin
+  result := TConstraint.create;
+end;
+
+function TFHIRResourceFactory.newNarrativeImage : TNarrativeImage;
+begin
+  result := TNarrativeImage.create;
+end;
+
+function TFHIRResourceFactory.newNarrativeMap : TNarrativeMap;
+begin
+  result := TNarrativeMap.create;
+end;
+
+function TFHIRResourceFactory.newNarrative : TNarrative;
+begin
+  result := TNarrative.create;
+end;
+
+function TFHIRResourceFactory.newCoding : TCoding;
+begin
+  result := TCoding.create;
+end;
+
+function TFHIRResourceFactory.newInterval_Quantity : TInterval_Quantity;
+begin
+  result := TInterval_Quantity.create;
+end;
+
+function TFHIRResourceFactory.newInterval_DateTime : TInterval_DateTime;
+begin
+  result := TInterval_DateTime.create;
+end;
+
+function TFHIRResourceFactory.newInterval_Date : TInterval_Date;
+begin
+  result := TInterval_Date.create;
+end;
+
+function TFHIRResourceFactory.newQuantity : TQuantity;
+begin
+  result := TQuantity.create;
+end;
+
+function TFHIRResourceFactory.newChoiceValue : TChoiceValue;
+begin
+  result := TChoiceValue.create;
+end;
+
+function TFHIRResourceFactory.newChoice : TChoice;
+begin
+  result := TChoice.create;
+end;
+
+function TFHIRResourceFactory.newAttachment : TAttachment;
+begin
+  result := TAttachment.create;
+end;
+
+function TFHIRResourceFactory.newRatio : TRatio;
+begin
+  result := TRatio.create;
+end;
+
+function TFHIRResourceFactory.newCodeableConcept : TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+end;
+
+function TFHIRResourceFactory.newIdentifier : TIdentifier;
+begin
+  result := TIdentifier.create;
+end;
+
+function TFHIRResourceFactory.newScheduleRepeat : TScheduleRepeat;
+begin
+  result := TScheduleRepeat.create;
+end;
+
+function TFHIRResourceFactory.newSchedule : TSchedule;
+begin
+  result := TSchedule.create;
+end;
+
+function TFHIRResourceFactory.newContact : TContact;
+begin
+  result := TContact.create;
+end;
+
+function TFHIRResourceFactory.newAddressPart : TAddressPart;
+begin
+  result := TAddressPart.create;
+end;
+
+function TFHIRResourceFactory.newAddress : TAddress;
+begin
+  result := TAddress.create;
+end;
+
+function TFHIRResourceFactory.newHumanNamePart : THumanNamePart;
+begin
+  result := THumanNamePart.create;
+end;
+
+function TFHIRResourceFactory.newHumanName : THumanName;
+begin
+  result := THumanName.create;
+end;
+
+function TFHIRResourceFactory.newHumanId : THumanId;
+begin
+  result := THumanId.create;
+end;
+
+function TFHIRResourceFactory.newConformancePublisher : TConformancePublisher;
+begin
+  result := TConformancePublisher.create;
+end;
+
+function TFHIRResourceFactory.newConformanceSoftware : TConformanceSoftware;
+begin
+  result := TConformanceSoftware.create;
+end;
+
+function TFHIRResourceFactory.newConformanceOperation : TConformanceOperation;
+begin
+  result := TConformanceOperation.create;
+end;
+
+function TFHIRResourceFactory.newConformanceOperationTransaction : TConformanceOperationTransaction;
+begin
+  result := TConformanceOperationTransaction.create;
+end;
+
+function TFHIRResourceFactory.newConformanceOperationSearch : TConformanceOperationSearch;
+begin
+  result := TConformanceOperationSearch.create;
+end;
+
+function TFHIRResourceFactory.newConformanceOperationCreate : TConformanceOperationCreate;
+begin
+  result := TConformanceOperationCreate.create;
+end;
+
+function TFHIRResourceFactory.newConformance : TConformance;
+begin
+  result := TConformance.create;
+end;
+
+function TFHIRResourceFactory.newDocumentAuthor : TDocumentAuthor;
+begin
+  result := TDocumentAuthor.create;
+end;
+
+function TFHIRResourceFactory.newDocumentAttestor : TDocumentAttestor;
+begin
+  result := TDocumentAttestor.create;
+end;
+
+function TFHIRResourceFactory.newDocumentSection : TDocumentSection;
+begin
+  result := TDocumentSection.create;
+end;
+
+function TFHIRResourceFactory.newDocumentSectionAuthor : TDocumentSectionAuthor;
+begin
+  result := TDocumentSectionAuthor.create;
+end;
+
+function TFHIRResourceFactory.newDocument : TDocument;
+begin
+  result := TDocument.create;
+end;
+
+function TFHIRResourceFactory.newMessageResponse : TMessageResponse;
+begin
+  result := TMessageResponse.create;
+end;
+
+function TFHIRResourceFactory.newMessage : TMessage;
+begin
+  result := TMessage.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformancePublisher : TMessageConformancePublisher;
+begin
+  result := TMessageConformancePublisher.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformanceSoftware : TMessageConformanceSoftware;
+begin
+  result := TMessageConformanceSoftware.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformanceEvent : TMessageConformanceEvent;
+begin
+  result := TMessageConformanceEvent.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformanceEventRequest : TMessageConformanceEventRequest;
+begin
+  result := TMessageConformanceEventRequest.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformanceEventResponse : TMessageConformanceEventResponse;
+begin
+  result := TMessageConformanceEventResponse.create;
+end;
+
+function TFHIRResourceFactory.newMessageConformance : TMessageConformance;
+begin
+  result := TMessageConformance.create;
+end;
+
+function TFHIRResourceFactory.newAgent : TAgent;
+begin
+  result := TAgent.create;
+end;
+
+function TFHIRResourceFactory.newAnimalRelatedEntity : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+end;
+
+function TFHIRResourceFactory.newAnimal : TAnimal;
+begin
+  result := TAnimal.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionDispense : TPrescriptionDispense;
+begin
+  result := TPrescriptionDispense.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionMedicine : TPrescriptionMedicine;
+begin
+  result := TPrescriptionMedicine.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionMedicineActiveIngredient : TPrescriptionMedicineActiveIngredient;
+begin
+  result := TPrescriptionMedicineActiveIngredient.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionMedicineInactiveIngredient : TPrescriptionMedicineInactiveIngredient;
+begin
+  result := TPrescriptionMedicineInactiveIngredient.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionAdministrationRequest : TPrescriptionAdministrationRequest;
+begin
+  result := TPrescriptionAdministrationRequest.create;
+end;
+
+function TFHIRResourceFactory.newPrescriptionAdministrationRequestDosageInstruction : TPrescriptionAdministrationRequestDosageInstruction;
+begin
+  result := TPrescriptionAdministrationRequestDosageInstruction.create;
+end;
+
+function TFHIRResourceFactory.newPrescription : TPrescription;
+begin
+  result := TPrescription.create;
+end;
+
+function TFHIRResourceFactory.newPatient : TPatient;
+begin
+  result := TPatient.create;
+end;
+
+function TFHIRResourceFactory.newOrganizationName : TOrganizationName;
+begin
+  result := TOrganizationName.create;
+end;
+
+function TFHIRResourceFactory.newOrganizationAccreditation : TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation.create;
+end;
+
+function TFHIRResourceFactory.newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+end;
+
+function TFHIRResourceFactory.newOrganization : TOrganization;
+begin
+  result := TOrganization.create;
+end;
+
+function TFHIRResourceFactory.newDocumentConformancePublisher : TDocumentConformancePublisher;
+begin
+  result := TDocumentConformancePublisher.create;
+end;
+
+function TFHIRResourceFactory.newDocumentConformanceSoftware : TDocumentConformanceSoftware;
+begin
+  result := TDocumentConformanceSoftware.create;
+end;
+
+function TFHIRResourceFactory.newDocumentConformanceDocument : TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument.create;
+end;
+
+function TFHIRResourceFactory.newDocumentConformance : TDocumentConformance;
+begin
+  result := TDocumentConformance.create;
+end;
+
+function TFHIRResourceFactory.newLabReportRequestDetail : TLabReportRequestDetail;
+begin
+  result := TLabReportRequestDetail.create;
+end;
+
+function TFHIRResourceFactory.newLabReportResultGroup : TLabReportResultGroup;
+begin
+  result := TLabReportResultGroup.create;
+end;
+
+function TFHIRResourceFactory.newLabReportResultGroupResult : TLabReportResultGroupResult;
+begin
+  result := TLabReportResultGroupResult.create;
+end;
+
+function TFHIRResourceFactory.newLabReportResultGroupResultReferenceRange : TLabReportResultGroupResultReferenceRange;
+begin
+  result := TLabReportResultGroupResultReferenceRange.create;
+end;
+
+function TFHIRResourceFactory.newLabReport : TLabReport;
+begin
+  result := TLabReport.create;
+end;
+
+function TFHIRResourceFactory.newPersonQualification : TPersonQualification;
+begin
+  result := TPersonQualification.create;
+end;
+
+function TFHIRResourceFactory.newPersonLanguage : TPersonLanguage;
+begin
+  result := TPersonLanguage.create;
+end;
+
+function TFHIRResourceFactory.newPersonRelatedPerson : TPersonRelatedPerson;
+begin
+  result := TPersonRelatedPerson.create;
+end;
+
+function TFHIRResourceFactory.newPerson : TPerson;
+begin
+  result := TPerson.create;
 end;
 
 
