@@ -19,6 +19,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -53,6 +54,9 @@
   </Style>
   <Style ss:ID="s65">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s126">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -317,7 +321,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
@@ -350,6 +353,47 @@
     <Pane>
      <Number>3</Number>
      <RangeSelection>R1:R1048576</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Events">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="93.75" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="111"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69"/>
+   <Row ss:AutoFitHeight="0" ss:Height="22.5">
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Event Code</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Notes</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Request Resources</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Response Resources</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Follow Ups</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">admin-notify</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">(see Person)</Data></Cell>
+    <Cell ss:StyleID="s126"/>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Patient</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

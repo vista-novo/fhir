@@ -20,6 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -329,7 +330,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
@@ -361,7 +361,45 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1:R1048576</RangeSelection>
+     <ActiveRow>28</ActiveRow>
+     <ActiveCol>2</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Events">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="99.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="171"/>
+   <Column ss:AutoFitWidth="0" ss:Width="96.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="107.25"/>
+   <Row>
+    <Cell><Data ss:Type="String">Event Code</Data></Cell>
+    <Cell><Data ss:Type="String">Description</Data></Cell>
+    <Cell><Data ss:Type="String">Request Resources</Data></Cell>
+    <Cell><Data ss:Type="String">Response Resources</Data></Cell>
+    <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">admin-notify</Data></Cell>
+    <Cell><Data ss:Type="String">Notification of a change to an administrative resource (either create or update). Note that there is no delete, though some administrative resources have status or period elements for this use</Data></Cell>
+    <Cell><Data ss:Type="String">Person</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
