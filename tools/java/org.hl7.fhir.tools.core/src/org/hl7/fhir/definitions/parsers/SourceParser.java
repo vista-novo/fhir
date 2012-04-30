@@ -11,6 +11,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.XLSXmlParser.Sheet;
@@ -168,8 +169,24 @@ public class SourceParser {
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
     ElementDefn root = sparser.parse();
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
-    definitions.getDefinedResources().put(root.getName(), root);   
+    definitions.getDefinedResources().put(root.getName(), root);
+    for (EventDefn e : sparser.getEvents())
+      processEvent(e, root);
     map.put(root.getName(), root);   
+  }
+
+
+  private void processEvent(EventDefn defn, ElementDefn root) throws Exception {
+    // first, validate the event. The Request Resource needs to be this resource - for now
+//    if (!defn.getUsages().get(0).getRequestResources().get(0).equals(root.getName())) 
+//      throw new Exception("Event "+defn.getCode()+" has a mismatched request resource - should be "+root.getName()+", is "+defn.getUsages().get(0).getRequestResources().get(0));
+    if (definitions.getEvents().containsKey(defn.getCode())) {
+      EventDefn master = definitions.getEvents().get(defn.getCode());
+      master.getUsages().add(defn.getUsages().get(0));
+      if (!defn.getDefinition().startsWith("(see"))
+        master.setDefinition(defn.getDefinition());
+    } else
+      definitions.getEvents().put(defn.getCode(), defn);
   }
 
 

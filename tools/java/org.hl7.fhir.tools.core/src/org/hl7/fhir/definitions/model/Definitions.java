@@ -32,7 +32,8 @@ public class Definitions {
   private Map<String, ElementDefn> resources = new HashMap<String, ElementDefn>();
   private Map<String, ElementDefn> specialResources = new HashMap<String, ElementDefn>();
   private Map<String, ElementDefn> definedResources = new HashMap<String, ElementDefn>();
-  
+
+  private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
 
   public boolean hasResource(String name) {
     return resources.containsKey(name) || specialResources.containsKey(name); // || knownResources.containsKey(name);
@@ -140,6 +141,11 @@ public class Definitions {
 
   public Map<String, DefinedCode> getConstraints() {
     return constraints;
+  }
+
+
+  public Map<String, EventDefn> getEvents() {
+    return events;
   }
 
   

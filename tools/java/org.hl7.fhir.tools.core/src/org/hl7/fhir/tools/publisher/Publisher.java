@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,8 @@ import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.parsers.TypeParser;
@@ -795,6 +798,8 @@ public class Publisher implements Logger {
 				src = s1+"<div class=\"content\">"+s3;
 			else if (com[0].equals("/maindiv"))
 				src = s1+"</div>"+s3;
+			else if (com[0].equals("events"))
+			  src = s1 + getEventsTable()+ s3;
 			else if (com[0].equals("resourcecodes"))
 				src = s1 + genResCodes() + s3;
       else if (com[0].equals("resimplall"))
@@ -808,7 +813,80 @@ public class Publisher implements Logger {
 		return src;
 	}
 
-	private String genReferenceImplList() {
+	private String getEventsTable() {
+/*
+<table clas="grid">
+ <tr><th>Code</th><th>Description</th><th>Request Resources</th><th>Response Resources</th><th>Further messages</th></tr>
+ <tr><td>admin-create</td><td>Create an Administrative resource </td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>admin-update</td><td>Update an administrative resource. Noe that there is no delete, since administrative resources are never really deleted - 
+   some have status or period elements for this use</td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>patient-link</td><td>Link two or patients</td><td>Two or more patient</td><td>(none)</td><td>N/A</td></tr>
+ <tr><td>provide-lab-report</td><td>Send a lab report</td><td>Primary: LabReport<br/>Aggregated: Patient+Person/Animal, Any specimens, Any resource linked in clinical information</td><td>(none)</td><td>N/A</td></tr>
+<!--
+ <tr><td>Code</td><td>Name / Description</td><td>Request Resources</td><td>Response Resources</td><td>Further transactions</td></tr>
+ -->
+ </table>
+
+ * 
+ */
+	  List<String> codes = new ArrayList<String>();
+	  codes.addAll(definitions.getEvents().keySet());
+	  Collections.sort(codes);
+	  StringBuilder s = new StringBuilder();
+	  s.append("<table class=\"grid\">\r\n");
+	  s.append(" <tr><th>Code</th><th>Description</th><th>Request</th><th>Response</th><th>Notes</th></tr>\r\n");
+	  for (String c : codes) {
+	    EventDefn e = definitions.getEvents().get(c);
+      if (e.getUsages().size() == 1) {
+        EventUsage u = e.getUsages().get(0);
+        s.append(" <tr><td>"+e.getCode()+"</td><td>"+e.getDefinition()+"</td>");
+        s.append("<td>"+describeMsg(u.getRequestResources(), u.getRequestAggregations())+"</td><td>"+
+            describeMsg(u.getResponseResources(), u.getResponseAggregations())+"</td><td>"+
+            combineNotes(e.getFollowUps(), u.getNotes())+"</td></tr>\r\n");
+      } else {
+        boolean first = true;
+        for (EventUsage u : e.getUsages()) {
+          if (first)
+            s.append(" <tr><td rowspan=\""+Integer.toString(e.getUsages().size())+"\">"+e.getCode()+"</td><td rowspan=\""+Integer.toString(e.getUsages().size())+"\">"+e.getDefinition()+"</td>");
+          else
+            s.append(" <tr>");
+          first = false;
+          s.append("<td>"+describeMsg(u.getRequestResources(), u.getRequestAggregations())+"</td><td>"+
+              describeMsg(u.getResponseResources(), u.getResponseAggregations())+"</td><td>"+
+              combineNotes(e.getFollowUps(), u.getNotes())+"</td></tr>\r\n");
+        }
+	    }
+	  }
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+
+  private String combineNotes(List<String> followUps, String notes) {
+    String s = "";
+    if (notes != null && !notes.equals(""))
+      s = notes;
+    if (followUps.size() > 0)
+      if (s != "")
+        s = s + "<br/>Follow ups: "+Utilities.asCSV(followUps);
+      else
+        s = "Follow ups: "+Utilities.asCSV(followUps);
+    return s;      
+  }
+
+  private String describeMsg(List<String> resources, List<String> aggregations) {
+    if (resources.size() == 0 && aggregations.size() == 0)
+      return "<font color=\"silver\">--</font>";
+    else {
+      String s = resources.size() == 0 ? "" : Utilities.asCSV(resources);
+      
+      if (aggregations.size() == 0)
+        return s;
+      else
+        return s + "<br/>"+Utilities.asHtmlBr("&nbsp;"+resources.get(0), aggregations)+"";
+    }      
+  }
+
+  private String genReferenceImplList() {
 	  StringBuilder s = new StringBuilder();
 	  for (PlatformGenerator gen : referenceImplementations) {
 	    s.append("<li><b><a href=\""+gen.getName()+".zip\">"+gen.getTitle()+"</a></b>: "+Utilities.escapeXml(gen.getDescription())+"</li>\r\n");
@@ -858,6 +936,8 @@ public class Publisher implements Logger {
 				src = s1+s3;
 			else if (com[0].equals("/maindiv"))
 				src = s1+s3;
+      else if (com[0].equals("events"))
+        src = s1 + getEventsTable()+ s3;
 			else if (com[0].equals("resourcecodes"))
 				src = s1 + genResCodes() + s3;
 			else if (com[0].equals("resimplall"))
@@ -903,6 +983,8 @@ public class Publisher implements Logger {
         src = s1+s3;
       else if (com[0].equals("/maindiv"))
         src = s1+s3;
+      else if (com[0].equals("events"))
+        src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
       else if (com[0].equals("resimplall"))

@@ -1,8 +1,12 @@
 package org.hl7.fhir.definitions.parsers;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.parsers.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -11,6 +15,7 @@ public class SpreadsheetParser {
 
   private String name;
   private XLSXmlParser xls;
+  private List<EventDefn> events = new ArrayList<EventDefn>();
   
   public SpreadsheetParser(InputStream in, String name) throws Exception {
     this.name = name;
@@ -23,7 +28,53 @@ public class SpreadsheetParser {
     for (int row = 0; row < sheet.rows.size(); row++) {
       processLine(root, sheet, row);
     }
+    readEvents(xls.getSheets().get("Events"));
     return root;
+  }
+
+  private void readEvents(Sheet sheet) throws Exception {
+    if (sheet != null) {
+      for (int row = 0; row < sheet.rows.size(); row++) {
+        String code = sheet.getColumn(row, "Event Code");
+        if (code != null && !code.equals("")) {
+          EventDefn e = new EventDefn();
+          events.add(e);
+          e.setCode(code);
+          e.setDefinition(sheet.getColumn(row, "Description"));
+          EventUsage u = new EventUsage();
+          e.getUsages().add(u);
+          u.setNotes(sheet.getColumn(row, "Notes"));
+          for (String s : sheet.getColumn(row, "Request Resources").split(",")) {
+            s = s.trim();
+            if (s != "")
+              u.getRequestResources().add(s);
+          }
+          for (String s : sheet.getColumn(row, "Request Aggregations").split("\n")) {
+            s = s.trim();
+            if (s != "")
+              u.getRequestAggregations().add(s);
+          }
+          for (String s : sheet.getColumn(row, "Response Resources").split(",")) {
+            s = s.trim();
+            if (s != "")
+               u.getResponseResources().add(s);
+          }
+          for (String s : sheet.getColumn(row, "Response Aggregations").split("\n")) {
+            s = s.trim();
+            if (s != "")
+              u.getResponseAggregations().add(s);
+          }
+          for (String s : sheet.getColumn(row, "Follow Ups").split(",")) {
+            s = s.trim();
+            if (s != "")
+              e.getFollowUps().add(s);
+          }
+
+        
+                    
+        }
+      }      
+    }
   }
 
   private void processLine(ElementDefn root, Sheet sheet, int row) throws Exception {
@@ -145,6 +196,10 @@ public class SpreadsheetParser {
 
   private String getLocation(int row) {
     return name+", row "+Integer.toString(row);
+  }
+
+  public List<EventDefn> getEvents() {
+    return events;
   }
 
 

@@ -340,5 +340,30 @@ public class Utilities {
       return true;
     }
   }
+
+  public static String asCSV(List<String> strings) {
+    StringBuilder s = new StringBuilder();
+    boolean first = true;
+    for (String n : strings) {
+      if (!first)
+        s.append(",");
+      s.append(n);
+      first = false;
+    }
+    return s.toString();
+  }
+
+  public static String asHtmlBr(String prefix, List<String> strings) {
+    StringBuilder s = new StringBuilder();
+    boolean first = true;
+    for (String n : strings) {
+      if (!first)
+        s.append("<br/>");
+      s.append(prefix);
+      s.append(n);
+      first = false;
+    }
+    return s.toString();
+  }
 	
 }

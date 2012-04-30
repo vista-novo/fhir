@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 22:50 Apr 29, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on 19:37 Apr 30, 2012 for FHIR v0.01
 
 /**
  * A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime

@@ -81,7 +81,7 @@ source application should resend the same aggregation with the same aggregation 
 <h2>Message Format</h2>
 <p>
 A message is just an <a href="atom.htm#Aggregation">aggregation</a> built using the
-Atom feed format (ref). The first resource of a message is a <a href="message.htm">Message</a> 
+Atom feed format. The first resource of a message is a <a href="message.htm">Message</a> 
 resource. This resource identifies 
 the message event and links to the additional focal resource associated with the message, if any. The list
 of additional resources which must be included in a given message is provided
@@ -92,17 +92,7 @@ in the aggregation.
 <a name="Events"></a>
 <h2>Event List</h2>
 
-<table clas="grid">
- <tr><th>Code</th><th>Description</th><th>Request Resources</th><th>Response Resources</th><th>Further messages</th></tr>
- <tr><td>admin-create</td><td>Create an Administrative resource </td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
- <tr><td>admin-update</td><td>Update an administrative resource. Noe that there is no delete, since administrative resources are never really deleted - 
-   some have status or period elements for this use</td><td>One of Person, Animal, Device, Organization, Agent, or Patient</td><td>(none)</td><td>N/A</td></tr>
- <tr><td>patient-link</td><td>Link two or patients</td><td>Two or more patient</td><td>(none)</td><td>N/A</td></tr>
- <tr><td>provide-lab-report</td><td>Send a lab report</td><td>Primary: LabReport<br/>Aggregated: Patient+Person/Animal, Any specimens, Any resource linked in clinical information</td><td>(none)</td><td>N/A</td></tr>
-<!--
- <tr><td>Code</td><td>Name / Description</td><td>Request Resources</td><td>Response Resources</td><td>Further transactions</td></tr>
- -->
- </table>
+<%events%>
 <p>
 
 </p>

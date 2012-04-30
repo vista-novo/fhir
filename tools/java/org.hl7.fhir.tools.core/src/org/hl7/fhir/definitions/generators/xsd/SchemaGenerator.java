@@ -30,7 +30,7 @@ public class SchemaGenerator {
     xsdb.generate(version, genDate);
     
     for (ElementDefn root : definitions.getDefinedResources().values()) {
-      XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName()+".xsd")));
+      XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")));
       sgen.setDataTypes(definitions.getKnownTypes());
       sgen.generate(root, definitions.getConceptDomains(), version, genDate);
 

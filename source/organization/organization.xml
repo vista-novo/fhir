@@ -379,7 +379,7 @@
     <Cell ss:StyleID="s126"><Data ss:Type="String">admin-notify</Data></Cell>
     <Cell ss:StyleID="s126"><Data ss:Type="String">(see Person)</Data></Cell>
     <Cell ss:StyleID="s126"/>
-    <Cell ss:StyleID="s126"><Data ss:Type="String">Patient</Data></Cell>
+    <Cell ss:StyleID="s126"><Data ss:Type="String">Organization</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -392,8 +392,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
