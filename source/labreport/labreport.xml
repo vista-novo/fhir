@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:17:14Z</Created>
-  <LastSaved>2012-04-30T07:19:47Z</LastSaved>
+  <LastSaved>2012-05-02T23:01:55Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -56,11 +55,15 @@
   <Style ss:ID="s65">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s126">
+  <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
+  <Names>
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R36C14"
+    ss:Hidden="1"/>
+  </Names>
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="36" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="196.5"/>
@@ -70,358 +73,709 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="247.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
-    <Cell><Data ss:Type="String">Element</Data></Cell>
-    <Cell><Data ss:Type="String">Card.</Data></Cell>
-    <Cell><Data ss:Type="String">Conf.</Data></Cell>
-    <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
-    <Cell><Data ss:Type="String">Short Name</Data></Cell>
-    <Cell><Data ss:Type="String">Definition</Data></Cell>
-    <Cell><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Comments</Data></Cell>
-    <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
-    <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
-    <Cell><Data ss:Type="String">To Do</Data></Cell>
-    <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
+   <Column ss:Index="14" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="164.25"/>
+   <Row ss:Height="30" ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Conf.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Type</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Concept Domain</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Short Name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Definition</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Requirements</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Comments</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">RIM Mapping</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">v2 Mapping</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">To Do</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Committee Notes</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="210">
-    <Cell><Data ss:Type="String">LabReport</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data></Cell>
-    <Cell><Data ss:Type="String">Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</Data></Cell>
-    <Cell><Data ss:Type="String">Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</Data></Cell>
+   <Row ss:Height="210">
+    <Cell><Data ss:Type="String">LabReport</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Observation[isNormalAct() and subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and domainMember(&quot;LabObservationType&quot;, code)]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">isNormalAct</Font></B><Font
+       html:Color="#000000"> is a short-cut meaning:&#10;not(actionNegationInd=&quot;true&quot; or isCriterionInd=&quot;true&quot;)</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.id</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Master Resource Id, always first in all resources</Data></Cell>
+   <Row ss:Height="225">
+    <Cell><Data ss:Type="String">LabReport.id</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">id</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Master Resource Id, always first in all resources</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">unique</Font></B><Font
+       html:Color="#000000"> is a short-cut indicating that a match only occurs in the event that there is only one match for the specified path and set of constraints.  If multiple values are found, the mapping does not apply.&#10;&#10;</Font><B><Font
+        html:Color="#000000">isNormalDatatype</Font></B><Font html:Color="#000000"> is a short-cut meaning: (validTimeLow&lt;=today() or not(validTimeLow)) and (validTimeHigh&gt;=today() or not(validTimeHigh)) and not(nullFlavor)</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.status</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">LabReportStatus</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data></Cell>
-    <Cell><Data ss:Type="String">The status of the pathology test result as a whole</Data></Cell>
-    <Cell><Data ss:Type="String">Labs routinely issue provisional/incomplete reports, or withdraw previously released reports</Data></Cell>
+   <Row ss:Height="409.5">
+    <Cell><Data ss:Type="String">LabReport.status</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabReportStatus</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The status of the pathology test result as a whole</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Labs routinely issue provisional/incomplete reports, or withdraw previously released reports</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">registered: </Font></B><Font
+       html:Color="#000000">./statusCode[isNormalDatatype()]=&quot;new&quot;;&#10;&#10;</Font><B><Font
+        html:Color="#000000">interim:</Font></B><Font html:Color="#000000"> ./statusCode[isNormalDatatype()]=&quot;active&quot;;&#10;&#10;</Font><B><Font
+        html:Color="#000000">final:</Font></B><Font html:Color="#000000"> ./statusCode[isNormalDatatype()]=&quot;complete&quot; and not(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseLabOrder&quot;, code) and isNormalAct()]);&#10;&#10;</Font><B><Font
+        html:Color="#000000">amended: </Font></B><Font html:Color="#000000">./statusCode[isNormalDatatype()]=&quot;complete&quot; and ./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseLabOrder&quot;, code) and isNormalAct() and statusCode=&quot;completed&quot;];&#10;&#10;</Font><B><Font
+        html:Color="#000000">cancelled: &#10;</Font></B><Font html:Color="#000000">./statusCode[isNormalDatatype()]=&quot;aborted&quot;;&#10;&#10;</Font><B><Font
+        html:Color="#000000">withdrawn: </Font></B><Font html:Color="#000000">./statusCode[isNormalDatatype()]=&quot;obsolete&quot;</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">isNormalActRelationship</Font></B><Font
+       html:Color="#000000"> is a short-cut meaning:&#10;not(inversionInd=&quot;true&quot; or negationInd=&quot;true&quot; or subsetCode[not(nullFlavor=&quot;NA&quot;)])</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.issued</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">instant</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">date issed for current status</Data></Cell>
-    <Cell><Data ss:Type="String">The date and/or time that the result was issued from the source for the recorded ‘Test result status</Data></Cell>
-    <Cell><Data ss:Type="String">Clinicians need to be able to check the date that the report was released</Data></Cell>
-    <Cell><Data ss:Type="String">May be different from LabReport.updated, because that is the status of this record, not the report the record is about</Data></Cell>
+   <Row ss:Height="255">
+    <Cell><Data ss:Type="String">LabReport.issued</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">instant</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">date issed for current status</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The date and/or time that the result was issued from the source for the recorded ‘Test result status</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Clinicians need to be able to check the date that the report was released</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">May be different from LabReport.updated, because that is the status of this record, not the report the record is about</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/time[type=&quot;TS&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14" ss:StyleID="s63"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">isHighest</Font></B><Font
+       html:Color="#000000"> is a short-cut that indicates that, in the event there are multiple occurrences that match the remaining constraints, the data element is the one with the highest non-null value for the indicated property.&#10;&#10;</Font><B><Font
+        html:Color="#000000">isNormalParticipation</Font></B><Font
+       html:Color="#000000"> is a short-cut meaning:&#10;not(negationInd=&quot;true&quot; or subsetCode[not(nullFlavor=&quot;NA&quot;)])&#10;&#10;</Font><B><Font
+        html:Color="#000000">Question: </Font></B><Font html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.patient</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Patient)</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">The patient the report is about</Data></Cell>
-    <Cell><Data ss:Type="String">The patient about who the report is about</Data></Cell>
-    <Cell><Data ss:Type="String">Must know the patient context</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">need to check the wording -is it about, upon, for?</Data></Cell>
+   <Row ss:Height="45">
+    <Cell><Data ss:Type="String">LabReport.patient</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The patient the report is about</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The patient about who the report is about</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Must know the patient context</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./participation[isHighest(priorityCode) and typeCode=&quot;SBJ&quot; and isNormalParticipation()]/role[classCode=&quot;PAT&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">need to check the wording -is it about, upon, for?</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+        html:Color="#000000">Question: </Font></B><Font html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.admission</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Admission)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Admission Context</Data></Cell>
-    <Cell><Data ss:Type="String">The admission that this diagnostic investigation is associated with</Data></Cell>
-    <Cell><Data ss:Type="String">Some institutions track and file diagnostic reports under a specific admission</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
+   <Row ss:Height="75">
+    <Cell><Data ss:Type="String">LabReport.admission</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Admission)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Admission Context</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The admission that this diagnostic investigation is associated with</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Some institutions track and file diagnostic reports under a specific admission</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./inboundRelationship[isHighest(priorityCode) and typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#ENC&quot;, code) and moodCode=&quot;EVN&quot; and isNormalAct()])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+        html:Color="#000000">Question: </Font></B><Font html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">LabReport.laboratory</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Responsible Laboratory</Data></Cell>
-    <Cell><Data ss:Type="String">The laboratory service that issued the report</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know how to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis</Data></Cell>
-    <Cell><Data ss:Type="String">This is not necessarily the source of the atomic reports - it's the lab that takes responsibility for the clinical report</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.laboratory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Organization)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Responsible Laboratory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The laboratory service that issued the report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to know how to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">This is not necessarily the source of the atomic reports - it's the lab that takes responsibility for the clinical report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]/scoper[subsumesCode(&quot;EntityClass#ORG&quot;, classCode) and determinerCode=&quot;INSTANCE&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
+       html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.reportId</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Id for external references to this report</Data></Cell>
-    <Cell><Data ss:Type="String">The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know what identifier to use when making queries about this report from the source laboratory</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.reportId</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">id</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Id for external references to this report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to know what identifier to use when making queries about this report from the source laboratory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./id[displayable=&quot;true&quot; and scope=&quot;OBJ&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">LabReport.requestDetail</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Details concerning a single pathology test requested.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data></Cell>
-    <Cell><Data ss:Type="String">Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</Data></Cell>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">LabReport.requestDetail</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Details concerning a single pathology test requested.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./outboundRelationship[typeCode=&quot;FLFS&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and subsumes(&quot;ActMood#PRMS&quot;, moodCode) and isNormalAct()])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="14"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
+       html:Color="#000000">Should this be by priorityCode too?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.requestDetail.requestOrderId</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Id assigned by requester</Data></Cell>
-    <Cell><Data ss:Type="String">The local ID assigned to the order by the order requester.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data></Cell>
-    <Cell><Data ss:Type="String">Equivalent to the Placer Order Identifier</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.requestDetail.requestOrderId</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Identifier</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Id assigned by requester</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The local ID assigned to the order by the order requester.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Equivalent to the Placer Order Identifier</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./outboundRelationship[typeCode=&quot;FLFS&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and subsumes(&quot;ActMood#RQO&quot;, moodCode) and isNormalAct()]/id[scope=&quot;OBJ&quot; and displayable=&quot;true&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><ss:Data ss:Type="String" xmlns="http://www.w3.org/TR/REC-html40"><B><Font
+        html:Color="#000000">Question: </Font></B><Font html:Color="#000000">Should this be by priorityCode too?</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.requestDetail.receiverOrderId</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Receiver's Id for the request</Data></Cell>
-    <Cell><Data ss:Type="String">The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data></Cell>
-    <Cell><Data ss:Type="String">Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
+   <Row ss:Height="45">
+    <Cell><Data ss:Type="String">LabReport.requestDetail.receiverOrderId</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Identifier</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Receiver's Id for the request</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./id[scope=&quot;OBJ&quot; and displayable=&quot;true&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Reckon this is not 80%</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.requestDetail.requestTest</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabRequests</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Test Requested</Data></Cell>
-    <Cell><Data ss:Type="String">Identification of pathology test requested,</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to report what diagnostic test swere requested (not always the same as what is delivered)</Data></Cell>
-    <Cell><Data ss:Type="String">Useful where the test requested differs from the test actually performed.</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.requestDetail.requestTest</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabRequests</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Test Requested</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Identification of pathology test requested,</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to report what diagnostic test swere requested (not always the same as what is delivered)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Useful where the test requested differs from the test actually performed.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.requestDetail.requester</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Agent|Organization)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Responsible for request</Data></Cell>
-    <Cell><Data ss:Type="String">Details of the clinician or organisation requesting the laboratory test.</Data></Cell>
-    <Cell><Data ss:Type="String">The requesting clinician may need to be contacted concerning the interpretation of the lab report</Data></Cell>
+   <Row ss:Height="225">
+    <Cell><Data ss:Type="String">LabReport.requestDetail.requester</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Agent|Organization)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Responsible for request</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Details of the clinician or organisation requesting the laboratory test.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The requesting clinician may need to be contacted concerning the interpretation of the lab report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Agent: </Font></B><Font
+       html:Color="#000000">unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]&#10;&#10;</Font><B><Font
+        html:Color="#000000">Organization:</Font></B><Font html:Color="#000000"> unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]/scoper[subsumesCode(&quot;EntityClass#ORG&quot;, classCode) and determinerCode=&quot;INSTANCE&quot; and code[isNormalDatatype]])&#10;</Font></ss:Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.requestDetail.clinicalInfo</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Any)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Clinical information provided</Data></Cell>
-    <Cell><Data ss:Type="String">Details of the clinical information provided to the laboratory along with the original request</Data></Cell>
-    <Cell><Data ss:Type="String">Knowing the clinical information may influence the interpretation of the result</Data></Cell>
+   <Row ss:Height="180">
+    <Cell><Data ss:Type="String">LabReport.requestDetail.clinicalInfo</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Any)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Clinical information provided</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Details of the clinical information provided to the laboratory along with the original request</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Knowing the clinical information may influence the interpretation of the result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;PERT&quot; and isNormalActRelationship()]/target</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">This isn't really *ANY* resource.  You can't send a drug or an Animal or a bunch of other things.  What you really want here are &quot;acts&quot;, and I suspect there's a constraint that the subject of the LabReport must have participated in them as subject or perhaps in some other way.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.reportName</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabReportNames</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Name for the entire report</Data></Cell>
-    <Cell><Data ss:Type="String">Identification of the pathology test performed, sometimes including specimen type.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know what report this is, so clinicians can filter/find the reports they are looking for</Data></Cell>
-    <Cell><Data ss:Type="String">A test result may be for a single analyte, or a group of items, including panel tests.</Data></Cell>
+   <Row ss:Height="45">
+    <Cell><Data ss:Type="String">LabReport.reportName</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabReportNames</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Name for the entire report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Identification of the pathology test performed, sometimes including specimen type.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to know what report this is, so clinicians can filter/find the reports they are looking for</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">A test result may be for a single analyte, or a group of items, including panel tests.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.service</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabServices</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Biochemistry, Haematology etc</Data></Cell>
-    <Cell><Data ss:Type="String">The diagnostic service that performs the examination e.g. biochemistry, haematology.</Data></Cell>
-    <Cell><Data ss:Type="String">Help clinicians filter/find the reports they are looking for</Data></Cell>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">LabReport.service</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabServices</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Biochemistry, Haematology etc</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The diagnostic service that performs the examination e.g. biochemistry, haematology.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Help clinicians filter/find the reports they are looking for</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./inboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#LIST&quot;, classCode) and moodCode=&quot;EVN&quot; and inDomain(code,&quot;Lab Service&quot;) and isNormalAct()]/code</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">I'm not sure this is in the 80%.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Could also model this via observation</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.diagnosticTime</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Effective time of diagnostic report</Data></Cell>
-    <Cell><Data ss:Type="String">The diagnostically relevant time for this report</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know where in the patient history to file/present this report</Data></Cell>
-    <Cell><Data ss:Type="String">The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.diagnosticTime</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">dateTime</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Effective time of diagnostic report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The diagnostically relevant time for this report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to know where in the patient history to file/present this report</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./effectiveTime[type=&quot;TS&quot;]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">LabReport.specimen</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Resource(Specimen)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Specimen (incl. time of collection)</Data></Cell>
-    <Cell><Data ss:Type="String">Details about the specimen if all individual test results are derived from the same specimen</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data></Cell>
-    <Cell><Data ss:Type="String">If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per 'Result group'</Data></Cell>
+   <Row ss:Height="75">
+    <Cell><Data ss:Type="String">LabReport.specimen</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Resource(Specimen)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Specimen (incl. time of collection)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Details about the specimen if all individual test results are derived from the same specimen</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per 'Result group'</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./participation[typeCode=&quot;SUBJ&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#SPEC&quot;, classCode)])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.resultGroup</Data></Cell>
-    <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to report groups of results, where the result grouping is arbitrary, but meaningful</Data></Cell>
-    <Cell><Data ss:Type="String">Many (most) lab reports don't really have a meaningful group. In these cases, just create a single group with no specimen or name</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.resultGroup</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to report groups of results, where the result grouping is arbitrary, but meaningful</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Many (most) lab reports don't really have a meaningful group. In these cases, just create a single group with no specimen or name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[isNormalAct() and subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot;]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.name</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabResultGroupNames</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">What defines the group</Data></Cell>
-    <Cell><Data ss:Type="String">A code or name that describes the group of results</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabResultGroupNames</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">What defines the group</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">A code or name that describes the group of results</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.specimen</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Specimen)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Specimen details</Data></Cell>
-    <Cell><Data ss:Type="String">Details about the individual specimen to which these ‘Result group’ test results refer, where testing of multiple specimens is required.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.specimen</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Resource(Specimen)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Specimen details</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Details about the individual specimen to which these ‘Result group’ test results refer, where testing of multiple specimens is required.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#SPEC&quot;, classCode)])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result</Data></Cell>
-    <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to report results with information that assist with interpretation</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to report results with information that assist with interpretation</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and isNormalAct()]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.name</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabResultNames</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Name or code of the result</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the meaning of the value</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know what the result is about</Data></Cell>
-    <Cell><Data ss:Type="String">results are fundamentally a name - value pair with additional clarifying information</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabResultNames</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Name or code of the result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Identifies the meaning of the value</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to know what the result is about</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">results are fundamentally a name - value pair with additional clarifying information</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.value[x]</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Interval(dateTime)|string</Data></Cell>
-    <Cell><Data ss:Type="String">*unbound*</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Result. [x] = type name</Data></Cell>
-    <Cell><Data ss:Type="String">Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images</Data></Cell>
-    <Cell><Data ss:Type="String">Need a value for the result</Data></Cell>
+   <Row ss:Height="120">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.value[x]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Interval(dateTime)|string</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">*unbound*</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Result. [x] = type name</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need a value for the result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./value</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.flag</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
-    <Cell><Data ss:Type="String">Flag indicating the abnormal status of the result</Data></Cell>
+   <Row ss:Height="45">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.flag</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabResultFlag</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Flag indicating the abnormal status of the result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./interpretationCode</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">The proposed set of codes are too narrow (and doesn't map well to v3.)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.status</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">LabReportStatus</Data></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data></Cell>
-    <Cell><Data ss:Type="String">The status of the result value</Data></Cell>
-    <Cell><Data ss:Type="String">Need to track the status of individual results - some results are finalised before the whole report is finalised</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.status</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">code</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabReportStatus</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The status of the result value</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to track the status of individual results - some results are finalised before the whole report is finalised</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">(as per LabReport.status)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Comments about result</Data></Cell>
-    <Cell><Data ss:Type="String">May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to provide free text additional information</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.comments</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">string</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Comments about result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to provide free text additional information</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and subsumesCode(LOINC#&#10;48767-8&quot;, code) and isNormalAct()]/value[type=&quot;ST&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Guidance on how to interpret the value by comparison to a normal or recommended range</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to provide multiple reference ranges</Data></Cell>
-    <Cell><Data ss:Type="String">Most results only have one reference range. Some non-numerical results don't have a reference range</Data></Cell>
+   <Row ss:Height="75">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Guidance on how to interpret the value by comparison to a normal or recommended range</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to provide multiple reference ranges</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Most results only have one reference range. Some non-numerical results don't have a reference range</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./outboundRelationship[typeCode=&quot;REFV&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and isCriterionInd=&quot;true&quot; and isNormalAct()]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Are multiple reference ranges in the 80%?</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.meaning</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabReferenceRanges</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The meaning of this range</Data></Cell>
-    <Cell><Data ss:Type="String">Code for the meaning of the reference range</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. hormonal cycles)</Data></Cell>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.meaning</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabReferenceRanges</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The meaning of this range</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Code for the meaning of the reference range</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. hormonal cycles)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./interpretationCode</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Quantity|Interval(Quantity)|string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell><Data ss:Type="String">Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to report numerical or text reference ranges, and handle legacy data</Data></Cell>
-    <Cell><Data ss:Type="String">Text reference ranges are typically used in endocrinology, or for legacy data with string reference ranges</Data></Cell>
+   <Row ss:Height="60">
+    <Cell><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Quantity|Interval(Quantity)|string</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Reference</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to report numerical or text reference ranges, and handle legacy data</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Text reference ranges are typically used in endocrinology, or for legacy data with string reference ranges</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./value[type=(&quot;PQ&quot;, &quot;IVL_PQ&quot;, &quot;ST&quot;)]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">LabReport.conclusion</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Clinical Interpretation of test results</Data></Cell>
-    <Cell><Data ss:Type="String">Concise and clinically contextualised narrative interpretation of the pathology test results.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to provide a conclusion that is not lost amongst the basic result data</Data></Cell>
-    <Cell><Data ss:Type="String">common reports don't have a conclusion, but some do</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.conclusion</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Narrative</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Clinical Interpretation of test results</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Concise and clinically contextualised narrative interpretation of the pathology test results.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Need to be able to provide a conclusion that is not lost amongst the basic result data</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">common reports don't have a conclusion, but some do</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">unique(./inboundRelationship[typeCode=&quot;SPRT&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and subsumesCode(LOINC#&#10;48767-8&quot;, code) and isNormalAct()]/value[type=&quot;ST&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Is this in the 80%?</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.codedDiagnosis</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">LabDiagnosisCodes</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Codes for the conclusion</Data></Cell>
+   <Row ss:Height="105">
+    <Cell><Data ss:Type="String">LabReport.codedDiagnosis</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">LabDiagnosisCodes</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Codes for the conclusion</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./inboundRelationship[typeCode=&quot;SPRT&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and subsumesCode(LOINC#&#10;54531-9&quot;, code) and isNormalAct()]/value[type=&quot;CD&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">LabReport.representation</Data></Cell>
-    <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Attachment</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">Entire Report as issued</Data></Cell>
-    <Cell><Data ss:Type="String">Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</Data></Cell>
-    <Cell><Data ss:Type="String">Laboratory needs to be able to provide it's own fully formatted report for clinical fidelity</Data></Cell>
-    <Cell><Data ss:Type="String">Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</Data></Cell>
+   <Row ss:Height="90">
+    <Cell><Data ss:Type="String">LabReport.representation</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Attachment</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Entire Report as issued</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Laboratory needs to be able to provide it's own fully formatted report for clinical fidelity</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">./text[type=&quot;ED&quot;]</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabReport.extensions</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
+   <Row>
+    <Cell><Data ss:Type="String">LabReport.extensions</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Optional</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">LabReport.text</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text summary of report, for human interpretation</Data></Cell>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="String">LabReport.text</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Narrative</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Text summary of report, for human interpretation</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">unique(./text[type=&quot;ST&quot;])</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -430,17 +784,39 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
-   <TopRowVisible>6</TopRowVisible>
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
+  <AutoFilter x:Range="R1C1:R36C14"
+   xmlns="urn:schemas-microsoft-com:office:excel">
+  </AutoFilter>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="1" x:FullColumns="1"
@@ -470,15 +846,15 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s126" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="73.5"/>
-   <Column ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="156.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="125.25"
+   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="73.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="156.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="125.25"
     ss:Span="1"/>
-   <Column ss:Index="8" ss:StyleID="s126" ss:AutoFitWidth="0" ss:Width="102"/>
-   <Row>
+   <Column ss:Index="8" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Notes</Data></Cell>
@@ -488,7 +864,7 @@
     <Cell><Data ss:Type="String">Response Aggregations</Data></Cell>
     <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
-   <Row ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">labreport-provide</Data></Cell>
     <Cell><Data ss:Type="String">Provide a lab report, or update a previously provided lab report</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">LabReport</Data></Cell>
@@ -501,17 +877,18 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
