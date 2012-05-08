@@ -92,13 +92,13 @@
           <low>
             <value>4.2</value>
             <units>x10*12/L</units>
-            <code>10^12/L</code>
+            <code>10*12/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </low>
           <high>
             <value>6.0</value>
             <units>x10*12/L</units>
-            <code>10^12/L</code>
+            <code>10*12/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </high>
         </rangeInterval>
@@ -209,7 +209,7 @@
       <valueQuantity>
         <value>444</value>
         <units>x10*9/L</units>
-        <code>10^9/L</code>
+        <code>10*9/L</code>
         <system>urn:hl7-org:sid/ucum</system>
       </valueQuantity>
       <status>final</status>
@@ -218,13 +218,13 @@
           <low>
             <value>150</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </low>
           <high>
             <value>450</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </high>
         </rangeInterval>
@@ -251,13 +251,13 @@
           <low>
             <value>4.0</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </low>
           <high>
             <value>11.0</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </high>
         </rangeInterval>
@@ -302,13 +302,13 @@
           <low>
             <value>2.0</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </low>
           <high>
             <value>7.5</value>
             <units>x10*9/L</units>
-            <code>10^9/L</code>
+            <code>10*9/L</code>
             <system>urn:hl7-org:sid/ucum</system>
           </high>
         </rangeInterval>
