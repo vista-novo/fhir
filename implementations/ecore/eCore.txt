@@ -13,6 +13,7 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute publisher : Conformance_publisher; -- The organization that publishes this conformance statement
     attribute software : Conformance_software; -- The software that is covered by this conformance statement
     attribute mode : code;                   -- client | server
+    attribute profile : uri;                 -- Additional other profiles that apply to this conformance statement.
     attribute resource : Constraint;         -- Resource Type with constraints
     attribute operation : Conformance_operation;
     attribute extensions : Extensions;       -- See Extensions
@@ -146,12 +147,50 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute duplicate : boolean;           -- True if this is not the first response, because the request message has been received more than once
   }
 
+  class Animal extends Resource              -- An animal that has relevance to the care process -usually this is for animals that are patients.
+  {
+    attribute id : id;                       -- Master Resource Id, always first in all resources
+    attribute identifier : HumanId;          -- Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+    attribute name : HumanName;              -- A name associated with the animal. The use code maiden does not apply.
+    attribute dob : dateTime;                -- The birth date for the animal
+    attribute species : CodeableConcept;     -- Species for the animal
+    attribute strain : CodeableConcept;      -- Strain for the animal
+    attribute gender : CodeableConcept;      -- Gender for the Animal
+    attribute relatedEntity : Animal_relatedEntity; -- Kin, owner, care giver etc
+    attribute extensions : Extensions;       -- See Extensions
+    attribute text : Narrative;              --  
+  }
+
+  class Animal_relatedEntity                 -- Kin, owner, care giver etc
+  {
+    attribute id : HumanId;                  -- Identifier for the entity
+    attribute role : CodeableConcept;        -- Type of relationship
+    attribute name : HumanName;              -- Name of the related entity
+    attribute address : Address;             -- An address (usually human, but may be kin)
+    attribute contact : Contact;             -- Contact details (usually for humans)
+  }
+
+  class Agent extends Resource               -- A person who represents an organisation, and is authorised to perform actions on it's behalf
+  {
+    attribute id : id;                       -- Master Resource Id, always first in all resources
+    attribute person : Resource;             -- The person who acts as the agent
+    attribute organization : Resource;       -- The organisation that is being represented
+    attribute role : CodeableConcept;        -- The way in which the person represents the organisation - what role do they have?
+    attribute period : Interval;             -- The time period during which the agent was/is authorised to represent the organisation.
+    attribute identifier : HumanId;          -- An identifier that applies to this person in this role
+    attribute address : Address;             -- A postal address for this person playing this role
+    attribute contact : Contact;             -- A contact detail address for this person playing this role
+    attribute extensions : Extensions;       -- See Extensions
+    attribute text : Narrative;              -- Text summary of the agent, for human interpretation
+  }
+
   class MessageConformance extends Resource  -- A conformance statement about how an application uses FHIR messaging
   {
     attribute id : id;                       -- Globally unique Conformance Statement Id (Must be a UUID)
     attribute date : dateTime;               -- Date that the conformance statement is published
     attribute publisher : MessageConformance_publisher; -- The organization that publishes this conformance statement
     attribute software : MessageConformance_software; -- The software that is covered by this conformance statement
+    attribute profile : uri;                 -- Additional other profiles that apply to this conformance statement.
     attribute event : MessageConformance_event; -- An event supported by the application
     attribute extensions : Extensions;       -- See Extensions
     attribute text : Narrative;              --  
@@ -190,41 +229,43 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute resource : Constraint;         -- Constraint on a resource used in the event response
   }
 
-  class Agent extends Resource               -- A person who represents an organisation, and is authorised to perform actions on it's behalf
+  class Organization extends Resource        -- For any organization/institution/government department that has relevance to the care process
   {
     attribute id : id;                       -- Master Resource Id, always first in all resources
-    attribute person : Resource;             -- The person who acts as the agent
-    attribute organization : Resource;       -- The organisation that is being represented
-    attribute role : CodeableConcept;        -- The way in which the person represents the organisation - what role do they have?
-    attribute period : Interval;             -- The time period during which the agent was/is authorised to represent the organisation.
-    attribute identifier : HumanId;          -- An identifier that applies to this person in this role
-    attribute address : Address;             -- A postal address for this person playing this role
-    attribute contact : Contact;             -- A contact detail address for this person playing this role
+    attribute identifier : HumanId;          -- Identifier for the organization that is used to identify the organization across multiple disparate systems
+    attribute name : Organization_name;      -- A name associated with the organization
+    attribute address : Address;             -- An address for the organization
+    attribute contact : Contact;             -- A contact detail for the organization
+    attribute code : CodeableConcept;        -- The kind of organization that this is
+    attribute industryCode : CodeableConcept; -- The industry that this organization is involved in
+    attribute accreditation : Organization_accreditation; -- The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+    attribute relatedOrganization : Organization_relatedOrganization; -- Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
     attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of the agent, for human interpretation
+    attribute text : Narrative;              -- Text summary of organization, fall back for human interpretation
   }
 
-  class Animal extends Resource              -- An animal that has relevance to the care process -usually this is for animals that are patients.
+  class Organization_name                    -- A name associated with the organization
   {
-    attribute id : id;                       -- Master Resource Id, always first in all resources
-    attribute identifier : HumanId;          -- Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person
-    attribute name : HumanName;              -- A name associated with the animal. The use code maiden does not apply.
-    attribute dob : dateTime;                -- The birth date for the animal
-    attribute species : CodeableConcept;     -- Species for the animal
-    attribute strain : CodeableConcept;      -- Strain for the animal
-    attribute gender : CodeableConcept;      -- Gender for the Animal
-    attribute relatedEntity : Animal_relatedEntity; -- Kin, owner, care giver etc
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              --  
+    attribute value : String;                -- The actual name of the organization
+    attribute period : Interval;             -- The period that this name was in use by the organization
   }
 
-  class Animal_relatedEntity                 -- Kin, owner, care giver etc
+  class Organization_relatedOrganization     -- Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
   {
-    attribute id : HumanId;                  -- Identifier for the entity
-    attribute role : CodeableConcept;        -- Type of relationship
-    attribute name : HumanName;              -- Name of the related entity
-    attribute address : Address;             -- An address (usually human, but may be kin)
-    attribute contact : Contact;             -- Contact details (usually for humans)
+    attribute id : HumanId;                  -- Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
+    attribute code : CodeableConcept;        -- Code that specifies how this organization is related to the subject. A code is required.
+    attribute name : String;                 -- A name should be specified for the related organization
+    attribute address : Address;             -- Postal addresses may be provided for the related organization
+    attribute contact : Contact;             -- Contact details (phone, email etc) may be provided for the related organization
+    attribute period : Interval;             -- The period during which the organizations were related in this fashion
+  }
+
+  class Organization_accreditation           -- The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+  {
+    attribute id : Identifier;               -- The identifier of the accreditation
+    attribute code : CodeableConcept;        -- The type of the accreditation
+    attribute institution : Resource;        -- The organization that confered/confers the accreditation
+    attribute period : Interval;             -- The period for which the accreditation is held
   }
 
   class Prescription extends Resource        -- Directions provided by a prescribing practitioner for a specific medication to be administered to an individual
@@ -292,6 +333,49 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute schedule : Schedule;           -- Schedule for administration. If multiple are given, they are considered to be active in parrallel
   }
 
+  class Profile extends Resource             -- A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains
+  {
+    attribute id : id;                       -- Globally unique Profile Id (Must be a UUID)
+    attribute name : String;                 -- A free text natural language name identifying the Template.
+    attribute author : Profile_author;       -- Details of the author who accepts responsibility for publishing the profile
+    attribute intention : String;            -- A free text natural language description of the intent and scope of the Template. The purpose is to provide the author’s initial intent for the Template in the language specified below.
+    attribute code : Coding;                 -- A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates
+    attribute description : String;          -- A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc
+    attribute evidence : uri;                -- A description, reference or link to a published medical knowledge that was used in the definition of this Template
+    attribute comments : String;             -- A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention
+    attribute status : code;                 -- draft | testing | production | withdrawn | superceded
+    attribute date : dateTime;               -- The date that the current value for publicationStatus was applied to the Template
+    attribute endorser : Profile_endorser;   -- A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+    attribute changes : String;              -- A free text description describing the changes in this version of the profile as compared to the previous version. 
+    attribute supercedes : uri;              -- A template that is supercded by this template (maybe a  previous version)
+    attribute profile : uri;                 -- Additional other profiles that apply to this conformance statement.
+    attribute resource : Constraint;         -- Resource Type with constraints
+    attribute binding : Profile_binding;
+    attribute extensions : Extensions;       -- See Extensions
+    attribute text : Narrative;              -- Text summary of resource profile for human interpretation
+  }
+
+  class Profile_binding
+  {
+    attribute name : String;                 -- The name of the concept domain that this profile is declaring a constraint on
+    attribute type : code;                   -- The form of the binding
+    attribute details : String;              -- extra details - see notes
+    attribute reference : uri;               -- source of binding content
+    attribute code : Coding;                 -- enumerated codes that are the binding
+  }
+
+  class Profile_author                       -- Details of the author who accepts responsibility for publishing the profile
+  {
+    attribute name : String;                 -- The name of the author
+    attribute reference : uri;               -- Reference to the author to assist a user in finding and communicating with the author
+  }
+
+  class Profile_endorser                     -- A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+  {
+    attribute name : String;                 -- The name of the endorsing body
+    attribute reference : uri;               -- Reference to the author to assist a user in finding and communicating with the endorsing body
+  }
+
   class Patient extends Resource             -- A patient is a person or animal that is receiving care
   {
     attribute id : id;                       -- Master Resource Id, always first in all resources
@@ -308,75 +392,43 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute text : Narrative;              -- Text summary of person, for human interpretation
   }
 
-  class Organization extends Resource        -- For any organization/institution/government department that has relevance to the care process
+  class Person extends Resource              -- A person who is involved in the healthcare process
   {
     attribute id : id;                       -- Master Resource Id, always first in all resources
-    attribute identifier : HumanId;          -- Identifier for the organization that is used to identify the organization across multiple disparate systems
-    attribute name : Organization_name;      -- A name associated with the organization
-    attribute address : Address;             -- An address for the organization
-    attribute contact : Contact;             -- A contact detail for the organization
-    attribute code : CodeableConcept;        -- The kind of organization that this is
-    attribute industryCode : CodeableConcept; -- The industry that this organization is involved in
-    attribute accreditation : Organization_accreditation; -- The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
-    attribute relatedOrganization : Organization_relatedOrganization; -- Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+    attribute identifier : HumanId;          -- Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+    attribute name : HumanName;              -- A name associated with the person
+    attribute address : Address;             -- An address for the person
+    attribute contact : Contact;             -- A contact detail for the person
+    attribute dob : dateTime;                -- The birth date for the person
+    attribute gender : CodeableConcept;      -- Administrative Gender
+    attribute religion : CodeableConcept;    -- The religious denomination to which a person professes affiliation
+    attribute qualification : Person_qualification; -- The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+    attribute language : Person_language;    -- A language spoken by the person, with proficiency
+    attribute relatedPerson : Person_relatedPerson; -- Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
     attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of organization, fall back for human interpretation
+    attribute text : Narrative;              -- Text summary of person, for human interpretation
   }
 
-  class Organization_name                    -- A name associated with the organization
+  class Person_qualification                 -- The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
   {
-    attribute value : String;                -- The actual name of the organization
-    attribute period : Interval;             -- The period that this name was in use by the organization
+    attribute id : Identifier;               -- The identifier of a qualification
+    attribute code : CodeableConcept;        -- The type of the qualification
+    attribute institution : Resource;        -- The organisation that confered/confers the qualification
+    attribute period : Interval;             -- The period for which a qualification is held
   }
 
-  class Organization_relatedOrganization     -- Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+  class Person_language                      -- A language spoken by the person, with proficiency
   {
-    attribute id : HumanId;                  -- Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
-    attribute code : CodeableConcept;        -- Code that specifies how this organization is related to the subject. A code is required.
-    attribute name : String;                 -- A name should be specified for the related organization
-    attribute address : Address;             -- Postal addresses may be provided for the related organization
-    attribute contact : Contact;             -- Contact details (phone, email etc) may be provided for the related organization
-    attribute period : Interval;             -- The period during which the organizations were related in this fashion
+    attribute code : code;                   -- A code that identifies the language
+    attribute use : code;                    -- A code the describes how well the language is spoken
   }
 
-  class Organization_accreditation           -- The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+  class Person_relatedPerson                 -- Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
   {
-    attribute id : Identifier;               -- The identifier of the accreditation
-    attribute code : CodeableConcept;        -- The type of the accreditation
-    attribute institution : Resource;        -- The organization that confered/confers the accreditation
-    attribute period : Interval;             -- The period for which the accreditation is held
-  }
-
-  class DocumentConformance extends Resource -- A conformance statement about how one or more FHIR documents
-  {
-    attribute id : id;                       -- Globally unique Conformance Statement Id (Must be a UUID)
-    attribute date : dateTime;               -- Date that this conformance statement is published
-    attribute publisher : DocumentConformance_publisher; -- The organization that publishes this conformance statement
-    attribute software : DocumentConformance_software; -- The software that is covered by this conformance statement
-    attribute document : DocumentConformance_document; -- A document definition
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of conformance profile for human interpretation
-  }
-
-  class DocumentConformance_publisher        -- The organization that publishes this conformance statement
-  {
-    attribute name : String;                 -- Name of Organization
-    attribute address : Address;             -- Address of Organization
-    attribute contact : Contact;             -- Contacts for Organization
-  }
-
-  class DocumentConformance_document         -- A document definition
-  {
-    attribute name : String;                 -- Name for this particular document profile
-    attribute purpose : String;              -- Human description of this particular profile
-    attribute resource : Constraint;         -- Constraint on a resource used in the document
-  }
-
-  class DocumentConformance_software         -- The software that is covered by this conformance statement
-  {
-    attribute name : String;                 -- Name software is known by
-    attribute version : String;              -- Version covered by this statement
-    attribute releaseDate : dateTime;        -- Date this version released
+    attribute id : HumanId;                  -- Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
+    attribute role : CodeableConcept;        -- Code that specifies how this person is related to the subject. A code is required.
+    attribute name : HumanName;              -- A name should be specified for the related person
+    attribute contact : Contact;             -- Contact details (phone, email etc) should be provided for the person
   }
 
   class LabReport extends Resource           -- The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care
@@ -433,43 +485,37 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute clinicalInfo : Resource;       -- Details of the clinical information provided to the laboratory along with the original request
   }
 
-  class Person extends Resource              -- A person who is involved in the healthcare process
+  class DocumentConformance extends Resource -- A conformance statement about how one or more FHIR documents
   {
-    attribute id : id;                       -- Master Resource Id, always first in all resources
-    attribute identifier : HumanId;          -- Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
-    attribute name : HumanName;              -- A name associated with the person
-    attribute address : Address;             -- An address for the person
-    attribute contact : Contact;             -- A contact detail for the person
-    attribute dob : dateTime;                -- The birth date for the person
-    attribute gender : CodeableConcept;      -- Administrative Gender
-    attribute religion : CodeableConcept;    -- The religious denomination to which a person professes affiliation
-    attribute qualification : Person_qualification; -- The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
-    attribute language : Person_language;    -- A language spoken by the person, with proficiency
-    attribute relatedPerson : Person_relatedPerson; -- Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
+    attribute id : id;                       -- Globally unique Conformance Statement Id (Must be a UUID)
+    attribute date : dateTime;               -- Date that this conformance statement is published
+    attribute publisher : DocumentConformance_publisher; -- The organization that publishes this conformance statement
+    attribute software : DocumentConformance_software; -- The software that is covered by this conformance statement
+    attribute profile : uri;                 -- Additional other profiles that apply to this conformance statement.
+    attribute document : DocumentConformance_document; -- A document definition
     attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of person, for human interpretation
+    attribute text : Narrative;              -- Text summary of conformance profile for human interpretation
   }
 
-  class Person_qualification                 -- The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+  class DocumentConformance_publisher        -- The organization that publishes this conformance statement
   {
-    attribute id : Identifier;               -- The identifier of a qualification
-    attribute code : CodeableConcept;        -- The type of the qualification
-    attribute institution : Resource;        -- The organisation that confered/confers the qualification
-    attribute period : Interval;             -- The period for which a qualification is held
+    attribute name : String;                 -- Name of Organization
+    attribute address : Address;             -- Address of Organization
+    attribute contact : Contact;             -- Contacts for Organization
   }
 
-  class Person_language                      -- A language spoken by the person, with proficiency
+  class DocumentConformance_document         -- A document definition
   {
-    attribute code : code;                   -- A code that identifies the language
-    attribute use : code;                    -- A code the describes how well the language is spoken
+    attribute name : String;                 -- Name for this particular document profile
+    attribute purpose : String;              -- Human description of this particular profile
+    attribute resource : Constraint;         -- Constraint on a resource used in the document
   }
 
-  class Person_relatedPerson                 -- Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
+  class DocumentConformance_software         -- The software that is covered by this conformance statement
   {
-    attribute id : HumanId;                  -- Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
-    attribute role : CodeableConcept;        -- Code that specifies how this person is related to the subject. A code is required.
-    attribute name : HumanName;              -- A name should be specified for the related person
-    attribute contact : Contact;             -- Contact details (phone, email etc) should be provided for the person
+    attribute name : String;                 -- Name software is known by
+    attribute version : String;              -- Version covered by this statement
+    attribute releaseDate : dateTime;        -- Date this version released
   }
 
 }

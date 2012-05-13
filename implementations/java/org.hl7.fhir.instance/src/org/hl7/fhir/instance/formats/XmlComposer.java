@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 19:37 Apr 30, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -33,6 +33,7 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeString("type", element.getType());
+      composeUri("profile", element.getProfile());
       composeString("name", element.getName());
       composeString("purpose", element.getPurpose());
       for (Constraint.Element_ e : element.getElement()) 
@@ -59,7 +60,7 @@ public class XmlComposer extends XmlComposerBase {
       composeString("definition", element.getDefinition());
       for (Constraint.Mapping e : element.getMapping()) 
         composeConstraintMapping("mapping", e);
-      composeConstraintAggregation("aggregation", element.getAggregation());
+      composeConstraintResource("resource", element.getResource());
       composeString("valueSet", element.getValueSet());
       for (Constraint.Value e : element.getValue()) 
         composeConstraintValue("value", e);
@@ -77,12 +78,12 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeConstraintAggregation(String name, Constraint.Aggregation element) throws Exception {
+  private void composeConstraintResource(String name, Constraint.Resource element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeBool("aggregated", element.getAggregated());
-      composeString("name", element.getName());
+      composeUri("profile", element.getProfile());
       xml.close(FHIR_NS, name);
     }
   }
@@ -424,6 +425,8 @@ public class XmlComposer extends XmlComposerBase {
       composeConformanceSoftware("software", element.getSoftware());
       if (element.getMode() != null)
         composeString("mode", element.getMode().toCode());
+      for (Uri e : element.getProfile()) 
+        composeUri("profile", e);
       composeConstraint("resource", element.getResource());
       composeConformanceOperation("operation", element.getOperation());
       if (element.getExtensions().size() > 0) {
@@ -633,6 +636,74 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composeAnimal(String name, Animal element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      for (HumanId e : element.getIdentifier()) 
+        composeHumanId("identifier", e);
+      for (HumanName e : element.getName()) 
+        composeHumanName("name", e);
+      composeDateTime("dob", element.getDob());
+      composeCodeableConcept("species", element.getSpecies());
+      composeCodeableConcept("strain", element.getStrain());
+      composeCodeableConcept("gender", element.getGender());
+      for (Animal.RelatedEntity e : element.getRelatedEntity()) 
+        composeAnimalRelatedEntity("relatedEntity", e);
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAnimalRelatedEntity(String name, Animal.RelatedEntity element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeHumanId("id", element.getId());
+      composeCodeableConcept("role", element.getRole());
+      composeHumanName("name", element.getName());
+      for (Address e : element.getAddress()) 
+        composeAddress("address", e);
+      for (Contact e : element.getContact()) 
+        composeContact("contact", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAgent(String name, Agent element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      composeResourceReference("person", element.getPerson());
+      composeResourceReference("organization", element.getOrganization());
+      for (CodeableConcept e : element.getRole()) 
+        composeCodeableConcept("role", e);
+      composeInterval_Date("period", element.getPeriod());
+      for (HumanId e : element.getIdentifier()) 
+        composeHumanId("identifier", e);
+      for (Address e : element.getAddress()) 
+        composeAddress("address", e);
+      for (Contact e : element.getContact()) 
+        composeContact("contact", e);
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composeMessageConformance(String name, MessageConformance element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
@@ -641,6 +712,8 @@ public class XmlComposer extends XmlComposerBase {
       composeDateTime("date", element.getDate());
       composeMessageConformancePublisher("publisher", element.getPublisher());
       composeMessageConformanceSoftware("software", element.getSoftware());
+      for (Uri e : element.getProfile()) 
+        composeUri("profile", e);
       for (MessageConformance.Event e : element.getEvent()) 
         composeMessageConformanceEvent("event", e);
       if (element.getExtensions().size() > 0) {
@@ -712,22 +785,25 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeAgent(String name, Agent element) throws Exception {
+  private void composeOrganization(String name, Organization element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeId("id", element.getId());
-      composeResourceReference("person", element.getPerson());
-      composeResourceReference("organization", element.getOrganization());
-      for (CodeableConcept e : element.getRole()) 
-        composeCodeableConcept("role", e);
-      composeInterval_Date("period", element.getPeriod());
       for (HumanId e : element.getIdentifier()) 
         composeHumanId("identifier", e);
+      for (Organization.Name e : element.getName()) 
+        composeOrganizationName("name", e);
       for (Address e : element.getAddress()) 
         composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
+      composeCodeableConcept("code", element.getCode());
+      composeCodeableConcept("industryCode", element.getIndustryCode());
+      for (Organization.Accreditation e : element.getAccreditation()) 
+        composeOrganizationAccreditation("accreditation", e);
+      for (Organization.RelatedOrganization e : element.getRelatedOrganization()) 
+        composeOrganizationRelatedOrganization("relatedOrganization", e);
       if (element.getExtensions().size() > 0) {
         xml.open(FHIR_NS, "extensions");
         for (Extension e : element.getExtensions()) 
@@ -739,43 +815,40 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeAnimal(String name, Animal element) throws Exception {
+  private void composeOrganizationName(String name, Organization.Name element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
-      composeId("id", element.getId());
-      for (HumanId e : element.getIdentifier()) 
-        composeHumanId("identifier", e);
-      for (HumanName e : element.getName()) 
-        composeHumanName("name", e);
-      composeDateTime("dob", element.getDob());
-      composeCodeableConcept("species", element.getSpecies());
-      composeCodeableConcept("strain", element.getStrain());
-      composeCodeableConcept("gender", element.getGender());
-      for (Animal.RelatedEntity e : element.getRelatedEntity()) 
-        composeAnimalRelatedEntity("relatedEntity", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extensions");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extensions");
-      }
-      composeNarrative("text", element.getText());
+      composeString_("value", element.getValue());
+      composeInterval_Date("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
 
-  private void composeAnimalRelatedEntity(String name, Animal.RelatedEntity element) throws Exception {
+  private void composeOrganizationAccreditation(String name, Organization.Accreditation element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeIdentifier("id", element.getId());
+      composeCodeableConcept("code", element.getCode());
+      composeResourceReference("institution", element.getInstitution());
+      composeInterval_Date("period", element.getPeriod());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeOrganizationRelatedOrganization(String name, Organization.RelatedOrganization element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeHumanId("id", element.getId());
-      composeCodeableConcept("role", element.getRole());
-      composeHumanName("name", element.getName());
+      composeCodeableConcept("code", element.getCode());
+      composeString_("name", element.getName());
       for (Address e : element.getAddress()) 
         composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
+      composeInterval_Date("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -887,6 +960,81 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composeProfile(String name, Profile element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      composeString_("name", element.getName());
+      composeProfileAuthor("author", element.getAuthor());
+      composeString_("intention", element.getIntention());
+      for (Coding e : element.getCode()) 
+        composeCoding("code", e);
+      composeString_("description", element.getDescription());
+      for (Uri e : element.getEvidence()) 
+        composeUri("evidence", e);
+      composeString_("comments", element.getComments());
+      if (element.getStatus() != null)
+        composeString("status", element.getStatus().toCode());
+      composeDateTime("date", element.getDate());
+      for (Profile.Endorser e : element.getEndorser()) 
+        composeProfileEndorser("endorser", e);
+      composeString_("changes", element.getChanges());
+      for (Uri e : element.getSupercedes()) 
+        composeUri("supercedes", e);
+      for (Uri e : element.getProfile()) 
+        composeUri("profile", e);
+      for (Constraint e : element.getResource()) 
+        composeConstraint("resource", e);
+      for (Profile.Binding e : element.getBinding()) 
+        composeProfileBinding("binding", e);
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeProfileAuthor(String name, Profile.Author element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      for (Uri e : element.getReference()) 
+        composeUri("reference", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeProfileEndorser(String name, Profile.Endorser element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      composeUri("reference", element.getReference());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeProfileBinding(String name, Profile.Binding element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      composeString_("details", element.getDetails());
+      composeUri("reference", element.getReference());
+      for (Coding e : element.getCode()) 
+        composeCoding("code", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composePatient(String name, Patient element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
@@ -914,25 +1062,28 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeOrganization(String name, Organization element) throws Exception {
+  private void composePerson(String name, Person element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeId("id", element.getId());
       for (HumanId e : element.getIdentifier()) 
         composeHumanId("identifier", e);
-      for (Organization.Name e : element.getName()) 
-        composeOrganizationName("name", e);
+      for (HumanName e : element.getName()) 
+        composeHumanName("name", e);
       for (Address e : element.getAddress()) 
         composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
-      composeCodeableConcept("code", element.getCode());
-      composeCodeableConcept("industryCode", element.getIndustryCode());
-      for (Organization.Accreditation e : element.getAccreditation()) 
-        composeOrganizationAccreditation("accreditation", e);
-      for (Organization.RelatedOrganization e : element.getRelatedOrganization()) 
-        composeOrganizationRelatedOrganization("relatedOrganization", e);
+      composeDateTime("dob", element.getDob());
+      composeCodeableConcept("gender", element.getGender());
+      composeCodeableConcept("religion", element.getReligion());
+      for (Person.Qualification e : element.getQualification()) 
+        composePersonQualification("qualification", e);
+      for (Person.Language e : element.getLanguage()) 
+        composePersonLanguage("language", e);
+      for (Person.RelatedPerson e : element.getRelatedPerson()) 
+        composePersonRelatedPerson("relatedPerson", e);
       if (element.getExtensions().size() > 0) {
         xml.open(FHIR_NS, "extensions");
         for (Extension e : element.getExtensions()) 
@@ -944,17 +1095,7 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeOrganizationName(String name, Organization.Name element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeString_("value", element.getValue());
-      composeInterval_Date("period", element.getPeriod());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeOrganizationAccreditation(String name, Organization.Accreditation element) throws Exception {
+  private void composePersonQualification(String name, Person.Qualification element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
@@ -966,75 +1107,26 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeOrganizationRelatedOrganization(String name, Organization.RelatedOrganization element) throws Exception {
+  private void composePersonLanguage(String name, Person.Language element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeCode("code", element.getCode());
+      if (element.getUse() != null)
+        composeString("use", element.getUse().toCode());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composePersonRelatedPerson(String name, Person.RelatedPerson element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeHumanId("id", element.getId());
-      composeCodeableConcept("code", element.getCode());
-      composeString_("name", element.getName());
-      for (Address e : element.getAddress()) 
-        composeAddress("address", e);
+      composeCodeableConcept("role", element.getRole());
+      composeHumanName("name", element.getName());
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
-      composeInterval_Date("period", element.getPeriod());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeDocumentConformance(String name, DocumentConformance element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeId("id", element.getId());
-      composeDateTime("date", element.getDate());
-      composeDocumentConformancePublisher("publisher", element.getPublisher());
-      composeDocumentConformanceSoftware("software", element.getSoftware());
-      for (DocumentConformance.Document e : element.getDocument()) 
-        composeDocumentConformanceDocument("document", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extensions");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extensions");
-      }
-      composeNarrative("text", element.getText());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeDocumentConformancePublisher(String name, DocumentConformance.Publisher element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeString_("name", element.getName());
-      for (Address e : element.getAddress()) 
-        composeAddress("address", e);
-      for (Contact e : element.getContact()) 
-        composeContact("contact", e);
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeDocumentConformanceSoftware(String name, DocumentConformance.Software element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeString_("name", element.getName());
-      composeString_("version", element.getVersion());
-      composeDateTime("releaseDate", element.getReleaseDate());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeDocumentConformanceDocument(String name, DocumentConformance.Document element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeString_("name", element.getName());
-      composeString_("purpose", element.getPurpose());
-      for (Constraint e : element.getResource()) 
-        composeConstraint("resource", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -1129,28 +1221,18 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composePerson(String name, Person element) throws Exception {
+  private void composeDocumentConformance(String name, DocumentConformance element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeId("id", element.getId());
-      for (HumanId e : element.getIdentifier()) 
-        composeHumanId("identifier", e);
-      for (HumanName e : element.getName()) 
-        composeHumanName("name", e);
-      for (Address e : element.getAddress()) 
-        composeAddress("address", e);
-      for (Contact e : element.getContact()) 
-        composeContact("contact", e);
-      composeDateTime("dob", element.getDob());
-      composeCodeableConcept("gender", element.getGender());
-      composeCodeableConcept("religion", element.getReligion());
-      for (Person.Qualification e : element.getQualification()) 
-        composePersonQualification("qualification", e);
-      for (Person.Language e : element.getLanguage()) 
-        composePersonLanguage("language", e);
-      for (Person.RelatedPerson e : element.getRelatedPerson()) 
-        composePersonRelatedPerson("relatedPerson", e);
+      composeDateTime("date", element.getDate());
+      composeDocumentConformancePublisher("publisher", element.getPublisher());
+      composeDocumentConformanceSoftware("software", element.getSoftware());
+      for (Uri e : element.getProfile()) 
+        composeUri("profile", e);
+      for (DocumentConformance.Document e : element.getDocument()) 
+        composeDocumentConformanceDocument("document", e);
       if (element.getExtensions().size() > 0) {
         xml.open(FHIR_NS, "extensions");
         for (Extension e : element.getExtensions()) 
@@ -1162,38 +1244,38 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composePersonQualification(String name, Person.Qualification element) throws Exception {
+  private void composeDocumentConformancePublisher(String name, DocumentConformance.Publisher element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
-      composeIdentifier("id", element.getId());
-      composeCodeableConcept("code", element.getCode());
-      composeResourceReference("institution", element.getInstitution());
-      composeInterval_Date("period", element.getPeriod());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composePersonLanguage(String name, Person.Language element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeCode("code", element.getCode());
-      if (element.getUse() != null)
-        composeString("use", element.getUse().toCode());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composePersonRelatedPerson(String name, Person.RelatedPerson element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeHumanId("id", element.getId());
-      composeCodeableConcept("role", element.getRole());
-      composeHumanName("name", element.getName());
+      composeString_("name", element.getName());
+      for (Address e : element.getAddress()) 
+        composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeDocumentConformanceSoftware(String name, DocumentConformance.Software element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      composeString_("version", element.getVersion());
+      composeDateTime("releaseDate", element.getReleaseDate());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeDocumentConformanceDocument(String name, DocumentConformance.Document element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      composeString_("purpose", element.getPurpose());
+      for (Constraint e : element.getResource()) 
+        composeConstraint("resource", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -1206,24 +1288,26 @@ public class XmlComposer extends XmlComposerBase {
       composeDocument("Document", (Document)resource);
     else if (resource instanceof Message)
       composeMessage("Message", (Message)resource);
-    else if (resource instanceof MessageConformance)
-      composeMessageConformance("MessageConformance", (MessageConformance)resource);
-    else if (resource instanceof Agent)
-      composeAgent("Agent", (Agent)resource);
     else if (resource instanceof Animal)
       composeAnimal("Animal", (Animal)resource);
-    else if (resource instanceof Prescription)
-      composePrescription("Prescription", (Prescription)resource);
-    else if (resource instanceof Patient)
-      composePatient("Patient", (Patient)resource);
+    else if (resource instanceof Agent)
+      composeAgent("Agent", (Agent)resource);
+    else if (resource instanceof MessageConformance)
+      composeMessageConformance("MessageConformance", (MessageConformance)resource);
     else if (resource instanceof Organization)
       composeOrganization("Organization", (Organization)resource);
-    else if (resource instanceof DocumentConformance)
-      composeDocumentConformance("DocumentConformance", (DocumentConformance)resource);
-    else if (resource instanceof LabReport)
-      composeLabReport("LabReport", (LabReport)resource);
+    else if (resource instanceof Prescription)
+      composePrescription("Prescription", (Prescription)resource);
+    else if (resource instanceof Profile)
+      composeProfile("Profile", (Profile)resource);
+    else if (resource instanceof Patient)
+      composePatient("Patient", (Patient)resource);
     else if (resource instanceof Person)
       composePerson("Person", (Person)resource);
+    else if (resource instanceof LabReport)
+      composeLabReport("LabReport", (LabReport)resource);
+    else if (resource instanceof DocumentConformance)
+      composeDocumentConformance("DocumentConformance", (DocumentConformance)resource);
     else
       throw new Exception("Unhanded resource type");
   }

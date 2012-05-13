@@ -2,8 +2,10 @@ package org.hl7.fhir.definitions.generators.xsd;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -82,7 +84,7 @@ public class SchemaGenerator {
 
       String[] com = s2.split(" ");
       if (com[0].equals("genDate"))
-        src = s1+genDate+s3;
+        src = s1+ genDate+s3;
       else if (com[0].equals("version"))
         src = s1+version+s3;
       else if (com[0].equals("resources")) {

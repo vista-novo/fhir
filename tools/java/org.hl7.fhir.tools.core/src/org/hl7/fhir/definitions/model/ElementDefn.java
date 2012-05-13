@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ElementDefn {
+  
+  
   public enum BindingStrength { Unspecified, Closed, Extensible }
   public enum Conformance { Unstated, Mandatory, Conditional, Optional, Prohibited;
     public String code() {
@@ -51,8 +53,46 @@ public class ElementDefn {
 	private String condition;
 	private String example;
 	private boolean nolist; 
+	private String profileName; // only in a profile, for unpicking
+	private String target; // only in extensions
+	private String value; // only in a profile
 	
-	public boolean isNolist() {
+	public ElementDefn() {
+	  super();
+	}
+
+	public ElementDefn(ElementDefn pattern) {
+	  super();
+	  types.addAll(pattern.types);
+	  for (ElementDefn c : pattern.getElements())
+	    elements.add(new ElementDefn(c));
+
+	  conformance = pattern.conformance;
+	  minCardinality = pattern.minCardinality;
+	  maxCardinality = pattern.maxCardinality;
+	  id = pattern.id;
+	  conceptDomain = pattern.conceptDomain;
+	  bindingStrength = pattern.bindingStrength;
+	  name = pattern.name;
+	  shortDefn = pattern.shortDefn;
+	  definition = pattern.definition;
+	  requirements = pattern.requirements; 
+	  mustUnderstand = pattern.mustUnderstand;
+	  rimMapping = pattern.rimMapping;
+	  comments = pattern.comments; 
+	  v2Mapping = pattern.v2Mapping;
+	  todo = pattern.todo;
+	  committeeNotes = pattern.committeeNotes;
+	  condition = pattern.condition;
+	  example = pattern.example;
+	  nolist = pattern.nolist; 
+	  profileName = pattern.profileName;
+	  target = pattern.target; 
+	  value = pattern.value; 
+    
+	}
+	 
+  public boolean isNolist() {
 		return nolist;
 	}
 
@@ -206,15 +246,24 @@ public class ElementDefn {
 
 
     public ElementDefn getElementByName(String name) {
-    	for (ElementDefn e : elements) {
-    		if (e.getName().equalsIgnoreCase(name))
-    			return e;
-    		if (e.getName().length() > name.length() && e.getName().substring(0, name.length()).equalsIgnoreCase(name) && e.getElements().size() == 1 && e.getElements().get(0).getName().equalsIgnoreCase(name))
-    			return e.getElements().get(0);
-    		}
-    	return null;
+      for (int i = elements.size()-1; i >= 0; i--) {
+        ElementDefn e = elements.get(i);
+        if (e.getName().equalsIgnoreCase(name))
+          return e;
+        if (e.getName().length() > name.length() && e.getName().substring(0, name.length()).equalsIgnoreCase(name) && e.getElements().size() == 1 && e.getElements().get(0).getName().equalsIgnoreCase(name))
+          return e.getElements().get(0);
+      }
+      return null;
     }
 
+    public ElementDefn getElementByProfileName(String name) {
+      for (int i = elements.size()-1; i >= 0; i--) {
+        ElementDefn e = elements.get(i);
+        if (e.getProfileName().equalsIgnoreCase(name))
+          return e;
+      }
+      return null;
+    }
 
     public String getConceptDomain() {
     	return conceptDomain;
@@ -339,6 +388,41 @@ public class ElementDefn {
     this.example = example;
   }
 
+  public String getProfileName() {
+    return profileName;
+  }
+
+  public void setProfileName(String profileName) {
+    this.profileName = profileName;
+  }
+
+  public String getTarget() {
+    return target;
+  }
+
+  public void setTarget(String target) {
+    this.target = target;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+
+  public boolean hasValue() {
+    return value != null && !value.equals("");
+  }
+
+  public void ban() {
+    minCardinality = 0;
+    maxCardinality = 0;
+    conformance = Conformance.Prohibited;
+    
+  }
 
 
 }

@@ -13,11 +13,13 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
+import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.parsers.XLSXmlParser.Sheet;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.XLSXmlParser;
+import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 
 /**
  * This class parses the master source for FHIR into a single definitions object model
@@ -37,6 +39,7 @@ public class SourceParser {
   private String termDir;
   public String dtDir;
   private Map<String, String> csvSrcs;
+  private String rootDir;
     
   public SourceParser(Logger logger, String root, Definitions definitions) {
     csvSrcs = new HashMap<String, String>();
@@ -51,6 +54,7 @@ public class SourceParser {
     termDir = srcDir+"terminologies"+sl;
     dtDir = srcDir+"datatypes"+sl;
     imgDir = root+sl+"images"+sl;
+    rootDir = root+sl;
   }
 
   
@@ -74,6 +78,18 @@ public class SourceParser {
       definitions.getKnownResources().put(n, cd);
       definitions.getFutureResources().put(n, cd);
     }
+    
+    for (String n : ini.getPropertyNames("profiles")) {
+      loadProfile(n, definitions.getProfiles());
+    }
+  }
+
+
+  private void loadProfile(String n, Map<String, Profile> profiles) throws Exception {
+    File spreadsheet = new File(rootDir+ini.getStringProperty("profiles", n));
+    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
+    Profile profile = sparser.parseProfile(definitions);
+    definitions.getProfiles().put(n, profile);
   }
 
 

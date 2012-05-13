@@ -56,9 +56,9 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="22" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="23" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="376.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
    <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
@@ -167,6 +167,23 @@
     <Cell ss:Index="7"><Data ss:Type="String">Date this version released</Data></Cell>
     <Cell><Data ss:Type="String">Date this version released</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">MessageConformance.profile</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">other profiles that apply (i.e. code binding rules)</Data></Cell>
+    <Cell><Data ss:Type="String">Additional other profiles that apply to this conformance statement.</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String"> Generally these profiles make  constraints on the bindings of concept domains / value sets</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageConformance.event</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
@@ -252,12 +269,10 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>10</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

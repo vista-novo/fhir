@@ -4,11 +4,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
-import org.hl7.fhir.definitions.parsers.XLSXmlParser.Sheet;
+import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.XLSXmlParser;
+import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 
 
 public class SpreadsheetParser {
@@ -16,13 +19,16 @@ public class SpreadsheetParser {
   private String name;
   private XLSXmlParser xls;
   private List<EventDefn> events = new ArrayList<EventDefn>();
+  private boolean isProfile;
   
   public SpreadsheetParser(InputStream in, String name) throws Exception {
     this.name = name;
     xls = new XLSXmlParser(in, name);    
   }
 
+  
   public ElementDefn parse() throws Exception {
+    isProfile = false;
     ElementDefn root = new ElementDefn();
     Sheet sheet = xls.getSheets().get("Data Elements");
     for (int row = 0; row < sheet.rows.size(); row++) {
@@ -32,6 +38,43 @@ public class SpreadsheetParser {
     return root;
   }
 
+  public Profile parseProfile(Definitions definitions) throws Exception {
+    isProfile = true;
+    Profile p = new Profile();
+
+    Sheet sheet = xls.getSheets().get("Metadata");
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      String n = sheet.getColumn(row, "Name");
+      String v = sheet.getColumn(row, "Value");
+      if (n != null && v != null) {
+        if (p.getMetadata().containsKey(n))
+          p.getMetadata().get(n).add(v);
+        else {
+          ArrayList<String> vl = new ArrayList<String>();
+          vl.add(v);
+          p.getMetadata().put(n, vl);
+        }
+      }
+    }
+    
+    for (String n : p.getMetadata().get("resource")) {
+      ElementDefn e = new ElementDefn();
+      sheet = xls.getSheets().get(n);
+      for (int row = 0; row < sheet.rows.size(); row++) {
+        processLine(e, sheet, row);
+      }
+      sheet = xls.getSheets().get(n+"-Extensions");
+      if (sheet != null) {
+        for (int row = 0; row < sheet.rows.size(); row++) {
+          processExtension(e.getElementByName("extensions"), sheet, row, definitions, p.getMetadata().get("extension.uri").get(0));
+        }
+      }
+      p.getResources().add(e);
+    }
+    return p;
+  }
+  
+  
   private void readEvents(Sheet sheet) throws Exception {
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
@@ -80,18 +123,20 @@ public class SpreadsheetParser {
   private void processLine(ElementDefn root, Sheet sheet, int row) throws Exception {
     ElementDefn e;
     String path = sheet.getColumn(row, "Element");
+    String profileName = isProfile  ? sheet.getColumn(row, "Profile Name") : "";
     if (!path.contains(".")) {
       e = root;
       if (root.hasName())
         throw new Exception("Definitions in "+getLocation(row)+" contain two roots: "+path+" in "+root.getName());
       e.setName(path);
     } else {
-      e = makeFromPath(root, path, row);
+      e = makeFromPath(root, path, row, profileName);
     }
     
     String[] card = sheet.getColumn(row, "Card.").split("\\.\\.");
     if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
-      throw new Exception("Unable to parse Cardinality "+sheet.getColumn(row, "Card.")+" in "+getLocation(row));
+      throw new Exception("Unable to parse Cardinality '"+sheet.getColumn(row, "Card.")+"' "+sheet.getColumn(row, "Card.")+" in "+getLocation(row)+" on "+path);
+    e.setProfileName(profileName);
     e.setMinCardinality(Integer.parseInt(card[0]));
     e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
     e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
@@ -111,14 +156,70 @@ public class SpreadsheetParser {
     e.setTodo(sheet.getColumn(row, "To Do"));
     e.setExample(sheet.getColumn(row, "Example"));
     e.setCommitteeNotes(sheet.getColumn(row, "Committee Notes"));
+    if (isProfile) {
+      e.setValue(sheet.getColumn(row, "Value"));
+    }
     String s = sheet.getColumn(row, "Must Understand").toLowerCase();
-    if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n"))
+    if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n") || s.equals("no"))
       e.setMustUnderstand(false);
-    else if (s.equals("true") || s.equals("1") || s.equals("t") || s.equals("y"))
+    else if (s.equals("true") || s.equals("1") || s.equals("t") || s.equals("y") || s.equals("yes"))
       e.setMustUnderstand(true);
     else if (!"".equals(s))
       throw new Exception("unable to process Must Understand flag: "+s+" in "+getLocation(row));
     
+  }
+
+  private void processExtension(ElementDefn extensions, Sheet sheet, int row, Definitions definitions, String uri) throws Exception {
+    ElementDefn e;
+    String path = sheet.getColumn(row, "Code");
+    e = makeExtension(extensions, path, row, definitions);
+    
+    String[] card = sheet.getColumn(row, "Card.").split("\\.\\.");
+    if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
+      throw new Exception("Unable to parse Cardinality "+sheet.getColumn(row, "Card.")+" in "+getLocation(row));
+    e.setTarget(sheet.getColumn(row, "Target"));
+    e.setMinCardinality(Integer.parseInt(card[0]));
+    e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
+    e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
+    e.setCondition(sheet.getColumn(row, "Condition"));
+    e.setConceptDomain(sheet.getColumn(row, "Concept Domain"));
+    e.setBindingStrength(pickBindingStrength(sheet.getColumn(row, "Binding Strength"), row));
+    e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));
+    e.setDefinition(sheet.getColumn(row, "Definition"));
+    e.setRequirements(sheet.getColumn(row, "Requirements"));
+    e.setComments(sheet.getColumn(row, "Comments"));
+    e.setRimMapping(sheet.getColumn(row, "RIM Mapping"));
+    e.setV2Mapping(sheet.getColumn(row, "v2 Mapping"));
+    e.setTodo(sheet.getColumn(row, "To Do"));
+    e.setExample(sheet.getColumn(row, "Example"));
+    e.setCommitteeNotes(sheet.getColumn(row, "Committee Notes"));
+    String s = sheet.getColumn(row, "Must Understand").toLowerCase();
+    if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n") || s.equals("no"))
+      e.setMustUnderstand(false);
+    else if (s.equals("true") || s.equals("1") || s.equals("t") || s.equals("y") || s.equals("yes"))
+      e.setMustUnderstand(true);
+    else if (!"".equals(s))
+      throw new Exception("unable to process Must Understand flag: "+s+" in "+getLocation(row));
+
+    e.getTypes().clear();
+    e.getElementByName("definition").setValue(uri);
+    e.getElementByName("ref").ban();
+    if (e.isMustUnderstand())
+      e.getElementByName("state").setValue("must-understand");
+    else
+      e.getElementByName("state").ban();
+    ElementDefn v = e.getElementByName("value[x]");
+    v.setShortDefn(sheet.getColumn(row, "Short Name"));
+    e.setShortDefn("");
+    v.getTypes().clear();
+    String t = sheet.getColumn(row, "Type");
+    if (t.equals(""))
+      v.ban();
+    else {
+      TypeParser tp = new TypeParser();
+      v.getTypes().addAll(tp.parse(t));
+    }
+    e.getElements().remove(e.getElementByName("extension"));
   }
 
 
@@ -133,8 +234,9 @@ public class SpreadsheetParser {
     throw new Exception("Unknown Binding Strength: "+s+" in "+getLocation(row));
   }
 
-  private ElementDefn makeFromPath(ElementDefn root, String pathname, int row) throws Exception {
+  private ElementDefn makeFromPath(ElementDefn root, String pathname, int row, String profileName) throws Exception {
     String[] path = pathname.split("\\.");
+    boolean n = false;
     if (!path[0].equals(root.getName()))
       throw new Exception("Element Path '"+pathname+"' is not legal in this context in "+getLocation(row));
     ElementDefn res = root;
@@ -149,12 +251,40 @@ public class SpreadsheetParser {
         en = en.substring(0, en.length()-1);
       }
       ElementDefn t = res.getElementByName(en);
-      if (t == null) {
+      if (t == null || (i == path.length - 1 && !t.getProfileName().equals("") && !t.getProfileName().equals(profileName))) {
+        if (n) 
+          throw new Exception("Internal Logic error "+pathname+" @ " +getLocation(row));
+        n = true;
         if (i < path.length - 1) 
           throw new Exception("Encounter Element "+pathname+" before all the elements in the path are defined in "+getLocation(row));
         t = new ElementDefn();
         t.setName(en);
         t.setNolist(nolist);
+        res.getElements().add(t);        
+      }
+      res = t; 
+    }
+    if (!n) 
+      throw new Exception("Duplicate Row name "+pathname+" @ " +getLocation(row));
+    return res;
+  }
+
+  private ElementDefn makeExtension(ElementDefn root, String pathname, int row, Definitions definitions) throws Exception {
+    String[] path = pathname.split("\\.");
+
+    ElementDefn res = root;
+    for (int i = 0; i < path.length; i++)
+    {
+      String en = path[i];
+
+      ElementDefn t = res.getElementByProfileName(en);
+      if (t == null) {
+        if (i < path.length - 1) 
+          throw new Exception("Encounter Element "+pathname+" before all the elements in the path are defined in "+getLocation(row));
+        t = new ElementDefn(definitions.getInfrastructure().get("Extensions"));
+        t.setName("extension");
+        t.setProfileName(en);
+        t.getElementByName("code").setValue(en);
         res.getElements().add(t);
       }
       res = t; 
@@ -201,6 +331,9 @@ public class SpreadsheetParser {
   public List<EventDefn> getEvents() {
     return events;
   }
+
+
+ 
 
 
 }

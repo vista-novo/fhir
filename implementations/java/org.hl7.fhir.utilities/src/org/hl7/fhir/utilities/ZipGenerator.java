@@ -31,7 +31,7 @@ public class ZipGenerator {
     File f = new File(actualDir);
     String files[] = f.list();
     for (int i=0; i < files.length; i++) {
-      if ((ext == null && new File(actualDir+files[i]).isFile()) || files[i].endsWith(ext)) {
+      if ((ext == null && new File(actualDir+files[i]).isFile()) || (ext != null && files[i].endsWith(ext))) {
         FileInputStream fi = new FileInputStream(actualDir+files[i]);
         origin = new BufferedInputStream(fi, BUFFER);
         ZipEntry entry = new ZipEntry(statedDir+files[i]);

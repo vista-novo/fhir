@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 19:37 Apr 30, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
 
 import java.util.*;
 
@@ -102,7 +102,7 @@ public class Constraint extends Element {
         /**
          * If context includes aggregation and type=Resource()
          */
-        private Aggregation aggregation;
+        private Resource resource;
 
         /**
          * Value set id (only if coded)
@@ -206,12 +206,12 @@ public class Constraint extends Element {
           return this.mapping;
         }
 
-        public Aggregation getAggregation() { 
-          return this.aggregation;
+        public Resource getResource() { 
+          return this.resource;
         }
 
-        public void setAggregation(Aggregation value) { 
-          this.aggregation = value;
+        public void setResource(Resource value) { 
+          this.resource = value;
         }
 
         public String getValueSet() { 
@@ -257,16 +257,16 @@ public class Constraint extends Element {
 
     }
 
-    public class Aggregation extends Element {
+    public class Resource extends Element {
         /**
          * Whether this resource is aggregated
          */
         private boolean aggregated;
 
         /**
-         * Reference to a Named Resource Profile
+         * Reference to a Resource Profile
          */
-        private String name;
+        private java.net.URI profile;
 
         public boolean getAggregated() { 
           return this.aggregated;
@@ -276,12 +276,12 @@ public class Constraint extends Element {
           this.aggregated = value;
         }
 
-        public String getName() { 
-          return this.name;
+        public java.net.URI getProfile() { 
+          return this.profile;
         }
 
-        public void setName(String value) { 
-          this.name = value;
+        public void setProfile(java.net.URI value) { 
+          this.profile = value;
         }
 
     }
@@ -321,7 +321,12 @@ public class Constraint extends Element {
     private String type;
 
     /**
-     * The name of an aggregation profile
+     * Reference to a resource profile which includes the constraint statement that applies to this resource
+     */
+    private java.net.URI profile;
+
+    /**
+     * The name of this aggregation profile
      */
     private String name;
 
@@ -341,6 +346,14 @@ public class Constraint extends Element {
 
     public void setType(String value) { 
       this.type = value;
+    }
+
+    public java.net.URI getProfile() { 
+      return this.profile;
+    }
+
+    public void setProfile(java.net.URI value) { 
+      this.profile = value;
     }
 
     public String getName() { 

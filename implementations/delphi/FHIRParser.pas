@@ -2,7 +2,7 @@ unit FHIRParser;
 
 interface
 
-// FHIR v0.01 generated 19:37 Apr 30, 2012
+// FHIR v0.01 generated Mon, May 14, 2012 02:13+1000
 
 uses
   SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
@@ -14,7 +14,7 @@ Type
     function ParseExtension(element : IXmlDomElement) : TExtension;
     function ParseConstraintElement(element : IXmlDomElement) : TConstraintElement;
     function ParseConstraintElementMapping(element : IXmlDomElement) : TConstraintElementMapping;
-    function ParseConstraintElementAggregation(element : IXmlDomElement) : TConstraintElementAggregation;
+    function ParseConstraintElementResource(element : IXmlDomElement) : TConstraintElementResource;
     function ParseConstraintElementValue(element : IXmlDomElement) : TConstraintElementValue;
     function ParseConstraint(element : IXmlDomElement) : TConstraint;
     function ParseNarrativeImage(element : IXmlDomElement) : TNarrativeImage;
@@ -53,15 +53,19 @@ Type
     function ParseDocument(element : IXmlDomElement) : TDocument;
     function ParseMessageResponse(element : IXmlDomElement) : TMessageResponse;
     function ParseMessage(element : IXmlDomElement) : TMessage;
+    function ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
+    function ParseAnimal(element : IXmlDomElement) : TAnimal;
+    function ParseAgent(element : IXmlDomElement) : TAgent;
     function ParseMessageConformancePublisher(element : IXmlDomElement) : TMessageConformancePublisher;
     function ParseMessageConformanceSoftware(element : IXmlDomElement) : TMessageConformanceSoftware;
     function ParseMessageConformanceEvent(element : IXmlDomElement) : TMessageConformanceEvent;
     function ParseMessageConformanceEventRequest(element : IXmlDomElement) : TMessageConformanceEventRequest;
     function ParseMessageConformanceEventResponse(element : IXmlDomElement) : TMessageConformanceEventResponse;
     function ParseMessageConformance(element : IXmlDomElement) : TMessageConformance;
-    function ParseAgent(element : IXmlDomElement) : TAgent;
-    function ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
-    function ParseAnimal(element : IXmlDomElement) : TAnimal;
+    function ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
+    function ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
+    function ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
+    function ParseOrganization(element : IXmlDomElement) : TOrganization;
     function ParsePrescriptionDispense(element : IXmlDomElement) : TPrescriptionDispense;
     function ParsePrescriptionMedicine(element : IXmlDomElement) : TPrescriptionMedicine;
     function ParsePrescriptionMedicineActiveIngredient(element : IXmlDomElement) : TPrescriptionMedicineActiveIngredient;
@@ -69,24 +73,24 @@ Type
     function ParsePrescriptionAdministrationRequest(element : IXmlDomElement) : TPrescriptionAdministrationRequest;
     function ParsePrescriptionAdministrationRequestDosageInstruction(element : IXmlDomElement) : TPrescriptionAdministrationRequestDosageInstruction;
     function ParsePrescription(element : IXmlDomElement) : TPrescription;
+    function ParseProfileAuthor(element : IXmlDomElement) : TProfileAuthor;
+    function ParseProfileEndorser(element : IXmlDomElement) : TProfileEndorser;
+    function ParseProfileBinding(element : IXmlDomElement) : TProfileBinding;
+    function ParseProfile(element : IXmlDomElement) : TProfile;
     function ParsePatient(element : IXmlDomElement) : TPatient;
-    function ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
-    function ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
-    function ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
-    function ParseOrganization(element : IXmlDomElement) : TOrganization;
-    function ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
-    function ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
-    function ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
-    function ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
+    function ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
+    function ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
+    function ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
+    function ParsePerson(element : IXmlDomElement) : TPerson;
     function ParseLabReportRequestDetail(element : IXmlDomElement) : TLabReportRequestDetail;
     function ParseLabReportResultGroup(element : IXmlDomElement) : TLabReportResultGroup;
     function ParseLabReportResultGroupResult(element : IXmlDomElement) : TLabReportResultGroupResult;
     function ParseLabReportResultGroupResultReferenceRange(element : IXmlDomElement) : TLabReportResultGroupResultReferenceRange;
     function ParseLabReport(element : IXmlDomElement) : TLabReport;
-    function ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
-    function ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
-    function ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
-    function ParsePerson(element : IXmlDomElement) : TPerson;
+    function ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
+    function ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
+    function ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
+    function ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
     function ParseResource(element : IxmlDomElement) : TFHIRResource; override;
   end;
 
@@ -95,7 +99,7 @@ Type
     procedure ComposeExtension(name : string; elem : TExtension);
     procedure ComposeConstraintElement(name : string; elem : TConstraintElement);
     procedure ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
-    procedure ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure ComposeConstraintElementResource(name : string; elem : TConstraintElementResource);
     procedure ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
     procedure ComposeConstraint(name : string; elem : TConstraint);
     procedure ComposeNarrativeImage(name : string; elem : TNarrativeImage);
@@ -134,15 +138,19 @@ Type
     procedure ComposeDocument(name : string; elem : TDocument);
     procedure ComposeMessageResponse(name : string; elem : TMessageResponse);
     procedure ComposeMessage(name : string; elem : TMessage);
+    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposeAgent(name : string; elem : TAgent);
     procedure ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
     procedure ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
     procedure ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
     procedure ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
     procedure ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
     procedure ComposeMessageConformance(name : string; elem : TMessageConformance);
-    procedure ComposeAgent(name : string; elem : TAgent);
-    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
-    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
+    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure ComposeOrganization(name : string; elem : TOrganization);
     procedure ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
     procedure ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
     procedure ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
@@ -150,24 +158,24 @@ Type
     procedure ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
     procedure ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
     procedure ComposePrescription(name : string; elem : TPrescription);
+    procedure ComposeProfileAuthor(name : string; elem : TProfileAuthor);
+    procedure ComposeProfileEndorser(name : string; elem : TProfileEndorser);
+    procedure ComposeProfileBinding(name : string; elem : TProfileBinding);
+    procedure ComposeProfile(name : string; elem : TProfile);
     procedure ComposePatient(name : string; elem : TPatient);
-    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
-    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
-    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
-    procedure ComposeOrganization(name : string; elem : TOrganization);
-    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
+    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure ComposePerson(name : string; elem : TPerson);
     procedure ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
     procedure ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
     procedure ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
     procedure ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
     procedure ComposeLabReport(name : string; elem : TLabReport);
-    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
-    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
-    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-    procedure ComposePerson(name : string; elem : TPerson);
+    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
     procedure ComposeResource(resource : TFHIRResource); override;
   end;
 
@@ -176,7 +184,7 @@ Type
     function ParseExtension : TExtension;
     function ParseConstraintElement : TConstraintElement;
     function ParseConstraintElementMapping : TConstraintElementMapping;
-    function ParseConstraintElementAggregation : TConstraintElementAggregation;
+    function ParseConstraintElementResource : TConstraintElementResource;
     function ParseConstraintElementValue : TConstraintElementValue;
     function ParseConstraint : TConstraint;
     function ParseNarrativeImage : TNarrativeImage;
@@ -215,15 +223,19 @@ Type
     function ParseDocument : TDocument;
     function ParseMessageResponse : TMessageResponse;
     function ParseMessage : TMessage;
+    function ParseAnimalRelatedEntity : TAnimalRelatedEntity;
+    function ParseAnimal : TAnimal;
+    function ParseAgent : TAgent;
     function ParseMessageConformancePublisher : TMessageConformancePublisher;
     function ParseMessageConformanceSoftware : TMessageConformanceSoftware;
     function ParseMessageConformanceEvent : TMessageConformanceEvent;
     function ParseMessageConformanceEventRequest : TMessageConformanceEventRequest;
     function ParseMessageConformanceEventResponse : TMessageConformanceEventResponse;
     function ParseMessageConformance : TMessageConformance;
-    function ParseAgent : TAgent;
-    function ParseAnimalRelatedEntity : TAnimalRelatedEntity;
-    function ParseAnimal : TAnimal;
+    function ParseOrganizationName : TOrganizationName;
+    function ParseOrganizationAccreditation : TOrganizationAccreditation;
+    function ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+    function ParseOrganization : TOrganization;
     function ParsePrescriptionDispense : TPrescriptionDispense;
     function ParsePrescriptionMedicine : TPrescriptionMedicine;
     function ParsePrescriptionMedicineActiveIngredient : TPrescriptionMedicineActiveIngredient;
@@ -231,24 +243,24 @@ Type
     function ParsePrescriptionAdministrationRequest : TPrescriptionAdministrationRequest;
     function ParsePrescriptionAdministrationRequestDosageInstruction : TPrescriptionAdministrationRequestDosageInstruction;
     function ParsePrescription : TPrescription;
+    function ParseProfileAuthor : TProfileAuthor;
+    function ParseProfileEndorser : TProfileEndorser;
+    function ParseProfileBinding : TProfileBinding;
+    function ParseProfile : TProfile;
     function ParsePatient : TPatient;
-    function ParseOrganizationName : TOrganizationName;
-    function ParseOrganizationAccreditation : TOrganizationAccreditation;
-    function ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
-    function ParseOrganization : TOrganization;
-    function ParseDocumentConformancePublisher : TDocumentConformancePublisher;
-    function ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
-    function ParseDocumentConformanceDocument : TDocumentConformanceDocument;
-    function ParseDocumentConformance : TDocumentConformance;
+    function ParsePersonQualification : TPersonQualification;
+    function ParsePersonLanguage : TPersonLanguage;
+    function ParsePersonRelatedPerson : TPersonRelatedPerson;
+    function ParsePerson : TPerson;
     function ParseLabReportRequestDetail : TLabReportRequestDetail;
     function ParseLabReportResultGroup : TLabReportResultGroup;
     function ParseLabReportResultGroupResult : TLabReportResultGroupResult;
     function ParseLabReportResultGroupResultReferenceRange : TLabReportResultGroupResultReferenceRange;
     function ParseLabReport : TLabReport;
-    function ParsePersonQualification : TPersonQualification;
-    function ParsePersonLanguage : TPersonLanguage;
-    function ParsePersonRelatedPerson : TPersonRelatedPerson;
-    function ParsePerson : TPerson;
+    function ParseDocumentConformancePublisher : TDocumentConformancePublisher;
+    function ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
+    function ParseDocumentConformanceDocument : TDocumentConformanceDocument;
+    function ParseDocumentConformance : TDocumentConformance;
     function ParseResource : TFHIRResource; override;
   end;
 
@@ -257,7 +269,7 @@ Type
     procedure ComposeExtension(name : string; elem : TExtension);
     procedure ComposeConstraintElement(name : string; elem : TConstraintElement);
     procedure ComposeConstraintElementMapping(name : string; elem : TConstraintElementMapping);
-    procedure ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+    procedure ComposeConstraintElementResource(name : string; elem : TConstraintElementResource);
     procedure ComposeConstraintElementValue(name : string; elem : TConstraintElementValue);
     procedure ComposeConstraint(name : string; elem : TConstraint);
     procedure ComposeNarrativeImage(name : string; elem : TNarrativeImage);
@@ -296,15 +308,19 @@ Type
     procedure ComposeDocument(name : string; elem : TDocument);
     procedure ComposeMessageResponse(name : string; elem : TMessageResponse);
     procedure ComposeMessage(name : string; elem : TMessage);
+    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposeAgent(name : string; elem : TAgent);
     procedure ComposeMessageConformancePublisher(name : string; elem : TMessageConformancePublisher);
     procedure ComposeMessageConformanceSoftware(name : string; elem : TMessageConformanceSoftware);
     procedure ComposeMessageConformanceEvent(name : string; elem : TMessageConformanceEvent);
     procedure ComposeMessageConformanceEventRequest(name : string; elem : TMessageConformanceEventRequest);
     procedure ComposeMessageConformanceEventResponse(name : string; elem : TMessageConformanceEventResponse);
     procedure ComposeMessageConformance(name : string; elem : TMessageConformance);
-    procedure ComposeAgent(name : string; elem : TAgent);
-    procedure ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
-    procedure ComposeAnimal(name : string; elem : TAnimal);
+    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
+    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+    procedure ComposeOrganization(name : string; elem : TOrganization);
     procedure ComposePrescriptionDispense(name : string; elem : TPrescriptionDispense);
     procedure ComposePrescriptionMedicine(name : string; elem : TPrescriptionMedicine);
     procedure ComposePrescriptionMedicineActiveIngredient(name : string; elem : TPrescriptionMedicineActiveIngredient);
@@ -312,24 +328,24 @@ Type
     procedure ComposePrescriptionAdministrationRequest(name : string; elem : TPrescriptionAdministrationRequest);
     procedure ComposePrescriptionAdministrationRequestDosageInstruction(name : string; elem : TPrescriptionAdministrationRequestDosageInstruction);
     procedure ComposePrescription(name : string; elem : TPrescription);
+    procedure ComposeProfileAuthor(name : string; elem : TProfileAuthor);
+    procedure ComposeProfileEndorser(name : string; elem : TProfileEndorser);
+    procedure ComposeProfileBinding(name : string; elem : TProfileBinding);
+    procedure ComposeProfile(name : string; elem : TProfile);
     procedure ComposePatient(name : string; elem : TPatient);
-    procedure ComposeOrganizationName(name : string; elem : TOrganizationName);
-    procedure ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
-    procedure ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
-    procedure ComposeOrganization(name : string; elem : TOrganization);
-    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
+    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
+    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+    procedure ComposePerson(name : string; elem : TPerson);
     procedure ComposeLabReportRequestDetail(name : string; elem : TLabReportRequestDetail);
     procedure ComposeLabReportResultGroup(name : string; elem : TLabReportResultGroup);
     procedure ComposeLabReportResultGroupResult(name : string; elem : TLabReportResultGroupResult);
     procedure ComposeLabReportResultGroupResultReferenceRange(name : string; elem : TLabReportResultGroupResultReferenceRange);
     procedure ComposeLabReport(name : string; elem : TLabReport);
-    procedure ComposePersonQualification(name : string; elem : TPersonQualification);
-    procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
-    procedure ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-    procedure ComposePerson(name : string; elem : TPerson);
+    procedure ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
+    procedure ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+    procedure ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+    procedure ComposeDocumentConformance(name : string; elem : TDocumentConformance);
     procedure ComposeResource(resource : TFHIRResource); override;
   end;
 
@@ -708,8 +724,8 @@ begin
         result.definition := child.text
       else if (child.nodeName = 'mapping') then
         result.Mapping.Add(ParseConstraintElementMapping(child))
-      else if (child.nodeName = 'aggregation') then
-        result.aggregation := ParseConstraintElementAggregation(child)
+      else if (child.nodeName = 'resource') then
+        result.resource := ParseConstraintElementResource(child)
       else if (child.nodeName = 'valueSet') then
         result.valueSet := child.text
       else if (child.nodeName = 'value') then
@@ -746,7 +762,7 @@ begin
   Text('definition',elem.definition);
   for i := 0 to elem.Mapping.Count - 1 do
     ComposeConstraintElementMapping('mapping', elem.Mapping[i]);
-  ComposeConstraintElementAggregation('aggregation', elem.aggregation);
+  ComposeConstraintElementResource('resource', elem.resource);
   Text('valueSet',elem.valueSet);
   for i := 0 to elem.Value.Count - 1 do
     ComposeConstraintElementValue('value', elem.Value[i]);
@@ -791,8 +807,8 @@ begin
           result.Mapping.Add(ParseConstraintElementMapping);
         FJson.Next;
       end
-      else if (FJson.ItemName = 'aggregation') then
-        result.aggregation := ParseConstraintElementAggregation
+      else if (FJson.ItemName = 'resource') then
+        result.resource := ParseConstraintElementResource
       else if (FJson.ItemName = 'valueSet') then
         result.valueSet := FJson.itemValue
       else if (FJson.ItemName = 'values') then
@@ -839,7 +855,7 @@ begin
       ComposeConstraintElementMapping('mapping',elem.Mapping[i]);
     FJson.FinishObject;
   end;
-  ComposeConstraintElementAggregation('aggregation', elem.aggregation);
+  ComposeConstraintElementResource('resource', elem.resource);
   Prop('valueSet',elem.valueSet);
   if elem.Value.Count > 0 then
   begin
@@ -920,11 +936,11 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseConstraintElementAggregation(element : IXmlDomElement) : TConstraintElementAggregation;
+function TFHIRXmlParser.ParseConstraintElementResource(element : IXmlDomElement) : TConstraintElementResource;
 var
   child : IXMLDOMElement;
 begin
-  result := TConstraintElementAggregation.create;
+  result := TConstraintElementResource.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
@@ -932,8 +948,8 @@ begin
     begin
       if (child.nodeName = 'aggregated') then
         result.aggregated := StringToBoolean(child.text)
-      else if (child.nodeName = 'name') then
-        result.name := child.text
+      else if (child.nodeName = 'profile') then
+        result.profile := child.text
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -945,20 +961,20 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+procedure TFHIRXmlComposer.ComposeConstraintElementResource(name : string; elem : TConstraintElementResource);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('aggregated',BooleanToString(elem.aggregated));
-  Text('name',elem.name);
+  Text('profile',elem.profile);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseConstraintElementAggregation : TConstraintElementAggregation;
+function TFHIRJsonParser.ParseConstraintElementResource : TConstraintElementResource;
 begin
-  result := TConstraintElementAggregation.create;
+  result := TConstraintElementResource.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
@@ -966,8 +982,8 @@ begin
         result.xmlId := FJson.itemValue
       else if (FJson.ItemName = 'aggregated') then
         result.aggregated := StringToBoolean(FJson.itemValue)
-      else if (FJson.ItemName = 'name') then
-        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'profile') then
+        result.profile := FJson.itemValue
       else
          UnknownContent;
     end;
@@ -978,14 +994,14 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeConstraintElementAggregation(name : string; elem : TConstraintElementAggregation);
+procedure TFHIRJsonComposer.ComposeConstraintElementResource(name : string; elem : TConstraintElementResource);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('aggregated',BooleanToString(elem.aggregated));
-  Prop('name',elem.name);
+  Prop('profile',elem.profile);
   FJson.finishObject;
 end;
 
@@ -1296,6 +1312,8 @@ begin
     begin
       if (child.nodeName = 'type') then
         result.type_ := child.text
+      else if (child.nodeName = 'profile') then
+        result.profile := child.text
       else if (child.nodeName = 'name') then
         result.name := child.text
       else if (child.nodeName = 'purpose') then
@@ -1322,6 +1340,7 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   Text('type',elem.type_);
+  Text('profile',elem.profile);
   Text('name',elem.name);
   Text('purpose',elem.purpose);
   for i := 0 to elem.Element.Count - 1 do
@@ -1339,6 +1358,8 @@ begin
         result.xmlId := FJson.itemValue
       else if (FJson.ItemName = 'type') then
         result.type_ := FJson.itemValue
+      else if (FJson.ItemName = 'profile') then
+        result.profile := FJson.itemValue
       else if (FJson.ItemName = 'name') then
         result.name := FJson.itemValue
       else if (FJson.ItemName = 'purpose') then
@@ -1370,6 +1391,7 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   Prop('type',elem.type_);
+  Prop('profile',elem.profile);
   Prop('name',elem.name);
   Prop('purpose',elem.purpose);
   if elem.Element.Count > 0 then
@@ -3707,6 +3729,8 @@ begin
         result.software := ParseConformanceSoftware(child)
       else if (child.nodeName = 'mode') then
         result.mode := TRestfulConformanceMode(ParseEnum(CODES_TRestfulConformanceMode, child))
+      else if (child.nodeName = 'profile') then
+        result.Profile.Add(child.text)
       else if (child.nodeName = 'resource') then
         result.resource := ParseConstraint(child)
       else if (child.nodeName = 'operation') then
@@ -3723,6 +3747,8 @@ begin
 end;
 
 procedure TFHIRXmlComposer.ComposeConformance(name : string; elem : TConformance);
+var
+  i : integer;
 begin
   if (elem = nil) then
     exit;
@@ -3733,6 +3759,8 @@ begin
   ComposeConformancePublisher('publisher', elem.publisher);
   ComposeConformanceSoftware('software', elem.software);
   Text('mode',CODES_TRestfulConformanceMode[elem.mode]);
+  for i := 0 to elem.Profile.Count - 1 do
+    Text('profile', elem.Profile[i]);
   ComposeConstraint('resource', elem.resource);
   ComposeConformanceOperation('operation', elem.operation);
   ComposeNarrative('text', elem.text);
@@ -3755,6 +3783,14 @@ begin
         result.software := ParseConformanceSoftware
       else if (FJson.ItemName = 'mode') then
         result.mode := TRestfulConformanceMode(ParseEnum(CODES_TRestfulConformanceMode))
+      else if (FJson.ItemName = 'profiles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Profile.Add(FJson.itemValue);
+        FJson.Next;
+      end
       else if (FJson.ItemName = 'resource') then
         result.resource := ParseConstraint
       else if (FJson.ItemName = 'operation') then
@@ -3770,6 +3806,8 @@ begin
 end;
 
 procedure TFHIRJsonComposer.ComposeConformance(name : string; elem : TConformance);
+var
+  i : integer;
 begin
   if (elem = nil) then
     exit;
@@ -3780,6 +3818,13 @@ begin
   ComposeConformancePublisher('publisher', elem.publisher);
   ComposeConformanceSoftware('software', elem.software);
   Prop('mode',CODES_TRestfulConformanceMode[elem.mode]);
+  if elem.Profile.Count > 0 then
+  begin
+    FJson.valueObject('profiles');
+    for i := 0 to elem.Profile.Count - 1 do
+      Prop('profile',elem.Profile[i]);
+    FJson.FinishObject;
+  end;
   ComposeConstraint('resource', elem.resource);
   ComposeConformanceOperation('operation', elem.operation);
   ComposeNarrative('text', elem.text);
@@ -4538,6 +4583,436 @@ begin
   FJson.finishObject;
 end;
 
+function TFHIRXmlParser.ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseHumanId(child)
+      else if (child.nodeName = 'role') then
+        result.role := ParseCodeableConcept(child)
+      else if (child.nodeName = 'name') then
+        result.name := ParseHumanName(child)
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAnimalRelatedEntity : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseHumanId
+      else if (FJson.ItemName = 'role') then
+        result.role := ParseCodeableConcept
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseHumanName
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      ComposeAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      ComposeContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAnimal(element : IXmlDomElement) : TAnimal;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAnimal.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'name') then
+        result.Name.Add(ParseHumanName(child))
+      else if (child.nodeName = 'dob') then
+        result.dob := child.text
+      else if (child.nodeName = 'species') then
+        result.species := ParseCodeableConcept(child)
+      else if (child.nodeName = 'strain') then
+        result.strain := ParseCodeableConcept(child)
+      else if (child.nodeName = 'gender') then
+        result.gender := ParseCodeableConcept(child)
+      else if (child.nodeName = 'relatedEntity') then
+        result.RelatedEntity.Add(ParseAnimalRelatedEntity(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeAnimal(name : string; elem : TAnimal);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Name.Count - 1 do
+    ComposeHumanName('name', elem.Name[i]);
+  Text('dob',elem.dob);
+  ComposeCodeableConcept('species', elem.species);
+  ComposeCodeableConcept('strain', elem.strain);
+  ComposeCodeableConcept('gender', elem.gender);
+  for i := 0 to elem.RelatedEntity.Count - 1 do
+    ComposeAnimalRelatedEntity('relatedEntity', elem.RelatedEntity[i]);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAnimal : TAnimal;
+begin
+  result := TAnimal.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'names') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Name.Add(ParseHumanName);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'dob') then
+        result.dob := FJson.itemValue
+      else if (FJson.ItemName = 'species') then
+        result.species := ParseCodeableConcept
+      else if (FJson.ItemName = 'strain') then
+        result.strain := ParseCodeableConcept
+      else if (FJson.ItemName = 'gender') then
+        result.gender := ParseCodeableConcept
+      else if (FJson.ItemName = 'relatedEntities') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedEntity.Add(ParseAnimalRelatedEntity);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeAnimal(name : string; elem : TAnimal);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      ComposeHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Name.Count > 0 then
+  begin
+    FJson.valueObject('names');
+    for i := 0 to elem.Name.Count - 1 do
+      ComposeHumanName('name',elem.Name[i]);
+    FJson.FinishObject;
+  end;
+  Prop('dob',elem.dob);
+  ComposeCodeableConcept('species', elem.species);
+  ComposeCodeableConcept('strain', elem.strain);
+  ComposeCodeableConcept('gender', elem.gender);
+  if elem.RelatedEntity.Count > 0 then
+  begin
+    FJson.valueObject('relatedEntities');
+    for i := 0 to elem.RelatedEntity.Count - 1 do
+      ComposeAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+    FJson.FinishObject;
+  end;
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseAgent(element : IXmlDomElement) : TAgent;
+var
+  child : IXMLDOMElement;
+begin
+  result := TAgent.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}(child)
+      else if (child.nodeName = 'organization') then
+        result.organization := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'role') then
+        result.Role.Add(ParseCodeableConcept(child))
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_date(child)
+      else if (child.nodeName = 'identifier') then
+        result.Identifier.Add(ParseHumanId(child))
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeAgent(name : string; elem : TAgent);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
+  for i := 0 to elem.Role.Count - 1 do
+    ComposeCodeableConcept('role', elem.Role[i]);
+  ComposeInterval_date('period', elem.period);
+  for i := 0 to elem.Identifier.Count - 1 do
+    ComposeHumanId('identifier', elem.Identifier[i]);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseAgent : TAgent;
+begin
+  result := TAgent.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'person') then
+        result.person := ParseFHIRResourceReference{TPerson}
+      else if (FJson.ItemName = 'organization') then
+        result.organization := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'roles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Role.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_date
+      else if (FJson.ItemName = 'identifiers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Identifier.Add(ParseHumanId);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'addresses') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeAgent(name : string; elem : TAgent);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  ComposeFHIRResourceReference{TPerson}('person', elem.person);
+  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
+  if elem.Role.Count > 0 then
+  begin
+    FJson.valueObject('roles');
+    for i := 0 to elem.Role.Count - 1 do
+      ComposeCodeableConcept('role',elem.Role[i]);
+    FJson.FinishObject;
+  end;
+  ComposeInterval_date('period', elem.period);
+  if elem.Identifier.Count > 0 then
+  begin
+    FJson.valueObject('identifiers');
+    for i := 0 to elem.Identifier.Count - 1 do
+      ComposeHumanId('identifier',elem.Identifier[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Address.Count > 0 then
+  begin
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      ComposeAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      ComposeContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
 function TFHIRXmlParser.ParseMessageConformancePublisher(element : IXmlDomElement) : TMessageConformancePublisher;
 var
   child : IXMLDOMElement;
@@ -4985,6 +5460,8 @@ begin
         result.publisher := ParseMessageConformancePublisher(child)
       else if (child.nodeName = 'software') then
         result.software := ParseMessageConformanceSoftware(child)
+      else if (child.nodeName = 'profile') then
+        result.Profile.Add(child.text)
       else if (child.nodeName = 'event') then
         result.Event.Add(ParseMessageConformanceEvent(child))
       else
@@ -5010,6 +5487,8 @@ begin
   Text('date',elem.date);
   ComposeMessageConformancePublisher('publisher', elem.publisher);
   ComposeMessageConformanceSoftware('software', elem.software);
+  for i := 0 to elem.Profile.Count - 1 do
+    Text('profile', elem.Profile[i]);
   for i := 0 to elem.Event.Count - 1 do
     ComposeMessageConformanceEvent('event', elem.Event[i]);
   ComposeNarrative('text', elem.text);
@@ -5030,6 +5509,14 @@ begin
         result.publisher := ParseMessageConformancePublisher
       else if (FJson.ItemName = 'software') then
         result.software := ParseMessageConformanceSoftware
+      else if (FJson.ItemName = 'profiles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Profile.Add(FJson.itemValue);
+        FJson.Next;
+      end
       else if (FJson.ItemName = 'events') then
       begin
         FJson.checkState(jpitArray);
@@ -5060,6 +5547,13 @@ begin
   Prop('date',elem.date);
   ComposeMessageConformancePublisher('publisher', elem.publisher);
   ComposeMessageConformanceSoftware('software', elem.software);
+  if elem.Profile.Count > 0 then
+  begin
+    FJson.valueObject('profiles');
+    for i := 0 to elem.Profile.Count - 1 do
+      Prop('profile',elem.Profile[i]);
+    FJson.FinishObject;
+  end;
   if elem.Event.Count > 0 then
   begin
     FJson.valueObject('events');
@@ -5071,34 +5565,20 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseAgent(element : IXmlDomElement) : TAgent;
+function TFHIRXmlParser.ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
 var
   child : IXMLDOMElement;
 begin
-  result := TAgent.create;
+  result := TOrganizationName.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'id') then
-        result.id := child.text
-      else if (child.nodeName = 'text') then
-        result.text := ParseNarrative(child)
-      else if (child.nodeName = 'person') then
-        result.person := ParseFHIRResourceReference{TPerson}(child)
-      else if (child.nodeName = 'organization') then
-        result.organization := ParseFHIRResourceReference{TOrganization}(child)
-      else if (child.nodeName = 'role') then
-        result.Role.Add(ParseCodeableConcept(child))
+      if (child.nodeName = 'value') then
+        result.value := child.text
       else if (child.nodeName = 'period') then
         result.period := ParseInterval_date(child)
-      else if (child.nodeName = 'identifier') then
-        result.Identifier.Add(ParseHumanId(child))
-      else if (child.nodeName = 'address') then
-        result.Address.Add(ParseAddress(child))
-      else if (child.nodeName = 'contact') then
-        result.Contact.Add(ParseContact(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5110,76 +5590,29 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeAgent(name : string; elem : TAgent);
-var
-  i : integer;
+procedure TFHIRXmlComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  Text('id', elem.id);
-  ComposeFHIRResourceReference{TPerson}('person', elem.person);
-  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
-  for i := 0 to elem.Role.Count - 1 do
-    ComposeCodeableConcept('role', elem.Role[i]);
+  Text('value',elem.value);
   ComposeInterval_date('period', elem.period);
-  for i := 0 to elem.Identifier.Count - 1 do
-    ComposeHumanId('identifier', elem.Identifier[i]);
-  for i := 0 to elem.Address.Count - 1 do
-    ComposeAddress('address', elem.Address[i]);
-  for i := 0 to elem.Contact.Count - 1 do
-    ComposeContact('contact', elem.Contact[i]);
-  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseAgent : TAgent;
+function TFHIRJsonParser.ParseOrganizationName : TOrganizationName;
 begin
-  result := TAgent.create;
+  result := TOrganizationName.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
       if (FJson.ItemName = 'xmlId') then
         result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'person') then
-        result.person := ParseFHIRResourceReference{TPerson}
-      else if (FJson.ItemName = 'organization') then
-        result.organization := ParseFHIRResourceReference{TOrganization}
-      else if (FJson.ItemName = 'roles') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Role.Add(ParseCodeableConcept);
-        FJson.Next;
-      end
+      else if (FJson.ItemName = 'value') then
+        result.value := FJson.itemValue
       else if (FJson.ItemName = 'period') then
         result.period := ParseInterval_date
-      else if (FJson.ItemName = 'identifiers') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Identifier.Add(ParseHumanId);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'addresses') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Address.Add(ParseAddress);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'contacts') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Contact.Add(ParseContact);
-        FJson.Next;
-      end
       else
          UnknownContent;
     end;
@@ -5190,55 +5623,103 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeAgent(name : string; elem : TAgent);
-var
-  i : integer;
+procedure TFHIRJsonComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
 begin
   if (elem = nil) then
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  Prop('id', elem.id);
-  ComposeFHIRResourceReference{TPerson}('person', elem.person);
-  ComposeFHIRResourceReference{TOrganization}('organization', elem.organization);
-  if elem.Role.Count > 0 then
-  begin
-    FJson.valueObject('roles');
-    for i := 0 to elem.Role.Count - 1 do
-      ComposeCodeableConcept('role',elem.Role[i]);
-    FJson.FinishObject;
-  end;
+  Prop('value',elem.value);
   ComposeInterval_date('period', elem.period);
-  if elem.Identifier.Count > 0 then
-  begin
-    FJson.valueObject('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FJson.FinishObject;
-  end;
-  if elem.Address.Count > 0 then
-  begin
-    FJson.valueObject('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FJson.FinishObject;
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FJson.valueObject('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FJson.FinishObject;
-  end;
-  ComposeNarrative('text', elem.text);
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseAnimalRelatedEntity(element : IXmlDomElement) : TAnimalRelatedEntity;
+function TFHIRXmlParser.ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
 var
   child : IXMLDOMElement;
 begin
-  result := TAnimalRelatedEntity.create;
+  result := TOrganizationAccreditation.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseIdentifier(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}(child)
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_date(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_date('period', elem.period);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseOrganizationAccreditation : TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseIdentifier
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'institution') then
+        result.institution := ParseFHIRResourceReference{TOrganization}
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_date
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  ComposeIdentifier('id', elem.id);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
+  ComposeInterval_date('period', elem.period);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
+var
+  child : IXMLDOMElement;
+begin
+  result := TOrganizationRelatedOrganization.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
@@ -5246,14 +5727,16 @@ begin
     begin
       if (child.nodeName = 'id') then
         result.id := ParseHumanId(child)
-      else if (child.nodeName = 'role') then
-        result.role := ParseCodeableConcept(child)
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
       else if (child.nodeName = 'name') then
-        result.name := ParseHumanName(child)
+        result.name := child.text
       else if (child.nodeName = 'address') then
         result.Address.Add(ParseAddress(child))
       else if (child.nodeName = 'contact') then
         result.Contact.Add(ParseContact(child))
+      else if (child.nodeName = 'period') then
+        result.period := ParseInterval_date(child)
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5265,7 +5748,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+procedure TFHIRXmlComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
 var
   i : integer;
 begin
@@ -5274,18 +5757,19 @@ begin
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
   ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('role', elem.role);
-  ComposeHumanName('name', elem.name);
+  ComposeCodeableConcept('code', elem.code);
+  Text('name',elem.name);
   for i := 0 to elem.Address.Count - 1 do
     ComposeAddress('address', elem.Address[i]);
   for i := 0 to elem.Contact.Count - 1 do
     ComposeContact('contact', elem.Contact[i]);
+  ComposeInterval_date('period', elem.period);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseAnimalRelatedEntity : TAnimalRelatedEntity;
+function TFHIRJsonParser.ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
 begin
-  result := TAnimalRelatedEntity.create;
+  result := TOrganizationRelatedOrganization.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
@@ -5293,10 +5777,10 @@ begin
         result.xmlId := FJson.itemValue
       else if (FJson.ItemName = 'id') then
         result.id := ParseHumanId
-      else if (FJson.ItemName = 'role') then
-        result.role := ParseCodeableConcept
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
       else if (FJson.ItemName = 'name') then
-        result.name := ParseHumanName
+        result.name := FJson.itemValue
       else if (FJson.ItemName = 'addresses') then
       begin
         FJson.checkState(jpitArray);
@@ -5313,6 +5797,8 @@ begin
           result.Contact.Add(ParseContact);
         FJson.Next;
       end
+      else if (FJson.ItemName = 'period') then
+        result.period := ParseInterval_date
       else
          UnknownContent;
     end;
@@ -5323,7 +5809,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeAnimalRelatedEntity(name : string; elem : TAnimalRelatedEntity);
+procedure TFHIRJsonComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
 var
   i : integer;
 begin
@@ -5332,8 +5818,8 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('role', elem.role);
-  ComposeHumanName('name', elem.name);
+  ComposeCodeableConcept('code', elem.code);
+  Prop('name',elem.name);
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
@@ -5348,14 +5834,15 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
+  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseAnimal(element : IXmlDomElement) : TAnimal;
+function TFHIRXmlParser.ParseOrganization(element : IXmlDomElement) : TOrganization;
 var
   child : IXMLDOMElement;
 begin
-  result := TAnimal.create;
+  result := TOrganization.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
@@ -5368,17 +5855,19 @@ begin
       else if (child.nodeName = 'identifier') then
         result.Identifier.Add(ParseHumanId(child))
       else if (child.nodeName = 'name') then
-        result.Name.Add(ParseHumanName(child))
-      else if (child.nodeName = 'dob') then
-        result.dob := child.text
-      else if (child.nodeName = 'species') then
-        result.species := ParseCodeableConcept(child)
-      else if (child.nodeName = 'strain') then
-        result.strain := ParseCodeableConcept(child)
-      else if (child.nodeName = 'gender') then
-        result.gender := ParseCodeableConcept(child)
-      else if (child.nodeName = 'relatedEntity') then
-        result.RelatedEntity.Add(ParseAnimalRelatedEntity(child))
+        result.Name.Add(ParseOrganizationName(child))
+      else if (child.nodeName = 'address') then
+        result.Address.Add(ParseAddress(child))
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
+      else if (child.nodeName = 'code') then
+        result.code := ParseCodeableConcept(child)
+      else if (child.nodeName = 'industryCode') then
+        result.industryCode := ParseCodeableConcept(child)
+      else if (child.nodeName = 'accreditation') then
+        result.Accreditation.Add(ParseOrganizationAccreditation(child))
+      else if (child.nodeName = 'relatedOrganization') then
+        result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -5390,7 +5879,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeAnimal(name : string; elem : TAnimal);
+procedure TFHIRXmlComposer.ComposeOrganization(name : string; elem : TOrganization);
 var
   i : integer;
 begin
@@ -5402,20 +5891,24 @@ begin
   for i := 0 to elem.Identifier.Count - 1 do
     ComposeHumanId('identifier', elem.Identifier[i]);
   for i := 0 to elem.Name.Count - 1 do
-    ComposeHumanName('name', elem.Name[i]);
-  Text('dob',elem.dob);
-  ComposeCodeableConcept('species', elem.species);
-  ComposeCodeableConcept('strain', elem.strain);
-  ComposeCodeableConcept('gender', elem.gender);
-  for i := 0 to elem.RelatedEntity.Count - 1 do
-    ComposeAnimalRelatedEntity('relatedEntity', elem.RelatedEntity[i]);
+    ComposeOrganizationName('name', elem.Name[i]);
+  for i := 0 to elem.Address.Count - 1 do
+    ComposeAddress('address', elem.Address[i]);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
+  ComposeCodeableConcept('code', elem.code);
+  ComposeCodeableConcept('industryCode', elem.industryCode);
+  for i := 0 to elem.Accreditation.Count - 1 do
+    ComposeOrganizationAccreditation('accreditation', elem.Accreditation[i]);
+  for i := 0 to elem.RelatedOrganization.Count - 1 do
+    ComposeOrganizationRelatedOrganization('relatedOrganization', elem.RelatedOrganization[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseAnimal : TAnimal;
+function TFHIRJsonParser.ParseOrganization : TOrganization;
 begin
-  result := TAnimal.create;
+  result := TOrganization.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
@@ -5434,23 +5927,43 @@ begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.Name.Add(ParseHumanName);
+          result.Name.Add(ParseOrganizationName);
         FJson.Next;
       end
-      else if (FJson.ItemName = 'dob') then
-        result.dob := FJson.itemValue
-      else if (FJson.ItemName = 'species') then
-        result.species := ParseCodeableConcept
-      else if (FJson.ItemName = 'strain') then
-        result.strain := ParseCodeableConcept
-      else if (FJson.ItemName = 'gender') then
-        result.gender := ParseCodeableConcept
-      else if (FJson.ItemName = 'relatedEntities') then
+      else if (FJson.ItemName = 'addresses') then
       begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.RelatedEntity.Add(ParseAnimalRelatedEntity);
+          result.Address.Add(ParseAddress);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'code') then
+        result.code := ParseCodeableConcept
+      else if (FJson.ItemName = 'industryCode') then
+        result.industryCode := ParseCodeableConcept
+      else if (FJson.ItemName = 'accreditations') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Accreditation.Add(ParseOrganizationAccreditation);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'relatedOrganizations') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization);
         FJson.Next;
       end
       else
@@ -5463,7 +5976,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeAnimal(name : string; elem : TAnimal);
+procedure TFHIRJsonComposer.ComposeOrganization(name : string; elem : TOrganization);
 var
   i : integer;
 begin
@@ -5483,18 +5996,37 @@ begin
   begin
     FJson.valueObject('names');
     for i := 0 to elem.Name.Count - 1 do
-      ComposeHumanName('name',elem.Name[i]);
+      ComposeOrganizationName('name',elem.Name[i]);
     FJson.FinishObject;
   end;
-  Prop('dob',elem.dob);
-  ComposeCodeableConcept('species', elem.species);
-  ComposeCodeableConcept('strain', elem.strain);
-  ComposeCodeableConcept('gender', elem.gender);
-  if elem.RelatedEntity.Count > 0 then
+  if elem.Address.Count > 0 then
   begin
-    FJson.valueObject('relatedEntities');
-    for i := 0 to elem.RelatedEntity.Count - 1 do
-      ComposeAnimalRelatedEntity('relatedEntity',elem.RelatedEntity[i]);
+    FJson.valueObject('addresses');
+    for i := 0 to elem.Address.Count - 1 do
+      ComposeAddress('address',elem.Address[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Contact.Count > 0 then
+  begin
+    FJson.valueObject('contacts');
+    for i := 0 to elem.Contact.Count - 1 do
+      ComposeContact('contact',elem.Contact[i]);
+    FJson.FinishObject;
+  end;
+  ComposeCodeableConcept('code', elem.code);
+  ComposeCodeableConcept('industryCode', elem.industryCode);
+  if elem.Accreditation.Count > 0 then
+  begin
+    FJson.valueObject('accreditations');
+    for i := 0 to elem.Accreditation.Count - 1 do
+      ComposeOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+    FJson.FinishObject;
+  end;
+  if elem.RelatedOrganization.Count > 0 then
+  begin
+    FJson.valueObject('relatedOrganizations');
+    for i := 0 to elem.RelatedOrganization.Count - 1 do
+      ComposeOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
     FJson.FinishObject;
   end;
   ComposeNarrative('text', elem.text);
@@ -6229,6 +6761,515 @@ begin
   FJson.finishObject;
 end;
 
+function TFHIRXmlParser.ParseProfileAuthor(element : IXmlDomElement) : TProfileAuthor;
+var
+  child : IXMLDOMElement;
+begin
+  result := TProfileAuthor.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'reference') then
+        result.Reference.Add(child.text)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeProfileAuthor(name : string; elem : TProfileAuthor);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  for i := 0 to elem.Reference.Count - 1 do
+    Text('reference', elem.Reference[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseProfileAuthor : TProfileAuthor;
+begin
+  result := TProfileAuthor.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'references') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Reference.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeProfileAuthor(name : string; elem : TProfileAuthor);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  if elem.Reference.Count > 0 then
+  begin
+    FJson.valueObject('references');
+    for i := 0 to elem.Reference.Count - 1 do
+      Prop('reference',elem.Reference[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseProfileEndorser(element : IXmlDomElement) : TProfileEndorser;
+var
+  child : IXMLDOMElement;
+begin
+  result := TProfileEndorser.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'reference') then
+        result.reference := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeProfileEndorser(name : string; elem : TProfileEndorser);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('reference',elem.reference);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseProfileEndorser : TProfileEndorser;
+begin
+  result := TProfileEndorser.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'reference') then
+        result.reference := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeProfileEndorser(name : string; elem : TProfileEndorser);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('reference',elem.reference);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseProfileBinding(element : IXmlDomElement) : TProfileBinding;
+var
+  child : IXMLDOMElement;
+begin
+  result := TProfileBinding.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'type') then
+        result.type_ := TConceptBindingType(ParseEnum(CODES_TConceptBindingType, child))
+      else if (child.nodeName = 'details') then
+        result.details := child.text
+      else if (child.nodeName = 'reference') then
+        result.reference := child.text
+      else if (child.nodeName = 'code') then
+        result.Code.Add(ParseCoding(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeProfileBinding(name : string; elem : TProfileBinding);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('type',CODES_TConceptBindingType[elem.type_]);
+  Text('details',elem.details);
+  Text('reference',elem.reference);
+  for i := 0 to elem.Code.Count - 1 do
+    ComposeCoding('code', elem.Code[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseProfileBinding : TProfileBinding;
+begin
+  result := TProfileBinding.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'type') then
+        result.type_ := TConceptBindingType(ParseEnum(CODES_TConceptBindingType))
+      else if (FJson.ItemName = 'details') then
+        result.details := FJson.itemValue
+      else if (FJson.ItemName = 'reference') then
+        result.reference := FJson.itemValue
+      else if (FJson.ItemName = 'codes') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Code.Add(ParseCoding);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeProfileBinding(name : string; elem : TProfileBinding);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('type',CODES_TConceptBindingType[elem.type_]);
+  Prop('details',elem.details);
+  Prop('reference',elem.reference);
+  if elem.Code.Count > 0 then
+  begin
+    FJson.valueObject('codes');
+    for i := 0 to elem.Code.Count - 1 do
+      ComposeCoding('code',elem.Code[i]);
+    FJson.FinishObject;
+  end;
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseProfile(element : IXmlDomElement) : TProfile;
+var
+  child : IXMLDOMElement;
+begin
+  result := TProfile.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'author') then
+        result.author := ParseProfileAuthor(child)
+      else if (child.nodeName = 'intention') then
+        result.intention := child.text
+      else if (child.nodeName = 'code') then
+        result.Code.Add(ParseCoding(child))
+      else if (child.nodeName = 'description') then
+        result.description := child.text
+      else if (child.nodeName = 'evidence') then
+        result.Evidence.Add(child.text)
+      else if (child.nodeName = 'comments') then
+        result.comments := child.text
+      else if (child.nodeName = 'status') then
+        result.status := TResourceProfileStatus(ParseEnum(CODES_TResourceProfileStatus, child))
+      else if (child.nodeName = 'date') then
+        result.date := child.text
+      else if (child.nodeName = 'endorser') then
+        result.Endorser.Add(ParseProfileEndorser(child))
+      else if (child.nodeName = 'changes') then
+        result.changes := child.text
+      else if (child.nodeName = 'supercedes') then
+        result.Supercedes.Add(child.text)
+      else if (child.nodeName = 'profile') then
+        result.Profile.Add(child.text)
+      else if (child.nodeName = 'resource') then
+        result.Resource.Add(ParseConstraint(child))
+      else if (child.nodeName = 'binding') then
+        result.Binding.Add(ParseProfileBinding(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeProfile(name : string; elem : TProfile);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('name',elem.name);
+  ComposeProfileAuthor('author', elem.author);
+  Text('intention',elem.intention);
+  for i := 0 to elem.Code.Count - 1 do
+    ComposeCoding('code', elem.Code[i]);
+  Text('description',elem.description);
+  for i := 0 to elem.Evidence.Count - 1 do
+    Text('evidence', elem.Evidence[i]);
+  Text('comments',elem.comments);
+  Text('status',CODES_TResourceProfileStatus[elem.status]);
+  Text('date',elem.date);
+  for i := 0 to elem.Endorser.Count - 1 do
+    ComposeProfileEndorser('endorser', elem.Endorser[i]);
+  Text('changes',elem.changes);
+  for i := 0 to elem.Supercedes.Count - 1 do
+    Text('supercedes', elem.Supercedes[i]);
+  for i := 0 to elem.Profile.Count - 1 do
+    Text('profile', elem.Profile[i]);
+  for i := 0 to elem.Resource.Count - 1 do
+    ComposeConstraint('resource', elem.Resource[i]);
+  for i := 0 to elem.Binding.Count - 1 do
+    ComposeProfileBinding('binding', elem.Binding[i]);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseProfile : TProfile;
+begin
+  result := TProfile.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'author') then
+        result.author := ParseProfileAuthor
+      else if (FJson.ItemName = 'intention') then
+        result.intention := FJson.itemValue
+      else if (FJson.ItemName = 'codes') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Code.Add(ParseCoding);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'description') then
+        result.description := FJson.itemValue
+      else if (FJson.ItemName = 'evidences') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Evidence.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'comments') then
+        result.comments := FJson.itemValue
+      else if (FJson.ItemName = 'status') then
+        result.status := TResourceProfileStatus(ParseEnum(CODES_TResourceProfileStatus))
+      else if (FJson.ItemName = 'date') then
+        result.date := FJson.itemValue
+      else if (FJson.ItemName = 'endorsers') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Endorser.Add(ParseProfileEndorser);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'changes') then
+        result.changes := FJson.itemValue
+      else if (FJson.ItemName = 'supercedes') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Supercedes.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'profiles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Profile.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'resources') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Resource.Add(ParseConstraint);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'bindings') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Binding.Add(ParseProfileBinding);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeProfile(name : string; elem : TProfile);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('name',elem.name);
+  ComposeProfileAuthor('author', elem.author);
+  Prop('intention',elem.intention);
+  if elem.Code.Count > 0 then
+  begin
+    FJson.valueObject('codes');
+    for i := 0 to elem.Code.Count - 1 do
+      ComposeCoding('code',elem.Code[i]);
+    FJson.FinishObject;
+  end;
+  Prop('description',elem.description);
+  if elem.Evidence.Count > 0 then
+  begin
+    FJson.valueObject('evidences');
+    for i := 0 to elem.Evidence.Count - 1 do
+      Prop('evidence',elem.Evidence[i]);
+    FJson.FinishObject;
+  end;
+  Prop('comments',elem.comments);
+  Prop('status',CODES_TResourceProfileStatus[elem.status]);
+  Prop('date',elem.date);
+  if elem.Endorser.Count > 0 then
+  begin
+    FJson.valueObject('endorsers');
+    for i := 0 to elem.Endorser.Count - 1 do
+      ComposeProfileEndorser('endorser',elem.Endorser[i]);
+    FJson.FinishObject;
+  end;
+  Prop('changes',elem.changes);
+  if elem.Supercedes.Count > 0 then
+  begin
+    FJson.valueObject('supercedes');
+    for i := 0 to elem.Supercedes.Count - 1 do
+      Prop('supercedes',elem.Supercedes[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Profile.Count > 0 then
+  begin
+    FJson.valueObject('profiles');
+    for i := 0 to elem.Profile.Count - 1 do
+      Prop('profile',elem.Profile[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Resource.Count > 0 then
+  begin
+    FJson.valueObject('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      ComposeConstraint('resource',elem.Resource[i]);
+    FJson.FinishObject;
+  end;
+  if elem.Binding.Count > 0 then
+  begin
+    FJson.valueObject('bindings');
+    for i := 0 to elem.Binding.Count - 1 do
+      ComposeProfileBinding('binding',elem.Binding[i]);
+    FJson.FinishObject;
+  end;
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
 function TFHIRXmlParser.ParsePatient(element : IXmlDomElement) : TPatient;
 var
   child : IXMLDOMElement;
@@ -6378,80 +7419,11 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseOrganizationName(element : IXmlDomElement) : TOrganizationName;
+function TFHIRXmlParser.ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
 var
   child : IXMLDOMElement;
 begin
-  result := TOrganizationName.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'value') then
-        result.value := child.text
-      else if (child.nodeName = 'period') then
-        result.period := ParseInterval_date(child)
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('value',elem.value);
-  ComposeInterval_date('period', elem.period);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseOrganizationName : TOrganizationName;
-begin
-  result := TOrganizationName.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'value') then
-        result.value := FJson.itemValue
-      else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_date
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeOrganizationName(name : string; elem : TOrganizationName);
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('value',elem.value);
-  ComposeInterval_date('period', elem.period);
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParseOrganizationAccreditation(element : IXmlDomElement) : TOrganizationAccreditation;
-var
-  child : IXMLDOMElement;
-begin
-  result := TOrganizationAccreditation.create;
+  result := TPersonQualification.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
@@ -6476,7 +7448,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+procedure TFHIRXmlComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
 begin
   if (elem = nil) then
     exit;
@@ -6489,9 +7461,9 @@ begin
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseOrganizationAccreditation : TOrganizationAccreditation;
+function TFHIRJsonParser.ParsePersonQualification : TPersonQualification;
 begin
-  result := TOrganizationAccreditation.create;
+  result := TPersonQualification.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
@@ -6515,7 +7487,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeOrganizationAccreditation(name : string; elem : TOrganizationAccreditation);
+procedure TFHIRJsonComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
 begin
   if (elem = nil) then
     exit;
@@ -6528,28 +7500,20 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseOrganizationRelatedOrganization(element : IXmlDomElement) : TOrganizationRelatedOrganization;
+function TFHIRXmlParser.ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
 var
   child : IXMLDOMElement;
 begin
-  result := TOrganizationRelatedOrganization.create;
+  result := TPersonLanguage.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'id') then
-        result.id := ParseHumanId(child)
-      else if (child.nodeName = 'code') then
-        result.code := ParseCodeableConcept(child)
-      else if (child.nodeName = 'name') then
-        result.name := child.text
-      else if (child.nodeName = 'address') then
-        result.Address.Add(ParseAddress(child))
-      else if (child.nodeName = 'contact') then
-        result.Contact.Add(ParseContact(child))
-      else if (child.nodeName = 'period') then
-        result.period := ParseInterval_date(child)
+      if (child.nodeName = 'code') then
+        result.code := child.text
+      else if (child.nodeName = 'use') then
+        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse, child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -6561,57 +7525,29 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
-var
-  i : integer;
+procedure TFHIRXmlComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
 begin
   if (elem = nil) then
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('code', elem.code);
-  Text('name',elem.name);
-  for i := 0 to elem.Address.Count - 1 do
-    ComposeAddress('address', elem.Address[i]);
-  for i := 0 to elem.Contact.Count - 1 do
-    ComposeContact('contact', elem.Contact[i]);
-  ComposeInterval_date('period', elem.period);
+  Text('code',elem.code);
+  Text('use',CODES_TLanguageUse[elem.use]);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+function TFHIRJsonParser.ParsePersonLanguage : TPersonLanguage;
 begin
-  result := TOrganizationRelatedOrganization.create;
+  result := TPersonLanguage.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
       if (FJson.ItemName = 'xmlId') then
         result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'id') then
-        result.id := ParseHumanId
       else if (FJson.ItemName = 'code') then
-        result.code := ParseCodeableConcept
-      else if (FJson.ItemName = 'name') then
-        result.name := FJson.itemValue
-      else if (FJson.ItemName = 'addresses') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Address.Add(ParseAddress);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'contacts') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Contact.Add(ParseContact);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_date
+        result.code := FJson.itemValue
+      else if (FJson.ItemName = 'use') then
+        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse))
       else
          UnknownContent;
     end;
@@ -6622,7 +7558,95 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeOrganizationRelatedOrganization(name : string; elem : TOrganizationRelatedOrganization);
+procedure TFHIRJsonComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('code',elem.code);
+  Prop('use',CODES_TLanguageUse[elem.use]);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
+var
+  child : IXMLDOMElement;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := ParseHumanId(child)
+      else if (child.nodeName = 'role') then
+        result.role := ParseCodeableConcept(child)
+      else if (child.nodeName = 'name') then
+        result.name := ParseHumanName(child)
+      else if (child.nodeName = 'contact') then
+        result.Contact.Add(ParseContact(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  ComposeHumanId('id', elem.id);
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
+  for i := 0 to elem.Contact.Count - 1 do
+    ComposeContact('contact', elem.Contact[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParsePersonRelatedPerson : TPersonRelatedPerson;
+begin
+  result := TPersonRelatedPerson.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'id') then
+        result.id := ParseHumanId
+      else if (FJson.ItemName = 'role') then
+        result.role := ParseCodeableConcept
+      else if (FJson.ItemName = 'name') then
+        result.name := ParseHumanName
+      else if (FJson.ItemName = 'contacts') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Contact.Add(ParseContact);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
 var
   i : integer;
 begin
@@ -6631,15 +7655,8 @@ begin
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
   ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('code', elem.code);
-  Prop('name',elem.name);
-  if elem.Address.Count > 0 then
-  begin
-    FJson.valueObject('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FJson.FinishObject;
-  end;
+  ComposeCodeableConcept('role', elem.role);
+  ComposeHumanName('name', elem.name);
   if elem.Contact.Count > 0 then
   begin
     FJson.valueObject('contacts');
@@ -6647,15 +7664,14 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  ComposeInterval_date('period', elem.period);
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParseOrganization(element : IXmlDomElement) : TOrganization;
+function TFHIRXmlParser.ParsePerson(element : IXmlDomElement) : TPerson;
 var
   child : IXMLDOMElement;
 begin
-  result := TOrganization.create;
+  result := TPerson.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
@@ -6668,19 +7684,23 @@ begin
       else if (child.nodeName = 'identifier') then
         result.Identifier.Add(ParseHumanId(child))
       else if (child.nodeName = 'name') then
-        result.Name.Add(ParseOrganizationName(child))
+        result.Name.Add(ParseHumanName(child))
       else if (child.nodeName = 'address') then
         result.Address.Add(ParseAddress(child))
       else if (child.nodeName = 'contact') then
         result.Contact.Add(ParseContact(child))
-      else if (child.nodeName = 'code') then
-        result.code := ParseCodeableConcept(child)
-      else if (child.nodeName = 'industryCode') then
-        result.industryCode := ParseCodeableConcept(child)
-      else if (child.nodeName = 'accreditation') then
-        result.Accreditation.Add(ParseOrganizationAccreditation(child))
-      else if (child.nodeName = 'relatedOrganization') then
-        result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization(child))
+      else if (child.nodeName = 'dob') then
+        result.dob := child.text
+      else if (child.nodeName = 'gender') then
+        result.gender := ParseCodeableConcept(child)
+      else if (child.nodeName = 'religion') then
+        result.religion := ParseCodeableConcept(child)
+      else if (child.nodeName = 'qualification') then
+        result.Qualification.Add(ParsePersonQualification(child))
+      else if (child.nodeName = 'language') then
+        result.Language.Add(ParsePersonLanguage(child))
+      else if (child.nodeName = 'relatedPerson') then
+        result.RelatedPerson.Add(ParsePersonRelatedPerson(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -6692,7 +7712,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposeOrganization(name : string; elem : TOrganization);
+procedure TFHIRXmlComposer.ComposePerson(name : string; elem : TPerson);
 var
   i : integer;
 begin
@@ -6704,24 +7724,27 @@ begin
   for i := 0 to elem.Identifier.Count - 1 do
     ComposeHumanId('identifier', elem.Identifier[i]);
   for i := 0 to elem.Name.Count - 1 do
-    ComposeOrganizationName('name', elem.Name[i]);
+    ComposeHumanName('name', elem.Name[i]);
   for i := 0 to elem.Address.Count - 1 do
     ComposeAddress('address', elem.Address[i]);
   for i := 0 to elem.Contact.Count - 1 do
     ComposeContact('contact', elem.Contact[i]);
-  ComposeCodeableConcept('code', elem.code);
-  ComposeCodeableConcept('industryCode', elem.industryCode);
-  for i := 0 to elem.Accreditation.Count - 1 do
-    ComposeOrganizationAccreditation('accreditation', elem.Accreditation[i]);
-  for i := 0 to elem.RelatedOrganization.Count - 1 do
-    ComposeOrganizationRelatedOrganization('relatedOrganization', elem.RelatedOrganization[i]);
+  Text('dob',elem.dob);
+  ComposeCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('religion', elem.religion);
+  for i := 0 to elem.Qualification.Count - 1 do
+    ComposePersonQualification('qualification', elem.Qualification[i]);
+  for i := 0 to elem.Language.Count - 1 do
+    ComposePersonLanguage('language', elem.Language[i]);
+  for i := 0 to elem.RelatedPerson.Count - 1 do
+    ComposePersonRelatedPerson('relatedPerson', elem.RelatedPerson[i]);
   ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParseOrganization : TOrganization;
+function TFHIRJsonParser.ParsePerson : TPerson;
 begin
-  result := TOrganization.create;
+  result := TPerson.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
@@ -6740,7 +7763,7 @@ begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.Name.Add(ParseOrganizationName);
+          result.Name.Add(ParseHumanName);
         FJson.Next;
       end
       else if (FJson.ItemName = 'addresses') then
@@ -6759,24 +7782,34 @@ begin
           result.Contact.Add(ParseContact);
         FJson.Next;
       end
-      else if (FJson.ItemName = 'code') then
-        result.code := ParseCodeableConcept
-      else if (FJson.ItemName = 'industryCode') then
-        result.industryCode := ParseCodeableConcept
-      else if (FJson.ItemName = 'accreditations') then
+      else if (FJson.ItemName = 'dob') then
+        result.dob := FJson.itemValue
+      else if (FJson.ItemName = 'gender') then
+        result.gender := ParseCodeableConcept
+      else if (FJson.ItemName = 'religion') then
+        result.religion := ParseCodeableConcept
+      else if (FJson.ItemName = 'qualifications') then
       begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.Accreditation.Add(ParseOrganizationAccreditation);
+          result.Qualification.Add(ParsePersonQualification);
         FJson.Next;
       end
-      else if (FJson.ItemName = 'relatedOrganizations') then
+      else if (FJson.ItemName = 'languages') then
       begin
         FJson.checkState(jpitArray);
         FJson.Next;
         while (FJson.ItemType <> jpitEnd) do
-          result.RelatedOrganization.Add(ParseOrganizationRelatedOrganization);
+          result.Language.Add(ParsePersonLanguage);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'relatedPeople') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.RelatedPerson.Add(ParsePersonRelatedPerson);
         FJson.Next;
       end
       else
@@ -6789,7 +7822,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposeOrganization(name : string; elem : TOrganization);
+procedure TFHIRJsonComposer.ComposePerson(name : string; elem : TPerson);
 var
   i : integer;
 begin
@@ -6809,7 +7842,7 @@ begin
   begin
     FJson.valueObject('names');
     for i := 0 to elem.Name.Count - 1 do
-      ComposeOrganizationName('name',elem.Name[i]);
+      ComposeHumanName('name',elem.Name[i]);
     FJson.FinishObject;
   end;
   if elem.Address.Count > 0 then
@@ -6826,398 +7859,28 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  ComposeCodeableConcept('code', elem.code);
-  ComposeCodeableConcept('industryCode', elem.industryCode);
-  if elem.Accreditation.Count > 0 then
+  Prop('dob',elem.dob);
+  ComposeCodeableConcept('gender', elem.gender);
+  ComposeCodeableConcept('religion', elem.religion);
+  if elem.Qualification.Count > 0 then
   begin
-    FJson.valueObject('accreditations');
-    for i := 0 to elem.Accreditation.Count - 1 do
-      ComposeOrganizationAccreditation('accreditation',elem.Accreditation[i]);
+    FJson.valueObject('qualifications');
+    for i := 0 to elem.Qualification.Count - 1 do
+      ComposePersonQualification('qualification',elem.Qualification[i]);
     FJson.FinishObject;
   end;
-  if elem.RelatedOrganization.Count > 0 then
+  if elem.Language.Count > 0 then
   begin
-    FJson.valueObject('relatedOrganizations');
-    for i := 0 to elem.RelatedOrganization.Count - 1 do
-      ComposeOrganizationRelatedOrganization('relatedOrganization',elem.RelatedOrganization[i]);
+    FJson.valueObject('languages');
+    for i := 0 to elem.Language.Count - 1 do
+      ComposePersonLanguage('language',elem.Language[i]);
     FJson.FinishObject;
   end;
-  ComposeNarrative('text', elem.text);
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
-var
-  child : IXMLDOMElement;
-begin
-  result := TDocumentConformancePublisher.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'name') then
-        result.name := child.text
-      else if (child.nodeName = 'address') then
-        result.Address.Add(ParseAddress(child))
-      else if (child.nodeName = 'contact') then
-        result.Contact.Add(ParseContact(child))
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('name',elem.name);
-  for i := 0 to elem.Address.Count - 1 do
-    ComposeAddress('address', elem.Address[i]);
-  for i := 0 to elem.Contact.Count - 1 do
-    ComposeContact('contact', elem.Contact[i]);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseDocumentConformancePublisher : TDocumentConformancePublisher;
-begin
-  result := TDocumentConformancePublisher.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'name') then
-        result.name := FJson.itemValue
-      else if (FJson.ItemName = 'addresses') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Address.Add(ParseAddress);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'contacts') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Contact.Add(ParseContact);
-        FJson.Next;
-      end
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('name',elem.name);
-  if elem.Address.Count > 0 then
+  if elem.RelatedPerson.Count > 0 then
   begin
-    FJson.valueObject('addresses');
-    for i := 0 to elem.Address.Count - 1 do
-      ComposeAddress('address',elem.Address[i]);
-    FJson.FinishObject;
-  end;
-  if elem.Contact.Count > 0 then
-  begin
-    FJson.valueObject('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FJson.FinishObject;
-  end;
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
-var
-  child : IXMLDOMElement;
-begin
-  result := TDocumentConformanceSoftware.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'name') then
-        result.name := child.text
-      else if (child.nodeName = 'version') then
-        result.version := child.text
-      else if (child.nodeName = 'releaseDate') then
-        result.releaseDate := child.text
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('name',elem.name);
-  Text('version',elem.version);
-  Text('releaseDate',elem.releaseDate);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
-begin
-  result := TDocumentConformanceSoftware.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'name') then
-        result.name := FJson.itemValue
-      else if (FJson.ItemName = 'version') then
-        result.version := FJson.itemValue
-      else if (FJson.ItemName = 'releaseDate') then
-        result.releaseDate := FJson.itemValue
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('name',elem.name);
-  Prop('version',elem.version);
-  Prop('releaseDate',elem.releaseDate);
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
-var
-  child : IXMLDOMElement;
-begin
-  result := TDocumentConformanceDocument.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'name') then
-        result.name := child.text
-      else if (child.nodeName = 'purpose') then
-        result.purpose := child.text
-      else if (child.nodeName = 'resource') then
-        result.Resource.Add(ParseConstraint(child))
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('name',elem.name);
-  Text('purpose',elem.purpose);
-  for i := 0 to elem.Resource.Count - 1 do
-    ComposeConstraint('resource', elem.Resource[i]);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseDocumentConformanceDocument : TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'name') then
-        result.name := FJson.itemValue
-      else if (FJson.ItemName = 'purpose') then
-        result.purpose := FJson.itemValue
-      else if (FJson.ItemName = 'resources') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Resource.Add(ParseConstraint);
-        FJson.Next;
-      end
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('name',elem.name);
-  Prop('purpose',elem.purpose);
-  if elem.Resource.Count > 0 then
-  begin
-    FJson.valueObject('resources');
-    for i := 0 to elem.Resource.Count - 1 do
-      ComposeConstraint('resource',elem.Resource[i]);
-    FJson.FinishObject;
-  end;
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
-var
-  child : IXMLDOMElement;
-begin
-  result := TDocumentConformance.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'id') then
-        result.id := child.text
-      else if (child.nodeName = 'text') then
-        result.text := ParseNarrative(child)
-      else if (child.nodeName = 'date') then
-        result.date := child.text
-      else if (child.nodeName = 'publisher') then
-        result.publisher := ParseDocumentConformancePublisher(child)
-      else if (child.nodeName = 'software') then
-        result.software := ParseDocumentConformanceSoftware(child)
-      else if (child.nodeName = 'document') then
-        result.Document.Add(ParseDocumentConformanceDocument(child))
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('id', elem.id);
-  Text('date',elem.date);
-  ComposeDocumentConformancePublisher('publisher', elem.publisher);
-  ComposeDocumentConformanceSoftware('software', elem.software);
-  for i := 0 to elem.Document.Count - 1 do
-    ComposeDocumentConformanceDocument('document', elem.Document[i]);
-  ComposeNarrative('text', elem.text);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParseDocumentConformance : TDocumentConformance;
-begin
-  result := TDocumentConformance.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'date') then
-        result.date := FJson.itemValue
-      else if (FJson.ItemName = 'publisher') then
-        result.publisher := ParseDocumentConformancePublisher
-      else if (FJson.ItemName = 'software') then
-        result.software := ParseDocumentConformanceSoftware
-      else if (FJson.ItemName = 'documents') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Document.Add(ParseDocumentConformanceDocument);
-        FJson.Next;
-      end
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('id', elem.id);
-  Prop('date',elem.date);
-  ComposeDocumentConformancePublisher('publisher', elem.publisher);
-  ComposeDocumentConformanceSoftware('software', elem.software);
-  if elem.Document.Count > 0 then
-  begin
-    FJson.valueObject('documents');
-    for i := 0 to elem.Document.Count - 1 do
-      ComposeDocumentConformanceDocument('document',elem.Document[i]);
+    FJson.valueObject('relatedPeople');
+    for i := 0 to elem.RelatedPerson.Count - 1 do
+      ComposePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
     FJson.FinishObject;
   end;
   ComposeNarrative('text', elem.text);
@@ -7891,288 +8554,22 @@ begin
   FJson.finishObject;
 end;
 
-function TFHIRXmlParser.ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
+function TFHIRXmlParser.ParseDocumentConformancePublisher(element : IXmlDomElement) : TDocumentConformancePublisher;
 var
   child : IXMLDOMElement;
 begin
-  result := TPersonQualification.create;
+  result := TDocumentConformancePublisher.create;
   try
     result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
     child := TMsXmlParser.FirstChild(element);
     while (child <> nil) do
     begin
-      if (child.nodeName = 'id') then
-        result.id := ParseIdentifier(child)
-      else if (child.nodeName = 'code') then
-        result.code := ParseCodeableConcept(child)
-      else if (child.nodeName = 'institution') then
-        result.institution := ParseFHIRResourceReference{TOrganization}(child)
-      else if (child.nodeName = 'period') then
-        result.period := ParseInterval_date(child)
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  ComposeIdentifier('id', elem.id);
-  ComposeCodeableConcept('code', elem.code);
-  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
-  ComposeInterval_date('period', elem.period);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParsePersonQualification : TPersonQualification;
-begin
-  result := TPersonQualification.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'id') then
-        result.id := ParseIdentifier
-      else if (FJson.ItemName = 'code') then
-        result.code := ParseCodeableConcept
-      else if (FJson.ItemName = 'institution') then
-        result.institution := ParseFHIRResourceReference{TOrganization}
-      else if (FJson.ItemName = 'period') then
-        result.period := ParseInterval_date
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposePersonQualification(name : string; elem : TPersonQualification);
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  ComposeIdentifier('id', elem.id);
-  ComposeCodeableConcept('code', elem.code);
-  ComposeFHIRResourceReference{TOrganization}('institution', elem.institution);
-  ComposeInterval_date('period', elem.period);
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
-var
-  child : IXMLDOMElement;
-begin
-  result := TPersonLanguage.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'code') then
-        result.code := child.text
-      else if (child.nodeName = 'use') then
-        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse, child))
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  Text('code',elem.code);
-  Text('use',CODES_TLanguageUse[elem.use]);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParsePersonLanguage : TPersonLanguage;
-begin
-  result := TPersonLanguage.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'code') then
-        result.code := FJson.itemValue
-      else if (FJson.ItemName = 'use') then
-        result.use := TLanguageUse(ParseEnum(CODES_TLanguageUse))
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposePersonLanguage(name : string; elem : TPersonLanguage);
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  Prop('code',elem.code);
-  Prop('use',CODES_TLanguageUse[elem.use]);
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParsePersonRelatedPerson(element : IXmlDomElement) : TPersonRelatedPerson;
-var
-  child : IXMLDOMElement;
-begin
-  result := TPersonRelatedPerson.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'id') then
-        result.id := ParseHumanId(child)
-      else if (child.nodeName = 'role') then
-        result.role := ParseCodeableConcept(child)
-      else if (child.nodeName = 'name') then
-        result.name := ParseHumanName(child)
-      else if (child.nodeName = 'contact') then
-        result.Contact.Add(ParseContact(child))
-      else
-         UnknownContent(child);
-      child := TMsXmlParser.NextSibling(child);
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRXmlComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  attribute('xml:Id', elem.xmlId);
-  FXml.open(name);
-  ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('role', elem.role);
-  ComposeHumanName('name', elem.name);
-  for i := 0 to elem.Contact.Count - 1 do
-    ComposeContact('contact', elem.Contact[i]);
-  FXml.close(name);
-end;
-
-function TFHIRJsonParser.ParsePersonRelatedPerson : TPersonRelatedPerson;
-begin
-  result := TPersonRelatedPerson.create;
-  try
-    while (FJson.ItemType <> jpitEnd) do
-    begin
-      if (FJson.ItemName = 'xmlId') then
-        result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'id') then
-        result.id := ParseHumanId
-      else if (FJson.ItemName = 'role') then
-        result.role := ParseCodeableConcept
-      else if (FJson.ItemName = 'name') then
-        result.name := ParseHumanName
-      else if (FJson.ItemName = 'contacts') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Contact.Add(ParseContact);
-        FJson.Next;
-      end
-      else
-         UnknownContent;
-    end;
-
-    result.link;
-  finally
-    result.free;
-  end;
-end;
-
-procedure TFHIRJsonComposer.ComposePersonRelatedPerson(name : string; elem : TPersonRelatedPerson);
-var
-  i : integer;
-begin
-  if (elem = nil) then
-    exit;
-  FJson.valueObject(name);
-  Prop('xmlId', elem.xmlId);
-  ComposeHumanId('id', elem.id);
-  ComposeCodeableConcept('role', elem.role);
-  ComposeHumanName('name', elem.name);
-  if elem.Contact.Count > 0 then
-  begin
-    FJson.valueObject('contacts');
-    for i := 0 to elem.Contact.Count - 1 do
-      ComposeContact('contact',elem.Contact[i]);
-    FJson.FinishObject;
-  end;
-  FJson.finishObject;
-end;
-
-function TFHIRXmlParser.ParsePerson(element : IXmlDomElement) : TPerson;
-var
-  child : IXMLDOMElement;
-begin
-  result := TPerson.create;
-  try
-    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
-    child := TMsXmlParser.FirstChild(element);
-    while (child <> nil) do
-    begin
-      if (child.nodeName = 'id') then
-        result.id := child.text
-      else if (child.nodeName = 'text') then
-        result.text := ParseNarrative(child)
-      else if (child.nodeName = 'identifier') then
-        result.Identifier.Add(ParseHumanId(child))
-      else if (child.nodeName = 'name') then
-        result.Name.Add(ParseHumanName(child))
+      if (child.nodeName = 'name') then
+        result.name := child.text
       else if (child.nodeName = 'address') then
         result.Address.Add(ParseAddress(child))
       else if (child.nodeName = 'contact') then
         result.Contact.Add(ParseContact(child))
-      else if (child.nodeName = 'dob') then
-        result.dob := child.text
-      else if (child.nodeName = 'gender') then
-        result.gender := ParseCodeableConcept(child)
-      else if (child.nodeName = 'religion') then
-        result.religion := ParseCodeableConcept(child)
-      else if (child.nodeName = 'qualification') then
-        result.Qualification.Add(ParsePersonQualification(child))
-      else if (child.nodeName = 'language') then
-        result.Language.Add(ParsePersonLanguage(child))
-      else if (child.nodeName = 'relatedPerson') then
-        result.RelatedPerson.Add(ParsePersonRelatedPerson(child))
       else
          UnknownContent(child);
       child := TMsXmlParser.NextSibling(child);
@@ -8184,7 +8581,7 @@ begin
   end;
 end;
 
-procedure TFHIRXmlComposer.ComposePerson(name : string; elem : TPerson);
+procedure TFHIRXmlComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
 var
   i : integer;
 begin
@@ -8192,52 +8589,24 @@ begin
     exit;
   attribute('xml:Id', elem.xmlId);
   FXml.open(name);
-  Text('id', elem.id);
-  for i := 0 to elem.Identifier.Count - 1 do
-    ComposeHumanId('identifier', elem.Identifier[i]);
-  for i := 0 to elem.Name.Count - 1 do
-    ComposeHumanName('name', elem.Name[i]);
+  Text('name',elem.name);
   for i := 0 to elem.Address.Count - 1 do
     ComposeAddress('address', elem.Address[i]);
   for i := 0 to elem.Contact.Count - 1 do
     ComposeContact('contact', elem.Contact[i]);
-  Text('dob',elem.dob);
-  ComposeCodeableConcept('gender', elem.gender);
-  ComposeCodeableConcept('religion', elem.religion);
-  for i := 0 to elem.Qualification.Count - 1 do
-    ComposePersonQualification('qualification', elem.Qualification[i]);
-  for i := 0 to elem.Language.Count - 1 do
-    ComposePersonLanguage('language', elem.Language[i]);
-  for i := 0 to elem.RelatedPerson.Count - 1 do
-    ComposePersonRelatedPerson('relatedPerson', elem.RelatedPerson[i]);
-  ComposeNarrative('text', elem.text);
   FXml.close(name);
 end;
 
-function TFHIRJsonParser.ParsePerson : TPerson;
+function TFHIRJsonParser.ParseDocumentConformancePublisher : TDocumentConformancePublisher;
 begin
-  result := TPerson.create;
+  result := TDocumentConformancePublisher.create;
   try
     while (FJson.ItemType <> jpitEnd) do
     begin
       if (FJson.ItemName = 'xmlId') then
         result.xmlId := FJson.itemValue
-      else if (FJson.ItemName = 'identifiers') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Identifier.Add(ParseHumanId);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'names') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Name.Add(ParseHumanName);
-        FJson.Next;
-      end
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
       else if (FJson.ItemName = 'addresses') then
       begin
         FJson.checkState(jpitArray);
@@ -8254,36 +8623,6 @@ begin
           result.Contact.Add(ParseContact);
         FJson.Next;
       end
-      else if (FJson.ItemName = 'dob') then
-        result.dob := FJson.itemValue
-      else if (FJson.ItemName = 'gender') then
-        result.gender := ParseCodeableConcept
-      else if (FJson.ItemName = 'religion') then
-        result.religion := ParseCodeableConcept
-      else if (FJson.ItemName = 'qualifications') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Qualification.Add(ParsePersonQualification);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'languages') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.Language.Add(ParsePersonLanguage);
-        FJson.Next;
-      end
-      else if (FJson.ItemName = 'relatedPeople') then
-      begin
-        FJson.checkState(jpitArray);
-        FJson.Next;
-        while (FJson.ItemType <> jpitEnd) do
-          result.RelatedPerson.Add(ParsePersonRelatedPerson);
-        FJson.Next;
-      end
       else
          UnknownContent;
     end;
@@ -8294,7 +8633,7 @@ begin
   end;
 end;
 
-procedure TFHIRJsonComposer.ComposePerson(name : string; elem : TPerson);
+procedure TFHIRJsonComposer.ComposeDocumentConformancePublisher(name : string; elem : TDocumentConformancePublisher);
 var
   i : integer;
 begin
@@ -8302,21 +8641,7 @@ begin
     exit;
   FJson.valueObject(name);
   Prop('xmlId', elem.xmlId);
-  Prop('id', elem.id);
-  if elem.Identifier.Count > 0 then
-  begin
-    FJson.valueObject('identifiers');
-    for i := 0 to elem.Identifier.Count - 1 do
-      ComposeHumanId('identifier',elem.Identifier[i]);
-    FJson.FinishObject;
-  end;
-  if elem.Name.Count > 0 then
-  begin
-    FJson.valueObject('names');
-    for i := 0 to elem.Name.Count - 1 do
-      ComposeHumanName('name',elem.Name[i]);
-    FJson.FinishObject;
-  end;
+  Prop('name',elem.name);
   if elem.Address.Count > 0 then
   begin
     FJson.valueObject('addresses');
@@ -8331,28 +8656,295 @@ begin
       ComposeContact('contact',elem.Contact[i]);
     FJson.FinishObject;
   end;
-  Prop('dob',elem.dob);
-  ComposeCodeableConcept('gender', elem.gender);
-  ComposeCodeableConcept('religion', elem.religion);
-  if elem.Qualification.Count > 0 then
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformanceSoftware(element : IXmlDomElement) : TDocumentConformanceSoftware;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentConformanceSoftware.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'version') then
+        result.version := child.text
+      else if (child.nodeName = 'releaseDate') then
+        result.releaseDate := child.text
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('version',elem.version);
+  Text('releaseDate',elem.releaseDate);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformanceSoftware : TDocumentConformanceSoftware;
+begin
+  result := TDocumentConformanceSoftware.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'version') then
+        result.version := FJson.itemValue
+      else if (FJson.ItemName = 'releaseDate') then
+        result.releaseDate := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeDocumentConformanceSoftware(name : string; elem : TDocumentConformanceSoftware);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('version',elem.version);
+  Prop('releaseDate',elem.releaseDate);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformanceDocument(element : IXmlDomElement) : TDocumentConformanceDocument;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'name') then
+        result.name := child.text
+      else if (child.nodeName = 'purpose') then
+        result.purpose := child.text
+      else if (child.nodeName = 'resource') then
+        result.Resource.Add(ParseConstraint(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('name',elem.name);
+  Text('purpose',elem.purpose);
+  for i := 0 to elem.Resource.Count - 1 do
+    ComposeConstraint('resource', elem.Resource[i]);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformanceDocument : TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'name') then
+        result.name := FJson.itemValue
+      else if (FJson.ItemName = 'purpose') then
+        result.purpose := FJson.itemValue
+      else if (FJson.ItemName = 'resources') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Resource.Add(ParseConstraint);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeDocumentConformanceDocument(name : string; elem : TDocumentConformanceDocument);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('name',elem.name);
+  Prop('purpose',elem.purpose);
+  if elem.Resource.Count > 0 then
   begin
-    FJson.valueObject('qualifications');
-    for i := 0 to elem.Qualification.Count - 1 do
-      ComposePersonQualification('qualification',elem.Qualification[i]);
+    FJson.valueObject('resources');
+    for i := 0 to elem.Resource.Count - 1 do
+      ComposeConstraint('resource',elem.Resource[i]);
     FJson.FinishObject;
   end;
-  if elem.Language.Count > 0 then
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseDocumentConformance(element : IXmlDomElement) : TDocumentConformance;
+var
+  child : IXMLDOMElement;
+begin
+  result := TDocumentConformance.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else if (child.nodeName = 'date') then
+        result.date := child.text
+      else if (child.nodeName = 'publisher') then
+        result.publisher := ParseDocumentConformancePublisher(child)
+      else if (child.nodeName = 'software') then
+        result.software := ParseDocumentConformanceSoftware(child)
+      else if (child.nodeName = 'profile') then
+        result.Profile.Add(child.text)
+      else if (child.nodeName = 'document') then
+        result.Document.Add(ParseDocumentConformanceDocument(child))
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  Text('date',elem.date);
+  ComposeDocumentConformancePublisher('publisher', elem.publisher);
+  ComposeDocumentConformanceSoftware('software', elem.software);
+  for i := 0 to elem.Profile.Count - 1 do
+    Text('profile', elem.Profile[i]);
+  for i := 0 to elem.Document.Count - 1 do
+    ComposeDocumentConformanceDocument('document', elem.Document[i]);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseDocumentConformance : TDocumentConformance;
+begin
+  result := TDocumentConformance.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else if (FJson.ItemName = 'date') then
+        result.date := FJson.itemValue
+      else if (FJson.ItemName = 'publisher') then
+        result.publisher := ParseDocumentConformancePublisher
+      else if (FJson.ItemName = 'software') then
+        result.software := ParseDocumentConformanceSoftware
+      else if (FJson.ItemName = 'profiles') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Profile.Add(FJson.itemValue);
+        FJson.Next;
+      end
+      else if (FJson.ItemName = 'documents') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Document.Add(ParseDocumentConformanceDocument);
+        FJson.Next;
+      end
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeDocumentConformance(name : string; elem : TDocumentConformance);
+var
+  i : integer;
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  Prop('date',elem.date);
+  ComposeDocumentConformancePublisher('publisher', elem.publisher);
+  ComposeDocumentConformanceSoftware('software', elem.software);
+  if elem.Profile.Count > 0 then
   begin
-    FJson.valueObject('languages');
-    for i := 0 to elem.Language.Count - 1 do
-      ComposePersonLanguage('language',elem.Language[i]);
+    FJson.valueObject('profiles');
+    for i := 0 to elem.Profile.Count - 1 do
+      Prop('profile',elem.Profile[i]);
     FJson.FinishObject;
   end;
-  if elem.RelatedPerson.Count > 0 then
+  if elem.Document.Count > 0 then
   begin
-    FJson.valueObject('relatedPeople');
-    for i := 0 to elem.RelatedPerson.Count - 1 do
-      ComposePersonRelatedPerson('relatedPerson',elem.RelatedPerson[i]);
+    FJson.valueObject('documents');
+    for i := 0 to elem.Document.Count - 1 do
+      ComposeDocumentConformanceDocument('document',elem.Document[i]);
     FJson.FinishObject;
   end;
   ComposeNarrative('text', elem.text);
@@ -8369,24 +8961,26 @@ begin
     result := ParseDocument(element)
   else if element.NodeName = 'Message' Then
     result := ParseMessage(element)
-  else if element.NodeName = 'MessageConformance' Then
-    result := ParseMessageConformance(element)
-  else if element.NodeName = 'Agent' Then
-    result := ParseAgent(element)
   else if element.NodeName = 'Animal' Then
     result := ParseAnimal(element)
-  else if element.NodeName = 'Prescription' Then
-    result := ParsePrescription(element)
-  else if element.NodeName = 'Patient' Then
-    result := ParsePatient(element)
+  else if element.NodeName = 'Agent' Then
+    result := ParseAgent(element)
+  else if element.NodeName = 'MessageConformance' Then
+    result := ParseMessageConformance(element)
   else if element.NodeName = 'Organization' Then
     result := ParseOrganization(element)
-  else if element.NodeName = 'DocumentConformance' Then
-    result := ParseDocumentConformance(element)
-  else if element.NodeName = 'LabReport' Then
-    result := ParseLabReport(element)
+  else if element.NodeName = 'Prescription' Then
+    result := ParsePrescription(element)
+  else if element.NodeName = 'Profile' Then
+    result := ParseProfile(element)
+  else if element.NodeName = 'Patient' Then
+    result := ParsePatient(element)
   else if element.NodeName = 'Person' Then
     result := ParsePerson(element)
+  else if element.NodeName = 'LabReport' Then
+    result := ParseLabReport(element)
+  else if element.NodeName = 'DocumentConformance' Then
+    result := ParseDocumentConformance(element)
   else
     raise Exception.create('Error: the element '+element.NodeName+' is not recognised as a valid resource name');
 end;
@@ -8399,15 +8993,16 @@ begin
     frtConformance: ComposeConformance('Conformance', TConformance(resource));
     frtDocument: ComposeDocument('Document', TDocument(resource));
     frtMessage: ComposeMessage('Message', TMessage(resource));
-    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
-    frtAgent: ComposeAgent('Agent', TAgent(resource));
     frtAnimal: ComposeAnimal('Animal', TAnimal(resource));
-    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
-    frtPatient: ComposePatient('Patient', TPatient(resource));
+    frtAgent: ComposeAgent('Agent', TAgent(resource));
+    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
     frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
-    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
-    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
+    frtProfile: ComposeProfile('Profile', TProfile(resource));
+    frtPatient: ComposePatient('Patient', TPatient(resource));
     frtPerson: ComposePerson('Person', TPerson(resource));
+    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
   else
     raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
   end;
@@ -8421,24 +9016,26 @@ begin
     result := ParseDocument
   else if FJson.ItemName = 'Message' Then
     result := ParseMessage
-  else if FJson.ItemName = 'MessageConformance' Then
-    result := ParseMessageConformance
-  else if FJson.ItemName = 'Agent' Then
-    result := ParseAgent
   else if FJson.ItemName = 'Animal' Then
     result := ParseAnimal
-  else if FJson.ItemName = 'Prescription' Then
-    result := ParsePrescription
-  else if FJson.ItemName = 'Patient' Then
-    result := ParsePatient
+  else if FJson.ItemName = 'Agent' Then
+    result := ParseAgent
+  else if FJson.ItemName = 'MessageConformance' Then
+    result := ParseMessageConformance
   else if FJson.ItemName = 'Organization' Then
     result := ParseOrganization
-  else if FJson.ItemName = 'DocumentConformance' Then
-    result := ParseDocumentConformance
-  else if FJson.ItemName = 'LabReport' Then
-    result := ParseLabReport
+  else if FJson.ItemName = 'Prescription' Then
+    result := ParsePrescription
+  else if FJson.ItemName = 'Profile' Then
+    result := ParseProfile
+  else if FJson.ItemName = 'Patient' Then
+    result := ParsePatient
   else if FJson.ItemName = 'Person' Then
     result := ParsePerson
+  else if FJson.ItemName = 'LabReport' Then
+    result := ParseLabReport
+  else if FJson.ItemName = 'DocumentConformance' Then
+    result := ParseDocumentConformance
   else
     raise Exception.create('error: the element '+FJson.itemName+' is not a valid resource name');
 end;
@@ -8451,15 +9048,16 @@ begin
     frtConformance: ComposeConformance('Conformance', TConformance(resource));
     frtDocument: ComposeDocument('Document', TDocument(resource));
     frtMessage: ComposeMessage('Message', TMessage(resource));
-    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
-    frtAgent: ComposeAgent('Agent', TAgent(resource));
     frtAnimal: ComposeAnimal('Animal', TAnimal(resource));
-    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
-    frtPatient: ComposePatient('Patient', TPatient(resource));
+    frtAgent: ComposeAgent('Agent', TAgent(resource));
+    frtMessageConformance: ComposeMessageConformance('MessageConformance', TMessageConformance(resource));
     frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
-    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
-    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
+    frtProfile: ComposeProfile('Profile', TProfile(resource));
+    frtPatient: ComposePatient('Patient', TPatient(resource));
     frtPerson: ComposePerson('Person', TPerson(resource));
+    frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
+    frtDocumentConformance: ComposeDocumentConformance('DocumentConformance', TDocumentConformance(resource));
   else
     raise Exception.create('Internal error: the resource type '+CODES_TFHIRResourceType[resource.ResourceType]+' is not a valid resource type');
   end;

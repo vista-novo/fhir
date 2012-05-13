@@ -1,0 +1,32 @@
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc (USA), Allergy List)</li>
+<li>Multiple codes may be assigned to the profile. These may either describe the template, or the focus of the template, or both. They are solely to help find the profile by searching for structured concepts</li>
+<li>If other profiles are referenced, then any constraints in those profiles also apply to this profile. If a resource or binding is 
+found in this profile, the constraints described must include all the constraints found in the referenced profiles, so 
+that it is not necessary to search the referenced profiles and merge the constraints. The primary use of referencing other 
+profiles is to re-use concept binding constraints</li>
+</ul>  
+
+
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for Resource Profiles:
+</p>
+<table class="list">
+  <tr><td>name   </td><td>a portion of the name of the resource</td></tr>
+  <tr><td>author </td><td>name or id of the author</td></tr>
+  <tr><td>code   </td><td>a code in the format uri::code</td></tr>
+  <tr><td>status </td><td>a status of the profile</td></tr>
+  <tr><td>type   </td><td>type of resource that is constrained in the profile</td></tr>
+  <tr><td>domain </td><td>concept domain that is constrained in the resource</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>

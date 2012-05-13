@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
   © HL7 (http://www.hl7.org)
-  Generated on 19:37 Apr 30, 2012 for FHIR v0.01 
+  Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace"/>
@@ -230,6 +230,11 @@
       <xs:enumeration value="Prescription">
         <xs:annotation>
           <xs:documentation>Directions provided by a prescribing practitioner for a specific medication to be administered to an individual</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Profile">
+        <xs:annotation>
+          <xs:documentation>A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="InterestOfCare">
@@ -629,9 +634,14 @@
           <xs:documentation>The Type of the resource being described</xs:documentation>
         </xs:annotation>
       </xs:element>
+      <xs:element name="profile" type="xs:anyURI" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reference to a resource profile which includes the constraint statement that applies to this resource</xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
-          <xs:documentation>The name of an aggregation profile</xs:documentation>
+          <xs:documentation>The name of this aggregation profile</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="purpose" type="xs:string" minOccurs="0" maxOccurs="1">
@@ -700,7 +710,7 @@
         </xs:annotation>
       </xs:element>
       <xs:element name="mapping" type="Constraint.Mapping" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="aggregation" type="Constraint.Aggregation" minOccurs="0" maxOccurs="1">
+      <xs:element name="resource" type="Constraint.Resource" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>If context includes aggregation and type=Resource()</xs:documentation>
         </xs:annotation>
@@ -714,6 +724,21 @@
     </xs:sequence>
     <xs:attribute ref="xml:id"/>
   </xs:complexType>
+  <xs:complexType name="Constraint.Resource">
+    <xs:sequence>
+      <xs:element name="aggregated" type="xs:boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Whether this resource is aggregated</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="profile" type="xs:anyURI" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reference to a Resource Profile</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute ref="xml:id"/>
+  </xs:complexType>
   <xs:complexType name="Constraint.Mapping">
     <xs:sequence>
       <xs:element name="target" type="xs:string" minOccurs="1" maxOccurs="1">
@@ -724,21 +749,6 @@
       <xs:element name="map" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation>Details of the mapping</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute ref="xml:id"/>
-  </xs:complexType>
-  <xs:complexType name="Constraint.Aggregation">
-    <xs:sequence>
-      <xs:element name="aggregated" type="xs:boolean" minOccurs="1" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Whether this resource is aggregated</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1">
-        <xs:annotation>
-          <xs:documentation>Reference to a Named Resource Profile</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

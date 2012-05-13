@@ -56,7 +56,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="32" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="33" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
@@ -174,6 +174,15 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">client | server</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Conformance.profile</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">other profiles that apply (i.e. code binding rules)</Data></Cell>
+    <Cell><Data ss:Type="String">Additional other profiles that apply to this conformance statement.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String"> Generally these profiles make  constraints on the bindings of concept domains / value sets</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.resource</Data></Cell>
@@ -315,12 +324,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>27</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <RangeSelection>R14</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

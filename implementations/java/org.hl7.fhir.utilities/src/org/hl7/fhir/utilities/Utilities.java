@@ -365,5 +365,12 @@ public class Utilities {
     }
     return s.toString();
   }
+
+  public static void clearDirectory(String folder) {
+    String[] files = new File(folder).list();
+    for (String f : files) {
+      new File(folder+File.separatorChar+f).delete();
+    }
+  }
 	
 }

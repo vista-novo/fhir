@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
@@ -86,14 +85,14 @@ The following logical interactions are supported:
   <tr><td><b>Instance</b></td><td></td></tr>
   <tr><td><a href="#read">read</a></td><td>Read the current state of the resource</td></tr>
   <tr><td><a href="#vread">vread</a></td><td>A version specific read of the resource</td></tr>
-  <tr><td><a href="#update">update</a></td><td>Update an existing resource by it's id</td></tr>
+  <tr><td><a href="#update">update</a></td><td>Update an existing resource by it's id (or create it if it is new)</td></tr>
   <tr><td><a href="#delete">delete</a></td><td>Delete a resource</td></tr>
   <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for the resource</td></tr>
   <tr><td><a href="#transaction">transaction</a></td><td>Support for specific transactions defined on the resource</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
   <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
-  <tr><td><a href="#create">create</a></td><td>Create a new resource. The id may be assigned by client or server</td></tr>
+  <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
   <tr><td><a href="#updates">updates</a></td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
   <tr><td><a href="#transaction">transaction</a></td><td>Support for specific transactions defined on the resource type</td></tr>
   <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for support of this resource type</td></tr>
@@ -210,7 +209,7 @@ The read interaction accesses the current contents of a resource. The interactio
 is performed by an HTTP GET operation as shown:
 </p>
 <pre>
-  GET [baseurl]/[resourcetype]/{:id} (.ext)
+  GET [baseurl]/[resourcetype]/{@id} (.ext)
 </pre>
 <p>
 This returns a single instance with the content that which is specified for the resource type.
@@ -227,7 +226,7 @@ The vread interaction preforms a version specific read of the resource. The inte
 is performed by an HTTP GET operation as shown:
 </p>
 <pre>
-  GET [baseurl]/[resourcetype]/{:id}/version-{:vid} (.ext)
+  GET [baseurl]/[resourcetype]/{@id}/version-{:vid} (.ext)
 </pre>
 <p>
 This returns a single instance with the content that which is specified for the resource type.
@@ -244,16 +243,14 @@ identifier is provided.
 <a name="update"> </a>
 <h2>update</h2>
 <p>
-The update interaction changes an existing resource. The interaction
-is performed by an HTTP PUT operation as shown:
+The update interaction changes an existing resource, or creates a new resource of it doesn't already exist. 
+The update interaction is performed by an HTTP PUT operation as shown:
 </p>
 <pre>
-  PUT [baseurl]/[resourcetype]/{:id} (.ext)
+  PUT [baseurl]/[resourcetype]/{@id} (.ext)
 </pre>
 <p>
-To get a copy of the 
-newly updated resource (which may not be the same as that submitted) returned with the acknowledgement , use ?reload=true 
-on the request.
+The server returns a copy of the newly updated resource (which may not be the same as that submitted) with the response.
 </p>
 <p>
 Servers may choose to require version checking, and only accept submitted updates that have an If-Match header that
@@ -261,9 +258,9 @@ contains a matching version id for the current version of the resource. Accordin
 up to the client to decide whether to provide an If-Match header, and if it does, the server must observe it. 
 On normal update operations the client should not provide an If-Match header, and if the server wishes to receive it,
 it should return a 412 error with the words "If-Match" in the response text. Upon receiving this error, the client
-should resubmit with the If-Match header, if it is able. The Last-Modified dateTime is not suitable for concurrency
-checking as it only has a resolution limit of per-second, and there are other problems with dates as well.</p>
-
+should resubmit with the If-Match header, if it is able. The Last-Modified dateTime may not suitable for concurrency
+checking as it only has a resolution limit of per-second, and there are other problems with dates as well.
+</p>
 <a name="delete"> </a>
 <h2>delete</h2>
 <p>
@@ -271,7 +268,7 @@ The delete interaction removes an existing resource. The interaction
 is performed by an HTTP DELETE operation as shown:
 </p>
 <pre>
-  DELETE [baseurl]/[resourcetype]/{:id} (.ext)
+  DELETE [baseurl]/[resourcetype]/{@id} (.ext)
 </pre>
 <p>
 Servers may refuse to delete a resource depending on the resource type and/or contents, and on audit requirements. If a server refuses 
@@ -288,7 +285,7 @@ update to an existing resource. The interaction is performed by an HTTP POST ope
 </p>
 <pre>
   POST [baseurl]/[resourcetype]/validate
-  POST [baseurl]/[resourcetype]/validate/{:id}
+  POST [baseurl]/[resourcetype]/validate/{@id}
 </pre>
 <p>
 In the first case, the content is checked against the general specification and against 
@@ -316,7 +313,7 @@ with the following content:
 The history interaction retrieves the history of the resource. The interaction is performed by an HTTP Get operation as shown:
 </p>
 <pre>
-  GET [baseurl]/[resourcetype]/{:id} (.ext)?view=history
+  GET [baseurl]/[resourcetype]/{@id} (.ext)?view=history
 </pre>
 <p>
 The return content is an <a href="atom.htm#Aggregation">Atom feed aggregration</a> containing the version history for that 
@@ -411,7 +408,7 @@ by this specification. The transaction interaction is supported on both individu
 </p>
 <pre>
   POST [baseurl]/[resourcetype]/transaction/[name](.ext)
-  POST [baseurl]/[resourcetype]/transaction/{:id}/[name](.ext)
+  POST [baseurl]/[resourcetype]/transaction/{@id}/[name](.ext)
 </pre>
 <p>
 The name of the transaction, along with the content model of the request and response will be specified against each resource 

@@ -114,7 +114,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
     def.append("    "+root.getDefinition()+"\r\n");
     def.append("  }\r\n");
-    def.append("  {!.Net HL7Connect.FHIR."+tn.substring(1)+"}\r\n");
+    def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
     factoryIntf.append("    {@member new"+tn.substring(1)+"\r\n      create a new "+root.getName()+"\r\n    }\r\n    {!script nolink}\r\n    function new"+tn.substring(1)+" : "+tn+";\r\n");
     factoryImpl.append("function TFHIRResourceFactory.new"+tn.substring(1)+" : "+tn+";\r\nbegin\r\n  result := "+tn+".create;\r\nend;\r\n\r\n");
@@ -199,7 +199,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
     def.append("    "+root.getDefinition()+"\r\n");
     def.append("  }\r\n");
-    def.append("  {!.Net HL7Connect.FHIR."+tn.substring(1)+"}\r\n");
+    def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
     factoryIntf.append("    {@member new"+tn.substring(1)+"\r\n      create a new "+root.getName()+"\r\n    }\r\n    {!script nolink}\r\n    function new"+tn.substring(1)+" : "+tn+";\r\n");    
     factoryImpl.append("function TFHIRResourceFactory.new"+tn.substring(1)+" : "+tn+";\r\nbegin\r\n  result := "+tn+".create;\r\nend;\r\n\r\n");
@@ -327,7 +327,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  {@Class "+tn+" : TFHIRElement\r\n");
     def.append("    "+e.getDefinition()+"\r\n");
     def.append("  }\r\n");
-    def.append("  {!.Net HL7Connect.FHIR."+tn.substring(1)+"}\r\n");
+    def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class (TFHIRElement)\r\n");
     factoryIntf.append("    {@member new"+tn.substring(1)+"\r\n      create a new "+e.getName()+"\r\n    }\r\n    {!script nolink}\r\n    function new"+tn.substring(1)+" : "+tn+";\r\n");    
     factoryImpl.append("function TFHIRResourceFactory.new"+tn.substring(1)+" : "+tn+";\r\nbegin\r\n  result := "+tn+".create;\r\nend;\r\n\r\n");
@@ -845,7 +845,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "  {@Class "+tn+"List\r\n"+
         "    A list of "+tt+"\r\n"+
         "  }\r\n"+
-        "  {!.Net HL7Connect.FHIR."+tn.substring(1)+"List}\r\n"+
+        "  {!.Net HL7Connect.Fhir."+tn.substring(1)+"List}\r\n"+
         "  "+tn+"List = class (THL7FHIRObjectList)\r\n"+
         "  private\r\n"+
         "    function GetItemN(index : Integer) : "+tn+";\r\n"+
@@ -1101,7 +1101,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     defCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRResources.pas"));
     defCode.start();
     defCode.name = "FHIRResources";
-    defCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate));
+    defCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
     defCode.precomments.add("!Wrapper uses FHIRBase_Wrapper");
     defCode.uses.add("FHIRBase");
     defCode.uses.add("AdvBuffers");
@@ -1157,7 +1157,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     DelphiCodeGenerator defnCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRDefinitions.pas"));
     defnCode.start();
     defnCode.name = "FHIRDefinitions";
-    defnCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate));
+    defnCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
     defnCode.uses.add("FHIRDefinitionBase");
     defnCode.procsPub.add("function LoadFHIRDefinitions : TFHIRDefinitions;\r\n");
     
@@ -1338,7 +1338,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  {@Class TFHIRResource : TFHIRElement\r\n");
     def.append("    Base Resource Definition - id, extensions, narrative\r\n");
     def.append("  }\r\n");
-    def.append("  {!.Net HL7Connect.FHIR.Resource}\r\n");
+    def.append("  {!.Net HL7Connect.Fhir.Resource}\r\n");
     def.append("  TFHIRResource = {abstract} class (TFHIRElement)\r\n");
     def.append("  private\r\n");
     def.append("    FId : String;\r\n");
@@ -1433,7 +1433,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.uses.add("FHIRResources");
     prsrCode.uses.add("MsXmlParser");
     prsrCode.uses.add("JSON");
-    prsrCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate));
+    prsrCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
     
     prsrImpl.append(
         "{ TFHIRXmlParser }\r\n"+

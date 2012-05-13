@@ -1,0 +1,7 @@
+Code,Definition
+Unbound,The concept domain is not bound to anything
+CodeList,The concept domain is bound to a list of supplied codes - only those codes are allowed
+Reference,The concept domain references some external definition by a provided reference
+Preferred,The concept domain references a set of preferred terms
+Suggestion,This profile was superceded by a more recent version
+External,The concept domain is defined by an external authority identified in the reference

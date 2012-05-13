@@ -92,8 +92,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       String t = n;
       if (n.equals("String"))
         t = "String_";
-      if (n.equals("Uri"))
-        t = "URI";
+//      if (n.equals("Uri"))
+//        t = "URI";
       regt.append("    else if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return parse"+t+"(xpp);\r\n");
       regn.append("    if (xpp.getName().equals(prefix+\""+n+"\"))\r\n      return true;\r\n");
     }
@@ -108,7 +108,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private void start(String version, Date genDate) throws Exception {
     write("package org.hl7.fhir.instance.formats;\r\n");
     write("\r\n");
-    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
+    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate)+" for FHIR v"+version+"\r\n");
     write("\r\n");
     write("import org.hl7.fhir.instance.model.*;\r\n");
     write("import org.xmlpull.v1.*;\r\n");
@@ -257,7 +257,10 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           else
             prsr = "parse"+upFirst(tn)+"(xpp, res)";
         } else
-          prsr = "parse"+upFirst(tn)+"(xpp)";
+          if (!contentsHaveDataAbsentReason && "Uri".equals(tn))
+            prsr = "parseURI(xpp)";
+          else
+            prsr = "parse"+upFirst(tn)+"(xpp)";
       }
       
       if (name.equals("extension")) {

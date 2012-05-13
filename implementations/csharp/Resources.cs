@@ -180,6 +180,11 @@ namespace org.hl7.fhir.instance.model
     public RestfulConformanceMode mode { get; set; }
 
     /**
+     * Additional other profiles that apply to this conformance statement.
+     */
+    public List<Uri> profile { get; private set; }
+
+    /**
      * Resource Type with constraints
      */
     public Constraint resource { get; set; }
@@ -464,6 +469,121 @@ namespace org.hl7.fhir.instance.model
 
   }
 
+  public class Animal : Resource {
+  
+    public class AnimalRelatedEntity : Element
+    {
+      public AnimalRelatedEntity()
+      {
+        address = new List<Address>();
+        contact = new List<Contact>();
+      }
+
+      /**
+       * Identifier for the entity
+       */
+      public HumanId id { get; set; }
+
+      /**
+       * Type of relationship
+       */
+      public CodeableConcept role { get; set; }
+
+      /**
+       * Name of the related entity
+       */
+      public HumanName name { get; set; }
+
+      /**
+       * An address (usually human, but may be kin)
+       */
+      public List<Address> address { get; private set; }
+
+      /**
+       * Contact details (usually for humans)
+       */
+      public List<Contact> contact { get; private set; }
+
+    }
+
+    /**
+     * Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+     */
+    public List<HumanId> identifier { get; private set; }
+
+    /**
+     * A name associated with the animal. The use code maiden does not apply.
+     */
+    public List<HumanName> name { get; private set; }
+
+    /**
+     * The birth date for the animal
+     */
+    public DateTime dob { get; set; }
+
+    /**
+     * Species for the animal
+     */
+    public CodeableConcept species { get; set; }
+
+    /**
+     * Strain for the animal
+     */
+    public CodeableConcept strain { get; set; }
+
+    /**
+     * Gender for the Animal
+     */
+    public CodeableConcept gender { get; set; }
+
+    /**
+     * Kin, owner, care giver etc
+     */
+    public List<AnimalRelatedEntity> relatedEntity { get; private set; }
+
+
+  }
+
+  public class Agent : Resource {
+  
+    /**
+     * The person who acts as the agent
+     */
+    public ResourceReference<Person> person { get; set; }
+
+    /**
+     * The organisation that is being represented
+     */
+    public ResourceReference<Organization> organization { get; set; }
+
+    /**
+     * The way in which the person represents the organisation - what role do they have?
+     */
+    public List<CodeableConcept> role { get; private set; }
+
+    /**
+     * The time period during which the agent was/is authorised to represent the organisation.
+     */
+    public Interval<Date> period { get; set; }
+
+    /**
+     * An identifier that applies to this person in this role
+     */
+    public List<HumanId> identifier { get; private set; }
+
+    /**
+     * A postal address for this person playing this role
+     */
+    public List<Address> address { get; private set; }
+
+    /**
+     * A contact detail address for this person playing this role
+     */
+    public List<Contact> contact { get; private set; }
+
+
+  }
+
   public class MessageConformance : Resource {
   
     public enum MessageConformanceEventMode
@@ -589,6 +709,11 @@ namespace org.hl7.fhir.instance.model
     public MessageConformanceSoftware software { get; set; }
 
     /**
+     * Additional other profiles that apply to this conformance statement.
+     */
+    public List<Uri> profile { get; private set; }
+
+    /**
      * An event supported by the application
      */
     public List<MessageConformanceEvent> event_ { get; private set; }
@@ -596,117 +721,125 @@ namespace org.hl7.fhir.instance.model
 
   }
 
-  public class Agent : Resource {
+  public class Organization : Resource {
   
-    /**
-     * The person who acts as the agent
-     */
-    public ResourceReference<Person> person { get; set; }
-
-    /**
-     * The organisation that is being represented
-     */
-    public ResourceReference<Organization> organization { get; set; }
-
-    /**
-     * The way in which the person represents the organisation - what role do they have?
-     */
-    public List<CodeableConcept> role { get; private set; }
-
-    /**
-     * The time period during which the agent was/is authorised to represent the organisation.
-     */
-    public Interval<Date> period { get; set; }
-
-    /**
-     * An identifier that applies to this person in this role
-     */
-    public List<HumanId> identifier { get; private set; }
-
-    /**
-     * A postal address for this person playing this role
-     */
-    public List<Address> address { get; private set; }
-
-    /**
-     * A contact detail address for this person playing this role
-     */
-    public List<Contact> contact { get; private set; }
-
-
-  }
-
-  public class Animal : Resource {
-  
-    public class AnimalRelatedEntity : Element
+    public class OrganizationName : Element
     {
-      public AnimalRelatedEntity()
+      /**
+       * The actual name of the organization
+       */
+      public String_ value { get; set; }
+
+      /**
+       * The period that this name was in use by the organization
+       */
+      public Interval<Date> period { get; set; }
+
+    }
+
+    public class OrganizationAccreditation : Element
+    {
+      /**
+       * The identifier of the accreditation
+       */
+      public Identifier id { get; set; }
+
+      /**
+       * The type of the accreditation
+       */
+      public CodeableConcept code { get; set; }
+
+      /**
+       * The organization that confered/confers the accreditation
+       */
+      public ResourceReference<Organization> institution { get; set; }
+
+      /**
+       * The period for which the accreditation is held
+       */
+      public Interval<Date> period { get; set; }
+
+    }
+
+    public class OrganizationRelatedOrganization : Element
+    {
+      public OrganizationRelatedOrganization()
       {
         address = new List<Address>();
         contact = new List<Contact>();
       }
 
       /**
-       * Identifier for the entity
+       * Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
        */
       public HumanId id { get; set; }
 
       /**
-       * Type of relationship
+       * Code that specifies how this organization is related to the subject. A code is required.
        */
-      public CodeableConcept role { get; set; }
+      public CodeableConcept code { get; set; }
 
       /**
-       * Name of the related entity
+       * A name should be specified for the related organization
        */
-      public HumanName name { get; set; }
+      public String_ name { get; set; }
 
       /**
-       * An address (usually human, but may be kin)
+       * Postal addresses may be provided for the related organization
        */
       public List<Address> address { get; private set; }
 
       /**
-       * Contact details (usually for humans)
+       * Contact details (phone, email etc) may be provided for the related organization
        */
       public List<Contact> contact { get; private set; }
+
+      /**
+       * The period during which the organizations were related in this fashion
+       */
+      public Interval<Date> period { get; set; }
 
     }
 
     /**
-     * Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+     * Identifier for the organization that is used to identify the organization across multiple disparate systems
      */
     public List<HumanId> identifier { get; private set; }
 
     /**
-     * A name associated with the animal. The use code maiden does not apply.
+     * A name associated with the organization
      */
-    public List<HumanName> name { get; private set; }
+    public List<OrganizationName> name { get; private set; }
 
     /**
-     * The birth date for the animal
+     * An address for the organization
      */
-    public DateTime dob { get; set; }
+    public List<Address> address { get; private set; }
 
     /**
-     * Species for the animal
+     * A contact detail for the organization
      */
-    public CodeableConcept species { get; set; }
+    public List<Contact> contact { get; private set; }
 
     /**
-     * Strain for the animal
+     * The kind of organization that this is
      */
-    public CodeableConcept strain { get; set; }
+    public CodeableConcept code { get; set; }
 
     /**
-     * Gender for the Animal
+     * The industry that this organization is involved in
      */
-    public CodeableConcept gender { get; set; }
+    public CodeableConcept industryCode { get; set; }
 
     /**
-     * Kin, owner, care giver etc
+     * The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
      */
-    public List<AnimalRelatedEntity> relatedEntity { get; private set; }
+    public List<OrganizationAccreditation> accreditation { get; private set; }
+
+    /**
+     * Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+     */
+    public List<OrganizationRelatedOrganization> relatedOrganization { get; private set; }
 
 
   }
@@ -940,6 +1073,172 @@ namespace org.hl7.fhir.instance.model
 
   }
 
+  public class Profile : Resource {
+  
+    public enum ResourceProfileStatus
+    {
+      draft, // This profile is still under development
+      testing, // this profile was authored for testing purposes (or education/evaluation/evangelisation)
+      production, // This profile is ready for use in production systems
+      withdrawn, // This profile has been withdrawn
+      superceded // This profile was superceded by a more recent version
+    }
+
+    public enum ConceptBindingType
+    {
+      Unbound, // The concept domain is not bound to anything
+      CodeList, // The concept domain is bound to a list of supplied codes - only those codes are allowed
+      Reference, // The concept domain references some external definition by a provided reference
+      Preferred, // The concept domain references a set of preferred terms
+      Suggestion, // This profile was superceded by a more recent version
+      External // The concept domain is defined by an external authority identified in the reference
+    }
+
+    public class ProfileAuthor : Element
+    {
+      public ProfileAuthor()
+      {
+        reference = new List<Uri>();
+      }
+
+      /**
+       * The name of the author
+       */
+      public String_ name { get; set; }
+
+      /**
+       * Reference to the author to assist a user in finding and communicating with the author
+       */
+      public List<Uri> reference { get; private set; }
+
+    }
+
+    public class ProfileEndorser : Element
+    {
+      /**
+       * The name of the endorsing body
+       */
+      public String_ name { get; set; }
+
+      /**
+       * Reference to the author to assist a user in finding and communicating with the endorsing body
+       */
+      public Uri reference { get; set; }
+
+    }
+
+    public class ProfileBinding : Element
+    {
+      public ProfileBinding()
+      {
+        code = new List<Coding>();
+      }
+
+      /**
+       * The name of the concept domain that this profile is declaring a constraint on
+       */
+      public String_ name { get; set; }
+
+      /**
+       * The form of the binding
+       */
+      public ConceptBindingType type { get; set; }
+
+      /**
+       * extra details - see notes
+       */
+      public String_ details { get; set; }
+
+      /**
+       * source of binding content
+       */
+      public Uri reference { get; set; }
+
+      /**
+       * enumerated codes that are the binding
+       */
+      public List<Coding> code { get; private set; }
+
+    }
+
+    /**
+     * A free text natural language name identifying the Template.
+     */
+    public String_ name { get; set; }
+
+    /**
+     * Details of the author who accepts responsibility for publishing the profile
+     */
+    public ProfileAuthor author { get; set; }
+
+    /**
+     * A free text natural language description of the intent and scope of the Template. The purpose is to provide the author’s initial intent for the Template in the language specified below.
+     */
+    public String_ intention { get; set; }
+
+    /**
+     * A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates
+     */
+    public List<Coding> code { get; private set; }
+
+    /**
+     * A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc
+     */
+    public String_ description { get; set; }
+
+    /**
+     * A description, reference or link to a published medical knowledge that was used in the definition of this Template
+     */
+    public List<Uri> evidence { get; private set; }
+
+    /**
+     * A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention
+     */
+    public String_ comments { get; set; }
+
+    /**
+     * draft | testing | production | withdrawn | superceded
+     */
+    public ResourceProfileStatus status { get; set; }
+
+    /**
+     * The date that the current value for publicationStatus was applied to the Template
+     */
+    public DateTime date { get; set; }
+
+    /**
+     * A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+     */
+    public List<ProfileEndorser> endorser { get; private set; }
+
+    /**
+     * A free text description describing the changes in this version of the profile as compared to the previous version. 
+     */
+    public String_ changes { get; set; }
+
+    /**
+     * A template that is supercded by this template (maybe a  previous version)
+     */
+    public List<Uri> supercedes { get; private set; }
+
+    /**
+     * Additional other profiles that apply to this conformance statement.
+     */
+    public List<Uri> profile { get; private set; }
+
+    /**
+     * Resource Type with constraints
+     */
+    public List<Constraint> resource { get; private set; }
+
+    /**
+     * 
+     */
+    public List<ProfileBinding> binding { get; private set; }
+
+
+  }
+
   public class Patient : Resource {
   
     /**
@@ -990,218 +1289,132 @@ namespace org.hl7.fhir.instance.model
 
   }
 
-  public class Organization : Resource {
+  public class Person : Resource {
   
-    public class OrganizationName : Element
+    public enum LanguageUse
     {
-      /**
-       * The actual name of the organization
-       */
-      public String_ value { get; set; }
-
-      /**
-       * The period that this name was in use by the organization
-       */
-      public Interval<Date> period { get; set; }
-
+      none, // The person does not speak the language at all
+      poor, // The person has minimal functional capability in the language
+      useable, // The person can use the language, but may not be full conversant, particularly with regards to health concepts
+      fluent // The person is fully capable of using the language
     }
 
-    public class OrganizationAccreditation : Element
+    public class PersonQualification : Element
     {
       /**
-       * The identifier of the accreditation
+       * The identifier of a qualification
        */
       public Identifier id { get; set; }
 
       /**
-       * The type of the accreditation
+       * The type of the qualification
        */
       public CodeableConcept code { get; set; }
 
       /**
-       * The organization that confered/confers the accreditation
+       * The organisation that confered/confers the qualification
        */
       public ResourceReference<Organization> institution { get; set; }
 
       /**
-       * The period for which the accreditation is held
+       * The period for which a qualification is held
        */
       public Interval<Date> period { get; set; }
 
     }
 
-    public class OrganizationRelatedOrganization : Element
+    public class PersonLanguage : Element
     {
-      public OrganizationRelatedOrganization()
+      /**
+       * A code that identifies the language
+       */
+      public Code code { get; set; }
+
+      /**
+       * A code the describes how well the language is spoken
+       */
+      public LanguageUse use { get; set; }
+
+    }
+
+    public class PersonRelatedPerson : Element
+    {
+      public PersonRelatedPerson()
       {
-        address = new List<Address>();
         contact = new List<Contact>();
       }
 
       /**
-       * Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
+       * Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
        */
       public HumanId id { get; set; }
 
       /**
-       * Code that specifies how this organization is related to the subject. A code is required.
+       * Code that specifies how this person is related to the subject. A code is required.
        */
-      public CodeableConcept code { get; set; }
+      public CodeableConcept role { get; set; }
 
       /**
-       * A name should be specified for the related organization
+       * A name should be specified for the related person
        */
-      public String_ name { get; set; }
+      public HumanName name { get; set; }
 
       /**
-       * Postal addresses may be provided for the related organization
-       */
-      public List<Address> address { get; private set; }
-
-      /**
-       * Contact details (phone, email etc) may be provided for the related organization
+       * Contact details (phone, email etc) should be provided for the person
        */
       public List<Contact> contact { get; private set; }
-
-      /**
-       * The period during which the organizations were related in this fashion
-       */
-      public Interval<Date> period { get; set; }
 
     }
 
     /**
-     * Identifier for the organization that is used to identify the organization across multiple disparate systems
+     * Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
      */
     public List<HumanId> identifier { get; private set; }
 
     /**
-     * A name associated with the organization
+     * A name associated with the person
      */
-    public List<OrganizationName> name { get; private set; }
+    public List<HumanName> name { get; private set; }
 
     /**
-     * An address for the organization
+     * An address for the person
      */
     public List<Address> address { get; private set; }
 
     /**
-     * A contact detail for the organization
+     * A contact detail for the person
      */
     public List<Contact> contact { get; private set; }
 
     /**
-     * The kind of organization that this is
+     * The birth date for the person
      */
-    public CodeableConcept code { get; set; }
+    public DateTime dob { get; set; }
 
     /**
-     * The industry that this organization is involved in
+     * Administrative Gender
      */
-    public CodeableConcept industryCode { get; set; }
+    public CodeableConcept gender { get; set; }
 
     /**
-     * The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+     * The religious denomination to which a person professes affiliation
      */
-    public List<OrganizationAccreditation> accreditation { get; private set; }
+    public CodeableConcept religion { get; set; }
 
     /**
-     * Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+     * The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
      */
-    public List<OrganizationRelatedOrganization> relatedOrganization { get; private set; }
-
-
-  }
-
-  public class DocumentConformance : Resource {
-  
-    public class DocumentConformancePublisher : Element
-    {
-      public DocumentConformancePublisher()
-      {
-        address = new List<Address>();
-        contact = new List<Contact>();
-      }
-
-      /**
-       * Name of Organization
-       */
-      public String_ name { get; set; }
-
-      /**
-       * Address of Organization
-       */
-      public List<Address> address { get; private set; }
-
-      /**
-       * Contacts for Organization
-       */
-      public List<Contact> contact { get; private set; }
-
-    }
-
-    public class DocumentConformanceSoftware : Element
-    {
-      /**
-       * Name software is known by
-       */
-      public String_ name { get; set; }
-
-      /**
-       * Version covered by this statement
-       */
-      public String_ version { get; set; }
-
-      /**
-       * Date this version released
-       */
-      public DateTime releaseDate { get; set; }
-
-    }
-
-    public class DocumentConformanceDocument : Element
-    {
-      public DocumentConformanceDocument()
-      {
-        resource = new List<Constraint>();
-      }
-
-      /**
-       * Name for this particular document profile
-       */
-      public String_ name { get; set; }
-
-      /**
-       * Human description of this particular profile
-       */
-      public String_ purpose { get; set; }
-
-      /**
-       * Constraint on a resource used in the document
-       */
-      public List<Constraint> resource { get; private set; }
-
-    }
+    public List<PersonQualification> qualification { get; private set; }
 
     /**
-     * Date that this conformance statement is published
+     * A language spoken by the person, with proficiency
      */
-    public DateTime date { get; set; }
+    public List<PersonLanguage> language { get; private set; }
 
     /**
-     * The organization that publishes this conformance statement
+     * Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
      */
-    public DocumentConformancePublisher publisher { get; set; }
-
-    /**
-     * The software that is covered by this conformance statement
-     */
-    public DocumentConformanceSoftware software { get; set; }
-
-    /**
-     * A document definition
-     */
-    public List<DocumentConformanceDocument> document { get; private set; }
+    public List<PersonRelatedPerson> relatedPerson { get; private set; }
 
 
   }
@@ -1417,132 +1630,100 @@ namespace org.hl7.fhir.instance.model
 
   }
 
-  public class Person : Resource {
+  public class DocumentConformance : Resource {
   
-    public enum LanguageUse
+    public class DocumentConformancePublisher : Element
     {
-      none, // The person does not speak the language at all
-      poor, // The person has minimal functional capability in the language
-      useable, // The person can use the language, but may not be full conversant, particularly with regards to health concepts
-      fluent // The person is fully capable of using the language
-    }
-
-    public class PersonQualification : Element
-    {
-      /**
-       * The identifier of a qualification
-       */
-      public Identifier id { get; set; }
-
-      /**
-       * The type of the qualification
-       */
-      public CodeableConcept code { get; set; }
-
-      /**
-       * The organisation that confered/confers the qualification
-       */
-      public ResourceReference<Organization> institution { get; set; }
-
-      /**
-       * The period for which a qualification is held
-       */
-      public Interval<Date> period { get; set; }
-
-    }
-
-    public class PersonLanguage : Element
-    {
-      /**
-       * A code that identifies the language
-       */
-      public Code code { get; set; }
-
-      /**
-       * A code the describes how well the language is spoken
-       */
-      public LanguageUse use { get; set; }
-
-    }
-
-    public class PersonRelatedPerson : Element
-    {
-      public PersonRelatedPerson()
+      public DocumentConformancePublisher()
       {
+        address = new List<Address>();
         contact = new List<Contact>();
       }
 
       /**
-       * Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
+       * Name of Organization
        */
-      public HumanId id { get; set; }
+      public String_ name { get; set; }
 
       /**
-       * Code that specifies how this person is related to the subject. A code is required.
+       * Address of Organization
        */
-      public CodeableConcept role { get; set; }
+      public List<Address> address { get; private set; }
 
       /**
-       * A name should be specified for the related person
-       */
-      public HumanName name { get; set; }
-
-      /**
-       * Contact details (phone, email etc) should be provided for the person
+       * Contacts for Organization
        */
       public List<Contact> contact { get; private set; }
 
     }
 
-    /**
-     * Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
-     */
-    public List<HumanId> identifier { get; private set; }
+    public class DocumentConformanceSoftware : Element
+    {
+      /**
+       * Name software is known by
+       */
+      public String_ name { get; set; }
+
+      /**
+       * Version covered by this statement
+       */
+      public String_ version { get; set; }
+
+      /**
+       * Date this version released
+       */
+      public DateTime releaseDate { get; set; }
+
+    }
+
+    public class DocumentConformanceDocument : Element
+    {
+      public DocumentConformanceDocument()
+      {
+        resource = new List<Constraint>();
+      }
+
+      /**
+       * Name for this particular document profile
+       */
+      public String_ name { get; set; }
+
+      /**
+       * Human description of this particular profile
+       */
+      public String_ purpose { get; set; }
+
+      /**
+       * Constraint on a resource used in the document
+       */
+      public List<Constraint> resource { get; private set; }
+
+    }
 
     /**
-     * A name associated with the person
+     * Date that this conformance statement is published
      */
-    public List<HumanName> name { get; private set; }
+    public DateTime date { get; set; }
 
     /**
-     * An address for the person
+     * The organization that publishes this conformance statement
      */
-    public List<Address> address { get; private set; }
+    public DocumentConformancePublisher publisher { get; set; }
 
     /**
-     * A contact detail for the person
+     * The software that is covered by this conformance statement
      */
-    public List<Contact> contact { get; private set; }
+    public DocumentConformanceSoftware software { get; set; }
 
     /**
-     * The birth date for the person
+     * Additional other profiles that apply to this conformance statement.
      */
-    public DateTime dob { get; set; }
+    public List<Uri> profile { get; private set; }
 
     /**
-     * Administrative Gender
+     * A document definition
      */
-    public CodeableConcept gender { get; set; }
-
-    /**
-     * The religious denomination to which a person professes affiliation
-     */
-    public CodeableConcept religion { get; set; }
-
-    /**
-     * The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
-     */
-    public List<PersonQualification> qualification { get; private set; }
-
-    /**
-     * A language spoken by the person, with proficiency
-     */
-    public List<PersonLanguage> language { get; private set; }
-
-    /**
-     * Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
-     */
-    public List<PersonRelatedPerson> relatedPerson { get; private set; }
+    public List<DocumentConformanceDocument> document { get; private set; }
 
 
   }

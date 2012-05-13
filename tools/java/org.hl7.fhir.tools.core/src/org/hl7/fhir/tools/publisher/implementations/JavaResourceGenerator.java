@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -45,7 +46,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		
 		write("package org.hl7.fhir.instance.model;\r\n");
 		write("\r\n");
-    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat("HH:mm MMM d, yyyy").format(genDate)+" for FHIR v"+version+"\r\n");
+    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate)+" for FHIR v"+version+"\r\n");
     write("\r\n");
 		if (hasList(root) || hasXhtml(root)) {
 		  if (hasList(root))

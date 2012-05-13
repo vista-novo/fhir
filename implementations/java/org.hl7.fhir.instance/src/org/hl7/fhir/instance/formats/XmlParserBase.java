@@ -138,7 +138,7 @@ public abstract class XmlParserBase extends XmlBase {
   }
   
   
-  protected URI parseUri(XmlPullParser xpp) throws Exception {
+  protected URI parseURI(XmlPullParser xpp) throws Exception {
     return new URI(parseString(xpp));
   }
   
@@ -217,7 +217,7 @@ public abstract class XmlParserBase extends XmlBase {
   protected Sid parseSid(XmlPullParser xpp) throws Exception {
     Sid result = new Sid();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseUri(xpp));
+    result.setValue(parseURI(xpp));
     return result;
   }
   protected Decimal parseDecimal(XmlPullParser xpp) throws Exception {
@@ -226,10 +226,10 @@ public abstract class XmlParserBase extends XmlBase {
     result.setValue(parseBigDecimal(xpp));
     return result;
   }
-  protected Uri parseURI(XmlPullParser xpp) throws Exception {
+  protected Uri parseUri(XmlPullParser xpp) throws Exception {
     Uri result = new Uri();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseUri(xpp));
+    result.setValue(parseURI(xpp));
     return result;
   }
   protected Base64Binary parseBase64Binary(XmlPullParser xpp) throws Exception {

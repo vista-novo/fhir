@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -44,7 +43,7 @@ Notes:
 </p>
 <ul>
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
- <li>All the XML is in the namespace http://www.hl7.org/fhir, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
+ <li>All the XML is in the namespace <a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
  <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
  <li>In addition, elements have a control flag shown in red, that specifies whether the element must be present, is optional or may be marked as not present. This is explained below. The control flags are hyperlinked to their definitions.</li>
  <li>Unless specified otherwise, by the appearance of Zero+ or One+, an element can only appear once. If an element that can repeat is labelled as <font color="Brown"><b>Zero+</b></font> <font color="red">mand</font>, that means that any element that appears is mandatory </li>
@@ -57,8 +56,7 @@ Every resource contains the following common elements:
 </p>
 <pre>
 &lt;<a href="#Resource" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://www.hl7.org/fhir"&gt;
-  &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> 
-<font color="navy">Master Resource Id, always first. Never changes after creation</font>&lt;/id&gt;
+  &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first. Never changes after creation</font>&lt;/id&gt;
   &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a>  <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
   &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
 &lt;/[Name]&gt;

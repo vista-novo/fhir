@@ -11,16 +11,18 @@ public class ResourceFactory {
             return new Device();
         if ("Message".equals(name))
             return new Message();
-        if ("MessageConformance".equals(name))
-            return new MessageConformance();
-        if ("Agent".equals(name))
-            return new Agent();
         if ("Animal".equals(name))
             return new Animal();
-        if ("Prescription".equals(name))
-            return new Prescription();
+        if ("Agent".equals(name))
+            return new Agent();
+        if ("MessageConformance".equals(name))
+            return new MessageConformance();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Prescription".equals(name))
+            return new Prescription();
+        if ("Profile".equals(name))
+            return new Profile();
         if ("Admission".equals(name))
             return new Admission();
         if ("Group".equals(name))
@@ -31,12 +33,12 @@ public class ResourceFactory {
             return new Specimen();
         if ("Patient".equals(name))
             return new Patient();
-        if ("DocumentConformance".equals(name))
-            return new DocumentConformance();
-        if ("LabReport".equals(name))
-            return new LabReport();
         if ("Person".equals(name))
             return new Person();
+        if ("LabReport".equals(name))
+            return new LabReport();
+        if ("DocumentConformance".equals(name))
+            return new DocumentConformance();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }

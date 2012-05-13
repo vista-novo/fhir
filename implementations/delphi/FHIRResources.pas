@@ -4,7 +4,7 @@ unit FHIRResources;
 
 interface
 
-// FHIR v0.01 generated 19:37 Apr 30, 2012
+// FHIR v0.01 generated Mon, May 14, 2012 02:13+1000
 
 uses
   FHIRBase, AdvBuffers, DecimalSupport, Classes;
@@ -17,15 +17,16 @@ Type
     frtConformance, {@enum.value A conformance statement returned by request in an RESTful framework }
     frtDocument, {@enum.value A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole }
     frtMessage, {@enum.value A message that contains FHIR resources }
-    frtMessageConformance, {@enum.value A conformance statement about how an application uses FHIR messaging }
-    frtAgent, {@enum.value A person who represents an organisation, and is authorised to perform actions on it's behalf }
     frtAnimal, {@enum.value An animal that has relevance to the care process -usually this is for animals that are patients. }
-    frtPrescription, {@enum.value Directions provided by a prescribing practitioner for a specific medication to be administered to an individual }
-    frtPatient, {@enum.value A patient is a person or animal that is receiving care }
+    frtAgent, {@enum.value A person who represents an organisation, and is authorised to perform actions on it's behalf }
+    frtMessageConformance, {@enum.value A conformance statement about how an application uses FHIR messaging }
     frtOrganization, {@enum.value For any organization/institution/government department that has relevance to the care process }
-    frtDocumentConformance, {@enum.value A conformance statement about how one or more FHIR documents }
+    frtPrescription, {@enum.value Directions provided by a prescribing practitioner for a specific medication to be administered to an individual }
+    frtProfile, {@enum.value A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains }
+    frtPatient, {@enum.value A patient is a person or animal that is receiving care }
+    frtPerson, {@enum.value A person who is involved in the healthcare process }
     frtLabReport, {@enum.value The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care }
-    frtPerson); {@enum.value A person who is involved in the healthcare process }
+    frtDocumentConformance); {@enum.value A conformance statement about how one or more FHIR documents }
 
   {@Enum TExtensionState
     The state of an extension
@@ -215,6 +216,39 @@ Type
     tbynYes, {@enum.value tbynYes TRUE }
     tbynNo); {@enum.value tbynNo FALSE }
 
+  {@Enum TResourceProfileStatus
+    The lifecycle status of a Resource Profile
+  }
+  TResourceProfileStatus = (
+    trpsUnknown,  {@enum.value trpsUnknown Value is unknown }
+    trpsDraft, {@enum.value trpsDraft This profile is still under development }
+    trpsTesting, {@enum.value trpsTesting this profile was authored for testing purposes (or education/evaluation/evangelisation) }
+    trpsProduction, {@enum.value trpsProduction This profile is ready for use in production systems }
+    trpsWithdrawn, {@enum.value trpsWithdrawn This profile has been withdrawn }
+    trpsSuperceded); {@enum.value trpsSuperceded This profile was superceded by a more recent version }
+
+  {@Enum TConceptBindingType
+    The type of a binding for a concept domain
+  }
+  TConceptBindingType = (
+    tcbtUnknown,  {@enum.value tcbtUnknown Value is unknown }
+    tcbtUnbound, {@enum.value tcbtUnbound The concept domain is not bound to anything }
+    tcbtCodeList, {@enum.value tcbtCodeList The concept domain is bound to a list of supplied codes - only those codes are allowed }
+    tcbtReference, {@enum.value tcbtReference The concept domain references some external definition by a provided reference }
+    tcbtPreferred, {@enum.value tcbtPreferred The concept domain references a set of preferred terms }
+    tcbtSuggestion, {@enum.value tcbtSuggestion This profile was superceded by a more recent version }
+    tcbtExternal); {@enum.value tcbtExternal The concept domain is defined by an external authority identified in the reference }
+
+  {@Enum TLanguageUse
+    How well a person speaks a language
+  }
+  TLanguageUse = (
+    tluUnknown,  {@enum.value tluUnknown Value is unknown }
+    tluNone, {@enum.value tluNone The person does not speak the language at all }
+    tluPoor, {@enum.value tluPoor The person has minimal functional capability in the language }
+    tluUseable, {@enum.value tluUseable The person can use the language, but may not be full conversant, particularly with regards to health concepts }
+    tluFluent); {@enum.value tluFluent The person is fully capable of using the language }
+
   {@Enum TLabReportStatus
     The status of a report or result item
   }
@@ -239,19 +273,9 @@ Type
     tlrfPlusPlus, {@enum.value tlrfPlusPlus  }
     tlrfPlusPlusPlus); {@enum.value tlrfPlusPlusPlus  }
 
-  {@Enum TLanguageUse
-    How well a person speaks a language
-  }
-  TLanguageUse = (
-    tluUnknown,  {@enum.value tluUnknown Value is unknown }
-    tluNone, {@enum.value tluNone The person does not speak the language at all }
-    tluPoor, {@enum.value tluPoor The person has minimal functional capability in the language }
-    tluUseable, {@enum.value tluUseable The person can use the language, but may not be full conversant, particularly with regards to health concepts }
-    tluFluent); {@enum.value tluFluent The person is fully capable of using the language }
-
 Const
-  CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('Conformance', 'Document', 'Message', 'MessageConformance', 'Agent', 'Animal', 'Prescription', 'Patient', 'Organization', 'DocumentConformance', 'LabReport', 'Person');
-  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('conformances', 'documents', 'messages', 'messageconformances', 'agents', 'animals', 'prescriptions', 'patients', 'organizations', 'documentconformances', 'labreports', 'people');
+  CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('Conformance', 'Document', 'Message', 'Animal', 'Agent', 'MessageConformance', 'Organization', 'Prescription', 'Profile', 'Patient', 'Person', 'LabReport', 'DocumentConformance');
+  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('conformances', 'documents', 'messages', 'animals', 'agents', 'messageconformances', 'organizations', 'prescriptions', 'profiles', 'patients', 'people', 'labreports', 'documentconformances');
   CODES_TExtensionState : Array[TExtensionState] of String = ('', 'must-understand', 'superceded');
   CODES_TConformanceType : Array[TConformanceType] of String = ('', 'Mandatory', 'Conditional', 'Optional', 'Prohibited');
   CODES_TNarrativeStatus : Array[TNarrativeStatus] of String = ('', 'generated', 'extensions', 'additional');
@@ -271,9 +295,11 @@ Const
   CODES_TMessageConformanceEventMode : Array[TMessageConformanceEventMode] of String = ('', 'sender', 'receiver');
   CODES_TPrescriptionStatus : Array[TPrescriptionStatus] of String = ('', 'active', 'completed');
   CODES_TBooleanYesNo : Array[TBooleanYesNo] of String = ('', 'yes', 'no');
+  CODES_TResourceProfileStatus : Array[TResourceProfileStatus] of String = ('', 'draft', 'testing', 'production', 'withdrawn', 'superceded');
+  CODES_TConceptBindingType : Array[TConceptBindingType] of String = ('', 'Unbound', 'CodeList', 'Reference', 'Preferred', 'Suggestion', 'External');
+  CODES_TLanguageUse : Array[TLanguageUse] of String = ('', 'none', 'poor', 'useable', 'fluent');
   CODES_TLabReportStatus : Array[TLabReportStatus] of String = ('', 'registered', 'interim', 'final', 'amended', 'cancelled', 'withdrawn');
   CODES_TLabResultFlag : Array[TLabResultFlag] of String = ('', '-', '--', '---', '+', '++', '+++');
-  CODES_TLanguageUse : Array[TLanguageUse] of String = ('', 'none', 'poor', 'useable', 'fluent');
   FHIR_GENERATED_VERSION = '0.01';
 
 
@@ -285,7 +311,7 @@ Type
   TConstraintElementValueList = class;
   TConstraintElement = class;
   TConstraintElementMapping = class;
-  TConstraintElementAggregation = class;
+  TConstraintElementResource = class;
   TConstraintElementValue = class;
   TConstraintElementList = class;
   TConstraint = class;
@@ -337,6 +363,13 @@ Type
   TDocument = class;
   TMessageResponse = class;
   TMessage = class;
+  TAnimalRelatedEntity = class;
+  THumanIdList = class;
+  THumanNameList = class;
+  TAnimalRelatedEntityList = class;
+  TAnimal = class;
+  TCodeableConceptList = class;
+  TAgent = class;
   TMessageConformancePublisher = class;
   TMessageConformanceSoftware = class;
   TMessageConformanceEvent = class;
@@ -345,13 +378,13 @@ Type
   TMessageConformanceEventResponse = class;
   TMessageConformanceEventList = class;
   TMessageConformance = class;
-  TCodeableConceptList = class;
-  THumanIdList = class;
-  TAgent = class;
-  TAnimalRelatedEntity = class;
-  THumanNameList = class;
-  TAnimalRelatedEntityList = class;
-  TAnimal = class;
+  TOrganizationName = class;
+  TOrganizationAccreditation = class;
+  TOrganizationRelatedOrganization = class;
+  TOrganizationNameList = class;
+  TOrganizationAccreditationList = class;
+  TOrganizationRelatedOrganizationList = class;
+  TOrganization = class;
   TPrescriptionDispense = class;
   TPrescriptionMedicineActiveIngredientList = class;
   TPrescriptionMedicineInactiveIngredientList = class;
@@ -363,19 +396,20 @@ Type
   TScheduleList = class;
   TPrescriptionAdministrationRequestDosageInstruction = class;
   TPrescription = class;
+  TProfileAuthor = class;
+  TProfileEndorser = class;
+  TProfileBinding = class;
+  TProfileEndorserList = class;
+  TProfileBindingList = class;
+  TProfile = class;
   TPatient = class;
-  TOrganizationName = class;
-  TOrganizationAccreditation = class;
-  TOrganizationRelatedOrganization = class;
-  TOrganizationNameList = class;
-  TOrganizationAccreditationList = class;
-  TOrganizationRelatedOrganizationList = class;
-  TOrganization = class;
-  TDocumentConformancePublisher = class;
-  TDocumentConformanceSoftware = class;
-  TDocumentConformanceDocument = class;
-  TDocumentConformanceDocumentList = class;
-  TDocumentConformance = class;
+  TPersonQualification = class;
+  TPersonLanguage = class;
+  TPersonRelatedPerson = class;
+  TPersonQualificationList = class;
+  TPersonLanguageList = class;
+  TPersonRelatedPersonList = class;
+  TPerson = class;
   TLabReportRequestDetail = class;
   TLabReportResultGroupResultList = class;
   TLabReportResultGroup = class;
@@ -386,18 +420,16 @@ Type
   TLabReportResultGroupList = class;
   TAttachmentList = class;
   TLabReport = class;
-  TPersonQualification = class;
-  TPersonLanguage = class;
-  TPersonRelatedPerson = class;
-  TPersonQualificationList = class;
-  TPersonLanguageList = class;
-  TPersonRelatedPersonList = class;
-  TPerson = class;
+  TDocumentConformancePublisher = class;
+  TDocumentConformanceSoftware = class;
+  TDocumentConformanceDocument = class;
+  TDocumentConformanceDocumentList = class;
+  TDocumentConformance = class;
 
   {@Class TFHIRResource : TFHIRElement
     Base Resource Definition - id, extensions, narrative
   }
-  {!.Net HL7Connect.FHIR.Resource}
+  {!.Net HL7Connect.Fhir.Resource}
   TFHIRResource = {abstract} class (TFHIRElement)
   private
     FId : String;
@@ -432,7 +464,7 @@ Type
   {@Class TExtensionList
     A list of Extension
   }
-  {!.Net HL7Connect.FHIR.ExtensionList}
+  {!.Net HL7Connect.Fhir.ExtensionList}
   TExtensionList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TExtension;
@@ -507,7 +539,7 @@ Type
   {@Class TExtension : TFHIRElement
     Optional Extensions Element - found in all resources
   }
-  {!.Net HL7Connect.FHIR.Extension}
+  {!.Net HL7Connect.Fhir.Extension}
   TExtension = class (TFHIRElement)
   private
     FCode : String;
@@ -566,7 +598,7 @@ Type
   {@Class TConstraintElementMappingList
     A list of ConstraintElementMapping
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementMappingList}
+  {!.Net HL7Connect.Fhir.ConstraintElementMappingList}
   TConstraintElementMappingList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TConstraintElementMapping;
@@ -641,7 +673,7 @@ Type
   {@Class TConstraintElementValueList
     A list of ConstraintElementValue
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementValueList}
+  {!.Net HL7Connect.Fhir.ConstraintElementValueList}
   TConstraintElementValueList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TConstraintElementValue;
@@ -716,7 +748,7 @@ Type
   {@Class TConstraintElement : TFHIRElement
     
   }
-  {!.Net HL7Connect.FHIR.ConstraintElement}
+  {!.Net HL7Connect.Fhir.ConstraintElement}
   TConstraintElement = class (TFHIRElement)
   private
     FPath : String;
@@ -731,7 +763,7 @@ Type
     FMustUnderstand : Boolean;
     FDefinition : String;
     FMapping : TConstraintElementMappingList;
-    FAggregation : TConstraintElementAggregation;
+    FResource : TConstraintElementResource;
     FValueSet : String;
     FValue : TConstraintElementValueList;
     Procedure SetPath(value : String);
@@ -745,7 +777,7 @@ Type
     Procedure SetMustSupport(value : Boolean);
     Procedure SetMustUnderstand(value : Boolean);
     Procedure SetDefinition(value : String);
-    Procedure SetAggregation(value : TConstraintElementAggregation);
+    Procedure SetResource(value : TConstraintElementResource);
     Procedure SetValueSet(value : String);
   public
     constructor Create; Override;
@@ -816,10 +848,10 @@ Type
     }
     property Mapping : TConstraintElementMappingList read FMapping;
 
-    {@member aggregation
+    {@member resource
       If context includes aggregation and type=Resource()
     }
-    property aggregation : TConstraintElementAggregation read FAggregation write SetAggregation;
+    property resource : TConstraintElementResource read FResource write SetResource;
 
     {@member valueSet
       Value set id (only if coded)
@@ -837,7 +869,7 @@ Type
   {@Class TConstraintElementMapping : TFHIRElement
     
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementMapping}
+  {!.Net HL7Connect.Fhir.ConstraintElementMapping}
   TConstraintElementMapping = class (TFHIRElement)
   private
     FTarget : String;
@@ -866,23 +898,23 @@ Type
   end;
 
 
-  {@Class TConstraintElementAggregation : TFHIRElement
+  {@Class TConstraintElementResource : TFHIRElement
     If context includes aggregation and type=Resource()
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementAggregation}
-  TConstraintElementAggregation = class (TFHIRElement)
+  {!.Net HL7Connect.Fhir.ConstraintElementResource}
+  TConstraintElementResource = class (TFHIRElement)
   private
     FAggregated : Boolean;
-    FName : String;
+    FProfile : String;
     Procedure SetAggregated(value : Boolean);
-    Procedure SetName(value : String);
+    Procedure SetProfile(value : String);
   public
     constructor Create; Override;
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TConstraintElementAggregation; overload;
-    function Clone : TConstraintElementAggregation; overload;
+    function Link : TConstraintElementResource; overload;
+    function Clone : TConstraintElementResource; overload;
     {!script show}
   published
     {@member aggregated
@@ -890,10 +922,10 @@ Type
     }
     property aggregated : Boolean read FAggregated write SetAggregated;
 
-    {@member name
-      Reference to a Named Resource Profile
+    {@member profile
+      Reference to a Resource Profile
     }
-    property name : String read FName write SetName;
+    property profile : String read FProfile write SetProfile;
 
   end;
 
@@ -901,7 +933,7 @@ Type
   {@Class TConstraintElementValue : TFHIRElement
     
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementValue}
+  {!.Net HL7Connect.Fhir.ConstraintElementValue}
   TConstraintElementValue = class (TFHIRElement)
   private
     FName : String;
@@ -933,7 +965,7 @@ Type
   {@Class TConstraintElementList
     A list of ConstraintElement
   }
-  {!.Net HL7Connect.FHIR.ConstraintElementList}
+  {!.Net HL7Connect.Fhir.ConstraintElementList}
   TConstraintElementList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TConstraintElement;
@@ -1008,14 +1040,16 @@ Type
   {@Class TConstraint : TFHIRElement
     
   }
-  {!.Net HL7Connect.FHIR.Constraint}
+  {!.Net HL7Connect.Fhir.Constraint}
   TConstraint = class (TFHIRElement)
   private
     FType_ : String;
+    FProfile : String;
     FName : String;
     FPurpose : String;
     FElement : TConstraintElementList;
     Procedure SetType_(value : String);
+    Procedure SetProfile(value : String);
     Procedure SetName(value : String);
     Procedure SetPurpose(value : String);
   public
@@ -1032,8 +1066,13 @@ Type
     }
     property type_ : String read FType_ write SetType_;
 
+    {@member profile
+      Reference to a resource profile which includes the constraint statement that applies to this resource
+    }
+    property profile : String read FProfile write SetProfile;
+
     {@member name
-      The name of an aggregation profile
+      The name of this aggregation profile
     }
     property name : String read FName write SetName;
 
@@ -1053,7 +1092,7 @@ Type
   {@Class TNarrativeImage : TFHIRElement
     An image referred to directly in the xhtml
   }
-  {!.Net HL7Connect.FHIR.NarrativeImage}
+  {!.Net HL7Connect.Fhir.NarrativeImage}
   TNarrativeImage = class (TFHIRElement)
   private
     FMimeType : String;
@@ -1085,7 +1124,7 @@ Type
   {@Class TNarrativeMap : TFHIRElement
     A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes
   }
-  {!.Net HL7Connect.FHIR.NarrativeMap}
+  {!.Net HL7Connect.Fhir.NarrativeMap}
   TNarrativeMap = class (TFHIRElement)
   private
     FText : String;
@@ -1124,7 +1163,7 @@ Type
   {@Class TNarrativeImageList
     A list of NarrativeImage
   }
-  {!.Net HL7Connect.FHIR.NarrativeImageList}
+  {!.Net HL7Connect.Fhir.NarrativeImageList}
   TNarrativeImageList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TNarrativeImage;
@@ -1199,7 +1238,7 @@ Type
   {@Class TNarrativeMapList
     A list of NarrativeMap
   }
-  {!.Net HL7Connect.FHIR.NarrativeMapList}
+  {!.Net HL7Connect.Fhir.NarrativeMapList}
   TNarrativeMapList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TNarrativeMap;
@@ -1274,7 +1313,7 @@ Type
   {@Class TNarrative : TFHIRElement
     A human readable formatted text, including images
   }
-  {!.Net HL7Connect.FHIR.Narrative}
+  {!.Net HL7Connect.Fhir.Narrative}
   TNarrative = class (TFHIRElement)
   private
     FStatus : TNarrativeStatus;
@@ -1318,7 +1357,7 @@ Type
   {@Class TCoding : TFHIRType
     A reference to a code defined by a terminology system 
   }
-  {!.Net HL7Connect.FHIR.Coding}
+  {!.Net HL7Connect.Fhir.Coding}
   TCoding = class (TFHIRType)
   private
     FCode : String;
@@ -1357,7 +1396,7 @@ Type
   {@Class TInterval_Quantity : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
-  {!.Net HL7Connect.FHIR.Interval_Quantity}
+  {!.Net HL7Connect.Fhir.Interval_Quantity}
   TInterval_Quantity = class (TFHIRType)
   private
     FLow : TQuantity;
@@ -1389,7 +1428,7 @@ Type
   {@Class TInterval_DateTime : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
-  {!.Net HL7Connect.FHIR.Interval_DateTime}
+  {!.Net HL7Connect.Fhir.Interval_DateTime}
   TInterval_DateTime = class (TFHIRType)
   private
     FLow : String;
@@ -1421,7 +1460,7 @@ Type
   {@Class TInterval_Date : TFHIRType
     A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime
   }
-  {!.Net HL7Connect.FHIR.Interval_Date}
+  {!.Net HL7Connect.Fhir.Interval_Date}
   TInterval_Date = class (TFHIRType)
   private
     FLow : String;
@@ -1453,7 +1492,7 @@ Type
   {@Class TQuantity : TFHIRType
     A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units, and floating currencies
   }
-  {!.Net HL7Connect.FHIR.Quantity}
+  {!.Net HL7Connect.Fhir.Quantity}
   TQuantity = class (TFHIRType)
   private
     FValue : TSmartDecimal;
@@ -1506,7 +1545,7 @@ Type
   {@Class TChoiceValue : TFHIRElement
     A list of possible values for the code
   }
-  {!.Net HL7Connect.FHIR.ChoiceValue}
+  {!.Net HL7Connect.Fhir.ChoiceValue}
   TChoiceValue = class (TFHIRElement)
   private
     FCode : String;
@@ -1538,7 +1577,7 @@ Type
   {@Class TChoiceValueList
     A list of ChoiceValue
   }
-  {!.Net HL7Connect.FHIR.ChoiceValueList}
+  {!.Net HL7Connect.Fhir.ChoiceValueList}
   TChoiceValueList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TChoiceValue;
@@ -1613,7 +1652,7 @@ Type
   {@Class TChoice : TFHIRType
     A code taken from a short list of codes that are not defined in a formal code system
   }
-  {!.Net HL7Connect.FHIR.Choice}
+  {!.Net HL7Connect.Fhir.Choice}
   TChoice = class (TFHIRType)
   private
     FCode : String;
@@ -1651,7 +1690,7 @@ Type
   {@Class TAttachment : TFHIRType
     For referring to data content defined in other formats.
   }
-  {!.Net HL7Connect.FHIR.Attachment}
+  {!.Net HL7Connect.Fhir.Attachment}
   TAttachment = class (TFHIRType)
   private
     FMimeType : String;
@@ -1711,7 +1750,7 @@ Type
   {@Class TRatio : TFHIRType
     A ratio of two Quantity values - a numerator and a denominator. 
   }
-  {!.Net HL7Connect.FHIR.Ratio}
+  {!.Net HL7Connect.Fhir.Ratio}
   TRatio = class (TFHIRType)
   private
     FNumerator : TQuantity;
@@ -1743,7 +1782,7 @@ Type
   {@Class TCodingList
     A list of Coding
   }
-  {!.Net HL7Connect.FHIR.CodingList}
+  {!.Net HL7Connect.Fhir.CodingList}
   TCodingList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TCoding;
@@ -1818,7 +1857,7 @@ Type
   {@Class TCodeableConcept : TFHIRType
     A concept that may be defined by a formal reference to a terminology or ontology, or may be provided by text
   }
-  {!.Net HL7Connect.FHIR.CodeableConcept}
+  {!.Net HL7Connect.Fhir.CodeableConcept}
   TCodeableConcept = class (TFHIRType)
   private
     FCoding : TCodingList;
@@ -1856,7 +1895,7 @@ Type
   {@Class TIdentifier : TFHIRType
     A technical identifier - identifies some entity uniquely and unambiguously
   }
-  {!.Net HL7Connect.FHIR.Identifier}
+  {!.Net HL7Connect.Fhir.Identifier}
   TIdentifier = class (TFHIRType)
   private
     FSystem : String;
@@ -1888,7 +1927,7 @@ Type
   {@Class TScheduleRepeat : TFHIRElement
     Only if there is none or one event
   }
-  {!.Net HL7Connect.FHIR.ScheduleRepeat}
+  {!.Net HL7Connect.Fhir.ScheduleRepeat}
   TScheduleRepeat = class (TFHIRElement)
   private
     FFrequency : Integer;
@@ -1941,7 +1980,7 @@ Type
   {@Class TInterval_dateTimeList
     A list of Interval_dateTime
   }
-  {!.Net HL7Connect.FHIR.Interval_dateTimeList}
+  {!.Net HL7Connect.Fhir.Interval_dateTimeList}
   TInterval_dateTimeList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TInterval_dateTime;
@@ -2016,7 +2055,7 @@ Type
   {@Class TSchedule : TFHIRType
     A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
   }
-  {!.Net HL7Connect.FHIR.Schedule}
+  {!.Net HL7Connect.Fhir.Schedule}
   TSchedule = class (TFHIRType)
   private
     FEvent : TInterval_dateTimeList;
@@ -2047,7 +2086,7 @@ Type
   {@Class TContact : TFHIRType
     All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
   }
-  {!.Net HL7Connect.FHIR.Contact}
+  {!.Net HL7Connect.Fhir.Contact}
   TContact = class (TFHIRType)
   private
     FSystem : TContactSystem;
@@ -2093,7 +2132,7 @@ Type
   {@Class TAddressPart : TFHIRElement
     A part of an address
   }
-  {!.Net HL7Connect.FHIR.AddressPart}
+  {!.Net HL7Connect.Fhir.AddressPart}
   TAddressPart = class (TFHIRElement)
   private
     FType_ : TAddressPartType;
@@ -2125,7 +2164,7 @@ Type
   {@Class TAddressPartList
     A list of AddressPart
   }
-  {!.Net HL7Connect.FHIR.AddressPartList}
+  {!.Net HL7Connect.Fhir.AddressPartList}
   TAddressPartList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TAddressPart;
@@ -2200,7 +2239,7 @@ Type
   {@Class TAddress : TFHIRType
     There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for addresses all around the world 
   }
-  {!.Net HL7Connect.FHIR.Address}
+  {!.Net HL7Connect.Fhir.Address}
   TAddress = class (TFHIRType)
   private
     FUse : TAddressUse;
@@ -2245,7 +2284,7 @@ Type
   {@Class THumanNamePart : TFHIRElement
     A part of a name
   }
-  {!.Net HL7Connect.FHIR.HumanNamePart}
+  {!.Net HL7Connect.Fhir.HumanNamePart}
   THumanNamePart = class (TFHIRElement)
   private
     FType_ : TNamePartType;
@@ -2277,7 +2316,7 @@ Type
   {@Class THumanNamePartList
     A list of HumanNamePart
   }
-  {!.Net HL7Connect.FHIR.HumanNamePartList}
+  {!.Net HL7Connect.Fhir.HumanNamePartList}
   THumanNamePartList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : THumanNamePart;
@@ -2352,7 +2391,7 @@ Type
   {@Class THumanName : TFHIRType
     A name of a human, or a name given to an animal by a human.
   }
-  {!.Net HL7Connect.FHIR.HumanName}
+  {!.Net HL7Connect.Fhir.HumanName}
   THumanName = class (TFHIRType)
   private
     FUse : TNameUse;
@@ -2397,7 +2436,7 @@ Type
   {@Class THumanId : TFHIRType
     An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
   }
-  {!.Net HL7Connect.FHIR.HumanId}
+  {!.Net HL7Connect.Fhir.HumanId}
   THumanId = class (TFHIRType)
   private
     FType_ : TCoding;
@@ -2443,7 +2482,7 @@ Type
   {@Class TAddressList
     A list of Address
   }
-  {!.Net HL7Connect.FHIR.AddressList}
+  {!.Net HL7Connect.Fhir.AddressList}
   TAddressList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TAddress;
@@ -2518,7 +2557,7 @@ Type
   {@Class TContactList
     A list of Contact
   }
-  {!.Net HL7Connect.FHIR.ContactList}
+  {!.Net HL7Connect.Fhir.ContactList}
   TContactList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TContact;
@@ -2593,7 +2632,7 @@ Type
   {@Class TConformancePublisher : TFHIRElement
     The organization that publishes this conformance statement
   }
-  {!.Net HL7Connect.FHIR.ConformancePublisher}
+  {!.Net HL7Connect.Fhir.ConformancePublisher}
   TConformancePublisher = class (TFHIRElement)
   private
     FName : String;
@@ -2630,7 +2669,7 @@ Type
   {@Class TConformanceSoftware : TFHIRElement
     The software that is covered by this conformance statement
   }
-  {!.Net HL7Connect.FHIR.ConformanceSoftware}
+  {!.Net HL7Connect.Fhir.ConformanceSoftware}
   TConformanceSoftware = class (TFHIRElement)
   private
     FName : String;
@@ -2669,7 +2708,7 @@ Type
   {@Class TConformanceOperation : TFHIRElement
     
   }
-  {!.Net HL7Connect.FHIR.ConformanceOperation}
+  {!.Net HL7Connect.Fhir.ConformanceOperation}
   TConformanceOperation = class (TFHIRElement)
   private
     FRead : Boolean;
@@ -2764,7 +2803,7 @@ Type
   {@Class TConformanceOperationTransaction : TFHIRElement
     only if supported
   }
-  {!.Net HL7Connect.FHIR.ConformanceOperationTransaction}
+  {!.Net HL7Connect.Fhir.ConformanceOperationTransaction}
   TConformanceOperationTransaction = class (TFHIRElement)
   private
     FName : TStringList;
@@ -2788,7 +2827,7 @@ Type
   {@Class TConformanceOperationSearch : TFHIRElement
     only if supported
   }
-  {!.Net HL7Connect.FHIR.ConformanceOperationSearch}
+  {!.Net HL7Connect.Fhir.ConformanceOperationSearch}
   TConformanceOperationSearch = class (TFHIRElement)
   private
     FParam : TStringList;
@@ -2812,7 +2851,7 @@ Type
   {@Class TConformanceOperationCreate : TFHIRElement
     if supported
   }
-  {!.Net HL7Connect.FHIR.ConformanceOperationCreate}
+  {!.Net HL7Connect.Fhir.ConformanceOperationCreate}
   TConformanceOperationCreate = class (TFHIRElement)
   private
     FId : TResourceIdSource;
@@ -2837,13 +2876,14 @@ Type
   {@Class TConformance : TFHIRResource
     A conformance statement returned by request in an RESTful framework
   }
-  {!.Net HL7Connect.FHIR.Conformance}
+  {!.Net HL7Connect.Fhir.Conformance}
   TConformance = class (TFHIRResource)
   private
     FDate : String;
     FPublisher : TConformancePublisher;
     FSoftware : TConformanceSoftware;
     FMode : TRestfulConformanceMode;
+    FProfile : TStringList;
     FResource : TConstraint;
     FOperation : TConformanceOperation;
     Procedure SetDate(value : String);
@@ -2883,6 +2923,11 @@ Type
     }
     property mode : TRestfulConformanceMode read FMode write SetMode;
 
+    {@member Profile
+      Additional other profiles that apply to this conformance statement.
+    }
+    property Profile : TStringList read FProfile;
+
     {@member resource
       Resource Type with constraints
     }
@@ -2899,7 +2944,7 @@ Type
   {@Class TDocumentAuthor : TFHIRElement
     Author (contributed content to document)
   }
-  {!.Net HL7Connect.FHIR.DocumentAuthor}
+  {!.Net HL7Connect.Fhir.DocumentAuthor}
   TDocumentAuthor = class (TFHIRElement)
   private
     FTime : String;
@@ -2931,7 +2976,7 @@ Type
   {@Class TDocumentAttestor : TFHIRElement
     a participant who has attested to the accuracy of the document
   }
-  {!.Net HL7Connect.FHIR.DocumentAttestor}
+  {!.Net HL7Connect.Fhir.DocumentAttestor}
   TDocumentAttestor = class (TFHIRElement)
   private
     FMode : TDocumentAuthenticationMode;
@@ -2970,7 +3015,7 @@ Type
   {@Class TDocumentSectionList
     A list of DocumentSection
   }
-  {!.Net HL7Connect.FHIR.DocumentSectionList}
+  {!.Net HL7Connect.Fhir.DocumentSectionList}
   TDocumentSectionList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TDocumentSection;
@@ -3045,7 +3090,7 @@ Type
   {@Class TDocumentSection : TFHIRElement
     Document is broken into sections
   }
-  {!.Net HL7Connect.FHIR.DocumentSection}
+  {!.Net HL7Connect.Fhir.DocumentSection}
   TDocumentSection = class (TFHIRElement)
   private
     FType_ : TCodeableConcept;
@@ -3118,7 +3163,7 @@ Type
   {@Class TDocumentSectionAuthor : TFHIRElement
     if section author different to document
   }
-  {!.Net HL7Connect.FHIR.DocumentSectionAuthor}
+  {!.Net HL7Connect.Fhir.DocumentSectionAuthor}
   TDocumentSectionAuthor = class (TFHIRElement)
   private
     FTime : String;
@@ -3150,7 +3195,7 @@ Type
   {@Class TDocumentAuthorList
     A list of DocumentAuthor
   }
-  {!.Net HL7Connect.FHIR.DocumentAuthorList}
+  {!.Net HL7Connect.Fhir.DocumentAuthorList}
   TDocumentAuthorList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TDocumentAuthor;
@@ -3225,7 +3270,7 @@ Type
   {@Class TDocumentAttestorList
     A list of DocumentAttestor
   }
-  {!.Net HL7Connect.FHIR.DocumentAttestorList}
+  {!.Net HL7Connect.Fhir.DocumentAttestorList}
   TDocumentAttestorList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TDocumentAttestor;
@@ -3300,7 +3345,7 @@ Type
   {@Class TDocument : TFHIRResource
     A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole
   }
-  {!.Net HL7Connect.FHIR.Document}
+  {!.Net HL7Connect.Fhir.Document}
   TDocument = class (TFHIRResource)
   private
     FInstant : TDateTime;
@@ -3414,7 +3459,7 @@ Type
   {@Class TMessageResponse : TFHIRElement
     Information about the the message that this message is a response to - if it is a response
   }
-  {!.Net HL7Connect.FHIR.MessageResponse}
+  {!.Net HL7Connect.Fhir.MessageResponse}
   TMessageResponse = class (TFHIRElement)
   private
     FId : String;
@@ -3453,7 +3498,7 @@ Type
   {@Class TMessage : TFHIRResource
     A message that contains FHIR resources
   }
-  {!.Net HL7Connect.FHIR.Message}
+  {!.Net HL7Connect.Fhir.Message}
   TMessage = class (TFHIRResource)
   private
     FThreadId : String;
@@ -3554,459 +3599,61 @@ Type
   end;
 
 
-  {@Class TMessageConformancePublisher : TFHIRElement
-    The organization that publishes this conformance statement
+  {@Class TAnimalRelatedEntity : TFHIRElement
+    Kin, owner, care giver etc
   }
-  {!.Net HL7Connect.FHIR.MessageConformancePublisher}
-  TMessageConformancePublisher = class (TFHIRElement)
+  {!.Net HL7Connect.Fhir.AnimalRelatedEntity}
+  TAnimalRelatedEntity = class (TFHIRElement)
   private
-    FName : String;
+    FId : THumanId;
+    FRole : TCodeableConcept;
+    FName : THumanName;
     FAddress : TAddressList;
     FContact : TContactList;
-    Procedure SetName(value : String);
+    Procedure SetId(value : THumanId);
+    Procedure SetRole(value : TCodeableConcept);
+    Procedure SetName(value : THumanName);
   public
     constructor Create; Override;
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformancePublisher; overload;
-    function Clone : TMessageConformancePublisher; overload;
+    function Link : TAnimalRelatedEntity; overload;
+    function Clone : TAnimalRelatedEntity; overload;
     {!script show}
   published
-    {@member name
-      Name of Organization
+    {@member id
+      Identifier for the entity
     }
-    property name : String read FName write SetName;
+    property id : THumanId read FId write SetId;
+
+    {@member role
+      Type of relationship
+    }
+    property role : TCodeableConcept read FRole write SetRole;
+
+    {@member name
+      Name of the related entity
+    }
+    property name : THumanName read FName write SetName;
 
     {@member Address
-      Address of Organization
+      An address (usually human, but may be kin)
     }
     property Address : TAddressList read FAddress;
 
     {@member Contact
-      Contacts for Organization
+      Contact details (usually for humans)
     }
     property Contact : TContactList read FContact;
 
   end;
 
 
-  {@Class TMessageConformanceSoftware : TFHIRElement
-    The software that is covered by this conformance statement
-  }
-  {!.Net HL7Connect.FHIR.MessageConformanceSoftware}
-  TMessageConformanceSoftware = class (TFHIRElement)
-  private
-    FName : String;
-    FVersion : String;
-    FReleaseDate : String;
-    Procedure SetName(value : String);
-    Procedure SetVersion(value : String);
-    Procedure SetReleaseDate(value : String);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformanceSoftware; overload;
-    function Clone : TMessageConformanceSoftware; overload;
-    {!script show}
-  published
-    {@member name
-      Name software is known by
-    }
-    property name : String read FName write SetName;
-
-    {@member version
-      Version covered by this statement
-    }
-    property version : String read FVersion write SetVersion;
-
-    {@member releaseDate
-      Date this version released
-    }
-    property releaseDate : String read FReleaseDate write SetReleaseDate;
-
-  end;
-
-
-  {@Class TMessageConformanceEvent : TFHIRElement
-    An event supported by the application
-  }
-  {!.Net HL7Connect.FHIR.MessageConformanceEvent}
-  TMessageConformanceEvent = class (TFHIRElement)
-  private
-    FCode : String;
-    FResource : String;
-    FMode : TMessageConformanceEventMode;
-    FRequest : TMessageConformanceEventRequest;
-    FResponse : TMessageConformanceEventResponse;
-    Procedure SetCode(value : String);
-    Procedure SetResource(value : String);
-    Procedure SetMode(value : TMessageConformanceEventMode);
-    Procedure SetRequest(value : TMessageConformanceEventRequest);
-    Procedure SetResponse(value : TMessageConformanceEventResponse);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformanceEvent; overload;
-    function Clone : TMessageConformanceEvent; overload;
-    {!script show}
-  published
-    {@member code
-      The code for the event
-    }
-    property code : String read FCode write SetCode;
-
-    {@member resource
-      The focal resource for the event
-    }
-    property resource : String read FResource write SetResource;
-
-    {@member mode
-      The mode of this event declaration - whether application is sender or receiver
-    }
-    property mode : TMessageConformanceEventMode read FMode write SetMode;
-
-    {@member request
-      Information about the request for this event
-    }
-    property request : TMessageConformanceEventRequest read FRequest write SetRequest;
-
-    {@member response
-      Information about the response for this event
-    }
-    property response : TMessageConformanceEventResponse read FResponse write SetResponse;
-
-  end;
-
-
-  {@Class TConstraintList
-    A list of Constraint
-  }
-  {!.Net HL7Connect.FHIR.ConstraintList}
-  TConstraintList = class (THL7FHIRObjectList)
-  private
-    function GetItemN(index : Integer) : TConstraint;
-    procedure SetItemN(index : Integer; value : TConstraint);
-  public
-    {!script hide}
-    function Link : TConstraintList; Overload;
-    function Clone : TConstraintList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a Constraint to the end of the list.
-    }
-    function Append : TConstraint;
-    
-    {@member AddItem
-      Add an already existing Constraint to the end of the list.
-    }
-    procedure AddItem(value : TConstraint);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TConstraint) : Integer;
-    
-    {@member Insert
-      Insert Constraint before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TConstraint;
-    
-    {@member InsertItem
-       Insert an existing Constraint before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TConstraint);
-    
-    {@member Item
-       Get the iIndexth Constraint. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth Constraint. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TConstraint);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TConstraint;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property Constraints[index : Integer] : TConstraint read GetItemN write SetItemN; default;
-  End;
-
-
-  {@Class TMessageConformanceEventRequest : TFHIRElement
-    Information about the request for this event
-  }
-  {!.Net HL7Connect.FHIR.MessageConformanceEventRequest}
-  TMessageConformanceEventRequest = class (TFHIRElement)
-  private
-    FResource : TConstraintList;
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformanceEventRequest; overload;
-    function Clone : TMessageConformanceEventRequest; overload;
-    {!script show}
-  published
-    {@member Resource
-      Constraint on a resource used in the event request
-    }
-    property Resource : TConstraintList read FResource;
-
-  end;
-
-
-  {@Class TMessageConformanceEventResponse : TFHIRElement
-    Information about the response for this event
-  }
-  {!.Net HL7Connect.FHIR.MessageConformanceEventResponse}
-  TMessageConformanceEventResponse = class (TFHIRElement)
-  private
-    FResource : TConstraintList;
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformanceEventResponse; overload;
-    function Clone : TMessageConformanceEventResponse; overload;
-    {!script show}
-  published
-    {@member Resource
-      Constraint on a resource used in the event response
-    }
-    property Resource : TConstraintList read FResource;
-
-  end;
-
-
-  {@Class TMessageConformanceEventList
-    A list of MessageConformanceEvent
-  }
-  {!.Net HL7Connect.FHIR.MessageConformanceEventList}
-  TMessageConformanceEventList = class (THL7FHIRObjectList)
-  private
-    function GetItemN(index : Integer) : TMessageConformanceEvent;
-    procedure SetItemN(index : Integer; value : TMessageConformanceEvent);
-  public
-    {!script hide}
-    function Link : TMessageConformanceEventList; Overload;
-    function Clone : TMessageConformanceEventList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a MessageConformanceEvent to the end of the list.
-    }
-    function Append : TMessageConformanceEvent;
-    
-    {@member AddItem
-      Add an already existing MessageConformanceEvent to the end of the list.
-    }
-    procedure AddItem(value : TMessageConformanceEvent);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TMessageConformanceEvent) : Integer;
-    
-    {@member Insert
-      Insert MessageConformanceEvent before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TMessageConformanceEvent;
-    
-    {@member InsertItem
-       Insert an existing MessageConformanceEvent before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TMessageConformanceEvent);
-    
-    {@member Item
-       Get the iIndexth MessageConformanceEvent. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth MessageConformanceEvent. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TMessageConformanceEvent);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TMessageConformanceEvent;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property MessageConformanceEvents[index : Integer] : TMessageConformanceEvent read GetItemN write SetItemN; default;
-  End;
-
-
-  {@Class TMessageConformance : TFHIRResource
-    A conformance statement about how an application uses FHIR messaging
-  }
-  {!.Net HL7Connect.FHIR.MessageConformance}
-  TMessageConformance = class (TFHIRResource)
-  private
-    FDate : String;
-    FPublisher : TMessageConformancePublisher;
-    FSoftware : TMessageConformanceSoftware;
-    FEvent : TMessageConformanceEventList;
-    Procedure SetDate(value : String);
-    Procedure SetPublisher(value : TMessageConformancePublisher);
-    Procedure SetSoftware(value : TMessageConformanceSoftware);
-  protected
-    function GetResourceType : TFHIRResourceType; override;
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TMessageConformance; overload;
-    function Clone : TMessageConformance; overload;
-    {!script show}
-  published
-    {@member date
-      Date that the conformance statement is published
-    }
-    property date : String read FDate write SetDate;
-
-    {@member publisher
-      The organization that publishes this conformance statement
-    }
-    property publisher : TMessageConformancePublisher read FPublisher write SetPublisher;
-
-    {@member software
-      The software that is covered by this conformance statement
-    }
-    property software : TMessageConformanceSoftware read FSoftware write SetSoftware;
-
-    {@member Event
-      An event supported by the application
-    }
-    property Event : TMessageConformanceEventList read FEvent;
-
-  end;
-
-
-  {@Class TCodeableConceptList
-    A list of CodeableConcept
-  }
-  {!.Net HL7Connect.FHIR.CodeableConceptList}
-  TCodeableConceptList = class (THL7FHIRObjectList)
-  private
-    function GetItemN(index : Integer) : TCodeableConcept;
-    procedure SetItemN(index : Integer; value : TCodeableConcept);
-  public
-    {!script hide}
-    function Link : TCodeableConceptList; Overload;
-    function Clone : TCodeableConceptList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a CodeableConcept to the end of the list.
-    }
-    function Append : TCodeableConcept;
-    
-    {@member AddItem
-      Add an already existing CodeableConcept to the end of the list.
-    }
-    procedure AddItem(value : TCodeableConcept);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TCodeableConcept) : Integer;
-    
-    {@member Insert
-      Insert CodeableConcept before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TCodeableConcept;
-    
-    {@member InsertItem
-       Insert an existing CodeableConcept before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TCodeableConcept);
-    
-    {@member Item
-       Get the iIndexth CodeableConcept. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth CodeableConcept. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TCodeableConcept);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TCodeableConcept;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property CodeableConcepts[index : Integer] : TCodeableConcept read GetItemN write SetItemN; default;
-  End;
-
-
   {@Class THumanIdList
     A list of HumanId
   }
-  {!.Net HL7Connect.FHIR.HumanIdList}
+  {!.Net HL7Connect.Fhir.HumanIdList}
   THumanIdList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : THumanId;
@@ -4078,126 +3725,10 @@ Type
   End;
 
 
-  {@Class TAgent : TFHIRResource
-    A person who represents an organisation, and is authorised to perform actions on it's behalf
-  }
-  {!.Net HL7Connect.FHIR.Agent}
-  TAgent = class (TFHIRResource)
-  private
-    FPerson : TFHIRResourceReference{TPerson};
-    FOrganization : TFHIRResourceReference{TOrganization};
-    FRole : TCodeableConceptList;
-    FPeriod : TInterval_date;
-    FIdentifier : THumanIdList;
-    FAddress : TAddressList;
-    FContact : TContactList;
-    Procedure SetPerson(value : TFHIRResourceReference{TPerson});
-    Procedure SetOrganization(value : TFHIRResourceReference{TOrganization});
-    Procedure SetPeriod(value : TInterval_date);
-  protected
-    function GetResourceType : TFHIRResourceType; override;
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TAgent; overload;
-    function Clone : TAgent; overload;
-    {!script show}
-  published
-    {@member person
-      The person who acts as the agent
-    }
-    property person : TFHIRResourceReference{TPerson} read FPerson write SetPerson;
-
-    {@member organization
-      The organisation that is being represented
-    }
-    property organization : TFHIRResourceReference{TOrganization} read FOrganization write SetOrganization;
-
-    {@member Role
-      The way in which the person represents the organisation - what role do they have?
-    }
-    property Role : TCodeableConceptList read FRole;
-
-    {@member period
-      The time period during which the agent was/is authorised to represent the organisation.
-    }
-    property period : TInterval_date read FPeriod write SetPeriod;
-
-    {@member Identifier
-      An identifier that applies to this person in this role
-    }
-    property Identifier : THumanIdList read FIdentifier;
-
-    {@member Address
-      A postal address for this person playing this role
-    }
-    property Address : TAddressList read FAddress;
-
-    {@member Contact
-      A contact detail address for this person playing this role
-    }
-    property Contact : TContactList read FContact;
-
-  end;
-
-
-  {@Class TAnimalRelatedEntity : TFHIRElement
-    Kin, owner, care giver etc
-  }
-  {!.Net HL7Connect.FHIR.AnimalRelatedEntity}
-  TAnimalRelatedEntity = class (TFHIRElement)
-  private
-    FId : THumanId;
-    FRole : TCodeableConcept;
-    FName : THumanName;
-    FAddress : TAddressList;
-    FContact : TContactList;
-    Procedure SetId(value : THumanId);
-    Procedure SetRole(value : TCodeableConcept);
-    Procedure SetName(value : THumanName);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TAnimalRelatedEntity; overload;
-    function Clone : TAnimalRelatedEntity; overload;
-    {!script show}
-  published
-    {@member id
-      Identifier for the entity
-    }
-    property id : THumanId read FId write SetId;
-
-    {@member role
-      Type of relationship
-    }
-    property role : TCodeableConcept read FRole write SetRole;
-
-    {@member name
-      Name of the related entity
-    }
-    property name : THumanName read FName write SetName;
-
-    {@member Address
-      An address (usually human, but may be kin)
-    }
-    property Address : TAddressList read FAddress;
-
-    {@member Contact
-      Contact details (usually for humans)
-    }
-    property Contact : TContactList read FContact;
-
-  end;
-
-
   {@Class THumanNameList
     A list of HumanName
   }
-  {!.Net HL7Connect.FHIR.HumanNameList}
+  {!.Net HL7Connect.Fhir.HumanNameList}
   THumanNameList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : THumanName;
@@ -4272,7 +3803,7 @@ Type
   {@Class TAnimalRelatedEntityList
     A list of AnimalRelatedEntity
   }
-  {!.Net HL7Connect.FHIR.AnimalRelatedEntityList}
+  {!.Net HL7Connect.Fhir.AnimalRelatedEntityList}
   TAnimalRelatedEntityList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TAnimalRelatedEntity;
@@ -4347,7 +3878,7 @@ Type
   {@Class TAnimal : TFHIRResource
     An animal that has relevance to the care process -usually this is for animals that are patients.
   }
-  {!.Net HL7Connect.FHIR.Animal}
+  {!.Net HL7Connect.Fhir.Animal}
   TAnimal = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
@@ -4410,10 +3941,961 @@ Type
   end;
 
 
+  {@Class TCodeableConceptList
+    A list of CodeableConcept
+  }
+  {!.Net HL7Connect.Fhir.CodeableConceptList}
+  TCodeableConceptList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TCodeableConcept;
+    procedure SetItemN(index : Integer; value : TCodeableConcept);
+  public
+    {!script hide}
+    function Link : TCodeableConceptList; Overload;
+    function Clone : TCodeableConceptList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a CodeableConcept to the end of the list.
+    }
+    function Append : TCodeableConcept;
+    
+    {@member AddItem
+      Add an already existing CodeableConcept to the end of the list.
+    }
+    procedure AddItem(value : TCodeableConcept);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TCodeableConcept) : Integer;
+    
+    {@member Insert
+      Insert CodeableConcept before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TCodeableConcept;
+    
+    {@member InsertItem
+       Insert an existing CodeableConcept before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TCodeableConcept);
+    
+    {@member Item
+       Get the iIndexth CodeableConcept. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth CodeableConcept. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TCodeableConcept);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TCodeableConcept;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property CodeableConcepts[index : Integer] : TCodeableConcept read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TAgent : TFHIRResource
+    A person who represents an organisation, and is authorised to perform actions on it's behalf
+  }
+  {!.Net HL7Connect.Fhir.Agent}
+  TAgent = class (TFHIRResource)
+  private
+    FPerson : TFHIRResourceReference{TPerson};
+    FOrganization : TFHIRResourceReference{TOrganization};
+    FRole : TCodeableConceptList;
+    FPeriod : TInterval_date;
+    FIdentifier : THumanIdList;
+    FAddress : TAddressList;
+    FContact : TContactList;
+    Procedure SetPerson(value : TFHIRResourceReference{TPerson});
+    Procedure SetOrganization(value : TFHIRResourceReference{TOrganization});
+    Procedure SetPeriod(value : TInterval_date);
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TAgent; overload;
+    function Clone : TAgent; overload;
+    {!script show}
+  published
+    {@member person
+      The person who acts as the agent
+    }
+    property person : TFHIRResourceReference{TPerson} read FPerson write SetPerson;
+
+    {@member organization
+      The organisation that is being represented
+    }
+    property organization : TFHIRResourceReference{TOrganization} read FOrganization write SetOrganization;
+
+    {@member Role
+      The way in which the person represents the organisation - what role do they have?
+    }
+    property Role : TCodeableConceptList read FRole;
+
+    {@member period
+      The time period during which the agent was/is authorised to represent the organisation.
+    }
+    property period : TInterval_date read FPeriod write SetPeriod;
+
+    {@member Identifier
+      An identifier that applies to this person in this role
+    }
+    property Identifier : THumanIdList read FIdentifier;
+
+    {@member Address
+      A postal address for this person playing this role
+    }
+    property Address : TAddressList read FAddress;
+
+    {@member Contact
+      A contact detail address for this person playing this role
+    }
+    property Contact : TContactList read FContact;
+
+  end;
+
+
+  {@Class TMessageConformancePublisher : TFHIRElement
+    The organization that publishes this conformance statement
+  }
+  {!.Net HL7Connect.Fhir.MessageConformancePublisher}
+  TMessageConformancePublisher = class (TFHIRElement)
+  private
+    FName : String;
+    FAddress : TAddressList;
+    FContact : TContactList;
+    Procedure SetName(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformancePublisher; overload;
+    function Clone : TMessageConformancePublisher; overload;
+    {!script show}
+  published
+    {@member name
+      Name of Organization
+    }
+    property name : String read FName write SetName;
+
+    {@member Address
+      Address of Organization
+    }
+    property Address : TAddressList read FAddress;
+
+    {@member Contact
+      Contacts for Organization
+    }
+    property Contact : TContactList read FContact;
+
+  end;
+
+
+  {@Class TMessageConformanceSoftware : TFHIRElement
+    The software that is covered by this conformance statement
+  }
+  {!.Net HL7Connect.Fhir.MessageConformanceSoftware}
+  TMessageConformanceSoftware = class (TFHIRElement)
+  private
+    FName : String;
+    FVersion : String;
+    FReleaseDate : String;
+    Procedure SetName(value : String);
+    Procedure SetVersion(value : String);
+    Procedure SetReleaseDate(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformanceSoftware; overload;
+    function Clone : TMessageConformanceSoftware; overload;
+    {!script show}
+  published
+    {@member name
+      Name software is known by
+    }
+    property name : String read FName write SetName;
+
+    {@member version
+      Version covered by this statement
+    }
+    property version : String read FVersion write SetVersion;
+
+    {@member releaseDate
+      Date this version released
+    }
+    property releaseDate : String read FReleaseDate write SetReleaseDate;
+
+  end;
+
+
+  {@Class TMessageConformanceEvent : TFHIRElement
+    An event supported by the application
+  }
+  {!.Net HL7Connect.Fhir.MessageConformanceEvent}
+  TMessageConformanceEvent = class (TFHIRElement)
+  private
+    FCode : String;
+    FResource : String;
+    FMode : TMessageConformanceEventMode;
+    FRequest : TMessageConformanceEventRequest;
+    FResponse : TMessageConformanceEventResponse;
+    Procedure SetCode(value : String);
+    Procedure SetResource(value : String);
+    Procedure SetMode(value : TMessageConformanceEventMode);
+    Procedure SetRequest(value : TMessageConformanceEventRequest);
+    Procedure SetResponse(value : TMessageConformanceEventResponse);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformanceEvent; overload;
+    function Clone : TMessageConformanceEvent; overload;
+    {!script show}
+  published
+    {@member code
+      The code for the event
+    }
+    property code : String read FCode write SetCode;
+
+    {@member resource
+      The focal resource for the event
+    }
+    property resource : String read FResource write SetResource;
+
+    {@member mode
+      The mode of this event declaration - whether application is sender or receiver
+    }
+    property mode : TMessageConformanceEventMode read FMode write SetMode;
+
+    {@member request
+      Information about the request for this event
+    }
+    property request : TMessageConformanceEventRequest read FRequest write SetRequest;
+
+    {@member response
+      Information about the response for this event
+    }
+    property response : TMessageConformanceEventResponse read FResponse write SetResponse;
+
+  end;
+
+
+  {@Class TConstraintList
+    A list of Constraint
+  }
+  {!.Net HL7Connect.Fhir.ConstraintList}
+  TConstraintList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TConstraint;
+    procedure SetItemN(index : Integer; value : TConstraint);
+  public
+    {!script hide}
+    function Link : TConstraintList; Overload;
+    function Clone : TConstraintList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a Constraint to the end of the list.
+    }
+    function Append : TConstraint;
+    
+    {@member AddItem
+      Add an already existing Constraint to the end of the list.
+    }
+    procedure AddItem(value : TConstraint);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TConstraint) : Integer;
+    
+    {@member Insert
+      Insert Constraint before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TConstraint;
+    
+    {@member InsertItem
+       Insert an existing Constraint before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TConstraint);
+    
+    {@member Item
+       Get the iIndexth Constraint. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth Constraint. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TConstraint);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TConstraint;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property Constraints[index : Integer] : TConstraint read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TMessageConformanceEventRequest : TFHIRElement
+    Information about the request for this event
+  }
+  {!.Net HL7Connect.Fhir.MessageConformanceEventRequest}
+  TMessageConformanceEventRequest = class (TFHIRElement)
+  private
+    FResource : TConstraintList;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformanceEventRequest; overload;
+    function Clone : TMessageConformanceEventRequest; overload;
+    {!script show}
+  published
+    {@member Resource
+      Constraint on a resource used in the event request
+    }
+    property Resource : TConstraintList read FResource;
+
+  end;
+
+
+  {@Class TMessageConformanceEventResponse : TFHIRElement
+    Information about the response for this event
+  }
+  {!.Net HL7Connect.Fhir.MessageConformanceEventResponse}
+  TMessageConformanceEventResponse = class (TFHIRElement)
+  private
+    FResource : TConstraintList;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformanceEventResponse; overload;
+    function Clone : TMessageConformanceEventResponse; overload;
+    {!script show}
+  published
+    {@member Resource
+      Constraint on a resource used in the event response
+    }
+    property Resource : TConstraintList read FResource;
+
+  end;
+
+
+  {@Class TMessageConformanceEventList
+    A list of MessageConformanceEvent
+  }
+  {!.Net HL7Connect.Fhir.MessageConformanceEventList}
+  TMessageConformanceEventList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TMessageConformanceEvent;
+    procedure SetItemN(index : Integer; value : TMessageConformanceEvent);
+  public
+    {!script hide}
+    function Link : TMessageConformanceEventList; Overload;
+    function Clone : TMessageConformanceEventList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a MessageConformanceEvent to the end of the list.
+    }
+    function Append : TMessageConformanceEvent;
+    
+    {@member AddItem
+      Add an already existing MessageConformanceEvent to the end of the list.
+    }
+    procedure AddItem(value : TMessageConformanceEvent);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TMessageConformanceEvent) : Integer;
+    
+    {@member Insert
+      Insert MessageConformanceEvent before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TMessageConformanceEvent;
+    
+    {@member InsertItem
+       Insert an existing MessageConformanceEvent before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TMessageConformanceEvent);
+    
+    {@member Item
+       Get the iIndexth MessageConformanceEvent. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth MessageConformanceEvent. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TMessageConformanceEvent);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TMessageConformanceEvent;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property MessageConformanceEvents[index : Integer] : TMessageConformanceEvent read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TMessageConformance : TFHIRResource
+    A conformance statement about how an application uses FHIR messaging
+  }
+  {!.Net HL7Connect.Fhir.MessageConformance}
+  TMessageConformance = class (TFHIRResource)
+  private
+    FDate : String;
+    FPublisher : TMessageConformancePublisher;
+    FSoftware : TMessageConformanceSoftware;
+    FProfile : TStringList;
+    FEvent : TMessageConformanceEventList;
+    Procedure SetDate(value : String);
+    Procedure SetPublisher(value : TMessageConformancePublisher);
+    Procedure SetSoftware(value : TMessageConformanceSoftware);
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TMessageConformance; overload;
+    function Clone : TMessageConformance; overload;
+    {!script show}
+  published
+    {@member date
+      Date that the conformance statement is published
+    }
+    property date : String read FDate write SetDate;
+
+    {@member publisher
+      The organization that publishes this conformance statement
+    }
+    property publisher : TMessageConformancePublisher read FPublisher write SetPublisher;
+
+    {@member software
+      The software that is covered by this conformance statement
+    }
+    property software : TMessageConformanceSoftware read FSoftware write SetSoftware;
+
+    {@member Profile
+      Additional other profiles that apply to this conformance statement.
+    }
+    property Profile : TStringList read FProfile;
+
+    {@member Event
+      An event supported by the application
+    }
+    property Event : TMessageConformanceEventList read FEvent;
+
+  end;
+
+
+  {@Class TOrganizationName : TFHIRElement
+    A name associated with the organization
+  }
+  {!.Net HL7Connect.Fhir.OrganizationName}
+  TOrganizationName = class (TFHIRElement)
+  private
+    FValue : String;
+    FPeriod : TInterval_date;
+    Procedure SetValue(value : String);
+    Procedure SetPeriod(value : TInterval_date);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TOrganizationName; overload;
+    function Clone : TOrganizationName; overload;
+    {!script show}
+  published
+    {@member value
+      The actual name of the organization
+    }
+    property value : String read FValue write SetValue;
+
+    {@member period
+      The period that this name was in use by the organization
+    }
+    property period : TInterval_date read FPeriod write SetPeriod;
+
+  end;
+
+
+  {@Class TOrganizationAccreditation : TFHIRElement
+    The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+  }
+  {!.Net HL7Connect.Fhir.OrganizationAccreditation}
+  TOrganizationAccreditation = class (TFHIRElement)
+  private
+    FId : TIdentifier;
+    FCode : TCodeableConcept;
+    FInstitution : TFHIRResourceReference{TOrganization};
+    FPeriod : TInterval_date;
+    Procedure SetId(value : TIdentifier);
+    Procedure SetCode(value : TCodeableConcept);
+    Procedure SetInstitution(value : TFHIRResourceReference{TOrganization});
+    Procedure SetPeriod(value : TInterval_date);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TOrganizationAccreditation; overload;
+    function Clone : TOrganizationAccreditation; overload;
+    {!script show}
+  published
+    {@member id
+      The identifier of the accreditation
+    }
+    property id : TIdentifier read FId write SetId;
+
+    {@member code
+      The type of the accreditation
+    }
+    property code : TCodeableConcept read FCode write SetCode;
+
+    {@member institution
+      The organization that confered/confers the accreditation
+    }
+    property institution : TFHIRResourceReference{TOrganization} read FInstitution write SetInstitution;
+
+    {@member period
+      The period for which the accreditation is held
+    }
+    property period : TInterval_date read FPeriod write SetPeriod;
+
+  end;
+
+
+  {@Class TOrganizationRelatedOrganization : TFHIRElement
+    Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+  }
+  {!.Net HL7Connect.Fhir.OrganizationRelatedOrganization}
+  TOrganizationRelatedOrganization = class (TFHIRElement)
+  private
+    FId : THumanId;
+    FCode : TCodeableConcept;
+    FName : String;
+    FAddress : TAddressList;
+    FContact : TContactList;
+    FPeriod : TInterval_date;
+    Procedure SetId(value : THumanId);
+    Procedure SetCode(value : TCodeableConcept);
+    Procedure SetName(value : String);
+    Procedure SetPeriod(value : TInterval_date);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TOrganizationRelatedOrganization; overload;
+    function Clone : TOrganizationRelatedOrganization; overload;
+    {!script show}
+  published
+    {@member id
+      Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
+    }
+    property id : THumanId read FId write SetId;
+
+    {@member code
+      Code that specifies how this organization is related to the subject. A code is required.
+    }
+    property code : TCodeableConcept read FCode write SetCode;
+
+    {@member name
+      A name should be specified for the related organization
+    }
+    property name : String read FName write SetName;
+
+    {@member Address
+      Postal addresses may be provided for the related organization
+    }
+    property Address : TAddressList read FAddress;
+
+    {@member Contact
+      Contact details (phone, email etc) may be provided for the related organization
+    }
+    property Contact : TContactList read FContact;
+
+    {@member period
+      The period during which the organizations were related in this fashion
+    }
+    property period : TInterval_date read FPeriod write SetPeriod;
+
+  end;
+
+
+  {@Class TOrganizationNameList
+    A list of OrganizationName
+  }
+  {!.Net HL7Connect.Fhir.OrganizationNameList}
+  TOrganizationNameList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TOrganizationName;
+    procedure SetItemN(index : Integer; value : TOrganizationName);
+  public
+    {!script hide}
+    function Link : TOrganizationNameList; Overload;
+    function Clone : TOrganizationNameList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationName to the end of the list.
+    }
+    function Append : TOrganizationName;
+    
+    {@member AddItem
+      Add an already existing OrganizationName to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationName);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TOrganizationName) : Integer;
+    
+    {@member Insert
+      Insert OrganizationName before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationName;
+    
+    {@member InsertItem
+       Insert an existing OrganizationName before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationName);
+    
+    {@member Item
+       Get the iIndexth OrganizationName. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationName. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationName);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TOrganizationName;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationNames[index : Integer] : TOrganizationName read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TOrganizationAccreditationList
+    A list of OrganizationAccreditation
+  }
+  {!.Net HL7Connect.Fhir.OrganizationAccreditationList}
+  TOrganizationAccreditationList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TOrganizationAccreditation;
+    procedure SetItemN(index : Integer; value : TOrganizationAccreditation);
+  public
+    {!script hide}
+    function Link : TOrganizationAccreditationList; Overload;
+    function Clone : TOrganizationAccreditationList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationAccreditation to the end of the list.
+    }
+    function Append : TOrganizationAccreditation;
+    
+    {@member AddItem
+      Add an already existing OrganizationAccreditation to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationAccreditation);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TOrganizationAccreditation) : Integer;
+    
+    {@member Insert
+      Insert OrganizationAccreditation before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationAccreditation;
+    
+    {@member InsertItem
+       Insert an existing OrganizationAccreditation before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationAccreditation);
+    
+    {@member Item
+       Get the iIndexth OrganizationAccreditation. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationAccreditation. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationAccreditation);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TOrganizationAccreditation;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationAccreditations[index : Integer] : TOrganizationAccreditation read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TOrganizationRelatedOrganizationList
+    A list of OrganizationRelatedOrganization
+  }
+  {!.Net HL7Connect.Fhir.OrganizationRelatedOrganizationList}
+  TOrganizationRelatedOrganizationList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TOrganizationRelatedOrganization;
+    procedure SetItemN(index : Integer; value : TOrganizationRelatedOrganization);
+  public
+    {!script hide}
+    function Link : TOrganizationRelatedOrganizationList; Overload;
+    function Clone : TOrganizationRelatedOrganizationList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a OrganizationRelatedOrganization to the end of the list.
+    }
+    function Append : TOrganizationRelatedOrganization;
+    
+    {@member AddItem
+      Add an already existing OrganizationRelatedOrganization to the end of the list.
+    }
+    procedure AddItem(value : TOrganizationRelatedOrganization);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TOrganizationRelatedOrganization) : Integer;
+    
+    {@member Insert
+      Insert OrganizationRelatedOrganization before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TOrganizationRelatedOrganization;
+    
+    {@member InsertItem
+       Insert an existing OrganizationRelatedOrganization before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TOrganizationRelatedOrganization);
+    
+    {@member Item
+       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TOrganizationRelatedOrganization);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TOrganizationRelatedOrganization;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property OrganizationRelatedOrganizations[index : Integer] : TOrganizationRelatedOrganization read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TOrganization : TFHIRResource
+    For any organization/institution/government department that has relevance to the care process
+  }
+  {!.Net HL7Connect.Fhir.Organization}
+  TOrganization = class (TFHIRResource)
+  private
+    FIdentifier : THumanIdList;
+    FName : TOrganizationNameList;
+    FAddress : TAddressList;
+    FContact : TContactList;
+    FCode : TCodeableConcept;
+    FIndustryCode : TCodeableConcept;
+    FAccreditation : TOrganizationAccreditationList;
+    FRelatedOrganization : TOrganizationRelatedOrganizationList;
+    Procedure SetCode(value : TCodeableConcept);
+    Procedure SetIndustryCode(value : TCodeableConcept);
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TOrganization; overload;
+    function Clone : TOrganization; overload;
+    {!script show}
+  published
+    {@member Identifier
+      Identifier for the organization that is used to identify the organization across multiple disparate systems
+    }
+    property Identifier : THumanIdList read FIdentifier;
+
+    {@member Name
+      A name associated with the organization
+    }
+    property Name : TOrganizationNameList read FName;
+
+    {@member Address
+      An address for the organization
+    }
+    property Address : TAddressList read FAddress;
+
+    {@member Contact
+      A contact detail for the organization
+    }
+    property Contact : TContactList read FContact;
+
+    {@member code
+      The kind of organization that this is
+    }
+    property code : TCodeableConcept read FCode write SetCode;
+
+    {@member industryCode
+      The industry that this organization is involved in
+    }
+    property industryCode : TCodeableConcept read FIndustryCode write SetIndustryCode;
+
+    {@member Accreditation
+      The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+    }
+    property Accreditation : TOrganizationAccreditationList read FAccreditation;
+
+    {@member RelatedOrganization
+      Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+    }
+    property RelatedOrganization : TOrganizationRelatedOrganizationList read FRelatedOrganization;
+
+  end;
+
+
   {@Class TPrescriptionDispense : TFHIRElement
     Details of the dispense as requested by the prescriber
   }
-  {!.Net HL7Connect.FHIR.PrescriptionDispense}
+  {!.Net HL7Connect.Fhir.PrescriptionDispense}
   TPrescriptionDispense = class (TFHIRElement)
   private
     FRepeats : Integer;
@@ -4452,7 +4934,7 @@ Type
   {@Class TPrescriptionMedicineActiveIngredientList
     A list of PrescriptionMedicineActiveIngredient
   }
-  {!.Net HL7Connect.FHIR.PrescriptionMedicineActiveIngredientList}
+  {!.Net HL7Connect.Fhir.PrescriptionMedicineActiveIngredientList}
   TPrescriptionMedicineActiveIngredientList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TPrescriptionMedicineActiveIngredient;
@@ -4527,7 +5009,7 @@ Type
   {@Class TPrescriptionMedicineInactiveIngredientList
     A list of PrescriptionMedicineInactiveIngredient
   }
-  {!.Net HL7Connect.FHIR.PrescriptionMedicineInactiveIngredientList}
+  {!.Net HL7Connect.Fhir.PrescriptionMedicineInactiveIngredientList}
   TPrescriptionMedicineInactiveIngredientList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TPrescriptionMedicineInactiveIngredient;
@@ -4602,7 +5084,7 @@ Type
   {@Class TPrescriptionMedicine : TFHIRElement
     The one single medicatine, vaccine or therapeutic good prescribed in this prescription.
   }
-  {!.Net HL7Connect.FHIR.PrescriptionMedicine}
+  {!.Net HL7Connect.Fhir.PrescriptionMedicine}
   TPrescriptionMedicine = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -4646,7 +5128,7 @@ Type
   {@Class TPrescriptionMedicineActiveIngredient : TFHIRElement
     The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect
   }
-  {!.Net HL7Connect.FHIR.PrescriptionMedicineActiveIngredient}
+  {!.Net HL7Connect.Fhir.PrescriptionMedicineActiveIngredient}
   TPrescriptionMedicineActiveIngredient = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -4678,7 +5160,7 @@ Type
   {@Class TPrescriptionMedicineInactiveIngredient : TFHIRElement
     Ingredients in the medication that are not active
   }
-  {!.Net HL7Connect.FHIR.PrescriptionMedicineInactiveIngredient}
+  {!.Net HL7Connect.Fhir.PrescriptionMedicineInactiveIngredient}
   TPrescriptionMedicineInactiveIngredient = class (TFHIRElement)
   private
     FProductCode : TCoding;
@@ -4710,7 +5192,7 @@ Type
   {@Class TPrescriptionAdministrationRequestDosageInstructionList
     A list of PrescriptionAdministrationRequestDosageInstruction
   }
-  {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequestDosageInstructionList}
+  {!.Net HL7Connect.Fhir.PrescriptionAdministrationRequestDosageInstructionList}
   TPrescriptionAdministrationRequestDosageInstructionList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TPrescriptionAdministrationRequestDosageInstruction;
@@ -4785,7 +5267,7 @@ Type
   {@Class TPrescriptionAdministrationRequest : TFHIRElement
     Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.
   }
-  {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequest}
+  {!.Net HL7Connect.Fhir.PrescriptionAdministrationRequest}
   TPrescriptionAdministrationRequest = class (TFHIRElement)
   private
     FDescription : String;
@@ -4851,7 +5333,7 @@ Type
   {@Class TScheduleList
     A list of Schedule
   }
-  {!.Net HL7Connect.FHIR.ScheduleList}
+  {!.Net HL7Connect.Fhir.ScheduleList}
   TScheduleList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TSchedule;
@@ -4926,7 +5408,7 @@ Type
   {@Class TPrescriptionAdministrationRequestDosageInstruction : TFHIRElement
     Specification of dose and schedule for administration
   }
-  {!.Net HL7Connect.FHIR.PrescriptionAdministrationRequestDosageInstruction}
+  {!.Net HL7Connect.Fhir.PrescriptionAdministrationRequestDosageInstruction}
   TPrescriptionAdministrationRequestDosageInstruction = class (TFHIRElement)
   private
     FPrecondition : TCodeableConceptList;
@@ -4990,7 +5472,7 @@ Type
   {@Class TPrescription : TFHIRResource
     Directions provided by a prescribing practitioner for a specific medication to be administered to an individual
   }
-  {!.Net HL7Connect.FHIR.Prescription}
+  {!.Net HL7Connect.Fhir.Prescription}
   TPrescription = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
@@ -5069,10 +5551,393 @@ Type
   end;
 
 
+  {@Class TProfileAuthor : TFHIRElement
+    Details of the author who accepts responsibility for publishing the profile
+  }
+  {!.Net HL7Connect.Fhir.ProfileAuthor}
+  TProfileAuthor = class (TFHIRElement)
+  private
+    FName : String;
+    FReference : TStringList;
+    Procedure SetName(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TProfileAuthor; overload;
+    function Clone : TProfileAuthor; overload;
+    {!script show}
+  published
+    {@member name
+      The name of the author
+    }
+    property name : String read FName write SetName;
+
+    {@member Reference
+      Reference to the author to assist a user in finding and communicating with the author
+    }
+    property Reference : TStringList read FReference;
+
+  end;
+
+
+  {@Class TProfileEndorser : TFHIRElement
+    A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+  }
+  {!.Net HL7Connect.Fhir.ProfileEndorser}
+  TProfileEndorser = class (TFHIRElement)
+  private
+    FName : String;
+    FReference : String;
+    Procedure SetName(value : String);
+    Procedure SetReference(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TProfileEndorser; overload;
+    function Clone : TProfileEndorser; overload;
+    {!script show}
+  published
+    {@member name
+      The name of the endorsing body
+    }
+    property name : String read FName write SetName;
+
+    {@member reference
+      Reference to the author to assist a user in finding and communicating with the endorsing body
+    }
+    property reference : String read FReference write SetReference;
+
+  end;
+
+
+  {@Class TProfileBinding : TFHIRElement
+    
+  }
+  {!.Net HL7Connect.Fhir.ProfileBinding}
+  TProfileBinding = class (TFHIRElement)
+  private
+    FName : String;
+    FType_ : TConceptBindingType;
+    FDetails : String;
+    FReference : String;
+    FCode : TCodingList;
+    Procedure SetName(value : String);
+    Procedure SetType_(value : TConceptBindingType);
+    Procedure SetDetails(value : String);
+    Procedure SetReference(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TProfileBinding; overload;
+    function Clone : TProfileBinding; overload;
+    {!script show}
+  published
+    {@member name
+      The name of the concept domain that this profile is declaring a constraint on
+    }
+    property name : String read FName write SetName;
+
+    {@member type_
+      The form of the binding
+    }
+    property type_ : TConceptBindingType read FType_ write SetType_;
+
+    {@member details
+      extra details - see notes
+    }
+    property details : String read FDetails write SetDetails;
+
+    {@member reference
+      source of binding content
+    }
+    property reference : String read FReference write SetReference;
+
+    {@member Code
+      enumerated codes that are the binding
+    }
+    property Code : TCodingList read FCode;
+
+  end;
+
+
+  {@Class TProfileEndorserList
+    A list of ProfileEndorser
+  }
+  {!.Net HL7Connect.Fhir.ProfileEndorserList}
+  TProfileEndorserList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TProfileEndorser;
+    procedure SetItemN(index : Integer; value : TProfileEndorser);
+  public
+    {!script hide}
+    function Link : TProfileEndorserList; Overload;
+    function Clone : TProfileEndorserList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ProfileEndorser to the end of the list.
+    }
+    function Append : TProfileEndorser;
+    
+    {@member AddItem
+      Add an already existing ProfileEndorser to the end of the list.
+    }
+    procedure AddItem(value : TProfileEndorser);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TProfileEndorser) : Integer;
+    
+    {@member Insert
+      Insert ProfileEndorser before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TProfileEndorser;
+    
+    {@member InsertItem
+       Insert an existing ProfileEndorser before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TProfileEndorser);
+    
+    {@member Item
+       Get the iIndexth ProfileEndorser. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ProfileEndorser. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TProfileEndorser);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TProfileEndorser;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ProfileEndorsers[index : Integer] : TProfileEndorser read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TProfileBindingList
+    A list of ProfileBinding
+  }
+  {!.Net HL7Connect.Fhir.ProfileBindingList}
+  TProfileBindingList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TProfileBinding;
+    procedure SetItemN(index : Integer; value : TProfileBinding);
+  public
+    {!script hide}
+    function Link : TProfileBindingList; Overload;
+    function Clone : TProfileBindingList; Overload;
+    {!script show}
+    
+    {@member Append
+      Add a ProfileBinding to the end of the list.
+    }
+    function Append : TProfileBinding;
+    
+    {@member AddItem
+      Add an already existing ProfileBinding to the end of the list.
+    }
+    procedure AddItem(value : TProfileBinding);
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    
+    {@member IndexOf
+      See if an item is already in the list. returns -1 if not in the list
+    }
+    function IndexOf(value : TProfileBinding) : Integer;
+    
+    {@member Insert
+      Insert ProfileBinding before the designated index (0 = first item)
+    }
+    function Insert(index : Integer) : TProfileBinding;
+    
+    {@member InsertItem
+       Insert an existing ProfileBinding before the designated index (0 = first item)
+    }
+    procedure InsertItem(index : Integer; value : TProfileBinding);
+    
+    {@member Item
+       Get the iIndexth ProfileBinding. (0 = first item)
+    }
+    
+    {@member Item
+       Get the iIndexth ProfileBinding. (0 = first item)
+    }
+    procedure SetItemByIndex(index : Integer; value : TProfileBinding);
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Item(index : Integer) : TProfileBinding;
+    
+    {@member Count
+      The number of items in the collection
+    }
+    function Count : Integer; Overload;
+    
+    {@member remove
+      Remove the indexth item. The first item is index 0.
+    }
+    procedure Remove(index : Integer);
+    {@member ClearItems
+      Remove All Items from the list
+    }
+    procedure ClearItems;
+    
+    Property ProfileBindings[index : Integer] : TProfileBinding read GetItemN write SetItemN; default;
+  End;
+
+
+  {@Class TProfile : TFHIRResource
+    A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains
+  }
+  {!.Net HL7Connect.Fhir.Profile}
+  TProfile = class (TFHIRResource)
+  private
+    FName : String;
+    FAuthor : TProfileAuthor;
+    FIntention : String;
+    FCode : TCodingList;
+    FDescription : String;
+    FEvidence : TStringList;
+    FComments : String;
+    FStatus : TResourceProfileStatus;
+    FDate : String;
+    FEndorser : TProfileEndorserList;
+    FChanges : String;
+    FSupercedes : TStringList;
+    FProfile : TStringList;
+    FResource : TConstraintList;
+    FBinding : TProfileBindingList;
+    Procedure SetName(value : String);
+    Procedure SetAuthor(value : TProfileAuthor);
+    Procedure SetIntention(value : String);
+    Procedure SetDescription(value : String);
+    Procedure SetComments(value : String);
+    Procedure SetStatus(value : TResourceProfileStatus);
+    Procedure SetDate(value : String);
+    Procedure SetChanges(value : String);
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TProfile; overload;
+    function Clone : TProfile; overload;
+    {!script show}
+  published
+    {@member name
+      A free text natural language name identifying the Template.
+    }
+    property name : String read FName write SetName;
+
+    {@member author
+      Details of the author who accepts responsibility for publishing the profile
+    }
+    property author : TProfileAuthor read FAuthor write SetAuthor;
+
+    {@member intention
+      A free text natural language description of the intent and scope of the Template. The purpose is to provide the author?s initial intent for the Template in the language specified below.
+    }
+    property intention : String read FIntention write SetIntention;
+
+    {@member Code
+      A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates
+    }
+    property Code : TCodingList read FCode;
+
+    {@member description
+      A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc
+    }
+    property description : String read FDescription write SetDescription;
+
+    {@member Evidence
+      A description, reference or link to a published medical knowledge that was used in the definition of this Template
+    }
+    property Evidence : TStringList read FEvidence;
+
+    {@member comments
+      A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention
+    }
+    property comments : String read FComments write SetComments;
+
+    {@member status
+      draft | testing | production | withdrawn | superceded
+    }
+    property status : TResourceProfileStatus read FStatus write SetStatus;
+
+    {@member date
+      The date that the current value for publicationStatus was applied to the Template
+    }
+    property date : String read FDate write SetDate;
+
+    {@member Endorser
+      A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+    }
+    property Endorser : TProfileEndorserList read FEndorser;
+
+    {@member changes
+      A free text description describing the changes in this version of the profile as compared to the previous version. 
+    }
+    property changes : String read FChanges write SetChanges;
+
+    {@member Supercedes
+      A template that is supercded by this template (maybe a  previous version)
+    }
+    property Supercedes : TStringList read FSupercedes;
+
+    {@member Profile
+      Additional other profiles that apply to this conformance statement.
+    }
+    property Profile : TStringList read FProfile;
+
+    {@member Resource
+      Resource Type with constraints
+    }
+    property Resource : TConstraintList read FResource;
+
+    {@member Binding
+      
+    }
+    property Binding : TProfileBindingList read FBinding;
+
+  end;
+
+
   {@Class TPatient : TFHIRResource
     A patient is a person or animal that is receiving care
   }
-  {!.Net HL7Connect.FHIR.Patient}
+  {!.Net HL7Connect.Fhir.Patient}
   TPatient = class (TFHIRResource)
   private
     FLink_ : TFHIRResourceReferenceList{TPatient};
@@ -5150,43 +6015,11 @@ Type
   end;
 
 
-  {@Class TOrganizationName : TFHIRElement
-    A name associated with the organization
+  {@Class TPersonQualification : TFHIRElement
+    The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
   }
-  {!.Net HL7Connect.FHIR.OrganizationName}
-  TOrganizationName = class (TFHIRElement)
-  private
-    FValue : String;
-    FPeriod : TInterval_date;
-    Procedure SetValue(value : String);
-    Procedure SetPeriod(value : TInterval_date);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TOrganizationName; overload;
-    function Clone : TOrganizationName; overload;
-    {!script show}
-  published
-    {@member value
-      The actual name of the organization
-    }
-    property value : String read FValue write SetValue;
-
-    {@member period
-      The period that this name was in use by the organization
-    }
-    property period : TInterval_date read FPeriod write SetPeriod;
-
-  end;
-
-
-  {@Class TOrganizationAccreditation : TFHIRElement
-    The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
-  }
-  {!.Net HL7Connect.FHIR.OrganizationAccreditation}
-  TOrganizationAccreditation = class (TFHIRElement)
+  {!.Net HL7Connect.Fhir.PersonQualification}
+  TPersonQualification = class (TFHIRElement)
   private
     FId : TIdentifier;
     FCode : TCodeableConcept;
@@ -5201,114 +6034,133 @@ Type
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TOrganizationAccreditation; overload;
-    function Clone : TOrganizationAccreditation; overload;
+    function Link : TPersonQualification; overload;
+    function Clone : TPersonQualification; overload;
     {!script show}
   published
     {@member id
-      The identifier of the accreditation
+      The identifier of a qualification
     }
     property id : TIdentifier read FId write SetId;
 
     {@member code
-      The type of the accreditation
+      The type of the qualification
     }
     property code : TCodeableConcept read FCode write SetCode;
 
     {@member institution
-      The organization that confered/confers the accreditation
+      The organisation that confered/confers the qualification
     }
     property institution : TFHIRResourceReference{TOrganization} read FInstitution write SetInstitution;
 
     {@member period
-      The period for which the accreditation is held
+      The period for which a qualification is held
     }
     property period : TInterval_date read FPeriod write SetPeriod;
 
   end;
 
 
-  {@Class TOrganizationRelatedOrganization : TFHIRElement
-    Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+  {@Class TPersonLanguage : TFHIRElement
+    A language spoken by the person, with proficiency
   }
-  {!.Net HL7Connect.FHIR.OrganizationRelatedOrganization}
-  TOrganizationRelatedOrganization = class (TFHIRElement)
+  {!.Net HL7Connect.Fhir.PersonLanguage}
+  TPersonLanguage = class (TFHIRElement)
   private
-    FId : THumanId;
-    FCode : TCodeableConcept;
-    FName : String;
-    FAddress : TAddressList;
-    FContact : TContactList;
-    FPeriod : TInterval_date;
-    Procedure SetId(value : THumanId);
-    Procedure SetCode(value : TCodeableConcept);
-    Procedure SetName(value : String);
-    Procedure SetPeriod(value : TInterval_date);
+    FCode : String;
+    FUse : TLanguageUse;
+    Procedure SetCode(value : String);
+    Procedure SetUse(value : TLanguageUse);
   public
     constructor Create; Override;
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TOrganizationRelatedOrganization; overload;
-    function Clone : TOrganizationRelatedOrganization; overload;
+    function Link : TPersonLanguage; overload;
+    function Clone : TPersonLanguage; overload;
     {!script show}
   published
-    {@member id
-      Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
-    }
-    property id : THumanId read FId write SetId;
-
     {@member code
-      Code that specifies how this organization is related to the subject. A code is required.
+      A code that identifies the language
     }
-    property code : TCodeableConcept read FCode write SetCode;
+    property code : String read FCode write SetCode;
 
-    {@member name
-      A name should be specified for the related organization
+    {@member use
+      A code the describes how well the language is spoken
     }
-    property name : String read FName write SetName;
-
-    {@member Address
-      Postal addresses may be provided for the related organization
-    }
-    property Address : TAddressList read FAddress;
-
-    {@member Contact
-      Contact details (phone, email etc) may be provided for the related organization
-    }
-    property Contact : TContactList read FContact;
-
-    {@member period
-      The period during which the organizations were related in this fashion
-    }
-    property period : TInterval_date read FPeriod write SetPeriod;
+    property use : TLanguageUse read FUse write SetUse;
 
   end;
 
 
-  {@Class TOrganizationNameList
-    A list of OrganizationName
+  {@Class TPersonRelatedPerson : TFHIRElement
+    Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
   }
-  {!.Net HL7Connect.FHIR.OrganizationNameList}
-  TOrganizationNameList = class (THL7FHIRObjectList)
+  {!.Net HL7Connect.Fhir.PersonRelatedPerson}
+  TPersonRelatedPerson = class (TFHIRElement)
   private
-    function GetItemN(index : Integer) : TOrganizationName;
-    procedure SetItemN(index : Integer; value : TOrganizationName);
+    FId : THumanId;
+    FRole : TCodeableConcept;
+    FName : THumanName;
+    FContact : TContactList;
+    Procedure SetId(value : THumanId);
+    Procedure SetRole(value : TCodeableConcept);
+    Procedure SetName(value : THumanName);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TPersonRelatedPerson; overload;
+    function Clone : TPersonRelatedPerson; overload;
+    {!script show}
+  published
+    {@member id
+      Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
+    }
+    property id : THumanId read FId write SetId;
+
+    {@member role
+      Code that specifies how this person is related to the subject. A code is required.
+    }
+    property role : TCodeableConcept read FRole write SetRole;
+
+    {@member name
+      A name should be specified for the related person
+    }
+    property name : THumanName read FName write SetName;
+
+    {@member Contact
+      Contact details (phone, email etc) should be provided for the person
+    }
+    property Contact : TContactList read FContact;
+
+  end;
+
+
+  {@Class TPersonQualificationList
+    A list of PersonQualification
+  }
+  {!.Net HL7Connect.Fhir.PersonQualificationList}
+  TPersonQualificationList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TPersonQualification;
+    procedure SetItemN(index : Integer; value : TPersonQualification);
   public
     {!script hide}
-    function Link : TOrganizationNameList; Overload;
-    function Clone : TOrganizationNameList; Overload;
+    function Link : TPersonQualificationList; Overload;
+    function Clone : TPersonQualificationList; Overload;
     {!script show}
     
     {@member Append
-      Add a OrganizationName to the end of the list.
+      Add a PersonQualification to the end of the list.
     }
-    function Append : TOrganizationName;
+    function Append : TPersonQualification;
     
     {@member AddItem
-      Add an already existing OrganizationName to the end of the list.
+      Add an already existing PersonQualification to the end of the list.
     }
-    procedure AddItem(value : TOrganizationName);
+    procedure AddItem(value : TPersonQualification);
     
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
@@ -5317,31 +6169,31 @@ Type
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    function IndexOf(value : TOrganizationName) : Integer;
+    function IndexOf(value : TPersonQualification) : Integer;
     
     {@member Insert
-      Insert OrganizationName before the designated index (0 = first item)
+      Insert PersonQualification before the designated index (0 = first item)
     }
-    function Insert(index : Integer) : TOrganizationName;
+    function Insert(index : Integer) : TPersonQualification;
     
     {@member InsertItem
-       Insert an existing OrganizationName before the designated index (0 = first item)
+       Insert an existing PersonQualification before the designated index (0 = first item)
     }
-    procedure InsertItem(index : Integer; value : TOrganizationName);
+    procedure InsertItem(index : Integer; value : TPersonQualification);
     
     {@member Item
-       Get the iIndexth OrganizationName. (0 = first item)
+       Get the iIndexth PersonQualification. (0 = first item)
     }
     
     {@member Item
-       Get the iIndexth OrganizationName. (0 = first item)
+       Get the iIndexth PersonQualification. (0 = first item)
     }
-    procedure SetItemByIndex(index : Integer; value : TOrganizationName);
+    procedure SetItemByIndex(index : Integer; value : TPersonQualification);
     
     {@member Count
       The number of items in the collection
     }
-    function Item(index : Integer) : TOrganizationName;
+    function Item(index : Integer) : TPersonQualification;
     
     {@member Count
       The number of items in the collection
@@ -5357,33 +6209,33 @@ Type
     }
     procedure ClearItems;
     
-    Property OrganizationNames[index : Integer] : TOrganizationName read GetItemN write SetItemN; default;
+    Property PersonQualifications[index : Integer] : TPersonQualification read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TOrganizationAccreditationList
-    A list of OrganizationAccreditation
+  {@Class TPersonLanguageList
+    A list of PersonLanguage
   }
-  {!.Net HL7Connect.FHIR.OrganizationAccreditationList}
-  TOrganizationAccreditationList = class (THL7FHIRObjectList)
+  {!.Net HL7Connect.Fhir.PersonLanguageList}
+  TPersonLanguageList = class (THL7FHIRObjectList)
   private
-    function GetItemN(index : Integer) : TOrganizationAccreditation;
-    procedure SetItemN(index : Integer; value : TOrganizationAccreditation);
+    function GetItemN(index : Integer) : TPersonLanguage;
+    procedure SetItemN(index : Integer; value : TPersonLanguage);
   public
     {!script hide}
-    function Link : TOrganizationAccreditationList; Overload;
-    function Clone : TOrganizationAccreditationList; Overload;
+    function Link : TPersonLanguageList; Overload;
+    function Clone : TPersonLanguageList; Overload;
     {!script show}
     
     {@member Append
-      Add a OrganizationAccreditation to the end of the list.
+      Add a PersonLanguage to the end of the list.
     }
-    function Append : TOrganizationAccreditation;
+    function Append : TPersonLanguage;
     
     {@member AddItem
-      Add an already existing OrganizationAccreditation to the end of the list.
+      Add an already existing PersonLanguage to the end of the list.
     }
-    procedure AddItem(value : TOrganizationAccreditation);
+    procedure AddItem(value : TPersonLanguage);
     
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
@@ -5392,31 +6244,31 @@ Type
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    function IndexOf(value : TOrganizationAccreditation) : Integer;
+    function IndexOf(value : TPersonLanguage) : Integer;
     
     {@member Insert
-      Insert OrganizationAccreditation before the designated index (0 = first item)
+      Insert PersonLanguage before the designated index (0 = first item)
     }
-    function Insert(index : Integer) : TOrganizationAccreditation;
+    function Insert(index : Integer) : TPersonLanguage;
     
     {@member InsertItem
-       Insert an existing OrganizationAccreditation before the designated index (0 = first item)
+       Insert an existing PersonLanguage before the designated index (0 = first item)
     }
-    procedure InsertItem(index : Integer; value : TOrganizationAccreditation);
+    procedure InsertItem(index : Integer; value : TPersonLanguage);
     
     {@member Item
-       Get the iIndexth OrganizationAccreditation. (0 = first item)
+       Get the iIndexth PersonLanguage. (0 = first item)
     }
     
     {@member Item
-       Get the iIndexth OrganizationAccreditation. (0 = first item)
+       Get the iIndexth PersonLanguage. (0 = first item)
     }
-    procedure SetItemByIndex(index : Integer; value : TOrganizationAccreditation);
+    procedure SetItemByIndex(index : Integer; value : TPersonLanguage);
     
     {@member Count
       The number of items in the collection
     }
-    function Item(index : Integer) : TOrganizationAccreditation;
+    function Item(index : Integer) : TPersonLanguage;
     
     {@member Count
       The number of items in the collection
@@ -5432,33 +6284,33 @@ Type
     }
     procedure ClearItems;
     
-    Property OrganizationAccreditations[index : Integer] : TOrganizationAccreditation read GetItemN write SetItemN; default;
+    Property PersonLanguages[index : Integer] : TPersonLanguage read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TOrganizationRelatedOrganizationList
-    A list of OrganizationRelatedOrganization
+  {@Class TPersonRelatedPersonList
+    A list of PersonRelatedPerson
   }
-  {!.Net HL7Connect.FHIR.OrganizationRelatedOrganizationList}
-  TOrganizationRelatedOrganizationList = class (THL7FHIRObjectList)
+  {!.Net HL7Connect.Fhir.PersonRelatedPersonList}
+  TPersonRelatedPersonList = class (THL7FHIRObjectList)
   private
-    function GetItemN(index : Integer) : TOrganizationRelatedOrganization;
-    procedure SetItemN(index : Integer; value : TOrganizationRelatedOrganization);
+    function GetItemN(index : Integer) : TPersonRelatedPerson;
+    procedure SetItemN(index : Integer; value : TPersonRelatedPerson);
   public
     {!script hide}
-    function Link : TOrganizationRelatedOrganizationList; Overload;
-    function Clone : TOrganizationRelatedOrganizationList; Overload;
+    function Link : TPersonRelatedPersonList; Overload;
+    function Clone : TPersonRelatedPersonList; Overload;
     {!script show}
     
     {@member Append
-      Add a OrganizationRelatedOrganization to the end of the list.
+      Add a PersonRelatedPerson to the end of the list.
     }
-    function Append : TOrganizationRelatedOrganization;
+    function Append : TPersonRelatedPerson;
     
     {@member AddItem
-      Add an already existing OrganizationRelatedOrganization to the end of the list.
+      Add an already existing PersonRelatedPerson to the end of the list.
     }
-    procedure AddItem(value : TOrganizationRelatedOrganization);
+    procedure AddItem(value : TPersonRelatedPerson);
     
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
@@ -5467,31 +6319,31 @@ Type
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    function IndexOf(value : TOrganizationRelatedOrganization) : Integer;
+    function IndexOf(value : TPersonRelatedPerson) : Integer;
     
     {@member Insert
-      Insert OrganizationRelatedOrganization before the designated index (0 = first item)
+      Insert PersonRelatedPerson before the designated index (0 = first item)
     }
-    function Insert(index : Integer) : TOrganizationRelatedOrganization;
+    function Insert(index : Integer) : TPersonRelatedPerson;
     
     {@member InsertItem
-       Insert an existing OrganizationRelatedOrganization before the designated index (0 = first item)
+       Insert an existing PersonRelatedPerson before the designated index (0 = first item)
     }
-    procedure InsertItem(index : Integer; value : TOrganizationRelatedOrganization);
+    procedure InsertItem(index : Integer; value : TPersonRelatedPerson);
     
     {@member Item
-       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+       Get the iIndexth PersonRelatedPerson. (0 = first item)
     }
     
     {@member Item
-       Get the iIndexth OrganizationRelatedOrganization. (0 = first item)
+       Get the iIndexth PersonRelatedPerson. (0 = first item)
     }
-    procedure SetItemByIndex(index : Integer; value : TOrganizationRelatedOrganization);
+    procedure SetItemByIndex(index : Integer; value : TPersonRelatedPerson);
     
     {@member Count
       The number of items in the collection
     }
-    function Item(index : Integer) : TOrganizationRelatedOrganization;
+    function Item(index : Integer) : TPersonRelatedPerson;
     
     {@member Count
       The number of items in the collection
@@ -5507,26 +6359,29 @@ Type
     }
     procedure ClearItems;
     
-    Property OrganizationRelatedOrganizations[index : Integer] : TOrganizationRelatedOrganization read GetItemN write SetItemN; default;
+    Property PersonRelatedPeople[index : Integer] : TPersonRelatedPerson read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TOrganization : TFHIRResource
-    For any organization/institution/government department that has relevance to the care process
+  {@Class TPerson : TFHIRResource
+    A person who is involved in the healthcare process
   }
-  {!.Net HL7Connect.FHIR.Organization}
-  TOrganization = class (TFHIRResource)
+  {!.Net HL7Connect.Fhir.Person}
+  TPerson = class (TFHIRResource)
   private
     FIdentifier : THumanIdList;
-    FName : TOrganizationNameList;
+    FName : THumanNameList;
     FAddress : TAddressList;
     FContact : TContactList;
-    FCode : TCodeableConcept;
-    FIndustryCode : TCodeableConcept;
-    FAccreditation : TOrganizationAccreditationList;
-    FRelatedOrganization : TOrganizationRelatedOrganizationList;
-    Procedure SetCode(value : TCodeableConcept);
-    Procedure SetIndustryCode(value : TCodeableConcept);
+    FDob : String;
+    FGender : TCodeableConcept;
+    FReligion : TCodeableConcept;
+    FQualification : TPersonQualificationList;
+    FLanguage : TPersonLanguageList;
+    FRelatedPerson : TPersonRelatedPersonList;
+    Procedure SetDob(value : String);
+    Procedure SetGender(value : TCodeableConcept);
+    Procedure SetReligion(value : TCodeableConcept);
   protected
     function GetResourceType : TFHIRResourceType; override;
   public
@@ -5534,285 +6389,59 @@ Type
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TOrganization; overload;
-    function Clone : TOrganization; overload;
+    function Link : TPerson; overload;
+    function Clone : TPerson; overload;
     {!script show}
   published
     {@member Identifier
-      Identifier for the organization that is used to identify the organization across multiple disparate systems
+      Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
     }
     property Identifier : THumanIdList read FIdentifier;
 
     {@member Name
-      A name associated with the organization
+      A name associated with the person
     }
-    property Name : TOrganizationNameList read FName;
+    property Name : THumanNameList read FName;
 
     {@member Address
-      An address for the organization
+      An address for the person
     }
     property Address : TAddressList read FAddress;
 
     {@member Contact
-      A contact detail for the organization
+      A contact detail for the person
     }
     property Contact : TContactList read FContact;
 
-    {@member code
-      The kind of organization that this is
+    {@member dob
+      The birth date for the person
     }
-    property code : TCodeableConcept read FCode write SetCode;
+    property dob : String read FDob write SetDob;
 
-    {@member industryCode
-      The industry that this organization is involved in
+    {@member gender
+      Administrative Gender
     }
-    property industryCode : TCodeableConcept read FIndustryCode write SetIndustryCode;
+    property gender : TCodeableConcept read FGender write SetGender;
 
-    {@member Accreditation
-      The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+    {@member religion
+      The religious denomination to which a person professes affiliation
     }
-    property Accreditation : TOrganizationAccreditationList read FAccreditation;
+    property religion : TCodeableConcept read FReligion write SetReligion;
 
-    {@member RelatedOrganization
-      Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
+    {@member Qualification
+      The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
     }
-    property RelatedOrganization : TOrganizationRelatedOrganizationList read FRelatedOrganization;
+    property Qualification : TPersonQualificationList read FQualification;
 
-  end;
+    {@member Language
+      A language spoken by the person, with proficiency
+    }
+    property Language : TPersonLanguageList read FLanguage;
 
-
-  {@Class TDocumentConformancePublisher : TFHIRElement
-    The organization that publishes this conformance statement
-  }
-  {!.Net HL7Connect.FHIR.DocumentConformancePublisher}
-  TDocumentConformancePublisher = class (TFHIRElement)
-  private
-    FName : String;
-    FAddress : TAddressList;
-    FContact : TContactList;
-    Procedure SetName(value : String);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TDocumentConformancePublisher; overload;
-    function Clone : TDocumentConformancePublisher; overload;
-    {!script show}
-  published
-    {@member name
-      Name of Organization
+    {@member RelatedPerson
+      Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
     }
-    property name : String read FName write SetName;
-
-    {@member Address
-      Address of Organization
-    }
-    property Address : TAddressList read FAddress;
-
-    {@member Contact
-      Contacts for Organization
-    }
-    property Contact : TContactList read FContact;
-
-  end;
-
-
-  {@Class TDocumentConformanceSoftware : TFHIRElement
-    The software that is covered by this conformance statement
-  }
-  {!.Net HL7Connect.FHIR.DocumentConformanceSoftware}
-  TDocumentConformanceSoftware = class (TFHIRElement)
-  private
-    FName : String;
-    FVersion : String;
-    FReleaseDate : String;
-    Procedure SetName(value : String);
-    Procedure SetVersion(value : String);
-    Procedure SetReleaseDate(value : String);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TDocumentConformanceSoftware; overload;
-    function Clone : TDocumentConformanceSoftware; overload;
-    {!script show}
-  published
-    {@member name
-      Name software is known by
-    }
-    property name : String read FName write SetName;
-
-    {@member version
-      Version covered by this statement
-    }
-    property version : String read FVersion write SetVersion;
-
-    {@member releaseDate
-      Date this version released
-    }
-    property releaseDate : String read FReleaseDate write SetReleaseDate;
-
-  end;
-
-
-  {@Class TDocumentConformanceDocument : TFHIRElement
-    A document definition
-  }
-  {!.Net HL7Connect.FHIR.DocumentConformanceDocument}
-  TDocumentConformanceDocument = class (TFHIRElement)
-  private
-    FName : String;
-    FPurpose : String;
-    FResource : TConstraintList;
-    Procedure SetName(value : String);
-    Procedure SetPurpose(value : String);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TDocumentConformanceDocument; overload;
-    function Clone : TDocumentConformanceDocument; overload;
-    {!script show}
-  published
-    {@member name
-      Name for this particular document profile
-    }
-    property name : String read FName write SetName;
-
-    {@member purpose
-      Human description of this particular profile
-    }
-    property purpose : String read FPurpose write SetPurpose;
-
-    {@member Resource
-      Constraint on a resource used in the document
-    }
-    property Resource : TConstraintList read FResource;
-
-  end;
-
-
-  {@Class TDocumentConformanceDocumentList
-    A list of DocumentConformanceDocument
-  }
-  {!.Net HL7Connect.FHIR.DocumentConformanceDocumentList}
-  TDocumentConformanceDocumentList = class (THL7FHIRObjectList)
-  private
-    function GetItemN(index : Integer) : TDocumentConformanceDocument;
-    procedure SetItemN(index : Integer; value : TDocumentConformanceDocument);
-  public
-    {!script hide}
-    function Link : TDocumentConformanceDocumentList; Overload;
-    function Clone : TDocumentConformanceDocumentList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a DocumentConformanceDocument to the end of the list.
-    }
-    function Append : TDocumentConformanceDocument;
-    
-    {@member AddItem
-      Add an already existing DocumentConformanceDocument to the end of the list.
-    }
-    procedure AddItem(value : TDocumentConformanceDocument);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TDocumentConformanceDocument) : Integer;
-    
-    {@member Insert
-      Insert DocumentConformanceDocument before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TDocumentConformanceDocument;
-    
-    {@member InsertItem
-       Insert an existing DocumentConformanceDocument before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TDocumentConformanceDocument);
-    
-    {@member Item
-       Get the iIndexth DocumentConformanceDocument. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth DocumentConformanceDocument. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TDocumentConformanceDocument);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TDocumentConformanceDocument;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property DocumentConformanceDocuments[index : Integer] : TDocumentConformanceDocument read GetItemN write SetItemN; default;
-  End;
-
-
-  {@Class TDocumentConformance : TFHIRResource
-    A conformance statement about how one or more FHIR documents
-  }
-  {!.Net HL7Connect.FHIR.DocumentConformance}
-  TDocumentConformance = class (TFHIRResource)
-  private
-    FDate : String;
-    FPublisher : TDocumentConformancePublisher;
-    FSoftware : TDocumentConformanceSoftware;
-    FDocument : TDocumentConformanceDocumentList;
-    Procedure SetDate(value : String);
-    Procedure SetPublisher(value : TDocumentConformancePublisher);
-    Procedure SetSoftware(value : TDocumentConformanceSoftware);
-  protected
-    function GetResourceType : TFHIRResourceType; override;
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TDocumentConformance; overload;
-    function Clone : TDocumentConformance; overload;
-    {!script show}
-  published
-    {@member date
-      Date that this conformance statement is published
-    }
-    property date : String read FDate write SetDate;
-
-    {@member publisher
-      The organization that publishes this conformance statement
-    }
-    property publisher : TDocumentConformancePublisher read FPublisher write SetPublisher;
-
-    {@member software
-      The software that is covered by this conformance statement
-    }
-    property software : TDocumentConformanceSoftware read FSoftware write SetSoftware;
-
-    {@member Document
-      A document definition
-    }
-    property Document : TDocumentConformanceDocumentList read FDocument;
+    property RelatedPerson : TPersonRelatedPersonList read FRelatedPerson;
 
   end;
 
@@ -5820,7 +6449,7 @@ Type
   {@Class TLabReportRequestDetail : TFHIRElement
     Details concerning a single pathology test requested.
   }
-  {!.Net HL7Connect.FHIR.LabReportRequestDetail}
+  {!.Net HL7Connect.Fhir.LabReportRequestDetail}
   TLabReportRequestDetail = class (TFHIRElement)
   private
     FRequestOrderId : TIdentifier;
@@ -5872,7 +6501,7 @@ Type
   {@Class TLabReportResultGroupResultList
     A list of LabReportResultGroupResult
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroupResultList}
+  {!.Net HL7Connect.Fhir.LabReportResultGroupResultList}
   TLabReportResultGroupResultList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TLabReportResultGroupResult;
@@ -5947,7 +6576,7 @@ Type
   {@Class TLabReportResultGroup : TFHIRElement
     A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroup}
+  {!.Net HL7Connect.Fhir.LabReportResultGroup}
   TLabReportResultGroup = class (TFHIRElement)
   private
     FName : TCodeableConcept;
@@ -5985,7 +6614,7 @@ Type
   {@Class TLabReportResultGroupResultReferenceRangeList
     A list of LabReportResultGroupResultReferenceRange
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroupResultReferenceRangeList}
+  {!.Net HL7Connect.Fhir.LabReportResultGroupResultReferenceRangeList}
   TLabReportResultGroupResultReferenceRangeList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TLabReportResultGroupResultReferenceRange;
@@ -6060,7 +6689,7 @@ Type
   {@Class TLabReportResultGroupResult : TFHIRElement
     Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroupResult}
+  {!.Net HL7Connect.Fhir.LabReportResultGroupResult}
   TLabReportResultGroupResult = class (TFHIRElement)
   private
     FName : TCodeableConcept;
@@ -6119,7 +6748,7 @@ Type
   {@Class TLabReportResultGroupResultReferenceRange : TFHIRElement
     Guidance on how to interpret the value by comparison to a normal or recommended range
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroupResultReferenceRange}
+  {!.Net HL7Connect.Fhir.LabReportResultGroupResultReferenceRange}
   TLabReportResultGroupResultReferenceRange = class (TFHIRElement)
   private
     FMeaning : TCodeableConcept;
@@ -6151,7 +6780,7 @@ Type
   {@Class TLabReportRequestDetailList
     A list of LabReportRequestDetail
   }
-  {!.Net HL7Connect.FHIR.LabReportRequestDetailList}
+  {!.Net HL7Connect.Fhir.LabReportRequestDetailList}
   TLabReportRequestDetailList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TLabReportRequestDetail;
@@ -6226,7 +6855,7 @@ Type
   {@Class TLabReportResultGroupList
     A list of LabReportResultGroup
   }
-  {!.Net HL7Connect.FHIR.LabReportResultGroupList}
+  {!.Net HL7Connect.Fhir.LabReportResultGroupList}
   TLabReportResultGroupList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TLabReportResultGroup;
@@ -6301,7 +6930,7 @@ Type
   {@Class TAttachmentList
     A list of Attachment
   }
-  {!.Net HL7Connect.FHIR.AttachmentList}
+  {!.Net HL7Connect.Fhir.AttachmentList}
   TAttachmentList = class (THL7FHIRObjectList)
   private
     function GetItemN(index : Integer) : TAttachment;
@@ -6376,7 +7005,7 @@ Type
   {@Class TLabReport : TFHIRResource
     The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care
   }
-  {!.Net HL7Connect.FHIR.LabReport}
+  {!.Net HL7Connect.Fhir.LabReport}
   TLabReport = class (TFHIRResource)
   private
     FStatus : TLabReportStatus;
@@ -6493,152 +7122,143 @@ Type
   end;
 
 
-  {@Class TPersonQualification : TFHIRElement
-    The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+  {@Class TDocumentConformancePublisher : TFHIRElement
+    The organization that publishes this conformance statement
   }
-  {!.Net HL7Connect.FHIR.PersonQualification}
-  TPersonQualification = class (TFHIRElement)
+  {!.Net HL7Connect.Fhir.DocumentConformancePublisher}
+  TDocumentConformancePublisher = class (TFHIRElement)
   private
-    FId : TIdentifier;
-    FCode : TCodeableConcept;
-    FInstitution : TFHIRResourceReference{TOrganization};
-    FPeriod : TInterval_date;
-    Procedure SetId(value : TIdentifier);
-    Procedure SetCode(value : TCodeableConcept);
-    Procedure SetInstitution(value : TFHIRResourceReference{TOrganization});
-    Procedure SetPeriod(value : TInterval_date);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TPersonQualification; overload;
-    function Clone : TPersonQualification; overload;
-    {!script show}
-  published
-    {@member id
-      The identifier of a qualification
-    }
-    property id : TIdentifier read FId write SetId;
-
-    {@member code
-      The type of the qualification
-    }
-    property code : TCodeableConcept read FCode write SetCode;
-
-    {@member institution
-      The organisation that confered/confers the qualification
-    }
-    property institution : TFHIRResourceReference{TOrganization} read FInstitution write SetInstitution;
-
-    {@member period
-      The period for which a qualification is held
-    }
-    property period : TInterval_date read FPeriod write SetPeriod;
-
-  end;
-
-
-  {@Class TPersonLanguage : TFHIRElement
-    A language spoken by the person, with proficiency
-  }
-  {!.Net HL7Connect.FHIR.PersonLanguage}
-  TPersonLanguage = class (TFHIRElement)
-  private
-    FCode : String;
-    FUse : TLanguageUse;
-    Procedure SetCode(value : String);
-    Procedure SetUse(value : TLanguageUse);
-  public
-    constructor Create; Override;
-    destructor Destroy; override;
-    {!script hide}
-    procedure Assign(oSource : TAdvObject); override;
-    function Link : TPersonLanguage; overload;
-    function Clone : TPersonLanguage; overload;
-    {!script show}
-  published
-    {@member code
-      A code that identifies the language
-    }
-    property code : String read FCode write SetCode;
-
-    {@member use
-      A code the describes how well the language is spoken
-    }
-    property use : TLanguageUse read FUse write SetUse;
-
-  end;
-
-
-  {@Class TPersonRelatedPerson : TFHIRElement
-    Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
-  }
-  {!.Net HL7Connect.FHIR.PersonRelatedPerson}
-  TPersonRelatedPerson = class (TFHIRElement)
-  private
-    FId : THumanId;
-    FRole : TCodeableConcept;
-    FName : THumanName;
+    FName : String;
+    FAddress : TAddressList;
     FContact : TContactList;
-    Procedure SetId(value : THumanId);
-    Procedure SetRole(value : TCodeableConcept);
-    Procedure SetName(value : THumanName);
+    Procedure SetName(value : String);
   public
     constructor Create; Override;
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TPersonRelatedPerson; overload;
-    function Clone : TPersonRelatedPerson; overload;
+    function Link : TDocumentConformancePublisher; overload;
+    function Clone : TDocumentConformancePublisher; overload;
     {!script show}
   published
-    {@member id
-      Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
-    }
-    property id : THumanId read FId write SetId;
-
-    {@member role
-      Code that specifies how this person is related to the subject. A code is required.
-    }
-    property role : TCodeableConcept read FRole write SetRole;
-
     {@member name
-      A name should be specified for the related person
+      Name of Organization
     }
-    property name : THumanName read FName write SetName;
+    property name : String read FName write SetName;
+
+    {@member Address
+      Address of Organization
+    }
+    property Address : TAddressList read FAddress;
 
     {@member Contact
-      Contact details (phone, email etc) should be provided for the person
+      Contacts for Organization
     }
     property Contact : TContactList read FContact;
 
   end;
 
 
-  {@Class TPersonQualificationList
-    A list of PersonQualification
+  {@Class TDocumentConformanceSoftware : TFHIRElement
+    The software that is covered by this conformance statement
   }
-  {!.Net HL7Connect.FHIR.PersonQualificationList}
-  TPersonQualificationList = class (THL7FHIRObjectList)
+  {!.Net HL7Connect.Fhir.DocumentConformanceSoftware}
+  TDocumentConformanceSoftware = class (TFHIRElement)
   private
-    function GetItemN(index : Integer) : TPersonQualification;
-    procedure SetItemN(index : Integer; value : TPersonQualification);
+    FName : String;
+    FVersion : String;
+    FReleaseDate : String;
+    Procedure SetName(value : String);
+    Procedure SetVersion(value : String);
+    Procedure SetReleaseDate(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TDocumentConformanceSoftware; overload;
+    function Clone : TDocumentConformanceSoftware; overload;
+    {!script show}
+  published
+    {@member name
+      Name software is known by
+    }
+    property name : String read FName write SetName;
+
+    {@member version
+      Version covered by this statement
+    }
+    property version : String read FVersion write SetVersion;
+
+    {@member releaseDate
+      Date this version released
+    }
+    property releaseDate : String read FReleaseDate write SetReleaseDate;
+
+  end;
+
+
+  {@Class TDocumentConformanceDocument : TFHIRElement
+    A document definition
+  }
+  {!.Net HL7Connect.Fhir.DocumentConformanceDocument}
+  TDocumentConformanceDocument = class (TFHIRElement)
+  private
+    FName : String;
+    FPurpose : String;
+    FResource : TConstraintList;
+    Procedure SetName(value : String);
+    Procedure SetPurpose(value : String);
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TDocumentConformanceDocument; overload;
+    function Clone : TDocumentConformanceDocument; overload;
+    {!script show}
+  published
+    {@member name
+      Name for this particular document profile
+    }
+    property name : String read FName write SetName;
+
+    {@member purpose
+      Human description of this particular profile
+    }
+    property purpose : String read FPurpose write SetPurpose;
+
+    {@member Resource
+      Constraint on a resource used in the document
+    }
+    property Resource : TConstraintList read FResource;
+
+  end;
+
+
+  {@Class TDocumentConformanceDocumentList
+    A list of DocumentConformanceDocument
+  }
+  {!.Net HL7Connect.Fhir.DocumentConformanceDocumentList}
+  TDocumentConformanceDocumentList = class (THL7FHIRObjectList)
+  private
+    function GetItemN(index : Integer) : TDocumentConformanceDocument;
+    procedure SetItemN(index : Integer; value : TDocumentConformanceDocument);
   public
     {!script hide}
-    function Link : TPersonQualificationList; Overload;
-    function Clone : TPersonQualificationList; Overload;
+    function Link : TDocumentConformanceDocumentList; Overload;
+    function Clone : TDocumentConformanceDocumentList; Overload;
     {!script show}
     
     {@member Append
-      Add a PersonQualification to the end of the list.
+      Add a DocumentConformanceDocument to the end of the list.
     }
-    function Append : TPersonQualification;
+    function Append : TDocumentConformanceDocument;
     
     {@member AddItem
-      Add an already existing PersonQualification to the end of the list.
+      Add an already existing DocumentConformanceDocument to the end of the list.
     }
-    procedure AddItem(value : TPersonQualification);
+    procedure AddItem(value : TDocumentConformanceDocument);
     
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
@@ -6647,31 +7267,31 @@ Type
     {@member IndexOf
       See if an item is already in the list. returns -1 if not in the list
     }
-    function IndexOf(value : TPersonQualification) : Integer;
+    function IndexOf(value : TDocumentConformanceDocument) : Integer;
     
     {@member Insert
-      Insert PersonQualification before the designated index (0 = first item)
+      Insert DocumentConformanceDocument before the designated index (0 = first item)
     }
-    function Insert(index : Integer) : TPersonQualification;
+    function Insert(index : Integer) : TDocumentConformanceDocument;
     
     {@member InsertItem
-       Insert an existing PersonQualification before the designated index (0 = first item)
+       Insert an existing DocumentConformanceDocument before the designated index (0 = first item)
     }
-    procedure InsertItem(index : Integer; value : TPersonQualification);
+    procedure InsertItem(index : Integer; value : TDocumentConformanceDocument);
     
     {@member Item
-       Get the iIndexth PersonQualification. (0 = first item)
+       Get the iIndexth DocumentConformanceDocument. (0 = first item)
     }
     
     {@member Item
-       Get the iIndexth PersonQualification. (0 = first item)
+       Get the iIndexth DocumentConformanceDocument. (0 = first item)
     }
-    procedure SetItemByIndex(index : Integer; value : TPersonQualification);
+    procedure SetItemByIndex(index : Integer; value : TDocumentConformanceDocument);
     
     {@member Count
       The number of items in the collection
     }
-    function Item(index : Integer) : TPersonQualification;
+    function Item(index : Integer) : TDocumentConformanceDocument;
     
     {@member Count
       The number of items in the collection
@@ -6687,179 +7307,24 @@ Type
     }
     procedure ClearItems;
     
-    Property PersonQualifications[index : Integer] : TPersonQualification read GetItemN write SetItemN; default;
+    Property DocumentConformanceDocuments[index : Integer] : TDocumentConformanceDocument read GetItemN write SetItemN; default;
   End;
 
 
-  {@Class TPersonLanguageList
-    A list of PersonLanguage
+  {@Class TDocumentConformance : TFHIRResource
+    A conformance statement about how one or more FHIR documents
   }
-  {!.Net HL7Connect.FHIR.PersonLanguageList}
-  TPersonLanguageList = class (THL7FHIRObjectList)
+  {!.Net HL7Connect.Fhir.DocumentConformance}
+  TDocumentConformance = class (TFHIRResource)
   private
-    function GetItemN(index : Integer) : TPersonLanguage;
-    procedure SetItemN(index : Integer; value : TPersonLanguage);
-  public
-    {!script hide}
-    function Link : TPersonLanguageList; Overload;
-    function Clone : TPersonLanguageList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a PersonLanguage to the end of the list.
-    }
-    function Append : TPersonLanguage;
-    
-    {@member AddItem
-      Add an already existing PersonLanguage to the end of the list.
-    }
-    procedure AddItem(value : TPersonLanguage);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TPersonLanguage) : Integer;
-    
-    {@member Insert
-      Insert PersonLanguage before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TPersonLanguage;
-    
-    {@member InsertItem
-       Insert an existing PersonLanguage before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TPersonLanguage);
-    
-    {@member Item
-       Get the iIndexth PersonLanguage. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth PersonLanguage. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TPersonLanguage);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TPersonLanguage;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property PersonLanguages[index : Integer] : TPersonLanguage read GetItemN write SetItemN; default;
-  End;
-
-
-  {@Class TPersonRelatedPersonList
-    A list of PersonRelatedPerson
-  }
-  {!.Net HL7Connect.FHIR.PersonRelatedPersonList}
-  TPersonRelatedPersonList = class (THL7FHIRObjectList)
-  private
-    function GetItemN(index : Integer) : TPersonRelatedPerson;
-    procedure SetItemN(index : Integer; value : TPersonRelatedPerson);
-  public
-    {!script hide}
-    function Link : TPersonRelatedPersonList; Overload;
-    function Clone : TPersonRelatedPersonList; Overload;
-    {!script show}
-    
-    {@member Append
-      Add a PersonRelatedPerson to the end of the list.
-    }
-    function Append : TPersonRelatedPerson;
-    
-    {@member AddItem
-      Add an already existing PersonRelatedPerson to the end of the list.
-    }
-    procedure AddItem(value : TPersonRelatedPerson);
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    
-    {@member IndexOf
-      See if an item is already in the list. returns -1 if not in the list
-    }
-    function IndexOf(value : TPersonRelatedPerson) : Integer;
-    
-    {@member Insert
-      Insert PersonRelatedPerson before the designated index (0 = first item)
-    }
-    function Insert(index : Integer) : TPersonRelatedPerson;
-    
-    {@member InsertItem
-       Insert an existing PersonRelatedPerson before the designated index (0 = first item)
-    }
-    procedure InsertItem(index : Integer; value : TPersonRelatedPerson);
-    
-    {@member Item
-       Get the iIndexth PersonRelatedPerson. (0 = first item)
-    }
-    
-    {@member Item
-       Get the iIndexth PersonRelatedPerson. (0 = first item)
-    }
-    procedure SetItemByIndex(index : Integer; value : TPersonRelatedPerson);
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Item(index : Integer) : TPersonRelatedPerson;
-    
-    {@member Count
-      The number of items in the collection
-    }
-    function Count : Integer; Overload;
-    
-    {@member remove
-      Remove the indexth item. The first item is index 0.
-    }
-    procedure Remove(index : Integer);
-    {@member ClearItems
-      Remove All Items from the list
-    }
-    procedure ClearItems;
-    
-    Property PersonRelatedPeople[index : Integer] : TPersonRelatedPerson read GetItemN write SetItemN; default;
-  End;
-
-
-  {@Class TPerson : TFHIRResource
-    A person who is involved in the healthcare process
-  }
-  {!.Net HL7Connect.FHIR.Person}
-  TPerson = class (TFHIRResource)
-  private
-    FIdentifier : THumanIdList;
-    FName : THumanNameList;
-    FAddress : TAddressList;
-    FContact : TContactList;
-    FDob : String;
-    FGender : TCodeableConcept;
-    FReligion : TCodeableConcept;
-    FQualification : TPersonQualificationList;
-    FLanguage : TPersonLanguageList;
-    FRelatedPerson : TPersonRelatedPersonList;
-    Procedure SetDob(value : String);
-    Procedure SetGender(value : TCodeableConcept);
-    Procedure SetReligion(value : TCodeableConcept);
+    FDate : String;
+    FPublisher : TDocumentConformancePublisher;
+    FSoftware : TDocumentConformanceSoftware;
+    FProfile : TStringList;
+    FDocument : TDocumentConformanceDocumentList;
+    Procedure SetDate(value : String);
+    Procedure SetPublisher(value : TDocumentConformancePublisher);
+    Procedure SetSoftware(value : TDocumentConformanceSoftware);
   protected
     function GetResourceType : TFHIRResourceType; override;
   public
@@ -6867,59 +7332,34 @@ Type
     destructor Destroy; override;
     {!script hide}
     procedure Assign(oSource : TAdvObject); override;
-    function Link : TPerson; overload;
-    function Clone : TPerson; overload;
+    function Link : TDocumentConformance; overload;
+    function Clone : TDocumentConformance; overload;
     {!script show}
   published
-    {@member Identifier
-      Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+    {@member date
+      Date that this conformance statement is published
     }
-    property Identifier : THumanIdList read FIdentifier;
+    property date : String read FDate write SetDate;
 
-    {@member Name
-      A name associated with the person
+    {@member publisher
+      The organization that publishes this conformance statement
     }
-    property Name : THumanNameList read FName;
+    property publisher : TDocumentConformancePublisher read FPublisher write SetPublisher;
 
-    {@member Address
-      An address for the person
+    {@member software
+      The software that is covered by this conformance statement
     }
-    property Address : TAddressList read FAddress;
+    property software : TDocumentConformanceSoftware read FSoftware write SetSoftware;
 
-    {@member Contact
-      A contact detail for the person
+    {@member Profile
+      Additional other profiles that apply to this conformance statement.
     }
-    property Contact : TContactList read FContact;
+    property Profile : TStringList read FProfile;
 
-    {@member dob
-      The birth date for the person
+    {@member Document
+      A document definition
     }
-    property dob : String read FDob write SetDob;
-
-    {@member gender
-      Administrative Gender
-    }
-    property gender : TCodeableConcept read FGender write SetGender;
-
-    {@member religion
-      The religious denomination to which a person professes affiliation
-    }
-    property religion : TCodeableConcept read FReligion write SetReligion;
-
-    {@member Qualification
-      The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
-    }
-    property Qualification : TPersonQualificationList read FQualification;
-
-    {@member Language
-      A language spoken by the person, with proficiency
-    }
-    property Language : TPersonLanguageList read FLanguage;
-
-    {@member RelatedPerson
-      Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
-    }
-    property RelatedPerson : TPersonRelatedPersonList read FRelatedPerson;
+    property Document : TDocumentConformanceDocumentList read FDocument;
 
   end;
 
@@ -6941,11 +7381,11 @@ Type
     }
     {!script nolink}
     function newConstraintElementMapping : TConstraintElementMapping;
-    {@member newConstraintElementAggregation
-      create a new aggregation
+    {@member newConstraintElementResource
+      create a new resource
     }
     {!script nolink}
-    function newConstraintElementAggregation : TConstraintElementAggregation;
+    function newConstraintElementResource : TConstraintElementResource;
     {@member newConstraintElementValue
       create a new value
     }
@@ -7136,6 +7576,21 @@ Type
     }
     {!script nolink}
     function newMessage : TMessage;
+    {@member newAnimalRelatedEntity
+      create a new relatedEntity
+    }
+    {!script nolink}
+    function newAnimalRelatedEntity : TAnimalRelatedEntity;
+    {@member newAnimal
+      create a new Animal
+    }
+    {!script nolink}
+    function newAnimal : TAnimal;
+    {@member newAgent
+      create a new Agent
+    }
+    {!script nolink}
+    function newAgent : TAgent;
     {@member newMessageConformancePublisher
       create a new publisher
     }
@@ -7166,21 +7621,26 @@ Type
     }
     {!script nolink}
     function newMessageConformance : TMessageConformance;
-    {@member newAgent
-      create a new Agent
+    {@member newOrganizationName
+      create a new name
     }
     {!script nolink}
-    function newAgent : TAgent;
-    {@member newAnimalRelatedEntity
-      create a new relatedEntity
+    function newOrganizationName : TOrganizationName;
+    {@member newOrganizationAccreditation
+      create a new accreditation
     }
     {!script nolink}
-    function newAnimalRelatedEntity : TAnimalRelatedEntity;
-    {@member newAnimal
-      create a new Animal
+    function newOrganizationAccreditation : TOrganizationAccreditation;
+    {@member newOrganizationRelatedOrganization
+      create a new relatedOrganization
     }
     {!script nolink}
-    function newAnimal : TAnimal;
+    function newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+    {@member newOrganization
+      create a new Organization
+    }
+    {!script nolink}
+    function newOrganization : TOrganization;
     {@member newPrescriptionDispense
       create a new dispense
     }
@@ -7216,51 +7676,51 @@ Type
     }
     {!script nolink}
     function newPrescription : TPrescription;
+    {@member newProfileAuthor
+      create a new author
+    }
+    {!script nolink}
+    function newProfileAuthor : TProfileAuthor;
+    {@member newProfileEndorser
+      create a new endorser
+    }
+    {!script nolink}
+    function newProfileEndorser : TProfileEndorser;
+    {@member newProfileBinding
+      create a new binding
+    }
+    {!script nolink}
+    function newProfileBinding : TProfileBinding;
+    {@member newProfile
+      create a new Profile
+    }
+    {!script nolink}
+    function newProfile : TProfile;
     {@member newPatient
       create a new Patient
     }
     {!script nolink}
     function newPatient : TPatient;
-    {@member newOrganizationName
-      create a new name
+    {@member newPersonQualification
+      create a new qualification
     }
     {!script nolink}
-    function newOrganizationName : TOrganizationName;
-    {@member newOrganizationAccreditation
-      create a new accreditation
+    function newPersonQualification : TPersonQualification;
+    {@member newPersonLanguage
+      create a new language
     }
     {!script nolink}
-    function newOrganizationAccreditation : TOrganizationAccreditation;
-    {@member newOrganizationRelatedOrganization
-      create a new relatedOrganization
+    function newPersonLanguage : TPersonLanguage;
+    {@member newPersonRelatedPerson
+      create a new relatedPerson
     }
     {!script nolink}
-    function newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
-    {@member newOrganization
-      create a new Organization
+    function newPersonRelatedPerson : TPersonRelatedPerson;
+    {@member newPerson
+      create a new Person
     }
     {!script nolink}
-    function newOrganization : TOrganization;
-    {@member newDocumentConformancePublisher
-      create a new publisher
-    }
-    {!script nolink}
-    function newDocumentConformancePublisher : TDocumentConformancePublisher;
-    {@member newDocumentConformanceSoftware
-      create a new software
-    }
-    {!script nolink}
-    function newDocumentConformanceSoftware : TDocumentConformanceSoftware;
-    {@member newDocumentConformanceDocument
-      create a new document
-    }
-    {!script nolink}
-    function newDocumentConformanceDocument : TDocumentConformanceDocument;
-    {@member newDocumentConformance
-      create a new DocumentConformance
-    }
-    {!script nolink}
-    function newDocumentConformance : TDocumentConformance;
+    function newPerson : TPerson;
     {@member newLabReportRequestDetail
       create a new requestDetail
     }
@@ -7286,26 +7746,26 @@ Type
     }
     {!script nolink}
     function newLabReport : TLabReport;
-    {@member newPersonQualification
-      create a new qualification
+    {@member newDocumentConformancePublisher
+      create a new publisher
     }
     {!script nolink}
-    function newPersonQualification : TPersonQualification;
-    {@member newPersonLanguage
-      create a new language
+    function newDocumentConformancePublisher : TDocumentConformancePublisher;
+    {@member newDocumentConformanceSoftware
+      create a new software
     }
     {!script nolink}
-    function newPersonLanguage : TPersonLanguage;
-    {@member newPersonRelatedPerson
-      create a new relatedPerson
+    function newDocumentConformanceSoftware : TDocumentConformanceSoftware;
+    {@member newDocumentConformanceDocument
+      create a new document
     }
     {!script nolink}
-    function newPersonRelatedPerson : TPersonRelatedPerson;
-    {@member newPerson
-      create a new Person
+    function newDocumentConformanceDocument : TDocumentConformanceDocument;
+    {@member newDocumentConformance
+      create a new DocumentConformance
     }
     {!script nolink}
-    function newPerson : TPerson;
+    function newDocumentConformance : TDocumentConformance;
   end;
 
 implementation
@@ -7687,7 +8147,7 @@ end;
 destructor TConstraintElement.Destroy;
 begin
   FMapping.Free;
-  FAggregation.free;
+  FResource.free;
   FValue.Free;
   inherited;
 end;
@@ -7707,7 +8167,7 @@ begin
   FMustUnderstand := TConstraintElement(oSource).FMustUnderstand;
   FDefinition := TConstraintElement(oSource).FDefinition;
   FMapping.Assign(TConstraintElement(oSource).FMapping);
-  aggregation := TConstraintElement(oSource).aggregation.Clone;
+  resource := TConstraintElement(oSource).resource.Clone;
   FValueSet := TConstraintElement(oSource).FValueSet;
   FValue.Assign(TConstraintElement(oSource).FValue);
 end;
@@ -7779,10 +8239,10 @@ begin
   FDefinition := value;
 end;
 
-Procedure TConstraintElement.SetAggregation(value : TConstraintElementAggregation);
+Procedure TConstraintElement.SetResource(value : TConstraintElementResource);
 begin
-  FAggregation.free;
-  FAggregation := value;
+  FResource.free;
+  FResource := value;
 end;
 
 Procedure TConstraintElement.SetValueSet(value : String);
@@ -7833,45 +8293,45 @@ begin
 end;
 
 
-{ TConstraintElementAggregation }
+{ TConstraintElementResource }
 
-constructor TConstraintElementAggregation.Create;
+constructor TConstraintElementResource.Create;
 begin
   inherited;
 end;
 
-destructor TConstraintElementAggregation.Destroy;
+destructor TConstraintElementResource.Destroy;
 begin
   inherited;
 end;
 
-procedure TConstraintElementAggregation.Assign(oSource : TAdvObject);
+procedure TConstraintElementResource.Assign(oSource : TAdvObject);
 begin
   inherited;
-  FAggregated := TConstraintElementAggregation(oSource).FAggregated;
-  FName := TConstraintElementAggregation(oSource).FName;
+  FAggregated := TConstraintElementResource(oSource).FAggregated;
+  FProfile := TConstraintElementResource(oSource).FProfile;
 end;
 
-function TConstraintElementAggregation.Link : TConstraintElementAggregation;
+function TConstraintElementResource.Link : TConstraintElementResource;
 begin
-  result := TConstraintElementAggregation(inherited Link);
+  result := TConstraintElementResource(inherited Link);
 end;
 
-function TConstraintElementAggregation.Clone : TConstraintElementAggregation;
+function TConstraintElementResource.Clone : TConstraintElementResource;
 begin
-  result := TConstraintElementAggregation(inherited Clone);
+  result := TConstraintElementResource(inherited Clone);
 end;
 
-{ TConstraintElementAggregation }
+{ TConstraintElementResource }
 
-Procedure TConstraintElementAggregation.SetAggregated(value : Boolean);
+Procedure TConstraintElementResource.SetAggregated(value : Boolean);
 begin
   FAggregated := value;
 end;
 
-Procedure TConstraintElementAggregation.SetName(value : String);
+Procedure TConstraintElementResource.SetProfile(value : String);
 begin
-  FName := value;
+  FProfile := value;
 end;
 
 
@@ -8023,6 +8483,7 @@ procedure TConstraint.Assign(oSource : TAdvObject);
 begin
   inherited;
   FType_ := TConstraint(oSource).FType_;
+  FProfile := TConstraint(oSource).FProfile;
   FName := TConstraint(oSource).FName;
   FPurpose := TConstraint(oSource).FPurpose;
   FElement.Assign(TConstraint(oSource).FElement);
@@ -8043,6 +8504,11 @@ end;
 Procedure TConstraint.SetType_(value : String);
 begin
   FType_ := value;
+end;
+
+Procedure TConstraint.SetProfile(value : String);
+begin
+  FProfile := value;
 end;
 
 Procedure TConstraint.SetName(value : String);
@@ -10206,12 +10672,14 @@ end;
 constructor TConformance.Create;
 begin
   inherited;
+  FProfile := TStringList.Create;
 end;
 
 destructor TConformance.Destroy;
 begin
   FPublisher.free;
   FSoftware.free;
+  FProfile.Free;
   FResource.free;
   FOperation.free;
   inherited;
@@ -10229,6 +10697,7 @@ begin
   publisher := TConformance(oSource).publisher.Clone;
   software := TConformance(oSource).software.Clone;
   FMode := TConformance(oSource).FMode;
+  FProfile.Assign(TConformance(oSource).FProfile);
   resource := TConformance(oSource).resource.Clone;
   operation := TConformance(oSource).operation.Clone;
 end;
@@ -11053,6 +11522,555 @@ begin
 end;
 
 
+{ TAnimalRelatedEntity }
+
+constructor TAnimalRelatedEntity.Create;
+begin
+  inherited;
+  FAddress := TAddressList.Create;
+  FContact := TContactList.Create;
+end;
+
+destructor TAnimalRelatedEntity.Destroy;
+begin
+  FId.free;
+  FRole.free;
+  FName.free;
+  FAddress.Free;
+  FContact.Free;
+  inherited;
+end;
+
+procedure TAnimalRelatedEntity.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  id := TAnimalRelatedEntity(oSource).id.Clone;
+  role := TAnimalRelatedEntity(oSource).role.Clone;
+  name := TAnimalRelatedEntity(oSource).name.Clone;
+  FAddress.Assign(TAnimalRelatedEntity(oSource).FAddress);
+  FContact.Assign(TAnimalRelatedEntity(oSource).FContact);
+end;
+
+function TAnimalRelatedEntity.Link : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity(inherited Link);
+end;
+
+function TAnimalRelatedEntity.Clone : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity(inherited Clone);
+end;
+
+{ TAnimalRelatedEntity }
+
+Procedure TAnimalRelatedEntity.SetId(value : THumanId);
+begin
+  FId.free;
+  FId := value;
+end;
+
+Procedure TAnimalRelatedEntity.SetRole(value : TCodeableConcept);
+begin
+  FRole.free;
+  FRole := value;
+end;
+
+Procedure TAnimalRelatedEntity.SetName(value : THumanName);
+begin
+  FName.free;
+  FName := value;
+end;
+
+
+{ THumanIdList }
+{ THumanIdList }
+procedure THumanIdList.AddItem(value: THumanId);
+begin
+  assert(value.ClassName = 'THumanId', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanId');
+  add(value);
+end;
+
+function THumanIdList.Append: THumanId;
+begin
+  result := THumanId.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanIdList.ClearItems;
+begin
+  Clear;
+end;
+
+function THumanIdList.Clone: THumanIdList;
+begin
+  result := THumanIdList(inherited Clone);
+end;
+
+function THumanIdList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function THumanIdList.GetItemN(index: Integer): THumanId;
+begin
+  result := THumanId(ObjectByIndex[index]);
+end;
+
+function THumanIdList.IndexOf(value: THumanId): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function THumanIdList.Insert(index: Integer): THumanId;
+begin
+  result := THumanId.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanIdList.InsertItem(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  Inherited Insert(index, value);
+end;
+
+function THumanIdList.Item(index: Integer): THumanId;
+begin
+  result := THumanId(ObjectByIndex[index]);
+end;
+
+function THumanIdList.Link: THumanIdList;
+begin
+  result := THumanIdList(inherited Link);
+end;
+
+procedure THumanIdList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure THumanIdList.SetItemByIndex(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  HumanIds[index] := value;
+end;
+
+procedure THumanIdList.SetItemN(index: Integer; value: THumanId);
+begin
+  assert(value is THumanId);
+  ObjectByIndex[index] := value;
+end;
+
+{ THumanNameList }
+{ THumanNameList }
+procedure THumanNameList.AddItem(value: THumanName);
+begin
+  assert(value.ClassName = 'THumanName', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanName');
+  add(value);
+end;
+
+function THumanNameList.Append: THumanName;
+begin
+  result := THumanName.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNameList.ClearItems;
+begin
+  Clear;
+end;
+
+function THumanNameList.Clone: THumanNameList;
+begin
+  result := THumanNameList(inherited Clone);
+end;
+
+function THumanNameList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function THumanNameList.GetItemN(index: Integer): THumanName;
+begin
+  result := THumanName(ObjectByIndex[index]);
+end;
+
+function THumanNameList.IndexOf(value: THumanName): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function THumanNameList.Insert(index: Integer): THumanName;
+begin
+  result := THumanName.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure THumanNameList.InsertItem(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  Inherited Insert(index, value);
+end;
+
+function THumanNameList.Item(index: Integer): THumanName;
+begin
+  result := THumanName(ObjectByIndex[index]);
+end;
+
+function THumanNameList.Link: THumanNameList;
+begin
+  result := THumanNameList(inherited Link);
+end;
+
+procedure THumanNameList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure THumanNameList.SetItemByIndex(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  HumanNames[index] := value;
+end;
+
+procedure THumanNameList.SetItemN(index: Integer; value: THumanName);
+begin
+  assert(value is THumanName);
+  ObjectByIndex[index] := value;
+end;
+
+{ TAnimalRelatedEntityList }
+{ TAnimalRelatedEntityList }
+procedure TAnimalRelatedEntityList.AddItem(value: TAnimalRelatedEntity);
+begin
+  assert(value.ClassName = 'TAnimalRelatedEntity', 'Attempt to add an item of type '+value.ClassName+' to a List of TAnimalRelatedEntity');
+  add(value);
+end;
+
+function TAnimalRelatedEntityList.Append: TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAnimalRelatedEntityList.ClearItems;
+begin
+  Clear;
+end;
+
+function TAnimalRelatedEntityList.Clone: TAnimalRelatedEntityList;
+begin
+  result := TAnimalRelatedEntityList(inherited Clone);
+end;
+
+function TAnimalRelatedEntityList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function TAnimalRelatedEntityList.GetItemN(index: Integer): TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity(ObjectByIndex[index]);
+end;
+
+function TAnimalRelatedEntityList.IndexOf(value: TAnimalRelatedEntity): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function TAnimalRelatedEntityList.Insert(index: Integer): TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TAnimalRelatedEntityList.InsertItem(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  Inherited Insert(index, value);
+end;
+
+function TAnimalRelatedEntityList.Item(index: Integer): TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity(ObjectByIndex[index]);
+end;
+
+function TAnimalRelatedEntityList.Link: TAnimalRelatedEntityList;
+begin
+  result := TAnimalRelatedEntityList(inherited Link);
+end;
+
+procedure TAnimalRelatedEntityList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TAnimalRelatedEntityList.SetItemByIndex(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  AnimalRelatedEntities[index] := value;
+end;
+
+procedure TAnimalRelatedEntityList.SetItemN(index: Integer; value: TAnimalRelatedEntity);
+begin
+  assert(value is TAnimalRelatedEntity);
+  ObjectByIndex[index] := value;
+end;
+
+{ TAnimal }
+
+constructor TAnimal.Create;
+begin
+  inherited;
+  FIdentifier := THumanIdList.Create;
+  FName := THumanNameList.Create;
+  FRelatedEntity := TAnimalRelatedEntityList.Create;
+end;
+
+destructor TAnimal.Destroy;
+begin
+  FIdentifier.Free;
+  FName.Free;
+  FSpecies.free;
+  FStrain.free;
+  FGender.free;
+  FRelatedEntity.Free;
+  inherited;
+end;
+
+function TAnimal.GetResourceType : TFHIRResourceType;
+begin
+  result := frtAnimal;
+end;
+
+procedure TAnimal.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FIdentifier.Assign(TAnimal(oSource).FIdentifier);
+  FName.Assign(TAnimal(oSource).FName);
+  FDob := TAnimal(oSource).FDob;
+  species := TAnimal(oSource).species.Clone;
+  strain := TAnimal(oSource).strain.Clone;
+  gender := TAnimal(oSource).gender.Clone;
+  FRelatedEntity.Assign(TAnimal(oSource).FRelatedEntity);
+end;
+
+function TAnimal.Link : TAnimal;
+begin
+  result := TAnimal(inherited Link);
+end;
+
+function TAnimal.Clone : TAnimal;
+begin
+  result := TAnimal(inherited Clone);
+end;
+
+{ TAnimal }
+
+Procedure TAnimal.SetDob(value : String);
+begin
+  FDob := value;
+end;
+
+Procedure TAnimal.SetSpecies(value : TCodeableConcept);
+begin
+  FSpecies.free;
+  FSpecies := value;
+end;
+
+Procedure TAnimal.SetStrain(value : TCodeableConcept);
+begin
+  FStrain.free;
+  FStrain := value;
+end;
+
+Procedure TAnimal.SetGender(value : TCodeableConcept);
+begin
+  FGender.free;
+  FGender := value;
+end;
+
+
+{ TCodeableConceptList }
+{ TCodeableConceptList }
+procedure TCodeableConceptList.AddItem(value: TCodeableConcept);
+begin
+  assert(value.ClassName = 'TCodeableConcept', 'Attempt to add an item of type '+value.ClassName+' to a List of TCodeableConcept');
+  add(value);
+end;
+
+function TCodeableConceptList.Append: TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TCodeableConceptList.ClearItems;
+begin
+  Clear;
+end;
+
+function TCodeableConceptList.Clone: TCodeableConceptList;
+begin
+  result := TCodeableConceptList(inherited Clone);
+end;
+
+function TCodeableConceptList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function TCodeableConceptList.GetItemN(index: Integer): TCodeableConcept;
+begin
+  result := TCodeableConcept(ObjectByIndex[index]);
+end;
+
+function TCodeableConceptList.IndexOf(value: TCodeableConcept): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function TCodeableConceptList.Insert(index: Integer): TCodeableConcept;
+begin
+  result := TCodeableConcept.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TCodeableConceptList.InsertItem(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  Inherited Insert(index, value);
+end;
+
+function TCodeableConceptList.Item(index: Integer): TCodeableConcept;
+begin
+  result := TCodeableConcept(ObjectByIndex[index]);
+end;
+
+function TCodeableConceptList.Link: TCodeableConceptList;
+begin
+  result := TCodeableConceptList(inherited Link);
+end;
+
+procedure TCodeableConceptList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TCodeableConceptList.SetItemByIndex(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  CodeableConcepts[index] := value;
+end;
+
+procedure TCodeableConceptList.SetItemN(index: Integer; value: TCodeableConcept);
+begin
+  assert(value is TCodeableConcept);
+  ObjectByIndex[index] := value;
+end;
+
+{ TAgent }
+
+constructor TAgent.Create;
+begin
+  inherited;
+  FRole := TCodeableConceptList.Create;
+  FIdentifier := THumanIdList.Create;
+  FAddress := TAddressList.Create;
+  FContact := TContactList.Create;
+end;
+
+destructor TAgent.Destroy;
+begin
+  FPerson.free;
+  FOrganization.free;
+  FRole.Free;
+  FPeriod.free;
+  FIdentifier.Free;
+  FAddress.Free;
+  FContact.Free;
+  inherited;
+end;
+
+function TAgent.GetResourceType : TFHIRResourceType;
+begin
+  result := frtAgent;
+end;
+
+procedure TAgent.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  person := TAgent(oSource).person.Clone;
+  organization := TAgent(oSource).organization.Clone;
+  FRole.Assign(TAgent(oSource).FRole);
+  period := TAgent(oSource).period.Clone;
+  FIdentifier.Assign(TAgent(oSource).FIdentifier);
+  FAddress.Assign(TAgent(oSource).FAddress);
+  FContact.Assign(TAgent(oSource).FContact);
+end;
+
+function TAgent.Link : TAgent;
+begin
+  result := TAgent(inherited Link);
+end;
+
+function TAgent.Clone : TAgent;
+begin
+  result := TAgent(inherited Clone);
+end;
+
+{ TAgent }
+
+Procedure TAgent.SetPerson(value : TFHIRResourceReference{TPerson});
+begin
+  FPerson.free;
+  FPerson := value;
+end;
+
+Procedure TAgent.SetOrganization(value : TFHIRResourceReference{TOrganization});
+begin
+  FOrganization.free;
+  FOrganization := value;
+end;
+
+Procedure TAgent.SetPeriod(value : TInterval_date);
+begin
+  FPeriod.free;
+  FPeriod := value;
+end;
+
+
 { TMessageConformancePublisher }
 
 constructor TMessageConformancePublisher.Create;
@@ -11450,6 +12468,7 @@ end;
 constructor TMessageConformance.Create;
 begin
   inherited;
+  FProfile := TStringList.Create;
   FEvent := TMessageConformanceEventList.Create;
 end;
 
@@ -11457,6 +12476,7 @@ destructor TMessageConformance.Destroy;
 begin
   FPublisher.free;
   FSoftware.free;
+  FProfile.Free;
   FEvent.Free;
   inherited;
 end;
@@ -11472,6 +12492,7 @@ begin
   FDate := TMessageConformance(oSource).FDate;
   publisher := TMessageConformance(oSource).publisher.Clone;
   software := TMessageConformance(oSource).software.Clone;
+  FProfile.Assign(TMessageConformance(oSource).FProfile);
   FEvent.Assign(TMessageConformance(oSource).FEvent);
 end;
 
@@ -11505,320 +12526,189 @@ begin
 end;
 
 
-{ TCodeableConceptList }
-{ TCodeableConceptList }
-procedure TCodeableConceptList.AddItem(value: TCodeableConcept);
-begin
-  assert(value.ClassName = 'TCodeableConcept', 'Attempt to add an item of type '+value.ClassName+' to a List of TCodeableConcept');
-  add(value);
-end;
+{ TOrganizationName }
 
-function TCodeableConceptList.Append: TCodeableConcept;
-begin
-  result := TCodeableConcept.create;
-  try
-    add(result.Link);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TCodeableConceptList.ClearItems;
-begin
-  Clear;
-end;
-
-function TCodeableConceptList.Clone: TCodeableConceptList;
-begin
-  result := TCodeableConceptList(inherited Clone);
-end;
-
-function TCodeableConceptList.Count: Integer;
-begin
-  result := Inherited Count;
-end;
-
-function TCodeableConceptList.GetItemN(index: Integer): TCodeableConcept;
-begin
-  result := TCodeableConcept(ObjectByIndex[index]);
-end;
-
-function TCodeableConceptList.IndexOf(value: TCodeableConcept): Integer;
-begin
-  result := IndexByReference(value);
-end;
-
-function TCodeableConceptList.Insert(index: Integer): TCodeableConcept;
-begin
-  result := TCodeableConcept.create;
-  try
-    inherited insert(index, result);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TCodeableConceptList.InsertItem(index: Integer; value: TCodeableConcept);
-begin
-  assert(value is TCodeableConcept);
-  Inherited Insert(index, value);
-end;
-
-function TCodeableConceptList.Item(index: Integer): TCodeableConcept;
-begin
-  result := TCodeableConcept(ObjectByIndex[index]);
-end;
-
-function TCodeableConceptList.Link: TCodeableConceptList;
-begin
-  result := TCodeableConceptList(inherited Link);
-end;
-
-procedure TCodeableConceptList.Remove(index: Integer);
-begin
-  DeleteByIndex(index);
-end;
-
-procedure TCodeableConceptList.SetItemByIndex(index: Integer; value: TCodeableConcept);
-begin
-  assert(value is TCodeableConcept);
-  CodeableConcepts[index] := value;
-end;
-
-procedure TCodeableConceptList.SetItemN(index: Integer; value: TCodeableConcept);
-begin
-  assert(value is TCodeableConcept);
-  ObjectByIndex[index] := value;
-end;
-
-{ THumanIdList }
-{ THumanIdList }
-procedure THumanIdList.AddItem(value: THumanId);
-begin
-  assert(value.ClassName = 'THumanId', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanId');
-  add(value);
-end;
-
-function THumanIdList.Append: THumanId;
-begin
-  result := THumanId.create;
-  try
-    add(result.Link);
-  finally
-    result.free;
-  end;
-end;
-
-procedure THumanIdList.ClearItems;
-begin
-  Clear;
-end;
-
-function THumanIdList.Clone: THumanIdList;
-begin
-  result := THumanIdList(inherited Clone);
-end;
-
-function THumanIdList.Count: Integer;
-begin
-  result := Inherited Count;
-end;
-
-function THumanIdList.GetItemN(index: Integer): THumanId;
-begin
-  result := THumanId(ObjectByIndex[index]);
-end;
-
-function THumanIdList.IndexOf(value: THumanId): Integer;
-begin
-  result := IndexByReference(value);
-end;
-
-function THumanIdList.Insert(index: Integer): THumanId;
-begin
-  result := THumanId.create;
-  try
-    inherited insert(index, result);
-  finally
-    result.free;
-  end;
-end;
-
-procedure THumanIdList.InsertItem(index: Integer; value: THumanId);
-begin
-  assert(value is THumanId);
-  Inherited Insert(index, value);
-end;
-
-function THumanIdList.Item(index: Integer): THumanId;
-begin
-  result := THumanId(ObjectByIndex[index]);
-end;
-
-function THumanIdList.Link: THumanIdList;
-begin
-  result := THumanIdList(inherited Link);
-end;
-
-procedure THumanIdList.Remove(index: Integer);
-begin
-  DeleteByIndex(index);
-end;
-
-procedure THumanIdList.SetItemByIndex(index: Integer; value: THumanId);
-begin
-  assert(value is THumanId);
-  HumanIds[index] := value;
-end;
-
-procedure THumanIdList.SetItemN(index: Integer; value: THumanId);
-begin
-  assert(value is THumanId);
-  ObjectByIndex[index] := value;
-end;
-
-{ TAgent }
-
-constructor TAgent.Create;
+constructor TOrganizationName.Create;
 begin
   inherited;
-  FRole := TCodeableConceptList.Create;
-  FIdentifier := THumanIdList.Create;
-  FAddress := TAddressList.Create;
-  FContact := TContactList.Create;
 end;
 
-destructor TAgent.Destroy;
+destructor TOrganizationName.Destroy;
 begin
-  FPerson.free;
-  FOrganization.free;
-  FRole.Free;
   FPeriod.free;
-  FIdentifier.Free;
-  FAddress.Free;
-  FContact.Free;
   inherited;
 end;
 
-function TAgent.GetResourceType : TFHIRResourceType;
-begin
-  result := frtAgent;
-end;
-
-procedure TAgent.Assign(oSource : TAdvObject);
+procedure TOrganizationName.Assign(oSource : TAdvObject);
 begin
   inherited;
-  person := TAgent(oSource).person.Clone;
-  organization := TAgent(oSource).organization.Clone;
-  FRole.Assign(TAgent(oSource).FRole);
-  period := TAgent(oSource).period.Clone;
-  FIdentifier.Assign(TAgent(oSource).FIdentifier);
-  FAddress.Assign(TAgent(oSource).FAddress);
-  FContact.Assign(TAgent(oSource).FContact);
+  FValue := TOrganizationName(oSource).FValue;
+  period := TOrganizationName(oSource).period.Clone;
 end;
 
-function TAgent.Link : TAgent;
+function TOrganizationName.Link : TOrganizationName;
 begin
-  result := TAgent(inherited Link);
+  result := TOrganizationName(inherited Link);
 end;
 
-function TAgent.Clone : TAgent;
+function TOrganizationName.Clone : TOrganizationName;
 begin
-  result := TAgent(inherited Clone);
+  result := TOrganizationName(inherited Clone);
 end;
 
-{ TAgent }
+{ TOrganizationName }
 
-Procedure TAgent.SetPerson(value : TFHIRResourceReference{TPerson});
+Procedure TOrganizationName.SetValue(value : String);
 begin
-  FPerson.free;
-  FPerson := value;
+  FValue := value;
 end;
 
-Procedure TAgent.SetOrganization(value : TFHIRResourceReference{TOrganization});
-begin
-  FOrganization.free;
-  FOrganization := value;
-end;
-
-Procedure TAgent.SetPeriod(value : TInterval_date);
+Procedure TOrganizationName.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
 end;
 
 
-{ TAnimalRelatedEntity }
+{ TOrganizationAccreditation }
 
-constructor TAnimalRelatedEntity.Create;
+constructor TOrganizationAccreditation.Create;
+begin
+  inherited;
+end;
+
+destructor TOrganizationAccreditation.Destroy;
+begin
+  FId.free;
+  FCode.free;
+  FInstitution.free;
+  FPeriod.free;
+  inherited;
+end;
+
+procedure TOrganizationAccreditation.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  id := TOrganizationAccreditation(oSource).id.Clone;
+  code := TOrganizationAccreditation(oSource).code.Clone;
+  institution := TOrganizationAccreditation(oSource).institution.Clone;
+  period := TOrganizationAccreditation(oSource).period.Clone;
+end;
+
+function TOrganizationAccreditation.Link : TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation(inherited Link);
+end;
+
+function TOrganizationAccreditation.Clone : TOrganizationAccreditation;
+begin
+  result := TOrganizationAccreditation(inherited Clone);
+end;
+
+{ TOrganizationAccreditation }
+
+Procedure TOrganizationAccreditation.SetId(value : TIdentifier);
+begin
+  FId.free;
+  FId := value;
+end;
+
+Procedure TOrganizationAccreditation.SetCode(value : TCodeableConcept);
+begin
+  FCode.free;
+  FCode := value;
+end;
+
+Procedure TOrganizationAccreditation.SetInstitution(value : TFHIRResourceReference{TOrganization});
+begin
+  FInstitution.free;
+  FInstitution := value;
+end;
+
+Procedure TOrganizationAccreditation.SetPeriod(value : TInterval_date);
+begin
+  FPeriod.free;
+  FPeriod := value;
+end;
+
+
+{ TOrganizationRelatedOrganization }
+
+constructor TOrganizationRelatedOrganization.Create;
 begin
   inherited;
   FAddress := TAddressList.Create;
   FContact := TContactList.Create;
 end;
 
-destructor TAnimalRelatedEntity.Destroy;
+destructor TOrganizationRelatedOrganization.Destroy;
 begin
   FId.free;
-  FRole.free;
-  FName.free;
+  FCode.free;
   FAddress.Free;
   FContact.Free;
+  FPeriod.free;
   inherited;
 end;
 
-procedure TAnimalRelatedEntity.Assign(oSource : TAdvObject);
+procedure TOrganizationRelatedOrganization.Assign(oSource : TAdvObject);
 begin
   inherited;
-  id := TAnimalRelatedEntity(oSource).id.Clone;
-  role := TAnimalRelatedEntity(oSource).role.Clone;
-  name := TAnimalRelatedEntity(oSource).name.Clone;
-  FAddress.Assign(TAnimalRelatedEntity(oSource).FAddress);
-  FContact.Assign(TAnimalRelatedEntity(oSource).FContact);
+  id := TOrganizationRelatedOrganization(oSource).id.Clone;
+  code := TOrganizationRelatedOrganization(oSource).code.Clone;
+  FName := TOrganizationRelatedOrganization(oSource).FName;
+  FAddress.Assign(TOrganizationRelatedOrganization(oSource).FAddress);
+  FContact.Assign(TOrganizationRelatedOrganization(oSource).FContact);
+  period := TOrganizationRelatedOrganization(oSource).period.Clone;
 end;
 
-function TAnimalRelatedEntity.Link : TAnimalRelatedEntity;
+function TOrganizationRelatedOrganization.Link : TOrganizationRelatedOrganization;
 begin
-  result := TAnimalRelatedEntity(inherited Link);
+  result := TOrganizationRelatedOrganization(inherited Link);
 end;
 
-function TAnimalRelatedEntity.Clone : TAnimalRelatedEntity;
+function TOrganizationRelatedOrganization.Clone : TOrganizationRelatedOrganization;
 begin
-  result := TAnimalRelatedEntity(inherited Clone);
+  result := TOrganizationRelatedOrganization(inherited Clone);
 end;
 
-{ TAnimalRelatedEntity }
+{ TOrganizationRelatedOrganization }
 
-Procedure TAnimalRelatedEntity.SetId(value : THumanId);
+Procedure TOrganizationRelatedOrganization.SetId(value : THumanId);
 begin
   FId.free;
   FId := value;
 end;
 
-Procedure TAnimalRelatedEntity.SetRole(value : TCodeableConcept);
+Procedure TOrganizationRelatedOrganization.SetCode(value : TCodeableConcept);
 begin
-  FRole.free;
-  FRole := value;
+  FCode.free;
+  FCode := value;
 end;
 
-Procedure TAnimalRelatedEntity.SetName(value : THumanName);
+Procedure TOrganizationRelatedOrganization.SetName(value : String);
 begin
-  FName.free;
   FName := value;
 end;
 
-
-{ THumanNameList }
-{ THumanNameList }
-procedure THumanNameList.AddItem(value: THumanName);
+Procedure TOrganizationRelatedOrganization.SetPeriod(value : TInterval_date);
 begin
-  assert(value.ClassName = 'THumanName', 'Attempt to add an item of type '+value.ClassName+' to a List of THumanName');
+  FPeriod.free;
+  FPeriod := value;
+end;
+
+
+{ TOrganizationNameList }
+{ TOrganizationNameList }
+procedure TOrganizationNameList.AddItem(value: TOrganizationName);
+begin
+  assert(value.ClassName = 'TOrganizationName', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationName');
   add(value);
 end;
 
-function THumanNameList.Append: THumanName;
+function TOrganizationNameList.Append: TOrganizationName;
 begin
-  result := THumanName.create;
+  result := TOrganizationName.create;
   try
     add(result.Link);
   finally
@@ -11826,34 +12716,34 @@ begin
   end;
 end;
 
-procedure THumanNameList.ClearItems;
+procedure TOrganizationNameList.ClearItems;
 begin
   Clear;
 end;
 
-function THumanNameList.Clone: THumanNameList;
+function TOrganizationNameList.Clone: TOrganizationNameList;
 begin
-  result := THumanNameList(inherited Clone);
+  result := TOrganizationNameList(inherited Clone);
 end;
 
-function THumanNameList.Count: Integer;
+function TOrganizationNameList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function THumanNameList.GetItemN(index: Integer): THumanName;
+function TOrganizationNameList.GetItemN(index: Integer): TOrganizationName;
 begin
-  result := THumanName(ObjectByIndex[index]);
+  result := TOrganizationName(ObjectByIndex[index]);
 end;
 
-function THumanNameList.IndexOf(value: THumanName): Integer;
+function TOrganizationNameList.IndexOf(value: TOrganizationName): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function THumanNameList.Insert(index: Integer): THumanName;
+function TOrganizationNameList.Insert(index: Integer): TOrganizationName;
 begin
-  result := THumanName.create;
+  result := TOrganizationName.create;
   try
     inherited insert(index, result);
   finally
@@ -11861,50 +12751,50 @@ begin
   end;
 end;
 
-procedure THumanNameList.InsertItem(index: Integer; value: THumanName);
+procedure TOrganizationNameList.InsertItem(index: Integer; value: TOrganizationName);
 begin
-  assert(value is THumanName);
+  assert(value is TOrganizationName);
   Inherited Insert(index, value);
 end;
 
-function THumanNameList.Item(index: Integer): THumanName;
+function TOrganizationNameList.Item(index: Integer): TOrganizationName;
 begin
-  result := THumanName(ObjectByIndex[index]);
+  result := TOrganizationName(ObjectByIndex[index]);
 end;
 
-function THumanNameList.Link: THumanNameList;
+function TOrganizationNameList.Link: TOrganizationNameList;
 begin
-  result := THumanNameList(inherited Link);
+  result := TOrganizationNameList(inherited Link);
 end;
 
-procedure THumanNameList.Remove(index: Integer);
+procedure TOrganizationNameList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure THumanNameList.SetItemByIndex(index: Integer; value: THumanName);
+procedure TOrganizationNameList.SetItemByIndex(index: Integer; value: TOrganizationName);
 begin
-  assert(value is THumanName);
-  HumanNames[index] := value;
+  assert(value is TOrganizationName);
+  OrganizationNames[index] := value;
 end;
 
-procedure THumanNameList.SetItemN(index: Integer; value: THumanName);
+procedure TOrganizationNameList.SetItemN(index: Integer; value: TOrganizationName);
 begin
-  assert(value is THumanName);
+  assert(value is TOrganizationName);
   ObjectByIndex[index] := value;
 end;
 
-{ TAnimalRelatedEntityList }
-{ TAnimalRelatedEntityList }
-procedure TAnimalRelatedEntityList.AddItem(value: TAnimalRelatedEntity);
+{ TOrganizationAccreditationList }
+{ TOrganizationAccreditationList }
+procedure TOrganizationAccreditationList.AddItem(value: TOrganizationAccreditation);
 begin
-  assert(value.ClassName = 'TAnimalRelatedEntity', 'Attempt to add an item of type '+value.ClassName+' to a List of TAnimalRelatedEntity');
+  assert(value.ClassName = 'TOrganizationAccreditation', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationAccreditation');
   add(value);
 end;
 
-function TAnimalRelatedEntityList.Append: TAnimalRelatedEntity;
+function TOrganizationAccreditationList.Append: TOrganizationAccreditation;
 begin
-  result := TAnimalRelatedEntity.create;
+  result := TOrganizationAccreditation.create;
   try
     add(result.Link);
   finally
@@ -11912,34 +12802,34 @@ begin
   end;
 end;
 
-procedure TAnimalRelatedEntityList.ClearItems;
+procedure TOrganizationAccreditationList.ClearItems;
 begin
   Clear;
 end;
 
-function TAnimalRelatedEntityList.Clone: TAnimalRelatedEntityList;
+function TOrganizationAccreditationList.Clone: TOrganizationAccreditationList;
 begin
-  result := TAnimalRelatedEntityList(inherited Clone);
+  result := TOrganizationAccreditationList(inherited Clone);
 end;
 
-function TAnimalRelatedEntityList.Count: Integer;
+function TOrganizationAccreditationList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TAnimalRelatedEntityList.GetItemN(index: Integer): TAnimalRelatedEntity;
+function TOrganizationAccreditationList.GetItemN(index: Integer): TOrganizationAccreditation;
 begin
-  result := TAnimalRelatedEntity(ObjectByIndex[index]);
+  result := TOrganizationAccreditation(ObjectByIndex[index]);
 end;
 
-function TAnimalRelatedEntityList.IndexOf(value: TAnimalRelatedEntity): Integer;
+function TOrganizationAccreditationList.IndexOf(value: TOrganizationAccreditation): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TAnimalRelatedEntityList.Insert(index: Integer): TAnimalRelatedEntity;
+function TOrganizationAccreditationList.Insert(index: Integer): TOrganizationAccreditation;
 begin
-  result := TAnimalRelatedEntity.create;
+  result := TOrganizationAccreditation.create;
   try
     inherited insert(index, result);
   finally
@@ -11947,110 +12837,191 @@ begin
   end;
 end;
 
-procedure TAnimalRelatedEntityList.InsertItem(index: Integer; value: TAnimalRelatedEntity);
+procedure TOrganizationAccreditationList.InsertItem(index: Integer; value: TOrganizationAccreditation);
 begin
-  assert(value is TAnimalRelatedEntity);
+  assert(value is TOrganizationAccreditation);
   Inherited Insert(index, value);
 end;
 
-function TAnimalRelatedEntityList.Item(index: Integer): TAnimalRelatedEntity;
+function TOrganizationAccreditationList.Item(index: Integer): TOrganizationAccreditation;
 begin
-  result := TAnimalRelatedEntity(ObjectByIndex[index]);
+  result := TOrganizationAccreditation(ObjectByIndex[index]);
 end;
 
-function TAnimalRelatedEntityList.Link: TAnimalRelatedEntityList;
+function TOrganizationAccreditationList.Link: TOrganizationAccreditationList;
 begin
-  result := TAnimalRelatedEntityList(inherited Link);
+  result := TOrganizationAccreditationList(inherited Link);
 end;
 
-procedure TAnimalRelatedEntityList.Remove(index: Integer);
+procedure TOrganizationAccreditationList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure TAnimalRelatedEntityList.SetItemByIndex(index: Integer; value: TAnimalRelatedEntity);
+procedure TOrganizationAccreditationList.SetItemByIndex(index: Integer; value: TOrganizationAccreditation);
 begin
-  assert(value is TAnimalRelatedEntity);
-  AnimalRelatedEntities[index] := value;
+  assert(value is TOrganizationAccreditation);
+  OrganizationAccreditations[index] := value;
 end;
 
-procedure TAnimalRelatedEntityList.SetItemN(index: Integer; value: TAnimalRelatedEntity);
+procedure TOrganizationAccreditationList.SetItemN(index: Integer; value: TOrganizationAccreditation);
 begin
-  assert(value is TAnimalRelatedEntity);
+  assert(value is TOrganizationAccreditation);
   ObjectByIndex[index] := value;
 end;
 
-{ TAnimal }
+{ TOrganizationRelatedOrganizationList }
+{ TOrganizationRelatedOrganizationList }
+procedure TOrganizationRelatedOrganizationList.AddItem(value: TOrganizationRelatedOrganization);
+begin
+  assert(value.ClassName = 'TOrganizationRelatedOrganization', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationRelatedOrganization');
+  add(value);
+end;
 
-constructor TAnimal.Create;
+function TOrganizationRelatedOrganizationList.Append: TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationRelatedOrganizationList.ClearItems;
+begin
+  Clear;
+end;
+
+function TOrganizationRelatedOrganizationList.Clone: TOrganizationRelatedOrganizationList;
+begin
+  result := TOrganizationRelatedOrganizationList(inherited Clone);
+end;
+
+function TOrganizationRelatedOrganizationList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function TOrganizationRelatedOrganizationList.GetItemN(index: Integer): TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization(ObjectByIndex[index]);
+end;
+
+function TOrganizationRelatedOrganizationList.IndexOf(value: TOrganizationRelatedOrganization): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function TOrganizationRelatedOrganizationList.Insert(index: Integer): TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TOrganizationRelatedOrganizationList.InsertItem(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  Inherited Insert(index, value);
+end;
+
+function TOrganizationRelatedOrganizationList.Item(index: Integer): TOrganizationRelatedOrganization;
+begin
+  result := TOrganizationRelatedOrganization(ObjectByIndex[index]);
+end;
+
+function TOrganizationRelatedOrganizationList.Link: TOrganizationRelatedOrganizationList;
+begin
+  result := TOrganizationRelatedOrganizationList(inherited Link);
+end;
+
+procedure TOrganizationRelatedOrganizationList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TOrganizationRelatedOrganizationList.SetItemByIndex(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  OrganizationRelatedOrganizations[index] := value;
+end;
+
+procedure TOrganizationRelatedOrganizationList.SetItemN(index: Integer; value: TOrganizationRelatedOrganization);
+begin
+  assert(value is TOrganizationRelatedOrganization);
+  ObjectByIndex[index] := value;
+end;
+
+{ TOrganization }
+
+constructor TOrganization.Create;
 begin
   inherited;
   FIdentifier := THumanIdList.Create;
-  FName := THumanNameList.Create;
-  FRelatedEntity := TAnimalRelatedEntityList.Create;
+  FName := TOrganizationNameList.Create;
+  FAddress := TAddressList.Create;
+  FContact := TContactList.Create;
+  FAccreditation := TOrganizationAccreditationList.Create;
+  FRelatedOrganization := TOrganizationRelatedOrganizationList.Create;
 end;
 
-destructor TAnimal.Destroy;
+destructor TOrganization.Destroy;
 begin
   FIdentifier.Free;
   FName.Free;
-  FSpecies.free;
-  FStrain.free;
-  FGender.free;
-  FRelatedEntity.Free;
+  FAddress.Free;
+  FContact.Free;
+  FCode.free;
+  FIndustryCode.free;
+  FAccreditation.Free;
+  FRelatedOrganization.Free;
   inherited;
 end;
 
-function TAnimal.GetResourceType : TFHIRResourceType;
+function TOrganization.GetResourceType : TFHIRResourceType;
 begin
-  result := frtAnimal;
+  result := frtOrganization;
 end;
 
-procedure TAnimal.Assign(oSource : TAdvObject);
+procedure TOrganization.Assign(oSource : TAdvObject);
 begin
   inherited;
-  FIdentifier.Assign(TAnimal(oSource).FIdentifier);
-  FName.Assign(TAnimal(oSource).FName);
-  FDob := TAnimal(oSource).FDob;
-  species := TAnimal(oSource).species.Clone;
-  strain := TAnimal(oSource).strain.Clone;
-  gender := TAnimal(oSource).gender.Clone;
-  FRelatedEntity.Assign(TAnimal(oSource).FRelatedEntity);
+  FIdentifier.Assign(TOrganization(oSource).FIdentifier);
+  FName.Assign(TOrganization(oSource).FName);
+  FAddress.Assign(TOrganization(oSource).FAddress);
+  FContact.Assign(TOrganization(oSource).FContact);
+  code := TOrganization(oSource).code.Clone;
+  industryCode := TOrganization(oSource).industryCode.Clone;
+  FAccreditation.Assign(TOrganization(oSource).FAccreditation);
+  FRelatedOrganization.Assign(TOrganization(oSource).FRelatedOrganization);
 end;
 
-function TAnimal.Link : TAnimal;
+function TOrganization.Link : TOrganization;
 begin
-  result := TAnimal(inherited Link);
+  result := TOrganization(inherited Link);
 end;
 
-function TAnimal.Clone : TAnimal;
+function TOrganization.Clone : TOrganization;
 begin
-  result := TAnimal(inherited Clone);
+  result := TOrganization(inherited Clone);
 end;
 
-{ TAnimal }
+{ TOrganization }
 
-Procedure TAnimal.SetDob(value : String);
+Procedure TOrganization.SetCode(value : TCodeableConcept);
 begin
-  FDob := value;
+  FCode.free;
+  FCode := value;
 end;
 
-Procedure TAnimal.SetSpecies(value : TCodeableConcept);
+Procedure TOrganization.SetIndustryCode(value : TCodeableConcept);
 begin
-  FSpecies.free;
-  FSpecies := value;
-end;
-
-Procedure TAnimal.SetStrain(value : TCodeableConcept);
-begin
-  FStrain.free;
-  FStrain := value;
-end;
-
-Procedure TAnimal.SetGender(value : TCodeableConcept);
-begin
-  FGender.free;
-  FGender := value;
+  FIndustryCode.free;
+  FIndustryCode := value;
 end;
 
 
@@ -12832,6 +13803,422 @@ begin
 end;
 
 
+{ TProfileAuthor }
+
+constructor TProfileAuthor.Create;
+begin
+  inherited;
+  FReference := TStringList.Create;
+end;
+
+destructor TProfileAuthor.Destroy;
+begin
+  FReference.Free;
+  inherited;
+end;
+
+procedure TProfileAuthor.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TProfileAuthor(oSource).FName;
+  FReference.Assign(TProfileAuthor(oSource).FReference);
+end;
+
+function TProfileAuthor.Link : TProfileAuthor;
+begin
+  result := TProfileAuthor(inherited Link);
+end;
+
+function TProfileAuthor.Clone : TProfileAuthor;
+begin
+  result := TProfileAuthor(inherited Clone);
+end;
+
+{ TProfileAuthor }
+
+Procedure TProfileAuthor.SetName(value : String);
+begin
+  FName := value;
+end;
+
+
+{ TProfileEndorser }
+
+constructor TProfileEndorser.Create;
+begin
+  inherited;
+end;
+
+destructor TProfileEndorser.Destroy;
+begin
+  inherited;
+end;
+
+procedure TProfileEndorser.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TProfileEndorser(oSource).FName;
+  FReference := TProfileEndorser(oSource).FReference;
+end;
+
+function TProfileEndorser.Link : TProfileEndorser;
+begin
+  result := TProfileEndorser(inherited Link);
+end;
+
+function TProfileEndorser.Clone : TProfileEndorser;
+begin
+  result := TProfileEndorser(inherited Clone);
+end;
+
+{ TProfileEndorser }
+
+Procedure TProfileEndorser.SetName(value : String);
+begin
+  FName := value;
+end;
+
+Procedure TProfileEndorser.SetReference(value : String);
+begin
+  FReference := value;
+end;
+
+
+{ TProfileBinding }
+
+constructor TProfileBinding.Create;
+begin
+  inherited;
+  FCode := TCodingList.Create;
+end;
+
+destructor TProfileBinding.Destroy;
+begin
+  FCode.Free;
+  inherited;
+end;
+
+procedure TProfileBinding.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TProfileBinding(oSource).FName;
+  FType_ := TProfileBinding(oSource).FType_;
+  FDetails := TProfileBinding(oSource).FDetails;
+  FReference := TProfileBinding(oSource).FReference;
+  FCode.Assign(TProfileBinding(oSource).FCode);
+end;
+
+function TProfileBinding.Link : TProfileBinding;
+begin
+  result := TProfileBinding(inherited Link);
+end;
+
+function TProfileBinding.Clone : TProfileBinding;
+begin
+  result := TProfileBinding(inherited Clone);
+end;
+
+{ TProfileBinding }
+
+Procedure TProfileBinding.SetName(value : String);
+begin
+  FName := value;
+end;
+
+Procedure TProfileBinding.SetType_(value : TConceptBindingType);
+begin
+  FType_ := value;
+end;
+
+Procedure TProfileBinding.SetDetails(value : String);
+begin
+  FDetails := value;
+end;
+
+Procedure TProfileBinding.SetReference(value : String);
+begin
+  FReference := value;
+end;
+
+
+{ TProfileEndorserList }
+{ TProfileEndorserList }
+procedure TProfileEndorserList.AddItem(value: TProfileEndorser);
+begin
+  assert(value.ClassName = 'TProfileEndorser', 'Attempt to add an item of type '+value.ClassName+' to a List of TProfileEndorser');
+  add(value);
+end;
+
+function TProfileEndorserList.Append: TProfileEndorser;
+begin
+  result := TProfileEndorser.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TProfileEndorserList.ClearItems;
+begin
+  Clear;
+end;
+
+function TProfileEndorserList.Clone: TProfileEndorserList;
+begin
+  result := TProfileEndorserList(inherited Clone);
+end;
+
+function TProfileEndorserList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function TProfileEndorserList.GetItemN(index: Integer): TProfileEndorser;
+begin
+  result := TProfileEndorser(ObjectByIndex[index]);
+end;
+
+function TProfileEndorserList.IndexOf(value: TProfileEndorser): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function TProfileEndorserList.Insert(index: Integer): TProfileEndorser;
+begin
+  result := TProfileEndorser.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TProfileEndorserList.InsertItem(index: Integer; value: TProfileEndorser);
+begin
+  assert(value is TProfileEndorser);
+  Inherited Insert(index, value);
+end;
+
+function TProfileEndorserList.Item(index: Integer): TProfileEndorser;
+begin
+  result := TProfileEndorser(ObjectByIndex[index]);
+end;
+
+function TProfileEndorserList.Link: TProfileEndorserList;
+begin
+  result := TProfileEndorserList(inherited Link);
+end;
+
+procedure TProfileEndorserList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TProfileEndorserList.SetItemByIndex(index: Integer; value: TProfileEndorser);
+begin
+  assert(value is TProfileEndorser);
+  ProfileEndorsers[index] := value;
+end;
+
+procedure TProfileEndorserList.SetItemN(index: Integer; value: TProfileEndorser);
+begin
+  assert(value is TProfileEndorser);
+  ObjectByIndex[index] := value;
+end;
+
+{ TProfileBindingList }
+{ TProfileBindingList }
+procedure TProfileBindingList.AddItem(value: TProfileBinding);
+begin
+  assert(value.ClassName = 'TProfileBinding', 'Attempt to add an item of type '+value.ClassName+' to a List of TProfileBinding');
+  add(value);
+end;
+
+function TProfileBindingList.Append: TProfileBinding;
+begin
+  result := TProfileBinding.create;
+  try
+    add(result.Link);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TProfileBindingList.ClearItems;
+begin
+  Clear;
+end;
+
+function TProfileBindingList.Clone: TProfileBindingList;
+begin
+  result := TProfileBindingList(inherited Clone);
+end;
+
+function TProfileBindingList.Count: Integer;
+begin
+  result := Inherited Count;
+end;
+
+function TProfileBindingList.GetItemN(index: Integer): TProfileBinding;
+begin
+  result := TProfileBinding(ObjectByIndex[index]);
+end;
+
+function TProfileBindingList.IndexOf(value: TProfileBinding): Integer;
+begin
+  result := IndexByReference(value);
+end;
+
+function TProfileBindingList.Insert(index: Integer): TProfileBinding;
+begin
+  result := TProfileBinding.create;
+  try
+    inherited insert(index, result);
+  finally
+    result.free;
+  end;
+end;
+
+procedure TProfileBindingList.InsertItem(index: Integer; value: TProfileBinding);
+begin
+  assert(value is TProfileBinding);
+  Inherited Insert(index, value);
+end;
+
+function TProfileBindingList.Item(index: Integer): TProfileBinding;
+begin
+  result := TProfileBinding(ObjectByIndex[index]);
+end;
+
+function TProfileBindingList.Link: TProfileBindingList;
+begin
+  result := TProfileBindingList(inherited Link);
+end;
+
+procedure TProfileBindingList.Remove(index: Integer);
+begin
+  DeleteByIndex(index);
+end;
+
+procedure TProfileBindingList.SetItemByIndex(index: Integer; value: TProfileBinding);
+begin
+  assert(value is TProfileBinding);
+  ProfileBindings[index] := value;
+end;
+
+procedure TProfileBindingList.SetItemN(index: Integer; value: TProfileBinding);
+begin
+  assert(value is TProfileBinding);
+  ObjectByIndex[index] := value;
+end;
+
+{ TProfile }
+
+constructor TProfile.Create;
+begin
+  inherited;
+  FCode := TCodingList.Create;
+  FEvidence := TStringList.Create;
+  FEndorser := TProfileEndorserList.Create;
+  FSupercedes := TStringList.Create;
+  FProfile := TStringList.Create;
+  FResource := TConstraintList.Create;
+  FBinding := TProfileBindingList.Create;
+end;
+
+destructor TProfile.Destroy;
+begin
+  FAuthor.free;
+  FCode.Free;
+  FEvidence.Free;
+  FEndorser.Free;
+  FSupercedes.Free;
+  FProfile.Free;
+  FResource.Free;
+  FBinding.Free;
+  inherited;
+end;
+
+function TProfile.GetResourceType : TFHIRResourceType;
+begin
+  result := frtProfile;
+end;
+
+procedure TProfile.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TProfile(oSource).FName;
+  author := TProfile(oSource).author.Clone;
+  FIntention := TProfile(oSource).FIntention;
+  FCode.Assign(TProfile(oSource).FCode);
+  FDescription := TProfile(oSource).FDescription;
+  FEvidence.Assign(TProfile(oSource).FEvidence);
+  FComments := TProfile(oSource).FComments;
+  FStatus := TProfile(oSource).FStatus;
+  FDate := TProfile(oSource).FDate;
+  FEndorser.Assign(TProfile(oSource).FEndorser);
+  FChanges := TProfile(oSource).FChanges;
+  FSupercedes.Assign(TProfile(oSource).FSupercedes);
+  FProfile.Assign(TProfile(oSource).FProfile);
+  FResource.Assign(TProfile(oSource).FResource);
+  FBinding.Assign(TProfile(oSource).FBinding);
+end;
+
+function TProfile.Link : TProfile;
+begin
+  result := TProfile(inherited Link);
+end;
+
+function TProfile.Clone : TProfile;
+begin
+  result := TProfile(inherited Clone);
+end;
+
+{ TProfile }
+
+Procedure TProfile.SetName(value : String);
+begin
+  FName := value;
+end;
+
+Procedure TProfile.SetAuthor(value : TProfileAuthor);
+begin
+  FAuthor.free;
+  FAuthor := value;
+end;
+
+Procedure TProfile.SetIntention(value : String);
+begin
+  FIntention := value;
+end;
+
+Procedure TProfile.SetDescription(value : String);
+begin
+  FDescription := value;
+end;
+
+Procedure TProfile.SetComments(value : String);
+begin
+  FComments := value;
+end;
+
+Procedure TProfile.SetStatus(value : TResourceProfileStatus);
+begin
+  FStatus := value;
+end;
+
+Procedure TProfile.SetDate(value : String);
+begin
+  FDate := value;
+end;
+
+Procedure TProfile.SetChanges(value : String);
+begin
+  FChanges := value;
+end;
+
+
 { TPatient }
 
 constructor TPatient.Create;
@@ -12927,58 +14314,14 @@ begin
 end;
 
 
-{ TOrganizationName }
+{ TPersonQualification }
 
-constructor TOrganizationName.Create;
+constructor TPersonQualification.Create;
 begin
   inherited;
 end;
 
-destructor TOrganizationName.Destroy;
-begin
-  FPeriod.free;
-  inherited;
-end;
-
-procedure TOrganizationName.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FValue := TOrganizationName(oSource).FValue;
-  period := TOrganizationName(oSource).period.Clone;
-end;
-
-function TOrganizationName.Link : TOrganizationName;
-begin
-  result := TOrganizationName(inherited Link);
-end;
-
-function TOrganizationName.Clone : TOrganizationName;
-begin
-  result := TOrganizationName(inherited Clone);
-end;
-
-{ TOrganizationName }
-
-Procedure TOrganizationName.SetValue(value : String);
-begin
-  FValue := value;
-end;
-
-Procedure TOrganizationName.SetPeriod(value : TInterval_date);
-begin
-  FPeriod.free;
-  FPeriod := value;
-end;
-
-
-{ TOrganizationAccreditation }
-
-constructor TOrganizationAccreditation.Create;
-begin
-  inherited;
-end;
-
-destructor TOrganizationAccreditation.Destroy;
+destructor TPersonQualification.Destroy;
 begin
   FId.free;
   FCode.free;
@@ -12987,129 +14330,162 @@ begin
   inherited;
 end;
 
-procedure TOrganizationAccreditation.Assign(oSource : TAdvObject);
+procedure TPersonQualification.Assign(oSource : TAdvObject);
 begin
   inherited;
-  id := TOrganizationAccreditation(oSource).id.Clone;
-  code := TOrganizationAccreditation(oSource).code.Clone;
-  institution := TOrganizationAccreditation(oSource).institution.Clone;
-  period := TOrganizationAccreditation(oSource).period.Clone;
+  id := TPersonQualification(oSource).id.Clone;
+  code := TPersonQualification(oSource).code.Clone;
+  institution := TPersonQualification(oSource).institution.Clone;
+  period := TPersonQualification(oSource).period.Clone;
 end;
 
-function TOrganizationAccreditation.Link : TOrganizationAccreditation;
+function TPersonQualification.Link : TPersonQualification;
 begin
-  result := TOrganizationAccreditation(inherited Link);
+  result := TPersonQualification(inherited Link);
 end;
 
-function TOrganizationAccreditation.Clone : TOrganizationAccreditation;
+function TPersonQualification.Clone : TPersonQualification;
 begin
-  result := TOrganizationAccreditation(inherited Clone);
+  result := TPersonQualification(inherited Clone);
 end;
 
-{ TOrganizationAccreditation }
+{ TPersonQualification }
 
-Procedure TOrganizationAccreditation.SetId(value : TIdentifier);
+Procedure TPersonQualification.SetId(value : TIdentifier);
 begin
   FId.free;
   FId := value;
 end;
 
-Procedure TOrganizationAccreditation.SetCode(value : TCodeableConcept);
+Procedure TPersonQualification.SetCode(value : TCodeableConcept);
 begin
   FCode.free;
   FCode := value;
 end;
 
-Procedure TOrganizationAccreditation.SetInstitution(value : TFHIRResourceReference{TOrganization});
+Procedure TPersonQualification.SetInstitution(value : TFHIRResourceReference{TOrganization});
 begin
   FInstitution.free;
   FInstitution := value;
 end;
 
-Procedure TOrganizationAccreditation.SetPeriod(value : TInterval_date);
+Procedure TPersonQualification.SetPeriod(value : TInterval_date);
 begin
   FPeriod.free;
   FPeriod := value;
 end;
 
 
-{ TOrganizationRelatedOrganization }
+{ TPersonLanguage }
 
-constructor TOrganizationRelatedOrganization.Create;
+constructor TPersonLanguage.Create;
 begin
   inherited;
-  FAddress := TAddressList.Create;
+end;
+
+destructor TPersonLanguage.Destroy;
+begin
+  inherited;
+end;
+
+procedure TPersonLanguage.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FCode := TPersonLanguage(oSource).FCode;
+  FUse := TPersonLanguage(oSource).FUse;
+end;
+
+function TPersonLanguage.Link : TPersonLanguage;
+begin
+  result := TPersonLanguage(inherited Link);
+end;
+
+function TPersonLanguage.Clone : TPersonLanguage;
+begin
+  result := TPersonLanguage(inherited Clone);
+end;
+
+{ TPersonLanguage }
+
+Procedure TPersonLanguage.SetCode(value : String);
+begin
+  FCode := value;
+end;
+
+Procedure TPersonLanguage.SetUse(value : TLanguageUse);
+begin
+  FUse := value;
+end;
+
+
+{ TPersonRelatedPerson }
+
+constructor TPersonRelatedPerson.Create;
+begin
+  inherited;
   FContact := TContactList.Create;
 end;
 
-destructor TOrganizationRelatedOrganization.Destroy;
+destructor TPersonRelatedPerson.Destroy;
 begin
   FId.free;
-  FCode.free;
-  FAddress.Free;
+  FRole.free;
+  FName.free;
   FContact.Free;
-  FPeriod.free;
   inherited;
 end;
 
-procedure TOrganizationRelatedOrganization.Assign(oSource : TAdvObject);
+procedure TPersonRelatedPerson.Assign(oSource : TAdvObject);
 begin
   inherited;
-  id := TOrganizationRelatedOrganization(oSource).id.Clone;
-  code := TOrganizationRelatedOrganization(oSource).code.Clone;
-  FName := TOrganizationRelatedOrganization(oSource).FName;
-  FAddress.Assign(TOrganizationRelatedOrganization(oSource).FAddress);
-  FContact.Assign(TOrganizationRelatedOrganization(oSource).FContact);
-  period := TOrganizationRelatedOrganization(oSource).period.Clone;
+  id := TPersonRelatedPerson(oSource).id.Clone;
+  role := TPersonRelatedPerson(oSource).role.Clone;
+  name := TPersonRelatedPerson(oSource).name.Clone;
+  FContact.Assign(TPersonRelatedPerson(oSource).FContact);
 end;
 
-function TOrganizationRelatedOrganization.Link : TOrganizationRelatedOrganization;
+function TPersonRelatedPerson.Link : TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization(inherited Link);
+  result := TPersonRelatedPerson(inherited Link);
 end;
 
-function TOrganizationRelatedOrganization.Clone : TOrganizationRelatedOrganization;
+function TPersonRelatedPerson.Clone : TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization(inherited Clone);
+  result := TPersonRelatedPerson(inherited Clone);
 end;
 
-{ TOrganizationRelatedOrganization }
+{ TPersonRelatedPerson }
 
-Procedure TOrganizationRelatedOrganization.SetId(value : THumanId);
+Procedure TPersonRelatedPerson.SetId(value : THumanId);
 begin
   FId.free;
   FId := value;
 end;
 
-Procedure TOrganizationRelatedOrganization.SetCode(value : TCodeableConcept);
+Procedure TPersonRelatedPerson.SetRole(value : TCodeableConcept);
 begin
-  FCode.free;
-  FCode := value;
+  FRole.free;
+  FRole := value;
 end;
 
-Procedure TOrganizationRelatedOrganization.SetName(value : String);
+Procedure TPersonRelatedPerson.SetName(value : THumanName);
 begin
+  FName.free;
   FName := value;
 end;
 
-Procedure TOrganizationRelatedOrganization.SetPeriod(value : TInterval_date);
-begin
-  FPeriod.free;
-  FPeriod := value;
-end;
 
-
-{ TOrganizationNameList }
-{ TOrganizationNameList }
-procedure TOrganizationNameList.AddItem(value: TOrganizationName);
+{ TPersonQualificationList }
+{ TPersonQualificationList }
+procedure TPersonQualificationList.AddItem(value: TPersonQualification);
 begin
-  assert(value.ClassName = 'TOrganizationName', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationName');
+  assert(value.ClassName = 'TPersonQualification', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonQualification');
   add(value);
 end;
 
-function TOrganizationNameList.Append: TOrganizationName;
+function TPersonQualificationList.Append: TPersonQualification;
 begin
-  result := TOrganizationName.create;
+  result := TPersonQualification.create;
   try
     add(result.Link);
   finally
@@ -13117,34 +14493,34 @@ begin
   end;
 end;
 
-procedure TOrganizationNameList.ClearItems;
+procedure TPersonQualificationList.ClearItems;
 begin
   Clear;
 end;
 
-function TOrganizationNameList.Clone: TOrganizationNameList;
+function TPersonQualificationList.Clone: TPersonQualificationList;
 begin
-  result := TOrganizationNameList(inherited Clone);
+  result := TPersonQualificationList(inherited Clone);
 end;
 
-function TOrganizationNameList.Count: Integer;
+function TPersonQualificationList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TOrganizationNameList.GetItemN(index: Integer): TOrganizationName;
+function TPersonQualificationList.GetItemN(index: Integer): TPersonQualification;
 begin
-  result := TOrganizationName(ObjectByIndex[index]);
+  result := TPersonQualification(ObjectByIndex[index]);
 end;
 
-function TOrganizationNameList.IndexOf(value: TOrganizationName): Integer;
+function TPersonQualificationList.IndexOf(value: TPersonQualification): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TOrganizationNameList.Insert(index: Integer): TOrganizationName;
+function TPersonQualificationList.Insert(index: Integer): TPersonQualification;
 begin
-  result := TOrganizationName.create;
+  result := TPersonQualification.create;
   try
     inherited insert(index, result);
   finally
@@ -13152,50 +14528,50 @@ begin
   end;
 end;
 
-procedure TOrganizationNameList.InsertItem(index: Integer; value: TOrganizationName);
+procedure TPersonQualificationList.InsertItem(index: Integer; value: TPersonQualification);
 begin
-  assert(value is TOrganizationName);
+  assert(value is TPersonQualification);
   Inherited Insert(index, value);
 end;
 
-function TOrganizationNameList.Item(index: Integer): TOrganizationName;
+function TPersonQualificationList.Item(index: Integer): TPersonQualification;
 begin
-  result := TOrganizationName(ObjectByIndex[index]);
+  result := TPersonQualification(ObjectByIndex[index]);
 end;
 
-function TOrganizationNameList.Link: TOrganizationNameList;
+function TPersonQualificationList.Link: TPersonQualificationList;
 begin
-  result := TOrganizationNameList(inherited Link);
+  result := TPersonQualificationList(inherited Link);
 end;
 
-procedure TOrganizationNameList.Remove(index: Integer);
+procedure TPersonQualificationList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure TOrganizationNameList.SetItemByIndex(index: Integer; value: TOrganizationName);
+procedure TPersonQualificationList.SetItemByIndex(index: Integer; value: TPersonQualification);
 begin
-  assert(value is TOrganizationName);
-  OrganizationNames[index] := value;
+  assert(value is TPersonQualification);
+  PersonQualifications[index] := value;
 end;
 
-procedure TOrganizationNameList.SetItemN(index: Integer; value: TOrganizationName);
+procedure TPersonQualificationList.SetItemN(index: Integer; value: TPersonQualification);
 begin
-  assert(value is TOrganizationName);
+  assert(value is TPersonQualification);
   ObjectByIndex[index] := value;
 end;
 
-{ TOrganizationAccreditationList }
-{ TOrganizationAccreditationList }
-procedure TOrganizationAccreditationList.AddItem(value: TOrganizationAccreditation);
+{ TPersonLanguageList }
+{ TPersonLanguageList }
+procedure TPersonLanguageList.AddItem(value: TPersonLanguage);
 begin
-  assert(value.ClassName = 'TOrganizationAccreditation', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationAccreditation');
+  assert(value.ClassName = 'TPersonLanguage', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonLanguage');
   add(value);
 end;
 
-function TOrganizationAccreditationList.Append: TOrganizationAccreditation;
+function TPersonLanguageList.Append: TPersonLanguage;
 begin
-  result := TOrganizationAccreditation.create;
+  result := TPersonLanguage.create;
   try
     add(result.Link);
   finally
@@ -13203,34 +14579,34 @@ begin
   end;
 end;
 
-procedure TOrganizationAccreditationList.ClearItems;
+procedure TPersonLanguageList.ClearItems;
 begin
   Clear;
 end;
 
-function TOrganizationAccreditationList.Clone: TOrganizationAccreditationList;
+function TPersonLanguageList.Clone: TPersonLanguageList;
 begin
-  result := TOrganizationAccreditationList(inherited Clone);
+  result := TPersonLanguageList(inherited Clone);
 end;
 
-function TOrganizationAccreditationList.Count: Integer;
+function TPersonLanguageList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TOrganizationAccreditationList.GetItemN(index: Integer): TOrganizationAccreditation;
+function TPersonLanguageList.GetItemN(index: Integer): TPersonLanguage;
 begin
-  result := TOrganizationAccreditation(ObjectByIndex[index]);
+  result := TPersonLanguage(ObjectByIndex[index]);
 end;
 
-function TOrganizationAccreditationList.IndexOf(value: TOrganizationAccreditation): Integer;
+function TPersonLanguageList.IndexOf(value: TPersonLanguage): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TOrganizationAccreditationList.Insert(index: Integer): TOrganizationAccreditation;
+function TPersonLanguageList.Insert(index: Integer): TPersonLanguage;
 begin
-  result := TOrganizationAccreditation.create;
+  result := TPersonLanguage.create;
   try
     inherited insert(index, result);
   finally
@@ -13238,50 +14614,50 @@ begin
   end;
 end;
 
-procedure TOrganizationAccreditationList.InsertItem(index: Integer; value: TOrganizationAccreditation);
+procedure TPersonLanguageList.InsertItem(index: Integer; value: TPersonLanguage);
 begin
-  assert(value is TOrganizationAccreditation);
+  assert(value is TPersonLanguage);
   Inherited Insert(index, value);
 end;
 
-function TOrganizationAccreditationList.Item(index: Integer): TOrganizationAccreditation;
+function TPersonLanguageList.Item(index: Integer): TPersonLanguage;
 begin
-  result := TOrganizationAccreditation(ObjectByIndex[index]);
+  result := TPersonLanguage(ObjectByIndex[index]);
 end;
 
-function TOrganizationAccreditationList.Link: TOrganizationAccreditationList;
+function TPersonLanguageList.Link: TPersonLanguageList;
 begin
-  result := TOrganizationAccreditationList(inherited Link);
+  result := TPersonLanguageList(inherited Link);
 end;
 
-procedure TOrganizationAccreditationList.Remove(index: Integer);
+procedure TPersonLanguageList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure TOrganizationAccreditationList.SetItemByIndex(index: Integer; value: TOrganizationAccreditation);
+procedure TPersonLanguageList.SetItemByIndex(index: Integer; value: TPersonLanguage);
 begin
-  assert(value is TOrganizationAccreditation);
-  OrganizationAccreditations[index] := value;
+  assert(value is TPersonLanguage);
+  PersonLanguages[index] := value;
 end;
 
-procedure TOrganizationAccreditationList.SetItemN(index: Integer; value: TOrganizationAccreditation);
+procedure TPersonLanguageList.SetItemN(index: Integer; value: TPersonLanguage);
 begin
-  assert(value is TOrganizationAccreditation);
+  assert(value is TPersonLanguage);
   ObjectByIndex[index] := value;
 end;
 
-{ TOrganizationRelatedOrganizationList }
-{ TOrganizationRelatedOrganizationList }
-procedure TOrganizationRelatedOrganizationList.AddItem(value: TOrganizationRelatedOrganization);
+{ TPersonRelatedPersonList }
+{ TPersonRelatedPersonList }
+procedure TPersonRelatedPersonList.AddItem(value: TPersonRelatedPerson);
 begin
-  assert(value.ClassName = 'TOrganizationRelatedOrganization', 'Attempt to add an item of type '+value.ClassName+' to a List of TOrganizationRelatedOrganization');
+  assert(value.ClassName = 'TPersonRelatedPerson', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonRelatedPerson');
   add(value);
 end;
 
-function TOrganizationRelatedOrganizationList.Append: TOrganizationRelatedOrganization;
+function TPersonRelatedPersonList.Append: TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization.create;
+  result := TPersonRelatedPerson.create;
   try
     add(result.Link);
   finally
@@ -13289,34 +14665,34 @@ begin
   end;
 end;
 
-procedure TOrganizationRelatedOrganizationList.ClearItems;
+procedure TPersonRelatedPersonList.ClearItems;
 begin
   Clear;
 end;
 
-function TOrganizationRelatedOrganizationList.Clone: TOrganizationRelatedOrganizationList;
+function TPersonRelatedPersonList.Clone: TPersonRelatedPersonList;
 begin
-  result := TOrganizationRelatedOrganizationList(inherited Clone);
+  result := TPersonRelatedPersonList(inherited Clone);
 end;
 
-function TOrganizationRelatedOrganizationList.Count: Integer;
+function TPersonRelatedPersonList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TOrganizationRelatedOrganizationList.GetItemN(index: Integer): TOrganizationRelatedOrganization;
+function TPersonRelatedPersonList.GetItemN(index: Integer): TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization(ObjectByIndex[index]);
+  result := TPersonRelatedPerson(ObjectByIndex[index]);
 end;
 
-function TOrganizationRelatedOrganizationList.IndexOf(value: TOrganizationRelatedOrganization): Integer;
+function TPersonRelatedPersonList.IndexOf(value: TPersonRelatedPerson): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TOrganizationRelatedOrganizationList.Insert(index: Integer): TOrganizationRelatedOrganization;
+function TPersonRelatedPersonList.Insert(index: Integer): TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization.create;
+  result := TPersonRelatedPerson.create;
   try
     inherited insert(index, result);
   finally
@@ -13324,386 +14700,114 @@ begin
   end;
 end;
 
-procedure TOrganizationRelatedOrganizationList.InsertItem(index: Integer; value: TOrganizationRelatedOrganization);
+procedure TPersonRelatedPersonList.InsertItem(index: Integer; value: TPersonRelatedPerson);
 begin
-  assert(value is TOrganizationRelatedOrganization);
+  assert(value is TPersonRelatedPerson);
   Inherited Insert(index, value);
 end;
 
-function TOrganizationRelatedOrganizationList.Item(index: Integer): TOrganizationRelatedOrganization;
+function TPersonRelatedPersonList.Item(index: Integer): TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization(ObjectByIndex[index]);
+  result := TPersonRelatedPerson(ObjectByIndex[index]);
 end;
 
-function TOrganizationRelatedOrganizationList.Link: TOrganizationRelatedOrganizationList;
+function TPersonRelatedPersonList.Link: TPersonRelatedPersonList;
 begin
-  result := TOrganizationRelatedOrganizationList(inherited Link);
+  result := TPersonRelatedPersonList(inherited Link);
 end;
 
-procedure TOrganizationRelatedOrganizationList.Remove(index: Integer);
+procedure TPersonRelatedPersonList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure TOrganizationRelatedOrganizationList.SetItemByIndex(index: Integer; value: TOrganizationRelatedOrganization);
+procedure TPersonRelatedPersonList.SetItemByIndex(index: Integer; value: TPersonRelatedPerson);
 begin
-  assert(value is TOrganizationRelatedOrganization);
-  OrganizationRelatedOrganizations[index] := value;
+  assert(value is TPersonRelatedPerson);
+  PersonRelatedPeople[index] := value;
 end;
 
-procedure TOrganizationRelatedOrganizationList.SetItemN(index: Integer; value: TOrganizationRelatedOrganization);
+procedure TPersonRelatedPersonList.SetItemN(index: Integer; value: TPersonRelatedPerson);
 begin
-  assert(value is TOrganizationRelatedOrganization);
+  assert(value is TPersonRelatedPerson);
   ObjectByIndex[index] := value;
 end;
 
-{ TOrganization }
+{ TPerson }
 
-constructor TOrganization.Create;
+constructor TPerson.Create;
 begin
   inherited;
   FIdentifier := THumanIdList.Create;
-  FName := TOrganizationNameList.Create;
+  FName := THumanNameList.Create;
   FAddress := TAddressList.Create;
   FContact := TContactList.Create;
-  FAccreditation := TOrganizationAccreditationList.Create;
-  FRelatedOrganization := TOrganizationRelatedOrganizationList.Create;
+  FQualification := TPersonQualificationList.Create;
+  FLanguage := TPersonLanguageList.Create;
+  FRelatedPerson := TPersonRelatedPersonList.Create;
 end;
 
-destructor TOrganization.Destroy;
+destructor TPerson.Destroy;
 begin
   FIdentifier.Free;
   FName.Free;
   FAddress.Free;
   FContact.Free;
-  FCode.free;
-  FIndustryCode.free;
-  FAccreditation.Free;
-  FRelatedOrganization.Free;
+  FGender.free;
+  FReligion.free;
+  FQualification.Free;
+  FLanguage.Free;
+  FRelatedPerson.Free;
   inherited;
 end;
 
-function TOrganization.GetResourceType : TFHIRResourceType;
+function TPerson.GetResourceType : TFHIRResourceType;
 begin
-  result := frtOrganization;
+  result := frtPerson;
 end;
 
-procedure TOrganization.Assign(oSource : TAdvObject);
+procedure TPerson.Assign(oSource : TAdvObject);
 begin
   inherited;
-  FIdentifier.Assign(TOrganization(oSource).FIdentifier);
-  FName.Assign(TOrganization(oSource).FName);
-  FAddress.Assign(TOrganization(oSource).FAddress);
-  FContact.Assign(TOrganization(oSource).FContact);
-  code := TOrganization(oSource).code.Clone;
-  industryCode := TOrganization(oSource).industryCode.Clone;
-  FAccreditation.Assign(TOrganization(oSource).FAccreditation);
-  FRelatedOrganization.Assign(TOrganization(oSource).FRelatedOrganization);
+  FIdentifier.Assign(TPerson(oSource).FIdentifier);
+  FName.Assign(TPerson(oSource).FName);
+  FAddress.Assign(TPerson(oSource).FAddress);
+  FContact.Assign(TPerson(oSource).FContact);
+  FDob := TPerson(oSource).FDob;
+  gender := TPerson(oSource).gender.Clone;
+  religion := TPerson(oSource).religion.Clone;
+  FQualification.Assign(TPerson(oSource).FQualification);
+  FLanguage.Assign(TPerson(oSource).FLanguage);
+  FRelatedPerson.Assign(TPerson(oSource).FRelatedPerson);
 end;
 
-function TOrganization.Link : TOrganization;
+function TPerson.Link : TPerson;
 begin
-  result := TOrganization(inherited Link);
+  result := TPerson(inherited Link);
 end;
 
-function TOrganization.Clone : TOrganization;
+function TPerson.Clone : TPerson;
 begin
-  result := TOrganization(inherited Clone);
+  result := TPerson(inherited Clone);
 end;
 
-{ TOrganization }
+{ TPerson }
 
-Procedure TOrganization.SetCode(value : TCodeableConcept);
+Procedure TPerson.SetDob(value : String);
 begin
-  FCode.free;
-  FCode := value;
+  FDob := value;
 end;
 
-Procedure TOrganization.SetIndustryCode(value : TCodeableConcept);
+Procedure TPerson.SetGender(value : TCodeableConcept);
 begin
-  FIndustryCode.free;
-  FIndustryCode := value;
+  FGender.free;
+  FGender := value;
 end;
 
-
-{ TDocumentConformancePublisher }
-
-constructor TDocumentConformancePublisher.Create;
+Procedure TPerson.SetReligion(value : TCodeableConcept);
 begin
-  inherited;
-  FAddress := TAddressList.Create;
-  FContact := TContactList.Create;
-end;
-
-destructor TDocumentConformancePublisher.Destroy;
-begin
-  FAddress.Free;
-  FContact.Free;
-  inherited;
-end;
-
-procedure TDocumentConformancePublisher.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FName := TDocumentConformancePublisher(oSource).FName;
-  FAddress.Assign(TDocumentConformancePublisher(oSource).FAddress);
-  FContact.Assign(TDocumentConformancePublisher(oSource).FContact);
-end;
-
-function TDocumentConformancePublisher.Link : TDocumentConformancePublisher;
-begin
-  result := TDocumentConformancePublisher(inherited Link);
-end;
-
-function TDocumentConformancePublisher.Clone : TDocumentConformancePublisher;
-begin
-  result := TDocumentConformancePublisher(inherited Clone);
-end;
-
-{ TDocumentConformancePublisher }
-
-Procedure TDocumentConformancePublisher.SetName(value : String);
-begin
-  FName := value;
-end;
-
-
-{ TDocumentConformanceSoftware }
-
-constructor TDocumentConformanceSoftware.Create;
-begin
-  inherited;
-end;
-
-destructor TDocumentConformanceSoftware.Destroy;
-begin
-  inherited;
-end;
-
-procedure TDocumentConformanceSoftware.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FName := TDocumentConformanceSoftware(oSource).FName;
-  FVersion := TDocumentConformanceSoftware(oSource).FVersion;
-  FReleaseDate := TDocumentConformanceSoftware(oSource).FReleaseDate;
-end;
-
-function TDocumentConformanceSoftware.Link : TDocumentConformanceSoftware;
-begin
-  result := TDocumentConformanceSoftware(inherited Link);
-end;
-
-function TDocumentConformanceSoftware.Clone : TDocumentConformanceSoftware;
-begin
-  result := TDocumentConformanceSoftware(inherited Clone);
-end;
-
-{ TDocumentConformanceSoftware }
-
-Procedure TDocumentConformanceSoftware.SetName(value : String);
-begin
-  FName := value;
-end;
-
-Procedure TDocumentConformanceSoftware.SetVersion(value : String);
-begin
-  FVersion := value;
-end;
-
-Procedure TDocumentConformanceSoftware.SetReleaseDate(value : String);
-begin
-  FReleaseDate := value;
-end;
-
-
-{ TDocumentConformanceDocument }
-
-constructor TDocumentConformanceDocument.Create;
-begin
-  inherited;
-  FResource := TConstraintList.Create;
-end;
-
-destructor TDocumentConformanceDocument.Destroy;
-begin
-  FResource.Free;
-  inherited;
-end;
-
-procedure TDocumentConformanceDocument.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FName := TDocumentConformanceDocument(oSource).FName;
-  FPurpose := TDocumentConformanceDocument(oSource).FPurpose;
-  FResource.Assign(TDocumentConformanceDocument(oSource).FResource);
-end;
-
-function TDocumentConformanceDocument.Link : TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument(inherited Link);
-end;
-
-function TDocumentConformanceDocument.Clone : TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument(inherited Clone);
-end;
-
-{ TDocumentConformanceDocument }
-
-Procedure TDocumentConformanceDocument.SetName(value : String);
-begin
-  FName := value;
-end;
-
-Procedure TDocumentConformanceDocument.SetPurpose(value : String);
-begin
-  FPurpose := value;
-end;
-
-
-{ TDocumentConformanceDocumentList }
-{ TDocumentConformanceDocumentList }
-procedure TDocumentConformanceDocumentList.AddItem(value: TDocumentConformanceDocument);
-begin
-  assert(value.ClassName = 'TDocumentConformanceDocument', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentConformanceDocument');
-  add(value);
-end;
-
-function TDocumentConformanceDocumentList.Append: TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument.create;
-  try
-    add(result.Link);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TDocumentConformanceDocumentList.ClearItems;
-begin
-  Clear;
-end;
-
-function TDocumentConformanceDocumentList.Clone: TDocumentConformanceDocumentList;
-begin
-  result := TDocumentConformanceDocumentList(inherited Clone);
-end;
-
-function TDocumentConformanceDocumentList.Count: Integer;
-begin
-  result := Inherited Count;
-end;
-
-function TDocumentConformanceDocumentList.GetItemN(index: Integer): TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument(ObjectByIndex[index]);
-end;
-
-function TDocumentConformanceDocumentList.IndexOf(value: TDocumentConformanceDocument): Integer;
-begin
-  result := IndexByReference(value);
-end;
-
-function TDocumentConformanceDocumentList.Insert(index: Integer): TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument.create;
-  try
-    inherited insert(index, result);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TDocumentConformanceDocumentList.InsertItem(index: Integer; value: TDocumentConformanceDocument);
-begin
-  assert(value is TDocumentConformanceDocument);
-  Inherited Insert(index, value);
-end;
-
-function TDocumentConformanceDocumentList.Item(index: Integer): TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument(ObjectByIndex[index]);
-end;
-
-function TDocumentConformanceDocumentList.Link: TDocumentConformanceDocumentList;
-begin
-  result := TDocumentConformanceDocumentList(inherited Link);
-end;
-
-procedure TDocumentConformanceDocumentList.Remove(index: Integer);
-begin
-  DeleteByIndex(index);
-end;
-
-procedure TDocumentConformanceDocumentList.SetItemByIndex(index: Integer; value: TDocumentConformanceDocument);
-begin
-  assert(value is TDocumentConformanceDocument);
-  DocumentConformanceDocuments[index] := value;
-end;
-
-procedure TDocumentConformanceDocumentList.SetItemN(index: Integer; value: TDocumentConformanceDocument);
-begin
-  assert(value is TDocumentConformanceDocument);
-  ObjectByIndex[index] := value;
-end;
-
-{ TDocumentConformance }
-
-constructor TDocumentConformance.Create;
-begin
-  inherited;
-  FDocument := TDocumentConformanceDocumentList.Create;
-end;
-
-destructor TDocumentConformance.Destroy;
-begin
-  FPublisher.free;
-  FSoftware.free;
-  FDocument.Free;
-  inherited;
-end;
-
-function TDocumentConformance.GetResourceType : TFHIRResourceType;
-begin
-  result := frtDocumentConformance;
-end;
-
-procedure TDocumentConformance.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FDate := TDocumentConformance(oSource).FDate;
-  publisher := TDocumentConformance(oSource).publisher.Clone;
-  software := TDocumentConformance(oSource).software.Clone;
-  FDocument.Assign(TDocumentConformance(oSource).FDocument);
-end;
-
-function TDocumentConformance.Link : TDocumentConformance;
-begin
-  result := TDocumentConformance(inherited Link);
-end;
-
-function TDocumentConformance.Clone : TDocumentConformance;
-begin
-  result := TDocumentConformance(inherited Clone);
-end;
-
-{ TDocumentConformance }
-
-Procedure TDocumentConformance.SetDate(value : String);
-begin
-  FDate := value;
-end;
-
-Procedure TDocumentConformance.SetPublisher(value : TDocumentConformancePublisher);
-begin
-  FPublisher.free;
-  FPublisher := value;
-end;
-
-Procedure TDocumentConformance.SetSoftware(value : TDocumentConformanceSoftware);
-begin
-  FSoftware.free;
-  FSoftware := value;
+  FReligion.free;
+  FReligion := value;
 end;
 
 
@@ -14486,178 +15590,152 @@ begin
 end;
 
 
-{ TPersonQualification }
+{ TDocumentConformancePublisher }
 
-constructor TPersonQualification.Create;
+constructor TDocumentConformancePublisher.Create;
 begin
   inherited;
-end;
-
-destructor TPersonQualification.Destroy;
-begin
-  FId.free;
-  FCode.free;
-  FInstitution.free;
-  FPeriod.free;
-  inherited;
-end;
-
-procedure TPersonQualification.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  id := TPersonQualification(oSource).id.Clone;
-  code := TPersonQualification(oSource).code.Clone;
-  institution := TPersonQualification(oSource).institution.Clone;
-  period := TPersonQualification(oSource).period.Clone;
-end;
-
-function TPersonQualification.Link : TPersonQualification;
-begin
-  result := TPersonQualification(inherited Link);
-end;
-
-function TPersonQualification.Clone : TPersonQualification;
-begin
-  result := TPersonQualification(inherited Clone);
-end;
-
-{ TPersonQualification }
-
-Procedure TPersonQualification.SetId(value : TIdentifier);
-begin
-  FId.free;
-  FId := value;
-end;
-
-Procedure TPersonQualification.SetCode(value : TCodeableConcept);
-begin
-  FCode.free;
-  FCode := value;
-end;
-
-Procedure TPersonQualification.SetInstitution(value : TFHIRResourceReference{TOrganization});
-begin
-  FInstitution.free;
-  FInstitution := value;
-end;
-
-Procedure TPersonQualification.SetPeriod(value : TInterval_date);
-begin
-  FPeriod.free;
-  FPeriod := value;
-end;
-
-
-{ TPersonLanguage }
-
-constructor TPersonLanguage.Create;
-begin
-  inherited;
-end;
-
-destructor TPersonLanguage.Destroy;
-begin
-  inherited;
-end;
-
-procedure TPersonLanguage.Assign(oSource : TAdvObject);
-begin
-  inherited;
-  FCode := TPersonLanguage(oSource).FCode;
-  FUse := TPersonLanguage(oSource).FUse;
-end;
-
-function TPersonLanguage.Link : TPersonLanguage;
-begin
-  result := TPersonLanguage(inherited Link);
-end;
-
-function TPersonLanguage.Clone : TPersonLanguage;
-begin
-  result := TPersonLanguage(inherited Clone);
-end;
-
-{ TPersonLanguage }
-
-Procedure TPersonLanguage.SetCode(value : String);
-begin
-  FCode := value;
-end;
-
-Procedure TPersonLanguage.SetUse(value : TLanguageUse);
-begin
-  FUse := value;
-end;
-
-
-{ TPersonRelatedPerson }
-
-constructor TPersonRelatedPerson.Create;
-begin
-  inherited;
+  FAddress := TAddressList.Create;
   FContact := TContactList.Create;
 end;
 
-destructor TPersonRelatedPerson.Destroy;
+destructor TDocumentConformancePublisher.Destroy;
 begin
-  FId.free;
-  FRole.free;
-  FName.free;
+  FAddress.Free;
   FContact.Free;
   inherited;
 end;
 
-procedure TPersonRelatedPerson.Assign(oSource : TAdvObject);
+procedure TDocumentConformancePublisher.Assign(oSource : TAdvObject);
 begin
   inherited;
-  id := TPersonRelatedPerson(oSource).id.Clone;
-  role := TPersonRelatedPerson(oSource).role.Clone;
-  name := TPersonRelatedPerson(oSource).name.Clone;
-  FContact.Assign(TPersonRelatedPerson(oSource).FContact);
+  FName := TDocumentConformancePublisher(oSource).FName;
+  FAddress.Assign(TDocumentConformancePublisher(oSource).FAddress);
+  FContact.Assign(TDocumentConformancePublisher(oSource).FContact);
 end;
 
-function TPersonRelatedPerson.Link : TPersonRelatedPerson;
+function TDocumentConformancePublisher.Link : TDocumentConformancePublisher;
 begin
-  result := TPersonRelatedPerson(inherited Link);
+  result := TDocumentConformancePublisher(inherited Link);
 end;
 
-function TPersonRelatedPerson.Clone : TPersonRelatedPerson;
+function TDocumentConformancePublisher.Clone : TDocumentConformancePublisher;
 begin
-  result := TPersonRelatedPerson(inherited Clone);
+  result := TDocumentConformancePublisher(inherited Clone);
 end;
 
-{ TPersonRelatedPerson }
+{ TDocumentConformancePublisher }
 
-Procedure TPersonRelatedPerson.SetId(value : THumanId);
+Procedure TDocumentConformancePublisher.SetName(value : String);
 begin
-  FId.free;
-  FId := value;
-end;
-
-Procedure TPersonRelatedPerson.SetRole(value : TCodeableConcept);
-begin
-  FRole.free;
-  FRole := value;
-end;
-
-Procedure TPersonRelatedPerson.SetName(value : THumanName);
-begin
-  FName.free;
   FName := value;
 end;
 
 
-{ TPersonQualificationList }
-{ TPersonQualificationList }
-procedure TPersonQualificationList.AddItem(value: TPersonQualification);
+{ TDocumentConformanceSoftware }
+
+constructor TDocumentConformanceSoftware.Create;
 begin
-  assert(value.ClassName = 'TPersonQualification', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonQualification');
+  inherited;
+end;
+
+destructor TDocumentConformanceSoftware.Destroy;
+begin
+  inherited;
+end;
+
+procedure TDocumentConformanceSoftware.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TDocumentConformanceSoftware(oSource).FName;
+  FVersion := TDocumentConformanceSoftware(oSource).FVersion;
+  FReleaseDate := TDocumentConformanceSoftware(oSource).FReleaseDate;
+end;
+
+function TDocumentConformanceSoftware.Link : TDocumentConformanceSoftware;
+begin
+  result := TDocumentConformanceSoftware(inherited Link);
+end;
+
+function TDocumentConformanceSoftware.Clone : TDocumentConformanceSoftware;
+begin
+  result := TDocumentConformanceSoftware(inherited Clone);
+end;
+
+{ TDocumentConformanceSoftware }
+
+Procedure TDocumentConformanceSoftware.SetName(value : String);
+begin
+  FName := value;
+end;
+
+Procedure TDocumentConformanceSoftware.SetVersion(value : String);
+begin
+  FVersion := value;
+end;
+
+Procedure TDocumentConformanceSoftware.SetReleaseDate(value : String);
+begin
+  FReleaseDate := value;
+end;
+
+
+{ TDocumentConformanceDocument }
+
+constructor TDocumentConformanceDocument.Create;
+begin
+  inherited;
+  FResource := TConstraintList.Create;
+end;
+
+destructor TDocumentConformanceDocument.Destroy;
+begin
+  FResource.Free;
+  inherited;
+end;
+
+procedure TDocumentConformanceDocument.Assign(oSource : TAdvObject);
+begin
+  inherited;
+  FName := TDocumentConformanceDocument(oSource).FName;
+  FPurpose := TDocumentConformanceDocument(oSource).FPurpose;
+  FResource.Assign(TDocumentConformanceDocument(oSource).FResource);
+end;
+
+function TDocumentConformanceDocument.Link : TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument(inherited Link);
+end;
+
+function TDocumentConformanceDocument.Clone : TDocumentConformanceDocument;
+begin
+  result := TDocumentConformanceDocument(inherited Clone);
+end;
+
+{ TDocumentConformanceDocument }
+
+Procedure TDocumentConformanceDocument.SetName(value : String);
+begin
+  FName := value;
+end;
+
+Procedure TDocumentConformanceDocument.SetPurpose(value : String);
+begin
+  FPurpose := value;
+end;
+
+
+{ TDocumentConformanceDocumentList }
+{ TDocumentConformanceDocumentList }
+procedure TDocumentConformanceDocumentList.AddItem(value: TDocumentConformanceDocument);
+begin
+  assert(value.ClassName = 'TDocumentConformanceDocument', 'Attempt to add an item of type '+value.ClassName+' to a List of TDocumentConformanceDocument');
   add(value);
 end;
 
-function TPersonQualificationList.Append: TPersonQualification;
+function TDocumentConformanceDocumentList.Append: TDocumentConformanceDocument;
 begin
-  result := TPersonQualification.create;
+  result := TDocumentConformanceDocument.create;
   try
     add(result.Link);
   finally
@@ -14665,34 +15743,34 @@ begin
   end;
 end;
 
-procedure TPersonQualificationList.ClearItems;
+procedure TDocumentConformanceDocumentList.ClearItems;
 begin
   Clear;
 end;
 
-function TPersonQualificationList.Clone: TPersonQualificationList;
+function TDocumentConformanceDocumentList.Clone: TDocumentConformanceDocumentList;
 begin
-  result := TPersonQualificationList(inherited Clone);
+  result := TDocumentConformanceDocumentList(inherited Clone);
 end;
 
-function TPersonQualificationList.Count: Integer;
+function TDocumentConformanceDocumentList.Count: Integer;
 begin
   result := Inherited Count;
 end;
 
-function TPersonQualificationList.GetItemN(index: Integer): TPersonQualification;
+function TDocumentConformanceDocumentList.GetItemN(index: Integer): TDocumentConformanceDocument;
 begin
-  result := TPersonQualification(ObjectByIndex[index]);
+  result := TDocumentConformanceDocument(ObjectByIndex[index]);
 end;
 
-function TPersonQualificationList.IndexOf(value: TPersonQualification): Integer;
+function TDocumentConformanceDocumentList.IndexOf(value: TDocumentConformanceDocument): Integer;
 begin
   result := IndexByReference(value);
 end;
 
-function TPersonQualificationList.Insert(index: Integer): TPersonQualification;
+function TDocumentConformanceDocumentList.Insert(index: Integer): TDocumentConformanceDocument;
 begin
-  result := TPersonQualification.create;
+  result := TDocumentConformanceDocument.create;
   try
     inherited insert(index, result);
   finally
@@ -14700,286 +15778,99 @@ begin
   end;
 end;
 
-procedure TPersonQualificationList.InsertItem(index: Integer; value: TPersonQualification);
+procedure TDocumentConformanceDocumentList.InsertItem(index: Integer; value: TDocumentConformanceDocument);
 begin
-  assert(value is TPersonQualification);
+  assert(value is TDocumentConformanceDocument);
   Inherited Insert(index, value);
 end;
 
-function TPersonQualificationList.Item(index: Integer): TPersonQualification;
+function TDocumentConformanceDocumentList.Item(index: Integer): TDocumentConformanceDocument;
 begin
-  result := TPersonQualification(ObjectByIndex[index]);
+  result := TDocumentConformanceDocument(ObjectByIndex[index]);
 end;
 
-function TPersonQualificationList.Link: TPersonQualificationList;
+function TDocumentConformanceDocumentList.Link: TDocumentConformanceDocumentList;
 begin
-  result := TPersonQualificationList(inherited Link);
+  result := TDocumentConformanceDocumentList(inherited Link);
 end;
 
-procedure TPersonQualificationList.Remove(index: Integer);
+procedure TDocumentConformanceDocumentList.Remove(index: Integer);
 begin
   DeleteByIndex(index);
 end;
 
-procedure TPersonQualificationList.SetItemByIndex(index: Integer; value: TPersonQualification);
+procedure TDocumentConformanceDocumentList.SetItemByIndex(index: Integer; value: TDocumentConformanceDocument);
 begin
-  assert(value is TPersonQualification);
-  PersonQualifications[index] := value;
+  assert(value is TDocumentConformanceDocument);
+  DocumentConformanceDocuments[index] := value;
 end;
 
-procedure TPersonQualificationList.SetItemN(index: Integer; value: TPersonQualification);
+procedure TDocumentConformanceDocumentList.SetItemN(index: Integer; value: TDocumentConformanceDocument);
 begin
-  assert(value is TPersonQualification);
+  assert(value is TDocumentConformanceDocument);
   ObjectByIndex[index] := value;
 end;
 
-{ TPersonLanguageList }
-{ TPersonLanguageList }
-procedure TPersonLanguageList.AddItem(value: TPersonLanguage);
-begin
-  assert(value.ClassName = 'TPersonLanguage', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonLanguage');
-  add(value);
-end;
+{ TDocumentConformance }
 
-function TPersonLanguageList.Append: TPersonLanguage;
-begin
-  result := TPersonLanguage.create;
-  try
-    add(result.Link);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TPersonLanguageList.ClearItems;
-begin
-  Clear;
-end;
-
-function TPersonLanguageList.Clone: TPersonLanguageList;
-begin
-  result := TPersonLanguageList(inherited Clone);
-end;
-
-function TPersonLanguageList.Count: Integer;
-begin
-  result := Inherited Count;
-end;
-
-function TPersonLanguageList.GetItemN(index: Integer): TPersonLanguage;
-begin
-  result := TPersonLanguage(ObjectByIndex[index]);
-end;
-
-function TPersonLanguageList.IndexOf(value: TPersonLanguage): Integer;
-begin
-  result := IndexByReference(value);
-end;
-
-function TPersonLanguageList.Insert(index: Integer): TPersonLanguage;
-begin
-  result := TPersonLanguage.create;
-  try
-    inherited insert(index, result);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TPersonLanguageList.InsertItem(index: Integer; value: TPersonLanguage);
-begin
-  assert(value is TPersonLanguage);
-  Inherited Insert(index, value);
-end;
-
-function TPersonLanguageList.Item(index: Integer): TPersonLanguage;
-begin
-  result := TPersonLanguage(ObjectByIndex[index]);
-end;
-
-function TPersonLanguageList.Link: TPersonLanguageList;
-begin
-  result := TPersonLanguageList(inherited Link);
-end;
-
-procedure TPersonLanguageList.Remove(index: Integer);
-begin
-  DeleteByIndex(index);
-end;
-
-procedure TPersonLanguageList.SetItemByIndex(index: Integer; value: TPersonLanguage);
-begin
-  assert(value is TPersonLanguage);
-  PersonLanguages[index] := value;
-end;
-
-procedure TPersonLanguageList.SetItemN(index: Integer; value: TPersonLanguage);
-begin
-  assert(value is TPersonLanguage);
-  ObjectByIndex[index] := value;
-end;
-
-{ TPersonRelatedPersonList }
-{ TPersonRelatedPersonList }
-procedure TPersonRelatedPersonList.AddItem(value: TPersonRelatedPerson);
-begin
-  assert(value.ClassName = 'TPersonRelatedPerson', 'Attempt to add an item of type '+value.ClassName+' to a List of TPersonRelatedPerson');
-  add(value);
-end;
-
-function TPersonRelatedPersonList.Append: TPersonRelatedPerson;
-begin
-  result := TPersonRelatedPerson.create;
-  try
-    add(result.Link);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TPersonRelatedPersonList.ClearItems;
-begin
-  Clear;
-end;
-
-function TPersonRelatedPersonList.Clone: TPersonRelatedPersonList;
-begin
-  result := TPersonRelatedPersonList(inherited Clone);
-end;
-
-function TPersonRelatedPersonList.Count: Integer;
-begin
-  result := Inherited Count;
-end;
-
-function TPersonRelatedPersonList.GetItemN(index: Integer): TPersonRelatedPerson;
-begin
-  result := TPersonRelatedPerson(ObjectByIndex[index]);
-end;
-
-function TPersonRelatedPersonList.IndexOf(value: TPersonRelatedPerson): Integer;
-begin
-  result := IndexByReference(value);
-end;
-
-function TPersonRelatedPersonList.Insert(index: Integer): TPersonRelatedPerson;
-begin
-  result := TPersonRelatedPerson.create;
-  try
-    inherited insert(index, result);
-  finally
-    result.free;
-  end;
-end;
-
-procedure TPersonRelatedPersonList.InsertItem(index: Integer; value: TPersonRelatedPerson);
-begin
-  assert(value is TPersonRelatedPerson);
-  Inherited Insert(index, value);
-end;
-
-function TPersonRelatedPersonList.Item(index: Integer): TPersonRelatedPerson;
-begin
-  result := TPersonRelatedPerson(ObjectByIndex[index]);
-end;
-
-function TPersonRelatedPersonList.Link: TPersonRelatedPersonList;
-begin
-  result := TPersonRelatedPersonList(inherited Link);
-end;
-
-procedure TPersonRelatedPersonList.Remove(index: Integer);
-begin
-  DeleteByIndex(index);
-end;
-
-procedure TPersonRelatedPersonList.SetItemByIndex(index: Integer; value: TPersonRelatedPerson);
-begin
-  assert(value is TPersonRelatedPerson);
-  PersonRelatedPeople[index] := value;
-end;
-
-procedure TPersonRelatedPersonList.SetItemN(index: Integer; value: TPersonRelatedPerson);
-begin
-  assert(value is TPersonRelatedPerson);
-  ObjectByIndex[index] := value;
-end;
-
-{ TPerson }
-
-constructor TPerson.Create;
+constructor TDocumentConformance.Create;
 begin
   inherited;
-  FIdentifier := THumanIdList.Create;
-  FName := THumanNameList.Create;
-  FAddress := TAddressList.Create;
-  FContact := TContactList.Create;
-  FQualification := TPersonQualificationList.Create;
-  FLanguage := TPersonLanguageList.Create;
-  FRelatedPerson := TPersonRelatedPersonList.Create;
+  FProfile := TStringList.Create;
+  FDocument := TDocumentConformanceDocumentList.Create;
 end;
 
-destructor TPerson.Destroy;
+destructor TDocumentConformance.Destroy;
 begin
-  FIdentifier.Free;
-  FName.Free;
-  FAddress.Free;
-  FContact.Free;
-  FGender.free;
-  FReligion.free;
-  FQualification.Free;
-  FLanguage.Free;
-  FRelatedPerson.Free;
+  FPublisher.free;
+  FSoftware.free;
+  FProfile.Free;
+  FDocument.Free;
   inherited;
 end;
 
-function TPerson.GetResourceType : TFHIRResourceType;
+function TDocumentConformance.GetResourceType : TFHIRResourceType;
 begin
-  result := frtPerson;
+  result := frtDocumentConformance;
 end;
 
-procedure TPerson.Assign(oSource : TAdvObject);
+procedure TDocumentConformance.Assign(oSource : TAdvObject);
 begin
   inherited;
-  FIdentifier.Assign(TPerson(oSource).FIdentifier);
-  FName.Assign(TPerson(oSource).FName);
-  FAddress.Assign(TPerson(oSource).FAddress);
-  FContact.Assign(TPerson(oSource).FContact);
-  FDob := TPerson(oSource).FDob;
-  gender := TPerson(oSource).gender.Clone;
-  religion := TPerson(oSource).religion.Clone;
-  FQualification.Assign(TPerson(oSource).FQualification);
-  FLanguage.Assign(TPerson(oSource).FLanguage);
-  FRelatedPerson.Assign(TPerson(oSource).FRelatedPerson);
+  FDate := TDocumentConformance(oSource).FDate;
+  publisher := TDocumentConformance(oSource).publisher.Clone;
+  software := TDocumentConformance(oSource).software.Clone;
+  FProfile.Assign(TDocumentConformance(oSource).FProfile);
+  FDocument.Assign(TDocumentConformance(oSource).FDocument);
 end;
 
-function TPerson.Link : TPerson;
+function TDocumentConformance.Link : TDocumentConformance;
 begin
-  result := TPerson(inherited Link);
+  result := TDocumentConformance(inherited Link);
 end;
 
-function TPerson.Clone : TPerson;
+function TDocumentConformance.Clone : TDocumentConformance;
 begin
-  result := TPerson(inherited Clone);
+  result := TDocumentConformance(inherited Clone);
 end;
 
-{ TPerson }
+{ TDocumentConformance }
 
-Procedure TPerson.SetDob(value : String);
+Procedure TDocumentConformance.SetDate(value : String);
 begin
-  FDob := value;
+  FDate := value;
 end;
 
-Procedure TPerson.SetGender(value : TCodeableConcept);
+Procedure TDocumentConformance.SetPublisher(value : TDocumentConformancePublisher);
 begin
-  FGender.free;
-  FGender := value;
+  FPublisher.free;
+  FPublisher := value;
 end;
 
-Procedure TPerson.SetReligion(value : TCodeableConcept);
+Procedure TDocumentConformance.SetSoftware(value : TDocumentConformanceSoftware);
 begin
-  FReligion.free;
-  FReligion := value;
+  FSoftware.free;
+  FSoftware := value;
 end;
 
 
@@ -14998,9 +15889,9 @@ begin
   result := TConstraintElementMapping.create;
 end;
 
-function TFHIRResourceFactory.newConstraintElementAggregation : TConstraintElementAggregation;
+function TFHIRResourceFactory.newConstraintElementResource : TConstraintElementResource;
 begin
-  result := TConstraintElementAggregation.create;
+  result := TConstraintElementResource.create;
 end;
 
 function TFHIRResourceFactory.newConstraintElementValue : TConstraintElementValue;
@@ -15193,6 +16084,21 @@ begin
   result := TMessage.create;
 end;
 
+function TFHIRResourceFactory.newAnimalRelatedEntity : TAnimalRelatedEntity;
+begin
+  result := TAnimalRelatedEntity.create;
+end;
+
+function TFHIRResourceFactory.newAnimal : TAnimal;
+begin
+  result := TAnimal.create;
+end;
+
+function TFHIRResourceFactory.newAgent : TAgent;
+begin
+  result := TAgent.create;
+end;
+
 function TFHIRResourceFactory.newMessageConformancePublisher : TMessageConformancePublisher;
 begin
   result := TMessageConformancePublisher.create;
@@ -15223,19 +16129,24 @@ begin
   result := TMessageConformance.create;
 end;
 
-function TFHIRResourceFactory.newAgent : TAgent;
+function TFHIRResourceFactory.newOrganizationName : TOrganizationName;
 begin
-  result := TAgent.create;
+  result := TOrganizationName.create;
 end;
 
-function TFHIRResourceFactory.newAnimalRelatedEntity : TAnimalRelatedEntity;
+function TFHIRResourceFactory.newOrganizationAccreditation : TOrganizationAccreditation;
 begin
-  result := TAnimalRelatedEntity.create;
+  result := TOrganizationAccreditation.create;
 end;
 
-function TFHIRResourceFactory.newAnimal : TAnimal;
+function TFHIRResourceFactory.newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
 begin
-  result := TAnimal.create;
+  result := TOrganizationRelatedOrganization.create;
+end;
+
+function TFHIRResourceFactory.newOrganization : TOrganization;
+begin
+  result := TOrganization.create;
 end;
 
 function TFHIRResourceFactory.newPrescriptionDispense : TPrescriptionDispense;
@@ -15273,49 +16184,49 @@ begin
   result := TPrescription.create;
 end;
 
+function TFHIRResourceFactory.newProfileAuthor : TProfileAuthor;
+begin
+  result := TProfileAuthor.create;
+end;
+
+function TFHIRResourceFactory.newProfileEndorser : TProfileEndorser;
+begin
+  result := TProfileEndorser.create;
+end;
+
+function TFHIRResourceFactory.newProfileBinding : TProfileBinding;
+begin
+  result := TProfileBinding.create;
+end;
+
+function TFHIRResourceFactory.newProfile : TProfile;
+begin
+  result := TProfile.create;
+end;
+
 function TFHIRResourceFactory.newPatient : TPatient;
 begin
   result := TPatient.create;
 end;
 
-function TFHIRResourceFactory.newOrganizationName : TOrganizationName;
+function TFHIRResourceFactory.newPersonQualification : TPersonQualification;
 begin
-  result := TOrganizationName.create;
+  result := TPersonQualification.create;
 end;
 
-function TFHIRResourceFactory.newOrganizationAccreditation : TOrganizationAccreditation;
+function TFHIRResourceFactory.newPersonLanguage : TPersonLanguage;
 begin
-  result := TOrganizationAccreditation.create;
+  result := TPersonLanguage.create;
 end;
 
-function TFHIRResourceFactory.newOrganizationRelatedOrganization : TOrganizationRelatedOrganization;
+function TFHIRResourceFactory.newPersonRelatedPerson : TPersonRelatedPerson;
 begin
-  result := TOrganizationRelatedOrganization.create;
+  result := TPersonRelatedPerson.create;
 end;
 
-function TFHIRResourceFactory.newOrganization : TOrganization;
+function TFHIRResourceFactory.newPerson : TPerson;
 begin
-  result := TOrganization.create;
-end;
-
-function TFHIRResourceFactory.newDocumentConformancePublisher : TDocumentConformancePublisher;
-begin
-  result := TDocumentConformancePublisher.create;
-end;
-
-function TFHIRResourceFactory.newDocumentConformanceSoftware : TDocumentConformanceSoftware;
-begin
-  result := TDocumentConformanceSoftware.create;
-end;
-
-function TFHIRResourceFactory.newDocumentConformanceDocument : TDocumentConformanceDocument;
-begin
-  result := TDocumentConformanceDocument.create;
-end;
-
-function TFHIRResourceFactory.newDocumentConformance : TDocumentConformance;
-begin
-  result := TDocumentConformance.create;
+  result := TPerson.create;
 end;
 
 function TFHIRResourceFactory.newLabReportRequestDetail : TLabReportRequestDetail;
@@ -15343,24 +16254,24 @@ begin
   result := TLabReport.create;
 end;
 
-function TFHIRResourceFactory.newPersonQualification : TPersonQualification;
+function TFHIRResourceFactory.newDocumentConformancePublisher : TDocumentConformancePublisher;
 begin
-  result := TPersonQualification.create;
+  result := TDocumentConformancePublisher.create;
 end;
 
-function TFHIRResourceFactory.newPersonLanguage : TPersonLanguage;
+function TFHIRResourceFactory.newDocumentConformanceSoftware : TDocumentConformanceSoftware;
 begin
-  result := TPersonLanguage.create;
+  result := TDocumentConformanceSoftware.create;
 end;
 
-function TFHIRResourceFactory.newPersonRelatedPerson : TPersonRelatedPerson;
+function TFHIRResourceFactory.newDocumentConformanceDocument : TDocumentConformanceDocument;
 begin
-  result := TPersonRelatedPerson.create;
+  result := TDocumentConformanceDocument.create;
 end;
 
-function TFHIRResourceFactory.newPerson : TPerson;
+function TFHIRResourceFactory.newDocumentConformance : TDocumentConformance;
 begin
-  result := TPerson.create;
+  result := TDocumentConformance.create;
 end;
 
 

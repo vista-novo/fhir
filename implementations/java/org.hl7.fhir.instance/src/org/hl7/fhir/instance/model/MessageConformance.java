@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 19:37 Apr 30, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
 
 import java.util.*;
 
@@ -214,6 +214,11 @@ public class MessageConformance extends Resource {
     private Software software;
 
     /**
+     * Additional other profiles that apply to this conformance statement.
+     */
+    private List<Uri> profile = new ArrayList<Uri>();
+
+    /**
      * An event supported by the application
      */
     private List<Event> event = new ArrayList<Event>();
@@ -240,6 +245,10 @@ public class MessageConformance extends Resource {
 
     public void setSoftware(Software value) { 
       this.software = value;
+    }
+
+    public List<Uri> getProfile() { 
+      return this.profile;
     }
 
     public List<Event> getEvent() { 

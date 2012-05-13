@@ -6,6 +6,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.Profile;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -51,6 +52,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		flush();
 		close();
 	}
+	
+	public void generate(Profile profile) throws Exception {
+	  generate(profile.getResources().get(0));
+	}
 
 	private void generateElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {
 //		if ((!elem.unbounded() && 1 == elem.getMaxCardinality()) || elem.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
@@ -79,26 +84,41 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 
 	private void generateCoreElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {
+	  if (elem.getConformance() == ElementDefn.Conformance.Prohibited)
+	    return;
+	  
 		boolean listed = false;
 	  for (int i= 0; i < indent; i++)
 		{
 		  write(" ");
 		}
-    if (elem.getName().equals("#"))
+    String en = elem.getName();
+    if (en.contains("[x]") && elem.getTypes().size() == 1 && !elem.typeCode().equals("*"))
+      en = en.replace("[x]", elem.typeCode());
+    
+    if (en.equals("#"))
     {
        write(" <font color=\"Gray\">&lt;!-- Content as for "+elem.typeCode().substring(1)+" --&gt;</font>\r\n");
       return;
     }
 		
 		if (rootName == null || "x".equals(rootName))
-		    write("&lt;<b>");
-		else
-			write("&lt;<a href=\"#"+pathName+"."+elem.getName()+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\"><b>");
+		    write("&lt;");
+		else 
+			write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\">");
+		
 		if (elem.typeCode().equals("xhtml")) {
-      write("div</b> xmlns=\"http://www.w3.org/1999/xhtml\"<a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>&lt;/div&gt;\r\n");
+      write("<b>div</b> xmlns=\"http://www.w3.org/1999/xhtml\"<a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>&lt;/div&gt;\r\n");
+		} else if (elem.hasValue()) {
 		  
+		  if (elem.typeCode().equals("CodeableConcept"))
+        write(en+"</a>&gt;"+renderCodeableConcept(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
+		  else if (elem.typeCode().equals("Quantity"))
+        write(en+"</a>&gt;"+renderQuantity(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
+		  else
+		    write(en+"</a>&gt;"+elem.getValue()+"&lt;"+en+"/&gt;\r\n");
 		} else {
-		  write(elem.getName());
+		  write("<b>"+en);
 		  if (rootName == null || "x".equals(rootName))
 		    write("</b>");
 		  else
@@ -108,6 +128,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		    write(" id=\""+elem.getId()+"\"");
 		  }
 		  write("&gt;");
+      if (elem.getProfileName() != null && !elem.getProfileName().equals(""))
+        write(" <font color=\"blue\">\""+elem.getProfileName()+"\"</font>");
 		  if (elem.getConformance() != ElementDefn.Conformance.Unstated)
 		  {
 		    write(" ");
@@ -150,6 +172,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		      i++;
 		    }
 		    write("</font>");
+		  } else if (elem.getName().equals("extensions")) {
+        write(" <a href=\"extensibility.htm\"><font color=\"navy\">See Extensions</font></a> ");
 		  }
 
 		  write(" ");
@@ -161,7 +185,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		      write("<font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>");
 		    }
 		    write("&lt;/");
-		    write(elem.getName());
+		    write(en);
 		    write("&gt;\r\n");
 		  }
 		  else
@@ -179,7 +203,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		    for (ElementDefn child : elem.getElements())
 		    {
-		      generateElem(child, indent + 1, rootName, pathName+"."+elem.getName());
+		      generateElem(child, indent + 1, rootName, pathName+"."+en);
 		    }
 
 		    for (int i= 0; i < indent; i++)
@@ -187,14 +211,65 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		      write(" ");
 		    }
 		    write("&lt;/");
-		    write(elem.getName());
+		    write(en);
 		    write("&gt;\r\n");
 		  }
 		}
 	}
 
 	
-	private String getSrcFile(String name) throws Exception {
+	private String renderCodeableConcept(int indent, String value) throws Exception {
+    StringBuilder s = new StringBuilder();
+    for (int i= 0; i < indent; i++)
+      s.append(" ");
+    String ind = s.toString();
+    s = new StringBuilder();
+    String[] parts = value.split("#");
+    if (parts.length != 2)
+      throw new Exception("unable to parse fixed code "+value);
+    String sys = parts[0];
+    String c = parts[1];
+    parts = c.split("\\|");
+    if (parts.length != 2)
+      throw new Exception("unable to parse fixed code "+value);
+    
+    s.append("\r\n"+ind+"  &lt;coding&gt;");  
+    s.append("\r\n"+ind+"    &lt;code&gt;"+parts[0]+"&lt;/code&gt;");  
+    s.append("\r\n"+ind+"    &lt;system&gt;"+sys+"&lt;/system&gt;");  
+    s.append("\r\n"+ind+"    &lt;display&gt;"+parts[1]+"&lt;/display&gt;");  
+    s.append("\r\n"+ind+"  &lt;/coding&gt;");  
+    s.append("\r\n"+ind);
+    return s.toString();
+    }
+
+  private String renderQuantity(int indent, String value) throws Exception {
+    StringBuilder s = new StringBuilder();
+    for (int i= 0; i < indent; i++)
+      s.append(" ");
+    String ind = s.toString();
+    s = new StringBuilder();
+    String f = null;
+    if (!Character.isDigit(value.charAt(0)))
+    {
+      f = value.substring(0, 1);
+      value = value.substring(1);
+    }
+    String[] parts = value.split(" ");
+    if (parts.length != 2)
+      throw new Exception("unable to parse fixed quantity value "+value);
+    String v = parts[0];
+    String u = parts[1];
+    s.append("\r\n"+ind+"  &lt;value&gt;"+v+"&lt;/value&gt;");  
+    if (f != null)
+      s.append("\r\n"+ind+"  &lt;status&gt;"+Utilities.escapeXml(Utilities.escapeXml(f))+"&lt;/status&gt;");  
+    s.append("\r\n"+ind+"  &lt;units&gt;"+u+"&lt;/units&gt;");  
+    s.append("\r\n"+ind+"  &lt;code&gt;"+u+"&lt;/code&gt;");  
+    s.append("\r\n"+ind+"  &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;");  
+    s.append("\r\n"+ind);
+    return s.toString();
+	}
+
+  private String getSrcFile(String name) throws Exception {
 		if (name == null)
 			throw new Exception("unknown null type");
 		if (name.equals("Attachment")) return "datatypes"; 	

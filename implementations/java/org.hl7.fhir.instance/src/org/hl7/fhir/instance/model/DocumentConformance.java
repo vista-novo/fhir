@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on 19:37 Apr 30, 2012 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
 
 import java.util.*;
 
@@ -139,6 +139,11 @@ public class DocumentConformance extends Resource {
     private Software software;
 
     /**
+     * Additional other profiles that apply to this conformance statement.
+     */
+    private List<Uri> profile = new ArrayList<Uri>();
+
+    /**
      * A document definition
      */
     private List<Document> document = new ArrayList<Document>();
@@ -165,6 +170,10 @@ public class DocumentConformance extends Resource {
 
     public void setSoftware(Software value) { 
       this.software = value;
+    }
+
+    public List<Uri> getProfile() { 
+      return this.profile;
     }
 
     public List<Document> getDocument() { 

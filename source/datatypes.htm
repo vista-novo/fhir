@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -69,7 +68,7 @@ string patterns that are commonly used:
  <tr><td><a name="code"></a>code</td><td>a string which has at least one character and no whitespace</td></tr>
  <tr><td><a name="oid"></a>oid</td><td>An ISO oid [ref ISO std]</td></tr>
  <tr><td><a name="uuid"></a>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
- <tr><td><a name="sid"></a>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a></td></tr>
+ <tr><td><a name="sid"></a>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a>. sid values never contain a '#'</td></tr>
  <tr><td><a name="id"></a>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
  <tr><td><a name="date"></a>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
    The format is a union of the schema types gYear, gYearMonth, and date.</td></tr>
