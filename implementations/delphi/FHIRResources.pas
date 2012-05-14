@@ -4,7 +4,7 @@ unit FHIRResources;
 
 interface
 
-// FHIR v0.01 generated Mon, May 14, 2012 02:13+1000
+// FHIR v0.01 generated Mon, May 14, 2012 11:09+1000
 
 uses
   FHIRBase, AdvBuffers, DecimalSupport, Classes;
@@ -6376,6 +6376,7 @@ Type
     FDob : String;
     FGender : TCodeableConcept;
     FReligion : TCodeableConcept;
+    FRace : TCodeableConceptList;
     FQualification : TPersonQualificationList;
     FLanguage : TPersonLanguageList;
     FRelatedPerson : TPersonRelatedPersonList;
@@ -6427,6 +6428,11 @@ Type
       The religious denomination to which a person professes affiliation
     }
     property religion : TCodeableConcept read FReligion write SetReligion;
+
+    {@member Race
+      blah balh
+    }
+    property Race : TCodeableConceptList read FRace;
 
     {@member Qualification
       The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
@@ -14742,6 +14748,7 @@ begin
   FName := THumanNameList.Create;
   FAddress := TAddressList.Create;
   FContact := TContactList.Create;
+  FRace := TCodeableConceptList.Create;
   FQualification := TPersonQualificationList.Create;
   FLanguage := TPersonLanguageList.Create;
   FRelatedPerson := TPersonRelatedPersonList.Create;
@@ -14755,6 +14762,7 @@ begin
   FContact.Free;
   FGender.free;
   FReligion.free;
+  FRace.Free;
   FQualification.Free;
   FLanguage.Free;
   FRelatedPerson.Free;
@@ -14776,6 +14784,7 @@ begin
   FDob := TPerson(oSource).FDob;
   gender := TPerson(oSource).gender.Clone;
   religion := TPerson(oSource).religion.Clone;
+  FRace.Assign(TPerson(oSource).FRace);
   FQualification.Assign(TPerson(oSource).FQualification);
   FLanguage.Assign(TPerson(oSource).FLanguage);
   FRelatedPerson.Assign(TPerson(oSource).FRelatedPerson);

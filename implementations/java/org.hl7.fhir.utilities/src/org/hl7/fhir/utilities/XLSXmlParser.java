@@ -78,7 +78,8 @@ public class XLSXmlParser {
     NodeList table = node.getElementsByTagNameNS(XLS_NS, "Table");
     check(table.getLength() == 1, "multiple table elements");
     NodeList rows = ((Element)table.item(0)).getElementsByTagNameNS(XLS_NS, "Row");
-    check(rows.getLength() > 0, "empty sheet");
+    if (rows.getLength() == 0) 
+      return;
     rowIndex = 1;
     sheet.columns = readRow((Element) rows.item(0));
     for (int i = 1; i < rows.getLength(); i++) {

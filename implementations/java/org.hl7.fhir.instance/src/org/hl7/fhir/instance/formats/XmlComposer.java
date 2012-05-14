@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:09+1000 for FHIR v0.01
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1078,6 +1078,8 @@ public class XmlComposer extends XmlComposerBase {
       composeDateTime("dob", element.getDob());
       composeCodeableConcept("gender", element.getGender());
       composeCodeableConcept("religion", element.getReligion());
+      for (CodeableConcept e : element.getRace()) 
+        composeCodeableConcept("race", e);
       for (Person.Qualification e : element.getQualification()) 
         composePersonQualification("qualification", e);
       for (Person.Language e : element.getLanguage()) 

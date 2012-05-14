@@ -30,17 +30,14 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
     zip.close();    
   }
 
-  @Override
   public String getName() {
     return "csharp";
   }
 
-  @Override
   public String getDescription() {
     return "Resource definitions (+ more todo)";
   }
 
-  @Override
   public String getTitle() {
     return "C#";
   }

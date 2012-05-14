@@ -30,7 +30,6 @@ public class TxSpecGenerator extends OutputStreamWriter {
 
 	public class MyCompare implements Comparator<ConceptDomain> {
 
-		@Override
 		public int compare(ConceptDomain arg0, ConceptDomain arg1) {
 			return txusages.get(arg0).get(0).path.compareTo(txusages.get(arg1).get(0).path);
 		}

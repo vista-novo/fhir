@@ -287,8 +287,20 @@ public class Publisher implements Logger {
 	  Utilities.clearDirectory(folders.rootDir+"temp\\chm");
 	  File chm = new File(folders.dstDir+"fhir.chm");
 	  chm.delete();
-    if (chm.exists())
-      throw new Exception("Deleting CHM file failed");
+    if (chm.exists()) {
+      List<String> command = new ArrayList<String>();
+      command.add("cmd");
+      command.add("del");
+      command.add(folders.dstDir+"fhir.chm");
+   
+      ProcessBuilder builder = new ProcessBuilder(command);
+      builder.directory(new File(folders.dstDir));
+      final Process process = builder.start();
+      process.waitFor();
+      
+      if (chm.exists()) 
+        throw new Exception("Deleting CHM file failed");
+    }
 
     String[] files = new File(folders.dstDir).list();
     for (String f : files) {
@@ -854,30 +866,29 @@ public class Publisher implements Logger {
 	    this.trackErrors = trackErrors;
 	  }
 
-	  @Override
-	  public void error(SAXParseException arg0) throws SAXException {
-	    if (trackErrors) {
-	      System.out.println("error: " + arg0.toString());
-	      errors.add(arg0.toString());
-	    }
-	  }
+    public void error(SAXParseException arg0) throws SAXException {
+    if (trackErrors) {
+    System.out.println("error: " + arg0.toString());
+    errors.add(arg0.toString());
+  }
+      
+    }
 
-	  @Override
-	  public void fatalError(SAXParseException arg0) throws SAXException {
-	    System.out.println("fatal error: " + arg0.toString());
+    public void fatalError(SAXParseException arg0) throws SAXException {
+    System.out.println("fatal error: " + arg0.toString());
+      
+    }
 
-	  }
+    public void warning(SAXParseException arg0) throws SAXException {
+    //  System.out.println("warning: " + arg0.toString());
+      
+    }
 
-	  public List<String> getErrors() {
-	    return errors;
-	  }
-
-	  @Override
-	  public void warning(SAXParseException arg0) throws SAXException {
-	  //  System.out.println("warning: " + arg0.toString());
-
-	  }
-
+    public List<String> getErrors() {
+      return errors;
+    }
+    
+    
 	}
 
 	public class MyLSInput implements LSInput {
@@ -888,96 +899,80 @@ public class Publisher implements Logger {
 	    this.stream = fileInputStream;
 	  }
 
-	  @Override
 	  public String getBaseURI() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public InputStream getByteStream() {
 	    return stream;
 	  }
 
-	  @Override
 	  public boolean getCertifiedText() {
 	    // TODO Auto-generated method stub
 	    return false;
 	  }
 
-	  @Override
 	  public Reader getCharacterStream() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public String getEncoding() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public String getPublicId() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public String getStringData() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public String getSystemId() {
 	    // TODO Auto-generated method stub
 	    return null;
 	  }
 
-	  @Override
 	  public void setBaseURI(String baseURI) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setByteStream(InputStream byteStream) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setCertifiedText(boolean certifiedText) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setCharacterStream(Reader characterStream) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setEncoding(String encoding) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setPublicId(String publicId) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setStringData(String stringData) {
 	    // TODO Auto-generated method stub
 
 	  }
 
-	  @Override
 	  public void setSystemId(String systemId) {
 	    // TODO Auto-generated method stub
 
@@ -992,7 +987,6 @@ public class Publisher implements Logger {
 	    this.dir = dir;
 	  }
 
-	  @Override
 	  public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
 	    System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
 	    if (!(namespaceURI.equals("http://www.hl7.org/fhir") || namespaceURI.equals("http://www.w3.org/1999/xhtml")))
@@ -1447,6 +1441,7 @@ public class Publisher implements Logger {
 		return val;
 	}
 
+	
 	private String xmlForDt(String dt) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		FileOutputStream fos = new FileOutputStream(tmp);
@@ -1470,7 +1465,6 @@ public class Publisher implements Logger {
 
 		}				
 		return html.toString();
-
 	}
 
 	private String genResImplList() {
@@ -1486,10 +1480,9 @@ public class Publisher implements Logger {
 
 	}
 
-  @Override
-  public void log(String content) {
-    System.out.println(content);    
-  }
+	public void log(String content) {
+	  System.out.println(content);        
+	}
 
 
 }

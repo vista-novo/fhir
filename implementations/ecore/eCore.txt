@@ -402,6 +402,7 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute dob : dateTime;                -- The birth date for the person
     attribute gender : CodeableConcept;      -- Administrative Gender
     attribute religion : CodeableConcept;    -- The religious denomination to which a person professes affiliation
+    attribute race : CodeableConcept;        -- blah balh
     attribute qualification : Person_qualification; -- The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
     attribute language : Person_language;    -- A language spoken by the person, with proficiency
     attribute relatedPerson : Person_relatedPerson; -- Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).

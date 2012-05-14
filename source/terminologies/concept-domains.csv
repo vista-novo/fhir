@@ -61,3 +61,4 @@ RestfulConformanceMode,The mode of a restful conformance statement,code list,res
 EventReason,The reason for an event occurring,,,
 ExtensionState,The state of an extension,code list,extension-state,
 ResourceIdSource,The system responsible for the provision of a resource unique id,code list,resource-id-source,
+Race,The race of the person,preferred,HL7 v2 table 0200,

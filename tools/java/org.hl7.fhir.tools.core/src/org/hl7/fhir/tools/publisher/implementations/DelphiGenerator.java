@@ -1091,12 +1091,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
   }
   
-  @Override
   public String getName() {
     return "delphi";
   }
 
-  @Override
   public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception {
     defCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRResources.pas"));
     defCode.start();
@@ -1513,12 +1511,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "  end;\r\n\r\n";
   }
 
-  @Override
   public String getDescription() {
     return "Resource Definitions, and XML & JSON parsers. D5+. TODO: remove dependencies on unpublished code.";
   }
 
-  @Override
   public String getTitle() {
     return "Delphi";
   }

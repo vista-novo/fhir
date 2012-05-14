@@ -1402,6 +1402,11 @@ namespace org.hl7.fhir.instance.model
     public CodeableConcept religion { get; set; }
 
     /**
+     * blah balh
+     */
+    public List<CodeableConcept> race { get; private set; }
+
+    /**
      * The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
      */
     public List<PersonQualification> qualification { get; private set; }

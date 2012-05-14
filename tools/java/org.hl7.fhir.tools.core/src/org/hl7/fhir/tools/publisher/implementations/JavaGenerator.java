@@ -18,17 +18,14 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   private String javaDir;
   private String javaParserDir;
 
-  @Override
   public String getName() {
     return "java";
   }
 
-  @Override
   public String getDescription() {
     return "Resource Definitions + parser (+ more todo). The java reference implementation depends on XmlPull (http://www.xmlpull.org/) and the Apache Commons Codec library (http://commons.apache.org/codec/).";
   }
 
-  @Override
   public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
     char sl = File.separatorChar;
     javaDir       =  implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
@@ -105,7 +102,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     return n.substring(0,1).toUpperCase()+n.substring(1);
   }
 
-  @Override
   public String getTitle() {
     return "Java";
   }

@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:09+1000 for FHIR v0.01
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -1636,6 +1636,8 @@ public class XmlParser extends XmlParserBase {
         res.setGender(parseCodeableConcept(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("religion")) {
         res.setReligion(parseCodeableConcept(xpp));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("race")) {
+        res.getRace().add(parseCodeableConcept(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("qualification")) {
         res.getQualification().add(parsePersonQualification(xpp, res));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("language")) {

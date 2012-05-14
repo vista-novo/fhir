@@ -2,7 +2,7 @@ unit FHIRParser;
 
 interface
 
-// FHIR v0.01 generated Mon, May 14, 2012 02:13+1000
+// FHIR v0.01 generated Mon, May 14, 2012 11:09+1000
 
 uses
   SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
@@ -7695,6 +7695,8 @@ begin
         result.gender := ParseCodeableConcept(child)
       else if (child.nodeName = 'religion') then
         result.religion := ParseCodeableConcept(child)
+      else if (child.nodeName = 'race') then
+        result.Race.Add(ParseCodeableConcept(child))
       else if (child.nodeName = 'qualification') then
         result.Qualification.Add(ParsePersonQualification(child))
       else if (child.nodeName = 'language') then
@@ -7732,6 +7734,8 @@ begin
   Text('dob',elem.dob);
   ComposeCodeableConcept('gender', elem.gender);
   ComposeCodeableConcept('religion', elem.religion);
+  for i := 0 to elem.Race.Count - 1 do
+    ComposeCodeableConcept('race', elem.Race[i]);
   for i := 0 to elem.Qualification.Count - 1 do
     ComposePersonQualification('qualification', elem.Qualification[i]);
   for i := 0 to elem.Language.Count - 1 do
@@ -7788,6 +7792,14 @@ begin
         result.gender := ParseCodeableConcept
       else if (FJson.ItemName = 'religion') then
         result.religion := ParseCodeableConcept
+      else if (FJson.ItemName = 'races') then
+      begin
+        FJson.checkState(jpitArray);
+        FJson.Next;
+        while (FJson.ItemType <> jpitEnd) do
+          result.Race.Add(ParseCodeableConcept);
+        FJson.Next;
+      end
       else if (FJson.ItemName = 'qualifications') then
       begin
         FJson.checkState(jpitArray);
@@ -7862,6 +7874,13 @@ begin
   Prop('dob',elem.dob);
   ComposeCodeableConcept('gender', elem.gender);
   ComposeCodeableConcept('religion', elem.religion);
+  if elem.Race.Count > 0 then
+  begin
+    FJson.valueObject('races');
+    for i := 0 to elem.Race.Count - 1 do
+      ComposeCodeableConcept('race',elem.Race[i]);
+    FJson.FinishObject;
+  end;
   if elem.Qualification.Count > 0 then
   begin
     FJson.valueObject('qualifications');

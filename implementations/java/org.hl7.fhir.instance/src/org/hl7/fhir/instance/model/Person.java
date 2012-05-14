@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 02:13+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:09+1000 for FHIR v0.01
 
 import java.util.*;
 
@@ -209,6 +209,11 @@ public class Person extends Resource {
     private CodeableConcept religion;
 
     /**
+     * blah balh
+     */
+    private List<CodeableConcept> race = new ArrayList<CodeableConcept>();
+
+    /**
      * The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
      */
     private List<Qualification> qualification = new ArrayList<Qualification>();
@@ -261,6 +266,10 @@ public class Person extends Resource {
 
     public void setReligion(CodeableConcept value) { 
       this.religion = value;
+    }
+
+    public List<CodeableConcept> getRace() { 
+      return this.race;
     }
 
     public List<Qualification> getQualification() { 

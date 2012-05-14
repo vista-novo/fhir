@@ -76,6 +76,13 @@
 
   <dob>1974-12-25</dob> 
 	
+	<race>
+	  <coding>
+	    <code>EUR</code>
+    <system>urn:hl7.org::v2/0200</system>
+    <display>European</display>
+  </coding>
+	</race>
 	<text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
