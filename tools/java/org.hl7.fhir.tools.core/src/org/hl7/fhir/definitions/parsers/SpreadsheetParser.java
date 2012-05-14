@@ -8,7 +8,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -38,9 +38,9 @@ public class SpreadsheetParser {
     return root;
   }
 
-  public Profile parseProfile(Definitions definitions) throws Exception {
+  public ProfileDefn parseProfile(Definitions definitions) throws Exception {
     isProfile = true;
-    Profile p = new Profile();
+    ProfileDefn p = new ProfileDefn();
 
     Sheet sheet = xls.getSheets().get("Metadata");
     for (int row = 0; row < sheet.rows.size(); row++) {

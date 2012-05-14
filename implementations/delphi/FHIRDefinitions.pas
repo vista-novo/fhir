@@ -2,7 +2,7 @@ unit FHIRDefinitions;
 
 interface
 
-// FHIR v0.01 generated Mon, May 14, 2012 11:22+1000
+// FHIR v0.01 generated Mon, May 14, 2012 23:22+1000
 
 uses
   FHIRDefinitionBase;
@@ -2383,6 +2383,51 @@ begin
   end;
 end;
 
+procedure addResourceElementDefnLloyd(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Lloyd', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.resources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
+procedure addResourceElementDefnWoody(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Woody', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.resources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
+procedure addResourceElementDefnEwout(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Ewout', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.resources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
 procedure addResourceElementDefnPatient(definitions : TFHIRDefinitions);
 var
   cd : TFHIRElementDefn;
@@ -2992,6 +3037,51 @@ begin
   end;
 end;
 
+procedure addDefinedResourceElementDefnLloyd(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Lloyd', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.DefinedResources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
+procedure addDefinedResourceElementDefnWoody(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Woody', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.DefinedResources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
+procedure addDefinedResourceElementDefnEwout(definitions : TFHIRDefinitions);
+var
+  cd : TFHIRElementDefn;
+begin
+  cd := TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'Ewout', '', '[Template] Master Definition', '', false, '', '', '', '', '', '', '', 'Resource', false);
+  try
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'id', 'Master Id, first in all resources', 'Master Id, first in all resources', '', false, '', '', '', '', '', '', '', 'id', false));
+    cd.AddChild(TFHIRElementDefn.create(cOptional, 0, 1, '', '', bsUnspecified, 'extensions', 'See Extensions', 'See Extensions', '', false, '', '', '', '', '', '', '', '', false));
+    cd.AddChild(TFHIRElementDefn.create(cMandatory, 1, 1, '', '', bsUnspecified, 'text', 'Text summary of [template] for human interpretation', 'Text summary of [template] for human interpretation', '', false, '', '', '', '', '', '', '', 'Narrative', false));
+    definitions.DefinedResources.add(cd.Link);
+  finally
+    cd.free
+  end;
+end;
+
 procedure addDefinedResourceElementDefnPatient(definitions : TFHIRDefinitions);
 var
   cd : TFHIRElementDefn;
@@ -3216,6 +3306,9 @@ begin
     result.KnownResources.add(TFHIRDefinedCode.create('Organization', 'For any organization/institution/government department that has relevance to the care process', 'organization'));
     result.KnownResources.add(TFHIRDefinedCode.create('Prescription', 'Directions provided by a prescribing practitioner for a specific medication to be administered to an individual', 'prescription'));
     result.KnownResources.add(TFHIRDefinedCode.create('Profile', 'A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains', 'profile'));
+    result.KnownResources.add(TFHIRDefinedCode.create('Lloyd', '[Template] Master Definition', 'lloyd'));
+    result.KnownResources.add(TFHIRDefinedCode.create('Woody', '[Template] Master Definition', 'woody'));
+    result.KnownResources.add(TFHIRDefinedCode.create('Ewout', '[Template] Master Definition', 'ewout'));
     result.KnownResources.add(TFHIRDefinedCode.create('InterestOfCare', 'Yet to be defined', 'interestofcare'));
     result.KnownResources.add(TFHIRDefinedCode.create('Admission', 'Yet to be defined', 'admission'));
     result.KnownResources.add(TFHIRDefinedCode.create('Specimen', 'Yet to be defined', 'specimen'));
@@ -3313,6 +3406,9 @@ begin
     addResourceElementDefnOrganization(result);
     addResourceElementDefnPrescription(result);
     addResourceElementDefnProfile(result);
+    addResourceElementDefnLloyd(result);
+    addResourceElementDefnWoody(result);
+    addResourceElementDefnEwout(result);
     addResourceElementDefnPatient(result);
     addResourceElementDefnPerson(result);
     addResourceElementDefnLabReport(result);
@@ -3330,6 +3426,9 @@ begin
     addDefinedResourceElementDefnOrganization(result);
     addDefinedResourceElementDefnPrescription(result);
     addDefinedResourceElementDefnProfile(result);
+    addDefinedResourceElementDefnLloyd(result);
+    addDefinedResourceElementDefnWoody(result);
+    addDefinedResourceElementDefnEwout(result);
     addDefinedResourceElementDefnPatient(result);
     addDefinedResourceElementDefnPerson(result);
     addDefinedResourceElementDefnLabReport(result);

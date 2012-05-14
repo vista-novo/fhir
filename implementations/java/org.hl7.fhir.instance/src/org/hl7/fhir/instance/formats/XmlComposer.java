@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.formats;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:22+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 23:22+1000 for FHIR v0.01
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1035,6 +1035,54 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composeLloyd(String name, Lloyd element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeWoody(String name, Woody element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeEwout(String name, Ewout element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeId("id", element.getId());
+      if (element.getExtensions().size() > 0) {
+        xml.open(FHIR_NS, "extensions");
+        for (Extension e : element.getExtensions()) 
+          composeExtension("extension", e);
+        xml.close(FHIR_NS, "extensions");
+      }
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composePatient(String name, Patient element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
@@ -1302,6 +1350,12 @@ public class XmlComposer extends XmlComposerBase {
       composePrescription("Prescription", (Prescription)resource);
     else if (resource instanceof Profile)
       composeProfile("Profile", (Profile)resource);
+    else if (resource instanceof Lloyd)
+      composeLloyd("Lloyd", (Lloyd)resource);
+    else if (resource instanceof Woody)
+      composeWoody("Woody", (Woody)resource);
+    else if (resource instanceof Ewout)
+      composeEwout("Ewout", (Ewout)resource);
     else if (resource instanceof Patient)
       composePatient("Patient", (Patient)resource);
     else if (resource instanceof Person)

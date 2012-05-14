@@ -34,7 +34,7 @@ public class Definitions {
   private Map<String, ElementDefn> definedResources = new HashMap<String, ElementDefn>();
 
   private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
-  private Map<String, Profile> profiles = new HashMap<String, Profile>();
+  private Map<String, ProfileDefn> profiles = new HashMap<String, ProfileDefn>();
 
   public boolean hasResource(String name) {
     return resources.containsKey(name) || specialResources.containsKey(name); // || knownResources.containsKey(name);
@@ -150,7 +150,7 @@ public class Definitions {
   }
 
 
-  public Map<String, Profile> getProfiles() {
+  public Map<String, ProfileDefn> getProfiles() {
     return profiles;
   }
 

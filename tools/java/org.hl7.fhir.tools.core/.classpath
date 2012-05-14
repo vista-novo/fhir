@@ -7,5 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.apache.commons.codec"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.json"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.hl7.fhir.utilities"/>
+	<classpathentry kind="src" path="/org.hl7.fhir.implementation"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

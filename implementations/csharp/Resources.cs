@@ -1239,6 +1239,21 @@ namespace org.hl7.fhir.instance.model
 
   }
 
+  public class Lloyd : Resource {
+  
+
+  }
+
+  public class Woody : Resource {
+  
+
+  }
+
+  public class Ewout : Resource {
+  
+
+  }
+
   public class Patient : Resource {
   
     /**

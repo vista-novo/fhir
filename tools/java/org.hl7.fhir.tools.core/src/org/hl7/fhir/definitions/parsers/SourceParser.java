@@ -13,7 +13,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
@@ -35,6 +35,7 @@ public class SourceParser {
   private IniFile ini;
   private Definitions definitions;
   private String srcDir;
+  private String sndBoxDir;
   private String imgDir;
   private String termDir;
   public String dtDir;
@@ -49,6 +50,7 @@ public class SourceParser {
     
     char sl = File.separatorChar;
     srcDir = root+sl+"source"+sl;
+    sndBoxDir = root+sl+"sandbox"+sl;
     ini = new IniFile(srcDir+ "fhir.ini");
     
     termDir = srcDir+"terminologies"+sl;
@@ -58,7 +60,7 @@ public class SourceParser {
   }
 
   
-  public void parse() throws Exception {
+  public void parse(boolean isInternal) throws Exception {
     logger.log("Loading");
     loadConceptDomains();
     loadPrimitives();
@@ -70,9 +72,12 @@ public class SourceParser {
     for (String n : ini.getPropertyNames("infrastructure")) 
       loadDataType(n, definitions.getInfrastructure());
     for (String n : ini.getPropertyNames("resources")) 
-      loadResource(n, definitions.getResources());
+      loadResource(n, definitions.getResources(), false);
+    if (isInternal)
+      for (String n : ini.getPropertyNames("sandbox")) 
+        loadResource(n, definitions.getResources(), true);
     for (String n : ini.getPropertyNames("special-resources")) 
-      loadResource(n, definitions.getSpecialResources());
+      loadResource(n, definitions.getSpecialResources(), false);
     for (String n : ini.getPropertyNames("future-resources")) {
       DefinedCode cd = new DefinedCode(ini.getStringProperty("future-resources", n), "Yet to be defined", n);
       definitions.getKnownResources().put(n, cd);
@@ -85,10 +90,10 @@ public class SourceParser {
   }
 
 
-  private void loadProfile(String n, Map<String, Profile> profiles) throws Exception {
+  private void loadProfile(String n, Map<String, ProfileDefn> profiles) throws Exception {
     File spreadsheet = new File(rootDir+ini.getStringProperty("profiles", n));
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
-    Profile profile = sparser.parseProfile(definitions);
+    ProfileDefn profile = sparser.parseProfile(definitions);
     definitions.getProfiles().put(n, profile);
   }
 
@@ -180,8 +185,8 @@ public class SourceParser {
     }
   }
 
-  private void loadResource(String n, Map<String, ElementDefn> map) throws Exception {
-    File spreadsheet = new File(srcDir+n+File.separatorChar+n+".xml");
+  private void loadResource(String n, Map<String, ElementDefn> map, boolean sandbox) throws Exception {
+    File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+".xml");
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
     ElementDefn root = sparser.parse();
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));

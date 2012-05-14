@@ -25,20 +25,26 @@ public class ResourceFactory {
             return new Profile();
         if ("Admission".equals(name))
             return new Admission();
+        if ("Lloyd".equals(name))
+            return new Lloyd();
+        if ("Woody".equals(name))
+            return new Woody();
         if ("Group".equals(name))
             return new Group();
         if ("InterestOfCare".equals(name))
             return new InterestOfCare();
         if ("Specimen".equals(name))
             return new Specimen();
+        if ("Ewout".equals(name))
+            return new Ewout();
         if ("Patient".equals(name))
             return new Patient();
-        if ("Person".equals(name))
-            return new Person();
-        if ("LabReport".equals(name))
-            return new LabReport();
         if ("DocumentConformance".equals(name))
             return new DocumentConformance();
+        if ("LabReport".equals(name))
+            return new LabReport();
+        if ("Person".equals(name))
+            return new Person();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }

@@ -2,7 +2,7 @@ unit FHIRParser;
 
 interface
 
-// FHIR v0.01 generated Mon, May 14, 2012 11:22+1000
+// FHIR v0.01 generated Mon, May 14, 2012 23:22+1000
 
 uses
   SysUtils, Classes, ActiveX, StringSupport, DateSupport, IdSoapMsXml, FHIRParserBase, FHIRBase, FHIRResources, MsXmlParser, JSON;
@@ -77,6 +77,9 @@ Type
     function ParseProfileEndorser(element : IXmlDomElement) : TProfileEndorser;
     function ParseProfileBinding(element : IXmlDomElement) : TProfileBinding;
     function ParseProfile(element : IXmlDomElement) : TProfile;
+    function ParseLloyd(element : IXmlDomElement) : TLloyd;
+    function ParseWoody(element : IXmlDomElement) : TWoody;
+    function ParseEwout(element : IXmlDomElement) : TEwout;
     function ParsePatient(element : IXmlDomElement) : TPatient;
     function ParsePersonQualification(element : IXmlDomElement) : TPersonQualification;
     function ParsePersonLanguage(element : IXmlDomElement) : TPersonLanguage;
@@ -162,6 +165,9 @@ Type
     procedure ComposeProfileEndorser(name : string; elem : TProfileEndorser);
     procedure ComposeProfileBinding(name : string; elem : TProfileBinding);
     procedure ComposeProfile(name : string; elem : TProfile);
+    procedure ComposeLloyd(name : string; elem : TLloyd);
+    procedure ComposeWoody(name : string; elem : TWoody);
+    procedure ComposeEwout(name : string; elem : TEwout);
     procedure ComposePatient(name : string; elem : TPatient);
     procedure ComposePersonQualification(name : string; elem : TPersonQualification);
     procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
@@ -247,6 +253,9 @@ Type
     function ParseProfileEndorser : TProfileEndorser;
     function ParseProfileBinding : TProfileBinding;
     function ParseProfile : TProfile;
+    function ParseLloyd : TLloyd;
+    function ParseWoody : TWoody;
+    function ParseEwout : TEwout;
     function ParsePatient : TPatient;
     function ParsePersonQualification : TPersonQualification;
     function ParsePersonLanguage : TPersonLanguage;
@@ -332,6 +341,9 @@ Type
     procedure ComposeProfileEndorser(name : string; elem : TProfileEndorser);
     procedure ComposeProfileBinding(name : string; elem : TProfileBinding);
     procedure ComposeProfile(name : string; elem : TProfile);
+    procedure ComposeLloyd(name : string; elem : TLloyd);
+    procedure ComposeWoody(name : string; elem : TWoody);
+    procedure ComposeEwout(name : string; elem : TEwout);
     procedure ComposePatient(name : string; elem : TPatient);
     procedure ComposePersonQualification(name : string; elem : TPersonQualification);
     procedure ComposePersonLanguage(name : string; elem : TPersonLanguage);
@@ -7270,6 +7282,201 @@ begin
   FJson.finishObject;
 end;
 
+function TFHIRXmlParser.ParseLloyd(element : IXmlDomElement) : TLloyd;
+var
+  child : IXMLDOMElement;
+begin
+  result := TLloyd.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeLloyd(name : string; elem : TLloyd);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseLloyd : TLloyd;
+begin
+  result := TLloyd.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeLloyd(name : string; elem : TLloyd);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseWoody(element : IXmlDomElement) : TWoody;
+var
+  child : IXMLDOMElement;
+begin
+  result := TWoody.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeWoody(name : string; elem : TWoody);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseWoody : TWoody;
+begin
+  result := TWoody.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeWoody(name : string; elem : TWoody);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
+function TFHIRXmlParser.ParseEwout(element : IXmlDomElement) : TEwout;
+var
+  child : IXMLDOMElement;
+begin
+  result := TEwout.create;
+  try
+    result.xmlId := TMsXmlParser.GetAttribute(element, 'xml:Id');
+    child := TMsXmlParser.FirstChild(element);
+    while (child <> nil) do
+    begin
+      if (child.nodeName = 'id') then
+        result.id := child.text
+      else if (child.nodeName = 'text') then
+        result.text := ParseNarrative(child)
+      else
+         UnknownContent(child);
+      child := TMsXmlParser.NextSibling(child);
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRXmlComposer.ComposeEwout(name : string; elem : TEwout);
+begin
+  if (elem = nil) then
+    exit;
+  attribute('xml:Id', elem.xmlId);
+  FXml.open(name);
+  Text('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FXml.close(name);
+end;
+
+function TFHIRJsonParser.ParseEwout : TEwout;
+begin
+  result := TEwout.create;
+  try
+    while (FJson.ItemType <> jpitEnd) do
+    begin
+      if (FJson.ItemName = 'xmlId') then
+        result.xmlId := FJson.itemValue
+      else
+         UnknownContent;
+    end;
+
+    result.link;
+  finally
+    result.free;
+  end;
+end;
+
+procedure TFHIRJsonComposer.ComposeEwout(name : string; elem : TEwout);
+begin
+  if (elem = nil) then
+    exit;
+  FJson.valueObject(name);
+  Prop('xmlId', elem.xmlId);
+  Prop('id', elem.id);
+  ComposeNarrative('text', elem.text);
+  FJson.finishObject;
+end;
+
 function TFHIRXmlParser.ParsePatient(element : IXmlDomElement) : TPatient;
 var
   child : IXMLDOMElement;
@@ -8992,6 +9199,12 @@ begin
     result := ParsePrescription(element)
   else if element.NodeName = 'Profile' Then
     result := ParseProfile(element)
+  else if element.NodeName = 'Lloyd' Then
+    result := ParseLloyd(element)
+  else if element.NodeName = 'Woody' Then
+    result := ParseWoody(element)
+  else if element.NodeName = 'Ewout' Then
+    result := ParseEwout(element)
   else if element.NodeName = 'Patient' Then
     result := ParsePatient(element)
   else if element.NodeName = 'Person' Then
@@ -9018,6 +9231,9 @@ begin
     frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
     frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
     frtProfile: ComposeProfile('Profile', TProfile(resource));
+    frtLloyd: ComposeLloyd('Lloyd', TLloyd(resource));
+    frtWoody: ComposeWoody('Woody', TWoody(resource));
+    frtEwout: ComposeEwout('Ewout', TEwout(resource));
     frtPatient: ComposePatient('Patient', TPatient(resource));
     frtPerson: ComposePerson('Person', TPerson(resource));
     frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));
@@ -9047,6 +9263,12 @@ begin
     result := ParsePrescription
   else if FJson.ItemName = 'Profile' Then
     result := ParseProfile
+  else if FJson.ItemName = 'Lloyd' Then
+    result := ParseLloyd
+  else if FJson.ItemName = 'Woody' Then
+    result := ParseWoody
+  else if FJson.ItemName = 'Ewout' Then
+    result := ParseEwout
   else if FJson.ItemName = 'Patient' Then
     result := ParsePatient
   else if FJson.ItemName = 'Person' Then
@@ -9073,6 +9295,9 @@ begin
     frtOrganization: ComposeOrganization('Organization', TOrganization(resource));
     frtPrescription: ComposePrescription('Prescription', TPrescription(resource));
     frtProfile: ComposeProfile('Profile', TProfile(resource));
+    frtLloyd: ComposeLloyd('Lloyd', TLloyd(resource));
+    frtWoody: ComposeWoody('Woody', TWoody(resource));
+    frtEwout: ComposeEwout('Ewout', TEwout(resource));
     frtPatient: ComposePatient('Patient', TPatient(resource));
     frtPerson: ComposePerson('Person', TPerson(resource));
     frtLabReport: ComposeLabReport('LabReport', TLabReport(resource));

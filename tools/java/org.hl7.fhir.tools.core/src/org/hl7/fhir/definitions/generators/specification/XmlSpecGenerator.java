@@ -6,7 +6,7 @@ import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -53,7 +53,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		close();
 	}
 	
-	public void generate(Profile profile) throws Exception {
+	public void generate(ProfileDefn profile) throws Exception {
 	  generate(profile.getResources().get(0));
 	}
 

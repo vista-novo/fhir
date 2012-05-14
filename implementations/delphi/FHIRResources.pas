@@ -4,7 +4,7 @@ unit FHIRResources;
 
 interface
 
-// FHIR v0.01 generated Mon, May 14, 2012 11:22+1000
+// FHIR v0.01 generated Mon, May 14, 2012 23:22+1000
 
 uses
   FHIRBase, AdvBuffers, DecimalSupport, Classes;
@@ -23,6 +23,9 @@ Type
     frtOrganization, {@enum.value For any organization/institution/government department that has relevance to the care process }
     frtPrescription, {@enum.value Directions provided by a prescribing practitioner for a specific medication to be administered to an individual }
     frtProfile, {@enum.value A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains }
+    frtLloyd, {@enum.value [Template] Master Definition }
+    frtWoody, {@enum.value [Template] Master Definition }
+    frtEwout, {@enum.value [Template] Master Definition }
     frtPatient, {@enum.value A patient is a person or animal that is receiving care }
     frtPerson, {@enum.value A person who is involved in the healthcare process }
     frtLabReport, {@enum.value The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care }
@@ -274,8 +277,8 @@ Type
     tlrfPlusPlusPlus); {@enum.value tlrfPlusPlusPlus  }
 
 Const
-  CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('Conformance', 'Document', 'Message', 'Animal', 'Agent', 'MessageConformance', 'Organization', 'Prescription', 'Profile', 'Patient', 'Person', 'LabReport', 'DocumentConformance');
-  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('conformances', 'documents', 'messages', 'animals', 'agents', 'messageconformances', 'organizations', 'prescriptions', 'profiles', 'patients', 'people', 'labreports', 'documentconformances');
+  CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('Conformance', 'Document', 'Message', 'Animal', 'Agent', 'MessageConformance', 'Organization', 'Prescription', 'Profile', 'Lloyd', 'Woody', 'Ewout', 'Patient', 'Person', 'LabReport', 'DocumentConformance');
+  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = ('conformances', 'documents', 'messages', 'animals', 'agents', 'messageconformances', 'organizations', 'prescriptions', 'profiles', 'lloyds', 'woodies', 'ewouts', 'patients', 'people', 'labreports', 'documentconformances');
   CODES_TExtensionState : Array[TExtensionState] of String = ('', 'must-understand', 'superceded');
   CODES_TConformanceType : Array[TConformanceType] of String = ('', 'Mandatory', 'Conditional', 'Optional', 'Prohibited');
   CODES_TNarrativeStatus : Array[TNarrativeStatus] of String = ('', 'generated', 'extensions', 'additional');
@@ -402,6 +405,9 @@ Type
   TProfileEndorserList = class;
   TProfileBindingList = class;
   TProfile = class;
+  TLloyd = class;
+  TWoody = class;
+  TEwout = class;
   TPatient = class;
   TPersonQualification = class;
   TPersonLanguage = class;
@@ -5934,6 +5940,66 @@ Type
   end;
 
 
+  {@Class TLloyd : TFHIRResource
+    [Template] Master Definition
+  }
+  {!.Net HL7Connect.Fhir.Lloyd}
+  TLloyd = class (TFHIRResource)
+  private
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TLloyd; overload;
+    function Clone : TLloyd; overload;
+    {!script show}
+  published
+  end;
+
+
+  {@Class TWoody : TFHIRResource
+    [Template] Master Definition
+  }
+  {!.Net HL7Connect.Fhir.Woody}
+  TWoody = class (TFHIRResource)
+  private
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TWoody; overload;
+    function Clone : TWoody; overload;
+    {!script show}
+  published
+  end;
+
+
+  {@Class TEwout : TFHIRResource
+    [Template] Master Definition
+  }
+  {!.Net HL7Connect.Fhir.Ewout}
+  TEwout = class (TFHIRResource)
+  private
+  protected
+    function GetResourceType : TFHIRResourceType; override;
+  public
+    constructor Create; Override;
+    destructor Destroy; override;
+    {!script hide}
+    procedure Assign(oSource : TAdvObject); override;
+    function Link : TEwout; overload;
+    function Clone : TEwout; overload;
+    {!script show}
+  published
+  end;
+
+
   {@Class TPatient : TFHIRResource
     A patient is a person or animal that is receiving care
   }
@@ -7702,6 +7768,21 @@ Type
     }
     {!script nolink}
     function newProfile : TProfile;
+    {@member newLloyd
+      create a new Lloyd
+    }
+    {!script nolink}
+    function newLloyd : TLloyd;
+    {@member newWoody
+      create a new Woody
+    }
+    {!script nolink}
+    function newWoody : TWoody;
+    {@member newEwout
+      create a new Ewout
+    }
+    {!script nolink}
+    function newEwout : TEwout;
     {@member newPatient
       create a new Patient
     }
@@ -14225,6 +14306,111 @@ begin
 end;
 
 
+{ TLloyd }
+
+constructor TLloyd.Create;
+begin
+  inherited;
+end;
+
+destructor TLloyd.Destroy;
+begin
+  inherited;
+end;
+
+function TLloyd.GetResourceType : TFHIRResourceType;
+begin
+  result := frtLloyd;
+end;
+
+procedure TLloyd.Assign(oSource : TAdvObject);
+begin
+  inherited;
+end;
+
+function TLloyd.Link : TLloyd;
+begin
+  result := TLloyd(inherited Link);
+end;
+
+function TLloyd.Clone : TLloyd;
+begin
+  result := TLloyd(inherited Clone);
+end;
+
+{ TLloyd }
+
+
+{ TWoody }
+
+constructor TWoody.Create;
+begin
+  inherited;
+end;
+
+destructor TWoody.Destroy;
+begin
+  inherited;
+end;
+
+function TWoody.GetResourceType : TFHIRResourceType;
+begin
+  result := frtWoody;
+end;
+
+procedure TWoody.Assign(oSource : TAdvObject);
+begin
+  inherited;
+end;
+
+function TWoody.Link : TWoody;
+begin
+  result := TWoody(inherited Link);
+end;
+
+function TWoody.Clone : TWoody;
+begin
+  result := TWoody(inherited Clone);
+end;
+
+{ TWoody }
+
+
+{ TEwout }
+
+constructor TEwout.Create;
+begin
+  inherited;
+end;
+
+destructor TEwout.Destroy;
+begin
+  inherited;
+end;
+
+function TEwout.GetResourceType : TFHIRResourceType;
+begin
+  result := frtEwout;
+end;
+
+procedure TEwout.Assign(oSource : TAdvObject);
+begin
+  inherited;
+end;
+
+function TEwout.Link : TEwout;
+begin
+  result := TEwout(inherited Link);
+end;
+
+function TEwout.Clone : TEwout;
+begin
+  result := TEwout(inherited Clone);
+end;
+
+{ TEwout }
+
+
 { TPatient }
 
 constructor TPatient.Create;
@@ -16211,6 +16397,21 @@ end;
 function TFHIRResourceFactory.newProfile : TProfile;
 begin
   result := TProfile.create;
+end;
+
+function TFHIRResourceFactory.newLloyd : TLloyd;
+begin
+  result := TLloyd.create;
+end;
+
+function TFHIRResourceFactory.newWoody : TWoody;
+begin
+  result := TWoody.create;
+end;
+
+function TFHIRResourceFactory.newEwout : TEwout;
+begin
+  result := TEwout.create;
 end;
 
 function TFHIRResourceFactory.newPatient : TPatient;

@@ -15,6 +15,7 @@ public class FolderManager {
     sl = File.separatorChar;
     rootDir = root+sl;
     srcDir = root+sl+"source"+sl;
+    sndBoxDir = root+sl+"sandbox"+sl;
     termDir = srcDir+"terminologies"+sl;
     dtDir = srcDir+"datatypes"+sl;
     imgDir = root+sl+"images"+sl;
@@ -29,6 +30,7 @@ public class FolderManager {
   }
   
   public String srcDir;
+  public String sndBoxDir;
   public String imgDir;
   public String xsdDir;
   public String dstDir;

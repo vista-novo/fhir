@@ -34,7 +34,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
-import org.hl7.fhir.definitions.model.Profile;
+import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.parsers.TypeParser;
@@ -91,18 +91,23 @@ public class Publisher implements Logger {
 
  
   private HashMap<String, HashMap<String, String>> keywords = new HashMap<String, HashMap<String, String>>();
+  private boolean isInternal;
   
 	public static void main(String[] args) throws Exception {
-		new Publisher().execute(args[0]);
+//    
+	  Publisher pub = new Publisher();
+	  pub.isInternal = !(args.length > 1 && args[1] == "-web");
+		pub.execute(args[0]);
 	}
 
 	public void execute(String folder) throws Exception {
-	  log("Publish FHIR in folder "+folder);
+	  
+	  log("Publish FHIR in folder "+folder+ (isInternal ? " [internal development mode - including the sandbox, not generating HL7 web site copy or fhir.chm]" : ""));
 
 	  registerReferencePlatforms();
 	  
 		if (initialize(folder)) {
-	    prsr.parse();
+	    prsr.parse(isInternal);
 			validate();
 			produceSpecification();
 			validateXml();
@@ -214,8 +219,10 @@ public class Publisher implements Logger {
     produceSchemaZip();
     log("Produce Specification");
     produceSpec(); 
-    produceCHM();
-    produceHL7Copy();
+    if (!isInternal) {
+      produceCHM();
+      produceHL7Copy();
+    }
   }
 
   
@@ -277,6 +284,15 @@ public class Publisher implements Logger {
   }
 
   private void produceCHM() throws Exception {
+    String hhc = "C:\\Program Files (x86)\\HTML Help Workshop\\hhc.exe";
+    if (!(new File(hhc).exists())) {
+      hhc = "C:\\Program Files\\HTML Help Workshop\\hhc.exe";
+      if (!(new File(hhc).exists())) {
+        log("Not producing CHM - Help Compiler not found");
+        return; 
+      }
+    }
+
     log("Produce CHM");
 	  // if not windows then....?
 	  Utilities.clearDirectory(folders.rootDir+"temp\\chm");
@@ -313,13 +329,6 @@ public class Publisher implements Logger {
     buildHHK(s);
     Utilities.stringToFile(s.toString(), folders.rootDir+"\\temp\\chm\\fhir.hhk");
 
-    String hhc = "C:\\Program Files (x86)\\HTML Help Workshop\\hhc.exe";
-    if (!(new File(hhc).exists())) {
-      hhc = "C:\\Program Files\\HTML Help Workshop\\hhc.exe";
-      if (!(new File(hhc).exists())) {
-        throw new Exception("unable to find HTML Help Compiler"); 
-      }
-    }
     List<String> command = new ArrayList<String>();
     command.add(hhc);
     command.add(folders.rootDir+"\\temp\\chm\\fhir.hhp");
@@ -508,7 +517,7 @@ public class Publisher implements Logger {
     
   }
 
-  private void addContent(List<Section> sections, XhtmlNode body) {
+  private void addContent(List<Section> sections, XhtmlNode body) throws Exception {
     XhtmlNode e = body.getElement("contents");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
     body.getChildNodes().remove(e);
@@ -535,6 +544,12 @@ public class Publisher implements Logger {
 
         boolean first = true;
         XhtmlDocument page = pages.get(n.name+".htm");
+        if (page == null)
+          throw new Exception("No content found for "+n.name+".htm");
+        if (page.getElement("html") == null)
+          throw new Exception("No 'html' tag found in "+n.name+".htm");
+        if (page.getElement("html").getElement("body") == null)
+          throw new Exception("No 'body' tag found in "+n.name+".htm");
         XhtmlNode pageBody = page.getElement("html").getElement("body");
         for (XhtmlNode child : pageBody.getChildNodes()) {
           if (child.getNodeType() == NodeType.Element) {
@@ -732,6 +747,8 @@ public class Publisher implements Logger {
 		dxgen.generate(root, "HL7");
 
 		File xmlf = new File(folders.srcDir+n+File.separatorChar+"example.xml");
+		if (!xmlf.exists())
+		  xmlf = new File(folders.sndBoxDir+n+File.separatorChar+"example.xml");
 		File umlf = new File(folders.imgDir+n+".png");
 
 		String src = Utilities.fileToString(folders.srcDir + "template.htm");
@@ -768,7 +785,7 @@ public class Publisher implements Logger {
 		
 	}
 
-  private void produceProfile(String filename, Profile profile) throws Exception {
+  private void produceProfile(String filename, ProfileDefn profile) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
   
     XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
@@ -1324,9 +1341,12 @@ public class Publisher implements Logger {
 				src = s1+tx+s3;
 			else if (com[0].equals("plural"))
 				src = s1+Utilities.pluralizeMe(name)+s3;
-			else if (com[0].equals("notes"))
-				src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+".htm")+s3;
-			else if (com[0].equals("dictionary"))
+			else if (com[0].equals("notes")) {
+			  if (new File(folders.sndBoxDir + name+File.separatorChar+name+".htm").exists())
+	        src = s1+Utilities.fileToString(folders.sndBoxDir + name+File.separatorChar+name+".htm")+s3;
+			  else
+			    src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+".htm")+s3;
+			} else if (com[0].equals("dictionary"))
 				src = s1+dict+s3;
 			else if (com[0].equals("resurl")) {
 				if (isSpecial(name))
@@ -1340,7 +1360,7 @@ public class Publisher implements Logger {
 		return src;
 	}
 
-  private String processProfileIncludes(String filename, Profile profile, String xml, String src) throws Exception {
+  private String processProfileIncludes(String filename, ProfileDefn profile, String xml, String src) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
