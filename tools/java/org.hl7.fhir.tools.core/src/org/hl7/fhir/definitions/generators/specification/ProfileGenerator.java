@@ -1,33 +1,41 @@
 package org.hl7.fhir.definitions.generators.specification;
 
 import java.io.OutputStream;
+import java.net.URISyntaxException;
 
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Id;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.Author;
+import org.hl7.fhir.instance.model.String_;
 
 public class ProfileGenerator {
 
-  public void generate(ProfileDefn profile, OutputStream stream) {
+  public void generate(ProfileDefn profile, OutputStream stream) throws Exception {
     Profile p = new Profile();
-    p.setId(new Id());
-    p.getId().setValue(profile.metadata("id"));
-//    p.
-    
-    
-//    
-//    <name> mand string Informal name for this profile</name>
-//    <author> mand  <!-- (Organisation or individual) -->
-//     <name> mand string Name of the recognised author</name>
-//     <reference> opt Zero+ uri Web reference to the author</reference>
-//    </author>
-//    <intention> opt string Why this profile was written</intention>
+    p.setId(Factory.newId(profile.metadata("id")));
+    p.setName(Factory.newString_(profile.metadata("name")));
+    p.setAuthor(p.new Author());
+    p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
+    p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
+    if (profile.hasMetadata("intention"))
+      p.setIntention(Factory.newString_(profile.metadata("intention")));
+    if (profile.hasMetadata("description"))
+      p.setIntention(Factory.newString_(profile.metadata("description")));
+    if (profile.hasMetadata("evidence"))
+      p.setIntention(Factory.newString_(profile.metadata("evidence")));
+    if (profile.hasMetadata("comments"))
+      p.setIntention(Factory.newString_(profile.metadata("comments")));
+    if (profile.hasMetadata("date"))
+      p.setDate(Factory.newDateTime(profile.metadata("date")));
+    p.getEndorser().add(p.new Endorser());
+    p.getEndorser().get(0).setName(Factory.newString_(profile.metadata("endorser.name")));
+    p.getEndorser().get(0).setReference(Factory.newUri(profile.metadata("endorser.reference")));
+
 //    <code> opt Zero+ Coding assist with indexing and finding</code>
-//    <description> mand string natural language description of the Template</description>
-//    <evidence> opt Zero+ uri Supporting evidence for the design</evidence>
-//    <comments> opt string Guidance for use, usage notes, etc</comments>
 //    <status> mand code draft | testing | production | withdrawn | superceded</status>
-//    <date> mand dateTime date for given status</date>
+
 //    <endorser> opt  <!-- Zero+ (Organisation or individual) -->
 //     <name> mand string Name of the recognised endorser</name>
 //     <reference> opt uri Web reference to the endorser</reference>

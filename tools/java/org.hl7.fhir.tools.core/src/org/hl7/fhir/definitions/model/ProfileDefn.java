@@ -31,6 +31,11 @@ public class ProfileDefn {
       return "";
   }
 
+  public boolean hasMetadata(String name) {
+    String s = metadata(name);
+    return (s != null && !s.equals(""));
+  }
+
 
   
   
