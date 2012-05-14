@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:09+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 11:22+1000 for FHIR v0.01
 
 /**
  * An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
