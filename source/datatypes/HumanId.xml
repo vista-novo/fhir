@@ -20,7 +20,6 @@
   <WindowWidth>25155</WindowWidth>
   <WindowTopX>3120</WindowTopX>
   <WindowTopY>3225</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -58,14 +57,13 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="101.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="29.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="67.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="81"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="77.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="49.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="102"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="230.25"/>
@@ -79,7 +77,6 @@
     <Cell><Data ss:Type="String">Conf.</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
-    <Cell><Data ss:Type="String">Binding Strength</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -96,10 +93,10 @@
     <Cell><Data ss:Type="String">HumanId</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">An identifier that humans use</Data></Cell>
     <Cell><Data ss:Type="String">An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Need to be able to work with the many vagaries of human identifiers - that is, identifiers that humans use for things, with the attendent uncertainty and correction features</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Need to be able to work with the many vagaries of human identifiers - that is, identifiers that humans use for things, with the attendent uncertainty and correction features</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">HumanId.type</Data></Cell>
@@ -107,27 +104,26 @@
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">IdentifierType</Data></Cell>
-    <Cell><Data ss:Type="String">Extensible</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Code for identifier type</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Code for identifier type</Data></Cell>
     <Cell><Data ss:Type="String">The type of the identifier - to allow a particular identifier to be picked elsewhere</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Human identifiers often have some type associated with them that is important to allow the identifier to be picked as a basis for exchange elsewhere, either in other electronic interchanges, or paper forms</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Human identifiers often have some type associated with them that is important to allow the identifier to be picked as a basis for exchange elsewhere, either in other electronic interchanges, or paper forms</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="124.5">
     <Cell><Data ss:Type="String">HumanId.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Actual identifier</Data></Cell>
     <Cell><Data ss:Type="String">The Actual identifier</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">An identifier with an id element is required unless a dataAbsentReason flag is provided on the identifier element. If the HumanId is mandatory, then the identifier element is also mandatory</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">An identifier with an id element is required unless a dataAbsentReason flag is provided on the identifier element. If the HumanId is mandatory, then the identifier element is also mandatory</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">HumanId.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Interval(dateTime)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Time period when id was valid for use</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Time period when id was valid for use</Data></Cell>
     <Cell><Data ss:Type="String">Time period during which identifier was valid for use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -135,7 +131,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Organisation that issued id</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Organisation that issued id</Data></Cell>
     <Cell><Data ss:Type="String">Organisation that issued/manages the identifier</Data></Cell>
    </Row>
   </Table>
@@ -152,12 +148,13 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>12</ActiveCol>
+     <ActiveCol>5</ActiveCol>
+     <RangeSelection>C6</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -208,7 +205,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

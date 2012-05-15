@@ -106,8 +106,8 @@ public class SourceParser {
     definitions.getConceptDomains().put(cd.getName(), cd);
     
     for (ConceptDomain cd : definitions.getConceptDomains().values()) {
-      if (cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-        File file = new File(termDir+cd.getBinding()+".csv");
+      if (cd.getBinding() == ConceptDomain.Binding.CodeList) {
+        File file = new File(termDir+cd.getReference().substring(1)+".csv");
         if (!file.exists())
           throw new Exception("code source file not found for "+cd.getName()+": "+file.getAbsolutePath());
         CodeListParser cparser = new CodeListParser(new FileInputStream(file));

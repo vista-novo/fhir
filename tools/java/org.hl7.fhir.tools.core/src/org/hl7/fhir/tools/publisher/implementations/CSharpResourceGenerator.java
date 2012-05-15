@@ -135,8 +135,8 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		String tn = null;
 		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
 			ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
-			if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-				tn = getCodeListType(cd.getBinding());
+			if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+				tn = getCodeListType(cd.getReference());
 				if (!enumNames.contains(tn)) {
 					enumNames.add(tn);
 					enums.add(e);

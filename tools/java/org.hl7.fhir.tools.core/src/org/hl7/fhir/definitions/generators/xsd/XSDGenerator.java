@@ -274,7 +274,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			String en = null;
 			if (e.hasConceptDomain()) {
 				ConceptDomain cd = getConceptDomainByName(tx, e.getConceptDomain());
-				if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+				if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
 					en = cd.getName();
 					enums.put(en, cd.getCodes());
 					return en;

@@ -145,7 +145,9 @@ public class SpreadsheetParser {
     e.getTypes().addAll(tp.parse(t));
     e.setCondition(sheet.getColumn(row, "Condition"));
     e.setConceptDomain(sheet.getColumn(row, "Concept Domain"));
-    e.setBindingStrength(pickBindingStrength(sheet.getColumn(row, "Binding Strength"), row));
+    if (!"".equals(sheet.getColumn(row, "Binding Strength")))
+      throw new Exception("Element definition binding strength is not supported in "+path);
+    
     e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));
     e.setShortDefn(sheet.getColumn(row, "Short Name"));
     e.setDefinition(sheet.getColumn(row, "Definition"));
@@ -183,7 +185,8 @@ public class SpreadsheetParser {
     e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
     e.setCondition(sheet.getColumn(row, "Condition"));
     e.setConceptDomain(sheet.getColumn(row, "Concept Domain"));
-    e.setBindingStrength(pickBindingStrength(sheet.getColumn(row, "Binding Strength"), row));
+    if (!"".equals(sheet.getColumn(row, "Binding Strength")))
+      throw new Exception("Element definition binding strength is not supported");
     e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));
     e.setDefinition(sheet.getColumn(row, "Definition"));
     e.setRequirements(sheet.getColumn(row, "Requirements"));
@@ -222,17 +225,6 @@ public class SpreadsheetParser {
     e.getElements().remove(e.getElementByName("extension"));
   }
 
-
-  private ElementDefn.BindingStrength pickBindingStrength(String s, int row) throws Exception {
-    s = s.toLowerCase();
-    if (s == null || "".equals(s))
-      return ElementDefn.BindingStrength.Unspecified;
-    if (s.equals("closed"))
-      return ElementDefn.BindingStrength.Closed;
-    if (s.equals("extensible"))
-      return ElementDefn.BindingStrength.Extensible;
-    throw new Exception("Unknown Binding Strength: "+s+" in "+getLocation(row));
-  }
 
   private ElementDefn makeFromPath(ElementDefn root, String pathname, int row, String profileName) throws Exception {
     String[] path = pathname.split("\\.");

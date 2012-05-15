@@ -16,7 +16,7 @@ public class ConceptDomainsParser extends CSVReader {
 		List<ConceptDomain> results = new ArrayList<ConceptDomain>();
 		ConceptDomain n = new ConceptDomain();
 		n.setName("*unbound*");
-		n.setBindingType(ConceptDomain.BindingType.Unbound);
+		n.setBinding(ConceptDomain.Binding.Unbound);
 		results.add(n);
 		
 
@@ -31,32 +31,45 @@ public class ConceptDomainsParser extends CSVReader {
 	
 	private void processLine(List<ConceptDomain> results, String[] titles, String[] values) throws Exception {
 		ConceptDomain cd = new ConceptDomain();
-		cd.setName(getColumn(titles, values, "Concept Domain"));
+    cd.setId(getColumn(titles, values, "Id"));
+    cd.setName(getColumn(titles, values, "Concept Domain"));
 		cd.setDefinition(getColumn(titles, values, "Definition"));
-		cd.setBindingType(readBinding(getColumn(titles, values, "Binding Type")));
-		cd.setBinding(getColumn(titles, values, "Binding"));
-		cd.setDetails(getColumn(titles, values, "Binding Details"));
+    cd.setBinding(readBinding(getColumn(titles, values, "Binding")));
+    cd.setBindingStrength(readBindingStrength(getColumn(titles, values, "Binding Strength")));
+    cd.setReference(getColumn(titles, values, "Reference"));
+    cd.setDescription(getColumn(titles, values, "Description"));
 		results.add(cd);
 	}
 
-	private ConceptDomain.BindingType readBinding(String s) throws Exception {
-
+	private ConceptDomain.Binding readBinding(String s) throws Exception {
 		s = s.toLowerCase();
-		if (s == null || "".equals(s))
-			return ConceptDomain.BindingType.Unbound;
+		if (s == null || "".equals(s) || "unbound".equals(s))
+			return ConceptDomain.Binding.Unbound;
 		if (s.equals("code list"))
-			return ConceptDomain.BindingType.CodeList;
-		if (s.equals("preferred"))
-			return ConceptDomain.BindingType.Preferred;
-		if (s.equals("reference"))
-			return ConceptDomain.BindingType.Reference;
+			return ConceptDomain.Binding.CodeList;
+		if (s.equals("code reference list"))
+			return ConceptDomain.Binding.CodeReference;
+		if (s.equals("single code"))
+			return ConceptDomain.Binding.SingleCode;
 		if (s.equals("special"))
-			return ConceptDomain.BindingType.Special;
-		if (s.equals("external"))
-			return ConceptDomain.BindingType.External;
-		if (s.equals("suggestion"))
-			return ConceptDomain.BindingType.Suggestion;
-		throw new Exception("Unknown Binding Type: "+s);
+			return ConceptDomain.Binding.Special;
+		if (s.equals("reference"))
+			return ConceptDomain.Binding.Reference;
+		if (s.equals("value set"))
+			return ConceptDomain.Binding.ValueSet;
+		throw new Exception("Unknown Binding: "+s);
 	}
-	
+		
+  private ConceptDomain.BindingStrength readBindingStrength(String s) throws Exception {
+    s = s.toLowerCase();
+    if (s == null || "".equals(s))
+      return ConceptDomain.BindingStrength.Unstated;
+    if (s.equals("required"))
+      return ConceptDomain.BindingStrength.Required;
+    if (s.equals("preferred"))
+      return ConceptDomain.BindingStrength.Preferred;
+    if (s.equals("suggested"))
+      return ConceptDomain.BindingStrength.Suggested;
+    throw new Exception("Unknown Binding Strength: "+s);
+  }
 }

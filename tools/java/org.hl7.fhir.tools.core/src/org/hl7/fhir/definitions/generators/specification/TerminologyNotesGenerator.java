@@ -61,10 +61,6 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 			String path;
 			List<CDUsage> list = txusages.get(cd);
 			for (int i = 2; i < list.size(); i++) {
-				if (list.get(i).element.getBindingStrength() != list.get(1).element.getBindingStrength())
-					throw new Exception("Mixed binding strengths on one concept domain in one type - not yet supported by the build process");
-			}
-			for (int i = 2; i < list.size(); i++) {
 				if (!list.get(i).element.typeCode().equals(list.get(1).element.typeCode()))
 					throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process");
 			}
@@ -78,13 +74,12 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 				}
 				path = path+" and "+list.get(list.size()-1).path+" are ";
 			}
-			ElementDefn.BindingStrength bs = list.get(1).element.getBindingStrength();
-
+	
 			if (cd.getName().equals("*unbound*")) {
-				write("  <li>"+path+" not bound to a concept domain</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.Unbound) {
+				write("  <li>"+path+" not bound to a concept domain (Error)</li>\r\n");
+			} else if (cd.getBinding() == ConceptDomain.Binding.Unbound) {
 				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\"</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+			} else if (cd.getBinding() == ConceptDomain.Binding.CodeList) {
 				String sid = "";
 				if (!list.get(1).element.typeCode().equals("code")) {
 					sid = "urn:hl7-org:sid/fhir/"+cd.getBinding();
@@ -93,10 +88,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 					sid = " (sid = "+sid+")";
 				}
 					
-				if (bs == ElementDefn.BindingStrength.Extensible)
-					write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Use one of these values if possible:\r\n");
-				else
-					write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
+  			write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
 				write("    <table class=\"codes\">\r\n");
 				boolean hasComment = false;
 				boolean hasDefinition = false;
@@ -121,35 +113,34 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 				write("    </table>\r\n");
 				write("  </li>\r\n");
 				
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.Reference) {
-				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". For example values, see "+Utilities.escapeXml(cd.getBinding())+"</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.Preferred) {
-				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". If an appropriate code exists in "+Utilities.escapeXml(cd.getBinding())+" then it should be used</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.Suggestion) {
-				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". A good candidate for codes is "+Utilities.escapeXml(cd.getBinding())+"</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.External) {
-				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". The possible values are those specified in "+makeLink(Utilities.escapeXml(cd.getBinding()), cd.getDetails())+"</li>\r\n");
-			} else if (cd.getBindingType() == ConceptDomain.BindingType.Special) {
-				if (cd.getName().equals("MessageEvent"))
-					write("<li>"+path+" bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href=\"messaging.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
-				else if (cd.getName().equals("ResourceType"))
-					write("  <li>"+path+" bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
-				else 
-					write("  <li>"+path+" bound to the concept domain <i>DataType</i> which has the allowed values of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
-				
-			} 
+      } else if (cd.getBinding() == ConceptDomain.Binding.Special) {
+        if (cd.getName().equals("MessageEvent"))
+          write("<li>"+path+" bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href=\"messaging.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
+        else if (cd.getName().equals("ResourceType"))
+          write("  <li>"+path+" bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
+        else 
+          write("  <li>"+path+" bound to the concept domain <i>DataType</i> which has the allowed values of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
+        
+			} else {
+			  if (cd.getBindingStrength() == ConceptDomain.BindingStrength.Required)
+	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". For example values, see "+ref(cd)+"</li>\r\n");
+			  else if (cd.getBindingStrength() == ConceptDomain.BindingStrength.Preferred)
+	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". If an appropriate code exists in "+ref(cd)+" then it should be used</li>\r\n");
+			  else // if (cd.getBindingStrength() = ConceptDomain.BindingStrength.Suggested)
+	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". A good candidate for codes is "+ref(cd)+"</li>\r\n");
+			}
 		}
 		write("</ul>\r\n");
 		
 	}
 
-	private String makeLink(String html, String details) {
-		if (details == null || "".equals(details))
-			return html;
-		else
-			return "<a href=\""+details+"\" target=\"_blank\">"+html+"</a>";
-			
-	}
+	private String ref(ConceptDomain cd) {
+    if (cd.hasReference())
+      return "<a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a>";
+    else
+      return Utilities.escapeXml(cd.getDescription());
+  }
+
 
 	private void scan(ElementDefn e, String path, Map<String, ConceptDomain> tx) throws Exception {
 		if (e.hasConceptDomain()) {

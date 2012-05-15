@@ -14,60 +14,96 @@ import java.util.List;
  */
 public class ConceptDomain {
   
-  public enum BindingType {
+  public enum Binding {
     Unbound,
-    CodeList,
+    CodeList, 
+    CodeReference,
+    SingleCode, 
+    ValueSet,
     Reference,
+    Special
+  }
+  
+  public enum BindingStrength {
+    Unstated,
+    Required,
     Preferred,
-    Suggestion,
-    Special, 
-    External
+    Suggested
   }
 
   
-	private String name;
+  private String id;
+  private String name;
 	private String definition;
-	private BindingType bindingType;
-	private String binding;
-	private String details;
+	private Binding binding;
+  private BindingStrength bindingStrength;
+	private String reference;
+	private String description;
+	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getDefinition() {
+    return definition;
+  }
+
+  public void setDefinition(String definition) {
+    this.definition = definition;
+  }
+
+  public Binding getBinding() {
+    return binding;
+  }
+
+  public void setBinding(Binding binding) {
+    this.binding = binding;
+  }
+
+  public BindingStrength getBindingStrength() {
+    return bindingStrength;
+  }
+
+  public void setBindingStrength(BindingStrength bindingStrength) {
+    this.bindingStrength = bindingStrength;
+  }
+
+  public String getReference() {
+    return reference;
+  }
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public List<DefinedCode> getCodes() {
+    return codes;
+  }
 	
-	
-	public String getDetails() {
-		return details;
+	public boolean hasReference() {
+	  return !(reference == null || reference.equals(""));
 	}
-	public void setDetails(String details) {
-		this.details = details;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDefinition() {
-		return definition;
-	}
-	public List<DefinedCode> getCodes() {
-		return codes;
-	}
-	public void setDefinition(String definition) {
-		this.definition = definition;
-	}
-	public BindingType getBindingType() {
-		return bindingType;
-	}
-	public void setBindingType(BindingType binding) {
-		this.bindingType = binding;
-	}
-	public String getBinding() {
-		return binding;
-	}
-	public void setBinding(String binding) {
-		this.binding = binding;
-	}
-	
-	
 
 }

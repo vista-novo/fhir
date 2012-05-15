@@ -14,7 +14,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.model.ConceptDomain.BindingType;
+import org.hl7.fhir.definitions.model.ConceptDomain.Binding;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -517,8 +517,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
       ConceptDomain cd = getConceptDomain(e.getConceptDomain());
-      if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-        tn = "T"+getCodeListType(cd.getBinding());
+      if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+        tn = "T"+getCodeList(cd.getReference());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);
@@ -566,7 +566,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   }
 
-  private String getCodeListType(String binding) {
+  private String getCodeList(String binding) {
     StringBuilder b = new StringBuilder();
     boolean up = true;
     for (char ch: binding.toCharArray()) {
@@ -1164,9 +1164,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       defnCode.procs.add("procedure addConceptDomain"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRConceptDomain;\r\nbegin\r\n  cd := TFHIRConceptDomain.create();\r\n  try\r\n"+
         "    cd.name := '"+c.getName()+"';\r\n"+
         "    cd.definition := '"+c.getDefinition()+"';\r\n"+
-        "    cd.bindingType := bt"+c.getBindingType()+";\r\n"+
-        "    cd.binding := '"+c.getBinding()+"';\r\n"+
-        "    cd.details := '"+c.getDetails()+"';\r\n");
+        "    cd.binding := bt"+c.getBinding()+";\r\n"+
+        "    cd.bindingString := bts"+c.getBindingStrength()+";\r\n"+
+        "    cd.reference := '"+c.getReference()+"';\r\n"+
+        "    cd.description := '"+c.getDescription()+"';\r\n");
       for (DefinedCode dc : c.getCodes()) 
         defnCode.procs.add("    cd.codes.add(TFHIRDefinedCode.create('"+dc.getCode()+"', '"+dWrap(dc.getDefinition())+"', '"+dWrap(dc.getComment())+"'));");
       defnCode.procs.add("    definitions.conceptDomains.add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
@@ -1244,7 +1245,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ElementDefn> types, String pfx, String home) {
     for (ElementDefn c : types.values()) {
       defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
-          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getId())+"', '"+dWrap(c.getConceptDomain())+"', bs"+c.getBindingStrength()+", '"+dWrap(c.getName())+"', '"+ 
+          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getId())+"', '"+dWrap(c.getConceptDomain())+"', bs"+dWrap(c.getName())+"', '"+ 
           dWrap(c.getShortDefn())+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getRequirements())+"', "+c.isMustUnderstand()+", '"+dWrap(c.getRimMapping())+"', '"+ 
           dWrap(c.getComments())+"', '"+dWrap(c.getV2Mapping())+"', '"+dWrap(c.getTodo())+"', '"+dWrap(c.getCommitteeNotes())+"', '"+dWrap(c.getCondition())+"', '"+dWrap(c.getExample())+"', '"+ 
           dWrap(c.typeCode())+"', "+c.isNolist()+");\r\n  try");
@@ -1252,7 +1253,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       for (ElementDefn g : c.getElements()) { 
         StringBuilder s = new StringBuilder();
         s.append("    cd.AddChild(TFHIRElementDefn.create("+
-            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getId())+"', '"+dWrap(g.getConceptDomain())+"', bs"+g.getBindingStrength()+", '"+dWrap(g.getName())+"', '"+ 
+            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getId())+"', '"+dWrap(g.getConceptDomain())+"', bs"+dWrap(g.getName())+"', '"+ 
             dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
             dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
             dWrap(g.typeCode())+"', "+g.isNolist()+")");
@@ -1267,7 +1268,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private void doChildElements(StringBuilder content, ElementDefn focus, String indent) {
     for (ElementDefn g : focus.getElements()) { 
       String s = "\r\n"+indent+".AddChild(TFHIRElementDefn.create("+
-          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getId())+"', '"+dWrap(g.getConceptDomain())+"', bs"+g.getBindingStrength()+", '"+dWrap(g.getName())+"', '"+ 
+          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getId())+"', '"+dWrap(g.getConceptDomain())+"', bs"+dWrap(g.getName())+"', '"+ 
           dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
           dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
           dWrap(g.typeCode())+"', "+g.isNolist()+")";

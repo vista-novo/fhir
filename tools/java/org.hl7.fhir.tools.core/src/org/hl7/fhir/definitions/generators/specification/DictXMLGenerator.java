@@ -56,8 +56,10 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		write("  <conceptDomain>\r\n");
 		write("    <name>"+Utilities.escapeXml(cd.getName())+"</name>\r\n");
 		write("    <definition>"+Utilities.escapeXml(cd.getDefinition())+"</definition>\r\n");
-		write("    <binding>"+cd.getBindingType().toString()+"</binding>\r\n");
-		if (cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+    write("    <binding>"+cd.getBinding().toString()+"</binding>\r\n");
+    if (cd.getBindingStrength() != null)
+      write("    <bindingStrength>"+cd.getBindingStrength().toString()+"</bindingStrength>\r\n");
+		if (cd.getBinding() == ConceptDomain.Binding.CodeList) {
 			write("    <list>\r\n");
 			write("      <sid>urn:hl7-org:sid/fhir/"+cd.getBinding()+"</sid>\r\n");
 			for (DefinedCode c : cd.getCodes()) {
@@ -70,21 +72,12 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 				write("      </item>\r\n");
 			}
 			write("    </list>\r\n");
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.Unbound) {
+		} else if (cd.getBinding() == ConceptDomain.Binding.Unbound) {
 		
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.External) {
-			write("    <description>"+Utilities.escapeXml(cd.getBinding())+"</description>\r\n");
-			write("    <reference>"+Utilities.escapeXml(cd.getDetails())+"</reference>\r\n");
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.Preferred) {
-			write("    <source>"+Utilities.escapeXml(cd.getBinding())+"</source>\r\n");
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.Reference) {
-			write("    <source>"+Utilities.escapeXml(cd.getBinding())+"</source>\r\n");
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.Special) {
-			write("    <value>"+Utilities.escapeXml(cd.getBinding())+"</value>\r\n");
-		} else if (cd.getBindingType() == ConceptDomain.BindingType.Suggestion) {
-			write("    <source>"+Utilities.escapeXml(cd.getBinding())+"</source>\r\n");
-		} else
-			throw new Exception("Unknown binding type "+cd.getBindingType().toString());
+		} else {
+			write("    <description>"+Utilities.escapeXml(cd.getDescription())+"</description>\r\n");
+			write("    <reference>"+Utilities.escapeXml(cd.getReference())+"</reference>\r\n");
+		} 
 		
 		write("  </conceptDomain>\r\n");
 		

@@ -236,7 +236,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     } else {
       String prsr = null;
       ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-      if (e.typeCode().equals("code") && cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
         String en = typeNames.get(e); // getCodeListType(cd.getBinding());
         prsr = en+".fromCode(parseString(xpp))";
       } else {   
@@ -374,8 +374,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
       ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-      if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-        tn = getCodeListType(cd.getBinding());
+      if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+        tn = getCodeListType(cd.getReference());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);

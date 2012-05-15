@@ -390,6 +390,13 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute text : Narrative;              -- Text summary of [template] for human interpretation
   }
 
+  class Linda extends Resource               -- [Template] Master Definition
+  {
+    attribute id : id;                       -- Master Id, first in all resources
+    attribute extensions : Extensions;       -- See Extensions
+    attribute text : Narrative;              -- Text summary of [template] for human interpretation
+  }
+
   class Ewout extends Resource               -- [Template] Master Definition
   {
     attribute id : id;                       -- Master Id, first in all resources

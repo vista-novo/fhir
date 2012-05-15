@@ -6,7 +6,6 @@ import java.util.List;
 public class ElementDefn {
   
   
-  public enum BindingStrength { Unspecified, Closed, Extensible }
   public enum Conformance { Unstated, Mandatory, Conditional, Optional, Prohibited;
     public String code() {
       switch (this) {
@@ -39,7 +38,6 @@ public class ElementDefn {
 	private Integer maxCardinality;
 	private String id;
 	private String conceptDomain;
-	private BindingStrength bindingStrength;
 	private String name;
 	private String shortDefn;
 	private String definition;
@@ -72,7 +70,6 @@ public class ElementDefn {
 	  maxCardinality = pattern.maxCardinality;
 	  id = pattern.id;
 	  conceptDomain = pattern.conceptDomain;
-	  bindingStrength = pattern.bindingStrength;
 	  name = pattern.name;
 	  shortDefn = pattern.shortDefn;
 	  definition = pattern.definition;
@@ -345,13 +342,6 @@ public class ElementDefn {
 		return conceptDomain != null && !conceptDomain.equals("");
 	}
 
-	public BindingStrength getBindingStrength() {
-		return bindingStrength;
-	}
-
-	public void setBindingStrength(BindingStrength bindingStrength) {
-		this.bindingStrength = bindingStrength;
-	}
 
 	public boolean hasType(String name) {
 		return types.size() == 1 && types.get(0).getName().equals(name);

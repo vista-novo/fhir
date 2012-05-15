@@ -223,7 +223,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       String en = null;
       ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
       String tn = typeName(root, e, !contentsHaveDataAbsentReason, false);
-      if (e.typeCode().equals("code") && cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
+      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
         comp = null;
       } else {   
@@ -366,8 +366,8 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
       ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-      if (cd != null && cd.getBindingType() == ConceptDomain.BindingType.CodeList) {
-        tn = getCodeListType(cd.getBinding());
+      if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+        tn = getCodeListType(cd.getReference());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);

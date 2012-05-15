@@ -6,13 +6,13 @@ namespace org.hl7.fhir.instance.model
 
   public class Conformance : Resource {
   
-    public enum RestfulConformanceMode
+    public enum #restfulConformanceMode
     {
       client, // The application acts as a server for this resource
       server // The application acts as a client for this resource
     }
 
-    public enum ResourceIdSource
+    public enum #resourceIdSource
     {
       client, // The client must provide a unique resource id
       server, // The server defines the id and will reject any client attempt to define it
@@ -155,7 +155,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * source of id: client | server | either
        */
-      public ResourceIdSource id { get; set; }
+      public #resourceIdSource id { get; set; }
 
     }
 
@@ -177,7 +177,7 @@ namespace org.hl7.fhir.instance.model
     /**
      * client | server
      */
-    public RestfulConformanceMode mode { get; set; }
+    public #restfulConformanceMode mode { get; set; }
 
     /**
      * Additional other profiles that apply to this conformance statement.
@@ -199,7 +199,7 @@ namespace org.hl7.fhir.instance.model
 
   public class Document : Resource {
   
-    public enum DocumentAuthenticationMode
+    public enum #documentAuthenticationMode
     {
       personal, // The person authenticated the document in their personal capacity
       professional, // The person authenticated the document in their professional capacity
@@ -226,7 +226,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * The type of attestation the authenticator offers
        */
-      public DocumentAuthenticationMode mode { get; set; }
+      public #documentAuthenticationMode mode { get; set; }
 
       /**
        * When document attested
@@ -378,7 +378,7 @@ namespace org.hl7.fhir.instance.model
 
   public class Message : Resource {
   
-    public enum ResponseCode
+    public enum #responseCode
     {
       ok, // The message was accepted and processed without error
       error, // Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
@@ -397,7 +397,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not
        */
-      public ResponseCode code { get; set; }
+      public #responseCode code { get; set; }
 
       /**
        * True if this is not the first response, because the request message has been received more than once
@@ -586,7 +586,7 @@ namespace org.hl7.fhir.instance.model
 
   public class MessageConformance : Resource {
   
-    public enum MessageConformanceEventMode
+    public enum #messageConformanceEventMode
     {
       sender, // The application sends requests and receives responses
       receiver // The application receives requests and sends responses
@@ -651,7 +651,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * The mode of this event declaration - whether application is sender or receiver
        */
-      public MessageConformanceEventMode mode { get; set; }
+      public #messageConformanceEventMode mode { get; set; }
 
       /**
        * Information about the request for this event
@@ -846,13 +846,13 @@ namespace org.hl7.fhir.instance.model
 
   public class Prescription : Resource {
   
-    public enum PrescriptionStatus
+    public enum #prescriptionStatus
     {
       active, // Patient is using the prescribed medicin
       completed // Prescription is no longer current
     }
 
-    public enum BooleanYesNo
+    public enum #booleanYesNo
     {
       yes, // TRUE
       no // FALSE
@@ -996,7 +996,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient
        */
-      public BooleanYesNo prn { get; set; }
+      public #booleanYesNo prn { get; set; }
 
       /**
        * Additional details to guide administration. Especially relevant for medicine administered by patient
@@ -1033,7 +1033,7 @@ namespace org.hl7.fhir.instance.model
     /**
      * Actual status of the prescription
      */
-    public PrescriptionStatus status { get; set; }
+    public #prescriptionStatus status { get; set; }
 
     /**
      * The patient the prescription is prescribing medicine for
@@ -1075,7 +1075,7 @@ namespace org.hl7.fhir.instance.model
 
   public class Profile : Resource {
   
-    public enum ResourceProfileStatus
+    public enum #resourceProfileStatus
     {
       draft, // This profile is still under development
       testing, // this profile was authored for testing purposes (or education/evaluation/evangelisation)
@@ -1084,7 +1084,7 @@ namespace org.hl7.fhir.instance.model
       superceded // This profile was superceded by a more recent version
     }
 
-    public enum ConceptBindingType
+    public enum #conceptBindingType
     {
       Unbound, // The concept domain is not bound to anything
       CodeList, // The concept domain is bound to a list of supplied codes - only those codes are allowed
@@ -1142,7 +1142,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * The form of the binding
        */
-      public ConceptBindingType type { get; set; }
+      public #conceptBindingType type { get; set; }
 
       /**
        * extra details - see notes
@@ -1199,7 +1199,7 @@ namespace org.hl7.fhir.instance.model
     /**
      * draft | testing | production | withdrawn | superceded
      */
-    public ResourceProfileStatus status { get; set; }
+    public #resourceProfileStatus status { get; set; }
 
     /**
      * The date that the current value for publicationStatus was applied to the Template
@@ -1245,6 +1245,11 @@ namespace org.hl7.fhir.instance.model
   }
 
   public class Woody : Resource {
+  
+
+  }
+
+  public class Linda : Resource {
   
 
   }
@@ -1306,7 +1311,7 @@ namespace org.hl7.fhir.instance.model
 
   public class Person : Resource {
   
-    public enum LanguageUse
+    public enum #languageUse
     {
       none, // The person does not speak the language at all
       poor, // The person has minimal functional capability in the language
@@ -1348,7 +1353,7 @@ namespace org.hl7.fhir.instance.model
       /**
        * A code the describes how well the language is spoken
        */
-      public LanguageUse use { get; set; }
+      public #languageUse use { get; set; }
 
     }
 
@@ -1441,7 +1446,7 @@ namespace org.hl7.fhir.instance.model
 
   public class LabReport : Resource {
   
-    public enum LabReportStatus
+    public enum #labReportStatus
     {
       registered, // The existence of the result is registered, but there is no result yet available
       interim, // This is an initial or interim result: data may be missing or verification not been performed
@@ -1451,7 +1456,7 @@ namespace org.hl7.fhir.instance.model
       withdrawn // The result has been withdrawn following previous Final release
     }
 
-    public enum LabResultFlag
+    public enum #labResultFlag
     {
       Minus, // 
       MinusMinus, // 
@@ -1539,12 +1544,12 @@ namespace org.hl7.fhir.instance.model
       /**
        * Flag indicating the abnormal status of the result
        */
-      public LabResultFlag flag { get; set; }
+      public #labResultFlag flag { get; set; }
 
       /**
        * The status of the result value
        */
-      public LabReportStatus status { get; set; }
+      public #labReportStatus status { get; set; }
 
       /**
        * May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.
@@ -1575,7 +1580,7 @@ namespace org.hl7.fhir.instance.model
     /**
      * The status of the pathology test result as a whole
      */
-    public LabReportStatus status { get; set; }
+    public #labReportStatus status { get; set; }
 
     /**
      * The date and/or time that the result was issued from the source for the recorded ‘Test result status
