@@ -35,7 +35,7 @@ public class ElementDefn {
 	private List<ElementDefn> elements = new ArrayList<ElementDefn>();
 	private Conformance conformance;
 	private Integer minCardinality;
-	private Integer maxCardinality;
+	private Integer maxCardinality; 
 	private String id;
 	private String conceptDomain;
 	private String name;
