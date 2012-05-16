@@ -1099,7 +1099,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     defCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRResources.pas"));
     defCode.start();
     defCode.name = "FHIRResources";
-    defCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
+    defCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
     defCode.precomments.add("!Wrapper uses FHIRBase_Wrapper");
     defCode.uses.add("FHIRBase");
     defCode.uses.add("AdvBuffers");
@@ -1155,7 +1155,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     DelphiCodeGenerator defnCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRDefinitions.pas"));
     defnCode.start();
     defnCode.name = "FHIRDefinitions";
-    defnCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
+    defnCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
     defnCode.uses.add("FHIRDefinitionBase");
     defnCode.procsPub.add("function LoadFHIRDefinitions : TFHIRDefinitions;\r\n");
     
@@ -1432,7 +1432,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.uses.add("FHIRResources");
     prsrCode.uses.add("MsXmlParser");
     prsrCode.uses.add("JSON");
-    prsrCode.comments.add("FHIR v"+version+" generated "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
+    prsrCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
     
     prsrImpl.append(
         "{ TFHIRXmlParser }\r\n"+

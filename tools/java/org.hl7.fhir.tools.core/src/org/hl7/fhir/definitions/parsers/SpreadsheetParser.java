@@ -66,7 +66,7 @@ public class SpreadsheetParser {
       sheet = xls.getSheets().get(n+"-Extensions");
       if (sheet != null) {
         for (int row = 0; row < sheet.rows.size(); row++) {
-          processExtension(e.getElementByName("extensions"), sheet, row, definitions, p.getMetadata().get("extension.uri").get(0));
+          processExtension(e.getElementByName("extensions"), sheet, row, definitions, p.metadata("extension.uri"));
         }
       }
       p.getResources().add(e);
@@ -208,9 +208,9 @@ public class SpreadsheetParser {
     e.getElementByName("definition").setValue(uri);
     e.getElementByName("ref").ban();
     if (e.isMustUnderstand())
-      e.getElementByName("state").setValue("must-understand");
+      e.getElementByName("mustUnderstand").setValue("true");
     else
-      e.getElementByName("state").ban();
+      e.getElementByName("mustUnderstand").ban();
     ElementDefn v = e.getElementByName("value[x]");
     v.setShortDefn(sheet.getColumn(row, "Short Name"));
     e.setShortDefn("");

@@ -111,7 +111,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
 
     write("package org.hl7.fhir.instance.formats;\r\n");
     write("\r\n");
-    write("// Copyright HL7 (http://www.hl7.org). Generated on "+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate)+" for FHIR v"+version+"\r\n");
+    write("// Copyright HL7 (http://www.hl7.org). Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n");
     write("\r\n");
     write("import org.hl7.fhir.instance.model.*;\r\n");
     write("import org.hl7.fhir.instance.model.Integer;\r\n");

@@ -96,7 +96,7 @@ public class Publisher implements Logger {
 	public static void main(String[] args) throws Exception {
 //    
 	  Publisher pub = new Publisher();
-	  pub.isInternal = !(args.length > 1 && args[1] == "-web");
+	  //pub.isInternal = !(args.length > 1 && args[1] == "-web");
 		pub.execute(args[0]);
 	}
 
@@ -215,7 +215,7 @@ public class Publisher implements Logger {
       gen.generate(definitions, folders.dstDir, folders.implDir(gen.getName()), version, genDate, this);
     }
     log("Produce Schemas");
-    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(genDate));
+    new SchemaGenerator().generate(definitions, ini, folders.tmpResDir, folders.xsdDir, folders.dstDir, folders.srcDir, version, Config.DATE_FORMAT().format(genDate));
     produceSchemaZip();
     log("Produce Specification");
     produceSpec(); 
@@ -1079,7 +1079,7 @@ public class Publisher implements Logger {
       else if (com[0].equals("version"))
         src = s1+version+s3;
       else if (com[0].equals("gendate"))
-        src = s1+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(new Date())+s3;
+        src = s1+Config.DATE_FORMAT().format(new Date())+s3;
 			else if (com[0].equals("maindiv"))
 				src = s1+"<div class=\"content\">"+s3;
 			else if (com[0].equals("/maindiv"))
@@ -1237,7 +1237,7 @@ public class Publisher implements Logger {
       else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))
-        src = s1+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(new Date())+s3;
+        src = s1+Config.DATE_FORMAT().format(new Date())+s3;
 			else if (com[0].equals("maindiv"))
 				src = s1+s3;
 			else if (com[0].equals("/maindiv"))
@@ -1286,7 +1286,7 @@ public class Publisher implements Logger {
       else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))
-        src = s1+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(new Date())+s3;
+        src = s1+Config.DATE_FORMAT().format(new Date())+s3;
       else if (com[0].equals("maindiv"))
         src = s1+s3;
       else if (com[0].equals("/maindiv"))
@@ -1332,7 +1332,7 @@ public class Publisher implements Logger {
       else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))
-        src = s1+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(new Date())+s3;
+        src = s1+Config.DATE_FORMAT().format(new Date())+s3;
 			else if (com[0].equals("definition"))
 				src = s1+root.getDefinition()+s3;
 			else if (com[0].equals("xml"))
@@ -1384,11 +1384,11 @@ public class Publisher implements Logger {
         src = s1+filename+s3;
       else if (com[0].equals("date")) {
         Date d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(profile.getMetadata().get("date").get(0));
-        src = s1+new SimpleDateFormat("dd-MMM yyyy").format(d)+s3;
+        src = s1+Config.DATE_FORMAT().format(d)+s3;
       } else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))
-        src = s1+new SimpleDateFormat(Config.STANDARD_DATE_FORMAT).format(new Date())+s3;
+        src = s1+Config.DATE_FORMAT().format(new Date())+s3;
       else if (com[0].equals("definition"))
         src = s1+profile.getMetadata().get("description").get(0)+s3;
       else if (com[0].equals("status"))
