@@ -287,7 +287,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (name.equals("Address")) return "datatypes"; 	
 		if (name.equals("boolean")) return "datatypes";	
 		if (name.equals("integer")) return "datatypes";	
-		if (name.equals("decimal")) return "datatypes";
+    if (name.equals("decimal")) return "datatypes";
+    if (name.equals("instant")) return "datatypes";
 		if (name.equals("base64Binary")) return "datatypes";
 		if (name.equals("datetime")) return "datatypes";
 		if (name.equals("string")) return "datatypes";
@@ -297,7 +298,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (name.equals("uuid")) return "datatypes";
 		if (name.equals("sid")) return "datatypes";
 		if (name.equals("id")) return "datatypes";
-		if (name.equals("humanDate")) return "datatypes";	
+    if (name.equals("date")) return "datatypes";  
+    if (name.equals("dateTime")) return "datatypes";  
 		if (name.equals("narrative")) return "xml";
 		if (name.equals("Resource")) return "xml";
 		if (name.equals("Constraint")) return "constraint";

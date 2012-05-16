@@ -96,7 +96,7 @@ public class Publisher implements Logger {
 	public static void main(String[] args) throws Exception {
 //    
 	  Publisher pub = new Publisher();
-	  //pub.isInternal = !(args.length > 1 && args[1] == "-web");
+	  pub.isInternal = !(args.length > 1 && args[1] == "-web");
 		pub.execute(args[0]);
 	}
 
