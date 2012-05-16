@@ -376,34 +376,6 @@ package Resources : res = 'http://www.hl7.org/fhir/resources'
     attribute reference : uri;               -- Reference to the author to assist a user in finding and communicating with the endorsing body
   }
 
-  class Lloyd extends Resource               -- [Template] Master Definition
-  {
-    attribute id : id;                       -- Master Id, first in all resources
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of [template] for human interpretation
-  }
-
-  class Woody extends Resource               -- [Template] Master Definition
-  {
-    attribute id : id;                       -- Master Id, first in all resources
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of [template] for human interpretation
-  }
-
-  class Linda extends Resource               -- [Template] Master Definition
-  {
-    attribute id : id;                       -- Master Id, first in all resources
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of [template] for human interpretation
-  }
-
-  class Ewout extends Resource               -- [Template] Master Definition
-  {
-    attribute id : id;                       -- Master Id, first in all resources
-    attribute extensions : Extensions;       -- See Extensions
-    attribute text : Narrative;              -- Text summary of [template] for human interpretation
-  }
-
   class Patient extends Resource             -- A patient is a person or animal that is receiving care
   {
     attribute id : id;                       -- Master Resource Id, always first in all resources
