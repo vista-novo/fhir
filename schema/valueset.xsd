@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on Thu, May 17, 2012 07:06+1000 for FHIR v0.02 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Valueset" type="Valueset">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Valueset">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of value set, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
