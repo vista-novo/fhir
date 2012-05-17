@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.xml.XMLConstants;
@@ -26,6 +27,7 @@ import javax.xml.validation.SchemaFactory;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
+import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
@@ -746,6 +748,21 @@ public class Publisher implements Logger {
 		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(folders.dstDir+n+".dict.xml"));
 		dxgen.generate(root, "HL7");
 
+		ProfileDefn p = new ProfileDefn();
+		p.putMetadata("id", "1");
+    p.putMetadata("name", n);
+    p.putMetadata("author.name", "todo (committee)");
+    p.putMetadata("author.ref", "todo");
+    p.putMetadata("description", root.getDefinition());
+    p.putMetadata("comments", "Basic Profile for ");
+    p.putMetadata("status", "testing");
+    p.putMetadata("date", new SimpleDateFormat("yyyymmdd", new Locale("en", "US")).format(new Date()));
+    p.putMetadata("endorser.name", "HL7");
+    p.putMetadata("endorser.ref", "http://www.hl7.org");
+    p.getResources().add(root);
+		ProfileGenerator pgen = new ProfileGenerator();
+		pgen.generate(p, new FileOutputStream(folders.dstDir+n+".profile.xml"));
+		
 		File xmlf = new File(folders.srcDir+n+File.separatorChar+"example.xml");
 		if (!xmlf.exists())
 		  xmlf = new File(folders.sndBoxDir+n+File.separatorChar+"example.xml");

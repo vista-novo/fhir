@@ -39,12 +39,12 @@
           <max>1</max>
           <type>Coding</type>
           <conformance>Mandatory</conformance>
-          <value>
-            <Coding>
+          <content>
+            <valueCoding>
               <code>patient</code>
               <system>urn:hl7-org:sid/fhir/identifier-type</system>
-            </Coding>
-          </value>
+            </valueCoding>
+          </content>
         </element>
         <element>
           <path>Person.identifier.identifier</path>

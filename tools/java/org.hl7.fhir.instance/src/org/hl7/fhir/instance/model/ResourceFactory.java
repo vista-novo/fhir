@@ -33,12 +33,16 @@ public class ResourceFactory {
             return new Group();
         if ("InterestOfCare".equals(name))
             return new InterestOfCare();
+        if ("Linda".equals(name))
+            return new Linda();
         if ("Specimen".equals(name))
             return new Specimen();
         if ("Ewout".equals(name))
             return new Ewout();
         if ("Patient".equals(name))
             return new Patient();
+        if ("Valueset".equals(name))
+            return new Valueset();
         if ("DocumentConformance".equals(name))
             return new DocumentConformance();
         if ("LabReport".equals(name))

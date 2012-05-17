@@ -380,7 +380,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           enumNames.add(tn);
           enums.add(e);
         }
-        typeNames.put(e,  rootOf(path)+"."+tn);
+        typeNames.put(e,  rootOf(path)+"."+upFirst(tn.substring(1)));
       }
     }
     if (tn == null) {

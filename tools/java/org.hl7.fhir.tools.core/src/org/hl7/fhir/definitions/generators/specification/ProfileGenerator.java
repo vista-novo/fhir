@@ -2,8 +2,15 @@ package org.hl7.fhir.definitions.generators.specification;
 
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.util.List;
 
+import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.instance.formats.XmlComposer;
+import org.hl7.fhir.instance.model.Constraint;
+import org.hl7.fhir.instance.model.Constraint.ConformanceType;
+import org.hl7.fhir.instance.model.Constraint.Element_;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Id;
 import org.hl7.fhir.instance.model.Profile;
@@ -19,6 +26,7 @@ public class ProfileGenerator {
     p.setAuthor(p.new Author());
     p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
     p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
+//  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       p.setIntention(Factory.newString_(profile.metadata("intention")));
     if (profile.hasMetadata("description"))
@@ -38,24 +46,60 @@ public class ProfileGenerator {
       p.getSupercedes().add(Factory.newUri(profile.metadata("supercedes")));
 
     if (profile.hasMetadata("status")) 
-      p.setStatus(Profile.ResourceProfileStatus.fromCode("status"));
+      p.setStatus(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
     
-    
-//    <code> opt Zero+ Coding assist with indexing and finding</code>
+    for (ElementDefn e : profile.getResources()) {
+      Constraint c = new Constraint();
+      p.getResource().add(c);
+      c.setType(e.typeCode());
+      // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
+      c.setName(e.getProfileName());
+      // no purpose element here
+      defineElement(c, e, e.getName());
+    }
+      
+      
+    XmlComposer comp = new XmlComposer();
+    comp.compose(stream, p, true);
+  }
 
-//    <profile> opt Zero+ uri other profiles that apply (i.e. code binding rules)</profile>
-//    <resource> mand Zero+ Constraint Resource Type with constraints</resource>
-//    <binding> mand  <!-- Zero+ -->
-//     <name> mand string concept domain name</name>
-//     <type> mand code binding type</type>
-//     <details> cond string extra details - see notes</details>
-//     <reference> cond uri source of binding content</reference>
-//     <code> cond Zero+ Coding enumerated codes that are the binding</code>
-//    </binding>
-//    <extensions> opt See Extensions   See Extensions </extensions>
-//    <text> mand Narrative Text summary of resource profile for human interpretation</text>
-//  </Profile>    
-//    
+  private void defineElement(Constraint c, ElementDefn e, String path) {
+    Constraint.Element_ ce = c.new Element_();
+    c.getElement().add(ce);
+    ce.setPath(path);
+    ce.setName(e.getProfileName());
+    // no purpose here
+    ce.setMin(e.getMinCardinality());
+    ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
+    ce.setType(e.typeCode()); // todo: this needs to be decomposed
+    ce.setConformance(getType(e.getConformance()));
+    ce.setCondition(e.getCondition());
+    // we don't know mustSupport here
+    if (e.isMustUnderstand()) 
+      ce.setMustUnderstand(e.isMustUnderstand());
+    ce.setDefinition(e.getDefinition());
+    // todo: mappings
+    // we don't have anything to say about constraints on resources
+    ce.setBinding(e.getConceptDomain());
+    
+    for (ElementDefn child : e.getElements()) {
+      defineElement(c, child, path+"."+child.getName());
+    }
+  }
+
+  private ConformanceType getType(Conformance conformance) {
+    if (conformance == Conformance.Unstated)
+      return ConformanceType.Optional;
+    if (conformance == Conformance.Mandatory) 
+      return ConformanceType.Mandatory;
+    if (conformance == Conformance.Conditional) 
+      return ConformanceType.Conditional;
+    if (conformance == Conformance.Optional)
+      return ConformanceType.Optional;
+    if (conformance == Conformance.Prohibited)
+      return ConformanceType.Prohibited;
+    else
+      return null;
   }
   
 }

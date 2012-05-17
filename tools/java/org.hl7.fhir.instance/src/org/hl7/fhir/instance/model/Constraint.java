@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 23:22+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Thu, May 17, 2012 17:40+1000 for FHIR v0.02
 
 import java.util.*;
 
@@ -45,7 +45,7 @@ public class Constraint extends Element {
         private String path;
 
         /**
-         * Name this constraint for re-use & unrolling
+         * Name of constraint for unpicking - see above
          */
         private String name;
 
@@ -107,12 +107,12 @@ public class Constraint extends Element {
         /**
          * Value set id (only if coded)
          */
-        private String valueSet;
+        private String binding;
 
         /**
-         * 
+         * Name (internal ref) or fixed value but not both
          */
-        private List<Value> value = new ArrayList<Value>();
+        private List<Content> content = new ArrayList<Content>();
 
         public String getPath() { 
           return this.path;
@@ -214,16 +214,16 @@ public class Constraint extends Element {
           this.resource = value;
         }
 
-        public String getValueSet() { 
-          return this.valueSet;
+        public String getBinding() { 
+          return this.binding;
         }
 
-        public void setValueSet(String value) { 
-          this.valueSet = value;
+        public void setBinding(String value) { 
+          this.binding = value;
         }
 
-        public List<Value> getValue() { 
-          return this.value;
+        public List<Content> getContent() { 
+          return this.content;
         }
 
     }
@@ -286,23 +286,23 @@ public class Constraint extends Element {
 
     }
 
-    public class Value extends Element {
+    public class Content extends Element {
         /**
-         * Reference to another element by element.name
+         * to another element constraint (by element.name)
          */
-        private String name;
+        private String nameReference;
 
         /**
          * Fixed value: [as defined for type]
          */
         private Type value;
 
-        public String getName() { 
-          return this.name;
+        public String getNameReference() { 
+          return this.nameReference;
         }
 
-        public void setName(String value) { 
-          this.name = value;
+        public void setNameReference(String value) { 
+          this.nameReference = value;
         }
 
         public Type getValue() { 

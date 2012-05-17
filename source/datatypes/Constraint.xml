@@ -9,14 +9,14 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:24:20Z</Created>
-  <LastSaved>2012-03-25T19:35:12Z</LastSaved>
+  <LastSaved>2012-05-16T05:30:04Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10050</WindowHeight>
+  <WindowHeight>9855</WindowHeight>
   <WindowWidth>25875</WindowWidth>
   <WindowTopX>2400</WindowTopX>
   <WindowTopY>2370</WindowTopY>
@@ -144,7 +144,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Name this constraint for re-use &amp; unrolling</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Name of constraint for unpicking - see above</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Constraint.element.purpose</Data></Cell>
@@ -254,27 +254,28 @@
     <Cell ss:Index="10"><Data ss:Type="String">The reference might be a simple name in the form #[name], which is a reference to another named constraint in a resource - where the resource contains more than one constraint, or a RUL which is a reference to a resource Profile</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Constraint.element.valueSet</Data></Cell>
+    <Cell><Data ss:Type="String">Constraint.element.binding</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Value set id (only if coded)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Constraint.element.value</Data></Cell>
+    <Cell><Data ss:Type="String">Constraint.element.content</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Name (internal ref) or fixed value but not both</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Constraint.element.value.name</Data></Cell>
+    <Cell><Data ss:Type="String">Constraint.element.content.nameReference</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Reference to another element by element.name</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">to another element constraint (by element.name)</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Either a name or a fixed value is required</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Constraint.element.value.[type]</Data></Cell>
+    <Cell><Data ss:Type="String">Constraint.element.content.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell><Data ss:Type="String">*</Data></Cell>
@@ -290,11 +291,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>15</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>25</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

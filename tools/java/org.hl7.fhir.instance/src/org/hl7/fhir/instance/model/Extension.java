@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Mon, May 14, 2012 23:22+1000 for FHIR v0.01
+// Copyright HL7 (http://www.hl7.org). Generated on Thu, May 17, 2012 17:40+1000 for FHIR v0.02
 
 import java.util.*;
 
@@ -8,27 +8,6 @@ import java.util.*;
  * Optional Extensions Element - found in all resources
  */
 public class Extension extends Element {
-
-    public enum ExtensionState {
-        mustMinusunderstand, // The extension contains information that qualifies or negates another element, and must be understood by an application processing the resource
-        superceded; // The extension has been promoted into the main content of the resource, and the content is found at the reference. The extension continues to be defined for backward compatibility
-        public static ExtensionState fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
-                return null;
-        if ("must-understand".equals(code))
-          return mustMinusunderstand;
-        if ("superceded".equals(code))
-          return superceded;
-        throw new Exception("Unknown ExtensionState code '"+code+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case mustMinusunderstand: return "must-understand";
-            case superceded: return "superceded";
-            default: return "?";
-          }
-        }
-    }
 
     /**
      * The code that identifies the meaning of the extension by reference to the definitions
@@ -46,9 +25,9 @@ public class Extension extends Element {
     private String ref;
 
     /**
-     * The state or the extension - whether readers must must understand, or whether it's superceded by being defined in the resource
+     * If this element is set to true, then the resource data is only safe to process if the reader understands this extension. 
      */
-    private ExtensionState state;
+    private boolean mustUnderstand;
 
     /**
      * Value of extension - any of the types defined in the data types
@@ -84,12 +63,12 @@ public class Extension extends Element {
       this.ref = value;
     }
 
-    public ExtensionState getState() { 
-      return this.state;
+    public boolean getMustUnderstand() { 
+      return this.mustUnderstand;
     }
 
-    public void setState(ExtensionState value) { 
-      this.state = value;
+    public void setMustUnderstand(boolean value) { 
+      this.mustUnderstand = value;
     }
 
     public Type getValue() { 

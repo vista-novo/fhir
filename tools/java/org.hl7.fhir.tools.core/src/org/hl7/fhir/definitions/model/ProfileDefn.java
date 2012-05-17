@@ -36,6 +36,17 @@ public class ProfileDefn {
     return (s != null && !s.equals(""));
   }
 
+  public void putMetadata(String name, String value) {
+    ArrayList<String> a;
+    if (metadata.containsKey(name))
+      a = metadata.get(name);
+    else {
+      a = new ArrayList<String>();
+      metadata.put(name, a);
+    }
+    a.add(value);
+  }
+
 
   
   

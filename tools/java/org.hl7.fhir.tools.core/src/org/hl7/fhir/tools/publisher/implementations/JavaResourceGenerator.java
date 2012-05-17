@@ -289,7 +289,7 @@ private String upFirst(String name) {
 		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
 			ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
 			if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
-				tn = getCodeListType(cd.getReference());
+				tn = getCodeListType(cd.getReference().substring(1));
 				if (!enumNames.contains(tn)) {
 					enumNames.add(tn);
 					enums.add(e);

@@ -1,4 +1,4 @@
-id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
+Id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
 1,Accreditation,Accreditations an organization may be granted,unbound,,,
 2,AddressPartType,Type of address part,code list,required,#address-part-type,
 3,AddressUse,The use of an address,code list,required,#address-use,
@@ -24,7 +24,7 @@ id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
 60,EventReason,The reason for an event occurring,unbound,,,
 23,EventTiming,A real world event that a schedule is related to,code list,required,#event-timing,
 61,ExtensionState,The state of an extension,code list,required,#extension-state,
-24,IdentifierType,The type of human identifier,code list,required,#identifier-type,
+24,IdentifierType,The type of human identifier,code list,preferred,#identifier-type,
 25,Industry,Code for the type of industry,value set,preferred,,HL7 v3 OrganizationIndustryClass value set
 26,LabDiagnosisCodes,Codes for laboratory diagnoses,value set,suggested,,SNOMED-CT Diagnoses
 27,LabReferenceRanges,Code for the meaning of a reference range,unbound,,,

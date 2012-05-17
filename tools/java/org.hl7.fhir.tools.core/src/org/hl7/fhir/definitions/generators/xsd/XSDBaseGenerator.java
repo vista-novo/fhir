@@ -476,7 +476,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		List<TypeDefn> types = e.getTypes();
 		if (types.size() > 1 || (types.size() == 1 && types.get(0).getName().equals("*"))) {
 			if (!e.getName().contains("[x]"))
-				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
+				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name '"+e.getName()+"' in resource "+root.getName());
       generateAny(root, e, e.getName().replace("[x]", ""));
 //			write("<xs:choice>\r\n");
 //			if (e.hasDefinition()) {

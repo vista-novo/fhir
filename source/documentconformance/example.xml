@@ -111,9 +111,9 @@
         <min>1</min>
         <max>1</max>
         <conformance>Mandatory</conformance>            
-        <value>
-         <code>legal</code>
-        </value>
+        <content>
+         <valueCode>legal</valueCode>
+        </content>
       </element>
       <element>
         <path>Doument.attestor.time</path>
