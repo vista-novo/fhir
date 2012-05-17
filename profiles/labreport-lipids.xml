@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
-  <WindowWidth>22755</WindowWidth>
+  <WindowHeight>6348</WindowHeight>
+  <WindowWidth>15576</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowTopY>6072</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -33,21 +33,40 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s111" ss:Name="Hyperlink">
+  <Style ss:ID="s62" ss:Name="Hyperlink">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#0000FF"
     ss:Underline="Single"/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s63">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s64">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s66" ss:Parent="s62">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
+   <NumberFormat ss:Format="Short Date"/>
+  </Style>
+  <Style ss:ID="s68">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s69">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s70">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -57,14 +76,14 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s72">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s73">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -72,101 +91,82 @@
    </Borders>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
-  </Style>
-  <Style ss:ID="s118">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
-  </Style>
-  <Style ss:ID="s119" ss:Parent="s111">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
-  </Style>
-  <Style ss:ID="s120">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
-   <NumberFormat ss:Format="Short Date"/>
-  </Style>
-  <Style ss:ID="s121">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Bottom"/>
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
-   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Metadata">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.5"/>
-   <Row>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Name</Data></Cell>
-    <Cell ss:StyleID="s121"><Data ss:Type="String">Value</Data></Cell>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.8"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Value</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Lipid Profile</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Lipid Profile</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">author.name</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Grahame Grieve</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">author.name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Grahame Grieve</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">author.reference</Data></Cell>
-    <Cell ss:StyleID="s119" ss:HRef="mailto:grahame@healthintersections.com.au"><Data
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">author.reference</Data></Cell>
+    <Cell ss:StyleID="s66" ss:HRef="mailto:grahame@healthintersections.com.au"><Data
       ss:Type="String">grahame@healthintersections.com.au</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">intention</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Describes how the lab report is used for a Lipid Profile</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">intention</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Describes how the lab report is used for a Lipid Profile</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">code</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">code</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">description</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">description</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">evidence</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">evidence</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">comments</Data></Cell>
-    <Cell ss:StyleID="s118"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">comments</Data></Cell>
+    <Cell ss:StyleID="s64"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">status</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">testing</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">status</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">testing</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:StyleID="s120"><Data ss:Type="DateTime">2012-05-12T00:00:00.000</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">date</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="DateTime">2012-05-12T00:00:00.000</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">endorser.name</Data></Cell>
-    <Cell ss:StyleID="s118"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">endorser.name</Data></Cell>
+    <Cell ss:StyleID="s64"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">endorser.reference</Data></Cell>
-    <Cell ss:StyleID="s118"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">endorser.reference</Data></Cell>
+    <Cell ss:StyleID="s64"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">changes</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">changes</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">supercedes</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">supercedes</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">profile</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">profile</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">resource</Data></Cell>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">LabReport</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">resource</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">LabReport</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s118"><Data ss:Type="String">binding</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">binding</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -175,6 +175,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -188,18 +189,19 @@
  </Worksheet>
  <Worksheet ss:Name="LabReport">
   <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="39" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75"
-    ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0"
+    ss:Width="150.60000000000002"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="2"/>
+   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="82.8"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="61.8" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s68" ss:AutoFitWidth="0"
+    ss:Width="213.60000000000002" ss:Span="1"/>
+   <Column ss:Index="11" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="161.4"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="245.39999999999998"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s70">
     <Cell><Data ss:Type="String">Profile Name</Data></Cell>
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -246,8 +248,8 @@
     <Cell ss:Index="9"><Data ss:Type="String">All the results in one group</Data></Cell>
     <Cell><Data ss:Type="String">All the lipid panel results</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
-    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">LabReport.resultGroup.name</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s72">
+    <Cell ss:Index="2" ss:StyleID="s73"><Data ss:Type="String">LabReport.resultGroup.name</Data></Cell>
     <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Prohibited</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
@@ -312,8 +314,8 @@
     <Cell><Data ss:Type="String">Range is a recommended range</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">yeah, so I suppose it should be coded, right? But coded how? No publically available terminologies include an appropriate code…</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
-    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s72">
+    <Cell ss:Index="2" ss:StyleID="s73"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
@@ -377,8 +379,8 @@
     <Cell><Data ss:Type="String">Range is a recommended range</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">see note above</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
-    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s72">
+    <Cell ss:Index="2" ss:StyleID="s73"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
@@ -442,8 +444,8 @@
     <Cell><Data ss:Type="String">Range is a recommended range</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">See note above</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
-    <Cell ss:Index="2" ss:StyleID="s66"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s72">
+    <Cell ss:Index="2" ss:StyleID="s73"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
@@ -544,10 +546,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>10</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>13</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

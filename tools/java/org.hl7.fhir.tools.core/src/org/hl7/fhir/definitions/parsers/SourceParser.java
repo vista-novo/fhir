@@ -177,7 +177,8 @@ public class SourceParser {
       for (int i = 0; i < sheet.rows.size(); i++) {
         if (sheet.getColumn(i, "Name").equals(n)) {
           found = true;
-          definitions.getConstraints().put(n, new DefinedCode(n, sheet.getColumn(i, "Name"), p));
+          definitions.getConstraints().put(n, 
+        		  new DefinedCode(n, sheet.getColumn(i, "Rules"), p));
         }
       }
       if (!found)

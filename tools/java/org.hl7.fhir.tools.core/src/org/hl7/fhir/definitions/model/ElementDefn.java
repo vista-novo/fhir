@@ -93,7 +93,7 @@ public class ElementDefn {
 		return nolist;
 	}
 
-	public void setNolist(boolean nolist) {
+	public void setNoListWrapper(boolean nolist) {
 		this.nolist = nolist;
 	}
 
