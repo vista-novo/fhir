@@ -232,13 +232,13 @@ public class SourceParser {
     for (String n : ini.getPropertyNames("resources")) {
       Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
       Utilities.checkFile("resource htm", srcDir+n+File.separatorChar, n+".htm", errors);
-      Utilities.checkFile("example xml", srcDir+n+File.separatorChar, "example.xml", errors);
+      Utilities.checkFile("example xml", srcDir+n+File.separatorChar, n+"-example.xml", errors);
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }
     for (String n : ini.getPropertyNames("special-resources")) {
       Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
       Utilities.checkFile("resource htm", srcDir+n+File.separatorChar, n+".htm", errors);
-      Utilities.checkFile("example xml", srcDir+n+File.separatorChar, "example.xml", errors);
+      Utilities.checkFile("example xml", srcDir+n+File.separatorChar, n+"-example.xml", errors);
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }
 

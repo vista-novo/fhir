@@ -755,9 +755,9 @@ public class Publisher implements Logger {
 
 		generateProfile(root, n);
 		
-		File xmlf = new File(folders.srcDir+n+File.separatorChar+"example.xml");
+		File xmlf = new File(folders.srcDir+n+File.separatorChar+n+"-example.xml");
 		if (!xmlf.exists())
-		  xmlf = new File(folders.sndBoxDir+n+File.separatorChar+"example.xml");
+		  xmlf = new File(folders.sndBoxDir+n+File.separatorChar+n+"-example.xml");
 		File umlf = new File(folders.imgDir+n+".png");
 
 		String src = Utilities.fileToString(folders.srcDir + "template.htm");
