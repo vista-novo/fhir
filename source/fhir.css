@@ -9,6 +9,11 @@ body.book {
 	padding: 20;
 }
 
+i.inherited {
+        font-size: 10px;
+        opacity: 0.5;
+}
+
 p, li {
 	font-size: 12px;
 	line-height: 1.4em;

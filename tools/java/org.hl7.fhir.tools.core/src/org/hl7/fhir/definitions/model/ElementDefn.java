@@ -3,6 +3,8 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.instance.model.Constraint.Element_;
+
 public class ElementDefn {
   
   
@@ -36,7 +38,7 @@ public class ElementDefn {
 	private Conformance conformance;
 	private Integer minCardinality;
 	private Integer maxCardinality; 
-	private String id;
+//	private String id;
 	private String conceptDomain;
 	private String name;
 	private String shortDefn;
@@ -50,10 +52,12 @@ public class ElementDefn {
 	private String committeeNotes;
 	private String condition;
 	private String example;
-	private boolean nolist; 
+	private boolean nolist; // this field is flagged for deletion - no longer used
 	private String profileName; // only in a profile, for unpicking
 	private String target; // only in extensions
 	private String value; // only in a profile
+  private Element_ derivation;
+  private boolean inherited; // in a profile, was this element add from the base definition (true) or was it specifically constrained in the profile (false)
 	
 	public ElementDefn() {
 	  super();
@@ -68,7 +72,7 @@ public class ElementDefn {
 	  conformance = pattern.conformance;
 	  minCardinality = pattern.minCardinality;
 	  maxCardinality = pattern.maxCardinality;
-	  id = pattern.id;
+//	  id = pattern.id;
 	  conceptDomain = pattern.conceptDomain;
 	  name = pattern.name;
 	  shortDefn = pattern.shortDefn;
@@ -86,6 +90,7 @@ public class ElementDefn {
 	  profileName = pattern.profileName;
 	  target = pattern.target; 
 	  value = pattern.value; 
+	  inherited = pattern.inherited;
     
 	}
 	 
@@ -270,13 +275,13 @@ public class ElementDefn {
     	this.conceptDomain = conceptDomain;
 	}
     
-    public String getId() {
-    	return id;
-	}
-
-    public void setId(String id) {
-    	this.id = id;
-	}
+//    public String getId() {
+//    	return id;
+//	}
+//
+//    public void setId(String id) {
+//    	this.id = id;
+//	}
 
     public List<TypeDefn> getTypes() {
 	    return types;
@@ -411,8 +416,24 @@ public class ElementDefn {
     minCardinality = 0;
     maxCardinality = 0;
     conformance = Conformance.Prohibited;
-    
   }
+
+  public void setDerivation(Element_ derivation) {
+    this.derivation = derivation;    
+  }
+
+  public boolean isInherited() {
+    return inherited;
+  }
+
+  public void setInherited(boolean inherited) {
+    this.inherited = inherited;
+  }
+
+  public Element_ getDerivation() {
+    return derivation;
+  }  
+  
 
 
 }

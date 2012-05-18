@@ -9,6 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:20:53Z</Created>
+  <LastSaved>2012-05-17T06:03:20Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -258,27 +259,28 @@
  <Worksheet ss:Name="Restrictions">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="76.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="89.25"/>
-   <Row>
+   <Column ss:AutoFitWidth="0" ss:Width="91.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="493.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="528.75"/>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Rules</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">Schematron</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Duration</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be an amount of time, and a UCUM unit must be provided.</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Distance</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be an amount of length, and a UCUM unit must be provided.</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Count</Data></Cell>
     <Cell><Data ss:Type="String">The value must a whole number, and the UCUM unit must be &quot;1&quot;</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Money</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;urn:hl7-org:sid/iso-4217&quot;)</Data></Cell>
    </Row>
@@ -289,11 +291,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

@@ -57,7 +57,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="28" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="29" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="219"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -147,11 +147,30 @@
     <Cell ss:Index="7"><Data ss:Type="String">Name of constraint for unpicking - see above</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Constraint.element.purpose</Data></Cell>
+    <Cell><Data ss:Type="String">Constraint.element.shortDefn</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Human summary: why describe this element?</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Concies definition (for use in this slot)</Data></Cell>
+    <Cell><Data ss:Type="String">A concise definition that  is shown in the concise XML format that summarises profiles</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90.75">
+    <Cell><Data ss:Type="String">Constraint.element.definition</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">More specific definition</Data></Cell>
+    <Cell><Data ss:Type="String">a more specific definition than the definition for the same element in the base resource. The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource</Data></Cell>
+    <Cell><Data ss:Type="String">To allow a user to clarify the usageof an element in a particular context</Data></Cell>
+    <Cell><Data ss:Type="String">It is easy for a different definition to change the meaning of an element, and this can have nasty downstream consequences. Please be careful when providing definitions</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="52.5">
+    <Cell><Data ss:Type="String">Constraint.element.comments</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Comments about the use of this element</Data></Cell>
+    <Cell><Data ss:Type="String">Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Constraint.element.min</Data></Cell>
@@ -167,13 +186,14 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Maximum Cardinality (a number or *)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="91.5">
     <Cell><Data ss:Type="String">Constraint.element.type</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">DataType</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Type of the element</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">The Type of the element can be left blank, in which case the type is inherited from the resource. The type can only be listed in this field if it is an allowed option in the base resource.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Constraint.element.conformance</Data></Cell>
@@ -204,13 +224,6 @@
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">If the element must be understood</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Constraint.element.definition</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">More specific definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Constraint.element.mapping</Data></Cell>
@@ -291,11 +304,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>15</TopRowVisible>
+   <TopRowVisible>11</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>25</ActiveRow>
+     <ActiveRow>14</ActiveRow>
      <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>

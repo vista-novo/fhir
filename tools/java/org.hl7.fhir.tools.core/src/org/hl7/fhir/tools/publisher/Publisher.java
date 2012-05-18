@@ -41,6 +41,10 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
+import org.hl7.fhir.definitions.validator.ProfileValidator;
+import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.model.Constraint;
+import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
 import org.hl7.fhir.tools.publisher.implementations.ECoreOclGenerator;
@@ -435,7 +439,8 @@ public class Publisher implements Logger {
 		
 		produceCombinedDictionary();
 		Utilities.copyFile(new File(folders.umlDir + "fhir.eap"), new File(folders.dstDir + "fhir.eap"));
-		Utilities.copyFile(new File(folders.umlDir + "fhir.xmi"), new File(folders.dstDir + "fhir.xmi"));
+// todo - collect and zip the xmi files
+		// Utilities.copyFile(new File(folders.umlDir + "fhir.xmi"), new File(folders.dstDir + "fhir.xmi"));
 		
 		produceZip();
 		produceBookForm();
@@ -748,20 +753,7 @@ public class Publisher implements Logger {
 		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(folders.dstDir+n+".dict.xml"));
 		dxgen.generate(root, "HL7");
 
-		ProfileDefn p = new ProfileDefn();
-		p.putMetadata("id", "1");
-    p.putMetadata("name", n);
-    p.putMetadata("author.name", "todo (committee)");
-    p.putMetadata("author.ref", "todo");
-    p.putMetadata("description", root.getDefinition());
-    p.putMetadata("comments", "Basic Profile for ");
-    p.putMetadata("status", "testing");
-    p.putMetadata("date", new SimpleDateFormat("yyyymmdd", new Locale("en", "US")).format(new Date()));
-    p.putMetadata("endorser.name", "HL7");
-    p.putMetadata("endorser.ref", "http://www.hl7.org");
-    p.getResources().add(root);
-		ProfileGenerator pgen = new ProfileGenerator();
-		pgen.generate(p, new FileOutputStream(folders.dstDir+n+".profile.xml"));
+		generateProfile(root, n);
 		
 		File xmlf = new File(folders.srcDir+n+File.separatorChar+"example.xml");
 		if (!xmlf.exists())
@@ -802,12 +794,36 @@ public class Publisher implements Logger {
 		
 	}
 
+  private void generateProfile(ElementDefn root, String n) throws Exception,
+      FileNotFoundException {
+    ProfileDefn p = new ProfileDefn();
+		p.putMetadata("id", "1");
+    p.putMetadata("name", n);
+    p.putMetadata("author.name", "todo (committee)");
+    p.putMetadata("author.ref", "todo");
+    p.putMetadata("description", root.getDefinition());
+    p.putMetadata("comments", "Basic Profile for ");
+    p.putMetadata("status", "testing");
+    p.putMetadata("date", new SimpleDateFormat("yyyymmdd", new Locale("en", "US")).format(new Date()));
+    p.putMetadata("endorser.name", "HL7");
+    p.putMetadata("endorser.ref", "http://www.hl7.org");
+    p.getResources().add(root);
+		ProfileGenerator pgen = new ProfileGenerator();
+		pgen.generate(p, new FileOutputStream(folders.dstDir+n+".profile.xml"));
+  }
+
   private void produceProfile(String filename, ProfileDefn profile) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
   
+    // you have to validate a profile, because it has to merged with it's base resource to fill out all the missing bits
+    validateProfile(profile);
+    
     XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
     gen.generate(profile);
     String xml = Utilities.fileToString(tmp.getAbsolutePath());
+    
+    ProfileGenerator pgen = new ProfileGenerator();
+    pgen.generate(profile, new FileOutputStream(folders.dstDir+filename+".profile.xml"));
 //
 //    TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 //    tgen.generate(root, definitions.getConceptDomains());
@@ -858,13 +874,30 @@ public class Publisher implements Logger {
   }
 
 
+private void validateProfile(ProfileDefn profile) throws FileNotFoundException, Exception {
+    for (ElementDefn c : profile.getResources()) {
+      Profile resource = loadResourceProfile(c.getName());
+      ProfileValidator v = new ProfileValidator();
+      v.setProfile(c);
+      v.setResource(resource);
+      List<String> errors = v.evaluate();
+      if (errors.size() > 0)
+        throw new Exception("Error validating "+profile.metadata("name")+": "+errors.toString());
+    }
+  }
+
 //	private void produceFutureResource(String n) throws Exception {
 //		ElementDefn e = new ElementDefn();
 //		e.setName(ini.getStringProperty("future-resources", n));
 //	}
 
 
-	private void producePage(String file) throws Exception {
+	private Profile loadResourceProfile(String name) throws FileNotFoundException, Exception {
+	  XmlParser xml = new XmlParser();
+	  return (Profile) xml.parse(new FileInputStream(folders.dstDir+name+".profile.xml"));
+}
+
+  private void producePage(String file) throws Exception {
 		String src = Utilities.fileToString(folders.srcDir + file);
 		src = processPageIncludes(file, src);
 		Utilities.stringToFile(src, folders.dstDir + file);

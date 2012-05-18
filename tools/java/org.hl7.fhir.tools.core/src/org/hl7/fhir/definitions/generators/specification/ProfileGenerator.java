@@ -7,6 +7,7 @@ import java.util.List;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.model.Constraint;
 import org.hl7.fhir.instance.model.Constraint.ConformanceType;
@@ -25,7 +26,8 @@ public class ProfileGenerator {
     p.setName(Factory.newString_(profile.metadata("name")));
     p.setAuthor(p.new Author());
     p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
-    p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
+    if (profile.hasMetadata("author.reference"))
+      p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
 //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       p.setIntention(Factory.newString_(profile.metadata("intention")));
@@ -39,7 +41,8 @@ public class ProfileGenerator {
       p.setDate(Factory.newDateTime(profile.metadata("date")));
     p.getEndorser().add(p.new Endorser());
     p.getEndorser().get(0).setName(Factory.newString_(profile.metadata("endorser.name")));
-    p.getEndorser().get(0).setReference(Factory.newUri(profile.metadata("endorser.reference")));
+    if (profile.hasMetadata("endorser.reference"))
+      p.getEndorser().get(0).setReference(Factory.newUri(profile.metadata("endorser.reference")));
     if (profile.hasMetadata("changes"))
       p.setIntention(Factory.newString_(profile.metadata("changes")));
     if (profile.hasMetadata("supercedes"))
@@ -53,7 +56,8 @@ public class ProfileGenerator {
       p.getResource().add(c);
       c.setType(e.typeCode());
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
-      c.setName(e.getProfileName());
+      if (!"".equals(e.getProfileName()))
+        c.setName(e.getProfileName());
       // no purpose element here
       defineElement(c, e, e.getName());
     }
@@ -67,20 +71,30 @@ public class ProfileGenerator {
     Constraint.Element_ ce = c.new Element_();
     c.getElement().add(ce);
     ce.setPath(path);
-    ce.setName(e.getProfileName());
+    if (!"".equals(e.getProfileName()))
+      ce.setName(e.getProfileName());
+    if (!"".equals(e.getComments()))
+      ce.setComments(e.getComments());
+    if (!"".equals(e.getShortDefn()))
+      ce.setShortDefn(e.getShortDefn());
+    if (!"".equals(e.getDefinition()))
+      ce.setDefinition(e.getDefinition());
+    
     // no purpose here
     ce.setMin(e.getMinCardinality());
     ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
-    ce.setType(e.typeCode()); // todo: this needs to be decomposed
+    for (TypeDefn t : e.getTypes())
+      ce.getType().add(t.summaryFormal()); 
     ce.setConformance(getType(e.getConformance()));
-    ce.setCondition(e.getCondition());
+    if (!"".equals(e.getCondition()))
+      ce.setCondition(e.getCondition());
     // we don't know mustSupport here
     if (e.isMustUnderstand()) 
       ce.setMustUnderstand(e.isMustUnderstand());
-    ce.setDefinition(e.getDefinition());
     // todo: mappings
     // we don't have anything to say about constraints on resources
-    ce.setBinding(e.getConceptDomain());
+    if (!"".equals(e.getConceptDomain()))
+      ce.setBinding(e.getConceptDomain());
     
     for (ElementDefn child : e.getElements()) {
       defineElement(c, child, path+"."+child.getName());

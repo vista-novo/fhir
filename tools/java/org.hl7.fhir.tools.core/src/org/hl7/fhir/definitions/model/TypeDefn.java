@@ -23,9 +23,19 @@ public class TypeDefn {
   public String summary() {
     String s = name;
     if (hasParams()) {
-      s = s + "("+s;
+      s = s + "(";
       for (String p : params)
         s = s + p+',';
+      s = s.substring(0, s.length()-1)+')';
+    }
+    return s;
+  }
+  public String summaryFormal() {
+    String s = name;
+    if (hasParams()) {
+      s = s + "(";
+      for (String p : params)
+        s = s + p+'|';
       s = s.substring(0, s.length()-1)+')';
     }
     return s;

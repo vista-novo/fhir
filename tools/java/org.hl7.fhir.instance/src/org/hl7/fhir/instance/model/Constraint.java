@@ -1,6 +1,6 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://www.hl7.org). Generated on Thu, May 17, 2012 17:40+1000 for FHIR v0.02
+// Copyright HL7 (http://www.hl7.org). Generated on Fri, May 18, 2012 22:20+1000 for FHIR v0.02
 
 import java.util.*;
 
@@ -50,9 +50,19 @@ public class Constraint extends Element {
         private String name;
 
         /**
-         * Human summary: why describe this element?
+         * A concise definition that  is shown in the concise XML format that summarises profiles
          */
-        private String purpose;
+        private String shortDefn;
+
+        /**
+         * a more specific definition than the definition for the same element in the base resource. The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
+         */
+        private String definition;
+
+        /**
+         * Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc
+         */
+        private String comments;
 
         /**
          * Minimum Cardinality
@@ -67,7 +77,7 @@ public class Constraint extends Element {
         /**
          * Type of the element
          */
-        private String type;
+        private List<String> type = new ArrayList<String>();
 
         /**
          * Mandatory|Conditional|Optional|Prohibited
@@ -88,11 +98,6 @@ public class Constraint extends Element {
          * If the element must be understood
          */
         private boolean mustUnderstand;
-
-        /**
-         * More specific definition
-         */
-        private String definition;
 
         /**
          * 
@@ -130,12 +135,28 @@ public class Constraint extends Element {
           this.name = value;
         }
 
-        public String getPurpose() { 
-          return this.purpose;
+        public String getShortDefn() { 
+          return this.shortDefn;
         }
 
-        public void setPurpose(String value) { 
-          this.purpose = value;
+        public void setShortDefn(String value) { 
+          this.shortDefn = value;
+        }
+
+        public String getDefinition() { 
+          return this.definition;
+        }
+
+        public void setDefinition(String value) { 
+          this.definition = value;
+        }
+
+        public String getComments() { 
+          return this.comments;
+        }
+
+        public void setComments(String value) { 
+          this.comments = value;
         }
 
         public int getMin() { 
@@ -154,12 +175,8 @@ public class Constraint extends Element {
           this.max = value;
         }
 
-        public String getType() { 
+        public List<String> getType() { 
           return this.type;
-        }
-
-        public void setType(String value) { 
-          this.type = value;
         }
 
         public ConformanceType getConformance() { 
@@ -192,14 +209,6 @@ public class Constraint extends Element {
 
         public void setMustUnderstand(boolean value) { 
           this.mustUnderstand = value;
-        }
-
-        public String getDefinition() { 
-          return this.definition;
-        }
-
-        public void setDefinition(String value) { 
-          this.definition = value;
         }
 
         public List<Mapping> getMapping() { 

@@ -51,7 +51,7 @@
       </element>
       <element>
         <path>Document.setId</path>
-        <purpose>All EHR documents must be versioned using setId/Version</purpose>              
+        <comments>All EHR documents must be versioned using setId/Version</comments>              
         <min>1</min>
         <max>1</max>
         <type>id</type>
@@ -73,7 +73,7 @@
       </element>
       <element>
         <path>subject</path>
-        <purpose>Only individual humans in the EHR</purpose>
+        <comments>Only individual humans in the EHR</comments>
         <min>1</min>
         <max>1</max>
         <type>Resource(Patient)</type>
@@ -93,7 +93,7 @@
       </element>
       <element>
         <path>Document.author.party</path>
-        <purpose>Only humans author documents</purpose>
+        <comments>Only humans author documents</comments>
         <min>1</min>
         <max>1</max>
         <type>Resource(Person)</type>
@@ -107,7 +107,7 @@
       </element>
       <element>
         <path>Doument.attestor.mode</path>
-        <purpose>Only legal authentication</purpose>
+        <comments>Only legal authentication</comments>
         <min>1</min>
         <max>1</max>
         <conformance>Mandatory</conformance>            

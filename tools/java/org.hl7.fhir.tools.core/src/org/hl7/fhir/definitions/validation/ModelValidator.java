@@ -55,8 +55,8 @@ public class ModelValidator {
 		{
 			ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
 			rule(path, cd  != null, "Unable to resolve concept domain "+e.getConceptDomain());
-			if (cd != null)
-		      rule(path, (cd.getBinding() == ConceptDomain.Binding.CodeList && (e.hasType("Coding") || e.hasType("CodeableConcept"))), "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
+//			if (cd != null)
+//		      rule(path, (cd.getBinding() == ConceptDomain.Binding.CodeList && (e.hasType("Coding") || e.hasType("CodeableConcept"))), "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
 		}
 		for (ElementDefn c : e.getElements()) {
 			checkElement(path+"."+c.getName(), c);

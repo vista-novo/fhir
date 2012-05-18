@@ -5,7 +5,7 @@ package org.hl7.fhir.instance.model;
 /**
  * [Template] Master Definition
  */
-public class Linda extends Resource {
+public class Amnon extends Resource {
 
 
 }

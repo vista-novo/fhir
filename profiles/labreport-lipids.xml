@@ -9,17 +9,17 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:17:14Z</Created>
-  <LastSaved>2012-05-13T08:07:34Z</LastSaved>
+  <LastSaved>2012-05-17T21:58:20Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6348</WindowHeight>
-  <WindowWidth>15576</WindowWidth>
+  <WindowHeight>6150</WindowHeight>
+  <WindowWidth>15570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6072</WindowTopY>
+  <WindowTopY>6075</WindowTopY>
   <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
@@ -96,7 +96,7 @@
  <Worksheet ss:Name="Metadata">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.8"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Value</Data></Cell>
@@ -190,15 +190,14 @@
  <Worksheet ss:Name="LabReport">
   <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="39" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0"
-    ss:Width="150.60000000000002"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="2"/>
-   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="61.8" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s68" ss:AutoFitWidth="0"
-    ss:Width="213.60000000000002" ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="161.4"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="245.39999999999998"/>
+   <Column ss:Index="2" ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
+   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="61.5" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="213.75"
+    ss:Span="1"/>
+   <Column ss:Index="11" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s70">
@@ -225,9 +224,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data></Cell>
-    <Cell><Data ss:Type="String">Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</Data></Cell>
-    <Cell><Data ss:Type="String">Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The findings and interpretation of a general lipd lab profile</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:Index="2"><Data ss:Type="String">LabReport.reportName</Data></Cell>
@@ -546,11 +543,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>10</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

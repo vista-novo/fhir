@@ -92,6 +92,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		{
 			write(" ");
 		}
+		if (elem.isInherited())
+		  write("<i class=\"inherited\">");
 		String en = elem.getName();
 		if (en.contains("[x]") && elem.getTypes().size() == 1 && !elem.typeCode().equals("*"))
 			en = en.replace("[x]", elem.typeCode());
@@ -125,15 +127,16 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		} 
 		else 
 		{
-			write("<b>"+en);
+		  write("<b>"+en);
 			if (rootName == null || "x".equals(rootName))
 				write("</b>");
 			else
 				write("</b></a>");
-			if (elem.getId() != null)
-			{
-				write(" id=\""+elem.getId()+"\"");
-			}
+//			disable 18-May 2012 Grahame - don't recall why we mark an element as having an id or not, and appears to be non-functional
+//			if (elem.getId() != null)
+//			{
+//				write(" id=\""+elem.getId()+"\"");
+//			}
 			write("&gt;");
 			
 			// If this is an unrolled element, show its profile name
@@ -227,7 +230,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 					write("<font color=\"Gray\"> --&gt;</font>");
 			write("&lt;/");
 			write(en);
-			write("&gt;\r\n");
+			write("&gt;");
+	    if (elem.isInherited())
+	      write("</i>");
+      write("\r\n");
 
 		}
 	}

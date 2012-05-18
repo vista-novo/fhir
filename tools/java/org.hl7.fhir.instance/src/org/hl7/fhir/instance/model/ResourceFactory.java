@@ -3,50 +3,54 @@ package org.hl7.fhir.instance.model;
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
-        if ("Conformance".equals(name))
-            return new Conformance();
-        if ("Document".equals(name))
-            return new Document();
         if ("Device".equals(name))
             return new Device();
-        if ("Message".equals(name))
-            return new Message();
-        if ("Animal".equals(name))
-            return new Animal();
-        if ("Agent".equals(name))
-            return new Agent();
         if ("MessageConformance".equals(name))
             return new MessageConformance();
-        if ("Organization".equals(name))
-            return new Organization();
+        if ("Animal".equals(name))
+            return new Animal();
         if ("Prescription".equals(name))
             return new Prescription();
-        if ("Profile".equals(name))
-            return new Profile();
-        if ("Admission".equals(name))
-            return new Admission();
+        if ("Organization".equals(name))
+            return new Organization();
         if ("Lloyd".equals(name))
             return new Lloyd();
         if ("Woody".equals(name))
             return new Woody();
         if ("Group".equals(name))
             return new Group();
-        if ("InterestOfCare".equals(name))
-            return new InterestOfCare();
         if ("Linda".equals(name))
             return new Linda();
-        if ("Specimen".equals(name))
-            return new Specimen();
         if ("Ewout".equals(name))
             return new Ewout();
-        if ("Patient".equals(name))
-            return new Patient();
         if ("Valueset".equals(name))
             return new Valueset();
-        if ("DocumentConformance".equals(name))
-            return new DocumentConformance();
+        if ("PaulK".equals(name))
+            return new PaulK();
+        if ("Amnon".equals(name))
+            return new Amnon();
         if ("LabReport".equals(name))
             return new LabReport();
+        if ("DocumentConformance".equals(name))
+            return new DocumentConformance();
+        if ("Conformance".equals(name))
+            return new Conformance();
+        if ("Document".equals(name))
+            return new Document();
+        if ("Message".equals(name))
+            return new Message();
+        if ("Agent".equals(name))
+            return new Agent();
+        if ("Profile".equals(name))
+            return new Profile();
+        if ("Admission".equals(name))
+            return new Admission();
+        if ("InterestOfCare".equals(name))
+            return new InterestOfCare();
+        if ("Specimen".equals(name))
+            return new Specimen();
+        if ("Patient".equals(name))
+            return new Patient();
         if ("Person".equals(name))
             return new Person();
         else
