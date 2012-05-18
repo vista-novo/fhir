@@ -1392,10 +1392,10 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 			else if (com[0].equals("plural"))
 				src = s1+Utilities.pluralizeMe(name)+s3;
 			else if (com[0].equals("notes")) {
-			  if (new File(folders.sndBoxDir + name+File.separatorChar+name+".htm").exists())
-	        src = s1+Utilities.fileToString(folders.sndBoxDir + name+File.separatorChar+name+".htm")+s3;
+			  if (new File(folders.sndBoxDir + name+File.separatorChar+name+"-notes.xhtml").exists())
+	        src = s1+Utilities.fileToString(folders.sndBoxDir + name+File.separatorChar+name+"-notes.xhtml")+s3;
 			  else
-			    src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+".htm")+s3;
+			    src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+"-notes.xhtml")+s3;
 			} else if (com[0].equals("dictionary"))
 				src = s1+dict+s3;
 			else if (com[0].equals("resurl")) {
