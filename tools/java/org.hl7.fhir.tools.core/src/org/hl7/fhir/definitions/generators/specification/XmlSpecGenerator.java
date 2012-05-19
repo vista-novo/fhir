@@ -171,9 +171,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 					if (t.getName().equals("xhtml") || t.getName().equals("list"))
 						write(t.getName());
 					else if (!t.getName().equals("Resource"))
-						//            write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">-></a>");
-						//		      else
-						write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">"+t.getName()+"</a>");
+//					  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">Resource</a>");
+//					else
+					  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">"+t.getName()+"</a>");
 					if (t.hasParams()) 
 					{
 						write("(");

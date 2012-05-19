@@ -248,10 +248,15 @@ public class ElementDefn {
 
 
     public ElementDefn getElementByName(String name) {
+      String n = name.contains(".") ? name.substring(0, name.indexOf(".")) : name;
+      String t = name.contains(".") ? name.substring(name.indexOf(".")+1) : null;
+      if (n.equals(this.name) && t != null)
+        return getElementByName(t);
+      
       for (int i = elements.size()-1; i >= 0; i--) {
         ElementDefn e = elements.get(i);
-        if (e.getName().equalsIgnoreCase(name))
-          return e;
+        if (e.getName().equalsIgnoreCase(n))
+          return t == null ? e : e.getElementByName(t);
         if (e.getName().length() > name.length() && e.getName().substring(0, name.length()).equalsIgnoreCase(name) && e.getElements().size() == 1 && e.getElements().get(0).getName().equalsIgnoreCase(name))
           return e.getElements().get(0);
       }

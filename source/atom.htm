@@ -150,20 +150,17 @@ There is a special end-point for aggregations at the relative url "/assemblies",
   <tr><td>delete</td><td>Delete an aggregation</td></tr>
   <tr><td>validate</td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td>history</td><td>Not supported - aggregations never change</td></tr>
-  <tr><td>transaction</td><td>Not supported</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
+  <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
   <tr><td>search</td><td>Search the aggregations based on some filter criteria. Supported search parameters<br/>
               <ul>
-	        <li>Document.id - an id of a document. There should only be one aggregation for each document (optional, for systems that support documents)</li>
-	        <li>Message.id - an id of a message. There is usually only one aggregation per message. (optional, for systems that archive messages and make them available in this fashion)</li>
+	        <li>document.id - an id of a document. There should only be one aggregation for each document (optional, for systems that support documents)</li>
+	        <li>message.id - an id of a message. There is usually only one aggregation per message. (optional, for systems that archive messages and make them available in this fashion)</li>
 		<li>[ResourceType].id - an id of a resource that may be brought into an aggregation. Multiple aggregations should be expected in the response. (also optional)</li>
 	      </ul>
 	      </td></tr>
   <tr><td>create</td><td>Create an aggregation (i.e. post to the server. The ID is assigned by the client)</td></tr>
-  <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
-  <tr><td>transaction</td><td>Not supported</td></tr>
   <tr><td>conformance</td><td>Not supported (no conformance statement for aggregations directly)</td></tr>
-  <tr><td>schema</td><td>Not supported (no schema for FHIR atom directly)</td></tr>
 </table>
 <p>
 For all these resources, the id (as used in the <a href="http.htm">RESTful transactions</a>) is the 

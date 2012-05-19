@@ -1,0 +1,64 @@
+
+<h2>Background</h2>
+<p>
+This specification describes a set of base resources that are used in many different
+contexts in healthcare. In order to make this manageable, applications and specifications need to be
+able to:
+</p>
+<ul class="dense">
+ <li>Explain how a set of resources is used in a particular context</li>
+ <li>Describe restrictions on the use of the elements defined as part of the resources</li> 
+ <li>Define the extensions that are used with the resources</li>
+ <li>Describe how resources are bound to terminology in a particular context</li>
+</ul>
+<p>
+All these things are done by a Resource Profile, which is itself a resource that 
+describes the usage of one or more other resources. Generally, profiles have a 
+metadata section that describes who published the profile, and why, and optional
+lists of resources constraints, extension definitions, and vocabulary bindings. 
+</p>
+
+<h2>Slicing</h2>
+<p>
+One common operation in a resource profile is to take an element that may occur more
+than once, and describe a series of different constraints on the elements in the list. 
+In this way, the list is split into a series of individual elements or sub-lists. 
+In FHIR, this operation is known as "Slicing" a list. Here is an example to illustrate the 
+process:
+</p>
+<table class="list">
+ <tr>
+  <th>Resource Definition</th>
+  <th>&nbsp;</th>
+  <th style="border-left: 1px solid gray">&nbsp;</th>
+  <th>Profile for Acme, Inc</th>
+ </tr>
+ <tr>
+  <td>relationship [0..*] <br/>&nbsp;&nbsp;type : Coding<br/>&nbsp;&nbsp;id : string</td>
+  <td>&nbsp;</td>
+  <td style="border-left: 1px solid gray">&nbsp;</td>
+  <td>
+   parent [1..2] <br/>&nbsp;&nbsp;type = PAR<br/>&nbsp;&nbsp;id : string<br/>
+   guardian [0..1] <br/>&nbsp;&nbsp;type = GUARD<br/>&nbsp;&nbsp;id : string<br/>
+   child [0..6] <br/>&nbsp;&nbsp;type = CHILD<br/>&nbsp;&nbsp;id : string<br/>
+   (closed)
+  </td>
+ </tr>
+</table>
+<p>
+In this example, the resource definition defines the relationship element which may occur
+multiple times. The profile for Acme, Inc constrains the relationships into 3 different kinds: 
+1 or 2 parents, up to 6 children, and maybe a guardian. No other relationships are supported
+by the Acme system. 
+</p>
+<p>
+Note that in FHIR, only the resource is ever actually exchanged. The profile describes a way of 
+using the resource, but the item profile names ("parent", etc in this list) are never exchanged.
+In order the unpicking to be useful, systems must be able to determine which 
+relationships in the relationship list that is actually exchanged are parent, child, or 
+guardian; in this particular case, the determination is achieved by fixing the value of the 
+relationship type element. Fixing a code value is the most common way to slice a list.
+</p>
+
+
+

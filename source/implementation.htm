@@ -38,12 +38,12 @@ reading applications are followed, then the implementation can claim conformance
   <li>Resource references need to be able to be resolved. There are a variety of solutions to this, from ensuring that the all the relevant resources are aggregated together, or that all relevent resources are passed as parameters in a service call, through to a resource repository that provides access to all reference resources. </li>
   <li>The <a href="xml.htm#metadata">Resource metadata</a> items "Version Id" and "Last Modified Date" are provided for use in resolving resource versioning and concurrency issues, both from a technical and human perspective. Most contexts of use will require at least one if not both of these attributes for some uses, and the implementation framework will need to resolve how and when they are exchanged</li>
   <li>The <a href="xml.htm#metadata">resource metadata</a> item "Master Location" may be useful as part of a solution towards resolving resource references, and/or handling issues pertaining to distrubed use and re-use of resources, and implementations should describe how this data item is handlded</li>
-  <li>The <a href="constraint.htm">basic conformance statement</a> allows authoring and reading applications to describe their rules concerning the contents of a resource. 
-      The implementation will need to describe how this constraint statement fits into the exchange/persistence context.</li>
+  <li>The <a href="conformance.htm">conformance statement</a> allows authoring and reading applications to describe their rules concerning the use and contents of a resource. 
+      The implementation will need to describe how this conformance statement or some other equivalent fits into the exchange/persistence context.</li>
   <li>How transactional information such as data enterer, author(s), responsible party, consent, and approvals is treated</li>
 </ul>
 <p>
-The resolution to these issues should be documented and published somewhere.
+The resolution to these issues should be documented and published with the service specification.
 </p>
 
 <a name="Use"></a>

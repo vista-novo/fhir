@@ -1,48 +1,680 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Conformance xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\conformance.xsd">
-  <id>6cb96d2f-cfa5-4da9-a5a6-d1a087da0baf</id>
-  <date>2012-01-04</date>
-  <publisher>
-    <name>ACME Corporation</name>
-    <contact>
-      <system>email</system>
-      <value>wile@acme.org</value>
-    </contact>
-  </publisher>
-  <software>
-    <name>EHR</name>
-    <version>0.00.020.2134</version>
-  </software>
-  <mode>server</mode>
+<Profile xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\profile.xsd">
+  <id>15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</id>
+  <name>Lipid Profile</name>
+  <author>
+    <name>Grahame Grieve</name>
+    <reference>grahame@healthintersections.com.au</reference>
+  </author>
+  <intention>Describes how the lab report is used for a Lipid Profile</intention>
+  <description>Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</description>
+  <status>testing</status>
+  <date>2012-05-12</date>
+  <endorser>
+    <name/>
+  </endorser>
   <resource>
-    <type>Patient</type>
+    <type>Resource</type>
+    <name>Lipids</name>
+    <element>
+      <path>LabReport</path>
+      <name>Lipids</name>
+      <definition>The findings and interpretation of a general lipd lab profile</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>Resource</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.id</path>
+      <shortDefn>Master Resource Id, always first in all resources</shortDefn>
+      <definition>Master Resource Id, always first in all resources</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>id</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.status</path>
+      <shortDefn>Registered|Interim|Final|Amended|Cancelled|Withdrawn</shortDefn>
+      <definition>The status of the pathology test result as a whole</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+      <binding>LabReportStatus</binding>
+    </element>
+    <element>
+      <path>LabReport.issued</path>
+      <shortDefn>date issed for current status</shortDefn>
+      <definition>The date and/or time that the result was issued from the source for the recorded â€˜Test result status</definition>
+      <comments>May be different from LabReport.updated, because that is the status of this record, not the report the record is about</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>instant</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.patient</path>
+      <shortDefn>The patient the report is about</shortDefn>
+      <definition>The patient about who the report is about</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>Resource(Patient)</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.admission</path>
+      <shortDefn>Admission Context</shortDefn>
+      <definition>The admission that this diagnostic investigation is associated with</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Resource(Admission)</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.laboratory</path>
+      <shortDefn>Responsible Laboratory</shortDefn>
+      <definition>The laboratory service that issued the report</definition>
+      <comments>This is not necessarily the source of the atomic reports - it&#39;s the lab that takes responsibility for the clinical report</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>Resource(Organization)</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.reportId</path>
+      <shortDefn>Id for external references to this report</shortDefn>
+      <definition>The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>id</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.requestDetail</path>
+      <definition>Details concerning a single pathology test requested.</definition>
+      <comments>Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</comments>
+      <min>0</min>
+      <max>*</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.requestDetail.requestOrderId</path>
+      <shortDefn>Id assigned by requester</shortDefn>
+      <definition>The local ID assigned to the order by the order requester.</definition>
+      <comments>Equivalent to the Placer Order Identifier</comments>
+      <min>0</min>
+      <max>1</max>
+      <type>Identifier</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.requestDetail.receiverOrderId</path>
+      <shortDefn>Receiver&#39;s Id for the request</shortDefn>
+      <definition>The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</definition>
+      <comments>Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</comments>
+      <min>0</min>
+      <max>1</max>
+      <type>Identifier</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.requestDetail.requestTest</path>
+      <shortDefn>Test Requested</shortDefn>
+      <definition>Identification of pathology test requested,</definition>
+      <comments>Useful where the test requested differs from the test actually performed.</comments>
+      <min>0</min>
+      <max>*</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+      <binding>LabRequests</binding>
+    </element>
+    <element>
+      <path>LabReport.requestDetail.requester</path>
+      <shortDefn>Responsible for request</shortDefn>
+      <definition>Details of the clinician or organisation requesting the laboratory test.</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Resource(Agent|Organization)</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.requestDetail.clinicalInfo</path>
+      <shortDefn>Clinical information provided</shortDefn>
+      <definition>Details of the clinical information provided to the laboratory along with the original request</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Resource(Any)</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.reportName</path>
+      <shortDefn>Loinc Code for Lipid Report with LDL</shortDefn>
+      <definition>Loinc Code for Lipid Report with LDL</definition>
+      <comments>Loinc code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.service</path>
+      <shortDefn>Biochemistry, Haematology etc</shortDefn>
+      <definition>The diagnostic service that performs the examination e.g. biochemistry, haematology.</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+      <binding>LabServices</binding>
+    </element>
+    <element>
+      <path>LabReport.diagnosticTime</path>
+      <shortDefn>Effective time of diagnostic report</shortDefn>
+      <definition>The diagnostically relevant time for this report</definition>
+      <comments>The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>dateTime</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.specimen</path>
+      <shortDefn>Specimen (incl. time of collection)</shortDefn>
+      <definition>Details about the specimen if all individual test results are derived from the same specimen</definition>
+      <comments>If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per &#39;Result group&#39;</comments>
+      <min>0</min>
+      <max>*</max>
+      <type>Resource(Specimen)</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup</path>
+      <shortDefn>All the results in one group</shortDefn>
+      <definition>All the lipid panel results</definition>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.name</path>
+      <shortDefn>No name needed for the result group</shortDefn>
+      <definition>No name needed for the result group</definition>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.specimen</path>
+      <shortDefn>Specimen details</shortDefn>
+      <definition>Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required.</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Resource(Specimen)</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result</path>
+      <name>Cholesterol Group</name>
+      <definition>Group of elements for Cholesterol result</definition>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.name</path>
+      <shortDefn>Cholesterol</shortDefn>
+      <definition>Cholesterol</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.value[x]</path>
+      <shortDefn>Cholesterol value</shortDefn>
+      <definition>Cholesterol value. If a result is not available, use the comments field</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.flag</path>
+      <shortDefn>+ | ++ | +++ | - | -- | --- </shortDefn>
+      <definition>+ | ++ | +++ | - | -- | --- </definition>
+      <min>0</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+      <binding>LabResultFlag</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.status</path>
+      <shortDefn>Registered|Interim|Final|Amended|Cancelled|Withdrawn</shortDefn>
+      <definition>The status of the result value</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+      <binding>LabReportStatus</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.comments</path>
+      <shortDefn>Comments about result</shortDefn>
+      <definition>May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>string</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange</path>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
+      <shortDefn>Range is a recommended range</shortDefn>
+      <definition>Range is a recommended range</definition>
+      <comments>yeah, so I suppose it should be coded, right? But coded how? No publically available terminologies include an appropriate code…</comments>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
+      <definition>&lt;4.5 mmol/L</definition>
+      <comments>Per Australian NHF Recommendations</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result</path>
+      <name>Triglyceride Group</name>
+      <definition>Group of elements for Triglyceride result</definition>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.name</path>
+      <shortDefn>Triglyceride</shortDefn>
+      <definition>Triglyceride</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.value[x]</path>
+      <shortDefn>Triglyceride value</shortDefn>
+      <definition>Triglyceride value. If a result is not available, use the comments field</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.flag</path>
+      <shortDefn>+ | ++ | +++ | - | -- | --- </shortDefn>
+      <definition>+ | ++ | +++ | - | -- | --- </definition>
+      <min>0</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+      <binding>LabResultFlag</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.comments</path>
+      <shortDefn>Comments about result</shortDefn>
+      <definition>Comments about result</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>string</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange</path>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
+      <shortDefn>Range is a recommended range</shortDefn>
+      <definition>Range is a recommended range</definition>
+      <comments>see note above</comments>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
+      <definition>&lt;2.0 mmol/L</definition>
+      <comments>Per Australian NHF Recommendations</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result</path>
+      <name>HDL Cholesteral Group</name>
+      <definition>Group of elements for HDL Cholesterol result</definition>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.name</path>
+      <shortDefn>HDL Cholesterol</shortDefn>
+      <definition>HDL Cholesterol</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.value[x]</path>
+      <shortDefn>HDL Cholesterol value</shortDefn>
+      <definition>HDL Cholesterol value. If a result is not available, use the comments field</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.flag</path>
+      <shortDefn>+ | ++ | +++ | - | -- | --- </shortDefn>
+      <definition>+ | ++ | +++ | - | -- | --- </definition>
+      <min>0</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+      <binding>LabResultFlag</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.comments</path>
+      <shortDefn>Comments about result</shortDefn>
+      <definition>Comments about result</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>string</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange</path>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
+      <shortDefn>Range is a recommended range</shortDefn>
+      <definition>Range is a recommended range</definition>
+      <comments>See note above</comments>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
+      <definition>&gt;1.5 mmol/L</definition>
+      <comments>Per Australian NHF Recommendations</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result</path>
+      <name>LDL Cholesteral Group</name>
+      <shortDefn>LDL Cholesterol result, if reported</shortDefn>
+      <definition>LDL Cholesterol result, if reported</definition>
+      <min>0</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.name</path>
+      <shortDefn>LDL Cholesterol. LOINC code defines measured or calc</shortDefn>
+      <definition>Group of elements for LDL Cholesterol. Loinc code defines whether LDL is measured or calculated</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>CodeableConcept</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+      <binding>Loinc 35198-1 | Loinc 13457-7</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.value[x]</path>
+      <shortDefn>LDL Cholesterol value</shortDefn>
+      <definition>LDL Cholesterol value. If a result is not available, use the comments field</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.flag</path>
+      <shortDefn>+ | ++ | +++ | - | -- | --- </shortDefn>
+      <definition>+ | ++ | +++ | - | -- | --- </definition>
+      <min>0</min>
+      <max>1</max>
+      <type>code</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+      <binding>LabResultFlag</binding>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.comments</path>
+      <shortDefn>Comments about result</shortDefn>
+      <definition>Comments about result</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>string</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange</path>
+      <min>1</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.meaning</path>
+      <shortDefn>Range is a recommended range</shortDefn>
+      <definition>Range is a recommended range</definition>
+      <comments>See Note above</comments>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.resultGroup.result.referenceRange.range[x]</path>
+      <definition>&lt;3.0 mmol/L</definition>
+      <comments>Per Australian NHF Recommendations</comments>
+      <min>1</min>
+      <max>1</max>
+      <type>Quantity</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.conclusion</path>
+      <shortDefn>Clinical Interpretation of Lipid Panel</shortDefn>
+      <definition>May include diagnosis or suggestions for follow up testing</definition>
+      <min>0</min>
+      <max>1</max>
+      <type>Narrative</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>true</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.codedDiagnosis</path>
+      <shortDefn>Codes for the conclusion</shortDefn>
+      <definition>Codes for the conclusion</definition>
+      <min>0</min>
+      <max>0</max>
+      <type>CodeableConcept</type>
+      <conformance>Prohibited</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+      <binding>LabDiagnosisCodes</binding>
+    </element>
+    <element>
+      <path>LabReport.representation</path>
+      <shortDefn>Entire Report as issued</shortDefn>
+      <definition>Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</definition>
+      <comments>Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</comments>
+      <min>1</min>
+      <max>*</max>
+      <type>Attachment</type>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.extensions</path>
+      <shortDefn>See Extensions</shortDefn>
+      <definition>See Extensions</definition>
+      <min>0</min>
+      <max>1</max>
+      <conformance>Optional</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
+    <element>
+      <path>LabReport.text</path>
+      <shortDefn>Text summary of report, for human interpretation</shortDefn>
+      <definition>Text summary of report, for human interpretation</definition>
+      <min>1</min>
+      <max>1</max>
+      <type>Narrative</type>
+      <conformance>Mandatory</conformance>
+      <mustSupport>false</mustSupport>
+      <mustUnderstand>false</mustUnderstand>
+    </element>
   </resource>
-  <operation>
-    <read>true</read>
-    <vread>true</vread>
-    <update>true</update>
-    <delete>false</delete>
-    <validate>false</validate>
-    <history>true</history>
-    <transaction>
-      <name>link</name>
-    </transaction>
-    <search>
-      <param>name</param>
-      <param>gender</param>
-    </search>
-    <create>
-      <id>server</id>
-    </create>
-    <updates>true</updates>
-    <schema>false</schema>
-  </operation>
-  
-
-	<text>
+  <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>The EHR Server supports the following transactions for the resource "Patient": read, vread, update, history, transaction(link), search(name,gender), create(server-id only), and updates</p>
     </div>
   </text>
-</Conformance>
+</Profile>

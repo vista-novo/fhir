@@ -1,6 +1,6 @@
 
 <p>
-Notes:
+Metadata Notes:
 </p>
 <ul>
 <li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc (USA), Allergy List)</li>
@@ -8,9 +8,43 @@ Notes:
 <li>If other profiles are referenced, then any constraints in those profiles also apply to this profile. If a resource or binding is 
 found in this profile, the constraints described must include all the constraints found in the referenced profiles, so 
 that it is not necessary to search the referenced profiles and merge the constraints. The primary use of referencing other 
-profiles is to re-use concept binding constraints</li>
+profiles is to re-use vocabulary binding constraints</li>
 </ul>  
 
+<p>
+Interpretation Notes:
+</p>
+<ul>
+<li>The name of the resource (Profile.resource.name) is only used as a logical target for .element.aggregation.reference. A reference may reference another resource 
+  constraint in same resource by Profile.resource.name as #[name]), or a different resource constraint in another profile by an absolute uri. In the case of an absolute uri, it 
+  must resolve literally or logically to a <a href="profile.htm">Resource Profile</a> and specify a #[name] portion in the URI</li>
+  
+<li>The constraint statement has a flat list of elements. The path element provides the overall structure and it must match the structure and names in the resource structure exactly</li>
+
+<li>The condition element must be present if the conformance value is conditional. There is no formal computable grammar for the condition, though it may be accompanied by an xpath statement, often on the parent element</li>
+
+<li>The type is used to specify which types apply when the underlying resource allows a choice of types. 
+When the type of the element is fixed in the underlying resource definitions, it should still be stated in the profile. The type is optional because repeating groups of elements do not have a type. </li>
+
+<li>Definition is provided so that the constraint statement can provide a more specific definition for the field in a specific context. 
+  For instance, the underlying resource definition might be "Result value", and the more specific resource definition could be "Plasma Cholesterol Test Value".
+  The meaning needs to be consistent with the underlying definition, but narrower - a constraint on it. If no definition is provided, the inherited definition
+  still applies</li>
+  
+<li>For an element with a maximum cardinality of 1, there can only be one entry in the value list, which is either a literal fixed type (with an element name matching the type of the fixed value), or a name,
+  which is a reference to a named constraint pattern. If the element has a type of "list", then there can be multiple values - again, either fixed values with a type, or a named constraint. 
+  Each of these appears in the list with the order and cardinality specified. By this means, a list may be "sliced" into a series of different components</li>
+
+<li>There can be more than one entry for each element path. The constraint specification can define multiple different constraints for any element, and 
+  then use them in different places. In practice, this is useful when slicing a list, and the differently named constraint profiles are invoked using the 
+  <i>values</i> element. The name of the element constraint must be unique within the constraint specification for that resource. if a constraint does not 
+  have a name, it applies to the base resource, and must be found in the correct place in the structure</li>
+  
+</ul>
+
+<p>
+TODO: Is any control over narrative required?
+</p>
 
 
 <h2>
@@ -21,15 +55,14 @@ The following simple search/filter parameters are defined for Resource Profiles:
 </p>
 <table class="list">
   <tr><td>name   </td><td>a portion of the name of the resource</td></tr>
+  <tr><td>word   </td><td>a word somewhere in the definition of the resource or the elements in the resource. (Common words  - 'and' etc - are often not supported)</td></tr>
   <tr><td>author </td><td>name or id of the author</td></tr>
   <tr><td>code   </td><td>a code in the format uri::code</td></tr>
+  <tr><td>extension </td><td>an extension code</td></tr>
+  <tr><td>binding </td><td>a vocabulary binding code</td></tr>
   <tr><td>status </td><td>a status of the profile</td></tr>
   <tr><td>type   </td><td>type of resource that is constrained in the profile</td></tr>
-  <tr><td>domain </td><td>concept domain that is constrained in the resource</td></tr>
-  words
-  extensions
-  binding
-  
+  <tr><td>domain </td><td>concept domain that is constrained in the resource</td></tr> 
 </table>
 <p>
 The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).

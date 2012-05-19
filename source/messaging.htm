@@ -54,7 +54,7 @@ delivery of messages.
 </p>
 <p>
 This specification ignores the existence of interface engines and message transfer agents that 
-lie between the <i>source</i> and <i>destination</i>. Either they are transparent to the message/transaction 
+exist between the <i>source</i> and <i>destination</i>. Either they are transparent to the message/transaction 
 content, and irrelevant to this specification, or they are actively involved in manipulating the 
 message content. If these middleware agents are modifying the message content, then they become
 responsible for honoring the contract described below in both directions.
@@ -100,7 +100,7 @@ in the aggregation.
 Applications claiming to be conformant to "FHIR messaging" may choose to publish a conformance statement that
 lists all the message events they support, either as sender or listener, and for each event, which resources
 are aggregated (sender), or are required to be aggregated (listener), and the conformance statements for the 
-information content of the individual resources. The conformance statement is a <a href="messageconformance.htm">resource with the name "MessageConformance"</a>.
+information content of the individual resources. The conformance statement is a <a href="conformance.htm">resource with the name "Conformance"</a>.
 </p>
 
 <%footer%>

@@ -13,6 +13,7 @@ Id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
 12,AnimalStrain,The strain of an animal,unbound,,,
 13,BooleanYesNo,"Either yes or no, true or false",code list,required,#boolean-yes-no,
 14,ConceptBindingType,The type of a binding for a concept domain,code list,required,#concept-binding-type,
+39,ConformanceEventMode,The mode of a message conformance statement,code list,required,#message-conformance-event-mode,
 15,ConformanceType,The conformance value for an element,code list,required,#conformance-type,
 16,ContactSystem,What kind of contact this is,code list,required,#contact-system,
 17,ContactUse,How to use this address,code list,required,#contact-use,
@@ -23,6 +24,7 @@ Id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
 22,DocumentType,Type of a clinical document,value set,preferred,,LOINC Document Types
 60,EventReason,The reason for an event occurring,unbound,,,
 23,EventTiming,A real world event that a schedule is related to,code list,required,#event-timing,
+64,ExtensionContextType,How the path of an extension should be understood,code list,required,#extension-context-type,
 61,ExtensionState,The state of an extension,code list,required,#extension-state,
 24,IdentifierType,The type of human identifier,code list,preferred,#identifier-type,
 25,Industry,Code for the type of industry,value set,preferred,,HL7 v3 OrganizationIndustryClass value set
@@ -39,7 +41,6 @@ Id,Concept Domain,Definition,Binding,Binding Strength,Reference,Description
 36,LanguageUse,How well a person speaks a language,code list,required,#language-use,
 37,MediaType,The mime type of an attachment,reference,required,http://www.rfc-editor.org/bcp/bcp13.txt,"BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)"
 38,MedicationKind,"The kind of medication, vaccine or therapeutic material",value set,preferred,,"G-Standaard (Netherlands), AMT (Australie)"
-39,MessageConformanceEventMode,The mode of a message conformance statement,code list,required,#message-conformance-event-mode,
 40,MessageEvent,One of the message types defined in FHIR messaging,special,required,#MessageEvent,
 42,NamePartType,Type of a part of a human name,code list,required,#name-part-type,
 41,NameUse,The use of a human name,code list,required,#name-use,

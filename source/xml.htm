@@ -14,15 +14,15 @@
 
 <%maindiv%>
 
-<h1>Resource XML</h1>
+<h1>Resource Format</h1>
 
 <p>
 In this specification, resources are described in a simple
 XML format. This page documents how the XML content for resources is described
 and controlled. The XML may be validated by schema, and schemas are provided, but 
 validation is not required in operational systems (though the XML must always be 
-valid against this specification). In addition, W3C Schema and UML models are 
-provided that may be a useful aid for system implementation.
+valid against this specification). In addition to the simple XML description, W3C 
+Schema and UML models are provided that may be a useful aid for system implementation.
 </p>
 
 <h2>XML Content Models</h2>
@@ -31,10 +31,10 @@ All the content model definitions provided in this specification follow the same
 </p>
 <pre>
  &lt;<b>name</b> xmlns="..."&gt; 
-   &lt;<b>nameA</b>&gt; <font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> &lt;nameA&gt;
-   &lt;<b>nameB</b>&gt; <font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> &lt;/nameB&gt;
+   &lt;<b>nameA</b>&gt;<font color="Gray">&lt;!-- </font><font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
+   &lt;<b>nameB</b>&gt;<font color="Gray">&lt;!-- </font><font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
    &lt;<b>nameC</b>&gt; <font color="Brown">&lt;!-- <b>One+</b> --&gt;</font>
-     &lt;<b>nameD</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> &lt;/nameD&gt;
+     &lt;<b>nameD</b><font color="Gray">&lt;!-- </font><font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
    &lt;/nameC&gt;
  &lt;name&gt;
 </pre>
@@ -44,6 +44,7 @@ Notes:
 <ul>
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
  <li>All the XML is in the namespace <a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
+ <li>To build a valid resource, simple replace the contents of the elements with valid content as described by the conformance, cardinality and type rules found in the comment in each element</li>
  <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
  <li>In addition, elements have a control flag shown in red, that specifies whether the element must be present, is optional or may be marked as not present. This is explained below. The control flags are hyperlinked to their definitions.</li>
  <li>Unless specified otherwise, by the appearance of Zero+ or One+, an element can only appear once. If an element that can repeat is labelled as <font color="Brown"><b>Zero+</b></font> <font color="red">mand</font>, that means that any element that appears is mandatory </li>
@@ -112,7 +113,7 @@ Notes:
 <li>Using "masked" may be breach of security or confidentiality, but there are times when it's use
    is required to support alternate workflows for gaining access to denied information.</li>
 <li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from it's definition. Usually this is where the contained elements define what data is missing.</li>
-<li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present, except as described in their <a href="constraint.htm">conformance statement</a>.</li>   
+<li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present.</li>   
 <li>The <i>dataAbsentReason</i> attribute cannot be used inside the data types, nor can it be used in the <i>text</i> portion of a resource, nor inside an <i>extension</i> block (with the exception of the <i>value</i> of the extension)</li>
 </ul>
 <a name="Control"></a>

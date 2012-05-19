@@ -17,34 +17,32 @@
 <h1>Document Framework</h1>
 
 <p>
-This page describes how FHIR Resources can be used to build clinical documents, like CDA. 
-Applications claiming conformance to this framework
-claim to be conformant to "FHIR documents". 
-</p>
-<p>
+This page describes how FHIR Resources can be used to build clinical documents. 
 Documents are a collections of resources that a fixed in scope and frozen in time, 
 and authored and/or attested by a collection or humans, orgnisations and devices,
 and gathered together into a <a href="atom.htm#Aggregation">single aggregation using an atom feed</a>.
 Documents built in this fashion may be exchanged between systems, and also persisted in document
 storage and management systems, including systems such as IHE XDS.
+Applications claiming conformance to this framework
+claim to be conformant to "FHIR documents". 
 </p>
 <h2>Document Format</h2>
 <p>
-All documents have the same structure: an aggregation that has <a href="document.htm">Document
-Resource</a> first, followed by a series of other resources referenced from the Document resource.
+All documents have the same structure: an <a href="atom.htm">aggregation</a> that has <a href="document.htm">Document
+Resource</a> first, followed by a series of other resources referenced from the Document resource that provides guidance 
+for how they fit together.
 </p>
 <p>
 The document resource identifies the document and it's purpose, sets the context of the document, and carries key information such 
 as the subject and author, and divides the document up into sections that each contain a content resource, which is some
 other resource identified in this specification. Any resource referenced directly in the 
 Document resource must be included in the aggregation when the document is assembled; other resources 
-that these documents refer to may also be aggregated if the document originator chooses to.
+that these documents refer to may also be aggregated if the document originator chooses to. 
 </p>
 <p>
-Document profiles and/or application 
-conformance statements can make additional rules about which resources
-must be aggregated along with the resources that are directly referenced in the Document resource. In addition, Document Profiles and conformance
-statements can specify what sections a document contains, and what the constraints on their content
+<a href="profile.htm">Document profiles</a> can make additional rules about which resources
+must be aggregated along with the resources that are directly referenced in the Document resource. In addition, 
+Document Profiles can specify what sections a document contains, and what the constraints on their content
 resource are.
 </p>
 <h2>Handling Documents</h2>
@@ -66,7 +64,7 @@ The standard RESTful framework, there is an <a href="document.htm">manager for t
 which uses the standard <a href="http.htm">HTTP Transactions</a> applied to Document <i>resources</i>.
 In this fashion, a RESTful framework can be used to build a logical description of a document by
 updating the appropriate resources. Note that although this can form a logically complete description
-of the document a full document only exists once the resources that are part of the document are 
+of the document, a full document only exists once the resources that are part of the document are 
 built into a single aggregation.
 </p>
 <p>
@@ -87,15 +85,14 @@ Issues: images &amp; attachments
 
 <h2>Document Profile / Conformance Statement</h2>
 <p>
-Applications claiming to be conformant to "FHIR documents" may choose to publish a conformance statement that
-lists all the document types they support, and for each type, what the document and section content is, and 
-which resources are aggregated (originator), or are required to be aggregated (recipient), along with 
-constraint statements for the information content of the individual resources. 
-The conformance statement is a <a href="documentconformance.htm">resource with the name "DocumentConformance"</a>.
+<a href="profile.htm">Document Profiles</a> describe the document and section 
+content is, and which resources are required to be aggregated into the document, along with 
+profiles of the content of the individual resources. Such profiles may be defined and published 
+by HL7, other standards organisations, institutions, and projects.
 </p>
 <p>
-The same structure can be used to declare a document profile. Such profiles may be defined and published 
-by HL7, other standards organisations, institutions, and projects.
+Applications claiming to be conformant to "FHIR documents" may choose to publish a <a href="conformance.htm">conformance statement</a> that
+lists all the document types they support, and refers to a <a href="profile.htm">profile</a> for each type. 
 </p>
 
 <%footer%>

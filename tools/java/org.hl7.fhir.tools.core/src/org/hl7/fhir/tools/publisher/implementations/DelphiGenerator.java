@@ -19,6 +19,7 @@ import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
+import org.xmlpull.v1.builder.xpath.jaxen.function.ext.UpperFunction;
 
 /**
  * Generates the delphi reference implementation
@@ -518,7 +519,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
       ConceptDomain cd = getConceptDomain(e.getConceptDomain());
       if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
-        tn = "T"+getCodeList(cd.getReference());
+        tn = "T"+getTitle(getCodeList(cd.getReference()).substring(1));
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
           enums.add(e);

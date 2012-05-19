@@ -3,9 +3,27 @@
 Notes:
 </p>
 <ul>
-<li>The MessageConformance resource is a special case; it is only defined for the conformance framework, and is not encountered in other contexts</li>
-<li>The interpretation of request and resource depends on the mode. If the mode is sender, then request specifies what the application sends, and response specifies what it accepts. If the mode is "listener", then this is reversed</li>
-<li>If a request or response is not specified for an event, then no rules are made for it</li>
-<li>Events that are not listed are not supported</li>
+ <li>This conformance resource provides for an application to describe it's use of the RESTful paradigm, or messaging events, or FHIR documents. Usually, an application would only describe one, but more than one may be described</li>
+ <li>RESTful conformance rules:
+  <ul class="dense">
+   <li>RESTful servers are required to provide <a href="http.htm#conformance">this resource on demand</a>. Servers SHALL specify what resource types and operations are supported, and SHOULD also specify profiles for each resource type.</li>
+   <li>RESTful clients SHOULD publish a conformance statement</li>
+   <li>Resource Types or operations that are not listed are not supported</li>
+  </ul>  
+ </li>
+ <li>Messaging conformance rules:
+  <ul class="dense">
+   <li>The interpretation of request and resource depends on the mode. If the mode is sender, then request specifies what the application sends, and response specifies what it accepts. If the mode is "listener", then this is reversed</li>
+   <li>If a request or response is not specified for an event, then no rules are made for it</li>
+   <li>Events that are not listed are not supported</li>
+  </ul>  
+ </li>
+ <li>Document conformance rules:
+  <ul class="dense">
+   <li>Document profile names are not used elsewhere in this specification - they are for human consumption</li>
+   <li>Ideally, the criteria in different document profile should be able to distinguish between multiple document profiles, 
+    so that there is no ambiguity concerning which profile any given document conforms to. However this is not always possible</li>
+  </ul>  
+ </li>
 </ul>  
 

@@ -23,7 +23,7 @@ specific implementations to have valid requirements that will not
 be adopted by this specification. Adopting all of these requirements 
 would make this specification very cumbersome and difficult to
 implement. Instead, this specification expects that these additional
-common requirements will be implemented as extensions.
+distinct requirements will be implemented as extensions.
 </p> 
 <p>
 As such, extensibility is a fundamental part of the design of this 
@@ -49,7 +49,7 @@ that must be met as part of the definition of the extension.
 </p>
 <h2>Extensibility Element</h2>
 <p>
-Each resource includes the optional extensions element before the narrative element at the end of the resource.
+Each resource includes the optional extensions element before the narrative element at the end of the resource. This is the content model of the extension as it appears in each resource:fs
 </p>
 <%dt Extensions%>
 
@@ -58,7 +58,7 @@ Notes:
 </p>
 <ul>
  <li>The <i>code</i> identifies the meaning of the extension. The only codes that can be used are those defined using the methodology described below.</li>
- <li>The source of the definition must be declared using the <i>definition</i> element. The <i>definition</i> may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.</li>
+ <li>The source of the definition must be declared using the <i>definition</i> element. The <i>definition</i> identifies a <a href="profile.htm">resource profile</a> that defines the meaning of the extension.</li>
  <li>If present, the id in the <i>ref</i> element identifies a target element that is extended by the content as if it contained the extension itself. The id must point within the same resource</li>
  <li>The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</li>
  <li>When using xml:id attributes, <a href="atom.htm#Aggregation">the comments in the aggregation section</a> about the value of the xml:id attribute should be kept in mind</li>
@@ -67,17 +67,12 @@ Notes:
 </ul>
 <p>
 As well as providing additional undescribed information, extensions may be used to qualify the meaning of other elements in a way that makes them 
-unsafe to ignore, or even to negate the meanings of other elements. Such extensions must have a state of "must-understand". Over time, an extension
-may be promoted to become part of the resource itself. In order to properly send the data, the extension should still be present, but should have no
-value element. Instead, the state of the extension is "superceded", and the ref points to the correct location for the data.
-</p>
-<p>
-<b>Any application processing the data of a resource must check for extensions with state="must-understand".</b> If the application does not recognise the code on an extension that is labeled
+unsafe to ignore, or even to negate the meanings of other elements. Such extensions must have a mustUnderstand = true. <b>Any application processing 
+the data of a resource must check for extensions lablled mustUnderstand.</b> If the application does not recognise the code on an extension that is labeled
 "must-understand", and where the extension either has no internal reference, or the reference is data processed by the application, it SHALL either refuse to process the data, 
 or carry a warning concerning the data along with any action or output that results from processing the data. 
 Note that it must always be safe to show the narrative to humans; any extension that is labelled as must-understand must be represented in the narrative.
-Applications are encouraged to ignore un-required extensions that they do not recognise. Applications that do not accept unknown extensions should declare 
-this in their conformance statement.
+Applications are encouraged to ignore un-required extensions that they do not recognise. 
 </p>
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
@@ -121,10 +116,8 @@ the question is whether an extension could ever alter the interpretation of some
 
 -->
 <p>
-Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself. 
-</p>
-<p>
-Extensions are always defined against some particular context. The following are possible contexts for an extension:
+Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself, and are published
+as part of <a href="profile.htm">Resource Profiles</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
 <ul class="dense">
  <li>A particular element in a single resource</li>
@@ -134,28 +127,27 @@ Extensions are always defined against some particular context. The following are
  <li>Another extension</li>
 </ul>
 <p>
-In addition, an element definition might apply additional constraints with 
+In addition, an extension definition might apply additional constraints with 
 regards to particular element values of the target that make it's use appropriate.
-Extensions SHALL only be used in the contect against which they are defined.
+Extensions SHALL only be used on a target for which they are defined.
 </p>
 <p>
 Each extension is defined using the following fields:
 </p>
-<p>todo: metadata, context</p>
 <table class="codes">
- <tr><td>Code</td><td>Required</td><td>The code that is used in a resource to identify this extension</td></tr>
- <tr><td>Context</td><td>Required</td><td>The context of this extension. See below</td></tr>
- <tr><td>TargetType</td><td>Optional</td><td>The type of the path to which this applies, if it matters. This must be a valid FHIR data type as described above</td></tr>
- <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conform to the set of extensions containing this extension, it must be included in the resource</td></tr>
- <tr><td>Conformance</td><td>Required</td><td>Whether the use of the extension is mandatory, conditional, optional, or prohibited. If the extension is conditional, the conditions must be described in the comments field. This field overlaps with the cardinality, and must be consistent with it.</td></tr>
- <tr><td>Type</td><td>Required</td><td>The type(s) of the extension. This must be a valid FHIR data type as described above, or "Extension: x,y,z" which indicates that the extension codes x,y, and z will be contained in the extension</td></tr>
- <tr><td>Concept Domain</td><td>Conditional</td><td>For the types CodeableConcept and Coding. see <a href="terminologies.htm">Terminologies</a></td></tr>
- <tr><td>Must Understand</td><td>Required</td><td>Whether the extension must be understood by any system reading the resource. There is 3 possible values: "true" - the extension must be understood, "false" - the extension does not need to be understood, and "sender" - the sender can decide whether the extension needs to be understood</td></tr>
+ <tr><td>Name</td><td>Required</td><td>The name that is used as a code in a resource to identify this extension</td></tr>
+ <tr><td>Context</td><td>Required</td><td>The context of this extension. See above. The context has two parts: a type, and a path which supplies the details</td></tr>
+ <tr><td>Short Defn</td><td>Required</td><td>A brief description of the resource used in the XML descriptions</td></tr>
  <tr><td>Definition</td><td>Required</td><td>A formal statement of the meaning of the content of the field</td></tr>
- <tr><td>Requirements</td><td>Required</td><td>Discussion of the reason for the extension / what use cases it was defined to handle</td></tr>
- <tr><td>Comments</td><td>Optional</td><td>Additional other information about the extension, including information concerning it's conditionality if indicated in the conformance field</td></tr>
+ <tr><td>Comments</td><td>Optional</td><td>Additional other information about the extension, includingsuch as requirements or use notes</td></tr>
+ <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conform to the set of extensions containing this extension, it must be included in the resource</td></tr>
+ <tr><td>Type</td><td>Required</td><td>The type(s) of the extension. This must be a valid FHIR data type as described above, or "Extension: x,y,z" which indicates that the extension codes x,y, and z will be contained in the extension</td></tr>
+ <tr><td>Conformance</td><td>Required</td><td>Whether the use of the extension is mandatory, conditional, optional, or prohibited. If the extension is conditional, the conditions must be described in the comments field. This field overlaps with the cardinality, and must be consistent with it.</td></tr>
+ <tr><td>XPaths</td><td>Optional</td><td>One or more XPath statements that must evaluate to true when the extension is used</td></tr>
+ <tr><td>Must Understand</td><td>Required</td><td>Whether the extension must be understood by any system reading the resource. There is 3 possible values: "true" - the extension must be understood, "false" - the extension does not need to be understood, and "sender" - the sender can decide whether the extension needs to be understood</td></tr>
  <tr><td>RIM Mapping</td><td>Conditional</td><td>The formal mapping from this extension to the RIM. Required for HL7 defined extensions, but may be optional in other contexts</td></tr>
  <tr><td>v2 Mapping</td><td>Optional</td><td>Mapping to a v2 segment/field/etc, if desired and appropriate. </td></tr>
+ <tr><td>Binding</td><td>Conditional</td><td>For the types CodeableConcept and Coding. see <a href="terminologies.htm">Terminologies</a></td></tr>
 </table>
 <p>
 Notes:
@@ -165,21 +157,13 @@ Notes:
 </ul>
 <p>
 Whenever resources containing extensions are exchanged, the definitions of the extensions must be available to all the parties that share the resources. 
-Each extension contains a URI that references the source of the definitions. The source can be a literal reference, such as an http: url that refers
-to an end-point that responds with the contents of the definitions, or a logical reference (e.g. using a urn:) - for instance, to a national published
-standard. Literal references are preferred. 
-</p>
-<p>
-Whether the reference is a literal or logical reference, the extension definitions must be published using the fields defined as above. 
-They may be published in narrative form, possibly as part of a larger specification. This narrative form is for human consumption. 
-In addition, they may be published in a structured form, as either a csv file, or an XML file. The CSV file should have the fields 
-described above as columns in the order described above, with a title row containing the case sensitive field names as above. XML
-files should use the format described in the <a href="definitions.xsd">XML Definitions schema</a> (note that element and extension
-definitions from FHIR itself also use the same format).
+Each extension contains a URI that references the source of the definitions as a Resource Profile. The source SHOULD be a literal reference, such as an 
+http: url that refers to an end-point that responds with the contents of the definitions - preferably a <a href="http.htm">FHIR RESTful server</a> 
+supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
+standard. 
 </p>
 <p>
 
-Todo: extension packs &amp; metadata
 
 
 Control
