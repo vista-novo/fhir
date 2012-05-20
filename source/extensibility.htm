@@ -20,14 +20,14 @@ This exchange specification is based on generally agreed common
 requirements across healthcare - many jurisdications, domains, and 
 different functional approaches. As such, it is common for 
 specific implementations to have valid requirements that will not
-be adopted by this specification. Adopting all of these requirements 
+be directly included in this specification. Incorporating all of these requirements 
 would make this specification very cumbersome and difficult to
 implement. Instead, this specification expects that these additional
 distinct requirements will be implemented as extensions.
 </p> 
 <p>
 As such, extensibility is a fundamental part of the design of this 
-specifications. Every resource includes an extensions section that 
+specification. Every resource includes an "extensions" section that 
 may be used to represent additional information that is not part of 
 the basic definition of the resource. Conformant applications are not
 allowed to reject resources because they contain extensions, though
@@ -35,21 +35,21 @@ they may need to reject resources because of the specific contents of
 the extensions.
 </p>
 <p>
-Note that unlike in many other specifications, there can be no stigma 
+Note that, unlike in many other specifications, there can be no stigma 
 associated with the use of extensions by any application, project, or 
-standard, whatever institution or jurisdiction uses or defines them; their use of
-such extensions is what allows the specification to retain a core 
+standard - regardless of the institution or jurisdiction uses or defines the
+extensions.  The use of extensions is what allows the specification to retain a core 
 simplicity for everyone.
 </p>
 <p>
-In order to make the use of extensions safe, and manageable, there is a 
+In order to make the use of extensions safe and manageable, there is a 
 strict governance applied to the definition and use of extensions. Though
 any implementer is allowed to define an extension, there is a set of reqiurements 
 that must be met as part of the definition of the extension.
 </p>
 <h2>Extensibility Element</h2>
 <p>
-Each resource includes the optional extensions element before the narrative element at the end of the resource. This is the content model of the extension as it appears in each resource:fs
+Each resource includes the optional "extensions" element before the narrative element at the end of the resource. This is the content model of the extension as it appears in each resource:
 </p>
 <%dt Extensions%>
 
@@ -67,13 +67,27 @@ Notes:
 </ul>
 <p>
 As well as providing additional undescribed information, extensions may be used to qualify the meaning of other elements in a way that makes them 
-unsafe to ignore, or even to negate the meanings of other elements. Such extensions must have a mustUnderstand = true. <b>Any application processing 
-the data of a resource must check for extensions lablled mustUnderstand.</b> If the application does not recognise the code on an extension that is labeled
-"must-understand", and where the extension either has no internal reference, or the reference is data processed by the application, it SHALL either refuse to process the data, 
+unsafe to ignore, or even to negate the meanings of other elements. Such extensions must have an attribute <i>mustUnderstand</i> = true. <b>Any application processing 
+the data of a resource must check for extensions labeled "mustUnderstand".</b> If the application does not recognise the code on an extension that is labeled
+"mustUnderstand", and where the extension either has no internal reference, or the reference is data processed by the application, the application SHALL either refuse to process the data, 
 or carry a warning concerning the data along with any action or output that results from processing the data. 
-Note that it must always be safe to show the narrative to humans; any extension that is labelled as must-understand must be represented in the narrative.
-Applications are encouraged to ignore un-required extensions that they do not recognise. 
+Note that it must always be safe to show the narrative to humans; any extension that is labelled as "mustUnderstand" must be represented in the narrative.
+Applications are encouraged to ignore un-required extensions that they do not recognise. "mustUnderstand" extensions SHALL be attached to reference points within an instance such that
+all data elements whose meaning may be impacted by the extension are part of the element to which the extension is attached.
 </p>
+<!--
+
+the question is whether an extension could ever alter the interpretation of something other than it's immediate context
+[7:12:13 AM] Grahame Grieve: and I suggest that the answer to this is definitional
+[7:12:16 AM] Grahame Grieve: and no.
+[7:12:23 AM | Edited 7:12:25 AM] Grahame Grieve: that's what defines it's context
+[7:13:02 AM] Lloyd McKenzie: Well, mood, negationInd, uncertaintyInd, inversionCode, etc. all only alter immediate context.
+[7:13:20 AM] Lloyd McKenzie: Off the top of my head, I can't think of any that would alter something else.
+[7:13:57 AM] Lloyd McKenzie: I'm ok with the idea of banning extensions that alter the meaning of anything outside their immediate context.  (If you want to do that, you need to define an extension that sits inside the context you want to alter.)
+[7:14:51 AM] Grahame Grieve: right
+[7:15:27 AM] Grahame Grieve: so then, must-understand is always qualified by the fact that if you don't process/understand the context it refers to, then you don't actually need to understand it
+
+-->
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
 </p>
@@ -102,33 +116,20 @@ Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is
 
 <h2>Defining Extensions</h2>
 
-<!--
-
-the question is whether an extension could ever alter the interpretation of something other than it's immediate context
-[7:12:13 AM] Grahame Grieve: and I suggest that the answer to this is definitional
-[7:12:16 AM] Grahame Grieve: and no.
-[7:12:23 AM | Edited 7:12:25 AM] Grahame Grieve: that's what defines it's context
-[7:13:02 AM] Lloyd McKenzie: Well, mood, negationInd, uncertaintyInd, inversionCode, etc. all only alter immediate context.
-[7:13:20 AM] Lloyd McKenzie: Off the top of my head, I can't think of any that would alter something else.
-[7:13:57 AM] Lloyd McKenzie: I'm ok with the idea of banning extensions that alter the meaning of anything outside their immediate context.  (If you want to do that, you need to define an extension that sits inside the context you want to alter.)
-[7:14:51 AM] Grahame Grieve: right
-[7:15:27 AM] Grahame Grieve: so then, must-understand is always qualified by the fact that if you don't process/understand the context it refers to, then you don't actually need to understand it
-
--->
 <p>
 Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself, and are published
-as part of <a href="profile.htm">Resource Profiles</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
+as part of <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
 <ul class="dense">
  <li>A particular element in a single resource</li>
  <li>Anywhere a particular data type is used</li>
  <li>A set of elements across one or more resources</li>
- <li>a particular context in one of the mapped reference models</li>
+ <li>A particular context in one of the mapped reference models</li>
  <li>Another extension</li>
 </ul>
 <p>
 In addition, an extension definition might apply additional constraints with 
-regards to particular element values of the target that make it's use appropriate.
+regards to particular element values of the target that make its use appropriate.
 Extensions SHALL only be used on a target for which they are defined.
 </p>
 <p>
@@ -139,15 +140,15 @@ Each extension is defined using the following fields:
  <tr><td>Context</td><td>Required</td><td>The context of this extension. See above. The context has two parts: a type, and a path which supplies the details</td></tr>
  <tr><td>Short Defn</td><td>Required</td><td>A brief description of the resource used in the XML descriptions</td></tr>
  <tr><td>Definition</td><td>Required</td><td>A formal statement of the meaning of the content of the field</td></tr>
- <tr><td>Comments</td><td>Optional</td><td>Additional other information about the extension, includingsuch as requirements or use notes</td></tr>
- <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that it conform to the set of extensions containing this extension, it must be included in the resource</td></tr>
+ <tr><td>Comments</td><td>Optional</td><td>Additional other information about the extension, including information such as requirements or use notes</td></tr>
+ <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that, if it conforms to the set of extensions containing this extension, the extension must be included in the resource</td></tr>
  <tr><td>Type</td><td>Required</td><td>The type(s) of the extension. This must be a valid FHIR data type as described above, or "Extension: x,y,z" which indicates that the extension codes x,y, and z will be contained in the extension</td></tr>
  <tr><td>Conformance</td><td>Required</td><td>Whether the use of the extension is mandatory, conditional, optional, or prohibited. If the extension is conditional, the conditions must be described in the comments field. This field overlaps with the cardinality, and must be consistent with it.</td></tr>
  <tr><td>XPaths</td><td>Optional</td><td>One or more XPath statements that must evaluate to true when the extension is used</td></tr>
- <tr><td>Must Understand</td><td>Required</td><td>Whether the extension must be understood by any system reading the resource. There is 3 possible values: "true" - the extension must be understood, "false" - the extension does not need to be understood, and "sender" - the sender can decide whether the extension needs to be understood</td></tr>
- <tr><td>RIM Mapping</td><td>Conditional</td><td>The formal mapping from this extension to the RIM. Required for HL7 defined extensions, but may be optional in other contexts</td></tr>
+ <tr><td>Must Understand</td><td>Required</td><td>Whether the extension must be understood by any system reading the resource. There are 3 possible values: "true" - the extension must be understood, "false" - the extension does not need to be understood, and "sender" - the sender can decide whether the extension needs to be understood</td></tr>
+ <tr><td>RIM Mapping</td><td>Conditional</td><td>The formal mapping from this extension to the RIM. Required for HL7-defined extensions, but may be optional in other contexts</td></tr>
  <tr><td>v2 Mapping</td><td>Optional</td><td>Mapping to a v2 segment/field/etc, if desired and appropriate. </td></tr>
- <tr><td>Binding</td><td>Conditional</td><td>For the types CodeableConcept and Coding. see <a href="terminologies.htm">Terminologies</a></td></tr>
+ <tr><td>Binding</td><td>Conditional</td><td>For the types CodeableConcept and Coding. See <a href="terminologies.htm">Terminologies</a></td></tr>
 </table>
 <p>
 Notes:
@@ -162,31 +163,41 @@ http: url that refers to an end-point that responds with the contents of the def
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
 standard. 
 </p>
+<h2>Control of extensions</h2>
 <p>
-
-
-
-Control
-* resources are balloted
-* implementations (jurisdictions, institutions, projects) must publish their extensions through HL7 extension registry/repository (will be distributed?)
-* extensions may be submitted to HL7 for endorsement. Committees approve them by in-committee vote, and then HL7 publishes them with endorsement
-* extensions should never be redefined once in used. (endorsed extensions can't have their RIM mappings changed)
-
-</p>
-<p>
-As well as defining the base element structure for resources, HL7 also publishes extensions.
-When HL7 itself publishes extensions as part of the FHIR specification, these extensions must 
-be used for this data whenever the data is represented in instances. HL7 publishes data definitions
+As well as defining the base element structure for resources, HL7 also publishes extensions. HL7 publishes data definitions
 as extensions rather than as part of the base resource structure in order to keep the base 
 resource structure simple and concise, and to allow implementors not to engage with an entire world's
 worth of functionality up front. Note that HL7 extensions are never flagged as must-understand - if 
 HL7 publishes resource content that <i>must</i> be understood, it will be part of the resource 
-content itself, since everyone has to understand it anyway.
+content itself, since everyone has to understand the extension anyway.
 </p>
 <p>
-Implementations are encouraged to share their extensions with HL7; the domain committees will work 
+HL7 profiles defining extensions may be balloted alongside resource content as part of the FHIR specification or may
+be published as part of separate specifications. 
+When HL7  publishes extensions as part of the FHIR specification, these extensions SHALL 
+be used for this data whenever the data is represented in instances. Applications SHOULD use other
+HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability. 
+If referencing a profile that defines extensions, implementations declaring conformance with the profile SHALL
+use the extension-defined extensions when conveying equivalent data elements.
+</p>
+<p>
+To minimize complexity for implementers, HL7 will not elevate content defined in an HL7-approved extension to
+be content defined in a core resource.
+</p>
+<p>
+In some cases, an HL7 work group or other body may publish a profile whose sole
+purpose is to define extensions expected to be needed by implementers in a particular context.  E.g. extensions needed
+to map a particular v2 segment or v3 model.
+</p>
+<p>
+Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work 
 to elevate the extensions into HL7 published extensions or the into the base resource structure itself.
 </p>
+<!-- Todo: point to actual registry once it's up and running -->
+<p>To avoid interoperability issues, extensions SHALL NOT change their definition once published.  (Small clarifications to descriptions
+that do not affect interoperability are permitted.)  Rather than modifying an existing extension, a new extension should be introduced.</p>
+<!-- Todo: Figure out how to manage "deprecating" extensions and pointing at their new versions -->
 
 <%footer%>
 
