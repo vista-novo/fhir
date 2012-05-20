@@ -43,7 +43,8 @@ Notes:
 </p>
 <ul>
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
- <li>All the XML is in the namespace <a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>, which is usually specified as the default namespace on the root element (except for XHTML discussed below)</li>
+ <li>FHIR elements are always in the namespace <a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>, which is usually specified as the default namespace on the root element</li>
+ <li>The only other namespaces that occur in FHIR resources are where some external content model is introduced into the resource content model. XHTML is found in every resource - see below</li>
  <li>To build a valid resource, simple replace the contents of the elements with valid content as described by the conformance, cardinality and type rules found in the comment in each element</li>
  <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
  <li>In addition, elements have a control flag shown in red, that specifies whether the element must be present, is optional or may be marked as not present. This is explained below. The control flags are hyperlinked to their definitions.</li>
@@ -133,16 +134,20 @@ is tolerated on a per element basis. The control flag must have one of the follo
 <a name="Narrative"></a>
 <h2>Narrative</h2>
 <p>
-Every resource includes a human readable narrative that contains a summary of the resource, 
+Every resource SHALL include a human readable narrative that contains a summary of the resource, 
 and may be used to represent the content of the resource to a human. The narrative need 
 not encode all the structured data, but is required to contain sufficient detail to make 
-it "clinically safe" for a human to just read the narrative. Each resource will define 
-what content must be represented in the narrative to ensure clinical safety
+it "clinically safe" for a human to just read the narrative. Resources may define 
+what content should be represented in the narrative to ensure clinical safety.
 </p>
 <p>
 The narrative for a resource is allowed to contain additional information that is not in 
 the structured data, including human edited content. Such additional information must be 
-in the scope of the definition of the resource.
+in the scope of the definition of the resource. In small, closed trading partner environments,
+there may be no need for a narrative text. In such cases, implementations are allowed to 
+populate the narrative with the text "No human readable text provided for this resource". 
+Implementers should note that small, closed traing partner environments are very likely 
+to open up during the lifetime of the resources they define.
 </p>
 <p>
 Each narrative has a flag that specifies the relationship of the narrative from the 
@@ -168,18 +173,12 @@ The narrative is an xhtml fragment that also includes images if appropriate:
 </p>
 <%dt Narrative%>
 
-
 <p>
-The status is required when the narrative is the full resource narrative, but not required in resource references (see below).
-</p>
-<p>
-The contents of the <i>xhtml</i> 
-element are an XHTML fragment containing only the basic html formatting elements described in 
+The contents of the <i>div</i> element are an XHTML fragment containing only the basic html formatting elements described in 
 chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href),
-images, and internally contained stylesheets. The XHTML content may not contain
+images, and internally contained style attributes. The XHTML content may not contain
 a head, a body element, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes,
-and objects. Technically, the content of the text element is a union of the XHTML Schema types "block", and "inline", with
-the additional rules above applied.
+and objects. 
 </p>
 <div class="example">
 <pre>
@@ -240,43 +239,58 @@ contained in it. The xhtml element must have some non-whitespace content.
 <h2>Resource References</h2>
 <p>
 The "Resource" type indicates a reference from one resource to another.
-Since each resource is identified by a master id that never changes (a different id implies a different resource),
-references are done by id.
 </p>
 <pre>
   &lt;x&gt;
     &lt;<b>type</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="terminologies.htm#resourcetypes">ResourceType</a></font> <font color="navy">Resource Type</font>&lt;/type&gt;
-    &lt;<b>id</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Id of the reference</font>&lt;/id&gt;
-    &lt;<b>version</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a> </font><font color="navy">Specific version Id of resource referenced</font>&lt;/version&gt;
+    &lt;<b>id</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">url</a></font> <font color="navy">URL/Id of the reference</font>&lt;/id&gt;
+    &lt;<b>version</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a> </font><font color="navy">Specific version URL/Id of resource referenced</font>&lt;/version&gt;
     &lt;<b>text</b>&gt; <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Text alternative for the resource</font>&lt;/text&gt;
   &lt;/x&gt;
 </pre>
 <p>
 The resourceType type is the name of one of the resources defined in this specification, such as "Patient". Whether or not the type of 
-the resource is fixed for a particular element, the reference includes the resource type (this is to assist with future prooting 
+the resource reference is fixed for a particular element, the reference includes the resource type (this is to assist with future prooting 
 the specification).
 </p>
 <p>
-A specific version of the resource may be referenced by specifying a version Id in addition to the resource identifier. The 
-version identifier is only known to be unique in the context of a given resource, so the resource Id is always required. 
-Note that locating and retrieving a particular version of a resource is implementation specific, like accessing the latest version of the resource.
+Both the id and the version are URL based references - they must be literal URLS that resolve to the location of the resource.
+Both URLs may be relative URLS, in which case they are interpreted to contain the logical id/versionId of the resource in question,
+and the resolution of the logical reference is a matter of implementation logic. Using absolute URLs provides a stable scalable
+approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
+when trading across closed eco-system boundaries. URLs do not need to point to a <a href="http.htm">FHIR RESTful server</a>, though this is the
+preferred approach.
+</p>
+<p>
+A resource reference may contain either a version independent reference (<i>"id"</i>) or a version dependent reference (<i>"version"</i>)
+of both. It is at the descretion of the processor of the data which to use in a particular context. If relative references are used, a <i>version</i> 
+cannot be provided without an <i>id</i>, since the <i>version</i> is scoped by the <i>id</i>.
 </p>
 
 <div class="example">
+<p>A relative reference to a patient in an element named "context":</p>
 <pre>
-  &lt;id&gt;
+  &lt;context&gt;
     &lt;type&gt;Patient&lt;/type&gt;
     &lt;id&gt;034AB16&lt;/id&gt;
-  &lt;id&gt;
+  &lt;context&gt;
 </pre>
+<p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
+<pre>
+  &lt;profile&gt;
+    &lt;type&gt;Profile&lt;/type&gt;
+    &lt;id&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/id&gt;
+  &lt;profile&gt;
+</pre>
+<p>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it.</p>
 </div>
 <p>
-The <a href="datatypes.htm#id">id</a> type can take one of the following forms:
+The logical <a href="datatypes.htm#id">id</a> and version id of a Resource can take one of the following forms:
 </p>
 <table class="list">
   <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex</td></tr>
   <tr><td>A uuid (guid) (in lowercase, without wrapping with the characters "{}[]" which sometimes occur)</td></tr>
-  <tr><td>An ISO OID (reference)</td></tr>
+  <tr><td>An <a href="http://en.wikipedia.org/wiki/Object_identifier">ISO OID</a></td></tr>
   <tr><td>Any other combination of letters, numerals, "-" and "."</td></tr>
   <tr><td></td><td></td></tr>
 </table>
@@ -285,7 +299,7 @@ Resource ids must be represented in lowercase. Ids are always opaque, and system
 their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
 </p>
 <p>
-Some narrative may be provided that describes the resource in addition to the resource reference (or in place of, unless the 
+Some plain text narrative may be provided that describes the resource in addition to the resource reference (or in place of, unless the 
 resource reference is mandatory).
 </p>
 <div class="example">
@@ -310,10 +324,8 @@ a valid <i>type</i> and <i>id</i>, or, if it is not mandatory, a text alternativ
 There is no explicit version marker in the XML. Subsequent versions
 of this specification may introduce new elements at any point in the 
 content models, but the path or meaning of existing data elements will not be 
-changed. 
-</p>
-<p>Given that in a typical scenario, mixed versions may need to exist, 
-applications would best ignore elements that they do not recognize. However in 
+changed. Given that in a typical scenario, mixed versions may need to exist, 
+applications SHOULD ignore elements that they do not recognize. However in 
 a healthcare context, many application vendors are unwilling to 
 consider this approach because of concerns about clinical risk. 
 Applications are not required to ignore unknown elements, but must
@@ -333,18 +345,31 @@ XML that is exchanged must be valid against the schema, though there is no requi
 validate instances against the schema, nor is being valid against the schema sufficient 
 to be a conformant instance (this specification makes many rules that cannot be checked 
 by schema). Exchanged content must not specify the schema or even the schema instance 
-namespace in the resource XML. 
+namespace in the resource itself. 
+</p>
+
+<a name="objects"></a>
+<h2>Object Models</h2>
+<p>
+In addition to the schema, this specification also provides object
+models defined in UML that may be of assistance in defining systems 
+that work with the resources defined here.
 </p>
 <p>
-Should schema based validation or code generation be of interest, applications can define their own
-schemas that more closely match the working content mode given their conformance statement. These 
-schemas can eliminate elements not used by the application, and explicitly define extensions that 
-are used. However the xml format they describe must be consistent with the XML and rules 
-defined in this specification. 
+Although the UML models provided express the same contents as the 
+resource formats, because of the wide variation in how different architectures and 
+tools map from UML to XML, there should be no expectation that any particular
+tool will produce compatible XML from these UML diagrams. Systems are welcome
+to use these object models as a basis for serialization internally, or even
+between trading partner systems, with any form of exchange technology (including 
+JSON). Systems that use this form of exchange cannot claim to be conformant 
+with this specification, but can describe themselves as using "FHIR consistent
+object models".
 </p>
 
 <a name="json"></a>
 <h2>JSON Format</h2>
+<p><i>Informative Section: due to a series of issues around the formalization of the JSON representation, the JSON representation is only informative.</i></p>
 <p>
 Though the formal representation of the resources is in XML, many systems wish to use JSON to exchange the resources, and it is useful to standardise a single JSON format for this use. 
 The JSON format for the resources follows the standard XML format closely:
@@ -378,33 +403,14 @@ is represented in JSON as
 <p>Notes:</p>
 <ul>
  <li>There is no namespaces in the JSON representation</li>
- <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form can also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
+ <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form could also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
  <li>The xml attributes <i>id</i> (xml:id) and <i>dataAbsentReason</i> become JSON object attributes with the names "id" and "dataAbsentReason"; they come in that order before other defined elements</li>
- <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form</li>
- <li>Items that can repeat are represented as arrays even if they do not repeat in the actual instance</li>
+ <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form (including instant, which is represented as plain text, not in a custom date format)</li>
  <li>JSON property attributes never have empty values; omit a value if it is empty (same as for the xml)</li>
+ <li>Items that may repeat are represented as arrays even if they do not repeat in the actual instance</li>
  <li>The XHTML &lt;div&gt; element is represented as a single escaped string of XHTML</li>
- <li>The last two items means that a generic XML -> JSON converter will not be able to perform a correct conversion. The reference platforms provide XML &lt;--&gt; JSON conversion functionalty</li>
+ <li>The last two items means that generic XML -> JSON converters will not be able to perform a correct conversion. The reference platforms provide XML &lt;--&gt; JSON conversion functionalty</li>
 </ul>
-
-<a name="objects"></a>
-<h2>Object Models</h2>
-<p>
-In addition to the schema, this specification also provides object
-models defined in UML that may be of assistance in defining systems 
-that work with the resources defined here.
-</p>
-<p>
-Although the UML models provided express the same contents as the 
-xml formats, because of the wide variation in how different architectures and 
-tools map from UML to XML, there should be no expectation that any particular
-tool will produce compatible XML from these UML diagrams. Systems are welcome
-to use these object models as a basis for serialization internally, or even
-between trading partner systems, with any form of exchange technology (including 
-JSON). Systems that use this form of exchange cannot claim to be conformant 
-with this specification, but can describe themselves as using "FHIR consistent
-object models".
-</p>
 
 <%footer%>
 

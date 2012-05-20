@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Terminologies - FHIR v<%version%></title>
+    <title>Using Codes and Terminologies - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css" media="screen" />
 </head>
 
@@ -12,32 +12,44 @@
 <%header%>
 <%sidebar%>
 
-
-
-
 <%maindiv%>
 
-
-<h1>Terminologies</h1>
+<h1>Using Code Systems and Terminologies</h1>
 
 <p>
-Throughout the FHIR specification, many elements are assigned a type of either <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a>, or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
-These elements are bound to a "Concept Domain", which defines the set of concepts that may be associated with the element. Each Concept Domain has a formal definition, and a binding type that may define a particular
-set of acceptable concepts:
+Many elements in the FHIR resources are assigned a type of either <a href="datatypes.htm#code">code</a>, 
+<a href="datatypes.htm#Coding">Coding</a>, or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
+These elements contain codes that have defined meanings, and come from lists of codes of varying sophistication
+and size. In many simple cases, the list of codes is a short list defined specifically for the element; in other cases,
+the list of codes is taken from a large and complex terminology or ontology such as SNOMED-CT. 
+</p>
+<p>
+All these elements of type <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a>, 
+or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> are given a "binding name", which defines the 
+set of possible codes that can be used in the element in question. In <a href="profile.htm">Resource Profiles</a>, 
+the elements can be assigned a new binding name which defines a new set of possible codes. The set of codes 
+defined by a profile must be a subset of the set of codes defined in the base resource, and those defined by 
+any other profiles the profile references. Binding Names can identify sets of codes in the following ways:
 </p>
 <table class="grid">
- <tr><td>Code List</td><td>The concept is directly bound to a code list defined in this specification (mostly used with elements of type "code"). In some circumstances, other additional codes may be used (not for elements with type "code")</td></tr>
- <tr><td>External</td><td>The possible list of codes (concepts) is defined by an external specification, usually ISO or W3C. A reference is provided </td></tr>
- <tr><td>Preferred</td><td>The concept domain is bound directly to an external coding system, and values from this coding system must be use if appropriate values exist</td></tr>
- <tr><td>Unbound</td><td>
-   The FHIR specification does not bind the concept domain to any particular set of concepts (a value set).
-   Instead, jurisdictions, Institions, projects or applications bind the concept domain.<br/><br/>
-   Within the unbound concept domains, FHIR may recommend a particular value set (or coding system), or 
-   suggest values as illustrative
-	</td></tr>
+ <tr><td>value set</td><td>The binding name has an associated URL which is a reference to a <a href="valueset.htm">Value Set Resource</a> that provides a formal definition of the set of possible codes</td></tr>
+ <tr><td>code list</td><td>The binding name is associated with a simple list of codes, and definitions from some identified code system (<a href="datatypes.htm#codesystem">SID, URI, OID, UUID</a>). In resource definitions, the system reference may be omitted, and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know)</td></tr>
+ <tr><td>reference</td><td>The binding name has an associated URL which refers to some external standard or specification that defines the possible codes</td></tr>
+ <tr><td>special</td><td>The binding points to a list of concepts defined as part of FHIR itself (<a href="#localsystems">see below for possible values</a>)</td></tr>
+ <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr>
 </table>
 <p>
-Note that this approach is based on the framework defined in the HL7 V3 core principles in section 5.1. Also note that when a CodeableConcept has a concept domain, this means that one of the codes in the coding list meet the binding of the concept domain, and all the codes must conform to the definition of the concept domain.
+Value set and code list bindings also have a strength property:
+</p>
+<table class="grid">
+ <tr><td>required</td><td>Only codes in the set are allowed. Profiles can only specify a subset of the defined codes</td></tr>
+ <tr><td>preferred</td><td>Codes in the set must be used when their meaning is appropriate. Other codes can be used 
+   if no appropriate code is in the set. Profiles can specify a subset of the codes and include other codes that do 
+   not overlap in meaning with the codes in the codes in the set</td></tr>
+ <tr><td>suggested</td><td>The codes in the set are an example to illustrate the meaning of the field. Other codes may be used, and profiles may choose other sets of codes</td></tr>
+</table>
+<p>
+See below for a full list of the binding names defined for all FHIR resources.
 </p>
 <a name="codesystems"></a>
 <h2>Named Systems List</h2>
@@ -101,14 +113,10 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
    <td>[X] is the 4 digit identifier for a table. i.e. urn:hl7-org:sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/iso-639</td>
-   <td>Language Codes as defined in (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>)</td>
-   <td>3 letter codes known as 639-3 <br/>OID=1.0.639.3</td>
- </tr>
- <tr>
-   <td>urn:hl7-org:sid/iso-4217</td>
-   <td>Currency Codes as defined in (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
-   <td>3 digit currency designators<br/>OID=1.0.4217</td>
+   <td>urn:hl7-org:sid/iso-[X]</td>
+   <td>Codes as defined in the ISO standard with the given number. Two important ISO standards are the 2-3 
+     letter language codes (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>-3), and the currency codes (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
+   <td>OID=1.0.[X](.tail as specified) <br/> (1.0.639.3 for 3 letter language codes </td>
  </tr>
  <tr>
    <td>urn:hl7-org:sid/atc</td>
@@ -116,7 +124,7 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
    <td><br/>OID=2.16.840.1.113883.6.73</td>
  </tr> 
  
- <tr style="background-color: #FEFEFE">
+ <tr style="background-color: #EEEEEE">
    <td colspan="3">Identifier Systems</td>
  </tr>
 
@@ -198,13 +206,17 @@ These are defined by the code system "urn:hl7-org:sid/fhir/special-values" which
 <a name="ResourceType"/>
 <h2>Resource Types</h2>
 <p>
-In several places, the resource types themselves are used as codes, with the sid, where required, of "urn:hl7-org:sid/fhir/resource-types". This is a formal list of such codes: 
+In several places, the resource types themselves are used as either codes or identifiers, with the sid, where required, of "urn:hl7-org:sid/fhir/resource-types". This is a formal list of the resource type codes: 
 </p>
 <table class="codes">
 <%resourcecodes%>
 </table>
 
+<h2>Binding Names Registry</h2>
 
+<p>This table contains a list of all the binding names defined as part of the resource definitions.</p>
+
+<%bindingtable%>
 
 
 

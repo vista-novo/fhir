@@ -113,7 +113,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		// element contains xhtml
 		if (elem.typeCode().equals("xhtml")) 
 		{
-			write("<b>div</b> xmlns=\"http://www.w3.org/1999/xhtml\"<a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font>&lt;/div&gt;\r\n");
+			write("<b>div</b> xmlns=\"http://www.w3.org/1999/xhtml\"> <font color=\"Gray\">&lt;!--</font> <a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font><font color=\"Gray\">&lt; --&gt;</font> &lt;/div&gt;\r\n");
 		} 
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) 
@@ -141,7 +141,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			
 			// If this is an unrolled element, show its profile name
 			if (elem.getProfileName() != null && !elem.getProfileName().equals(""))
-				write(" <font color=\"blue\">\""+elem.getProfileName()+"\"</font>");
+				write(" <font color=\"Gray\">&lt;!--</font> <font color=\"blue\">\""+elem.getProfileName()+"\"</font>  <font color=\"Gray\">&lt; --&gt;</font>");
 	
 			if( elem.getElements().isEmpty())
 				write("<font color=\"Gray\">&lt;!--</font>");
@@ -170,9 +170,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 						write("\r\n              ");
 					if (t.getName().equals("xhtml") || t.getName().equals("list"))
 						write(t.getName());
-					else if (!t.getName().equals("Resource"))
+//					else if (!t.getName().equals("Resource"))
 //					  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">Resource</a>");
-//					else
+					else
 					  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">"+t.getName()+"</a>");
 					if (t.hasParams()) 
 					{

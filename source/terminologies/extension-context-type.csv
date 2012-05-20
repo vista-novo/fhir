@@ -1,5 +1,5 @@
 Code,Definition
-resource,"The extension can be used in the resource or resources provided in the path. The paht consists of one or more resource names, seaprated by commas"
+resource,"The extension can be used in the resource or resources provided in the path. The path consists of one or more resource names, seaprated by commas"
 datatype,The extension can be used anywhere a data type is used. The path has the form [DataType](.name) where (.name) is used to refer to a context within the data type
 elements,the extension is used on one or elements in one or more resources. The path consists of a series of element paths separated by commas
 mapping,"The extension is allowed to be used anywhere that makes sense given the identified mapping. The path identifies the mapping by name. The mapping should clearly identify where such an extension could be used, though this may not be computable"

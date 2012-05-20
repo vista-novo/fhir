@@ -57,7 +57,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="42" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="43" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="210.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
@@ -167,6 +167,14 @@
     <Cell><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Date this version released</Data></Cell>
     <Cell><Data ss:Type="String">Date this version released</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Conformance.version</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">FHIR Version</Data></Cell>
+    <Cell><Data ss:Type="String">The version of the FHIR specification on which this conformance profile is based</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest</Data></Cell>
@@ -468,12 +476,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>21</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>30</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

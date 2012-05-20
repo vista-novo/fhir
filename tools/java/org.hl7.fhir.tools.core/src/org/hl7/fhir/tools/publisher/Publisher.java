@@ -267,9 +267,9 @@ public class Publisher {
 
 		generateProfile(root, n);
 		
-		String first = "";
-		if (new File(page.getFolders().srcDir+n+File.separatorChar+n+"-first.htm").exists())
-		  first = Utilities.fileToString(page.getFolders().srcDir+n+File.separatorChar+n+"-first.htm");
+		String introduction = "";
+		if (new File(page.getFolders().srcDir+n+File.separatorChar+n+"-introduction.htm").exists())
+		  introduction = Utilities.fileToString(page.getFolders().srcDir+n+File.separatorChar+n+"-introduction.htm");
 		
 		File xmlf = new File(page.getFolders().srcDir+n+File.separatorChar+n+"-example.xml");
 		if (!xmlf.exists())
@@ -277,15 +277,15 @@ public class Publisher {
 		File umlf = new File(page.getFolders().imgDir+n+".png");
 
 		String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, first);
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
 		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
 
 		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, first);
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
 		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
 		Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
     src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, root, xml, tx, dict, src, first);
+    src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
     cachePage(n+".htm", src);
 
 		// xml to xhtml of xml

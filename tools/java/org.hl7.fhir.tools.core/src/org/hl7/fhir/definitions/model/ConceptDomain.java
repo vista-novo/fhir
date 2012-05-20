@@ -17,8 +17,6 @@ public class ConceptDomain {
   public enum Binding {
     Unbound,
     CodeList, 
-    CodeReference,
-    SingleCode, 
     ValueSet,
     Reference,
     Special

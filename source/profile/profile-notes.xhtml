@@ -67,3 +67,34 @@ The following simple search/filter parameters are defined for Resource Profiles:
 <p>
 The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
 </p>
+
+<h2>Profiled FHIR</h2>
+<p>
+If a profile is unambiguous, then the FHIR profile tooling (ref to be provided) 
+is able to generate reference implementation based object models that express 
+the profiled model natively, where the object interface does not include 
+prohibited elements, treats declared extensions as primary properties, and 
+slices lists according to the profile. This eases the burden on an implementer, 
+though this object model can only be used with a sub-set of the possible resources.
+</p>
+<p>
+The tooling is also able to generate bi-directional transforms between the 
+<a href="xml.htm">normal XML format</a> and an XML representation of this 
+profiled object model, and schema for this profiled XML representation. 
+This XML form has extensions promoted into the primary XML form by using the 
+extension code as the XML name, and sliced lists are renamed to use the 
+Profile.resource.element.name as the XML element name. Profiles are only suitable
+for this use if they ensure that there are no clashing extension names when
+the extension definition spaces are ignored, and that the sliced list names are 
+appropriate.
+</p>
+<p>
+Implementations are allowed to exchange this profiled XML format. Implementations
+that do so are not fully conformant to FHIR; instead they can claim to be conformant
+to "Profiled FHIR". Implementations should consider carefully before adopting this 
+approach; while it will reduce the amount of work required to initially implement 
+particular profiles, it will increase the amount of work required to exchange this
+data with other communities, or to re-use tooling and applications that are also 
+used in other contexts. 
+</p>
+

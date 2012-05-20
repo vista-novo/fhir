@@ -14,6 +14,9 @@
     <version>0.00.020.2134</version>
   </software>
 
+  <!-- while the FHIR infrastructure is turning over prior to development, a version is required. Note that this may be rescinded later? -->
+  <version>0.02</version>
+  
   <!-- in a real conformance statement, it's unlikely that a single conformance statement would declare conformance 
    for REST, messaging, and documents, though it is legal. This example does so in order to show all the parts of a  
    conformance statement -->

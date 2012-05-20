@@ -75,19 +75,7 @@ Note that it must always be safe to show the narrative to humans; any extension 
 Applications are encouraged to ignore un-required extensions that they do not recognise. "mustUnderstand" extensions SHALL be attached to reference points within an instance such that
 all data elements whose meaning may be impacted by the extension are part of the element to which the extension is attached.
 </p>
-<!--
 
-the question is whether an extension could ever alter the interpretation of something other than it's immediate context
-[7:12:13 AM] Grahame Grieve: and I suggest that the answer to this is definitional
-[7:12:16 AM] Grahame Grieve: and no.
-[7:12:23 AM | Edited 7:12:25 AM] Grahame Grieve: that's what defines it's context
-[7:13:02 AM] Lloyd McKenzie: Well, mood, negationInd, uncertaintyInd, inversionCode, etc. all only alter immediate context.
-[7:13:20 AM] Lloyd McKenzie: Off the top of my head, I can't think of any that would alter something else.
-[7:13:57 AM] Lloyd McKenzie: I'm ok with the idea of banning extensions that alter the meaning of anything outside their immediate context.  (If you want to do that, you need to define an extension that sits inside the context you want to alter.)
-[7:14:51 AM] Grahame Grieve: right
-[7:15:27 AM] Grahame Grieve: so then, must-understand is always qualified by the fact that if you don't process/understand the context it refers to, then you don't actually need to understand it
-
--->
 <p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
 </p>
@@ -109,6 +97,7 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li>HumanName</li>
  <li>Address</li>
  <li>Contact</li>
+ <li>Resource - a reference to another resource</li>
 </ul>
 <p>
 Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extension codes make rules about it. Extensions can never have a default value.
@@ -118,7 +107,7 @@ Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is
 
 <p>
 Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself, and are published
-as part of <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
+as part of a <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
 <ul class="dense">
  <li>A particular element in a single resource</li>

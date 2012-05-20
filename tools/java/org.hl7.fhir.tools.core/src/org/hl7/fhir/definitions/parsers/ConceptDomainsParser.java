@@ -47,10 +47,6 @@ public class ConceptDomainsParser extends CSVReader {
 			return ConceptDomain.Binding.Unbound;
 		if (s.equals("code list"))
 			return ConceptDomain.Binding.CodeList;
-		if (s.equals("code reference list"))
-			return ConceptDomain.Binding.CodeReference;
-		if (s.equals("single code"))
-			return ConceptDomain.Binding.SingleCode;
 		if (s.equals("special"))
 			return ConceptDomain.Binding.Special;
 		if (s.equals("reference"))
