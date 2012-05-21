@@ -1166,7 +1166,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "    cd.name := '"+c.getName()+"';\r\n"+
         "    cd.definition := '"+c.getDefinition()+"';\r\n"+
         "    cd.binding := bt"+c.getBinding()+";\r\n"+
-        "    cd.bindingString := bts"+c.getBindingStrength()+";\r\n"+
+        "    cd.bindingStrength := bs"+c.getBindingStrength()+";\r\n"+
         "    cd.reference := '"+c.getReference()+"';\r\n"+
         "    cd.description := '"+c.getDescription()+"';\r\n");
       for (DefinedCode dc : c.getCodes()) 
@@ -1246,7 +1246,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ElementDefn> types, String pfx, String home) {
     for (ElementDefn c : types.values()) {
       defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
-          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap("" /*c.getId() */)+"', '"+dWrap(c.getConceptDomain())+"', bs"+dWrap(c.getName())+"', '"+ 
+          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getConceptDomain())+"', '"+dWrap(c.getName())+"', '"+ 
           dWrap(c.getShortDefn())+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getRequirements())+"', "+c.isMustUnderstand()+", '"+dWrap(c.getRimMapping())+"', '"+ 
           dWrap(c.getComments())+"', '"+dWrap(c.getV2Mapping())+"', '"+dWrap(c.getTodo())+"', '"+dWrap(c.getCommitteeNotes())+"', '"+dWrap(c.getCondition())+"', '"+dWrap(c.getExample())+"', '"+ 
           dWrap(c.typeCode())+"', "+c.isNolist()+");\r\n  try");
@@ -1254,7 +1254,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       for (ElementDefn g : c.getElements()) { 
         StringBuilder s = new StringBuilder();
         s.append("    cd.AddChild(TFHIRElementDefn.create("+
-            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(""/*g.getId()*/)+"', '"+dWrap(g.getConceptDomain())+"', bs"+dWrap(g.getName())+"', '"+ 
+            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getConceptDomain())+"', '"+dWrap(g.getName())+"', '"+ 
             dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
             dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
             dWrap(g.typeCode())+"', "+g.isNolist()+")");
@@ -1269,7 +1269,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private void doChildElements(StringBuilder content, ElementDefn focus, String indent) {
     for (ElementDefn g : focus.getElements()) { 
       String s = "\r\n"+indent+".AddChild(TFHIRElementDefn.create("+
-          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(""/*g.getId()*/)+"', '"+dWrap(g.getConceptDomain())+"', bs"+dWrap(g.getName())+"', '"+ 
+          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getConceptDomain())+"', '"+dWrap(g.getName())+"', '"+ 
           dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
           dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
           dWrap(g.typeCode())+"', "+g.isNolist()+")";
@@ -1281,10 +1281,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private String dWrap(String definition) {
     String s = definition == null ? "" : definition.replace("'", "''").replace("\n", "'+#10+'").replace("\r", "'+#13+'");
-    if (s.length() > 500)
-      s = s.substring(0, 400)+"'+\r\n      '"+s.substring(400);
-    if (s.length() > 250)
-      s = s.substring(0, 200)+"'+\r\n      '"+s.substring(200);
+    int i = 202;
+    while (s.length() > i) {
+      s = s.substring(0, i)+"'+\r\n      '"+s.substring(i);
+      i = i + 200;      
+    }
     return s;    
   }
 
@@ -1315,7 +1316,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       }
     }
 
-    con.append("\r\n  MANAGER_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
+    con.append("\r\n  PLURAL_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     i = 0;
     for (String s : definitions.getDefinedResources().keySet()) {
       i++;
