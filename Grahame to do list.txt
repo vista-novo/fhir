@@ -1,0 +1,15 @@
+* Assessment Scale
+* build HL7 web site changes for sandbox
+* todo list for tooling
+* non-techie summary - pager
+* techie summary - 1 pager
+* extensions plurality & naming
+* use binding name instead of concept (finish)
+* remove id from resources
+* add profile to resource?
+* FHIR Product Line Scope and Principles
+* cardinality - change? 
+* version in Coding
+* hData page
+
+

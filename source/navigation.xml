@@ -31,7 +31,7 @@
     </entry>
     <entry>
       <link>profile</link>
-      <name>Profiles</name>
+      <name>Profiling Resources</name>
     </entry>
   </category>
   <category>
@@ -62,7 +62,7 @@
     </entry>
     <entry>
       <link>conformance</link>
-      <name>Conformance Statements</name>
+      <name>Conformance Statement</name>
     </entry>
     <entry>
       <link>hdata</link>
@@ -146,10 +146,15 @@
   <category>
     <name>Clinical Components</name>
     <entry>
-      <name>Vitals </name>etc</entry>
+      <name>Vitals etc</name>
+    </entry>
     <entry>
       <link>labreport</link>
       <name>Lab Report</name>
+    </entry>
+    <entry>
+      <link>assessmentscale</link>
+      <name>Assessment Scale</name>
     </entry>
     <entry>
       <name>Imaging </name>Report</entry>
