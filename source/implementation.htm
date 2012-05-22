@@ -45,9 +45,6 @@ reading applications are followed, then the implementation can claim conformance
 <p>
 The resolution to these issues should be documented and published with the service specification.
 </p>
-
-<a name="Use"></a>
-<h2>Using Resources</h2>
 <p>
 Given these options, there are many ways to implement any particular workflow. 
 There are many ways to use resources to build working systems:
@@ -59,9 +56,9 @@ There are many ways to use resources to build working systems:
 <li>The resources can be embedded in HTML pages or other web content such as content feeds</li>
 </ul>
 
-<h2>Useful Resources</h2>
+<h2>Implementation Support</h2>
 <p>
-General Resources:
+This section contains links to content that assist implementers make FHIR work in production:
 </p>
 <ul>
  <li><a href="fhir-all-xsd.zip">All schemas as a .zip</a> (includes base schemas, resource schemas, and metadata schemas)</li>
@@ -69,34 +66,26 @@ General Resources:
  <li>The UML definitions as an <a href="fhir.xmi">XMI file</a> (or the <a href="fhir.eap">Enterprise Architect source</a>)</li>
 </ul>
 <p>
-Resource specific resources:
-</p>
-<table class="codes">
-  <%resimplall%>
-</table>
-<p>
-Note: the JSON examples are simply the XML examples auto-converted to JSON by the <a href="http://www.json.org/java/index.html">json.org code</a>. TODO: Add note about why JSON is included.
-</p>
-<p>
-All of these resources except the JSON format are normative (i.e. Ballot comments may be made against these resources with regard to their 
-correctness, other comments may be ruled out of scope). The reference implementations below are informative, and not subject to ballot.
+TODO: add RDF &amp; OWL renditions, eCore definitions, ADL versions, anything anyone else asks for
 </p>
 
 <h3>Reference Implementations</h3>
 <p>
-Reference implementations are provided for implementer interest and assistance. Other implementations can be used, including code generated from the schemas.
+These reference implementations are provided for implementer interest and assistance. 
+They may be used in production instances, though HL7 accepts no liability for this 
+use (see the full license (link needed)). These reference implementations are limited
+to code for representing the resource contents in their native form, and parsing &amp; 
+serializing them as XML and JSON. In addition, some of them provide support for 
+building, using and reasoning with resource definitions. Full blown open source 
+implementations for FHIR, some of which use these reference implementations, are
+listed on the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 wiki</a>.
+</p>
+<p>
+It is not necessary to use these or any other implementations; any other approach 
+may be used, including code generated from the schemas.
 </p>
 <ul>
 <%impllist%>
-</ul>
-
-<a name="defaults"> </a>
-<h2>Default Values</h2>
-<p>
-This is a list of the all the default values defined in the FHIR specification:
-</p>
-<ul>
-  <li>In the RESTful conformance  declaration, support for a transaction is declared on an element of type boolean. If no element is present, the transaction is not supported.</li>
 </ul>
 
 <%footer%>

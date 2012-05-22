@@ -1145,6 +1145,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 //      generate(e, definitions.getConceptDomains());
 //    }
     defCode.enumConsts.add("  FHIR_GENERATED_VERSION = '"+version+"';\r\n");
+    defCode.enumConsts.add("  FHIR_GENERATED_DATE = '"+new SimpleDateFormat("yyyyMMddhhmmss").format(genDate)+"';\r\n");
     defCode.classDefs.add(" TFHIRResourceFactory = class (TFHIRBaseFactory)\r\n  public\r\n"+factoryIntf.toString()+"  end;\r\n");
     defCode.classImpls.add(factoryImpl.toString());
     defCode.finish();
@@ -1327,6 +1328,18 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"', ");
       }
     }
+    con.append("\r\n  LOWERCASE_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
+    i = 0;
+    for (String s : definitions.getDefinedResources().keySet()) {
+      i++;
+      if (i == l) {
+        con.append("'"+s.toLowerCase()+"');");
+      }
+      else {
+        con.append("'"+s.toLowerCase()+"', ");
+      }
+    }
+
 
     defCode.enumDefs.add(def.toString());
     defCode.enumConsts.add(con.toString());
@@ -1344,6 +1357,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  private\r\n");
     def.append("    FId : String;\r\n");
     def.append("    FText : TNarrative;\r\n");
+    def.append("    FFormat : TFHIRFormat;\r\n");
     def.append("    procedure SetResourceId(value : string);\r\n");
     def.append("    procedure SetText(value : TNarrative);\r\n");
     def.append("  protected\r\n");
@@ -1366,6 +1380,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("      Text summary of resource, for human interpretation\r\n");
     def.append("    }\r\n");
     def.append("    property text : TNarrative read FText write SetText;\r\n");
+    def.append("    {@member format\r\n");
+    def.append("      Whether the resource was first represented in XML or JSON\r\n");
+    def.append("    }\r\n");
+    def.append("    property format : TFHIRFormat read FFormat write FFormat;\r\n");
     def.append("  end;\r\n");
     
     def.append("\r\n");
@@ -1386,6 +1404,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("begin\r\n");
     impl2.append("  inherited;\r\n");
     impl2.append("  FId := TFHIRResource(oSource).FId;\r\n");
+    impl2.append("  FFormat := TFHIRResource(oSource).FFormat;\r\n");
     impl2.append("  text := TFHIRResource(oSource).text.Clone;\r\n");
     impl2.append("end;\r\n\r\n");
     

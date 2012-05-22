@@ -89,14 +89,15 @@ http://server/path/patient
 All the logical operations are defined relative to the service root
 URL below. Note that this means that given the address of any one FHIR
 resource on a system, the correct address for all the other resources 
-may be determined.
-
-However since application URLs may change, and because in some uses of FHIR within internal eco-systems,
+may be determined. However since application URLs may change, and because in some uses of FHIR within internal eco-systems,
 local configuration may dictate that the provider of a resource is different
 to that claimed by any particular provider or consumer, 
 applications may need to replace Service Root URLs.
 </p>
-
+<p>
+Note: except for the Service Root Portion of the URL, all the URLs (and ids that form part of the URL) defined by 
+this specification are case sensitive and are required to be in lowercase. 
+</p>
 <h2>Resource Metadata &amp; Versioning</h2>
 <p>
 Each resource has an associated set of <a href="xml.htm#metadata">resource metadata</a>. These map to the http request and response using the following fields:
@@ -112,17 +113,15 @@ Each resource has an associated set of <a href="xml.htm#metadata">resource metad
 
 <h2>Security</h2>
 <p>
-For this specification, normal HTTP security and authentication
-rules apply. The Service Root URL will specify whether SSL is 
-required. HTTP authentication, including possibly the requirement for 
-client certificates, may be required by the server. 
-It is a matter of application requirements and local 
-configuration whether all interactions run under the account of 
-a trusted system user, or whether each interaction runs under the 
+For this specification, normal HTTP security and authentication rules apply. The Service Root URL will specify 
+whether SSL is required. HTTP authentication, including possibly the requirement for client certificates, may 
+be required by the server. It is a matter of application requirements and local configuration whether all 
+interactions run under the account of a trusted system user, or whether each interaction runs under the 
 account of the individual user, or whether some other arrangement is required. 
 </p>
 <p>
-OAuth may be used to provide security. Applications are recommended to use the variants of the OAuth protocol that do not require URL parameters, but these may be used if necessary.
+<a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
+that do not require URL parameters, but these may be used if necessary.
 </p>
 <h2>Content Types &amp; File Extensions</h2>
 <p>
@@ -134,6 +133,7 @@ limitations, may choose to support the (?format=) parameter to specify alternati
 For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
 defined by FHIR, and application/json must be interpreted to mean the informative JSON format.
 </p>
+
 <a name="read"> </a>
 <h2>read</h2>
 <p>

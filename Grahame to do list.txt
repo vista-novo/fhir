@@ -10,6 +10,6 @@
 * FHIR Product Line Scope and Principles
 * cardinality - change? 
 * version in Coding
-* hData page
+* sort out the hdata page
 
 

@@ -18,9 +18,9 @@
 <a name="Aggregation"></a>
 <h1>Aggregation</h1>
 <p>
-One basic operation performed with resources is to aggregate a group of resources into a single XML document. 
-This is performed in many of the implementation frameworks. Aggregated resources are useful for grouping 
-resources together for a variety of different reasons, including:
+One basic operation performed with resources is to aggregate all the content of a group of resources 
+into a single XML document. This is performed in many of the implementation frameworks. Aggregated 
+resources are useful for grouping resources together for a variety of different reasons, including:
 </p>
 <ul>
   <li>Listing a set of resources that have changed since a given instant in time </li>
@@ -57,15 +57,16 @@ Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/h
     &lt;<b>summary</b> <a href="xml.htm#Control" class="cf">opt</a> type="xhtml">
          <font color="Gray">&lt;!-- Narrative from resource for a browser. Must be wrapped in a &lt;div&gt; --&gt;</font>
     &lt;/summary>
-    &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <a href="xml.htm#Control" class="cf">opt</a>&gt;
-         <font color="Gray">&lt;!-- Enveloped Digital Signature (see Atom section 5.1) --&gt;</font>
-    &lt;/Signature&gt;
   &lt;/entry&gt;
+  &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <a href="xml.htm#Control" class="cf">opt</a>&gt;
+       <font color="Gray">&lt;!-- Enveloped Digital Signature (see Atom section 5.1) --&gt;</font>
+  &lt;/Signature&gt;
 &lt;/feed&gt;
 </pre>
 <p>Notes:</p>
 <ul>
  <li>Logically, an aggregation is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
+ <li>The order of elements does not matter in an atom feed. The order of elements in the atom namespace as documented here does not need to be followed</li>
  <li>The title for the feed and the entry are arbitary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
  <li>Every aggregation must have a unique id, which must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
  <li>The link elements are mandatory in the atom feed format.</li>
@@ -74,13 +75,13 @@ Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/h
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author, or a device. The uri is a link to the resource for the author</li>
  <li>In a RESTful implementation, the Master Location is the URL of the resource on a system that is the master for that resource. In the absence of a known master, or a RESTful implementation, some other location may be used.</li>
  <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
- <li>The aggregation can be signed with a single Enveloped Digital Signature as described in the Atom specification</li>
+ <li>The entire aggregation can be signed with a single Enveloped Digital Signature as described in the Atom specification. See below for further comment</li>
 </ul>
 
 <p>
 Readers of the aggregated resources should always look through the resources in the 
 atom feed when a <a href="xml.htm#Resource">resource reference</a> is encountered. 
-The resource reference will have the resource type and the id of the target, like this:
+The resource reference may have the resource type and a relative url, which is the id of the target, like this:
 </p>
 <div class="example">
 <pre>
@@ -91,9 +92,10 @@ The resource reference will have the resource type and the id of the target, lik
 </pre>
 </div>
 <p>
-A reader trying to find this institution should always look through the entries in 
-the atom feed prior to looking anywhere else for the institution. If that 
-organization is in the feed, it would look like this:
+A reader trying to find the resource this institution element identifies 
+should always look through the entries in the atom feed prior to looking 
+anywhere else for the institution. If that organization is in the feed, 
+it would look like this:
 </p>
 <div class="example">
 <pre>
@@ -114,26 +116,69 @@ organization is in the feed, it would look like this:
 </pre>
 </div>
 <p>
-It would also be possible to locate the resouce by the url (todo: explanation of this method).
+It would also be possible to locate the resouce by an absolute url. In this case, the <i>id</i> 
+element contains a reference to the location of the resource:
 </p>
-<a name="Ids"></a>
-<h2>XML Ids in resources</h2>
+<div class="example">
+<pre>
+  &lt;institution&gt;
+    &lt;type&gt;Organization&lt;/type&gt;
+    &lt;id&gt;http://acme.com/fhir/patient/@23&lt;/id&gt;
+  &lt;/institution&gt;
+</pre>
+</div>
 <p>
+A reader trying to find this institution should always look through the entries in 
+the atom feed prior to looking anywhere else for the institution. If that 
+patient is in the feed, it would look like this:
+</p>
+<div class="example">
+<pre>
+   .. feed ..
+  &lt;entry>
+    .. 
+    &lt;link rel="self" href="http://acme.com/fhir/patient/@23"/&gt;
+    &lt;id>23&lt;id>
+    .. 
+    &lt;category term="Patient" scheme="urn:hl7-org:sid/fhir/resource-types"/>
+
+    &lt;content type="text/xml">
+      &lt;Patient xmlns="http://www.hl7.org/fhir">
+         &lt;id&gt;23&lt;/id&gt;
+         &lt;!-- other Content for the resource --&gt;
+      &lt;/Patient>
+    &lt;/content>
+  ... feed ...
+</pre>
+</div>
+<p>
+If there is no resource in the atom feed with an appropriate URL, then 
+the application may try accessing the provided URL directly, or use some 
+other implementation specific method for resolving how to find the resource.
+Note that this example used a <a href=http.htm">FHIR RESTful URL</a>, but this 
+is not required.
+</p>
+<h2>Implementation Notes</h2>
+<ul>
+<a name="digsig"></a>
+<li>Aggregations may be signed following the rules described in the Atom specification. One consequence of 
+signing the document is that URLs, Identifiers, and internal references are frozen, and cannot be changed.
+This might be a good feature, but it may also cripple interoperability between closed eco-systems where
+re-identification frequently occurs. For this reason, it is recommended that only Document Aggregations 
+are signed, and then only when all the related resources are found in the aggregation.</li>
+<a name="Ids"></a>
+<li>
 FHIR resources make use of XML id attributes as targets for pointers elsewhere in the document. XML id attributes must be unique 
 in the context of a single XML document, and the atom feed is a single XML document. it can be difficult and time consuming - or
 impossible in the presence of a digital signature - to fix the id attributes so they are unique when aggregating resources.
 For this reason, it is highly recommended that all XML id attributes are prefixed with the type and master id of the resource, like
 this: [Type]_[master id]_id (e.g. Person_23442_1). 
-</p>
+</li>
 <a name="json"></a>
-<h2>JSON Format</h2>
-<p>
-For the <a href="xml.htm#json">same reasons as resources</a>, it is useful to define a standard JSON representation of the atom format. Several existing JSON 
-representations of the atom feed are in general use; this specification adopts the <a href="https://developers.google.com/gdata/docs/json">Google GData representation</a>.
-</p>
-<blockquote>
-<p>Note: All of the existing JSON representations of Atom are lacking in simplicity. The Google conversion is at least algorithmic.</p>
-</blockquote>
+<li>There is no JSON representation of an atom feed. Atom feeds are always in XML format, though the resources may be in <a href="xml.htm#json">JSON</a>.</li>
+</ul>
+<!--
+Grahame: drop this out - no one is asking for it. Lets see if anyone actually wants this. Other than me, that is. 
 
 <a name="endpoint"></a>
 <h2>RESTful support for Aggregations</h2>
@@ -169,7 +214,7 @@ implied transactions in the resources found in the aggregation should be applied
 executed by any system - specific transaction are required, either using the RESTful or messaging frameworks, 
 or a SOA implementation.
 </p>
-
+-->
 
 <%footer%>
 <%/maindiv%>    
