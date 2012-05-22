@@ -21,6 +21,8 @@ public class BindingNameRegistry {
       else 
         last = 1;
       ini.setIntegerProperty("Key", "Last", last, null);
+      ini.setIntegerProperty("Binding Names", name, last, null);
+      ini.save();
       return last.toString();
     }
   }
