@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- remove this note!
-  Actual exchanged FHIR resources aren't allowed to have a xsi namespace, nor the schema location. but putting it here makes
-  editing the resource much easier, and it will get stripped out during the build process
+<!--
+For simplicitly, this example uses BMI as the assessment scale
 -->
-<Template xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\template.xsd">
-  <id>[value here]</id>
+<AssessmentScale xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\assessmentscale.xsd">
+  <id>2342342134134</id>
+  <subject>
+    <type>Patient</type>
+    <id>25bd34</id>
+  </subject>
+  <performer>
+    <type>Agent</type>
+    <id>1</id>
+  </performer>
+  <time>2012-05-23T07:43:00</time>
+  <interpretation>
+    <coding>
+      <code>263654008</code>
+      <system>http://snomed.info</system>
+      <display>Abnormal</display>
+    </coding>
+  </interpretation>
+  <interpretation>
+    <coding>
+      <code>248342006</code>
+      <system>http://snomed.info</system>
+      <display>Underweight</display>
+    </coding>
+  </interpretation>
+  <score>
+    <code>  
+      <coding>
+        <code>39156-5</code>
+        <system>urn:hl7-org:sid/loinc</system>
+        <display>Body mass index</display>
+      </coding>
+      <coding>
+        <code>60621009</code>
+        <system>http://snomed.info</system>
+        <display>Body mass index</display>
+      </coding>
+    </code>
+    <valueQuantity>
+      <value>18</value>
+      <!-- Nominally a BMI has units kg/m2, but we're going to pretend this is a real index... -->
+    </valueQuantity>
+    <!-- todo - fill out measures -->
+  </score>
+  <reason>?Anorexia Nervosa</reason>
   <text>
     <status>generated</status>
-    <xhtml xmlns="http://www.w3.org/1999/xhtml">
+    <div xmlns="http://www.w3.org/1999/xhtml">
       Fill this out....
-    </xhtml>
+    </div>
   </text>
-</Template>
+</AssessmentScale>

@@ -97,7 +97,7 @@ public class PageProcessor implements Logger  {
       s.append("  <ul>\r\n");
       for (Navigation.Entry e : c.getEntries()) {
         if (e.getLink() != null)
-          s.append("    <li><a href=\""+e.getLink()+".htm\">"+e.getName()+"</a></li>\r\n");
+          s.append("    <li><a href=\""+e.getLink()+".htm\">"+Utilities.escapeXml(e.getName())+"</a></li>\r\n");
         else
           s.append("    <li>"+e.getName()+"</li>\r\n");
       }

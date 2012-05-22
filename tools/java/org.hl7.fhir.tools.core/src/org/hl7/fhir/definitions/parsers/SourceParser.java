@@ -92,7 +92,7 @@ public class SourceParser {
 
   private void loadProfile(String n, Map<String, ProfileDefn> profiles) throws Exception {
     File spreadsheet = new File(rootDir+ini.getStringProperty("profiles", n));
-    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
+    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir);
     ProfileDefn profile = sparser.parseProfile(definitions);
     definitions.getProfiles().put(n, profile);
   }
@@ -100,7 +100,7 @@ public class SourceParser {
 
   private void loadConceptDomains() throws Exception {
     logger.log("Load Concept Domains");
-    ConceptDomainsParser parser = new ConceptDomainsParser(new FileInputStream(new File(termDir+"concept-domains.csv")));
+    ConceptDomainsParser parser = new ConceptDomainsParser(new FileInputStream(new File(termDir+"concept-domains.csv")), srcDir);
     List<ConceptDomain> cds = parser.parse();
     for (ConceptDomain cd : cds)
     definitions.getConceptDomains().put(cd.getName(), cd);
@@ -163,7 +163,7 @@ public class SourceParser {
     TypeDefn t = ts.get(0);
     File csv = new File(dtDir+t.getName()+".xml");
     if (csv.exists()) {
-      SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName());
+      SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName(), definitions, srcDir);
       ElementDefn el = p.parse();
       map.put(t.getName(), el);
     } else {
@@ -188,7 +188,7 @@ public class SourceParser {
 
   private void loadResource(String n, Map<String, ElementDefn> map, boolean sandbox) throws Exception {
     File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-def.xml");
-    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName());
+    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir);
     ElementDefn root = sparser.parse();
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
     definitions.getDefinedResources().put(root.getName(), root);

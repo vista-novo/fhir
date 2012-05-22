@@ -401,7 +401,7 @@ public class XhtmlParser {
 //    UInt16 w;
     readChar();
     String c = readUntil(';');
-    if (c.equals("apo"))
+    if (c.equals("apos"))
       s.append('\'');
     else if (c.equals("quot"))
       s.append('"');

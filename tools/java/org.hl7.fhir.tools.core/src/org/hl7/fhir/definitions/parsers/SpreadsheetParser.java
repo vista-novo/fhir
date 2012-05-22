@@ -4,11 +4,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.instance.model.Profile.ConceptBindingType;
+import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -20,17 +23,24 @@ public class SpreadsheetParser {
 	private XLSXmlParser xls;
 	private List<EventDefn> events = new ArrayList<EventDefn>();
 	private boolean isProfile;
+	private String root;
+	private Definitions definitions;
 
-	public SpreadsheetParser(InputStream in, String name) throws Exception {
+	public SpreadsheetParser(InputStream in, String name, Definitions definitions, String root) throws Exception {
 		this.name = name;
 		xls = new XLSXmlParser(in, name);    
+		this.root = root;
+		this.definitions = definitions;
 	}
 
 
 	public ElementDefn parse() throws Exception {
 		isProfile = false;
 		ElementDefn root = new ElementDefn();
-		Sheet sheet = xls.getSheets().get("Data Elements");
+		Sheet sheet = xls.getSheets().get("Bindings");
+		if (sheet != null)
+		  readBindings(sheet);
+		sheet = xls.getSheets().get("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			processLine(root, sheet, row);
 		}
@@ -38,7 +48,29 @@ public class SpreadsheetParser {
 		return root;
 	}
 
-	public ProfileDefn parseProfile(Definitions definitions) throws Exception {
+	private void readBindings(Sheet sheet) throws Exception {
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      ConceptDomain cd = new ConceptDomain();
+
+      cd.setName(sheet.getColumn(row, "Binding Name"));
+      cd.setDefinition(sheet.getColumn(row, "Definition"));
+      cd.setBinding(ConceptDomainsParser.readBinding(sheet.getColumn(row, "Binding")));
+      cd.setBindingStrength(ConceptDomainsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+      cd.setReference(sheet.getColumn(row, "Reference"));
+      cd.setDescription(sheet.getColumn(row, "Description"));
+      cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
+      cd.setSource(name);
+     
+      if (definitions.getConceptDomainByName(cd.getName()) != null) {
+        throw new Exception("Definition of binding '"+cd.getName()+"' in "+name+" clashes with previous definition in "+definitions.getConceptDomainByName(cd.getName()).getSource());
+      }
+      definitions.getConceptDomains().put(cd.getName(), cd);
+    }
+    
+  }
+
+
+  public ProfileDefn parseProfile(Definitions definitions) throws Exception {
 		isProfile = true;
 		ProfileDefn p = new ProfileDefn();
 

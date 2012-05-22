@@ -18,16 +18,17 @@ public class ChmMaker {
   private Navigation navigation;
   private FolderManager folders;
   private Definitions definitions;
+  private PageProcessor page;
   
   private HashMap<String, HashMap<String, String>> keywords = new HashMap<String, HashMap<String, String>>();
   
   
-  public ChmMaker(Navigation navigation, FolderManager folders,
-      Definitions definitions) {
+  public ChmMaker(Navigation navigation, FolderManager folders,  Definitions definitions, PageProcessor page) {
     super();
     this.navigation = navigation;
     this.folders = folders;
     this.definitions = definitions;
+    this.page = page;
     
     for (ElementDefn root : definitions.getDefinedResources().values())
       registerElementDefnInIndex(root, root.getName().toLowerCase()+".htm", root.getName());
@@ -92,7 +93,7 @@ public class ChmMaker {
     builder.directory(new File(folders.rootDir+"\\temp\\chm"));
 
     final Process process = builder.start();
-//    log("wait: "+Integer.toString(process.waitFor()));
+    page.log("wait: "+Integer.toString(process.waitFor()));
     if (!chm.exists())
       throw new Exception("Generation of CHM file failed");
   }
@@ -142,16 +143,18 @@ public class ChmMaker {
       for (Navigation.Entry e : c.getEntries()) {
         s.append("    <LI> <OBJECT type=\"text/sitemap\">\r\n");
         s.append("       <param name=\"Name\" value=\""+e.getName()+"\">\r\n");
-        s.append("       <param name=\"Local\" value=\""+e.getLink()+".htm\">\r\n");
+        if (e.getLink() != null) {
+          Utilities.copyFile(new File(folders.dstDir+"print-"+e.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+e.getLink()+".htm"));
+          s.append("       <param name=\"Local\" value=\""+e.getLink()+".htm\">\r\n");
+        }
         s.append("      </OBJECT>\r\n");
-        for (Navigation.Entry ce : c.getEntries()) {
+        for (Navigation.Entry ce : e.getEntries()) {
           s.append("    <LI> <OBJECT type=\"text/sitemap\">\r\n");
           s.append("       <param name=\"Name\" value=\""+ce.getName()+"\">\r\n");
           s.append("       <param name=\"Local\" value=\""+ce.getLink()+".htm\">\r\n");
           s.append("      </OBJECT>\r\n");
           Utilities.copyFile(new File(folders.dstDir+"print-"+ce.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+ce.getLink()+".htm"));
         }
-        Utilities.copyFile(new File(folders.dstDir+"print-"+e.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+e.getLink()+".htm"));
       }
       s.append("  </UL>\r\n");
     }

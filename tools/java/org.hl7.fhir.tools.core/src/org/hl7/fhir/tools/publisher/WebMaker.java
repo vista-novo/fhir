@@ -16,6 +16,13 @@ public class WebMaker {
   private FolderManager folders;
   private String version;
   
+  
+  public WebMaker(FolderManager folders, String version) {
+    super();
+    this.folders = folders;
+    this.version = version;
+  }
+
   public void produceHL7Copy() throws Exception {
     Utilities.clearDirectory(folders.rootDir+"temp\\hl7\\dload");
     Utilities.clearDirectory(folders.rootDir+"temp\\hl7\\web");
@@ -26,9 +33,13 @@ public class WebMaker {
         int i = src.indexOf("</body>");
         if (i > 0)
           src = src.substring(0, i) + google()+src.substring(i);
-        XhtmlDocument doc = new XhtmlParser().parse(src);
-        replaceDownloadUrls(doc);
-        new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp\\hl7\\web\\"+f), doc);
+//        try {
+          XhtmlDocument doc = new XhtmlParser().parse(src);
+          replaceDownloadUrls(doc);
+          new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp\\hl7\\web\\"+f), doc);
+//        } catch (Exception e) {
+//          throw new Exception("exception processing: "+src+": "+e.getMessage());
+//        }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"\\temp\\hl7\\dload\\"+f));
       else

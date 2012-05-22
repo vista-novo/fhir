@@ -89,7 +89,7 @@ public class Publisher {
 	public static void main(String[] args) throws Exception {
 //    
 	  Publisher pub = new Publisher();
-	  pub.isInternal = !(args.length > 1 && args[1] == "-web");
+	  pub.isInternal = false; // !(args.length > 1 && args[1] == "-web");
 		pub.execute(args[0]);
 	}
 
@@ -100,6 +100,7 @@ public class Publisher {
 	  registerReferencePlatforms();
 	  
 		if (initialize(folder)) {
+		  Utilities.clearDirectory(page.getFolders().dstDir);
 	    prsr.parse(isInternal);
 			validate();
 			produceSpecification();
@@ -178,8 +179,8 @@ public class Publisher {
 
   private void produceSpecification() throws Exception {
     page.setNavigation(new Navigation());
-    page.getNavigation().parse(page.getFolders().srcDir+"navigation.xml");
-    chm = new ChmMaker(page.getNavigation(),  page.getFolders(), page.getDefinitions());
+    page.getNavigation().parse(page.getFolders().srcDir+"navigation.xml", isInternal);
+    chm = new ChmMaker(page.getNavigation(),  page.getFolders(), page.getDefinitions(), page);
     book = new BookMaker(page, chm);
 
 
@@ -197,7 +198,7 @@ public class Publisher {
       log("Produce fhir.chm");
       chm.produce();
       log("Produce HL7 copy");
-      new WebMaker().produceHL7Copy();
+      new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
     }
   }
 

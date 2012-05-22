@@ -16,6 +16,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 public class Navigation {
+  private boolean isInternal;
+  
   public class Entry {
     private String name;    
     private String link;    
@@ -65,7 +67,8 @@ public class Navigation {
     return categories;
   }
   
-  public void parse(String file) throws Exception {
+  public void parse(String file, boolean isInternal) throws Exception {
+    this.isInternal = isInternal;
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     factory.setNamespaceAware(true); 
     DocumentBuilder builder = factory.newDocumentBuilder();
@@ -82,7 +85,9 @@ public class Navigation {
     Node child = root.getFirstChild();
     while (child != null) {
       if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("category")) {
-        getCategories().add(parseCategory(child));
+        Category c = parseCategory(child);
+        if (isInternal || !"sandbox".equals(c.getMode()))
+          getCategories().add(c);
       }
       child = child.getNextSibling();
     }

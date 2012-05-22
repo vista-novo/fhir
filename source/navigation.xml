@@ -71,7 +71,7 @@
   </category>
   <category>
     <name>Sandbox Resources</name>
-    <mode>Sandbox</mode>
+    <mode>sandbox</mode>
     <entry>
       <link>woody</link>
       <name>Woody</name>

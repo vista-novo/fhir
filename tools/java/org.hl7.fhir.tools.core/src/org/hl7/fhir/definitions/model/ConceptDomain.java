@@ -37,6 +37,7 @@ public class ConceptDomain {
   private BindingStrength bindingStrength;
 	private String reference;
 	private String description;
+	private String source; // for useful error messages during build
 	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
 
@@ -103,5 +104,13 @@ public class ConceptDomain {
 	public boolean hasReference() {
 	  return !(reference == null || reference.equals(""));
 	}
+
+  public String getSource() {
+    return source;
+  }
+
+  public void setSource(String source) {
+    this.source = source;
+  }
 
 }
