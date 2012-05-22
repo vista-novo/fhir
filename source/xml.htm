@@ -127,7 +127,43 @@ is tolerated on a per element basis. The control flag must have one of the follo
  <tr><td><font color="red">req</font></td><td>The element must be present, but may have a <i>dataAbsentReason</i> (todo: when would this be used?)</td></tr>
  <tr><td><font color="red">cond</font></td><td>The element may not be present, but if it is, may not have a dataAbsentReason. The condition must be explained in the notes that follow the definition</td></tr>
  <tr><td><font color="red">opt</font></td><td>The element doesn't have to be present. If it is present, it might have a dataAbsentReason. If the normal structure can be replaced with text, it might be.</td></tr>
+ <tr><td><font color="red">proh</font></td><td>The element isn't allowed to be present. This is not used in the base specification, but used in <a href="profile.htm">Resource Profiles</a>.</td></tr>
 </table> 
+<p>
+This table summarises the relationship between minimum cardinality and the conformance flag:
+</p>
+<table class="codes">
+ <tr>
+  <td></td>
+  <td><b>0..?</b></td>
+  <td><b>1..?</b></td>
+ </tr>
+ <tr>
+  <td><b><font color="red">mand</font></b></td>
+  <td>may be present<br/>no dataAbsentReason<br/>must be supported</td>
+  <td>must be present<br/>no dataAbsentReason<br/>must be supported</td>
+ </tr>
+ <tr>
+  <td><b><font color="red">req</font></b></td>
+  <td>may be present<br/>dataAbsentReason ok<br/>must be supported</td>
+  <td>must be present<br/>dataAbsentReason ok<br/>must be supported</td>
+ </tr>
+ <tr>
+  <td><b><font color="red">cond</font></b></td>
+  <td>presence depends<br/>dataAbsentReason depends<br/>depends condition</td>
+  <td>not valid</td>
+ </tr>
+ <tr>
+  <td><b><font color="red">opt</font></b></td>
+  <td>may be present<br/>dataAbsentReason ok<br/>must be supported</td>
+  <td>Not valid</td>
+ </tr>
+ <tr>
+  <td><b><font color="red">proh</font></b></td>
+  <td>may not be present<br/>no dataAbsentReason<br/>must be supported</td>
+  <td>Not valid</td>
+ </tr>
+</table>
 <hr/>
 
 <img src="base.png"/>
