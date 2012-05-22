@@ -14,7 +14,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
   public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
     CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(new FileOutputStream(implDir+"Resources.cs"));
-    cSharpGen.start();
+    cSharpGen.start(version, genDate);
     
     for (ElementDefn root : definitions.getDefinedResources().values()) {
       cSharpGen.generate(root, definitions.getConceptDomains());

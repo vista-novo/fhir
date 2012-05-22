@@ -6,6 +6,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.definitions.Config;
+
 public class DelphiCodeGenerator extends OutputStreamWriter {
 
 	// fragments
@@ -41,6 +43,7 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
 	  }
     write("unit "+name+";\r\n");
     write("\r\n");
+    write("{\r\n"+Config.FULL_LICENSE_CODE+"}\r\n\r\n");
     write("interface\r\n");
     write("\r\n");
 

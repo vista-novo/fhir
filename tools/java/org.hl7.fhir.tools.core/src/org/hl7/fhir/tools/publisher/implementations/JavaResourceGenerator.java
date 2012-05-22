@@ -45,9 +45,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		this.clss = clss;
 		
 		write("package org.hl7.fhir.instance.model;\r\n");
-		write("\r\n");
-    write("// Copyright HL7 (http://www.hl7.org). Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n");
-    write("\r\n");
+    write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
+    write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
 		if (hasList(root) || hasXhtml(root)) {
 		  if (hasList(root))
 		    write("import java.util.*;\r\n");

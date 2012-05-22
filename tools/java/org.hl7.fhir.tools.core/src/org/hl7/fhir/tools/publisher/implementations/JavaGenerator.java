@@ -88,7 +88,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     jParserGen.generate(definitions, version, genDate);    
     JavaComposerXmlGenerator jComposerGen = new JavaComposerXmlGenerator(new FileOutputStream(javaParserDir+"XmlComposer.java"));
     jComposerGen.generate(definitions, version, genDate);    
-    jFactoryGen.generate();
+    jFactoryGen.generate(version, genDate);
     ZipGenerator zip = new ZipGenerator(destDir+"java.zip");
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, ".java");
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl, ".java");

@@ -107,9 +107,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
 
   private void start(String version, Date genDate) throws Exception {
     write("package org.hl7.fhir.instance.formats;\r\n");
-    write("\r\n");
-    write("// Copyright HL7 (http://www.hl7.org). Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n");
-    write("\r\n");
+    write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
+    write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
     write("import org.hl7.fhir.instance.model.*;\r\n");
     write("import org.xmlpull.v1.*;\r\n");
   //  write("import java.util.*;\r\n");

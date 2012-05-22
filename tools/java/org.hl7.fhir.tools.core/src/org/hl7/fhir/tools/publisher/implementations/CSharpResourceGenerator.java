@@ -4,10 +4,12 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ConceptDomain;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -27,10 +29,11 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		super(out, "UTF-8");
 	}
 
-	public void start() throws Exception {
+	public void start(String version, Date genDate) throws Exception {
 		write("using System;\r\n");
 		write("using System.Collections.Generic;\r\n");
-		write("\r\n");
+    write("\r\n/*\r\n"+Config.FULL_LICENSE_CODE+"*/\r\n\r\n");
+    write("// Generated on "+Config.DATE_FORMAT().format(genDate)+" for FHIR v"+version+"\r\n\r\n");
 		write("namespace org.hl7.fhir.instance.model\r\n");
 		write("{\r\n");
 		write("\r\n");
