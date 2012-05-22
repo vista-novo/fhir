@@ -170,6 +170,7 @@
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">The actual score</Data></Cell>
     <Cell><Data ss:Type="String">A group that represents the actual score value</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">A score must have sub items, either score or data or both</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AssessmentScale.score.code</Data></Cell>
@@ -195,6 +196,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AssessmentScale.score.score</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Nested Score elements</Data></Cell>
     <Cell><Data ss:Type="String">Nested Scores - sub-scores that contribute to the overall score. A score is an aggregate based on a series of data</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">There is no formal limit on the levels of nesting, but no subscores are expected to contain more than 3 levels</Data></Cell>
@@ -211,10 +213,11 @@
     <Cell><Data ss:Type="String">Conditional</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Data from which the score is derived</Data></Cell>
     <Cell><Data ss:Type="String">The actual data items from which the score is derived. Each score must have at least one data item on which it is based</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">A score must have sub items, either score or data or both</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AssessmentScale.score.measure.code</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">AssessmentScaleMeasure</Data></Cell>
@@ -282,11 +285,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>14</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>15</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
