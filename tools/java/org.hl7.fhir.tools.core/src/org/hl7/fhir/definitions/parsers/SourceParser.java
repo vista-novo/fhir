@@ -100,7 +100,7 @@ public class SourceParser {
 
   private void loadConceptDomains() throws Exception {
     logger.log("Load Concept Domains");
-    ConceptDomainsParser parser = new ConceptDomainsParser(new FileInputStream(new File(termDir+"concept-domains.csv")), srcDir);
+    BindingsParser parser = new BindingsParser(new FileInputStream(new File(termDir+"bindings.xml")), termDir+"bindings.xml", srcDir);
     List<BindingSpecification> cds = parser.parse();
     for (BindingSpecification cd : cds)
     definitions.getBindings().put(cd.getName(), cd);

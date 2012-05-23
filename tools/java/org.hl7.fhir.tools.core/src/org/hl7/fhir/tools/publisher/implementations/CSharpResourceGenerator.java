@@ -80,7 +80,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 	private void generateEnum(ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = typeNames.get(e);
-		BindingSpecification cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+		BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
 		
 		write("    public enum "+tn+"\r\n    {\r\n");
 		int l = cd.getCodes().size();
@@ -137,7 +137,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = null;
 		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-			BindingSpecification cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+			BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
 			if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 				tn = getCodeListType(cd.getReference());
 				if (!enumNames.contains(tn)) {

@@ -93,8 +93,8 @@ public class ProfileGenerator {
       ce.setMustUnderstand(e.isMustUnderstand());
     // todo: mappings
     // we don't have anything to say about constraints on resources
-    if (!"".equals(e.getConceptDomain()))
-      ce.setBinding(e.getConceptDomain());
+    if (!"".equals(e.getBindingName()))
+      ce.setBinding(e.getBindingName());
     
     for (ElementDefn child : e.getElements()) {
       defineElement(c, child, path+"."+child.getName());

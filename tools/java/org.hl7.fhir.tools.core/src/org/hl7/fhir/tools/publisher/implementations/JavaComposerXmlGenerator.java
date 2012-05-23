@@ -220,7 +220,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     } else {
       String comp = null;
       String en = null;
-      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       String tn = typeName(root, e, !contentsHaveDataAbsentReason, false);
       if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
@@ -364,7 +364,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = getCodeListType(cd.getReference());
         if (!enumNames.contains(tn)) {

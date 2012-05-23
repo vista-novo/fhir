@@ -54,8 +54,8 @@ public class SpreadsheetParser {
 
       cd.setName(sheet.getColumn(row, "Binding Name"));
       cd.setDefinition(sheet.getColumn(row, "Definition"));
-      cd.setBinding(ConceptDomainsParser.readBinding(sheet.getColumn(row, "Binding")));
-      cd.setBindingStrength(ConceptDomainsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+      cd.setBinding(BindingsParser.readBinding(sheet.getColumn(row, "Binding")));
+      cd.setBindingStrength(BindingsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
       cd.setReference(sheet.getColumn(row, "Reference"));
       cd.setDescription(sheet.getColumn(row, "Description"));
       cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
@@ -176,7 +176,7 @@ public class SpreadsheetParser {
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
 		e.setCondition(sheet.getColumn(row, "Condition"));
-		e.setConceptDomain(sheet.getColumn(row, "Concept Domain"));
+		e.setBindingName(sheet.getColumn(row, "Concept Domain"));
 		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
 			throw new Exception("Element definition binding strength is not supported in "+path);
 
@@ -217,7 +217,7 @@ public class SpreadsheetParser {
 		e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
 		e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
 		e.setCondition(sheet.getColumn(row, "Condition"));
-		e.setConceptDomain(sheet.getColumn(row, "Concept Domain"));
+		e.setBindingName(sheet.getColumn(row, "Concept Domain"));
 		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
 			throw new Exception("Element definition binding strength is not supported");
 		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));

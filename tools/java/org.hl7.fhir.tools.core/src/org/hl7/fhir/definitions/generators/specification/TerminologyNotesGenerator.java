@@ -144,7 +144,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 
 	private void scan(ElementDefn e, String path, Map<String, BindingSpecification> tx) throws Exception {
 		if (e.hasConceptDomain()) {
-			BindingSpecification cd = getConceptDomainByName(tx, e.getConceptDomain());
+			BindingSpecification cd = getConceptDomainByName(tx, e.getBindingName());
 			if (!txusages.containsKey(cd)) {
 				txusages.put(cd, new ArrayList<CDUsage>());
 				c++;

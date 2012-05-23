@@ -98,7 +98,7 @@ public class ProfileValidator {
     n.setName(terminalName(e));
     n.setInherited(true);
     n.setComments(e.getComments());
-    n.setConceptDomain(e.getBinding());
+    n.setBindingName(e.getBinding());
     n.setCondition(e.getCondition());
     n.setConformance(getType(e.getConformance()));
     n.setDefinition(e.getDefinition());

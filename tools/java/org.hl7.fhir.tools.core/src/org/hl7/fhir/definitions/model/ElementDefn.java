@@ -39,7 +39,7 @@ public class ElementDefn {
 	private Integer minCardinality;
 	private Integer maxCardinality; 
 //	private String id;
-	private String conceptDomain;
+	private String bindingName;
 	private String name;
 	private String shortDefn;
 	private String definition;
@@ -73,7 +73,7 @@ public class ElementDefn {
 	  minCardinality = pattern.minCardinality;
 	  maxCardinality = pattern.maxCardinality;
 //	  id = pattern.id;
-	  conceptDomain = pattern.conceptDomain;
+	  bindingName = pattern.bindingName;
 	  name = pattern.name;
 	  shortDefn = pattern.shortDefn;
 	  definition = pattern.definition;
@@ -272,12 +272,12 @@ public class ElementDefn {
       return null;
     }
 
-    public String getConceptDomain() {
-    	return conceptDomain;
+    public String getBindingName() {
+    	return bindingName;
     }
     
-    public void setConceptDomain(String conceptDomain) {
-    	this.conceptDomain = conceptDomain;
+    public void setBindingName(String conceptDomain) {
+    	this.bindingName = conceptDomain;
 	}
     
 //    public String getId() {
@@ -349,7 +349,7 @@ public class ElementDefn {
 	}
 
 	public boolean hasConceptDomain() {
-		return conceptDomain != null && !conceptDomain.equals("");
+		return bindingName != null && !bindingName.equals("");
 	}
 
 

@@ -565,7 +565,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		else if (type.getName().equals("code")) {
 			String en = null;
 			if (e.hasConceptDomain()) {
-				BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+				BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
 				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 					en = cd.getName();
 					enums.add(en);

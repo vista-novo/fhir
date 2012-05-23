@@ -30,7 +30,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void generateElement(String name, ElementDefn e) throws IOException {
-		writeEntry(name+"."+e.getName(), e.describeCardinality(), e.getConformance(), describeType(e), e.getConceptDomain(), e);
+		writeEntry(name+"."+e.getName(), e.describeCardinality(), e.getConformance(), describeType(e), e.getBindingName(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}

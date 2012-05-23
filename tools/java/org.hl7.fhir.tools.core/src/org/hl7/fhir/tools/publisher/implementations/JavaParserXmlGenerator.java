@@ -234,7 +234,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       write("        res.set"+upFirst(en)+"(parseType(\""+en+"\", xpp));\r\n");
     } else {
       String prsr = null;
-      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         String en = typeNames.get(e); // getCodeListType(cd.getBinding());
         prsr = en+".fromCode(parseString(xpp))";
@@ -372,7 +372,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = getCodeListType(cd.getReference());
         if (!enumNames.contains(tn)) {

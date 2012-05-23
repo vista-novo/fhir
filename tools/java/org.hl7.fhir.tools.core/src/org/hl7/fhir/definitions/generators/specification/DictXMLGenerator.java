@@ -106,7 +106,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void generateElement(String name, ElementDefn e) throws IOException {
-		writeEntry(name+"."+e.getName(), e.getMinCardinality(), e.getMaxCardinality(), e.getConformance(), e.getTypes(), e.getConceptDomain(), e);
+		writeEntry(name+"."+e.getName(), e.getMinCardinality(), e.getMaxCardinality(), e.getConformance(), e.getTypes(), e.getBindingName(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}
