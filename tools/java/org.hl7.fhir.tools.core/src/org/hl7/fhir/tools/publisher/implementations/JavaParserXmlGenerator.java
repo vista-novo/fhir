@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -234,8 +234,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       write("        res.set"+upFirst(en)+"(parseType(\""+en+"\", xpp));\r\n");
     } else {
       String prsr = null;
-      ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      if (e.typeCode().equals("code") && cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         String en = typeNames.get(e); // getCodeListType(cd.getBinding());
         prsr = en+".fromCode(parseString(xpp))";
       } else {   
@@ -372,8 +372,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-      ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-      if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+      BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+      if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = getCodeListType(cd.getReference());
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);

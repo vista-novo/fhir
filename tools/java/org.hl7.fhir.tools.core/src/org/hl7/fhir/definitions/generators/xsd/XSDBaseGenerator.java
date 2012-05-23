@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -336,7 +336,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	private void generateEnum(String en) throws IOException {
 		write("  <xs:simpleType name=\""+en+"\">\r\n");
 		write("    <xs:restriction base=\"xs:string\">\r\n");
-		for (DefinedCode c : definitions.getConceptDomainByName(en).getCodes()) {
+		for (DefinedCode c : definitions.getBindingByName(en).getCodes()) {
 			write("      <xs:enumeration value=\""+Utilities.escapeXml(c.getCode())+"\">\r\n");
 			write("        <xs:annotation>\r\n");
 			write("          <xs:documentation>"+Utilities.escapeXml(c.getDefinition())+"</xs:documentation>\r\n");
@@ -565,8 +565,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		else if (type.getName().equals("code")) {
 			String en = null;
 			if (e.hasConceptDomain()) {
-				ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
-				if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+				BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
+				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 					en = cd.getName();
 					enums.add(en);
 					return en;

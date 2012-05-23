@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.tools.publisher.FolderManager;
 
 public class ConceptDomainsParser extends CSVReader {
@@ -16,11 +16,11 @@ public class ConceptDomainsParser extends CSVReader {
 		this.root = root;
 	}
 
-	public List<ConceptDomain> parse() throws Exception {
-		List<ConceptDomain> results = new ArrayList<ConceptDomain>();
-		ConceptDomain n = new ConceptDomain();
+	public List<BindingSpecification> parse() throws Exception {
+		List<BindingSpecification> results = new ArrayList<BindingSpecification>();
+		BindingSpecification n = new BindingSpecification();
 		n.setName("*unbound*");
-		n.setBinding(ConceptDomain.Binding.Unbound);
+		n.setBinding(BindingSpecification.Binding.Unbound);
 		results.add(n);
 		
 
@@ -33,8 +33,8 @@ public class ConceptDomainsParser extends CSVReader {
 		return results;
 	}
 	
-	private void processLine(List<ConceptDomain> results, String[] titles, String[] values) throws Exception {
-		ConceptDomain cd = new ConceptDomain();
+	private void processLine(List<BindingSpecification> results, String[] titles, String[] values) throws Exception {
+		BindingSpecification cd = new BindingSpecification();
     cd.setName(getColumn(titles, values, "Binding Name"));
 		cd.setDefinition(getColumn(titles, values, "Definition"));
     cd.setBinding(readBinding(getColumn(titles, values, "Binding")));
@@ -46,31 +46,31 @@ public class ConceptDomainsParser extends CSVReader {
 		results.add(cd);
 	}
 
-	public static ConceptDomain.Binding readBinding(String s) throws Exception {
+	public static BindingSpecification.Binding readBinding(String s) throws Exception {
 		s = s.toLowerCase();
 		if (s == null || "".equals(s) || "unbound".equals(s))
-			return ConceptDomain.Binding.Unbound;
+			return BindingSpecification.Binding.Unbound;
 		if (s.equals("code list"))
-			return ConceptDomain.Binding.CodeList;
+			return BindingSpecification.Binding.CodeList;
 		if (s.equals("special"))
-			return ConceptDomain.Binding.Special;
+			return BindingSpecification.Binding.Special;
 		if (s.equals("reference"))
-			return ConceptDomain.Binding.Reference;
+			return BindingSpecification.Binding.Reference;
 		if (s.equals("value set"))
-			return ConceptDomain.Binding.ValueSet;
+			return BindingSpecification.Binding.ValueSet;
 		throw new Exception("Unknown Binding: "+s);
 	}
 		
-	public static ConceptDomain.BindingStrength readBindingStrength(String s) throws Exception {
+	public static BindingSpecification.BindingStrength readBindingStrength(String s) throws Exception {
     s = s.toLowerCase();
     if (s == null || "".equals(s))
-      return ConceptDomain.BindingStrength.Unstated;
+      return BindingSpecification.BindingStrength.Unstated;
     if (s.equals("required"))
-      return ConceptDomain.BindingStrength.Required;
+      return BindingSpecification.BindingStrength.Required;
     if (s.equals("preferred"))
-      return ConceptDomain.BindingStrength.Preferred;
+      return BindingSpecification.BindingStrength.Preferred;
     if (s.equals("suggested"))
-      return ConceptDomain.BindingStrength.Suggested;
+      return BindingSpecification.BindingStrength.Suggested;
     throw new Exception("Unknown Binding Strength: "+s);
   }
 }

@@ -12,9 +12,9 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
-import org.hl7.fhir.definitions.model.ConceptDomain;
-import org.hl7.fhir.definitions.model.ConceptDomain.Binding;
-import org.hl7.fhir.definitions.model.ConceptDomain.BindingStrength;
+import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -65,7 +65,7 @@ public class PageProcessor implements Logger  {
     ElementDefn e = definitions.getElementDefn(t.getName());
     if (e == null)
       throw new Exception("unable to find definition for "+dt);
-    gen.generate(e, definitions.getConceptDomains());
+    gen.generate(e, definitions.getBindings());
     fos.close();
     String val = Utilities.fileToString(tmp.getAbsolutePath())+"\r\n";
     tmp.delete();
@@ -189,11 +189,11 @@ public class PageProcessor implements Logger  {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
     List<String> names = new ArrayList<String>();
-    names.addAll(definitions.getConceptDomains().keySet());
+    names.addAll(definitions.getBindings().keySet());
     Collections.sort(names);
     for (String n : names) {
       if (!n.startsWith("*")) {
-        ConceptDomain cd = definitions.getConceptDomainByName(n);
+        BindingSpecification cd = definitions.getBindingByName(n);
         s.append("  <tr><td title=\""+Utilities.escapeXml(cd.getDefinition())+"\">"+cd.getName()+"</td><td>");
         if (cd.getBinding() == Binding.Unbound) {
           s.append("Definition: "+Utilities.escapeXml(cd.getDefinition()));

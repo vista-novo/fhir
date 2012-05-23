@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -101,12 +101,12 @@ public class SourceParser {
   private void loadConceptDomains() throws Exception {
     logger.log("Load Concept Domains");
     ConceptDomainsParser parser = new ConceptDomainsParser(new FileInputStream(new File(termDir+"concept-domains.csv")), srcDir);
-    List<ConceptDomain> cds = parser.parse();
-    for (ConceptDomain cd : cds)
-    definitions.getConceptDomains().put(cd.getName(), cd);
+    List<BindingSpecification> cds = parser.parse();
+    for (BindingSpecification cd : cds)
+    definitions.getBindings().put(cd.getName(), cd);
     
-    for (ConceptDomain cd : definitions.getConceptDomains().values()) {
-      if (cd.getBinding() == ConceptDomain.Binding.CodeList) {
+    for (BindingSpecification cd : definitions.getBindings().values()) {
+      if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
         File file = new File(termDir+cd.getReference().substring(1)+".csv");
         if (!file.exists())
           throw new Exception("code source file not found for "+cd.getName()+": "+file.getAbsolutePath());

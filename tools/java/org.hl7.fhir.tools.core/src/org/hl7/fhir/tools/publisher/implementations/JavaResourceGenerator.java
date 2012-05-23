@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.utilities.Utilities;
@@ -36,7 +36,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return typeNames;
 	}
 
-	public void generate(ElementDefn root, Map<String, ConceptDomain> conceptDomains, JavaGenClass clss, DefinedCode cd, Date genDate, String version) throws Exception {
+	public void generate(ElementDefn root, Map<String, BindingSpecification> conceptDomains, JavaGenClass clss, DefinedCode cd, Date genDate, String version) throws Exception {
 		typeNames.clear();
 		typeNameStrings.clear();
 		enums.clear();
@@ -189,9 +189,9 @@ private String upFirst(String name) {
     return false;
   }
 
-	private void generateEnum(ElementDefn e, Map<String, ConceptDomain> conceptDomains) throws Exception {
+	private void generateEnum(ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = typeNames.get(e);
-		ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+		BindingSpecification cd = getConceptDomain(conceptDomains, e.getConceptDomain());
 		
 		write("    public enum "+tn+" {\r\n");
 		int l = cd.getCodes().size();
@@ -283,11 +283,11 @@ private String upFirst(String name) {
 		
 	}
 
-	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, ConceptDomain> conceptDomains) throws Exception {
+	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = null;
 		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-			ConceptDomain cd = getConceptDomain(conceptDomains, e.getConceptDomain());
-			if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+			BindingSpecification cd = getConceptDomain(conceptDomains, e.getConceptDomain());
+			if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 				tn = getCodeListType(cd.getReference().substring(1));
 				if (!enumNames.contains(tn)) {
 					enumNames.add(tn);
@@ -389,8 +389,8 @@ private String upFirst(String name) {
 		return b.toString();
 	}
 
-	private ConceptDomain getConceptDomain(Map<String, ConceptDomain> conceptDomains, String conceptDomain) {
-		for (ConceptDomain cd : conceptDomains.values())
+	private BindingSpecification getConceptDomain(Map<String, BindingSpecification> conceptDomains, String conceptDomain) {
+		for (BindingSpecification cd : conceptDomains.values())
 			if (cd.getName().equals(conceptDomain))
 				return cd;
 		return null;

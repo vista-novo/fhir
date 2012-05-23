@@ -3,7 +3,7 @@ package org.hl7.fhir.definitions.validation;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
@@ -53,7 +53,7 @@ public class ModelValidator {
 		checkType(path, e);
 		if (e.hasConceptDomain())
 		{
-			ConceptDomain cd = definitions.getConceptDomainByName(e.getConceptDomain());
+			BindingSpecification cd = definitions.getBindingByName(e.getConceptDomain());
 			rule(path, cd  != null, "Unable to resolve concept domain "+e.getConceptDomain());
 //			if (cd != null)
 //		      rule(path, (cd.getBinding() == ConceptDomain.Binding.CodeList && (e.hasType("Coding") || e.hasType("CodeableConcept"))), "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");

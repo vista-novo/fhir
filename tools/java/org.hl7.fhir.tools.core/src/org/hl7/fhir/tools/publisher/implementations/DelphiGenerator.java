@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.model.ConceptDomain.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -262,7 +262,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private void generateEnum(ElementDefn e) throws Exception {
     String tn = typeNames.get(e);
-    ConceptDomain cd = getConceptDomain(e.getConceptDomain());
+    BindingSpecification cd = getConceptDomain(e.getConceptDomain());
     
     
     StringBuilder pfx = new StringBuilder();
@@ -517,8 +517,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
     if (e.typeCode().equals("code") && e.hasConceptDomain()) {
-      ConceptDomain cd = getConceptDomain(e.getConceptDomain());
-      if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+      BindingSpecification cd = getConceptDomain(e.getConceptDomain());
+      if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = "T"+getTitle(getCodeList(cd.getReference()).substring(1));
         if (!enumNames.contains(tn)) {
           enumNames.add(tn);
@@ -583,8 +583,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     return b.toString();
   }
 
-  private ConceptDomain getConceptDomain(String conceptDomain) {
-    for (ConceptDomain cd : definitions.getConceptDomains().values())
+  private BindingSpecification getConceptDomain(String conceptDomain) {
+    for (BindingSpecification cd : definitions.getBindings().values())
       if (cd.getName().equals(conceptDomain))
         return cd;
     return null;
@@ -1161,7 +1161,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     defnCode.uses.add("FHIRDefinitionBase");
     defnCode.procsPub.add("function LoadFHIRDefinitions : TFHIRDefinitions;\r\n");
     
-    for (ConceptDomain c : definitions.getConceptDomains().values()) 
+    for (BindingSpecification c : definitions.getBindings().values()) 
       if (!c.getName().equals("*unbound*")) {
       defnCode.procs.add("procedure addConceptDomain"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRConceptDomain;\r\nbegin\r\n  cd := TFHIRConceptDomain.create();\r\n  try\r\n"+
         "    cd.name := '"+c.getName()+"';\r\n"+
@@ -1195,7 +1195,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
     
     defnCode.procs.add("\r\nfunction LoadFHIRDefinitions : TFHIRDefinitions;\r\nbegin\r\n  result := TFHIRDefinitions.create;\r\n  try");
-    for (ConceptDomain c : definitions.getConceptDomains().values()) 
+    for (BindingSpecification c : definitions.getBindings().values()) 
       if (!c.getName().equals("*unbound*"))
         defnCode.procs.add("    addConceptDomain"+getTitle(c.getName())+"(result);");
     defnCode.procs.add("");

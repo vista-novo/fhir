@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
@@ -17,7 +17,7 @@ import org.hl7.fhir.utilities.Utilities;
 public class DictXMLGenerator  extends OutputStreamWriter {
 
 			
-	private Map<String, ConceptDomain> conceptDomains;
+	private Map<String, BindingSpecification> conceptDomains;
 
 	public DictXMLGenerator(OutputStream out) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
@@ -43,7 +43,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 			write("  </resourceDefinition>\r\n");
 		}
 		if (conceptDomains != null) {
-			for (ConceptDomain cd : conceptDomains.values()) {
+			for (BindingSpecification cd : conceptDomains.values()) {
 				generateConceptDomain(cd);
 			}
 		}
@@ -52,14 +52,14 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		flush();
 	}
 
-	private void generateConceptDomain(ConceptDomain cd) throws Exception {
+	private void generateConceptDomain(BindingSpecification cd) throws Exception {
 		write("  <conceptDomain>\r\n");
 		write("    <name>"+Utilities.escapeXml(cd.getName())+"</name>\r\n");
 		write("    <definition>"+Utilities.escapeXml(cd.getDefinition())+"</definition>\r\n");
     write("    <binding>"+cd.getBinding().toString()+"</binding>\r\n");
     if (cd.getBindingStrength() != null)
       write("    <bindingStrength>"+cd.getBindingStrength().toString()+"</bindingStrength>\r\n");
-		if (cd.getBinding() == ConceptDomain.Binding.CodeList) {
+		if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
 			write("    <list>\r\n");
 			write("      <sid>urn:hl7-org:sid/fhir/"+cd.getBinding()+"</sid>\r\n");
 			for (DefinedCode c : cd.getCodes()) {
@@ -72,7 +72,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 				write("      </item>\r\n");
 			}
 			write("    </list>\r\n");
-		} else if (cd.getBinding() == ConceptDomain.Binding.Unbound) {
+		} else if (cd.getBinding() == BindingSpecification.Binding.Unbound) {
 		
 		} else {
 			write("    <description>"+Utilities.escapeXml(cd.getDescription())+"</description>\r\n");
@@ -168,7 +168,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		return s != null && !"".equals(s);
 	}
 
-	public void setConceptDomains(Map<String, ConceptDomain> conceptDomains) {
+	public void setConceptDomains(Map<String, BindingSpecification> conceptDomains) {
 		this.conceptDomains = conceptDomains;
 		
 	}

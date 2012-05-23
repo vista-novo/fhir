@@ -1561,7 +1561,7 @@ public class XmlParser extends XmlParserBase {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
         res.setName(parseString_(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
-        res.setType(Profile.ConceptBindingType.fromCode(parseString(xpp)));
+        res.setType(Profile.BindingType.fromCode(parseString(xpp)));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("details")) {
         res.setDetails(parseString_(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("reference")) {

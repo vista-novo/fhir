@@ -36,27 +36,27 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     for (String n : definitions.getDefinedResources().keySet()) {
       ElementDefn root = definitions.getResourceDefn(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root, definitions.getConceptDomains(), JavaGenClass.Resource, null, genDate, version);
+      jgen.generate(root, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
       jFactoryGen.registerResource(n,  root.getName());
     }
 
     for (DefinedCode cd : definitions.getFutureResources().values()) {
       ElementDefn e = new ElementDefn();
       e.setName(cd.getCode());
-      new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java")).generate(e, definitions.getConceptDomains(), JavaGenClass.Resource, null, genDate, version);
+      new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java")).generate(e, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
       jFactoryGen.registerResource(cd.getCode(),  e.getName());
     }
 
     for (String n : definitions.getInfrastructure().keySet()) {
       ElementDefn root = definitions.getInfrastructure().get(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root, definitions.getConceptDomains(), JavaGenClass.Structure, null, genDate, version);
+      jgen.generate(root, definitions.getBindings(), JavaGenClass.Structure, null, genDate, version);
       jFactoryGen.registerType(n,  root.getName());
     }
     for (String n : definitions.getTypes().keySet()) {
       ElementDefn root = definitions.getTypes().get(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root, definitions.getConceptDomains(), JavaGenClass.Type, null, genDate, version);
+      jgen.generate(root, definitions.getBindings(), JavaGenClass.Type, null, genDate, version);
       if (root.typeCode().equals("GenericType")) {
         for (TypeDefn td : definitions.getKnownTypes()) {
           if (td.getName().equals(root.getName()) && td.hasParams()) {
@@ -71,14 +71,14 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     for (DefinedCode cd : definitions.getConstraints().values()) {
       ElementDefn root = definitions.getTypes().get(cd.getComment()); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+cd.getCode()+".java"));
-      jgen.generate(root, definitions.getConceptDomains(), JavaGenClass.Constraint, cd, genDate, version);
+      jgen.generate(root, definitions.getBindings(), JavaGenClass.Constraint, cd, genDate, version);
       jFactoryGen.registerType(cd.getCode(), cd.getCode());      
     }
     
     for (String n : definitions.getStructures().keySet()) {
       ElementDefn root = definitions.getStructures().get(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root, definitions.getConceptDomains(), JavaGenClass.Type, null, genDate, version);
+      jgen.generate(root, definitions.getBindings(), JavaGenClass.Type, null, genDate, version);
       jFactoryGen.registerType(n,  root.getName());
     }
 

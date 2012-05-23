@@ -4,13 +4,13 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.ProfileDefn;
-import org.hl7.fhir.instance.model.Profile.ConceptBindingType;
+import org.hl7.fhir.instance.model.Profile.BindingType;
 import org.hl7.fhir.tools.publisher.FolderManager;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
@@ -50,7 +50,7 @@ public class SpreadsheetParser {
 
 	private void readBindings(Sheet sheet) throws Exception {
     for (int row = 0; row < sheet.rows.size(); row++) {
-      ConceptDomain cd = new ConceptDomain();
+      BindingSpecification cd = new BindingSpecification();
 
       cd.setName(sheet.getColumn(row, "Binding Name"));
       cd.setDefinition(sheet.getColumn(row, "Definition"));
@@ -61,10 +61,10 @@ public class SpreadsheetParser {
       cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
       cd.setSource(name);
      
-      if (definitions.getConceptDomainByName(cd.getName()) != null) {
-        throw new Exception("Definition of binding '"+cd.getName()+"' in "+name+" clashes with previous definition in "+definitions.getConceptDomainByName(cd.getName()).getSource());
+      if (definitions.getBindingByName(cd.getName()) != null) {
+        throw new Exception("Definition of binding '"+cd.getName()+"' in "+name+" clashes with previous definition in "+definitions.getBindingByName(cd.getName()).getSource());
       }
-      definitions.getConceptDomains().put(cd.getName(), cd);
+      definitions.getBindings().put(cd.getName(), cd);
     }
     
   }

@@ -5,7 +5,7 @@ package org.hl7.fhir.instance.model;
 import java.util.*;
 
 /**
- * A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains
+ * A Resource Profile - a statement of constraint on one or more Resources and/or bindings
  */
 public class Profile extends Resource {
 
@@ -42,14 +42,14 @@ public class Profile extends Resource {
         }
     }
 
-    public enum ConceptBindingType {
-        Unbound, // The concept domain is not bound to anything
-        CodeList, // The concept domain is bound to a list of supplied codes - only those codes are allowed
-        Reference, // The concept domain references some external definition by a provided reference
-        Preferred, // The concept domain references a set of preferred terms
+    public enum BindingType {
+        Unbound, // The binding is not bound to anything
+        CodeList, // The binding is bound to a list of supplied codes - only those codes are allowed
+        Reference, // The binding references some external definition by a provided reference
+        Preferred, // The binding references a set of preferred terms
         Suggestion, // This profile was superceded by a more recent version
-        External; // The concept domain is defined by an external authority identified in the reference
-        public static ConceptBindingType fromCode(String code) throws Exception {
+        External; // The binding is defined by an external authority identified in the reference
+        public static BindingType fromCode(String code) throws Exception {
             if (code == null || "".equals(code))
                 return null;
         if ("Unbound".equals(code))
@@ -135,14 +135,14 @@ public class Profile extends Resource {
 
     public class Binding extends Element {
         /**
-         * The name of the concept domain that this profile is declaring a constraint on
+         * The name of the binding that this profile is declaring a constraint on
          */
         private String_ name;
 
         /**
          * The form of the binding
          */
-        private ConceptBindingType type;
+        private BindingType type;
 
         /**
          * extra details - see notes
@@ -167,11 +167,11 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public ConceptBindingType getType() { 
+        public BindingType getType() { 
           return this.type;
         }
 
-        public void setType(ConceptBindingType value) { 
+        public void setType(BindingType value) { 
           this.type = value;
         }
 

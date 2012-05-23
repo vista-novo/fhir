@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class Definitions {
 
-  private Map<String, ConceptDomain> conceptDomains = new HashMap<String, ConceptDomain>();
+  private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
   private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
   private Map<String, DefinedCode> futureResources = new HashMap<String, DefinedCode>();
   private List<TypeDefn> knownTypes = new ArrayList<TypeDefn>();
@@ -41,8 +41,8 @@ public class Definitions {
   }
 
   
-  public ConceptDomain getConceptDomainByName(String conceptDomain) {
-    return conceptDomains.get(conceptDomain);
+  public BindingSpecification getBindingByName(String name) {
+    return bindings.get(name);
   }
 
   public ElementDefn getResourceDefn(String name) throws Exception {
@@ -74,8 +74,8 @@ public class Definitions {
   }
 
 
-  public Map<String, ConceptDomain> getConceptDomains() {
-    return conceptDomains;
+  public Map<String, BindingSpecification> getBindings() {
+    return bindings;
   }
 
 

@@ -256,7 +256,7 @@ public class Publisher {
 		String xml = Utilities.fileToString(tmp.getAbsolutePath());
 
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
-		tgen.generate(root, page.getDefinitions().getConceptDomains());
+		tgen.generate(root, page.getDefinitions().getBindings());
 		String tx = Utilities.fileToString(tmp.getAbsolutePath());
 
 		DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
@@ -615,7 +615,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 	UnsupportedEncodingException, Exception, IOException {
 		FileOutputStream fos = new FileOutputStream(page.getFolders().dstDir+"fhir.dict.xml");
 		DictXMLGenerator dxgen = new DictXMLGenerator(fos);
-		dxgen.setConceptDomains(page.getDefinitions().getConceptDomains());
+		dxgen.setConceptDomains(page.getDefinitions().getBindings());
 		dxgen.generate(page.getDefinitions().getDefinedResources().values(), "HL7");
 		fos.close();
 	}

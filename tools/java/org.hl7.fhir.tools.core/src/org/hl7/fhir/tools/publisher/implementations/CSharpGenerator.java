@@ -17,12 +17,12 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
     cSharpGen.start(version, genDate);
     
     for (ElementDefn root : definitions.getDefinedResources().values()) {
-      cSharpGen.generate(root, definitions.getConceptDomains());
+      cSharpGen.generate(root, definitions.getBindings());
     }
     for (DefinedCode n : definitions.getFutureResources().values()) {
       ElementDefn e = new ElementDefn();
       e.setName(n.getDefinition());
-      cSharpGen.generate(e, definitions.getConceptDomains());
+      cSharpGen.generate(e, definitions.getBindings());
     }
     cSharpGen.finish();
     ZipGenerator zip = new ZipGenerator(destDir+"CSharp.zip");

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.model.ConceptDomain;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -24,7 +24,7 @@ public class XSDGenerator extends OutputStreamWriter {
   private Map<ElementDefn, String> types = new HashMap<ElementDefn, String>();
 	private List<String> typenames = new ArrayList<String>();
 	private List<TypeDefn> datatypes = new ArrayList<TypeDefn>();
-	private Map<String, ConceptDomain> tx;
+	private Map<String, BindingSpecification> tx;
 	private Map<String, List<DefinedCode>> enums = new HashMap<String, List<DefinedCode>>();
 	
 	public XSDGenerator(OutputStream out, Definitions definitions) throws UnsupportedEncodingException {
@@ -36,7 +36,7 @@ public class XSDGenerator extends OutputStreamWriter {
   	datatypes.addAll(types);
 	}
 
-	public void generate(ElementDefn root, Map<String, ConceptDomain> tx, String version, String genDate) throws Exception
+	public void generate(ElementDefn root, Map<String, BindingSpecification> tx, String version, String genDate) throws Exception
 	{
 		this.tx = tx;
 		enums.clear();
@@ -322,8 +322,8 @@ public class XSDGenerator extends OutputStreamWriter {
 		else if (type.getName().equals("code")) {
 			String en = null;
 			if (e.hasConceptDomain()) {
-				ConceptDomain cd = getConceptDomainByName(tx, e.getConceptDomain());
-				if (cd != null && cd.getBinding() == ConceptDomain.Binding.CodeList) {
+				BindingSpecification cd = getConceptDomainByName(tx, e.getConceptDomain());
+				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 					en = cd.getName();
 					enums.put(en, cd.getCodes());
 					return en;
@@ -339,8 +339,8 @@ public class XSDGenerator extends OutputStreamWriter {
 			return type.getName()+"_"+upFirst(type.getParams().get(0));
 	}
 
-	private ConceptDomain getConceptDomainByName(Map<String, ConceptDomain> tx, String conceptDomain) throws Exception {		
-		for (ConceptDomain cd : tx.values()) {
+	private BindingSpecification getConceptDomainByName(Map<String, BindingSpecification> tx, String conceptDomain) throws Exception {		
+		for (BindingSpecification cd : tx.values()) {
 			if (cd.getName().equals(conceptDomain))
 				return cd; 
 		}

@@ -34,7 +34,7 @@ public class SchemaGenerator {
     for (ElementDefn root : definitions.getDefinedResources().values()) {
       XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
       sgen.setDataTypes(definitions.getKnownTypes());
-      sgen.generate(root, definitions.getConceptDomains(), version, genDate);
+      sgen.generate(root, definitions.getBindings(), version, genDate);
 
     }
 
@@ -98,7 +98,7 @@ public class SchemaGenerator {
         if (com[1].equals("resource")) {
           values = definitions.getKnownResources().values();          
         } else {
-          values = definitions.getConceptDomainByName(com[1]).getCodes();
+          values = definitions.getBindingByName(com[1]).getCodes();
         }
         StringBuilder enums = new StringBuilder();
         for (DefinedCode c : values) {
