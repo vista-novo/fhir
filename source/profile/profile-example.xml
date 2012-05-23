@@ -276,6 +276,16 @@
       <conformance>Optional</conformance>
       <mustSupport>false</mustSupport>
       <mustUnderstand>true</mustUnderstand>
+      <content>
+        <valueCodeableConcept>
+          <coding>
+            <code>35200-2</code>
+            <system>urn:hl7-org:sid/loinc</system>
+            <display>Cholesterol</display>
+          </coding>
+        </valueCodeableConcept>
+      </content>
+      
     </element>
     <element>
       <path>LabReport.resultGroup.result.value[x]</path>
@@ -374,6 +384,16 @@
       <conformance>Optional</conformance>
       <mustSupport>false</mustSupport>
       <mustUnderstand>true</mustUnderstand>
+      <content>
+        <valueCodeableConcept>
+          <coding>
+            <code>35217-9</code>
+            <system>urn:hl7-org:sid/loinc</system>
+            <display>Triglyceride</display>
+          </coding>
+        </valueCodeableConcept>
+      </content>
+      
     </element>
     <element>
       <path>LabReport.resultGroup.result.value[x]</path>
@@ -460,6 +480,15 @@
       <conformance>Optional</conformance>
       <mustSupport>false</mustSupport>
       <mustUnderstand>true</mustUnderstand>
+      <content>
+        <valueCodeableConcept>
+          <coding>
+            <code>2085-9</code>
+            <system>urn:hl7-org:sid/loinc</system>
+            <display>Cholesterol in HDL</display>
+          </coding>
+        </valueCodeableConcept>
+      </content>
     </element>
     <element>
       <path>LabReport.resultGroup.result.value[x]</path>
