@@ -854,8 +854,9 @@
 										<UML:Classifier xmi.idref="eaxmiid13"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="type" value="Resource(Encounter)"/>
+										<UML:TaggedValue tag="type" value="Resource(Encounter|InterestOfCare)"/>
 										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="length" value="0"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="precision" value="0"/>
@@ -915,8 +916,8 @@
 				<UML:DataType xmi.id="eaxmiid9" name="id" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid3" name="Resource(Person|Device)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid4" name="CodeableConcept" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid13" name="Resource(Encounter)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid12" name="Resource(Organization)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid13" name="Resource(Encounter|InterestOfCare)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid5" name="instant" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid1" name="dateTime" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid2" name="Resource(Person|Organization)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
