@@ -131,7 +131,7 @@
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="contacts" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+								<UML:Attribute name="contact" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
@@ -141,6 +141,7 @@
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Contact"/>
 										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="length" value="0"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="precision" value="0"/>
@@ -176,7 +177,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="384"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=-82;SY=20;EX=107;EY=-66;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+relatedPerson"/>
@@ -289,7 +289,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="385"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=-54;SY=7;EX=107;EY=-27;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+language"/>
@@ -391,8 +390,9 @@
 										<UML:Classifier xmi.idref="eaxmiid6"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="type" value="Resource(Organisation)"/>
+										<UML:TaggedValue tag="type" value="Resource(Organization)"/>
 										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="length" value="0"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="precision" value="0"/>
@@ -452,7 +452,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="386"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=-108;SY=12;EX=0;EY=0;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+qualification"/>
@@ -735,10 +734,10 @@
 				</UML:Package>
 				<UML:DataType xmi.id="eaxmiid8" name="Address" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid1" name="CodeableConcept" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid6" name="Resource(Organization)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid9" name="dateTime" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid7" name="Interval(date)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid4" name="code" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid6" name="Resource(Organisation)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid2" name="HumanName" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid5" name="Identifier" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid0" name="HumanId" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
