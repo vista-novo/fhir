@@ -308,11 +308,11 @@
 								<UML:TaggedValue tag="ea_sourceID" value="415"/>
 								<UML:TaggedValue tag="ea_targetID" value="416"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
-								<UML:TaggedValue tag="lb" value="0..*"/>
+								<UML:TaggedValue tag="lb" value="0..1"/>
 								<UML:TaggedValue tag="lt" value="+author"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="author" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_8B904D03_73A7_4548_830D_6ABC9763B5B5">
+								<UML:AssociationEnd visibility="public" multiplicity="0..1" name="author" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_8B904D03_73A7_4548_830D_6ABC9763B5B5">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
