@@ -98,7 +98,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (en.contains("[x]") && elem.getTypes().size() == 1 && !elem.typeCode().equals("*"))
 			en = en.replace("[x]", elem.typeCode());
 
-		// An anonymous child element
+		// Contents of element are defined elsewhere in the same resource
 		if (en.equals("#"))
 		{
 			write(" <font color=\"Gray\">&lt;!-- Content as for "+elem.typeCode().substring(1)+" --&gt;</font>\r\n");
@@ -143,6 +143,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			if (elem.getProfileName() != null && !elem.getProfileName().equals(""))
 				write(" <font color=\"Gray\">&lt;!--</font> <font color=\"blue\">\""+elem.getProfileName()+"\"</font>  <font color=\"Gray\"> --&gt;</font>");
 	
+			// For simple elements without nested content, render the optionality etc. within a comment
 			if( elem.getElements().isEmpty())
 				write("<font color=\"Gray\">&lt;!--</font>");
 			
@@ -152,6 +153,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("<a href=\"xml.htm#Control\" class=\"cf\">" + elem.getConformance().code() + "</a>");
 			}
 
+			if( elem.hasAggregation() )
+			{
+				write(" aggregated");
+			}
+						
 			if (!elem.getTypes().isEmpty() && 
 					!(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
 			{
@@ -181,11 +187,23 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 						for (String p : t.getParams()) {
 							if (!firstp)
 								write("|");
-							write("<a href=\""+getSrcFile(p)+".htm#"+p+"\">"+p+"</a>");
+							
+							//TODO: There has to be an aggregation specification per t.getParams()
+							if( elem.hasAggregation() )
+							{
+								//TODO: This should link to the documentation of the profile as specified
+								//in the aggregation. For now it links to the base resource.
+								write("<a href=\""+getSrcFile(p)+".htm#"+p+"\">"+elem.getAggregation()+"</a>");
+							}
+							else
+								write("<a href=\""+getSrcFile(p)+".htm#"+p+"\">"+p+"</a>");
+							
 							firstp = false;
 						}
 						write(")");
 					}
+					
+					
 					i++;
 				}
 				write("</font>");

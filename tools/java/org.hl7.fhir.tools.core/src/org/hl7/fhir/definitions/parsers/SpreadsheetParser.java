@@ -193,6 +193,7 @@ public class SpreadsheetParser {
 		e.setCommitteeNotes(sheet.getColumn(row, "Committee Notes"));
 		if (isProfile) {
 			e.setValue(sheet.getColumn(row, "Value"));
+			e.setAggregation(sheet.getColumn(row, "Aggregation"));
 		}
 		String s = sheet.getColumn(row, "Must Understand").toLowerCase();
 		if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n") || s.equals("no"))

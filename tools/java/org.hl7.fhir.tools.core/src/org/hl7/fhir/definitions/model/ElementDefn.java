@@ -56,8 +56,9 @@ public class ElementDefn {
 	private String profileName; // only in a profile, for unpicking
 	private String target; // only in extensions
 	private String value; // only in a profile
-  private Element_ derivation;
-  private boolean inherited; // in a profile, was this element add from the base definition (true) or was it specifically constrained in the profile (false)
+	private String aggregation; //only in a profile
+	private Element_ derivation;
+	private boolean inherited; // in a profile, was this element add from the base definition (true) or was it specifically constrained in the profile (false)
 	
 	public ElementDefn() {
 	  super();
@@ -412,7 +413,21 @@ public class ElementDefn {
     this.value = value;
   }
 
+  public String getAggregation()
+  {
+	  return aggregation;
+  }
+  
+  public void setAggregation(String aggregation) 
+  {
+	  this.aggregation = aggregation;
+  }  
 
+  public boolean hasAggregation()
+  {
+	  return aggregation != null && !aggregation.equals("");
+  }
+  
   public boolean hasValue() {
     return value != null && !value.equals("");
   }
@@ -437,8 +452,8 @@ public class ElementDefn {
 
   public Element_ getDerivation() {
     return derivation;
-  }  
-  
+  }
+ 
 
 
 }

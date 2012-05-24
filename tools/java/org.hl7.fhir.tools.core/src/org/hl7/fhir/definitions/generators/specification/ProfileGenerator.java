@@ -80,6 +80,7 @@ public class ProfileGenerator {
     if (!"".equals(e.getDefinition()))
       ce.setDefinition(e.getDefinition());
     
+    
     // no purpose here
     ce.setMin(e.getMinCardinality());
     ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
@@ -95,6 +96,23 @@ public class ProfileGenerator {
     // we don't have anything to say about constraints on resources
     if (!"".equals(e.getBindingName()))
       ce.setBinding(e.getBindingName());
+    
+    if( e.hasAggregation() )
+    {
+    	Constraint.Resource res = c.new Resource();
+    	
+    	res.setAggregated(true);
+    	
+    	try
+    	{
+    		res.setProfile( new java.net.URI(e.getAggregation()) );
+    	}
+    	catch( URISyntaxException ue )
+    	{
+    		//TODO: whatever
+    	}
+    	ce.setResource(res);
+    }
     
     for (ElementDefn child : e.getElements()) {
       defineElement(c, child, path+"."+child.getName());
