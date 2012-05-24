@@ -86,9 +86,21 @@ public class XLSXmlParser {
       rowIndex++;
       sheet.rows.add(readRow((Element) rows.item(i)));
     }
-    
+       
+    //Remove empty rows at the end of the sheet
+    while( sheet.rows.size() != 0 && isEmptyRow(sheet.rows.get(sheet.rows.size()-1) ) )
+    	sheet.rows.remove(sheet.rows.size()-1);
   }
 
+  
+  private boolean isEmptyRow(Row w)
+  { 
+	  for( int col=0; col<w.size(); col++ )
+		  if( !w.get(col).trim().isEmpty() ) return false;
+	  
+	  return true;
+  }
+  
   private Row readRow(Element row) throws Exception {
     Row res = new Row();
     int ndx = 1;    

@@ -141,7 +141,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			
 			// If this is an unrolled element, show its profile name
 			if (elem.getProfileName() != null && !elem.getProfileName().equals(""))
-				write(" <font color=\"Gray\">&lt;!--</font> <font color=\"blue\">\""+elem.getProfileName()+"\"</font>  <font color=\"Gray\">&lt; --&gt;</font>");
+				write(" <font color=\"Gray\">&lt;!--</font> <font color=\"blue\">\""+elem.getProfileName()+"\"</font>  <font color=\"Gray\"> --&gt;</font>");
 	
 			if( elem.getElements().isEmpty())
 				write("<font color=\"Gray\">&lt;!--</font>");
