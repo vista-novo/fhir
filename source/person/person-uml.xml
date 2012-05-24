@@ -176,6 +176,7 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="384"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
+								<UML:TaggedValue tag="privatedata5" value="SX=-82;SY=20;EX=107;EY=-66;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+relatedPerson"/>
@@ -288,12 +289,13 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="385"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
+								<UML:TaggedValue tag="privatedata5" value="SX=-54;SY=7;EX=107;EY=-27;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
-								<UML:TaggedValue tag="lt" value="+languages"/>
+								<UML:TaggedValue tag="lt" value="+language"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="languages" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_58EA14EF_9462_44c3_8FDE_4C30D3FE543A">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="language" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_58EA14EF_9462_44c3_8FDE_4C30D3FE543A">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -450,12 +452,13 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="386"/>
 								<UML:TaggedValue tag="ea_targetID" value="387"/>
+								<UML:TaggedValue tag="privatedata5" value="SX=-108;SY=12;EX=0;EY=0;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
-								<UML:TaggedValue tag="lt" value="+qualifications"/>
+								<UML:TaggedValue tag="lt" value="+qualification"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="qualifications" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_C4106682_2B9A_4b70_BBE6_322D5AE391AD">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="qualification" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_C4106682_2B9A_4b70_BBE6_322D5AE391AD">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
