@@ -154,7 +154,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="414"/>
 								<UML:TaggedValue tag="ea_targetID" value="417"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+attestor"/>
@@ -268,7 +267,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="415"/>
 								<UML:TaggedValue tag="ea_targetID" value="417"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;EDGE=4;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="1..*"/>
 								<UML:TaggedValue tag="lt" value="+author"/>
@@ -309,13 +307,12 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="415"/>
 								<UML:TaggedValue tag="ea_targetID" value="416"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;EDGE=3;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
-								<UML:TaggedValue tag="lt" value="+authors"/>
+								<UML:TaggedValue tag="lt" value="+author"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="authors" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_8B904D03_73A7_4548_830D_6ABC9763B5B5">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="author" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_8B904D03_73A7_4548_830D_6ABC9763B5B5">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -431,12 +428,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid3"/>
+										<UML:Classifier xmi.idref="eaxmiid6"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="type" value="Resource(Person|Device)"/>
+										<UML:TaggedValue tag="type" value="Resource(Patient|Group|Device)"/>
 										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="length" value="0"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="precision" value="0"/>
@@ -456,7 +452,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid6"/>
+										<UML:Classifier xmi.idref="eaxmiid7"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Resource(Person)"/>
@@ -480,7 +476,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid7"/>
+										<UML:Classifier xmi.idref="eaxmiid8"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Resource(Any)"/>
@@ -492,7 +488,7 @@
 										<UML:TaggedValue tag="scale" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
 										<UML:TaggedValue tag="position" value="5"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
 										<UML:TaggedValue tag="upperBound" value="1"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
 										<UML:TaggedValue tag="ea_guid" value="{616DBB7D-8412-46d4-8D92-36AB92CF060A}"/>
@@ -521,7 +517,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="416"/>
 								<UML:TaggedValue tag="ea_targetID" value="417"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;EDGE=1;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="1..*"/>
 								<UML:TaggedValue tag="lt" value="+section"/>
@@ -562,7 +557,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="416"/>
 								<UML:TaggedValue tag="ea_targetID" value="416"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;SCME=1;SCTR=1;EDGE=3;SCTR.LEFT=363;SCTR.TOP=-387;SCTR.RIGHT=449;SCTR.BOTTOM=-317;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+section"/>
@@ -660,7 +654,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid8"/>
+										<UML:Classifier xmi.idref="eaxmiid9"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="string"/>
@@ -684,7 +678,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid9"/>
+										<UML:Classifier xmi.idref="eaxmiid10"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="id"/>
@@ -708,7 +702,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid10"/>
+										<UML:Classifier xmi.idref="eaxmiid11"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="integer"/>
@@ -732,7 +726,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid9"/>
+										<UML:Classifier xmi.idref="eaxmiid10"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="id"/>
@@ -757,12 +751,11 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid11"/>
+										<UML:Classifier xmi.idref="eaxmiid6"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
-										<UML:TaggedValue tag="type" value="Resource(Patient|Group)"/>
+										<UML:TaggedValue tag="type" value="Resource(Patient|Group|Device)"/>
 										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="length" value="0"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="precision" value="0"/>
@@ -831,7 +824,7 @@
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
 									<UML:StructuralFeature.type>
-										<UML:Classifier xmi.idref="eaxmiid7"/>
+										<UML:Classifier xmi.idref="eaxmiid8"/>
 									</UML:StructuralFeature.type>
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Resource(Any)"/>
@@ -916,8 +909,8 @@
 						</UML:Generalization>
 					</UML:Namespace.ownedElement>
 				</UML:Package>
-				<UML:DataType xmi.id="eaxmiid8" name="string" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid9" name="id" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid9" name="string" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid10" name="id" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid3" name="Resource(Person|Device)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid4" name="CodeableConcept" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid12" name="Resource(Organization)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
@@ -925,11 +918,11 @@
 				<UML:DataType xmi.id="eaxmiid1" name="dateTime" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid2" name="Resource(Person|Organization)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid0" name="code" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid7" name="Resource(Any)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid6" name="Resource(Person)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid11" name="Resource(Patient|Group)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid8" name="Resource(Any)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid7" name="Resource(Person)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 				<UML:DataType xmi.id="eaxmiid13" name="Resource(Admission|InterestOfCare)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
-				<UML:DataType xmi.id="eaxmiid10" name="integer" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid6" name="Resource(Patient|Group|Device)" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
+				<UML:DataType xmi.id="eaxmiid11" name="integer" visibility="private" isRoot="false" isLeaf="false" isAbstract="false"/>
 			</UML:Namespace.ownedElement>
 		</UML:Model>
 		<UML:Diagram name="Document" xmi.id="EAID_B8C47E9E_93EC_4277_A377_A87B48C707A8" diagramType="PackageDiagram" owner="EAPK_A30D5BA5_FCC2_425b_A0AE_B30C34A48711" toolName="Enterprise Architect 2.5">
