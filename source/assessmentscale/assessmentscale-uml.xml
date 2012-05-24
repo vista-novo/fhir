@@ -81,7 +81,7 @@
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="value" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+								<UML:Attribute name="value[x]" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
@@ -91,6 +91,7 @@
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Quantity|CodeableConcept|Choice|boolean"/>
 										<UML:TaggedValue tag="derived" value="0"/>
+										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
 										<UML:TaggedValue tag="position" value="1"/>
@@ -123,7 +124,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="426"/>
 								<UML:TaggedValue tag="ea_targetID" value="425"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=-73;SY=43;EX=0;EY=0;EDGE=3;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+measure"/>
@@ -164,7 +164,6 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="425"/>
 								<UML:TaggedValue tag="ea_targetID" value="425"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;SCME=1;SCTR=1;EDGE=2;SCTR.LEFT=411;SCTR.TOP=-257;SCTR.RIGHT=481;SCTR.BOTTOM=-203;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
 								<UML:TaggedValue tag="lt" value="+score"/>
@@ -205,13 +204,12 @@
 								<UML:TaggedValue tag="ea_targetType" value="Class"/>
 								<UML:TaggedValue tag="ea_sourceID" value="425"/>
 								<UML:TaggedValue tag="ea_targetID" value="424"/>
-								<UML:TaggedValue tag="privatedata5" value="SX=0;SY=0;EX=0;EY=0;EDGE=1;"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
-								<UML:TaggedValue tag="lb" value="1"/>
+								<UML:TaggedValue tag="lb" value="1..1"/>
 								<UML:TaggedValue tag="lt" value="+score"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="1" name="score" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_458DD1D6_EDDF_4644_A947_2E5F1D4209D9">
+								<UML:AssociationEnd visibility="public" multiplicity="1..1" name="score" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_458DD1D6_EDDF_4644_A947_2E5F1D4209D9">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
@@ -453,15 +451,15 @@
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
 										<UML:TaggedValue tag="position" value="0"/>
-										<UML:TaggedValue tag="lowerBound" value="1"/>
-										<UML:TaggedValue tag="upperBound" value="1"/>
+										<UML:TaggedValue tag="lowerBound" value="0"/>
+										<UML:TaggedValue tag="upperBound" value="*"/>
 										<UML:TaggedValue tag="duplicates" value="0"/>
 										<UML:TaggedValue tag="ea_guid" value="{CB6A9C0C-431D-4df4-9C3A-7F45E9108583}"/>
 										<UML:TaggedValue tag="ea_localid" value="947"/>
 										<UML:TaggedValue tag="styleex" value="IsLiteral=0;volatile=0;"/>
 									</UML:ModelElement.taggedValue>
 								</UML:Attribute>
-								<UML:Attribute name="value" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
+								<UML:Attribute name="value[x]" changeable="none" visibility="public" ownerScope="instance" targetScope="instance">
 									<UML:Attribute.initialValue>
 										<UML:Expression/>
 									</UML:Attribute.initialValue>
@@ -471,7 +469,6 @@
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="type" value="Quantity|CodeableConcept|Choice|boolean"/>
 										<UML:TaggedValue tag="derived" value="0"/>
-										<UML:TaggedValue tag="containment" value="Not Specified"/>
 										<UML:TaggedValue tag="ordered" value="0"/>
 										<UML:TaggedValue tag="collection" value="false"/>
 										<UML:TaggedValue tag="position" value="1"/>
