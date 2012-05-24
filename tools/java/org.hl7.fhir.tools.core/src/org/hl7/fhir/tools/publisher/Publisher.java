@@ -44,6 +44,7 @@ import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
 import org.hl7.fhir.tools.publisher.implementations.ECoreOclGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
+import org.hl7.fhir.tools.validation.UMLValidator;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -102,10 +103,13 @@ public class Publisher {
 		if (initialize(folder)) {
 		  Utilities.clearDirectory(page.getFolders().dstDir);
 	    prsr.parse(isInternal);
-			validate();
-			produceSpecification();
-			validateXml();
-			System.out.println("Finished publishing FHIR");
+			if (validate()) {
+			  produceSpecification();
+			  validateXml();
+			  System.out.println("Finished publishing FHIR");
+			}
+			else 
+			  System.out.println("Didn't publish FHIR due to errors");
 		}
 	}
 
@@ -172,6 +176,11 @@ public class Publisher {
 		for (String n : page.getDefinitions().getDefinedResources().keySet())
 			errors.addAll(val.check(n, page.getDefinitions().getDefinedResources().get(n)));
 
+		for (String n : page.getDefinitions().getDefinedResources().keySet()) {
+		  String filename = page.getFolders().srcDir+n+File.separatorChar+n+"-uml.xml";
+		  if (new File(filename).exists() || !new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-def.xml").exists())		    
+		    new UMLValidator(page.getDefinitions().getDefinedResources().get(n), filename, errors).validate();
+		}
 		for (String e : errors)
 			System.out.println(e);
 		return errors.size() == 0;			

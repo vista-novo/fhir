@@ -60,8 +60,9 @@
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="35" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
@@ -168,7 +169,7 @@
     <Cell><Data ss:Type="String">Document.subject</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Patient|Group)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">who the document is about</Data></Cell>
    </Row>
@@ -221,7 +222,7 @@
     <Cell><Data ss:Type="String">Document.attestor.party</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Person|Organisation)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Person|Organization)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">who attested the document</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -309,7 +310,7 @@
     <Cell><Data ss:Type="String">Document.section.subject</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Person|Group)</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Patient|Group|Device)</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">if section different to document</Data></Cell>
    </Row>
@@ -366,12 +367,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>21</TopRowVisible>
+   <TopRowVisible>15</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>27</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>19</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

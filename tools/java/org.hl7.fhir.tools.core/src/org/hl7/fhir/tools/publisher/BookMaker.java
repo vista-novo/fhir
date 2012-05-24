@@ -113,6 +113,8 @@ public class BookMaker {
       int i3 = 0;
       int i4 = 0;
       for (Navigation.Entry n : s.getEntries()) {
+        if (n.getLink() != null) {
+          //throw new Exception("no link for "+n.getName());
         i2++;
         i3 = 0;
         i4 = 0;
@@ -158,6 +160,7 @@ public class BookMaker {
           }
         }
         divT.getChildNodes().addAll(pageBody.getChildNodes());
+        }
       }
     }
 
@@ -195,7 +198,7 @@ public class BookMaker {
           } else if (s.endsWith(".htm")) {
             s = "#"+s.substring(0, i);
           } else {
-            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi"))
+            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi"))
               System.out.println("odd ref: "+s+" in "+node.allText());
             s = s;
           }
@@ -236,8 +239,8 @@ public class BookMaker {
     div.addText("\r\n  ");
   }
 
-  public void produce() {
-    // TODO Auto-generated method stub
+  public void produce() throws FileNotFoundException, Exception {
+    produceBookForm(); 
     
   }
 

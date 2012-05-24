@@ -216,7 +216,7 @@ public class SourceParser {
     Utilities.checkFolder(srcDir, errors);
     Utilities.checkFolder(termDir, errors);
     Utilities.checkFolder(imgDir, errors);
-    Utilities.checkFile("required", termDir, "concept-domains.csv", errors);
+    Utilities.checkFile("required", termDir, "bindings.xml", errors);
     Utilities.checkFile("required", dtDir, "primitives.xml", errors);
 
     for (String n : ini.getPropertyNames("types"))

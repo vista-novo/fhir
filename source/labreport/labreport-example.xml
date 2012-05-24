@@ -15,7 +15,10 @@
 	  <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
 	  <text>Acme Laboratory, Inc</text>
 	</laboratory>
-	<reportId>5234342</reportId>
+	<reportId>
+	  <system>http://acme.com/lab/reports</system>
+	  <id>5234342</id>
+	</reportId>
 	<reportName>
 	  <coding>
 	    <code>15430-2</code>

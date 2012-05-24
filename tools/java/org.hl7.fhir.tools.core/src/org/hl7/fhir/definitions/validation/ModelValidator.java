@@ -44,8 +44,8 @@ public class ModelValidator {
 		rule(path, e.unbounded() || e.getMaxCardinality() == 1, "Max Cardinality must be 1 or unbounded");
 		rule(path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1, "Min Cardinality must be 0 or 1");
 		rule(path, e.getConformance() != ElementDefn.Conformance.Prohibited, "Prohibited is not allowed");
-		if (e.getConformance() == ElementDefn.Conformance.Mandatory && !e.unbounded())
-		  rule(path, e.getMinCardinality() > 0, "Min Cardinality cannot be 0 when element is mandatory");
+//		if (e.getConformance() == ElementDefn.Conformance.Mandatory && !e.unbounded())
+//		  rule(path, e.getMinCardinality() > 0, "Min Cardinality cannot be 0 when element is mandatory");
 		if (e.getConformance() == ElementDefn.Conformance.Conditional)
 			rule(path, e.hasCondition(), "A conditional element must have a condition");
 		if (!e.getName().equals("#"))
