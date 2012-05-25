@@ -24,7 +24,7 @@ be exchanged.
 <p>
 The data types defined on this page on this page are categorised as either "Core Types" or "Structures". 
 "Structures" are higher level concepts that some systems internally treat differently from the "Core Types". 
-There is no functional difference betweent the two categories, and systems are not required to treat them 
+There is no functional difference between the two categories, and systems are not required to treat them 
 any differently. This table summarises the types:
 </p>
 <table class="grid">
@@ -40,18 +40,27 @@ any differently. This table summarises the types:
 </p>
 <p>
 The following table summarises the primitive types that 
-are used in the exchange specifications. The posssible values for these types are those specified in the W3C Schema specification part 2.
+are used in the exchange specifications. The posssible values for these types are those specified in the W3C Schema specification part 2. 
 </p>
 <table class="list">
- <tr><td><a name="boolean"></a>boolean</td><td>values can be true or false</td></tr>
- <tr><td><a name="integer"></a>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td></tr>
- <tr><td><a name="decimal"></a>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td></tr>
- <tr><td><a name="base64Binary"></a>base64Binary</td><td>A stream of bytes, base64 encoded</td></tr>
- <tr><td><a name="instant"></a>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td></tr>
- <tr><td><a name="string"></a>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td></tr>
- <tr><td><a name="uri"></a>uri</td><td>Ref to W3C spec</td></tr>
- <tr><td></td><td></td></tr>
+ <tr><th>type</th><th>description</th><th>default value</th></tr>
+ <tr><td><a name="boolean"></a>boolean</td><td>values can be true or false</td><td>false</td></tr>
+ <tr><td><a name="integer"></a>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td><td>0</td></tr>
+ <tr><td><a name="decimal"></a>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>0</td></tr>
+ <tr><td><a name="base64Binary"></a>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>null / empty</td></tr>
+ <tr><td><a name="instant"></a>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
+ <tr><td><a name="string"></a>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td>null / empty</td></tr>
+ <tr><td><a name="uri"></a>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>null / no reference</td></tr>
+ <tr><td></td><td></td><td></td></tr>
 </table>
+<p>
+The default value specifies the implicit semantic meaning of 
+a missing element. Note that some implementations are able to 
+distinguish between missing values and the default values, but 
+the semantic meaning is still required anyway. The string patterns
+that follow share the same default value as the string type,
+and all the rest of the types have a default value of null.
+</p>
 <p>
 Implementations that convert the xml described in this specification to other formats such as 
 JSON or some object based notation will have to find equivalent types.
