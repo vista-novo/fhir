@@ -146,7 +146,7 @@ public class Publisher {
       Utilities.checkFile("required", page.getFolders().srcDir, "header.htm", errors);
       Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
 	    Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
-	    Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
+	    Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
 	    Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 	    for (String n : page.getIni().getPropertyNames("support"))
@@ -290,9 +290,6 @@ public class Publisher {
 		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
 		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
 
-		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
-		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
 		Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
     src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
     src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
@@ -427,9 +424,6 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		String src = Utilities.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
 		Utilities.stringToFile(src, page.getFolders().dstDir + file);
-		src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processPageIncludesForPrinting(file, src);
-		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+file);
 		
     src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 10px\">");
     src = page.processPageIncludesForBook(file, src);
