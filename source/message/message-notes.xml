@@ -1,3 +1,4 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
 Notes:
@@ -10,3 +11,4 @@ Notes:
   statement for an application must describe what aggregation occurs or is required here</li>
 <li>The actual content of the data is specified per message event. The data resource is always aggregated</li>
 </ul>  
+</div>

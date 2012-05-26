@@ -278,10 +278,7 @@ public class Publisher {
 
 		generateProfile(root, n);
 		
-		String introduction = "";
-		if (new File(page.getFolders().srcDir+n+File.separatorChar+n+"-introduction.htm").exists())
-		  introduction = Utilities.fileToString(page.getFolders().srcDir+n+File.separatorChar+n+"-introduction.htm");
-		
+	
 		File xmlf = new File(page.getFolders().srcDir+n+File.separatorChar+n+"-example.xml");
 		if (!xmlf.exists())
 		  xmlf = new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-example.xml");
@@ -306,14 +303,14 @@ public class Publisher {
     String xhtm = new XhtmlComposer().compose(pre);
     
     String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
 		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
 		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
 		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
 		Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
     src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
+    src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
     cachePage(n+".htm", src);
 
 		// xml to json

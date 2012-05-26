@@ -1,3 +1,4 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
 Notes:
@@ -50,18 +51,5 @@ it is implemented on the resource manager as a POST to [todo]
 There is no content model for the response, except for an HTTP status code.
 </p>
 
-<h2>
-Searching Criteria
-</h2>
-<p>
-The following simple search/filter parameters are defined for person:
-</p>
-<table class="list">
-  <tr><td>person      </td><td>The identity of a person</td></tr>
-  <tr><td>provider    </td><td>The identity of an organization</td></tr>
-  <tr><td>id          </td><td>search id in any patient identifiers</td></tr>
-</table>
-<p>
-The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
-</p>
 
+</div>

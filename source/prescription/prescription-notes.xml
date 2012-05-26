@@ -1,0 +1,19 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+Notes:
+</p>
+<ul>
+<li>TODO</li>
+</ul>
+
+
+<h2>RESTful Transactions</h2>
+<p>
+TODO
+</p>
+<p>
+There is no content model for the response, except for an HTTP status code.
+</p>
+
+</div>

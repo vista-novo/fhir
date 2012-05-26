@@ -1,3 +1,4 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
 Notes:
@@ -60,3 +61,4 @@ The following simple search/filter parameters are defined for person:
 The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
 </p>
 
+</div>

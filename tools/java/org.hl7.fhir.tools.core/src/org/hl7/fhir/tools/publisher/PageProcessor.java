@@ -420,7 +420,7 @@ public class PageProcessor implements Logger  {
 
 
 
-  String processResourceIncludes(String name, ElementDefn root, String xml, String tx, String dict, String src, String introduction, String example) throws Exception {
+  String processResourceIncludes(String name, ElementDefn root, String xml, String tx, String dict, String src, String example) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -441,7 +441,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("title"))
         src = s1+root.getName()+s3;
       else if (com[0].equals("introduction")) 
-        src = s1+introduction+s3;
+        src = s1+loadXmlNotes(name, "introduction")+s3;
       else if (com[0].equals("example")) 
         src = s1+example+s3;
       else if (com[0].equals("name"))
@@ -459,10 +459,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("plural"))
         src = s1+Utilities.pluralizeMe(name)+s3;
       else if (com[0].equals("notes")) {
-        if (new File(folders.sndBoxDir + name+File.separatorChar+name+"-notes.xhtml").exists())
-          src = s1+Utilities.fileToString(folders.sndBoxDir + name+File.separatorChar+name+"-notes.xhtml")+s3;
-        else
-          src = s1+Utilities.fileToString(folders.srcDir + name+File.separatorChar+name+"-notes.xhtml")+s3;
+        src = s1+loadXmlNotes(name, "notes")+s3;
       } else if (com[0].equals("dictionary"))
         src = s1+dict+s3;
       else if (com[0].equals("resurl")) {
@@ -476,6 +473,35 @@ public class PageProcessor implements Logger  {
     }
     return src;
   }
+
+  private static final String HTML_PREFIX = "<div xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n";
+  private static final String HTML_SUFFIX = "</div>\r\n";
+  
+  private String loadXmlNotes(String name, String suffix) throws Exception {
+    String filename;
+    if (new File(folders.sndBoxDir + name).exists())
+      filename = folders.sndBoxDir + name+File.separatorChar+name+"-"+suffix+".xml";
+    else
+      filename = folders.srcDir + name+File.separatorChar+name+"-"+suffix+".xml";
+    
+    if (!new File(filename).exists()) {
+      Utilities.stringToFile(HTML_PREFIX+"\r\n<!-- content goes here -->\r\n\r\n"+HTML_SUFFIX, filename);
+      return "";
+    }
+    
+    String cnt = Utilities.fileToString(filename);
+    if (cnt.startsWith("<div")) {
+      if (!cnt.startsWith(HTML_PREFIX) || !cnt.endsWith(HTML_SUFFIX))
+        throw new Exception("unable to process xhtml content "+name);
+      else {
+        String res = cnt.substring(HTML_PREFIX.length(), cnt.length()-(HTML_SUFFIX.length()));
+        return res;
+      }
+    } else {
+      Utilities.stringToFile(HTML_PREFIX+cnt+HTML_SUFFIX, filename);
+      return cnt;
+    }
+}
 
   String processProfileIncludes(String filename, ProfileDefn profile, String xml, String src) throws Exception {
     while (src.contains("<%"))

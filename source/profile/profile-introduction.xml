@@ -1,3 +1,4 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <h2>Background</h2>
 <p>
@@ -26,7 +27,7 @@ In this way, the list is split into a series of individual elements or sub-lists
 In FHIR, this operation is known as "Slicing" a collection. Here is an example to illustrate the 
 process:
 </p>
-
+<!-- This table is sort of hard to read.  Perhaps using Courier for the content would help? -->
 <table class="list">
  <tr>
   <th>Resource Definition</th>
@@ -63,3 +64,4 @@ relationship type element. Fixing a code value is the most common way to slice a
 
 
 
+</div>

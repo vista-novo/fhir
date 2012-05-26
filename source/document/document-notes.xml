@@ -1,3 +1,4 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
 Notes:
@@ -54,3 +55,4 @@ to this specification. A document recipient has the following responsibilities:
  <li>Warn users when a superceded document is displayed, and either withdraw data extracted from superceded documents, or warn users when they view it</li>
 </ul>
  
+</div>
