@@ -372,5 +372,9 @@ public class Utilities {
       new File(folder+File.separatorChar+f).delete();
     }
   }
+
+  public static void createDirectory(String path) {
+    new File(path).mkdirs();    
+  }
 	
 }

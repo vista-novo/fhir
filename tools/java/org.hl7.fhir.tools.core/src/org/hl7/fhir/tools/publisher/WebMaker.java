@@ -3,6 +3,7 @@ package org.hl7.fhir.tools.publisher;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -24,8 +25,8 @@ public class WebMaker {
   }
 
   public void produceHL7Copy() throws Exception {
-    Utilities.clearDirectory(folders.rootDir+"temp\\hl7\\dload");
-    Utilities.clearDirectory(folders.rootDir+"temp\\hl7\\web");
+    Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
+    Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
     String[] files = new File(folders.dstDir).list();
     for (String f : files) {
       if (f.endsWith(".htm")) {
@@ -36,24 +37,26 @@ public class WebMaker {
 //        try {
           XhtmlDocument doc = new XhtmlParser().parse(src);
           replaceDownloadUrls(doc);
-          new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp\\hl7\\web\\"+f), doc);
+          new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f), doc);
 //        } catch (Exception e) {
 //          throw new Exception("exception processing: "+src+": "+e.getMessage());
 //        }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
-        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"\\temp\\hl7\\dload\\"+f));
-      else
-        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"\\temp\\hl7\\web\\"+f));
+        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
+      else if (!f.matches(Config.VERSION_REGEX))
+        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
     }
 
-    File f = new File(folders.rootDir+"archive\\fhir-web-"+version+".zip");
+    File f = new File(folders.rootDir+"archive"+File.separator+"fhir-web-"+version+".zip");
     if (f.exists())
       f.delete();
     ZipGenerator zip = new ZipGenerator(folders.rootDir+"archive\\fhir-hl7-"+version+"-web.zip");
-    zip.addFiles(folders.rootDir+"temp\\hl7\\web\\", "", null);
+    zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator, "", null);
+    zip.addFiles(folders.dstDir+"v"+version+File.separator, "v"+version+File.separator, null);
     zip.close();  
-    zip = new ZipGenerator(folders.rootDir+"archive\\fhir-hl7-"+version+"-dload.zip");
-    zip.addFiles(folders.rootDir+"temp\\hl7\\dload\\", "", null);
+    zip = new ZipGenerator(folders.rootDir+"archive"+File.separator+"fhir-hl7-"+version+"-dload.zip");
+    zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
+    zip.addFiles(folders.dstDir+"v"+version+File.separator+"bin"+File.separator, "v"+version+File.separator, null);
     zip.close();  
     
   }

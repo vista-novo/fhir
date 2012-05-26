@@ -89,7 +89,7 @@ string patterns that are commonly used:
 <div class="example">
 <p><b>Examples</b></p>
 <p>date (e.g. Date of birth):</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;1951-06-04&lt;/x&gt;
 </pre>
 </div>
@@ -147,7 +147,7 @@ The context of use may frequently make rules about the kind of attachment
 <div class="example">
 <p><b>Examples</b></p>
 <p>A PDF document:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;mimeType&gt;application/pdf&lt;/mimeType&gt;
    &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
@@ -156,7 +156,7 @@ The context of use may frequently make rules about the kind of attachment
   &lt;/x&gt;
 </pre>
 <p>A reference to a DICOM image:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;mimeType&gt;application/dicom&lt;/mimeType&gt;
    &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;wado details...&lt;/url&gt;
@@ -204,28 +204,28 @@ contain a <i>system</i>.
 <p><b>Examples</b></p>
 <p>A primary key from an application table (an OID in the space allowcated by HL7
 to some organisation to further sub-allocate):</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
    &lt;id&gt;123&lt;/id&gt;
   &lt;/x&gt;
 </pre>
 <p>An identifier of a resource defined by this specification, on a particular system:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;system&gt;http://pas-server/xxx/patients&lt;/system&gt;
    &lt;id&gt;443556&lt;/id&gt;
   &lt;/x&gt;
 </pre>
 <p>A guid:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;system&gt;urn:hl7-org:sid/uuid&lt;/system&gt;
    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
   &lt;/x&gt;
 </pre>
 <p>A full URL as the identifier:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;system&gt;urn:hl7-org:sid/uri&lt;/system&gt;
    &lt;id&gt;http://server.acme.com/fhir/people/@1&lt;/id&gt;
@@ -306,7 +306,7 @@ in the <i>CodeableConcept</i> data type.
 <div class="example">
 <p><b>Examples</b></p>
 <p>A simple code for headache, in ICD-10, with the text on which the coding is based:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;coding&gt;
       &lt;code&gt;G44.1&lt;/code&gt;
@@ -316,7 +316,7 @@ in the <i>CodeableConcept</i> data type.
   &lt;/x&gt;
 </pre>
 <p>A concept represented in an institutions local coding systems for which no snomed equivalent exists:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;coding&gt;
       &lt;code&gt;burn&lt;/code&gt;
@@ -329,7 +329,7 @@ in the <i>CodeableConcept</i> data type.
   &lt;/x&gt;
 </pre>
 <p>A Snomed-CT expression:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;coding&gt;
       &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
@@ -368,7 +368,7 @@ The Choice element must always contain at least one possible value.
 <div class="example">
 <p><b>Example</b></p>
 <p>The results on a urinalysis strip:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;code&gt;+&lt;/code&gt;
     &lt;value&gt;
@@ -448,7 +448,7 @@ These are used as types in resource content models, but they are really just Qua
 <div class="example">
 <p><b>Examples</b></p>
 <p>A duration:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;value&gt;25&lt;/value&gt;
     &lt;unit&gt;sec&lt;/unit&gt;
@@ -457,7 +457,7 @@ These are used as types in resource content models, but they are really just Qua
   &lt;/x&gt;
 </pre>
 <p>A concentration where the value was out of range:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;value&gt;40000&lt;/value&gt;
     &lt;status&gt;&amp;gt;&lt;/status&gt;
@@ -467,7 +467,7 @@ These are used as types in resource content models, but they are really just Qua
   &lt;/x&gt;
 </pre>
 <p>An amount of prescribed medication:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;value&gt;3&lt;/value&gt;
     &lt;unit&gt;capsules&lt;/unit&gt;
@@ -476,7 +476,7 @@ These are used as types in resource content models, but they are really just Qua
   &lt;/x&gt;
 </pre>
 <p>A price:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;value&gt;25.45&lt;/value&gt;
     &lt;unit&gt;US$&lt;/unit&gt;
@@ -540,7 +540,7 @@ a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
 <div class="example">
 <p><b>Examples</b></p>
 <p>Interval of Quantity (distance):</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;low&gt;
      &lt;value&gt;2.8&lt;/value&gt;
@@ -553,7 +553,7 @@ a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
   &lt;/x&gt;
 </pre>
 <p>23rd May 2011 to 27th May, including 27th May:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;low&gt;
      &lt;date&gt;2011-05-23&lt;/date&gt;
@@ -589,7 +589,7 @@ particular types of Quantity for the numerator or denominator.
 <div class="example">
 <p><b>Examples</b></p>
 <p>Titer (Ratio of integer:integer)</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;numerator&gt;
      &lt;value&gt;1&lt;/value&gt;
@@ -600,7 +600,7 @@ particular types of Quantity for the numerator or denominator.
   &lt;/x&gt;
 </pre>
 <p>Unit cost (Ratio of Money:Quantity):</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;numerator&gt;
      &lt;value&gt;103.50&lt;/value&gt;
@@ -672,7 +672,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
 <div class="example">
 <p><b>Examples</b></p>
 <p>A US SSN:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;type&gt;
       &lt;code&gt;ssn&lt;/code&gt;
@@ -691,7 +691,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
   US SSN. Not all countries will have a registered system id like USA does; it might be useful to also reference the country in the assigning authority</li>
 </ul>
 <p>A medical record number assigned on 5-July 2009:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;type&gt;
       &lt;code&gt;patient&lt;/code&gt;
@@ -742,7 +742,7 @@ flag is provided on the name element.
 <div class="example">
 <p><b>Example</b></p>
 <p>Full name of Peter James Chalmers, with a preferred name of James.</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;use&gt;usual official&lt;/use&gt;
     &lt;part&gt;
@@ -789,7 +789,7 @@ flag is provided on the address element.
 <div class="example">
 <p><b>Example</b></p>
 <p>HL7 office's address.</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;use&gt;work primary&lt;/use&gt;
    &lt;text&gt;
@@ -837,7 +837,7 @@ flag is provided on the contact element. A <i>system</i> is required if a <i>val
 <div class="example">
 <p><b>Example</b></p>
 <p>Phone number for some one who works at home:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;system&gt;phone&lt;/system&gt;
    &lt;value&gt;+15556755745&lt;/value&gt;
@@ -921,7 +921,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
 <div class="example">
 <p><b>Example</b></p>
 <p>A series of appointments for radiotherapy:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;event&gt;
       &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
@@ -938,7 +938,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
   &lt;/x&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
    &lt;repeat&gt;
      &lt;frequency&gt;2&lt;/frequency&gt;
@@ -952,7 +952,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
   &lt;/x&gt;
 </pre>
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
-<pre>
+<pre class="xml">
   &lt;x&gt;
     &lt;event&gt;
       &lt;low&gt;2011-12-23&lt;/low&gt;

@@ -420,7 +420,7 @@ public class PageProcessor implements Logger  {
 
 
 
-  String processResourceIncludes(String name, ElementDefn root, String xml, String tx, String dict, String src, String introduction) throws Exception {
+  String processResourceIncludes(String name, ElementDefn root, String xml, String tx, String dict, String src, String introduction, String example) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -442,6 +442,8 @@ public class PageProcessor implements Logger  {
         src = s1+root.getName()+s3;
       else if (com[0].equals("introduction")) 
         src = s1+introduction+s3;
+      else if (com[0].equals("example")) 
+        src = s1+example+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("version"))

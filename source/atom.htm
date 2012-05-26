@@ -85,7 +85,7 @@ atom feed when a <a href="xml.htm#Resource">resource reference</a> is encountere
 The resource reference may have the resource type and a relative url, which is the id of the target, like this:
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
   &lt;institution&gt;
     &lt;type&gt;Organization&lt;/type&gt;
     &lt;id&gt;1145c09c-73d0-4297-9835-620e4afa9deb&lt;/id&gt;
@@ -99,7 +99,7 @@ anywhere else for the institution. If that organization is in the feed,
 it would look like this:
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
    .. feed ..
   &lt;entry>
     .. 
@@ -121,7 +121,7 @@ It would also be possible to locate the resouce by an absolute url. In this case
 element contains a reference to the location of the resource:
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
   &lt;institution&gt;
     &lt;type&gt;Organization&lt;/type&gt;
     &lt;id&gt;http://acme.com/fhir/patient/@23&lt;/id&gt;
@@ -134,7 +134,7 @@ the atom feed prior to looking anywhere else for the institution. If that
 patient is in the feed, it would look like this:
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
    .. feed ..
   &lt;entry>
     .. 

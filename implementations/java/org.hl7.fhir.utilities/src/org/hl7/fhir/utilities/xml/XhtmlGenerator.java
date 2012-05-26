@@ -25,12 +25,16 @@ public class XhtmlGenerator {
 		out.write(" <link rel=\"Stylesheet\" href=\"fhir.css\" type=\"text/css\" media=\"screen\"/>\r\n");
 		out.write("</head>\r\n");
 		out.write("<body>\r\n");
-		out.write("<pre class=\"xml\">\r\n");
+    out.write("<p>&nbsp;</p>\r\n");	
+    out.write("<div class=\"example\">\r\n");
+    out.write("<p>Example:</p>\r\n"); 
+    out.write("<pre class=\"xml\">\r\n");
 
 		for (int i = 0; i < doc.getChildNodes().getLength(); i++)
 			writeNode(out, doc.getChildNodes().item(i));
 		
-		out.write("</pre>\r\n");
+    out.write("</pre>\r\n");
+    out.write("</div>\r\n");
 		out.write("</body>\r\n");
 		out.write("</html>\r\n");
 		out.flush();

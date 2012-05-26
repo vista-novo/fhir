@@ -233,9 +233,9 @@ pre              {
 
 pre.xml              {
 	font-family: 'Courier New';
- 	font-size: 10pt;
+ 	font-size: 9pt;
   padding: 2px;
-  background: #FFFFFF ; 
+  background: #F0FFFF ; 
 }
 
 span.xmltag   {
@@ -256,4 +256,14 @@ pre a {
 	text-decoration: none;
 	border: 0;
 
+}
+
+@media all
+{
+	.page-break	{ display:none; }
+}
+
+@media print
+{
+	.page-break	{ display:block; page-break-before:always; }
 }

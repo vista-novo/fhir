@@ -173,4 +173,13 @@ public class XhtmlNode {
       throw new Error("value is null");
     Attributes.put(name, value);
   }
+
+  public String getAttribute(String name) {
+    return getAttributes().get(name);
+  }
+
+  public void setAttribute(String name, String value) {
+    getAttributes().put(name, value);
+    
+  }
 }

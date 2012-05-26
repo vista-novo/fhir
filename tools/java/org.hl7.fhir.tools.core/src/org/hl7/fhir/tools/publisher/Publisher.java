@@ -147,6 +147,7 @@ public class Publisher {
       Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
 	    Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
 	    Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
+	    Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
 	    Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 	    for (String n : page.getIni().getPropertyNames("support"))
@@ -286,29 +287,35 @@ public class Publisher {
 		  xmlf = new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-example.xml");
 		File umlf = new File(page.getFolders().imgDir+n+".png");
 
-		String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
-		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
+    // xml to xhtml of xml
+    // first pass is to strip the xsi: stuff. seems to need double processing in order to delete namespace crap
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true); 
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document xdoc = builder.parse(new FileInputStream(xmlf));
+    XmlGenerator xmlgen = new XmlGenerator();
+    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 
+    // reload it now
+    builder = factory.newDocumentBuilder();
+    xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
+    XhtmlGenerator xhtml = new XhtmlGenerator();
+    xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1));
+    XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page.getFolders().dstDir+n+".xml.htm"));
+    XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
+    String xhtm = new XhtmlComposer().compose(pre);
+    
+    String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
+		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
+		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
+		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
 		Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
     src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction);
+    src = page.processResourceIncludes(n, root, xml, tx, dict, src, introduction, xhtm);
     cachePage(n+".htm", src);
 
-		// xml to xhtml of xml
-		// first pass is to strip the xsi: stuff. seems to need double processing in order to delete namespace crap
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setNamespaceAware(true); 
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document xdoc = builder.parse(new FileInputStream(xmlf));
-		XmlGenerator xmlgen = new XmlGenerator();
-		xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
-
-		// reload it now
-		builder = factory.newDocumentBuilder();
-		xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
-		XhtmlGenerator xhtml = new XhtmlGenerator();
-		xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1));
 		// xml to json
 		JsonGenerator jsongen = new JsonGenerator();
 		jsongen.generate(new File(page.getFolders().dstDir+n+".xml"), new File(page.getFolders().dstDir+n+".json"));
@@ -424,6 +431,9 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		String src = Utilities.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
 		Utilities.stringToFile(src, page.getFolders().dstDir + file);
+		src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 20px\">");
+		src = page.processPageIncludesForPrinting(file, src);
+		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+file);
 		
     src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 10px\">");
     src = page.processPageIncludesForBook(file, src);

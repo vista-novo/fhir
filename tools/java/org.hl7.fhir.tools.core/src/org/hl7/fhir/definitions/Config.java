@@ -5,6 +5,8 @@ import java.util.Locale;
 
 public class Config {
 
+  public static final String VERSION_REGEX = "v[0-9]\\.[0-9][0-9]";
+  
   public static final boolean SUPPRESS_WRAPPER_ELEMENTS = true;
   public static final boolean SHOW_SINGLE_CARDINALITIES = false;
   public static final SimpleDateFormat DATE_FORMAT() {

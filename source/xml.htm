@@ -91,7 +91,7 @@ every element defined as part of a resource data structure may have a dataAbsent
 attribute, which is used to specify why the normally expected content of the data element is missing. 
 </p>
 <p>
-<pre>
+<pre class="xml">
  &lt;<b>x</b> dataAbsentReason=""/&gt;
 </pre> 
 </p>
@@ -218,7 +218,7 @@ a head, a body element, external stylesheet references, scripts, forms, base/lin
 and objects. 
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
   &lt;narrative&gt;
     &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;This is a simple 
           example with only plain text&lt;/div&gt;
@@ -236,7 +236,7 @@ and objects.
 <p>
 An additional address scheme is defined for use within the xhtml for image location:
 </p>
-<pre>
+<pre class="xml">
   &lt;img src="fhir:#45"/&gt;
 </pre>
 <p>
@@ -244,7 +244,7 @@ This is a reference to an id attribute on an element in the same resource, eithe
 directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</a>".
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
   &lt;narrative&gt;
     &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
       &lt;p&gt;
@@ -306,14 +306,14 @@ cannot be provided without an <i>id</i>, since the <i>version</i> is scoped by t
 
 <div class="example">
 <p>A relative reference to a patient in an element named "context":</p>
-<pre>
+<pre class="xml">
   &lt;context&gt;
     &lt;type&gt;Patient&lt;/type&gt;
     &lt;id&gt;034AB16&lt;/id&gt;
   &lt;context&gt;
 </pre>
 <p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
-<pre>
+<pre class="xml">
   &lt;profile&gt;
     &lt;type&gt;Profile&lt;/type&gt;
     &lt;id&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/id&gt;
@@ -340,7 +340,7 @@ Some plain text narrative may be provided that describes the resource in additio
 resource reference is mandatory).
 </p>
 <div class="example">
-<pre>
+<pre class="xml">
   &lt;id&gt;
     &lt;type&gt;Organisation&lt;/type&gt;
     &lt;id&gt;1234&lt;/id&gt;

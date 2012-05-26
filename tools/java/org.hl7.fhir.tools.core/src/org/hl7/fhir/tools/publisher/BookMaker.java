@@ -1,5 +1,6 @@
 package org.hl7.fhir.tools.publisher;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class BookMaker {
 
   private PageProcessor page;
   private ChmMaker chm;
+  private String target;
+  private String targetBin;
   
   private Map<String, XhtmlDocument> pages = new HashMap<String, XhtmlDocument>();
 
@@ -35,6 +38,16 @@ public class BookMaker {
   }
 
   private void produceBookForm() throws FileNotFoundException, Exception {
+    target = page.getFolders().dstDir+"v"+page.getVersion();
+    if (new File(target).exists())
+      Utilities.clearDirectory(target);
+    else
+      Utilities.createDirectory(target);
+    target = target + File.separator;
+    targetBin = target + "bin" + File.separator;
+    Utilities.createDirectory(targetBin);
+    Utilities.copyFile(new File(page.getFolders().dstDir+"fhir.css"), new File(target+"fhir.css"));
+    
     String src = Utilities.fileToString(page.getFolders().srcDir+"book.htm");
     src = page.processPageIncludes(page.getFolders().srcDir+"book.htm", src);
     XhtmlDocument doc = new XhtmlParser().parse(src);
@@ -42,7 +55,7 @@ public class BookMaker {
     addTOC(body);   
     addContent(body);
     addReferenceIds(body);
-    new XhtmlComposer().compose(new FileOutputStream(page.getFolders().dstDir+"fhir-book.htm"), doc); 
+    new XhtmlComposer().compose(new FileOutputStream(target+"fhir-book.htm"), doc); 
   }
 
   private void addReferenceIds(XhtmlNode body) {
@@ -104,6 +117,7 @@ public class BookMaker {
     int i1 = 0;
     for (Navigation.Category s : page.getNavigation().getCategories()) {
       i1++;
+      div.addTag("div").setAttribute("class", "page-break");
       XhtmlNode divS = div.addTag("div");
       divS.attribute("class", "section");
       XhtmlNode h1 = divS.addTag("h1");
@@ -134,7 +148,7 @@ public class BookMaker {
         XhtmlNode pageBody = page.getElement("html").getElement("body");
         for (XhtmlNode child : pageBody.getChildNodes()) {
           if (child.getNodeType() == NodeType.Element) {
-            fixReferences(child, n.getLink());
+            fixReferences(pageBody, child, n.getLink());
           }
           if ("h1".equals(child.getName())) {
             if (!first)
@@ -159,22 +173,25 @@ public class BookMaker {
             child.setName("h5");
           }
         }
+        if (i2 != 1)
+          divT.addTag("div").setAttribute("class", "page-break");
         divT.getChildNodes().addAll(pageBody.getChildNodes());
         }
       }
     }
-
   }
 
   
-  private void fixReferences(XhtmlNode node, String name) {
+  private void fixReferences(XhtmlNode parent, XhtmlNode node, String name) throws Exception {
     for (XhtmlNode child : node.getChildNodes()) {
       if (child.getNodeType() == NodeType.Element) {
-        fixReferences(child, name);
+        fixReferences(node, child, name);
       }    
     }
-    if (node.getName().equals("a")) {
-      
+    if (node.getName().equals("img")) {
+      String s = node.getAttribute("src");
+      Utilities.copyFile(new File(page.getFolders().dstDir+s), new File(target+File.separatorChar+s));
+    } else if (node.getName().equals("a")) {      
       if (node.getAttributes().containsKey("name")) {
         String lname = node.getAttributes().get("name");
         node.getAttributes().put("name", name+"."+lname);
@@ -198,13 +215,22 @@ public class BookMaker {
           } else if (s.endsWith(".htm")) {
             s = "#"+s.substring(0, i);
           } else {
-            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi"))
+            if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi")) {
               System.out.println("odd ref: "+s+" in "+node.allText());
-            s = s;
+              s = s;
+            } else {
+              // actually, what we want to do is do what?
+              System.out.println("ref to remove: "+s+" in "+node.allText());
+              Utilities.copyFile(new File(page.getFolders().dstDir+s), new File(targetBin+File.separatorChar+s));
+              s = "http://hl7.org/documentcenter/public/standards/FHIR/v"+page.getVersion()+"/"+s;
+            }
           }
 
         }
         node.getAttributes().put("href", s);
+        if (s.startsWith("http") && parent != null) {
+          node.addText(" ("+s+") ");
+        }
         //System.out.println("reference to "+s); 
       }
     }

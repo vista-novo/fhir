@@ -28,6 +28,13 @@ public class XhtmlComposer {
     return sdst.toString();
   }
 
+  public String compose(XhtmlNode node) throws Exception {
+    StringWriter sdst = new StringWriter();
+    dst = sdst;
+    writeNode("", node);
+    return sdst.toString();
+  }
+
   public void compose(OutputStream stream, XhtmlDocument doc) throws Exception {
     dst = new OutputStreamWriter(stream, "UTF-8");
     composeDoc(doc);
