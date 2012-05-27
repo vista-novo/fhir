@@ -5,10 +5,16 @@ Notes:
 </p>
 <ul>
 <li>The Message resource is a special case; it is only defined for the messaging framework, and is not encountered in other contexts</li>
-<li>The Message resource is always found in an aggregation. The resource references source, destination, enterer, author, and responsible may 
+<li>The Message resource is always found in an aggregation. The resource references enterer, author, and responsible may 
   all be included in the aggregation or left out on the basis that the recipient (and any intermediaries) are able to locate/resolve the resources
   independently. The former would be suitable for loosely coupled systems, and the latter for tightly coupled systems. The messaging conformance 
-  statement for an application must describe what aggregation occurs or is required here</li>
+  statement for an application may describe what aggregation occurs or is required here</li>
 <li>The actual content of the data is specified per message event. The data resource is always aggregated</li>
 </ul>  
+
+<a name="Events"></a>
+<h2>Event List</h2>
+
+[%events%]
+
 </div>

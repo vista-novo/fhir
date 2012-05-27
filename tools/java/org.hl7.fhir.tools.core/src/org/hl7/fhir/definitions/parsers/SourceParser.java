@@ -187,7 +187,9 @@ public class SourceParser {
   }
 
   private void loadResource(String n, Map<String, ElementDefn> map, boolean sandbox) throws Exception {
-    File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-def.xml");
+    File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-spreadsheet.xml");
+    if (!spreadsheet.exists())
+      spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-def.xml");
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir);
     ElementDefn root = sparser.parse();
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
@@ -230,7 +232,10 @@ public class SourceParser {
       Utilities.checkFile("infrastructure definition", dtDir, n+".xml", errors);
     
     for (String n : ini.getPropertyNames("resources")) {
-      Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
+      if (new File(srcDir+n+File.separatorChar, n+"-spreadsheet.xml").exists())
+        Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-spreadsheet.xml", errors);
+      else
+        Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
       Utilities.checkFile("example xml", srcDir+n+File.separatorChar, n+"-example.xml", errors);
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }

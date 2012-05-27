@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Ewout Kramer</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-05-21T00:26:08Z</LastSaved>
+  <LastSaved>2012-05-27T10:37:51Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>945</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -80,7 +79,7 @@
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Conf.</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -808,12 +807,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <TopRowVisible>6</TopRowVisible>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -855,39 +854,39 @@
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
     <Cell><Data ss:Type="String">a portion of the name of the resource</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">word</Data></Cell>
     <Cell><Data ss:Type="String">a word somewhere in the definition of the resource or the elements in the resource. (Common words  - 'and' etc - are often not supported)</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">author</Data></Cell>
     <Cell><Data ss:Type="String">name or id of the author</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">a code in the format uri::code</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">extension</Data></Cell>
     <Cell><Data ss:Type="String">an extension code</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">binding</Data></Cell>
     <Cell><Data ss:Type="String">a vocabulary binding code</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">status</Data></Cell>
     <Cell><Data ss:Type="String">a status of the profile</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">type</Data></Cell>
     <Cell><Data ss:Type="String">type of resource that is constrained in the profile</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">binding</Data></Cell>
     <Cell><Data ss:Type="String">binding name used / constrained in the resource</Data></Cell>
    </Row>
@@ -898,7 +897,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

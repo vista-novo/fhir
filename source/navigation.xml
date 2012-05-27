@@ -8,14 +8,14 @@
     <entry>
       <link>xml</link>
       <name>Resource Format</name>
-    </entry>
-    <entry>
-      <link>datatypes</link>
-      <name>Data Types</name>
       <entry>
         <link>mixins</link>
         <name>Mixins</name>
       </entry>
+    </entry>
+    <entry>
+      <link>datatypes</link>
+      <name>Data Types</name>
     </entry>
     <entry>
       <link>terminologies</link>
@@ -49,12 +49,8 @@
       <name>REST (HTTP)</name>
     </entry>
     <entry>
-      <link>messaging</link>
+      <link>message</link>
       <name>Messaging</name>
-      <entry>
-        <link>message</link>
-        <name>Message Resource</name>
-      </entry>
     </entry>
     <entry>
       <link>documents</link>

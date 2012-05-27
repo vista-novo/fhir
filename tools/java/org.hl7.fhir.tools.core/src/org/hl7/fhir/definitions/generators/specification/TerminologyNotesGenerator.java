@@ -115,7 +115,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 				
       } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
         if (cd.getName().equals("MessageEvent"))
-          write("<li>"+path+" bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href=\"messaging.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
+          write("<li>"+path+" bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href=\"message.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
         else if (cd.getName().equals("ResourceType"))
           write("  <li>"+path+" bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
         else 

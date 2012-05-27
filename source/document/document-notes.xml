@@ -48,7 +48,6 @@ The document recipient is responsible for ensuring that received CDA documents a
 to this specification. A document recipient has the following responsibilities:
 </p>
 <ul>
- <li>Assume default values where they are defined in the FHIR specification (see the <a href="implementation.htm#defaults">list here</a>)</li>
  <li>Render the document following the rules described above</li>
  <li>A recipient is allowed to extract resources or data from the document, but doing so voids the attestation, and the recipient 
  should always ensure that the user can access the original document when displaying extracted data</li>

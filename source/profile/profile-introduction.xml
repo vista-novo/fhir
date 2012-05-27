@@ -27,26 +27,7 @@ In this way, the list is split into a series of individual elements or sub-lists
 In FHIR, this operation is known as "Slicing" a collection. Here is an example to illustrate the 
 process:
 </p>
-<!-- This table is sort of hard to read.  Perhaps using Courier for the content would help? -->
-<table class="list">
- <tr>
-  <th>Resource Definition</th>
-  <th>&nbsp;</th>
-  <th style="border-left: 1px solid gray">&nbsp;</th>
-  <th>Profile for Acme, Inc</th>
- </tr>
- <tr>
-  <td>relationship [0..*] <br/>&nbsp;&nbsp;type : Coding<br/>&nbsp;&nbsp;id : string</td>
-  <td>&nbsp;</td>
-  <td style="border-left: 1px solid gray">&nbsp;</td>
-  <td>
-   parent [1..2] <br/>&nbsp;&nbsp;type = PAR<br/>&nbsp;&nbsp;id : string<br/>
-   guardian [0..1] <br/>&nbsp;&nbsp;type = GUARD<br/>&nbsp;&nbsp;id : string<br/>
-   child [0..6] <br/>&nbsp;&nbsp;type = CHILD<br/>&nbsp;&nbsp;id : string<br/>
-   (closed)
-  </td>
- </tr>
-</table>
+<img src="slicing.png"/>
 <p>
 In this example, the resource definition defines the "relationship" element which may occur
 multiple times. The profile for Acme, Inc constrains the relationship element into 3 different named kinds: 

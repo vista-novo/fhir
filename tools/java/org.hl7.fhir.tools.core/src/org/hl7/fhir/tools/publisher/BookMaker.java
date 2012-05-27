@@ -79,8 +79,10 @@ public class BookMaker {
             
           }
         }
-        else
+        else {
           page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on "+a.allText());
+          a.addText(" (Known Broken Link - needs to be resolved)");
+        }
       }
     }    
   }
@@ -109,76 +111,88 @@ public class BookMaker {
     
   }
 
+  private class LevelCounter {
+    int l1;
+    int l2;
+    int l3;
+    int l4;
+  }
   private void addContent(XhtmlNode body) throws Exception {
     XhtmlNode e = body.getElement("contents");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
     body.getChildNodes().remove(e);
 
-    int i1 = 0;
+    LevelCounter lvl = new LevelCounter();
+    lvl.l1 = 0;
     for (Navigation.Category s : page.getNavigation().getCategories()) {
-      i1++;
-      div.addTag("div").setAttribute("class", "page-break");
+      lvl.l1++;
+//      div.addTag("div").setAttribute("class", "page-break");
       XhtmlNode divS = div.addTag("div");
       divS.attribute("class", "section");
       XhtmlNode h1 = divS.addTag("h1");
-      h1.addText(Integer.toString(i1)+": "+s.getName());
+      h1.addText(Integer.toString(lvl.l1)+": "+s.getName());
 
-      int i2 = 0;
-      int i3 = 0;
-      int i4 = 0;
+      lvl.l2 = 0;
       for (Navigation.Entry n : s.getEntries()) {
+        lvl.l2++;
+        lvl.l3 = 0;
         if (n.getLink() != null) {
-          //throw new Exception("no link for "+n.getName());
-        i2++;
-        i3 = 0;
-        i4 = 0;
-        XhtmlNode divT = divS.addTag("div");
-        XhtmlNode a = divT.addTag("a");
-        a.attribute("name", n.getLink());
-        a.addText(" "); // work around for a browser bug
-
-        boolean first = true;
-        XhtmlDocument page = pages.get(n.getLink()+".htm");
-        if (page == null)
-          throw new Exception("No content found for "+n.getLink()+".htm");
-        if (page.getElement("html") == null)
-          throw new Exception("No 'html' tag found in "+n.getLink()+".htm");
-        if (page.getElement("html").getElement("body") == null)
-          throw new Exception("No 'body' tag found in "+n.getLink()+".htm");
-        XhtmlNode pageBody = page.getElement("html").getElement("body");
-        for (XhtmlNode child : pageBody.getChildNodes()) {
-          if (child.getNodeType() == NodeType.Element) {
-            fixReferences(pageBody, child, n.getLink());
-          }
-          if ("h1".equals(child.getName())) {
-            if (!first)
-              throw new Error("?? ("+n.getLink()+".h1 repeated) ");
-            first = false;
-            chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
-            child.setName("h2");
-            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+": ");
-
-          } else if ("h2".equals(child.getName())) {
-            i3++;
-            i4 = 0;
-            chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
-            child.setName("h3");
-            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+"."+Integer.toString(i3)+": ");
-          } else if ("h3".equals(child.getName())) {
-            i4++;
-            chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
-            child.setName("h4");
-            child.addText(0, Integer.toString(i1)+"."+Integer.toString(i2)+"."+Integer.toString(i3)+"."+Integer.toString(i4)+": ");
-          } else if ("h4".equals(child.getName())) {
-            child.setName("h5");
-          }
+          addPageContent(lvl, divS, n);
         }
-        if (i2 != 1)
-          divT.addTag("div").setAttribute("class", "page-break");
-        divT.getChildNodes().addAll(pageBody.getChildNodes());
+        for (Navigation.Entry g : n.getEntries()) {
+          if (g.getLink() != null) {
+            addPageContent(lvl, divS, g);
+          }
         }
       }
     }
+  }
+
+  private void addPageContent(LevelCounter lvl, XhtmlNode divS, Navigation.Entry n) throws Exception, Error {
+    XhtmlNode divT = divS.addTag("div");
+    XhtmlNode a = divT.addTag("a");
+    a.attribute("name", n.getLink());
+    a.addText(" "); // work around for a browser bug
+
+    boolean first = true;
+    XhtmlDocument page = pages.get(n.getLink()+".htm");
+    if (page == null)
+      throw new Exception("No content found for "+n.getLink()+".htm");
+    if (page.getElement("html") == null)
+      throw new Exception("No 'html' tag found in "+n.getLink()+".htm");
+    if (page.getElement("html").getElement("body") == null)
+      throw new Exception("No 'body' tag found in "+n.getLink()+".htm");
+    XhtmlNode pageBody = page.getElement("html").getElement("body");
+    for (XhtmlNode child : pageBody.getChildNodes()) {
+      if (child.getNodeType() == NodeType.Element) {
+        fixReferences(pageBody, child, n.getLink());
+      }
+      if ("h1".equals(child.getName())) {
+        if (!first)
+          throw new Error("?? ("+n.getLink()+".h1 repeated) ");
+        first = false;
+        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        child.setName("h2");
+        child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+": ");
+
+      } else if ("h2".equals(child.getName())) {
+        lvl.l3++;
+        lvl.l4 = 0;
+        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        child.setName("h3");
+        child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+": ");
+      } else if ("h3".equals(child.getName())) {
+        lvl.l4++;
+        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        child.setName("h4");
+        child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+"."+Integer.toString(lvl.l4)+": ");
+      } else if ("h4".equals(child.getName())) {
+        child.setName("h5");
+      }
+    }
+//        if (i2 != 1)
+//          divT.addTag("div").setAttribute("class", "page-break");
+    divT.getChildNodes().addAll(pageBody.getChildNodes());
   }
 
   
@@ -252,14 +266,16 @@ public class BookMaker {
       p.addText("\r\n      ");
       int i2 = 0;
       for (Navigation.Entry n : c.getEntries()) {
-        i2++;
-        p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+        if (n.getLink() != null) {
+          i2++;
+          p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
 
-        XhtmlNode a = p.addTag("a");
-        a.attribute("href", "#"+n.getLink());
-        a.addText(n.getName());
-        p.addTag("br");
-        p.addText("\r\n     ");
+          XhtmlNode a = p.addTag("a");
+          a.attribute("href", "#"+n.getLink());
+          a.addText(n.getName());
+          p.addTag("br");
+          p.addText("\r\n     ");
+        }
       }
     }
     div.addText("\r\n  ");

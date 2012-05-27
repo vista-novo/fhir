@@ -134,10 +134,14 @@ public class PageProcessor implements Logger  {
 
 
   public String processPageIncludes(String file, String src) throws Exception {
-    while (src.contains("<%"))
+    while (src.contains("<%") || src.contains("[%"))
     {
       int i1 = src.indexOf("<%");
       int i2 = src.indexOf("%>");
+      if (i1 == -1) {
+        i1 = src.indexOf("[%");
+        i2 = src.indexOf("%]");
+      }
       String s1 = src.substring(0, i1);
       String s2 = src.substring(i1 + 2, i2).trim();
       String s3 = src.substring(i2+2);
@@ -235,7 +239,7 @@ public class PageProcessor implements Logger  {
           s.append("See <a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a>");
         } else if (cd.getBinding() == Binding.Special) {
           if (cd.getName().equals("MessageEvent"))
-            s.append("See the <a href=\"messaging.htm#Events\"> Event List </a>in the messaging framework");
+            s.append("See the <a href=\"message.htm#Events\"> Event List </a>in the messaging framework");
           else if (cd.getName().equals("ResourceType"))
             s.append("See the <a href=\"terminologies.htm#ResourceType\"> list of defined Resource Types</a>");
           else 
@@ -463,10 +467,10 @@ public class PageProcessor implements Logger  {
       } else if (com[0].equals("dictionary"))
         src = s1+dict+s3;
       else if (com[0].equals("resurl")) {
-        if (isSpecial(name))
-          src = s1+"This special resource has no associated URL"+s3;
+        if (isSpecial(root.getName()))
+          src = s1+s3;
         else
-          src = s1+"The resource name as it appears in a <a href=\"http.htm\"> RESTful URL</a> is /"+name+"/"+s3;
+          src = s1+"<p>The resource name as it appears in a <a href=\"http.htm\"> RESTful URL</a> is /"+name+"/</p>"+s3;
       } else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
 
@@ -490,6 +494,7 @@ public class PageProcessor implements Logger  {
     }
     
     String cnt = Utilities.fileToString(filename);
+    cnt = processPageIncludes(filename, cnt);
     if (cnt.startsWith("<div")) {
       if (!cnt.startsWith(HTML_PREFIX) || !cnt.endsWith(HTML_SUFFIX))
         throw new Exception("unable to process xhtml content "+name);

@@ -40,11 +40,12 @@ This is the default landing page for FHIR.
 <h2>Useful Links</h2>
 <ul>
  <li><a href="introduction.htm">The FHIR specification</a></li>
- <li><a href="v<%version%>/fhir-book.htm">The specification in a single book</a></li>
  <li><a href="fhir.chm">The specification as a Windows Help File (.chm)</a></li>
+ <li><a href="v<%version%>/fhir-book.htm">The specification in a single book</a></li>
  <li><a href="fhir-spec.zip">A Zip of the whole specification for offline use</a></li>
  <li><a href="fhir-all-xsd.zip">FHIR Schemas</a></li>
  <li><a href="implementation.htm#Use">Reference Implementations</a></li>
+ <li><a href="http://wiki.hl7.org/index.php?title=FHIR">FHIR wiki</a> - home for FHIR development team</li>
  <li><a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing">Publicly Available Test Servers</a></li>
 </ul>
 <h2>FHIR License</h2>
@@ -59,7 +60,7 @@ FHIR plain English license:
  <li>You can't claim that HL7 or any of it's members endorses your derived [thing] because it uses content from this specification</li>
 </ul>
 <p>
-Note: Why not use a standard open source license? We like to use <a href="http://creativecommons.org/">Creative Commons</a> or 
+Note: Why not use a standard open source license? We'd like to use <a href="http://creativecommons.org/">Creative Commons</a> or 
 <a href="http://opensource.org/licenses/alphabetical">a license listed here</a>, but none of them actually deliver on 
 the plain english intent above in important ways. We aspire to meet <a href="http://opensource.org/osr-intro">these requirements from the Open 
 Source Initiative</a>, though <a href="http://xml.coverpages.org/patents.html">patents are a problem</a>. 
@@ -70,22 +71,59 @@ adapted from the <a href="http://www.omg.org">OMG</a> (thanks for allowing this)
 </p>
 <blockquote>
 <p>
-Subject to all of the terms and conditions below, HL7 hereby grants you a fully-paid up, non-exclusive, nontransferable, perpetual, worldwide license (without the right to sublicense), to use this specification to create and distribute software and special purpose specifications that are based upon this specification, and to use, copy, and distribute this specification as provided under the Copyright Act; provided that: (1) both the copyright notice identified above and this permission notice appear on any copies of this specification; (2) the use of the specifications is for informational purposes and will not be copied or posted on any network computer or broadcast in any media and will not be otherwise resold or transferred for commercial purposes; and (3) no modifications are made to this specification. This limited permission automatically terminates without notice if you breach any of these terms or conditions. Upon termination, you will destroy immediately any copies of the specifications in your possession or control. 
+Subject to all of the terms and conditions below, HL7 hereby grants you a fully-paid up, 
+non-exclusive, nontransferable, perpetual, worldwide license (without the right to 
+sublicense), to use this specification to create and distribute software and special 
+purpose specifications that are based upon this specification, and to use, copy, and 
+distribute this specification as provided under the Copyright Act; provided that: 
+</p>
+<ol>
+ <li>both the copyright notice identified above and this permission notice appear on any copies of this specification; </li>
+ <li>the use of the specifications is for informational purposes and will not be resold or transferred for commercial purposes; </li> 
+ <li>no modifications are made to this specification. </li>
+</ol>
+<p> 
+This limited permission automatically terminates without notice if you breach any of 
+these terms or conditions. Upon termination, you will destroy immediately any copies 
+of the specifications in your possession or control. 
 </p>
 <h3>GENERAL USE RESTRICTIONS</h3>
 <p>
-Any unauthorized use of this specification may violate copyright laws, trademark laws, and communications regulations and statutes. This document contains information which is protected by copyright. All Rights Reserved. No part of this work covered by copyright herein may be reproduced or used in any form or by any means--graphic, electronic, or mechanical, including photocopying, recording, taping, or information storage and retrieval systems--without permission of the copyright owner.
+Any unauthorized use of this specification may violate copyright laws, trademark laws, and communications 
+regulations and statutes. This document contains information which is protected by copyright. All Rights 
+Reserved. No part of this work covered by copyright herein may be reproduced or used in any form or by 
+any means--graphic, electronic, or mechanical, including photocopying, recording, taping, or information 
+storage and retrieval systems--without permission of the copyright owner.
 </p>
 <h3>DISCLAIMER OF WARRANTY</h3>
 <p>
-WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY CONTAIN ERRORS OR MISPRINTS. THE OBJECT MANAGEMENT GROUP AND THE COMPANIES LISTED ABOVE MAKE NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS PUBLICATION, INCLUDING BUT NOT LIMITED TO ANY WARRANTY OF TITLE OR OWNERSHIP, IMPLIED WARRANTY OF MERCHANTABILITY OR WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE OR USE. IN NO EVENT SHALL THE OBJECT MANAGEMENT GROUP OR ANY OF THE COMPANIES LISTED ABOVE BE LIABLE FOR ERRORS CONTAINED HEREIN OR FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, RELIANCE OR COVER DAMAGES, INCLUDING LOSS OF PROFITS, REVENUE, DATA OR USE, INCURRED BY ANY USER OR ANY THIRD PARTY IN CONNECTION WITH THE FURNISHING, PERFORMANCE, OR USE OF THIS MATERIAL, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. 
+WHILE THIS PUBLICATION IS BELIEVED TO BE ACCURATE, IT IS PROVIDED "AS IS" AND MAY CONTAIN ERRORS OR 
+MISPRINTS. HL7 MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH REGARD TO THIS PUBLICATION, 
+INCLUDING BUT NOT LIMITED TO ANY WARRANTY OF TITLE OR OWNERSHIP, IMPLIED WARRANTY OF MERCHANTABILITY OR 
+WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE OR USE. IN NO EVENT SHALL HL7  BE LIABLE FOR ERRORS 
+CONTAINED HEREIN OR FOR DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, RELIANCE OR COVER 
+DAMAGES, INCLUDING LOSS OF PROFITS, REVENUE, DATA OR USE, INCURRED BY ANY USER OR ANY THIRD PARTY 
+IN CONNECTION WITH THE FURNISHING, PERFORMANCE, OR USE OF THIS MATERIAL, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGES. 
 </p>
 <p>
-The entire risk as to the quality and performance of software developed using this specification is borne by you. This disclaimer of warranty constitutes an essential part of the license granted to you to use this specification.
+The entire risk as to the quality and performance of software developed using this specification is 
+borne by you. This disclaimer of warranty constitutes an essential part of the license granted to 
+you to use this specification.
 </p>
 <h3>CONFORMANCE</h3>
 <p>
-HL7 is and shall at all times be the sole entity that may authorize developers, suppliers and sellers of computer software or specifications to use certification marks, trademarks or other special designations to indicate compliance with these materials. Software developed under the terms of this license may claim compliance or conformance with this specification if and only if the software compliance is of a nature fully matching the applicable conformance points as stated in the specification. Software developed only partially matching the applicable compliance points may claim only that the software was based on this specification, but may not claim compliance or conformance with this specification. In the event that testing suites are implemented or approved by HL7, Inc., software developed using this specification may claim compliance or conformance with the specification only if the software satisfactorily completes the testing suites.
+HL7 is and shall at all times be the sole entity that may authorize developers, suppliers and 
+sellers of computer software or specifications to use certification marks, trademarks or other 
+special designations to indicate compliance with with FHIR. Software developed under the 
+terms of this license may claim compliance or conformance with FHIR if and only 
+if the software compliance is of a nature fully matching the applicable conformance points as 
+stated in the FHIR specification. Software developed only partially matching the applicable 
+compliance points may claim only that the software was based on FHIR, but may 
+not claim compliance or conformance with this specification. In the event that testing suites 
+or processes are implemented or approved by HL7, Inc., software developed using this 
+specification may claim compliance or conformance with the FHIR specification only if the 
+software satisfactorily completes the testing suites.
 </p>
 
 </blockquote>
