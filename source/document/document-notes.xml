@@ -11,47 +11,74 @@ Notes:
 <li>The custodian is responsible for the maintainance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
 </ul>  
 
-<h2>Displaying a document</h2>
+<h2>Presenting a Document</h2>
 <p>
-The human display of the Document is the collated narrative portions of following resources (in order):</p>
+The human display of the Document is the collated narrative  portions of following resources (in order):
+</p>
 <ol>
  <li>The Document itself</li>
- <li>The subject resource</li>
+ <li>The Subject resource</li>
  <li>Resources referenced in the <i>section.content</i></li>
 </ol>
 <p>
 The document narrative should summarise the important parts of the document header that are required 
 to establish clinical context for the document (other than the subject, which is displayed in it's own 
-right). To actually build the combined narrative, simply append all the narratives xhtml fragments. 
-The viewer program can provide it's own stylesheet (.css) for the combined html of the narrative, 
-but cannot change any styles specified internally in the existing narratives.
+right). To actually build the combined narrative, simply append all the narrative &lt;div&gt; fragments. 
+<i>TODO: how to css styles work?</i>
 </p>
 
-<h3>Originator Responsibilities</h3>
+
+<h2>Document Handling Obligations</h2>
 <p>
-A document originator is an application that creates a document resource. The originator may create 
-new content resources or assemble already existing content resources while doing so. A document originator 
+Both the authors and users of Clinical Documents, whether human or software, have 
+obligations that they must satisfy. 
+</p>
+
+<h3>Author Obligation</h3>
+<p>
+A document author is an application that creates a document resource. The author may create 
+new content resources and/or assemble already existing content resources while doing so. A document author 
 has the following responsibilities:
 </p>
 <ul>
- <li>Build a document that conforms to the Document rules, and links to content resources that also conform to the rules for the resources</li>
- <li>Ensure that the content of the document is frozen and easily reproducible, either by <a href="atom.htm#Aggregation">aggregating the document</a>, 
- or using version specific resource references in a FHIR conformant <a href="http.htm">RESTful framework</a></li>
- <li>Ensure that the content of the documend and other resources conforms to any applicable conformance statements and declared clinical patterns.</li>
+ <li>Build a valid document header that that conforms to the Document rules explained here, and that only links to other valid resources</li>
+ <li>Ensure that the content of the document and other resources conforms to any declared <a href="profile.htm">Profiles</a>.</li>
+ <li>Ensure that the presentation of the document is properly attested according to the information supplied in the <i>attestors</i>.</li>
 </ul>
 
-
-<h3>Recipient Responsibilities</h3>
+<h3>User Obligations</h3>
 <p>
-A document recipient is an application that receives documents from a document originator or document management system. 
-The document recipient is responsible for ensuring that received CDA documents are processed and/or rendered in accordance 
-to this specification. A document recipient has the following responsibilities:
+A document user is an application that receives or presents documents, or extracts data from them, or makes decisions because of them. 
+The documents may be received directly from a document author, or found in a document management system. 
+The document user is responsible for ensuring that received CDA documents are processed and/or rendered in accordance 
+to this specification. A document recipient has the following obligations:
 </p>
 <ul>
- <li>Render the document following the rules described above</li>
- <li>A recipient is allowed to extract resources or data from the document, but doing so voids the attestation, and the recipient 
- should always ensure that the user can access the original document when displaying extracted data</li>
- <li>Warn users when a superceded document is displayed, and either withdraw data extracted from superceded documents, or warn users when they view it</li>
+ <li>When storing/transmitting a document, any method may be used as long as the aggregated document can be assembled with sufficient integrity to validate a digital signature</li>
+ <li>When presenting the document, the rules described above must be followed</li>
+ <li>A user is allowed to extract resources or data from the document for other use, but the data is no longer attested by the document author.</li>
+ <li>Where ever the data is used, there should always be a way for a clinical consumer to access a presentation of the original document</li>
+ <li>Correctly determine when a document has been superceded (according the statements made in the 
+    <i>setId</i>, <i>version</i>, <i>replaces</i> elements of received documents, or those in the 
+    source document management system),  and either withdraw data extracted from superceded documents, 
+    or warn users when they view the document</li>
 </ul>
- 
+
+<h2>Implementation Notes</h2>
+<ul>
+ <li>Documents may be signed using digital signatures following the rules laid out in 
+     the <a href="http://tools.ietf.org/html/rfc4287" target="_blank">Atom specification</a>. 
+     The signature SHOULD be provided by a listed attestor of the document, and the signature 
+     SHOULD contain a <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo 
+     element</a> that contains a KeyName element, whose value is a URI that matches the Atom <i>link</i> 
+     element value for the attestor.</li>
+ <li>TODO: how css styles work</li>
+ <li>TODO: how images and attachments work</li>
+ <li>The RESTful URL /document/ identifies a RESTful server that handles aggregated documents instead of atomic resources. 
+   The operations create, read, vread, update, delete, and validate all accept and/or return atom documents, and the operations 
+   history, updates, and search all return atom feeds that contain other atom feeds as nested structures. Should systems wish to 
+   use the document header as a stand-alone resource - perhaps during the process of building a document, the RESTful URL /documentheader/ should be used.</li>
+</ul>
+
+
 </div>

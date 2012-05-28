@@ -53,7 +53,7 @@
       <name>Messaging</name>
     </entry>
     <entry>
-      <link>documents</link>
+      <link>document</link>
       <name>Documents</name>
     </entry>
     <entry>
@@ -118,10 +118,6 @@
     <entry>
       <link>patient</link>
       <name>Patient</name>
-    </entry>
-    <entry>
-      <link>document</link>
-      <name>Document</name>
     </entry>
     <entry>
       <name>Clinics</name>

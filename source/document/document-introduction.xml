@@ -1,5 +1,39 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- content goes here -->
+<p>
+FHIR resources can be used to build clinical documents that document clinical observations and services. 
+A clinical document is a aggregated collection of resources that is fixed in scope and frozen in time, 
+and authored and/or attested as an aggregate by humans, organisations and devices. Documents built in 
+this fashion may be exchanged between systems, and also persisted in document storage and management 
+systems, including systems such as IHE XDS. Applications claiming conformance to this framework claim 
+to be conformant to "FHIR documents". 
+</p>
+
+<h2>Document Content</h2>
+<p>
+All documents have the same structure: an <a href="atom.htm">aggregation</a> that has <i>Document
+Header</i> (below) first, followed by a series of other resources referenced from the Document 
+header that provides guidance for how they fit together. The aggregation gathers all the content
+of the document into a single XML document which maybe signed and managed as required. The resources
+nclude both human and computer readable portions.
+</p>
+<p>
+The document header identifies the document and it's purpose, sets the context of the document, and 
+carries key information such as the subject and author. It also divides the document up into a 
+series of sections that each contain some other resource identified in this specification that 
+carries the content. Any resource referenced directly in the Document resource must be included
+in the aggregation when the document is assembled; other resources that these documents refer to
+may also be aggregated if the document originator chooses to. 
+</p>
+<p>
+<a href="profile.htm">Document profiles</a> can make additional rules about which resources
+must be aggregated along with the resources that are directly referenced in the Document resource. 
+In addition, Document Profiles can specify what sections a document contains, and what the 
+constraints on their contents are. Applications should consider publishing <a href="conformance.htm">conformance 
+statements</a> that identify particular documents they support.
+</p>
+<p>The resource name as it appears in a RESTful URL is /document/. This resource name is for aggregated
+documents - <a href="#rest">see below</a> for details.
+</p>
 
 </div>
