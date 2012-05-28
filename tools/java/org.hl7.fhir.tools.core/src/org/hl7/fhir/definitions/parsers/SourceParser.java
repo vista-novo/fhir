@@ -240,7 +240,10 @@ public class SourceParser {
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }
     for (String n : ini.getPropertyNames("special-resources")) {
-      Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
+      if (new File(srcDir+n+File.separatorChar, n+"-spreadsheet.xml").exists())
+        Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-spreadsheet.xml", errors);
+      else
+        Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
       Utilities.checkFile("example xml", srcDir+n+File.separatorChar, n+"-example.xml", errors);
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }

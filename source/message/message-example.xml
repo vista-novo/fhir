@@ -9,12 +9,26 @@
     <duplicate>false</duplicate>
   </response>
   <source>
-    <type>Device</type>
-    <id>2501</id>
+    <name>Acme Central Patient Registry</name>
+    <software>FooBar Patient Manager</software>
+    <version>3.1.45.AABB</version>
+    <contact>
+      <system>phone</system>
+      <value>+1 (555) 123 4567</value>
+    </contact>
   </source>
   <destination>
-    <type>Device</type>
-    <id>a23</id>
+    <name>Acme Message Gateway</name>
+    <!-- this is to indicate to the message delivery service identified by the name that 
+       this particular message is intended for Person 34 - it would make sense for that 
+       resource to also be in the aggregation. 
+
+       Of course, it doesn't make sense to send a person update message to a particular 
+       person, but it might very well make sense to do this with targetted clinical content -->
+    <target>
+      <type>Person</type>
+      <id>34</id>
+    </target>
   </destination>
 	<author>
 	  <type>Person</type>
