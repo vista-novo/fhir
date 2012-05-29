@@ -1,0 +1,3996 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/atom.xsd">
+	<title>Standard Person Examples</title>
+	<updated>2012-05-29T23:45:32</updated>
+	<id>b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
+	<link rel="via" href="http://www.hl7.org/fhir/patient-examples.xml"/>
+	<entry>
+		<title>patient, female</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#1"/>
+		<id>1</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>1</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444222222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Everywoman</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Eve</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>2222 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2003</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everywoman, Eve. SSN: 444222222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everywoman, Eve. SSN: 444222222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>patient, male</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#2"/>
+		<id>2</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>2</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444333333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Everyman</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Adam</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>2222 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2004</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everyman, Adam. SSN: 444333333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everyman, Adam. SSN: 444333333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>patient, child</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#3"/>
+		<id>3</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>3</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444555555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Kidd</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Kari</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>2222 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2005</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidd, Kari. SSN: 444555555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidd, Kari. SSN: 444555555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>family, daughter</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#4"/>
+		<id>4</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>4</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444114567</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Nuclear</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Nancy</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>6666 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nancy. SSN: 444114567</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nancy. SSN: 444114567</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>family, husband</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#5"/>
+		<id>5</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>5</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444111234</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Nuclear</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Neville</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>6666 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Neville. SSN: 444111234</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Neville. SSN: 444111234</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>family, son</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#6"/>
+		<id>6</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>6</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444113456</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Nuclear</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Ned</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>6666 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Ned. SSN: 444113456</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Ned. SSN: 444113456</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>family, wife</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#7"/>
+		<id>7</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>7</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444112345</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Nuclear</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Nelda</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>6666 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nelda. SSN: 444112345</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nelda. SSN: 444112345</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>next of kin (parent)</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#8"/>
+		<id>8</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>8</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444666666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Mum</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Martha</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>4444 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2006</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Mum, Martha. SSN: 444666666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Mum, Martha. SSN: 444666666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>next of kin (child)</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#9"/>
+		<id>9</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>9</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444777777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Sons</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Stuart</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>4444 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2007</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sons, Stuart. SSN: 444777777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sons, Stuart. SSN: 444777777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>next of kin (spouse)</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#10"/>
+		<id>10</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>10</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444888888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Betterhalf</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Boris</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>2222 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2008</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>next of kin (other)</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#11"/>
+		<id>11</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>11</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444999999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Relative</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Ralph</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>4444 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2009</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Relative, Ralph. SSN: 444999999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Relative, Ralph. SSN: 444999999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>contact person</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#12"/>
+		<id>12</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>12</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>555222222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Contact</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Carrie</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>5555 Home Street</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2010</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Contact, Carrie. SSN: 555222222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Contact, Carrie. SSN: 555222222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>healthcare provider</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#13"/>
+		<id>13</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>13</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>333333333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Seven</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Henry</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1002 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1002</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Seven, Henry. SSN: 333333333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Seven, Henry. SSN: 333333333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>assigned practitioner</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#14"/>
+		<id>14</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>14</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>33344444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Assigned</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Amanda</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1020 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1021</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Assigned, Amanda. SSN: 33344444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Assigned, Amanda. SSN: 33344444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>physician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#15"/>
+		<id>15</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>15</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>444444444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Hippocrates</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Harold</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1003 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1003</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hippocrates, Harold. SSN: 444444444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hippocrates, Harold. SSN: 444444444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>primary care physician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#16"/>
+		<id>16</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>16</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>555555555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Primary</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Patricia</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1004 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1004</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Primary, Patricia. SSN: 555555555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Primary, Patricia. SSN: 555555555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>admitting physician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#17"/>
+		<id>17</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>17</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>666666666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Admit</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Alan</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1005 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1005</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Admit, Alan. SSN: 666666666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Admit, Alan. SSN: 666666666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>attending physician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#18"/>
+		<id>18</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>18</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>777777777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Attend</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Aaron</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1006 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1006</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Attend, Aaron. SSN: 777777777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Attend, Aaron. SSN: 777777777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>referring physician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#19"/>
+		<id>19</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>19</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>888888888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Sender</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Sam</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1007 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1007</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sender, Sam. SSN: 888888888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sender, Sam. SSN: 888888888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>intern</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#20"/>
+		<id>20</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>20</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>888222222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Intern</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Irving</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1021 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1022</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Intern, Irving. SSN: 888222222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Intern, Irving. SSN: 888222222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>resident</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#21"/>
+		<id>21</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>21</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>888333333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Resident</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Rachel</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1022 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1023</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Resident, Rachel. SSN: 888333333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Resident, Rachel. SSN: 888333333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>chief of staff</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#22"/>
+		<id>22</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>22</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>888444444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Leader</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Linda</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1023 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1024</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Leader, Linda. SSN: 888444444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Leader, Linda. SSN: 888444444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>authenticator</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#23"/>
+		<id>23</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>23</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>999999999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Verify</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Virgil</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1008 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1008</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Verify, Virgil. SSN: 999999999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Verify, Virgil. SSN: 999999999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>specialist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#24"/>
+		<id>24</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>24</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222333333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Specialize</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Sara</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1009 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1009</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specialize, Sara. SSN: 222333333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specialize, Sara. SSN: 222333333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>allergist/immunologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#25"/>
+		<id>25</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>25</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222223333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Reaction</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Ramsey</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1024 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1025</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Reaction, Ramsey. SSN: 222223333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Reaction, Ramsey. SSN: 222223333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>anesthesiologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#26"/>
+		<id>26</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>26</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222666666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Sleeper</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Sally</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1012 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1012</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sleeper, Sally. SSN: 222666666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sleeper, Sally. SSN: 222666666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>cardiologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#27"/>
+		<id>27</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>27</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222334444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Pump</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Patrick</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1025 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1027</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pump, Patrick. SSN: 222334444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pump, Patrick. SSN: 222334444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>cardiovascular surgeon</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#28"/>
+		<id>28</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>28</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222335555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Valve</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Vera</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1026 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1028</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Valve, Vera. SSN: 222335555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Valve, Vera. SSN: 222335555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>dermatologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#29"/>
+		<id>29</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>29</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222336666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Scratch</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Sophie</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1027 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1029</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Scratch, Sophie. SSN: 222336666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Scratch, Sophie. SSN: 222336666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>emergency medicine specialist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#30"/>
+		<id>30</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>30</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222337777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Emergency</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Eric</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1028 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1030</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Emergency, Eric. SSN: 222337777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Emergency, Eric. SSN: 222337777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>endocrinologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#31"/>
+		<id>31</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>31</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222338888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Hormone</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Horace</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1029 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1031</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hormone, Horace. SSN: 222338888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hormone, Horace. SSN: 222338888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>family practitioner</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#32"/>
+		<id>32</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>32</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222339999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Family</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Fay</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1030 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1032</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Family, Fay. SSN: 222339999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Family, Fay. SSN: 222339999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>gastroenterologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#33"/>
+		<id>33</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>33</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222442222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Tum</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Tony</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1031 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1033</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tum, Tony. SSN: 222442222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tum, Tony. SSN: 222442222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>geriatrician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#34"/>
+		<id>34</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>34</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222443333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Sage</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Stanley</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1032 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1034</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sage, Stanley. SSN: 222443333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sage, Stanley. SSN: 222443333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>hematologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#35"/>
+		<id>35</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>35</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222443344</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Bleeder</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Boris</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1033 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1035</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bleeder, Boris. SSN: 222443344</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bleeder, Boris. SSN: 222443344</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>infectious disease specialist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#36"/>
+		<id>36</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>36</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222445555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Pasteur</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Paula</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1034 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1036</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pasteur, Paula. SSN: 222445555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pasteur, Paula. SSN: 222445555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>internist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#37"/>
+		<id>37</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>37</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222446666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Osler</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Otto</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1035 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1037</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Osler, Otto. SSN: 222446666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Osler, Otto. SSN: 222446666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>nephrologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#38"/>
+		<id>38</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>38</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222447777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Renal</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Rory</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1036 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1038</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Renal, Rory. SSN: 222447777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Renal, Rory. SSN: 222447777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>neurologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#39"/>
+		<id>39</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>39</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222448888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Brain</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Barry</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1037 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1039</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brain, Barry. SSN: 222448888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brain, Barry. SSN: 222448888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>neurosurgeon</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#40"/>
+		<id>40</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>40</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222449999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Cranium</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Carol</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1038 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1040</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cranium, Carol. SSN: 222449999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cranium, Carol. SSN: 222449999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>OB/GYN</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#41"/>
+		<id>41</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>41</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222552222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Fem</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Flora</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1039 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1041</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Fem, Flora. SSN: 222552222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Fem, Flora. SSN: 222552222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>oncologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#42"/>
+		<id>42</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>42</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222553333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Tumor</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Trudy</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1040 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-2003</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tumor, Trudy. SSN: 222553333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tumor, Trudy. SSN: 222553333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>ophthalmologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#43"/>
+		<id>43</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>43</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222554444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Vision</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Victor</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1041 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1043</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Vision, Victor. SSN: 222554444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Vision, Victor. SSN: 222554444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>orthopedic surgeon</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#44"/>
+		<id>44</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>44</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222555545</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Carpenter</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Calvin</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1042 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1044</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Carpenter, Calvin. SSN: 222555545</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Carpenter, Calvin. SSN: 222555545</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>otolaryngologist (ENT)</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#45"/>
+		<id>45</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>45</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222556666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Rhino</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Rick</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1043 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1045</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Rhino, Rick. SSN: 222556666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Rhino, Rick. SSN: 222556666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>pathologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#46"/>
+		<id>46</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>46</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222444444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Slide</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Stan</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1010 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1010</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Slide, Stan. SSN: 222444444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Slide, Stan. SSN: 222444444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>pediatrician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#47"/>
+		<id>47</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>47</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222557777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Kidder</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Karen</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1044 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1046</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidder, Karen. SSN: 222557777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidder, Karen. SSN: 222557777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>plastic surgeon</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#48"/>
+		<id>48</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>48</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222558888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Hollywood</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Heddie</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1045 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1047</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hollywood, Heddie. SSN: 222558888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hollywood, Heddie. SSN: 222558888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>psychiatrist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#49"/>
+		<id>49</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>49</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222559999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Shrink</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Serena</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1046 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1048</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Shrink, Serena. SSN: 222559999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Shrink, Serena. SSN: 222559999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>pulmonologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#50"/>
+		<id>50</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>50</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222662222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Puffer</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Penny</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1047 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1049</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Puffer, Penny. SSN: 222662222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Puffer, Penny. SSN: 222662222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>radiologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#51"/>
+		<id>51</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>51</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222555555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Curie</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Christine</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1011 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1011</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Curie, Christine. SSN: 222555555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Curie, Christine. SSN: 222555555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>rheumatologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#52"/>
+		<id>52</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>52</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222663333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Joint</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Jeffrey</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1048 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1050</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Joint, Jeffrey. SSN: 222663333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Joint, Jeffrey. SSN: 222663333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>surgeon</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#53"/>
+		<id>53</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>53</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222777777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Cutter</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Carl</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1013 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1013</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cutter, Carl. SSN: 222777777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cutter, Carl. SSN: 222777777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>urologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#54"/>
+		<id>54</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>54</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222664444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Plumber</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Peter</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1049 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1051</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Plumber, Peter. SSN: 222664444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Plumber, Peter. SSN: 222664444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>physician assistant</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#55"/>
+		<id>55</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>55</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222665555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Helper</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Horace</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1050 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1052</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Helper, Horace. SSN: 222665555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Helper, Horace. SSN: 222665555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>registered nurse</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#56"/>
+		<id>56</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>56</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222888888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Nightingale</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Nancy</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1014 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1014</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nightingale, Nancy. SSN: 222888888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nightingale, Nancy. SSN: 222888888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>nursing assistant</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#57"/>
+		<id>57</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>57</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222999999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Barton</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Clarence</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1015 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1015</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Barton, Clarence. SSN: 222999999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Barton, Clarence. SSN: 222999999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>chiropractor</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#58"/>
+		<id>58</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>58</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222666666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Bender</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Bob</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1051 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1053</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bender, Bob. SSN: 222666666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bender, Bob. SSN: 222666666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>dentist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#59"/>
+		<id>59</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>59</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222667777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Chopper</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Charlie</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1052 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1054</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chopper, Charlie. SSN: 222667777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chopper, Charlie. SSN: 222667777</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>orthodontist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#60"/>
+		<id>60</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>60</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222668888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Brace</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Ben</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1053 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1055</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brace, Ben. SSN: 222668888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brace, Ben. SSN: 222668888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>optometrist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#61"/>
+		<id>61</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>61</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222669999</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Specs</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Sylvia</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1054 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1056</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specs, Sylvia. SSN: 222669999</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specs, Sylvia. SSN: 222669999</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>pharmacist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#62"/>
+		<id>62</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>62</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>333222222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Script</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Susan</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1016 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1016</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Script, Susan. SSN: 333222222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Script, Susan. SSN: 333222222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>podiatrist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#63"/>
+		<id>63</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>63</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222772222</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Bunion</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Paul</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1055 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1057</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bunion, Paul. SSN: 222772222</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bunion, Paul. SSN: 222772222</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>psychologist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#64"/>
+		<id>64</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>64</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222773333</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Listener</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Larry</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1056 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1058</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Listener, Larry. SSN: 222773333</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Listener, Larry. SSN: 222773333</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>lab technician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#65"/>
+		<id>65</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>65</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>333444444</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Beaker</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Bill</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1017 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1017</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Beaker, Bill. SSN: 333444444</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Beaker, Bill. SSN: 333444444</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>dietician</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#66"/>
+		<id>66</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>66</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>333555555</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Chow</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Connie</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1018 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1018</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chow, Connie. SSN: 333555555</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chow, Connie. SSN: 333555555</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>social worker</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#67"/>
+		<id>67</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>67</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>000111111</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Helper</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Helen</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1019 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1019</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">teHelper. SSN: 000111111</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">teHelper. SSN: 000111111</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>occupational therapist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#68"/>
+		<id>68</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>68</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222776666</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Player</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Pamela</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1057 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1059</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Player, Pamela. SSN: 222776666</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Player, Pamela. SSN: 222776666</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>physical therapist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#69"/>
+		<id>69</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>69</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>222778888</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Stretcher</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Seth</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1058 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1060</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>M</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Stretcher, Seth. SSN: 222778888</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Stretcher, Seth. SSN: 222778888</xhtml:div>
+		</summary>
+	</entry>
+	<entry>
+		<title>transcriptionist</title>
+		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#70"/>
+		<id>70</id>
+		<updated>2012-05-29T23:45:32</updated>
+		<author>
+			<name>Grahame Grieve</name>
+		</author>
+		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<content type="text/xml">
+			<Person xmlns="http://hl7.org/fhir">
+				<id>70</id>
+				<identifier>
+					<type>
+						<code>ssn</code>
+						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+					</type>
+					<identifier>
+						<system>http://hl7.org/fhir/sid/us-ssn</system>
+						<id>333777777</id>
+					</identifier>
+				</identifier>
+				<name>
+					<use>official</use>
+					<part>
+						<type>family</type>
+						<value>Enter</value>
+					</part>
+					<part>
+						<type>given</type>
+						<value>Ellen</value>
+					</part>
+				</name>
+				<address>
+					<use>home</use>
+					<part>
+						<type>line</type>
+						<value>1058 Healthcare Drive</value>
+					</part>
+				</address>
+				<contact>
+					<system>phone</system>
+					<value>555-555-1020</value>
+					<use>work</use>
+				</contact>
+				<gender>
+					<text>F</text>
+				</gender>
+				<text>
+					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Enter Ellen, ElleSSN: 333777777</xhtml:div>
+				</text>
+			</Person>
+		</content>
+		<summary type="xhtml">
+			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Enter Ellen, ElleSSN: 333777777</xhtml:div>
+		</summary>
+	</entry>
+</feed>
