@@ -150,7 +150,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	
 	private void generateNestedClass(ElementDefn e) throws Exception {
 		String tn = typeNames.get(e);
-
+		
 		writeLn("    public class " + tn + " : Element");
 		writeLn("    {");
 				
@@ -220,8 +220,8 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			else 
 			{
 				// It is a structure. The structured type gets the name of
-				// the capitalized element name.
-				String tn = capitalize(e.getName());
+				// the capitalized element name + "Component" appended.
+				String tn = capitalize(e.getName()) + "Component";
 
 				if (tn.equals("Element"))
 					tn = "Element_";
@@ -338,6 +338,12 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		writeLn(indent + " * " + e.getDefinition());
 		writeLn(indent + " */");
 
+		String propName = capitalize(getElementName(e.getName()));
+		
+		// member names cannot have the same name as their enclosing class
+		if( propName.equals(root.getName()) )
+				propName += "Data";
+		
 		// Generate List<> + accessor for collection types
 		if (e.unbounded()) 
 		{		
@@ -352,8 +358,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			writeLn(indent + "private List<" + listType + "> "
 						+ fieldName + " = new List<" + listType + ">();");
 				
-			write(indent + "public List<" + listType + "> "
-						+ capitalize(getElementName(e.getName())));
+			write(indent + "public List<" + listType + "> " + propName);
 			writeLn(" " + "{ get { return " + fieldName + "; } set { " + fieldName + " = value; } }");			
 			writeLn("");
 		} 
@@ -361,7 +366,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		// Single accessors otherwise
 		else 
 		{
-			writeLn(indent + "public " + tn + " " + capitalize(getElementName(e.getName())) + " { get; set; }");		
+			writeLn(indent + "public " + tn + " " + propName + " { get; set; }");		
 			writeLn("");
 		}
 	}
@@ -417,7 +422,18 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 				return "ResourceReference<"
 						+ getTypeName(type.getParams().get(0)) + ">";
 			else if (type.getName().equals("Interval"))
-				return "Interval<" + getTypeName(type.getParams().get(0)) + ">";
+			{
+				String mappedParamType = 
+						mapFHIRPrimitiveToCSharpType(type.getParams().get(0));
+				
+				if( mappedParamType != null )
+					return "Interval<" + mappedParamType  + ">";
+				else
+				{
+					throw new Exception("Interval<"+ getTypeName(type.getParams().get(0)) +
+							"> not supported, not a known primitive type.");
+				}
+			}
 			else
 				throw new Exception("not supported");
 		}
