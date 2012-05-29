@@ -41,6 +41,7 @@ public class SchemaGenerator {
         xsd = processSchemaIncludes(definitions, n, xsd);
         Utilities.stringToFile(xsd, xsdDir + n);
     }
+    produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
     produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
 
     dir = new File(xsdDir);
@@ -50,6 +51,12 @@ public class SchemaGenerator {
     }
     
     
+  }
+
+  private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
+    String src = Utilities.fileToString(srcDir + "atom-template.xsd");
+    src = processSchemaIncludes(definitions, "atom-templates.xsd", src);
+    Utilities.stringToFile(src, xsdDir + "atom.xsd");
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
@@ -89,6 +96,18 @@ public class SchemaGenerator {
         StringBuilder includes = new StringBuilder();
         for (String n : definitions.getResources().keySet()) // was ini.names of resources 
           includes.append("  <xs:include schemaLocation=\""+n+".xsd\"/>\r\n");
+        src = s1+includes.toString()+s3;
+      }
+      else if (com[0].equals("atom.imports")) {
+        StringBuilder includes = new StringBuilder();
+        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
+          includes.append("  <xs:import namespace=\"http://hl7.org/fhir\" schemaLocation=\""+n+".xsd\"/>\r\n");
+        src = s1+includes.toString()+s3;
+      }
+      else if (com[0].equals("atom.elements")) {
+        StringBuilder includes = new StringBuilder();
+        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
+          includes.append("      <xs:element ref=\"fhir:"+n+"\"/>\r\n");
         src = s1+includes.toString()+s3;
       }
       else if (com[0].equals("enum")) {

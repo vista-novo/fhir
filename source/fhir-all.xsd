@@ -4,7 +4,7 @@
   Generated on <%genDate%> for FHIR v<%version%>
 -->
 <xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified">
-<!--  <xs:include schemaLocation="fhir-base.xsd"/> -->
   <xs:include schemaLocation="definitions.xsd"/>
   <!--%resources%-->
+  <xs:import namespace="http://www.w3.org/2005/Atom" schemaLocation="atom.xsd"/>
 </xs:schema>

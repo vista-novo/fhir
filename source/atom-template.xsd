@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   © HL7 (http://hl7.org)
-  Generated on Wed, May 30, 2012 06:54+1000 for FHIR v0.03
+  Generated on <%genDate%> for FHIR v<%version%>
 -->
 <xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:annotation>
@@ -11,20 +11,7 @@
   </xs:annotation>
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
   <xs:import namespace="http://hl7.org/fhir" schemaLocation="fhir-base.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Conformance.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Document.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Message.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Animal.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Agent.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Organization.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Prescription.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Profile.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Patient.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="AssessmentScale.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Valueset.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="Person.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="LabReport.xsd"/>
-
+<!--%atom.imports%-->
   <xs:element name="feed" type="atom:FeedType"/>
   <xs:complexType name="TestType" mixed="true">
     <xs:annotation>
@@ -84,20 +71,7 @@
   </xs:complexType>
   <xs:complexType name="ContentType" mixed="true">
     <xs:choice minOccurs="1" maxOccurs="1">
-      <xs:element ref="fhir:Conformance"/>
-      <xs:element ref="fhir:Document"/>
-      <xs:element ref="fhir:Message"/>
-      <xs:element ref="fhir:Animal"/>
-      <xs:element ref="fhir:Agent"/>
-      <xs:element ref="fhir:Organization"/>
-      <xs:element ref="fhir:Prescription"/>
-      <xs:element ref="fhir:Profile"/>
-      <xs:element ref="fhir:Patient"/>
-      <xs:element ref="fhir:AssessmentScale"/>
-      <xs:element ref="fhir:Valueset"/>
-      <xs:element ref="fhir:Person"/>
-      <xs:element ref="fhir:LabReport"/>
-
+<!--%atom.elements%-->
     </xs:choice>
     <xs:attribute name="type" type="xs:string"/>
     <xs:attributeGroup ref="atom:CommonAttributes"/>
