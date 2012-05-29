@@ -2,6 +2,7 @@ package org.hl7.fhir.definitions.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A concept domain - a use of terminology in FHIR.
@@ -113,4 +114,15 @@ public class BindingSpecification {
     this.source = source;
   }
 
+  
+  public static BindingSpecification getBindingFromList(
+			Map<String, BindingSpecification> conceptDomains,
+			String conceptDomain)
+  {
+	  for (BindingSpecification cd : conceptDomains.values())
+		  if (cd.getName().equals(conceptDomain))
+			  return cd;
+	
+	  return null;
+  }
 }

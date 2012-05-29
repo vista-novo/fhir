@@ -454,6 +454,18 @@ public class ElementDefn {
     return derivation;
   }
  
-
-
+  
+  // Returns true is this element is a standard Resource element 
+  // like 'id', 'extensions' and 'text'
+  public boolean isBaseResourceElement()
+  {
+	  return	getName().equals("id") ||
+			  	getName().equals("extensions") ||
+			  	getName().equals("text");
+  }
+  
+  public boolean isBoundCode()
+  {
+	  return typeCode().equals("code") && hasConceptDomain();
+  }
 }
