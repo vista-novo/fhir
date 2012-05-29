@@ -188,8 +188,8 @@ In this case, no useful matching may be perfomed using the id unless the system 
 <p>
 Note that the <i>system</i> defines the scheme that controls uniqueness of the <i>id</i>. 
 The <i>id</i> must be unique for within the defined <i>system</i>. If the <i>id</i> itself 
-is actually an OID, a UUID, or a URI, then the <i>system</i> will be either "urn:hl7-org:sid/oid", 
-"urn:hl7-org:sid/uuid" or "urn:hl7-org:sid/uri" respectively, and the OID, UUID would be in the <i>id</i> 
+is actually an OID, a UUID, or a URI, then the <i>system</i> will be either "http://hl7.org/fhir/sid/oid", 
+"http://hl7.org/fhir/sid/uuid" or "http://hl7.org/fhir/sid/uri" respectively, and the OID, UUID would be in the <i>id</i> 
 element. Ids are always case sensitive. UUIDs must be represented in lower case.
 </p>
 <div class="use">
@@ -220,14 +220,14 @@ to some organisation to further sub-allocate):</p>
 <p>A guid:</p>
 <pre class="xml">
   &lt;x&gt;
-   &lt;system&gt;urn:hl7-org:sid/uuid&lt;/system&gt;
+   &lt;system&gt;http://hl7.org/fhir/sid/uuid&lt;/system&gt;
    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
   &lt;/x&gt;
 </pre>
 <p>A full URL as the identifier:</p>
 <pre class="xml">
   &lt;x&gt;
-   &lt;system&gt;urn:hl7-org:sid/uri&lt;/system&gt;
+   &lt;system&gt;http://hl7.org/fhir/sid/uri&lt;/system&gt;
    &lt;id&gt;http://server.acme.com/fhir/people/@1&lt;/id&gt;
   &lt;/x&gt;
 </pre>
@@ -310,7 +310,7 @@ in the <i>CodeableConcept</i> data type.
   &lt;x&gt;
     &lt;coding&gt;
       &lt;code&gt;G44.1&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/icd-10&lt;/system&gt;
+      &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
     &lt;/coding&gt;
     &lt;text&gt;general headache&lt;/text&gt;
   &lt;/x&gt;
@@ -442,7 +442,7 @@ These are used as types in resource content models, but they are really just Qua
  <tr><td>Duration  </td><td>The unit must be an amount of time, and a UCUM unit must be provided.</td></tr>
  <tr><td>Distance  </td><td>The unit must be an amount of length, and a UCUM unit must be provided.</td></tr>
  <tr><td>Count     </td><td>The value must a whole number, and the UCUM unit must be "1"</td></tr>
- <tr><td>Money     </td><td>The unit must be a currency, and the code must from ISO 4217<br/>(system = "urn:hl7-org:sid/iso-4217")</td></tr>
+ <tr><td>Money     </td><td>The unit must be a currency, and the code must from ISO 4217<br/>(system = "http://hl7.org/fhir/sid/iso-4217")</td></tr>
 </table>
 
 <div class="example">
@@ -453,7 +453,7 @@ These are used as types in resource content models, but they are really just Qua
     &lt;value&gt;25&lt;/value&gt;
     &lt;unit&gt;sec&lt;/unit&gt;
     &lt;code&gt;s&lt;/code&gt;
-    &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+    &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
   &lt;/x&gt;
 </pre>
 <p>A concentration where the value was out of range:</p>
@@ -463,7 +463,7 @@ These are used as types in resource content models, but they are really just Qua
     &lt;status&gt;&amp;gt;&lt;/status&gt;
     &lt;unit&gt;mcg/L&lt;/unit&gt;
     &lt;code&gt;ug&lt;/code&gt;
-    &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+    &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
   &lt;/x&gt;
 </pre>
 <p>An amount of prescribed medication:</p>
@@ -481,7 +481,7 @@ These are used as types in resource content models, but they are really just Qua
     &lt;value&gt;25.45&lt;/value&gt;
     &lt;unit&gt;US$&lt;/unit&gt;
     &lt;code&gt;USD&lt;/code&gt;
-    &lt;system&gt;urn:hl7-org:sid/iso-4217&lt;/system&gt;
+    &lt;system&gt;http://hl7.org/fhir/sid/iso-4217&lt;/system&gt;
   &lt;/x&gt;
 </pre>
 </div>
@@ -606,13 +606,13 @@ particular types of Quantity for the numerator or denominator.
      &lt;value&gt;103.50&lt;/value&gt;
      &lt;unit&gt;US$&lt;/unit&gt;
      &lt;code&gt;USD&lt;/code&gt;
-     &lt;system&gt;urn:hl7-org:sid/iso-4217&lt;/system&gt;
+     &lt;system&gt;http://hl7.org/fhir/sid/iso-4217&lt;/system&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
      &lt;value&gt;128&lt;/value&gt;
      &lt;unit&gt;day&lt;/unit&gt;
      &lt;code&gt;day&lt;/code&gt;
-     &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+     &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
    &lt;/denominator&gt;
   &lt;/x&gt;
 </pre>
@@ -652,7 +652,7 @@ come from a direct unambiguous reference to a resource, or may be from a seperat
 the identifier is actually a direct resource reference, the <i>type</i> should be a 
 <a href="terminologies.htm#resourcetypes">resource type</a>, the <i>identifier</i>.<i>system</i> should be the URL
 of the source system or, if a particular end point is 
-not known, then "urn:hl7-org:sid/fhir/[X]" where "[X]" is the resource name , 
+not known, then "http://hl7.org/fhir/sid/fhir/[X]" where "[X]" is the resource name , 
 and the <i>identifier</i>.<i>id</i> should be the resource id.
 </p>
 <div class="use">
@@ -676,10 +676,10 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
   &lt;x&gt;
     &lt;type&gt;
       &lt;code&gt;ssn&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/fhir/identifier-type&lt;/system&gt;
+      &lt;system&gt;http://hl7.org/fhir/sid/fhir/identifier-type&lt;/system&gt;
     &lt;/type&gt;
     &lt;identifier&gt;
-      &lt;system&gt;urn:hl7-org:sid/us-ssn&lt;/system&gt;
+      &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
       &lt;id&gt;000111111&lt;/id&gt;
     &lt;/identifier&gt;
   &lt;/x&gt;
@@ -695,7 +695,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
   &lt;x&gt;
     &lt;type&gt;
       &lt;code&gt;patient&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/fhir/identifier-type&lt;/system&gt;
+      &lt;system&gt;http://hl7.org/fhir/sid/fhir/identifier-type&lt;/system&gt;
     &lt;/type&gt;
     &lt;identifier&gt;
       &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
@@ -946,7 +946,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
        &lt;value&gt;1&lt;/value&gt;
        &lt;units&gt;day&lt;/units&gt;
        &lt;code&gt;d&lt;/code&gt;
-       &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+       &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
      &lt;/duration&gt;
    &lt;/repeat&gt;
   &lt;/x&gt;
@@ -963,7 +963,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
         &lt;value&gt;30&lt;/value&gt;
         &lt;units&gt;min&lt;/units&gt;
         &lt;code&gt;min&lt;/code&gt;
-        &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+        &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
       &lt;/duration&gt;
       &lt;end&gt;2012-01-02&lt;/end&gt;
     &lt;/repeat&gt;

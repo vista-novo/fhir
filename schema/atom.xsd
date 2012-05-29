@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>
+				This is a reduced form of the atom schema, that only supports the features profiled in the FHIR specification
+			</xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
+  <xs:include schemaLocation="Conformance.xsd"/>
+  <xs:include schemaLocation="Document.xsd"/>
+  <xs:include schemaLocation="Message.xsd"/>
+  <xs:include schemaLocation="Animal.xsd"/>
+  <xs:include schemaLocation="Agent.xsd"/>
+  <xs:include schemaLocation="Organization.xsd"/>
+  <xs:include schemaLocation="Prescription.xsd"/>
+  <xs:include schemaLocation="Profile.xsd"/>
+  <xs:include schemaLocation="Patient.xsd"/>
+  <xs:include schemaLocation="AssessmentScale.xsd"/>
+  <xs:include schemaLocation="Valueset.xsd"/>
+  <xs:include schemaLocation="Person.xsd"/>
+  <xs:include schemaLocation="LabReport.xsd"/>
+
+  <xs:element name="feed" type="atom:feedType"/>
+  <xs:complexType name="textType" mixed="true">
+    <xs:annotation>
+      <xs:documentation>
+				The Atom text construct is defined in section 3.1 of the format spec.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:any namespace="http://www.w3.org/1999/xhtml" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="text"/>
+          <xs:enumeration value="html"/>
+          <xs:enumeration value="xhtml"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="personType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="uri" type="atom:uriType" minOccurs="0" maxOccurs="1"/>
+    </xs:choice>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="feedType">
+    <xs:choice minOccurs="3" maxOccurs="unbounded">
+      <xs:element name="title" type="atom:textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="updated" type="atom:dateTimeType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="id" type="atom:idType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="link" type="atom:linkType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="entry" type="atom:entryType" minOccurs="0" maxOccurs="unbounded"/> 
+    </xs:choice>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="entryType">
+    <xs:annotation>
+      <xs:documentation>
+				The Atom entry construct is defined in section 4.1.2 of the format spec.
+			</xs:documentation>
+    </xs:annotation>
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="title" type="atom:textType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="link" type="atom:linkType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="id" type="atom:idType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="updated" type="atom:dateTimeType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="published" type="atom:dateTimeType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="author" type="atom:personType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="category" type="atom:categoryType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="content" type="atom:contentType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="summary" type="atom:textType" minOccurs="1" maxOccurs="1"/>
+    </xs:choice>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="categoryType">
+    <xs:attribute name="term" type="xs:string" use="required"/>
+    <xs:attribute name="scheme" type="xs:anyURI" use="optional"/>
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="contentType" mixed="true">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element ref="Person"/>
+    </xs:choice>
+    <xs:attribute name="type" type="xs:string"/>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="uriType">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:attributeGroup ref="atom:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="linkType" mixed="true">
+    <xs:attribute name="href" type="xs:anyURI" use="required"/>
+    <xs:attribute name="rel" type="xs:string" use="optional"/>
+    <xs:attribute name="type" type="xs:string" use="optional"/>
+    <xs:attribute name="hreflang" type="xs:NMTOKEN" use="optional"/>
+    <xs:attribute name="title" type="xs:string" use="optional"/>
+    <xs:attribute name="length" type="xs:positiveInteger" use="optional"/>
+    <xs:attributeGroup ref="atom:commonAttributes"/>
+  </xs:complexType>
+  <xs:complexType name="idType">
+    <xs:simpleContent>
+      <xs:extension base="xs:anyURI">
+        <xs:attributeGroup ref="atom:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="dateTimeType">
+    <xs:simpleContent>
+      <xs:extension base="xs:dateTime">
+        <xs:attributeGroup ref="atom:commonAttributes"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:attributeGroup name="commonAttributes">
+    <xs:attribute ref="xml:base"/>
+    <xs:attribute ref="xml:lang"/>
+  </xs:attributeGroup>
+</xs:schema>

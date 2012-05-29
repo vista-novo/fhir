@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Profile xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\profile.xsd">
+<Profile xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\profile.xsd">
   <id>15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</id>
   <name>Lipid Profile</name>
   <author>
@@ -280,7 +280,7 @@
         <valueCodeableConcept>
           <coding>
             <code>35200-2</code>
-            <system>urn:hl7-org:sid/loinc</system>
+            <system>http://hl7.org/fhir/sid/loinc</system>
             <display>Cholesterol</display>
           </coding>
         </valueCodeableConcept>
@@ -388,7 +388,7 @@
         <valueCodeableConcept>
           <coding>
             <code>35217-9</code>
-            <system>urn:hl7-org:sid/loinc</system>
+            <system>http://hl7.org/fhir/sid/loinc</system>
             <display>Triglyceride</display>
           </coding>
         </valueCodeableConcept>
@@ -484,7 +484,7 @@
         <valueCodeableConcept>
           <coding>
             <code>2085-9</code>
-            <system>urn:hl7-org:sid/loinc</system>
+            <system>http://hl7.org/fhir/sid/loinc</system>
             <display>Cholesterol in HDL</display>
           </coding>
         </valueCodeableConcept>

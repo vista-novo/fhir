@@ -14,12 +14,10 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
-import org.xmlpull.v1.builder.xpath.jaxen.function.ext.UpperFunction;
 
 /**
  * Generates the delphi reference implementation
@@ -1189,9 +1187,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     addElementDefn(definitions, defnCode, definitions.getStructures(), "Structure", "structures");
     addElementDefn(definitions, defnCode, definitions.getInfrastructure(), "Infrastructure", "infrastructure");
     addElementDefn(definitions, defnCode, definitions.getResources(), "Resource", "resources");
-    addElementDefn(definitions, defnCode, definitions.getSpecialResources(), "SpecialResource", "SpecialResources");
-    addElementDefn(definitions, defnCode, definitions.getDefinedResources(), "DefinedResource", "DefinedResources");
-
 
     
     defnCode.procs.add("\r\nfunction LoadFHIRDefinitions : TFHIRDefinitions;\r\nbegin\r\n  result := TFHIRDefinitions.create;\r\n  try");
@@ -1229,11 +1224,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     for (ElementDefn c : definitions.getResources().values()) {
       defnCode.procs.add("    addResourceElementDefn"+c.getName()+"(result);");
     }
-    for (ElementDefn c : definitions.getSpecialResources().values()) {
-      defnCode.procs.add("    addSpecialResourceElementDefn"+c.getName()+"(result);");
-    }
-    for (ElementDefn c : definitions.getDefinedResources().values()) {
-      defnCode.procs.add("    addDefinedResourceElementDefn"+c.getName()+"(result);");
+    for (String c : definitions.getSpecialResources()) {
+      defnCode.procs.add("    addSpecialResourceElementDefn"+c+"(result);");
     }
     defnCode.procs.add("");
     defnCode.procs.add("    result.Link;\r\n  finally\r\n    result.free\r\n  end;\r\nend;\r\n");
@@ -1244,7 +1236,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     zip.close();    
   }
 
-  private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ElementDefn> types, String pfx, String home) {
+  private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ? extends ElementDefn> types, String pfx, String home) {
     for (ElementDefn c : types.values()) {
       defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
           "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getBindingName())+"', '"+dWrap(c.getName())+"', '"+ 
@@ -1300,9 +1292,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  TFHIRResourceType = (\r\n");
     con.append("  CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     
-    int l = definitions.getDefinedResources().size();
+    int l = definitions.getResources().size();
     int i = 0;
-    for (String s : definitions.getDefinedResources().keySet()) {
+    for (String s : definitions.getResources().keySet()) {
       i++;
       String s2 = prefix + getTitle(s);
       if (Utilities.isDelphiReservedWord(s2))
@@ -1319,7 +1311,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
     con.append("\r\n  PLURAL_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     i = 0;
-    for (String s : definitions.getDefinedResources().keySet()) {
+    for (String s : definitions.getResources().keySet()) {
       i++;
       if (i == l) {
         con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"');");
@@ -1330,7 +1322,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
     con.append("\r\n  LOWERCASE_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     i = 0;
-    for (String s : definitions.getDefinedResources().keySet()) {
+    for (String s : definitions.getResources().keySet()) {
       i++;
       if (i == l) {
         con.append("'"+s.toLowerCase()+"');");

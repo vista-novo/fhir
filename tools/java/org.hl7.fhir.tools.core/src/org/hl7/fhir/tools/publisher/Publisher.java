@@ -10,12 +10,9 @@ import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -38,7 +35,6 @@ import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validator.ProfileValidator;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.Constraint;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
@@ -49,7 +45,6 @@ import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
-import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -174,13 +169,13 @@ public class Publisher {
 		ModelValidator val = new ModelValidator(page.getDefinitions());
 
 		List<String> errors = new ArrayList<String>();
-		for (String n : page.getDefinitions().getDefinedResources().keySet())
-			errors.addAll(val.check(n, page.getDefinitions().getDefinedResources().get(n)));
+		for (String n : page.getDefinitions().getResources().keySet())
+			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n)));
 
-		for (String n : page.getDefinitions().getDefinedResources().keySet()) {
+		for (String n : page.getDefinitions().getResources().keySet()) {
 		  String filename = page.getFolders().srcDir+n+File.separatorChar+n+"-uml.xml";
 		  if (new File(filename).exists() || !new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-def.xml").exists())		    
-		    new UMLValidator(page.getDefinitions().getDefinedResources().get(n), filename, errors).validate();
+		    new UMLValidator(page.getDefinitions().getResources().get(n), filename, errors).validate();
 		}
 		for (String e : errors)
 			System.out.println(e);
@@ -219,7 +214,7 @@ public class Publisher {
 		for (String n : page.getIni().getPropertyNames("images")) 
 			Utilities.copyFile(new File(page.getFolders().imgDir + n), new File(page.getFolders().dstDir + n));
 
-		for (ElementDefn n : page.getDefinitions().getDefinedResources().values())
+		for (ElementDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
@@ -291,7 +286,7 @@ public class Publisher {
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document xdoc = builder.parse(new FileInputStream(xmlf));
     XmlGenerator xmlgen = new XmlGenerator();
-    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 
     // reload it now
     builder = factory.newDocumentBuilder();
@@ -333,7 +328,7 @@ public class Publisher {
     p.putMetadata("status", "testing");
     p.putMetadata("date", new SimpleDateFormat("yyyymmdd", new Locale("en", "US")).format(new Date()));
     p.putMetadata("endorser.name", "HL7");
-    p.putMetadata("endorser.ref", "http://www.hl7.org");
+    p.putMetadata("endorser.ref", "http://hl7.org");
     p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
 		pgen.generate(p, new FileOutputStream(page.getFolders().dstDir+n+".profile.xml"));
@@ -385,7 +380,7 @@ public class Publisher {
 //    DocumentBuilder builder = factory.newDocumentBuilder();
 //    Document xdoc = builder.parse(new FileInputStream(xmlf));
 //    XmlGenerator xmlgen = new XmlGenerator();
-//    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+//    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 //
 //    // reload it now
 //    builder = factory.newDocumentBuilder();
@@ -578,7 +573,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 
 	  public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
 	    System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
-	    if (!(namespaceURI.equals("http://www.hl7.org/fhir") || namespaceURI.equals("http://www.w3.org/1999/xhtml")))
+	    if (!(namespaceURI.equals("http://hl7.org/fhir") || namespaceURI.equals("http://www.w3.org/1999/xhtml")))
 	      return null;
 	      try {
 	      return new MyLSInput(new FileInputStream(new File(dir + systemId)));
@@ -587,10 +582,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 	      e.printStackTrace();
 	      return null;
 	    }
-
 	  }
-
-
 	}
 
 	
@@ -606,7 +598,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
 		Schema schema = schemaFactory.newSchema(sources);	
 
-		for (String n : page.getDefinitions().getDefinedResources().keySet()) {
+		for (String n : page.getDefinitions().getResources().keySet()) {
 		  log("Validate "+n);
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			factory.setNamespaceAware(true);
@@ -626,7 +618,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		FileOutputStream fos = new FileOutputStream(page.getFolders().dstDir+"fhir.dict.xml");
 		DictXMLGenerator dxgen = new DictXMLGenerator(fos);
 		dxgen.setConceptDomains(page.getDefinitions().getBindings());
-		dxgen.generate(page.getDefinitions().getDefinedResources().values(), "HL7");
+		dxgen.generate(page.getDefinitions().getResources().values(), "HL7");
 		fos.close();
 	}
 

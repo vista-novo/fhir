@@ -38,7 +38,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		else
 			write("</b></a>");
 
-		write(" xmlns=\"http://www.hl7.org/fhir\"&gt;\r\n");
+		write(" xmlns=\"http://hl7.org/fhir\"&gt;\r\n");
 
 		for (ElementDefn elem : root.getElements())
 		{

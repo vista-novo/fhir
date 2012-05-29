@@ -26,7 +26,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -74,7 +73,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="14" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="13" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
@@ -142,25 +141,14 @@
     <Cell><Data ss:Type="String">If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Patient.person</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Conditional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Person)</Data></Cell>
+    <Cell><Data ss:Type="String">Patient.subject</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell><Data ss:Type="String">Resource(Person|Animal)</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell><Data ss:Type="String">The person who is the patient</Data></Cell>
-    <Cell><Data ss:Type="String">The person that this patient record is about</Data></Cell>
-    <Cell><Data ss:Type="String">Need to link this patient record to a known and identifiable person (or animal)</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Either an animal or a person must be provided, but not both</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Patient.animal</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Conditional</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Animal)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The animal which is the patient</Data></Cell>
-    <Cell><Data ss:Type="String">The animal that this patient record is about</Data></Cell>
-    <Cell><Data ss:Type="String">Need to link this patient record to a known and identifiable animal (or person)</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Either an animal or a person must be provided, but not both</Data></Cell>
+    <Cell><Data ss:Type="String">The person or animal that is the patient</Data></Cell>
+    <Cell><Data ss:Type="String">The person or animal that this patient record is about</Data></Cell>
+    <Cell><Data ss:Type="String">Need to link this patient record to a known and identifiable person or animal</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Patient.provider</Data></Cell>
@@ -235,11 +223,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -333,15 +321,15 @@
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">person</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a person</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">provider</Data></Cell>
     <Cell><Data ss:Type="String">The identity of an organization</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell><Data ss:Type="String">Search id in any patient identifiers</Data></Cell>
    </Row>
@@ -352,7 +340,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

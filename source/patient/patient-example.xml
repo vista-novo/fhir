@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Patient xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Patient.xsd">
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Patient.xsd">
   <id>1.2.36.146595217.4.19.1</id>
 
   <link>
@@ -9,11 +9,11 @@
 
   <active>true</active>
 	
-  <person>
+  <subject>
     <type>Person</type>
     <id>35623</id>
     <text>Donald DUCK, Male, 3-April 1951</text>
-  </person> 
+  </subject> 
   <provider>
     <type>Organization</type>
     <id>3</id>  
@@ -22,7 +22,7 @@
   <identifier>
     <type>
       <code>MR</code>
-      <system>urn:hl7-org:sid/v2-0203</system>
+      <system>http://hl7.org/fhir/sid/v2-0203</system>
     </type>
     <identifier>
       <system>oid:0.1.2.3.4.5.6.7</system>

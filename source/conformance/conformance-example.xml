@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Conformance xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\conformance.xsd">
+<Conformance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\conformance.xsd">
   <id>6cb96d2f-cfa5-4da9-a5a6-d1a087da0baf</id>
   <date>2012-01-04</date>
   <publisher>

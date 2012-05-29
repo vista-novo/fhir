@@ -29,15 +29,14 @@ public class Definitions {
   private Map<String, ElementDefn> types = new HashMap<String, ElementDefn>();
   private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
   private Map<String, ElementDefn> infrastructure = new HashMap<String, ElementDefn>();
-  private Map<String, ElementDefn> resources = new HashMap<String, ElementDefn>();
-  private Map<String, ElementDefn> specialResources = new HashMap<String, ElementDefn>();
-  private Map<String, ElementDefn> definedResources = new HashMap<String, ElementDefn>();
+  private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
+  private List<String> specialResources = new ArrayList<String>();
 
   private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
   private Map<String, ProfileDefn> profiles = new HashMap<String, ProfileDefn>();
 
   public boolean hasResource(String name) {
-    return resources.containsKey(name) || specialResources.containsKey(name); // || knownResources.containsKey(name);
+    return resources.containsKey(name); 
   }
 
   
@@ -49,8 +48,6 @@ public class Definitions {
     ElementDefn root = null;
     if (resources.containsKey(name))
       root = resources.get(name);
-    if (specialResources.containsKey(name))
-      root = specialResources.get(name);
     if (root == null)
       throw new Exception("unable to find resource "+name);
     return root;
@@ -66,8 +63,6 @@ public class Definitions {
       root = infrastructure.get(name);
     if (resources.containsKey(name))
       root = resources.get(name);
-    if (specialResources.containsKey(name))
-      root = specialResources.get(name);
     if (root == null)
       throw new Exception("unable to find resource "+name);
     return root;
@@ -99,23 +94,18 @@ public class Definitions {
   }
 
 
-  public Map<String, ElementDefn> getResources() {
+  public Map<String, ResourceDefn> getResources() {
     return resources;
   }
 
 
-  public Map<String, ElementDefn> getSpecialResources() {
+  public List<String> getSpecialResources() {
     return specialResources;
   }
 
 
   public Map<String, DefinedCode> getKnownResources() {
     return knownResources;
-  }
-
-
-  public Map<String, ElementDefn> getDefinedResources() {
-    return definedResources;
   }
 
 

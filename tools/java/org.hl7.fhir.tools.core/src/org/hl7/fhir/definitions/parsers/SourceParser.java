@@ -14,6 +14,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
@@ -77,7 +78,7 @@ public class SourceParser {
       for (String n : ini.getPropertyNames("sandbox")) 
         loadResource(n, definitions.getResources(), true);
     for (String n : ini.getPropertyNames("special-resources")) 
-      loadResource(n, definitions.getSpecialResources(), false);
+      definitions.getSpecialResources().add(n);
     for (String n : ini.getPropertyNames("future-resources")) {
       DefinedCode cd = new DefinedCode(ini.getStringProperty("future-resources", n), "Yet to be defined", n);
       definitions.getKnownResources().put(n, cd);
@@ -164,7 +165,7 @@ public class SourceParser {
     File csv = new File(dtDir+t.getName()+".xml");
     if (csv.exists()) {
       SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName(), definitions, srcDir);
-      ElementDefn el = p.parse();
+      ElementDefn el = p.parseType();
       map.put(t.getName(), el);
     } else {
       String p = ini.getStringProperty("types", n);
@@ -186,14 +187,14 @@ public class SourceParser {
     }
   }
 
-  private void loadResource(String n, Map<String, ElementDefn> map, boolean sandbox) throws Exception {
+  private void loadResource(String n, Map<String, ResourceDefn> map, boolean sandbox) throws Exception {
     File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-spreadsheet.xml");
     if (!spreadsheet.exists())
       spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-def.xml");
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir);
-    ElementDefn root = sparser.parse();
+    ResourceDefn root = sparser.parseResource();
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
-    definitions.getDefinedResources().put(root.getName(), root);
+    definitions.getResources().put(root.getName(), root);
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root);
     map.put(root.getName(), root);   
@@ -244,7 +245,6 @@ public class SourceParser {
         Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-spreadsheet.xml", errors);
       else
         Utilities.checkFile("definition", srcDir+n+File.separatorChar, n+"-def.xml", errors);
-      Utilities.checkFile("example xml", srcDir+n+File.separatorChar, n+"-example.xml", errors);
       Utilities.checkFile("resource uml", imgDir, n+".png", errors);    
     }
 

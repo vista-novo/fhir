@@ -2,7 +2,6 @@ package org.hl7.fhir.definitions.generators.specification;
 
 import java.io.OutputStream;
 import java.net.URISyntaxException;
-import java.util.List;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
@@ -11,12 +10,8 @@ import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.model.Constraint;
 import org.hl7.fhir.instance.model.Constraint.ConformanceType;
-import org.hl7.fhir.instance.model.Constraint.Element_;
 import org.hl7.fhir.instance.model.Factory;
-import org.hl7.fhir.instance.model.Id;
 import org.hl7.fhir.instance.model.Profile;
-import org.hl7.fhir.instance.model.Profile.Author;
-import org.hl7.fhir.instance.model.String_;
 
 public class ProfileGenerator {
 

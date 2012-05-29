@@ -2,10 +2,8 @@ package org.hl7.fhir.definitions.generators.xsd;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 
-import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -31,7 +29,7 @@ public class SchemaGenerator {
     xsdb.setDefinitions(definitions);
     xsdb.generate(version, genDate);
     
-    for (ElementDefn root : definitions.getDefinedResources().values()) {
+    for (ElementDefn root : definitions.getResources().values()) {
       XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
       sgen.setDataTypes(definitions.getKnownTypes());
       sgen.generate(root, definitions.getBindings(), version, genDate);
@@ -89,7 +87,7 @@ public class SchemaGenerator {
         src = s1+version+s3;
       else if (com[0].equals("resources")) {
         StringBuilder includes = new StringBuilder();
-        for (String n : definitions.getDefinedResources().keySet()) // was ini.names of resources 
+        for (String n : definitions.getResources().keySet()) // was ini.names of resources 
           includes.append("  <xs:include schemaLocation=\""+n+".xsd\"/>\r\n");
         src = s1+includes.toString()+s3;
       }

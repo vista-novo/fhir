@@ -11,6 +11,7 @@ import java.util.Map;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -23,10 +24,10 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		super(out, "UTF-8");
 	}
 
-	public void generate(Collection<ElementDefn> roots, String author) throws Exception
+	public void generate(Collection<ResourceDefn> roots, String author) throws Exception
 	{
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-		write("<resourceDefinitions xmlns=\"http://www.hl7.org/fhir\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.hl7.org/fhir definitions.xsd\">\r\n");
+		write("<resourceDefinitions xmlns=\"http://hl7.org/fhir\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://hl7.org/fhir definitions.xsd\">\r\n");
 		write("  <author>"+author+"</author>\r\n");
 		
 		for (ElementDefn root : roots) {
@@ -86,7 +87,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 	public void generate(ElementDefn root, String author) throws Exception
 	{
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-		write("<resourceDefinitions xmlns=\"http://www.hl7.org/fhir\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.hl7.org/fhir definitions.xsd\">\r\n");
+		write("<resourceDefinitions xmlns=\"http://hl7.org/fhir\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://hl7.org/fhir definitions.xsd\">\r\n");
 		write("  <author>"+author+"</author>\r\n");
 		write("  <resourceDefinition>\r\n");
 		write("    <name>"+root.getName()+"</name>\r\n");

@@ -176,8 +176,10 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
-      else if (com[0].equals("bindingtable"))
-        src = s1 + genBindingTable() + s3;
+      else if (com[0].equals("bindingtable-codelists"))
+        src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("bindingtable-others"))
+        src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
@@ -189,16 +191,22 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
-  private String genBindingTable() {
+  private String genBindingTable(boolean codelists) {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
     List<String> names = new ArrayList<String>();
-    names.addAll(definitions.getBindings().keySet());
+    for (String n : definitions.getBindings().keySet()) {
+      if ((codelists && definitions.getBindingByName(n).getBinding() == Binding.CodeList) || (!codelists && definitions.getBindingByName(n).getBinding() != Binding.CodeList))
+       names.add(n);
+    }
     Collections.sort(names);
     for (String n : names) {
       if (!n.startsWith("*")) {
         BindingSpecification cd = definitions.getBindingByName(n);
-        s.append("  <tr><td title=\""+Utilities.escapeXml(cd.getDefinition())+"\">"+cd.getName()+"</td><td>");
+        if (cd.getBinding() == Binding.CodeList || cd.getBinding() == Binding.Special)
+          s.append("  <tr><td title=\""+Utilities.escapeXml(cd.getDefinition())+"\">"+cd.getName()+"<br/><font color=\"grey\">http://hl7.org/fhir/sid/"+cd.getReference().substring(1)+"</font></td><td>");
+        else
+          s.append("  <tr><td title=\""+Utilities.escapeXml(cd.getDefinition())+"\">"+cd.getName()+"</td><td>");
         if (cd.getBinding() == Binding.Unbound) {
           s.append("Definition: "+Utilities.escapeXml(cd.getDefinition()));
         } else if (cd.getBinding() == Binding.CodeList) {
@@ -301,7 +309,7 @@ public class PageProcessor implements Logger  {
   private String genResImplList() {
     StringBuilder html = new StringBuilder();
     List<String> res = new ArrayList<String>();
-    for (ElementDefn n: definitions.getDefinedResources().values())
+    for (ElementDefn n: definitions.getResources().values())
       res.add(n.getName());
     for (DefinedCode c : definitions.getKnownResources().values()) {
       if (res.contains(c.getComment()))
@@ -359,8 +367,10 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
-      else if (com[0].equals("bindingtable"))
-        src = s1 + genBindingTable() + s3;
+      else if (com[0].equals("bindingtable-codelists"))
+        src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("bindingtable-others"))
+        src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
@@ -410,8 +420,10 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
-      else if (com[0].equals("bindingtable"))
-        src = s1 + genBindingTable() + s3;
+      else if (com[0].equals("bindingtable-codelists"))
+        src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("bindingtable-others"))
+        src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
@@ -564,7 +576,7 @@ public class PageProcessor implements Logger  {
   }
 
   private boolean isSpecial(String name) {
-    return definitions.getSpecialResources().containsKey(name);
+    return definitions.getSpecialResources().contains(name);
   }   
 
 

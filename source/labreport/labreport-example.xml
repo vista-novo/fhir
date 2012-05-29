@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- lab report example: a CBC -->
 
-<LabReport xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ../../schema/labreport.xsd">
+<LabReport xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/labreport.xsd">
 	<id>1</id>
   <!-- first, various administrative/context stuff -->
 	<status>final</status> <!-- all this report is final -->
@@ -22,7 +22,7 @@
 	<reportName>
 	  <coding>
 	    <code>15430-2</code>
-      <system>urn:hl7-org:sid/loinc</system>
+      <system>http://hl7.org/fhir/sid/loinc</system>
       <display>FULL BLOOD EXAMINATION</display>
     </coding>
 	  <coding>
@@ -34,7 +34,7 @@
 	<service>
 	  <coding>
 	    <code>HM</code>
-      <system>urn:hl7-org:sid/v2-0074</system>
+      <system>http://hl7.org/fhir/sid/v2-0074</system>
     </coding>
 	</service>
 	<diagnosticTime>2011-03-04T08:30:00+11:00</diagnosticTime>
@@ -46,7 +46,7 @@
       <name>
         <coding>
           <code>718-7</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Haemoglobin</display>
         </coding>
       </name>
@@ -54,7 +54,7 @@
         <value>176</value>
         <units>g/L</units>
         <code>g/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -63,13 +63,13 @@
             <value>135</value>
             <units>g/L</units>
             <code>g/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>180</value>
             <units>g/L</units>
             <code>g/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -79,7 +79,7 @@
       <name>
         <coding>
           <code>789-8</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Red Cell Count</display>
         </coding>
       </name>
@@ -87,7 +87,7 @@
         <value>5.9</value>
         <units>x10*12/L</units>
         <code>10*12/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -96,13 +96,13 @@
             <value>4.2</value>
             <units>x10*12/L</units>
             <code>10*12/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>6.0</value>
             <units>x10*12/L</units>
             <code>10*12/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -112,7 +112,7 @@
       <name>
         <coding>
           <code>4544-3</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Haematocrit</display>
         </coding>
       </name>
@@ -137,7 +137,7 @@
       <name>
         <coding>
           <code>787-2</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Mean Cell Volume</display>
         </coding>
       </name>
@@ -145,7 +145,7 @@
         <value>99</value>
         <units>fL</units>
         <code>fL</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <flag>+</flag>
       <status>final</status>
@@ -155,13 +155,13 @@
             <value>80</value>
             <units>fL</units>
             <code>fL</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>98</value>
             <units>fL</units>
             <code>fL</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -171,7 +171,7 @@
       <name>
         <coding>
           <code>785-6</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Mean Cell Haemoglobin</display>
         </coding>
       </name>
@@ -179,7 +179,7 @@
         <value>36</value>
         <units>pg</units>
         <code>pg</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <flag>+</flag>
       <status>final</status>
@@ -189,13 +189,13 @@
             <value>27</value>
             <units>pg</units>
             <code>pg</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>35</value>
             <units>pg</units>
             <code>pg</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -205,7 +205,7 @@
       <name>
         <coding>
           <code>777-3</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Platelet Count</display>
         </coding>
       </name>
@@ -213,7 +213,7 @@
         <value>444</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -222,13 +222,13 @@
             <value>150</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>450</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -238,7 +238,7 @@
       <name>
         <coding>
           <code>6690-2</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>White Cell Count</display>
         </coding>
       </name>
@@ -246,7 +246,7 @@
         <value>4.6</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -255,13 +255,13 @@
             <value>4.0</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>11.0</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -271,7 +271,7 @@
       <name>
         <coding>
           <code>770-8</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Neutrophils</display>
         </coding>
       </name>
@@ -279,7 +279,7 @@
         <value>20</value>
         <units>%</units>
         <code>%</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -288,7 +288,7 @@
       <name>
         <coding>
           <code>751-8</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Neutrophils</display>
         </coding>
       </name>
@@ -296,7 +296,7 @@
         <value>0.9</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <flag>---</flag>
       <status>final</status>
@@ -306,13 +306,13 @@
             <value>2.0</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>7.5</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -322,7 +322,7 @@
       <name>
         <coding>
           <code>736-9</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Lymphocytes</display>
         </coding>
       </name>
@@ -330,7 +330,7 @@
         <value>20</value>
         <units>%</units>
         <code>%</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -339,7 +339,7 @@
       <name>
         <coding>
           <code>731-0</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Lymphocytes</display>
         </coding>
       </name>
@@ -347,7 +347,7 @@
         <value>0.9</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <flag>-</flag>
       <status>final</status>
@@ -357,13 +357,13 @@
             <value>1.1</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>4.0</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -373,7 +373,7 @@
       <name>
         <coding>
           <code>5905-5</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Monocytes</display>
         </coding>
       </name>
@@ -381,7 +381,7 @@
         <value>20</value>
         <units>%</units>
         <code>%</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -390,7 +390,7 @@
       <name>
         <coding>
           <code>742-7</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Monocytes</display>
         </coding>
       </name>
@@ -398,7 +398,7 @@
         <value>0.9</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -407,13 +407,13 @@
             <value>0.2</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>1.0</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -423,7 +423,7 @@
       <name>
         <coding>
           <code>713-8</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Eosinophils</display>
         </coding>
       </name>
@@ -431,7 +431,7 @@
         <value>20</value>
         <units>%</units>
         <code>%</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -440,7 +440,7 @@
       <name>
         <coding>
           <code>711-2</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Eosinophils</display>
         </coding>
       </name>
@@ -448,7 +448,7 @@
         <value>0.92</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <flag>++</flag>
       <status>final</status>
@@ -458,13 +458,13 @@
             <value>0.04</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </low>
           <high>
             <value>0.40</value>
             <units>x10*9/L</units>
             <code>10*9/L</code>
-            <system>urn:hl7-org:sid/ucum</system>
+            <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
         </rangeInterval>
       </referenceRange>
@@ -474,7 +474,7 @@
       <name>
         <coding>
           <code>706-2</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Basophils</display>
         </coding>
       </name>
@@ -482,7 +482,7 @@
         <value>20</value>
         <units>%</units>
         <code>%</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -491,7 +491,7 @@
       <name>
         <coding>
           <code>704-7</code>
-          <system>urn:hl7-org:sid/loinc</system>
+          <system>http://hl7.org/fhir/sid/loinc</system>
           <display>Basophils</display>
         </coding>
       </name>
@@ -499,7 +499,7 @@
         <value>0.92</value>
         <units>x10*9/L</units>
         <code>10*9/L</code>
-        <system>urn:hl7-org:sid/ucum</system>
+        <system>http://hl7.org/fhir/sid/ucum</system>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -508,7 +508,7 @@
           <status>&lt;</status>
           <units>x10*9/L</units>
           <code>10*9/L</code>
-          <system>urn:hl7-org:sid/ucum</system>
+          <system>http://hl7.org/fhir/sid/ucum</system>
         </rangeQuantity>
       </referenceRange>
     </result>      

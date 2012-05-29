@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Person xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Person.xsd">
+<Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Person.xsd">
   <id>34234</id>
 	
   <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
   <identifier>
     <type>
       <code>MR</code>
-      <system>urn:hl7-org:sid/v2-0203</system>
+      <system>http://hl7.org/fhir/sid/v2-0203</system>
     </type>
     <identifier>
       <system>oid:1.2.36.146.595.217.0.1</system>

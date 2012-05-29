@@ -1,5 +1,6 @@
 package org.hl7.fhir.definitions.parsers;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +10,9 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
+import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
-import org.hl7.fhir.instance.model.Profile.BindingType;
-import org.hl7.fhir.tools.publisher.FolderManager;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -25,28 +26,49 @@ public class SpreadsheetParser {
 	private boolean isProfile;
 	private String root;
 	private Definitions definitions;
+	private String title;
+	private String folder;
 
 	public SpreadsheetParser(InputStream in, String name, Definitions definitions, String root) throws Exception {
 		this.name = name;
 		xls = new XLSXmlParser(in, name);    
 		this.root = root;
 		this.definitions = definitions;
+		if (name.indexOf('-') > 0)
+		  title = name.substring(0, name.indexOf('-'));
+		else
+	    title = name.substring(0, name.indexOf('.'));
+		this.folder = root+title+File.separator;
 	}
 
 
-	public ElementDefn parse() throws Exception {
-		isProfile = false;
-		ElementDefn root = new ElementDefn();
-		Sheet sheet = xls.getSheets().get("Bindings");
-		if (sheet != null)
-		  readBindings(sheet);
-		sheet = xls.getSheets().get("Data Elements");
-		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(root, sheet, row);
-		}
-		readEvents(xls.getSheets().get("Events"));
-		return root;
-	}
+  public ElementDefn parseType() throws Exception {
+    isProfile = false;
+    ResourceDefn root = new ResourceDefn();
+    Sheet sheet = xls.getSheets().get("Bindings");
+    if (sheet != null)
+      readBindings(sheet);
+    sheet = xls.getSheets().get("Data Elements");
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      processLine(root, sheet, row);
+    }
+    return root;
+  }
+
+  public ResourceDefn parseResource() throws Exception {
+    isProfile = false;
+    ResourceDefn root = new ResourceDefn();
+    Sheet sheet = xls.getSheets().get("Bindings");
+    if (sheet != null)
+      readBindings(sheet);
+    sheet = xls.getSheets().get("Data Elements");
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      processLine(root, sheet, row);
+    }
+    readEvents(xls.getSheets().get("Events"));
+    readExamples(root, xls.getSheets().get("Examples"));
+    return root;
+  }
 
 	private void readBindings(Sheet sheet) throws Exception {
     for (int row = 0; row < sheet.rows.size(); row++) {
@@ -107,6 +129,29 @@ public class SpreadsheetParser {
 	}
 
 
+  private void readExamples(ResourceDefn defn, Sheet sheet) throws Exception {
+    if (sheet != null) {
+      for (int row = 0; row < sheet.rows.size(); row++) {
+        String name = sheet.getColumn(row, "Name");
+        if (name != null && !name.equals("")) {
+          String desc = sheet.getColumn(row, "Description");
+          if (desc == null || desc.equals(""))
+            throw new Exception("Example "+name+" has no description parsing "+this.name);
+          File file = new File(folder+sheet.getColumn(row, "Filename"));
+          if (!file.exists())
+            throw new Exception("Example "+name+" file '"+file.getAbsolutePath()+"' not found parsing "+this.name);
+          defn.getExamples().add(new Example(name, desc, file));
+        }
+      }         
+    }
+    if (defn.getExamples().size() == 0) {
+      File file = new File(folder+title+"-example.xml");
+      if (!file.exists())
+        throw new Exception("Example (file '"+file.getAbsolutePath()+"') not found parsing "+this.name);
+      defn.getExamples().add(new Example("General", "Example of "+name, file));
+    }
+  }
+  
 	private void readEvents(Sheet sheet) throws Exception {
 		if (sheet != null) {
 			for (int row = 0; row < sheet.rows.size(); row++) {

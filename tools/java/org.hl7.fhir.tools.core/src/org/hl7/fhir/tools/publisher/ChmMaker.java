@@ -31,7 +31,7 @@ public class ChmMaker {
     this.definitions = definitions;
     this.page = page;
     
-    for (ElementDefn root : definitions.getDefinedResources().values())
+    for (ElementDefn root : definitions.getResources().values())
       registerElementDefnInIndex(root, root.getName().toLowerCase()+".htm", root.getName());
     for (ElementDefn root : definitions.getInfrastructure().values())
       registerElementDefnInIndex(root, "xml.htm", root.getName());
@@ -168,11 +168,11 @@ public class ChmMaker {
     s.append("      </OBJECT>\r\n");
     s.append("    <UL>\r\n");
     List<String> names = new ArrayList<String>();
-    names.addAll(definitions.getDefinedResources().keySet());
+    names.addAll(definitions.getResources().keySet());
     Collections.sort(names);
     for (String name : names) {
       s.append("      <LI> <OBJECT type=\"text/sitemap\">\r\n");
-      s.append("         <param name=\"Name\" value=\""+definitions.getDefinedResources().get(name).getName()+"\">\r\n");
+      s.append("         <param name=\"Name\" value=\""+definitions.getResources().get(name).getName()+"\">\r\n");
       s.append("         <param name=\"Local\" value=\""+name.toLowerCase()+".xml.htm\">\r\n");
       s.append("        </OBJECT>\r\n");
     }

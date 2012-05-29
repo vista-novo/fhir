@@ -16,7 +16,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
     CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(new FileOutputStream(implDir+"Resources.cs"));
     cSharpGen.start(version, genDate);
     
-    for (ElementDefn root : definitions.getDefinedResources().values()) {
+    for (ElementDefn root : definitions.getResources().values()) {
       cSharpGen.generate(root, definitions.getBindings());
     }
     for (DefinedCode n : definitions.getFutureResources().values()) {

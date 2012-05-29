@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Document.xsd">
+<Document xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Document.xsd">
   <id>1cbdfb97-5859-48a4-8301-d54eab818d68</id>
   <instant>2012-01-04T09:10:14Z</instant>
   <type>
     <coding>
       <code>11488-4</code>
-      <system>urn:hl7-org:sid/loinc</system>
+      <system>http://hl7.org/fhir/sid/loinc</system>
       <display>Consultation note</display>    
     </coding>
   </type>
@@ -40,7 +40,7 @@
     <type>
       <coding>
         <code>10164-2</code>
-        <system>urn:hl7-org:sid/loinc</system>
+        <system>http://hl7.org/fhir/sid/loinc</system>
       </coding>
     </type>
     <content dataAbsentReason="error">

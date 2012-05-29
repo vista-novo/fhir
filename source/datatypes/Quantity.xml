@@ -282,7 +282,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Money</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;urn:hl7-org:sid/iso-4217&quot;)</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;http://hl7.org/fhir/sid/iso-4217&quot;)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

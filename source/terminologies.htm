@@ -57,7 +57,7 @@ See below for a full list of the binding names defined for all FHIR resources.
 <p>
 This specification defines the following names (URIs) as fixed names that may 
 be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>,
-<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept"></a> data types. 
+<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> data types. 
 </p>
 
 <table class="grid">
@@ -77,7 +77,7 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
    <td>The version, module etc may be appended to this uri following the IHTSDO specifications<br/>OID=2.16.840.1.113883.6.96</td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/loinc</td>
+   <td>http://hl7.org/fhir/sid/loinc</td>
    <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
    <td><p>
        The LOINC sid can also be used to indicate a LOINC property value by append one of the following values to the URL:</p>
@@ -90,37 +90,37 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
          <tr><td>/class</td><td>CLASS</td></tr>
        </table>
        <p>The acceptable values for these URLs are the literal values found in the definition of LOINC for the given column name. <br/><br/>
-       The version of LOINC may be appended to this uri like so: urn:hl7-org:sid/loinc?v=2.36<br/><br/>OID=2.16.840.1.113883.6.1.</p>
+       The version of LOINC may be appended to this uri like so: http://hl7.org/fhir/sid/loinc?v=2.36<br/><br/>OID=2.16.840.1.113883.6.1.</p>
    </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/ucum</td>
+   <td>http://hl7.org/fhir/sid/ucum</td>
    <td>UCUM: (<a href="http://unitsofmeasure.org">UnitsOfMeasure.org</a>)</td>
    <td>Generally used in the Quantity Data Type<br/>OID=2.16.840.1.113883.6.8</td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/icd-10</td>
+   <td>http://hl7.org/fhir/sid/icd-10</td>
    <td>ICD-10 International (<a href="http://www.who.int/classifications/icd/en/">WHO</a>)</td>
    <td><br/>OID=2.16.840.1.113883.6.3 </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/icd-9</td>
+   <td>http://hl7.org/fhir/sid/icd-9</td>
    <td>ICD-9 USA (<a href="http://www.cdc.gov/nchs/icd/icd9.htm">CDC</a>)</td>
    <td><br/>OID=2.16.840.1.113883.6.42 </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/v2-[X]</td>
+   <td>http://hl7.org/fhir/sid/v2-[X]</td>
    <td>Version 2 table code</td>
-   <td>[X] is the 4 digit identifier for a table. i.e. urn:hl7-org:sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
+   <td>[X] is the 4 digit identifier for a table. i.e. http://hl7.org/fhir/sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/iso-[X]</td>
+   <td>http://hl7.org/fhir/sid/iso-[X]</td>
    <td>Codes as defined in the ISO standard with the given number. Two important ISO standards are the 2-3 
      letter language codes (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>-3), and the currency codes (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
    <td>OID=1.0.[X](.tail as specified) <br/> (1.0.639.3 for 3 letter language codes </td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/atc</td>
+   <td>http://hl7.org/fhir/sid/atc</td>
    <td>Anatomical Therapeutic Chemical Classification System (<a href="http://www.whocc.no/atc/structure_and_principles/">WHO</a>)</td>
    <td><br/>OID=2.16.840.1.113883.6.73</td>
  </tr> 
@@ -130,22 +130,22 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
  </tr>
 
  <tr>
-   <td>urn:hl7-org:sid/uri</td>
+   <td>http://hl7.org/fhir/sid/uri</td>
    <td>URIs (<a href="http://www.w3.org">W3C</a>)</td>
    <td>As defined by various applicable RFCs including X<br/>No OID</td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/oid</td>
+   <td>http://hl7.org/fhir/sid/oid</td>
    <td>OIDs</td>
    <td>The identifier is an OID itself</td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/uuid</td>
+   <td>http://hl7.org/fhir/sid/uuid</td>
    <td>UUIDs</td>
    <td>Also called GUIDs<br/>No OID</td>
  </tr>
  <tr>
-   <td>urn:hl7-org:sid/us-ssn</td>
+   <td>http://hl7.org/fhir/sid/us-ssn</td>
    <td>SSN (<a href="http://www.w3.org">W3C</a>)</td>
    <td>SSN for USA. Represented with dashes removed<br/>OID=2.16.840.1.113883.4.1</td>
  </tr>
@@ -162,38 +162,39 @@ for them, though these are not generally used directly in this specification:
 <table class="list">
  <tr>
   <td><a href="#specialvalues">Special Values</a></td>
-  <td>urn:hl7-org:sid/fhir/special-values</td>
+  <td>http://hl7.org/fhir/sid/special-values</td>
   <td>2.16.840.1.113883.6.305</td>
  </tr>
  <tr>
   <td><a href="#resourcetypes">Resource Types</a></td>
-  <td>urn:hl7-org:sid/fhir/resources</td>
+  <td>http://hl7.org/fhir/sid/resource-types</td>
   <td>2.16.840.1.113883.6.306</td>
  </tr>
  <tr>
   <td><a href="http.htm#interactions">Logical Interactions</a> (RESTful framework)</td>
-  <td>urn:hl7-org:sid/fhir/interactions</td>
+  <td>http://hl7.org/fhir/sid/rest-operations</td>
   <td>2.16.840.1.113883.6.308</td>
  </tr>
  <tr>
   <td><a href="message.htm#Events">Message Events</a> (Messaging framework)</td>
-  <td>urn:hl7-org:sid/fhir/message-events</td>
+  <td>http://hl7.org/fhir/sid/message-events</td>
   <td>2.16.840.1.113883.6.307</td>
  </tr>
  <tr>
   <td><a href="xml.htm#dataAbsentReason">Data Absent Reason</a></td>
-  <td>urn:hl7-org:sid/fhir/data-absent-reason</td>
+  <td>http://hl7.org/fhir/sid/data-absent-reasons</td>
   <td>2.16.840.1.113883.6.309</td>
  </tr>
 </table>
 <p>
 Note that all the codes in these code systems are case sensitive, and must be used in lowercase.
+All the codes in these code systems have the own uri, which is http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
 </p>
 <a name="specialvalues"/>
 <h2>Special Values</h2>
 <p>
 Internally defined codes useful throughout the specification where <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> is used.
-These are defined by the code system "urn:hl7-org:sid/fhir/special-values" which has OID 2.16.840.1.113883.6.305. 
+These are defined by the code system "http://hl7.org/fhir/sid/special-values" which has OID 2.16.840.1.113883.6.305. 
 </p>
 <table class="codes">
   <tr><td>true</td><td>Boolean true</td></tr>
@@ -207,7 +208,7 @@ These are defined by the code system "urn:hl7-org:sid/fhir/special-values" which
 <a name="ResourceType"/>
 <h2>Resource Types</h2>
 <p>
-In several places, the resource types themselves are used as either codes or identifiers, with the sid, where required, of "urn:hl7-org:sid/fhir/resource-types". This is a formal list of the resource type codes: 
+In several places, the resource types themselves are used as either codes or identifiers, with the sid, where required, of "http://hl7.org/fhir/sid/fhir/resource-types". This is a formal list of the resource type codes: 
 </p>
 <table class="codes">
 <%resourcecodes%>
@@ -215,9 +216,15 @@ In several places, the resource types themselves are used as either codes or ide
 
 <h2>Binding Names Registry</h2>
 
-<p>This table contains a list of all the binding names defined as part of the resource definitions.</p>
+<p>This table contains a list of all the binding names that are bound directly to their own codes. 
+Each implicitly represents a code system with the full URI http://hl7.org/fhir/sid/[system], 
+and where each indiviudal code has the uri http://hl7.org/fhir/sid/[system]/[ccde].</p>
 
-<%bindingtable%>
+<%bindingtable-codelists%>
+
+<p>This table contains a list of all the binding names that reference value sets, or simply provide definitions.</p>
+
+<%bindingtable-others%>
 
 
 

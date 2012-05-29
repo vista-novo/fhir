@@ -25,18 +25,18 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
     writeLine("module _'FHIR.ecore'");
     writeLine("import ecore : 'http://www.eclipse.org/emf/2002/Ecore#/';");
     writeLine("");
-    writeLine("package DataTypes : dt = 'http://www.hl7.org/fhir/datatypes'");
+    writeLine("package DataTypes : dt = 'http://hl7.org/fhir/datatypes'");
     writeLine("{");
-    for (String name : definitions.getDefinedResources().keySet()) {
+    for (String name : definitions.getResources().keySet()) {
       if (isDataType(name, definitions))
-        generateResource(name, definitions.getDefinedResources().get(name));
+        generateResource(name, definitions.getResources().get(name));
     }
     writeLine("}");
-    writeLine("package Resources : res = 'http://www.hl7.org/fhir/resources'");
+    writeLine("package Resources : res = 'http://hl7.org/fhir/resources'");
     writeLine("{");
-    for (String name : definitions.getDefinedResources().keySet()) {
+    for (String name : definitions.getResources().keySet()) {
       if (!isDataType(name, definitions))
-        generateResource(name, definitions.getDefinedResources().get(name));
+        generateResource(name, definitions.getResources().get(name));
     }
     writeLine("}");
     flush();

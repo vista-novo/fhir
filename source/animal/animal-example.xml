@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Animal xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\Animal.xsd">
+<Animal xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Animal.xsd">
   <id>wer234fwde234</id>
 	
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
     <type>
       <code>microchip</code>
-      <system>urn:hl7-org:sid/fhir/identifier-type</system>
+      <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
     </type>
     <identifier>
       <system>http://http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
@@ -47,7 +47,7 @@
   <gender>
     <coding>
       <code>F</code>
-      <system>urn:hl7-org:sid/v2-0001</system>
+      <system>http://hl7.org/fhir/sid/v2-0001</system>
     </coding>
   </gender>
 	
@@ -56,7 +56,7 @@
     <role>
       <coding>
         <code>OWN</code>
-        <system>urn:hl7-org:sid/v2-0063</system>
+        <system>http://hl7.org/fhir/sid/v2-0063</system>
         <display>Owner</display>
       </coding>
     </role>

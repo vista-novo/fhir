@@ -2,7 +2,6 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;

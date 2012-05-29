@@ -44,7 +44,7 @@ Notes:
 </p>
 <ul>
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
- <li>FHIR elements are always in the namespace <a href="http://www.hl7.org/fhir">http://www.hl7.org/fhir</a>, which is usually specified as the default namespace on the root element</li>
+ <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>, which is usually specified as the default namespace on the root element</li>
  <li>The only other namespaces that occur in FHIR resources are where some external content model is introduced into the resource content model. XHTML is found in every resource - see below</li>
  <li>To build a valid resource, simple replace the contents of the elements with valid content as described by the conformance, cardinality and type rules found in the comment in each element</li>
  <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
@@ -58,7 +58,7 @@ Notes:
 Every resource contains the following common elements:
 </p>
 <pre>
-&lt;<a href="#Resource" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://www.hl7.org/fhir"&gt;
+&lt;<a href="#Resource" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
   &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first. Never changes after creation</font>&lt;/id&gt;
   &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a>  <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
   &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;

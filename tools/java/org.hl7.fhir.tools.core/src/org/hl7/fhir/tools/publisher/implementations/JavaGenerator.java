@@ -33,7 +33,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
-    for (String n : definitions.getDefinedResources().keySet()) {
+    for (String n : definitions.getResources().keySet()) {
       ElementDefn root = definitions.getResourceDefn(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);

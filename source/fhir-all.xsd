@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  © HL7 (http://www.hl7.org)
+  © HL7 (http://hl7.org)
   Generated on <%genDate%> for FHIR v<%version%>
 -->
-<xs:schema xmlns="http://www.hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+<xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified">
 <!--  <xs:include schemaLocation="fhir-base.xsd"/> -->
   <xs:include schemaLocation="definitions.xsd"/>
   <!--%resources%-->
