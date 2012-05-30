@@ -30,7 +30,9 @@ import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validator.ProfileValidator;
@@ -80,24 +82,24 @@ public class Publisher {
   private PageProcessor page = new PageProcessor();
   private BookMaker book;
   
-  private boolean isInternal;
+  private boolean isInternalRun;
   
 	public static void main(String[] args) throws Exception {
 //    
 	  Publisher pub = new Publisher();
-	  pub.isInternal = !(args.length > 1 && args[1].equals("-web"));
+	  pub.isInternalRun = !(args.length > 1 && args[1].equals("-web"));
 		pub.execute(args[0]);
 	}
 
 	public void execute(String folder) throws Exception {
 	  
-	  log("Publish FHIR in folder "+folder+ (isInternal ? " [internal development mode - including the sandbox, not generating HL7 web site copy or fhir.chm]" : ""));
+	  log("Publish FHIR in folder "+folder+ (isInternalRun ? " [internal development mode - including the sandbox]" : ""));
 
 	  registerReferencePlatforms();
 	  
 		if (initialize(folder)) {
 		  Utilities.clearDirectory(page.getFolders().dstDir);
-	    prsr.parse(isInternal);
+	    prsr.parse(isInternalRun);
 			if (validate()) {
 			  produceSpecification();
 			  validateXml();
@@ -174,7 +176,7 @@ public class Publisher {
 
 		for (String n : page.getDefinitions().getResources().keySet()) {
 		  String filename = page.getFolders().srcDir+n+File.separatorChar+n+"-uml.xml";
-		  if (new File(filename).exists() || !new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-def.xml").exists())		    
+		  if (new File(filename).exists() || !page.getDefinitions().getResources().get(n).isSandbox())		    
 		    new UMLValidator(page.getDefinitions().getResources().get(n), filename, errors).validate();
 		}
 		for (String e : errors)
@@ -184,7 +186,7 @@ public class Publisher {
 
   private void produceSpecification() throws Exception {
     page.setNavigation(new Navigation());
-    page.getNavigation().parse(page.getFolders().srcDir+"navigation.xml", isInternal);
+    page.getNavigation().parse(page.getFolders().srcDir+"navigation.xml", isInternalRun);
     chm = new ChmMaker(page.getNavigation(),  page.getFolders(), page.getDefinitions(), page);
     book = new BookMaker(page, chm);
 
@@ -199,12 +201,10 @@ public class Publisher {
     produceSchemaZip();
     log("Produce Specification");
     produceSpec(); 
-    if (!isInternal) {
-      log("Produce fhir.chm");
-      chm.produce();
-      log("Produce HL7 copy");
-      new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
-    }
+    log("Produce fhir.chm");
+    chm.produce();
+    log("Produce HL7 copy");
+    new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
   }
 
   
@@ -214,7 +214,7 @@ public class Publisher {
 		for (String n : page.getIni().getPropertyNames("images")) 
 			Utilities.copyFile(new File(page.getFolders().imgDir + n), new File(page.getFolders().dstDir + n));
 
-		for (ElementDefn n : page.getDefinitions().getResources().values())
+		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
@@ -252,7 +252,7 @@ public class Publisher {
     Utilities.copyFile(new File(page.getFolders().tmpResDir+"fhir-all-xsd.zip"), f);
   }
 	
-  private void produceResource(ElementDefn root) throws Exception {
+  private void produceResource(ResourceDefn root) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		String n = root.getName().toLowerCase();
 	
@@ -273,18 +273,44 @@ public class Publisher {
 
 		generateProfile(root, n);
 		
-	
-		File xmlf = new File(page.getFolders().srcDir+n+File.separatorChar+n+"-example.xml");
-		if (!xmlf.exists())
-		  xmlf = new File(page.getFolders().sndBoxDir+n+File.separatorChar+n+"-example.xml");
-		File umlf = new File(page.getFolders().imgDir+n+".png");
+
+		for (Example e : root.getExamples()) {
+		  processExample(e);
+		}
+    
+    String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
+		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
+		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
+		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
+		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
+
+    File umlf = new File(page.getFolders().imgDir+n+".png");
+    Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
+    src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
+    src = page.processResourceIncludes(n, root, xml, tx, dict, src);
+    cachePage(n+".htm", src);
+
+		// xml to json
+    // todo - fix this up
+//		JsonGenerator jsongen = new JsonGenerator();
+//		jsongen.generate(new File(page.getFolders().dstDir+n+".xml"), new File(page.getFolders().dstDir+n+".json"));
+
+		tmp.delete();
+		
+	}
+
+  private void processExample(Example e) throws Exception {
+    if (!e.getPath().exists())
+      throw new Exception("unable to find example file");
+    String n = e.getFileTitle();
 
     // xml to xhtml of xml
     // first pass is to strip the xsi: stuff. seems to need double processing in order to delete namespace crap
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     factory.setNamespaceAware(true); 
     DocumentBuilder builder = factory.newDocumentBuilder();
-    Document xdoc = builder.parse(new FileInputStream(xmlf));
+    Document xdoc = builder.parse(new FileInputStream(e.getPath()));
     XmlGenerator xmlgen = new XmlGenerator();
     xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 
@@ -295,26 +321,8 @@ public class Publisher {
     xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1));
     XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page.getFolders().dstDir+n+".xml.htm"));
     XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
-    String xhtm = new XhtmlComposer().compose(pre);
-    
-    String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
-		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
-		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
-		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
-		Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
-    src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, root, xml, tx, dict, src, xhtm);
-    cachePage(n+".htm", src);
-
-		// xml to json
-		JsonGenerator jsongen = new JsonGenerator();
-		jsongen.generate(new File(page.getFolders().dstDir+n+".xml"), new File(page.getFolders().dstDir+n+".json"));
-
-		tmp.delete();
-		
-	}
+    e.setXhtm(new XhtmlComposer().compose(pre));
+  }
 
   private void generateProfile(ElementDefn root, String n) throws Exception,
       FileNotFoundException {

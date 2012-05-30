@@ -6,6 +6,7 @@ public class Example {
   private String name;
   private String description;
   private File path;
+  private String xhtm;
   public Example(String name, String description, File path) {
     super();
     this.name = name;
@@ -29,6 +30,17 @@ public class Example {
   }
   public void setPath(File path) {
     this.path = path;
+  }
+  public String getFileTitle() {
+    String s = path.getName();
+    return s.substring(0, s.indexOf("."));
+  }
+  public void setXhtm(String content) {
+   xhtm = content;
+    
+  }
+  public String getXhtm() {
+    return xhtm;
   }
   
   

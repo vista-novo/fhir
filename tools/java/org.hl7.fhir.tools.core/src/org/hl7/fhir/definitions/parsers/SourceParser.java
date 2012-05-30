@@ -61,7 +61,7 @@ public class SourceParser {
   }
 
   
-  public void parse(boolean isInternal) throws Exception {
+  public void parse(boolean isInternalRun) throws Exception {
     logger.log("Loading");
     loadConceptDomains();
     loadPrimitives();
@@ -74,7 +74,7 @@ public class SourceParser {
       loadDataType(n, definitions.getInfrastructure());
     for (String n : ini.getPropertyNames("resources")) 
       loadResource(n, definitions.getResources(), false);
-    if (isInternal)
+    if (isInternalRun)
       for (String n : ini.getPropertyNames("sandbox")) 
         loadResource(n, definitions.getResources(), true);
     for (String n : ini.getPropertyNames("special-resources")) 
@@ -188,11 +188,14 @@ public class SourceParser {
   }
 
   private void loadResource(String n, Map<String, ResourceDefn> map, boolean sandbox) throws Exception {
+    String src = sandbox ? sndBoxDir : srcDir;
     File spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-spreadsheet.xml");
-    if (!spreadsheet.exists())
+    if (!spreadsheet.exists()) 
       spreadsheet = new File((sandbox ? sndBoxDir : srcDir)+n+File.separatorChar+n+"-def.xml");
-    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, srcDir);
+      
+    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, src);
     ResourceDefn root = sparser.parseResource();
+    root.setSandbox(sandbox);
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
     definitions.getResources().put(root.getName(), root);
     for (EventDefn e : sparser.getEvents())

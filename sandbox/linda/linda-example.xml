@@ -3,7 +3,7 @@
   Actual exchanged FHIR resources aren't allowed to have a xsi namespace, nor the schema location. but putting it here makes
   editing the resource much easier, and it will get stripped out during the build process
 -->
-<Linda xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir ..\..\schema\linda.xsd">
+<Linda xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\linda.xsd">
   <id>valid.id.needed</id>
   <text>
     <status>generated</status>

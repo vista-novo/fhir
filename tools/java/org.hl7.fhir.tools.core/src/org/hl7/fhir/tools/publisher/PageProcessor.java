@@ -20,7 +20,9 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
+import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.utilities.IniFile;
@@ -436,7 +438,7 @@ public class PageProcessor implements Logger  {
 
 
 
-  String processResourceIncludes(String name, ElementDefn root, String xml, String tx, String dict, String src, String example) throws Exception {
+  String processResourceIncludes(String name, ResourceDefn resource, String xml, String tx, String dict, String src) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -455,11 +457,11 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
-        src = s1+root.getName()+s3;
+        src = s1+resource.getName()+s3;
       else if (com[0].equals("introduction")) 
         src = s1+loadXmlNotes(name, "introduction")+s3;
-      else if (com[0].equals("example")) 
-        src = s1+example+s3;
+      else if (com[0].equals("examples")) 
+        src = s1+produceExamples(resource)+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
       else if (com[0].equals("version"))
@@ -467,7 +469,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("gendate"))
         src = s1+Config.DATE_FORMAT().format(new Date())+s3;
       else if (com[0].equals("definition"))
-        src = s1+root.getDefinition()+s3;
+        src = s1+resource.getDefinition()+s3;
       else if (com[0].equals("xml"))
         src = s1+xml+s3;
       else if (com[0].equals("tx"))
@@ -479,7 +481,7 @@ public class PageProcessor implements Logger  {
       } else if (com[0].equals("dictionary"))
         src = s1+dict+s3;
       else if (com[0].equals("resurl")) {
-        if (isSpecial(root.getName()))
+        if (isSpecial(resource.getName()))
           src = s1+s3;
         else
           src = s1+"<p>The resource name as it appears in a <a href=\"http.htm\"> RESTful URL</a> is /"+name+"/</p>"+s3;
@@ -488,6 +490,14 @@ public class PageProcessor implements Logger  {
 
     }
     return src;
+  }
+
+  private String produceExamples(ResourceDefn resource) {
+    StringBuilder s = new StringBuilder();
+    for (Example e: resource.getExamples()) {
+      s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
+    }
+    return s.toString();
   }
 
   private static final String HTML_PREFIX = "<div xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n";
@@ -645,5 +655,5 @@ public class PageProcessor implements Logger  {
   public void setNavigation(Navigation navigation) {
     this.navigation = navigation;
   }
-  
+
 }

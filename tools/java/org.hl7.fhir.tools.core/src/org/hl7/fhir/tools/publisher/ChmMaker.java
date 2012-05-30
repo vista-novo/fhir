@@ -47,7 +47,8 @@ public class ChmMaker {
     if (!(new File(hhc).exists())) {
       hhc = "C:\\Program Files\\HTML Help Workshop\\hhc.exe";
       if (!(new File(hhc).exists())) {
-        throw new Exception("Not producing CHM - Help Compiler not found");
+        page.log("Not producing CHM - Help Compiler not found");
+        return;
       }
     }
 
@@ -56,18 +57,7 @@ public class ChmMaker {
     File chm = new File(folders.dstDir+"fhir.chm");
     chm.delete();
     if (chm.exists()) {
-      List<String> command = new ArrayList<String>();
-      command.add("cmd");
-      command.add("del");
-      command.add(folders.dstDir+"fhir.chm");
-   
-      ProcessBuilder builder = new ProcessBuilder(command);
-      builder.directory(new File(folders.dstDir));
-      final Process process = builder.start();
-      process.waitFor();
-      
-      if (chm.exists()) 
-        throw new Exception("Deleting CHM file failed");
+      throw new Exception("Deleting CHM file failed");
     }
 
     String[] files = new File(folders.dstDir).list();
