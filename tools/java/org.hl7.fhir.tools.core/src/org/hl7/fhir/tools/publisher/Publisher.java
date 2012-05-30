@@ -312,13 +312,16 @@ public class Publisher {
     DocumentBuilder builder = factory.newDocumentBuilder();
     Document xdoc = builder.parse(new FileInputStream(e.getPath()));
     XmlGenerator xmlgen = new XmlGenerator();
-    xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+    if (xdoc.getDocumentElement().getLocalName().equals("feed"))
+      xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
+    else
+      xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 
     // reload it now
     builder = factory.newDocumentBuilder();
     xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
     XhtmlGenerator xhtml = new XhtmlGenerator();
-    xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1));
+    xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1), e.getDescription());
     XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page.getFolders().dstDir+n+".xml.htm"));
     XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
     e.setXhtm(new XhtmlComposer().compose(pre));

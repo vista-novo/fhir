@@ -455,8 +455,11 @@ public class ElementDefn {
   }
  
   
-  // Returns true is this element is a standard Resource element 
-  // like 'id', 'extensions' and 'text'
+  /**
+   * Warning: this method is only safe to call if the owner element has type "resource". The element names "id" and "text" are used in other contexts for valid element names
+   * 
+   * @return if this element is a standard Resource element like 'id', 'extensions' and 'text'
+   */
   public boolean isBaseResourceElement()
   {
 	  return	getName().equals("id") ||

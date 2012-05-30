@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
+import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Comment;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -15,7 +16,7 @@ import org.w3c.dom.Text;
 
 public class XhtmlGenerator {
 
-	public void generate(Document doc, File xhtml, String name) throws Exception {
+	public void generate(Document doc, File xhtml, String name, String desc) throws Exception {
 		FileOutputStream outs = new FileOutputStream(xhtml);
 		OutputStreamWriter out = new OutputStreamWriter(outs);
 		
@@ -27,7 +28,7 @@ public class XhtmlGenerator {
 		out.write("<body>\r\n");
     out.write("<p>&nbsp;</p>\r\n");	
     out.write("<div class=\"example\">\r\n");
-    out.write("<p>Example:</p>\r\n"); 
+    out.write("<p>"+Utilities.escapeXml(desc)+"</p>\r\n"); 
     out.write("<pre class=\"xml\">\r\n");
 
 		for (int i = 0; i < doc.getChildNodes().getLength(); i++)

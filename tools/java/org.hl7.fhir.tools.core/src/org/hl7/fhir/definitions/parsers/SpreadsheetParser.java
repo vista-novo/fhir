@@ -148,7 +148,7 @@ public class SpreadsheetParser {
       File file = new File(folder+title+"-example.xml");
       if (!file.exists())
         throw new Exception("Example (file '"+file.getAbsolutePath()+"') not found parsing "+this.name);
-      defn.getExamples().add(new Example("General", "Example of "+name, file));
+      defn.getExamples().add(new Example("General", "Example of "+title, file));
     }
   }
   
