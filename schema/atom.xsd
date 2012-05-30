@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   © HL7 (http://hl7.org)
-  Generated on Wed, May 30, 2012 22:39+1000 for FHIR v0.03
+  Generated on Thu, May 31, 2012 00:15+1000 for FHIR v0.03
 -->
 <xs:schema xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" targetNamespace="http://www.w3.org/2005/Atom" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:annotation>

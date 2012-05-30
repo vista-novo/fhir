@@ -628,8 +628,9 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 	static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 	private void validateXml() throws Exception {
     log("Validating XML");
-		StreamSource[] sources = new StreamSource[1];
-		sources[0] = new StreamSource(new FileInputStream(page.getFolders().dstDir+"fhir-all.xsd"));
+		StreamSource[] sources = new StreamSource[2];
+    sources[0] = new StreamSource(new FileInputStream(page.getFolders().dstDir+"fhir-all.xsd"));
+    sources[1] = new StreamSource(new FileInputStream(page.getFolders().dstDir+"atom.xsd"));
 		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		schemaFactory.setErrorHandler(new MyErrorHandler(false));
 		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
