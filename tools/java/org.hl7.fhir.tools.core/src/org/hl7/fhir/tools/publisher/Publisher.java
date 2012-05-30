@@ -220,15 +220,22 @@ public class Publisher {
       int c = 0;
       String[] files = new File(page.getFolders().dstDir).list();
       for (String f : files) {
-        if (f.endsWith(".htm")) {
-          String src = Utilities.fileToString(page.getFolders().dstDir+f);
-          String srcn = src.replace("Warning: FHIR is a draft specification that is still undergoing development prior to balloting as a full HL7 standard", "This is an old version of FHIR retained for archive purposes. Do not use for anything else");
-          if (!srcn.equals(src))
-            c++;
-          Utilities.stringToFile(srcn, target+File.separator+f);
+        File fn = new File(page.getFolders().dstDir+f);
+        if (!fn.isDirectory()) {
+          if (f.endsWith(".htm")) {
+            String src = Utilities.fileToString(fn.getAbsolutePath());
+            String srcn = src.replace("Warning: FHIR is a draft specification that is still undergoing development prior to balloting as a full HL7 standard", "This is an old version of FHIR retained for archive purposes. Do not use for anything else");
+            if (!srcn.equals(src))
+              c++;
+            Utilities.stringToFile(srcn, target+File.separator+f);
+          }
+          else
+            Utilities.copyFile(fn, new File(target+File.separator+f));
+        } else {
+          // used to put stuff in sub-directories. clean them out if they still exist
+          Utilities.clearDirectory(fn.getAbsolutePath());
+          fn.delete();
         }
-        else
-          Utilities.copyFile(new File(page.getFolders().dstDir+f), new File(target+File.separator+f));
       }    
       if (c < 3)
         throw new Exception("header note replacement in archive failed");
