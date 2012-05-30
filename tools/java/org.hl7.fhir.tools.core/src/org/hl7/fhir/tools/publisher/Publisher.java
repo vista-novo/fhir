@@ -205,9 +205,35 @@ public class Publisher {
     chm.produce();
     log("Produce HL7 copy");
     new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
+    log("Produce Archive copy");
+    produceArchive();
   }
 
   
+    private void produceArchive() throws Exception {
+      String target = page.getFolders().rootDir+"archive"+File.separator+"v"+page.getVersion();
+      if (new File(target).exists())
+        Utilities.clearDirectory(target);
+      else
+        Utilities.createDirectory(target);
+      
+      int c = 0;
+      String[] files = new File(page.getFolders().dstDir).list();
+      for (String f : files) {
+        if (f.endsWith(".htm")) {
+          String src = Utilities.fileToString(page.getFolders().dstDir+f);
+          String srcn = src.replace("Warning: FHIR is a draft specification that is still undergoing development prior to balloting as a full HL7 standard", "This is an old version of FHIR retained for archive purposes. Do not use for anything else");
+          if (!srcn.equals(src))
+            c++;
+          Utilities.stringToFile(srcn, target+File.separator+f);
+        }
+        else
+          Utilities.copyFile(new File(page.getFolders().dstDir+f), new File(target+File.separator+f));
+      }    
+      if (c < 3)
+        throw new Exception("header note replacement in archive failed");
+  }
+
     private void produceSpec() throws Exception {
 		for (String n : page.getIni().getPropertyNames("support")) 
 			Utilities.copyFile(new File(page.getFolders().srcDir + n), new File(page.getFolders().dstDir + n));
@@ -609,18 +635,21 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
 		Schema schema = schemaFactory.newSchema(sources);	
 
-		for (String n : page.getDefinitions().getResources().keySet()) {
-		  log("Validate "+n);
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			factory.setNamespaceAware(true);
-			factory.setValidating(false);
-			factory.setSchema(schema);
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			MyErrorHandler err = new MyErrorHandler(true);
-			builder.setErrorHandler(err);
-			builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
-			if (err.getErrors().size() > 0) 
-				throw new Exception("Resource Example "+n+" failed schema validation");
+		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+		  for (Example e : r.getExamples()) {
+		    String n = e.getFileTitle();
+		    log("Validate "+n);
+		    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		    factory.setNamespaceAware(true);
+		    factory.setValidating(false);
+		    factory.setSchema(schema);
+		    DocumentBuilder builder = factory.newDocumentBuilder();
+		    MyErrorHandler err = new MyErrorHandler(true);
+		    builder.setErrorHandler(err);
+		    builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
+		    if (err.getErrors().size() > 0) 
+		      throw new Exception("Resource Example "+n+" failed schema validation");
+		  }
 		}
 	}
 

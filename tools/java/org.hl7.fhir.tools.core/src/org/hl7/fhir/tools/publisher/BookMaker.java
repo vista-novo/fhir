@@ -20,7 +20,6 @@ public class BookMaker {
   private PageProcessor page;
   private ChmMaker chm;
   private String target;
-  private String targetBin;
   
   private Map<String, XhtmlDocument> pages = new HashMap<String, XhtmlDocument>();
 
@@ -38,15 +37,8 @@ public class BookMaker {
   }
 
   private void produceBookForm() throws FileNotFoundException, Exception {
-    target = page.getFolders().dstDir+"v"+page.getVersion();
-    if (new File(target).exists())
-      Utilities.clearDirectory(target);
-    else
-      Utilities.createDirectory(target);
+    target = page.getFolders().dstDir;
     target = target + File.separator;
-    targetBin = target + "bin" + File.separator;
-    Utilities.createDirectory(targetBin);
-    Utilities.copyFile(new File(page.getFolders().dstDir+"fhir.css"), new File(target+"fhir.css"));
     
     String src = Utilities.fileToString(page.getFolders().srcDir+"book.htm");
     src = page.processPageIncludes(page.getFolders().srcDir+"book.htm", src);
@@ -202,10 +194,7 @@ public class BookMaker {
         fixReferences(node, child, name);
       }    
     }
-    if (node.getName().equals("img")) {
-      String s = node.getAttribute("src");
-      Utilities.copyFile(new File(page.getFolders().dstDir+s), new File(target+File.separatorChar+s));
-    } else if (node.getName().equals("a")) {      
+    if (node.getName().equals("a")) {      
       if (node.getAttributes().containsKey("name")) {
         String lname = node.getAttributes().get("name");
         node.getAttributes().put("name", name+"."+lname);
@@ -234,15 +223,15 @@ public class BookMaker {
               s = s;
             } else {
               // actually, what we want to do is do what?
-              System.out.println("ref to remove: "+s+" in "+node.allText());
-              Utilities.copyFile(new File(page.getFolders().dstDir+s), new File(targetBin+File.separatorChar+s));
-              s = "http://hl7.org/documentcenter/public/standards/FHIR/v"+page.getVersion()+"/"+s;
+//              System.out.println("ref to remove: "+s+" in "+node.allText());
+//              Utilities.copyFile(new File(page.getFolders().dstDir+s), new File(targetBin+File.separatorChar+s));
+//              s = "http://hl7.org/documentcenter/public/standards/FHIR/v"+page.getVersion()+"/"+s;
             }
           }
 
         }
         node.getAttributes().put("href", s);
-        if (s.startsWith("http") && parent != null) {
+        if (s.startsWith("http") && parent != null && !node.allText().equals(s)) {
           node.addText(" ("+s+") ");
         }
         //System.out.println("reference to "+s); 

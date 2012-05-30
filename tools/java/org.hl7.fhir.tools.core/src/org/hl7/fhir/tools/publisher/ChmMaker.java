@@ -11,6 +11,7 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -82,7 +83,7 @@ public class ChmMaker {
  
     ProcessBuilder builder = new ProcessBuilder(command);
     builder.directory(new File(folders.rootDir+"\\temp\\chm"));
-
+    
     final Process process = builder.start();
     page.log("wait: "+Integer.toString(process.waitFor()));
     if (!chm.exists())
@@ -161,10 +162,12 @@ public class ChmMaker {
     names.addAll(definitions.getResources().keySet());
     Collections.sort(names);
     for (String name : names) {
-      s.append("      <LI> <OBJECT type=\"text/sitemap\">\r\n");
-      s.append("         <param name=\"Name\" value=\""+definitions.getResources().get(name).getName()+"\">\r\n");
-      s.append("         <param name=\"Local\" value=\""+name.toLowerCase()+".xml.htm\">\r\n");
-      s.append("        </OBJECT>\r\n");
+      for (Example e : definitions.getResources().get(name).getExamples()) {
+        s.append("      <LI> <OBJECT type=\"text/sitemap\">\r\n");
+        s.append("         <param name=\"Name\" value=\""+e.getName()+"\">\r\n");
+        s.append("         <param name=\"Local\" value=\""+e.getFileTitle()+".xml.htm\">\r\n");
+        s.append("        </OBJECT>\r\n");
+      }
     }
 
     s.append("    </UL>\r\n");

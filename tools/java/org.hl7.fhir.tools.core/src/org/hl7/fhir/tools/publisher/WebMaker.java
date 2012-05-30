@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -31,16 +32,19 @@ public class WebMaker {
     for (String f : files) {
       if (f.endsWith(".htm")) {
         String src = Utilities.fileToString(folders.dstDir+f);
+        if (src.contains("<!--archive-->")) {
+          src = src.replace("<!--archive-->", makeArchives());
+        }
         int i = src.indexOf("</body>");
         if (i > 0)
           src = src.substring(0, i) + google()+src.substring(i);
-//        try {
+        try {
           XhtmlDocument doc = new XhtmlParser().parse(src);
           replaceDownloadUrls(doc);
           new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f), doc);
-//        } catch (Exception e) {
-//          throw new Exception("exception processing: "+src+": "+e.getMessage());
-//        }
+        } catch (Exception e) {
+          throw new Exception("exception processing: "+src+": "+e.getMessage());
+        }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
       else if (!f.matches(Config.VERSION_REGEX))
@@ -52,13 +56,23 @@ public class WebMaker {
       f.delete();
     ZipGenerator zip = new ZipGenerator(folders.rootDir+"archive\\fhir-hl7-"+version+"-web.zip");
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator, "", null);
-    zip.addFiles(folders.dstDir+"v"+version+File.separator, "v"+version+File.separator, null);
     zip.close();  
     zip = new ZipGenerator(folders.rootDir+"archive"+File.separator+"fhir-hl7-"+version+"-dload.zip");
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
-    zip.addFiles(folders.dstDir+"v"+version+File.separator+"bin"+File.separator, "v"+version+File.separator, null);
     zip.close();  
     
+  }
+
+  private CharSequence makeArchives() {
+    IniFile ini = new IniFile(folders.rootDir+"publish.ini"); 
+    StringBuilder s = new StringBuilder();
+    s.append("<h2>Archived Versions of FHIR</h2>");
+    s.append("<ul>");
+    for (String v : ini.getPropertyNames("Archives")) {
+      s.append("<li><a href=\"\">Version "+v+", "+ini.getStringProperty("Archives", v)+"</a> todo: diff link </li>");
+    }
+    s.append("</ul>");
+    return s.toString();
   }
 
   private void replaceDownloadUrls(XhtmlNode node) {
