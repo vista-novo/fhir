@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Profile - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body style="margin: 20px">
+
+<h1>Profile</h1>
+<p>
+A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains.
+</p>
+<p>
+The relative url is /profiles
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="profile.png"/></p>
+
+<pre>
+&lt;<a title="A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains" class="dict" href="#Profile"><b>Profile</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Globally unique Profile Id (Must be a UUID)" class="dict" href="#Profile.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">fixed identifier for this profile (UUID)</font>&lt;/id&gt;
+  &lt;<a title="A free text natural language name identifying the Template." class="dict" href="#Profile.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Informal name for this profile</font>&lt;/name&gt;
+  &lt;<a title="Details of the author who accepts responsibility for publishing the profile" class="dict" href="#Profile.author"><b>author</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- (Organisation or individual) --&gt;</font>
+   &lt;<a title="The name of the author" class="dict" href="#Profile.author.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Name of the recognised author</font>&lt;/name&gt;
+   &lt;<a title="Reference to the author to assist a user in finding and communicating with the author" class="dict" href="#Profile.author.reference"><b>reference</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">Web reference to the author</font>&lt;/reference&gt;
+  &lt;/author&gt;
+  &lt;<a title="A free text natural language description of the intent and scope of the Template. The purpose is to provide the authorâ€™s initial intent for the Template in the language specified below." class="dict" href="#Profile.intention"><b>intention</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Why this profile was written</font>&lt;/intention&gt;
+  &lt;<a title="A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates" class="dict" href="#Profile.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Coding">Coding</a></font> <font color="navy">assist with indexing and finding</font>&lt;/code&gt;
+  &lt;<a title="A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc" class="dict" href="#Profile.description"><b>description</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">natural language description of the Template</font>&lt;/description&gt;
+  &lt;<a title="A description, reference or link to a published medical knowledge that was used in the definition of this Template" class="dict" href="#Profile.evidence"><b>evidence</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">Supporting evidence for the design</font>&lt;/evidence&gt;
+  &lt;<a title="A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention" class="dict" href="#Profile.comments"><b>comments</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Guidance for use, usage notes, etc</font>&lt;/comments&gt;
+  &lt;<a title="draft | testing | production | withdrawn | superceded" class="dict" href="#Profile.status"><b>status</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">draft | testing | production | withdrawn | superceded</font>&lt;/status&gt;
+  &lt;<a title="The date that the current value for publicationStatus was applied to the Template" class="dict" href="#Profile.date"><b>date</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">date for given status</font>&lt;/date&gt;
+  &lt;<a title="A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use." class="dict" href="#Profile.endorser"><b>endorser</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> (Organisation or individual) --&gt;</font>
+   &lt;<a title="The name of the endorsing body" class="dict" href="#Profile.endorser.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Name of the recognised endorser</font>&lt;/name&gt;
+   &lt;<a title="Reference to the author to assist a user in finding and communicating with the endorsing body" class="dict" href="#Profile.endorser.reference"><b>reference</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">Web reference to the endorser</font>&lt;/reference&gt;
+  &lt;/endorser&gt;
+  &lt;<a title="A free text description describing the changes in this version of the profile as compared to the previous version. " class="dict" href="#Profile.changes"><b>changes</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">notes about changes since last version</font>&lt;/changes&gt;
+  &lt;<a title="A template that is supercded by this template (maybe a  previous version)" class="dict" href="#Profile.supercedes"><b>supercedes</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">references to previous versions</font>&lt;/supercedes&gt;
+  &lt;<a title="Additional other profiles that apply to this conformance statement." class="dict" href="#Profile.profile"><b>profile</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">other profiles that apply (i.e. code binding rules)</font>&lt;/profile&gt;
+  &lt;<a title="Resource Type with constraints" class="dict" href="#Profile.resource"><b>resource</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="constraint.htm#Constraint">Constraint</a></font> <font color="navy">Resource Type with constraints</font>&lt;/resource&gt;
+  &lt;<a title="null" class="dict" href="#Profile.binding"><b>binding</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+   &lt;<a title="The name of the concept domain that this profile is declaring a constraint on" class="dict" href="#Profile.binding.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">concept domain name</font>&lt;/name&gt;
+   &lt;<a title="The form of the binding" class="dict" href="#Profile.binding.type"><b>type</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">binding type</font>&lt;/type&gt;
+   &lt;<a title="extra details - see notes" class="dict" href="#Profile.binding.details"><b>details</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">extra details - see notes</font>&lt;/details&gt;
+   &lt;<a title="source of binding content" class="dict" href="#Profile.binding.reference"><b>reference</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">source of binding content</font>&lt;/reference&gt;
+   &lt;<a title="enumerated codes that are the binding" class="dict" href="#Profile.binding.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Coding">Coding</a></font> <font color="navy">enumerated codes that are the binding</font>&lt;/code&gt;
+  &lt;/binding&gt;
+  &lt;<a title="See Extensions" class="dict" href="#Profile.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title="Text summary of resource profile for human interpretation" class="dict" href="#Profile.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource profile for human interpretation</font>&lt;/text&gt;
+&lt;/Profile&gt;
+</pre>
+
+
+<p><a href="profile.xsd">Schema for Profile</a> and <a href="profile.xml">an example</a> (or <a href="profile.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Profile.status is  bound to the concept domain <i>ResourceProfileStatus</i>: &quot;The lifecycle status of a Resource Profile&quot;. Possible values:
+    <table class="codes">
+    <tr><td>draft</td><td colspan="2">This profile is still under development</td></tr>    <tr><td>testing</td><td colspan="2">this profile was authored for testing purposes (or education/evaluation/evangelisation)</td></tr>    <tr><td>production</td><td colspan="2">This profile is ready for use in production systems</td></tr>    <tr><td>withdrawn</td><td colspan="2">This profile has been withdrawn</td></tr>    <tr><td>superceded</td><td colspan="2">This profile was superceded by a more recent version</td></tr>    </table>
+  </li>
+  <li>Profile.binding.type is  bound to the concept domain <i>ConceptBindingType</i>: &quot;The type of a binding for a concept domain&quot;. Possible values:
+    <table class="codes">
+    <tr><td>Unbound</td><td colspan="2">The concept domain is not bound to anything</td></tr>    <tr><td>CodeList</td><td colspan="2">The concept domain is bound to a list of supplied codes - only those codes are allowed</td></tr>    <tr><td>Reference</td><td colspan="2">The concept domain references some external definition by a provided reference</td></tr>    <tr><td>Preferred</td><td colspan="2">The concept domain references a set of preferred terms</td></tr>    <tr><td>Suggestion</td><td colspan="2">This profile was superceded by a more recent version</td></tr>    <tr><td>External</td><td colspan="2">The concept domain is defined by an external authority identified in the reference</td></tr>    </table>
+  </li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc (USA), Allergy List)</li>
+<li>Multiple codes may be assigned to the profile. These may either describe the template, or the focus of the template, or both. They are solely to help find the profile by searching for structured concepts</li>
+<li>If other profiles are referenced, then any constraints in those profiles also apply to this profile. If a resource or binding is 
+found in this profile, the constraints described must include all the constraints found in the referenced profiles, so 
+that it is not necessary to search the referenced profiles and merge the constraints. The primary use of referencing other 
+profiles is to re-use concept binding constraints</li>
+</ul>  
+
+
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for Resource Profiles:
+</p>
+<table class="list">
+  <tr><td>name   </td><td>a portion of the name of the resource</td></tr>
+  <tr><td>author </td><td>name or id of the author</td></tr>
+  <tr><td>code   </td><td>a code in the format uri::code</td></tr>
+  <tr><td>status </td><td>a status of the profile</td></tr>
+  <tr><td>type   </td><td>type of resource that is constrained in the profile</td></tr>
+  <tr><td>domain </td><td>concept domain that is constrained in the resource</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="profile.dict.xml">an XML file</a></p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile"> </a><b>Profile</b></td></tr>
+  <tr><td>Definition</td><td>A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Comments</td><td>Often called a clinical template</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.id"> </a><b>Profile.id</b></td></tr>
+  <tr><td>Definition</td><td>Globally unique Profile Id (Must be a UUID)</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.name"> </a><b>Profile.name</b></td></tr>
+  <tr><td>Definition</td><td>A free text natural language name identifying the Template.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td>Comments</td><td>Not expected to be unique</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.author"> </a><b>Profile.author</b></td></tr>
+  <tr><td>Definition</td><td>Details of the author who accepts responsibility for publishing the profile</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Comments</td><td>Usually an organisation, but may be an individual</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.author.name"> </a><b>Profile.author.name</b></td></tr>
+  <tr><td>Definition</td><td>The name of the author</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.author.reference"> </a><b>Profile.author.reference</b></td></tr>
+  <tr><td>Definition</td><td>Reference to the author to assist a user in finding and communicating with the author</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td>Comments</td><td>may be a web site, an email address, a telephone number</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.intention"> </a><b>Profile.intention</b></td></tr>
+  <tr><td>Definition</td><td>A free text natural language description of the intent and scope of the Template. The purpose is to provide the authorâ€™s initial intent for the Template in the language specified below.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.code"> </a><b>Profile.code</b></td></tr>
+  <tr><td>Definition</td><td>A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>Coding</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.description"> </a><b>Profile.description</b></td></tr>
+  <tr><td>Definition</td><td>A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.evidence"> </a><b>Profile.evidence</b></td></tr>
+  <tr><td>Definition</td><td>A description, reference or link to a published medical knowledge that was used in the definition of this Template</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.comments"> </a><b>Profile.comments</b></td></tr>
+  <tr><td>Definition</td><td>A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.status"> </a><b>Profile.status</b></td></tr>
+  <tr><td>Definition</td><td>draft | testing | production | withdrawn | superceded</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from ResourceProfileStatus</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.date"> </a><b>Profile.date</b></td></tr>
+  <tr><td>Definition</td><td>The date that the current value for publicationStatus was applied to the Template</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.endorser"> </a><b>Profile.endorser</b></td></tr>
+  <tr><td>Definition</td><td>A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.endorser.name"> </a><b>Profile.endorser.name</b></td></tr>
+  <tr><td>Definition</td><td>The name of the endorsing body</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.endorser.reference"> </a><b>Profile.endorser.reference</b></td></tr>
+  <tr><td>Definition</td><td>Reference to the author to assist a user in finding and communicating with the endorsing body</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.changes"> </a><b>Profile.changes</b></td></tr>
+  <tr><td>Definition</td><td>A free text description describing the changes in this version of the profile as compared to the previous version. </td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: This field must be populated if the template is not the first version.</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.supercedes"> </a><b>Profile.supercedes</b></td></tr>
+  <tr><td>Definition</td><td>A template that is supercded by this template (maybe a  previous version)</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.profile"> </a><b>Profile.profile</b></td></tr>
+  <tr><td>Definition</td><td>Additional other profiles that apply to this conformance statement.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td>Comments</td><td> Generally these profiles make  constraints on the bindings of concept domains / value sets</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.resource"> </a><b>Profile.resource</b></td></tr>
+  <tr><td>Definition</td><td>Resource Type with constraints</td></tr>
+  <tr><td>Control</td><td>Mandatory, 0..*</td></tr>
+  <tr><td>Type</td><td>Constraint</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding"> </a><b>Profile.binding</b></td></tr>
+  <tr><td>Control</td><td>Mandatory, 0..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding.name"> </a><b>Profile.binding.name</b></td></tr>
+  <tr><td>Definition</td><td>The name of the concept domain that this profile is declaring a constraint on</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding.type"> </a><b>Profile.binding.type</b></td></tr>
+  <tr><td>Definition</td><td>The form of the binding</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from ConceptBindingType</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding.details"> </a><b>Profile.binding.details</b></td></tr>
+  <tr><td>Definition</td><td>extra details - see notes</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: May be required depending on the value of binding.type</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding.reference"> </a><b>Profile.binding.reference</b></td></tr>
+  <tr><td>Definition</td><td>source of binding content</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: May be required depending on the value of binding.type</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.binding.code"> </a><b>Profile.binding.code</b></td></tr>
+  <tr><td>Definition</td><td>enumerated codes that are the binding</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..*: May be required depending on the value of binding.type</td></tr>
+  <tr><td>Type</td><td>Coding</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.extensions"> </a><b>Profile.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Profile.text"> </a><b>Profile.text</b></td></tr>
+  <tr><td>Definition</td><td>Text summary of resource profile for human interpretation</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+
+   
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

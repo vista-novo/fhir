@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on Mon, May 14, 2012 09:48+1000 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="LabReport" type="LabReport">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="LabReport">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="status" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The status of the pathology test result as a whole</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="LabReportStatus">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="issued" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date and/or time that the result was issued from the source for the recorded ‘Test result status</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="instant">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="patient" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The patient about who the report is about</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="admission" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The admission that this diagnostic investigation is associated with</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="laboratory" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The laboratory service that issued the report</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="reportId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="requestDetail" type="LabReport.RequestDetail" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Details concerning a single pathology test requested.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="reportName" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identification of the pathology test performed, sometimes including specimen type.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="service" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The diagnostic service that performs the examination e.g. biochemistry, haematology.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="diagnosticTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The diagnostically relevant time for this report</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="specimen" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Details about the specimen if all individual test results are derived from the same specimen</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="resultGroup" type="LabReport.ResultGroup" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="conclusion" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Concise and clinically contextualised narrative interpretation of the pathology test results.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Narrative">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="codedDiagnosis" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Codes for the conclusion</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="representation" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Attachment">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of report, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LabReport.RequestDetail">
+    <xs:sequence>
+      <xs:element name="requestOrderId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The local ID assigned to the order by the order requester.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Identifier">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="receiverOrderId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Identifier">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="requestTest" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Identification of pathology test requested,</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="requester" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Details of the clinician or organisation requesting the laboratory test.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="clinicalInfo" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Details of the clinical information provided to the laboratory along with the original request</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LabReport.ResultGroup">
+    <xs:sequence>
+      <xs:element name="name" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A code or name that describes the group of results</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="specimen" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Details about the individual specimen to which these ‘Result group’ test results refer, where testing of multiple specimens is required.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="result" type="LabReport.Result" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LabReport.Result">
+    <xs:sequence>
+      <xs:element name="name" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifies the meaning of the value</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="1" >
+        <xs:annotation>
+          <xs:documentation>Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images</xs:documentation>
+        </xs:annotation>
+        <xs:element name="valueQuantity" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Quantity">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueCodeableConcept" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="CodeableConcept">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueAttachment" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Attachment">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueRatio" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Ratio">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueChoice" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Choice">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueInterval" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Interval_DateTime">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="valueString" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="string">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:element name="flag" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Flag indicating the abnormal status of the result</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="LabResultFlag">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="status" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The status of the result value</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="LabReportStatus">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="comments" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="referenceRange" type="LabReport.ReferenceRange" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Guidance on how to interpret the value by comparison to a normal or recommended range</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LabReport.ReferenceRange">
+    <xs:sequence>
+      <xs:element name="meaning" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Code for the meaning of the reference range</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:choice minOccurs="1" maxOccurs="1" >
+        <xs:annotation>
+          <xs:documentation>Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</xs:documentation>
+        </xs:annotation>
+        <xs:element name="rangeQuantity" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Quantity">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rangeInterval" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Interval_Quantity">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rangeString" >
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="string">
+                <xs:attributeGroup ref="dataAbsentReason"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LabResultFlag">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="-">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="--">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="---">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="+">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="++">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="+++">
+          <xs:annotation>
+            <xs:documentation></xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="LabReportStatus">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="registered">
+          <xs:annotation>
+            <xs:documentation>The existence of the result is registered, but there is no result yet available</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="interim">
+          <xs:annotation>
+            <xs:documentation>This is an initial or interim result: data may be missing or verification not been performed</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="final">
+          <xs:annotation>
+            <xs:documentation>The result is complete and verified by the responsible pathologist</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="amended">
+          <xs:annotation>
+            <xs:documentation>The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="cancelled">
+          <xs:annotation>
+            <xs:documentation>The result is unavailable because the test was not started or not completed (also sometimes called aborted)</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="withdrawn">
+          <xs:annotation>
+            <xs:documentation>The result has been withdrawn following previous Final release</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

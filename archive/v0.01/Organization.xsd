@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on Mon, May 14, 2012 09:48+1000 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Organization" type="Organization">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Organization">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Identifier for the organization that is used to identify the organization across multiple disparate systems</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="HumanId">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="name" type="Organization.Name" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A name associated with the organization</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An address for the organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Address">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A contact detail for the organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Contact">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="code" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The kind of organization that this is</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="industryCode" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The industry that this organization is involved in</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="accreditation" type="Organization.Accreditation" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="relatedOrganization" type="Organization.RelatedOrganization" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of organization, fall back for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Organization.Name">
+    <xs:sequence>
+      <xs:element name="value" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The actual name of the organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="period" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The period that this name was in use by the organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Interval_Date">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Organization.Accreditation">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The identifier of the accreditation</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Identifier">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="code" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of the accreditation</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="institution" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The organization that confered/confers the accreditation</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="period" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The period for which the accreditation is held</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Interval_Date">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Organization.RelatedOrganization">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="HumanId">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="code" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Code that specifies how this organization is related to the subject. A code is required.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="name" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A name should be specified for the related organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="address" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Postal addresses may be provided for the related organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Address">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="contact" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Contact details (phone, email etc) may be provided for the related organization</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Contact">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="period" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The period during which the organizations were related in this fashion</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="Interval_Date">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

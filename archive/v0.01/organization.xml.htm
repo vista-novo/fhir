@@ -1,0 +1,63 @@
+<html>
+<head>
+ <title>Example Instance for Organization</title>
+ <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+<body>
+<pre class="xml">
+<span class="xmltag">&lt;Organization</span><span class="xmlattr"> xmlns=&quot;http://www.hl7.org/fhir&quot;</span><span class="xmltag">&gt;</span><b>
+  </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>34234</b><span class="xmltag">&lt;/id&gt;</span><b>
+
+  </b><span class="xmlcomment">&lt;!--   Clinical Team &quot;Gastroenterology&quot; at Acme Hospital   --&gt;</span><b>
+  </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>http://www.acme.org.au/units</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>Gastro</b><span class="xmltag">&lt;/id&gt;</span><b>
+    </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+    </b><span class="xmltag">&lt;assigner</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>Acme Healthcare</b><span class="xmltag">&lt;/text&gt;</span><b>
+    </b><span class="xmltag">&lt;/assigner&gt;</span><b>
+  </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+
+  </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Gastroenterology</b><span class="xmltag">&lt;/value&gt;</span><b>
+  </b><span class="xmltag">&lt;/name&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;contact</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>phone</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>+1 555 234 3523</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>mobile</b><span class="xmltag">&lt;/use&gt;</span><b>
+  </b><span class="xmltag">&lt;/contact&gt;</span><b>
+  </b><span class="xmltag">&lt;contact</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>email</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>gastro@acme.org</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>work</b><span class="xmltag">&lt;/use&gt;</span><b>
+  </b><span class="xmltag">&lt;/contact&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;relatedOrganization</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>  
+      </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>TERR</b><span class="xmltag">&lt;/code&gt;</span><b>
+        </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>oid:2.16.840.1.113883.5.110</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;/coding&gt;</span><b>
+    </b><span class="xmltag">&lt;/code&gt;</span><b>
+    </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>Acme Hospital</b><span class="xmltag">&lt;/name&gt;</span><b>
+  </b><span class="xmltag">&lt;/relatedOrganization&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;status</span><span class="xmltag">&gt;</span><b>generated</b><span class="xmltag">&lt;/status&gt;</span><b>
+    </b><span class="xmltag">&lt;div</span><span class="xmlattr"> xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;p</span><span class="xmltag">&gt;</span><b>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: </b><span class="xmltag">&lt;a</span><span class="xmlattr"> href=&quot;mailto:gastro@acme.org&quot;</span><span class="xmltag">&gt;</span><b>gastro@acme.org</b><span class="xmltag">&lt;/a&gt;</span><span class="xmltag">&lt;/p&gt;</span><b>
+    </b><span class="xmltag">&lt;/div&gt;</span><b>
+  </b><span class="xmltag">&lt;/text&gt;</span><b>
+</b><span class="xmltag">&lt;/Organization&gt;</span></pre>
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

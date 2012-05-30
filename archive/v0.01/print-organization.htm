@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Organization - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body style="margin: 20px">
+
+<h1>Organization</h1>
+<p>
+For any organization/institution/government department that has relevance to the care process.
+</p>
+<p>
+The relative url is /organizations
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="organization.png"/></p>
+
+<pre>
+&lt;<a title="For any organization/institution/government department that has relevance to the care process" class="dict" href="#Organization"><b>Organization</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#Organization.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;<a title="Identifier for the organization that is used to identify the organization across multiple disparate systems" class="dict" href="#Organization.identifier"><b>identifier</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#HumanId">HumanId</a></font> <font color="navy">Identifier for this organization</font>&lt;/identifier&gt;
+  &lt;<a title="A name associated with the organization" class="dict" href="#Organization.name"><b>name</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+   &lt;<a title="The actual name of the organization" class="dict" href="#Organization.name.value"><b>value</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">A name associated with the organization</font>&lt;/value&gt;
+   &lt;<a title="The period that this name was in use by the organization" class="dict" href="#Organization.name.period"><b>period</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="date.htm#date">date</a>)</font> <font color="navy">When this name is/was in use</font>&lt;/period&gt;
+  &lt;/name&gt;
+  &lt;<a title="An address for the organization" class="dict" href="#Organization.address"><b>address</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Address">Address</a></font> <font color="navy">An address for the organization</font>&lt;/address&gt;
+  &lt;<a title="A contact detail for the organization" class="dict" href="#Organization.contact"><b>contact</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Contact">Contact</a></font> <font color="navy">A contact detail for the organization</font>&lt;/contact&gt;
+  &lt;<a title="The kind of organization that this is" class="dict" href="#Organization.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">kind of organisation</font>&lt;/code&gt;
+  &lt;<a title="The industry that this organization is involved in" class="dict" href="#Organization.industryCode"><b>industryCode</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">kind of industry</font>&lt;/industryCode&gt;
+  &lt;<a title="The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment" class="dict" href="#Organization.accreditation"><b>accreditation</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+   &lt;<a title="The identifier of the accreditation" class="dict" href="#Organization.accreditation.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></font> <font color="navy">Identifier for the accreditation</font>&lt;/id&gt;
+   &lt;<a title="The type of the accreditation" class="dict" href="#Organization.accreditation.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">What kind of accreditation</font>&lt;/code&gt;
+   &lt;<a title="The organization that confered/confers the accreditation" class="dict" href="#Organization.accreditation.institution"><b>institution</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">Who conferred it</font>&lt;/institution&gt;
+   &lt;<a title="The period for which the accreditation is held" class="dict" href="#Organization.accreditation.period"><b>period</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="date.htm#date">date</a>)</font> <font color="navy">When the accreditation is valid</font>&lt;/period&gt;
+  &lt;/accreditation&gt;
+  &lt;<a title="Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)" class="dict" href="#Organization.relatedOrganization"><b>relatedOrganization</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> sub-, super-, and partner organisations --&gt;</font>
+   &lt;<a title="Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier" class="dict" href="#Organization.relatedOrganization.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#HumanId">HumanId</a></font> <font color="navy">Identifier for the organization</font>&lt;/id&gt;
+   &lt;<a title="Code that specifies how this organization is related to the subject. A code is required." class="dict" href="#Organization.relatedOrganization.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">How the organizations are related</font>&lt;/code&gt;
+   &lt;<a title="A name should be specified for the related organization" class="dict" href="#Organization.relatedOrganization.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Name of the organization</font>&lt;/name&gt;
+   &lt;<a title="Postal addresses may be provided for the related organization" class="dict" href="#Organization.relatedOrganization.address"><b>address</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Address">Address</a></font> <font color="navy">An address for the organization</font>&lt;/address&gt;
+   &lt;<a title="Contact details (phone, email etc) may be provided for the related organization" class="dict" href="#Organization.relatedOrganization.contact"><b>contact</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Contact">Contact</a></font> <font color="navy">General contact details for the organization</font>&lt;/contact&gt;
+   &lt;<a title="The period during which the organizations were related in this fashion" class="dict" href="#Organization.relatedOrganization.period"><b>period</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="date.htm#date">date</a>)</font> <font color="navy">When the organizations were related</font>&lt;/period&gt;
+  &lt;/relatedOrganization&gt;
+  &lt;<a title="See Extensions" class="dict" href="#Organization.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title="Text summary of organization, fall back for human interpretation" class="dict" href="#Organization.text"><b>text</b></a>&gt; <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of organization, fall back for human interpretation</font>&lt;/text&gt;
+&lt;/Organization&gt;
+</pre>
+
+
+<p><a href="organization.xsd">Schema for Organization</a> and <a href="organization.xml">an example</a> (or <a href="organization.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Organization.code is  bound to the concept domain <i>OrganisationType</i>: &quot;The type of an organisation&quot;. A good candidate for codes is SNOMED-CT, and the HL7 v3 Entity Code table</li>
+  <li>Organization.industryCode is  bound to the concept domain <i>Industry</i>: &quot;Code for the type of industry&quot;. For example values, see HL7 v3 OrganizationIndustryClass value set</li>
+  <li>Organization.accreditation.code is  bound to the concept domain <i>Accreditation</i>: &quot;Accreditations an organization may be granted&quot;</li>
+  <li>Organization.relatedOrganization.code is  bound to the concept domain <i>OrganizationRelationship</i>: &quot;The relationship an organization has to the subject, including sub and super organizations, and other kind of relationships such as partner organisations&quot;</li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The organization references are all optional, so can be replaced by simple text rather than a full resource reference</li>
+</ul>
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for organization:
+</p>
+<table class="list">
+  <tr><td>name       </td><td>a portion of name in any name part</td></tr>
+  <tr><td>phonetic   </td><td>a portion of name using some kind of phonetic matching algorithm</td></tr>
+  <tr><td>id         </td><td>search id in any identifiers</td></tr>
+  <tr><td/><td/></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="organization.dict.xml">an XML file</a></p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization"> </a><b>Organization</b></td></tr>
+  <tr><td>Definition</td><td>For any organization/institution/government department that has relevance to the care process</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>RIM Mapping</td><td>Organization(classCode=ORG, determinerCode=INST)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.id"> </a><b>Organization.id</b></td></tr>
+  <tr><td>Definition</td><td>Master Resource Id, always first in all resources</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>RIM Mapping</td><td>.id(scope=OBJ)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.identifier"> </a><b>Organization.identifier</b></td></tr>
+  <tr><td>Definition</td><td>Identifier for the organization that is used to identify the organization across multiple disparate systems</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>HumanId</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</td></tr>
+  <tr><td>RIM Mapping</td><td>.scopes[Role](classCode=IDENT)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.name"> </a><b>Organization.name</b></td></tr>
+  <tr><td>Definition</td><td>A name associated with the organization</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to use the name as the label of the organization</td></tr>
+  <tr><td>Comments</td><td>Don't use HumanName since that has many non-organization things in it</td></tr>
+  <tr><td>RIM Mapping</td><td>.name</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.name.value"> </a><b>Organization.name.value</b></td></tr>
+  <tr><td>Definition</td><td>The actual name of the organization</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>RIM Mapping</td><td>.part[1](type=NULL,qualifier=NULL).value</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.name.period"> </a><b>Organization.name.period</b></td></tr>
+  <tr><td>Definition</td><td>The period that this name was in use by the organization</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Interval(date)</td></tr>
+  <tr><td>Requirements</td><td>Organizations have a habit of renaming themselves, and the current and past names are required</td></tr>
+  <tr><td>RIM Mapping</td><td>.validTime</td></tr>
+  <tr><td>To Do</td><td>This is 80%??</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.address"> </a><b>Organization.address</b></td></tr>
+  <tr><td>Definition</td><td>An address for the organization</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Address</td></tr>
+  <tr><td>Requirements</td><td>May need to keep track of the organizations addresses for contacting, billing or reporting requirements</td></tr>
+  <tr><td>Comments</td><td>Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used</td></tr>
+  <tr><td>RIM Mapping</td><td>.address</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.contact"> </a><b>Organization.contact</b></td></tr>
+  <tr><td>Definition</td><td>A contact detail for the organization</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Contact</td></tr>
+  <tr><td>Requirements</td><td>Human contact for the organization</td></tr>
+  <tr><td>Comments</td><td>The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself</td></tr>
+  <tr><td>RIM Mapping</td><td>.telecom</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.code"> </a><b>Organization.code</b></td></tr>
+  <tr><td>Definition</td><td>The kind of organization that this is</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from OrganisationType</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track the kind of organization that this is - different organization types have different uses</td></tr>
+  <tr><td>Comments</td><td>Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</td></tr>
+  <tr><td>RIM Mapping</td><td>.code</td></tr>
+  <tr><td>To Do</td><td>Name code is too RIM-like.  Should be typeCode or type.</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.industryCode"> </a><b>Organization.industryCode</b></td></tr>
+  <tr><td>Definition</td><td>The industry that this organization is involved in</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from Industry</td></tr>
+  <tr><td>Requirements</td><td>For some organization types, an industry code is required for statistical reporting requirements</td></tr>
+  <tr><td>RIM Mapping</td><td>.standardIndustryClassCode</td></tr>
+  <tr><td>To Do</td><td>Is this really in the 80%??</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.accreditation"> </a><b>Organization.accreditation</b></td></tr>
+  <tr><td>Definition</td><td>The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Requirements</td><td>For many persons in healthcare, it is necessary to track the qualifications a person has - formal.</td></tr>
+  <tr><td>RIM Mapping</td><td>.plays[Role](classCode='QUAL')</td></tr>
+  <tr><td>To Do</td><td>Not sure if qualified &amp; accredited are the same.  Could potentially propose a new classCode</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.accreditation.id"> </a><b>Organization.accreditation.id</b></td></tr>
+  <tr><td>Definition</td><td>The identifier of the accreditation</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Identifier</td></tr>
+  <tr><td>Requirements</td><td>Allows a link back to a accreditation registry, if one exists</td></tr>
+  <tr><td>RIM Mapping</td><td>.identifier</td></tr>
+  <tr><td>To Do</td><td>Not a humanId?</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.accreditation.code"> </a><b>Organization.accreditation.code</b></td></tr>
+  <tr><td>Definition</td><td>The type of the accreditation</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from Accreditation</td></tr>
+  <tr><td>Requirements</td><td>commonly used to determine the roles an  organization may perform</td></tr>
+  <tr><td>RIM Mapping</td><td>.code</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.accreditation.institution"> </a><b>Organization.accreditation.institution</b></td></tr>
+  <tr><td>Definition</td><td>The organization that confered/confers the accreditation</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Organization)</td></tr>
+  <tr><td>Requirements</td><td>May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</td></tr>
+  <tr><td>RIM Mapping</td><td>.scopedBy[Organization]</td></tr>
+  <tr><td>To Do</td><td>Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.accreditation.period"> </a><b>Organization.accreditation.period</b></td></tr>
+  <tr><td>Definition</td><td>The period for which the accreditation is held</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Interval(date)</td></tr>
+  <tr><td>Requirements</td><td>Most accreditations are only conferred for a limited time period and must be re-acquired or forfeited</td></tr>
+  <tr><td>RIM Mapping</td><td>.effectiveTime[IVL&lt;TS&gt;]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization"> </a><b>Organization.relatedOrganization</b></td></tr>
+  <tr><td>Definition</td><td>Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track many kinds of organizational relationships and use to determine roles and mediate workflows</td></tr>
+  <tr><td>To Do</td><td>There's no reason why this wouldn't point to another resource.  Will map when updated accordingly.</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.id"> </a><b>Organization.relatedOrganization.id</b></td></tr>
+  <tr><td>Definition</td><td>Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>HumanId</td></tr>
+  <tr><td>Requirements</td><td>may have an identifier for the organization that can be used to source contact details</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.code"> </a><b>Organization.relatedOrganization.code</b></td></tr>
+  <tr><td>Definition</td><td>Code that specifies how this organization is related to the subject. A code is required.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from OrganizationRelationship</td></tr>
+  <tr><td>Requirements</td><td>Need to know how the organization is related</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.name"> </a><b>Organization.relatedOrganization.name</b></td></tr>
+  <tr><td>Definition</td><td>A name should be specified for the related organization</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.address"> </a><b>Organization.relatedOrganization.address</b></td></tr>
+  <tr><td>Definition</td><td>Postal addresses may be provided for the related organization</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Address</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.contact"> </a><b>Organization.relatedOrganization.contact</b></td></tr>
+  <tr><td>Definition</td><td>Contact details (phone, email etc) may be provided for the related organization</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Contact</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.relatedOrganization.period"> </a><b>Organization.relatedOrganization.period</b></td></tr>
+  <tr><td>Definition</td><td>The period during which the organizations were related in this fashion</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Interval(date)</td></tr>
+  <tr><td>Requirements</td><td>Organization relationships are changing all the time</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.extensions"> </a><b>Organization.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>RIM Mapping</td><td>[varies]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Organization.text"> </a><b>Organization.text</b></td></tr>
+  <tr><td>Definition</td><td>Text summary of organization, fall back for human interpretation</td></tr>
+  <tr><td>Control</td><td>1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+  <tr><td>To Do</td><td>.text</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+
+   
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

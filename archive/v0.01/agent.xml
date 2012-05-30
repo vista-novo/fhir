@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><Agent xmlns="http://www.hl7.org/fhir">
+  <id>1</id>
+	
+  <person>
+    <type>Person</type>
+    <id>32344</id>  
+  </person> 
+  <organization>
+    <type>Organization</type>
+    <id>3</id>  
+  </organization> 
+
+  <!--  Referring Provider for the first 3 months of 2012  -->
+  <role>
+    <coding>
+      <code>RP</code>
+      <system>urn:hl7-org:sid/v2-0286</system>
+    </coding>
+  </role>
+  
+  <period>
+    <low>2012-01-01</low>
+    <high>2012-03-31</high>
+  </period>
+  
+  <identifier>
+    <identifier>  
+      <system>htp://www.acme.org/providers</system>
+      <id>23</id>
+    </identifier>
+  </identifier>
+
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</p>
+    </div>
+  </text>
+</Agent>

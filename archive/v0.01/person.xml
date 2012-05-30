@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><Person xmlns="http://www.hl7.org/fhir">
+  <id>34234</id>
+	
+  <!--  MRN assigned by ACME healthcare on 6-May 2001  -->
+  <identifier>
+    <type>
+      <code>MR</code>
+      <system>urn:hl7-org:sid/v2-0203</system>
+    </type>
+    <identifier>
+      <system>oid:1.2.36.146.595.217.0.1</system>
+      <id>12345</id>	    
+    </identifier>
+    <period>
+      <low>2001-05-06</low>
+    </period>
+    <assigner>
+      <text>Acme Healthcare</text>
+    </assigner>
+  </identifier>
+
+  <!--  Peter James Chalmers, but called "Jim"  -->
+  <name>
+    <use>official</use>
+    <part>
+      <type>given</type>
+      <value>Peter</value>
+    </part>
+    <part>
+      <type>given</type>
+      <value>James</value>
+    </part>
+    <part>
+      <type>family</type>
+      <value>Chalmers</value>
+    </part>
+  </name>
+  <name>
+    <use>usual</use>
+    <part>
+      <type>given</type>
+      <value>Jim</value>
+    </part>
+  </name>
+  
+  
+  <address>
+    <use>home</use>
+    <part>
+      <type>line</type>
+      <value>534 Erewhon St</value>
+    </part>
+    <part>
+      <type>city</type>
+      <value>PleasantVille</value>
+    </part>
+    <part>
+      <type>state</type>
+      <value>Vic</value>
+    </part>
+    <part>
+      <type>zip</type>
+      <value>3999</value>
+    </part>
+  </address>
+
+  <contact dataAbsentReason="unknown">
+    <use>home</use>
+  </contact>
+  <contact>
+    <system>phone</system>
+    <value>(03) 5555 6473</value>
+    <use>work</use>
+  </contact>
+
+  <dob>1974-12-25</dob> 
+	
+	<text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>Peter James <b>Chalmers</b> (&quot;Jim&quot;)</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>534 Erewhon, Pleasantville, Vic, 3999</td>
+          </tr>
+          <tr>
+            <td>Contacts</td>
+            <td>Home: unknown. Work: (03) 5555 6473</td>
+          </tr>
+          <tr>
+            <td>Id</td>
+            <td>MRN: 12345 (Acme Healthcare)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </text>
+</Person>

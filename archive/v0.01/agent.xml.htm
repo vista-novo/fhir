@@ -1,0 +1,56 @@
+<html>
+<head>
+ <title>Example Instance for Agent</title>
+ <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+<body>
+<pre class="xml">
+<span class="xmltag">&lt;Agent</span><span class="xmlattr"> xmlns=&quot;http://www.hl7.org/fhir&quot;</span><span class="xmltag">&gt;</span><b>
+  </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/id&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;person</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>Person</b><span class="xmltag">&lt;/type&gt;</span><b>
+    </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>32344</b><span class="xmltag">&lt;/id&gt;</span><b>  
+  </b><span class="xmltag">&lt;/person&gt;</span><b> 
+  </b><span class="xmltag">&lt;organization</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>Organization</b><span class="xmltag">&lt;/type&gt;</span><b>
+    </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>3</b><span class="xmltag">&lt;/id&gt;</span><b>  
+  </b><span class="xmltag">&lt;/organization&gt;</span><b> 
+
+  </b><span class="xmlcomment">&lt;!--   Referring Provider for the first 3 months of 2012   --&gt;</span><b>
+  </b><span class="xmltag">&lt;role</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>RP</b><span class="xmltag">&lt;/code&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>urn:hl7-org:sid/v2-0286</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;/coding&gt;</span><b>
+  </b><span class="xmltag">&lt;/role&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;period</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;low</span><span class="xmltag">&gt;</span><b>2012-01-01</b><span class="xmltag">&lt;/low&gt;</span><b>
+    </b><span class="xmltag">&lt;high</span><span class="xmltag">&gt;</span><b>2012-03-31</b><span class="xmltag">&lt;/high&gt;</span><b>
+  </b><span class="xmltag">&lt;/period&gt;</span><b>
+  
+  </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>  
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>htp://www.acme.org/providers</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>23</b><span class="xmltag">&lt;/id&gt;</span><b>
+    </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+  </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+
+  </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;status</span><span class="xmltag">&gt;</span><b>generated</b><span class="xmltag">&lt;/status&gt;</span><b>
+    </b><span class="xmltag">&lt;div</span><span class="xmlattr"> xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;p</span><span class="xmltag">&gt;</span><b>Dr Adam Careful is a Referring Provider for Acme Hospital from 1-Jan 2012 to 31-Mar 2012</b><span class="xmltag">&lt;/p&gt;</span><b>
+    </b><span class="xmltag">&lt;/div&gt;</span><b>
+  </b><span class="xmltag">&lt;/text&gt;</span><b>
+</b><span class="xmltag">&lt;/Agent&gt;</span></pre>
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

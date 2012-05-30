@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>LabReport - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body>
+<div class="header">
+  <a title="Fast Healthcare Interoperability Resources - Home Page" href="http://www.hl7.org/fhir"><img style="vertical-align: text-bottom" src="flame16.png"/> <b>FHIR</b></a>
+ 
+  © HL7.org 2011-2012
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="print-labreport.htm"><b>Printable Version </b></a>
+  &nbsp;
+  &nbsp;
+  <a href="http://wiki.hl7.org/index.php?title=FHIR_LabReport_Page"><b>Wiki for this page</b></a> &nbsp;
+  <!-- -  <a href="authoring.htm">Authoring Guidelines</a>  -->
+  <br/>
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+  
+</div>
+<div class="sidebar">
+  <h2>Infrastructure</h2>
+  <ul>
+   <li><a href="introduction.htm">Introduction</a></li>
+   <li><a href="xml.htm">Resource Format</a></li>
+   <li><a href="datatypes.htm">Data Types</a></li>
+   <li style="display: none"><a href="mixins.htm">Mixins</a></li>
+   <li><a href="terminologies.htm">Terminologies</a></li>
+   <li><a href="extensibility.htm">Extensibility</a></li>
+   <li><a href="constraint.htm">Constraint</a></li>
+  </ul> 
+
+  <h2>Exchange</h2>
+  <ul>
+   <li><a href="implementation.htm">Implementation</a></li>
+   <li><a href="atom.htm">Aggregations</a></li>
+   <li><a href="http.htm">REST (HTTP)</a></li>
+   <li style="display: none"><a href="conformance.htm">RESTful Conformance Statement</a></li>
+   <li><a href="messaging.htm">Messaging</a></li>
+   <li style="display: none"><a href="message.htm">Message Resource</a></li>
+   <li style="display: none"><a href="messageconformance.htm">Messaging Conformance Statement</a></li>
+   <li><a href="documents.htm">Documents</a></li>
+   <li style="display: none"><a href="documentconformance.htm">Document Conformance Statement</a></li>
+   <li><a href="hdata.htm">hData Integration</a></li>
+   <li><a href="profile.htm">Resource Profile</a></li>
+  </ul> 
+
+  <h2>Administrative Resources</h2>
+  <ul>
+   <li><a href="person.htm">Person</a></li>
+   <li><a href="animal.htm">Animal</a></li>
+   <li><a href="organization.htm">Organization</a></li>
+   <li><a href="agent.htm">Agent</a></li>
+   <li><a href="patient.htm">Patient</a></li>
+   <li><a href="document.htm">Document</a></li>
+   <li>Clinics</li>
+   <li>Admissions</li>
+   <li>Appointments</li>
+   <li>InterestOfCare</li>
+   <li>Transfers</li>
+  </ul> 
+  <h2>Clinical Components</h2>
+  <ul>
+   <li>Vitals etc</li>
+   <li><a href="labreport.htm">Lab Report</a></li>
+   <li>Imaging Report</li>
+   <li>Alert</li>
+   <li>Procedure </li>
+   <li>Consultation</li>
+   <li>Problem</li>
+   <li>Immunization</li>
+   <li>Diet</li>
+   <li>Implant</li>
+  </ul> 
+  <h2>Medications</h2>
+  <ul>
+   <li>Instruction</li>
+   <li><a href="prescription.htm">Prescription</a></li>
+   <li>Dispense</li>
+  </ul> 
+  <h2>Care management</h2>
+  <ul>
+   <li>Care Plan</li>
+  </ul> 
+  <h2>Documents</h2>
+  <ul>
+   <li>Discharge Summary</li>
+   <li>Transition Request</li>
+   <li>Notes</li>
+   <li>Letters</li>
+  </ul> 
+</div>
+
+<div class="content">
+<h1>LabReport</h1>
+<p>
+The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care.
+</p>
+<p>
+The relative url is /labreports
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="labreport.png"/></p>
+
+<pre>
+&lt;<a title="The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care" class="dict" href="#LabReport"><b>LabReport</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;<a title="The status of the pathology test result as a whole" class="dict" href="#LabReport.status"><b>status</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Registered|Interim|Final|Amended|Cancelled|Withdrawn</font>&lt;/status&gt;
+  &lt;<a title="The date and/or time that the result was issued from the source for the recorded â€˜Test result status" class="dict" href="#LabReport.issued"><b>issued</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="instant.htm#instant">instant</a></font> <font color="navy">date issed for current status</font>&lt;/issued&gt;
+  &lt;<a title="The patient about who the report is about" class="dict" href="#LabReport.patient"><b>patient</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Patient.htm#Patient">Patient</a>)</font> <font color="navy">The patient the report is about</font>&lt;/patient&gt;
+  &lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#LabReport.admission"><b>admission</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Admission.htm#Admission">Admission</a>)</font> <font color="navy">Admission Context</font>&lt;/admission&gt;
+  &lt;<a title="The laboratory service that issued the report" class="dict" href="#LabReport.laboratory"><b>laboratory</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">Responsible Laboratory</font>&lt;/laboratory&gt;
+  &lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.reportId"><b>reportId</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Id for external references to this report</font>&lt;/reportId&gt;
+  &lt;<a title="Details concerning a single pathology test requested." class="dict" href="#LabReport.requestDetail"><b>requestDetail</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+   &lt;<a title="The local ID assigned to the order by the order requester." class="dict" href="#LabReport.requestDetail.requestOrderId"><b>requestOrderId</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></font> <font color="navy">Id assigned by requester</font>&lt;/requestOrderId&gt;
+   &lt;<a title="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.requestDetail.receiverOrderId"><b>receiverOrderId</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></font> <font color="navy">Receiver's Id for the request</font>&lt;/receiverOrderId&gt;
+   &lt;<a title="Identification of pathology test requested," class="dict" href="#LabReport.requestDetail.requestTest"><b>requestTest</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Test Requested</font>&lt;/requestTest&gt;
+   &lt;<a title="Details of the clinician or organisation requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester"><b>requester</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Agent.htm#Agent">Agent</a>|<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">Responsible for request</font>&lt;/requester&gt;
+   &lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#LabReport.requestDetail.clinicalInfo"><b>clinicalInfo</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Any.htm#Any">Any</a>)</font> <font color="navy">Clinical information provided</font>&lt;/clinicalInfo&gt;
+  &lt;/requestDetail&gt;
+  &lt;<a title="Identification of the pathology test performed, sometimes including specimen type." class="dict" href="#LabReport.reportName"><b>reportName</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Name for the entire report</font>&lt;/reportName&gt;
+  &lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, haematology." class="dict" href="#LabReport.service"><b>service</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Biochemistry, Haematology etc</font>&lt;/service&gt;
+  &lt;<a title="The diagnostically relevant time for this report" class="dict" href="#LabReport.diagnosticTime"><b>diagnosticTime</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">Effective time of diagnostic report</font>&lt;/diagnosticTime&gt;
+  &lt;<a title="Details about the specimen if all individual test results are derived from the same specimen" class="dict" href="#LabReport.specimen"><b>specimen</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen">(<a href="Specimen.htm#Specimen">Specimen</a>)</font> <font color="navy">Specimen (incl. time of collection)</font>&lt;/specimen&gt;
+  &lt;<a title="A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together." class="dict" href="#LabReport.resultGroup"><b>resultGroup</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> --&gt;</font>
+   &lt;<a title="A code or name that describes the group of results" class="dict" href="#LabReport.resultGroup.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">What defines the group</font>&lt;/name&gt;
+   &lt;<a title="Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required." class="dict" href="#LabReport.resultGroup.specimen"><b>specimen</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Specimen.htm#Specimen">Specimen</a>)</font> <font color="navy">Specimen details</font>&lt;/specimen&gt;
+   &lt;<a title="Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements." class="dict" href="#LabReport.resultGroup.result"><b>result</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> --&gt;</font>
+    &lt;<a title="Identifies the meaning of the value" class="dict" href="#LabReport.resultGroup.result.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Name or code of the result</font>&lt;/name&gt;
+    &lt;<a title="Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images" class="dict" href="#LabReport.resultGroup.result.value[x]"><b>value[x]</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Quantity">Quantity</a>|<a href="datatypes.htm#CodeableConcept">CodeableConcept</a>|<a href="datatypes.htm#Attachment">Attachment</a>|
+              <a href="datatypes.htm#Ratio">Ratio</a>|<a href="datatypes.htm#Choice">Choice</a>|<a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)|<a href="datatypes.htm#string">string</a></font> <font color="navy">Result. [x] = type name</font>&lt;/value[x]&gt;
+    &lt;<a title="Flag indicating the abnormal status of the result" class="dict" href="#LabReport.resultGroup.result.flag"><b>flag</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">+ | ++ | +++ | - | -- | --- </font>&lt;/flag&gt;
+    &lt;<a title="The status of the result value" class="dict" href="#LabReport.resultGroup.result.status"><b>status</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Registered|Interim|Final|Amended|Cancelled|Withdrawn</font>&lt;/status&gt;
+    &lt;<a title="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result." class="dict" href="#LabReport.resultGroup.result.comments"><b>comments</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Comments about result</font>&lt;/comments&gt;
+    &lt;<a title="Guidance on how to interpret the value by comparison to a normal or recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange"><b>referenceRange</b></a>&gt;  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+     &lt;<a title="Code for the meaning of the reference range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning"><b>meaning</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">The meaning of this range</font>&lt;/meaning&gt;
+     &lt;<a title="Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text" class="dict" href="#LabReport.resultGroup.result.referenceRange.range[x]"><b>range[x]</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#Quantity">Quantity</a>|<a href="datatypes.htm#Interval">Interval</a>(<a href="datatypes.htm#Quantity">Quantity</a>)|<a href="datatypes.htm#string">string</a></font> <font color="navy">Reference</font>&lt;/range[x]&gt;
+    &lt;/referenceRange&gt;
+   &lt;/result&gt;
+  &lt;/resultGroup&gt;
+  &lt;<a title="Concise and clinically contextualised narrative interpretation of the pathology test results." class="dict" href="#LabReport.conclusion"><b>conclusion</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Clinical Interpretation of test results</font>&lt;/conclusion&gt;
+  &lt;<a title="Codes for the conclusion" class="dict" href="#LabReport.codedDiagnosis"><b>codedDiagnosis</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Codes for the conclusion</font>&lt;/codedDiagnosis&gt;
+  &lt;<a title="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent." class="dict" href="#LabReport.representation"><b>representation</b></a>&gt; <font color="brown"><b>One+</b></font> <font color="darkgreen"><a href="datatypes.htm#Attachment">Attachment</a></font> <font color="navy">Entire Report as issued</font>&lt;/representation&gt;
+  &lt;<a title="See Extensions" class="dict" href="#LabReport.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title="Text summary of report, for human interpretation" class="dict" href="#LabReport.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of report, for human interpretation</font>&lt;/text&gt;
+&lt;/LabReport&gt;
+</pre>
+
+
+<p><a href="labreport.xsd">Schema for LabReport</a> and <a href="labreport.xml">an example</a> (or <a href="labreport.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>LabReport.status and LabReport.resultGroup.result.status are  bound to the concept domain <i>LabReportStatus</i>: &quot;The status of a report or result item&quot;. Possible values:
+    <table class="codes">
+    <tr><td>registered</td><td colspan="2">The existence of the result is registered, but there is no result yet available</td></tr>    <tr><td>interim</td><td colspan="2">This is an initial or interim result: data may be missing or verification not been performed</td></tr>    <tr><td>final</td><td colspan="2">The result is complete and verified by the responsible pathologist</td></tr>    <tr><td>amended</td><td colspan="2">The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist</td></tr>    <tr><td>cancelled</td><td colspan="2">The result is unavailable because the test was not started or not completed (also sometimes called aborted)</td></tr>    <tr><td>withdrawn</td><td colspan="2">The result has been withdrawn following previous Final release</td></tr>    </table>
+  </li>
+  <li>LabReport.requestDetail.requestTest is  bound to the concept domain <i>LabRequests</i>: &quot;codes for requestable tests&quot;</li>
+  <li>LabReport.reportName is  bound to the concept domain <i>LabReportNames</i>: &quot;codes for report names&quot;. If an appropriate code exists in LOINC then it should be used</li>
+  <li>LabReport.service is  bound to the concept domain <i>LabServices</i>: &quot;codes for laboratory services&quot;. For example values, see HL7 v2 table 0074</li>
+  <li>LabReport.resultGroup.name is  bound to the concept domain <i>LabResultGroupNames</i>: &quot;codes for result groups&quot;. If an appropriate code exists in LOINC then it should be used</li>
+  <li>LabReport.resultGroup.result.name is  bound to the concept domain <i>LabResultNames</i>: &quot;codes for results&quot;. If an appropriate code exists in LOINC then it should be used</li>
+  <li>LabReport.resultGroup.result.value[x] is  not bound to a concept domain</li>
+  <li>LabReport.resultGroup.result.flag is  bound to the concept domain <i>LabResultFlag</i>: &quot;codes for result flags&quot;. Possible values:
+    <table class="codes">
+    <tr><td colspan="3">-</td></tr>    <tr><td colspan="3">--</td></tr>    <tr><td colspan="3">---</td></tr>    <tr><td colspan="3">+</td></tr>    <tr><td colspan="3">++</td></tr>    <tr><td colspan="3">+++</td></tr>    </table>
+  </li>
+  <li>LabReport.resultGroup.result.referenceRange.meaning is  bound to the concept domain <i>LabReferenceRanges</i>: &quot;Code for the meaning of a reference range&quot;</li>
+  <li>LabReport.codedDiagnosis is  bound to the concept domain <i>LabDiagnosisCodes</i>: &quot;Codes for laboratory diagnoses&quot;. A good candidate for codes is SNOMED-CT</li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>About naming: a laboratory produces &quot;reports&quot; that is a collection of &quot;tests&quot; that produce &quot;results&quot;. Clinical consumers call the whole 
+collection &quot;the results&quot;. There is much potential confusion around these names. The confusion is worsened because &quot;the report&quot; is sometimes a 
+document which entirely contains narrative, sometimes it is purely atomic data results, and sometimes it's a mix of both. </li> 
+<li>The scope of this resource is the laboratory reporting process. While this resource includes some elements that relate to the ordering cycle, these are only included to the degree that it is useful for the final report to refer back to the orders. Different resources are required for supporting the ordering cycle.</li>
+<li>This laboratory report model provides a 3 level structure for the results - a report contains a list of groups, each of which contains a list of results.
+Results are grouped by either a specimen or a code that indicates that nature of the grouping (e.g. organism isolate/sensitivity or antibody functional testing). 
+While many common lab reports don't need or benefit directly from the group structure, this lab report model imposes the group structure anyway. This means that these 
+lab reports have a single group which has no code on it, and which contains all the results. The advantage of this model is that all the results are found 
+at the same point in the heirarchy, and there is a single point on the heirarchy - the group - that may influence the meaning of the test.</li>
+<li>The element that contains the actual value of the result has a variable name depending on the type. The name is &quot;value&quot; + the type name, ignoring parameters, with a capital on the first letter, e.g. valueInterval or valueString</li>
+<li>The clinical information associated with a request can be a simple text summary, or a reference to another resource</li>
+<li>The <i>diagnosticTime</i> can be inferred from the specimens, if they are provided, but specimen details are often not provided, and the value of <i>diagnosticTime</i> is always important. The value of the <i>diagnosticTime</i> element must be consistent with the speciment collection times</li>
+<li>Applications consuming lab reports must take careful note of updates to lab reports, and particularly note withdrawn reports. 
+A report shouldn't be final until all the results are final or amended. If a report is withdrawn, all the results must be 
+withdrawn by replacing every result value with the Concept &quot;withdrawn&quot; in the internal terminology <a href="terminologies.htm">&quot;Special values&quot;</a> 
+(sid = &quot;urn:hl7-org:sid/fhir/special-values&quot;), and setting the conclusion (if provided) and the text narrative to some text like 
+&quot;This report has been withdrawn&quot;. A reason may be provided in the narrative. </li>
+</ul>
+<h3>Relationship between results, narrative, and synoptic reports</h3>
+<p>
+One difficult aspect of the design of this resource can be captured with a simple question: “just what is a result?” There 
+is a wide range of variation in the answers to this question; some respond that a result is inherently measurement based, 
+while others focus on the clinical utility of the data item. 
+</p>
+<p>
+Some practical examples:
+</p>
+<ul>
+<li>Tumour dimensions in synoptic reports</li>
+<li>Injection volumes in radiology reports</li>
+<li>Phenotypes and genotypes in pathology reports</li>
+<li>Images (Scatter plots, electrophoresis photos, slide photos, chromatograms)</li>
+</ul>
+<p>
+Which of these are results? For this resource, we have chosen to take an inclusive view; any of these things can be a result, as long 
+as they have a formal code or name that has a clinical meaning, and some kind of (possible) value then they can be a result. 
+</p>
+
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for person:
+</p>
+<table class="list">
+  <tr><td>id          </td><td>an identifier associated with the report</td></tr>
+  <tr><td>test        </td><td>the name or code of either a requested test, the report or a report group</td></tr>
+  <tr><td>result      </td><td>the name or code or result value of a <i>result</i></td></tr>
+  <tr><td>specimen    </td><td>Either of the specimens. The parameter is then followed by an additional parameter (separated for a &quot;.&quot;) that species search/filter inside specimen</td></tr>
+  <tr><td>patient     </td><td>The identity of a patient</td></tr>
+  <tr><td>laboratory  </td><td>The identity of an laboratory</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="labreport.dict.xml">an XML file</a>.</p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport"> </a><b>LabReport</b></td></tr>
+  <tr><td>Definition</td><td>The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Requirements</td><td>Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</td></tr>
+  <tr><td>Comments</td><td>Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</td></tr>
+  <tr><td>RIM Mapping</td><td>Observation[isNormalAct() and subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and domainMember(&quot;LabObservationType&quot;, code)]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.id"> </a><b>LabReport.id</b></td></tr>
+  <tr><td>Definition</td><td>Master Resource Id, always first in all resources</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.status"> </a><b>LabReport.status</b></td></tr>
+  <tr><td>Definition</td><td>The status of the pathology test result as a whole</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from LabReportStatus</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Labs routinely issue provisional/incomplete reports, or withdraw previously released reports</td></tr>
+  <tr><td>RIM Mapping</td><td>registered: ./statusCode[isNormalDatatype()]=&quot;new&quot;;
+
+interim: ./statusCode[isNormalDatatype()]=&quot;active&quot;;
+
+final: ./statusCode[isNormalDatatype()]=&quot;complete&quot; and not(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseLabOrder&quot;, code) and isNormalAct()]);
+
+amended: ./statusCode[isNormalDatatype()]=&quot;complete&quot; and ./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#CACT&quot;) and moodCode=&quot;EVN&quot; and domainMember(&quot;ReviseLabOrder&quot;, code) and isNormalAct() and statusCode=&quot;completed&quot;];
+
+cancelled: 
+./statusCode[isNormalDatatype()]=&quot;aborted&quot;;
+
+withdrawn: ./statusCode[isNormalDatatype()]=&quot;obsolete&quot;</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.issued"> </a><b>LabReport.issued</b></td></tr>
+  <tr><td>Definition</td><td>The date and/or time that the result was issued from the source for the recorded â€˜Test result status</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>instant</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Clinicians need to be able to check the date that the report was released</td></tr>
+  <tr><td>Comments</td><td>May be different from LabReport.updated, because that is the status of this record, not the report the record is about</td></tr>
+  <tr><td>RIM Mapping</td><td>firstOf(unique(./participation[isHighest(priorityCode) and typeCode=&quot;VRF&quot; and isNormalParticipation()]/time[type=&quot;TS&quot;]), 
+unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/time[type=&quot;TS&quot;]))</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.patient"> </a><b>LabReport.patient</b></td></tr>
+  <tr><td>Definition</td><td>The patient about who the report is about</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Patient)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Must know the patient context</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./participation[isHighest(priorityCode) and typeCode=&quot;SBJ&quot; and isNormalParticipation()]/role[classCode=&quot;PAT&quot;])</td></tr>
+  <tr><td>To Do</td><td>need to check the wording -is it about, upon, for?</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.admission"> </a><b>LabReport.admission</b></td></tr>
+  <tr><td>Definition</td><td>The admission that this diagnostic investigation is associated with</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Admission)</td></tr>
+  <tr><td>Requirements</td><td>Some institutions track and file diagnostic reports under a specific admission</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./inboundRelationship[isHighest(priorityCode) and typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#ENC&quot;, code) and moodCode=&quot;EVN&quot; and isNormalAct()])</td></tr>
+  <tr><td>To Do</td><td>Reckon this is not 80%</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.laboratory"> </a><b>LabReport.laboratory</b></td></tr>
+  <tr><td>Definition</td><td>The laboratory service that issued the report</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Organization)</td></tr>
+  <tr><td>Requirements</td><td>Need to know how to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis</td></tr>
+  <tr><td>Comments</td><td>This is not necessarily the source of the atomic reports - it's the lab that takes responsibility for the clinical report</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]/scoper[subsumesCode(&quot;EntityClass#ORG&quot;, classCode) and determinerCode=&quot;INSTANCE&quot;])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.reportId"> </a><b>LabReport.reportId</b></td></tr>
+  <tr><td>Definition</td><td>The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>Requirements</td><td>Need to know what identifier to use when making queries about this report from the source laboratory</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./id[displayable=&quot;true&quot; and scope=&quot;OBJ&quot;])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail"> </a><b>LabReport.requestDetail</b></td></tr>
+  <tr><td>Definition</td><td>Details concerning a single pathology test requested.</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</td></tr>
+  <tr><td>Comments</td><td>Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./outboundRelationship[typeCode=&quot;FLFS&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and subsumes(&quot;ActMood#PRMS&quot;, moodCode) and isNormalAct()])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail.requestOrderId"> </a><b>LabReport.requestDetail.requestOrderId</b></td></tr>
+  <tr><td>Definition</td><td>The local ID assigned to the order by the order requester.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Identifier</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track completion of requests based on reports issued</td></tr>
+  <tr><td>Comments</td><td>Equivalent to the Placer Order Identifier</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./outboundRelationship[typeCode=&quot;FLFS&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and subsumes(&quot;ActMood#RQO&quot;, moodCode) and isNormalAct()]/id[scope=&quot;OBJ&quot; and displayable=&quot;true&quot;])</td></tr>
+  <tr><td>To Do</td><td>Reckon this is not 80%</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail.receiverOrderId"> </a><b>LabReport.requestDetail.receiverOrderId</b></td></tr>
+  <tr><td>Definition</td><td>The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Identifier</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track completion of requests based on reports issued</td></tr>
+  <tr><td>Comments</td><td>Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./id[scope=&quot;OBJ&quot; and displayable=&quot;true&quot;])</td></tr>
+  <tr><td>To Do</td><td>Reckon this is not 80%</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail.requestTest"> </a><b>LabReport.requestDetail.requestTest</b></td></tr>
+  <tr><td>Definition</td><td>Identification of pathology test requested,</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabRequests</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to report what diagnostic test swere requested (not always the same as what is delivered)</td></tr>
+  <tr><td>Comments</td><td>Useful where the test requested differs from the test actually performed.</td></tr>
+  <tr><td>RIM Mapping</td><td>./code</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail.requester"> </a><b>LabReport.requestDetail.requester</b></td></tr>
+  <tr><td>Definition</td><td>Details of the clinician or organisation requesting the laboratory test.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Agent|Organization)</td></tr>
+  <tr><td>Requirements</td><td>The requesting clinician may need to be contacted concerning the interpretation of the lab report</td></tr>
+  <tr><td>RIM Mapping</td><td>Agent: unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]
+
+Organization: unique(./participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#ASSIGN&quot;, classCode)]/scoper[subsumesCode(&quot;EntityClass#ORG&quot;, classCode) and determinerCode=&quot;INSTANCE&quot; and code[isNormalDatatype]])
+</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.requestDetail.clinicalInfo"> </a><b>LabReport.requestDetail.clinicalInfo</b></td></tr>
+  <tr><td>Definition</td><td>Details of the clinical information provided to the laboratory along with the original request</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Any)</td></tr>
+  <tr><td>Requirements</td><td>Knowing the clinical information may influence the interpretation of the result</td></tr>
+  <tr><td>RIM Mapping</td><td>./outboundRelationship[typeCode=&quot;PERT&quot; and isNormalActRelationship()]/target</td></tr>
+  <tr><td>To Do</td><td>This isn't really *ANY* resource.  You can't send a drug or an Animal or a bunch of other things.  What you really want here are &quot;acts&quot;, and I suspect there's a constraint that the subject of the LabReport must have participated in them as subject or perhaps in some other way.</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.reportName"> </a><b>LabReport.reportName</b></td></tr>
+  <tr><td>Definition</td><td>Identification of the pathology test performed, sometimes including specimen type.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabReportNames</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to know what report this is, so clinicians can filter/find the reports they are looking for</td></tr>
+  <tr><td>Comments</td><td>A test result may be for a single analyte, or a group of items, including panel tests.</td></tr>
+  <tr><td>RIM Mapping</td><td>./code</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.service"> </a><b>LabReport.service</b></td></tr>
+  <tr><td>Definition</td><td>The diagnostic service that performs the examination e.g. biochemistry, haematology.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabServices</td></tr>
+  <tr><td>Requirements</td><td>Help clinicians filter/find the reports they are looking for</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./inboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#LIST&quot;, classCode) and moodCode=&quot;EVN&quot; and inDomain(code,&quot;Lab Service&quot;) and isNormalAct()]/code</td></tr>
+  <tr><td>To Do</td><td>I'm not sure this is in the 80%.</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.diagnosticTime"> </a><b>LabReport.diagnosticTime</b></td></tr>
+  <tr><td>Definition</td><td>The diagnostically relevant time for this report</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to know where in the patient history to file/present this report</td></tr>
+  <tr><td>Comments</td><td>The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</td></tr>
+  <tr><td>RIM Mapping</td><td>./effectiveTime[type=&quot;TS&quot;]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.specimen"> </a><b>LabReport.specimen</b></td></tr>
+  <tr><td>Definition</td><td>Details about the specimen if all individual test results are derived from the same specimen</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Resource(Specimen)</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to report information about the collected specimens on which the report is based</td></tr>
+  <tr><td>Comments</td><td>If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per 'Result group'</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./participation[typeCode=&quot;SUBJ&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#SPEC&quot;, classCode)])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup"> </a><b>LabReport.resultGroup</b></td></tr>
+  <tr><td>Definition</td><td>A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</td></tr>
+  <tr><td>Control</td><td>1..*</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to report groups of results, where the result grouping is arbitrary, but meaningful</td></tr>
+  <tr><td>Comments</td><td>Many (most) lab reports don't really have a meaningful group. In these cases, just create a single group with no specimen or name</td></tr>
+  <tr><td>RIM Mapping</td><td>./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[isNormalAct() and subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and fromDomain(code, &quot;LabObservationBattery&quot;)]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.name"> </a><b>LabReport.resultGroup.name</b></td></tr>
+  <tr><td>Definition</td><td>A code or name that describes the group of results</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabResultGroupNames</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Comments</td><td>For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</td></tr>
+  <tr><td>RIM Mapping</td><td>./code</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.specimen"> </a><b>LabReport.resultGroup.specimen</b></td></tr>
+  <tr><td>Definition</td><td>Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Specimen)</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to report information about the collected specimens on which the report is based</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./participation[typeCode=&quot;SBJ&quot; and isNormalParticipation()]/role[subsumesCode(&quot;RoleClass#SPEC&quot;, classCode)])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result"> </a><b>LabReport.resultGroup.result</b></td></tr>
+  <tr><td>Definition</td><td>Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</td></tr>
+  <tr><td>Control</td><td>1..*</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to report results with information that assist with interpretation</td></tr>
+  <tr><td>RIM Mapping</td><td>./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and isNormalAct() and fromDomain(code, &quot;LabObservationResult&quot;)]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.name"> </a><b>LabReport.resultGroup.result.name</b></td></tr>
+  <tr><td>Definition</td><td>Identifies the meaning of the value</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabResultNames</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to know what the result is about</td></tr>
+  <tr><td>Comments</td><td>results are fundamentally a name - value pair with additional clarifying information</td></tr>
+  <tr><td>RIM Mapping</td><td>./code</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.value[x]"> </a><b>LabReport.resultGroup.result.value[x]</b></td></tr>
+  <tr><td>Definition</td><td>Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Quantity|CodeableConcept|Attachment|Ratio|Choice|Interval(dateTime)|string from *unbound*</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need a value for the result</td></tr>
+  <tr><td>RIM Mapping</td><td>./value</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.flag"> </a><b>LabReport.resultGroup.result.flag</b></td></tr>
+  <tr><td>Definition</td><td>Flag indicating the abnormal status of the result</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>code from LabResultFlag</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>RIM Mapping</td><td>./interpretationCode</td></tr>
+  <tr><td>To Do</td><td>The proposed set of codes are too narrow (and doesn't map well to v3.)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.status"> </a><b>LabReport.resultGroup.result.status</b></td></tr>
+  <tr><td>Definition</td><td>The status of the result value</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from LabReportStatus</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to track the status of individual results - some results are finalised before the whole report is finalised</td></tr>
+  <tr><td>RIM Mapping</td><td>(as per LabReport.status)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.comments"> </a><b>LabReport.resultGroup.result.comments</b></td></tr>
+  <tr><td>Definition</td><td>May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to provide free text additional information</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./inboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and mapsTo(code, &quot;LOINC#
+48767-8&quot;) and isNormalAct()]/value[type=&quot;ST&quot;])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.referenceRange"> </a><b>LabReport.resultGroup.result.referenceRange</b></td></tr>
+  <tr><td>Definition</td><td>Guidance on how to interpret the value by comparison to a normal or recommended range</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to provide multiple reference ranges</td></tr>
+  <tr><td>Comments</td><td>Most results only have one reference range. Some non-numerical results don't have a reference range</td></tr>
+  <tr><td>RIM Mapping</td><td>./outboundRelationship[typeCode=&quot;REFV&quot; and isNormalActRelationship()]/target[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and isCriterionInd=&quot;true&quot; and isNormalAct()]</td></tr>
+  <tr><td>To Do</td><td>Are multiple reference ranges in the 80%?</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.referenceRange.meaning"> </a><b>LabReport.resultGroup.result.referenceRange.meaning</b></td></tr>
+  <tr><td>Definition</td><td>Code for the meaning of the reference range</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabReferenceRanges</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. hormonal cycles)</td></tr>
+  <tr><td>RIM Mapping</td><td>./interpretationCode</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.resultGroup.result.referenceRange.range[x]"> </a><b>LabReport.resultGroup.result.referenceRange.range[x]</b></td></tr>
+  <tr><td>Definition</td><td>Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Quantity|Interval(Quantity)|string</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to report numerical or text reference ranges, and handle legacy data</td></tr>
+  <tr><td>Comments</td><td>Text reference ranges are typically used in endocrinology, or for legacy data with string reference ranges</td></tr>
+  <tr><td>RIM Mapping</td><td>./value[type=(&quot;PQ&quot;, &quot;IVL_PQ&quot;, &quot;ST&quot;)]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.conclusion"> </a><b>LabReport.conclusion</b></td></tr>
+  <tr><td>Definition</td><td>Concise and clinically contextualised narrative interpretation of the pathology test results.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to provide a conclusion that is not lost amongst the basic result data</td></tr>
+  <tr><td>Comments</td><td>common reports don't have a conclusion, but some do</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./inboundRelationship[typeCode=&quot;SPRT&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and mapsTo(code, &quot;LOINC#
+48767-8&quot;) and isNormalAct()]/value[type=&quot;ST&quot;])</td></tr>
+  <tr><td>To Do</td><td>Is this in the 80%?</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.codedDiagnosis"> </a><b>LabReport.codedDiagnosis</b></td></tr>
+  <tr><td>Definition</td><td>Codes for the conclusion</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from LabDiagnosisCodes</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./inboundRelationship[typeCode=&quot;SPRT&quot; and isNormalActRelationship()]/source[subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and subsumesCode(code, &quot;LOINC#
+54531-9&quot;) and isNormalAct()]/value[type=&quot;CD&quot;])</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.representation"> </a><b>LabReport.representation</b></td></tr>
+  <tr><td>Definition</td><td>Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</td></tr>
+  <tr><td>Control</td><td>1..*</td></tr>
+  <tr><td>Type</td><td>Attachment</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Laboratory needs to be able to provide it's own fully formatted report for clinical fidelity</td></tr>
+  <tr><td>Comments</td><td>Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</td></tr>
+  <tr><td>RIM Mapping</td><td>./text[type=&quot;ED&quot;]</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.extensions"> </a><b>LabReport.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>RIM Mapping</td><td>N/A</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="LabReport.text"> </a><b>LabReport.text</b></td></tr>
+  <tr><td>Definition</td><td>Text summary of report, for human interpretation</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+  <tr><td>RIM Mapping</td><td>unique(./text[type=&quot;ST&quot;])</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+</div> 
+    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

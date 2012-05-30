@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><Organization xmlns="http://www.hl7.org/fhir">
+  <id>34234</id>
+
+  <!--  Clinical Team "Gastroenterology" at Acme Hospital  -->
+  <identifier>
+    <identifier>
+      <system>http://www.acme.org.au/units</system>
+      <id>Gastro</id>
+    </identifier>
+    <assigner>
+      <text>Acme Healthcare</text>
+    </assigner>
+  </identifier>
+
+  <name>
+    <value>Gastroenterology</value>
+  </name>
+  
+  <contact>
+    <system>phone</system>
+    <value>+1 555 234 3523</value>
+    <use>mobile</use>
+  </contact>
+  <contact>
+    <system>email</system>
+    <value>gastro@acme.org</value>
+    <use>work</use>
+  </contact>
+	
+  <relatedOrganization>
+    <code>  
+      <coding>
+        <code>TERR</code>
+        <system>oid:2.16.840.1.113883.5.110</system>
+      </coding>
+    </code>
+    <name>Acme Hospital</name>
+  </relatedOrganization>
+	
+	<text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: <a href="mailto:gastro@acme.org">gastro@acme.org</a></p>
+    </div>
+  </text>
+</Organization>

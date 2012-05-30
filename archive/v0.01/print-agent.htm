@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Agent - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body style="margin: 20px">
+
+<h1>Agent</h1>
+<p>
+A person who represents an organisation, and is authorised to perform actions on it's behalf.
+</p>
+<p>
+The relative url is /agents
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="agent.png"/></p>
+
+<pre>
+&lt;<a title="A person who represents an organisation, and is authorised to perform actions on it's behalf" class="dict" href="#Agent"><b>Agent</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#Agent.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;<a title="The person who acts as the agent" class="dict" href="#Agent.person"><b>person</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>)</font> <font color="navy">The person who is the agent</font>&lt;/person&gt;
+  &lt;<a title="The organisation that is being represented" class="dict" href="#Agent.organization"><b>organization</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">The represented organization</font>&lt;/organization&gt;
+  &lt;<a title="The way in which the person represents the organisation - what role do they have?" class="dict" href="#Agent.role"><b>role</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>One+</b></font> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">A role the agent has</font>&lt;/role&gt;
+  &lt;<a title="The time period during which the agent was/is authorised to represent the organisation." class="dict" href="#Agent.period"><b>period</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="date.htm#date">date</a>)</font> <font color="navy">The period for which this agency applies</font>&lt;/period&gt;
+  &lt;<a title="An identifier that applies to this person in this role" class="dict" href="#Agent.identifier"><b>identifier</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#HumanId">HumanId</a></font> <font color="navy">A Human identifier for the person as this agent</font>&lt;/identifier&gt;
+  &lt;<a title="A postal address for this person playing this role" class="dict" href="#Agent.address"><b>address</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Address">Address</a></font> <font color="navy">An address that applies for the person as this agent</font>&lt;/address&gt;
+  &lt;<a title="A contact detail address for this person playing this role" class="dict" href="#Agent.contact"><b>contact</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Contact">Contact</a></font> <font color="navy">A contact that applies for the person as this agent</font>&lt;/contact&gt;
+  &lt;<a title="See Extensions" class="dict" href="#Agent.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title="Text summary of the agent, for human interpretation" class="dict" href="#Agent.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of the agent, for human interpretation</font>&lt;/text&gt;
+&lt;/Agent&gt;
+</pre>
+
+
+<p><a href="agent.xsd">Schema for Agent</a> and <a href="agent.xml">an example</a> (or <a href="agent.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Agent.role is  bound to the concept domain <i>AgentRole</i>: &quot;The role a person plays representing an organization&quot;</li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>Any person can represent the same organisation in multiple different ways. This may be represented as a single agent resource with multiple role codes, or multiple agent resources. Which is correct depends on whether the combined roles share other attributes, such as identifiers and time periods.</li>
+<li>The person and organization references are mandatory, so must be a full resource reference by identifier</li>
+</ul>
+
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for person:
+</p>
+<table class="list">
+  <tr><td>person      </td><td>The identity of a person</td></tr>
+  <tr><td>organization</td><td>The identity of an organization</td></tr>
+  <tr><td>id         </td><td>search id in any agent identifiers</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="agent.dict.xml">an XML file</a></p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent"> </a><b>Agent</b></td></tr>
+  <tr><td>Definition</td><td>A person who represents an organisation, and is authorised to perform actions on it's behalf</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Requirements</td><td>Need to track doctors, staff, locums etc for both healthcare providers, funders, etc.</td></tr>
+  <tr><td>RIM Mapping</td><td>Role</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD (as one example)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.id"> </a><b>Agent.id</b></td></tr>
+  <tr><td>Definition</td><td>Master Resource Id, always first in all resources</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>RIM Mapping</td><td>.id(scope=OBJ)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.person"> </a><b>Agent.person</b></td></tr>
+  <tr><td>Definition</td><td>The person who acts as the agent</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track the person who represents the organisation separately</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-2</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.organization"> </a><b>Agent.organization</b></td></tr>
+  <tr><td>Definition</td><td>The organisation that is being represented</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Organization)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track the represented organisation separately</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-10 (-&gt; 14)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.role"> </a><b>Agent.role</b></td></tr>
+  <tr><td>Definition</td><td>The way in which the person represents the organisation - what role do they have?</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from AgentRole</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to know what authority the agent has - what can they do?</td></tr>
+  <tr><td>Comments</td><td>A person may have more than one role. At least one role is required - why have an agent who isn't actually an agent?</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.period"> </a><b>Agent.period</b></td></tr>
+  <tr><td>Definition</td><td>The time period during which the agent was/is authorised to represent the organisation.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Interval(date)</td></tr>
+  <tr><td>Requirements</td><td>Agencies are often for a limited period of time, and can be revoked. Even after the agencies is revoked, the fact that it existed must still be recorded</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-8/9</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.identifier"> </a><b>Agent.identifier</b></td></tr>
+  <tr><td>Definition</td><td>An identifier that applies to this person in this role</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>HumanId</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Often, specific identifies are assigned for the agent</td></tr>
+  <tr><td>Comments</td><td>The identifier changes when a new/different person steps into the same role</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-7</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.address"> </a><b>Agent.address</b></td></tr>
+  <tr><td>Definition</td><td>A postal address for this person playing this role</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Address</td></tr>
+  <tr><td>Comments</td><td>i.e. the address is not their personal address. For many agents, this is the same as their work address</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-3</td></tr>
+  <tr><td>To Do</td><td>What about place? (PRD-4)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.contact"> </a><b>Agent.contact</b></td></tr>
+  <tr><td>Definition</td><td>A contact detail address for this person playing this role</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>Contact</td></tr>
+  <tr><td>Comments</td><td>i.e. the contact is not their personal contact. For many agents, this is the same as their work contacts. Note that a person may choose to use a personal mobile phone (for instance) for their contact in a given role - in this case, the contact detail will be repeated in the agent resource</td></tr>
+  <tr><td>v2 Mapping</td><td>PRD-5</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.extensions"> </a><b>Agent.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Agent.text"> </a><b>Agent.text</b></td></tr>
+  <tr><td>Definition</td><td>Text summary of the agent, for human interpretation</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+
+   
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

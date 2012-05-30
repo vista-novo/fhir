@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Document - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body>
+<div class="header">
+  <a title="Fast Healthcare Interoperability Resources - Home Page" href="http://www.hl7.org/fhir"><img style="vertical-align: text-bottom" src="flame16.png"/> <b>FHIR</b></a>
+ 
+  © HL7.org 2011-2012
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="print-document.htm"><b>Printable Version </b></a>
+  &nbsp;
+  &nbsp;
+  <a href="http://wiki.hl7.org/index.php?title=FHIR_Document_Page"><b>Wiki for this page</b></a> &nbsp;
+  <!-- -  <a href="authoring.htm">Authoring Guidelines</a>  -->
+  <br/>
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+  
+</div>
+<div class="sidebar">
+  <h2>Infrastructure</h2>
+  <ul>
+   <li><a href="introduction.htm">Introduction</a></li>
+   <li><a href="xml.htm">Resource Format</a></li>
+   <li><a href="datatypes.htm">Data Types</a></li>
+   <li style="display: none"><a href="mixins.htm">Mixins</a></li>
+   <li><a href="terminologies.htm">Terminologies</a></li>
+   <li><a href="extensibility.htm">Extensibility</a></li>
+   <li><a href="constraint.htm">Constraint</a></li>
+  </ul> 
+
+  <h2>Exchange</h2>
+  <ul>
+   <li><a href="implementation.htm">Implementation</a></li>
+   <li><a href="atom.htm">Aggregations</a></li>
+   <li><a href="http.htm">REST (HTTP)</a></li>
+   <li style="display: none"><a href="conformance.htm">RESTful Conformance Statement</a></li>
+   <li><a href="messaging.htm">Messaging</a></li>
+   <li style="display: none"><a href="message.htm">Message Resource</a></li>
+   <li style="display: none"><a href="messageconformance.htm">Messaging Conformance Statement</a></li>
+   <li><a href="documents.htm">Documents</a></li>
+   <li style="display: none"><a href="documentconformance.htm">Document Conformance Statement</a></li>
+   <li><a href="hdata.htm">hData Integration</a></li>
+   <li><a href="profile.htm">Resource Profile</a></li>
+  </ul> 
+
+  <h2>Administrative Resources</h2>
+  <ul>
+   <li><a href="person.htm">Person</a></li>
+   <li><a href="animal.htm">Animal</a></li>
+   <li><a href="organization.htm">Organization</a></li>
+   <li><a href="agent.htm">Agent</a></li>
+   <li><a href="patient.htm">Patient</a></li>
+   <li><a href="document.htm">Document</a></li>
+   <li>Clinics</li>
+   <li>Admissions</li>
+   <li>Appointments</li>
+   <li>InterestOfCare</li>
+   <li>Transfers</li>
+  </ul> 
+  <h2>Clinical Components</h2>
+  <ul>
+   <li>Vitals etc</li>
+   <li><a href="labreport.htm">Lab Report</a></li>
+   <li>Imaging Report</li>
+   <li>Alert</li>
+   <li>Procedure </li>
+   <li>Consultation</li>
+   <li>Problem</li>
+   <li>Immunization</li>
+   <li>Diet</li>
+   <li>Implant</li>
+  </ul> 
+  <h2>Medications</h2>
+  <ul>
+   <li>Instruction</li>
+   <li><a href="prescription.htm">Prescription</a></li>
+   <li>Dispense</li>
+  </ul> 
+  <h2>Care management</h2>
+  <ul>
+   <li>Care Plan</li>
+  </ul> 
+  <h2>Documents</h2>
+  <ul>
+   <li>Discharge Summary</li>
+   <li>Transition Request</li>
+   <li>Notes</li>
+   <li>Letters</li>
+  </ul> 
+</div>
+
+<div class="content">
+<h1>Document</h1>
+<p>
+A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole.
+</p>
+<p>
+The relative url is /documents
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="document.png"/></p>
+
+<pre>
+&lt;<a title="A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole" class="dict" href="#Document"><b>Document</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="the unique id of a clinical document" class="dict" href="#Document.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id = document Id</font>&lt;/id&gt;
+  &lt;<a title="the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created." class="dict" href="#Document.instant"><b>instant</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="instant.htm#instant">instant</a></font> <font color="navy">Document Creation Time</font>&lt;/instant&gt;
+  &lt;<a title="specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)" class="dict" href="#Document.type"><b>type</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Document Type (LOINC if possible)</font>&lt;/type&gt;
+  &lt;<a title="the title of the document" class="dict" href="#Document.title"><b>title</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Document Title</font>&lt;/title&gt;
+  &lt;<a title="Represents an identifier that is common across all document revisions" class="dict" href="#Document.setId"><b>setId</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Id fixed across all document revisions</font>&lt;/setId&gt;
+  &lt;<a title="used to version successive replacement documents" class="dict" href="#Document.version"><b>version</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#integer">integer</a></font> <font color="navy">used to version successive replacement documents</font>&lt;/version&gt;
+  &lt;<a title="If this document replaces another" class="dict" href="#Document.replaces"><b>replaces</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">If this document replaces another</font>&lt;/replaces&gt;
+  &lt;<a title="who the document is about" class="dict" href="#Document.subject"><b>subject</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Patient.htm#Patient">Patient</a>|<a href="Group.htm#Group">Group</a>)</font> <font color="navy">who the document is about</font>&lt;/subject&gt;
+  &lt;<a title="Author (contributed content to document)" class="dict" href="#Document.author"><b>author</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> Author (contributed content to document) --&gt;</font>
+   &lt;<a title="When authoring happened" class="dict" href="#Document.author.time"><b>time</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">When authoring happened</font>&lt;/time&gt;
+   &lt;<a title="who/what authored the final document" class="dict" href="#Document.author.party"><b>party</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Device.htm#Device">Device</a>)</font> <font color="navy">who/what authored the final document</font>&lt;/party&gt;
+  &lt;/author&gt;
+  &lt;<a title="a participant who has attested to the accuracy of the document" class="dict" href="#Document.attestor"><b>attestor</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> attests to accuracy of document --&gt;</font>
+   &lt;<a title="The type of attestation the authenticator offers" class="dict" href="#Document.attestor.mode"><b>mode</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">personal | professional | legal | official</font>&lt;/mode&gt;
+   &lt;<a title="When document attested" class="dict" href="#Document.attestor.time"><b>time</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">When document attested</font>&lt;/time&gt;
+   &lt;<a title="who attested the document" class="dict" href="#Document.attestor.party"><b>party</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Organisation.htm#Organisation">Organisation</a>)</font> <font color="navy">who attested the document</font>&lt;/party&gt;
+  &lt;/attestor&gt;
+  &lt;<a title="expected to receive a copy " class="dict" href="#Document.recipient"><b>recipient</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">expected to receive a copy </font>&lt;/recipient&gt;
+  &lt;<a title="org which maintains the document." class="dict" href="#Document.custodian"><b>custodian</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">org which maintains the document.</font>&lt;/custodian&gt;
+  &lt;<a title="the main Act, such as a colonoscopy or an appendectomy, being documented" class="dict" href="#Document.event"><b>event</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Any.htm#Any">Any</a>)</font> <font color="navy">the clinical item being documented</font>&lt;/event&gt;
+  &lt;<a title="context of the document" class="dict" href="#Document.encounter"><b>encounter</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Admission.htm#Admission">Admission</a>|<a href="InterestOfCare.htm#InterestOfCare">InterestOfCare</a>)</font> <font color="navy">context of the document</font>&lt;/encounter&gt;
+  &lt;<a title="Document is broken into sections" class="dict" href="#Document.section"><b>section</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> Document is broken into sections --&gt;</font>
+   &lt;<a title="type of section (recommended)" class="dict" href="#Document.section.type"><b>type</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">type of section (recommended)</font>&lt;/type&gt;
+   &lt;<a title="the section creation time (sections are often re-used in several documents)." class="dict" href="#Document.section.instant"><b>instant</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="instant.htm#instant">instant</a></font> <font color="navy">Section Creation Time</font>&lt;/instant&gt;
+   &lt;<a title="if section author different to document" class="dict" href="#Document.section.author"><b>author</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a>  <font color="Gray">&lt;!-- if section author different to document --&gt;</font>
+    &lt;<a title="When authoring happened" class="dict" href="#Document.section.author.time"><b>time</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">When authoring happened</font>&lt;/time&gt;
+    &lt;<a title="who/what authored the section" class="dict" href="#Document.section.author.party"><b>party</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Device.htm#Device">Device</a>)</font> <font color="navy">who/what authored the section</font>&lt;/party&gt;
+   &lt;/author&gt;
+   &lt;<a title="The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions" class="dict" href="#Document.section.enterer"><b>enterer</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Device.htm#Device">Device</a>)</font> <font color="navy">The source of the data entry</font>&lt;/enterer&gt;
+   &lt;<a title="if section different to document" class="dict" href="#Document.section.subject"><b>subject</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>|<a href="Group.htm#Group">Group</a>)</font> <font color="navy">if section different to document</font>&lt;/subject&gt;
+   &lt;<a title="provided information in section" class="dict" href="#Document.section.informant"><b>informant</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>)</font> <font color="navy">provided information in section</font>&lt;/informant&gt;
+   &lt;<a title="the actual content of the section" class="dict" href="#Document.section.content"><b>content</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen">(<a href="Any.htm#Any">Any</a>)</font> <font color="navy">the actual content of the section</font>&lt;/content&gt;
+   &lt;<a title="nested Section" class="dict" href="#Document.section.section"><b>section</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> nested Section --&gt;</font>
+     <font color="Gray">&lt;!-- Content as for Document.Section --&gt;</font>
+   &lt;/section&gt;
+  &lt;/section&gt;
+  &lt;<a title="See Extensions" class="dict" href="#Document.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title=" " class="dict" href="#Document.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of message, for human interpretation</font>&lt;/text&gt;
+&lt;/Document&gt;
+</pre>
+
+
+<p><a href="document.xsd">Schema for Document</a> and <a href="document.xml">an example</a> (or <a href="document.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Document.type is  bound to the concept domain <i>DocumentType</i>: &quot;Type of a clinical document&quot;. If an appropriate code exists in LOINC then it should be used</li>
+  <li>Document.attestor.mode is  bound to the concept domain <i>DocumentAuthenticationMode</i>: &quot;The way in which a person authenticated a document&quot;. Possible values:
+    <table class="codes">
+    <tr><td>personal</td><td colspan="2">The person authenticated the document in their personal capacity</td></tr>    <tr><td>professional</td><td colspan="2">The person authenticated the document in their professional capacity</td></tr>    <tr><td>legal</td><td colspan="2">The person authenticated the document and accepted legal responsibility for it's content</td></tr>    <tr><td>official</td><td colspan="2">The organization authenticated the document as consistent with their policies and procedures</td></tr>    </table>
+  </li>
+  <li>Document.section.type is  bound to the concept domain <i>DocumentSectionType</i>: &quot;Type of a clinical document section&quot;. If an appropriate code exists in LOINC then it should be used</li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The Document resource can be used in a <a href="http.htm">RESTful framework</a> as a stand-alone resource, or as the basis for a full document in <a href="documents.htm">the document framework</a>.</li>
+<li>The author and the attestor are often the same person, but this may not be the case in many clinical workflows</li>
+<li>The attestor attests to the collated narrative portions of the resources</li>
+<li>The author, subject, enterer, and informant features are inherited in contained sections, and need not be repeated. Specifying any of these in a section replaces the inherited value</li>
+<li>The custodian is responsible for the maintainance of the document. Principally, they are responsible for the policy regarding persistence of the documents. They need not actually retain a copy of the document, but they should do so.</li>
+</ul>  
+
+<h2>Displaying a document</h2>
+<p>
+The human display of the Document is the collated narrative portions of following resources (in order):</p>
+<ol>
+ <li>The Document itself</li>
+ <li>The subject resource</li>
+ <li>Resources referenced in the <i>section.content</i></li>
+</ol>
+<p>
+The document narrative should summarise the important parts of the document header that are required 
+to establish clinical context for the document (other than the subject, which is displayed in it's own 
+right). To actually build the combined narrative, simply append all the narratives xhtml fragments. 
+The viewer program can provide it's own stylesheet (.css) for the combined html of the narrative, 
+but cannot change any styles specified internally in the existing narratives.
+</p>
+
+<h3>Originator Responsibilities</h3>
+<p>
+A document originator is an application that creates a document resource. The originator may create 
+new content resources or assemble already existing content resources while doing so. A document originator 
+has the following responsibilities:
+</p>
+<ul>
+ <li>Build a document that conforms to the Document rules, and links to content resources that also conform to the rules for the resources</li>
+ <li>Ensure that the content of the document is frozen and easily reproducible, either by <a href="atom.htm#Aggregation">aggregating the document</a>, 
+ or using version specific resource references in a FHIR conformant <a href="http.htm">RESTful framework</a></li>
+ <li>Ensure that the content of the documend and other resources conforms to any applicable conformance statements and declared clinical patterns.</li>
+</ul>
+
+
+<h3>Recipient Responsibilities</h3>
+<p>
+A document recipient is an application that receives documents from a document originator or document management system. 
+The document recipient is responsible for ensuring that received CDA documents are processed and/or rendered in accordance 
+to this specification. A document recipient has the following responsibilities:
+</p>
+<ul>
+ <li>Assume default values where they are defined in the FHIR specification (see the <a href="implementation.htm#defaults">list here</a>)</li>
+ <li>Render the document following the rules described above</li>
+ <li>A recipient is allowed to extract resources or data from the document, but doing so voids the attestation, and the recipient 
+ should always ensure that the user can access the original document when displaying extracted data</li>
+ <li>Warn users when a superceded document is displayed, and either withdraw data extracted from superceded documents, or warn users when they view it</li>
+</ul>
+ 
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="document.dict.xml">an XML file</a>.</p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document"> </a><b>Document</b></td></tr>
+  <tr><td>Definition</td><td>A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>For document based framework</td></tr>
+  <tr><td>To Do</td><td>Confidentiality? Language? Consent? Signatures</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.id"> </a><b>Document.id</b></td></tr>
+  <tr><td>Definition</td><td>the unique id of a clinical document</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Each document needs a unique identifier so other documents and underlying infrastructure can reference it</td></tr>
+  <tr><td>Comments</td><td>must be globally unique. UUIDs are recommended</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.instant"> </a><b>Document.instant</b></td></tr>
+  <tr><td>Definition</td><td>the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>instant</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.type"> </a><b>Document.type</b></td></tr>
+  <tr><td>Definition</td><td>specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from DocumentType</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.title"> </a><b>Document.title</b></td></tr>
+  <tr><td>Definition</td><td>the title of the document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td>Comments</td><td>It's commonly the case that clinical documents do not have a title, and are collectively referred to by the display name of Document.type (e.g. a &quot;consultation&quot; or &quot;progress note&quot;). Where these display names are rendered to the clinician, or where the document has a unique title, the Document.title value should be used</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.setId"> </a><b>Document.setId</b></td></tr>
+  <tr><td>Definition</td><td>Represents an identifier that is common across all document revisions</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: cannot have both setId and replaces</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.version"> </a><b>Document.version</b></td></tr>
+  <tr><td>Definition</td><td>used to version successive replacement documents</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>integer</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Comments</td><td>An integer value is recommended</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.replaces"> </a><b>Document.replaces</b></td></tr>
+  <tr><td>Definition</td><td>If this document replaces another</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: cannot have both setId and replaces</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.subject"> </a><b>Document.subject</b></td></tr>
+  <tr><td>Definition</td><td>who the document is about</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Patient|Group)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.author"> </a><b>Document.author</b></td></tr>
+  <tr><td>Definition</td><td>Author (contributed content to document)</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.author.time"> </a><b>Document.author.time</b></td></tr>
+  <tr><td>Definition</td><td>When authoring happened</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.author.party"> </a><b>Document.author.party</b></td></tr>
+  <tr><td>Definition</td><td>who/what authored the final document</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Device)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.attestor"> </a><b>Document.attestor</b></td></tr>
+  <tr><td>Definition</td><td>a participant who has attested to the accuracy of the document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.attestor.mode"> </a><b>Document.attestor.mode</b></td></tr>
+  <tr><td>Definition</td><td>The type of attestation the authenticator offers</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from DocumentAuthenticationMode</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.attestor.time"> </a><b>Document.attestor.time</b></td></tr>
+  <tr><td>Definition</td><td>When document attested</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.attestor.party"> </a><b>Document.attestor.party</b></td></tr>
+  <tr><td>Definition</td><td>who attested the document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Organisation)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.recipient"> </a><b>Document.recipient</b></td></tr>
+  <tr><td>Definition</td><td>expected to receive a copy </td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Organization)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.custodian"> </a><b>Document.custodian</b></td></tr>
+  <tr><td>Definition</td><td>org which maintains the document.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Organization)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.event"> </a><b>Document.event</b></td></tr>
+  <tr><td>Definition</td><td>the main Act, such as a colonoscopy or an appendectomy, being documented</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Any)</td></tr>
+  <tr><td>Comments</td><td>The event needs to be consistent with the type element, though can provide further information if desired</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.encounter"> </a><b>Document.encounter</b></td></tr>
+  <tr><td>Definition</td><td>context of the document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Admission|InterestOfCare)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section"> </a><b>Document.section</b></td></tr>
+  <tr><td>Definition</td><td>Document is broken into sections</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.type"> </a><b>Document.section.type</b></td></tr>
+  <tr><td>Definition</td><td>type of section (recommended)</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from DocumentSectionType</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.instant"> </a><b>Document.section.instant</b></td></tr>
+  <tr><td>Definition</td><td>the section creation time (sections are often re-used in several documents).</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>instant</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.author"> </a><b>Document.section.author</b></td></tr>
+  <tr><td>Definition</td><td>if section author different to document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.author.time"> </a><b>Document.section.author.time</b></td></tr>
+  <tr><td>Definition</td><td>When authoring happened</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.author.party"> </a><b>Document.section.author.party</b></td></tr>
+  <tr><td>Definition</td><td>who/what authored the section</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Device)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.enterer"> </a><b>Document.section.enterer</b></td></tr>
+  <tr><td>Definition</td><td>The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Device)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.subject"> </a><b>Document.section.subject</b></td></tr>
+  <tr><td>Definition</td><td>if section different to document</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person|Group)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.informant"> </a><b>Document.section.informant</b></td></tr>
+  <tr><td>Definition</td><td>provided information in section</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>Resource(Person)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.content"> </a><b>Document.section.content</b></td></tr>
+  <tr><td>Definition</td><td>the actual content of the section</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: a section must have content or one or more sections</td></tr>
+  <tr><td>Type</td><td>Resource(Any)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.section"> </a><b>Document.section.section</b></td></tr>
+  <tr><td>Definition</td><td>nested Section</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..*: a section must have content or one or more sections</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.section.section.#"> </a><b>Document.section.section.#</b></td></tr>
+  <tr><td>Definition</td><td>contents as for a section</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>@Document.Section</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.extensions"> </a><b>Document.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Document.text"> </a><b>Document.text</b></td></tr>
+  <tr><td>Definition</td><td> </td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+</div> 
+    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<html>
+<head>
+ <title>Example Instance for Animal</title>
+ <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+<body>
+<pre class="xml">
+<span class="xmltag">&lt;Animal</span><span class="xmlattr"> xmlns=&quot;http://www.hl7.org/fhir&quot;</span><span class="xmltag">&gt;</span><b>
+  </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>wer234fwde234</b><span class="xmltag">&lt;/id&gt;</span><b>
+  
+  </b><span class="xmlcomment">&lt;!--   Dog tag, under Maroondah City council   --&gt;</span><b>
+  </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>microchip</b><span class="xmltag">&lt;/code&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>urn:hl7-org:sid/fhir/identifier-type</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;/type&gt;</span><b>
+    </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>http://http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>1234123123312332</b><span class="xmltag">&lt;/id&gt;</span><b>      
+    </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+    </b><span class="xmltag">&lt;period</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;low</span><span class="xmltag">&gt;</span><b>2010-05-31</b><span class="xmltag">&lt;/low&gt;</span><b>
+    </b><span class="xmltag">&lt;/period&gt;</span><b>
+    </b><span class="xmltag">&lt;assigner</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>Maroondah City Council</b><span class="xmltag">&lt;/text&gt;</span><b>
+    </b><span class="xmltag">&lt;/assigner&gt;</span><b>
+  </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+
+  </b><span class="xmlcomment">&lt;!--   Dog's name: Kenzi   --&gt;</span><b>
+  </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>usual</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Kenzi</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+  </b><span class="xmltag">&lt;/name&gt;</span><b>
+    
+  </b><span class="xmltag">&lt;dob</span><span class="xmltag">&gt;</span><b>2010-03-23</b><span class="xmltag">&lt;/dob&gt;</span><b> 
+  </b><span class="xmlcomment">&lt;!--   todo: how do you code a species?   --&gt;</span><b>
+  </b><span class="xmltag">&lt;species</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>Canis lupus familiaris</b><span class="xmltag">&lt;/code&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>http://en.wikipedia.org/wiki/Biological_classification</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;/coding&gt;</span><b>
+  </b><span class="xmltag">&lt;/species&gt;</span><b>
+  </b><span class="xmltag">&lt;strain</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>58108001</b><span class="xmltag">&lt;/code&gt;</span><b>              
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>http://snomed.info</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;display</span><span class="xmltag">&gt;</span><b>Golden retriever</b><span class="xmltag">&lt;/display&gt;</span><b>  
+    </b><span class="xmltag">&lt;/coding&gt;</span><b>      
+  </b><span class="xmltag">&lt;/strain&gt;</span><b>
+  </b><span class="xmltag">&lt;gender</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>F</b><span class="xmltag">&lt;/code&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>urn:hl7-org:sid/v2-0001</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;/coding&gt;</span><b>
+  </b><span class="xmltag">&lt;/gender&gt;</span><b>
+  
+  </b><span class="xmlcomment">&lt;!--   owner   --&gt;</span><b>
+  </b><span class="xmltag">&lt;relatedEntity</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;role</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;coding</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>OWN</b><span class="xmltag">&lt;/code&gt;</span><b>
+        </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>urn:hl7-org:sid/v2-0063</b><span class="xmltag">&lt;/system&gt;</span><b>
+        </b><span class="xmltag">&lt;display</span><span class="xmltag">&gt;</span><b>Owner</b><span class="xmltag">&lt;/display&gt;</span><b>
+      </b><span class="xmltag">&lt;/coding&gt;</span><b>
+    </b><span class="xmltag">&lt;/role&gt;</span><b>
+    </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>official</b><span class="xmltag">&lt;/use&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Peter</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>James</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>family</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Chalmers</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;/name&gt;</span><b>
+    </b><span class="xmltag">&lt;address</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>home</b><span class="xmltag">&lt;/use&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>line</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>534 Erewhon St</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>city</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>PleasantVille</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>state</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Vic</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+      </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>zip</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>3999</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;/address&gt;</span><b>
+    </b><span class="xmltag">&lt;contact</span><span class="xmlattr"> dataAbsentReason=&quot;unknown&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>home</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;/contact&gt;</span><b>
+    </b><span class="xmltag">&lt;contact</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>phone</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>(03) 5555 6473</b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>work</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;/contact&gt;</span><b>
+  </b><span class="xmltag">&lt;/relatedEntity&gt;</span><b>
+   
+  </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;status</span><span class="xmltag">&gt;</span><b>generated</b><span class="xmltag">&lt;/status&gt;</span><b>
+    </b><span class="xmltag">&lt;div</span><span class="xmlattr"> xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;table</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;tbody</span><span class="xmltag">&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Id</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Kenzi (Dog: Golden Retriever)</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Owner</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Peter Chalmers, 534 Erewhon, Pleasantville, Vic, 3999</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Contacts</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Home: unknown. Work: (03) 5555 6473</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Id</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Microchip: 1234123123312332 (Maroondah City Council)</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+        </b><span class="xmltag">&lt;/tbody&gt;</span><b>
+      </b><span class="xmltag">&lt;/table&gt;</span><b>
+    </b><span class="xmltag">&lt;/div&gt;</span><b>
+  </b><span class="xmltag">&lt;/text&gt;</span><b>
+</b><span class="xmltag">&lt;/Animal&gt;</span></pre>
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

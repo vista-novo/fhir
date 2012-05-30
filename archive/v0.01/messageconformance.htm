@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>MessageConformance - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body>
+<div class="header">
+  <a title="Fast Healthcare Interoperability Resources - Home Page" href="http://www.hl7.org/fhir"><img style="vertical-align: text-bottom" src="flame16.png"/> <b>FHIR</b></a>
+ 
+  © HL7.org 2011-2012
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="print-messageconformance.htm"><b>Printable Version </b></a>
+  &nbsp;
+  &nbsp;
+  <a href="http://wiki.hl7.org/index.php?title=FHIR_MessageConformance_Page"><b>Wiki for this page</b></a> &nbsp;
+  <!-- -  <a href="authoring.htm">Authoring Guidelines</a>  -->
+  <br/>
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+  
+</div>
+<div class="sidebar">
+  <h2>Infrastructure</h2>
+  <ul>
+   <li><a href="introduction.htm">Introduction</a></li>
+   <li><a href="xml.htm">Resource Format</a></li>
+   <li><a href="datatypes.htm">Data Types</a></li>
+   <li style="display: none"><a href="mixins.htm">Mixins</a></li>
+   <li><a href="terminologies.htm">Terminologies</a></li>
+   <li><a href="extensibility.htm">Extensibility</a></li>
+   <li><a href="constraint.htm">Constraint</a></li>
+  </ul> 
+
+  <h2>Exchange</h2>
+  <ul>
+   <li><a href="implementation.htm">Implementation</a></li>
+   <li><a href="atom.htm">Aggregations</a></li>
+   <li><a href="http.htm">REST (HTTP)</a></li>
+   <li style="display: none"><a href="conformance.htm">RESTful Conformance Statement</a></li>
+   <li><a href="messaging.htm">Messaging</a></li>
+   <li style="display: none"><a href="message.htm">Message Resource</a></li>
+   <li style="display: none"><a href="messageconformance.htm">Messaging Conformance Statement</a></li>
+   <li><a href="documents.htm">Documents</a></li>
+   <li style="display: none"><a href="documentconformance.htm">Document Conformance Statement</a></li>
+   <li><a href="hdata.htm">hData Integration</a></li>
+   <li><a href="profile.htm">Resource Profile</a></li>
+  </ul> 
+
+  <h2>Administrative Resources</h2>
+  <ul>
+   <li><a href="person.htm">Person</a></li>
+   <li><a href="animal.htm">Animal</a></li>
+   <li><a href="organization.htm">Organization</a></li>
+   <li><a href="agent.htm">Agent</a></li>
+   <li><a href="patient.htm">Patient</a></li>
+   <li><a href="document.htm">Document</a></li>
+   <li>Clinics</li>
+   <li>Admissions</li>
+   <li>Appointments</li>
+   <li>InterestOfCare</li>
+   <li>Transfers</li>
+  </ul> 
+  <h2>Clinical Components</h2>
+  <ul>
+   <li>Vitals etc</li>
+   <li><a href="labreport.htm">Lab Report</a></li>
+   <li>Imaging Report</li>
+   <li>Alert</li>
+   <li>Procedure </li>
+   <li>Consultation</li>
+   <li>Problem</li>
+   <li>Immunization</li>
+   <li>Diet</li>
+   <li>Implant</li>
+  </ul> 
+  <h2>Medications</h2>
+  <ul>
+   <li>Instruction</li>
+   <li><a href="prescription.htm">Prescription</a></li>
+   <li>Dispense</li>
+  </ul> 
+  <h2>Care management</h2>
+  <ul>
+   <li>Care Plan</li>
+  </ul> 
+  <h2>Documents</h2>
+  <ul>
+   <li>Discharge Summary</li>
+   <li>Transition Request</li>
+   <li>Notes</li>
+   <li>Letters</li>
+  </ul> 
+</div>
+
+<div class="content">
+<h1>MessageConformance</h1>
+<p>
+A conformance statement about how an application uses FHIR messaging.
+</p>
+<p>
+The relative url is /messageconformances
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="messageconformance.png"/></p>
+
+<pre>
+&lt;<a title="A conformance statement about how an application uses FHIR messaging" class="dict" href="#MessageConformance"><b>MessageConformance</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Globally unique Conformance Statement Id (Must be a UUID)" class="dict" href="#MessageConformance.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">ConformanceStatement Id (UUID)</font>&lt;/id&gt;
+  &lt;<a title="Date that the conformance statement is published" class="dict" href="#MessageConformance.date"><b>date</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">Publication Date</font>&lt;/date&gt;
+  &lt;<a title="The organization that publishes this conformance statement" class="dict" href="#MessageConformance.publisher"><b>publisher</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> 
+   &lt;<a title="Name of Organization" class="dict" href="#MessageConformance.publisher.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Publishing Organization</font>&lt;/name&gt;
+   &lt;<a title="Address of Organization" class="dict" href="#MessageConformance.publisher.address"><b>address</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Address">Address</a></font> <font color="navy">Address of Organization</font>&lt;/address&gt;
+   &lt;<a title="Contacts for Organization" class="dict" href="#MessageConformance.publisher.contact"><b>contact</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Contact">Contact</a></font> <font color="navy">Contacts for Organization</font>&lt;/contact&gt;
+  &lt;/publisher&gt;
+  &lt;<a title="The software that is covered by this conformance statement" class="dict" href="#MessageConformance.software"><b>software</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> 
+   &lt;<a title="Name software is known by" class="dict" href="#MessageConformance.software.name"><b>name</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Name software is known by</font>&lt;/name&gt;
+   &lt;<a title="Version covered by this statement" class="dict" href="#MessageConformance.software.version"><b>version</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Version covered by this statement</font>&lt;/version&gt;
+   &lt;<a title="Date this version released" class="dict" href="#MessageConformance.software.releaseDate"><b>releaseDate</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">Date this version released</font>&lt;/releaseDate&gt;
+  &lt;/software&gt;
+  &lt;<a title="Additional other profiles that apply to this conformance statement." class="dict" href="#MessageConformance.profile"><b>profile</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">other profiles that apply (i.e. code binding rules)</font>&lt;/profile&gt;
+  &lt;<a title="An event supported by the application" class="dict" href="#MessageConformance.event"><b>event</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> --&gt;</font>
+   &lt;<a title="The code for the event" class="dict" href="#MessageConformance.event.code"><b>code</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Declare support for this event</font>&lt;/code&gt;
+   &lt;<a title="The focal resource for the event" class="dict" href="#MessageConformance.event.resource"><b>resource</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Which resource if event has multiple</font>&lt;/resource&gt;
+   &lt;<a title="The mode of this event declaration - whether application is sender or receiver" class="dict" href="#MessageConformance.event.mode"><b>mode</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Sender | Receiver</font>&lt;/mode&gt;
+   &lt;<a title="Information about the request for this event" class="dict" href="#MessageConformance.event.request"><b>request</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> 
+    &lt;<a title="Constraint on a resource used in the event request" class="dict" href="#MessageConformance.event.request.resource"><b>resource</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>One+</b></font> <font color="darkgreen"><a href="constraint.htm#Constraint">Constraint</a></font> <font color="navy">Constraint on a resource used in request</font>&lt;/resource&gt;
+   &lt;/request&gt;
+   &lt;<a title="Information about the response for this event" class="dict" href="#MessageConformance.event.response"><b>response</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> 
+    &lt;<a title="Constraint on a resource used in the event response" class="dict" href="#MessageConformance.event.response.resource"><b>resource</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>One+</b></font> <font color="darkgreen"><a href="constraint.htm#Constraint">Constraint</a></font> <font color="navy">Constraint on a resource used in response</font>&lt;/resource&gt;
+   &lt;/response&gt;
+  &lt;/event&gt;
+  &lt;<a title="See Extensions" class="dict" href="#MessageConformance.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title=" " class="dict" href="#MessageConformance.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of conformance statement for human interpretation</font>&lt;/text&gt;
+&lt;/MessageConformance&gt;
+</pre>
+
+
+<p><a href="messageconformance.xsd">Schema for MessageConformance</a> and <a href="messageconformance.xml">an example</a> (or <a href="messageconformance.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+<li>MessageConformance.event.code is  bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href="messaging.htm#Events"> Event List in the messaging framework</a></li>
+  <li>MessageConformance.event.resource is  bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href="terminologies.htm#ResourceType"> any defined Resource Type name</a></li>
+  <li>MessageConformance.event.mode is  bound to the concept domain <i>MessageConformanceEventMode</i>: &quot;The mode of a message conformance statement&quot;. Possible values:
+    <table class="codes">
+    <tr><td>sender</td><td colspan="2">The application sends requests and receives responses</td></tr>    <tr><td>receiver</td><td colspan="2">The application receives requests and sends responses</td></tr>    </table>
+  </li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>The MessageConformance resource is a special case; it is only defined for the conformance framework, and is not encountered in other contexts</li>
+<li>The interpretation of request and resource depends on the mode. If the mode is sender, then request specifies what the application sends, and response specifies what it accepts. If the mode is &quot;listener&quot;, then this is reversed</li>
+<li>If a request or response is not specified for an event, then no rules are made for it</li>
+<li>Events that are not listed are not supported</li>
+</ul>  
+
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="messageconformance.dict.xml">an XML file</a>.</p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance"> </a><b>MessageConformance</b></td></tr>
+  <tr><td>Definition</td><td>A conformance statement about how an application uses FHIR messaging</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.id"> </a><b>MessageConformance.id</b></td></tr>
+  <tr><td>Definition</td><td>Globally unique Conformance Statement Id (Must be a UUID)</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.date"> </a><b>MessageConformance.date</b></td></tr>
+  <tr><td>Definition</td><td>Date that the conformance statement is published</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.publisher"> </a><b>MessageConformance.publisher</b></td></tr>
+  <tr><td>Definition</td><td>The organization that publishes this conformance statement</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.publisher.name"> </a><b>MessageConformance.publisher.name</b></td></tr>
+  <tr><td>Definition</td><td>Name of Organization</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.publisher.address"> </a><b>MessageConformance.publisher.address</b></td></tr>
+  <tr><td>Definition</td><td>Address of Organization</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>Address</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.publisher.contact"> </a><b>MessageConformance.publisher.contact</b></td></tr>
+  <tr><td>Definition</td><td>Contacts for Organization</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>Contact</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.software"> </a><b>MessageConformance.software</b></td></tr>
+  <tr><td>Definition</td><td>The software that is covered by this conformance statement</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.software.name"> </a><b>MessageConformance.software.name</b></td></tr>
+  <tr><td>Definition</td><td>Name software is known by</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.software.version"> </a><b>MessageConformance.software.version</b></td></tr>
+  <tr><td>Definition</td><td>Version covered by this statement</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>string</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.software.releaseDate"> </a><b>MessageConformance.software.releaseDate</b></td></tr>
+  <tr><td>Definition</td><td>Date this version released</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>dateTime</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.profile"> </a><b>MessageConformance.profile</b></td></tr>
+  <tr><td>Definition</td><td>Additional other profiles that apply to this conformance statement.</td></tr>
+  <tr><td>Control</td><td>Optional, 0..*</td></tr>
+  <tr><td>Type</td><td>uri</td></tr>
+  <tr><td>Comments</td><td> Generally these profiles make  constraints on the bindings of concept domains / value sets</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event"> </a><b>MessageConformance.event</b></td></tr>
+  <tr><td>Definition</td><td>An event supported by the application</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.code"> </a><b>MessageConformance.event.code</b></td></tr>
+  <tr><td>Definition</td><td>The code for the event</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from MessageEvent</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.resource"> </a><b>MessageConformance.event.resource</b></td></tr>
+  <tr><td>Definition</td><td>The focal resource for the event</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: A resource type is required if the event declaration has multiple focal resources</td></tr>
+  <tr><td>Type</td><td>code from ResourceType</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.mode"> </a><b>MessageConformance.event.mode</b></td></tr>
+  <tr><td>Definition</td><td>The mode of this event declaration - whether application is sender or receiver</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>code from MessageConformanceEventMode</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.request"> </a><b>MessageConformance.event.request</b></td></tr>
+  <tr><td>Definition</td><td>Information about the request for this event</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.request.resource"> </a><b>MessageConformance.event.request.resource</b></td></tr>
+  <tr><td>Definition</td><td>Constraint on a resource used in the event request</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td>Type</td><td>Constraint</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.response"> </a><b>MessageConformance.event.response</b></td></tr>
+  <tr><td>Definition</td><td>Information about the response for this event</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.event.response.resource"> </a><b>MessageConformance.event.response.resource</b></td></tr>
+  <tr><td>Definition</td><td>Constraint on a resource used in the event response</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..*</td></tr>
+  <tr><td>Type</td><td>Constraint</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.extensions"> </a><b>MessageConformance.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="MessageConformance.text"> </a><b>MessageConformance.text</b></td></tr>
+  <tr><td>Definition</td><td> </td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+</div> 
+    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceDefinitions xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir definitions.xsd">
+  <author>HL7</author>
+  <resourceDefinition>
+    <name>Organization</name>
+    <elementDefinitions>
+      <elementDefinition>
+        <name>Organization</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>For any organization/institution/government department that has relevance to the care process</definition>
+        <requirements></requirements>
+        <rim>Organization(classCode=ORG, determinerCode=INST)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.id</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>id</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Master Resource Id, always first in all resources</definition>
+        <requirements></requirements>
+        <rim>.id(scope=OBJ)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.identifier</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>HumanId</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>Identifier for the organization that is used to identify the organization across multiple disparate systems</definition>
+        <requirements>Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</requirements>
+        <rim>.scopes[Role](classCode=IDENT)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.name</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>A name associated with the organization</definition>
+        <requirements>Need to use the name as the label of the organization</requirements>
+        <comments>Don't use HumanName since that has many non-organization things in it</comments>
+        <rim>.name</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.name.value</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>string</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>The actual name of the organization</definition>
+        <requirements></requirements>
+        <rim>.part[1](type=NULL,qualifier=NULL).value</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.name.period</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Interval(date)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The period that this name was in use by the organization</definition>
+        <requirements>Organizations have a habit of renaming themselves, and the current and past names are required</requirements>
+        <rim>.validTime</rim>
+        <todo>This is 80%??</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.address</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Address</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>An address for the organization</definition>
+        <requirements>May need to keep track of the organizations addresses for contacting, billing or reporting requirements</requirements>
+        <comments>Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used</comments>
+        <rim>.address</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.contact</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Contact</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A contact detail for the organization</definition>
+        <requirements>Human contact for the organization</requirements>
+        <comments>The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself</comments>
+        <rim>.telecom</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.code</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>OrganisationType</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The kind of organization that this is</definition>
+        <requirements>Need to be able to track the kind of organization that this is - different organization types have different uses</requirements>
+        <comments>Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</comments>
+        <rim>.code</rim>
+        <todo>Name code is too RIM-like.  Should be typeCode or type.</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.industryCode</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>Industry</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The industry that this organization is involved in</definition>
+        <requirements>For some organization types, an industry code is required for statistical reporting requirements</requirements>
+        <rim>.standardIndustryClassCode</rim>
+        <todo>Is this really in the 80%??</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.accreditation</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</definition>
+        <requirements>For many persons in healthcare, it is necessary to track the qualifications a person has - formal.</requirements>
+        <rim>.plays[Role](classCode='QUAL')</rim>
+        <todo>Not sure if qualified &amp; accredited are the same.  Could potentially propose a new classCode</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.accreditation.id</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Identifier</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The identifier of the accreditation</definition>
+        <requirements>Allows a link back to a accreditation registry, if one exists</requirements>
+        <rim>.identifier</rim>
+        <todo>Not a humanId?</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.accreditation.code</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>Accreditation</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The type of the accreditation</definition>
+        <requirements>commonly used to determine the roles an  organization may perform</requirements>
+        <rim>.code</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.accreditation.institution</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Resource(Organization)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The organization that confered/confers the accreditation</definition>
+        <requirements>May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</requirements>
+        <rim>.scopedBy[Organization]</rim>
+        <todo>Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.accreditation.period</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Interval(date)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The period for which the accreditation is held</definition>
+        <requirements>Most accreditations are only conferred for a limited time period and must be re-acquired or forfeited</requirements>
+        <rim>.effectiveTime[IVL&lt;TS>]</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</definition>
+        <requirements>Need to be able to track many kinds of organizational relationships and use to determine roles and mediate workflows</requirements>
+        <rim></rim>
+        <todo>There's no reason why this wouldn't point to another resource.  Will map when updated accordingly.</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.id</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>HumanId</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier</definition>
+        <requirements>may have an identifier for the organization that can be used to source contact details</requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.code</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>OrganizationRelationship</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Code that specifies how this organization is related to the subject. A code is required.</definition>
+        <requirements>Need to know how the organization is related</requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.name</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>string</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A name should be specified for the related organization</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.address</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Address</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Postal addresses may be provided for the related organization</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.contact</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Contact</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Contact details (phone, email etc) may be provided for the related organization</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.relatedOrganization.period</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Interval(date)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The period during which the organizations were related in this fashion</definition>
+        <requirements>Organization relationships are changing all the time</requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.extensions</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>See Extensions</definition>
+        <requirements></requirements>
+        <rim>[varies]</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Organization.text</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Narrative</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Text summary of organization, fall back for human interpretation</definition>
+        <requirements></requirements>
+        <rim></rim>
+        <todo>.text</todo>
+      </elementDefinition>
+    </elementDefinitions>
+  </resourceDefinition>
+</resourceDefinitions>
+

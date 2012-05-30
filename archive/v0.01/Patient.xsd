@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on Mon, May 14, 2012 09:48+1000 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Patient" type="Patient">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Patient">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Master Resource Id, always first in all resources</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="active" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Whether the patient record is in use, or has been removed from active use</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="boolean">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="person" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The person that this patient record is about</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="animal" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The animal that this patient record is about</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="provider" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The provider for whom this is a patient record</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="identifier" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>An identifier that applies to this person as a patient</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="HumanId">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="diet" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Dietary restrictions for the patient</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="confidentiality" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Confidentiality of the patient records</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="recordLocation" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The location of the paper record for the patient, if there is one</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of person, for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

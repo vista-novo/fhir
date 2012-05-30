@@ -1,0 +1,162 @@
+<html>
+<head>
+ <title>Example Instance for Documentconformance</title>
+ <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+<body>
+<pre class="xml">
+<span class="xmltag">&lt;DocumentConformance</span><span class="xmlattr"> xmlns=&quot;http://www.hl7.org/fhir&quot;</span><span class="xmltag">&gt;</span><b>
+  </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>6c8d7aec-05b8-4093-8101-7f5eab5a416d</b><span class="xmltag">&lt;/id&gt;</span><b>
+  </b><span class="xmltag">&lt;date</span><span class="xmltag">&gt;</span><b>2012-01-04</b><span class="xmltag">&lt;/date&gt;</span><b>
+  </b><span class="xmltag">&lt;publisher</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>ACME Corporation</b><span class="xmltag">&lt;/name&gt;</span><b>
+    </b><span class="xmltag">&lt;contact</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>email</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>wile@acme.org</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/contact&gt;</span><b>
+  </b><span class="xmltag">&lt;/publisher&gt;</span><b>
+  </b><span class="xmltag">&lt;software</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>EHR</b><span class="xmltag">&lt;/name&gt;</span><b>
+    </b><span class="xmltag">&lt;version</span><span class="xmltag">&gt;</span><b>0.00.020.2134</b><span class="xmltag">&lt;/version&gt;</span><b>
+  </b><span class="xmltag">&lt;/software&gt;</span><b>
+  
+  </b><span class="xmlcomment">&lt;!--   1 document profile.   --&gt;</span><b>
+  </b><span class="xmltag">&lt;document</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>General</b><span class="xmltag">&lt;/name&gt;</span><b>
+    </b><span class="xmltag">&lt;purpose</span><span class="xmltag">&gt;</span><b>Basic rules for all documents in the EHR system</b><span class="xmltag">&lt;/purpose&gt;</span><b>
+    </b><span class="xmltag">&lt;resource</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmlcomment">&lt;!--   document resource first, as required   --&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>Document</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.id</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>id</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.instant</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>dateTime</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.type</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>CodeableConcept</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.title</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>string</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.setId</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;purpose</span><span class="xmltag">&gt;</span><b>All EHR documents must be versioned using setId/Version</b><span class="xmltag">&lt;/purpose&gt;</span><b>              
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>id</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.version</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>integer</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.replaces</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>0</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>0</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>id</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Prohibited</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>subject</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;purpose</span><span class="xmltag">&gt;</span><b>Only individual humans in the EHR</b><span class="xmltag">&lt;/purpose&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>Resource(Patient)</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.author</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Doument.author.time</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.author.party</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;purpose</span><span class="xmltag">&gt;</span><b>Only humans author documents</b><span class="xmltag">&lt;/purpose&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>Resource(Person)</b><span class="xmltag">&lt;/type&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.attestor</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Doument.attestor.mode</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;purpose</span><span class="xmltag">&gt;</span><b>Only legal authentication</b><span class="xmltag">&lt;/purpose&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+        </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>
+         </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>legal</b><span class="xmltag">&lt;/code&gt;</span><b>
+        </b><span class="xmltag">&lt;/value&gt;</span><b>
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Doument.attestor.time</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmltag">&lt;element</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;path</span><span class="xmltag">&gt;</span><b>Document.attestor.party</b><span class="xmltag">&lt;/path&gt;</span><b>
+        </b><span class="xmltag">&lt;min</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/min&gt;</span><b>
+        </b><span class="xmltag">&lt;max</span><span class="xmltag">&gt;</span><b>1</b><span class="xmltag">&lt;/max&gt;</span><b>
+        </b><span class="xmltag">&lt;conformance</span><span class="xmltag">&gt;</span><b>Mandatory</b><span class="xmltag">&lt;/conformance&gt;</span><b>            
+      </b><span class="xmltag">&lt;/element&gt;</span><b>
+      </b><span class="xmlcomment">&lt;!--   etc, though stopping here simply means, no rules made about the other elements   --&gt;</span><b>
+    </b><span class="xmltag">&lt;/resource&gt;</span><b>
+  </b><span class="xmltag">&lt;/document&gt;</span><b>
+
+  </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;status</span><span class="xmltag">&gt;</span><b>generated</b><span class="xmltag">&lt;/status&gt;</span><b>
+    </b><span class="xmltag">&lt;div</span><span class="xmlattr"> xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;p</span><span class="xmltag">&gt;</span><b>General EHR Document rules (Acme Healthcare): </b><span class="xmltag">&lt;/p&gt;</span><b>
+      </b><span class="xmltag">&lt;ul</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;li</span><span class="xmltag">&gt;</span><b>EHR documents must be versioned using setId</b><span class="xmltag">&lt;/li&gt;</span><b>
+        </b><span class="xmltag">&lt;li</span><span class="xmltag">&gt;</span><b>Only individual humans in the EHR</b><span class="xmltag">&lt;/li&gt;</span><b>
+        </b><span class="xmltag">&lt;li</span><span class="xmltag">&gt;</span><b>Only humans author documents</b><span class="xmltag">&lt;/li&gt;</span><b>
+        </b><span class="xmltag">&lt;li</span><span class="xmltag">&gt;</span><b>Only legal authentication</b><span class="xmltag">&lt;/li&gt;</span><b>
+      </b><span class="xmltag">&lt;/ul&gt;</span><b>
+    </b><span class="xmltag">&lt;/div&gt;</span><b>
+  </b><span class="xmltag">&lt;/text&gt;</span><b>
+</b><span class="xmltag">&lt;/DocumentConformance&gt;</span></pre>
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>UML Models and dataAbsentReason - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body style="margin: 20px">
+
+
+
+
+
+
+
+<h1>UML Models and dataAbsentReason</h1>
+
+<p>
+This specification describes the use of the <i>dataAbsentReason</i> attribute, 
+which is used throughout the content models on elements of any type to
+indicate missing data. The <i>dataAbsentReason</i> attribute &quot;may appear on any element in a resource other 
+than those marked mandatory&quot;.
+</p>
+<p>
+In Object-Orientated paradigms, the <i>dataAbsentReason</i> is a mixin. 
+The <a href="http://en.wikipedia.org/wiki/Mixin#">definition of a mix-in</a> is that 
+it is an abstract class that provides functionality that is not inherited by specialization but rather by collecting functionality.
+A mixin can be thought of as a generic class that specializes it's parameter class:
+</p>
+<p><img src="mixin-pure.png"/></p>
+<p>
+This shows a mixin called &quot;DataQualityAspect&quot; which expresses the attribute &quot;dataAbsentReason&quot;. The 
+two derived classes, DataQualityAspectQuantity which inherits both Quantity and DataQualityAspect
+and DataQualityAspect(Quantity), which binds Quantity to the paramter T on the DataQualityAspect mixin
+both have the same semantics (are identical other than their type derivation). 
+</p>
+<p>
+The problem with this approach is that not only is the &lt;&lt;mixin&gt;&gt; stereotype
+not a recognised standard UML sytnax, but most mainstream programming languages cannot 
+implement multiple inheritence in this form. There is two alternative approaches for 
+implementing this in these platforms. The first is using a wrapper class:
+</p>
+<p><img src="mixin-wrapper.png"/></p>
+<p>
+The problem with this variation is that Quantity and DataQualityAspect(Quantity) are 
+no longer both types of Quantity, as with a pure mixin, and this will have a series of 
+knock on effects in implementations. The other alternative is simply to make DataQualityAspect
+a base class:
+</p>
+<p><img src="mixin-base.png"/></p>
+<p>
+This is the simplest approach, but has the disadvantage that all instances of 
+the Quantity data type carry the dataAbsentReason attribute, whether it is
+appropriate or not. 
+</p>
+<p>
+Implementors that use these objects in an environment where mixins are not supported
+must choose either of these two approaches. For simplicity, the object models defined
+in this specification simply bind the target type directly to the specified data type,
+and ignore the issue of the dataAbsentReason mixin.</p>
+<p>
+Note that the dataAbsentReason may also be associated with primitive 
+types as well.
+</p>
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

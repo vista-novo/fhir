@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://www.hl7.org)
+  Generated on Mon, May 14, 2012 09:48+1000 for FHIR v0.01 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://www.hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Document" type="Document">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the unique id of a clinical document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="instant" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="instant">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="type" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="title" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the title of the document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="string">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="setId" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Represents an identifier that is common across all document revisions</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="version" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>used to version successive replacement documents</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="integer">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="replaces" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>If this document replaces another</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="id">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="subject" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>who the document is about</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="author" type="Document.Author" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Author (contributed content to document)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="attestor" type="Document.Attestor" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>a participant who has attested to the accuracy of the document</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recipient" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>expected to receive a copy </xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="custodian" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>org which maintains the document.</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="event" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the main Act, such as a colonoscopy or an appendectomy, being documented</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="encounter" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>context of the document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="section" type="Document.Section" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Document is broken into sections</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extensions" type="Extensions" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document.Author">
+    <xs:sequence>
+      <xs:element name="time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When authoring happened</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="party" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>who/what authored the final document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document.Attestor">
+    <xs:sequence>
+      <xs:element name="mode" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of attestation the authenticator offers</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="DocumentAuthenticationMode">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When document attested</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="party" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>who attested the document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document.Section">
+    <xs:sequence>
+      <xs:element name="type" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>type of section (recommended)</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="CodeableConcept">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="instant" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the section creation time (sections are often re-used in several documents).</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="instant">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="author" type="Document.Author1" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>if section author different to document</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="enterer" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="subject" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>if section different to document</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="informant" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>provided information in section</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="content" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>the actual content of the section</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="section" type="Document.Section" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>nested Section</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Document.Author1">
+    <xs:sequence>
+      <xs:element name="time" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When authoring happened</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="dateTime">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+      <xs:element name="party" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>who/what authored the section</xs:documentation>
+        </xs:annotation>
+         <xs:complexType>
+           <xs:complexContent>
+             <xs:extension base="ResourceReference">
+               <xs:attributeGroup ref="dataAbsentReason"/>
+             </xs:extension>
+           </xs:complexContent>
+         </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentAuthenticationMode">
+    <xs:simpleContent>
+      <xs:restriction base="code">
+        <xs:enumeration value="personal">
+          <xs:annotation>
+            <xs:documentation>The person authenticated the document in their personal capacity</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="professional">
+          <xs:annotation>
+            <xs:documentation>The person authenticated the document in their professional capacity</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="legal">
+          <xs:annotation>
+            <xs:documentation>The person authenticated the document and accepted legal responsibility for it's content</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="official">
+          <xs:annotation>
+            <xs:documentation>The organization authenticated the document as consistent with their policies and procedures</xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

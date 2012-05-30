@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Patient - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body>
+<div class="header">
+  <a title="Fast Healthcare Interoperability Resources - Home Page" href="http://www.hl7.org/fhir"><img style="vertical-align: text-bottom" src="flame16.png"/> <b>FHIR</b></a>
+ 
+  © HL7.org 2011-2012
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="print-patient.htm"><b>Printable Version </b></a>
+  &nbsp;
+  &nbsp;
+  <a href="http://wiki.hl7.org/index.php?title=FHIR_Patient_Page"><b>Wiki for this page</b></a> &nbsp;
+  <!-- -  <a href="authoring.htm">Authoring Guidelines</a>  -->
+  <br/>
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+  
+</div>
+<div class="sidebar">
+  <h2>Infrastructure</h2>
+  <ul>
+   <li><a href="introduction.htm">Introduction</a></li>
+   <li><a href="xml.htm">Resource Format</a></li>
+   <li><a href="datatypes.htm">Data Types</a></li>
+   <li style="display: none"><a href="mixins.htm">Mixins</a></li>
+   <li><a href="terminologies.htm">Terminologies</a></li>
+   <li><a href="extensibility.htm">Extensibility</a></li>
+   <li><a href="constraint.htm">Constraint</a></li>
+  </ul> 
+
+  <h2>Exchange</h2>
+  <ul>
+   <li><a href="implementation.htm">Implementation</a></li>
+   <li><a href="atom.htm">Aggregations</a></li>
+   <li><a href="http.htm">REST (HTTP)</a></li>
+   <li style="display: none"><a href="conformance.htm">RESTful Conformance Statement</a></li>
+   <li><a href="messaging.htm">Messaging</a></li>
+   <li style="display: none"><a href="message.htm">Message Resource</a></li>
+   <li style="display: none"><a href="messageconformance.htm">Messaging Conformance Statement</a></li>
+   <li><a href="documents.htm">Documents</a></li>
+   <li style="display: none"><a href="documentconformance.htm">Document Conformance Statement</a></li>
+   <li><a href="hdata.htm">hData Integration</a></li>
+   <li><a href="profile.htm">Resource Profile</a></li>
+  </ul> 
+
+  <h2>Administrative Resources</h2>
+  <ul>
+   <li><a href="person.htm">Person</a></li>
+   <li><a href="animal.htm">Animal</a></li>
+   <li><a href="organization.htm">Organization</a></li>
+   <li><a href="agent.htm">Agent</a></li>
+   <li><a href="patient.htm">Patient</a></li>
+   <li><a href="document.htm">Document</a></li>
+   <li>Clinics</li>
+   <li>Admissions</li>
+   <li>Appointments</li>
+   <li>InterestOfCare</li>
+   <li>Transfers</li>
+  </ul> 
+  <h2>Clinical Components</h2>
+  <ul>
+   <li>Vitals etc</li>
+   <li><a href="labreport.htm">Lab Report</a></li>
+   <li>Imaging Report</li>
+   <li>Alert</li>
+   <li>Procedure </li>
+   <li>Consultation</li>
+   <li>Problem</li>
+   <li>Immunization</li>
+   <li>Diet</li>
+   <li>Implant</li>
+  </ul> 
+  <h2>Medications</h2>
+  <ul>
+   <li>Instruction</li>
+   <li><a href="prescription.htm">Prescription</a></li>
+   <li>Dispense</li>
+  </ul> 
+  <h2>Care management</h2>
+  <ul>
+   <li>Care Plan</li>
+  </ul> 
+  <h2>Documents</h2>
+  <ul>
+   <li>Discharge Summary</li>
+   <li>Transition Request</li>
+   <li>Notes</li>
+   <li>Letters</li>
+  </ul> 
+</div>
+
+<div class="content">
+<h1>Patient</h1>
+<p>
+A patient is a person or animal that is receiving care.
+</p>
+<p>
+The relative url is /patients
+</p>
+<h2>
+Content
+</h2>
+<p><img alt="UML Image" src="patient.png"/></p>
+
+<pre>
+&lt;<a title="A patient is a person or animal that is receiving care" class="dict" href="#Patient"><b>Patient</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#Patient.id"><b>id</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font>&lt;/id&gt;
+  &lt;<a title="A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error." class="dict" href="#Patient.link"><b>link</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen">(<a href="Patient.htm#Patient">Patient</a>)</font> <font color="navy">Other patients linked to this resource</font>&lt;/link&gt;
+  &lt;<a title="Whether the patient record is in use, or has been removed from active use" class="dict" href="#Patient.active"><b>active</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#boolean">boolean</a></font> <font color="navy">Whether this patient record is active (in use)</font>&lt;/active&gt;
+  &lt;<a title="The person that this patient record is about" class="dict" href="#Patient.person"><b>person</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen">(<a href="Person.htm#Person">Person</a>)</font> <font color="navy">The person who is the patient</font>&lt;/person&gt;
+  &lt;<a title="The animal that this patient record is about" class="dict" href="#Patient.animal"><b>animal</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen">(<a href="Animal.htm#Animal">Animal</a>)</font> <font color="navy">The animal which is the patient</font>&lt;/animal&gt;
+  &lt;<a title="The provider for whom this is a patient record" class="dict" href="#Patient.provider"><b>provider</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">Organization managing the patient</font>&lt;/provider&gt;
+  &lt;<a title="An identifier that applies to this person as a patient" class="dict" href="#Patient.identifier"><b>identifier</b></a>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#HumanId">HumanId</a></font> <font color="navy">An identifier for the person as this patient</font>&lt;/identifier&gt;
+  &lt;<a title="Dietary restrictions for the patient" class="dict" href="#Patient.diet"><b>diet</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Dietary restrictions for the patient</font>&lt;/diet&gt;
+  &lt;<a title="Confidentiality of the patient records" class="dict" href="#Patient.confidentiality"><b>confidentiality</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Confidentiality of the patient records</font>&lt;/confidentiality&gt;
+  &lt;<a title="The location of the paper record for the patient, if there is one" class="dict" href="#Patient.recordLocation"><b>recordLocation</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></font> <font color="navy">Where the paper record is</font>&lt;/recordLocation&gt;
+  &lt;<a title="See Extensions" class="dict" href="#Patient.extensions"><b>extensions</b></a>&gt; <a class="cf" href="xml.htm#Control">opt</a> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
+  &lt;<a title="Text summary of person, for human interpretation" class="dict" href="#Patient.text"><b>text</b></a>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of person, for human interpretation</font>&lt;/text&gt;
+&lt;/Patient&gt;
+</pre>
+
+
+<p><a href="patient.xsd">Schema for Patient</a> and <a href="patient.xml">an example</a> (or <a href="patient.xml.htm">formatted for browser</a>)</p>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Patient.diet is  bound to the concept domain <i>PatientDiet</i>: &quot;casual dietary restrictions associated with this patient&quot;</li>
+  <li>Patient.confidentiality is  bound to the concept domain <i>PatientConfidentiality</i>: &quot;The confidentiality of the records associated with this patient&quot;</li>
+  <li>Patient.recordLocation is  bound to the concept domain <i>PaperRecordLocation</i>: &quot;A physical location for a record. (Usually site specific)&quot;</li>
+</ul>
+
+
+
+<p>
+Notes:
+</p>
+<ul>
+<li>Links: linking patient records is an assertion that they both are about the same actual person. If any patient record is linked to another, then the other must be linked back to the source record.</li>
+<li>The patient may be a person or an animal (in order to support vetinary medicine). Either a person or an animal resource link must be provided, but not both.</li> 
+<li>The dietary restrictions are not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</li>
+</ul>
+
+<h2>Managing Patient Registration</h2>
+<p>
+Managing Patient registration is a well known difficult problem. Around 2% of registrations are in error, 
+mostly duplicate records. Sometimes the duplicate record is caught fairly quickly and retired before much 
+data is accumulated. In other cases, substantial amounts of data may accumulate. For these and other 
+reasons, the identifiers associated with a patient may change over time.
+</p>
+<p>
+The master identifier for the Patient Resource can never change. For this reason the identifiers with 
+which humans are concerned (often called MRN - Medical Record Number, or UR - Unit Record) should not 
+be used as the master identifier. Instead they should be represented in the <i>Patient.identifier</i> 
+list where they can be managed. This is also useful for the case of institutions that have acquired 
+multiple numbers because of mergers of patient record systems over time.
+</p>
+<p>
+In this specification, patient records are never merged. If multiple patient records are found to be 
+duplicates, they are linked. In a RESTful context, this is done using the &quot;link patients&quot; transaction
+described below. In other contexts, equivalent functionality will be needed. When patient resources 
+are linked, one may be chosen as the &quot;master&quot; - the correct record. In this case, the active status 
+of all the other resources is set to false, and all the content is moved to the active record by updating
+it directly. 
+</p>
+<p>
+Patient records may only be in one of two statuses: active and retired. A normal record is active 
+- it is in use. The status retired is used when a record is created in error. Once the error is 
+discovered, it can either be retired or deleted. A record does not need to be linked to be retired.
+</p>
+<h2>RESTful Transactions</h2>
+<p>
+The patient resource type defines one special transaction provided by the patient manager: &quot;Link&quot; for 
+linking resources. The reason is that linking records is effectively a transaction that involves at 
+least two resources, and all or none must change. Since the transaction involves multiple resources, 
+it is implemented on the resource manager as a POST to [todo]
+</p>
+<p>
+There is no content model for the response, except for an HTTP status code.
+</p>
+
+<h2>
+Searching Criteria
+</h2>
+<p>
+The following simple search/filter parameters are defined for person:
+</p>
+<table class="list">
+  <tr><td>person      </td><td>The identity of a person</td></tr>
+  <tr><td>provider    </td><td>The identity of an organization</td></tr>
+  <tr><td>id          </td><td>search id in any patient identifiers</td></tr>
+</table>
+<p>
+The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
+</p>
+
+
+
+<h2>Formal Definitions</h2>
+
+<p>The formal definitions for the elements above. Also available as <a href="patient.dict.xml">an XML file</a>.</p>
+
+<table class="dict">
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient"> </a><b>Patient</b></td></tr>
+  <tr><td>Definition</td><td>A patient is a person or animal that is receiving care</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Requirements</td><td>Tracking patient is the center of the healthcare process</td></tr>
+  <tr><td>RIM Mapping</td><td>Patient</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.id"> </a><b>Patient.id</b></td></tr>
+  <tr><td>Definition</td><td>Master Resource Id, always first in all resources</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>id</td></tr>
+  <tr><td>To Do</td><td>.id(scope=OBJ)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.link"> </a><b>Patient.link</b></td></tr>
+  <tr><td>Definition</td><td>A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.</td></tr>
+  <tr><td>Control</td><td>Mandatory, 0..*</td></tr>
+  <tr><td>Type</td><td>Resource(Patient)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Due to the clerical errors associated with the difficulties of identifying humans consistently, duplicate patient records are frequently created in error</td></tr>
+  <tr><td>Comments</td><td>More then two patient records may be linked. Note that there is a special transaction for linking patient records in the RESTful context, as record linking consistency must be maintained</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.active"> </a><b>Patient.active</b></td></tr>
+  <tr><td>Definition</td><td>Whether the patient record is in use, or has been removed from active use</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>boolean</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to mark a patient record as not to be used because it was created in error</td></tr>
+  <tr><td>Comments</td><td>If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.person"> </a><b>Patient.person</b></td></tr>
+  <tr><td>Definition</td><td>The person that this patient record is about</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: Either an animal or a person must be provided, but not both</td></tr>
+  <tr><td>Type</td><td>Resource(Person)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to link this patient record to a known and identifiable person (or animal)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.animal"> </a><b>Patient.animal</b></td></tr>
+  <tr><td>Definition</td><td>The animal that this patient record is about</td></tr>
+  <tr><td>Control</td><td>Conditional, 0..1: Either an animal or a person must be provided, but not both</td></tr>
+  <tr><td>Type</td><td>Resource(Animal)</td></tr>
+  <tr><td>Requirements</td><td>Need to link this patient record to a known and identifiable animal (or person)</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.provider"> </a><b>Patient.provider</b></td></tr>
+  <tr><td>Definition</td><td>The provider for whom this is a patient record</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Resource(Organization)</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Need to know who recognises this patient record</td></tr>
+  <tr><td>To Do</td><td>But is thie same as institution above?</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.identifier"> </a><b>Patient.identifier</b></td></tr>
+  <tr><td>Definition</td><td>An identifier that applies to this person as a patient</td></tr>
+  <tr><td>Control</td><td>0..*</td></tr>
+  <tr><td>Type</td><td>HumanId</td></tr>
+  <tr><td>Must Understand</td><td>true</td></tr>
+  <tr><td>Requirements</td><td>Patients are almos always assigned specific numerical identifiers</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.diet"> </a><b>Patient.diet</b></td></tr>
+  <tr><td>Definition</td><td>Dietary restrictions for the patient</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from PatientDiet</td></tr>
+  <tr><td>Requirements</td><td>Track patients reported dietary restrictions to help with catering requirements</td></tr>
+  <tr><td>Comments</td><td>not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.confidentiality"> </a><b>Patient.confidentiality</b></td></tr>
+  <tr><td>Definition</td><td>Confidentiality of the patient records</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from PatientConfidentiality</td></tr>
+  <tr><td>Requirements</td><td>Need to be able to track which patient records are particularly sensitive</td></tr>
+  <tr><td>Comments</td><td>Confidentiality tracking also occurs at more detailed points in the medical record</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.recordLocation"> </a><b>Patient.recordLocation</b></td></tr>
+  <tr><td>Definition</td><td>The location of the paper record for the patient, if there is one</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td>Type</td><td>CodeableConcept from PaperRecordLocation</td></tr>
+  <tr><td>Requirements</td><td>Track old paper records where these are still in use</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.extensions"> </a><b>Patient.extensions</b></td></tr>
+  <tr><td>Definition</td><td>See Extensions</td></tr>
+  <tr><td>Control</td><td>Optional, 0..1</td></tr>
+  <tr><td colspan="2 class=&quot;structure&quot;"><a name="Patient.text"> </a><b>Patient.text</b></td></tr>
+  <tr><td>Definition</td><td>Text summary of person, for human interpretation</td></tr>
+  <tr><td>Control</td><td>Mandatory, 1..1</td></tr>
+  <tr><td>Type</td><td>Narrative</td></tr>
+</table>
+
+
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+</div> 
+    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

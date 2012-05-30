@@ -1,0 +1,120 @@
+<html>
+<head>
+ <title>Example Instance for Person</title>
+ <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+<body>
+<pre class="xml">
+<span class="xmltag">&lt;Person</span><span class="xmlattr"> xmlns=&quot;http://www.hl7.org/fhir&quot;</span><span class="xmltag">&gt;</span><b>
+  </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>34234</b><span class="xmltag">&lt;/id&gt;</span><b>
+  
+  </b><span class="xmlcomment">&lt;!--   MRN assigned by ACME healthcare on 6-May 2001   --&gt;</span><b>
+  </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;code</span><span class="xmltag">&gt;</span><b>MR</b><span class="xmltag">&lt;/code&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>urn:hl7-org:sid/v2-0203</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;/type&gt;</span><b>
+    </b><span class="xmltag">&lt;identifier</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>oid:1.2.36.146.595.217.0.1</b><span class="xmltag">&lt;/system&gt;</span><b>
+      </b><span class="xmltag">&lt;id</span><span class="xmltag">&gt;</span><b>12345</b><span class="xmltag">&lt;/id&gt;</span><b>      
+    </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+    </b><span class="xmltag">&lt;period</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;low</span><span class="xmltag">&gt;</span><b>2001-05-06</b><span class="xmltag">&lt;/low&gt;</span><b>
+    </b><span class="xmltag">&lt;/period&gt;</span><b>
+    </b><span class="xmltag">&lt;assigner</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>Acme Healthcare</b><span class="xmltag">&lt;/text&gt;</span><b>
+    </b><span class="xmltag">&lt;/assigner&gt;</span><b>
+  </b><span class="xmltag">&lt;/identifier&gt;</span><b>
+
+  </b><span class="xmlcomment">&lt;!--   Peter James Chalmers, but called &quot;Jim&quot;   --&gt;</span><b>
+  </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>official</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Peter</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>James</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>family</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Chalmers</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+  </b><span class="xmltag">&lt;/name&gt;</span><b>
+  </b><span class="xmltag">&lt;name</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>usual</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>given</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Jim</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+  </b><span class="xmltag">&lt;/name&gt;</span><b>
+  
+  
+  </b><span class="xmltag">&lt;address</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>home</b><span class="xmltag">&lt;/use&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>line</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>534 Erewhon St</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>city</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>PleasantVille</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>state</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>Vic</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+    </b><span class="xmltag">&lt;part</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;type</span><span class="xmltag">&gt;</span><b>zip</b><span class="xmltag">&lt;/type&gt;</span><b>
+      </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>3999</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;/part&gt;</span><b>
+  </b><span class="xmltag">&lt;/address&gt;</span><b>
+
+  </b><span class="xmltag">&lt;contact</span><span class="xmlattr"> dataAbsentReason=&quot;unknown&quot;</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>home</b><span class="xmltag">&lt;/use&gt;</span><b>
+  </b><span class="xmltag">&lt;/contact&gt;</span><b>
+  </b><span class="xmltag">&lt;contact</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;system</span><span class="xmltag">&gt;</span><b>phone</b><span class="xmltag">&lt;/system&gt;</span><b>
+    </b><span class="xmltag">&lt;value</span><span class="xmltag">&gt;</span><b>(03) 5555 6473</b><span class="xmltag">&lt;/value&gt;</span><b>
+    </b><span class="xmltag">&lt;use</span><span class="xmltag">&gt;</span><b>work</b><span class="xmltag">&lt;/use&gt;</span><b>
+  </b><span class="xmltag">&lt;/contact&gt;</span><b>
+
+  </b><span class="xmltag">&lt;dob</span><span class="xmltag">&gt;</span><b>1974-12-25</b><span class="xmltag">&lt;/dob&gt;</span><b> 
+  
+  </b><span class="xmltag">&lt;text</span><span class="xmltag">&gt;</span><b>
+    </b><span class="xmltag">&lt;status</span><span class="xmltag">&gt;</span><b>generated</b><span class="xmltag">&lt;/status&gt;</span><b>
+    </b><span class="xmltag">&lt;div</span><span class="xmlattr"> xmlns=&quot;http://www.w3.org/1999/xhtml&quot;</span><span class="xmltag">&gt;</span><b>
+      </b><span class="xmltag">&lt;table</span><span class="xmltag">&gt;</span><b>
+        </b><span class="xmltag">&lt;tbody</span><span class="xmltag">&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Name</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Peter James </b><span class="xmltag">&lt;b</span><span class="xmltag">&gt;</span><b>Chalmers</b><span class="xmltag">&lt;/b&gt;</span><b> (&quot;Jim&quot;)</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Address</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>534 Erewhon, Pleasantville, Vic, 3999</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Contacts</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Home: unknown. Work: (03) 5555 6473</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+          </b><span class="xmltag">&lt;tr</span><span class="xmltag">&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>Id</b><span class="xmltag">&lt;/td&gt;</span><b>
+            </b><span class="xmltag">&lt;td</span><span class="xmltag">&gt;</span><b>MRN: 12345 (Acme Healthcare)</b><span class="xmltag">&lt;/td&gt;</span><b>
+          </b><span class="xmltag">&lt;/tr&gt;</span><b>
+        </b><span class="xmltag">&lt;/tbody&gt;</span><b>
+      </b><span class="xmltag">&lt;/table&gt;</span><b>
+    </b><span class="xmltag">&lt;/div&gt;</span><b>
+  </b><span class="xmltag">&lt;/text&gt;</span><b>
+</b><span class="xmltag">&lt;/Person&gt;</span></pre>
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceDefinitions xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir definitions.xsd">
+  <author>HL7</author>
+  <resourceDefinition>
+    <name>Agent</name>
+    <elementDefinitions>
+      <elementDefinition>
+        <name>Agent</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A person who represents an organisation, and is authorised to perform actions on it's behalf</definition>
+        <requirements>Need to track doctors, staff, locums etc for both healthcare providers, funders, etc.</requirements>
+        <rim>Role</rim>
+        <v2>PRD (as one example)</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.id</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>id</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Master Resource Id, always first in all resources</definition>
+        <requirements></requirements>
+        <rim>.id(scope=OBJ)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.person</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>Resource(Person)</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>The person who acts as the agent</definition>
+        <requirements>Need to be able to track the person who represents the organisation separately</requirements>
+        <rim></rim>
+        <v2>PRD-2</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.organization</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>Resource(Organization)</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>The organisation that is being represented</definition>
+        <requirements>Need to be able to track the represented organisation separately</requirements>
+        <rim></rim>
+        <v2>PRD-10 (-> 14)</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.role</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>AgentRole</conceptDomain>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>The way in which the person represents the organisation - what role do they have?</definition>
+        <requirements>Need to know what authority the agent has - what can they do?</requirements>
+        <comments>A person may have more than one role. At least one role is required - why have an agent who isn't actually an agent?</comments>
+        <rim></rim>
+        <v2>PRD-1</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.period</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Interval(date)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The time period during which the agent was/is authorised to represent the organisation.</definition>
+        <requirements>Agencies are often for a limited period of time, and can be revoked. Even after the agencies is revoked, the fact that it existed must still be recorded</requirements>
+        <rim></rim>
+        <v2>PRD-8/9</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.identifier</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>HumanId</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>An identifier that applies to this person in this role</definition>
+        <requirements>Often, specific identifies are assigned for the agent</requirements>
+        <comments>The identifier changes when a new/different person steps into the same role</comments>
+        <rim></rim>
+        <v2>PRD-7</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.address</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Address</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A postal address for this person playing this role</definition>
+        <requirements></requirements>
+        <comments>i.e. the address is not their personal address. For many agents, this is the same as their work address</comments>
+        <rim></rim>
+        <v2>PRD-3</v2>
+        <todo>What about place? (PRD-4)</todo>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.contact</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Contact</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A contact detail address for this person playing this role</definition>
+        <requirements></requirements>
+        <comments>i.e. the contact is not their personal contact. For many agents, this is the same as their work contacts. Note that a person may choose to use a personal mobile phone (for instance) for their contact in a given role - in this case, the contact detail will be repeated in the agent resource</comments>
+        <rim></rim>
+        <v2>PRD-5</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.extensions</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>See Extensions</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Agent.text</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>Narrative</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Text summary of the agent, for human interpretation</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+    </elementDefinitions>
+  </resourceDefinition>
+</resourceDefinitions>
+

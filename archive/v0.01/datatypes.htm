@@ -1,0 +1,1284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Data Types - FHIR v0.01</title>
+    <link rel="Stylesheet" type="text/css" media="screen" href="fhir.css"/>
+</head>
+
+<body>
+<div class="header">
+  <a title="Fast Healthcare Interoperability Resources - Home Page" href="http://www.hl7.org/fhir"><img style="vertical-align: text-bottom" src="flame16.png"/> <b>FHIR</b></a>
+ 
+  © HL7.org 2011-2012
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <a href="print-datatypes.htm"><b>Printable Version </b></a>
+  &nbsp;
+  &nbsp;
+  <a href="http://wiki.hl7.org/index.php?title=FHIR_Datatypes_Page"><b>Wiki for this page</b></a> &nbsp;
+  <!-- -  <a href="authoring.htm">Authoring Guidelines</a>  -->
+  <br/>
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+  
+</div>
+<div class="sidebar">
+  <h2>Infrastructure</h2>
+  <ul>
+   <li><a href="introduction.htm">Introduction</a></li>
+   <li><a href="xml.htm">Resource Format</a></li>
+   <li><a href="datatypes.htm">Data Types</a></li>
+   <li style="display: none"><a href="mixins.htm">Mixins</a></li>
+   <li><a href="terminologies.htm">Terminologies</a></li>
+   <li><a href="extensibility.htm">Extensibility</a></li>
+   <li><a href="constraint.htm">Constraint</a></li>
+  </ul> 
+
+  <h2>Exchange</h2>
+  <ul>
+   <li><a href="implementation.htm">Implementation</a></li>
+   <li><a href="atom.htm">Aggregations</a></li>
+   <li><a href="http.htm">REST (HTTP)</a></li>
+   <li style="display: none"><a href="conformance.htm">RESTful Conformance Statement</a></li>
+   <li><a href="messaging.htm">Messaging</a></li>
+   <li style="display: none"><a href="message.htm">Message Resource</a></li>
+   <li style="display: none"><a href="messageconformance.htm">Messaging Conformance Statement</a></li>
+   <li><a href="documents.htm">Documents</a></li>
+   <li style="display: none"><a href="documentconformance.htm">Document Conformance Statement</a></li>
+   <li><a href="hdata.htm">hData Integration</a></li>
+   <li><a href="profile.htm">Resource Profile</a></li>
+  </ul> 
+
+  <h2>Administrative Resources</h2>
+  <ul>
+   <li><a href="person.htm">Person</a></li>
+   <li><a href="animal.htm">Animal</a></li>
+   <li><a href="organization.htm">Organization</a></li>
+   <li><a href="agent.htm">Agent</a></li>
+   <li><a href="patient.htm">Patient</a></li>
+   <li><a href="document.htm">Document</a></li>
+   <li>Clinics</li>
+   <li>Admissions</li>
+   <li>Appointments</li>
+   <li>InterestOfCare</li>
+   <li>Transfers</li>
+  </ul> 
+  <h2>Clinical Components</h2>
+  <ul>
+   <li>Vitals etc</li>
+   <li><a href="labreport.htm">Lab Report</a></li>
+   <li>Imaging Report</li>
+   <li>Alert</li>
+   <li>Procedure </li>
+   <li>Consultation</li>
+   <li>Problem</li>
+   <li>Immunization</li>
+   <li>Diet</li>
+   <li>Implant</li>
+  </ul> 
+  <h2>Medications</h2>
+  <ul>
+   <li>Instruction</li>
+   <li><a href="prescription.htm">Prescription</a></li>
+   <li>Dispense</li>
+  </ul> 
+  <h2>Care management</h2>
+  <ul>
+   <li>Care Plan</li>
+  </ul> 
+  <h2>Documents</h2>
+  <ul>
+   <li>Discharge Summary</li>
+   <li>Transition Request</li>
+   <li>Notes</li>
+   <li>Letters</li>
+  </ul> 
+</div>
+
+<div class="content">
+<h1>Data Types</h1>
+
+<p>
+The data types include primitive types imported from XML schema,
+and also additional data types that capture patterns that are 
+ubiquitious throughout the scope of the healthcare data that will
+be exchanged.
+</p>
+<p align="center"><img height="408" width="450" src="dt-map.png"/></p>
+<p>
+The data types defined on this page on this page are categorised as either &quot;Core Types&quot; or &quot;Structures&quot;. 
+&quot;Structures&quot; are higher level concepts that some systems internally treat differently from the &quot;Core Types&quot;. 
+There is no functional difference betweent the two categories, and systems are not required to treat them 
+any differently. This table summarises the types:
+</p>
+<table class="grid">
+<tr><td colspan="3">Core Types</td><td colspan="2">Structures</td></tr>
+<tr><td><a href="#Attachment">Attachment</a></td>             <td><a href="#Identifier">Identifier</a></td>  <td><a href="#Interval">Interval</a></td> <td><a href="#HumanId">HumanId</a></td> <td><a href="#Contact">Contact</a></td></tr>
+<tr><td><a href="#CodeableConcept">CodeableConcept</a></td>       <td><a href="#Quantity">Quantity</a></td>  <td><a href="#Ratio">Ratio</a></td>   <td><a href="#HumanName">HumanName</a></td>       <td/></tr>
+<tr><td><a href="#Coding">Coding</a></td> <td><a href="#Choice">Choice</a></td>    <td/>                   <td><a href="#Address">Address</a></td> <td><a href="#Schedule">Schedule</a></td></tr>
+</table>
+<a name="primitive"/>
+<h2>Primitive Types</h2>
+<p>
+<img src="dt1.png"/>
+</p>
+<p>
+The following table summarises the primitive types that 
+are used in the exchange specifications. The posssible values for these types are those specified in the W3C Schema specification part 2.
+</p>
+<table class="list">
+ <tr><td><a name="boolean"/>boolean</td><td>values can be true or false</td></tr>
+ <tr><td><a name="integer"/>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td></tr>
+ <tr><td><a name="decimal"/>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td></tr>
+ <tr><td><a name="base64Binary"/>base64Binary</td><td>A stream of bytes, base64 encoded</td></tr>
+ <tr><td><a name="instant"/>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td></tr>
+ <tr><td><a name="string"/>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td></tr>
+ <tr><td><a name="uri"/>uri</td><td>Ref to W3C spec</td></tr>
+ <tr><td/><td/></tr>
+</table>
+<p>
+Implementations that convert the xml described in this specification to other formats such as 
+JSON or some object based notation will have to find equivalent types.
+</p>
+<a name="strings"/>
+<h2>String Patterns</h2>
+
+<p>
+In addition to these assumed primitive types, this specification define a few simple
+string patterns that are commonly used:
+</p>
+
+<table class="list">
+ <tr><td><a name="code"/>code</td><td>a string which has at least one character and no whitespace</td></tr>
+ <tr><td><a name="oid"/>oid</td><td>An ISO oid [ref ISO std]</td></tr>
+ <tr><td><a name="uuid"/>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
+ <tr><td><a name="sid"/>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a>. sid values never contain a '#'</td></tr>
+ <tr><td><a name="id"/>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of letters, numerals, &quot;-&quot; and &quot;.&quot;, with a length limit of 36 characters</td></tr>
+ <tr><td><a name="date"/>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
+   The format is a union of the schema types gYear, gYearMonth, and date.</td></tr>
+ <tr><td><a name="dateTime"/>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
+   populated if hours and minutes are specified. The format is a union of the schema types gYear, gYearMonth, date, and dateTime. Seconds may be provided but may also be ignored.</td></tr>
+</table>
+
+<div class="example">
+<p><b>Examples</b></p>
+<p>date (e.g. Date of birth):</p>
+<pre>
+  &lt;x&gt;1951-06-04&lt;/x&gt;
+</pre>
+</div>
+
+<hr/>
+<h2>Types</h2>
+<p>
+<img src="dt2.png"/>
+</p>
+<a name="Attachment"/>
+<h2>
+Attachment
+</h2>
+<p>
+This type is for referring to data content defined in other formats.
+The most common use of this to include images or reports in 
+some report format such as PDF, but it can be used for any 
+data that has a mime type.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>mimeType</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">the mime type of the content</font>&lt;/mimeType&gt;
+  &lt;<b>data</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">data inline, base64ed</font>&lt;/data&gt;
+  &lt;<b>url</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">uri where the data can be found</font>&lt;/url&gt;
+  &lt;<b>hash</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#base64Binary">base64Binary</a></font> <font color="navy">sha-256 hash of the data (base64 )</font>&lt;/hash&gt;
+  &lt;<b>lang</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">ISO 639-3 language code</font>&lt;/lang&gt;
+  &lt;<b>title</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">A name to display in place of the data</font>&lt;/title&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Attachment.mimeType is  bound to the concept domain <i>MediaType</i>: &quot;The mime type of an attachment&quot;. The possible values are those specified in <a target="_blank" href="http://www.rfc-editor.org/bcp/bcp13.txt">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</a></li>
+  <li>Attachment.lang is  bound to the concept domain <i>Language</i>: &quot;A human language&quot;. The possible values are those specified in <a target="_blank" href="http://www.sil.org/iso639-3/codes.asp">ISO 639-3</a></li>
+</ul>
+
+
+<p>
+The <i>mimeType</i> element must always be populated. The actual content of the 
+Attachment can be conveyed directly using the <i>data</i> element,
+or a <i>url</i> reference can be provided. If both are provided, they must 
+point to the same content. The reference can never be reused to point to
+different data (which means that the reference is version specific). The
+<i>url</i> reference must point to a location that resolves to actual data; some
+uri's such as cid: meet this requirement.
+</p>
+<p>
+The <i>hash</i> is included so that applications can verify that the contents
+of a location have not changd, and also so that a signature of the xml content can 
+implicitly sign the content of an image without having to include the data 
+or reference the url in the signature. The <i>lang</i> element can help a 
+consumer choose between multiple different Data elements.
+</p>
+<p>
+In many cases where Attachment is used, the cardinality is &gt;1; repeats
+are used to convey the same content in different mime types and languages,
+or to provide a thumbnail of a large image.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Attachment element has a dataAbsentReason flag, it must contain 
+a <i>data</i> or a <i>url</i>. If neither <i>data</i> nor a <i>url</i> 
+is provided, the value should be understood as an assertion that no content for 
+the specified <i>mimeType</i> and/or <i>lang</i> is available for the reason stated.
+</p>
+<p>
+The context of use may frequently make rules about the kind of attachment
+(and therefore, the kind of mime types) that can be used.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>A PDF document:</p>
+<pre>
+  &lt;x&gt;
+   &lt;mimeType&gt;application/pdf&lt;/mimeType&gt;
+   &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
+   &lt;lang type=&quot;code&quot;&gt;en-us&lt;/lang&gt;
+   &lt;title type=&quot;string&quot;&gt;Definition of Procedure&lt;/title&gt;
+  &lt;/x&gt;
+</pre>
+<p>A reference to a DICOM image:</p>
+<pre>
+  &lt;x&gt;
+   &lt;mimeType&gt;application/dicom&lt;/mimeType&gt;
+   &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;wado details...&lt;/url&gt;
+   &lt;hash&gt;&gt;EQH/..AgME&lt;/hash&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<a name="Identifier"/>
+<h2>
+Identifier
+</h2>
+<p>
+An identifier defined by some external system.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>system</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">The system that defines the id</font>&lt;/system&gt;
+  &lt;<b>id</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">the actual identifier</font>&lt;/id&gt;
+&lt;/x&gt;
+</pre>
+
+
+
+<p>
+The <i>system</i> may be either a specific application, or a recognised
+concept for which the specific application may be implicit. 
+The system is a URI that 
+may be an OID (oid:) or a UUID (uuid:), a sid (a specially defined URI from <a href="terminologies.htm#codesystems"> the named systems list</a>),
+or a URL that references a definition of the identifier. 
+OIDs and UUIDs may be registered in the HL7 OID registry, and should be if the content is shared or exchanged across institutional boundaries.
+</p>
+<p>
+In some cases, the system may not be known - only the id is known (i.e. a simple device that scans a barcode). 
+In this case, no useful matching may be perfomed using the id unless the system can be safely inferred by the context. 
+</p>
+<p>
+Note that the <i>system</i> defines the scheme that controls uniqueness of the <i>id</i>. 
+The <i>id</i> must be unique for within the defined <i>system</i>. If the <i>id</i> itself 
+is actually an OID, a UUID, or a URI, then the <i>system</i> will be either &quot;urn:hl7-org:sid/oid&quot;, 
+&quot;urn:hl7-org:sid/uuid&quot; or &quot;urn:hl7-org:sid/uri&quot; respectively, and the OID, UUID would be in the <i>id</i> 
+element. Ids are always case sensitive. UUIDs must be represented in lower case.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Identifier element has a dataAbsentReason flag, it must contain 
+a an <i>id</i>. If the Identifier element is marked as mandatory, it must 
+contain a <i>system</i>.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>A primary key from an application table (an OID in the space allowcated by HL7
+to some organisation to further sub-allocate):</p>
+<pre>
+  &lt;x&gt;
+   &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
+   &lt;id&gt;123&lt;/id&gt;
+  &lt;/x&gt;
+</pre>
+<p>An identifier of a resource defined by this specification, on a particular system:</p>
+<pre>
+  &lt;x&gt;
+   &lt;system&gt;http://pas-server/xxx/patients&lt;/system&gt;
+   &lt;id&gt;443556&lt;/id&gt;
+  &lt;/x&gt;
+</pre>
+<p>A guid:</p>
+<pre>
+  &lt;x&gt;
+   &lt;system&gt;urn:hl7-org:sid/uuid&lt;/system&gt;
+   &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+
+<a name="CodeableConcept"/>
+<h2>
+CodeableConcept
+</h2>
+<p>
+A CodeableConcept represents a represents a field that is usually defined by formal reference to one or more terminologies or ontologies, but may also be defined by the provision of text.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>coding</b>&gt; <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Coding">Coding</a></font>  <font color="Gray">&lt;!-- A reference to a code defined by a terminology system  --&gt;</font>
+   &lt;<b>code</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Symbol in syntax defined by the system</font>&lt;/code&gt;
+   &lt;<b>system</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">Identity of the terminology system </font>&lt;/system&gt;
+   &lt;<b>display</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Representation defined by the system</font>&lt;/display&gt;
+  &lt;/coding&gt;
+  &lt;<b>text</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">A plain text representation of the concept</font>&lt;/text&gt;
+  &lt;<b>primary</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="xml:ID.htm#xml:ID">xml:ID</a></font> <font color="navy">Which code was chosen directly by the user</font>&lt;/primary&gt;
+&lt;/x&gt;
+</pre>
+
+
+
+<p>
+This data type has text and/or one more &quot;codings&quot; that all represent a single notional concept, 
+though the multiple codings will often have slightly different granularity due to the differences 
+in the definitions of the underlying codes.
+Each &quot;<i>coding</i>&quot; is a representation of the concept using a symbol from a defined &quot;code system&quot;, 
+which may be an enumeration, a list of codes, a full terminology such as SNOMED-CT or LOINC, 
+or a formal ontology. The concept may be coded multiple times in different code systems (or even 
+multiple times in the same code systems, where multiple forms are possible, such as 
+with SNOMED-CT). Whether or not <i>coding</i> elements are present, the <i>text</i> 
+is a human language representation of the concept as seen/selected/uttered by the user 
+who entered the data, and/or which represents the intended meaning of the user or concept. 
+Very often the <i>text</i> is the same as a <i>display</i> of one of the codings.
+</p>
+<p>
+For each <i>coding</i>, there must be a <i>system</i> the identifies the 
+terminology or ontology the <i>code</i> is defined by. The <i>system</i> is a URI that 
+may be an OID (oid:) or a UUID (uuid:), a specially defined URI from 
+<a href="terminologies.htm#codesystems"> the named systems list</a>, or a url that references 
+a definition of the system, or any other URI. OIDs and UUIDs may be registered in the HL7 OID 
+registry, and should be if the content is shared or exchanged across institutional boundaries.
+The <i>system</i> reference is version independent; applications are never required to process 
+the content of the system URI in order to determine whether two codes are the same. 
+Note though, that merely because a code/system pair is different does not mean that concept
+is different - applications have to consult the ontologies or terminologies to make those kind 
+of comparisons. 
+</p>
+<p>
+If present, the <i>code</i> must be a syntactically correct symbol as 
+defined by the <i>system</i>. Note that codes are case sensitive unless specified otherwise by the code system.
+If no code is present, the coding means
+that the concept cannot be encoded in the identified system.
+The <i>display</i> is a text representation of the code that is 
+defined by the <i>system</i>, which can be used to display the code by
+an application that is not aware of the system. One of the codings 
+may be flagged as the primary - the code that the user actually chose directly. 
+If present, the value of the primary element is an ID that must match an xml:id 
+on one of the codings. 
+</p>
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the CodeableConcept element has a dataAbsentReason flag, it must contain 
+at least one <i>coding</i> with a <i>code</i>, or a <i>text</i>. 
+Each <i>coding</i> must contain a <i>system</i> element, and should contain a <i>display</i> if it contains a <i>code</i>.
+</p>
+<p>
+The context of use may frequently make rules about what codings are allowed or required.
+</p>
+</div>
+<a name="Coding"/>
+<h3>&quot;Coding&quot; Data Type</h3>
+<p>
+The CodeableConcept data type represents a commonly encountered pattern around the use of coding, with multiple codings and a text. 
+In some circumstances, the resources and/or models that use these data types may be more prescriptive about the use of 
+multiple codings, the way that the text element interacts with the codings, and/or the way that codings are derived from each other. 
+In these circumstances, the &quot;Coding&quot; Data Type is used. The Coding type has the contents of the <i>coding</i> element as defined 
+in the <i>CodeableConcept</i> data type.
+</p>
+
+<div class="example">
+<p><b>Examples</b></p>
+<p>A simple code for headache, in ICD-10, with the text on which the coding is based:</p>
+<pre>
+  &lt;x&gt;
+    &lt;coding&gt;
+      &lt;code&gt;G44.1&lt;/code&gt;
+      &lt;system&gt;urn:hl7-org:sid/icd-10&lt;/system&gt;
+    &lt;/coding&gt;
+    &lt;text&gt;general headache&lt;/text&gt;
+  &lt;/x&gt;
+</pre>
+<p>A concept represented in an institutions local coding systems for which no snomed equivalent exists:</p>
+<pre>
+  &lt;x&gt;
+    &lt;coding&gt;
+      &lt;code&gt;burn&lt;/code&gt;
+      &lt;system&gt;oid:2.16.840.1.113883.19.5.2&lt;/system&gt;
+    &lt;/coding&gt;
+    &lt;coding&gt;
+      &lt;system&gt;http://snomed.info&lt;/system&gt;
+    &lt;/coding&gt;
+    &lt;text&gt;Burnt ear with iron. Burnt other ear calling for ambulance&lt;/text&gt;
+  &lt;/x&gt;
+</pre>
+<p>A Snomed-CT expression:</p>
+<pre>
+  &lt;x&gt;
+    &lt;coding&gt;
+      &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
+      &lt;system&gt;http://snomed.info&lt;/system&gt;
+    &lt;/coding&gt;
+    &lt;text&gt;Cellulitis of the foot&lt;/text&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<a name="Choice"/>
+<h2>
+Choice
+</h2>
+<p>
+A code taken from a short list of codes that are not defined in a formal code system. Choice is generally used 
+for things like pain scales, questionnaires or formally defined assessment indexes. The possible codes may be 
+ordered with some arbitrarily defined scale. Note: Choice is not an appropriate data type to use when the possible
+codes are defined in a formal code system, such as a value set, or otherwise stord on a terminology server.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>code</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Selected code</font>&lt;/code&gt;
+  &lt;<b>value</b>&gt; <a class="cf" href="xml.htm#Control">mand</a>  <font color="Gray">&lt;!-- <font color="brown"><b>One+</b></font> A list of possible values for the code --&gt;</font>
+   &lt;<b>code</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Possible code</font>&lt;/code&gt;
+   &lt;<b>display</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Display for the code</font>&lt;/display&gt;
+  &lt;/value&gt;
+  &lt;<b>isOrdered</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#boolean">boolean</a></font> <font color="navy">If the order of the values has meaning</font>&lt;/isOrdered&gt;
+&lt;/x&gt;
+</pre>
+
+
+
+<p>
+The <i>code</i> is the selected value. A list of possible values must be provided; at least a code must be provided for each <i>value</i>. 
+The selected code must be found in the list of possible codes. 
+</p>
+<p>
+If isOrdered is true, then the values have an inherent meaningful order, and the list of values must be provided in the correct order.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Choice element has a dataAbsentReason flag, it must contain a <i>code</i>.
+The Choice element must always contain at least one possible value.
+</p>
+</div>
+<div class="example">
+<p><b>Example</b></p>
+<p>The results on a urinalysis strip:</p>
+<pre>
+  &lt;x&gt;
+    &lt;code&gt;+&lt;/code&gt;
+    &lt;value&gt;
+      &lt;code&gt;neg&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;trace&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;+&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;++&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;value&gt;
+      &lt;code&gt;+++&lt;/code&gt;
+    &lt;/value&gt;
+    &lt;isOrdered&gt;true&lt;/isOrdered&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<a name="Quantity"/>
+<h2>
+Quantity
+</h2>
+<p>
+A measured amount (or an amount that can potentially be measured).
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>value</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#decimal">decimal</a></font> <font color="navy">Numerical value (with implicit precision)</font>&lt;/value&gt;
+  &lt;<b>status</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">how the value should be understood and represented</font>&lt;/status&gt;
+  &lt;<b>units</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">unit representation</font>&lt;/units&gt;
+  &lt;<b>code</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">A coded form of the unit</font>&lt;/code&gt;
+  &lt;<b>system</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#uri">uri</a></font> <font color="navy">The system that defines the coded form</font>&lt;/system&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Quantity.status is  bound to the concept domain <i>QuantityStatus</i>: &quot;how the Quantity should be understood and represented&quot;. Possible values:
+    <table class="codes">
+    <tr><td>&lt;</td><td colspan="2">The actual value is less than the given value</td></tr>    <tr><td>&lt;=</td><td colspan="2">The actual value is less than or equal to the given value</td></tr>    <tr><td>&gt;=</td><td colspan="2">The actual value is greater than or equal to the given value</td></tr>    <tr><td>&gt;</td><td colspan="2">The actual value is greater than the given value</td></tr>    </table>
+  </li>
+</ul>
+
+
+
+<p>
+The <i>value</i> contains the numerical value of the quantity, including an implicit precision. 
+The <i>status</i> indicates how the value should be understood and 
+represented. If no status is specified, the value is a point
+value. The <i>status</i> element can never be ignored.
+</p>
+<p>
+The <i>units</i> element must contain a displayable unit that defines what is measured. 
+The units may additionally be coded in the <i>code</i> and the <i>system</i>, 
+which is a URI, OID, or a SID that defines the code (see <a href="#CodeableConcept">CodeableConcept</a> for further information about <i>system</i>). 
+</p>
+<p>
+If the units are able to be coded in UCUM, and a code is provided, it SHOULD be a UCUM code. 
+If a UCUM unit is provided in the <i>code</i> then a canonical value can be generated for 
+purposes of comparison between quantities. Note that the <i>units</i> element will often 
+contain text that is actually a valid UCUM unit, but it cannot be assumed that it does. 
+</p>
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Quantity element has a dataAbsentReason flag, it must contain 
+at a <i>value</i> and a <i>unit</i>. If a <i>code</i> is present, a <i>system</i>
+is also required.
+</p>
+<p>
+The context of use may frequently define what kind of quantity
+this is, and therefore what kind of units can be used. The context 
+of use may additionally require a <i>code</i> from a particular <i>system</i>.
+The context of use may also restrict the values for <i>status</i>.
+</p>
+</div>
+<h3>
+Defined Variations on Quantity
+</h3>
+<p>
+These are used as types in resource content models, but they are really just Quantity with some rules:
+</p>
+<table class="list">
+ <tr><td>Duration  </td><td>The unit must be an amount of time, and a UCUM unit must be provided.</td></tr>
+ <tr><td>Distance  </td><td>The unit must be an amount of length, and a UCUM unit must be provided.</td></tr>
+ <tr><td>Count     </td><td>The value must a whole number, and the UCUM unit must be &quot;1&quot;</td></tr>
+ <tr><td>Money     </td><td>The unit must be a currency, and the code must from ISO 4217<br/>(system = &quot;urn:hl7-org:sid/iso-4217&quot;)</td></tr>
+</table>
+
+<div class="example">
+<p><b>Examples</b></p>
+<p>A duration:</p>
+<pre>
+  &lt;x&gt;
+    &lt;value&gt;25&lt;/value&gt;
+    &lt;unit&gt;sec&lt;/unit&gt;
+    &lt;code&gt;s&lt;/code&gt;
+    &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+  &lt;/x&gt;
+</pre>
+<p>A concentration where the value was out of range:</p>
+<pre>
+  &lt;x&gt;
+    &lt;value&gt;40000&lt;/value&gt;
+    &lt;status&gt;&amp;gt;&lt;/status&gt;
+    &lt;unit&gt;mcg/L&lt;/unit&gt;
+    &lt;code&gt;ug&lt;/code&gt;
+    &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+  &lt;/x&gt;
+</pre>
+<p>An amount of prescribed medication:</p>
+<pre>
+  &lt;x&gt;
+    &lt;value&gt;3&lt;/value&gt;
+    &lt;unit&gt;capsules&lt;/unit&gt;
+    &lt;code&gt;385049006&lt;/code&gt;
+    &lt;system&gt;http://snomed.info&lt;/system&gt;
+  &lt;/x&gt;
+</pre>
+<p>A price:</p>
+<pre>
+  &lt;x&gt;
+    &lt;value&gt;25.45&lt;/value&gt;
+    &lt;unit&gt;US$&lt;/unit&gt;
+    &lt;code&gt;USD&lt;/code&gt;
+    &lt;system&gt;urn:hl7-org:sid/iso-4217&lt;/system&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+
+
+<a name="Interval"/>
+<h2>
+Interval
+</h2>
+<p>
+A set of ordered values defined by a low and high limit.
+</p>
+<p>
+An interval may be applied to <a href="#Quantity">Quantity</a>, 
+<a href="#dateTime">dateTime</a>, and <a href="#date">date</a>. 
+The context where the type is used must specify which of these 
+types is used. An interval specifies a range of values; the context
+of use will specify whether the entire range applies (e.g. &quot;the patient
+was an inpatient of the hospital for this time range&quot;) or one value 
+from the range applies (e.g. &quot;give the patient between 2 and 4 tablets&quot;).
+</p>
+<pre>
+&lt;<a title="A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime" class="dict" href="#Interval"><b>Interval</b></a> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<a title="The low value. The boundary is inclusive." class="dict" href="#Interval.low"><b>low</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="[param].htm#[param]">[param]</a></font> <font color="navy">Low value (Text or elements from specified type)</font>&lt;/low&gt;
+  &lt;<a title="The high value. The boundary is inclusive. See discussion in specification regarding how the high value boundary is interpreted for dates" class="dict" href="#Interval.high"><b>high</b></a>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="[param].htm#[param]">[param]</a></font> <font color="navy">High value (Text or elements from specified type)</font>&lt;/high&gt;
+&lt;/Interval&gt;
+</pre>
+
+
+
+<p>
+If the <i>low</i> or <i>high</i> elements are missing, the meaning
+is that the low or high boundaries are not known. A 
+<i>dataAbsentReason</i> flag may be used on the <i>low</i> or <i>high</i>
+elements in this case. On intervals over a time period, if the <i>high</i> is missing, 
+it means that the interval is current and ongoing.
+</p>
+<p>
+If the interval applies to the <a href="#Quantity">Quantity</a> type, the <i>status</i> flag on 
+the quantity cannot have the values &lt;, &lt;=, =&gt;, or &gt;. Note that the Interval type should not be 
+used to represent measurements where the status flag might be used instead.
+</p>
+<p>
+When the interval applies to a date or dateTime, the high value includes any matching date/time. 
+When the interval applies to the other types, the high value is assumed to have arbitrarily high precision.
+For example:
+</p>
+<table class="list">   
+  <tr><td>1.5 to 2.5</td><td>
+    includes 1.50, and 2.50 but not 1.49 or 2.51</td></tr>
+  
+  <tr><td>2011-05-23 to 2011-05-27 </td><td>
+   includes all the times of 23rd May through to the end of the 27th May </td></tr>
+
+</table>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Interval element has a <i>dataAbsentReason</i> flag, it must contain 
+a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>Interval of Quantity (distance):</p>
+<pre>
+  &lt;x&gt;
+   &lt;low&gt;
+     &lt;value&gt;2.8&lt;/value&gt;
+     &lt;unit&gt;m&lt;/unit&gt;
+   &lt;/low&gt;
+   &lt;high&gt;
+     &lt;value&gt;4.6&lt;/value&gt;
+     &lt;unit&gt;m&lt;/unit&gt;
+   &lt;/high&gt;
+  &lt;/x&gt;
+</pre>
+<p>23rd May 2011 to 27th May, including 27th May:</p>
+<pre>
+  &lt;x&gt;
+   &lt;low&gt;
+     &lt;date&gt;2011-05-23&lt;/date&gt;
+   &lt;/low&gt;
+   &lt;high&gt;
+     &lt;date&gt;2011-05-27&lt;/date&gt;
+   &lt;/high&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<a name="Ratio"/>
+<h2>
+Ratio
+</h2>
+<p>
+A ratio of two Quantity values - a numerator and a denominator.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>numerator</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></font> <font color="navy">The numerator</font>&lt;/numerator&gt;
+  &lt;<b>denominator</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></font> <font color="navy">The denominator</font>&lt;/denominator&gt;
+&lt;/x&gt;
+</pre>
+
+
+
+<p>
+Common factors in the numerator and denominator are not automatically cancelled out. The Ratio data type is used for titers  (e.g.,  &quot;1:128&quot;)  and  other  quantities  produced  by  laboratories  that  truly 
+represent  ratios.  Ratios  are  not  simply  &quot;structured  numerics&quot; and blood  pressure  measurements (e.g. &quot;120/60&quot;) are not ratios. In addition, ratios are used where common factors in the numerator and denominator do not 
+cancel out. The most common example of this is where the ratio represents a unit cost, and the numerator is a currency.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Ratio element has a <i>dataAbsentReason</i> flag, it must contain 
+a <i>numerator</i> and a <i>denominator</i>. The context of use may require 
+particular types of Quantity for the numerator or denominator.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>Titer (Ratio of integer:integer)</p>
+<pre>
+  &lt;x&gt;
+   &lt;numerator&gt;
+     &lt;value&gt;1&lt;/value&gt;
+   &lt;/numerator&gt;
+   &lt;denominator&gt;
+     &lt;value&gt;128&lt;/value&gt;
+   &lt;/denominator&gt;
+  &lt;/x&gt;
+</pre>
+<p>Unit cost (Ratio of Money:Quantity):</p>
+<pre>
+  &lt;x&gt;
+   &lt;numerator&gt;
+     &lt;value&gt;103.50&lt;/value&gt;
+     &lt;unit&gt;US$&lt;/unit&gt;
+     &lt;code&gt;USD&lt;/code&gt;
+     &lt;system&gt;urn:hl7-org:sid/iso-4217&lt;/system&gt;
+   &lt;/numerator&gt;
+   &lt;denominator&gt;
+     &lt;value&gt;128&lt;/value&gt;
+     &lt;unit&gt;day&lt;/unit&gt;
+     &lt;code&gt;day&lt;/code&gt;
+     &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+   &lt;/denominator&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<hr/>
+<h2>Structures</h2>
+<p>
+<img src="dt3.png"/>
+</p>
+<a name="HumanId"/>
+<h2>HumanId</h2>
+
+
+<p>An identifier that humans use. This is different to a system
+identifier because identifiers that humans use are regularly changed or 
+retired due to human intervention and error. Note that an 
+human identifier may be a system identifier on some master 
+system, but becomes a human identifier elsewhere due to how it is 
+exchanged between humans. Driver's license nunmbers are a 
+good example of this. Also, because human mediated identifiers
+are often invoked as implicit links to external business processes,
+such identifiers are often associated with multiple different resources. 
+Human identifiers often have some type associated with them that is
+important to allow the identifier to be picked as a basis for 
+exchange elsewhere, either in other electronic interchanges, or 
+paper forms.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>type</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Coding">Coding</a></font> <font color="navy">Code for identifier type</font>&lt;/type&gt;
+  &lt;<b>identifier</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></font> <font color="navy">Actual identifier</font>&lt;/identifier&gt;
+  &lt;<b>period</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)</font> <font color="navy">Time period when id was valid for use</font>&lt;/period&gt;
+  &lt;<b>assigner</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen">(<a href="Organization.htm#Organization">Organization</a>)</font> <font color="navy">Organisation that issued id</font>&lt;/assigner&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>HumanId.type is  bound to the concept domain <i>IdentifierType</i>: &quot;The type of human identifier&quot; (sid = urn:hl7-org:sid/fhir/identifier-type). Use one of these values if possible:
+    <table class="codes">
+    <tr><td>account</td><td>Account number</td><td>An identifier that is unique to an account.</td></tr>    <tr><td>credit</td><td>Credit Card Number</td><td>A credit card number (or debit card).</td></tr>    <tr><td>microchip</td><td>Microchip Number</td><td>implanted, for animals, or a worn RFID for humans</td></tr>    <tr><td>registry</td><td>A Registry Number</td><td/></tr>    <tr><td>insurance</td><td>Insurance Scheme Member Number</td><td>Identifies the person as a member of an insurance scheme.</td></tr>    <tr><td>national</td><td>National Healthcare Identifier</td><td>May not only be used for healthcare.</td></tr>    <tr><td>ssn</td><td>National Social Security Number</td><td/></tr>    <tr><td>state</td><td>State Healthcare Identifier</td><td>May not only be used for healthcare.</td></tr>    <tr><td>patient</td><td>Patient identifier</td><td>Frequently called MRN (medical record number) or UR (unit record number).</td></tr>    <tr><td>facility</td><td>Facility ID</td><td/></tr>    <tr><td>provider</td><td>Provider number</td><td>a number allocated to a person as a provider of healthcare resources.</td></tr>    </table>
+  </li>
+</ul>
+
+
+<p>
+Note that in many cases, the assigner is used to indicate what registry/state/facility etc assigned the identifier. 
+Another possible source for the type of an identifier is HL7 v2 table 0203. 
+</p>  
+<p>
+The resource elements often use HumanId for an identifier that may be an external human mediated reference, or that may also 
+come from a direct unambiguous reference to a resource, or may be from a seperate workflow, possibly human mediated. When 
+the identifier is actually a direct resource reference, the <i>type</i> should be a 
+<a href="terminologies.htm#resourcetypes">resource type</a>, the <i>identifier</i>.<i>system</i> should be the URL
+of the source system or, if a particular end point is 
+not known, then &quot;urn:hl7-org:sid/fhir/[X]&quot; where &quot;[X]&quot; is the resource name , 
+and the <i>identifier</i>.<i>id</i> should be the resource id.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+An <i>identifier</i> with an <i>id</i> element is required unless a <i>dataAbsentReason</i>
+flag is provided on the <i>identifier</i> element. If the HumanId is mandatory, then either an 
+<i>identifier.system</i> or an <i>type</i> must be provided (In some cases, the <i>type</i> of the 
+identifier will be known, but not the <i>identifier</i>.<i>system</i>. For instance, 
+a driver's license number, where the state, province or country that issues
+the license identifier is unknown). 
+</p>
+<p>
+The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> when used with the <i>dataAbsentReason</i> &quot;astext&quot;.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>A US SSN:</p>
+<pre>
+  &lt;x&gt;
+    &lt;type&gt;
+      &lt;code&gt;ssn&lt;/code&gt;
+      &lt;system&gt;urn:hl7-org:sid/fhir/identifier-type&lt;/system&gt;
+    &lt;/type&gt;
+    &lt;identifier&gt;
+      &lt;system&gt;urn:hl7-org:sid/us-ssn&lt;/system&gt;
+      &lt;id&gt;000111111&lt;/id&gt;
+    &lt;/identifier&gt;
+  &lt;/x&gt;
+</pre>
+<p>Notes:</p> 
+<ul>
+<li>US SSNs are often presented like this: 000-11-1111, the dashes are for presentation and should be removed, as specified in the <a href="terminologies.htm">definition of ssn-us</a></li>
+<li>There is apparent duplication between type and system; the type says that this is a national social security identifier from some country, while the system specifically identifies the 
+  US SSN. Not all countries will have a registered system id like USA does; it might be useful to also reference the country in the assigning authority</li>
+</ul>
+<p>A medical record number assigned on 5-July 2009:</p>
+<pre>
+  &lt;x&gt;
+    &lt;type&gt;
+      &lt;code&gt;patient&lt;/code&gt;
+      &lt;system&gt;urn:hl7-org:sid/fhir/identifier-type&lt;/system&gt;
+    &lt;/type&gt;
+    &lt;identifier&gt;
+      &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
+      &lt;id&gt;2356&lt;/id&gt;
+    &lt;/identifier&gt;
+   &lt;period&gt;
+     &lt;low&gt;2009-06-05&lt;/low&gt;
+   &lt;/period&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<a name="HumanName"/>
+<h2>
+HumanName
+</h2>
+<p>
+</p>
+A name of a human, or a name given to an animal by a human.
+<p>
+Names may be changed, or repudiated, or people may have different names in different 
+contexts. Names may be divided into parts of different type that have variable 
+significance depending on context, though the division into parts does not always 
+matter. With personal names, the different parts may or may not be imbued with
+some implicit meaning; various cultures associate different importance with the 
+name parts, and the degree to which systems must care about name parts around the 
+world varies widely.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>use</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">The use of this name</font>&lt;/use&gt;
+  &lt;<b>text</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Text representation of the full name</font>&lt;/text&gt;
+  &lt;<b>part</b>&gt; <a class="cf" href="xml.htm#Control">cond</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> A part of a name --&gt;</font>
+   &lt;<b>type</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Type of name part (see below)</font>&lt;/type&gt;
+   &lt;<b>value</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">The content of the name part</font>&lt;/value&gt;
+  &lt;/part&gt;
+  &lt;<b>period</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)</font> <font color="navy">Time period when name was/is in use</font>&lt;/period&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>HumanName.use is  bound to the concept domain <i>NameUse</i>: &quot;The use of a human name&quot;. Possible values:
+    <table class="codes">
+    <tr><td>usual</td><td colspan="2">Known as/conventional/the one you normally use</td></tr>    <tr><td>official</td><td colspan="2">The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called legal name.</td></tr>    <tr><td>temp</td><td colspan="2">A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.</td></tr>    <tr><td>anonymous</td><td colspan="2">Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)</td></tr>    <tr><td>old</td><td colspan="2">This name is no longer in use (or was never correct, but retained for records)</td></tr>    <tr><td>maiden</td><td colspan="2">A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store maiden names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a personâ€˜s name, nor should the maiden name be determined algorithmically</td></tr>    </table>
+  </li>
+  <li>HumanName.part.type is  bound to the concept domain <i>NamePartType</i>: &quot;Type of a part of a human name&quot;. Possible values:
+    <table class="codes">
+    <tr><td>family</td><td colspan="2">Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</td></tr>    <tr><td>given</td><td colspan="2">Given name. NOTE Not to be called first name since given names do not always come first. .</td></tr>    <tr><td>title</td><td colspan="2">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications.</td></tr>    </table>
+  </li>
+</ul>
+
+
+<p>
+The <i>text</i> element specifies the entire name as it should be represented. This
+may be provided instead of or as well as specific <i>part</i> elements. Every <i>part</i>
+must have a <i>value</i>.
+</p>
+      
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Either <i>text</i> or at least one <i>part</i> is required unless a <i>dataAbsentReason</i>
+flag is provided on the name element. 
+</p>
+</div>
+<div class="example">
+<p><b>Example</b></p>
+<p>Full name of Peter James Chalmers, with a preferred name of James.</p>
+<pre>
+  &lt;x&gt;
+    &lt;use&gt;usual official&lt;/use&gt;
+    &lt;part&gt;
+      &lt;type&gt;given&lt;/type&gt;
+      &lt;value&gt;Peter&lt;/value&gt;
+    &lt;/part&gt;
+    &lt;part&gt;
+      &lt;type&gt;given&lt;/type&gt;
+      &lt;value&gt;James&lt;/value&gt;
+    &lt;/part&gt;
+    &lt;part&gt;
+      &lt;type&gt;family&lt;/type&gt;
+      &lt;value&gt;Chalmers&lt;/value&gt;
+    &lt;/part&gt;
+  &lt;/x&gt;
+</pre>
+<p>See <a href="examples-datatypes.htm">further examples</a></p>
+</div>
+<a name="Address"/>
+<h2>
+Address
+</h2>
+<p>
+A postal address. There is a variety of postal address formats defined around the world. 
+This format defines a superset that is the basis for addresses all around the world 
+Note: address is for <b>postal addresses</b>, not physical locations. 
+</p>
+
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>use</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">The use of this address</font>&lt;/use&gt;
+  &lt;<b>text</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">Text representation of the address</font>&lt;/text&gt;
+  &lt;<b>part</b>&gt; <a class="cf" href="xml.htm#Control">cond</a>  <font color="Gray">&lt;!-- <font color="brown"><b>Zero+</b></font> --&gt;</font>
+   &lt;<b>type</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Type of address part (see below)</font>&lt;/type&gt;
+   &lt;<b>value</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">The content of the address part</font>&lt;/value&gt;
+  &lt;/part&gt;
+  &lt;<b>period</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)</font> <font color="navy">Time period when address was/is in use</font>&lt;/period&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Address.use is  bound to the concept domain <i>AddressUse</i>: &quot;The use of an address&quot;. Possible values:
+    <table class="codes">
+    <tr><td>home</td><td colspan="2">A communication address at a home.</td></tr>    <tr><td>work</td><td colspan="2">An office address. First choice for business related contacts during business hours.</td></tr>    <tr><td>temp</td><td colspan="2">A temporary address. The period can provide more detailed information.</td></tr>    <tr><td>old</td><td colspan="2">This address is no longer in use (or was never correct, but retained for records)</td></tr>    </table>
+  </li>
+  <li>Address.part.type is  bound to the concept domain <i>AddressPartType</i>: &quot;Type of address part&quot;. Possible values:
+    <table class="codes">
+    <tr><td>part</td><td colspan="2">Part of an address line (typically used with an extension that further defines the meaning of the part).</td></tr>    <tr><td>line</td><td colspan="2">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints etc) .</td></tr>    <tr><td>city</td><td colspan="2">The name of the city, town, village, or other community or delivery centre.</td></tr>    <tr><td>state</td><td colspan="2">sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</td></tr>    <tr><td>country</td><td colspan="2">Country. ISO 3166 3 letter codes can be used in place of a full country name.</td></tr>    <tr><td>zip</td><td colspan="2">A postal code designating a region defined by the postal service.</td></tr>    <tr><td>dpid</td><td colspan="2">A value that uniquely identifies the postal address. (often used in barcodes).</td></tr>    </table>
+  </li>
+</ul>
+
+
+<p>
+The <i>text</i> element specifies the entire address as it should be represented. This
+may be provided instead of or as well as specific <i>part</i> elements. Every <i>part</i>
+must have a <i>value</i>.
+</p>
+
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Either <i>text</i> or at least one <i>part</i> is required unless a <i>dataAbsentReason</i>
+flag is provided on the address element. 
+</p>
+</div>
+<div class="example">
+<p><b>Example</b></p>
+<p>HL7 office's address.</p>
+<pre>
+  &lt;x&gt;
+   &lt;use&gt;work primary&lt;/use&gt;
+   &lt;text&gt;
+       1050 W Wishard Blvd
+       RG 5th floor
+       Indianapolis, IN 46240
+     &lt;/html&gt;
+   &lt;/text&gt;
+   &lt;part&gt; 
+     &lt;type&gt;city&lt;/type&gt;
+     &lt;value&gt;Indianapolis&lt;/value&gt;
+   &lt;/part&gt;
+   &lt;part&gt; 
+     &lt;type&gt;state&lt;/type&gt;
+     &lt;value&gt;IN&lt;/value&gt;
+   &lt;/part&gt;
+   &lt;part&gt; 
+     &lt;type&gt;zip&lt;/type&gt;
+     &lt;value&gt;46240&lt;/value&gt;
+   &lt;/part&gt;
+  &lt;/x&gt;
+</pre>
+<p>See <a href="examples-datatypes.htm">further examples</a></p>
+</div>
+<a name="Contact"/>
+<h2>
+Contact
+</h2>
+<p>
+All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>system</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">What kind of contact this is</font>&lt;/system&gt;
+  &lt;<b>value</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#string">string</a></font> <font color="navy">The actual contact details</font>&lt;/value&gt;
+  &lt;<b>use</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">How to use this address</font>&lt;/use&gt;
+  &lt;<b>period</b>&gt; <a class="cf" href="xml.htm#Control">opt</a> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)</font> <font color="navy">Time period when the contact was/is in use</font>&lt;/period&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Contact.system is  bound to the concept domain <i>ContactSystem</i>: &quot;What kind of contact this is&quot;. Possible values:
+    <table class="codes">
+    <tr><td>phone</td><td colspan="2">the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</td></tr>    <tr><td>fax</td><td colspan="2">the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</td></tr>    <tr><td>email</td><td colspan="2">the value is an email address</td></tr>    <tr><td>url</td><td colspan="2">The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses</td></tr>    </table>
+  </li>
+  <li>Contact.use is  bound to the concept domain <i>ContactUse</i>: &quot;How to use this address&quot;. Possible values:
+    <table class="codes">
+    <tr><td>home</td><td colspan="2">A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.</td></tr>    <tr><td>work</td><td colspan="2">An office contact. First choice for business related contacts during business hours.</td></tr>    <tr><td>temp</td><td colspan="2">A temporary contact. The period can provide more detailed information.</td></tr>    <tr><td>old</td><td colspan="2">This contact is no longer in use (or was never correct, but retained for records)</td></tr>    <tr><td>mobile</td><td colspan="2">A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business</td></tr>    </table>
+  </li>
+</ul>
+
+
+<p>
+The value should be a properly formatted telephone number according to 
+<a href="http://www.itu.int/rec/T-REC-E.123-200102-I/e">ITU-T E.123</a>, 
+but this is frequently not possible due to legacy data and/or recording methods.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+A <i>value</i> is required unless a <i>dataAbsentReason</i>
+flag is provided on the contact element. A <i>system</i> is required if a <i>value</i> is provided.
+</p>
+</div>
+<div class="example">
+<p><b>Example</b></p>
+<p>Phone number for some one who works at home:</p>
+<pre>
+  &lt;x&gt;
+   &lt;system&gt;phone&lt;/system&gt;
+   &lt;value&gt;+15556755745&lt;/value&gt;
+   &lt;use&gt;home&lt;/use&gt;
+  &lt;/x&gt;
+</pre>
+<p>See <a href="examples-datatypes.htm">further examples</a></p>
+</div>
+  <!-- - 
+<a name="Location"></a>
+<h2>Location</h2>
+<p>
+A physical location based on geospatial co-ordinates.
+</p>
+<pre>
+&lt;x&gt;
+ <identifier>
+  <code>
+  <names>
+  <address>
+  <text>
+  <parts>
+    <part type="Location"></part>
+  </parts>
+  <partOfs>
+    <partOf type="Location"></part>
+  </partOfs>
+  <spacialLocation>
+    <identifier>
+    <system>
+    
+  </spacialLocation>
+  <period> 
+&lt;/x&gt;
+</pre>
+<p>
+TODO: what should this be - ?  (google KML)
+</p>
+ -->
+<a name="Schedule"/>
+<h2>
+Schedule
+</h2>
+<p>
+A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
+A schedule can be either a list of events - intervals on which the event occurs, 
+or a single event with repeating criteria, or just repeating criteria with no actual event. 
+</p>
+<p>
+Note: a possible enhancement to this is to have the repeat content repeat with each event. This is richer and more complex - is the added functionality useful?
+</p>
+<pre>
+&lt;<b>x</b> xmlns=&quot;http://www.hl7.org/fhir&quot;&gt;
+  &lt;<b>event</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="brown"><b>Zero+</b></font> <font color="darkgreen"><a href="datatypes.htm#Interval">Interval</a>(<a href="dateTime.htm#dateTime">dateTime</a>)</font> <font color="navy">When the event occurs</font>&lt;/event&gt;
+  &lt;<b>repeat</b>&gt; <a class="cf" href="xml.htm#Control">opt</a>  <font color="Gray">&lt;!-- Only if there is none or one event --&gt;</font>
+   &lt;<b>frequency</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#integer">integer</a></font> <font color="navy">Event occurs frequency times per duration</font>&lt;/frequency&gt;
+   &lt;<b>when</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#code">code</a></font> <font color="navy">Event occurs duration from common life event</font>&lt;/when&gt;
+   &lt;<b>duration</b>&gt; <a class="cf" href="xml.htm#Control">mand</a> <font color="darkgreen"><a href="Duration.htm#Duration">Duration</a></font> <font color="navy">repeating or event-related duration</font>&lt;/duration&gt;
+   &lt;<b>count</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="datatypes.htm#integer">integer</a></font> <font color="navy">number of times to repeat</font>&lt;/count&gt;
+   &lt;<b>end</b>&gt; <a class="cf" href="xml.htm#Control">cond</a> <font color="darkgreen"><a href="dateTime.htm#dateTime">dateTime</a></font> <font color="navy">when to stop repeats</font>&lt;/end&gt;
+  &lt;/repeat&gt;
+&lt;/x&gt;
+</pre>
+
+<p>
+Terminology Bindings
+</p>
+<ul>
+  <li>Schedule.repeat.when is  bound to the concept domain <i>EventTiming</i>: &quot;A real world event that a schedule is related to&quot;. Possible values:
+    <table class="codes">
+    <tr><td>HS</td><td colspan="2">event occurs duration before the hour of sleep (or trying to)</td></tr>    <tr><td>WAKE</td><td colspan="2">event occurs duration after waking</td></tr>    <tr><td>AC</td><td colspan="2">event occurs duration before a meal (from the latin ante cibus)</td></tr>    <tr><td>ACM</td><td colspan="2">event occurs duration before breakfast (from the latin ante cibus matutinus)</td></tr>    <tr><td>ACD</td><td colspan="2">event occurs duration before lunch (from the latin ante cibus diurnus)</td></tr>    <tr><td>ACV</td><td colspan="2">event occurs duration before dinner (from the latin ante cibus vespertinus)</td></tr>    <tr><td>PC</td><td colspan="2">event occurs duration after a meal (from the latin post cibus)</td></tr>    <tr><td>PCM</td><td colspan="2">event occurs duration after breakfast (from the latin post cibus matutinus)</td></tr>    <tr><td>PCD</td><td colspan="2">event occurs duration after lunch (from the latin post cibus diurnus)</td></tr>    <tr><td>PCV</td><td colspan="2">event occurs duration after dinner (from the latin post cibus vespertinus)</td></tr>    </table>
+  </li>
+</ul>
+
+
+<p>
+If events are specified, at least a low must be specified for each event. If no high is 
+specified, the event is assumed to last a limited but
+unknown time as clinically relevant.
+</p>
+<p>
+If the schedule has repeating criteria, the repeat can occur a given number of times per 
+the specified duration, or in relation to some real world event. Also, if the event repeats,
+a time to end the schedule can be specified, either by specifying a count number of times 
+it can occur, or a date at which to end the schedule. If no end condition is specified, 
+the Schedule will terminate on some criteria which is expressed elsewhere. 
+</p>
+<p>
+There are 3 rules concerning the contents of a <i>Schedule</i>:
+</p>
+<ol>
+ <li>There can only be a repeat element if there is none or one event</li>
+ <li>Only one of <i>frequency</i> and <i>when</i> can be present</li>
+ <li>Only one of <i>count</i> and <i>end</i> can be present</li>
+</ol>
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+At least one <i>event</i> or a <i>repeat</i> is required unless a <i>dataAbsentReason</i>
+flag is provided on the Schedule element. If a <i>repeat</i> is present, either <i>frequency</i> or <i>when</i> is required.
+</p>
+</div>
+<div class="example">
+<p><b>Example</b></p>
+<p>A series of appointments for radiotherapy:</p>
+<pre>
+  &lt;x&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
+      &lt;high&gt;2012-01-07T13:00&lt;/high&gt;
+    &lt;/event&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-14T09:00&lt;/low&gt;
+      &lt;high&gt;2012-01-14T13:00&lt;/high&gt;
+    &lt;/event&gt;
+    &lt;event&gt;
+      &lt;low&gt;2012-01-22T11:00&lt;/low&gt;
+      &lt;high&gt;2012-01-22T15:00&lt;/high&gt;
+    &lt;/event&gt;
+  &lt;/x&gt;
+</pre>
+<p>BID (twice a day) (no start or end specified):</p>
+<pre>
+  &lt;x&gt;
+   &lt;repeat&gt;
+     &lt;frequency&gt;2&lt;/frequency&gt;
+     &lt;duration&gt;
+       &lt;value&gt;1&lt;/value&gt;
+       &lt;units&gt;day&lt;/units&gt;
+       &lt;code&gt;d&lt;/code&gt;
+       &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+     &lt;/duration&gt;
+   &lt;/repeat&gt;
+  &lt;/x&gt;
+</pre>
+<p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
+<pre>
+  &lt;x&gt;
+    &lt;event&gt;
+      &lt;low&gt;2011-12-23&lt;/low&gt;
+    &lt;/event&gt;
+    &lt;repeat&gt;
+      &lt;when&gt;ACM&lt;/when&gt;
+      &lt;duration&gt;
+        &lt;value&gt;30&lt;/value&gt;
+        &lt;units&gt;min&lt;/units&gt;
+        &lt;code&gt;min&lt;/code&gt;
+        &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;/duration&gt;
+      &lt;end&gt;2012-01-02&lt;/end&gt;
+    &lt;/repeat&gt;
+  &lt;/x&gt;
+</pre>
+<p>
+Note that the end date is inclusive like the high date of an Interval.
+</p>
+
+</div>
+
+<h2>Schema &amp; UML models</h2>
+<p>
+<a href="fhir-base.xsd">Data Types Schema</a>.
+</p>
+<p>
+  With regard to the UML models, see notes about the <a href="xml.htm#objects">UML Object models</a>, and particularly the note regarding the <a href="mixins.htm">UML representation of dataAbsentReason</a>
+</p>
+
+<h3>Change History</h3>
+<ul>
+  <li>20-Mar 2011: Removed version from system in Coding - version and module pushed to extensions</li>
+  <li>19-Mar 2011: Renamed dateTime to instant, humanDate to dateTime, and introduced date.</li>
+</ul>
+
+<hr/>
+<p style="text-align: center">
+  <span style="font-weight: bold; color: Maroon"><img src="warning.png"/> This is an old version of FHIR retained for archive purposes. Do not use for anything else</span>
+<br/>
+Implementers are welcome to experiment with the content defined here, but should note that the contents are subject to change without prior notice.<br/>
+  © HL7.org 2011 - 2012. FHIR v0.01 generated on Mon, May 14, 2012 09:48+1000. <br/>
+</p>
+
+
+
+</div>    
+<script src="/includes/GoogleAnalyticsAddFileTracking.js" type="text/javascript"/>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-676355-1']);
+  _gaq.push(['_setDomainName', '.hl7.org']);
+  _gaq.push(['_trackPageview']);
+  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+</script>
+</body>
+</html>

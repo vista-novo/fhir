@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceDefinitions xmlns="http://www.hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hl7.org/fhir definitions.xsd">
+  <author>HL7</author>
+  <resourceDefinition>
+    <name>Person</name>
+    <elementDefinitions>
+      <elementDefinition>
+        <name>Person</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A person who is involved in the healthcare process</definition>
+        <requirements>Need to track persons across multiple roles</requirements>
+        <rim>Person(classCode=PSN, determinerCode=INST)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.id</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>id</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Master Resource Id, always first in all resources</definition>
+        <requirements></requirements>
+        <rim>.id(scope=OBJ)</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.identifier</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>HumanId</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person</definition>
+        <requirements>People are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the patient.</requirements>
+        <rim>.plays:Role(classCode='IDENT').id</rim>
+        <v2>PID-3</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.name</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>HumanName</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>A name associated with the person</definition>
+        <requirements>Need to be able to track the person by multiple names</requirements>
+        <comments>Person may have multiple names with different uses or applicable periods</comments>
+        <rim>.name</rim>
+        <v2>PID-5, PID-9</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.address</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Address</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>An address for the person</definition>
+        <requirements>May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification</requirements>
+        <comments>Person may have multiple addresses with different uses or applicable periods</comments>
+        <rim>.addr</rim>
+        <v2>PID-11</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.contact</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Contact</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A contact detail for the person</definition>
+        <requirements>May need to have options for contacting the person urgently, and also to help with identification</requirements>
+        <comments>Person may have multiple contacts with different uses or applicable periods</comments>
+        <rim>.telecom</rim>
+        <v2>PID-13, PID-14</v2>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.dob</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>dateTime</type>
+        </types>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>The birth date for the person</definition>
+        <requirements>Age of person drives many clinical processes.</requirements>
+        <comments>At least a estimated year should be provided as a guess if the real dob is unknown</comments>
+        <rim>.birthTime</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.gender</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>AdministrativeGender</conceptDomain>
+        <mustUnderstand>true</mustUnderstand>
+        <definition>Administrative Gender</definition>
+        <requirements>Patient Identification, and also for managing the patient</requirements>
+        <rim>.administrativeGender</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.religion</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>Religion</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The religious denomination to which a person professes affiliation</definition>
+        <requirements>The religion of a person may influence ancilliary processes around the provision of healthcare, and may provide general advice with regard to diet, etc</requirements>
+        <comments>Not all people have a formal religious affiliation</comments>
+        <rim>.religiousAffiliationCode</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.race</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>Race</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>blah balh</definition>
+        <requirements>This is added because many jurisdictions insisted on it</requirements>
+        <comments>Some places do not use this!</comments>
+        <rim>.raceCode</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.qualification</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</definition>
+        <requirements>For many persons in healthcare, it is necessary to track the qualifications a person has - formal.</requirements>
+        <rim>.plays:Role(classCode='QUAL')</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.qualification.id</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Identifier</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The identifier of a qualification</definition>
+        <requirements>Allows a link back to a qualification registry, if one exists</requirements>
+        <rim>.identifier</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.qualification.code</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>Qualifications</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The type of the qualification</definition>
+        <requirements>commonly used to determine the roles a person may play</requirements>
+        <rim>.code</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.qualification.institution</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Resource(Organization)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The organisation that confered/confers the qualification</definition>
+        <requirements>May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</requirements>
+        <rim>.scopedBy:Organization</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.qualification.period</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>Interval(date)</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>The period for which a qualification is held</definition>
+        <requirements>Some qualifications are only conferred for a limited time period and must be re-acquired or forfeited</requirements>
+        <comments>Formal degrees may have a known start date, but no end date</comments>
+        <rim>.effectiveTime:IVL_TS</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.language</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A language spoken by the person, with proficiency</definition>
+        <requirements>If a patient does not speak the local language, interpreters may be required, so languages spoken and profiency is an important things to keep track of both for patient and other persons of interest</requirements>
+        <comments>If no language is specified, this *implies* that the default local language is spoken</comments>
+        <rim>.LanguageCommunicationCode</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.language.code</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>code</type>
+        </types>
+        <conceptDomain>Language</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A code that identifies the language</definition>
+        <requirements></requirements>
+        <comments>So just ISO 639-3?  Not allowing ENG-CA or something?</comments>
+        <rim>.languageCode</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.language.use</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>code</type>
+        </types>
+        <conceptDomain>LanguageUse</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A code the describes how well the language is spoken</definition>
+        <requirements></requirements>
+        <comments>No differentiation is made between spoken and written functionality here</comments>
+        <rim>.proficiencyLanguageCode</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.relatedPerson</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).</definition>
+        <requirements>Need to be able to track next of kin, or other people who may need to contacted/consulting regarding the patient's healthcare status or who might otherwise influence their treatment</requirements>
+        <rim>.plays:Role(classCode='REL')</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.relatedPerson.id</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>HumanId</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Identifier the related person - may be a full link to a Person resource, or some other kind of identifier</definition>
+        <requirements>may have an identifier for the person that can be used to source contact details</requirements>
+        <rim>.scopedBy:Person.identifier</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.relatedPerson.role</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>CodeableConcept</type>
+        </types>
+        <conceptDomain>PersonRelationship</conceptDomain>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Code that specifies how this person is related to the subject. A code is required.</definition>
+        <requirements>Need to know how the person is related</requirements>
+        <rim>.code</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.relatedPerson.name</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <types>
+          <type>HumanName</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>A name should be specified for the related person</definition>
+        <requirements></requirements>
+        <rim>.scopedBy:Person.name</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.relatedPerson.contact</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>unbounded</maxOccurs>
+        </cardinality>
+        <conformance></conformance>
+        <condition></condition>
+        <types>
+          <type>Contact</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Contact details (phone, email etc) should be provided for the person</definition>
+        <requirements></requirements>
+        <rim>.scopedBy:Person.telecom</rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.extensions</name>
+        <cardinality>
+          <minOccurs>0</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Optional</conformance>
+        <condition></condition>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>See Extensions</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+      <elementDefinition>
+        <name>Person.text</name>
+        <cardinality>
+          <minOccurs>1</minOccurs>
+          <maxOccurs>1</maxOccurs>
+        </cardinality>
+        <conformance>Mandatory</conformance>
+        <condition></condition>
+        <types>
+          <type>Narrative</type>
+        </types>
+        <mustUnderstand>false</mustUnderstand>
+        <definition>Text summary of person, for human interpretation</definition>
+        <requirements></requirements>
+        <rim></rim>
+      </elementDefinition>
+    </elementDefinitions>
+  </resourceDefinition>
+</resourceDefinitions>
+

@@ -1,0 +1,254 @@
+body {
+	background: #fff url(topgreenfade.png) repeat-x;
+	margin: 0;
+	padding: 0;
+}
+
+body.book {
+	margin: 20;
+	padding: 20;
+}
+
+p, li {
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	margin: 0 0 20px 0;
+	font-weight: normal;
+}
+
+a.cf {
+        color: red;
+}
+
+a.dict {
+        color: Purple;
+}
+
+td {
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+	vertical-align: top;
+}
+
+tr {
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+	vertical-align: top;
+	text-align: left;
+}
+table.list td {
+        border-top: 1px silver solid;
+	border-spacing: 0;
+}
+
+table.dict td {
+        padding:3px 7px 2px 7px;
+	font-size: 11px;
+	line-height: 1.2em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+	vertical-align: top;
+}
+
+table.dict td.structure {
+        padding:3px 7px 2px 7px;
+	font-size: 12px;
+	line-height: 1.2em;
+	font-family: verdana;
+	font-weight: bold;
+	padding: 3px;
+	vertical-align: top;
+	border-bottom: 1px silver solid;
+  background: #EFEFEF
+}
+
+
+table {
+	margin-bottom: 10px;
+        border-collapse:collapse;
+}
+
+table.codes{
+	margin-bottom: 10px;
+        border: 1px black solid;
+}
+
+table.codes td {
+        border:1px solid silver;
+        padding:3px 7px 2px 7px;
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+	vertical-align: top;
+}
+
+table.grid{
+	margin-bottom: 10px;
+        border: 1px black solid;
+        margin-left: auto;
+        margin-right: auto;
+	
+}
+
+table.grid th {
+        border:1px solid silver;
+        padding:3px 7px 2px 7px;
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	font-weight: bold;
+	padding: 3px;
+	vertical-align: top;
+}
+
+
+table.grid td {
+        border:1px solid silver;
+        padding:3px 7px 2px 7px;
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	font-weight: normal;
+	padding: 3px;
+	vertical-align: top;
+}
+
+ul {
+	margin: 10px 0;
+	padding: 0 0 0 25px;
+}
+
+.dense li {
+	margin: 0 0 0 0;
+}
+li {
+	margin: 0 0 5px 0;
+}
+
+h1 {
+	font-size: 16px;
+	margin: 0 0 4px 0;
+	font-family: verdana;
+	border-bottom: 1px solid #7e7e7e;
+	padding-bottom: 2px;
+}
+
+h2 {
+	font-family: verdana;
+	line-height: 1.2em;
+	font-size: 14px;
+	margin: 0 0 3px 0;
+	margin-top: 15px;
+	border-bottom: 1px solid #dcdcdc;
+	padding-bottom: 2px;
+}
+
+
+h3 {
+	font-family: verdana;
+	line-height: 1.2em;
+	font-size: 12px;
+	margin: 0 0 3px 0;
+	margin-top: 10px;
+}
+
+h4 {
+	font-family: verdana;
+	line-height: 1.2em;
+	font-size: 11px;
+	margin: 0 0 3px 0;
+	margin-top: 10px;
+}
+
+
+div.header {
+	font-size: 12px;
+	line-height: 1.4em;
+	font-family: verdana;
+	margin: 5px 0 0 0;
+	font-weight: normal;
+	text-align: center;
+}
+
+div.content {
+	margin: 40px auto;
+	width: 640px;
+}
+
+div.use {
+	border: 1px solid #dcdcdc;
+        background: #EEEEEE ; 
+	padding: 5px;
+}
+
+div.example {
+	border: 1px solid #dcdcdc;
+        background: #FFECDD ; 
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+div.sidebar h2{
+	border-bottom: 1px solid #dcdcdc;
+	padding-bottom: 2px;
+}
+
+div.sidebar ul {
+	list-style: none;
+	padding: 0;
+	margin: 5px 0;
+}
+
+div.sidebar li {
+	margin: 0 0 3px 0;
+}
+
+div.sidebar {
+	margin-top: 0px;
+	width: 175px;
+	float: right;
+}
+
+pre              {
+	border: 1px solid #dcdcdc;
+ 	font-size: 11px;
+  background: #FFFFE0 ; 
+	padding: 5px;
+}
+
+pre.xml              {
+	font-family: 'Courier New';
+ 	font-size: 10pt;
+  padding: 2px;
+  background: #FFFFFF ; 
+}
+
+span.xmltag   {
+  color: Navy;
+}
+
+span.xmlcomment  {
+  color: Grey;
+}
+
+span.xmlattr  {
+  color: Maroon;
+}
+
+
+pre a {
+	color: darkgreen;
+	text-decoration: none;
+	border: 0;
+
+}
