@@ -26,14 +26,13 @@ public class ZipGenerator {
   static final int BUFFER = 2048;
 
   public void addFiles(String actualDir, String statedDir, String ext) throws Exception {
-    BufferedInputStream origin = null;
     byte data[] = new byte[BUFFER];
     File f = new File(actualDir);
     String files[] = f.list();
     for (int i=0; i < files.length; i++) {
       if ((ext == null && new File(actualDir+files[i]).isFile()) || (ext != null && files[i].endsWith(ext))) {
         FileInputStream fi = new FileInputStream(actualDir+files[i]);
-        origin = new BufferedInputStream(fi, BUFFER);
+        BufferedInputStream origin = new BufferedInputStream(fi, BUFFER);
         ZipEntry entry = new ZipEntry(statedDir+files[i]);
         out.putNextEntry(entry);
         int count;
@@ -44,32 +43,22 @@ public class ZipGenerator {
     }
   }
 
-//  protected void zipFiles(String rootDir, String[] subdirs, String dstFilename) throws Exception {
-//    BufferedInputStream origin = null;
-//    FileOutputStream dest = new FileOutputStream(dstFilename);
-//    ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
-//    byte data[] = new byte[BUFFER];
-//    
-//    for (String sub : subdirs) {
-//      File f = new File(rootDir+File.separator+sub+File.separator);
-//      String[] files = f.list();
-//      for (int i=0; i < files.length; i++) {
-//        if (files[i].endsWith(".java")) {
-//          FileInputStream fi = new FileInputStream(rootDir+File.separator+sub+File.separator+files[i]);
-//          origin = new BufferedInputStream(fi, BUFFER);
-//          ZipEntry entry = new ZipEntry(sub+File.separator+files[i]);
-//          out.putNextEntry(entry);
-//          int count;
-//          while((count = origin.read(data, 0, BUFFER)) != -1) {
-//            out.write(data, 0, count);
-//          }
-//        }
-//      }
-//    }
-//
-//    out.close();
-//
-//  }
-  
+  public void addFileSource(String path, String cnt) throws Exception {
+    File tmp = File.createTempFile("tmp", ".tmp");
+    Utilities.stringToFile(cnt, tmp.getAbsolutePath());
+    addFileName(path, tmp.getAbsolutePath());
+  }
 
+  public void addFileName(String statedPath, String actualPath) throws Exception {
+    byte data[] = new byte[BUFFER];
+    FileInputStream fi = new FileInputStream(actualPath);
+    BufferedInputStream origin = new BufferedInputStream(fi, BUFFER);
+    ZipEntry entry = new ZipEntry(statedPath);
+    out.putNextEntry(entry);
+    int count;
+    while((count = origin.read(data, 0, BUFFER)) != -1) {
+      out.write(data, 0, count);
+    }
+  }
+  
 }

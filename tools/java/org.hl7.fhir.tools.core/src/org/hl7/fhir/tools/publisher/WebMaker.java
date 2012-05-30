@@ -2,8 +2,16 @@ package org.hl7.fhir.tools.publisher;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.instance.model.Conformance.Create;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
@@ -17,7 +25,7 @@ public class WebMaker {
 
   private FolderManager folders;
   private String version;
-  
+  private List<String> past = new ArrayList<String>();
   
   public WebMaker(FolderManager folders, String version) {
     super();
@@ -28,6 +36,13 @@ public class WebMaker {
   public void produceHL7Copy() throws Exception {
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
+    File fw = new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-web-"+version+".zip");
+    if (fw.exists())
+      fw.delete();
+    File fd = new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-dload-"+version+".zip");
+    if (fd.exists())
+      fd.delete();
+
     String[] files = new File(folders.dstDir).list();
     for (String f : files) {
       if (f.endsWith(".htm")) {
@@ -51,29 +66,58 @@ public class WebMaker {
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
     }
 
-    File f = new File(folders.rootDir+"archive"+File.separator+"fhir-web-"+version+".zip");
-    if (f.exists())
-      f.delete();
-    ZipGenerator zip = new ZipGenerator(folders.rootDir+"archive\\fhir-hl7-"+version+"-web.zip");
+    ZipGenerator zip = new ZipGenerator(fw.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator, "", null);
+    for (String v : past)
+      zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v"+v+File.separator, "v"+v+File.separator, null);
     zip.close();  
-    zip = new ZipGenerator(folders.rootDir+"archive"+File.separator+"fhir-hl7-"+version+"-dload.zip");
+    zip = new ZipGenerator(fd.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
-    zip.close();  
-    
+    zip.close();    
   }
 
-  private CharSequence makeArchives() {
+  private CharSequence makeArchives() throws Exception {
     IniFile ini = new IniFile(folders.rootDir+"publish.ini"); 
     StringBuilder s = new StringBuilder();
     s.append("<h2>Archived Versions of FHIR</h2>");
+    s.append("<p>These archives only keep the more significant past versions of FHIR, and only the book form, and are provided for purposes of supporting html diff tools. A full archive history of everything is available <a href=\"http://wiki.hl7.org/index.php?title=FHIR\">through the HL7 gForge archives</a>.</p>");
     s.append("<ul>");
     for (String v : ini.getPropertyNames("Archives")) {
-      s.append("<li><a href=\"\">Version "+v+", "+ini.getStringProperty("Archives", v)+"</a> todo: diff link </li>");
+      s.append("<li><a href=\"v"+v+"/fhir-book.htm\">Version "+v+"</a>, "+ini.getStringProperty("Archives", v)+". (<a " +
+      		"href=\"http://www.w3.org/2007/10/htmldiff?doc1=http%3A%2F%2Fwww.hl7.org%2Fimplement%2Fstandards%2FFHIR%2Fv"+v+"%2Ffhir-book.htm&amp;doc2=http%3A%2F%2Fwww.hl7.org%2Fimplement%2Fstandards%2FFHIR%2Ffhir-book.htm\">Diff with current</a>) </li>");
+      if (!past.contains(v))
+        past.add(v);
+      extractZip(folders.rootDir+"archive"+File.separator+"v"+v+".zip", folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v"+v+File.separator);
     }
     s.append("</ul>");
     return s.toString();
   }
+
+  static final int BUFFER = 2048;
+
+  private void extractZip(String src, String dest) throws Exception {
+    Utilities.createDirectory(dest);
+    ZipFile zf = new ZipFile(src);
+    try {
+      for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements();) {
+        ZipEntry ze = e.nextElement();
+        String name = ze.getName();
+        if (name.endsWith(".htm") || name.endsWith(".png") || name.endsWith(".css")) {
+          InputStream in = zf.getInputStream(ze);
+          OutputStream out = new FileOutputStream(dest+name);
+
+          byte data[] = new byte[BUFFER];
+          int count;
+          while((count = in.read(data, 0, BUFFER)) != -1) {
+            out.write(data, 0, count);
+          }
+        }
+      }
+    } finally {
+      zf.close();
+    }  
+  } 
+    
 
   private void replaceDownloadUrls(XhtmlNode node) {
     if (node.getNodeType() == NodeType.Document || node.getNodeType() == NodeType.Element) {

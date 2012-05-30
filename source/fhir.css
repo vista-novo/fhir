@@ -9,6 +9,19 @@ body.book {
 	padding: 20;
 }
 
+.watermark
+{
+   background-image: url(watermark.png);
+   background-position: center center;
+   s-background-size: 100%; /* CSS3 only, but not really necessary if you make a large enough image */
+   background-attachment: fixed;
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   z-index: 10;
+}
+
 i.inherited {
         font-size: 10px;
         opacity: 0.5;

@@ -369,7 +369,10 @@ public class Utilities {
   public static void clearDirectory(String folder) {
     String[] files = new File(folder).list();
     for (String f : files) {
-      new File(folder+File.separatorChar+f).delete();
+      File fh = new File(folder+File.separatorChar+f);
+      if (fh.isDirectory()) 
+        clearDirectory(fh.getAbsolutePath());
+      fh.delete();
     }
   }
 

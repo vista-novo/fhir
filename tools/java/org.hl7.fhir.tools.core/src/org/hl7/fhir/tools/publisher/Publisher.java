@@ -203,19 +203,22 @@ public class Publisher {
     produceSpec(); 
     log("Produce fhir.chm");
     chm.produce();
-    log("Produce HL7 copy");
-    new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
-    log("Produce Archive copy");
-    produceArchive();
+    if (!isInternalRun) {
+      log("Produce HL7 copy");
+      new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
+      log("Produce Archive copy");
+      produceArchive();
+    }
   }
 
   
     private void produceArchive() throws Exception {
-      String target = page.getFolders().rootDir+"archive"+File.separator+"v"+page.getVersion();
-      if (new File(target).exists())
-        Utilities.clearDirectory(target);
-      else
-        Utilities.createDirectory(target);
+      String target = page.getFolders().rootDir+"archive"+File.separator+"v"+page.getVersion()+".zip";
+      File tf = new File(target);
+      if (tf.exists())
+        tf.delete();
+      
+      ZipGenerator zip = new ZipGenerator(target);
       
       int c = 0;
       String[] files = new File(page.getFolders().dstDir).list();
@@ -227,10 +230,18 @@ public class Publisher {
             String srcn = src.replace("Warning: FHIR is a draft specification that is still undergoing development prior to balloting as a full HL7 standard", "This is an old version of FHIR retained for archive purposes. Do not use for anything else");
             if (!srcn.equals(src))
               c++;
-            Utilities.stringToFile(srcn, target+File.separator+f);
+            srcn = srcn.replace("<body>", "<body><div class=\"watermark\"/>").replace("<body class=\"book\">", "<body class=\"book\"><div class=\"watermark\"/>");
+            zip.addFileSource(f, srcn);
+//            Utilities.stringToFile(srcn, target+File.separator+f);
+          }
+          else if (f.endsWith(".css")) {
+            String src = Utilities.fileToString(fn.getAbsolutePath());
+            src = src.replace("#fff", "lightcyan");
+            zip.addFileSource(f, src);
+//            Utilities.stringToFile(srcn, target+File.separator+f);
           }
           else
-            Utilities.copyFile(fn, new File(target+File.separator+f));
+            zip.addFileName(f, fn.getAbsolutePath());
         } else {
           // used to put stuff in sub-directories. clean them out if they still exist
           Utilities.clearDirectory(fn.getAbsolutePath());
@@ -239,6 +250,7 @@ public class Publisher {
       }    
       if (c < 3)
         throw new Exception("header note replacement in archive failed");
+      zip.close();
   }
 
     private void produceSpec() throws Exception {
