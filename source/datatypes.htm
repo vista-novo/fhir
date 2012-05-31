@@ -45,13 +45,13 @@ are used in the exchange specifications. The posssible values for these types ar
 </p>
 <table class="list">
  <tr><th>type</th><th>description</th><th>default value</th></tr>
- <tr><td><a name="boolean"></a>boolean</td><td>values can be true or false</td><td>false</td></tr>
- <tr><td><a name="integer"></a>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td><td>0</td></tr>
- <tr><td><a name="decimal"></a>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>0</td></tr>
- <tr><td><a name="base64Binary"></a>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>null / empty</td></tr>
- <tr><td><a name="instant"></a>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
- <tr><td><a name="string"></a>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td>null / empty</td></tr>
- <tr><td><a name="uri"></a>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>null / no reference</td></tr>
+ <tr><td>boolean</td><td>values can be true or false</td><td>false</td></tr>
+ <tr><td>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td><td>0</td></tr>
+ <tr><td>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>0</td></tr>
+ <tr><td>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>null / empty</td></tr>
+ <tr><td>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
+ <tr><td>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td>null / empty</td></tr>
+ <tr><td>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>null / no reference</td></tr>
  <tr><td></td><td></td><td></td></tr>
 </table>
 <p>
@@ -75,14 +75,14 @@ string patterns that are commonly used:
 </p>
 
 <table class="list">
- <tr><td><a name="code"></a>code</td><td>a string which has at least one character and no whitespace</td></tr>
- <tr><td><a name="oid"></a>oid</td><td>An ISO oid [ref ISO std]</td></tr>
- <tr><td><a name="uuid"></a>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
- <tr><td><a name="sid"></a>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a>. sid values never contain a '#'</td></tr>
- <tr><td><a name="id"></a>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
- <tr><td><a name="date"></a>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
+ <tr><td>code</td><td>a string which has at least one character and no whitespace</td></tr>
+ <tr><td>oid</td><td>An ISO oid [ref ISO std]</td></tr>
+ <tr><td>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
+ <tr><td>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a>. sid values never contain a '#'</td></tr>
+ <tr><td>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
+ <tr><td>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
    The format is a union of the schema types gYear, gYearMonth, and date.</td></tr>
- <tr><td><a name="dateTime"></a>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
+ <tr><td>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
    populated if hours and minutes are specified. The format is a union of the schema types gYear, gYearMonth, date, and dateTime. Seconds may be provided but may also be ignored.</td></tr>
 </table>
 

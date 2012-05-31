@@ -37,7 +37,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void writeEntry(String path, String cardinality, ElementDefn.Conformance conformance, String type, String conceptDomain, ElementDefn e) throws IOException {
-		write("  <tr><td colspan=2 class=\"structure\"><a name=\""+path+"\"> </a><b>"+path+"</b></td></tr>\r\n");
+		write("  <tr><td colspan=\"2\" class=\"structure\"><b>"+path+"</b></td></tr>\r\n");
 		tableRow("Definition", e.getDefinition());
 		tableRow("Control", (conformance == ElementDefn.Conformance.Unstated ? "" : conformance.fullName()+", ")+cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRow("Type", type + (conceptDomain != "" ? " from "+conceptDomain : ""));

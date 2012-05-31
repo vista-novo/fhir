@@ -81,6 +81,7 @@ public class Publisher {
   private ChmMaker chm;
   private PageProcessor page = new PageProcessor();
   private BookMaker book;
+  private PdfMaker pdf;
   
   private boolean isInternalRun;
   
@@ -189,6 +190,7 @@ public class Publisher {
     page.getNavigation().parse(page.getFolders().srcDir+"navigation.xml", isInternalRun);
     chm = new ChmMaker(page.getNavigation(),  page.getFolders(), page.getDefinitions(), page);
     book = new BookMaker(page, chm);
+    pdf = new PdfMaker(page);
 
 
     for (PlatformGenerator gen : page.getReferenceImplementations())
@@ -274,6 +276,7 @@ public class Publisher {
 		
 		produceZip();
 		book.produce();
+		pdf.produce();
 	}
 
 
