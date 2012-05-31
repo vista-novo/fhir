@@ -10,5 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.hl7.fhir.utilities"/>
 	<classpathentry kind="lib" path="/org.hl7.fhir.dependencies/xmlworker-1.1.3.jar" sourcepath="/External Scratchpad/src"/>
 	<classpathentry kind="lib" path="/org.hl7.fhir.dependencies/itextpdf-5.2.1.jar" sourcepath="/External Scratchpad/src"/>
+	<classpathentry kind="lib" path="/org.hl7.fhir.dependencies/saxon9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -23,7 +23,7 @@ public class FolderManager {
     tmpResDir = xsdDir+"datatypes"+sl;
     dstDir = root+sl+"publish"+sl;
     umlDir = root+sl+"uml"+sl;
-//    javaDir       =  root+sl+"tools"+sl+"java"+sl+"org.hl7.fhir.tools.core"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
+    javaDir = root+sl+"tools"+sl+"java"+sl+"org.hl7.fhir.tools.core"+sl+"src"+ sl;
 //    javaParserDir =  root+sl+"tools"+sl+"java"+sl+"org.hl7.fhir.tools.core"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
 //    cSharpDir      = root+sl+"tools"+sl+"csharp"+sl+"FHIR"+sl+"FHIR"+sl;
 //    delphiDir      = root+sl+"tools"+sl+"delphi"+sl;
@@ -39,6 +39,7 @@ public class FolderManager {
   public String termDir;
   public String dtDir;
   public String tmpResDir;
+  public String javaDir;
   
   public String implDir(String name) {
     return rootDir+"implementations"+sl+name+sl;
