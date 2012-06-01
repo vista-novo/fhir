@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FHIR", "org.hl7.fhir.instance.model\FHIR.csproj", "{3CA811D7-19A7-43AC-A403-1F35E4EC2BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "org.hl7.fhir.instance", "org.hl7.fhir.instance.csproj", "{3CA811D7-19A7-43AC-A403-1F35E4EC2BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

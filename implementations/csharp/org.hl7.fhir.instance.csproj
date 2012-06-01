@@ -40,35 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admission.cs" />
-    <Compile Include="Agent.cs" />
-    <Compile Include="Amnon.cs" />
-    <Compile Include="Animal.cs" />
-    <Compile Include="AssessmentDefinition.cs" />
-    <Compile Include="AssessmentScale.cs" />
-    <Compile Include="Conformance.cs" />
-    <Compile Include="DavidH.cs" />
-    <Compile Include="Device.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="Ewout.cs" />
-    <Compile Include="Group.cs" />
-    <Compile Include="Infrastructure.cs" />
-    <Compile Include="InterestOfCare.cs" />
-    <Compile Include="LabReport.cs" />
-    <Compile Include="Linda.cs" />
-    <Compile Include="Lloyd.cs" />
-    <Compile Include="Message.cs" />
-    <Compile Include="Organization.cs" />
-    <Compile Include="Patient.cs" />
-    <Compile Include="PaulK.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="Prescription.cs" />
-    <Compile Include="Profile.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Admission.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Agent.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Amnon.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Animal.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\AssessmentDefinition.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\AssessmentScale.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Conformance.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\DavidH.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Device.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Document.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Ewout.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Group.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Infrastructure.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\InterestOfCare.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\LabReport.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Linda.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Lloyd.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Message.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Organization.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Patient.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\PaulK.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Person.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Prescription.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Profile.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Specimen.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Valueset.cs" />
+    <Compile Include="org.hl7.fhir.instance.model\Woody.cs" />
+    <Compile Include="org.hl7.fhir.instance.support\XsdDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Specimen.cs" />
-    <Compile Include="Valueset.cs" />
-    <Compile Include="Woody.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
