@@ -9,6 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:24:32Z</Created>
+  <LastSaved>2012-05-31T07:13:14Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -52,33 +53,39 @@
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s65">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
-    ss:Span="2"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="198.75"/>
+    ss:Span="1"/>
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="198.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
-    <Cell><Data ss:Type="String">Conf.</Data></Cell>
+    <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Example</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Condition</Data></Cell>
     <Cell><Data ss:Type="String">Comments</Data></Cell>
     <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
     <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
@@ -87,26 +94,26 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A reference to a code defined by a terminology system </Data></Cell>
     <Cell><Data ss:Type="String">A reference to a code defined by a terminology system </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Refering to codes is a ubiquitous task in healthcare models</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Codes may defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED-CT - see the v3 core principles for more information</Data></Cell>
+    <Cell><Data ss:Type="String">Codes may defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED-CT - see the v3 core principles for more information</Data></Cell>
     <Cell><Data ss:Type="String">CV</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Coding.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">Symbol in syntax defined by the system</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Symbol in syntax defined by the system</Data></Cell>
     <Cell><Data ss:Type="String">A symbol in syntax defined by the system. The symbol may be a predefined code, or an expression in a syntax defined by the coding system</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Need to refer to a particular code in the system</Data></Cell>
-    <Cell><Data ss:Type="String">Unless the CodeableConcept element has a dataAbsentReason, it must contain at least one coding with a code, or a text.</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">CV.code</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">CV.code</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -114,14 +121,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="133.5">
     <Cell><Data ss:Type="String">Coding.system</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">Identity of the terminology system </Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Identity of the terminology system </Data></Cell>
     <Cell><Data ss:Type="String">The identification of the system that defines the meaning of the symbol in the code. Can be a simple list of enumerations, a list of codes with meanings, or all the way to a complex semantic web such as SNOMED-CT, whether classification, terminology, or ontology</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Need to be unambiguous about the source of the definition of the symbol</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">The identity is a uri. It may be an OID or a UUID, which must be references to the HL7 OID registry, or a URI which either comes from the list of FHIR defined special URIs, or from some system defined elsewhere, in which case the URI should de-reference to establish the system unambiguously</Data></Cell>
+    <Cell><Data ss:Type="String">The identity is a uri. It may be an OID or a UUID, which must be references to the HL7 OID registry, or a URI which either comes from the list of FHIR defined special URIs, or from some system defined elsewhere, in which case the URI should de-reference to establish the system unambiguously</Data></Cell>
     <Cell><Data ss:Type="String">CV.codeSystem</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -130,13 +136,12 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coding.display</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Representation defined by the system</Data></Cell>
     <Cell><Data ss:Type="String">A representation of the meaning of the code in the system, following the rules laid out by the system. </Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Need to be able to carry a human readable meaning of the code for readers that do not recognise the system</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">CV.displayName</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">language?</Data></Cell>
@@ -163,41 +168,18 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s65" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="185.25"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="342.75"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="267.75"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="305.25"/>
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="185.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="342.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="267.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="305.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
-    <Cell><Data ss:Type="String">Schematron</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Must have a system</Data></Cell>
-    <Cell><Data ss:Type="String">Codings must contain a system URI</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">system.size() &gt; 0</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">code Must contain at least one char</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If a code element is provided, it must be least one character long</Data></Cell>
-    <Cell><Data ss:Type="String">code.oclIsDefined implies code.size &gt; 0</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">system Must contain at least one char</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If a system element is provided, it must be least one character long</Data></Cell>
-    <Cell><Data ss:Type="String">system.oclIsDefined implies system.size &gt; 0</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">display Must contain at least one char</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">If a display element is provided, it must be least one character long</Data></Cell>
-    <Cell><Data ss:Type="String">display.oclIsDefined implies display.size &gt; 0</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -210,8 +192,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

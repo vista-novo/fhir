@@ -9,6 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-05-23T20:36:08Z</Created>
+  <LastSaved>2012-05-31T12:31:38Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -46,7 +47,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="65" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="63" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
@@ -66,20 +67,6 @@
     <Cell><Data ss:Type="String">Accreditation</Data></Cell>
     <Cell><Data ss:Type="String">Accreditations an organization may be granted</Data></Cell>
     <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AddressPartType</Data></Cell>
-    <Cell><Data ss:Type="String">Type of address part</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#address-part-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AddressUse</Data></Cell>
-    <Cell><Data ss:Type="String">The use of an address</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#address-use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AdministrationInstruction</Data></Cell>
@@ -490,8 +477,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>25</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <RangeSelection>R3:R4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

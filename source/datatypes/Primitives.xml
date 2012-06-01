@@ -20,7 +20,6 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>240</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -33,7 +32,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s57">
+  <Style ss:ID="s62">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
@@ -45,8 +44,8 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="66.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="177" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="117"/>
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Span="3"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="117"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Span="3"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Data Type</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -102,11 +101,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -124,12 +124,12 @@
    <NamedRange ss:Name="uuid" ss:RefersTo="='String Patterns'!R4C1"/>
   </Names>
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s57" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="74.25"/>
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="233.25"/>
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="142.5"/>
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="199.5"/>
-   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="108"/>
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="74.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="233.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="142.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="199.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Data Type</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -197,7 +197,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

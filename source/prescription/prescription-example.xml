@@ -41,13 +41,17 @@
   </dispense>
 
   <medicine>
-    <description>Penicillin VK oral suspension, 125mg/5ml</description>
+    <identification>
+      <text>Penicillin VK oral suspension, 125mg/5ml</text>
+    </identification>
     <activeIngredient>
-      <productCode>
-        <code>XXXXX</code>
-        <system>urn:hl7.org:sid/atc</system>
-        <display>Penicillin</display>
-      </productCode>
+      <identification>
+        <coding>
+          <code>XXXXX</code>
+          <system>urn:hl7.org:sid/atc</system>
+          <display>Penicillin</display>
+        </coding>
+      </identification>      
       <quantity>
         <numerator>
           <value>125</value>
@@ -62,11 +66,13 @@
       </quantity>
     </activeIngredient>
     <inactiveIngredient>
-      <productCode>
-        <code>YYYYY</code>
-        <system>urn:hl7.org:sid/atc</system>
-        <display>Water</display>
-      </productCode>
+      <identification>
+        <coding>
+          <code>YYYYY</code>
+          <system>urn:hl7.org:sid/atc</system>
+          <display>Water</display>
+        </coding>  
+      </identification>
       <quantity>
         <numerator>
           <value>5</value>

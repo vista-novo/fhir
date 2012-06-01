@@ -41,8 +41,23 @@ any differently. This table summarises the types:
 </p>
 <p>
 The following table summarises the primitive types that 
-are used in the exchange specifications. The posssible values for these types are those specified in the W3C Schema specification part 2. 
+are used in the exchange specifications. The posssible values for 
+these types are those specified in the W3C Schema specification part 2. 
+All elements that contain text content have one of these primitive types.
+Elements of this type can only be empty if they have a
+<a href="xml.htm#dataAbsentReason">dataReasonAbsent</a> attribute on 
+them (and only where that attribute is allowed).
 </p>
+
+<a name="boolean"> </a>
+<a name="integer"> </a>
+<a name="decimal"> </a>
+<a name="base64Binary"> </a>
+<a name="instant"> </a>
+<a name="string"> </a>
+<a name="uri"> </a>
+
+ 
 <table class="list">
  <tr><th>type</th><th>description</th><th>default value</th></tr>
  <tr><td>boolean</td><td>values can be true or false</td><td>false</td></tr>
@@ -74,6 +89,14 @@ In addition to these assumed primitive types, this specification define a few si
 string patterns that are commonly used:
 </p>
 
+<a name="code"> </a>
+<a name="oid"> </a>
+<a name="uuid"> </a>
+<a name="sid"> </a>
+<a name="id"> </a>
+<a name="date"> </a>
+<a name="dateTime"> </a>
+   
 <table class="list">
  <tr><td>code</td><td>a string which has at least one character and no whitespace</td></tr>
  <tr><td>oid</td><td>An ISO oid [ref ISO std]</td></tr>
