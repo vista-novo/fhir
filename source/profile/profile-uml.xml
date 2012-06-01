@@ -547,10 +547,10 @@
 								<UML:TaggedValue tag="ea_targetID" value="398"/>
 								<UML:TaggedValue tag="virtualInheritance" value="0"/>
 								<UML:TaggedValue tag="lb" value="0..*"/>
-								<UML:TaggedValue tag="lt" value="+xpath"/>
+								<UML:TaggedValue tag="lt" value="+constraint"/>
 							</UML:ModelElement.taggedValue>
 							<UML:Association.connection>
-								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="xpath" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_40349F9F_7AD9_4d31_8911_B22DCD81F720">
+								<UML:AssociationEnd visibility="public" multiplicity="0..*" name="constraint" aggregation="none" isOrdered="false" targetScope="instance" changeable="none" isNavigable="false" type="EAID_40349F9F_7AD9_4d31_8911_B22DCD81F720">
 									<UML:ModelElement.taggedValue>
 										<UML:TaggedValue tag="containment" value="Unspecified"/>
 										<UML:TaggedValue tag="sourcestyle" value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
