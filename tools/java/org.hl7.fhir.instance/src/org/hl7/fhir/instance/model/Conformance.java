@@ -1,11 +1,40 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://hl7.org). Generated on Fri, May 18, 2012 22:20+1000 for FHIR v0.02
+/*
+  Copyright (c) 2011-2012, HL7, Inc
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+*/
+
+// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
 
 import java.util.*;
 
 /**
- * A conformance statement returned by request in an RESTful framework
+ * A conformance statement about how an application supports FHIR
  */
 public class Conformance extends Resource {
 
@@ -30,26 +59,22 @@ public class Conformance extends Resource {
         }
     }
 
-    public enum ResourceIdSource {
-        client, // The client must provide a unique resource id
-        server, // The server defines the id and will reject any client attempt to define it
-        either; // The client can provide a unique resource id, or the server will define it instead
-        public static ResourceIdSource fromCode(String code) throws Exception {
+    public enum MessageConformanceEventMode {
+        sender, // The application sends requests and receives responses
+        receiver; // The application receives requests and sends responses
+        public static MessageConformanceEventMode fromCode(String code) throws Exception {
             if (code == null || "".equals(code))
                 return null;
-        if ("client".equals(code))
-          return client;
-        if ("server".equals(code))
-          return server;
-        if ("either".equals(code))
-          return either;
-        throw new Exception("Unknown ResourceIdSource code '"+code+"'");
+        if ("sender".equals(code))
+          return sender;
+        if ("receiver".equals(code))
+          return receiver;
+        throw new Exception("Unknown MessageConformanceEventMode code '"+code+"'");
         }
         public String toCode() {
           switch (this) {
-            case client: return "client";
-            case server: return "server";
-            case either: return "either";
+            case sender: return "sender";
+            case receiver: return "receiver";
             default: return "?";
           }
         }
@@ -59,7 +84,7 @@ public class Conformance extends Resource {
         /**
          * Name of Organization
          */
-        private String_ name;
+        private String name;
 
         /**
          * Address of Organization
@@ -71,11 +96,11 @@ public class Conformance extends Resource {
          */
         private List<Contact> contact = new ArrayList<Contact>();
 
-        public String_ getName() { 
+        public String getName() { 
           return this.name;
         }
 
-        public void setName(String_ value) { 
+        public void setName(String value) { 
           this.name = value;
         }
 
@@ -93,79 +118,99 @@ public class Conformance extends Resource {
         /**
          * Name software is known by
          */
-        private String_ name;
+        private String name;
 
         /**
          * Version covered by this statement
          */
-        private String_ version;
+        private String version;
 
         /**
          * Date this version released
          */
-        private DateTime releaseDate;
+        private String releaseDate;
 
-        public String_ getName() { 
+        public String getName() { 
           return this.name;
         }
 
-        public void setName(String_ value) { 
+        public void setName(String value) { 
           this.name = value;
         }
 
-        public String_ getVersion() { 
+        public String getVersion() { 
           return this.version;
         }
 
-        public void setVersion(String_ value) { 
+        public void setVersion(String value) { 
           this.version = value;
         }
 
-        public DateTime getReleaseDate() { 
+        public String getReleaseDate() { 
           return this.releaseDate;
         }
 
-        public void setReleaseDate(DateTime value) { 
+        public void setReleaseDate(String value) { 
           this.releaseDate = value;
         }
 
     }
 
-    public class Operation extends Element {
+    public class Rest extends Element {
         /**
-         * if supported
+         * client | server
          */
-        private Boolean read;
+        private RestfulConformanceMode mode;
+
+        /**
+         * 
+         */
+        private List<Resource> resource = new ArrayList<Resource>();
+
+        public RestfulConformanceMode getMode() { 
+          return this.mode;
+        }
+
+        public void setMode(RestfulConformanceMode value) { 
+          this.mode = value;
+        }
+
+        public List<Resource> getResource() { 
+          return this.resource;
+        }
+
+    }
+
+    public class Resource extends Element {
+        /**
+         * resource type
+         */
+        private String type;
+
+        /**
+         * Additional other profiles that apply to this conformance statement.
+         */
+        private java.net.URI profile;
 
         /**
          * if supported
          */
-        private Boolean vread;
+        private boolean update;
 
         /**
          * if supported
          */
-        private Boolean update;
+        private boolean delete;
 
         /**
          * if supported
          */
-        private Boolean delete;
+        private boolean validate;
 
         /**
          * if supported
          */
-        private Boolean validate;
-
-        /**
-         * if supported
-         */
-        private Boolean history;
-
-        /**
-         * only if supported
-         */
-        private Transaction transaction;
+        private boolean history;
 
         /**
          * only if supported
@@ -175,72 +220,59 @@ public class Conformance extends Resource {
         /**
          * if supported
          */
-        private Create create;
+        private boolean create;
 
         /**
          * if supported
          */
-        private Boolean updates;
+        private boolean updates;
 
-        /**
-         * if supported
-         */
-        private Boolean schema;
-
-        public Boolean getRead() { 
-          return this.read;
+        public String getType() { 
+          return this.type;
         }
 
-        public void setRead(Boolean value) { 
-          this.read = value;
+        public void setType(String value) { 
+          this.type = value;
         }
 
-        public Boolean getVread() { 
-          return this.vread;
+        public java.net.URI getProfile() { 
+          return this.profile;
         }
 
-        public void setVread(Boolean value) { 
-          this.vread = value;
+        public void setProfile(java.net.URI value) { 
+          this.profile = value;
         }
 
-        public Boolean getUpdate() { 
+        public boolean getUpdate() { 
           return this.update;
         }
 
-        public void setUpdate(Boolean value) { 
+        public void setUpdate(boolean value) { 
           this.update = value;
         }
 
-        public Boolean getDelete() { 
+        public boolean getDelete() { 
           return this.delete;
         }
 
-        public void setDelete(Boolean value) { 
+        public void setDelete(boolean value) { 
           this.delete = value;
         }
 
-        public Boolean getValidate() { 
+        public boolean getValidate() { 
           return this.validate;
         }
 
-        public void setValidate(Boolean value) { 
+        public void setValidate(boolean value) { 
           this.validate = value;
         }
 
-        public Boolean getHistory() { 
+        public boolean getHistory() { 
           return this.history;
         }
 
-        public void setHistory(Boolean value) { 
+        public void setHistory(boolean value) { 
           this.history = value;
-        }
-
-        public Transaction getTransaction() { 
-          return this.transaction;
-        }
-
-        public void setTransaction(Transaction value) { 
-          this.transaction = value;
         }
 
         public Search getSearch() { 
@@ -251,40 +283,20 @@ public class Conformance extends Resource {
           this.search = value;
         }
 
-        public Create getCreate() { 
+        public boolean getCreate() { 
           return this.create;
         }
 
-        public void setCreate(Create value) { 
+        public void setCreate(boolean value) { 
           this.create = value;
         }
 
-        public Boolean getUpdates() { 
+        public boolean getUpdates() { 
           return this.updates;
         }
 
-        public void setUpdates(Boolean value) { 
+        public void setUpdates(boolean value) { 
           this.updates = value;
-        }
-
-        public Boolean getSchema() { 
-          return this.schema;
-        }
-
-        public void setSchema(Boolean value) { 
-          this.schema = value;
-        }
-
-    }
-
-    public class Transaction extends Element {
-        /**
-         * transaction names supported
-         */
-        private List<Code> name = new ArrayList<Code>();
-
-        public List<Code> getName() { 
-          return this.name;
         }
 
     }
@@ -293,26 +305,174 @@ public class Conformance extends Resource {
         /**
          * search params supported
          */
-        private List<String_> param = new ArrayList<String_>();
+        private List<Param> param = new ArrayList<Param>();
 
-        public List<String_> getParam() { 
+        public List<Param> getParam() { 
           return this.param;
         }
 
     }
 
-    public class Create extends Element {
+    public class Param extends Element {
         /**
-         * source of id: client | server | either
+         * name of search parameter
          */
-        private ResourceIdSource id;
+        private String name;
 
-        public ResourceIdSource getId() { 
-          return this.id;
+        /**
+         * contents and meaning of search parameter
+         */
+        private String documentation;
+
+        public String getName() { 
+          return this.name;
         }
 
-        public void setId(ResourceIdSource value) { 
-          this.id = value;
+        public void setName(String value) { 
+          this.name = value;
+        }
+
+        public String getDocumentation() { 
+          return this.documentation;
+        }
+
+        public void setDocumentation(String value) { 
+          this.documentation = value;
+        }
+
+    }
+
+    public class Messaging extends Element {
+        /**
+         * Actual endpoint being described
+         */
+        private java.net.URI endpoint;
+
+        /**
+         * The code for the event
+         */
+        private List<Event> event = new ArrayList<Event>();
+
+        public java.net.URI getEndpoint() { 
+          return this.endpoint;
+        }
+
+        public void setEndpoint(java.net.URI value) { 
+          this.endpoint = value;
+        }
+
+        public List<Event> getEvent() { 
+          return this.event;
+        }
+
+    }
+
+    public class Event extends Element {
+        /**
+         * The focal resource for the event
+         */
+        private String code;
+
+        /**
+         * The mode of this event declaration - whether application is sender or receiver
+         */
+        private MessageConformanceEventMode mode;
+
+        /**
+         * if the event code supports multiple resources
+         */
+        private String focus;
+
+        /**
+         * Information about the request for this event
+         */
+        private java.net.URI request;
+
+        /**
+         * Information about the response for this event
+         */
+        private java.net.URI response;
+
+        public String getCode() { 
+          return this.code;
+        }
+
+        public void setCode(String value) { 
+          this.code = value;
+        }
+
+        public MessageConformanceEventMode getMode() { 
+          return this.mode;
+        }
+
+        public void setMode(MessageConformanceEventMode value) { 
+          this.mode = value;
+        }
+
+        public String getFocus() { 
+          return this.focus;
+        }
+
+        public void setFocus(String value) { 
+          this.focus = value;
+        }
+
+        public java.net.URI getRequest() { 
+          return this.request;
+        }
+
+        public void setRequest(java.net.URI value) { 
+          this.request = value;
+        }
+
+        public java.net.URI getResponse() { 
+          return this.response;
+        }
+
+        public void setResponse(java.net.URI value) { 
+          this.response = value;
+        }
+
+    }
+
+    public class Document extends Element {
+        /**
+         * Name for this particular document profile
+         */
+        private String name;
+
+        /**
+         * Human description of this particular profile
+         */
+        private String purpose;
+
+        /**
+         * Constraint on a resource used in the document
+         */
+        private java.net.URI profile;
+
+        public String getName() { 
+          return this.name;
+        }
+
+        public void setName(String value) { 
+          this.name = value;
+        }
+
+        public String getPurpose() { 
+          return this.purpose;
+        }
+
+        public void setPurpose(String value) { 
+          this.purpose = value;
+        }
+
+        public java.net.URI getProfile() { 
+          return this.profile;
+        }
+
+        public void setProfile(java.net.URI value) { 
+          this.profile = value;
         }
 
     }
@@ -320,7 +480,7 @@ public class Conformance extends Resource {
     /**
      * Date that the conformance statement is published
      */
-    private DateTime date;
+    private String date;
 
     /**
      * The organization that publishes this conformance statement
@@ -333,30 +493,35 @@ public class Conformance extends Resource {
     private Software software;
 
     /**
-     * client | server
+     * The version of the FHIR specification on which this conformance profile is based
      */
-    private RestfulConformanceMode mode;
+    private String version;
 
     /**
-     * Additional other profiles that apply to this conformance statement.
+     * Whether the application accepts unknown elements as part of a resource. This does not include extensions, but genuine new additions to a resource
      */
-    private List<Uri> profile = new ArrayList<Uri>();
-
-    /**
-     * Resource Type with constraints
-     */
-    private Constraint resource;
+    private boolean acceptUnknown;
 
     /**
      * 
      */
-    private Operation operation;
+    private Rest rest;
 
-    public DateTime getDate() { 
+    /**
+     * An event supported by the application
+     */
+    private Messaging messaging;
+
+    /**
+     * A document definition
+     */
+    private List<Document> document = new ArrayList<Document>();
+
+    public String getDate() { 
       return this.date;
     }
 
-    public void setDate(DateTime value) { 
+    public void setDate(String value) { 
       this.date = value;
     }
 
@@ -376,32 +541,40 @@ public class Conformance extends Resource {
       this.software = value;
     }
 
-    public RestfulConformanceMode getMode() { 
-      return this.mode;
+    public String getVersion() { 
+      return this.version;
     }
 
-    public void setMode(RestfulConformanceMode value) { 
-      this.mode = value;
+    public void setVersion(String value) { 
+      this.version = value;
     }
 
-    public List<Uri> getProfile() { 
-      return this.profile;
+    public boolean getAcceptUnknown() { 
+      return this.acceptUnknown;
     }
 
-    public Constraint getResource() { 
-      return this.resource;
+    public void setAcceptUnknown(boolean value) { 
+      this.acceptUnknown = value;
     }
 
-    public void setResource(Constraint value) { 
-      this.resource = value;
+    public Rest getRest() { 
+      return this.rest;
     }
 
-    public Operation getOperation() { 
-      return this.operation;
+    public void setRest(Rest value) { 
+      this.rest = value;
     }
 
-    public void setOperation(Operation value) { 
-      this.operation = value;
+    public Messaging getMessaging() { 
+      return this.messaging;
+    }
+
+    public void setMessaging(Messaging value) { 
+      this.messaging = value;
+    }
+
+    public List<Document> getDocument() { 
+      return this.document;
     }
 
 

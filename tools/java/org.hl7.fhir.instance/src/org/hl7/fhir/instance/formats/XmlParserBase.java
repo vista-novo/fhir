@@ -28,7 +28,7 @@ public abstract class XmlParserBase extends XmlBase {
     this.allowUnknownContent = allowUnknownContent;
   }
 
-  private Map<String, Element> idMap = new HashMap<String, Element>();
+  private Map<String, Object> idMap = new HashMap<String, Object>();
 
   /** -- worker routines --------------------------------------------------- */
   
@@ -107,12 +107,15 @@ public abstract class XmlParserBase extends XmlBase {
 
 
   protected String parseString(XmlPullParser xpp) throws Exception {
+    String id = xpp.getAttributeValue(null, "xml:Id");	      
     if (xpp.next() != XmlPullParser.TEXT)
-      throw new Exception("No text in Id");
+      throw new Exception("No text in String");
     String res = xpp.getText();
     if (xpp.next() != XmlPullParser.END_TAG)
       throw new Exception("Bad String Structure");
     xpp.next();
+    if (id != null) 
+        idMap.put(id, res);
     return res;
   }
 
@@ -131,12 +134,16 @@ public abstract class XmlParserBase extends XmlBase {
   }
   
   protected Instant parseInstant(XmlPullParser xpp) throws Exception {
-    Instant result = new Instant();
-    parseTypeAttributes(xpp, result);
-    result.setValue(new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").parse(parseString(xpp)));
-    return result;    
+	    Instant result = new Instant();
+	    parseTypeAttributes(xpp, result);
+	    result.setValue(new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").parse(parseString(xpp)));
+	    return result;    
+	  }
+	  
+  protected java.util.Date parseInstantSimple(XmlPullParser xpp) throws Exception {
+	  return new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").parse(parseString(xpp));    
   }
-  
+	  
   
   protected URI parseURI(XmlPullParser xpp) throws Exception {
     return new URI(parseString(xpp));
@@ -157,9 +164,12 @@ public abstract class XmlParserBase extends XmlBase {
   }
 
   protected Integer parseInteger(XmlPullParser xpp) throws Exception {
+    String id = xpp.getAttributeValue(null, "xml:Id");	      
     Integer result = new Integer();
     parseTypeAttributes(xpp, result);
     result.setValue(parseInt(xpp));
+    if (id != null) 
+        idMap.put(id, result);
     return result;    
   }
  

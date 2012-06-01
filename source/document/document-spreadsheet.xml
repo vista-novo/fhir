@@ -32,17 +32,25 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s62" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s64">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s65">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -52,38 +60,44 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="34" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="27.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="126.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -95,10 +109,10 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">Document</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A document that contains resources</Data></Cell>
     <Cell><Data ss:Type="String">A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole</Data></Cell>
@@ -359,8 +373,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -369,14 +383,14 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="25.5"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="60.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="230.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="210.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="306"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="230.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="210.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="306"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -387,13 +401,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Versioning Rule</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s62"><Data ss:Type="String">cannot have both setId and replaces</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s63"><Data ss:Type="String">cannot have both setId and replaces</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Section Rule</Data></Cell>
     <Cell><Data ss:Type="String">Document.section</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">a section must have content or one or more sections</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">a section must have content or one or more sections</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -419,13 +433,106 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">type</Data></Cell>
     <Cell><Data ss:Type="String">The type of the document</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="18.75">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="153.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="252.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="91.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentAuthenticationMode</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">#document-authentication-mode</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentSectionType</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Type of a clinical document section</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentType</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Type of a clinical document</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">LOINC Document Types</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="document-authentication-mode">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="580.5"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">personal</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document in their personal capacity</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">professional</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document in their professional capacity</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">legal</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The person authenticated the document and accepted legal responsibility for it's content</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">official</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The organization authenticated the document as consistent with their policies and procedures</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

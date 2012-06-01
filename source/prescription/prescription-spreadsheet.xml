@@ -20,12 +20,20 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s72" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -61,6 +69,12 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s83">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
@@ -89,8 +103,7 @@
     <Cell><Data ss:Type="String">Must Understand</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Type</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Binding</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Short Name</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Definition</Data><NamedCell
@@ -592,11 +605,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>18</TopRowVisible>
+   <TopRowVisible>27</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>45</ActiveRow>
+     <ActiveRow>32</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -627,7 +641,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -680,6 +693,121 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="135.75"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="282.75"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="90"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="168"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="324"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">PrescriptionStatus</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The status of a prescription</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">#prescription-status</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">MedicationKind</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The kind of medication, vaccine or therapeutic material</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australie)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">AdministrationInstruction</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Instructions for administering medication</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">NHG Table 25b</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s83"><Data ss:Type="String">AdministrationPrecondition</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Precondition for administering medication</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">NHG Table 25b</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">AdministrationRoute</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Route by which a medication is administered</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">G-Standaard subtable 0007</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">PrescriptionReason</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">Medical reason for prescribing a medicine</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s83"><Data ss:Type="String">ICD-10 or ICPC-1</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="prescription-status">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="432.75"/>
+   <Row ss:StyleID="s73">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">active</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Patient is using the prescribed medicin</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">completed</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">Prescription is no longer current</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

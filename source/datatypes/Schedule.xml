@@ -32,6 +32,14 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s67" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
   <Style ss:ID="s62">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -60,6 +68,12 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s101">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
@@ -81,7 +95,7 @@
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -179,7 +193,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -231,6 +245,114 @@
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
      <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s101" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="77.25"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="190.5"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="78.75"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="173.25"/>
+   <Column ss:StyleID="s101" ss:AutoFitWidth="0" ss:Width="283.5"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s75"><Data ss:Type="String">EventTiming</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">A real world event that a schedule is related to</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">#event-timing</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="event-timing">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="11" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="453"/>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">HS</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration before the hour of sleep (or trying to)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">WAKE</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration after waking</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">AC</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration before a meal (from the latin ante cibus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ACM</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration before breakfast (from the latin ante cibus matutinus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ACD</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration before lunch (from the latin ante cibus diurnus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ACV</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration before dinner (from the latin ante cibus vespertinus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">PC</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration after a meal (from the latin post cibus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">PCM</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration after breakfast (from the latin post cibus matutinus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">PCD</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration after lunch (from the latin post cibus diurnus)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">PCV</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">event occurs duration after dinner (from the latin post cibus vespertinus) </Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

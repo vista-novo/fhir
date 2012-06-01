@@ -114,7 +114,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     write("import org.hl7.fhir.instance.model.*;\r\n");
     write("import org.hl7.fhir.instance.model.Integer;\r\n");
     write("import org.hl7.fhir.instance.model.Boolean;\r\n");
-  //  write("import java.util.*;\r\n");
+    write("import java.net.*;\r\n");
     write("\r\n");
     write("public class XmlComposer extends XmlComposerBase {\r\n");
     write("\r\n");
@@ -234,8 +234,10 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         else if (tn.equals("code")) {
           tn = "Code";
           comp = "composeCode";
-        } else if (tn.equals("uri"))
-          tn = "Uri";
+        } else if (tn.equalsIgnoreCase("uri"))
+          tn = (!contentsHaveDataAbsentReason || !e.isAllowDAR()) ? "URI" : "Uri";
+        else if (tn.equals("instant"))
+          tn = "Instant";
         if (tn.contains("Resource(")) {
           comp = "composeResourceReference";
           tn = "ResourceReference";
@@ -288,7 +290,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
-    if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
+    if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
         return formal ? "boolean" : "Bool";
       else if (t.equals("integer"))
@@ -303,13 +305,12 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         return formal ? "java.net.URI" : "Uri";
       else 
         return "String";
+    } else if (elem.typeCode().startsWith("@")) { 
+      if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
+        return typeNames.get(elem);
+      else  
+        return root.getName();      
     } else if (elem.getTypes().size() == 0) {
-      if (elem.getElements().size() == 1 && elem.getElements().get(0).getName().equals("#")) { 
-        if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
-          return typeNames.get(elem);
-        else  
-          return root.getName();      
-      } else
         return typeNames.get(elem);
     } else if (typeNames.containsKey(elem))
       return typeNames.get(elem);
@@ -362,7 +363,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
 
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
-    if (e.typeCode().equals("code") && e.hasConceptDomain()) {
+    if (e.typeCode().equals("code") && e.hasBinding()) {
       BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = getCodeListType(cd.getReference());
@@ -374,7 +375,10 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       }
     }
     if (tn == null) {
-      if (e.getTypes().size() > 0) {
+      if (e.typeCode().startsWith("@")) {
+        tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
+        typeNames.put(e,  tn);
+      } else if (e.getTypes().size() > 0) {
         tn = e.typeCode();
         if (tn.equals("[param]"))
           tn = genparam;
@@ -390,27 +394,22 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
           tn = tn.substring(0, tn.indexOf('<')+1)+tn.substring(tn.indexOf('<')+1, tn.indexOf('<')+2).toUpperCase()+tn.substring(tn.indexOf('<')+2);
         typeNames.put(e,  tn);
       } else {
-        if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
-          tn = typeNames.get(getElementForPath(root, e.getElements().get(0).typeCode().substring(1)));
-          typeNames.put(e,  tn);
-        } else {
-          tn = upFirst(e.getName());
-          if (tn.equals("Element"))
-            tn = "Element_";
-          if (!e.getName().equals("extensions"))
-            strucs.add(e);
-          if (typeNameStrings.contains(tn)) {
-            char i = 'A';
-            while (typeNameStrings.contains(tn+i))
-              i++;
-            tn = tn + i;
-          }
-          typeNameStrings.add(tn);
-          tn = path+"."+tn;
-          typeNames.put(e,  tn);
-          for (ElementDefn c : e.getElements()) {
-            scanNestedTypes(root, path, c);
-          }
+        tn = upFirst(e.getName());
+        if (tn.equals("Element"))
+          tn = "Element_";
+        if (!e.getName().equals("extensions"))
+          strucs.add(e);
+        if (typeNameStrings.contains(tn)) {
+          char i = 'A';
+          while (typeNameStrings.contains(tn+i))
+            i++;
+          tn = tn + i;
+        }
+        typeNameStrings.add(tn);
+        tn = path+"."+tn;
+        typeNames.put(e,  tn);
+        for (ElementDefn c : e.getElements()) {
+          scanNestedTypes(root, path, c);
         }
       }
     } 

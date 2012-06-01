@@ -321,7 +321,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			return "ResourceReference";
 		else if (type.getName().equals("code")) {
 			String en = null;
-			if (e.hasConceptDomain()) {
+			if (e.hasBinding()) {
 				BindingSpecification cd = getConceptDomainByName(tx, e.getBindingName());
 				if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 					en = cd.getName();

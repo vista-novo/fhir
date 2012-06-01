@@ -1,11 +1,13 @@
 package org.hl7.fhir.definitions.parsers;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
@@ -107,13 +109,30 @@ public class SpreadsheetParser {
       cd.setDescription(sheet.getColumn(row, "Description"));
       cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
       cd.setSource(name);
-     
+      
+      if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
+        Sheet codes = xls.getSheets().get(cd.getReference().substring(1));
+        if (codes == null)
+          throw new Exception("code source sheet not found for "+cd.getName()+": "+cd.getReference());
+        parseCodes(cd.getCodes(), codes);
+      }     
       if (definitions.getBindingByName(cd.getName()) != null) {
         throw new Exception("Definition of binding '"+cd.getName()+"' in "+name+" clashes with previous definition in "+definitions.getBindingByName(cd.getName()).getSource());
       }
       definitions.getBindings().put(cd.getName(), cd);
     }
     
+  }
+
+
+  private void parseCodes(List<DefinedCode> codes, Sheet sheet) throws Exception {
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      DefinedCode c = new DefinedCode();
+      c.setCode(sheet.getColumn(row, "Code"));
+      c.setDefinition(sheet.getColumn(row, "Definition"));
+      c.setComment(sheet.getColumn(row, "Comment"));
+      codes.add(c);    
+     }    
   }
 
 
@@ -271,7 +290,10 @@ public class SpreadsheetParser {
 		String t = sheet.getColumn(row, "Type");
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
-		e.setBindingName(sheet.getColumn(row, "Concept Domain"));
+		if (sheet.hasColumn(row, "Concept Domain"))
+      throw new Exception("Column 'Concept Domain' has been retired in "+path);
+		
+		e.setBindingName(sheet.getColumn(row, "Binding"));
 		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
 			throw new Exception("Element definition binding strength is not supported in "+path);
 

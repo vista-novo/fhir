@@ -57,7 +57,7 @@ public abstract class XmlComposerBase extends XmlBase {
     if (value != null)
       xml.element(FHIR_NS, name, value);
   }
-  protected void composeUri(String name, java.net.URI value) throws Exception {
+  protected void composeURI(String name, java.net.URI value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value.toString());
   }
@@ -155,7 +155,7 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeInstant(String name, Instant value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").format(value.getValue()));
+      xml.element(FHIR_NS, name, new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(value.getValue()));
     }
   }
   
@@ -166,6 +166,12 @@ public abstract class XmlComposerBase extends XmlBase {
     }
   }
   
+  protected void composeDate(String name, java.util.Date value) throws Exception {
+	  if (value != null) {
+	      xml.element(FHIR_NS, name, new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(value));
+	  }
+  }
+	  
   protected void composeDate(String name, Date value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);

@@ -3,7 +3,7 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.instance.model.Constraint.Element_;
+import org.hl7.fhir.instance.model.Profile.Element_;
 
 public class ElementDefn {
  
@@ -311,7 +311,7 @@ public class ElementDefn {
 		return maxCardinality == null;
 	}
 
-	public boolean hasConceptDomain() {
+	public boolean hasBinding() {
 		return bindingName != null && !bindingName.equals("");
 	}
 
@@ -430,7 +430,7 @@ public class ElementDefn {
   
   public boolean isBoundCode()
   {
-	  return typeCode().equals("code") && hasConceptDomain();
+	  return typeCode().equals("code") && hasBinding();
   }
 
   public boolean isAllowDAR() {

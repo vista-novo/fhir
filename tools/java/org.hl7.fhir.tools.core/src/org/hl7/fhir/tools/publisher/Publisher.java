@@ -382,7 +382,7 @@ public class Publisher {
     p.putMetadata("description", root.getDefinition());
     p.putMetadata("comments", "Basic Profile for ");
     p.putMetadata("status", "testing");
-    p.putMetadata("date", new SimpleDateFormat("yyyymmdd", new Locale("en", "US")).format(new Date()));
+    p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
     p.putMetadata("endorser.name", "HL7");
     p.putMetadata("endorser.ref", "http://hl7.org");
     p.getResources().add(root);

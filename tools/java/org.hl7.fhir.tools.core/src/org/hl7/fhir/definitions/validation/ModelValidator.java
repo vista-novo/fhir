@@ -48,7 +48,9 @@ public class ModelValidator {
 		if (!e.getName().equals("#"))
 		rule(path, e.hasShortDefn() || e.getElements().size() > 0, "Must have a short defn unless child elements exist");
 		checkType(path, e);
-		if (e.hasConceptDomain())
+		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(), "Must have a binding if type is 'code'");
+		  
+		if (e.hasBinding())
 		{
 			BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
 			rule(path, cd  != null, "Unable to resolve concept domain "+e.getBindingName());

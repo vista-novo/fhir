@@ -24,6 +24,11 @@ public class XLSXmlParser {
     public Row columns;
     public List<Row> rows = new ArrayList<Row>();
 
+    public boolean hasColumn(int row, String column) throws Exception {
+      String s = getColumn(row, column);
+      return s != null && !s.equals("");     
+    }
+    
     public String getColumn(int row, String column) throws Exception {
       int c = -1;
       String s = "";

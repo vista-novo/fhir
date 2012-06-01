@@ -514,7 +514,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
-    if (e.typeCode().equals("code") && e.hasConceptDomain()) {
+    if (e.typeCode().equals("code") && e.hasBinding()) {
       BindingSpecification cd = getConceptDomain(e.getBindingName());
       if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = "T"+getTitle(getCodeList(cd.getReference()).substring(1));

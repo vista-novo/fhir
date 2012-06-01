@@ -19,12 +19,19 @@
   <WindowWidth>25635</WindowWidth>
   <WindowTopX>2640</WindowTopX>
   <WindowTopY>2655</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s81" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -60,6 +67,9 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s127">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="6" x:FullColumns="1"
@@ -80,7 +90,7 @@
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Bindings</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -151,11 +161,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -201,7 +212,151 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="97.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="164.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="54.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="91.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="135.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="242.25"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">ContactSystem</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">What kind of contact this is</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">#contact-system</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">ContactUse</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">How to use this address</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s127"><Data ss:Type="String">#contact-use</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="contact-use">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="511.5"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">home</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">work</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">An office contact. First choice for business related contacts during business hours.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">temp</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">A temporary contact. The period can provide more detailed information.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">old</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">This contact is no longer in use (or was never correct, but retained for records)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">mobile</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="contact-system">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="491.25"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">phone</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">fax</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">email</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">the value is an email address</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">url</Data></Cell>
+    <Cell ss:StyleID="s81"><Data ss:Type="String">The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
    <Panes>
     <Pane>
      <Number>3</Number>

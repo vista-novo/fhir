@@ -1,6 +1,35 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://hl7.org). Generated on Fri, May 18, 2012 22:20+1000 for FHIR v0.02
+/*
+  Copyright (c) 2011-2012, HL7, Inc
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+*/
+
+// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
 
 import java.util.*;
 
@@ -244,7 +273,7 @@ public class Document extends Resource {
     /**
      * the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
      */
-    private Instant instant;
+    private java.util.Date instant;
 
     /**
      * specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
@@ -259,20 +288,20 @@ public class Document extends Resource {
     /**
      * Represents an identifier that is common across all document revisions
      */
-    private Id setId;
+    private String setId;
 
     /**
      * used to version successive replacement documents
      */
-    private Integer version;
+    private int version;
 
     /**
      * If this document replaces another
      */
-    private Id replaces;
+    private String replaces;
 
     /**
-     * who the document is about
+     * who/what the document is about
      */
     private ResourceReference subject;
 
@@ -311,11 +340,11 @@ public class Document extends Resource {
      */
     private List<Section> section = new ArrayList<Section>();
 
-    public Instant getInstant() { 
+    public java.util.Date getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(Instant value) { 
+    public void setInstant(java.util.Date value) { 
       this.instant = value;
     }
 
@@ -335,27 +364,27 @@ public class Document extends Resource {
       this.title = value;
     }
 
-    public Id getSetId() { 
+    public String getSetId() { 
       return this.setId;
     }
 
-    public void setSetId(Id value) { 
+    public void setSetId(String value) { 
       this.setId = value;
     }
 
-    public Integer getVersion() { 
+    public int getVersion() { 
       return this.version;
     }
 
-    public void setVersion(Integer value) { 
+    public void setVersion(int value) { 
       this.version = value;
     }
 
-    public Id getReplaces() { 
+    public String getReplaces() { 
       return this.replaces;
     }
 
-    public void setReplaces(Id value) { 
+    public void setReplaces(String value) { 
       this.replaces = value;
     }
 

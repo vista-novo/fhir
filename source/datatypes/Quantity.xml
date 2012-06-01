@@ -20,6 +20,7 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -32,17 +33,25 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s62" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s64">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s65">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -52,35 +61,38 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="24"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="31.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="24"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="31.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -92,9 +104,9 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A measured amount (or an amount that can potentially be measured).&#10;</Data></Cell>
     <Cell><Data ss:Type="String">A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units, and floating currencies</Data></Cell>
@@ -166,12 +178,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -180,12 +191,12 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="350.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="346.5"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="383.25"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="153"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="350.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="346.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="383.25"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
@@ -241,7 +252,7 @@
    <Column ss:AutoFitWidth="0" ss:Width="91.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="493.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="528.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Rules</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
@@ -275,6 +286,90 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="120">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">QuantityStatus</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#quantity-status</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="quantity-status">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="569.25"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">&lt;</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is less than the given value</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">&lt;=</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is less than or equal to the given value</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">&gt;=</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is greater than or equal to the given value</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">&gt;</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The actual value is greater than the given value</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -20,6 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -60,6 +61,12 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s84">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="12" x:FullColumns="1"
@@ -83,7 +90,7 @@
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -207,13 +214,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -279,6 +284,47 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s84" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="72"/>
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="235.5"/>
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="120.75"/>
+   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="222.75"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">AgentRole</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

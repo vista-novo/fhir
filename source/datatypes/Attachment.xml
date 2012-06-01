@@ -53,15 +53,24 @@
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s65">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s66">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s70">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s108">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s139">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -86,7 +95,7 @@
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Example</Data></Cell>
@@ -99,9 +108,9 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="78.75">
     <Cell><Data ss:Type="String">Attachment</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">For referring to data content defined in other formats.</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Many models need to include data defined in other specifications that is complex and opaque to the healthcare model. This includes documents, media recordings, structured data etc</Data></Cell>
@@ -140,7 +149,7 @@
     <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">uri where the data can be found</Data></Cell>
     <Cell><Data ss:Type="String">An alternative location where the data can be accessed</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data></Cell>
     <Cell><Data ss:Type="String">The data needs to be transmitted by reference</Data></Cell>
     <Cell><Data ss:Type="String">If both data and url are provided, the url must point to the same content as the data contains. Urls may be relative references, or may be made to transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures</Data></Cell>
     <Cell><Data ss:Type="String">ED.reference</Data></Cell>
@@ -195,7 +204,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -204,11 +214,11 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="102"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="386.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="347.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="292.5"/>
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="386.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="347.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="292.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -244,6 +254,56 @@
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
      <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s108" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s108" ss:AutoFitWidth="0" ss:Width="94.5"/>
+   <Column ss:StyleID="s108" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s108" ss:AutoFitWidth="0" ss:Width="180"/>
+   <Column ss:StyleID="s108" ss:AutoFitWidth="0" ss:Width="104.25"/>
+   <Column ss:StyleID="s108" ss:Width="200.25"/>
+   <Column ss:StyleID="s108" ss:AutoFitWidth="0" ss:Width="386.25"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MediaType</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">reference</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">Language</Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">A human language</Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">reference</Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">http://www.sil.org/iso639-3/codes.asp</Data></Cell>
+    <Cell ss:StyleID="s139"><Data ss:Type="String">ISO 639-3</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>39</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

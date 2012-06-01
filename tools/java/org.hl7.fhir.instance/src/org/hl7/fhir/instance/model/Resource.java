@@ -7,7 +7,7 @@ public class Resource extends Element {
 	/**
 	 * Master resource Id, in all resources
 	 */
-	private Id id;
+	private String id;
 	
 	/**
 	 * Extensions
@@ -19,11 +19,11 @@ public class Resource extends Element {
 	 */
 	private Narrative text;
 
-	public Id getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Id id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -11,7 +11,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.instance.model.Conformance.Create;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;

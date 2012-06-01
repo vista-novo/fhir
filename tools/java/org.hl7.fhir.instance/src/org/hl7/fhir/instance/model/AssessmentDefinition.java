@@ -32,61 +32,9 @@ package org.hl7.fhir.instance.model;
 // Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
 
 /**
- * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
+ * null
  */
-public class Contact extends Type {
-
-    /**
-     * What kind of contact this is - what communications system is required to make use of the contact
-     */
-    private String system;
-
-    /**
-     * The actual contact details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
-     */
-    private String value;
-
-    /**
-     * How to use this address
-     */
-    private String use;
-
-    /**
-     * Time period when the contact was/is in use
-     */
-    private Interval<DateTime> period;
-
-    public String getSystem() { 
-      return this.system;
-    }
-
-    public void setSystem(String value) { 
-      this.system = value;
-    }
-
-    public String getValue() { 
-      return this.value;
-    }
-
-    public void setValue(String value) { 
-      this.value = value;
-    }
-
-    public String getUse() { 
-      return this.use;
-    }
-
-    public void setUse(String value) { 
-      this.use = value;
-    }
-
-    public Interval<DateTime> getPeriod() { 
-      return this.period;
-    }
-
-    public void setPeriod(Interval<DateTime> value) { 
-      this.period = value;
-    }
+public class AssessmentDefinition extends Resource {
 
 
 }

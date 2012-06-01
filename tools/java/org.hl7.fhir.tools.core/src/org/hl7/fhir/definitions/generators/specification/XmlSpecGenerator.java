@@ -1,5 +1,6 @@
 package org.hl7.fhir.definitions.generators.specification;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -42,7 +43,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		for (ElementDefn elem : root.getElements())
 		{
-			generateElem(elem, 2, rn, root.getName());
+			generateElem(elem, 1, rn, root.getName());
 		}
 
 		write("&lt;/");
@@ -168,10 +169,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write(" aggregated");
 			}
 						
-			if (!elem.getTypes().isEmpty() && 
+			if (elem.typeCode().startsWith("@")) {
+        writeCardinality(elem);
+        listed = true;
+			} else if (!elem.getTypes().isEmpty()  &&
 					!(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
 			{
-  	    write(" <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font>");
+  	    writeCardinality(elem);
 			  listed = true;
 				write(" <font color=\"darkgreen\">");
 				int i = 0;
@@ -217,6 +221,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</font>");
 			} else if (elem.getName().equals("extensions")) {
 				write(" <a href=\"extensibility.htm\"><font color=\"navy\">See Extensions</font></a> ");
+			} else if (elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")) {
+        writeCardinality(elem);
+        listed = true;
 			}
 
 			write(" ");
@@ -231,12 +238,19 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			else
 			{
 				if (elem.unbounded() && !listed) { // isNolist()) {
-					if (elem.getElements().size() == 1 && elem.getElements().get(0).getName().equals("#"))
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
-					else if (elem.hasShortDefn())
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
-					else
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> --&gt;</font>");
+					if (elem.typeCode().startsWith("@")) {
+						write(" <font color=\"Gray\">&lt;!--");
+						writeCardinality(elem);
+						write(""+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+					} else if (elem.hasShortDefn()) {
+					  write(" <font color=\"Gray\">&lt;!--");
+            writeCardinality(elem);
+					  write(" "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+					} else {
+					  write(" <font color=\"Gray\">&lt;!--");
+            writeCardinality(elem);
+					  write(" --&gt;</font>");
+					}
 				} else if (elem.hasShortDefn())
 					write(" <font color=\"Gray\">&lt;!-- "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
 				write("\r\n");
@@ -263,6 +277,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		}
 	}
+
+  private void writeCardinality(ElementDefn elem) throws IOException {
+    if (elem.getInvariant() != null)
+      write(" <font color=\"deeppink\" title=\""+Utilities.escapeXml(elem.getInvariant().getEnglish())+"\"><b>"+elem.describeCardinality()+"</b></font>");
+    else
+      write(" <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font>");
+  }
 
 
 	private String renderCodeableConcept(int indent, String value) throws Exception {

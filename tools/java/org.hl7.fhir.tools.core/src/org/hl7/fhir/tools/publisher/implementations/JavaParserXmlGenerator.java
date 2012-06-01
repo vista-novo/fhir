@@ -255,8 +255,10 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           else
             prsr = "parse"+upFirst(tn)+"(xpp, res)";
         } else
-          if (!contentsHaveDataAbsentReason && "Uri".equals(tn))
+          if ((!contentsHaveDataAbsentReason || !e.isAllowDAR()) && "Uri".equals(tn))
             prsr = "parseURI(xpp)";
+          else if ((!contentsHaveDataAbsentReason || !e.isAllowDAR()) && "Instant".equals(tn))
+            prsr = "parseInstantSimple(xpp)";
           else
             prsr = "parse"+upFirst(tn)+"(xpp)";
       }
@@ -301,7 +303,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
-    if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
+    if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
         return formal ? "boolean" : "Bool";
       else if (t.equals("integer"))
@@ -311,18 +313,17 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       else if (t.equals("base64Binary"))
         return formal ? "byte[]" : "bytes";
       else if (t.equals("instant"))
-        return formal ? "java.util.Date" : "Date";
+        return formal ? "java.util.Date" : "Instant";
       else if (t.equals("uri"))
         return formal ? "java.net.URI" : "Uri";
       else 
         return "String";
+    } else if (elem.typeCode().startsWith("@")) { 
+      if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
+        return typeNames.get(elem);
+      else  
+        return root.getName();      
     } else if (elem.getTypes().size() == 0) {
-      if (elem.getElements().size() == 1 && elem.getElements().get(0).getName().equals("#")) { 
-        if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
-          return typeNames.get(elem);
-        else  
-          return root.getName();      
-      } else
         return typeNames.get(elem);
     } else if (typeNames.containsKey(elem))
       return typeNames.get(elem);
@@ -370,7 +371,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
 
   private void scanNestedTypes(ElementDefn root, String path, ElementDefn e) throws Exception {
     String tn = null;
-    if (e.typeCode().equals("code") && e.hasConceptDomain()) {
+    if (e.typeCode().equals("code") && e.hasBinding()) {
       BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
       if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
         tn = getCodeListType(cd.getReference());
@@ -382,7 +383,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       }
     }
     if (tn == null) {
-      if (e.getTypes().size() > 0) {
+      if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
         tn = e.typeCode();
         if (tn.equals("[param]"))
           tn = genparam;
@@ -396,8 +397,8 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           tn = "String_";
         typeNames.put(e,  tn);
       } else {
-        if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
-          tn = typeNames.get(getElementForPath(root, e.getElements().get(0).typeCode().substring(1)));
+        if (e.typeCode().startsWith("@")) {
+          tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
           typeNames.put(e,  tn);
         } else {
           tn = upFirst(e.getName());

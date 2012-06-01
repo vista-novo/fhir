@@ -1,6 +1,35 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://hl7.org). Generated on Fri, May 18, 2012 22:20+1000 for FHIR v0.02
+/*
+  Copyright (c) 2011-2012, HL7, Inc
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+*/
+
+// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
 
 import java.util.*;
 
@@ -14,7 +43,7 @@ public class LabReport extends Resource {
         interim, // This is an initial or interim result: data may be missing or verification not been performed
         final_, // The result is complete and verified by the responsible pathologist
         amended, // The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist
-        cancelled, // The result is unavailable because the test was not started or not completed (also sometimes called aborted)
+        cancelled, // The result is unavailable because the test was not started or not completed (also sometimes called "aborted")
         withdrawn; // The result has been withdrawn following previous Final release
         public static LabReportStatus fromCode(String code) throws Exception {
             if (code == null || "".equals(code))
@@ -299,7 +328,7 @@ public class LabReport extends Resource {
     /**
      * The date and/or time that the result was issued from the source for the recorded ‘Test result status
      */
-    private Instant issued;
+    private java.util.Date issued;
 
     /**
      * The patient about who the report is about
@@ -319,7 +348,7 @@ public class LabReport extends Resource {
     /**
      * The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).
      */
-    private Id reportId;
+    private Identifier reportId;
 
     /**
      * Details concerning a single pathology test requested.
@@ -339,7 +368,7 @@ public class LabReport extends Resource {
     /**
      * The diagnostically relevant time for this report
      */
-    private DateTime diagnosticTime;
+    private String diagnosticTime;
 
     /**
      * Details about the specimen if all individual test results are derived from the same specimen
@@ -374,11 +403,11 @@ public class LabReport extends Resource {
       this.status = value;
     }
 
-    public Instant getIssued() { 
+    public java.util.Date getIssued() { 
       return this.issued;
     }
 
-    public void setIssued(Instant value) { 
+    public void setIssued(java.util.Date value) { 
       this.issued = value;
     }
 
@@ -406,11 +435,11 @@ public class LabReport extends Resource {
       this.laboratory = value;
     }
 
-    public Id getReportId() { 
+    public Identifier getReportId() { 
       return this.reportId;
     }
 
-    public void setReportId(Id value) { 
+    public void setReportId(Identifier value) { 
       this.reportId = value;
     }
 
@@ -434,11 +463,11 @@ public class LabReport extends Resource {
       this.service = value;
     }
 
-    public DateTime getDiagnosticTime() { 
+    public String getDiagnosticTime() { 
       return this.diagnosticTime;
     }
 
-    public void setDiagnosticTime(DateTime value) { 
+    public void setDiagnosticTime(String value) { 
       this.diagnosticTime = value;
     }
 

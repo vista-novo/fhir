@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-05-23T20:36:08Z</Created>
-  <LastSaved>2012-05-31T12:31:38Z</LastSaved>
+  <LastSaved>2012-06-01T12:56:38Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -47,7 +47,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="63" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
@@ -64,62 +64,6 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Accreditation</Data></Cell>
-    <Cell><Data ss:Type="String">Accreditations an organization may be granted</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AdministrationInstruction</Data></Cell>
-    <Cell><Data ss:Type="String">Instructions for administering medication</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">NHG Table 25b</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AdministrationPrecondition</Data></Cell>
-    <Cell><Data ss:Type="String">Precondition for administering medication</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">NHG Table 25b</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AdministrationRoute</Data></Cell>
-    <Cell><Data ss:Type="String">Route by which a medication is administered</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">G-Standaard subtable 0007</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell><Data ss:Type="String">The gender of a person used for administrative purposes  </Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">AgentRole</Data></Cell>
-    <Cell><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AnimalGender</Data></Cell>
-    <Cell><Data ss:Type="String">The gender of an animal</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">AnimalRelationship</Data></Cell>
-    <Cell><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell><Data ss:Type="String">The species of an animal</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AnimalStrain</Data></Cell>
-    <Cell><Data ss:Type="String">The strain of an animal</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">BooleanYesNo</Data></Cell>
     <Cell><Data ss:Type="String">Either yes or no, true or false</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
@@ -132,34 +76,6 @@
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#concept-binding-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">ConformanceEventMode</Data></Cell>
-    <Cell><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ConformanceType</Data></Cell>
-    <Cell><Data ss:Type="String">The conformance value for an element</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#conformance-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ContactSystem</Data></Cell>
-    <Cell><Data ss:Type="String">What kind of contact this is</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#contact-system</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ContactUse</Data></Cell>
-    <Cell><Data ss:Type="String">How to use this address</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#contact-use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DataAbsentReason</Data></Cell>
@@ -176,39 +92,6 @@
     <Cell><Data ss:Type="String">#DataType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DocumentAuthenticationMode</Data></Cell>
-    <Cell><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#document-authentication-mode</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DocumentSectionType</Data></Cell>
-    <Cell><Data ss:Type="String">Type of a clinical document section</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">LOINC Section Types</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">DocumentType</Data></Cell>
-    <Cell><Data ss:Type="String">Type of a clinical document</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">LOINC Document Types</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">EventReason</Data></Cell>
-    <Cell><Data ss:Type="String">The reason for an event occurring</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">EventTiming</Data></Cell>
-    <Cell><Data ss:Type="String">A real world event that a schedule is related to</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#event-timing</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ExtensionContextType</Data></Cell>
     <Cell><Data ss:Type="String">How the path of an extension should be understood</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
@@ -221,214 +104,6 @@
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#extension-state</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">IdentifierType</Data></Cell>
-    <Cell><Data ss:Type="String">The type of human identifier</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell><Data ss:Type="String">#identifier-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Industry</Data></Cell>
-    <Cell><Data ss:Type="String">Code for the type of industry</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HL7 v3 OrganizationIndustryClass value set</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabDiagnosisCodes</Data></Cell>
-    <Cell><Data ss:Type="String">Codes for laboratory diagnoses</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT Diagnoses</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabReferenceRanges</Data></Cell>
-    <Cell><Data ss:Type="String">Code for the meaning of a reference range</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabReportNames</Data></Cell>
-    <Cell><Data ss:Type="String">codes for report names</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabReportStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The status of a report or result item</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#lab-report-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabRequests</Data></Cell>
-    <Cell><Data ss:Type="String">codes for requestable tests</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabResultFlag</Data></Cell>
-    <Cell><Data ss:Type="String">codes for result flags</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#lab-result-flag</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabResultGroupNames</Data></Cell>
-    <Cell><Data ss:Type="String">codes for result groups</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">LOINC Panel Names</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabResultNames</Data></Cell>
-    <Cell><Data ss:Type="String">codes for results</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">LOINC Result names</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LabServices</Data></Cell>
-    <Cell><Data ss:Type="String">codes for laboratory services</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HL7 v2 table 0074</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Language</Data></Cell>
-    <Cell><Data ss:Type="String">A human language</Data></Cell>
-    <Cell><Data ss:Type="String">reference</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">http://www.sil.org/iso639-3/codes.asp</Data></Cell>
-    <Cell><Data ss:Type="String">ISO 639-3</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">LanguageUse</Data></Cell>
-    <Cell><Data ss:Type="String">How well a person speaks a language</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#language-use</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">MediaType</Data></Cell>
-    <Cell><Data ss:Type="String">The mime type of an attachment</Data></Cell>
-    <Cell><Data ss:Type="String">reference</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">http://www.rfc-editor.org/bcp/bcp13.txt</Data></Cell>
-    <Cell><Data ss:Type="String">BCP 13 (RFCs 2045, 2046, 2047, 4288, 4289 and 2049)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">MedicationKind</Data></Cell>
-    <Cell><Data ss:Type="String">The kind of medication, vaccine or therapeutic material</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australie)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
-    <Cell><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
-    <Cell><Data ss:Type="String">special</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#MessageEvent</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">NamePartType</Data></Cell>
-    <Cell><Data ss:Type="String">Type of a part of a human name</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#name-part-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">NameUse</Data></Cell>
-    <Cell><Data ss:Type="String">The use of a human name</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#name-use</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">NarrativeMapSource</Data></Cell>
-    <Cell><Data ss:Type="String">Which is the source in a Narrative &lt;-&gt; Data mapping</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#narrative-map-source</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">NarrativeStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The status of a resource narrative</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#narrative-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">OrganisationType</Data></Cell>
-    <Cell><Data ss:Type="String">The type of an organisation</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT Organisation codes and the HL7 v3 Entity Code table</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">OrganizationRelationship</Data></Cell>
-    <Cell><Data ss:Type="String">The relationship an organization has to the subject, including sub and super organizations, and other kind of relationships such as partner organisations</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">PaperRecordLocation</Data></Cell>
-    <Cell><Data ss:Type="String">A physical location for a record. (Usually site specific)</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">PatientConfidentiality</Data></Cell>
-    <Cell><Data ss:Type="String">The confidentiality of the records associated with this patient</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell><Data ss:Type="String">casual dietary restrictions associated with this patient</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">PersonRelationship</Data></Cell>
-    <Cell><Data ss:Type="String">The relationship a person has to the subject, including familial, marital, financial, legal, and casual relationships  </Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">PrescriptionReason</Data></Cell>
-    <Cell><Data ss:Type="String">Medical reason for prescribing a medicine</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">ICD-10 or ICPC-1</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">PrescriptionStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The status of a prescription</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#prescription-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Qualifications</Data></Cell>
-    <Cell><Data ss:Type="String">Formal qualifications, accreditations, and Certifications acquired by a person  </Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">QuantityStatus</Data></Cell>
-    <Cell><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#quantity-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Race</Data></Cell>
-    <Cell><Data ss:Type="String">The race of the person</Data></Cell>
-    <Cell><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HL7 v2 table 0200</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Religion</Data></Cell>
-    <Cell><Data ss:Type="String">The denomination to which a person professes affiliation  </Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ResourceIdSource</Data></Cell>
@@ -451,20 +126,6 @@
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#ResourceType</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ResponseCode</Data></Cell>
-    <Cell><Data ss:Type="String">The kind of response to a message</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#response-code</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
-    <Cell><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -477,8 +138,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <RangeSelection>R3:R4</RangeSelection>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

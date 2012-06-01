@@ -63,6 +63,9 @@
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="25" x:FullColumns="1"
@@ -84,7 +87,7 @@
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -332,8 +335,7 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>23</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -443,7 +445,66 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="294.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="89.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="287.25"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">OrganisationType</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The type of an organisation</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s67"><Data ss:Type="String">SNOMED-CT Organisation codes and the HL7 v3 Entity Code table</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Industry</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Code for the type of industry</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s67"><Data ss:Type="String">HL7 v3 OrganizationIndustryClass value set</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Accreditation</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Accreditations an organization may be granted</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+   <Row ss:Height="45">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">OrganizationRelationship</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship an organization has to the subject, including sub and super organizations, and other kind of relationships such as partner organisations</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

@@ -32,6 +32,14 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s80" ss:Name="Normal 2">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
   <Style ss:ID="s62">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -53,15 +61,18 @@
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s65">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s66">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s71">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -86,7 +97,7 @@
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -98,10 +109,10 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Person</Data></Cell>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">A person who is involved in the healthcare process</Data></Cell>
     <Cell><Data ss:Type="String">Need to track persons across multiple roles</Data></Cell>
@@ -350,7 +361,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -359,7 +371,7 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s65" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -388,12 +400,12 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="99.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="171"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="107.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="69.75"/>
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="99.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="171"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="107.25"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="69.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -491,12 +503,12 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Filename</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
     <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Publishing</Data></Cell>
     <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
     <Cell><Data ss:Type="String">person-examples.xml</Data></Cell>
@@ -508,10 +520,125 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="174.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="126"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="260.25"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">AdministrativeGender</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The gender of a person used for administrative purposes  </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Race</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The race of the person</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s67"><Data ss:Type="String">HL7 v2 table 0200</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Religion</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The denomination to which a person professes affiliation  </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+   <Row ss:Height="45">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Qualifications</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Formal qualifications, accreditations, and Certifications acquired by a person  </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">LanguageUse</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">How well a person speaks a language</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">#language-use</Data></Cell>
+   </Row>
+   <Row ss:Height="60">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">PersonRelationship</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship a person has to the subject, including familial, marital, financial, legal, and casual relationships  </Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="language-use">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="288"/>
+   <Row ss:StyleID="s69">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">none</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The person does not speak the language at all</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">poor</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The person has minimal functional capability in the language</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">useable</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The person can use the language, but may not be full conversant, particularly with regards to health concepts</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">fluent</Data></Cell>
+    <Cell ss:StyleID="s80"><Data ss:Type="String">The person is fully capable of using the language</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

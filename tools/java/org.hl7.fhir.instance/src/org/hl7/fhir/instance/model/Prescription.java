@@ -1,6 +1,35 @@
 package org.hl7.fhir.instance.model;
 
-// Copyright HL7 (http://hl7.org). Generated on Fri, May 18, 2012 22:20+1000 for FHIR v0.02
+/*
+  Copyright (c) 2011-2012, HL7, Inc
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
+*/
+
+// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
 
 import java.util.*;
 
@@ -30,32 +59,11 @@ public class Prescription extends Resource {
         }
     }
 
-    public enum BooleanYesNo {
-        yes, // TRUE
-        no; // FALSE
-        public static BooleanYesNo fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
-                return null;
-        if ("yes".equals(code))
-          return yes;
-        if ("no".equals(code))
-          return no;
-        throw new Exception("Unknown BooleanYesNo code '"+code+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case yes: return "yes";
-            case no: return "no";
-            default: return "?";
-          }
-        }
-    }
-
     public class Dispense extends Element {
         /**
          * Requested number of repeats
          */
-        private Integer repeats;
+        private int repeats;
 
         /**
          * Requested quantity per repeat
@@ -67,11 +75,11 @@ public class Prescription extends Resource {
          */
         private ResourceReference dispenser;
 
-        public Integer getRepeats() { 
+        public int getRepeats() { 
           return this.repeats;
         }
 
-        public void setRepeats(Integer value) { 
+        public void setRepeats(int value) { 
           this.repeats = value;
         }
 
@@ -95,14 +103,9 @@ public class Prescription extends Resource {
 
     public class Medicine extends Element {
         /**
-         * Coded representation of medicine
+         * Text and or Code(s) that identify the medicine
          */
-        private Coding productCode;
-
-        /**
-         * Textual description of medicine, including strength and ingredients
-         */
-        private String_ description;
+        private CodeableConcept identification;
 
         /**
          * The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect
@@ -114,20 +117,12 @@ public class Prescription extends Resource {
          */
         private List<InactiveIngredient> inactiveIngredient = new ArrayList<InactiveIngredient>();
 
-        public Coding getProductCode() { 
-          return this.productCode;
+        public CodeableConcept getIdentification() { 
+          return this.identification;
         }
 
-        public void setProductCode(Coding value) { 
-          this.productCode = value;
-        }
-
-        public String_ getDescription() { 
-          return this.description;
-        }
-
-        public void setDescription(String_ value) { 
-          this.description = value;
+        public void setIdentification(CodeableConcept value) { 
+          this.identification = value;
         }
 
         public List<ActiveIngredient> getActiveIngredient() { 
@@ -144,19 +139,19 @@ public class Prescription extends Resource {
         /**
          * Coded representation of active ingredient
          */
-        private Coding productCode;
+        private CodeableConcept identification;
 
         /**
          * Quantity of active ingredient expressed in relation to the whole of the prepared medicine
          */
         private Ratio quantity;
 
-        public Coding getProductCode() { 
-          return this.productCode;
+        public CodeableConcept getIdentification() { 
+          return this.identification;
         }
 
-        public void setProductCode(Coding value) { 
-          this.productCode = value;
+        public void setIdentification(CodeableConcept value) { 
+          this.identification = value;
         }
 
         public Ratio getQuantity() { 
@@ -173,19 +168,19 @@ public class Prescription extends Resource {
         /**
          * Coded representation of the inactive ingredient
          */
-        private Coding productCode;
+        private CodeableConcept identification;
 
         /**
          * Quantity of inactive ingredient expressed in relation to the whole of the prepared medicine
          */
         private Ratio quantity;
 
-        public Coding getProductCode() { 
-          return this.productCode;
+        public CodeableConcept getIdentification() { 
+          return this.identification;
         }
 
-        public void setProductCode(Coding value) { 
-          this.productCode = value;
+        public void setIdentification(CodeableConcept value) { 
+          this.identification = value;
         }
 
         public Ratio getQuantity() { 
@@ -297,7 +292,7 @@ public class Prescription extends Resource {
         /**
          * Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient
          */
-        private BooleanYesNo prn;
+        private boolean prn;
 
         /**
          * Additional details to guide administration. Especially relevant for medicine administered by patient
@@ -328,11 +323,11 @@ public class Prescription extends Resource {
           return this.precondition;
         }
 
-        public BooleanYesNo getPrn() { 
+        public boolean getPrn() { 
           return this.prn;
         }
 
-        public void setPrn(BooleanYesNo value) { 
+        public void setPrn(boolean value) { 
           this.prn = value;
         }
 
@@ -393,7 +388,7 @@ public class Prescription extends Resource {
     /**
      * Date/time on which the prescription was written
      */
-    private DateTime prescribed;
+    private String prescribed;
 
     /**
      * Details of the dispense as requested by the prescriber
@@ -443,11 +438,11 @@ public class Prescription extends Resource {
       this.prescriber = value;
     }
 
-    public DateTime getPrescribed() { 
+    public String getPrescribed() { 
       return this.prescribed;
     }
 
-    public void setPrescribed(DateTime value) { 
+    public void setPrescribed(String value) { 
       this.prescribed = value;
     }
 

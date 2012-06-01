@@ -20,11 +20,20 @@
   <WindowWidth>27075</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>945</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s83" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -55,6 +64,12 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s67">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s105">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="44" x:FullColumns="1"
@@ -76,7 +91,7 @@
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -469,12 +484,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>35</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -539,6 +553,124 @@
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Bindings">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s105" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="134.25"/>
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="48.75"/>
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="178.5"/>
+   <Column ss:StyleID="s105" ss:AutoFitWidth="0" ss:Width="324"/>
+   <Row>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s67"><Data ss:Type="String">ConformanceEventMode</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="restful-conformance-mode">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="435.75"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s83"><Data ss:Type="String">client</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The application acts as a server for this resource</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s83"><Data ss:Type="String">server</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The application acts as a client for this resource</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="message-conformance-event-mode">
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="438.75"/>
+   <Row ss:StyleID="s64">
+    <Cell><Data ss:Type="String">Code</Data></Cell>
+    <Cell><Data ss:Type="String">Definition</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">sender</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The application sends requests and receives responses</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">receiver</Data></Cell>
+    <Cell ss:StyleID="s83"><Data ss:Type="String">The application receives requests and sends responses</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <RangeSelection>R1:R1048576</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

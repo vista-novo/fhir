@@ -1,6 +1,0 @@
-Code,Definition
-ok,The message was accepted and processed without error
-error,"Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required"
-rejection,The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is
-rules,"The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition"
-undeliverable,A middleware agent was unable to deliver the message to it's supposed destination

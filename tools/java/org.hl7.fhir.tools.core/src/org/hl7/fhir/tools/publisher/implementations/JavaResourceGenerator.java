@@ -284,7 +284,7 @@ private String upFirst(String name) {
 
 	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e, Map<String, BindingSpecification> conceptDomains) throws Exception {
 		String tn = null;
-		if (e.typeCode().equals("code") && e.hasConceptDomain()) {
+		if (e.typeCode().equals("code") && e.hasBinding()) {
 			BindingSpecification cd = getConceptDomain(conceptDomains, e.getBindingName());
 			if (cd != null && cd.getBinding() == BindingSpecification.Binding.CodeList) {
 				tn = getCodeListType(cd.getReference().substring(1));
@@ -296,9 +296,9 @@ private String upFirst(String name) {
 			}
 		}
 		if (tn == null) {
-			if (e.getTypes().size() > 0) {
+			if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
 			  tn = e.typeCode();
-			  if (clss != JavaGenClass.Resource) {
+			  if (clss != JavaGenClass.Resource || !e.isAllowDAR()) {
           if (tn.equals("boolean")) tn = "boolean";
           else if (tn.equals("integer")) tn = "int";
           else if (tn.equals("decimal")) tn = "java.math.BigDecimal";
@@ -328,8 +328,8 @@ private String upFirst(String name) {
 				
 				typeNames.put(e,  tn);
 			} else {
-				if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
-					tn = typeNames.get(getElementForPath(root, e.getElements().get(0).typeCode().substring(1)));
+				if (e.typeCode().startsWith("@")) {
+					tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
 					typeNames.put(e,  tn);
 				} else {
 					tn = getTitle(e.getName());
@@ -402,8 +402,8 @@ private String upFirst(String name) {
 			write(indent+"/**\r\n");
 			write(indent+" * "+e.getDefinition()+"\r\n");
 			write(indent+" */\r\n");
-			if (tn == null && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-			  write(indent+"private List<"+root.getName()+"> "+getElementName(e.getName())+" = new ArrayList<"+root.getName()+">();\r\n");
+			if (tn == null && e.typeCode().startsWith("@"))
+			  write(indent+"/*1*/private List<"+root.getName()+"> "+getElementName(e.getName())+" = new ArrayList<"+root.getName()+">();\r\n");
 			else
 			  write(indent+"private List<"+tn+"> "+getElementName(e.getName())+" = new ArrayList<"+tn+">();\r\n");
 			write("\r\n");
@@ -423,8 +423,8 @@ private String upFirst(String name) {
 		String tn = typeNames.get(e);
 
 		if (e.unbounded()) {
-      if (tn == null && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-        write(indent+"public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
+      if (tn == null && e.typeCode().startsWith("@"))
+        write(indent+"/*2*/public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
       else
         write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
 			write(indent+"  return this."+getElementName(e.getName())+";\r\n");
