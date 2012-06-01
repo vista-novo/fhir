@@ -19,7 +19,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	public void generate(ElementDefn root) throws Exception
 	{
 		write("<table class=\"dict\">\r\n");
-		writeEntry(root.getName(), "1..1", ElementDefn.Conformance.Mandatory, "", "", root);
+		writeEntry(root.getName(), "1..1", "", "", root);
 		for (ElementDefn e : root.getElements()) {
 		   generateElement(root.getName(), e);
 		}
@@ -30,16 +30,16 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void generateElement(String name, ElementDefn e) throws IOException {
-		writeEntry(name+"."+e.getName(), e.describeCardinality(), e.getConformance(), describeType(e), e.getBindingName(), e);
+		writeEntry(name+"."+e.getName(), e.describeCardinality(), describeType(e), e.getBindingName(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}
 	}
 
-	private void writeEntry(String path, String cardinality, ElementDefn.Conformance conformance, String type, String conceptDomain, ElementDefn e) throws IOException {
+	private void writeEntry(String path, String cardinality, String type, String conceptDomain, ElementDefn e) throws IOException {
 		write("  <tr><td colspan=\"2\" class=\"structure\"><b>"+path+"</b></td></tr>\r\n");
 		tableRow("Definition", e.getDefinition());
-		tableRow("Control", (conformance == ElementDefn.Conformance.Unstated ? "" : conformance.fullName()+", ")+cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
+		tableRow("Control", cardinality + (e.hasCondition() ? ": "+  e.getCondition(): ""));
 		tableRow("Type", type + (conceptDomain != "" ? " from "+conceptDomain : ""));
 		tableRow("Must Understand", displayBoolean(e.isMustUnderstand()));
 		tableRow("Requirements", e.getRequirements());

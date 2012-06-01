@@ -4,7 +4,6 @@ import java.io.OutputStream;
 import java.net.URISyntaxException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.instance.formats.XmlComposer;
@@ -81,7 +80,7 @@ public class ProfileGenerator {
     ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
     for (TypeDefn t : e.getTypes())
       ce.getType().add(t.summaryFormal()); 
-    ce.setConformance(getType(e.getConformance()));
+    // ce.setConformance(getType(e.getConformance()));
     if (!"".equals(e.getCondition()))
       ce.setCondition(e.getCondition());
     // we don't know mustSupport here
@@ -114,19 +113,5 @@ public class ProfileGenerator {
     }
   }
 
-  private ConformanceType getType(Conformance conformance) {
-    if (conformance == Conformance.Unstated)
-      return ConformanceType.Optional;
-    if (conformance == Conformance.Mandatory) 
-      return ConformanceType.Mandatory;
-    if (conformance == Conformance.Conditional) 
-      return ConformanceType.Conditional;
-    if (conformance == Conformance.Optional)
-      return ConformanceType.Optional;
-    if (conformance == Conformance.Prohibited)
-      return ConformanceType.Prohibited;
-    else
-      return null;
-  }
   
 }

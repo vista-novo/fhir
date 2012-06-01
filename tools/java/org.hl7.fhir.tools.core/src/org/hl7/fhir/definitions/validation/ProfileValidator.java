@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.validator;
+package org.hl7.fhir.definitions.validation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.ElementDefn.Conformance;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Constraint;
 import org.hl7.fhir.instance.model.Constraint.ConformanceType;
@@ -100,7 +99,6 @@ public class ProfileValidator {
     n.setComments(e.getComments());
     n.setBindingName(e.getBinding());
     n.setCondition(e.getCondition());
-    n.setConformance(getType(e.getConformance()));
     n.setDefinition(e.getDefinition());
     n.setMaxCardinality("*".equals(e.getMax()) ? null : Integer.parseInt(e.getMax()));
     n.setMinCardinality(e.getMin());
@@ -124,19 +122,6 @@ public class ProfileValidator {
       n.getElements().add(nc);
     }
 //    todo: children
-  }
-
-  private Conformance getType(ConformanceType conformance) {
-    if (conformance == ConformanceType.Mandatory) 
-      return Conformance.Mandatory;
-    if (conformance == ConformanceType.Conditional) 
-      return Conformance.Conditional;
-    if (conformance == ConformanceType.Optional)
-      return Conformance.Optional;
-    if (conformance == ConformanceType.Prohibited)
-      return Conformance.Prohibited;
-    else
-      return null;
   }
 
   

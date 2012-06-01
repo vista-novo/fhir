@@ -96,7 +96,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(root, e);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
 				generateElement(root, e);
 			else
 				generateWrapperElement(root, e);

@@ -1236,40 +1236,41 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     zip.close();    
   }
 
-  private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ? extends ElementDefn> types, String pfx, String home) {
-    for (ElementDefn c : types.values()) {
-      defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
-          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getBindingName())+"', '"+dWrap(c.getName())+"', '"+ 
-          dWrap(c.getShortDefn())+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getRequirements())+"', "+c.isMustUnderstand()+", '"+dWrap(c.getRimMapping())+"', '"+ 
-          dWrap(c.getComments())+"', '"+dWrap(c.getV2Mapping())+"', '"+dWrap(c.getTodo())+"', '"+dWrap(c.getCommitteeNotes())+"', '"+dWrap(c.getCondition())+"', '"+dWrap(c.getExample())+"', '"+ 
-          dWrap(c.typeCode())+"', "+c.isNolist()+");\r\n  try");
-      
-      for (ElementDefn g : c.getElements()) { 
-        StringBuilder s = new StringBuilder();
-        s.append("    cd.AddChild(TFHIRElementDefn.create("+
-            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
-            dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
-            dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
-            dWrap(g.typeCode())+"', "+g.isNolist()+")");
-        doChildElements(s, g, "      ");
-        s.append(");");
-        defnCode.procs.add(s.toString());
-      }
-      defnCode.procs.add("    definitions."+home+".add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
-    }
+  private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ? extends ElementDefn> types, String pfx, String home) throws Exception {
+   // throw new Exception("todo");
+//    for (ElementDefn c : types.values()) {
+//      defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
+//          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getBindingName())+"', '"+dWrap(c.getName())+"', '"+ 
+//          dWrap(c.getShortDefn())+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getRequirements())+"', "+c.isMustUnderstand()+", '"+dWrap(c.getRimMapping())+"', '"+ 
+//          dWrap(c.getComments())+"', '"+dWrap(c.getV2Mapping())+"', '"+dWrap(c.getTodo())+"', '"+dWrap(c.getCommitteeNotes())+"', '"+dWrap(c.getCondition())+"', '"+dWrap(c.getExample())+"', '"+ 
+//          dWrap(c.typeCode())+"', "+c.isNolist()+");\r\n  try");
+//      
+//      for (ElementDefn g : c.getElements()) { 
+//        StringBuilder s = new StringBuilder();
+//        s.append("    cd.AddChild(TFHIRElementDefn.create("+
+//            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
+//            dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
+//            dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
+//            dWrap(g.typeCode())+"', "+g.isNolist()+")");
+//        doChildElements(s, g, "      ");
+//        s.append(");");
+//        defnCode.procs.add(s.toString());
+//      }
+//      defnCode.procs.add("    definitions."+home+".add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
+//    }
   }
 
   private void doChildElements(StringBuilder content, ElementDefn focus, String indent) {
-    for (ElementDefn g : focus.getElements()) { 
-      String s = "\r\n"+indent+".AddChild(TFHIRElementDefn.create("+
-          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
-          dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
-          dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
-          dWrap(g.typeCode())+"', "+g.isNolist()+")";
-      doChildElements(content, g, indent + "  ");
-      s = s + ")";
-      content.append(s);
-    }    
+//    for (ElementDefn g : focus.getElements()) { 
+//      String s = "\r\n"+indent+".AddChild(TFHIRElementDefn.create("+
+//          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
+//          dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
+//          dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
+//          dWrap(g.typeCode())+"', "+g.isNolist()+")";
+//      doChildElements(content, g, indent + "  ");
+//      s = s + ")";
+//      content.append(s);
+//    }    
   }
 
   private String dWrap(String definition) {

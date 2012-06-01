@@ -11,6 +11,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.Utilities;
@@ -48,6 +49,10 @@ public class SpreadsheetParser {
     Sheet sheet = xls.getSheets().get("Bindings");
     if (sheet != null)
       readBindings(sheet);
+    sheet = xls.getSheets().get("Invariants");
+    if (sheet != null)
+      readInvariants(root, sheet);
+    
     sheet = xls.getSheets().get("Data Elements");
     for (int row = 0; row < sheet.rows.size(); row++) {
       processLine(root, sheet, row);
@@ -61,6 +66,10 @@ public class SpreadsheetParser {
     Sheet sheet = xls.getSheets().get("Bindings");
     if (sheet != null)
       readBindings(sheet);
+    sheet = xls.getSheets().get("Invariants");
+    if (sheet != null)
+      readInvariants(root, sheet);
+
     sheet = xls.getSheets().get("Data Elements");
     for (int row = 0; row < sheet.rows.size(); row++) {
       processLine(root, sheet, row);
@@ -68,6 +77,22 @@ public class SpreadsheetParser {
     readEvents(xls.getSheets().get("Events"));
     readExamples(root, xls.getSheets().get("Examples"));
     return root;
+  }
+
+  private void readInvariants(ResourceDefn root2, Sheet sheet) throws Exception {
+    for (int row = 0; row < sheet.rows.size(); row++) {
+      Invariant inv = new Invariant();
+
+      String s = sheet.getColumn(row, "Id");
+      inv.setName(sheet.getColumn(row, "Name"));
+      inv.setContext(sheet.getColumn(row, "Context"));
+      inv.setEnglish(sheet.getColumn(row, "English"));
+      inv.setXpath(sheet.getColumn(row, "XPath"));
+      inv.setOcl(sheet.getColumn(row, "OCL"));
+      if (s == null || s.equals("") || root2.getInvariants().containsKey(s))
+        throw new Exception("duplicate or missing invariant id "+getLocation(row));
+      root2.getInvariants().put(s, inv);
+    }
   }
 
 	private void readBindings(Sheet sheet) throws Exception {
@@ -112,7 +137,7 @@ public class SpreadsheetParser {
 		}
 
 		for (String n : p.getMetadata().get("resource")) {
-			ElementDefn e = new ElementDefn();
+		  ResourceDefn e = new ResourceDefn();
 			sheet = xls.getSheets().get(n);
 			for (int row = 0; row < sheet.rows.size(); row++) {
 				processLine(e, sheet, row);
@@ -197,9 +222,12 @@ public class SpreadsheetParser {
 		}
 	}
 
-	private void processLine(ElementDefn root, Sheet sheet, int row) throws Exception {
+	private void processLine(ResourceDefn root, Sheet sheet, int row) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
+		if (path.contains("#"))
+		  throw new Exception("Old path style @ "+getLocation(row));
+		
 		String profileName = isProfile  ? sheet.getColumn(row, "Profile Name") : "";
 		if (!path.contains(".")) {
 			e = root;
@@ -210,23 +238,43 @@ public class SpreadsheetParser {
 			e = makeFromPath(root, path, row, profileName);
 		}
 
-		String[] card = sheet.getColumn(row, "Card.").split("\\.\\.");
-		if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
-			throw new Exception("Unable to parse Cardinality '"+sheet.getColumn(row, "Card.")+"' "+sheet.getColumn(row, "Card.")+" in "+getLocation(row)+" on "+path);
+		String c = sheet.getColumn(row, "Card.");
+		if (c == null || c.equals("")) {
+		  if (e != root)
+		    throw new Exception("Missing cardinality");
+	    e.setMinCardinality(1);
+	    e.setMaxCardinality(1);
+		} else { 
+		  String[] card = c.split("\\.\\.");
+		  if (card.length != 2 || !Utilities.IsInteger(card[0]) || (!"*".equals(card[1]) && !Utilities.IsInteger(card[1])))
+		    throw new Exception("Unable to parse Cardinality '"+c+"' "+c+" in "+getLocation(row)+" on "+path);
+	    e.setMinCardinality(Integer.parseInt(card[0]));
+	    e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
+		}
 		e.setProfileName(profileName);
-		e.setMinCardinality(Integer.parseInt(card[0]));
-		e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
-		e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
+		
+    e.setAllowDAR(parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
+		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
+    e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
+    String s = sheet.getColumn(row, "Condition");
+    if (s != null && !s.equals(""))
+      throw new Exception("Found Condition in spreadsheet "+getLocation(row));
+    s = sheet.getColumn(row, "Inv.");
+    if (s != null && !s.equals("")) {
+      Invariant inv = root.getInvariants().get(s);
+      if (inv == null)
+        throw new Exception("unable to find Invariant '"+s+"' "+getLocation(row));
+      e.setInvariant(inv);
+    }
+    
+
 		String t = sheet.getColumn(row, "Type");
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
-		e.setCondition(sheet.getColumn(row, "Condition"));
 		e.setBindingName(sheet.getColumn(row, "Concept Domain"));
 		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
 			throw new Exception("Element definition binding strength is not supported in "+path);
 
-		// TODO: Next line seems to be duplicated under this group of statements
-		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));
 		e.setShortDefn(sheet.getColumn(row, "Short Name"));
 		e.setDefinition(sheet.getColumn(row, "Definition"));
 		e.setRequirements(sheet.getColumn(row, "Requirements"));
@@ -240,14 +288,6 @@ public class SpreadsheetParser {
 			e.setValue(sheet.getColumn(row, "Value"));
 			e.setAggregation(sheet.getColumn(row, "Aggregation"));
 		}
-		String s = sheet.getColumn(row, "Must Understand").toLowerCase();
-		if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n") || s.equals("no"))
-			e.setMustUnderstand(false);
-		else if (s.equals("true") || s.equals("1") || s.equals("t") || s.equals("y") || s.equals("yes"))
-			e.setMustUnderstand(true);
-		else if (!"".equals(s))
-			throw new Exception("unable to process Must Understand flag: "+s+" in "+getLocation(row));
-
 	}
 
 	private void processExtension(ElementDefn extensions, Sheet sheet, int row, Definitions definitions, String uri) throws Exception {
@@ -261,12 +301,12 @@ public class SpreadsheetParser {
 		e.setTarget(sheet.getColumn(row, "Target"));
 		e.setMinCardinality(Integer.parseInt(card[0]));
 		e.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
-		e.setConformance(pickConformance(sheet.getColumn(row, "Conf."), row));
+    e.setAllowDAR(parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
 		e.setCondition(sheet.getColumn(row, "Condition"));
 		e.setBindingName(sheet.getColumn(row, "Concept Domain"));
 		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
 			throw new Exception("Element definition binding strength is not supported");
-		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand")));
+		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
 		e.setDefinition(sheet.getColumn(row, "Definition"));
 		e.setRequirements(sheet.getColumn(row, "Requirements"));
 		e.setComments(sheet.getColumn(row, "Comments"));
@@ -314,12 +354,10 @@ public class SpreadsheetParser {
 		for (int i = 1; i < path.length; i++)
 		{
 			String en = path[i];
-			boolean noListWrapper = false;
 			if (en.length() == 0)
 				throw new Exception("Improper path "+pathname+" in "+getLocation(row));
 			if (en.charAt(en.length() - 1) == '*') {
-				noListWrapper = true;
-				en = en.substring(0, en.length()-1);
+				throw new Exception("no list wrapper found "+getLocation(row));
 			}
 			ElementDefn t = res.getElementByName(en);
 			
@@ -337,7 +375,6 @@ public class SpreadsheetParser {
 					throw new Exception("Encounter Element "+pathname+" before all the elements in the path are defined in "+getLocation(row));
 				t = new ElementDefn();
 				t.setName(en);
-				t.setNoListWrapper(noListWrapper);
 				res.getElements().add(t);        
 			}
 			res = t; 
@@ -371,39 +408,20 @@ public class SpreadsheetParser {
 	}
 
 
-	private ElementDefn.Conformance pickConformance(String s, int row) throws Exception {
-		s = s.toLowerCase();
-		if (s == null || "".equals(s))
-			return ElementDefn.Conformance.Unstated;
-		if (s.equals("opt"))
-			return ElementDefn.Conformance.Optional;
-		if (s.equals("mand"))
-			return ElementDefn.Conformance.Mandatory;
-		if (s.equals("cond"))
-			return ElementDefn.Conformance.Conditional;
-		if (s.equals("optional"))
-			return ElementDefn.Conformance.Optional;
-		if (s.equals("mandatory"))
-			return ElementDefn.Conformance.Mandatory;
-		if (s.equals("conditional"))
-			return ElementDefn.Conformance.Conditional;
-		if (s.equals("prohibited"))
-			return ElementDefn.Conformance.Prohibited;
-		throw new Exception("Unknown Conformance flag: "+s+" in "+getLocation(row));
-	}
-
-
-	protected boolean parseBoolean(String column) {
-		if (column == null)
-			return false;
-		else if (column.equalsIgnoreCase("y") || column.equalsIgnoreCase("yes") || column.equalsIgnoreCase("true") || column.equalsIgnoreCase("1"))
+	protected boolean parseBoolean(String s, int row, boolean def) throws Exception {
+	  s = s.toLowerCase();
+		if (s == null || s.equals(""))
+			return def;
+		else if (s.equalsIgnoreCase("y") || s.equalsIgnoreCase("yes") || s.equalsIgnoreCase("true") || s.equalsIgnoreCase("1"))
 			return true;
+		else if (s.equals("false") || s.equals("0") || s.equals("f") || s.equals("n") || s.equals("no"))
+		  return false;
 		else
-			return false;
+	    throw new Exception("unable to process boolean value: "+s+" in "+getLocation(row));
 	}  
 
 	private String getLocation(int row) {
-		return name+", row "+Integer.toString(row);
+		return name+", row "+Integer.toString(row+2);
 	}
 
 	public List<EventDefn> getEvents() {

@@ -1,4 +1,4 @@
-package org.hl7.fhir.tools.validation;
+package org.hl7.fhir.definitions.validation;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -116,7 +116,7 @@ public class UMLValidator {
     condition(!"true".equals(clss.getAttribute("abstract")), "Resource Classes cannot be abstract");
     condition("public".equals(clss.getAttribute("visibility")), "Resource Classes must be public");
     
-    if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
+    if (e.typeCode().startsWith("@"))
       return; // don't check this 
     
     Map<String, ElementDefn> allDefns = new HashMap<String, ElementDefn>();

@@ -128,7 +128,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
         generateAny(elem, e, null);
-      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
         generateElement(elem, e, null);
       else
         generateWrapperElement(elem, e);
@@ -195,7 +195,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
         generateAny(elem, e, null);
-      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+      else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
         generateElement(elem, e, null);
       else
         generateWrapperElement(elem, e);
@@ -224,7 +224,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
         generateAny(elem, e, null);
-    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
     generateElement(elem, e, null);
   else
     generateWrapperElement(elem, e);
@@ -264,7 +264,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
     for (ElementDefn e : elem.getElements()) {
       if (e.getName().equals("[type]"))
         generateAny(elem, e, null);
-    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+    else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
     generateElement(elem, e, null);
   else
     generateWrapperElement(elem, e);
@@ -300,7 +300,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
           for (ElementDefn e : elem.getElements()) {
             if (e.getName().equals("[type]"))
               generateAny(elem, e, null);
-            else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+            else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
               generateElement(elem, e, pt);
             else
               generateWrapperElement(elem, e);
@@ -354,7 +354,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		for (ElementDefn e : struc.getElements()) {
 			if (e.getName().equals("[type]"))
 				generateAny(root, e, null);
-			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || e.isNolist() || Config.SUPPRESS_WRAPPER_ELEMENTS)
+			else if ((!e.unbounded() && 1 == e.getMaxCardinality()) || Config.SUPPRESS_WRAPPER_ELEMENTS)
 				generateElement(root, e, null);
 			else
 				generateWrapperElement(root, e);
@@ -434,8 +434,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			write("          </xs:choice>\r\n");
 		} else {
 
-			if (e.getTypes().size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-				write("<xs:element name=\""+e.getName()+"\" type=\""+e.getElements().get(0).getTypes().get(0).getName().substring(1)+"\" ");
+			if (e.typeCode().startsWith("@"))
+				write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() > 0)
 			{
 				int i = 0;
@@ -509,8 +509,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
 			else if ("xhtml".equals(e.getName()))
         write("<xs:element ref=\"xhtml:div\" ");
-			else if (types.size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-        write("<xs:element name=\""+e.getName()+"\" type=\""+e.getElements().get(0).getTypes().get(0).getName().substring(1)+"\" ");
+			else if (e.typeCode().startsWith("@"))
+        write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (types.size() == 0 && e.getElements().size() > 0)
 			{
 				int i = 0;

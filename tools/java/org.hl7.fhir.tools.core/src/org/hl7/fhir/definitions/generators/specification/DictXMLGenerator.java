@@ -35,7 +35,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 			write("    <name>"+root.getName()+"</name>\r\n");
 			write("    <elementDefinitions>\r\n");
 			
-			writeEntry(root.getName(), 1, 1, ElementDefn.Conformance.Mandatory, null, "", root);
+			writeEntry(root.getName(), 1, 1, null, "", root);
 			for (ElementDefn e : root.getElements()) {
 			   generateElement(root.getName(), e);
 			}
@@ -93,7 +93,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		write("    <name>"+root.getName()+"</name>\r\n");
 		write("    <elementDefinitions>\r\n");
 		
-		writeEntry(root.getName(), 1, 1, ElementDefn.Conformance.Mandatory, null, "", root);
+		writeEntry(root.getName(), 1, 1, null, "", root);
 		for (ElementDefn e : root.getElements()) {
 		   generateElement(root.getName(), e);
 		}
@@ -107,14 +107,14 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 	}
 
 	private void generateElement(String name, ElementDefn e) throws IOException {
-		writeEntry(name+"."+e.getName(), e.getMinCardinality(), e.getMaxCardinality(), e.getConformance(), e.getTypes(), e.getBindingName(), e);
+		writeEntry(name+"."+e.getName(), e.getMinCardinality(), e.getMaxCardinality(), e.getTypes(), e.getBindingName(), e);
 		for (ElementDefn c : e.getElements())	{
 		   generateElement(name+"."+e.getName(), c);
 		}
 		
 	}
 
-	private void writeEntry(String path, Integer min, Integer max, ElementDefn.Conformance conformance, List<TypeDefn> types, String conceptDomain, ElementDefn e) throws IOException {
+	private void writeEntry(String path, Integer min, Integer max, List<TypeDefn> types, String conceptDomain, ElementDefn e) throws IOException {
 		write("      <elementDefinition>\r\n");
 		write("        <name>"+Utilities.escapeXml(path)+"</name>\r\n");
 		write("        <cardinality>\r\n");
@@ -124,7 +124,6 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		else
 			write("          <maxOccurs>"+max.toString()+"</maxOccurs>\r\n");
 		write("        </cardinality>\r\n");
-		write("        <conformance>"+Utilities.escapeXml(conformance.fullName())+"</conformance>\r\n");
 		write("        <condition>"+Utilities.escapeXml(e.getCondition())+"</condition>\r\n");
 		if (types != null && types.size() > 0)
 		{ 

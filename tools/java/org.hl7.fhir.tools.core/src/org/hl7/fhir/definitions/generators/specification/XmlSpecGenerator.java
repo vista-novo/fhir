@@ -84,8 +84,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 
 	private void generateCoreElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {
-		if (elem.getConformance() == ElementDefn.Conformance.Prohibited)
-			return;
+//		if (elem.getConformance() == ElementDefn.Conformance.Prohibited)
+//			return;
 
 		boolean listed = false;
 		for (int i= 0; i < indent; i++)
@@ -107,6 +107,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		if (rootName == null || "x".equals(rootName))
 			write("&lt;");
+		else if (elem.isMustUnderstand() || elem.isMustSupport() )
+      write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition() +" (this element must be supported or understood)")+"\" class=\"dict\"><u>");
 		else 
 			write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\">");
 
@@ -130,13 +132,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		  write("<b>"+en);
 			if (rootName == null || "x".equals(rootName))
 				write("</b>");
-			else
+  	  else if (elem.isMustUnderstand() || elem.isMustSupport() )
+        write("</b></u></a>");
+	    else     
 				write("</b></a>");
 //			disable 18-May 2012 Grahame - don't recall why we mark an element as having an id or not, and appears to be non-functional
 //			if (elem.getId() != null)
 //			{
 //				write(" id=\""+elem.getId()+"\"");
 //			}
+			if (elem.isAllowDAR())
+			  write(" <font color=\"red\" title=\"dataAbsentReason attribute is allowed\">d?</font>");
 			write("&gt;");
 			
 			// If this is an unrolled element, show its profile name
@@ -146,12 +152,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			// For simple elements without nested content, render the optionality etc. within a comment
 			if( elem.getElements().isEmpty())
 				write("<font color=\"Gray\">&lt;!--</font>");
-			
-			if (elem.getConformance() != ElementDefn.Conformance.Unstated)
-			{
-				write(" ");
-				write("<a href=\"xml.htm#Control\" class=\"cf\">" + elem.getConformance().code() + "</a>");
-			}
+//			if (elem.getConformance() != ElementDefn.Conformance.Unstated)
+//			{
+//				write(" ");
+//				write("<a href=\"xml.htm#Control\" class=\"cf\">" + elem.getConformance().code() + "</a>");
+//			}
 
 			if( elem.hasAggregation() )
 			{
@@ -161,10 +166,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			if (!elem.getTypes().isEmpty() && 
 					!(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
 			{
-				if (elem.unbounded() || Config.SHOW_SINGLE_CARDINALITIES) {
-					write(" <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font>");
-					listed = true;
-				}
+  	    write(" <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font>");
+			  listed = true;
 				write(" <font color=\"darkgreen\">");
 				int i = 0;
 				int d = elem.getTypes().size() / 2;
@@ -224,11 +227,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			{
 				if (elem.unbounded() && !listed) { // isNolist()) {
 					if (elem.getElements().size() == 1 && elem.getElements().get(0).getName().equals("#"))
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
 					else if (elem.hasShortDefn())
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
+						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
 					else
-						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.textForCardinality()+"</b></font> --&gt;</font>");
+						write(" <font color=\"Gray\">&lt;!-- <font color=\"brown\"><b>"+elem.describeCardinality()+"</b></font> --&gt;</font>");
 				} else if (elem.hasShortDefn())
 					write(" <font color=\"Gray\">&lt;!-- "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</font>");
 				write("\r\n");

@@ -6,45 +6,24 @@ import java.util.List;
 import org.hl7.fhir.instance.model.Constraint.Element_;
 
 public class ElementDefn {
-  
-  
-  public enum Conformance { Unstated, Mandatory, Conditional, Optional, Prohibited;
-    public String code() {
-      switch (this) {
-      case Unstated: return "";
-      case Mandatory: return "mand";
-      case Conditional: return "cond";
-      case Optional: return "opt";
-      case Prohibited: return "prohibited";
-      default: 
-        return "";
-      }
-    }
-    public String fullName() {
-      switch (this) {
-      case Unstated: return "";
-      case Mandatory: return "Mandatory";
-      case Conditional: return "Conditional";
-      case Optional: return "Optional";
-      case Prohibited: return "Prohibited";
-      default: 
-        return "";
-      }
-    }
-  }
+ 
   
 	private List<TypeDefn> types = new ArrayList<TypeDefn>();
 	private List<ElementDefn> elements = new ArrayList<ElementDefn>();
-	private Conformance conformance;
+
 	private Integer minCardinality;
-	private Integer maxCardinality; 
+	private Integer maxCardinality;
+	private boolean allowDAR;
+	private Invariant invariant;
+  private boolean mustUnderstand;
+  private boolean mustSupport;
+	
 //	private String id;
 	private String bindingName;
 	private String name;
 	private String shortDefn;
 	private String definition;
 	private String requirements; 
-	private boolean mustUnderstand;
 	private String rimMapping;
 	private String comments; 
 	private String v2Mapping;
@@ -52,7 +31,6 @@ public class ElementDefn {
 	private String committeeNotes;
 	private String condition;
 	private String example;
-	private boolean nolist; // this field is flagged for deletion - no longer used
 	private String profileName; // only in a profile, for unpicking
 	private String target; // only in extensions
 	private String value; // only in a profile
@@ -70,16 +48,18 @@ public class ElementDefn {
 	  for (ElementDefn c : pattern.getElements())
 	    elements.add(new ElementDefn(c));
 
-	  conformance = pattern.conformance;
 	  minCardinality = pattern.minCardinality;
 	  maxCardinality = pattern.maxCardinality;
-//	  id = pattern.id;
+	  allowDAR = pattern.allowDAR;
+	  invariant = pattern.invariant;
+	  mustUnderstand = pattern.mustUnderstand;
+	  mustSupport = pattern.mustSupport;
+
 	  bindingName = pattern.bindingName;
 	  name = pattern.name;
 	  shortDefn = pattern.shortDefn;
 	  definition = pattern.definition;
 	  requirements = pattern.requirements; 
-	  mustUnderstand = pattern.mustUnderstand;
 	  rimMapping = pattern.rimMapping;
 	  comments = pattern.comments; 
 	  v2Mapping = pattern.v2Mapping;
@@ -87,7 +67,6 @@ public class ElementDefn {
 	  committeeNotes = pattern.committeeNotes;
 	  condition = pattern.condition;
 	  example = pattern.example;
-	  nolist = pattern.nolist; 
 	  profileName = pattern.profileName;
 	  target = pattern.target; 
 	  value = pattern.value; 
@@ -95,14 +74,6 @@ public class ElementDefn {
     
 	}
 	 
-  public boolean isNolist() {
-		return nolist;
-	}
-
-	public void setNoListWrapper(boolean nolist) {
-		this.nolist = nolist;
-	}
-
 	public String getCondition() {
 		return condition;
 	}
@@ -291,18 +262,9 @@ public class ElementDefn {
 
     public List<TypeDefn> getTypes() {
 	    return types;
-	}
+    }
    
    
-
-    public Conformance getConformance()	  {
-	    return conformance;
-    }
-
-    public void setConformance(Conformance conformance)	  {
-	    this.conformance = conformance;
-    }
-
     public Integer getMinCardinality() {
     	return minCardinality;
     }
@@ -326,20 +288,20 @@ public class ElementDefn {
 		return minCardinality.toString()+".."+maxCardinality.toString();
 	}
 	
-	public String textForCardinality() {
-	  if (maxCardinality != null) {
-	    if (maxCardinality == 1)
-	      if (minCardinality == 0)
-	        return "?One";
-	      else
-	        return "One";
-	    else
-	      return "??";
-	  } else if (minCardinality == 0)
-	    return "Zero+";
-	  else
-	    return "One+";
-	}
+//	public String textForCardinality() {
+//	  if (maxCardinality != null) {
+//	    if (maxCardinality == 1)
+//	      if (minCardinality == 0)
+//	        return "?One";
+//	      else
+//	        return "One";
+//	    else
+//	      return "??";
+//	  } else if (minCardinality == 0)
+//	    return "Zero+";
+//	  else
+//	    return "One+";
+//	}
 
 	public boolean hasDefinition() {
 		return (this.definition != null && !this.definition.equals("")) || (shortDefn != null && !this.shortDefn.equals(""));
@@ -435,7 +397,6 @@ public class ElementDefn {
   public void ban() {
     minCardinality = 0;
     maxCardinality = 0;
-    conformance = Conformance.Prohibited;
   }
 
   public void setDerivation(Element_ derivation) {
@@ -471,4 +432,30 @@ public class ElementDefn {
   {
 	  return typeCode().equals("code") && hasConceptDomain();
   }
+
+  public boolean isAllowDAR() {
+    return allowDAR;
+  }
+
+  public void setAllowDAR(boolean allowDAR) {
+    this.allowDAR = allowDAR;
+  }
+
+  public Invariant getInvariant() {
+    return invariant;
+  }
+
+  public void setInvariant(Invariant invariant) {
+    this.invariant = invariant;
+  }
+
+  public boolean isMustSupport() {
+    return mustSupport;
+  }
+
+  public void setMustSupport(boolean mustSupport) {
+    this.mustSupport = mustSupport;
+  }
+  
+  
 }

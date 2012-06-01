@@ -8,14 +8,14 @@ import java.util.Map;
 public class ProfileDefn {
 
 
-  private List<ElementDefn> resources = new ArrayList<ElementDefn>();
+  private List<ResourceDefn> resources = new ArrayList<ResourceDefn>();
   private Map<String, ArrayList<String>> metadata = new HashMap<String, ArrayList<String>>();
   
   public Map<String, ArrayList<String>> getMetadata() {
     return metadata;
   }
 
-  public List<ElementDefn> getResources() {
+  public List<ResourceDefn> getResources() {
     return resources;
   }
 

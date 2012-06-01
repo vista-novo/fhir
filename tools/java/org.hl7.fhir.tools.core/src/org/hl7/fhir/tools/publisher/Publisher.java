@@ -318,7 +318,6 @@ public class Publisher {
 		dxgen.generate(root, "HL7");
 
 		generateProfile(root, n);
-		
 
 		for (Example e : root.getExamples()) {
 		  processExample(e);
@@ -373,7 +372,7 @@ public class Publisher {
     e.setXhtm(new XhtmlComposer().compose(pre));
   }
 
-  private void generateProfile(ElementDefn root, String n) throws Exception,
+  private void generateProfile(ResourceDefn root, String n) throws Exception,
       FileNotFoundException {
     ProfileDefn p = new ProfileDefn();
 		p.putMetadata("id", "1");
