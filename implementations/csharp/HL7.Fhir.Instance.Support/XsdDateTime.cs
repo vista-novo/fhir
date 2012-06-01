@@ -129,7 +129,8 @@ namespace HL7.Fhir.Instance.Support
             if( isTimePrecision(precision) )
             {
                 if (value.Kind == DateTimeKind.Unspecified)
-                    throw new ArgumentException("DateTime value has unspecified timezone. Please explicitly convert to Utc or local time");
+                    throw new ArgumentException("DateTime value has unspecified timezone. " +
+                                "Please explicitly convert to Utc or local time");
             }
 
             XsdDateTime result = new XsdDateTime();
@@ -196,13 +197,10 @@ namespace HL7.Fhir.Instance.Support
             DateTimeOffset parsedValue;
 
             bool parseSuccessful = DateTimeOffset.TryParseExact(xsdString, format,
-                null, System.Globalization.DateTimeStyles.AssumeLocal,
-                out parsedValue);
+                null, System.Globalization.DateTimeStyles.AssumeLocal, out parsedValue);
 
             if(parseSuccessful)
-            {
                 copyFromDateTimeUtc(parsedValue.ToUniversalTime().UtcDateTime);
-            }
 
             return parseSuccessful;
         }
@@ -213,12 +211,6 @@ namespace HL7.Fhir.Instance.Support
             {
                 switch (Kind)
                 {
-                    //case XsdDateTimeKind.Year:
-                    //    return new DateTime(Year, 1, 1, 0,0,0, DateTimeKind.Utc);
-                    //case XsdDateTimeKind.YearMonth:
-                    //    return new DateTime(Year, Month, 1, 0,0,0, DateTimeKind.Utc);
-                    //case XsdDateTimeKind.Date:
-                    //    return new DateTime(Year, Month, Day, 0,0,0, DateTimeKind.Utc);
                     case XsdDateTimeKind.DateTimeHHMM:
                         return new DateTime(Year, Month, Day, Hour, Minutes, 0, DateTimeKind.Utc);
                     case XsdDateTimeKind.DateTime:

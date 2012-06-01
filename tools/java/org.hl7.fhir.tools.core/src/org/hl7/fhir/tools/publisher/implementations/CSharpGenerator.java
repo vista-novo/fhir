@@ -7,7 +7,9 @@ import java.util.Date;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
+import org.hl7.fhir.tools.publisher.implementations.CSharpResourceGenerator.GenClass;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.ZipGenerator;
@@ -19,7 +21,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			throws Exception {
 
 		char sl = File.separatorChar;
-		String modelGenerationDir =  implDir + sl + "org.hl7.fhir.instance.model" + sl;
+		String modelGenerationDir =  implDir + sl + "HL7.Fhir.Instance.Model" + sl;
 		
 		File f = new File(modelGenerationDir);
 		if( !f.exists() )
@@ -32,24 +34,63 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
 					new FileOutputStream(modelGenerationDir + root.getName() + ".cs" ));
 		
-			cSharpGen.generate(root, definitions.getBindings(), genDate, version );
+			cSharpGen.generate(root, definitions.getBindings(), 
+					GenClass.Resource, genDate, version );
 		}
 
-		//TODO: Generate infrastructure classes
 		
 		// Generate a C# file for each "future" Resource
-	    for (DefinedCode cd : definitions.getFutureResources().values()) {
+	    for (DefinedCode cd : definitions.getFutureResources().values()) 
+	    {
 	        ElementDefn e = new ElementDefn();
 	        e.setName(cd.getCode());
 	        new CSharpResourceGenerator(
 	        	new FileOutputStream(modelGenerationDir+e.getName()+".cs"))
-	        		.generate(e, definitions.getBindings(), genDate, version);
-	      }
+	        		.generate(e, definitions.getBindings(), 
+	        				GenClass.Resource, genDate, version);
+	    }
 		
-		// TODO: Generate a C# file for basic  types
+		// Generate infrastructure classes
+		for (String n : definitions.getInfrastructure().keySet()) 
+		{
+		      ElementDefn root = definitions.getInfrastructure().get(n); 
+		      new CSharpResourceGenerator(
+		    	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
+		      		.generate(root, definitions.getBindings(), 
+		      				GenClass.Structure, genDate, version);
+		}
 
-		// TODO: Generate a C# file for structured types
 		
+		// Generate a C# file for basic types
+	    for (String n : definitions.getTypes().keySet())
+	    {
+	        ElementDefn root = definitions.getTypes().get(n); 
+	     
+	        GenClass generationType = GenClass.Type;
+	        
+	        if( root.getName().equals("Quantity"))
+	        	generationType = GenClass.Ordered;
+
+	        if( root.typeCode().equals("GenericType"))
+	        	generationType = GenClass.Generic;
+
+	        new CSharpResourceGenerator(
+	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
+	        		.generate(root, definitions.getBindings(), 
+	        			generationType, genDate, version);
+	    }
+
+		// TODO: Generate a C# file for structured types (HumanName, Address)
+	    for (String n : definitions.getStructures().keySet())
+	    {
+	        ElementDefn root = definitions.getStructures().get(n); 
+	        new CSharpResourceGenerator(
+	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
+	        		.generate(root, definitions.getBindings(), 
+	        				GenClass.Type, genDate, version);
+	    }
+
+	    
 		// TODO: Generate a C# file for each Valueset as enum
 
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");

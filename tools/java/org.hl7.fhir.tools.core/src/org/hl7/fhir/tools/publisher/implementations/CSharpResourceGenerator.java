@@ -15,11 +15,20 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
-import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Utilities;
 
 public class CSharpResourceGenerator extends OutputStreamWriter {
 
+	public enum GenClass
+	{
+		Resource, 		// Derives from Resource (has id, text, extensions)
+		Structure,		// Derives from Element 
+		Type, 			// Derives from Type (i.e. has dataAbsentReason)
+		Ordered,		// Subclass of Type for ordered types
+		Generic			// Subclass of Type for generic types
+	}
+	
+	
 	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
 	private List<String> typeNameStrings = new ArrayList<String>();
 	
@@ -35,6 +44,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 	public void generate(ElementDefn root,
 			Map<String, BindingSpecification> conceptDomains,
+			GenClass generationType,
 			Date genDate, String version) throws Exception 
 	{
 		typeNames.clear();
@@ -44,7 +54,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		enumNames.clear();
 
 		generateHeader(version, genDate);
-		beginClass(root.getName(), root.getDefinition());
+		beginClass(generationType, root.getName(), root.getDefinition());
 		
 		// First, descend into the element definition
 		// and find all nested structs and enums.
@@ -89,12 +99,38 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 
 
-	private void beginClass(String className, String description) throws IOException {
+	private void beginClass(GenClass generationType, String className, String description) throws Exception, IOException {
 		writeLn("/**");
 		writeLn(" * " + description);
 		writeLn(" */");
 		
-		writeLn("  public class " + className + " : Resource" );
+		String baseClass;
+		
+		switch( generationType )
+		{
+			case Resource:
+				baseClass = "Resource";
+				break;
+			case Structure:
+				baseClass = "Element";
+				break;
+			case Type:
+				baseClass= "Type";
+				break;
+			case Ordered:
+				baseClass = "Ordered";
+				break;
+			case Generic:
+				baseClass = "Type";
+				break;
+			default:
+				throw new Exception("Don't support that class of generation yet");
+		}
+
+		if( generationType == GenClass.Generic )
+			className += "<T>";
+		
+		writeLn("  public partial class " + className + " : " + baseClass );
 		writeLn("  {");
 	}
 
@@ -102,6 +138,8 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	public void generateHeader(String version, Date genDate) throws Exception {
 		writeLn("using System;");
 		writeLn("using System.Collections.Generic;");
+		writeLn("using HL7.Fhir.Instance.Support;");
+		writeLn("using System.Xml.Linq;");
 		writeLn("");
 		writeLn("/*");
 		writeLn(Config.FULL_LICENSE_CODE);
@@ -110,7 +148,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		writeLn("// Generated on " + Config.DATE_FORMAT().format(genDate)
 				+ " for FHIR v" + version);
 		writeLn("");
-		writeLn("namespace org.hl7.fhir.instance.model");
+		writeLn("namespace HL7.Fhir.Instance.Model");
 		writeLn("{");	// begin namespace
 		writeLn("");
 	}
@@ -133,13 +171,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		
 		for (DefinedCode c : cd.getCodes()) 
 		{
-			String cc = c.getCode();
-			
-			if (Utilities.isCSharpReservedWord(cc))
-				cc = cc + "_";
-			cc = cc.replace("-", "Minus").replace("+", "Plus");
-			//TODO: Java version has extended mapping
-			
+			String cc = cleanupCodeString( c.getCode() );		
 			writeLn("      " + cc + ", // " + c.getDefinition());			
 		}
 		
@@ -148,10 +180,23 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 
 	
+	private String cleanupCodeString( String code )
+	{
+		if(Utilities.isCSharpReservedWord(code))
+			return code + "_";
+	
+		if (code.equals("<")) return "lessThan";
+		else if (code.equals("<=")) return "lessOrEqual";
+		else if (code.equals(">")) return "greaterThan";
+		else if (code.equals(">=")) return "greaterOrEqual";
+		else
+			return code.replace("-", "Minus").replace("+", "Plus");
+	}
+	
 	private void generateNestedClass(ElementDefn e) throws Exception {
 		String tn = typeNames.get(e);
 		
-		writeLn("    public class " + tn + " : Element");
+		writeLn("    public partial class " + tn + " : Element");
 		writeLn("    {");
 				
 		for (ElementDefn c : e.getElements()) {
@@ -195,12 +240,18 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			// Returns null if the type is not recognized as a type that
 			// directly maps to an underlying CSharp type.
 			tn = mapFHIRPrimitiveToCSharpType(tn);
-			
+							
 			// Not a (single) primitive type, but a named complex type
-			// This can be a Resource, Interval or some other type.
-			if( tn == null ) 
-				tn = getTypeName(e);
-			
+			// This can be a Resource, Interval or some other type.			
+			if( tn == null )
+			{
+				// Special case: types that are actually names
+				// of template parameters in generic types
+				if(e.typeCode().equals("[param]"))
+					tn = "T";
+				else
+					tn = getTypeName(e);
+			}
 			typeNames.put(e, tn);
 		}
 		
@@ -278,9 +329,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		else if (tn.equals("id"))
 			return "string";
 		else if (tn.equals("date"))
-			return "string";
+			return "XsdDateTime";
 		else if (tn.equals("dateTime"))
-			return "string";
+			return "XsdDateTime";
 		else
 			return null;
 	}
@@ -382,7 +433,6 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			    
 	}
 
-
 	
 	private String getTypeName(ElementDefn e) throws Exception {
 		// If the element is a choice of more than one type,
@@ -469,7 +519,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			return "String";
 		
 		if (tn.equalsIgnoreCase("Xhtml"))
-			return "XhtmlNode";
+			return "XNode";
 
 		// Type name Any means "Any resource"
 		if (tn.equals("Any")) 
