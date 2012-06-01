@@ -120,12 +120,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) 
 		{
+		  if (elem.isMustUnderstand() || elem.isMustSupport() )
+		    write(en+"</u></a>&gt;");
+		  else
+		    write(en+"</a>&gt;");
+		        
 			if (elem.typeCode().equals("CodeableConcept"))
-				write(en+"</a>&gt;"+renderCodeableConcept(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
+			  write(renderCodeableConcept(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
 			else if (elem.typeCode().equals("Quantity"))
-				write(en+"</a>&gt;"+renderQuantity(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
+				write(renderQuantity(indent, elem.getValue())+"&lt;"+en+"/&gt;\r\n");
 			else
-				write(en+"</a>&gt;"+elem.getValue()+"&lt;"+en+"/&gt;\r\n");
+				write(elem.getValue()+"&lt;"+en+"/&gt;\r\n");
 		} 
 		else 
 		{

@@ -149,8 +149,8 @@ public class XSDGenerator extends OutputStreamWriter {
 			write("          </xs:choice>\r\n");
 		} else {
 
-			if (e.getTypes().size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#"))
-				write("<xs:element name=\""+e.getName()+"\" type=\""+e.getElements().get(0).getTypes().get(0).getName().substring(1)+"\" ");
+			if (e.typeCode().startsWith("@"))
+				write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() > 0)
 			{
 				int i = 0;
@@ -261,8 +261,8 @@ public class XSDGenerator extends OutputStreamWriter {
 		  String tn = null;
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
-			else if (e.getTypes().size() == 0 && e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
-			  ElementDefn ref = root.getElementByName(e.getElements().get(0).getTypes().get(0).getName().substring(1));
+			else if (e.typeCode().startsWith("@")) {
+			  ElementDefn ref = root.getElementByName(e.typeCode().substring(1));
 			  String rtn = types.get(ref);
         write("<xs:element name=\""+e.getName()+"\" type=\""+rtn+"\" ");
 			} else if (e.getTypes().size() == 0 && e.getElements().size() > 0){
