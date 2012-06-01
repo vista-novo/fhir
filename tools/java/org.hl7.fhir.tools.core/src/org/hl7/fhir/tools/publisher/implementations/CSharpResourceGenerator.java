@@ -188,7 +188,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		}
 		
 		// If the element is atomic (either simple type or a resource reference)...
-		if (e.getTypes().size() > 0) 
+		if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) 
 		{
 			String tn = e.typeCode();
 				
@@ -208,13 +208,11 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		else
 		{
 			boolean isInternalReference = 
-					e.getElements().size() == 1	&& 
-					e.getElements().get(0).getName().equals("#");
+					e.typeCode().startsWith("@");
 			
 			if (isInternalReference)
 			{
-				String tn = typeNames.get(getElementForPath(root, e.getElements()
-							.get(0).typeCode().substring(1)));
+				String tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
 				typeNames.put(e, tn);
 			} 
 			else 
@@ -349,8 +347,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		{		
 			boolean isInternalReference = 
 					tn == null && 
-					e.getElements().size() == 1 && 
-					e.getElements().get(0).getName().equals("#");
+					e.typeCode().startsWith("@");
 			
 			
 			String listType = isInternalReference ? root.getName() : tn;
