@@ -67,6 +67,7 @@
     <Compile Include="HL7.Fhir.Instance.Model\Specimen.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Valueset.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Woody.cs" />
+    <Compile Include="HL7.Fhir.Instance.Support\XsdDateTime.cs" />
     <Compile Include="HL7.Fhir.Instance.Support\XsdDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
