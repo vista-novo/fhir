@@ -7,11 +7,14 @@ public class Example {
   private String description;
   private File path;
   private String xhtm;
-  public Example(String name, String description, File path) {
+  private String type;
+  
+  public Example(String name, String description, File path, String type) {
     super();
     this.name = name;
     this.description = description;
     this.path = path;
+    this.type = type;
   }
   public String getName() {
     return name;
@@ -41,6 +44,12 @@ public class Example {
   }
   public String getXhtm() {
     return xhtm;
+  }
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
   }
   
   

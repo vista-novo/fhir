@@ -43,6 +43,7 @@ import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
 import org.hl7.fhir.tools.publisher.implementations.ECoreOclGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
+import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -349,22 +350,29 @@ public class Publisher {
     if (!e.getPath().exists())
       throw new Exception("unable to find example file");
     String n = e.getFileTitle();
-
-    // xml to xhtml of xml
-    // first pass is to strip the xsi: stuff. seems to need double processing in order to delete namespace crap
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     factory.setNamespaceAware(true); 
     DocumentBuilder builder = factory.newDocumentBuilder();
-    Document xdoc = builder.parse(new FileInputStream(e.getPath()));
-    XmlGenerator xmlgen = new XmlGenerator();
-    if (xdoc.getDocumentElement().getLocalName().equals("feed"))
-      xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
-    else
-      xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
 
-    // reload it now
+    if ("csv".equals(e.getType())) {
+      CSVProcessor csv = new CSVProcessor();
+      csv.setSource(new FileInputStream(e.getPath()));
+      csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath().getAbsolutePath(), ".csv")));
+      csv.setOutput(new FileOutputStream(page.getFolders().dstDir+n+".xml"));
+      csv.process();
+    } else {
+      // strip the xsi: stuff. seems to need double processing in order to delete namespace crap
+      Document xdoc = builder.parse(new FileInputStream(e.getPath()));
+      XmlGenerator xmlgen = new XmlGenerator();
+      if (xdoc.getDocumentElement().getLocalName().equals("feed"))
+        xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
+      else
+        xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+    }
+    
+    // reload it now, xml to xhtml of xml
     builder = factory.newDocumentBuilder();
-    xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
+    Document xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
     XhtmlGenerator xhtml = new XhtmlGenerator();
     xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"), n.toUpperCase().substring(0, 1)+n.substring(1), e.getDescription());
     XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page.getFolders().dstDir+n+".xml.htm"));

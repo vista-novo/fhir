@@ -13,6 +13,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeDefn;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
@@ -216,6 +217,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
     def.append("    function Link : "+tn+"; overload;\r\n");
     def.append("    function Clone : "+tn+"; overload;\r\n");
+    if (root.typeCode().equals("Resource"))
+      def.append("    procedure ListSearchParams(oParams : TFHIRSearchParameters); override;\r\n");
     def.append("    {!script show}\r\n");
     def.append("  published\r\n");
     def.append(defPub.toString());
@@ -243,7 +246,14 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
     impl2.append("end;\r\n\r\n");
-    
+    if (root.typeCode().equals("Resource")) {
+      ResourceDefn r = (ResourceDefn) root;
+      impl2.append("procedure "+tn+".ListSearchParams(oParams : TFHIRSearchParameters);\r\n");
+      impl2.append("begin\r\n");
+      for (String n : r.getSearchParams().keySet())
+        impl2.append("  oParams.add('"+n+"', '"+defCode.escape(r.getSearchParams().get(n))+"');\r\n");
+      impl2.append("end;\r\n\r\n");
+    }
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := "+tn+"(inherited Link);\r\n");
@@ -526,20 +536,19 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       }
     }
     if (tn == null) {
-      if (e.getTypes().size() > 0) {
+      if (e.typeCode().startsWith("@")) {
+        tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
+        typeNames.put(e,  tn);
+      } else if (e.getTypes().size() > 0) {
         tn = getTypeName(e);
         typeNames.put(e,  tn);
-      } else {
-        if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
-          tn = typeNames.get(getElementForPath(root, e.getElements().get(0).typeCode().substring(1)));
-          typeNames.put(e,  tn);
-        } else {
-          tn = "T"+path+getTitle(e.getName());
-          strucs.add(e);
-          typeNames.put(e,  tn);
-          for (ElementDefn c : e.getElements()) {
-            scanNestedTypes(root, path+getTitle(e.getName()), c);
-          }
+      } else 
+      {
+        tn = "T"+path+getTitle(e.getName());
+        strucs.add(e);
+        typeNames.put(e,  tn);
+        for (ElementDefn c : e.getElements()) {
+          scanNestedTypes(root, path+getTitle(e.getName()), c);
         }
       }
     }
@@ -766,6 +775,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
               if (td.getName().equalsIgnoreCase("string")) {
                 workingComposerX.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is TFHIRType"+getTitle(td.getName())+" then\r\n    Text('"+pfx+getTitle(td.getName())+"', TFHIRType"+getTitle(td.getName())+"(elem."+s+").value)"+(i == t-1?";" : "")+"\r\n");
                 workingComposerJ.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is TFHIRType"+getTitle(td.getName())+" then\r\n    Prop('"+pfx+getTitle(td.getName())+"', TFHIRType"+getTitle(td.getName())+"(elem."+s+").value)"+(i == t-1?";" : "")+"\r\n");
+              } else if (td.getName().equalsIgnoreCase("boolean") ) {
+                  workingComposerX.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is TFHIRType"+getTitle(td.getName())+" then\r\n    Text('"+pfx+getTitle(td.getName())+"', BooleanToString(TFHIRType"+getTitle(td.getName())+"(elem."+s+").value))"+(i == t-1?";" : "")+"\r\n");
+                  workingComposerJ.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is TFHIRType"+getTitle(td.getName())+" then\r\n    Prop('"+pfx+getTitle(td.getName())+"', BooleanToString(TFHIRType"+getTitle(td.getName())+"(elem."+s+").value))"+(i == t-1?";" : "")+"\r\n");
               } else {
                 workingComposerX.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is T"+getTitle(td.getName())+" then\r\n    Compose"+getTitle(td.getName())+"('"+pfx+getTitle(td.getName())+"', T"+getTitle(td.getName())+"(elem."+s+"))"+(i == t-1?";" : "")+"\r\n");
                 workingComposerJ.append("  "+(i==0 ? "if" : "else if")+" elem."+s+" is T"+getTitle(td.getName())+" then\r\n    Compose"+getTitle(td.getName())+"('"+pfx+getTitle(td.getName())+"', T"+getTitle(td.getName())+"(elem."+s+"))"+(i == t-1?";" : "")+"\r\n");
@@ -1152,135 +1164,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.classImpls.add(prsrImpl.toString());
     prsrCode.finish();
     
-    DelphiCodeGenerator defnCode = new DelphiCodeGenerator(new FileOutputStream(implDir+"FHIRDefinitions.pas"));
-    defnCode.start();
-    defnCode.name = "FHIRDefinitions";
-    defnCode.comments.add("FHIR v"+version+" generated "+Config.DATE_FORMAT().format(genDate));
-    defnCode.uses.add("FHIRDefinitionBase");
-    defnCode.procsPub.add("function LoadFHIRDefinitions : TFHIRDefinitions;\r\n");
-    
-    for (BindingSpecification c : definitions.getBindings().values()) 
-      if (!c.getName().equals("*unbound*")) {
-      defnCode.procs.add("procedure addConceptDomain"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRConceptDomain;\r\nbegin\r\n  cd := TFHIRConceptDomain.create();\r\n  try\r\n"+
-        "    cd.name := '"+c.getName()+"';\r\n"+
-        "    cd.definition := '"+c.getDefinition()+"';\r\n"+
-        "    cd.binding := bt"+c.getBinding()+";\r\n"+
-        "    cd.bindingStrength := bs"+c.getBindingStrength()+";\r\n"+
-        "    cd.reference := '"+c.getReference()+"';\r\n"+
-        "    cd.description := '"+c.getDescription()+"';\r\n");
-      for (DefinedCode dc : c.getCodes()) 
-        defnCode.procs.add("    cd.codes.add(TFHIRDefinedCode.create('"+dc.getCode()+"', '"+dWrap(dc.getDefinition())+"', '"+dWrap(dc.getComment())+"'));");
-      defnCode.procs.add("    definitions.conceptDomains.add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
-      }
-    
-    int i = 0;
-    for (TypeDefn c : definitions.getKnownTypes()) {
-      i++;
-      defnCode.procs.add("procedure addKnownType"+getTitle(c.getName())+"_"+Integer.toString(i)+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRTypeDefn;\r\nbegin\r\n  cd := TFHIRTypeDefn.create();\r\n  try\r\n"+
-          "    cd.name := '"+c.getName()+"';\r\n");
-        for (String s : c.getParams()) 
-          defnCode.procs.add("    cd.params.add('"+dWrap(s)+"');");
-        defnCode.procs.add("    definitions.KnownTypes.add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
-    }
-
-    addElementDefn(definitions, defnCode, definitions.getTypes(), "Type", "types");
-    addElementDefn(definitions, defnCode, definitions.getStructures(), "Structure", "structures");
-    addElementDefn(definitions, defnCode, definitions.getInfrastructure(), "Infrastructure", "infrastructure");
-    addElementDefn(definitions, defnCode, definitions.getResources(), "Resource", "resources");
-
-    
-    defnCode.procs.add("\r\nfunction LoadFHIRDefinitions : TFHIRDefinitions;\r\nbegin\r\n  result := TFHIRDefinitions.create;\r\n  try");
-    for (BindingSpecification c : definitions.getBindings().values()) 
-      if (!c.getName().equals("*unbound*"))
-        defnCode.procs.add("    addConceptDomain"+getTitle(c.getName())+"(result);");
-    defnCode.procs.add("");
-    for (DefinedCode c : definitions.getKnownResources().values()) 
-        defnCode.procs.add("    result.KnownResources.add(TFHIRDefinedCode.create('"+c.getCode()+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getComment())+"'));");
-    defnCode.procs.add("");
-    for (DefinedCode c : definitions.getFutureResources().values()) 
-      defnCode.procs.add("    result.FutureResources.add(TFHIRDefinedCode.create('"+c.getCode()+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getComment())+"'));");
-    defnCode.procs.add("");
-    for (DefinedCode c : definitions.getConstraints().values()) 
-      defnCode.procs.add("    result.Constraints.add(TFHIRDefinedCode.create('"+c.getCode()+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getComment())+"'));");
-    defnCode.procs.add("");
-    for (DefinedCode c : definitions.getPrimitives().values()) 
-      defnCode.procs.add("    result.Primitives.add(TFHIRDefinedCode.create('"+c.getCode()+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getComment())+"'));");
-    defnCode.procs.add("");
-    i = 0;
-    for (TypeDefn c : definitions.getKnownTypes()) {
-      i++;
-      defnCode.procs.add("    addKnownType"+getTitle(c.getName())+"_"+Integer.toString(i)+"(result);");
-    }
-    defnCode.procs.add("");
-    for (ElementDefn c : definitions.getTypes().values()) {
-      defnCode.procs.add("    addTypeElementDefn"+c.getName()+"(result);");
-    }
-    for (ElementDefn c : definitions.getStructures().values()) {
-      defnCode.procs.add("    addStructureElementDefn"+c.getName()+"(result);");
-    }
-    for (ElementDefn c : definitions.getInfrastructure().values()) {
-      defnCode.procs.add("    addInfrastructureElementDefn"+c.getName()+"(result);");
-    }
-    for (ElementDefn c : definitions.getResources().values()) {
-      defnCode.procs.add("    addResourceElementDefn"+c.getName()+"(result);");
-    }
-    for (String c : definitions.getSpecialResources()) {
-      defnCode.procs.add("    addSpecialResourceElementDefn"+c+"(result);");
-    }
-    defnCode.procs.add("");
-    defnCode.procs.add("    result.Link;\r\n  finally\r\n    result.free\r\n  end;\r\nend;\r\n");
-    defnCode.finish();
-    
     ZipGenerator zip = new ZipGenerator(destDir+"delphi.zip");
     zip.addFiles(implDir, "", ".pas");
     zip.close();    
-  }
-
-  private void addElementDefn(Definitions definitions, DelphiCodeGenerator defnCode, Map<String, ? extends ElementDefn> types, String pfx, String home) throws Exception {
-   // throw new Exception("todo");
-//    for (ElementDefn c : types.values()) {
-//      defnCode.procs.add("procedure add"+pfx+"ElementDefn"+getTitle(c.getName())+"(definitions : TFHIRDefinitions);\r\nvar\r\n  cd : TFHIRElementDefn;\r\nbegin\r\n  cd := TFHIRElementDefn.create("+
-//          "c"+c.getConformance()+", "+c.getMinCardinality()+", "+(c.getMaxCardinality() == null ? "-1" : c.getMaxCardinality())+", '"+dWrap(c.getBindingName())+"', '"+dWrap(c.getName())+"', '"+ 
-//          dWrap(c.getShortDefn())+"', '"+dWrap(c.getDefinition())+"', '"+dWrap(c.getRequirements())+"', "+c.isMustUnderstand()+", '"+dWrap(c.getRimMapping())+"', '"+ 
-//          dWrap(c.getComments())+"', '"+dWrap(c.getV2Mapping())+"', '"+dWrap(c.getTodo())+"', '"+dWrap(c.getCommitteeNotes())+"', '"+dWrap(c.getCondition())+"', '"+dWrap(c.getExample())+"', '"+ 
-//          dWrap(c.typeCode())+"', "+c.isNolist()+");\r\n  try");
-//      
-//      for (ElementDefn g : c.getElements()) { 
-//        StringBuilder s = new StringBuilder();
-//        s.append("    cd.AddChild(TFHIRElementDefn.create("+
-//            "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
-//            dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
-//            dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
-//            dWrap(g.typeCode())+"', "+g.isNolist()+")");
-//        doChildElements(s, g, "      ");
-//        s.append(");");
-//        defnCode.procs.add(s.toString());
-//      }
-//      defnCode.procs.add("    definitions."+home+".add(cd.Link);\r\n  finally\r\n    cd.free\r\n  end;\r\nend;\r\n");
-//    }
-  }
-
-  private void doChildElements(StringBuilder content, ElementDefn focus, String indent) {
-//    for (ElementDefn g : focus.getElements()) { 
-//      String s = "\r\n"+indent+".AddChild(TFHIRElementDefn.create("+
-//          "c"+g.getConformance()+", "+g.getMinCardinality()+", "+(g.getMaxCardinality() == null ? "-1" : g.getMaxCardinality())+", '"+dWrap(g.getBindingName())+"', '"+dWrap(g.getName())+"', '"+ 
-//          dWrap(g.getShortDefn())+"', '"+dWrap(g.getDefinition())+"', '"+dWrap(g.getRequirements())+"', "+g.isMustUnderstand()+", '"+dWrap(g.getRimMapping())+"', '"+ 
-//          dWrap(g.getComments())+"', '"+dWrap(g.getV2Mapping())+"', '"+dWrap(g.getTodo())+"', '"+dWrap(g.getCommitteeNotes())+"', '"+dWrap(g.getCondition())+"', '"+dWrap(g.getExample())+"', '"+ 
-//          dWrap(g.typeCode())+"', "+g.isNolist()+")";
-//      doChildElements(content, g, indent + "  ");
-//      s = s + ")";
-//      content.append(s);
-//    }    
-  }
-
-  private String dWrap(String definition) {
-    String s = definition == null ? "" : definition.replace("'", "''").replace("\n", "'+#10+'").replace("\r", "'+#13+'");
-    int i = 202;
-    while (s.length() > i) {
-      s = s.substring(0, i)+"'+\r\n      '"+s.substring(i);
-      i = i + 200;      
-    }
-    return s;    
   }
 
   private void generateResource() throws Exception {
@@ -1333,6 +1219,18 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       }
     }
 
+    con.append("\r\n  CLASSES_TFHIRResourceType : Array[TFHIRResourceType] of TFHIRResourceClass = (");
+    i = 0;
+    for (String s : definitions.getResources().keySet()) {
+      i++;
+      if (i == l) {
+        con.append("T"+getTitle(s)+");");
+      }
+      else {
+        con.append("T"+getTitle(s)+", ");
+      }
+    }
+
 
     defCode.enumDefs.add(def.toString());
     defCode.enumConsts.add(con.toString());
@@ -1362,6 +1260,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
     def.append("    function Link : TFHIRResource; overload;\r\n");
     def.append("    function Clone : TFHIRResource; overload;\r\n");
+    def.append("    procedure ListSearchParams(oParams : TFHIRSearchParameters); overload; virtual;\r\n");
     def.append("    {!script show}\r\n");
     def.append("  published\r\n");
     def.append("    Property ResourceType : TFHIRResourceType read GetResourceType;\r\n\r\n");
@@ -1378,6 +1277,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    }\r\n");
     def.append("    property format : TFHIRFormat read FFormat write FFormat;\r\n");
     def.append("  end;\r\n");
+    def.append("  \r\n");
+    def.append("  TFHIRResourceClass = class of TFHIRResource;\r\n");
+  
     
     def.append("\r\n");
     StringBuilder impl2 = new StringBuilder();
@@ -1408,6 +1310,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("function TFHIRResource.Clone : TFHIRResource;\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := TFHIRResource(inherited Clone);\r\n");
+    impl2.append("end;\r\n\r\n");
+    impl2.append("procedure TFHIRResource.ListSearchParams(oParams : TFHIRSearchParameters);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  oParams.add('n', 'Starting offset of the first record to return in the search set');\r\n");
+    impl2.append("  oParams.add('n', 'Number of return records requested');\r\n");
     impl2.append("end;\r\n\r\n");
     impl2.append("procedure TFHIRResource.SetResourceId(value : string);\r\n");
     impl2.append("begin\r\n");

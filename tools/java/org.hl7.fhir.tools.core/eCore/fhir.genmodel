@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.hl7.fhir.tools/src"
+    modelPluginID="org.hl7.fhir.tools" modelName="Fhir" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>FHIR.ecore</foreignModel>
+  <genPackages prefix="Fhir" basePackage="org.hl7.fhir.definitions.ecore" disposableProviderFactory="true"
+      ecorePackage="FHIR.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="FHIR.ecore#//BindingType">
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingType/Unbound"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingType/CodeList"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingType/ValueSet"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingType/Reference"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingType/Special"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="FHIR.ecore#//BindingStrength">
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingStrength/Unstated"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingStrength/Required"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingStrength/Preferred"/>
+      <genEnumLiterals ecoreEnumLiteral="FHIR.ecore#//BindingStrength/Suggested"/>
+    </genEnums>
+    <genClasses ecoreClass="FHIR.ecore#//Definitions">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/bindings"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/futureResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Definitions/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Definitions/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/primitives"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/events"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Definitions/profiles"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//ElementDefn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/todo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/maxCardinality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/minCardinality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/allowDAR"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/mustUnderstand"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/invariant"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/mustSupport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/binding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/shortDefn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/requirements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/comments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/mappings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/committeeNotes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/exampleValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/profileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/targetUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/fixedValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/aggregation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/derivation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ElementDefn/inherited"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/elements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference FHIR.ecore#//ElementDefn/content"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//Invariant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Invariant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Invariant/human"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Invariant/ocl"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Invariant/xpath"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//TypeRef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//TypeRef/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//TypeRef/param"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//Binding">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/binding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/strength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/reference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Binding/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Binding/codes"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//Mapping">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Mapping/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Mapping/details"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//ResourceDefn">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ResourceDefn/definition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ResourceDefn/invariants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ResourceDefn/example"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ResourceDefn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ResourceDefn/sandbox"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//ResourceDefn/special"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//Example">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Example/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Example/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Example/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Example/source"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//DefinedCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//DefinedCode/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//DefinedCode/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//DefinedCode/comment"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//TypeDefn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//TypeDefn/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//TypeDefn/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//TypeDefn/pattern"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//Constraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Constraint/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//Constraint/defintion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Constraint/constrains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//Constraint/details"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//EventDefn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventDefn/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventDefn/definition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventDefn/followUps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//EventDefn/usages"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//EventUsage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventUsage/notes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventUsage/requestResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventUsage/requestAggregations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventUsage/responseResources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//EventUsage/responseAggregations"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//ProfileDefn">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ProfileDefn/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference FHIR.ecore#//ProfileDefn/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="FHIR.ecore#//MetaDataItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//MetaDataItem/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute FHIR.ecore#//MetaDataItem/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

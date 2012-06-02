@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.parsers;
+package org.hl7.fhir.utilities;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

@@ -379,5 +379,12 @@ public class Utilities {
   public static void createDirectory(String path) {
     new File(path).mkdirs();    
   }
+
+  public static String changeFileExt(String name, String ext) {
+    if (name.lastIndexOf('.') > -1)
+      return name.substring(0, name.lastIndexOf('.')) + ext;
+    else
+      return name+ext;
+  }
 	
 }

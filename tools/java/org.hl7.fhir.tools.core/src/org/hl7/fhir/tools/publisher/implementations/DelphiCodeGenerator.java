@@ -31,6 +31,16 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
 	public void start() throws Exception {
 	}
 
+	public String escape(String v) {
+	  StringBuilder s = new StringBuilder();
+	  for (char c : v.toCharArray())
+	    if (c == '\'')
+	      s.append("''");
+	    else
+	      s.append(c);
+	  return s.toString();
+	}
+	
 	public void finish() throws Exception {
 	  if (precomments.size() > 0) {
 	    for (int i = 0; i < precomments.size(); i++) {
@@ -71,12 +81,6 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
       for (String s : enumDefs) {
         write(s+"\r\n");
       }
-
-      write("Const\r\n");
-      for (String s : enumConsts) {
-        write(s+"\r\n");
-      }
-      write("\r\n");
     }
 
     if (classDefs.size() > 0) {
@@ -88,6 +92,14 @@ public class DelphiCodeGenerator extends OutputStreamWriter {
       for (String s : classDefs) {
         write(s+"\r\n");
       }
+    }
+    if (enumDefs.size() > 0) {
+      
+      write("Const\r\n");
+      for (String s : enumConsts) {
+        write(s+"\r\n");
+      }
+      write("\r\n");
     }
     if (procsPub.size() > 0) {
       for (String s : procsPub) {

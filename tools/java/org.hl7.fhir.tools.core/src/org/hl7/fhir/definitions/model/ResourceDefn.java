@@ -8,6 +8,7 @@ import java.util.Map;
 public class ResourceDefn extends ElementDefn {
    private List<Example> examples = new ArrayList<Example>();
    private Map<String, Invariant> invariants = new HashMap<String, Invariant>();
+   private Map<String, String> searchParams = new HashMap<String, String>();
    
    private boolean sandbox;
 
@@ -25,6 +26,10 @@ public class ResourceDefn extends ElementDefn {
 
   public Map<String, Invariant> getInvariants() {
     return invariants;
+  }
+
+  public Map<String, String> getSearchParams() {
+    return searchParams;
   } 
    
 }

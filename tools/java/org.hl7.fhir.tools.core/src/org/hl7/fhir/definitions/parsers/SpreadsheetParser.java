@@ -59,6 +59,7 @@ public class SpreadsheetParser {
     for (int row = 0; row < sheet.rows.size(); row++) {
       processLine(root, sheet, row);
     }
+    
     return root;
   }
 
@@ -78,6 +79,7 @@ public class SpreadsheetParser {
     }
     readEvents(xls.getSheets().get("Events"));
     readExamples(root, xls.getSheets().get("Examples"));
+    readSearchParams(root, xls.getSheets().get("Search"));
     return root;
   }
 
@@ -95,6 +97,21 @@ public class SpreadsheetParser {
         throw new Exception("duplicate or missing invariant id "+getLocation(row));
       root2.getInvariants().put(s, inv);
     }
+  }
+
+  private void readSearchParams(ResourceDefn root2, Sheet sheet) throws Exception {
+    if (sheet != null)
+      for (int row = 0; row < sheet.rows.size(); row++) {
+
+        if (!sheet.hasColumn(row, "Name"))
+          throw new Exception("Search Param has no name "+getLocation(row));
+        if (!sheet.hasColumn(row, "Description"))
+          throw new Exception("Search Param has no dascription "+getLocation(row));
+        String n = sheet.getColumn(row, "Name");
+        String d = sheet.getColumn(row, "Description");
+
+        root2.getSearchParams().put(n, d);
+      }
   }
 
 	private void readBindings(Sheet sheet) throws Exception {
@@ -184,7 +201,7 @@ public class SpreadsheetParser {
           File file = new File(folder+sheet.getColumn(row, "Filename"));
           if (!file.exists())
             throw new Exception("Example "+name+" file '"+file.getAbsolutePath()+"' not found parsing "+this.name);
-          defn.getExamples().add(new Example(name, desc, file));
+          defn.getExamples().add(new Example(name, desc, file, sheet.getColumn(row, "Type")));
         }
       }         
     }
@@ -192,7 +209,7 @@ public class SpreadsheetParser {
       File file = new File(folder+title+"-example.xml");
       if (!file.exists())
         throw new Exception("Example (file '"+file.getAbsolutePath()+"') not found parsing "+this.name);
-      defn.getExamples().add(new Example("General", "Example of "+title, file));
+      defn.getExamples().add(new Example("General", "Example of "+title, file, null));
     }
   }
   

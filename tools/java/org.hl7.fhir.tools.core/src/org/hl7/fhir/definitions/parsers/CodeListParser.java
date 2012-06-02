@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.utilities.CSVReader;
 
 public class CodeListParser  extends CSVReader {
 
