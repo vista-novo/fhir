@@ -462,8 +462,12 @@ public class PageProcessor implements Logger  {
         src = s1+loadXmlNotes(name, "introduction")+s3;
       else if (com[0].equals("examples")) 
         src = s1+produceExamples(resource)+s3;
+      else if (com[0].equals("examples-book")) 
+        src = s1+produceBookExamples(resource)+s3;
       else if (com[0].equals("name"))
         src = s1+name+s3;
+      else if (com[0].equals("search"))
+        src = s1+getSearch(resource)+s3;
       else if (com[0].equals("version"))
         src = s1+ini.getStringProperty("FHIR", "version")+s3;
       else if (com[0].equals("gendate"))
@@ -492,10 +496,40 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
+  private String getSearch(ResourceDefn resource) {
+    if (resource.getSearchParams().size() == 0)
+      return "";
+    else {
+      StringBuilder b = new StringBuilder();
+      b.append("<h2>Examples</h2>\r\n");
+      b.append("<table class=\"list\">\r\n");
+      List<String> names = new ArrayList<String>();
+      names.addAll(resource.getSearchParams().keySet());
+      Collections.sort(names);
+      for (String n : names) {
+        b.append("<tr><td>"+n+"</td><td>"+Utilities.escapeXml(resource.getSearchParams().get(n))+"</td></tr>\r\n");
+      }
+      b.append("</table>\r\n");
+      return b.toString();
+    }
+  }
+
   private String produceExamples(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     for (Example e: resource.getExamples()) {
       s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
+    }
+    return s.toString();
+  }
+
+  private String produceBookExamples(ResourceDefn resource) {
+    StringBuilder s = new StringBuilder();
+    for (Example e: resource.getExamples()) {
+      if (e.isInBook()) {
+        s.append("<h3>"+Utilities.escapeXml(e.getName())+"</h3>\r\n");
+        s.append("<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n");
+        s.append(e.getXhtm());
+      }
     }
     return s.toString();
   }

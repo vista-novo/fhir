@@ -16,6 +16,10 @@
     <entry>
       <link>datatypes</link>
       <name>Data Types</name>
+      <entry>
+        <link>examples-datatypes</link>
+        <name>Additional Examples</name>
+      </entry>
     </entry>
     <entry>
       <link>terminologies</link>

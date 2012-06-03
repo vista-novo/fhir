@@ -57,7 +57,7 @@ public class SpreadsheetParser {
     
     sheet = xls.getSheets().get("Data Elements");
     for (int row = 0; row < sheet.rows.size(); row++) {
-      processLine(root, sheet, row);
+      processLine(root, sheet, row, false);
     }
     
     return root;
@@ -75,7 +75,7 @@ public class SpreadsheetParser {
 
     sheet = xls.getSheets().get("Data Elements");
     for (int row = 0; row < sheet.rows.size(); row++) {
-      processLine(root, sheet, row);
+      processLine(root, sheet, row, true);
     }
     readEvents(xls.getSheets().get("Events"));
     readExamples(root, xls.getSheets().get("Examples"));
@@ -176,7 +176,7 @@ public class SpreadsheetParser {
 		  ResourceDefn e = new ResourceDefn();
 			sheet = xls.getSheets().get(n);
 			for (int row = 0; row < sheet.rows.size(); row++) {
-				processLine(e, sheet, row);
+				processLine(e, sheet, row, true);
 			}
 			sheet = xls.getSheets().get(n+"-Extensions");
 			if (sheet != null) {
@@ -201,7 +201,7 @@ public class SpreadsheetParser {
           File file = new File(folder+sheet.getColumn(row, "Filename"));
           if (!file.exists())
             throw new Exception("Example "+name+" file '"+file.getAbsolutePath()+"' not found parsing "+this.name);
-          defn.getExamples().add(new Example(name, desc, file, sheet.getColumn(row, "Type")));
+          defn.getExamples().add(new Example(name, desc, file, sheet.getColumn(row, "Type"), parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
         }
       }         
     }
@@ -209,7 +209,7 @@ public class SpreadsheetParser {
       File file = new File(folder+title+"-example.xml");
       if (!file.exists())
         throw new Exception("Example (file '"+file.getAbsolutePath()+"') not found parsing "+this.name);
-      defn.getExamples().add(new Example("General", "Example of "+title, file, null));
+      defn.getExamples().add(new Example("General", "Example of "+title, file, null, true));
     }
   }
   
@@ -258,7 +258,7 @@ public class SpreadsheetParser {
 		}
 	}
 
-	private void processLine(ResourceDefn root, Sheet sheet, int row) throws Exception {
+	private void processLine(ResourceDefn root, Sheet sheet, int row, boolean allowDAR) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (path.contains("#"))
@@ -289,7 +289,7 @@ public class SpreadsheetParser {
 		}
 		e.setProfileName(profileName);
 		
-    e.setAllowDAR(parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
+    e.setAllowDAR(allowDAR && parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
 		e.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
     e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"), row, false));
     String s = sheet.getColumn(row, "Condition");

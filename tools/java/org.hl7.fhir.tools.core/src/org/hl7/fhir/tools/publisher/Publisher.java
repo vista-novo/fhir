@@ -76,6 +76,20 @@ import org.xml.sax.SAXParseException;
  * @author Grahame
  *
  */
+/**
+ *             EObject eObject = ...;
+ 
+            Resource resource = new XMLResourceImpl();
+            resource.getContents().add(eObject);
+ 
+            Map options = new HashMap();
+            options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+            options.put(XMLResource.OPTION_XML_VERSION, "1.0");      
+            new XMLProcessor().save(System.err, resource, options);
+            
+ * @author Grahame
+ *
+ */
 public class Publisher {
 
   private SourceParser prsr;
@@ -636,7 +650,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 	  }
 
 	  public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
-	    System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
+	    // System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
 	    if (!(namespaceURI.equals("http://hl7.org/fhir") || namespaceURI.equals("http://www.w3.org/1999/xhtml")))
 	      return null;
 	      try {
@@ -655,6 +669,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 	static final String JAXP_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 	private void validateXml() throws Exception {
     log("Validating XML");
+    log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
     sources[0] = new StreamSource(new FileInputStream(page.getFolders().dstDir+"fhir-all.xsd"));
     sources[1] = new StreamSource(new FileInputStream(page.getFolders().dstDir+"atom.xsd"));
@@ -662,6 +677,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		schemaFactory.setErrorHandler(new MyErrorHandler(false));
 		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
 		Schema schema = schemaFactory.newSchema(sources);	
+    log(".... done");
 
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 		  for (Example e : r.getExamples()) {

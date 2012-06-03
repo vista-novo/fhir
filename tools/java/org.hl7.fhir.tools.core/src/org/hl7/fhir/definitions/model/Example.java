@@ -8,13 +8,15 @@ public class Example {
   private File path;
   private String xhtm;
   private String type;
+  private boolean inBook;
   
-  public Example(String name, String description, File path, String type) {
+  public Example(String name, String description, File path, String type, boolean inBook) {
     super();
     this.name = name;
     this.description = description;
     this.path = path;
     this.type = type;
+    this.inBook = inBook;
   }
   public String getName() {
     return name;
@@ -50,6 +52,12 @@ public class Example {
   }
   public void setType(String type) {
     this.type = type;
+  }
+  public boolean isInBook() {
+    return inBook;
+  }
+  public void setInBook(boolean inBook) {
+    this.inBook = inBook;
   }
   
   

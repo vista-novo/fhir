@@ -495,7 +495,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="116.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="251.25"/>
@@ -505,22 +505,26 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Filename</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">In Book</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
     <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Publishing</Data></Cell>
     <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
     <Cell><Data ss:Type="String">person-examples.xml</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Cypress</Data></Cell>
     <Cell><Data ss:Type="String">Example People from cypress project</Data></Cell>
     <Cell><Data ss:Type="String">person-examples-cypress-template.xml</Data></Cell>
     <Cell><Data ss:Type="String">csv</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -534,8 +538,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

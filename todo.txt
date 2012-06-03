@@ -1,11 +1,2 @@
 length limits on system artifacts
 
-
-
- <%if isFHIR%>
-    <!-- START TAB 1A CONTENTS -->   
-   <div id="tabs-1a" class="ui-tabs-hide"> 
-<div class="SectionHeaderSmall">FHIR Details <%hchelp("interfacefhir.htm")%></div>
-   </div>
-   <!-- END TAB 1A CONTENTS -->    
- <%endif%> 

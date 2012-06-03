@@ -31,8 +31,8 @@ any differently. This table summarises the types:
 <table class="grid">
 <tr><td colspan="3">Core Types</td><td colspan="2">Structures</td></tr>
 <tr><td><a href="#Attachment">Attachment</a></td>             <td><a href="#Identifier">Identifier</a></td>  <td><a href="#Interval">Interval</a></td> <td><a href="#HumanId">HumanId</a></td> <td><a href="#Contact">Contact</a></td></tr>
-<tr><td><a href="#CodeableConcept">CodeableConcept</a></td>       <td><a href="#Quantity">Quantity</a></td>  <td><a href="#Ratio">Ratio</a></td>   <td><a href="#HumanName">HumanName</a></td>       <td></td></tr>
-<tr><td><a href="#Coding">Coding</a></td> <td><a href="#Choice">Choice</a></td>    <td></td>                   <td><a href="#Address">Address</a></td> <td><a href="#Schedule">Schedule</a></td></tr>
+<tr><td><a href="#Coding">Coding</a></td>       <td><a href="#Quantity">Quantity</a></td>  <td><a href="#Ratio">Ratio</a></td>   <td><a href="#HumanName">HumanName</a></td>       <td></td></tr>
+<tr><td><a href="#CodeableConcept">CodeableConcept</a></td> <td><a href="#Choice">Choice</a></td>    <td></td>                   <td><a href="#Address">Address</a></td> <td><a href="#Schedule">Schedule</a></td></tr>
 </table>
 <a name="primitive"></a>
 <h2>Primitive Types</h2>
@@ -256,33 +256,19 @@ to some organisation to further sub-allocate):</p>
 </pre>
 </div>
 
-
-<a name="CodeableConcept"></a>
-<h2>
-CodeableConcept
-</h2>
+<a name="Coding"></a>
+<h2>Coding</h2>
 <p>
-A CodeableConcept represents a represents a field that is usually defined by formal reference to one or more terminologies or ontologies, but may also be defined by the provision of text.
-</p>
-<%dt CodeableConcept%>
-<p>
-This data type has text and/or one more "codings" that all represent a single notional concept, 
-though the multiple codings will often have slightly different granularity due to the differences 
-in the definitions of the underlying codes.
-Each "<i>coding</i>" is a representation of the concept using a symbol from a defined "code system", 
+A "<i>coding</i>" is a representation of a defined concept using a symbol from a defined "code system", 
 which may be an enumeration, a list of codes, a full terminology such as SNOMED-CT or LOINC, 
-or a formal ontology. The concept may be coded multiple times in different code systems (or even 
-multiple times in the same code systems, where multiple forms are possible, such as 
-with SNOMED-CT). Whether or not <i>coding</i> elements are present, the <i>text</i> 
-is a human language representation of the concept as seen/selected/uttered by the user 
-who entered the data, and/or which represents the intended meaning of the user or concept. 
-Very often the <i>text</i> is the same as a <i>display</i> of one of the codings.
+or a formal ontology. 
 </p>
+<%dt Coding%>
+
 <a name="codesystem"></a>
 <p>
-For each <i>coding</i>, there must be a <i>system</i> the identifies the 
-terminology or ontology the <i>code</i> is defined by. The <i>system</i> is a URI that 
-may be an OID (oid:) or a UUID (uuid:), a specially defined URI from 
+There must be a <i>system</i> the identifies the terminology or ontology the <i>code</i> is defined by. 
+The <i>system</i> is a URI that may be an OID (oid:) or a UUID (uuid:), a specially defined URI from 
 <a href="terminologies.htm#codesystems"> the named systems list</a>, or a url that references 
 a definition of the system, or any other URI. OIDs and UUIDs may be registered in the HL7 OID 
 registry, and should be if the content is shared or exchanged across institutional boundaries.
@@ -293,13 +279,80 @@ is different - applications have to consult the ontologies or terminologies to m
 of comparisons. 
 </p>
 <p>
-If present, the <i>code</i> must be a syntactically correct symbol as 
-defined by the <i>system</i>. Note that codes are case sensitive unless specified otherwise by the code system.
-If no code is present, the coding means
-that the concept cannot be encoded in the identified system.
-The <i>display</i> is a text representation of the code that is 
-defined by the <i>system</i>, which can be used to display the code by
-an application that is not aware of the system. One of the codings 
+If present, the <i>code</i> must be a syntactically correct symbol as defined by the <i>system</i>. 
+Note that codes are case sensitive unless specified otherwise by the code system. If no code is 
+present and there is no <i>dataAbsentReasonM</i>, the coding should be interpreted to mean that 
+the concept cannot be encoded in the identified system. The <i>display</i> is a text representation 
+of the code that is  defined by the <i>system</i>, which can be used to display the code by
+an application that is not aware of the <i>system</i>. 
+</p>
+
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Coding element has a dataAbsentReason flag, it must contain a <i>system</i> element, 
+and it should contain a <i>display</i> if it contains a <i>code</i>.
+</p>
+<p>
+The context of use usually makes rules about what codes and systems are allowed or required in a 
+particular context by <a href="terminologies.htm">binding</a> the element to a value set.
+</p>
+</div>
+
+<div class="example">
+<p><b>Examples</b></p>
+<p>A simple code for headache, in ICD-10:</p>
+<pre class="xml">
+  &lt;x&gt;
+    &lt;code&gt;G44.1&lt;/code&gt;
+    &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
+  &lt;/coding&gt;
+  &lt;/x&gt;
+</pre>
+<p>A Snomed-CT expression:</p>
+<pre class="xml">
+  &lt;x&gt;
+    &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
+    &lt;system&gt;http://snomed.info&lt;/system&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
+<h3>Choosing Coding vs CodeableConcept</h3>
+<p>
+A <b>Coding</b> is a simple direct reference to a code in a code system. The following type, <b>CodeableConcept</b>
+is a complex type that may include multiple <b>Coding</b> and/or a text representation. The interplay between one
+or more coding systems and a text representation is an extremely common pattern encountered in healthcare data, and
+the CodeableConcept caters for the general case; accordingly, it is usually used in the resources in preference to
+the simpler Coding. Some resource definitions use <b>Coding</b> directly because the interplay between text and codes
+is inherently part of the resource model. In such cases, these resource definitions have to make allowance for the 
+design issues directly
+</p>
+
+
+<a name="CodeableConcept"></a>
+<h2>
+CodeableConcept
+</h2>
+<p>
+A CodeableConcept represents a represents a field that is usually defined by formal 
+reference to one or more terminologies or ontologies, but may also be defined by the 
+provision of text. This is a common pattern in healthcare data.
+</p>
+<%dt CodeableConcept%>
+<p>
+Each "<i>coding</i>" is a representation of the concept using a symbol from a defined "code system", 
+which may be an enumeration, a list of codes, a full terminology such as SNOMED-CT or LOINC, 
+or a formal ontology. The concept may be coded multiple times in different code systems (or even 
+multiple times in the same code systems, where multiple forms are possible, such as 
+with SNOMED-CT). The different codings may have slightly different granularity due to the differences 
+in the definitions of the underlying codes. 
+</p>
+<p>
+Whether or not <i>coding</i> elements are present, the <i>text</i> 
+is a human language representation of the concept as seen/selected/uttered by the user 
+who entered the data, and/or which represents the intended meaning of the user or concept. 
+Very often the <i>text</i> is the same as a <i>display</i> of one of the codings. One of the codings 
 may be flagged as the primary - the code that the user actually chose directly. 
 If present, the value of the primary element is an ID that must match an xml:id 
 on one of the codings. 
@@ -310,21 +363,14 @@ on one of the codings.
 <p>
 Unless the CodeableConcept element has a dataAbsentReason flag, it must contain 
 at least one <i>coding</i> with a <i>code</i>, or a <i>text</i>. 
-Each <i>coding</i> must contain a <i>system</i> element, and should contain a <i>display</i> if it contains a <i>code</i>.
 </p>
 <p>
-The context of use may frequently make rules about what codings are allowed or required.
+The context of use usually makes rules about what codes and systems are allowed or required in a 
+particular context by <a href="terminologies.htm">binding</a> the element to a value set.
 </p>
 </div>
-<a name="Coding"></a>
-<h3>"Coding" Data Type</h3>
-<p>
-The CodeableConcept data type represents a commonly encountered pattern around the use of coding, with multiple codings and a text. 
-In some circumstances, the resources and/or models that use these data types may be more prescriptive about the use of 
-multiple codings, the way that the text element interacts with the codings, and/or the way that codings are derived from each other. 
-In these circumstances, the "Coding" Data Type is used. The Coding type has the contents of the <i>coding</i> element as defined 
-in the <i>CodeableConcept</i> data type.
-</p>
+
+
 
 <div class="example">
 <p><b>Examples</b></p>

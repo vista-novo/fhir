@@ -23,19 +23,20 @@ XML format. This page documents how the XML content for resources is described
 and controlled. The XML may be validated by schema, and schemas are provided, but 
 validation is not required in operational systems (though the XML must always be 
 valid against this specification). In addition to the simple XML description, W3C 
-Schema and UML models are provided that may be a useful aid for system implementation.
+Schema, UML models, and other definitional models are provided that may be a 
+useful aid for system implementation.
 </p>
 
 <h2>XML Content Models</h2>
 <p>
-All the content model definitions provided in this specification follow the same general pattern:
+All the XML defined by this specifications is described using this same notation:
 </p>
 <pre>
- &lt;<b>name</b> xmlns="..."&gt; 
-   &lt;<b>nameA</b>&gt;<font color="Gray">&lt;!-- </font><font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
-   &lt;<b>nameB</b>&gt;<font color="Gray">&lt;!-- </font><font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
-   &lt;<b>nameC</b>&gt; <font color="Brown">&lt;!-- <b>One+</b> --&gt;</font>
-     &lt;<b>nameD</b><font color="Gray">&lt;!-- </font><font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
+ &lt;<b>name</b> xmlns="http://hl7.org/fhir"&gt; 
+   &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
+   &lt;<b title="Formal Definition">nameB</b> <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
+   &lt;<b>nameC</b>&gt; <font color="Brown"><font color="Gray">&lt;!-- </font> <b>1..*</b> --&gt;</font>
+     &lt;<b>nameD</b>  <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
    &lt;/nameC&gt;
  &lt;name&gt;
 </pre>
@@ -44,24 +45,27 @@ Notes:
 </p>
 <ul>
  <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed</li>
- <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>, which is usually specified as the default namespace on the root element</li>
- <li>The only other namespaces that occur in FHIR resources are where some external content model is introduced into the resource content model. XHTML is found in every resource - see below</li>
- <li>To build a valid resource, simple replace the contents of the elements with valid content as described by the conformance, cardinality and type rules found in the comment in each element</li>
- <li>The elements are assigned types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
- <li>In addition, elements have a control flag shown in red, that specifies whether the element must be present, is optional or may be marked as not present. This is explained below. The control flags are hyperlinked to their definitions.</li>
- <li>Unless specified otherwise, by the appearance of Zero+ or One+, an element can only appear once. If an element that can repeat is labelled as <font color="Brown"><b>Zero+</b></font> <font color="red">mand</font>, that means that any element that appears is mandatory </li>
- <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats.</li>
- <li>Any of the XML elements may have an xml id attribute to serve as the target of an reference.</li>
+ <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>, which is usually specified as the default namespace on the root element. The only other namespaces that occur in FHIR resources are where some external content model is introduced into the resource content model. XHTML is found in every resource - see below</li>
+ <li>To build a valid resource, simply replace the contents of the elements with valid content as described by the cardinality, type rules and content description found in the comment in each element</li>
+ <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. If the cardinality is shown in 
+    <font color="deeppink">Pink</font> then there is an additional condition that impacts on the allowed cardinality. This is available as a mouse-over text, or in the formal definitions</li>
+ <li>Some elements are marked with a <font color="red">d?</font>, which indicates that they are able to carry the "<i>dataAbsentReason</i>" attribute. <a href="#dataAbsentReason">See below for further discussion</a>.</li>
+ <li>The elements are assigned one or more types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
+ <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
+   If the element name is underlined, then applications are required to support and/or understand it</li>
+ <li>Any of the XML elements may have an xml id attribute (not shown) to serve as the target of an reference.</li>
+ <li>In addition to this description, other definitional forms are available, including W3C schema, Relax NG schema, RDF, and eCore.</li>
 </ul>
 <a name="metadata"></a>
+<h2>Resource Data and Metadata items</h2>
 <p>
 Every resource contains the following common elements:
 </p>
 <pre>
-&lt;<a href="#Resource" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
-  &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first. Never changes after creation</font>&lt;/id&gt;
-  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a>&gt; <a href="xml.htm#Control" class="cf">opt</a>  <a href="extensibility.htm"><font color="navy">See Extensions</font></a> &lt;/extensions&gt;
-  &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt; <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen"><a href="xml.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of resource, for human interpretation</font>&lt;/text&gt;
+&lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
+ &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>0..1</b></font> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font><font color="Gray"> --&gt;</font>&lt;/id&gt;
+ &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a> <font title="dataAbsentReason attribute is allowed" color="red">d?</font>&gt;<font color="Gray">&lt;!--</font> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extensions&gt;
+ &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of person, for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
 &lt;/[Name]&gt;
 </pre>
 <p>
@@ -84,11 +88,11 @@ In any environment where the resources are used, the technical details of the de
 
 
 <a name="dataAbsentReason"></a>
-<h2>dataAbsentReason &amp; Control Flags </h2>
+<h2>dataAbsentReason</h2>
 <p>
 Data Quality - or the lack thereof- is a ubiquitious issue in healthcare. In order to handle this, 
-every element defined as part of a resource data structure may have a dataAbsentReason 
-attribute, which is used to specify why the normally expected content of the data element is missing. 
+many elements defined as part of a resource may have a dataAbsentReason attribute, which may be used 
+to specify why the normally expected content of the data element is missing. 
 </p>
 <p>
 <pre class="xml">
@@ -114,57 +118,13 @@ Notes:
 <ul>
 <li>Using "masked" may be breach of security or confidentiality, but there are times when it's use
    is required to support alternate workflows for gaining access to denied information.</li>
-<li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from it's definition. Usually this is where the contained elements define what data is missing.</li>
-<li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present.</li>   
-<li>The <i>dataAbsentReason</i> attribute cannot be used inside the data types, nor can it be used in the <i>text</i> portion of a resource, nor inside an <i>extension</i> block (with the exception of the <i>value</i> of the extension)</li>
+<li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from it's normally defined content. Usually this is where the contained elements define what data is missing 
+  (for instance, that a <a href="datatypes.htm#Contact">home phone number</a> is unknown).</li>
+<li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present, but may choose to do so.</li>   
+<li>The <i>dataAbsentReason</i> attribute is never used inside the data types, nor can it be used in the <i>text</i> portion 
+  of a resource, nor inside an <i>extension</i> block (with the exception of the <i>value</i> of the extension)</li>
 </ul>
-<a name="Control"></a>
-<p> 
-Every element has a control flags which is used to control the degree to which missing or poor quality data
-is tolerated on a per element basis. The control flag must have one of the following values:
-</p>
-<table class="codes">
- <tr><td><font color="red">mand</font></td><td>The element must be present, and must be populated with correct data. i.e. Resource.id. No <i>dataAbsentReason</i> is allowed.</td></tr>
- <tr><td><font color="red">req</font></td><td>The element must be present, but may have a <i>dataAbsentReason</i> (todo: when would this be used?)</td></tr>
- <tr><td><font color="red">cond</font></td><td>The element may not be present, but if it is, may not have a dataAbsentReason. The condition must be explained in the notes that follow the definition</td></tr>
- <tr><td><font color="red">opt</font></td><td>The element doesn't have to be present. If it is present, it might have a dataAbsentReason. If the normal structure can be replaced with text, it might be.</td></tr>
- <tr><td><font color="red">proh</font></td><td>The element isn't allowed to be present. This is not used in the base specification, but used in <a href="profile.htm">Resource Profiles</a>.</td></tr>
-</table> 
-<p>
-This table summarises the relationship between minimum cardinality and the conformance flag:
-</p>
-<table class="codes">
- <tr>
-  <td></td>
-  <td><b>0..?</b></td>
-  <td><b>1..?</b></td>
- </tr>
- <tr>
-  <td><b><font color="red">mand</font></b></td>
-  <td>may be present<br/>no dataAbsentReason<br/>must be supported</td>
-  <td>must be present<br/>no dataAbsentReason<br/>must be supported</td>
- </tr>
- <tr>
-  <td><b><font color="red">req</font></b></td>
-  <td>may be present<br/>dataAbsentReason ok<br/>must be supported</td>
-  <td>must be present<br/>dataAbsentReason ok<br/>must be supported</td>
- </tr>
- <tr>
-  <td><b><font color="red">cond</font></b></td>
-  <td>presence depends<br/>dataAbsentReason depends<br/>depends condition</td>
-  <td>not valid</td>
- </tr>
- <tr>
-  <td><b><font color="red">opt</font></b></td>
-  <td>may be present<br/>dataAbsentReason ok<br/>choice to support</td>
-  <td>Not valid</td>
- </tr>
- <tr>
-  <td><b><font color="red">proh</font></b></td>
-  <td>may not be present<br/>no dataAbsentReason<br/>choice to support</td>
-  <td>Not valid</td>
- </tr>
-</table>
+
 <hr/>
 
 <img src="base.png"/>
@@ -291,17 +251,17 @@ the resource reference is fixed for a particular element, the reference includes
 the specification).
 </p>
 <p>
-Both the id and the version are URL based references - they must be literal URLS that resolve to the location of the resource.
-Both URLs may be relative URLS, in which case they are interpreted to contain the logical id/versionId of the resource in question,
+Both the id and the version are URL based references - they must be literal URLs that resolve to the location of the resource.
+Both URLs may be relative URLS, in which case they are interpreted to contain the logical id and versionId respectively of the resource in question,
 and the resolution of the logical reference is a matter of implementation logic. Using absolute URLs provides a stable scalable
 approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
-when trading across closed eco-system boundaries. URLs do not need to point to a <a href="http.htm">FHIR RESTful server</a>, though this is the
-preferred approach.
+when trading across closed eco-system boundaries. Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
+server</a>, though this is the preferred approach.
 </p>
 <p>
 A resource reference may contain either a version independent reference (<i>"id"</i>) or a version dependent reference (<i>"version"</i>)
-of both. It is at the descretion of the processor of the data which to use in a particular context. If relative references are used, a <i>version</i> 
-cannot be provided without an <i>id</i>, since the <i>version</i> is scoped by the <i>id</i>.
+or both. It is at the descretion of the processor of the data which to use in a particular context. If relative references are used, a <i>version</i> 
+cannot be provided without an <i>id</i>, since the <i>version</i> may be scoped by the <i>id</i>.
 </p>
 
 <div class="example">
@@ -319,7 +279,7 @@ cannot be provided without an <i>id</i>, since the <i>version</i> is scoped by t
     &lt;id&gt;http://fhir.hl7.org/svc/profile/@c8973a22-2b5b-4e76-9c66-00639c99e61b&lt;/id&gt;
   &lt;profile&gt;
 </pre>
-<p>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it.</p>
+<p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
 </div>
 <p>
 The logical <a href="datatypes.htm#id">id</a> and version id of a Resource can take one of the following forms:
@@ -334,10 +294,13 @@ The logical <a href="datatypes.htm#id">id</a> and version id of a Resource can t
 <p>
 Resource ids must be represented in lowercase. Ids are always opaque, and systems should not and need not attempt to determine 
 their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
+Note that absolute URLs that do not point to FHIR RESTful servers do not need to include the id in the URL, though this is good practice. 
+If the id is in the URL, it must be present in lower case. Irrespective of whether the URL points to a FHIR RESTful server, or includes
+the logical id in the URL, URLs are always considered to be case-sensitive, and lowercase <i>SHOULD</i> always be used.
 </p>
 <p>
-Some plain text narrative may be provided that describes the resource in addition to the resource reference (or in place of, unless the 
-resource reference is mandatory).
+Some plain text narrative may be provided that describes the resource in addition to the resource reference (or in place of, if a 
+dataAbsentReason is allowed).
 </p>
 <div class="example">
 <pre class="xml">
@@ -352,7 +315,7 @@ resource reference is mandatory).
 <p><b>Use</b></p>
 <p>
 Unless the resource reference element has a dataAbsentReason flag, it must contain 
-a valid <i>type</i> and <i>id</i>, or, if it is not mandatory, a text alternative. 
+a valid <i>type</i> and <i>id</i>, or, if a dataAbsentReason is allowed and present, a text alternative. 
 </p>
 </div>
 
@@ -412,11 +375,11 @@ Though the formal representation of the resources is in XML, many systems wish t
 The JSON format for the resources follows the standard XML format closely:
 </p>
 <pre>
- &lt;<b>name</b> xmlns="..."&gt; 
-   &lt;<b>nameA</b>&gt; <font color="red">opt</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> &lt;nameA&gt;
-   &lt;<b>nameB</b>&gt; <font color="red">mand</font> <font color="darkgreen">type</font> <font color="Brown"><b>Zero+</b></font> <font color="Navy">description</font> &lt;/nameB&gt;
-   &lt;<b>nameC</b>&gt; <font color="Brown">&lt;!-- <b>One+</b> --&gt;</font>
-     &lt;<b>nameD</b> <font color="red">mand</font> <font color="darkgreen">type="?"</font>&gt;<font color="navy">Relevant records</font> &lt;/nameD&gt;
+ &lt;<b>name</b> xmlns="http://hl7.org/fhir"&gt; 
+   &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
+   &lt;<b title="Formal Definition">nameB</b> <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
+   &lt;<b>nameC</b>&gt; <font color="Brown"><font color="Gray">&lt;!-- </font> <b>1..*</b> --&gt;</font>
+     &lt;<b>nameD</b>  <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
    &lt;/nameC&gt;
  &lt;name&gt;
 </pre>
@@ -442,7 +405,7 @@ is represented in JSON as
  <li>There is no namespaces in the JSON representation</li>
  <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form could also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
  <li>The xml attributes <i>id</i> (xml:id) and <i>dataAbsentReason</i> become JSON object attributes with the names "id" and "dataAbsentReason"; they come in that order before other defined elements</li>
- <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form (including instant, which is represented as plain text, not in a custom date format)</li>
+ <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form (including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
  <li>JSON property attributes never have empty values; omit a value if it is empty (same as for the xml)</li>
  <li>Items that may repeat are represented as arrays even if they do not repeat in the actual instance</li>
  <li>The XHTML &lt;div&gt; element is represented as a single escaped string of XHTML</li>

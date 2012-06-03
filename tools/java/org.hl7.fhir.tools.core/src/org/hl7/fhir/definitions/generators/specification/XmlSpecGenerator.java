@@ -106,9 +106,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return;
 		}
 
-		if (rootName == null || "x".equals(rootName))
-			write("&lt;");
-		else if (elem.isMustUnderstand() || elem.isMustSupport() )
+		if (rootName == null || "x".equals(rootName)) {
+		  if (elem.isMustUnderstand() || elem.isMustSupport() )
+		    write("&lt;<u title=\""+Utilities.escapeXml(elem.getDefinition() +" (this element must be supported or understood)")+"\">");
+		  else
+        write("&lt;<span title=\""+Utilities.escapeXml(elem.getDefinition())+"\">");
+		} else if (elem.isMustUnderstand() || elem.isMustSupport() )
       write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition() +" (this element must be supported or understood)")+"\" class=\"dict\"><u>");
 		else 
 			write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\">");
@@ -116,7 +119,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		// element contains xhtml
 		if (elem.typeCode().equals("xhtml")) 
 		{
-			write("<b>div</b> xmlns=\"http://www.w3.org/1999/xhtml\"> <font color=\"Gray\">&lt;!--</font> <a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font><font color=\"Gray\">&lt; --&gt;</font> &lt;/div&gt;\r\n");
+			write("<b title=\""+Utilities.escapeXml(elem.getDefinition())+"\">div</b></u> xmlns=\"http://www.w3.org/1999/xhtml\"> <font color=\"Gray\">&lt;!--</font> <a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font><font color=\"Gray\">&lt; --&gt;</font> &lt;/div&gt;\r\n");
 		} 
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) 
@@ -136,9 +139,12 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		else 
 		{
 		  write("<b>"+en);
-			if (rootName == null || "x".equals(rootName))
-				write("</b>");
-  	  else if (elem.isMustUnderstand() || elem.isMustSupport() )
+			if (rootName == null || "x".equals(rootName)) {
+			  if (elem.isMustUnderstand() || elem.isMustSupport() )
+	        write("</b></u>");
+			  else
+			    write("</b></span>");
+			} else if (elem.isMustUnderstand() || elem.isMustSupport() )
         write("</b></u></a>");
 	    else     
 				write("</b></a>");

@@ -4,7 +4,7 @@
 Notes:
 </p>
 <ul>
-<li>The Document resource can be used in a <a href="http.htm">RESTful framework</a> as a stand-alone resource, or as the basis for a full document in <a href="documents.htm">the document framework</a>.</li>
+<li>The Document resource can be used in a <a href="http.htm">RESTful framework</a> as a stand-alone resource, or as the basis for a full document.</li>
 <li>The author and the attestor are often the same person, but this may not be the case in many clinical workflows</li>
 <li>The attestor attests to the collated narrative portions of the resources</li>
 <li>The author, subject, enterer, and informant features are inherited in contained sections, and need not be repeated. Specifying any of these in a section replaces the inherited value</li>
@@ -64,6 +64,7 @@ to this specification. A document recipient has the following obligations:
     or warn users when they view the document</li>
 </ul>
 
+<a name="rest"></a>
 <h2>Implementation Notes</h2>
 <ul>
  <li>Documents may be signed using digital signatures following the rules laid out in 
