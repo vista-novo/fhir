@@ -8,7 +8,7 @@ import org.hl7.fhir.instance.model.Profile.Element_;
 public class ElementDefn {
  
   
-	private List<TypeDefn> types = new ArrayList<TypeDefn>();
+	private List<TypeRef> types = new ArrayList<TypeRef>();
 	private List<ElementDefn> elements = new ArrayList<ElementDefn>();
 
 	private Integer minCardinality;
@@ -265,7 +265,7 @@ public class ElementDefn {
 //    	this.id = id;
 //	}
 
-    public List<TypeDefn> getTypes() {
+    public List<TypeRef> getTypes() {
 	    return types;
     }
    
@@ -328,7 +328,7 @@ public class ElementDefn {
 	public String typeCode() {
 		StringBuilder tn = new StringBuilder();
 		boolean first = true;
-		for (TypeDefn t : types) {
+		for (TypeRef t : types) {
 			if (!first)
 				tn.append("|");
 			first = false;
@@ -462,6 +462,11 @@ public class ElementDefn {
     this.mustSupport = mustSupport;
   }
   
+  
+  public boolean isXhtmlElement()
+  {
+	  return !types.isEmpty() && types.get(0).isXhtml();
+  }
   
   public ElementDefn getElementForPath(String pathname)
 			throws Exception 

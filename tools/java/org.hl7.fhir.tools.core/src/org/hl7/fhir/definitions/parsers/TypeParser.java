@@ -3,16 +3,16 @@ package org.hl7.fhir.definitions.parsers;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 
 public class TypeParser {
 
-	public List<TypeDefn> parse(String n) throws Exception {
-		ArrayList<TypeDefn> a = new ArrayList<TypeDefn>();
+	public List<TypeRef> parse(String n) throws Exception {
+		ArrayList<TypeRef> a = new ArrayList<TypeRef>();
 		
 		Tokeniser tkn = new Tokeniser(n);
 		while (tkn.more()) {
-			TypeDefn t = new TypeDefn();
+			TypeRef t = new TypeRef();
 			t.setName(tkn.next());
 			String p = tkn.next();
 			if (p.equals("(")) {

@@ -6,7 +6,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class DictHTMLGenerator  extends OutputStreamWriter {
@@ -67,7 +67,7 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 	private String describeType(ElementDefn e) {
 		StringBuilder b = new StringBuilder();
 		boolean first = true;
-		for (TypeDefn t : e.getTypes())
+		for (TypeRef t : e.getTypes())
 		{
 		  if (!first)
 			  b.append("|");

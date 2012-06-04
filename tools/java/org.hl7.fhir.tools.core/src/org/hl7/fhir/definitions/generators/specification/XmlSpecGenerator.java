@@ -8,7 +8,7 @@ import java.io.UnsupportedEncodingException;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {
@@ -96,7 +96,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (elem.isInherited())
 		  write("<i class=\"inherited\">");
 		String en = elem.getName();
-		if (en.contains("[x]") && elem.getTypes().size() == 1 && !elem.typeCode().equals("*"))
+		if (en.contains("[x]") && elem.getTypes().size() == 1 && !elem.getTypes().get(0).isWildcardType())
 			en = en.replace("[x]", elem.typeCode());
 
 		// Contents of element are defined elsewhere in the same resource
@@ -117,7 +117,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write("&lt;<a href=\"#"+pathName+"."+en+"\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\" class=\"dict\">");
 
 		// element contains xhtml
-		if (elem.typeCode().equals("xhtml")) 
+		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) 
 		{
 			write("<b title=\""+Utilities.escapeXml(elem.getDefinition())+"\">div</b></u> xmlns=\"http://www.w3.org/1999/xhtml\"> <font color=\"Gray\">&lt;!--</font> <a href=\"xml.htm#Control\" class=\"cf\">mand</a> <font color=\"navy\">"+Utilities.escapeXml(elem.getShortDefn())+"</font><font color=\"Gray\">&lt; --&gt;</font> &lt;/div&gt;\r\n");
 		} 
@@ -179,20 +179,20 @@ public class XmlSpecGenerator extends OutputStreamWriter {
         writeCardinality(elem);
         listed = true;
 			} else if (!elem.getTypes().isEmpty()  &&
-					!(elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")))
+					!(elem.getTypes().size() == 1 && elem.getTypes().get(0).isWildcardType()))
 			{
   	    writeCardinality(elem);
 			  listed = true;
 				write(" <font color=\"darkgreen\">");
 				int i = 0;
 				int d = elem.getTypes().size() / 2;
-				for (TypeDefn t : elem.getTypes())
+				for (TypeRef t : elem.getTypes())
 				{
 					if (i > 0)
 						write("|");
 					if (elem.getTypes().size() > 5 && i == d)
 						write("\r\n              ");
-					if (t.getName().equals("xhtml") || t.getName().equals("list"))
+					if (t.isXhtml() || t.getName().equals("list"))
 						write(t.getName());
 //					else if (!t.getName().equals("Resource"))
 //					  write("<a href=\""+getSrcFile(t.getName())+".htm#"+t.getName()+"\">Resource</a>");
@@ -227,7 +227,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</font>");
 			} else if (elem.getName().equals("extensions")) {
 				write(" <a href=\"extensibility.htm\"><font color=\"navy\">See Extensions</font></a> ");
-			} else if (elem.getTypes().size() == 1 && elem.getTypes().get(0).getName().equals("*")) {
+			} else if (elem.getTypes().size() == 1 && elem.getTypes().get(0).isWildcardType()) {
         writeCardinality(elem);
         listed = true;
 			}

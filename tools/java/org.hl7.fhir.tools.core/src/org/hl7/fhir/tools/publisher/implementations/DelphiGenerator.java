@@ -15,7 +15,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -71,7 +71,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
    
     if (root.getTypes().size() > 0 && root.getTypes().get(0).getName().equals("GenericType")) {
-      for (TypeDefn td : definitions.getKnownTypes()) {
+      for (TypeRef td : definitions.getKnownTypes()) {
         if (td.getName().equals(root.getName()) && td.hasParams()) {
           for (String pt : td.getParams()) {
             String tn = getTypeName(pt);
@@ -648,7 +648,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private void generateField(ElementDefn e, StringBuilder defPriv1, StringBuilder defPriv2, StringBuilder defPub, StringBuilder impl, StringBuilder create, StringBuilder destroy, StringBuilder assign, String cn, String pt, Boolean isType, boolean listsAreWrapped) throws Exception {
     String tn;
-    if (e.getTypes().size() > 0 && e.getTypes().get(0).getName().equals("[param]"))
+    if (e.getTypes().size() > 0 && e.getTypes().get(0).isUnboundGenericParam())
       tn = pt;
     else
       tn = typeNames.get(e);
@@ -810,7 +810,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           String pfx = e.getName().replace("[x]", "");
           int t = e.getTypes().size();
           int i = 0;
-          for (TypeDefn td : e.getTypes()) {
+          for (TypeRef td : e.getTypes()) {
             if (td.hasParams()) {
               for (String ptn : td.getParams()) {
                 workingParserX.append("      else if (child.nodeName = '"+pfx+getTitle(td.getName())+"_"+getTitle(ptn)+"') then\r\n        result."+s+" := Parse"+getTitle(td.getName())+"_"+getTitle(ptn)+"(child)\r\n");
@@ -864,7 +864,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
           }
           for (ElementDefn ed : definitions.getTypes().values()) {
             if (ed.getTypes().get(0).getName().equals("GenericType")) {
-              for (TypeDefn td : definitions.getKnownTypes()) {
+              for (TypeRef td : definitions.getKnownTypes()) {
                 if (td.getName().equals(ed.getName()) && td.hasParams()) {
                   for (String ptn : td.getParams()) {
                     workingParserX.append("      else if (child.nodeName = '"+pfx+getTitle(ed.getName())+"_"+getTitle(ptn)+"') then\r\n        result."+s+" := Parse"+getTitle(ed.getName())+"_"+getTitle(ptn)+"(child)\r\n");
@@ -1093,7 +1093,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
   }
 
-  private String getTypename(TypeDefn type) throws Exception {
+  private String getTypename(TypeRef type) throws Exception {
     if (type.getParams().size() == 1) {     
       if (type.getName().equals("Resource"))
         return "TFHIRResourceReference{"+getTypeName(type.getParams().get(0))+"}";

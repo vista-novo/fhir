@@ -10,7 +10,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 
 public class ECoreOclFormatGenerator  extends OutputStreamWriter {
 
@@ -123,14 +123,14 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
     return res + " -- "+e.getDefinition();
   }
 
-  private String ecoreType(TypeDefn typeDefn) {
+  private String ecoreType(TypeRef typeDefn) {
     if (typeDefn.getName().equals("string"))
       return "String";
-    else if (typeDefn.getName().equals("[param]"))
+    else if (typeDefn.isUnboundGenericParam())
       return "T";
-    else if (typeDefn.getName().equals("*"))
+    else if (typeDefn.isWildcardType())
       return "object";
-    else if (typeDefn.getName().equals("xml:ID"))
+    else if (typeDefn.isXmlId())
       return "String";  
     else if (typeDefn.getName().charAt(0) == '@')
       return typeDefn.getName().substring(1).replace('.', '_');  

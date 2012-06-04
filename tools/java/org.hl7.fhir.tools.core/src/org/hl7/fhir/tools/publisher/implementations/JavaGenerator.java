@@ -7,7 +7,7 @@ import java.util.Date;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Logger;
@@ -58,7 +58,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Type, null, genDate, version);
       if (root.typeCode().equals("GenericType")) {
-        for (TypeDefn td : definitions.getKnownTypes()) {
+        for (TypeRef td : definitions.getKnownTypes()) {
           if (td.getName().equals(root.getName()) && td.hasParams()) {
             for (String pt : td.getParams()) {
               jFactoryGen.registerType(n+"<"+getTitle(pt)+">", root.getName()+"<"+getTitle(pt)+">");

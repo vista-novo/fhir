@@ -6,7 +6,7 @@ import java.util.List;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 
 public class ModelValidator {
 
@@ -68,14 +68,14 @@ public class ModelValidator {
 			rule(path, path.contains("."), "Must have a type on a base element");
 			rule(path, e.getName().equals("extensions") || e.getElements().size() > 0, "Must have a type unless sub-elements exist");
 		} else {
-			for (TypeDefn t : e.getTypes()) {
+			for (TypeRef t : e.getTypes()) {
 				String s = t.getName();
 				if (s.charAt(0) == '@') {
 					// validate path
 				} else {
 					if (s.charAt(0) == '#')
 						s = s.substring(1);
-					if (!typeIsSpecial(s)) {
+					if (!t.isSpecialType()) {
 						rule(path, typeExists(s), "Illegal Type '"+s+"'");
 						if (s.equals("Resource")) {
 							for (String p : t.getParams()) {
@@ -89,9 +89,6 @@ public class ModelValidator {
 		
 	}
 
-	private boolean typeIsSpecial(String name) {
-		return (name.equals("xml:ID") || name.equals("xhtml") || name.equals("[param]") || name.equals("*")) || name.equals("Type") || name.equals("GenericType") || name.equals("Resource");
-	}
 
 	private boolean typeExists(String name) {
 		return definitions.hasType(name);

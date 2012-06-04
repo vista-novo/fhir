@@ -3,7 +3,7 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeDefn {
+public class TypeRef {
 	private String name;
 	private List<String> params = new ArrayList<String>();
 	
@@ -26,11 +26,32 @@ public class TypeDefn {
 		return name.equals("[param]");
 	}
 	
+	public boolean isXmlId()
+	{
+		return name.equalsIgnoreCase("xml:ID");
+	}
+
+	public boolean isXhtml()
+	{
+		return name.equalsIgnoreCase("xhtml");
+	}
+	
 	public boolean isWildcardType()
 	{
 		return name.equals("*");
 	}
   
+	public boolean isSpecialType()
+	{
+		return 	isXmlId() || 
+				isXhtml() || 
+				isUnboundGenericParam() || 
+				isWildcardType() || 
+				name.equals("Type") || 
+				name.equals("GenericType") || 
+				name.equals("Resource");
+	}
+	
 	public String summary() {
 	    String s = name;
 	    if (hasParams()) {

@@ -22,7 +22,7 @@ public class Definitions {
   private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
   private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
   private Map<String, DefinedCode> futureResources = new HashMap<String, DefinedCode>();
-  private List<TypeDefn> knownTypes = new ArrayList<TypeDefn>();
+  private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
   private Map<String, DefinedCode> constraints = new HashMap<String, DefinedCode>();
   
   private Map<String, DefinedCode> primitives = new HashMap<String, DefinedCode>();
@@ -110,7 +110,7 @@ public class Definitions {
 
 
   public boolean hasType(String name) {
-    for (TypeDefn td : knownTypes) {
+    for (TypeRef td : knownTypes) {
       if (td.getName().equals(name))
         return true;
     }
@@ -120,7 +120,7 @@ public class Definitions {
   }
 
 
-  public List<TypeDefn> getKnownTypes() {
+  public List<TypeRef> getKnownTypes() {
     return knownTypes;
   }
 

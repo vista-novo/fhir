@@ -16,7 +16,7 @@ import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XSDBaseGenerator extends OutputStreamWriter {
@@ -289,7 +289,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
   private void genGeneric(ElementDefn elem) throws Exception {
     enums.clear();
-    for (TypeDefn td : definitions.getKnownTypes()) {
+    for (TypeRef td : definitions.getKnownTypes()) {
       if (td.getName().equals(elem.getName()) && td.hasParams()) {
         for (String pt : td.getParams()) {
 
@@ -371,7 +371,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 			write("        </xs:annotation>\r\n");
 		}
-		for (TypeDefn t : definitions.getKnownTypes()) {
+		for (TypeRef t : definitions.getKnownTypes()) {
 		  if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
 		    String en = prefix != null ? prefix + upFirst(t.getName()) : t.getName();
 		    if (t.hasParams()) {
@@ -426,7 +426,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				write("              <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 				write("            </xs:annotation>\r\n");
 			}
-			for (TypeDefn t : e.getTypes()) {
+			for (TypeRef t : e.getTypes()) {
 				String tn = encodeType(e, t, false);
 				String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
 				write("            <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
@@ -473,8 +473,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	}
 
 	private void generateElement(ElementDefn root, ElementDefn e, String paramType) throws Exception {
-		List<TypeDefn> types = e.getTypes();
-		if (types.size() > 1 || (types.size() == 1 && types.get(0).getName().equals("*"))) {
+		List<TypeRef> types = e.getTypes();
+		if (types.size() > 1 || (types.size() == 1 && types.get(0).isWildcardType())) {
 			if (!e.getName().contains("[x]"))
 				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name '"+e.getName()+"' in resource "+root.getName());
       generateAny(root, e, e.getName().replace("[x]", ""));
@@ -524,7 +524,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				typenames.add(tn);
 			}
 			else if (types.size() == 1) {
-			  if (types.get(0).getName().equals("[param]") && paramType != null)
+			  if (types.get(0).isUnboundGenericParam() && paramType != null)
 	        write("<xs:element name=\""+e.getName()+"\" type=\""+paramType+"\" ");
 			  else
 			    write("<xs:element name=\""+e.getName()+"\" type=\""+encodeType(e, types.get(0), true)+"\" ");
@@ -555,10 +555,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		return name.toUpperCase().charAt(0)+name.substring(1);
 	}
 
-	private String encodeType(ElementDefn e, TypeDefn type, boolean params) throws Exception {
+	private String encodeType(ElementDefn e, TypeRef type, boolean params) throws Exception {
 		if ("Resource".equals(type.getName()))
 			return "ResourceReference";
-		else if ("xml:ID".equalsIgnoreCase(type.getName())) 
+		else if (type.isXmlId()) 
 		  return "id-simple";
 		else if (params && definitions.getPrimitives().containsKey(type.getName()) && definitions.getPrimitives().get(type.getName()) instanceof PrimitiveType)
 		  return "xs:"+((PrimitiveType) definitions.getPrimitives().get(type.getName())).getSchemaType();

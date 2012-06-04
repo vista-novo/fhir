@@ -15,7 +15,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class JavaComposerXmlGenerator extends OutputStreamWriter {
@@ -53,7 +53,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     for (ElementDefn n : definitions.getTypes().values()) {
       if (n.getTypes().size() > 0 && n.getTypes().get(0).getName().equals("GenericType")) {
 
-        for (TypeDefn td : definitions.getKnownTypes()) {
+        for (TypeRef td : definitions.getKnownTypes()) {
           if (td.getName().equals(n.getName()) && td.hasParams()) {
             for (String pt : td.getParams()) {
               genGeneric(n, n.getName()+"<"+upFirst(pt)+">", pt, false);
@@ -380,13 +380,15 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         typeNames.put(e,  tn);
       } else if (e.getTypes().size() > 0) {
         tn = e.typeCode();
-        if (tn.equals("[param]"))
+        TypeRef tr = e.getTypes().get(0);
+        
+        if (tr.isUnboundGenericParam())
           tn = genparam;
-        else if (tn.equalsIgnoreCase("xml:ID"))
+        else if (tr.isXmlId())
           tn ="String";
-        else if (tn.equalsIgnoreCase("Xhtml")) 
+        else if (tr.isXhtml()) 
           tn = "char[]";
-        else if (tn.equalsIgnoreCase("*"))
+        else if (tr.isWildcardType())
           tn ="Type";
         else if (tn.equals("string"))
           tn = "String_";

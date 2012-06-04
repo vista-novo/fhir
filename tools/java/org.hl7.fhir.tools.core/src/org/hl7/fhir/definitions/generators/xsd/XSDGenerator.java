@@ -14,7 +14,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XSDGenerator extends OutputStreamWriter {
@@ -23,7 +23,7 @@ public class XSDGenerator extends OutputStreamWriter {
   private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
   private Map<ElementDefn, String> types = new HashMap<ElementDefn, String>();
 	private List<String> typenames = new ArrayList<String>();
-	private List<TypeDefn> datatypes = new ArrayList<TypeDefn>();
+	private List<TypeRef> datatypes = new ArrayList<TypeRef>();
 	private Map<String, BindingSpecification> tx;
 	private Map<String, List<DefinedCode>> enums = new HashMap<String, List<DefinedCode>>();
 	
@@ -32,7 +32,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		this.definitions = definitions;
 	}
 
-	public void setDataTypes(List<TypeDefn> types) throws Exception {
+	public void setDataTypes(List<TypeRef> types) throws Exception {
   	datatypes.addAll(types);
 	}
 
@@ -112,7 +112,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 			write("        </xs:annotation>\r\n");
 		}
-		for (TypeDefn t : datatypes) {
+		for (TypeRef t : datatypes) {
 			if (t.getName().equals("Resource"))
 				write("       <xs:element name=\"Resource\" type=\"ResourceReference\"/>\r\n");				
 			else if (t.hasParams()) {
@@ -132,7 +132,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		write("        <xs:complexType>\r\n");
 		write("          <xs:sequence>\r\n");
 		write("            ");
-		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).getName().equals("*"))) {
+		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).isWildcardType())) {
 			if (!e.getName().contains("[x]"))
 				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
 			write("<xs:choice minOccurs=\"0\">\r\n");
@@ -141,7 +141,7 @@ public class XSDGenerator extends OutputStreamWriter {
 				write("              <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 				write("            </xs:annotation>\r\n");
 			}
-			for (TypeDefn t : e.getTypes()) {
+			for (TypeRef t : e.getTypes()) {
 				String tn = encodeType(e, t, false);
 				String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
 				write("            <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
@@ -188,7 +188,7 @@ public class XSDGenerator extends OutputStreamWriter {
 	}
 
 	 private void generateAny(ElementDefn root, ElementDefn e, String prefix) throws Exception {
-	    for (TypeDefn t : definitions.getKnownTypes()) {
+	    for (TypeRef t : definitions.getKnownTypes()) {
 	      if (!definitions.getInfrastructure().containsKey(t.getName()) && !definitions.getConstraints().containsKey(t.getName())) {
 	        String en = prefix != null ? prefix + upFirst(t.getName()) : t.getName();
 	        if (t.hasParams()) {
@@ -230,7 +230,7 @@ public class XSDGenerator extends OutputStreamWriter {
 
 	private void generateElement(ElementDefn root, ElementDefn e) throws Exception {
 		write("      ");
-		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).getName().equals("*"))) {
+		if (e.getTypes().size() > 1 || (e.getTypes().size() == 1 && e.getTypes().get(0).isWildcardType())) {
 			if (!e.getName().contains("[x]"))
 				throw new Exception("Element has multiple types as a choice doesn't have a [x] in the element name");
 			write("<xs:choice minOccurs=\""+e.getMinCardinality().toString()+"\" maxOccurs=\""+(e.unbounded() ? "unbounded" : "1")+"\" ");
@@ -243,7 +243,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			if (e.getTypes().size() == 1)
 			  generateAny(root, e, e.getName().replace("[x]", ""));
 			else
-			  for (TypeDefn t : e.getTypes()) {
+			  for (TypeRef t : e.getTypes()) {
 			    String tn = encodeType(e, t, false);
 			    String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
 			    write("        <xs:element name=\""+n+"\" >\r\n");
@@ -316,7 +316,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		return name.toUpperCase().charAt(0)+name.substring(1);
 	}
 
-	private String encodeType(ElementDefn e, TypeDefn type, boolean params) throws Exception {
+	private String encodeType(ElementDefn e, TypeRef type, boolean params) throws Exception {
 		if ("Resource".equals(type.getName()))
 			return "ResourceReference";
 		else if (type.getName().equals("code")) {

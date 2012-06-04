@@ -5,7 +5,7 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 
 public class JavaBaseGenerator extends OutputStreamWriter {
 
@@ -31,7 +31,7 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 		}
 	}
 
-	protected String getTypename(TypeDefn type) throws Exception {
+	protected String getTypename(TypeRef type) throws Exception {
 		if (type.getParams().size() == 1) {			
 			if (type.getName().equals("Resource"))
 				return "ResourceReference";

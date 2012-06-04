@@ -14,7 +14,7 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class CSharpResourceGenerator extends OutputStreamWriter {
@@ -329,16 +329,16 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		 */
 		String tn = null;
 		
-		TypeDefn type = e.getTypes().get(0);
+		TypeRef type = e.getTypes().get(0);
 
 		if( type.getName().startsWith("@"))
 			tn = elementToGeneratedTypeMapping.get(
 					root.getElementForPath(e.typeCode().substring(1)));
 		else if( type.isUnboundGenericParam() )
 			tn = "T";
-		else if( type.getName().equalsIgnoreCase("xhtml") )
+		else if( type.isXhtml() )
 			tn = "XNode";
-		else if( type.getName().equalsIgnoreCase("xml:ID") )
+		else if( type.isXmlId() )
 			tn = "string";
 		else if(type.getName().startsWith("Interval"))
 			tn = buildIntervalMappedTypeName(type);
@@ -352,7 +352,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 
 
-	private String buildIntervalMappedTypeName(TypeDefn type) throws Exception {
+	private String buildIntervalMappedTypeName(TypeRef type) throws Exception {
 		String mappedParamType = 
 			mapFHIRPrimitiveToCSharpType(type.getParams().get(0));
 		
@@ -388,7 +388,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			
 			// Primitives which are used without a dataAbsentReason
 			// can be mapped to a C# specific primitive type.
-			else if( TypeDefn.isFhirPrimitiveType(typeName) &&
+			else if( TypeRef.isFhirPrimitiveType(typeName) &&
 					!e.isAllowDAR() )
 				return mapFHIRPrimitiveToCSharpType(typeName);
 			
@@ -415,7 +415,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		 return capitalize(tn);
 	}
 	
-	private String buildResourceReferenceTypename(TypeDefn type) throws Exception 
+	private String buildResourceReferenceTypename(TypeRef type) throws Exception 
 	{
 		// If this is a polymorphic Resource reference (Resource(A|B|....), 
 		// or Resource(Any)), generate a reference to a polymorphic Resource.

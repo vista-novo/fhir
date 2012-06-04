@@ -23,7 +23,7 @@ import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
@@ -46,7 +46,7 @@ public class PageProcessor implements Logger  {
     FileOutputStream fos = new FileOutputStream(tmp);
     DictHTMLGenerator gen = new DictHTMLGenerator(fos);
     TypeParser tp = new TypeParser();
-    TypeDefn t = tp.parse(dt).get(0);
+    TypeRef t = tp.parse(dt).get(0);
     ElementDefn e = definitions.getElementDefn(t.getName());
     if (e == null)
       throw new Exception("unable to find definition for "+dt);
@@ -63,7 +63,7 @@ public class PageProcessor implements Logger  {
     FileOutputStream fos = new FileOutputStream(tmp);
     TerminologyNotesGenerator gen = new TerminologyNotesGenerator(fos);
     TypeParser tp = new TypeParser();
-    TypeDefn t = tp.parse(dt).get(0);
+    TypeRef t = tp.parse(dt).get(0);
     ElementDefn e = definitions.getElementDefn(t.getName());
     if (e == null)
       throw new Exception("unable to find definition for "+dt);
@@ -80,7 +80,7 @@ public class PageProcessor implements Logger  {
     FileOutputStream fos = new FileOutputStream(tmp);
     XmlSpecGenerator gen = new XmlSpecGenerator(fos);
     TypeParser tp = new TypeParser();
-    TypeDefn t = tp.parse(dt).get(0);
+    TypeRef t = tp.parse(dt).get(0);
     ElementDefn e = definitions.getElementDefn(t.getName());
     if (e == null)
       throw new Exception("unable to find definition for "+dt);

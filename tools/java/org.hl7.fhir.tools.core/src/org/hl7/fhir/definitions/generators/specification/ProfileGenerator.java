@@ -6,7 +6,7 @@ import java.net.URISyntaxException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Profile;
@@ -78,7 +78,7 @@ public class ProfileGenerator {
     // no purpose here
     ce.setMin(e.getMinCardinality());
     ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
-    for (TypeDefn t : e.getTypes())
+    for (TypeRef t : e.getTypes())
       ce.getType().add(t.summaryFormal()); 
     // ce.setConformance(getType(e.getConformance()));
     if (!"".equals(e.getCondition()))

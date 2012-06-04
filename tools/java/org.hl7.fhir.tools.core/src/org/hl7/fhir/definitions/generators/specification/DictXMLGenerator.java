@@ -12,7 +12,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class DictXMLGenerator  extends OutputStreamWriter {
@@ -114,7 +114,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		
 	}
 
-	private void writeEntry(String path, Integer min, Integer max, List<TypeDefn> types, String conceptDomain, ElementDefn e) throws IOException {
+	private void writeEntry(String path, Integer min, Integer max, List<TypeRef> types, String conceptDomain, ElementDefn e) throws IOException {
 		write("      <elementDefinition>\r\n");
 		write("        <name>"+Utilities.escapeXml(path)+"</name>\r\n");
 		write("        <cardinality>\r\n");
@@ -128,7 +128,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		if (types != null && types.size() > 0)
 		{ 
 			write("        <types>\r\n");
-			for (TypeDefn t : types)
+			for (TypeRef t : types)
 			{
 				if (t.hasParams()) {
 					write("          <type>"+t.getName()+"(");

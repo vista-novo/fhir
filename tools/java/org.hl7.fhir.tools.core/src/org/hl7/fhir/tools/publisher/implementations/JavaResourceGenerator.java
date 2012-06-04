@@ -162,7 +162,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 	private boolean hasXhtml(ElementDefn root) {
 		for (ElementDefn e : root.getElements()) {
-			if (e.typeCode().equals("xhtml") || hasXhtmlInner(e))
+			if (e.isXhtmlElement() || hasXhtmlInner(e))
 				return true;
 		}
 		return false;
@@ -179,7 +179,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 	private boolean hasXhtmlInner(ElementDefn e) {
 		for (ElementDefn c : e.getElements()) {
-			if (c.typeCode().equals("xhtml") || hasXhtmlInner(c))
+			if (c.isXhtmlElement() || hasXhtmlInner(c))
 				return true;
 		}
 
@@ -315,13 +315,13 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 						tn = getTypeName(e);
 				} else 
 					tn = getTypeName(e);
-				if (tn.equals("[param]"))
+				if (e.getTypes().get(0).isUnboundGenericParam())
 					tn = "T";
-				else if (tn.equalsIgnoreCase("xml:ID"))
+				else if (e.getTypes().get(0).isXmlId())
 					tn ="String";
-				else if (tn.equalsIgnoreCase("Xhtml")) 
+				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";
-				else if (tn.equalsIgnoreCase("*"))
+				else if (e.getTypes().get(0).isWildcardType())
 					tn ="Type";
 
 				typeNames.put(e,  tn);

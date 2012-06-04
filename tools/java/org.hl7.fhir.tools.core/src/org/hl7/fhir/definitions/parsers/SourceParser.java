@@ -15,7 +15,7 @@ import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -137,7 +137,7 @@ public class SourceParser {
     prim.setDefinition(sheet.getColumn(row, "Definition"));
     prim.setComment(sheet.getColumn(row, "Comments"));
     prim.setSchemaType(sheet.getColumn(row, "Schema"));
-    TypeDefn td = new TypeDefn();
+    TypeRef td = new TypeRef();
     td.setName(prim.getCode());
     definitions.getKnownTypes().add(td);
     definitions.getPrimitives().put(prim.getCode(), prim);    
@@ -149,7 +149,7 @@ public class SourceParser {
     prim.setDefinition(sheet.getColumn(row, "Definition"));
     prim.setComment(sheet.getColumn(row, "Comments"));
     prim.setRegex(sheet.getColumn(row, "RegEx"));
-    TypeDefn td = new TypeDefn();
+    TypeRef td = new TypeRef();
     td.setName(prim.getCode());
     definitions.getKnownTypes().add(td);
     definitions.getPrimitives().put(prim.getCode(), prim);    
@@ -158,10 +158,10 @@ public class SourceParser {
 
   private void loadDataType(String n, Map<String, ElementDefn> map) throws Exception {
     TypeParser tp = new TypeParser();
-    List<TypeDefn> ts = tp.parse(n);
+    List<TypeRef> ts = tp.parse(n);
     definitions.getKnownTypes().addAll(ts);
 
-    TypeDefn t = ts.get(0);
+    TypeRef t = ts.get(0);
     File csv = new File(dtDir+t.getName()+".xml");
     if (csv.exists()) {
       SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName(), definitions, srcDir);
@@ -227,7 +227,7 @@ public class SourceParser {
 
     for (String n : ini.getPropertyNames("types"))
       if (ini.getStringProperty("types", n).equals("")) {
-        TypeDefn t = new TypeParser().parse(n).get(0);
+        TypeRef t = new TypeParser().parse(n).get(0);
         Utilities.checkFile("type definition", dtDir, t.getName()+".xml", errors);
       }
     for (String n : ini.getPropertyNames("structures"))

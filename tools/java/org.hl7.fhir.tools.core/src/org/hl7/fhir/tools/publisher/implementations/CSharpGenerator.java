@@ -2,12 +2,14 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.TypeDefn;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.CSharpResourceGenerator.GenClass;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
@@ -27,6 +29,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		if( !f.exists() )
 			f.mkdir();
 		
+		List<String> filenames = new ArrayList<String>();
+		
 		// Generate a C# file for each Resource class
 		for (String n : definitions.getResources().keySet()) 
 		{
@@ -34,6 +38,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
 					new FileOutputStream(modelGenerationDir + root.getName() + ".cs" ));
 		
+			filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 			cSharpGen.generate(root, definitions.getBindings(), 
 					GenClass.Resource, genDate, version );
 		}
@@ -47,6 +52,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        	new FileOutputStream(modelGenerationDir+e.getName()+".cs"))
 	        		.generate(e, definitions.getBindings(), 
 	        				GenClass.Resource, genDate, version);
+	        
+			filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
 	    }
 		
 		// Generate infrastructure classes
@@ -57,6 +64,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		    	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 		      		.generate(root, definitions.getBindings(), 
 		      				GenClass.Structure, genDate, version);
+				filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 		}
 
 		
@@ -77,6 +85,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 	        		.generate(root, definitions.getBindings(), 
 	        			generationType, genDate, version);
+
+	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 	    }
 
 		// Generate a C# file for structured types (HumanName, Address)
@@ -87,6 +97,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 	        		.generate(root, definitions.getBindings(), 
 	        				GenClass.Type, genDate, version);
+
+	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 	    }
 
 	    // Generate a C# file for Constrained types (Money, Distance, ...)
@@ -96,13 +108,19 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        	new FileOutputStream(modelGenerationDir+cd.getCode()+".cs"))
 	        		.generateConstraint(cd.getCode(), root.getName(),
 	        				cd.getDefinition(), genDate, version);
-	      }
+			filenames.add("HL7.Fhir.Instance.Model" + sl + cd.getCode()+".cs" );  
+	    }
 
+	    // Generate C# project file
+	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
+	    projGen.build(implDir, filenames);
 	    
-		// TODO: Generate a C# file for each Valueset as enum
-
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");
-		zip.addFiles(implDir, "", ".cs");
+		zip.addFiles(modelGenerationDir, "HL7.Fhir.Instance.Model" +sl, ".cs");
+		zip.addFiles(implDir + sl + "HL7.Fhir.Instance.Support" + sl, "HL7.Fhir.Instance.Support" +sl, ".cs");
+		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
+		zip.addFiles(implDir + sl, "", ".csproj");
+		zip.addFiles(implDir + sl, "", ".sln");
 		zip.close();
 	}
 
