@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-03-19T11:15:11Z</LastSaved>
+  <LastSaved>2012-06-04T13:12:58Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -26,7 +26,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -67,7 +67,7 @@
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s106">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
@@ -326,8 +326,8 @@
     <Cell><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">person</Data></Cell>
-    <Cell><Data ss:Type="String">The identity of a person</Data></Cell>
+    <Cell><Data ss:Type="String">subject</Data></Cell>
+    <Cell><Data ss:Type="String">The identity of the subject</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">provider</Data></Cell>
@@ -345,10 +345,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -357,14 +359,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s106" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="114.75"/>
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="201.75"/>
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s106" ss:AutoFitWidth="0" ss:Width="214.5"/>
-   <Row>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="114.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="201.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="53.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="214.5"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
@@ -372,17 +374,17 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">PatientConfidentiality</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The confidentiality of the records associated with this patient</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">PatientDiet</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">casual dietary restrictions associated with this patient</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">PaperRecordLocation</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">A physical location for a record. (Usually site specific)</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
@@ -394,7 +396,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

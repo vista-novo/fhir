@@ -3,6 +3,7 @@ package org.hl7.fhir.tools.publisher.implementations;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -180,6 +181,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     workingParserJ = new StringBuilder();
     workingComposerJ = new StringBuilder();
 
+    
+    if (root.typeCode().equals("Resource")) 
+      generateSearchEnums((ResourceDefn) root);
+     
     StringBuilder def = new StringBuilder();
     StringBuilder defPriv1 = new StringBuilder();
     StringBuilder defPriv2 = new StringBuilder();
@@ -217,8 +222,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
     def.append("    function Link : "+tn+"; overload;\r\n");
     def.append("    function Clone : "+tn+"; overload;\r\n");
-    if (root.typeCode().equals("Resource"))
-      def.append("    procedure ListSearchParams(oParams : TFHIRSearchParameters); override;\r\n");
     def.append("    {!script show}\r\n");
     def.append("  published\r\n");
     def.append(defPub.toString());
@@ -246,14 +249,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
     impl2.append("end;\r\n\r\n");
-    if (root.typeCode().equals("Resource")) {
-      ResourceDefn r = (ResourceDefn) root;
-      impl2.append("procedure "+tn+".ListSearchParams(oParams : TFHIRSearchParameters);\r\n");
-      impl2.append("begin\r\n");
-      for (String n : r.getSearchParams().keySet())
-        impl2.append("  oParams.add('"+n+"', '"+defCode.escape(r.getSearchParams().get(n))+"');\r\n");
-      impl2.append("end;\r\n\r\n");
-    }
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := "+tn+"(inherited Link);\r\n");
@@ -268,6 +263,60 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     generateParser(tn, superClass.equals("TFHIRResource"));
   }
 
+  private void generateSearchEnums(ResourceDefn r) throws Exception {
+    StringBuilder def = new StringBuilder();
+    StringBuilder con = new StringBuilder();
+    StringBuilder con2 = new StringBuilder();
+
+    String tn = "TSearchParams"+r.getName();
+    String prefix = "sp"+r.getName()+"_";
+
+    def.append("  {@Enum "+tn+"\r\n");
+    def.append("    Search Parameters for "+r.getName()+"\r\n");
+    def.append("  }\r\n");
+    def.append("  "+tn+" = (\r\n");
+    
+    con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
+    con2.append("  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
+
+    List<String> params = new ArrayList<String>();
+    params.add("n");
+    params.add("count");
+    params.addAll(r.getSearchParams().keySet());
+    Collections.sort(params);
+    int l = params.size();
+    int i = 0;
+
+    for (String n : params) {
+      i++;
+
+      String d;
+      if (n.equals("n")) {
+        d = "Starting offset of the first record to return in the search set";
+      } else if (n.equals("count")) {
+        d = "Number of return records requested. The server is not bound to conform.";
+      } else 
+        d = r.getSearchParams().get(n);
+
+      n = n.replace("-", "_");
+      if (i == l) {
+        def.append("    "+prefix+getTitle(n)+"); {@enum.value "+prefix+getTitle(n)+" "+d+" }\r\n");
+        con.append("'"+defCode.escape(d)+"');");
+        con2.append(" "+prefix+getTitle(n)+");");
+      }
+      else {
+        def.append("    "+prefix+getTitle(n)+", {@enum.value "+prefix+getTitle(n)+" "+d+" }\r\n");
+        con.append("'"+defCode.escape(d)+"', ");
+        con2.append(" "+prefix+getTitle(n)+", ");
+      }
+    }
+
+    defCode.enumDefs.add(def.toString());
+    defCode.enumConsts.add(con.toString());
+    defCode.enumConsts.add(con2.toString());
+    
+  }
+  
   private void generateEnum(ElementDefn e) throws Exception {
     String tn = typeNames.get(e);
     BindingSpecification cd = getConceptDomain(e.getBindingName());
@@ -1260,7 +1309,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    procedure Assign(oSource : TAdvObject); override;\r\n");
     def.append("    function Link : TFHIRResource; overload;\r\n");
     def.append("    function Clone : TFHIRResource; overload;\r\n");
-    def.append("    procedure ListSearchParams(oParams : TFHIRSearchParameters); overload; virtual;\r\n");
     def.append("    {!script show}\r\n");
     def.append("  published\r\n");
     def.append("    Property ResourceType : TFHIRResourceType read GetResourceType;\r\n\r\n");
@@ -1310,11 +1358,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("function TFHIRResource.Clone : TFHIRResource;\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := TFHIRResource(inherited Clone);\r\n");
-    impl2.append("end;\r\n\r\n");
-    impl2.append("procedure TFHIRResource.ListSearchParams(oParams : TFHIRSearchParameters);\r\n");
-    impl2.append("begin\r\n");
-    impl2.append("  oParams.add('n', 'Starting offset of the first record to return in the search set');\r\n");
-    impl2.append("  oParams.add('n', 'Number of return records requested');\r\n");
     impl2.append("end;\r\n\r\n");
     impl2.append("procedure TFHIRResource.SetResourceId(value : string);\r\n");
     impl2.append("begin\r\n");

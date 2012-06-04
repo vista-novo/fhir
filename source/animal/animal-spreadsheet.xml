@@ -20,6 +20,7 @@
   <WindowWidth>27315</WindowWidth>
   <WindowTopX>960</WindowTopX>
   <WindowTopY>660</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -63,7 +64,7 @@
   <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s85">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
@@ -247,7 +248,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -334,13 +334,33 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="1" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">name</Data></Cell>
+    <Cell><Data ss:Type="String">a portion of name in any name part</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">species</Data></Cell>
+    <Cell><Data ss:Type="String">the species, including by subsumption if the coding supports this</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">phonetic</Data></Cell>
+    <Cell><Data ss:Type="String">a portion of name using some kind of phonetic matching algorithm</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">id</Data></Cell>
+    <Cell><Data ss:Type="String">search id in any identifiers</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">related</Data></Cell>
+    <Cell><Data ss:Type="String">a portion of any part of a related entity's name</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -350,11 +370,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -363,14 +383,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s85" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="111"/>
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="223.5"/>
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="51"/>
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="132.75"/>
-   <Column ss:StyleID="s85" ss:AutoFitWidth="0" ss:Width="288"/>
-   <Row>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="111"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="223.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="51"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="132.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
@@ -378,22 +398,22 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalGender</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The gender of an animal</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalRelationship</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalSpecies</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The species of an animal</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalStrain</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The strain of an animal</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
@@ -405,6 +425,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
