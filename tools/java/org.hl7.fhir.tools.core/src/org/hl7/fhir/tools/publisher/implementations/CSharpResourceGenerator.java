@@ -25,7 +25,8 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		Structure,		// Derives from Element 
 		Type, 			// Derives from Type (i.e. has dataAbsentReason)
 		Ordered,		// Subclass of Type for ordered types
-		Generic			// Subclass of Type for generic types
+		Generic,		// Subclass of Type for generic types
+		ConstrainedType // Constraint versions of other types (Count, Distance, Money)
 	}
 	
 	
@@ -54,7 +55,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		enumNames.clear();
 
 		generateHeader(version, genDate);
-		beginClass(generationType, root.getName(), root.getDefinition());
+		beginClass(generationType, root.getName(), null, root.getDefinition());
 		
 		// First, descend into the element definition
 		// and find all nested structs and enums.
@@ -90,6 +91,21 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 
 
+	
+	public void generateConstraint( String className, String baseClassName,
+			String description, Date genDate, String version) throws Exception, IOException
+	{
+		generateHeader(version, genDate);
+		beginClass(GenClass.ConstrainedType, className, baseClassName,
+					description);
+		endClass();
+
+		finish();
+
+		flush();
+		close();	
+	}
+
 
 	private void endClass() throws IOException {
 		writeLn("");
@@ -99,7 +115,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 
 
-	private void beginClass(GenClass generationType, String className, String description) throws Exception, IOException {
+	private void beginClass(GenClass generationType, 
+			String className, String baseClassName, 
+			String description) throws Exception, IOException {
 		writeLn("/**");
 		writeLn(" * " + description);
 		writeLn(" */");
@@ -123,6 +141,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			case Generic:
 				baseClass = "Type";
 				break;
+			case ConstrainedType:
+				baseClass = baseClassName;
+				break;
 			default:
 				throw new Exception("Don't support that class of generation yet");
 		}
@@ -134,7 +155,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		writeLn("  {");
 	}
 
-	
+		
 	public void generateHeader(String version, Date genDate) throws Exception {
 		writeLn("using System;");
 		writeLn("using System.Collections.Generic;");
@@ -211,7 +232,6 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	private void scanNestedTypes(ElementDefn root, String path, ElementDefn e,
 			Map<String, BindingSpecification> conceptDomains) throws Exception
 	{
-
 		// If the element is a coded type with a binding AND the binding is an fixed
 		// list of codes, add this element as an Enum-to-be-generated.
 		if (e.isBoundCode()) 
@@ -232,72 +252,84 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			}
 		}
 		
-		// If the element is atomic (either simple type or a resource reference)...
-		if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) 
-		{
-			String tn = e.typeCode();
-				
-			// Returns null if the type is not recognized as a type that
-			// directly maps to an underlying CSharp type.
-			tn = mapFHIRPrimitiveToCSharpType(tn);
-							
-			// Not a (single) primitive type, but a named complex type
-			// This can be a Resource, Interval or some other type.			
-			if( tn == null )
+		// The element is atomic (it directly references an existing type,
+		// or the type defined by some other element within the same resource).
+		// This means the element does not have children of its own.
+		if (!e.hasNestedElements() && e.getTypes().size() > 0)
+		{					
+			String tn = null;
+			
+			// Indirect type definition via another element within resource
+			if (e.typeCode().startsWith("@"))
 			{
-				// Special case: types that are actually names
-				// of template parameters in generic types
-				if(e.typeCode().equals("[param]"))
-					tn = "T";
-				else
-					tn = getTypeName(e);
+				tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
+			} 
+			else 
+			{
+				tn = e.typeCode();
+					
+				// If we do not allow dataAbsenceReasons, we could check to see
+				// if this type is a primitive. The function will return null if
+				// the type is not recognized as a primitive type (that
+				// directly maps to an underlying CSharp type).
+		//		if( !e.isAllowDAR() )
+					tn = mapFHIRPrimitiveToCSharpType(tn);
+								
+				// The type is not an existing Resource/datatype name and
+				// cannot/may not be mapped to a (single) primitive type, 
+				// we must use special supporting C# class instead.			
+				if( tn == null )
+				{
+					// Special case: types that are actually names
+					// of template parameters in generic types
+					if(e.typeCode().equals("[param]"))
+						tn = "T";
+					else
+						tn = getTypeName(e);
+				}
 			}
+			
 			typeNames.put(e, tn);
 		}
 		
 		// If the element has nested elements...
-		else
+		else if( e.hasNestedElements() )
 		{
-			boolean isInternalReference = 
-					e.typeCode().startsWith("@");
+			// It is a structure. The structured type gets the name of
+			// the capitalized element name + "Component" appended.
+			String tn = capitalize(e.getName()) + "Component";
+
+			if (tn.equals("Element"))
+				tn = "Element_";
 			
-			if (isInternalReference)
-			{
-				String tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
-				typeNames.put(e, tn);
-			} 
-			else 
-			{
-				// It is a structure. The structured type gets the name of
-				// the capitalized element name + "Component" appended.
-				String tn = capitalize(e.getName()) + "Component";
+			strucs.add(e);
 
-				if (tn.equals("Element"))
-					tn = "Element_";
-				
-				strucs.add(e);
-
-				// If the structure has an existing name within the
-				// nested classes, add A, B, C, .....
-				if (typeNameStrings.contains(tn)) 
-				{
-					char i = 'A';
-					while (typeNameStrings.contains(tn + i))
-						i++;
-					tn = tn + i;
-				}
-				
-				typeNames.put(e, tn);
-				typeNameStrings.add(tn);
-				
-				// Continue with nested elements
-				for (ElementDefn c : e.getElements()) 
-				{
-					scanNestedTypes(root, path + capitalize(e.getName()), c,
-							conceptDomains);
-				}
+			// If the structure has an existing name within the
+			// nested classes, add A, B, C, .....
+			if (typeNameStrings.contains(tn)) 
+			{
+				char i = 'A';
+				while (typeNameStrings.contains(tn + i))
+					i++;
+				tn = tn + i;
+			}
+			
+			typeNames.put(e, tn);
+			typeNameStrings.add(tn);
+			
+			// Continue with nested elements
+			for (ElementDefn c : e.getElements()) 
+			{
+				scanNestedTypes(root, path + capitalize(e.getName()), c,
+						conceptDomains);
 			}
 		}
+		else
+		{
+			throw new Exception("Internal error: " + root.getName() +
+					" has element " + e.getName() + " which carries both" +
+					" a type and child elements.");
+		}	
 	}
 
 
@@ -496,7 +528,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 				throw new Exception("not supported");
 		} 
 		
-		// Another non-parameterized type
+		// Another non-parameterized type, we will just pass-through
+		// a capitalized version of the name, and hope it maps to
+		// a hand-crafted support class.
 		else 
 		{
 			return getTypeName(type.getName());
@@ -508,13 +542,10 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	{	
 		if (tn.equalsIgnoreCase("*"))
 			return "Type";
-		
-		// TODO: Can this ever be "string"?
-		// I think code more upstream already
-		// handles this.		
-		if (tn.equals("string")) 
-			return "String_";
-		
+
+		if( Utilities.isCSharpReservedWord(tn) )
+			return capitalize(tn)+"_";
+				
 		if (tn.equalsIgnoreCase("xml:ID"))
 			return "String";
 		

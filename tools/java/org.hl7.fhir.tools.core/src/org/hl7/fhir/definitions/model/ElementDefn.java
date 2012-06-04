@@ -184,12 +184,17 @@ public class ElementDefn {
 
 	      
 	   
-	   public List<ElementDefn> getElements()
-	   {
-	     return elements ;
-	   }
+   public List<ElementDefn> getElements()
+   {
+     return elements ;
+   }
 
 
+   public boolean hasNestedElements()
+   {
+	   return elements != null && !elements.isEmpty();
+   }
+   
 
 	public String getName() {
 		return name;

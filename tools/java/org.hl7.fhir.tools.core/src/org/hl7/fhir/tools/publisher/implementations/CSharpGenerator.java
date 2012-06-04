@@ -38,7 +38,6 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 					GenClass.Resource, genDate, version );
 		}
 
-		
 		// Generate a C# file for each "future" Resource
 	    for (DefinedCode cd : definitions.getFutureResources().values()) 
 	    {
@@ -80,7 +79,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        			generationType, genDate, version);
 	    }
 
-		// TODO: Generate a C# file for structured types (HumanName, Address)
+		// Generate a C# file for structured types (HumanName, Address)
 	    for (String n : definitions.getStructures().keySet())
 	    {
 	        ElementDefn root = definitions.getStructures().get(n); 
@@ -89,6 +88,15 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        		.generate(root, definitions.getBindings(), 
 	        				GenClass.Type, genDate, version);
 	    }
+
+	    // Generate a C# file for Constrained types (Money, Distance, ...)
+	    for (DefinedCode cd : definitions.getConstraints().values()) {
+	        ElementDefn root = definitions.getTypes().get(cd.getComment()); 
+	        new CSharpResourceGenerator(
+	        	new FileOutputStream(modelGenerationDir+cd.getCode()+".cs"))
+	        		.generateConstraint(cd.getCode(), root.getName(),
+	        				cd.getDefinition(), genDate, version);
+	      }
 
 	    
 		// TODO: Generate a C# file for each Valueset as enum

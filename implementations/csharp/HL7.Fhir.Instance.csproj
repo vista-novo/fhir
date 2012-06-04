@@ -54,9 +54,12 @@
     <Compile Include="HL7.Fhir.Instance.Model\Coding.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Conformance.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Contact.cs" />
+    <Compile Include="HL7.Fhir.Instance.Model\Count.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\DavidH.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Device.cs" />
+    <Compile Include="HL7.Fhir.Instance.Model\Distance.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Document.cs" />
+    <Compile Include="HL7.Fhir.Instance.Model\Duration.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Ewout.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Extension.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Group.cs" />
@@ -70,6 +73,7 @@
     <Compile Include="HL7.Fhir.Instance.Model\Linda.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Lloyd.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Message.cs" />
+    <Compile Include="HL7.Fhir.Instance.Model\Money.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Narrative.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Organization.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Patient.cs" />

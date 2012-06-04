@@ -8,8 +8,6 @@
         eType="#//Binding" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//ResourceDefn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="futureResources" upperBound="-1"
-        eType="#//DefinedCode" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
