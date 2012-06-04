@@ -66,7 +66,6 @@
     <Compile Include="HL7.Fhir.Instance.Model\HumanId.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\HumanName.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Identifier.cs" />
-    <Compile Include="HL7.Fhir.Instance.Model\Infrastructure.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\InterestOfCare.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Interval.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\LabReport.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="HL7.Fhir.Instance.Model\Specimen.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Valueset.cs" />
     <Compile Include="HL7.Fhir.Instance.Model\Woody.cs" />
+    <Compile Include="HL7.Fhir.Instance.Support\Infrastructure.cs" />
     <Compile Include="HL7.Fhir.Instance.Support\XsdDateTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

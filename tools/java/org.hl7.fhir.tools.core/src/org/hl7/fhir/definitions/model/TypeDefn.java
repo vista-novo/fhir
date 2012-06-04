@@ -20,17 +20,29 @@ public class TypeDefn {
 	public boolean hasParams() {
 		return params.size() > 0;
 	}
-  public String summary() {
-    String s = name;
-    if (hasParams()) {
-      s = s + "(";
-      for (String p : params)
-        s = s + p+',';
-      s = s.substring(0, s.length()-1)+')';
-    }
-    return s;
-  }
-  public String summaryFormal() {
+	
+	public boolean isUnboundGenericParam()
+	{
+		return name.equals("[param]");
+	}
+	
+	public boolean isWildcardType()
+	{
+		return name.equals("*");
+	}
+  
+	public String summary() {
+	    String s = name;
+	    if (hasParams()) {
+	      s = s + "(";
+	      for (String p : params)
+	        s = s + p+',';
+	      s = s.substring(0, s.length()-1)+')';
+	    }
+	    return s;
+	}
+  
+	public String summaryFormal() {
     String s = name;
     if (hasParams()) {
       s = s + "(";
@@ -40,4 +52,14 @@ public class TypeDefn {
     }
     return s;
   }
+	
+	public static boolean isFhirPrimitiveType(String tn)
+	{
+		return  tn.equals("boolean") || tn.equals("integer") ||
+				tn.equals("decimal") || tn.equals("base64Binary") ||
+				tn.equals("instant") || tn.equals("string") || tn.equals("uri") ||
+				tn.equals("code") || tn.equals("oid") || tn.equals("uuid") ||
+				tn.equals("sid") || tn.equals("id") || tn.equals("date") ||
+				tn.equals("dateTime");
+	}
 }

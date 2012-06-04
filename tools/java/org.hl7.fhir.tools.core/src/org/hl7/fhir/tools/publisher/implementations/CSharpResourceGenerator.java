@@ -30,10 +30,10 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 	
 	
-	private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
-	private List<String> typeNameStrings = new ArrayList<String>();
+	private Map<ElementDefn, String> elementToGeneratedTypeMapping = new HashMap<ElementDefn, String>();
+	private List<String> generatedTypesInScope = new ArrayList<String>();
 	
-	private List<ElementDefn> enums = new ArrayList<ElementDefn>();
+	private List<ElementDefn> enumsToGenerate = new ArrayList<ElementDefn>();
 	private List<String> enumNames = new ArrayList<String>();
 	private List<ElementDefn> strucs = new ArrayList<ElementDefn>();
 
@@ -48,9 +48,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			GenClass generationType,
 			Date genDate, String version) throws Exception 
 	{
-		typeNames.clear();
-		typeNameStrings.clear();
-		enums.clear();
+		elementToGeneratedTypeMapping.clear();
+		generatedTypesInScope.clear();
+		enumsToGenerate.clear();
 		strucs.clear();
 		enumNames.clear();
 
@@ -65,7 +65,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		}
 
 		// Generate nested enums
-		for (ElementDefn e : enums) 
+		for (ElementDefn e : enumsToGenerate) 
 		{
 			generateEnum(e, conceptDomains);
 		}
@@ -114,6 +114,8 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 
 
+	
+	private String TYPE_BASECLASSNAME = "FhirType";
 
 	private void beginClass(GenClass generationType, 
 			String className, String baseClassName, 
@@ -133,13 +135,13 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 				baseClass = "Element";
 				break;
 			case Type:
-				baseClass= "Type";
+				baseClass= TYPE_BASECLASSNAME;
 				break;
 			case Ordered:
 				baseClass = "Ordered";
 				break;
 			case Generic:
-				baseClass = "Type";
+				baseClass = TYPE_BASECLASSNAME;
 				break;
 			case ConstrainedType:
 				baseClass = baseClassName;
@@ -182,7 +184,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	private void generateEnum(ElementDefn e,
 			Map<String, BindingSpecification> conceptDomains) throws Exception 
 	{
-		String tn = typeNames.get(e);
+		String tn = elementToGeneratedTypeMapping.get(e);
 		
 		BindingSpecification cd = BindingSpecification.getBindingFromList(conceptDomains,
 				e.getBindingName());
@@ -215,7 +217,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	}
 	
 	private void generateNestedClass(ElementDefn e) throws Exception {
-		String tn = typeNames.get(e);
+		String tn = elementToGeneratedTypeMapping.get(e);
 		
 		writeLn("    public partial class " + tn + " : Element");
 		writeLn("    {");
@@ -244,94 +246,190 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 				String tn = getCodeListType(cd.getReference().substring(1));
 				if (!enumNames.contains(tn)) {
 					enumNames.add(tn);
-					enums.add(e);
+					enumsToGenerate.add(e);
 				}
-				typeNames.put(e, tn);
+			
+				elementToGeneratedTypeMapping.put(e, tn);
 				
 				return;
 			}
-		}
-		
-		// The element is atomic (it directly references an existing type,
-		// or the type defined by some other element within the same resource).
-		// This means the element does not have children of its own.
-		if (!e.hasNestedElements() && e.getTypes().size() > 0)
-		{					
-			String tn = null;
 			
-			// Indirect type definition via another element within resource
-			if (e.typeCode().startsWith("@"))
-			{
-				tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
-			} 
-			else 
-			{
-				tn = e.typeCode();
-					
-				// If we do not allow dataAbsenceReasons, we could check to see
-				// if this type is a primitive. The function will return null if
-				// the type is not recognized as a primitive type (that
-				// directly maps to an underlying CSharp type).
-		//		if( !e.isAllowDAR() )
-					tn = mapFHIRPrimitiveToCSharpType(tn);
-								
-				// The type is not an existing Resource/datatype name and
-				// cannot/may not be mapped to a (single) primitive type, 
-				// we must use special supporting C# class instead.			
-				if( tn == null )
-				{
-					// Special case: types that are actually names
-					// of template parameters in generic types
-					if(e.typeCode().equals("[param]"))
-						tn = "T";
-					else
-						tn = getTypeName(e);
-				}
-			}
-			
-			typeNames.put(e, tn);
+			// If the code is not bound, it will just appear as an unconstrained
+			// "Code" type (or more probably mapped to string) in the generated code.
+			// There will be no generated enum.
 		}
-		
-		// If the element has nested elements...
+				
+		if (!e.hasNestedElements() )
+			handleSingleElement(root, e);		
 		else if( e.hasNestedElements() )
-		{
-			// It is a structure. The structured type gets the name of
-			// the capitalized element name + "Component" appended.
-			String tn = capitalize(e.getName()) + "Component";
-
-			if (tn.equals("Element"))
-				tn = "Element_";
-			
-			strucs.add(e);
-
-			// If the structure has an existing name within the
-			// nested classes, add A, B, C, .....
-			if (typeNameStrings.contains(tn)) 
-			{
-				char i = 'A';
-				while (typeNameStrings.contains(tn + i))
-					i++;
-				tn = tn + i;
-			}
-			
-			typeNames.put(e, tn);
-			typeNameStrings.add(tn);
-			
-			// Continue with nested elements
-			for (ElementDefn c : e.getElements()) 
-			{
-				scanNestedTypes(root, path + capitalize(e.getName()), c,
-						conceptDomains);
-			}
-		}
+			handleComplexElement(root, path, e, conceptDomains);
 		else
-		{
-			throw new Exception("Internal error: " + root.getName() +
-					" has element " + e.getName() + " which carries both" +
-					" a type and child elements.");
-		}	
+			throw new Exception("Internal error: impossible case in type declaration");	
 	}
 
+
+	private void handleComplexElement(ElementDefn root, String path,
+			ElementDefn e, Map<String, BindingSpecification> conceptDomains)
+			throws Exception {
+		// It is a structure. The structured type gets the name of
+		// the capitalized element name + "Component" appended.
+		String tn = capitalize(e.getName()) + "Component";
+		
+		// If the structure has an existing name within the
+		// nested classes, add A, B, C, .....
+		if (generatedTypesInScope.contains(tn)) 
+		{
+			char i = 'A';
+			while (generatedTypesInScope.contains(tn + i))
+				i++;
+			tn = tn + i;
+		}
+
+		strucs.add(e);
+		elementToGeneratedTypeMapping.put(e, tn);
+		generatedTypesInScope.add(tn);
+		
+		// Continue with nested elements
+		for (ElementDefn c : e.getElements()) 
+		{
+			scanNestedTypes(root, path + capitalize(e.getName()), c,
+					conceptDomains);
+		}
+	}
+
+
+	private void handleSingleElement(ElementDefn root, ElementDefn e) throws Exception {
+		String exceptionPrefix = root.getName() +
+				" has element " + e.getName();
+		
+		// The element has no nested children, so should have
+		// a type declaration (directly, or via the type declared
+		// on some other element within the same resource).
+		if( e.getTypes().isEmpty() )
+			throw new Exception(exceptionPrefix + " which carries neither" +
+				" a type nor child elements.");
+
+		/* Syntax for type declarations
+		 * 
+		 *   typeSpec = '@' elementreference |
+		 *   			'[param]' |
+		 *   			'xhtml' |
+		 *   			'xml:ID' |
+		 *   			'Interval(' orderedType ')' |
+		 *   			'Resource(' resourceParams ')' |
+		 *   	    	type ('|' type)* | '*'
+		 *   
+		 *   resourceParams = resourceType ('|' resourceType)* | Any
+		 *   type = primitiveType | dataType | structure
+		 *   
+		 *   NB: mapping of primitive types is dependent on
+		 *   dataAbsenceAllowed. Is allowed, then the primitives must
+		 *   be mapped to a subclass of Type, otherwise to the
+		 *   corresponding C# primitive (or XsdDateTime).
+		 */
+		String tn = null;
+		
+		TypeDefn type = e.getTypes().get(0);
+
+		if( type.getName().startsWith("@"))
+			tn = elementToGeneratedTypeMapping.get(
+					root.getElementForPath(e.typeCode().substring(1)));
+		else if( type.isUnboundGenericParam() )
+			tn = "T";
+		else if( type.getName().equalsIgnoreCase("xhtml") )
+			tn = "XNode";
+		else if( type.getName().equalsIgnoreCase("xml:ID") )
+			tn = "string";
+		else if(type.getName().startsWith("Interval"))
+			tn = buildIntervalMappedTypeName(type);
+		else if(type.getName().startsWith("Resource"))
+			tn = buildResourceReferenceTypename(type);
+		else
+			//Not a special case, must be a type/list of types
+			tn = buildFhirTypeMappedName(e);
+		
+		elementToGeneratedTypeMapping.put(e, tn);
+	}
+
+
+	private String buildIntervalMappedTypeName(TypeDefn type) throws Exception {
+		String mappedParamType = 
+			mapFHIRPrimitiveToCSharpType(type.getParams().get(0));
+		
+		if( mappedParamType != null )
+			return "Interval<" + mappedParamType  + ">";
+		else
+		{
+			throw new Exception("Interval<"+ type.getParams().get(0) +
+					"> not supported, not a known primitive type.");
+		}
+	}
+
+
+	private String buildFhirTypeMappedName(ElementDefn e) throws Exception {
+		// If we have a list of alternate types, we can only
+		// use the Type baseclass for polymorphic use.
+		boolean isPolymorphicElement = 
+				e.getTypes().size() > 1 || e.getTypes().get(0).isWildcardType(); 
+				
+		if ( isPolymorphicElement ) 
+			return TYPE_BASECLASSNAME;
+
+		// If it is one single specific type, generate this as type
+		else
+		{
+			String typeName = e.getTypes().get(0).getName();
+			
+			// instant, date and dateTime are always mapped to the specially 
+			// hand-crafted XsdDateTime in C#
+			if( typeName.equals("date") || typeName.equals("dateTime") || 
+					typeName.equals("instant") )
+				return "XsdDateTime";
+			
+			// Primitives which are used without a dataAbsentReason
+			// can be mapped to a C# specific primitive type.
+			else if( TypeDefn.isFhirPrimitiveType(typeName) &&
+					!e.isAllowDAR() )
+				return mapFHIRPrimitiveToCSharpType(typeName);
+			
+			else
+				return buildCSharpTypeName(typeName);
+		}		
+	}
+
+	
+	private String buildCSharpTypeName(String tn)
+	{
+		// For now, just capitalize, but any namespace ambiguities must
+		// now be resolved and commonly used names avoided. The name returned
+		// here will be put verbatim in the source code for the class.
+		if( tn.equals("dateTime") )
+			return "DateTime_";
+		if( tn.equals("string") )
+			return "String_";
+		if( tn.equals("integer") )
+			return "Integer_";
+		if( tn.equals("uri") )
+			return "Uri_";
+		
+		 return capitalize(tn);
+	}
+	
+	private String buildResourceReferenceTypename(TypeDefn type) throws Exception 
+	{
+		// If this is a polymorphic Resource reference (Resource(A|B|....), 
+		// or Resource(Any)), generate a reference to a polymorphic Resource.
+		boolean isPolymorphicReference =
+				type.getParams().size() > 1 || type.getParams().get(0).equals("Any");
+				
+		if( isPolymorphicReference ) 
+		return "ResourceReference<Resource>";
+		
+		// If we are dealing with a Resource reference for a specific resource,
+		// generate a reference with that specific typename.
+		else 
+			return "ResourceReference<" + buildCSharpTypeName(type.getParams().get(0)) + ">";
+	}
 
 	
 	private String mapFHIRPrimitiveToCSharpType(String tn)
@@ -349,7 +447,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		else if (tn.equals("string"))
 			return "string";
 		else if (tn.equals("uri"))
-			return "Uri";
+			return "System.Uri";
 		else if (tn.equals("code"))
 			return "string";
 		else if (tn.equals("oid"))
@@ -368,33 +466,6 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			return null;
 	}
 	
-	
-	private Object getElementForPath(ElementDefn root, String pathname)
-			throws Exception 
-	{
-		String[] path = pathname.split("\\.");
-	
-		if (!path[0].equals(root.getName()))
-			throw new Exception("Element Path '" + pathname
-					+ "' is not legal in this context");
-		
-		ElementDefn res = root;
-		
-		for (int i = 1; i < path.length; i++) 
-		{
-			String en = path[i];
-			if (en.length() == 0)
-				throw new Exception("Improper path " + pathname);
-		
-			ElementDefn t = res.getElementByName(en);
-			if (t == null) {
-				throw new Exception("unable to resolve " + pathname);
-			}
-			
-			res = t;
-		}
-		return res;
-	}
 
 	private String getCodeListType(String binding) {
 		StringBuilder b = new StringBuilder();
@@ -413,13 +484,16 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 
 	private void generateFieldAndProperty(ElementDefn root, ElementDefn e, String indent) throws Exception {
-		String tn = typeNames.get(e);
+		String tn = elementToGeneratedTypeMapping.get(e);
 
 		writeLn(indent + "/**");
 		writeLn(indent + " * " + e.getDefinition());
 		writeLn(indent + " */");
 
 		String propName = capitalize(getElementName(e.getName()));
+		
+		if( Utilities.isCSharpReservedWord(propName) )
+			  propName += "_";
 		
 		// member names cannot have the same name as their enclosing class
 		if( propName.equals(root.getName()) )
@@ -431,8 +505,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			boolean isInternalReference = 
 					tn == null && 
 					e.typeCode().startsWith("@");
-			
-			
+				
 			String listType = isInternalReference ? root.getName() : tn;
 			String fieldName = "_" + getElementName(e.getName()); 
 			writeLn(indent + "private List<" + listType + "> "
@@ -456,121 +529,16 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		  if (name.equals("[type]"))
 			    return "value";
 		  else
-		  {
-			  if( Utilities.isCSharpReservedWord(name) )
-				  name = name + "_";
-				  
-			  return name.replace("[x]", "");
-		  }
-			    
+			  return name.replace("[x]", "");			    
 	}
-
-	
-	private String getTypeName(ElementDefn e) throws Exception {
-		// If the element is a choice of more than one type,
-		// this must be a list of datatypes. The type of the element
-		// is set to polymorphic Type.
-		if (e.getTypes().size() > 1) 
-		{
-			return "Type";
-		}
-
-		// The element has no type, so we cannot determine
-		// a typename. Throw exception.
-		else if (e.getTypes().size() == 0)
-		{
-			throw new Exception("not supported");
-		} 
 		
-		// The element is a resource(reference) or another
-		// unrecognized type.
-		else
-		{
-			return getTypename(e.getTypes().get(0));
-		}
-	}
-
-	
-	private String getTypename(TypeDefn type) throws Exception {
-		// The element is has 1 type parameter, which suggests
-		// it is a Resourcereference or a parameterized Interval.
-		// If not, this is not supported.
-		if (type.getParams().size() == 1) 
-		{
-			if (type.getName().equals("Resource"))
-				return "ResourceReference<"
-						+ getTypeName(type.getParams().get(0)) + ">";
-			else if (type.getName().equals("Interval"))
-			{
-				String mappedParamType = 
-						mapFHIRPrimitiveToCSharpType(type.getParams().get(0));
-				
-				if( mappedParamType != null )
-					return "Interval<" + mappedParamType  + ">";
-				else
-				{
-					throw new Exception("Interval<"+ getTypeName(type.getParams().get(0)) +
-							"> not supported, not a known primitive type.");
-				}
-			}
-			else
-				throw new Exception("not supported");
-		}
-		
-		// The element is a polymorphic Resource reference
-		// Resource(A|B|....). Generate this a reference
-		// to a "Resource".
-		else if (type.getParams().size() > 1) 
-		{
-			if (type.getName().equals("Resource"))
-				return "ResourceReference<Resource>";
-			else
-				throw new Exception("not supported");
-		} 
-		
-		// Another non-parameterized type, we will just pass-through
-		// a capitalized version of the name, and hope it maps to
-		// a hand-crafted support class.
-		else 
-		{
-			return getTypeName(type.getName());
-		}
-	}
-
-	
-	private String getTypeName(String tn) 
-	{	
-		if (tn.equalsIgnoreCase("*"))
-			return "Type";
-
-		if( Utilities.isCSharpReservedWord(tn) )
-			return capitalize(tn)+"_";
-				
-		if (tn.equalsIgnoreCase("xml:ID"))
-			return "String";
-		
-		if (tn.equalsIgnoreCase("Xhtml"))
-			return "XNode";
-
-		// Type name Any means "Any resource"
-		if (tn.equals("Any")) 
-			return "Resource";
-		
-		// We don't know the type, just capitalize it.
-		return capitalize(tn);
-	}
-	
-	
 	private String capitalize(String name) {
 		return name.substring(0, 1).toUpperCase() + name.substring(1);
 	}
-
-		
+	
 	private void writeLn( String line ) throws IOException
 	{
 		write(line);
 		write("\r\n");
 	}
-
-
 }

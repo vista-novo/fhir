@@ -35,7 +35,7 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Support
 {
-    public class XsdDateTime : HL7.Fhir.Instance.Model.Ordered
+    public class XsdDateTime : HL7.Fhir.Instance.Support.Ordered
     {
         public enum XsdDateTimeKind
         {

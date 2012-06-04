@@ -463,4 +463,32 @@ public class ElementDefn {
   }
   
   
+  public ElementDefn getElementForPath(String pathname)
+			throws Exception 
+	{
+		String[] path = pathname.split("\\.");
+	
+		if (!path[0].equals(getName()))
+			throw new Exception("Element Path '" + pathname
+					+ "' is not legal in this context");
+		
+		ElementDefn res = this;
+		
+		for (int i = 1; i < path.length; i++) 
+		{
+			String en = path[i];
+			if (en.length() == 0)
+				throw new Exception("Improper path " + pathname);
+		
+			ElementDefn t = res.getElementByName(en);
+			if (t == null) {
+				throw new Exception("unable to resolve " + pathname);
+			}
+			
+			res = t;
+		}
+		
+		return res;
+	}
+  
 }
