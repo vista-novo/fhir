@@ -678,8 +678,7 @@
     <Cell><Data ss:Type="String">Profile.resource.element.content.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">*</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Fixed value: [as defined for type]</Data></Cell>
@@ -808,12 +807,11 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>27</TopRowVisible>
+   <TopRowVisible>45</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>35</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>51</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
