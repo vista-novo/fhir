@@ -9,26 +9,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
 
 public class CSharpProjectGenerator 
 {	
 	public void build( String destDir, List<String> cSharpProjectFiles ) throws IOException
 	{
-		if( !destDir.endsWith(File.separator) )
-			destDir += File.separator;
-		
-		Path p = Paths.get(destDir + "HL7.Fhir.Instance.csproj.template");	
-		List<String> templateContents = 
-				Files.readAllLines(p,Charset.forName("UTF-8"));
-		
-		List<String> itemGroup = buildItemGroupContents(cSharpProjectFiles);
-		List<String> outputLines = replaceTemplateVar( templateContents, "@@@PROJECTFILES@@@", itemGroup);
-		
-		Path outPath = Paths.get(destDir + "HL7.Fhir.Instance.csproj");
-		Files.write(outPath, outputLines, Charset.forName("UTF-8"));
+//		if( !destDir.endsWith(File.separator) )
+//			destDir += File.separator;
+//		
+//		Path p = Paths.get(destDir + "HL7.Fhir.Instance.csproj.template");	
+//		List<String> templateContents = 
+//				Files.readAllLines(p,Charset.forName("UTF-8"));
+//		
+//		List<String> itemGroup = buildItemGroupContents(cSharpProjectFiles);
+//		List<String> outputLines = replaceTemplateVar( templateContents, "@@@PROJECTFILES@@@", itemGroup);
+//		
+//		Path outPath = Paths.get(destDir + "HL7.Fhir.Instance.csproj");
+//		Files.write(outPath, outputLines, Charset.forName("UTF-8"));
 	}
 	
 

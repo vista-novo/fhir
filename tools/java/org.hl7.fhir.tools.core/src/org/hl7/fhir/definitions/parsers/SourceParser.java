@@ -72,7 +72,7 @@ public class SourceParser {
       loadDataType(n, definitions.getStructures());
     for (String n : ini.getPropertyNames("infrastructure")) 
       loadDataType(n, definitions.getInfrastructure());
-    for (String n : ini.getPropertyNames("resources")) 
+    for (String n : ini.getPropertyNames("resources"))  
       loadResource(n, definitions.getResources(), false);
     if (isInternalRun)
       for (String n : ini.getPropertyNames("sandbox")) 
@@ -200,7 +200,8 @@ public class SourceParser {
     definitions.getResources().put(root.getName(), root);
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root);
-    map.put(root.getName(), root);   
+    map.put(root.getName(), root);
+    root.setStatus(ini.getStringProperty("status", n));
   }
 
 

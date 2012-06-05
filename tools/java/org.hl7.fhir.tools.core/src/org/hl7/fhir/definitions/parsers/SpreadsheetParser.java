@@ -100,6 +100,10 @@ public class SpreadsheetParser {
   }
 
   private void readSearchParams(ResourceDefn root2, Sheet sheet) throws Exception {
+    root2.getSearchParams().put("n", "Starting offset of the first record to return in the search set");
+    root2.getSearchParams().put("count", "Number of return records requested. The server is not bound to conform");
+    root2.getSearchParams().put("id", "An identifier associated with the resource");
+    
     if (sheet != null)
       for (int row = 0; row < sheet.rows.size(); row++) {
 

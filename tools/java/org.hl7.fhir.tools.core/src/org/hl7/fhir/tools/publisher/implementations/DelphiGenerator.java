@@ -267,6 +267,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder def = new StringBuilder();
     StringBuilder con = new StringBuilder();
     StringBuilder con2 = new StringBuilder();
+    StringBuilder con3 = new StringBuilder();
 
     String tn = "TSearchParams"+r.getName();
     String prefix = "sp"+r.getName()+"_";
@@ -276,12 +277,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  }\r\n");
     def.append("  "+tn+" = (\r\n");
     
+    con3.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
     con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
-    con2.append("  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
+    con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
 
     List<String> params = new ArrayList<String>();
-    params.add("n");
-    params.add("count");
     params.addAll(r.getSearchParams().keySet());
     Collections.sort(params);
     int l = params.size();
@@ -289,29 +289,24 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
     for (String n : params) {
       i++;
-
-      String d;
-      if (n.equals("n")) {
-        d = "Starting offset of the first record to return in the search set";
-      } else if (n.equals("count")) {
-        d = "Number of return records requested. The server is not bound to conform.";
-      } else 
-        d = r.getSearchParams().get(n);
-
-      n = n.replace("-", "_");
+      String d = r.getSearchParams().get(n);
+      String nf = n.replace("-", "_");
       if (i == l) {
-        def.append("    "+prefix+getTitle(n)+"); {@enum.value "+prefix+getTitle(n)+" "+d+" }\r\n");
+        def.append("    "+prefix+getTitle(nf)+"); {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
         con.append("'"+defCode.escape(d)+"');");
-        con2.append(" "+prefix+getTitle(n)+");");
+        con2.append(" "+prefix+getTitle(nf)+");");
+        con3.append("'"+defCode.escape(n)+"');");
       }
       else {
-        def.append("    "+prefix+getTitle(n)+", {@enum.value "+prefix+getTitle(n)+" "+d+" }\r\n");
+        def.append("    "+prefix+getTitle(nf)+", {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
         con.append("'"+defCode.escape(d)+"', ");
-        con2.append(" "+prefix+getTitle(n)+", ");
+        con2.append(" "+prefix+getTitle(nf)+", ");
+        con3.append("'"+defCode.escape(n)+"', ");
       }
     }
 
     defCode.enumDefs.add(def.toString());
+    defCode.enumConsts.add(con3.toString());
     defCode.enumConsts.add(con.toString());
     defCode.enumConsts.add(con2.toString());
     
@@ -715,16 +710,16 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         tnl = "TStringList";
       else
         tnl = tn+"List";
-      s = getTitle(s);
+      s = s+"List";
       defPriv1.append("    F"+s+" : "+tnl+";\r\n");
       defPub.append("    {@member "+s+"\r\n");
       defPub.append("      "+e.getDefinition()+"\r\n");
       defPub.append("    }\r\n");
       defPub.append("    property "+s+" : "+tnl+" read F"+getTitle(s)+";\r\n");
       defPub.append("\r\n");
-      create.append("  F"+s+" := "+tnl+".Create;\r\n");
-      destroy.append("  F"+s+".Free;\r\n");
-      assign.append("  F"+s+".Assign("+cn+"(oSource).F"+s+");\r\n");
+      create.append("  F"+getTitle(s)+" := "+tnl+".Create;\r\n");
+      destroy.append("  F"+getTitle(s)+".Free;\r\n");
+      assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
       
       defineList(tn, tnl);
       if (!typeIsSimple(tn)) {

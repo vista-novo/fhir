@@ -458,6 +458,8 @@ public class PageProcessor implements Logger  {
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
         src = s1+resource.getName()+s3;
+      else if (com[0].equals("status"))
+        src = s1+resource.getStatus()+s3;
       else if (com[0].equals("introduction")) 
         src = s1+loadXmlNotes(name, "introduction")+s3;
       else if (com[0].equals("examples")) 

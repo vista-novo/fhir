@@ -8,11 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -21,7 +24,22 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.definitions.ecore.fhir.Binding;
+import org.hl7.fhir.definitions.ecore.fhir.Constraint;
+import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
+import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
@@ -61,6 +79,9 @@ import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.*;
+import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 /**
  * This is the entry point for the publication method for FHIR
@@ -73,20 +94,6 @@ import org.xml.sax.SAXParseException;
  *     4. final specification
  *   Validate the XML
  *   
- * @author Grahame
- *
- */
-/**
- *             EObject eObject = ...;
- 
-            Resource resource = new XMLResourceImpl();
-            resource.getContents().add(eObject);
- 
-            Map options = new HashMap();
-            options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-            options.put(XMLResource.OPTION_XML_VERSION, "1.0");      
-            new XMLProcessor().save(System.err, resource, options);
-            
  * @author Grahame
  *
  */
@@ -116,6 +123,7 @@ public class Publisher {
 		  Utilities.clearDirectory(page.getFolders().dstDir);
 	    prsr.parse(isInternalRun);
 			if (validate()) {
+			  testECore();
 			  produceSpecification();
 			  validateXml();
 			  System.out.println("Finished publishing FHIR");
@@ -124,6 +132,23 @@ public class Publisher {
 			  System.out.println("Didn't publish FHIR due to errors");
 		}
 	}
+
+  private void testECore() throws IOException {
+    org.hl7.fhir.definitions.ecore.fhir.Definitions d = FhirFactory.eINSTANCE.createDefinitions();
+    org.hl7.fhir.definitions.ecore.fhir.ResourceDefn r = FhirFactory.eINSTANCE.createResourceDefn();
+    d.getResources().add(r);
+    r.setName("test");
+
+    Resource resource = new XMLResourceImpl();
+    resource.getContents().add(d);
+    r.setDefinition(FhirFactory.eINSTANCE.createElementDefn());
+    r.getDefinition().setName("t");
+
+    Map<String, String> options = new HashMap<String, String>();
+    options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+    options.put(XMLResource.OPTION_XML_VERSION, "1.0");      
+    new XMLProcessor().save(new FileOutputStream("c:\\temp\\ecore.xml"), resource, options);
+  }
 
   private void registerReferencePlatforms() {
     page.getReferenceImplementations().add(new DelphiGenerator());
