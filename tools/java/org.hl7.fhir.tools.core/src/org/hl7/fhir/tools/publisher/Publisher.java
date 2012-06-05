@@ -139,16 +139,17 @@ public class Publisher {
     org.hl7.fhir.definitions.ecore.fhir.ResourceDefn r = FhirFactory.eINSTANCE.createResourceDefn();
     d.getResources().add(r);
     r.setName("test");
-
-    Resource resource = new XMLResourceImpl();
-    resource.getContents().add(d);
     r.setDefinition(FhirFactory.eINSTANCE.createElementDefn());
     r.getDefinition().setName("t");
 
+    Resource resource = new XMLResourceImpl();
     Map<String, String> options = new HashMap<String, String>();
     options.put(XMLResource.OPTION_ENCODING, "UTF-8");
     options.put(XMLResource.OPTION_XML_VERSION, "1.0");      
-    new XMLProcessor().save(new FileOutputStream("c:\\temp\\ecore.xml"), resource, options);
+    
+    resource.getContents().add(d);
+    resource.save(new FileOutputStream("c:\\temp\\ecore.xml"), options);   
+//    new XMLProcessor().save(new FileOutputStream("c:\\temp\\ecore.xml"), resource, options);
   }
 
   private void registerReferencePlatforms() {
