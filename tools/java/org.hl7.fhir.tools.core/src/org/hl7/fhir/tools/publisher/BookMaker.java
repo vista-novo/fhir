@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -40,7 +41,7 @@ public class BookMaker {
     target = page.getFolders().dstDir;
     target = target + File.separator;
     
-    String src = Utilities.fileToString(page.getFolders().srcDir+"book.htm");
+    String src = TextFile.fileToString(page.getFolders().srcDir+"book.htm");
     src = page.processPageIncludes(page.getFolders().srcDir+"book.htm", src);
     XhtmlDocument doc = new XhtmlParser().parse(src);
     XhtmlNode body = doc.getElement("html").getElement("body");

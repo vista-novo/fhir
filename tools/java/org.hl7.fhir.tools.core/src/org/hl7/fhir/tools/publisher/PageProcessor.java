@@ -27,6 +27,7 @@ import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class PageProcessor implements Logger  {
@@ -52,7 +53,7 @@ public class PageProcessor implements Logger  {
       throw new Exception("unable to find definition for "+dt);
     gen.generate(e);
     fos.close();
-    String val = Utilities.fileToString(tmp.getAbsolutePath())+"\r\n";
+    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
     tmp.delete();
     return val; 
     
@@ -69,7 +70,7 @@ public class PageProcessor implements Logger  {
       throw new Exception("unable to find definition for "+dt);
     gen.generate(e, definitions.getBindings());
     fos.close();
-    String val = Utilities.fileToString(tmp.getAbsolutePath())+"\r\n";
+    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
     tmp.delete();
     return val;
   }
@@ -86,7 +87,7 @@ public class PageProcessor implements Logger  {
       throw new Exception("unable to find definition for "+dt);
     gen.generate(e);
     fos.close();
-    String val = Utilities.fileToString(tmp.getAbsolutePath())+"\r\n";
+    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
     tmp.delete();
     return val; 
   }
@@ -157,9 +158,9 @@ public class PageProcessor implements Logger  {
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("header"))
-        src = s1+Utilities.fileToString(folders.srcDir + "header.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
       else if (com[0].equals("footer"))
-        src = s1+Utilities.fileToString(folders.srcDir + "footer.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
@@ -350,7 +351,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("header"))
         src = s1+s3;
       else if (com[0].equals("footer"))
-        src = s1+Utilities.fileToString(folders.srcDir + "footer.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
         src = s1+s3;
       else if (com[0].equals("title"))
@@ -451,9 +452,9 @@ public class PageProcessor implements Logger  {
       if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
       else if (com[0].equals("header"))
-        src = s1+Utilities.fileToString(folders.srcDir + "header.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
       else if (com[0].equals("footer"))
-        src = s1+Utilities.fileToString(folders.srcDir + "footer.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))
@@ -547,11 +548,11 @@ public class PageProcessor implements Logger  {
       filename = folders.srcDir + name+File.separatorChar+name+"-"+suffix+".xml";
     
     if (!new File(filename).exists()) {
-      Utilities.stringToFile(HTML_PREFIX+"\r\n<!-- content goes here -->\r\n\r\n"+HTML_SUFFIX, filename);
+      TextFile.stringToFile(HTML_PREFIX+"\r\n<!-- content goes here -->\r\n\r\n"+HTML_SUFFIX, filename);
       return "";
     }
     
-    String cnt = Utilities.fileToString(filename);
+    String cnt = TextFile.fileToString(filename);
     cnt = processPageIncludes(filename, cnt);
     if (cnt.startsWith("<div")) {
       if (!cnt.startsWith(HTML_PREFIX) || !cnt.endsWith(HTML_SUFFIX))
@@ -561,7 +562,7 @@ public class PageProcessor implements Logger  {
         return res;
       }
     } else {
-      Utilities.stringToFile(HTML_PREFIX+cnt+HTML_SUFFIX, filename);
+      TextFile.stringToFile(HTML_PREFIX+cnt+HTML_SUFFIX, filename);
       return cnt;
     }
 }
@@ -579,9 +580,9 @@ public class PageProcessor implements Logger  {
       if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+filename);
       else if (com[0].equals("header"))
-        src = s1+Utilities.fileToString(folders.srcDir + "header.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
       else if (com[0].equals("footer"))
-        src = s1+Utilities.fileToString(folders.srcDir + "footer.htm")+s3;
+        src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
         src = s1+generateSideBar()+s3;
       else if (com[0].equals("title"))

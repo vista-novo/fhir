@@ -64,6 +64,7 @@ import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
 import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
@@ -266,7 +267,7 @@ public class Publisher {
         File fn = new File(page.getFolders().dstDir+f);
         if (!fn.isDirectory()) {
           if (f.endsWith(".htm")) {
-            String src = Utilities.fileToString(fn.getAbsolutePath());
+            String src = TextFile.fileToString(fn.getAbsolutePath());
             String srcn = src.replace("Warning: FHIR is a draft specification that is still undergoing development prior to balloting as a full HL7 standard", "This is an old version of FHIR retained for archive purposes. Do not use for anything else");
             if (!srcn.equals(src))
               c++;
@@ -275,7 +276,7 @@ public class Publisher {
 //            Utilities.stringToFile(srcn, target+File.separator+f);
           }
           else if (f.endsWith(".css")) {
-            String src = Utilities.fileToString(fn.getAbsolutePath());
+            String src = TextFile.fileToString(fn.getAbsolutePath());
             src = src.replace("#fff", "lightcyan");
             zip.addFileSource(f, src);
 //            Utilities.stringToFile(srcn, target+File.separator+f);
@@ -344,15 +345,15 @@ public class Publisher {
 	
 		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
 		gen.generate(root);
-		String xml = Utilities.fileToString(tmp.getAbsolutePath());
+		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 		tgen.generate(root, page.getDefinitions().getBindings());
-		String tx = Utilities.fileToString(tmp.getAbsolutePath());
+		String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
 		DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
 		dgen.generate(root);
-		String dict = Utilities.fileToString(tmp.getAbsolutePath());
+		String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
 		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir+n+".dict.xml"));
 		dxgen.generate(root, "HL7");
@@ -363,16 +364,16 @@ public class Publisher {
 		  processExample(e);
 		}
     
-    String src = Utilities.fileToString(page.getFolders().srcDir + "template.htm");
+    String src = TextFile.fileToString(page.getFolders().srcDir + "template.htm");
 		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
-		Utilities.stringToFile(src, page.getFolders().dstDir + n+".htm");
-		src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
+		TextFile.stringToFile(src, page.getFolders().dstDir + n+".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
 		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
-		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
+		TextFile.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
 
     File umlf = new File(page.getFolders().imgDir+n+".png");
     Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
-    src = Utilities.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
     src = page.processResourceIncludes(n, root, xml, tx, dict, src);
     cachePage(n+".htm", src);
 
@@ -445,7 +446,7 @@ public class Publisher {
     
     XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
     gen.generate(profile);
-    String xml = Utilities.fileToString(tmp.getAbsolutePath());
+    String xml = TextFile.fileToString(tmp.getAbsolutePath());
     
     ProfileGenerator pgen = new ProfileGenerator();
     pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+filename+".profile.xml"));
@@ -464,9 +465,9 @@ public class Publisher {
 //    File xmlf = new File(page.getFolders().srcDir+n+File.separatorChar+"example.xml");
 //    File umlf = new File(page.getFolders().imgDir+n+".png");
 //
-    String src = Utilities.fileToString(page.getFolders().srcDir + "template-profile.htm");
+    String src = TextFile.fileToString(page.getFolders().srcDir + "template-profile.htm");
     src = page.processProfileIncludes(filename, profile, xml, src);
-    Utilities.stringToFile(src, page.getFolders().dstDir + filename+".htm");
+    TextFile.stringToFile(src, page.getFolders().dstDir + filename+".htm");
 //
 //    src = Utilities.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
 //    src = processResourceIncludes(n, root, xml, tx, dict, src);
@@ -523,14 +524,14 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 }
 
   private void producePage(String file) throws Exception {
-		String src = Utilities.fileToString(page.getFolders().srcDir + file);
+		String src = TextFile.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
-		Utilities.stringToFile(src, page.getFolders().dstDir + file);
-		src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 20px\">");
+		TextFile.stringToFile(src, page.getFolders().dstDir + file);
+		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 20px\">");
 		src = page.processPageIncludesForPrinting(file, src);
-		Utilities.stringToFile(src, page.getFolders().dstDir + "print-"+file);
+		TextFile.stringToFile(src, page.getFolders().dstDir + "print-"+file);
 		
-    src = Utilities.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 10px\">");
+    src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 10px\">");
     src = page.processPageIncludesForBook(file, src);
 		cachePage(file, src);
 	}

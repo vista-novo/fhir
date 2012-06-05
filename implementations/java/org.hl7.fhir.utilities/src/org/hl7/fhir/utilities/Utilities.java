@@ -39,27 +39,7 @@ public class Utilities {
     	return inf.pluralize(word);
     }
     
-    public static void stringToFile(String content, String dst) throws Exception {
-		File file = new File(dst);
-		FileOutputStream s = new FileOutputStream(file);
-		OutputStreamWriter sw = new OutputStreamWriter(s);
-		sw.write(content);
-		sw.flush();
-		s.close();
-	}
-
-    public static String fileToString(String src) throws Exception {
-		File file = new File(src);
-		FileInputStream s = new FileInputStream(file);
-		InputStreamReader sr = new InputStreamReader(s);
-		StringBuilder b = new StringBuilder();
-		while (sr.ready()) {
-			char c = (char) sr.read();
-			b.append(c);
-		}
-		return b.toString();
-	}
-
+  
 	public static boolean IsInteger(String string) {
 		try {
 			int i = Integer.parseInt(string);

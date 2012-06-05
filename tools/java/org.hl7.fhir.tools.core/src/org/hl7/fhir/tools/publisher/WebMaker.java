@@ -12,6 +12,7 @@ import java.util.zip.ZipFile;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.utilities.IniFile;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -45,7 +46,7 @@ public class WebMaker {
     String[] files = new File(folders.dstDir).list();
     for (String f : files) {
       if (f.endsWith(".htm")) {
-        String src = Utilities.fileToString(folders.dstDir+f);
+        String src = TextFile.fileToString(folders.dstDir+f);
         if (src.contains("<!--archive-->")) {
           src = src.replace("<!--archive-->", makeArchives());
         }

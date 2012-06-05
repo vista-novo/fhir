@@ -8,6 +8,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.utilities.IniFile;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class SchemaGenerator {
@@ -37,9 +38,9 @@ public class SchemaGenerator {
     }
 
     for (String n : ini.getPropertyNames("schema")) {
-        String xsd = Utilities.fileToString(srcDir + n);
+        String xsd = TextFile.fileToString(srcDir + n);
         xsd = processSchemaIncludes(definitions, n, xsd);
-        Utilities.stringToFile(xsd, xsdDir + n);
+        TextFile.stringToFile(xsd, xsdDir + n);
     }
     produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
     produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
@@ -54,15 +55,15 @@ public class SchemaGenerator {
   }
 
   private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
-    String src = Utilities.fileToString(srcDir + "atom-template.xsd");
+    String src = TextFile.fileToString(srcDir + "atom-template.xsd");
     src = processSchemaIncludes(definitions, "atom-templates.xsd", src);
-    Utilities.stringToFile(src, xsdDir + "atom.xsd");
+    TextFile.stringToFile(src, xsdDir + "atom.xsd");
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
-    String src = Utilities.fileToString(srcDir + "fhir-all.xsd");
+    String src = TextFile.fileToString(srcDir + "fhir-all.xsd");
     src = processSchemaIncludes(definitions, "fhir-all.xsd", src);
-    Utilities.stringToFile(src, xsdDir + "fhir-all.xsd");
+    TextFile.stringToFile(src, xsdDir + "fhir-all.xsd");
   }
 
   private String processSchemaIncludes(Definitions definitions, String filename, String src) throws Exception {

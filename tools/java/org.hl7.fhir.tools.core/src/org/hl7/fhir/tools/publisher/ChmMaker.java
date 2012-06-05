@@ -13,6 +13,7 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class ChmMaker {
@@ -67,15 +68,15 @@ public class ChmMaker {
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp\\chm\\"+f));
     }
     
-    String src = Utilities.fileToString(folders.rootDir+"\\tools\\chm\\fhir.hhp");
-    Utilities.stringToFile(src.replace("%fhir%", folders.dstDir), folders.rootDir+"\\temp\\chm\\fhir.hhp");
+    String src = TextFile.fileToString(folders.rootDir+"\\tools\\chm\\fhir.hhp");
+    TextFile.stringToFile(src.replace("%fhir%", folders.dstDir), folders.rootDir+"\\temp\\chm\\fhir.hhp");
     Utilities.copyFile(new File(folders.rootDir+"\\tools\\chm\\words.stp"), new File(folders.rootDir+"\\temp\\chm\\words.stp"));
     StringBuilder s = new StringBuilder();
     buildHHC(s);
-    Utilities.stringToFile(s.toString(), folders.rootDir+"\\temp\\chm\\fhir.hhc");
+    TextFile.stringToFile(s.toString(), folders.rootDir+"\\temp\\chm\\fhir.hhc");
     s = new StringBuilder();
     buildHHK(s);
-    Utilities.stringToFile(s.toString(), folders.rootDir+"\\temp\\chm\\fhir.hhk");
+    TextFile.stringToFile(s.toString(), folders.rootDir+"\\temp\\chm\\fhir.hhk");
 
     List<String> command = new ArrayList<String>();
     command.add(hhc);
