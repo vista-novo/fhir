@@ -8,7 +8,7 @@ import java.util.Map;
 public class ResourceDefn extends ElementDefn {
    private List<Example> examples = new ArrayList<Example>();
    private Map<String, Invariant> invariants = new HashMap<String, Invariant>();
-   private Map<String, String> searchParams = new HashMap<String, String>();
+   private List<SearchParameter> searchParams = new ArrayList<SearchParameter>();
    
    private boolean sandbox;
    private String status;
@@ -29,7 +29,7 @@ public class ResourceDefn extends ElementDefn {
     return invariants;
   }
 
-  public Map<String, String> getSearchParams() {
+  public List<SearchParameter> getSearchParams() {
     return searchParams;
   }
 

@@ -23,6 +23,8 @@ import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.utilities.IniFile;
@@ -499,6 +501,7 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
+  @SuppressWarnings("unchecked")
   private String getSearch(ResourceDefn resource) {
     if (resource.getSearchParams().size() == 0)
       return "";
@@ -506,11 +509,12 @@ public class PageProcessor implements Logger  {
       StringBuilder b = new StringBuilder();
       b.append("<h2>Examples</h2>\r\n");
       b.append("<table class=\"list\">\r\n");
-      List<String> names = new ArrayList<String>();
-      names.addAll(resource.getSearchParams().keySet());
-      Collections.sort(names);
-      for (String n : names) {
-        b.append("<tr><td>"+n+"</td><td>"+Utilities.escapeXml(resource.getSearchParams().get(n))+"</td></tr>\r\n");
+      for (SearchParameter p : resource.getSearchParams()) {
+        if (p.getType() == SearchType.date) {
+          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");          
+        } else
+          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
       }
       b.append("</table>\r\n");
       return b.toString();

@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:12:40Z</Created>
-  <LastSaved>2012-03-25T19:48:17Z</LastSaved>
+  <LastSaved>2012-06-05T12:55:02Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -653,45 +653,49 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">patient</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a patient to list prescriptions for</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">prescriber</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a prescriber to list prescriptions from</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">startdate</Data></Cell>
     <Cell><Data ss:Type="String">Return only prescriptions made starting from this date (inclusive) (prescribed)</Data></Cell>
+    <Cell><Data ss:Type="String">date</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">enddate</Data></Cell>
     <Cell><Data ss:Type="String">Return only prescriptions made before this date (inclusive) (prescribed)</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">search id in any prescription identifiers</Data></Cell>
+    <Cell><Data ss:Type="String">date</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">status</Data></Cell>
     <Cell><Data ss:Type="String">status of the prescription</Data></Cell>
+    <Cell><Data ss:Type="String">token</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">medicine</Data></Cell>
     <Cell><Data ss:Type="String">code or text in medicine or ingredient</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">reason</Data></Cell>
-    <Cell><Data ss:Type="String">code or test in reason for prescription</Data></Cell>
+    <Cell><Data ss:Type="String">code or text in reason for prescription</Data></Cell>
+    <Cell><Data ss:Type="String">text</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -705,7 +709,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

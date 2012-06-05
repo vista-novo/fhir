@@ -20,7 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -61,11 +61,11 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s70">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s84">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -252,25 +252,24 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Search">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="94.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="408.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">person</Data></Cell>
     <Cell><Data ss:Type="String">The identity of a person</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">organization</Data></Cell>
     <Cell><Data ss:Type="String">The identity of an organization</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell><Data ss:Type="String">search id in any agent identifiers</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -280,11 +279,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -293,14 +293,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s84" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="72"/>
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="235.5"/>
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="120.75"/>
-   <Column ss:StyleID="s84" ss:AutoFitWidth="0" ss:Width="222.75"/>
-   <Row>
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="72"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="235.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="120.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="222.75"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
@@ -308,10 +308,10 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:Height="30">
-    <Cell ss:StyleID="s70"><Data ss:Type="String">AgentRole</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AgentRole</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The role a person plays representing an organization</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -320,7 +320,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

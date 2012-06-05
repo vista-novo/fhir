@@ -15,11 +15,13 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
+import org.xmlpull.v1.builder.xpath.jaxen.function.ext.UpperFunction;
 
 /**
  * Generates the delphi reference implementation
@@ -268,6 +270,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder con = new StringBuilder();
     StringBuilder con2 = new StringBuilder();
     StringBuilder con3 = new StringBuilder();
+    StringBuilder con4 = new StringBuilder();
 
     String tn = "TSearchParams"+r.getName();
     String prefix = "sp"+r.getName()+"_";
@@ -278,35 +281,37 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  "+tn+" = (\r\n");
     
     con3.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
+    con4.append("  TYPES_"+tn+" : Array["+tn+"] of TSearchType = (");
     con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
     con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
 
-    List<String> params = new ArrayList<String>();
-    params.addAll(r.getSearchParams().keySet());
-    Collections.sort(params);
-    int l = params.size();
+    int l = r.getSearchParams().size();
     int i = 0;
 
-    for (String n : params) {
+    for (SearchParameter p : r.getSearchParams()) {
       i++;
-      String d = r.getSearchParams().get(n);
+      String n = p.getCode();
+      String d = p.getDescription();
       String nf = n.replace("-", "_");
       if (i == l) {
         def.append("    "+prefix+getTitle(nf)+"); {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
         con.append("'"+defCode.escape(d)+"');");
         con2.append(" "+prefix+getTitle(nf)+");");
+        con4.append(" st"+getTitle(p.getType().toString())+");");
         con3.append("'"+defCode.escape(n)+"');");
       }
       else {
         def.append("    "+prefix+getTitle(nf)+", {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
         con.append("'"+defCode.escape(d)+"', ");
         con2.append(" "+prefix+getTitle(nf)+", ");
+        con4.append(" st"+getTitle(p.getType().toString())+", ");
         con3.append("'"+defCode.escape(n)+"', ");
       }
     }
 
     defCode.enumDefs.add(def.toString());
     defCode.enumConsts.add(con3.toString());
+    defCode.enumConsts.add(con4.toString());
     defCode.enumConsts.add(con.toString());
     defCode.enumConsts.add(con2.toString());
     

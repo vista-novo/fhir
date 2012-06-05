@@ -16,6 +16,8 @@ import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -100,9 +102,9 @@ public class SpreadsheetParser {
   }
 
   private void readSearchParams(ResourceDefn root2, Sheet sheet) throws Exception {
-    root2.getSearchParams().put("n", "Starting offset of the first record to return in the search set");
-    root2.getSearchParams().put("count", "Number of return records requested. The server is not bound to conform");
-    root2.getSearchParams().put("id", "An identifier associated with the resource");
+    root2.getSearchParams().add(new SearchParameter("n", "Starting offset of the first record to return in the search set", SearchType.integer));
+    root2.getSearchParams().add(new SearchParameter("count", "Number of return records requested. The server is not bound to conform", SearchType.integer));
+    root2.getSearchParams().add(new SearchParameter("id", "An identifier associated with the resource", SearchType.token));
     
     if (sheet != null)
       for (int row = 0; row < sheet.rows.size(); row++) {
@@ -111,14 +113,36 @@ public class SpreadsheetParser {
           throw new Exception("Search Param has no name "+getLocation(row));
         if (!sheet.hasColumn(row, "Description"))
           throw new Exception("Search Param has no dascription "+getLocation(row));
+        if (!sheet.hasColumn(row, "Type"))
+          throw new Exception("Search Param has no type "+getLocation(row));
         String n = sheet.getColumn(row, "Name");
+        if (n.endsWith("-before") || n.endsWith("-before"))
+          throw new Exception("Search Param includes relative time "+getLocation(row));
         String d = sheet.getColumn(row, "Description");
+        SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
 
-        root2.getSearchParams().put(n, d);
+        root2.getSearchParams().add(new SearchParameter(n, d, t));
       }
   }
 
-	private void readBindings(Sheet sheet) throws Exception {
+	private SearchType readSearchType(String s, int row) throws Exception {
+    if ("integer".equals(s))
+      return SearchType.integer;
+    if ("string".equals(s))
+      return SearchType.string;
+    if ("text".equals(s))
+      return SearchType.text;
+    if ("date".equals(s))
+      return SearchType.date;
+    if ("token".equals(s))
+      return SearchType.token;
+    if ("qtoken".equals(s))
+      return SearchType.qtoken;
+    throw new Exception("Unknown Search Type '"+s+"': "+getLocation(row));
+  }
+
+
+  private void readBindings(Sheet sheet) throws Exception {
     for (int row = 0; row < sheet.rows.size(); row++) {
       BindingSpecification cd = new BindingSpecification();
 
