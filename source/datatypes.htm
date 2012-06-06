@@ -23,7 +23,7 @@ be exchanged.
 </p>
 <p align="center"><img src="dt-map.png" height="408" width="450"/></p>
 <p>
-The data types defined on this page on this page are categorised as either "Core Types" or "Structures". 
+The data types defined on this page on this page are categorised as either "Primitive Types" or "Structures". 
 "Structures" are higher level concepts that some systems internally treat differently from the "Core Types". 
 There is no functional difference between the two categories, and systems are not required to treat them 
 any differently. This table summarises the types:
@@ -45,7 +45,7 @@ are used in the exchange specifications. The posssible values for
 these types are those specified in the W3C Schema specification part 2. 
 All elements that contain text content have one of these primitive types.
 Elements of this type can only be empty if they have a
-<a href="xml.htm#dataAbsentReason">dataReasonAbsent</a> attribute on 
+<a href="xml.htm#dataAbsentReason">dataAbsentReason</a> attribute on 
 them (and only where that attribute is allowed).
 </p>
 
@@ -103,10 +103,8 @@ string patterns that are commonly used:
  <tr><td>uuid</td><td>A UUID [ref DEC std]. Sometimes called a GUID. Always represented in lowercase</td></tr>
  <tr><td>sid</td><td>A system id, which is a uri taken from the list of <a href="terminologies.htm#codesystems">known definition systems</a>. sid values never contain a '#'</td></tr>
  <tr><td>id</td><td>A whole number in the range 0 to 2^64-1, optionally represented in hex, a uuid, an oid, or any other combination of lowercase letters, numerals, "-" and ".", with a length limit of 36 characters</td></tr>
- <tr><td>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. 
-   The format is a union of the schema types gYear, gYearMonth, and date.</td></tr>
- <tr><td>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month). Generally, there is no timezone, though one may be 
-   populated if hours and minutes are specified. The format is a union of the schema types gYear, gYearMonth, date, and dateTime. Seconds may be provided but may also be ignored.</td></tr>
+ <tr><td>date</td><td>A date, or partial date (e.g. just year or year + month). There is no timezone. The format is a union of the schema types gYear, gYearMonth, and date. Dates must be valid dates.</td></tr>
+ <tr><td>dateTime</td><td>A date, date-time or partial date (e.g. just year or year + month).  If hours and minutes are specified, a timezone must be populated. The format is a union of the schema types gYear, gYearMonth, date, and dateTime. Seconds may be provided but may also be ignored. Dates must be valid dates.</td></tr>
 </table>
 
 <div class="example">
