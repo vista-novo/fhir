@@ -4,6 +4,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fhir"
     nsURI="http://hl7.org/fhir/definitions" nsPrefix="fhir">
   <eClassifiers xsi:type="ecore:EClass" name="Definitions">
+    <eOperations name="getPrimitiveTypes"/>
+    <eOperations name="getConstrainedTypes"/>
+    <eOperations name="getCompositeTypes"/>
+    <eOperations name="getResources"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bindings" upperBound="-1"
         eType="#//BindingDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
@@ -16,16 +20,16 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="primitives" upperBound="-1"
         eType="#//PrimitiveTypeDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
-        eType="#//ConstraintDefn" containment="true"/>
+        eType="#//ConstrainedTypeDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//EventDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="profiles" upperBound="-1"
         eType="#//ProfileDefn" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="structs" eType="#//StructTypeDefn"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structs" eType="#//CompositeTypeDefn"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//TypeDefn"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="typedefs" eType="#//TypeDefn"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//TypeDefn" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElementDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="todo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -73,9 +77,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="xpath" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeRef">
+    <eOperations name="getType" eType="#//TypeDefn"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="param" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//TypeDefn"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BindingDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
@@ -138,14 +143,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypeDefn" eSuperTypes="#//TypeDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseType : EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConstraintDefn">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defintion" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstrainedTypeDefn" eSuperTypes="#//TypeDefn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constrains" lowerBound="1"
-        eType="#//TypeDefn" containment="true"/>
+        eType="#//CompositeTypeDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="details" lowerBound="1"
         upperBound="-1" eType="#//Invariant" containment="true"/>
   </eClassifiers>
@@ -196,7 +197,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StructTypeDefn" eSuperTypes="#//TypeDefn">
+  <eClassifiers xsi:type="ecore:EClass" name="CompositeTypeDefn" eSuperTypes="#//TypeDefn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
         eType="#//ElementDefn" containment="true"/>
   </eClassifiers>
