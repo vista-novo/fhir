@@ -77,6 +77,11 @@ public abstract class XmlComposerBase extends XmlBase {
   }
   
   protected void composeXhtml(String name, XhtmlNode html) throws Exception {
+    XhtmlComposer comp = new XhtmlComposer();
+    // name is also found in the html and should the same
+    // ? check that
+    xml.namespace(XhtmlComposer.XHTML_NS, null);
+    comp.compose(xml, html);
   }
   
   protected void composeBytes(String name, byte[] content) {
@@ -155,7 +160,7 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeInstant(String name, Instant value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(value.getValue()));
+      xml.element(FHIR_NS, name, dateToXml(value.getValue()));
     }
   }
   
@@ -168,7 +173,7 @@ public abstract class XmlComposerBase extends XmlBase {
   
   protected void composeDate(String name, java.util.Date value) throws Exception {
 	  if (value != null) {
-	      xml.element(FHIR_NS, name, new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(value));
+	      xml.element(FHIR_NS, name, dateToXml(value));
 	  }
   }
 	  

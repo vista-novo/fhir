@@ -507,7 +507,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	    write("      ");
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
-			else if ("xhtml".equals(e.getName()))
+			else if ("div".equals(e.getName()) && e.typeCode().equals("xhtml"))
         write("<xs:element ref=\"xhtml:div\" ");
 			else if (e.typeCode().startsWith("@"))
         write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");

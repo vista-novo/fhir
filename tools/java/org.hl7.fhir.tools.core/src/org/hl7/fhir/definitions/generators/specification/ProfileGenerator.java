@@ -1,5 +1,7 @@
 package org.hl7.fhir.definitions.generators.specification;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -8,13 +10,19 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
+import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.Narrative;
+import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Resource;
+import org.hl7.fhir.utilities.xhtml.NodeType;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
+import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 
 public class ProfileGenerator {
 
-  public void generate(ProfileDefn profile, OutputStream stream) throws Exception {
+  public Profile generate(ProfileDefn profile, OutputStream stream, String html) throws Exception {
     Profile p = new Profile();
     p.setId(profile.metadata("id"));
     p.setName(profile.metadata("name"));
@@ -55,10 +63,18 @@ public class ProfileGenerator {
       // no purpose element here
       defineElement(p, c, e, e.getName());
     }
-      
-      
+    
+    XhtmlNode div = new XhtmlNode();
+    div.setName("div");
+    div.setNodeType(NodeType.Element);
+    div.getChildNodes().add(new XhtmlParser().parseFragment(html));
+    p.setText(new Narrative());
+    p.getText().setStatus(NarrativeStatus.generated);
+    p.getText().setDiv(div);
     XmlComposer comp = new XmlComposer();
     comp.compose(stream, p, true);
+    
+    return p;
   }
 
   private void defineElement(Profile p, Profile.Resource c, ElementDefn e, String path) throws Exception {

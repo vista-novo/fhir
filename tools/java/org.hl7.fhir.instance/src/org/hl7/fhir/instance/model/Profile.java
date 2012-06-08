@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
+// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
 
 import java.util.*;
 
@@ -317,7 +317,7 @@ public class Profile extends Resource {
         /**
          * Xpath condition that must evaluate to true
          */
-        private List<String> constraint = new ArrayList<String>();
+        private List<Constraint> constraint = new ArrayList<Constraint>();
 
         /**
          * If the element must be usable
@@ -430,7 +430,7 @@ public class Profile extends Resource {
           this.condition = value;
         }
 
-        public List<String> getConstraint() { 
+        public List<Constraint> getConstraint() { 
           return this.constraint;
         }
 
@@ -480,6 +480,48 @@ public class Profile extends Resource {
 
         public void setClosed(boolean value) { 
           this.closed = value;
+        }
+
+    }
+
+    public class Constraint extends Element {
+        /**
+         * target of condition reference above
+         */
+        private String id;
+
+        /**
+         * human description of constraint
+         */
+        private String human;
+
+        /**
+         * xpath expression of constraint
+         */
+        private String xpath;
+
+        public String getId() { 
+          return this.id;
+        }
+
+        public void setId(String value) { 
+          this.id = value;
+        }
+
+        public String getHuman() { 
+          return this.human;
+        }
+
+        public void setHuman(String value) { 
+          this.human = value;
+        }
+
+        public String getXpath() { 
+          return this.xpath;
+        }
+
+        public void setXpath(String value) { 
+          this.xpath = value;
         }
 
     }

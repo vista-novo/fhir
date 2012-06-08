@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
+// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -63,7 +63,7 @@ public class XmlComposer extends XmlComposerBase {
       xml.open(FHIR_NS, name);
       if (element.getStatus() != null)
         composeString("status", element.getStatus().toCode());
-      composeXhtml("xhtml", element.getXhtml());
+      composeXhtml("div", element.getDiv());
       for (Narrative.Image e : element.getImage()) 
         composeNarrativeImage("image", e);
       for (Narrative.Map e : element.getMap()) 
@@ -302,9 +302,11 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("system", element.getSystem());
+      if (element.getSystem() != null)
+        composeString("system", element.getSystem().toCode());
       composeString("value", element.getValue());
-      composeString("use", element.getUse());
+      if (element.getUse() != null)
+        composeString("use", element.getUse().toCode());
       composeInterval_DateTime("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
@@ -985,8 +987,8 @@ public class XmlComposer extends XmlComposerBase {
         composeString("type", e);
       composeBool("dataAbsentReason", element.getDataAbsentReason());
       composeString("condition", element.getCondition());
-      for (String e : element.getConstraint()) 
-        composeString("constraint", e);
+      for (Profile.Constraint e : element.getConstraint()) 
+        composeProfileConstraint("constraint", e);
       composeBool("mustSupport", element.getMustSupport());
       composeBool("mustUnderstand", element.getMustUnderstand());
       for (Profile.Mapping e : element.getMapping()) 
@@ -996,6 +998,17 @@ public class XmlComposer extends XmlComposerBase {
       for (Profile.Content e : element.getContent()) 
         composeProfileContent("content", e);
       composeBool("closed", element.getClosed());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeProfileConstraint(String name, Profile.Constraint element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString("id", element.getId());
+      composeString("human", element.getHuman());
+      composeString("xpath", element.getXpath());
       xml.close(FHIR_NS, name);
     }
   }
@@ -1240,7 +1253,7 @@ public class XmlComposer extends XmlComposerBase {
         composeResourceReference("specimen", e);
       for (LabReport.ResultGroup e : element.getResultGroup()) 
         composeLabReportResultGroup("resultGroup", e);
-      composeNarrative("conclusion", element.getConclusion());
+      composeString_("conclusion", element.getConclusion());
       for (CodeableConcept e : element.getCodedDiagnosis()) 
         composeCodeableConcept("codedDiagnosis", e);
       for (Attachment e : element.getRepresentation()) 

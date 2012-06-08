@@ -20,13 +20,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 public abstract class XmlParserBase extends XmlBase {
 
 
-  private boolean allowUnknownContent;
-  public boolean isAllowUnknownContent() {
-    return allowUnknownContent;
-  }
-  public void setAllowUnknownContent(boolean allowUnknownContent) {
-    this.allowUnknownContent = allowUnknownContent;
-  }
+ 
 
   private Map<String, Object> idMap = new HashMap<String, Object>();
 
@@ -36,17 +30,6 @@ public abstract class XmlParserBase extends XmlBase {
 //    return idMap.get(id);
 //  }
 
-  private XmlPullParser loadXml(InputStream stream) throws Exception {
-    BufferedInputStream input = new BufferedInputStream(stream);
-    XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
-    factory.setNamespaceAware(true);
-    XmlPullParser xpp = factory.newPullParser();
-    xpp.setInput(input, null);
-    xpp.next();
-    
-    return xpp;
-  }
- 
   protected void parseTypeAttributes(XmlPullParser xpp, Type t) throws Exception {
     if (xpp.getAttributeValue(null, "dataAbsentReason") != null)
       t.setDataAbsentReason(DataAbsentReason.fromCode(xpp.getAttributeValue(null, "dataAbsentReason")));
@@ -64,12 +47,6 @@ public abstract class XmlParserBase extends XmlBase {
   }
 
 
-  protected int nextNoWhitespace(XmlPullParser xpp) throws Exception {
-    int eventType = xpp.next();
-    while (eventType == XmlPullParser.TEXT && xpp.isWhitespace())
-      eventType = xpp.next();
-    return eventType;
-  }
 
 
   private String pathForLocation(XmlPullParser xpp) {
@@ -94,7 +71,7 @@ public abstract class XmlParserBase extends XmlBase {
 
   
   protected void unknownContent(XmlPullParser xpp) throws Exception {
-    if (!allowUnknownContent)
+    if (!isAllowUnknownContent())
       throw new Exception("Unknown Content "+xpp.getName()+" @ "+pathForLocation(xpp));
   }
   
@@ -136,12 +113,12 @@ public abstract class XmlParserBase extends XmlBase {
   protected Instant parseInstant(XmlPullParser xpp) throws Exception {
 	    Instant result = new Instant();
 	    parseTypeAttributes(xpp, result);
-	    result.setValue(new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").parse(parseString(xpp)));
+	    result.setValue(xmlToDate(parseString(xpp)));
 	    return result;    
 	  }
 	  
   protected java.util.Date parseInstantSimple(XmlPullParser xpp) throws Exception {
-	  return new SimpleDateFormat("YYYY-MM-DDTHH:NN:SS").parse(parseString(xpp));    
+	  return xmlToDate(parseString(xpp));    
   }
 	  
   

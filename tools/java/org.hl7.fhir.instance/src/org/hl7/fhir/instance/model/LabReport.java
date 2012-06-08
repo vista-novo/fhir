@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
+// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
 
 import java.util.*;
 
@@ -383,7 +383,7 @@ public class LabReport extends Resource {
     /**
      * Concise and clinically contextualised narrative interpretation of the pathology test results.
      */
-    private Narrative conclusion;
+    private String_ conclusion;
 
     /**
      * Codes for the conclusion
@@ -479,11 +479,11 @@ public class LabReport extends Resource {
       return this.resultGroup;
     }
 
-    public Narrative getConclusion() { 
+    public String_ getConclusion() { 
       return this.conclusion;
     }
 
-    public void setConclusion(Narrative value) { 
+    public void setConclusion(String_ value) { 
       this.conclusion = value;
     }
 

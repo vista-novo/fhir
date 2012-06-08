@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 2, 2012 08:18+1000 for FHIR v0.03
+// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -164,7 +164,7 @@ public class Narrative extends Element {
     /**
      * The actual narrative content, a stripped down version of XHTML
      */
-    private XhtmlNode xhtml;
+    private XhtmlNode div;
 
     /**
      * An image referred to directly in the xhtml
@@ -184,12 +184,12 @@ public class Narrative extends Element {
       this.status = value;
     }
 
-    public XhtmlNode getXhtml() { 
-      return this.xhtml;
+    public XhtmlNode getDiv() { 
+      return this.div;
     }
 
-    public void setXhtml(XhtmlNode value) { 
-      this.xhtml = value;
+    public void setDiv(XhtmlNode value) { 
+      this.div = value;
     }
 
     public List<Image> getImage() { 

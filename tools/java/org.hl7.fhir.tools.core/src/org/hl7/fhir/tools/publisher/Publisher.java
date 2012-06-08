@@ -20,6 +20,7 @@ import java.util.Map;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -55,7 +56,10 @@ import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.UMLValidator;
+import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.model.AtomEntry;
+import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.tools.publisher.implementations.CSharpGenerator;
 import org.hl7.fhir.tools.publisher.implementations.DelphiGenerator;
@@ -106,6 +110,7 @@ public class Publisher {
   private BookMaker book;
   
   private boolean isInternalRun;
+  private AtomFeed profileFeed;
   
 	public static void main(String[] args) throws Exception {
 //    
@@ -127,12 +132,18 @@ public class Publisher {
 			  testECore();
 			  produceSpecification();
 			  validateXml();
+			  validateJava();
 			  System.out.println("Finished publishing FHIR");
 			}
 			else 
 			  System.out.println("Didn't publish FHIR due to errors");
 		}
 	}
+
+  private void validateJava() {
+  // todo.. compile resource code...  javax.tools.
+    
+  }
 
   private void testECore() throws IOException {
     org.hl7.fhir.definitions.ecore.fhir.Definitions d = FhirFactory.eINSTANCE.createDefinitions();
@@ -232,7 +243,6 @@ public class Publisher {
     chm = new ChmMaker(page.getNavigation(),  page.getFolders(), page.getDefinitions(), page);
     book = new BookMaker(page, chm);
 
-
     for (PlatformGenerator gen : page.getReferenceImplementations())
     {
       log("Produce "+gen.getName()+" Reference Implementation");
@@ -301,8 +311,10 @@ public class Publisher {
 		for (String n : page.getIni().getPropertyNames("images")) 
 			Utilities.copyFile(new File(page.getFolders().imgDir + n), new File(page.getFolders().dstDir + n));
 
+    profileFeed = new AtomFeed();
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
+		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir+"profiles.xml"), profileFeed, true);
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
 
@@ -359,7 +371,7 @@ public class Publisher {
 		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir+n+".dict.xml"));
 		dxgen.generate(root, "HL7");
 
-		generateProfile(root, n);
+		generateProfile(root, n, xml);
 
 		for (Example e : root.getExamples()) {
 		  processExample(e);
@@ -421,10 +433,10 @@ public class Publisher {
     e.setXhtm(new XhtmlComposer().compose(pre));
   }
 
-  private void generateProfile(ResourceDefn root, String n) throws Exception,
+  private void generateProfile(ResourceDefn root, String n, String xmlSpec) throws Exception,
       FileNotFoundException {
     ProfileDefn p = new ProfileDefn();
-		p.putMetadata("id", "1");
+		p.putMetadata("id", root.getName().toLowerCase());
     p.putMetadata("name", n);
     p.putMetadata("author.name", "todo (committee)");
     p.putMetadata("author.ref", "todo");
@@ -436,7 +448,22 @@ public class Publisher {
     p.putMetadata("endorser.ref", "http://hl7.org");
     p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
-		pgen.generate(p, new FileOutputStream(page.getFolders().dstDir+n+".profile.xml"));
+		addToResourceFeed(pgen.generate(p, new FileOutputStream(page.getFolders().dstDir+n+".profile.xml"), xmlSpec));
+  }
+
+  private void addToResourceFeed(Profile profile) {
+    AtomEntry e = new AtomEntry();
+    e.setId(profile.getId());
+    e.setLink("http://hl7.org/implement/standards/fhir/"+profile.getId()+".xml");
+    e.setTitle("Resource \""+profile.getId()+"\" as a profile (to help derivation)");
+    e.setUpdated(page.getGenDate());
+    e.setPublished(page.getGenDate());
+    e.setAuthorName("HL7, Inc");
+    e.setAuthorUri("http://hl7.org");
+    e.setCategory("Profile");
+    e.setResource(profile);
+    e.setSummary(profile.getText().getDiv());
+    profileFeed.getEntryList().add(e);
   }
 
   private void produceProfile(String filename, ProfileDefn profile) throws Exception {
@@ -450,7 +477,7 @@ public class Publisher {
     String xml = TextFile.fileToString(tmp.getAbsolutePath());
     
     ProfileGenerator pgen = new ProfileGenerator();
-    pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+filename+".profile.xml"));
+    pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+filename+".profile.xml"), xml);
 //
 //    TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 //    tgen.generate(root, page.getDefinitions().getConceptDomains());
@@ -710,19 +737,24 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		  for (Example e : r.getExamples()) {
 		    String n = e.getFileTitle();
 		    log("Validate "+n);
-		    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		    factory.setNamespaceAware(true);
-		    factory.setValidating(false);
-		    factory.setSchema(schema);
-		    DocumentBuilder builder = factory.newDocumentBuilder();
-		    MyErrorHandler err = new MyErrorHandler(true);
-		    builder.setErrorHandler(err);
-		    builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
-		    if (err.getErrors().size() > 0) 
-		      throw new Exception("Resource Example "+n+" failed schema validation");
+		    validateXmlFile(schema, n);
 		  }
 		}
+    validateXmlFile(schema, "profiles");
 	}
+
+  private void validateXmlFile(Schema schema, String n) throws Exception {
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    factory.setValidating(false);
+    factory.setSchema(schema);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    MyErrorHandler err = new MyErrorHandler(true);
+    builder.setErrorHandler(err);
+    builder.parse(new FileInputStream(new File(page.getFolders().dstDir+n+".xml")));
+    if (err.getErrors().size() > 0) 
+      throw new Exception("Resource Example "+n+" failed schema validation");
+  }
 
   private void produceCombinedDictionary() throws FileNotFoundException,
 	UnsupportedEncodingException, Exception, IOException {
