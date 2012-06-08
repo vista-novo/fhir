@@ -6,8 +6,11 @@ import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 
+import org.hl7.fhir.utilities.xml.IXMLWriter;
+
 public class XhtmlComposer {
 
+  public static final String XHTML_NS = "http://www.w3.org/1999/xhtml";
   private boolean pretty;
   
   
@@ -147,6 +150,25 @@ public class XhtmlComposer {
       dst.append(indent + "</" + node.getName() + ">" + (isPretty() ? "\r\n" : ""));
     }
   }
-  
+
+  public void compose(IXMLWriter xml, XhtmlNode node) throws Exception {
+    if (node.getNodeType() == NodeType.Comment)
+      xml.comment(node.getContent(), isPretty());
+    else if (node.getNodeType() == NodeType.Element)
+      composeElement(xml, node);
+    else if (node.getNodeType() == NodeType.Text)
+      xml.text(node.getContent());
+    else
+      throw new Exception("Unhandled node type: "+node.getNodeType().toString());
+  }
+
+  private void composeElement(IXMLWriter xml, XhtmlNode node) throws Exception {
+    for (String n : node.getAttributes().keySet())
+      xml.attribute(n, node.getAttributes().get(n));
+    xml.open(XHTML_NS, node.getName());
+    for (XhtmlNode n : node.getChildNodes())
+      compose(xml, n);
+    xml.close(XHTML_NS, node.getName());
+  }
   
 }

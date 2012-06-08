@@ -288,7 +288,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	private void defineNamespace(String namespace, String abbrev) throws IOException {
 		checkStarted();
 		if (namespace != null && !namespace.equals("")) {
-			if (abbrev.equals(""))
+			if ("".equals(abbrev))
 				abbrev = null;
 
 			newLevelIfRequired();

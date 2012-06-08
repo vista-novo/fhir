@@ -90,9 +90,11 @@ public class CSVProcessor {
     if (i < 0)
       throw new Exception("Unable to process template - didn't find %] matching [%loop");
     String tmp = template.substring(0, i);
-    if (!tmp.startsWith(" count="))
-      throw new Exception("Unable to process template - unrecongised content on [%loop");
-    count = Integer.parseInt(tmp.substring(7));
+    if (tmp != null && !tmp.equals("")) {
+      if (!tmp.startsWith(" count="))
+        throw new Exception("Unable to process template - unrecognised content on [%loop");
+      count = Integer.parseInt(tmp.substring(7));
+    }
     
     template = template.substring(i+2);
     i = template.indexOf("[%endloop%]");
