@@ -1,0 +1,47 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Standard Patient Examples</title>
+  <updated>2012-06-06T22:45:32</updated>
+  <id>aef4410d-b34b-4d5f-922a-c4c861a6cbad</id>
+  <link href="http://www.hl7.org/fhir/patient-examples.xml" rel="via"/>
+
+<!-- note: because these examples are auto-generated, the patient and person id are the same. This would not usually be the case in production systems -->
+
+[%loop%]
+  <entry>
+    <title>patient [%count%]</title>
+    <link href="http://www.hl7.org/fhir/patient-examples.xml#[%count%]" rel="self"/>
+    <id>[%patient%]</id>
+    <updated>2012-06-03T23:45:32</updated>
+    <author>
+      <name>Grahame Grieve / HL7 publishing committee</name>
+    </author>
+    <category scheme="http://hl7.org/fhir/sid/fhir/resource-types" term="Patient"/>
+    <content type="text/xml">
+    
+	<Patient xmlns="http://hl7.org/fhir">
+	  <id>[%patient%]</id>
+	  <active>true</active>
+	  <subject>
+	    <type>Person</type>
+	    <id>[%person%]</id>
+	  </subject> 
+	  <provider>
+	    <type>Organization</type>
+	    <id>[%organization%]</id>  
+	  </provider> 
+
+	  <text>
+	    <status>generated</status>
+	    <div xmlns="http://www.w3.org/1999/xhtml">
+	      <p>Patient:[%patient%]</p>
+	    </div>
+	  </text>
+	</Patient>
+    
+    </content>
+    <summary type="xhtml">
+      <div xmlns="http://www.w3.org/1999/xhtml">Patient: [%patient%]</div>
+    </summary>
+  </entry>
+[%endloop%]
+</feed>

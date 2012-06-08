@@ -466,7 +466,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">contact</Data></Cell>
     <Cell><Data ss:Type="String">the value in any kind of contact</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">address</Data></Cell>
@@ -500,8 +500,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

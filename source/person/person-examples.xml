@@ -10,7 +10,7 @@
 		<id>1</id>
 		<updated>2012-05-29T23:45:32</updated>
 		<author>
-			<name>Grahame Grieve</name>
+			<name>Grahame Grieve / HL7 publishing committee</name>
 		</author>
 		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
 		<content type="text/xml">
