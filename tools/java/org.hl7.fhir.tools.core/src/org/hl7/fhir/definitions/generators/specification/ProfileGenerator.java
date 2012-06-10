@@ -99,7 +99,7 @@ public class ProfileGenerator {
     p.getText().setStatus(NarrativeStatus.generated);
     p.getText().setDiv(div);
     XmlComposer comp = new XmlComposer();
-    comp.compose(stream, p, true);
+    comp.compose(stream, p, true, false);
     
     return p;
   }

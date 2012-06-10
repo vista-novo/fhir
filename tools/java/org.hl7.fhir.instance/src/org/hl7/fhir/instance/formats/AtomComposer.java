@@ -44,16 +44,26 @@ import org.hl7.fhir.utilities.xml.XMLWriter;
 
 public class AtomComposer extends XmlBase {
   private IXMLWriter xml;
+  private boolean htmlPretty;
 
   public void compose(OutputStream stream, AtomFeed feed, boolean pretty) throws Exception {
     XMLWriter writer = new XMLWriter(stream, "UTF-8");
     writer.setPretty(pretty);
     writer.start();
-    compose(writer, feed);
+    compose(writer, feed, pretty);
     writer.close();
   }
   
-  public void compose(IXMLWriter writer, AtomFeed feed) throws Exception {
+  public void compose(OutputStream stream, AtomFeed feed, boolean pretty, boolean htmlPretty) throws Exception {
+    XMLWriter writer = new XMLWriter(stream, "UTF-8");
+    writer.setPretty(pretty);
+    writer.start();
+    compose(writer, feed, htmlPretty);
+    writer.close();
+  }
+  
+  public void compose(IXMLWriter writer, AtomFeed feed, boolean htmlPretty) throws Exception {
+    this.htmlPretty = htmlPretty;
     xml = writer;
     xml.setDefaultNamespace(ATOM_NS);
     composeFeed(feed);
@@ -108,13 +118,16 @@ public class AtomComposer extends XmlBase {
     xml.attribute("type", "text/xml");
     xml.open(ATOM_NS, "content");
     xml.namespace(FHIR_NS, null);
-    new XmlComposer().compose(xml, e.getResource());
+    new XmlComposer().compose(xml, e.getResource(), htmlPretty);
     xml.close(ATOM_NS, "content");
     
     xml.attribute("type", "xhtml");
     xml.open(ATOM_NS, "summary");
     xml.namespace(XhtmlComposer.XHTML_NS, null);
+    boolean oldPretty = xml.isPretty();
+    xml.setPretty(htmlPretty);
     new XhtmlComposer().compose(xml, e.getSummary());
+    xml.setPretty(oldPretty);
     xml.close(ATOM_NS, "summary");
     
     xml.close(ATOM_NS, "entry");

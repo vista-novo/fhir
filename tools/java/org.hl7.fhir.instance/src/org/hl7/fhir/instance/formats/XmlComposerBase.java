@@ -43,16 +43,26 @@ import org.hl7.fhir.utilities.xml.*;
 public abstract class XmlComposerBase extends XmlBase {
   
   protected IXMLWriter xml;
+  private boolean htmlPretty;
   
   public void compose(OutputStream stream, Resource resource, boolean pretty) throws Exception {
     XMLWriter writer = new XMLWriter(stream, "UTF-8");
     writer.setPretty(pretty);
     writer.start();
-    compose(writer, resource);
+    compose(writer, resource, pretty);
     writer.close();
   }
   
-  public void compose(IXMLWriter writer, Resource resource) throws Exception {
+  public void compose(OutputStream stream, Resource resource, boolean pretty, boolean htmlPretty) throws Exception {
+    XMLWriter writer = new XMLWriter(stream, "UTF-8");
+    writer.setPretty(pretty);
+    writer.start();
+    compose(writer, resource, htmlPretty);
+    writer.close();
+  }
+  
+  public void compose(IXMLWriter writer, Resource resource, boolean htmlPretty) throws Exception {
+    this.htmlPretty = htmlPretty;
     xml = writer;
     xml.setDefaultNamespace(FHIR_NS);
     composeResource(resource);
@@ -110,8 +120,11 @@ public abstract class XmlComposerBase extends XmlBase {
     XhtmlComposer comp = new XhtmlComposer();
     // name is also found in the html and should the same
     // ? check that
+    boolean oldPretty = xml.isPretty();
+    xml.setPretty(htmlPretty);
     xml.namespace(XhtmlComposer.XHTML_NS, null);
     comp.compose(xml, html);
+    xml.setPretty(oldPretty);
   }
   
   protected void composeBytes(String name, byte[] content) {

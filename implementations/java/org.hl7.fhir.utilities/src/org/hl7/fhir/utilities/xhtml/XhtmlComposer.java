@@ -110,6 +110,8 @@ public class XhtmlComposer {
         dst.append("&nbsp;");
       else if (c == (char) 0xA7)
         dst.append("&sect;");
+      else if (c == (char) 169)
+        dst.append("&copy;");
       else 
         dst.append(c);
     }

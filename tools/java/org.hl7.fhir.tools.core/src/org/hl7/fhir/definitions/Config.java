@@ -43,7 +43,7 @@ public class Config {
 
   public static final String FULL_LICENSE_CODE = 
       
-"  Copyright (c) 2011-2012, HL7, Inc\r\n"+
+"  Copyright (c) 2011-2012, HL7, Inc.\r\n"+
 "  All rights reserved.\r\n"+
 "  \r\n"+
 "  Redistribution and use in source and binary forms, with or without modification, \r\n" +

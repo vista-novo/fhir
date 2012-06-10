@@ -55,7 +55,7 @@ public class XmlBase {
   }
  
   protected int nextNoWhitespace(XmlPullParser xpp) throws Exception {
-    int eventType = xpp.next();
+    int eventType = xpp.getEventType();
     while (eventType == XmlPullParser.TEXT && xpp.isWhitespace())
       eventType = xpp.next();
     return eventType;

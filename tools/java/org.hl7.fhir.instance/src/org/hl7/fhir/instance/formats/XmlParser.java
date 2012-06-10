@@ -1361,6 +1361,7 @@ public class XmlParser extends XmlParserBase {
   private Profile parseProfile(XmlPullParser xpp) throws Exception {
     Profile res = new Profile();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
