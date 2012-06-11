@@ -1,8 +1,3 @@
-/**
- * 
- */
-package org.hl7.fhir.instance.model;
-
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -32,7 +27,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+package org.hl7.fhir.instance.model;
 
+/**
+ * @author Grahame
+ *
+ */
 public class DateTime extends Ordered {
 
 	private String value;

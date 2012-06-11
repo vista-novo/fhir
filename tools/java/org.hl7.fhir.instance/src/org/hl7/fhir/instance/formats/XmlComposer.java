@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.formats;
 
 /*
-  Copyright (c) 2011-2012, HL7, Inc
+  Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
+// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;

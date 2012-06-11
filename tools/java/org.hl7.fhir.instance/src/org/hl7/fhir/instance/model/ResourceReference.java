@@ -1,5 +1,4 @@
 package org.hl7.fhir.instance.model;
-
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.

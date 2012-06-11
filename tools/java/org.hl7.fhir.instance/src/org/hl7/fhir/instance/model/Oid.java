@@ -1,5 +1,3 @@
-package org.hl7.fhir.instance.model;
-
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -28,6 +26,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+package org.hl7.fhir.instance.model;
 
 public class Oid extends Id {
 

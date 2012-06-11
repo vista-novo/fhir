@@ -406,11 +406,19 @@ public class Publisher {
 		}
     
     String src = TextFile.fileToString(page.getFolders().srcDir + "template.htm");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
-		TextFile.stringToFile(src, page.getFolders().dstDir + n+".htm");
-		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body style=\"margin: 20px\">");
-		src = page.processResourceIncludes(n, root, xml, tx, dict, src);
-		TextFile.stringToFile(src, page.getFolders().dstDir + "print-"+n+".htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+".htm");
+  
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-examples.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-examples.htm");
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-definitions.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-definitions.htm");
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-explanations.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-explanations.htm");
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-profiles.htm");
+		
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
+		TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + "print-"+n+".htm");
 
     File umlf = new File(page.getFolders().imgDir+n+".png");
     Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
@@ -608,7 +616,7 @@ private void validateProfile(ProfileDefn profile) throws FileNotFoundException, 
 		String src = TextFile.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + file);
-		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 20px\">");
+		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
 		src = page.processPageIncludesForPrinting(file, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + "print-"+file);
 		

@@ -1,7 +1,7 @@
 package org.hl7.fhir.instance.formats;
 
 /*
-  Copyright (c) 2011-2012, HL7, Inc
+  Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jun 9, 2012 09:07+1000 for FHIR v0.03
+// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -39,6 +39,7 @@ public class XmlParser extends XmlParserBase {
   private Extension parseExtension(XmlPullParser xpp) throws Exception {
     Extension res = new Extension();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -69,6 +70,7 @@ public class XmlParser extends XmlParserBase {
   private Narrative parseNarrative(XmlPullParser xpp) throws Exception {
     Narrative res = new Narrative();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("status")) {
@@ -89,6 +91,7 @@ public class XmlParser extends XmlParserBase {
   private Narrative.Image parseNarrativeImage(XmlPullParser xpp, Narrative owner) throws Exception {
     Narrative.Image res = owner.new Image();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mimeType")) {
@@ -105,6 +108,7 @@ public class XmlParser extends XmlParserBase {
   private Narrative.Map parseNarrativeMap(XmlPullParser xpp, Narrative owner) throws Exception {
     Narrative.Map res = owner.new Map();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("text")) {
@@ -123,6 +127,7 @@ public class XmlParser extends XmlParserBase {
   private Coding parseCoding(XmlPullParser xpp) throws Exception {
     Coding res = new Coding();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -141,6 +146,7 @@ public class XmlParser extends XmlParserBase {
   private Interval<Quantity> parseInterval_Quantity(XmlPullParser xpp) throws Exception {
     Interval<Quantity> res = new Interval<Quantity>("Quantity");
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("low")) {
@@ -157,6 +163,7 @@ public class XmlParser extends XmlParserBase {
   private Interval<DateTime> parseInterval_DateTime(XmlPullParser xpp) throws Exception {
     Interval<DateTime> res = new Interval<DateTime>("DateTime");
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("low")) {
@@ -173,6 +180,7 @@ public class XmlParser extends XmlParserBase {
   private Interval<Date> parseInterval_Date(XmlPullParser xpp) throws Exception {
     Interval<Date> res = new Interval<Date>("Date");
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("low")) {
@@ -189,6 +197,7 @@ public class XmlParser extends XmlParserBase {
   private Quantity parseQuantity(XmlPullParser xpp) throws Exception {
     Quantity res = new Quantity();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -211,6 +220,7 @@ public class XmlParser extends XmlParserBase {
   private Choice parseChoice(XmlPullParser xpp) throws Exception {
     Choice res = new Choice();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -229,6 +239,7 @@ public class XmlParser extends XmlParserBase {
   private Choice.Value parseChoiceValue(XmlPullParser xpp, Choice owner) throws Exception {
     Choice.Value res = owner.new Value();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -245,6 +256,7 @@ public class XmlParser extends XmlParserBase {
   private Attachment parseAttachment(XmlPullParser xpp) throws Exception {
     Attachment res = new Attachment();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mimeType")) {
@@ -269,6 +281,7 @@ public class XmlParser extends XmlParserBase {
   private Ratio parseRatio(XmlPullParser xpp) throws Exception {
     Ratio res = new Ratio();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("numerator")) {
@@ -285,6 +298,7 @@ public class XmlParser extends XmlParserBase {
   private CodeableConcept parseCodeableConcept(XmlPullParser xpp) throws Exception {
     CodeableConcept res = new CodeableConcept();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("coding")) {
@@ -303,6 +317,7 @@ public class XmlParser extends XmlParserBase {
   private Identifier parseIdentifier(XmlPullParser xpp) throws Exception {
     Identifier res = new Identifier();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("system")) {
@@ -319,6 +334,7 @@ public class XmlParser extends XmlParserBase {
   private Count parseCount(XmlPullParser xpp) throws Exception {
     Count res = new Count();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -341,6 +357,7 @@ public class XmlParser extends XmlParserBase {
   private Money parseMoney(XmlPullParser xpp) throws Exception {
     Money res = new Money();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -363,6 +380,7 @@ public class XmlParser extends XmlParserBase {
   private Distance parseDistance(XmlPullParser xpp) throws Exception {
     Distance res = new Distance();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -385,6 +403,7 @@ public class XmlParser extends XmlParserBase {
   private Duration parseDuration(XmlPullParser xpp) throws Exception {
     Duration res = new Duration();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -407,6 +426,7 @@ public class XmlParser extends XmlParserBase {
   private Schedule parseSchedule(XmlPullParser xpp) throws Exception {
     Schedule res = new Schedule();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("event")) {
@@ -423,6 +443,7 @@ public class XmlParser extends XmlParserBase {
   private Schedule.Repeat parseScheduleRepeat(XmlPullParser xpp, Schedule owner) throws Exception {
     Schedule.Repeat res = owner.new Repeat();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("frequency")) {
@@ -445,6 +466,7 @@ public class XmlParser extends XmlParserBase {
   private Contact parseContact(XmlPullParser xpp) throws Exception {
     Contact res = new Contact();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("system")) {
@@ -465,6 +487,7 @@ public class XmlParser extends XmlParserBase {
   private Address parseAddress(XmlPullParser xpp) throws Exception {
     Address res = new Address();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("use")) {
@@ -485,6 +508,7 @@ public class XmlParser extends XmlParserBase {
   private Address.Part parseAddressPart(XmlPullParser xpp, Address owner) throws Exception {
     Address.Part res = owner.new Part();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -501,6 +525,7 @@ public class XmlParser extends XmlParserBase {
   private HumanName parseHumanName(XmlPullParser xpp) throws Exception {
     HumanName res = new HumanName();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("use")) {
@@ -521,6 +546,7 @@ public class XmlParser extends XmlParserBase {
   private HumanName.Part parseHumanNamePart(XmlPullParser xpp, HumanName owner) throws Exception {
     HumanName.Part res = owner.new Part();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -537,6 +563,7 @@ public class XmlParser extends XmlParserBase {
   private HumanId parseHumanId(XmlPullParser xpp) throws Exception {
     HumanId res = new HumanId();
     parseTypeAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -557,6 +584,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance parseConformance(XmlPullParser xpp) throws Exception {
     Conformance res = new Conformance();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -597,6 +625,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Publisher parseConformancePublisher(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Publisher res = owner.new Publisher();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -615,6 +644,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Software parseConformanceSoftware(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Software res = owner.new Software();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -633,6 +663,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Rest parseConformanceRest(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Rest res = owner.new Rest();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mode")) {
@@ -649,6 +680,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Resource parseConformanceResource(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Resource res = owner.new Resource();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -679,6 +711,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Search parseConformanceSearch(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Search res = owner.new Search();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("param")) {
@@ -693,6 +726,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Param parseConformanceParam(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Param res = owner.new Param();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -709,6 +743,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Messaging parseConformanceMessaging(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Messaging res = owner.new Messaging();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("endpoint")) {
@@ -725,6 +760,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Event parseConformanceEvent(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Event res = owner.new Event();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -747,6 +783,7 @@ public class XmlParser extends XmlParserBase {
   private Conformance.Document parseConformanceDocument(XmlPullParser xpp, Conformance owner) throws Exception {
     Conformance.Document res = owner.new Document();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -765,6 +802,7 @@ public class XmlParser extends XmlParserBase {
   private Document parseDocument(XmlPullParser xpp) throws Exception {
     Document res = new Document();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -817,6 +855,7 @@ public class XmlParser extends XmlParserBase {
   private Document.Author parseDocumentAuthor(XmlPullParser xpp, Document owner) throws Exception {
     Document.Author res = owner.new Author();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("time")) {
@@ -833,6 +872,7 @@ public class XmlParser extends XmlParserBase {
   private Document.Attestor parseDocumentAttestor(XmlPullParser xpp, Document owner) throws Exception {
     Document.Attestor res = owner.new Attestor();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("mode")) {
@@ -851,6 +891,7 @@ public class XmlParser extends XmlParserBase {
   private Document.Section parseDocumentSection(XmlPullParser xpp, Document owner) throws Exception {
     Document.Section res = owner.new Section();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -879,6 +920,7 @@ public class XmlParser extends XmlParserBase {
   private Document.AuthorA parseDocumentAuthorA(XmlPullParser xpp, Document owner) throws Exception {
     Document.AuthorA res = owner.new AuthorA();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("time")) {
@@ -895,6 +937,7 @@ public class XmlParser extends XmlParserBase {
   private Message parseMessage(XmlPullParser xpp) throws Exception {
     Message res = new Message();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -943,6 +986,7 @@ public class XmlParser extends XmlParserBase {
   private Message.Response parseMessageResponse(XmlPullParser xpp, Message owner) throws Exception {
     Message.Response res = owner.new Response();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -961,6 +1005,7 @@ public class XmlParser extends XmlParserBase {
   private Message.Source parseMessageSource(XmlPullParser xpp, Message owner) throws Exception {
     Message.Source res = owner.new Source();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -983,6 +1028,7 @@ public class XmlParser extends XmlParserBase {
   private Message.Destination parseMessageDestination(XmlPullParser xpp, Message owner) throws Exception {
     Message.Destination res = owner.new Destination();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1001,6 +1047,7 @@ public class XmlParser extends XmlParserBase {
   private Animal parseAnimal(XmlPullParser xpp) throws Exception {
     Animal res = new Animal();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1039,6 +1086,7 @@ public class XmlParser extends XmlParserBase {
   private Animal.RelatedEntity parseAnimalRelatedEntity(XmlPullParser xpp, Animal owner) throws Exception {
     Animal.RelatedEntity res = owner.new RelatedEntity();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1061,6 +1109,7 @@ public class XmlParser extends XmlParserBase {
   private Agent parseAgent(XmlPullParser xpp) throws Exception {
     Agent res = new Agent();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1099,6 +1148,7 @@ public class XmlParser extends XmlParserBase {
   private Organization parseOrganization(XmlPullParser xpp) throws Exception {
     Organization res = new Organization();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1139,6 +1189,7 @@ public class XmlParser extends XmlParserBase {
   private Organization.Name parseOrganizationName(XmlPullParser xpp, Organization owner) throws Exception {
     Organization.Name res = owner.new Name();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
@@ -1155,6 +1206,7 @@ public class XmlParser extends XmlParserBase {
   private Organization.Accreditation parseOrganizationAccreditation(XmlPullParser xpp, Organization owner) throws Exception {
     Organization.Accreditation res = owner.new Accreditation();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1175,6 +1227,7 @@ public class XmlParser extends XmlParserBase {
   private Organization.RelatedOrganization parseOrganizationRelatedOrganization(XmlPullParser xpp, Organization owner) throws Exception {
     Organization.RelatedOrganization res = owner.new RelatedOrganization();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1199,6 +1252,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription parsePrescription(XmlPullParser xpp) throws Exception {
     Prescription res = new Prescription();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1241,6 +1295,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.Dispense parsePrescriptionDispense(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.Dispense res = owner.new Dispense();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("repeats")) {
@@ -1259,6 +1314,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.Medicine parsePrescriptionMedicine(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.Medicine res = owner.new Medicine();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identification")) {
@@ -1277,6 +1333,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.ActiveIngredient parsePrescriptionActiveIngredient(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.ActiveIngredient res = owner.new ActiveIngredient();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identification")) {
@@ -1293,6 +1350,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.InactiveIngredient parsePrescriptionInactiveIngredient(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.InactiveIngredient res = owner.new InactiveIngredient();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identification")) {
@@ -1309,6 +1367,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.AdministrationRequest parsePrescriptionAdministrationRequest(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.AdministrationRequest res = owner.new AdministrationRequest();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("description")) {
@@ -1335,6 +1394,7 @@ public class XmlParser extends XmlParserBase {
   private Prescription.DosageInstruction parsePrescriptionDosageInstruction(XmlPullParser xpp, Prescription owner) throws Exception {
     Prescription.DosageInstruction res = owner.new DosageInstruction();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("precondition")) {
@@ -1418,6 +1478,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Author parseProfileAuthor(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Author res = owner.new Author();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1434,6 +1495,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Endorser parseProfileEndorser(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Endorser res = owner.new Endorser();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1450,6 +1512,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Resource parseProfileResource(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Resource res = owner.new Resource();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
@@ -1472,6 +1535,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Element_ parseProfileElement_(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Element_ res = owner.new Element_();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("path")) {
@@ -1520,6 +1584,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Constraint parseProfileConstraint(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Constraint res = owner.new Constraint();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1538,6 +1603,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Mapping parseProfileMapping(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Mapping res = owner.new Mapping();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("target")) {
@@ -1554,6 +1620,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.ResourceA parseProfileResourceA(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.ResourceA res = owner.new ResourceA();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("aggregated")) {
@@ -1570,6 +1637,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Content parseProfileContent(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Content res = owner.new Content();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("nameReference")) {
@@ -1586,6 +1654,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.ExtensionDefn parseProfileExtensionDefn(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.ExtensionDefn res = owner.new ExtensionDefn();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("contextType")) {
@@ -1602,6 +1671,7 @@ public class XmlParser extends XmlParserBase {
   private Profile.Binding parseProfileBinding(XmlPullParser xpp, Profile owner) throws Exception {
     Profile.Binding res = owner.new Binding();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1624,6 +1694,7 @@ public class XmlParser extends XmlParserBase {
   private Patient parsePatient(XmlPullParser xpp) throws Exception {
     Patient res = new Patient();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1664,6 +1735,7 @@ public class XmlParser extends XmlParserBase {
   private AssessmentScale parseAssessmentScale(XmlPullParser xpp) throws Exception {
     AssessmentScale res = new AssessmentScale();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1702,6 +1774,7 @@ public class XmlParser extends XmlParserBase {
   private AssessmentScale.Score parseAssessmentScaleScore(XmlPullParser xpp, AssessmentScale owner) throws Exception {
     AssessmentScale.Score res = owner.new Score();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -1722,6 +1795,7 @@ public class XmlParser extends XmlParserBase {
   private AssessmentScale.Measure parseAssessmentScaleMeasure(XmlPullParser xpp, AssessmentScale owner) throws Exception {
     AssessmentScale.Measure res = owner.new Measure();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -1742,6 +1816,7 @@ public class XmlParser extends XmlParserBase {
   private Valueset parseValueset(XmlPullParser xpp) throws Exception {
     Valueset res = new Valueset();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1766,6 +1841,7 @@ public class XmlParser extends XmlParserBase {
   private Person parsePerson(XmlPullParser xpp) throws Exception {
     Person res = new Person();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1812,6 +1888,7 @@ public class XmlParser extends XmlParserBase {
   private Person.Qualification parsePersonQualification(XmlPullParser xpp, Person owner) throws Exception {
     Person.Qualification res = owner.new Qualification();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1832,6 +1909,7 @@ public class XmlParser extends XmlParserBase {
   private Person.Language parsePersonLanguage(XmlPullParser xpp, Person owner) throws Exception {
     Person.Language res = owner.new Language();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("code")) {
@@ -1848,6 +1926,7 @@ public class XmlParser extends XmlParserBase {
   private Person.RelatedPerson parsePersonRelatedPerson(XmlPullParser xpp, Person owner) throws Exception {
     Person.RelatedPerson res = owner.new RelatedPerson();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1868,6 +1947,7 @@ public class XmlParser extends XmlParserBase {
   private LabReport parseLabReport(XmlPullParser xpp) throws Exception {
     LabReport res = new LabReport();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id")) {
@@ -1922,6 +2002,7 @@ public class XmlParser extends XmlParserBase {
   private LabReport.RequestDetail parseLabReportRequestDetail(XmlPullParser xpp, LabReport owner) throws Exception {
     LabReport.RequestDetail res = owner.new RequestDetail();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("requestOrderId")) {
@@ -1944,6 +2025,7 @@ public class XmlParser extends XmlParserBase {
   private LabReport.ResultGroup parseLabReportResultGroup(XmlPullParser xpp, LabReport owner) throws Exception {
     LabReport.ResultGroup res = owner.new ResultGroup();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1962,6 +2044,7 @@ public class XmlParser extends XmlParserBase {
   private LabReport.Result parseLabReportResult(XmlPullParser xpp, LabReport owner) throws Exception {
     LabReport.Result res = owner.new Result();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -1986,6 +2069,7 @@ public class XmlParser extends XmlParserBase {
   private LabReport.ReferenceRange parseLabReportReferenceRange(XmlPullParser xpp, LabReport owner) throws Exception {
     LabReport.ReferenceRange res = owner.new ReferenceRange();
     parseElementAttributes(xpp, res);
+    xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("meaning")) {

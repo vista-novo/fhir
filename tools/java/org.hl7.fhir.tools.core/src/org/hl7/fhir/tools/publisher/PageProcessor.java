@@ -124,6 +124,9 @@ public class PageProcessor implements Logger  {
   private String generateSideBar() {
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
+    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> <a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> &copy; <a href=\"http://hl7.org\">HL7.org</a></p>\r\n");
+    s.append("<p class=\"note\">Version v"+getVersion()+" - Under Development</p>\r\n"); 
+
     for (Navigation.Category c : navigation.getCategories()) {
       s.append("  <h2>"+c.getName()+"</h2>\r\n");
       s.append("  <ul>\r\n");
@@ -184,10 +187,18 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
+      else if (com[0].equals("dtheader"))
+        src = s1+dtHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("txheader"))
+        src = s1+txHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("extheader"))
+        src = s1+extHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("atomheader"))
+        src = s1+atomHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
-      else if (com[0].equals("header"))
-        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
+      else if (com[0].equals("pageheader"))
+        src = s1+pageHeader(name.toUpperCase().substring(0, 1)+name.substring(1))+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
@@ -221,6 +232,134 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String pageHeader(String n) {
+    return "<div class=\"navtop\"><ul class=\"navtop\"><li class=\"spacerright\" style=\"width: 500px\"><span>&nbsp;</span></li><li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n+"_Page\">Community Input (wiki)</a></span></li></ul></div>\r\n";
+  }
+  
+  private String dtHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("examples".equals(mode))
+      b.append("<li class=\"selected\"><span>Examples</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
+    if ("definitions".equals(mode))
+      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 270px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String extHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("examples".equals(mode))
+      b.append("<li class=\"selected\"><span>Examples</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
+    if ("definitions".equals(mode))
+      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 270px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String txHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("bindings".equals(mode))
+      b.append("<li class=\"selected\"><span>Bindings</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-bindings.htm\">Bindings</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 370px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String atomHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("examples".equals(mode))
+      b.append("<li class=\"selected\"><span>Examples</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 370px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String resHeader(String n, String title, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\">");
+    b.append("<li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("examples".equals(mode))
+      b.append("<li class=\"selected\"><span>Examples</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
+    if ("definitions".equals(mode))
+      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+
+    if ("explanations".equals(mode))
+      b.append("<li class=\"selected\"><span>Design Notes</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-explanations.htm\">Design Notes</a></span></li>");
+    
+    if ("profiles".equals(mode))
+      b.append("<li class=\"selected\"><span>Profiles</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-profiles.htm\">Profiles</a></span></li>");
+    
+    b.append("<li class=\"spacerright\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
   }
 
   private String genBindingTable(boolean codelists) {
@@ -375,10 +514,10 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+        src = s1+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
-      else if (com[0].equals("header"))
-        src = s1+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
@@ -428,10 +567,10 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+        src = s1+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
-      else if (com[0].equals("header"))
-        src = s1+s3;
       else if (com[0].equals("footer"))
         src = s1+s3;
       else if (com[0].equals("sidebar"))
@@ -478,10 +617,12 @@ public class PageProcessor implements Logger  {
       String s3 = src.substring(i2+2);
 
       String[] com = s2.split(" ");
-      if (com.length != 1)
+      if (com[0].equals("resheader"))
+        src = s1+resHeader(name, resource.getName(), com.length > 1 ? com[1] : null)+s3;
+      else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+name);
-      else if (com[0].equals("header"))
-        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
+      else if (com[0].equals("pageheader"))
+        src = s1+pageHeader(resource.getName())+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))
@@ -494,6 +635,8 @@ public class PageProcessor implements Logger  {
         src = s1+loadXmlNotes(name, "introduction")+s3;
       else if (com[0].equals("examples")) 
         src = s1+produceExamples(resource)+s3;
+      else if (com[0].equals("example-list")) 
+        src = s1+produceExampleList(resource)+s3;
       else if (com[0].equals("examples-book")) 
         src = s1+produceBookExamples(resource)+s3;
       else if (com[0].equals("name"))
@@ -528,13 +671,13 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
-  @SuppressWarnings("unchecked")
   private String getSearch(ResourceDefn resource) {
     if (resource.getSearchParams().size() == 0)
       return "";
     else {
       StringBuilder b = new StringBuilder();
-      b.append("<h2>Examples</h2>\r\n");
+      b.append("<h2>Search Parameters</h2>\r\n");
+      b.append("<p>Search Parameters for RESTful searches. The standard parameters also apply. See <a href=\"http.htm#search\">Searching</a> for more information.</p>\r\n");
       b.append("<table class=\"list\">\r\n");
       for (SearchParameter p : resource.getSearchParams()) {
         if (p.getType() == SearchType.date) {
@@ -551,11 +694,29 @@ public class PageProcessor implements Logger  {
   private String produceExamples(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     for (Example e: resource.getExamples()) {
-      s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
+        s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
     }
     return s.toString();
   }
 
+  private String produceExampleList(ResourceDefn resource) {
+    StringBuilder s = new StringBuilder();
+    boolean started = false;
+    for (Example e: resource.getExamples()) {
+      if (!e.isInBook()) {
+        if (!started)
+          s.append("<p>Additional Examples:</p>\r\n<table class=\"list\">\r\n");
+        started = true;
+        s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
+      }
+    }
+    if (started)
+      s.append("</table>\r\n");
+    return s.toString();
+  }
+
+  
+    
   private String produceBookExamples(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     for (Example e: resource.getExamples()) {
@@ -610,8 +771,8 @@ public class PageProcessor implements Logger  {
       String[] com = s2.split(" ");
       if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing resource "+filename);
-      else if (com[0].equals("header"))
-        src = s1+TextFile.fileToString(folders.srcDir + "header.htm")+s3;
+      else if (com[0].equals("pageheader"))
+        src = s1+pageHeader(profile.getMetadata().get("name").get(0))+s3;
       else if (com[0].equals("footer"))
         src = s1+TextFile.fileToString(folders.srcDir + "footer.htm")+s3;
       else if (com[0].equals("sidebar"))

@@ -226,6 +226,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       write("    parseTypeAttributes(xpp, res);\r\n");
     else
       write("    parseElementAttributes(xpp, res);\r\n");
+    write("    xpp.next();\r\n");
     write("    int eventType = nextNoWhitespace(xpp);\r\n");
     write("    while (eventType != XmlPullParser.END_TAG) {\r\n");
     boolean first = true;

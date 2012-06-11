@@ -53,7 +53,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			rn = "x";
 		else
 			rn = root.getName();
-		write("<pre>\r\n");
+		write("<pre class=\"spec\">\r\n");
 
 		write("&lt;");
 		if (rn == null || "x".equals(rn))
