@@ -461,7 +461,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			write("          </xs:choice>\r\n");
 		} else {
 
-			if (e.typeCode().startsWith("@"))
+			if (e.usesCompositeType())
 				write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() > 0)
 			{
@@ -536,7 +536,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
 			else if ("div".equals(e.getName()) && e.typeCode().equals("xhtml"))
         write("<xs:element ref=\"xhtml:div\" ");
-			else if (e.typeCode().startsWith("@"))
+			else if (e.usesCompositeType())
         write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (types.size() == 0 && e.getElements().size() > 0)
 			{

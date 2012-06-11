@@ -130,7 +130,7 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
         writeLine(addDefn("    attribute "+n+" : "+ecoreType(e.getTypes().get(0))+";", e));
       }
     } else {
-      if (e.getElements().size() == 1 && e.getElements().get(0).getName().equals("#")) {
+      if (e.usesCompositeType()) {
         writeLine(addDefn("    attribute "+e.getName()+" : "+ecoreType(e.getElements().get(0).getTypes().get(0))+";", e));
       }
       else {

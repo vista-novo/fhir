@@ -333,7 +333,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         return formal ? "java.net.URI" : "Uri";
       else 
         return "String";
-    } else if (elem.typeCode().startsWith("@")) { 
+    } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);
       else  
@@ -403,7 +403,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       }
     }
     if (tn == null) {
-      if (e.typeCode().startsWith("@")) {
+      if (e.usesCompositeType()) {
         tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
         typeNames.put(e,  tn);
       } else if (e.getTypes().size() > 0) {

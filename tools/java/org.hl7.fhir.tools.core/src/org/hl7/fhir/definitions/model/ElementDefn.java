@@ -489,6 +489,11 @@ public class ElementDefn {
     this.mustSupport = mustSupport;
   }
   
+  public boolean usesCompositeType()
+  {
+	  return this.typeCode().startsWith("@");
+  }
+  
   
   public boolean isXhtmlElement()
   {

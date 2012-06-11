@@ -358,7 +358,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		
 		TypeRef type = e.getTypes().get(0);
 
-		if( type.getName().startsWith("@"))
+		if( e.usesCompositeType())
 			tn = elementToGeneratedTypeMapping.get(
 					root.getElementForPath(e.typeCode().substring(1)));
 		else if( type.isUnboundGenericParam() )
@@ -531,7 +531,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 		{		
 			boolean isInternalReference = 
 					tn == null && 
-					e.typeCode().startsWith("@");
+					e.usesCompositeType();
 				
 			String listType = isInternalReference ? root.getName() : tn;
 			String fieldName = "_" + getElementName(e.getName()); 

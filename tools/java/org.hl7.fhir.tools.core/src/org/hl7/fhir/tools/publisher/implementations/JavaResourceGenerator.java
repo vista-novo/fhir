@@ -321,7 +321,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			}
 		}
 		if (tn == null) {
-			if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
+			if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
 				tn = e.typeCode();
 				if (clss != JavaGenClass.Resource || !e.isAllowDAR()) {
 					if (tn.equals("boolean")) tn = "boolean";
@@ -353,7 +353,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 				typeNames.put(e,  tn);
 			} else {
-				if (e.typeCode().startsWith("@")) {
+				if (e.usesCompositeType()) {
 					tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
 					typeNames.put(e,  tn);
 				} else {
@@ -427,7 +427,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write(indent+"/**\r\n");
 			write(indent+" * "+e.getDefinition()+"\r\n");
 			write(indent+" */\r\n");
-			if (tn == null && e.typeCode().startsWith("@"))
+			if (tn == null && e.usesCompositeType())
 				write(indent+"/*1*/private List<"+root.getName()+"> "+getElementName(e.getName())+" = new ArrayList<"+root.getName()+">();\r\n");
 			else
 				write(indent+"private List<"+tn+"> "+getElementName(e.getName())+" = new ArrayList<"+tn+">();\r\n");
@@ -448,7 +448,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		String tn = typeNames.get(e);
 
 		if (e.unbounded()) {
-			if (tn == null && e.typeCode().startsWith("@"))
+			if (tn == null && e.usesCompositeType())
 				write(indent+"/*2*/public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
 			else
 				write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");

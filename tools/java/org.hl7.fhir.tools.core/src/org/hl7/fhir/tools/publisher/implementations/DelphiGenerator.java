@@ -606,7 +606,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       }
     }
     if (tn == null) {
-      if (e.typeCode().startsWith("@")) {
+      if (e.usesCompositeType()) {
         tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
         typeNames.put(e,  tn);
       } else if (e.getTypes().size() > 0) {

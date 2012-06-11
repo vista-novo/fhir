@@ -143,7 +143,7 @@ public class UMLValidator {
     condition(!"true".equals(clss.getAttribute("abstract")), "Resource Classes cannot be abstract");
     condition("public".equals(clss.getAttribute("visibility")), "Resource Classes must be public");
     
-    if (e.typeCode().startsWith("@"))
+    if (e.usesCompositeType())
       return; // don't check this 
     
     Map<String, ElementDefn> allDefns = new HashMap<String, ElementDefn>();

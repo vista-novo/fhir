@@ -347,7 +347,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         return formal ? "java.net.URI" : "Uri";
       else 
         return "String";
-    } else if (elem.typeCode().startsWith("@")) { 
+    } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);
       else  
@@ -412,7 +412,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       }
     }
     if (tn == null) {
-      if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
+      if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
         tn = e.typeCode();
         TypeRef tr = e.getTypes().get(0);
         if (tr.isUnboundGenericParam())
@@ -427,7 +427,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           tn = "String_";
         typeNames.put(e,  tn);
       } else {
-        if (e.typeCode().startsWith("@")) {
+        if (e.usesCompositeType()) {
           tn = typeNames.get(getElementForPath(root, e.typeCode().substring(1)));
           typeNames.put(e,  tn);
         } else {

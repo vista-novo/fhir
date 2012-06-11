@@ -176,7 +176,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			write("          </xs:choice>\r\n");
 		} else {
 
-			if (e.typeCode().startsWith("@"))
+			if (e.usesCompositeType())
 				write("<xs:element name=\""+e.getName()+"\" type=\""+e.typeCode().substring(1)+"\" ");
 			else if (e.getTypes().size() == 0 && e.getElements().size() > 0)
 			{
@@ -288,7 +288,7 @@ public class XSDGenerator extends OutputStreamWriter {
 		  String tn = null;
 			if ("extensions".equals(e.getName()))
 				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
-			else if (e.typeCode().startsWith("@")) {
+			else if (e.usesCompositeType()) {
 			  ElementDefn ref = root.getElementByName(e.typeCode().substring(1));
 			  String rtn = types.get(ref);
         write("<xs:element name=\""+e.getName()+"\" type=\""+rtn+"\" ");
