@@ -89,7 +89,7 @@ public class SpreadsheetParser {
       processLine(root, sheet, row, false);
     }
     
-    return root;
+    return root.getRoot();
   }
 
   public ResourceDefn parseResource() throws Exception {
@@ -228,18 +228,18 @@ public class SpreadsheetParser {
 		}
 
 		for (String n : p.getMetadata().get("resource")) {
-		  ResourceDefn e = new ResourceDefn();
+		  ResourceDefn resource = new ResourceDefn();
 			sheet = xls.getSheets().get(n);
 			for (int row = 0; row < sheet.rows.size(); row++) {
-				processLine(e, sheet, row, true);
+				processLine(resource, sheet, row, true);
 			}
 			sheet = xls.getSheets().get(n+"-Extensions");
 			if (sheet != null) {
 				for (int row = 0; row < sheet.rows.size(); row++) {
-					processExtension(e.getElementByName("extensions"), sheet, row, definitions, p.metadata("extension.uri"));
+					processExtension(resource.getRoot().getElementByName("extensions"), sheet, row, definitions, p.metadata("extension.uri"));
 				}
 			}
-			p.getResources().add(e);
+			p.getResources().add(resource);
 		}
 		return p;
 	}
@@ -321,17 +321,19 @@ public class SpreadsheetParser {
 		
 		String profileName = isProfile  ? sheet.getColumn(row, "Profile Name") : "";
 		if (!path.contains(".")) {
-			e = root;
-			if (root.hasName())
+			if (root.getRoot() != null)
 				throw new Exception("Definitions in "+getLocation(row)+" contain two roots: "+path+" in "+root.getName());
+
+			root.setRoot(new ElementDefn());
+			e = root.getRoot();
 			e.setName(path);
 		} else {
-			e = makeFromPath(root, path, row, profileName);
+			e = makeFromPath(root.getRoot(), path, row, profileName);
 		}
 
 		String c = sheet.getColumn(row, "Card.");
 		if (c == null || c.equals("")) {
-		  if (e != root)
+		  if (e != root.getRoot())
 		    throw new Exception("Missing cardinality");
 	    e.setMinCardinality(1);
 	    e.setMaxCardinality(1);

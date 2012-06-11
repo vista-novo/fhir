@@ -253,12 +253,12 @@ public class Publisher {
 
 		List<String> errors = new ArrayList<String>();
 		for (String n : page.getDefinitions().getResources().keySet())
-			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n)));
+			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n).getRoot()));
 
 		for (String n : page.getDefinitions().getResources().keySet()) {
 		  String filename = page.getFolders().srcDir+n+File.separatorChar+n+"-uml.xml";
 		  if (new File(filename).exists() || !page.getDefinitions().getResources().get(n).isSandbox())		    
-		    new UMLValidator(page.getDefinitions().getResources().get(n), filename, errors).validate();
+		    new UMLValidator(page.getDefinitions().getResources().get(n).getRoot(), filename, errors).validate();
 		}
 		for (String e : errors)
 			System.out.println(e);
@@ -380,50 +380,50 @@ public class Publisher {
     Utilities.copyFile(new File(page.getFolders().tmpResDir+"fhir-all-xsd.zip"), f);
   }
 	
-  private void produceResource(ResourceDefn root) throws Exception {
+  private void produceResource(ResourceDefn resource) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
-		String n = root.getName().toLowerCase();
+		String n = resource.getName().toLowerCase();
 	
 		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
-		gen.generate(root);
+		gen.generate(resource.getRoot());
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
-		tgen.generate(root, page.getDefinitions().getBindings());
+		tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
 		DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
-		dgen.generate(root);
+		dgen.generate(resource.getRoot());
 		String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
 		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir+n+".dict.xml"));
-		dxgen.generate(root, "HL7");
+		dxgen.generate(resource.getRoot(), "HL7");
 
-		generateProfile(root, n, xml);
+		generateProfile(resource, n, xml);
 
-		for (Example e : root.getExamples()) {
+		for (Example e : resource.getExamples()) {
 		  processExample(e);
 		}
     
     String src = TextFile.fileToString(page.getFolders().srcDir + "template.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+".htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n+".htm");
   
     src = TextFile.fileToString(page.getFolders().srcDir + "template-examples.htm");
-    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-examples.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n+"-examples.htm");
     src = TextFile.fileToString(page.getFolders().srcDir + "template-definitions.htm");
-    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-definitions.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n+"-definitions.htm");
     src = TextFile.fileToString(page.getFolders().srcDir + "template-explanations.htm");
-    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-explanations.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n+"-explanations.htm");
     src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
-    TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + n+"-profiles.htm");
+    TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n+"-profiles.htm");
 		
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
-		TextFile.stringToFile(page.processResourceIncludes(n, root, xml, tx, dict, src), page.getFolders().dstDir + "print-"+n+".htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-"+n+".htm");
 
     File umlf = new File(page.getFolders().imgDir+n+".png");
     Utilities.copyFile(umlf, new File(page.getFolders().dstDir+n+".png"));				
     src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, root, xml, tx, dict, src);
+    src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
     cachePage(n+".htm", src);
 
 		// xml to json
@@ -476,7 +476,7 @@ public class Publisher {
     p.putMetadata("name", n);
     p.putMetadata("author.name", "todo (committee)");
     p.putMetadata("author.ref", "todo");
-    p.putMetadata("description", root.getDefinition());
+    p.putMetadata("description", root.getRoot().getDefinition());
     p.putMetadata("comments", "Basic Profile for ");
     p.putMetadata("status", "testing");
     p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
@@ -590,7 +590,7 @@ public class Publisher {
 
 
 private void validateProfile(ProfileDefn profile) throws FileNotFoundException, Exception {
-    for (ElementDefn c : profile.getResources()) {
+    for (ResourceDefn c : profile.getResources()) {
       Profile resource = loadResourceProfile(c.getName());
       ProfileValidator v = new ProfileValidator();
       v.setProfile(c);

@@ -34,6 +34,7 @@ import java.util.Date;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
@@ -61,9 +62,9 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
     for (String n : definitions.getResources().keySet()) {
-      ElementDefn root = definitions.getResourceDefn(n); 
+      ResourceDefn root = definitions.getResourceDefn(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      jgen.generate(root.getRoot(), definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
       jFactoryGen.registerResource(n,  root.getName());
     }
 

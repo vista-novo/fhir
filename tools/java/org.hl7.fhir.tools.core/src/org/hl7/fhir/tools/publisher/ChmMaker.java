@@ -39,6 +39,7 @@ import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -60,8 +61,8 @@ public class ChmMaker {
     this.definitions = definitions;
     this.page = page;
     
-    for (ElementDefn root : definitions.getResources().values())
-      registerElementDefnInIndex(root, root.getName().toLowerCase()+".htm", root.getName());
+    for (ResourceDefn root : definitions.getResources().values())
+      registerElementDefnInIndex(root.getRoot(), root.getName().toLowerCase()+".htm", root.getName());
     for (ElementDefn root : definitions.getInfrastructure().values())
       registerElementDefnInIndex(root, "xml.htm", root.getName());
     for (ElementDefn root : definitions.getTypes().values())

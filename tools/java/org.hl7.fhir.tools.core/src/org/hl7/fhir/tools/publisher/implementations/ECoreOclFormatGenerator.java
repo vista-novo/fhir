@@ -37,6 +37,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
 public class ECoreOclFormatGenerator  extends OutputStreamWriter {
@@ -81,8 +82,8 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
     write(string+"\r\n");    
   }
 
-  private void generateResource(String name, ElementDefn elementDefn) throws Exception {
-    generateType(name, elementDefn);
+  private void generateResource(String name, ResourceDefn resourceDefn) throws Exception {
+    generateType(name, resourceDefn.getRoot());
     processWaitingElements();
   }
 

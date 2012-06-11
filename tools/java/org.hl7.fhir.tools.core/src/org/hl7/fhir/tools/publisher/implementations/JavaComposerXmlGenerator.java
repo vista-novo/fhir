@@ -42,6 +42,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -108,8 +109,8 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
-    for (ElementDefn n : definitions.getResources().values()) {
-      generate(n, false, true, true);
+    for (ResourceDefn n : definitions.getResources().values()) {
+      generate(n.getRoot(), false, true, true);
       reg.append("    else if (resource instanceof "+n.getName()+")\r\n      compose"+n.getName()+"(\""+n.getName()+"\", ("+n.getName()+")resource);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }

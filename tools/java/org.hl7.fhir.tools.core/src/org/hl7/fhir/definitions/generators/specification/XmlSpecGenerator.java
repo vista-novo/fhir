@@ -82,7 +82,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	}
 
 	public void generate(ProfileDefn profile) throws Exception {
-		generate(profile.getResources().get(0));
+		generate(profile.getResources().get(0).getRoot());
 	}
 
 	private void generateElem(ElementDefn elem, int indent, String rootName, String pathName) throws Exception {

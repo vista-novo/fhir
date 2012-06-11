@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.model;
+package org.hl7.fhir.instance.model;
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -27,68 +27,53 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class ResourceDefn  {
-   private List<Example> examples = new ArrayList<Example>();
-   private Map<String, Invariant> invariants = new HashMap<String, Invariant>();
-   private List<SearchParameter> searchParams = new ArrayList<SearchParameter>();
-   
-   private boolean sandbox;
-   private String status;
+public class AtomFeed {
+  private String id;
+  private String title;
+  private String link;
+  private java.util.Date updated;
 
-   private ElementDefn root;
-   
-   public ElementDefn getRoot()
-   {
-	   return root;
-   }
-   
-   public void setRoot(ElementDefn root)
-   {
-	   this.root = root;
-   }
-   
-   public String getName()
-   {
-	   return root.getName();
-   }
-   
-   public String getDefinition()
-   {
-	   return root.getDefinition();
-   }
-   
-   
-  public List<Example> getExamples() {
-    return examples;
+  private List<AtomEntry> entryList = new ArrayList<AtomEntry>();
+
+  public String getId() {
+    return id;
   }
 
-  public boolean isSandbox() {
-    return sandbox;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public void setSandbox(boolean sandbox) {
-    this.sandbox = sandbox;
+  public String getTitle() {
+    return title;
   }
 
-  public Map<String, Invariant> getInvariants() {
-    return invariants;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
-  public List<SearchParameter> getSearchParams() {
-    return searchParams;
+  public String getLink() {
+    return link;
   }
 
-  public String getStatus() {
-    return status;
+  public void setLink(String link) {
+    this.link = link;
   }
 
-  public void setStatus(String status) {
-    this.status = status;
-  } 
-   
+  public java.util.Date getUpdated() {
+    return updated;
+  }
+
+  public void setUpdated(java.util.Date updated) {
+    this.updated = updated;
+  }
+
+  public List<AtomEntry> getEntryList() {
+    return entryList;
+  }
+  
+  
 }

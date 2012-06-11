@@ -51,13 +51,15 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		super(out, "UTF-8");
 	}
 
-	public void generate(Collection<ResourceDefn> roots, String author) throws Exception
+	public void generate(Collection<ResourceDefn> resources, String author) throws Exception
 	{
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
 		write("<resourceDefinitions xmlns=\"http://hl7.org/fhir\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://hl7.org/fhir definitions.xsd\">\r\n");
 		write("  <author>"+author+"</author>\r\n");
 		
-		for (ElementDefn root : roots) {
+		for (ResourceDefn resource : resources) 
+		{
+			ElementDefn root = resource.getRoot();
 			write("  <resourceDefinition>\r\n");
 			write("    <name>"+root.getName()+"</name>\r\n");
 			write("    <elementDefinitions>\r\n");

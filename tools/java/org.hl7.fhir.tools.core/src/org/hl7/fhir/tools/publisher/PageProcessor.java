@@ -480,7 +480,7 @@ public class PageProcessor implements Logger  {
   private String genResImplList() {
     StringBuilder html = new StringBuilder();
     List<String> res = new ArrayList<String>();
-    for (ElementDefn n: definitions.getResources().values())
+    for (ResourceDefn n: definitions.getResources().values())
       res.add(n.getName());
     for (DefinedCode c : definitions.getKnownResources().values()) {
       if (res.contains(c.getComment()))
@@ -648,7 +648,7 @@ public class PageProcessor implements Logger  {
       else if (com[0].equals("gendate"))
         src = s1+Config.DATE_FORMAT().format(new Date())+s3;
       else if (com[0].equals("definition"))
-        src = s1+resource.getDefinition()+s3;
+        src = s1+resource.getRoot().getDefinition()+s3;
       else if (com[0].equals("xml"))
         src = s1+xml+s3;
       else if (com[0].equals("tx"))

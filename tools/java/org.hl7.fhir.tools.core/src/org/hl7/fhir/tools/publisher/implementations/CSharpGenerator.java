@@ -36,6 +36,7 @@ import java.util.List;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.CSharpResourceGenerator.GenClass;
@@ -61,12 +62,12 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		// Generate a C# file for each Resource class
 		for (String n : definitions.getResources().keySet()) 
 		{
-			ElementDefn root = definitions.getResourceDefn(n);
+			ResourceDefn root = definitions.getResourceDefn(n);
 			CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
 					new FileOutputStream(modelGenerationDir + root.getName() + ".cs" ));
 		
 			filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
-			cSharpGen.generate(root, definitions.getBindings(), 
+			cSharpGen.generate(root.getRoot(), definitions.getBindings(), 
 					GenClass.Resource, genDate, version );
 		}
 

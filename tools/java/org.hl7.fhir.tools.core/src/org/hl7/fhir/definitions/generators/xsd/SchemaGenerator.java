@@ -34,6 +34,7 @@ import java.util.Collection;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -57,10 +58,10 @@ public class SchemaGenerator {
     xsdb.setDefinitions(definitions);
     xsdb.generate(version, genDate);
     
-    for (ElementDefn root : definitions.getResources().values()) {
+    for (ResourceDefn root : definitions.getResources().values()) {
       XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
       sgen.setDataTypes(definitions.getKnownTypes());
-      sgen.generate(root, definitions.getBindings(), version, genDate);
+      sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate);
 
     }
 

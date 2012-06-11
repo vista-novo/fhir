@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.Element_;
@@ -41,11 +42,11 @@ public class ProfileValidator {
 
   private Map<Profile.Element_, ArrayList<ElementDefn>> map = new HashMap<Profile.Element_, ArrayList<ElementDefn>>();
   
-  private ElementDefn profile;
+  private ResourceDefn profile;
   private Profile resource;
   private ArrayList<String> errors;
 
-  public void setProfile(ElementDefn profile) {
+  public void setProfile(ResourceDefn profile) {
     this.profile = profile; 
   }
 
@@ -77,7 +78,7 @@ public class ProfileValidator {
     return errors;
   }
 
-  private void fillOutElement(ElementDefn profileElement, String path) {
+  private void fillOutElement(ResourceDefn profileElement, String path) {
 //    int i = 0;
 //    for (Element_ e : collectChildren(path)) {
 //      ElementDefn m = null;
@@ -152,12 +153,12 @@ public class ProfileValidator {
   }
 
   
-  private void inspectConstraints(ElementDefn profile2, String name) {
+  private void inspectConstraints(ResourceDefn profile2, String name) {
     
     
   }
 
-  private void matchElement(ElementDefn element, String path) {
+  private void matchElement(ResourceDefn element, String path) {
 //    Element_ e = getConstraintByPath(path);
 //    if (e == null)
 //      errors.add("Profile element '"+path+"' not found");

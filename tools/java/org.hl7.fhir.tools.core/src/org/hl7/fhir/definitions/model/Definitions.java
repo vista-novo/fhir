@@ -71,8 +71,8 @@ public class Definitions {
     return bindings.get(name);
   }
 
-  public ElementDefn getResourceDefn(String name) throws Exception {
-    ElementDefn root = null;
+  public ResourceDefn getResourceDefn(String name) throws Exception {
+    ResourceDefn root = null;
     if (resources.containsKey(name))
       root = resources.get(name);
     if (root == null)
@@ -89,7 +89,7 @@ public class Definitions {
     if (infrastructure.containsKey(name))
       root = infrastructure.get(name);
     if (resources.containsKey(name))
-      root = resources.get(name);
+      root = resources.get(name).getRoot();
     if (root == null)
       throw new Exception("unable to find resource "+name);
     return root;

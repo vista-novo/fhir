@@ -35,6 +35,7 @@ import java.net.URISyntaxException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
@@ -80,15 +81,15 @@ public class ProfileGenerator {
     if (profile.hasMetadata("status")) 
       p.setStatus(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
     
-    for (ElementDefn e : profile.getResources()) {
+    for (ResourceDefn resource : profile.getResources()) {
       Profile.Resource c = p.new Resource();
       p.getResource().add(c);
-      c.setType(e.typeCode());
+      c.setType(resource.getRoot().typeCode());
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
-      if (!"".equals(e.getProfileName()))
-        c.setName(e.getProfileName());
+      if (!"".equals(resource.getRoot().getProfileName()))
+        c.setName(resource.getRoot().getProfileName());
       // no purpose element here
-      defineElement(p, c, e, e.getName());
+      defineElement(p, c, resource.getRoot(), resource.getName());
     }
     
     XhtmlNode div = new XhtmlNode();

@@ -223,10 +223,10 @@ public class SourceParser {
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, src);
     ResourceDefn root = sparser.parseResource();
     root.setSandbox(sandbox);
-    definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getDefinition(), n));
+    definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
     definitions.getResources().put(root.getName(), root);
     for (EventDefn e : sparser.getEvents())
-      processEvent(e, root);
+      processEvent(e, root.getRoot());
     map.put(root.getName(), root);
     root.setStatus(ini.getStringProperty("status", n));
   }
