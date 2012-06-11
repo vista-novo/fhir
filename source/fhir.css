@@ -1,12 +1,15 @@
 body {
-	background: #fff url(topgreenfade.png) repeat-x;
-	margin: 0;
-	padding: 0;
+    background-color: rgb(243, 243, 243);
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	font-size: 1em;
 }
 
 body.book {
-	margin: 20;
-	padding: 20;
+	margin: 20px;
+	padding: 20px;
+    background-color: #fff;
 }
 
 .watermark
@@ -189,18 +192,11 @@ h4 {
 }
 
 
-div.header {
-	font-size: 12px;
-	line-height: 1.4em;
-	font-family: verdana;
-	margin: 5px 0 0 0;
-	font-weight: normal;
-	text-align: center;
-}
-
 div.content {
-	margin: 40px auto;
-	width: 640px;
+	background-color: #fff;
+	margin-left: 150px;
+	padding: 5px;
+	border-left: 1px solid #dcdcdc;
 }
 
 div.use {
@@ -214,41 +210,81 @@ div.example {
         background: #FFECDD ; 
 	padding: 5px;
 	margin-bottom: 10px;
+	font-size: 0.75em;
+	width: 670px;
 }
 
 div.sidebar h2{
 	border-bottom: 1px solid #dcdcdc;
 	padding-bottom: 2px;
+	font-weight: normal;
+	margin-left: 8px;
+	x-padding: 1.25em 0.0em 1.25em 1.75em;
+	font-size: 12px;
+	x-font-family: sans serif;
+}
+
+div.sidebar p {
+	padding-bottom: 0px;
+	padding-top: 10px;
+	font-weight: normal;
+	margin-left: 8px;
+	margin-bottom: 0px;
+	x-padding: 1.25em 0.0em 1.25em 1.75em;
+	font-size: 12px;
+	x-font-family: sans serif;
 }
 
 div.sidebar ul {
 	list-style: none;
 	padding: 0;
-	margin: 5px 0;
+	x-margin: 5px 0;
+	margin-left: 6px;
+	font-size: 12px;
+	line-height: 1.125em; 
+	x-font-family: sans serif;
 }
 
 div.sidebar li {
-	margin: 0 0 3px 0;
+	margin-left: 6px;
+	font-size: 12px;
+	line-height: 1.125em; 
+	x-font-family: sans serif;
 }
 
 div.sidebar {
-	margin-top: 0px;
-	width: 175px;
-	float: right;
+	x-margin-top: 0px;
+	x-width: 175px;
+	x-float: right;
+	position: absolute;
+	width: 150px;
+	left: 0px;
+	font-family: font-family;
+
 }
 
-pre              {
+pre.spec             {
 	border: 1px solid #dcdcdc;
  	font-size: 11px;
-  background: #FFFFE0 ; 
+        background: #FFFFE0 ; 
 	padding: 5px;
+	width: 650px;
+}
+
+pre.json             {
+	border: 1px solid #dcdcdc;
+ 	font-size: 11px;
+        background: #EFFFEF ; 
+	padding: 5px;
+	width: 650px;
 }
 
 pre.xml              {
 	font-family: 'Courier New';
  	font-size: 9pt;
-  padding: 2px;
-  background: #F0FFFF ; 
+        padding: 2px;
+        background: #F0FFFF ; 
+	width: 650px;
 }
 
 span.xmltag   {
@@ -279,4 +315,114 @@ pre a {
 @media print
 {
 	.page-break	{ display:block; page-break-before:always; }
+}
+
+ul.navtop 
+{
+  list-style: none outside none;
+  display: block;
+  font-family: sans serif;
+  margin: 0 0 8px 0;
+  padding:0px;
+  x-border-bottom: 1px solid #adcbb9;
+}
+
+li.selected 
+{
+  white-space: nowrap;
+  display: inline-block;
+  background-color: white;
+  x-border-left: 1px solid #adcbb9;
+  border-right: 1px solid #adcbb9;
+  margin: 0px;
+  padding: 0px;
+}
+
+li.spacerleft 
+{
+  white-space: nowrap;
+  display: inline-block;
+  background-color: white;
+  border-bottom: 1px solid #adcbb9;
+  x-border-left: 1px solid #adcbb9;
+  border-right: 1px solid #adcbb9;
+  margin: 0px;
+  padding: 0px;
+}
+
+li.spacerright
+{
+  white-space: nowrap;
+  display: inline-block;
+  background-color: white;
+  border-bottom: 1px solid #adcbb9;
+  x-border-left: 1px solid #adcbb9;
+  x-border-right: 1px solid #adcbb9;
+  margin: 0px;
+  padding: 0px;
+  width: 150px;
+}
+
+li.nselected 
+{
+  white-space: nowrap;
+  display: inline-block;
+  background-color: #eeeeee;
+  x-border-left: 1px solid #adcbb9;
+  border-right: 1px solid #adcbb9;
+  margin: 0px;
+  border-bottom: 1px solid #adcbb9;
+  padding: 0px;
+  background-image: url(strip.png);
+  background-repeat: x-repeat;
+}
+
+li.wiki 
+{
+  white-space: nowrap;
+  display: inline-block;
+  background-color: #fff;
+  x-border-left: 1px solid #adcbb9;
+  x-border-right: 1px solid #adcbb9;
+  margin: 0px;
+  border-bottom: 1px solid #adcbb9;
+  padding: 0px;
+  x-background-image: url(strip.png);
+  x-background-repeat: x-repeat;
+}
+
+
+div.navtop 
+{
+  margin: 0px;
+  padding: 0px;
+}
+
+ul.navtop a 
+{
+  margin: 0px;
+  padding: 0px;
+  color: black;
+  font-size: 10px;
+
+}
+
+ul.navtop span
+{
+  display: inline-block;
+  margin: 0px;
+  padding: 3px 3px 3px 3px;
+  font-size: 10px;
+}
+
+span.forprint 
+{
+  display: none;
+}
+
+p.status
+{
+  color: navy;
+  border: 1px solid navy;
+  background-color: Mistyrose;
 }

@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<%header%>
 <%sidebar%>
 
 
 <%maindiv%>
+<%atomheader%>
 
 
 <a name="Aggregation"></a>
@@ -31,7 +31,7 @@ resources are useful for grouping resources together for a variety of different 
 <p>
 Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
 </p>
-<pre>
+<pre class="spec">
 &lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
   &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
   &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">when aggregation happened</font>&lt;/updated&gt;

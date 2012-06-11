@@ -9,99 +9,85 @@
 </head>
 
 <body>
-<%header%>
 <%sidebar%>
 
 <%maindiv%>
-<h2>Data Type Examples</h2>
+<%dtheader definitions%>
+<h2>Data Type Definitions</h2>
 
-<p>This page includes additional examples of the data types, based on common usages and questions</p>
+<p>This page provides the formal definitions for the data types</p>
 
-<%footer%>
-
-<p align="center"><img src="dt-map.png" height="408" width="450"/></p>
-<p>
-The data types defined on this page on this page are categorised as either "Core Types" or "Structures". 
-"Structures" are higher level concepts that some systems internally treat differently from the "Core Types". 
-There is no functional difference between the two categories, and systems are not required to treat them 
-any differently. This table summarises the types:
-</p>
 <table class="grid">
-<tr><td colspan="3">Core Types</td><td colspan="2">Structures</td></tr>
 <tr><td><a href="#Attachment">Attachment</a></td>             <td><a href="#Identifier">Identifier</a></td>  <td><a href="#Interval">Interval</a></td> <td><a href="#HumanId">HumanId</a></td> <td><a href="#Contact">Contact</a></td></tr>
 <tr><td><a href="#Coding">Coding</a></td>       <td><a href="#Quantity">Quantity</a></td>  <td><a href="#Ratio">Ratio</a></td>   <td><a href="#HumanName">HumanName</a></td>       <td></td></tr>
 <tr><td><a href="#CodeableConcept">CodeableConcept</a></td> <td><a href="#Choice">Choice</a></td>    <td></td>                   <td><a href="#Address">Address</a></td> <td><a href="#Schedule">Schedule</a></td></tr>
 </table>
-<a name="primitive"></a>
-<h3>Primitive Types</h3>
 
-<a name="strings"></a>
-<h3>String Patterns</h3>
 
 <a name="Attachment"></a>
-<h3>
-Attachment
-</h3>
+<h3>Attachment</h3>
+
+<%dictionary Attachment%>
 
 <a name="Identifier"></a>
-<h3>
-Identifier
-</h3>
+<h3>Identifier</h3>
 
+<%dictionary Identifier%>
 
 <a name="Coding"></a>
 <h3>Coding</h3>
 
+<%dictionary Coding%>
 
 <a name="CodeableConcept"></a>
-<h3>
-CodeableConcept
-</h3>
+<h3>CodeableConcept</h3>
+
+<%dictionary CodeableConcept%>
 
 <a name="Choice"></a>
-<h3>
-Choice
-</h3>
+<h3>Choice</h3>
+
+<%dictionary Choice%>
 
 <a name="Quantity"></a>
-<h3>
-Quantity
-</h3>
+<h3>Quantity</h3>
 
+<%dictionary Quantity%>
 
 <a name="Interval"></a>
-<h3>
-Interval
-</h3>
+<h3>Interval</h3>
+
+<%dictionary Interval%>
 
 <a name="Ratio"></a>
-<h3>
-Ratio
-</h3>
+<h3>Ratio</h3>
+
+<%dictionary Ratio%>
 
 <a name="HumanId"></a>
 <h3>HumanId</h3>
 
+<%dictionary HumanId%>
 
 <a name="HumanName"></a>
-<h3>
-HumanName
-</h3>
+<h3>HumanName</h3>
+
+<%dictionary HumanName%>
 
 <a name="Address"></a>
-<h3>
-Address
-</h3>
+<h3>Address</h3>
+
+<%dictionary Address%>
 
 <a name="Contact"></a>
-<h3>
-Contact
-</h3>
+<h3>Contact</h3>
+
+<%dictionary Contact%>
 
 <a name="Schedule"></a>
-<h3>
-Schedule
-</h3>
+<h3>Schedule</h3>
+
+<%dictionary Schedule%>
 
 <%/maindiv%>    
 </body>

@@ -17,21 +17,37 @@
       <link>datatypes</link>
       <name>Data Types</name>
       <entry>
-        <link>examples-datatypes</link>
+        <link>datatypes-examples</link>
         <name>Additional Examples</name>
+      </entry>
+      <entry>
+        <link>datatypes-definitions</link>
+        <name>Formal Definitions</name>
       </entry>
     </entry>
     <entry>
       <link>terminologies</link>
-      <name>Codes &amp; Terminologies</name>
+      <name>Using Codes</name>
       <entry>
         <link>valueset</link>
         <name>Value Set</name>
+      </entry>
+      <entry>
+        <link>terminologies-bindings</link>
+        <name>Terminology Bindings</name>
       </entry>
     </entry>
     <entry>
       <link>extensibility</link>
       <name>Extensibility</name>
+      <entry>
+        <link>extensibility-examples</link>
+        <name>Additional Examples</name>
+      </entry>
+      <entry>
+        <link>extensibility-definitions</link>
+        <name>Formal Definitions</name>
+      </entry>
     </entry>
     <entry>
       <link>profile</link>
@@ -106,7 +122,7 @@
     </entry>
   </category>
   <category>
-    <name>Administrative Resources</name>
+    <name>Administrative</name>
     <entry>
       <link>person</link>
       <name>Person</name>
@@ -144,7 +160,7 @@
     </entry>
   </category>
   <category>
-    <name>Clinical Components</name>
+    <name>Clinical</name>
     <entry>
       <name>Vitals etc</name>
     </entry>

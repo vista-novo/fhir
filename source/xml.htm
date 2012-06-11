@@ -9,11 +9,11 @@
 </head>
 
 <body>
-<%header%>
 <%sidebar%>
 
 
 <%maindiv%>
+<%pageheader%>
 
 <h1>Resource Format</h1>
 
@@ -31,7 +31,7 @@ useful aid for system implementation.
 <p>
 All the XML defined by this specifications is described using this same notation:
 </p>
-<pre>
+<pre class="spec">
  &lt;<b>name</b> xmlns="http://hl7.org/fhir"&gt; 
    &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
    &lt;<b title="Formal Definition">nameB</b> <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
@@ -61,7 +61,7 @@ Notes:
 <p>
 Every resource contains the following common elements:
 </p>
-<pre>
+<pre class="spec">
 &lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
  &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>0..1</b></font> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font><font color="Gray"> --&gt;</font>&lt;/id&gt;
  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extensions</b></a> <font title="dataAbsentReason attribute is allowed" color="red">d?</font>&gt;<font color="Gray">&lt;!--</font> <a href="extensibility.htm"><font color="navy">See Extensions</font></a>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extensions&gt;
@@ -237,7 +237,7 @@ contained in it. The xhtml element must have some non-whitespace content.
 <p>
 The "Resource" type indicates a reference from one resource to another.
 </p>
-<pre>
+<pre class="spec">
   &lt;x&gt;
     &lt;<b>type</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="terminologies.htm#resourcetypes">ResourceType</a></font> <font color="navy">Resource Type</font>&lt;/type&gt;
     &lt;<b>id</b>&gt; <a href="xml.htm#Control" class="cf">cond</a> <font color="darkgreen"><a href="datatypes.htm#id">url</a></font> <font color="navy">URL/Id of the reference</font>&lt;/id&gt;
@@ -374,7 +374,7 @@ object models".
 Though the formal representation of the resources is in XML, many systems wish to use JSON to exchange the resources, and it is useful to standardise a single JSON format for this use. 
 The JSON format for the resources follows the standard XML format closely:
 </p>
-<pre>
+<pre class="spec">
  &lt;<b>name</b> xmlns="http://hl7.org/fhir"&gt; 
    &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
    &lt;<b title="Formal Definition">nameB</b> <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
@@ -386,7 +386,7 @@ The JSON format for the resources follows the standard XML format closely:
 <p>
 is represented in JSON as 
 </p>
-<pre>
+<pre class="json">
 {"name":
   "nameA" : {...},
   "nameB" : 
