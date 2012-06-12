@@ -39,7 +39,46 @@ public class ResourceDefn  {
    
    private boolean sandbox;
    private String status;
-
+     
+   private String name = null;
+   
+   public String getName()
+   {
+	   return name;
+   }
+   
+   public void setName(String name)
+   {
+	   this.name = name;
+   }
+   
+   
+   private String definition = null;
+   
+   public String getDefinition()
+   {
+	   return definition;
+   }
+   
+   public void setDefinition(String def)
+   {
+	   this.definition = def;
+   }
+  
+   
+   // EK: This function supports the new eCore model
+   // It it still defined in terms of the old functionality,
+   // we need to refactor all references to getRoot()
+   // out of all generators.
+   public List<ElementDefn> getContents()
+   {
+	   if( getRoot() != null )
+		   return getRoot().getElements();
+	   else
+		   return new ArrayList<ElementDefn>();
+   }
+   
+   
    private ElementDefn root;
    
    public ElementDefn getRoot()
@@ -51,17 +90,11 @@ public class ResourceDefn  {
    {
 	   this.root = root;
    }
+
    
-   public String getName()
-   {
-	   return root.getName();
-   }
    
-   public String getDefinition()
-   {
-	   return root.getDefinition();
-   }
    
+
    private boolean forFutureUse = false;
    
    public boolean isForFutureUse()

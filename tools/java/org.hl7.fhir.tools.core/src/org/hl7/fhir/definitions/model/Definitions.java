@@ -48,7 +48,6 @@ public class Definitions {
 
 	private Map<String, BindingSpecification> bindings = new HashMap<String, BindingSpecification>();
 	private Map<String, DefinedCode> knownResources = new HashMap<String, DefinedCode>();
-	private Map<String, DefinedCode> futureResources = new HashMap<String, DefinedCode>();
 	private List<TypeRef> knownTypes = new ArrayList<TypeRef>();
 	private Map<String, DefinedCode> constraints = new HashMap<String, DefinedCode>();
 
@@ -57,6 +56,8 @@ public class Definitions {
 	private Map<String, ElementDefn> structures = new HashMap<String, ElementDefn>();
 	private Map<String, ElementDefn> infrastructure = new HashMap<String, ElementDefn>();
 	private Map<String, ResourceDefn> resources = new HashMap<String, ResourceDefn>();
+	private Map<String, ResourceDefn> futureResources = new HashMap<String, ResourceDefn>();
+
 	private List<String> aggregationEndpoints = new ArrayList<String>();
 
 	private Map<String, EventDefn> events = new HashMap<String, EventDefn>();
@@ -136,6 +137,12 @@ public class Definitions {
 		return resources;
 	}
 	
+	// Returns the list of names (as codes) of all Resources under the
+	// [future-resources] section of the fhir.ini
+	public Map<String, ResourceDefn> getFutureResources() {
+		return futureResources;
+	}
+	
 	public ResourceDefn getResourceByName(String name) throws Exception {
 		ResourceDefn root = null;
 		if (resources.containsKey(name))
@@ -169,12 +176,6 @@ public class Definitions {
 		}
 
 		return false;
-	}
-
-	// Returns the list of names (as codes) of all Resources under the
-	// [future-resources] section of the fhir.ini
-	public Map<String, DefinedCode> getFutureResources() {
-		return futureResources;
 	}
 
 	// List of Events as collected from the "Events" tab of the Resources

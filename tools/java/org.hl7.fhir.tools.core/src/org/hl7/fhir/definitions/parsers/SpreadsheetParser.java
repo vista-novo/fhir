@@ -369,9 +369,10 @@ public class SpreadsheetParser {
 						+ " contain two roots: " + path + " in "
 						+ root.getName());
 
-			root.setRoot(new ElementDefn());
-			e = root.getRoot();
+			root.setName(path);
+			e = new ElementDefn();
 			e.setName(path);
+			root.setRoot(e);
 		} else {
 			e = makeFromPath(root.getRoot(), path, row, profileName);
 		}
@@ -428,6 +429,11 @@ public class SpreadsheetParser {
 
 		e.setShortDefn(sheet.getColumn(row, "Short Name"));
 		e.setDefinition(sheet.getColumn(row, "Definition"));
+		
+		if (!path.contains(".")) {
+			root.setDefinition(e.getDefinition());
+		} 
+		
 		e.setRequirements(sheet.getColumn(row, "Requirements"));
 		e.setComments(sheet.getColumn(row, "Comments"));
 		e.setRimMapping(sheet.getColumn(row, "RIM Mapping"));

@@ -71,16 +71,22 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		}
 
 		// Generate a C# file for each "future" Resource
-	    for (DefinedCode cd : definitions.getFutureResources().values()) 
+	    for (ResourceDefn resource : definitions.getFutureResources().values()) 
 	    {
-	        ElementDefn e = new ElementDefn();
-	        e.setName(cd.getCode());
-	        new CSharpResourceGenerator(
-	        	new FileOutputStream(modelGenerationDir+e.getName()+".cs"))
-	        		.generate(e, definitions.getBindings(), 
-	        				GenClass.Resource, genDate, version);
-	        
-			filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
+	    	CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
+					new FileOutputStream(modelGenerationDir + resource.getName() + ".cs" ));
+		
+			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
+			cSharpGen.generateFutureResource(resource, genDate, version );
+			
+//	        ElementDefn e = new ElementDefn();
+//	        e.setName(cd.getCode());
+//	        new CSharpResourceGenerator(
+//	        	new FileOutputStream(modelGenerationDir+e.getName()+".cs"))
+//	        		.generate(e, definitions.getBindings(), 
+//	        				GenClass.Resource, genDate, version);
+//	        
+//			filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
 	    }
 		
 		// Generate infrastructure classes

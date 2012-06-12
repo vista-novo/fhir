@@ -61,7 +61,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		{
 			ElementDefn root = resource.getRoot();
 			write("  <resourceDefinition>\r\n");
-			write("    <name>"+root.getName()+"</name>\r\n");
+			write("    <name>"+resource.getName()+"</name>\r\n");
 			write("    <elementDefinitions>\r\n");
 			
 			writeEntry(root.getName(), 1, 1, null, "", root);

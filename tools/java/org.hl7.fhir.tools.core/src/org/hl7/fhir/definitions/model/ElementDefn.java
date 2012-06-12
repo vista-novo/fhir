@@ -491,7 +491,14 @@ public class ElementDefn {
   
   public boolean usesCompositeType()
   {
+	  if( this.typeCode().startsWith("@") )
+	  {
+		  String p = this.typeCode() + " " + this.getName();
+		  String q = p;
+	  }
 	  return this.typeCode().startsWith("@");
+	  
+	  
   }
   
   

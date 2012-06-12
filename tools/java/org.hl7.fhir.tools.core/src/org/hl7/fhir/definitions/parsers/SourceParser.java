@@ -104,7 +104,12 @@ public class SourceParser {
     for (String n : ini.getPropertyNames("future-resources")) {
         DefinedCode cd = new DefinedCode(ini.getStringProperty("future-resources", n), "Yet to be defined", n);
         definitions.getKnownResources().put(n, cd);
-        definitions.getFutureResources().put(n, cd);
+        
+        ResourceDefn futureResource = new ResourceDefn();
+        futureResource.setName(cd.getCode());
+        futureResource.setDefinition("Future resource " + cd.getCode() + ". As yet undefined." );
+        futureResource.setForFutureUse(true);
+        definitions.getFutureResources().put(cd.getCode(), futureResource);
       }
     
     if (isInternalRun)
