@@ -660,7 +660,7 @@ public class PageProcessor implements Logger  {
       } else if (com[0].equals("dictionary"))
         src = s1+dict+s3;
       else if (com[0].equals("resurl")) {
-        if (isSpecial(resource.getName()))
+        if (isAggregationEndpoint(resource.getName()))
           src = s1+s3;
         else
           src = s1+"<p>The resource name as it appears in a <a href=\"http.htm\"> RESTful URL</a> is /"+name+"/</p>"+s3;
@@ -814,8 +814,8 @@ public class PageProcessor implements Logger  {
     return src;
   }
 
-  private boolean isSpecial(String name) {
-    return definitions.getSpecialResources().contains(name);
+  private boolean isAggregationEndpoint(String name) {
+    return definitions.getAggregationEndpoints().contains(name);
   }   
 
 

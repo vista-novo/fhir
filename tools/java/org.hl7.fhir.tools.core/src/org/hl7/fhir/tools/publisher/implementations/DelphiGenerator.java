@@ -1258,11 +1258,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       if (Utilities.isDelphiReservedWord(s2))
         s2 = s2 + "_";
       if (i == l) {
-        def.append("    "+s2+"); {@enum.value "+definitions.getResourceDefn(s).getDefinition()+" }\r\n");
+        def.append("    "+s2+"); {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
         con.append("'"+s+"');");
       }
       else {
-        def.append("    "+s2+", {@enum.value "+definitions.getResourceDefn(s).getDefinition()+" }\r\n");
+        def.append("    "+s2+", {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
         con.append("'"+s+"', ");
       }
     }

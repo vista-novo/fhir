@@ -62,16 +62,17 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
     for (String n : definitions.getResources().keySet()) {
-      ResourceDefn root = definitions.getResourceDefn(n); 
-      JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
-      jgen.generate(root.getRoot(), definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      ResourceDefn root = definitions.getResourceByName(n); 
+      new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"))
+      	.generate(root.getRoot(), definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
       jFactoryGen.registerResource(n,  root.getName());
     }
 
     for (DefinedCode cd : definitions.getFutureResources().values()) {
       ElementDefn e = new ElementDefn();
       e.setName(cd.getCode());
-      new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java")).generate(e, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java"))
+      	.generate(e, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
       jFactoryGen.registerResource(cd.getCode(),  e.getName());
     }
 

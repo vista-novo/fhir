@@ -94,23 +94,27 @@ public class SourceParser {
     loadPrimitives();
 
     for (String n : ini.getPropertyNames("types")) 
-      loadDataType(n, definitions.getTypes());
+      loadCompositeType(n, definitions.getTypes());
     for (String n : ini.getPropertyNames("structures")) 
-      loadDataType(n, definitions.getStructures());
+      loadCompositeType(n, definitions.getStructures());
     for (String n : ini.getPropertyNames("infrastructure")) 
-      loadDataType(n, definitions.getInfrastructure());
+      loadCompositeType(n, definitions.getInfrastructure());
     for (String n : ini.getPropertyNames("resources"))  
       loadResource(n, definitions.getResources(), false);
+    for (String n : ini.getPropertyNames("future-resources")) {
+        DefinedCode cd = new DefinedCode(ini.getStringProperty("future-resources", n), "Yet to be defined", n);
+        definitions.getKnownResources().put(n, cd);
+        definitions.getFutureResources().put(n, cd);
+      }
+    
     if (isInternalRun)
+    {
       for (String n : ini.getPropertyNames("sandbox")) 
         loadResource(n, definitions.getResources(), true);
-    for (String n : ini.getPropertyNames("special-resources")) 
-      definitions.getSpecialResources().add(n);
-    for (String n : ini.getPropertyNames("future-resources")) {
-      DefinedCode cd = new DefinedCode(ini.getStringProperty("future-resources", n), "Yet to be defined", n);
-      definitions.getKnownResources().put(n, cd);
-      definitions.getFutureResources().put(n, cd);
     }
+    
+    for (String n : ini.getPropertyNames("special-resources")) 
+      definitions.getAggregationEndpoints().add(n);
     
     for (String n : ini.getPropertyNames("profiles")) {
       loadProfile(n, definitions.getProfiles());
@@ -183,7 +187,7 @@ public class SourceParser {
   }
 
 
-  private void loadDataType(String n, Map<String, ElementDefn> map) throws Exception {
+  private void loadCompositeType(String n, Map<String, ElementDefn> map) throws Exception {
     TypeParser tp = new TypeParser();
     List<TypeRef> ts = tp.parse(n);
     definitions.getKnownTypes().addAll(ts);
@@ -192,7 +196,7 @@ public class SourceParser {
     File csv = new File(dtDir+t.getName()+".xml");
     if (csv.exists()) {
       SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName(), definitions, srcDir);
-      ElementDefn el = p.parseType();
+      ElementDefn el = p.parseCompositeType();
       map.put(t.getName(), el);
     } else {
       String p = ini.getStringProperty("types", n);
@@ -224,10 +228,14 @@ public class SourceParser {
     ResourceDefn root = sparser.parseResource();
     root.setSandbox(sandbox);
     definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
-    definitions.getResources().put(root.getName(), root);
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root.getRoot());
+
+    //EK: Commented this out, seems double with next statement, since loadResource()
+    //is always called with definitions.getResources in its map argument.
+    //definitions.getResources().put(root.getName(), root);
     map.put(root.getName(), root);
+    
     root.setStatus(ini.getStringProperty("status", n));
   }
 

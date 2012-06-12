@@ -62,6 +62,17 @@ public class ResourceDefn  {
 	   return root.getDefinition();
    }
    
+   private boolean forFutureUse = false;
+   
+   public boolean isForFutureUse()
+   {
+	   return forFutureUse;
+   }
+   
+   public void setForFutureUse(boolean future)
+   {
+	   forFutureUse = future;
+   }
    
   public List<Example> getExamples() {
     return examples;

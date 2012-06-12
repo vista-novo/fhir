@@ -33,8 +33,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElementDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="todo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minCardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxCardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minCardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowDAR" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mustUnderstand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="invariant" eType="#//Invariant"/>
@@ -146,7 +146,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveTypeDefn" eSuperTypes="#//TypeDefn">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConstrainedTypeDefn" eSuperTypes="#//TypeDefn">
+  <eClassifiers xsi:type="ecore:EClass" name="ConstrainedTypeDefn" eSuperTypes="#//CompositeTypeDefn">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constrains" lowerBound="1"
         eType="#//CompositeTypeDefn" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="details" lowerBound="1"

@@ -60,14 +60,13 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		List<String> filenames = new ArrayList<String>();
 		
 		// Generate a C# file for each Resource class
-		for (String n : definitions.getResources().keySet()) 
+		for (ResourceDefn resource : definitions.getResources().values()) 
 		{
-			ResourceDefn root = definitions.getResourceDefn(n);
 			CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
-					new FileOutputStream(modelGenerationDir + root.getName() + ".cs" ));
+					new FileOutputStream(modelGenerationDir + resource.getName() + ".cs" ));
 		
-			filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
-			cSharpGen.generate(root.getRoot(), definitions.getBindings(), 
+			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
+			cSharpGen.generate(resource.getRoot(), definitions.getBindings(), 
 					GenClass.Resource, genDate, version );
 		}
 
