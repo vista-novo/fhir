@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment <em>Comment</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,7 +38,7 @@ public interface TypeDefn extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
@@ -63,7 +64,7 @@ public interface TypeDefn extends EObject {
 	 * @return the value of the '<em>Definition</em>' attribute.
 	 * @see #setDefinition(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Definition()
-	 * @model
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getDefinition();
@@ -77,5 +78,31 @@ public interface TypeDefn extends EObject {
 	 * @generated
 	 */
 	void setDefinition(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Comment</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Comment</em>' attribute.
+	 * @see #setComment(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Comment()
+	 * @model extendedMetaData="kind='element'"
+	 * @generated
+	 */
+	String getComment();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Comment</em>' attribute.
+	 * @see #getComment()
+	 * @generated
+	 */
+	void setComment(String value);
 
 } // TypeDefn

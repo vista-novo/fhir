@@ -35,13 +35,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
-import org.hl7.fhir.definitions.ecore.fhir.util.BindingConverter;
+import org.hl7.fhir.definitions.model.BindingConverter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.definitions.model.PrimitiveConverter;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -98,10 +99,10 @@ public class SourceParser {
 	  return eCoreParseResults;
   }
   
-  public void parse(boolean isInternalRun, Date genDate) throws Exception {
+  public void parse(boolean isInternalRun, Date genDate, String version) throws Exception {
     logger.log("Loading");
     
-    eCoreParseResults = DefinitionsImpl.Build(genDate, ini.getStringProperty("FHIR", "version"));
+    eCoreParseResults = DefinitionsImpl.build(genDate, version);
         
     loadGlobalConceptDomains();
     
@@ -109,6 +110,9 @@ public class SourceParser {
     	.addAll(BindingConverter.buildBindingsFromFhirModel(definitions.getBindings().values()));
     
     loadPrimitives();
+    
+    eCoreParseResults.getTypes()
+    	.addAll(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions.getPrimitives().values()));
 
     for (String n : ini.getPropertyNames("types")) 
       loadCompositeType(n, definitions.getTypes());

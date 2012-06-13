@@ -304,7 +304,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDefinitions_Primitives() {
+	public EReference getDefinitions_Events() {
 		return (EReference)definitionsEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -313,44 +313,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDefinitions_Constraints() {
-		return (EReference)definitionsEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDefinitions_Events() {
-		return (EReference)definitionsEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getDefinitions_Profiles() {
-		return (EReference)definitionsEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDefinitions_Structs() {
-		return (EReference)definitionsEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDefinitions_EReference0() {
-		return (EReference)definitionsEClass.getEStructuralFeatures().get(7);
+		return (EReference)definitionsEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -925,6 +889,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getPrimitiveTypeDefn_Xsdtype() {
+		return (EAttribute)primitiveTypeDefnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConstrainedTypeDefn() {
 		return constrainedTypeDefnEClass;
 	}
@@ -972,6 +945,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 */
 	public EAttribute getTypeDefn_Definition() {
 		return (EAttribute)typeDefnEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeDefn_Comment() {
+		return (EAttribute)typeDefnEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1293,12 +1275,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		definitionsEClass = createEClass(DEFINITIONS);
 		createEAttribute(definitionsEClass, DEFINITIONS__DATE);
 		createEAttribute(definitionsEClass, DEFINITIONS__VERSION);
-		createEReference(definitionsEClass, DEFINITIONS__PRIMITIVES);
-		createEReference(definitionsEClass, DEFINITIONS__CONSTRAINTS);
 		createEReference(definitionsEClass, DEFINITIONS__EVENTS);
 		createEReference(definitionsEClass, DEFINITIONS__PROFILES);
-		createEReference(definitionsEClass, DEFINITIONS__STRUCTS);
-		createEReference(definitionsEClass, DEFINITIONS__EREFERENCE0);
 
 		elementDefnEClass = createEClass(ELEMENT_DEFN);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__TODO);
@@ -1371,6 +1349,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		primitiveTypeDefnEClass = createEClass(PRIMITIVE_TYPE_DEFN);
 		createEAttribute(primitiveTypeDefnEClass, PRIMITIVE_TYPE_DEFN__PATTERN);
+		createEAttribute(primitiveTypeDefnEClass, PRIMITIVE_TYPE_DEFN__XSDTYPE);
 
 		constrainedTypeDefnEClass = createEClass(CONSTRAINED_TYPE_DEFN);
 		createEReference(constrainedTypeDefnEClass, CONSTRAINED_TYPE_DEFN__CONSTRAINS);
@@ -1405,6 +1384,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		typeDefnEClass = createEClass(TYPE_DEFN);
 		createEAttribute(typeDefnEClass, TYPE_DEFN__NAME);
 		createEAttribute(typeDefnEClass, TYPE_DEFN__DEFINITION);
+		createEAttribute(typeDefnEClass, TYPE_DEFN__COMMENT);
 
 		compositeTypeDefnEClass = createEClass(COMPOSITE_TYPE_DEFN);
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__CONTENTS);
@@ -1463,12 +1443,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEClass(definitionsEClass, Definitions.class, "Definitions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDefinitions_Date(), ecorePackage.getEDate(), "date", null, 1, 1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDefinitions_Version(), ecorePackage.getEString(), "version", null, 1, 1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDefinitions_Primitives(), this.getPrimitiveTypeDefn(), null, "primitives", null, 0, -1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDefinitions_Constraints(), this.getConstrainedTypeDefn(), null, "constraints", null, 0, -1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDefinitions_Events(), this.getEventDefn(), null, "events", null, 0, -1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDefinitions_Profiles(), this.getProfileDefn(), null, "profiles", null, 0, -1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDefinitions_Structs(), this.getCompositeTypeDefn(), null, "structs", null, 0, 1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDefinitions_EReference0(), this.getTypeDefn(), null, "EReference0", null, 0, 1, Definitions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementDefnEClass, ElementDefn.class, "ElementDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElementDefn_Todo(), ecorePackage.getEString(), "todo", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1545,6 +1521,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		initEClass(primitiveTypeDefnEClass, PrimitiveTypeDefn.class, "PrimitiveTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrimitiveTypeDefn_Pattern(), ecorePackage.getEString(), "pattern", null, 0, 1, PrimitiveTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrimitiveTypeDefn_Xsdtype(), ecorePackage.getEString(), "xsdtype", null, 1, 1, PrimitiveTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constrainedTypeDefnEClass, ConstrainedTypeDefn.class, "ConstrainedTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstrainedTypeDefn_Constrains(), this.getCompositeTypeDefn(), null, "constrains", null, 1, 1, ConstrainedTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1577,8 +1554,9 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefnEClass, TypeDefn.class, "TypeDefn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeDefn_Definition(), ecorePackage.getEString(), "definition", null, 0, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeDefn_Comment(), ecorePackage.getEString(), "comment", null, 0, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositeTypeDefnEClass, CompositeTypeDefn.class, "CompositeTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeTypeDefn_Contents(), this.getElementDefn(), null, "contents", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1676,6 +1654,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		   source, 
 		   new String[] {
 			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getPrimitiveTypeDefn_Pattern(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getTypeDefn_Definition(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getTypeDefn_Comment(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
 		   });		
 		addAnnotation
 		  (getNameScope_Bindings(), 

@@ -52,12 +52,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getPrimitives <em>Primitives</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getProfiles <em>Profiles</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getStructs <em>Structs</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEReference0 <em>EReference0</em>}</li>
  * </ul>
  * </p>
  *
@@ -135,26 +131,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	protected String version = VERSION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPrimitives() <em>Primitives</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrimitives()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<PrimitiveTypeDefn> primitives;
-
-	/**
-	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ConstrainedTypeDefn> constraints;
-
-	/**
 	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,26 +149,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * @ordered
 	 */
 	protected EList<ProfileDefn> profiles;
-
-	/**
-	 * The cached value of the '{@link #getStructs() <em>Structs</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStructs()
-	 * @generated
-	 * @ordered
-	 */
-	protected CompositeTypeDefn structs;
-
-	/**
-	 * The cached value of the '{@link #getEReference0() <em>EReference0</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEReference0()
-	 * @generated
-	 * @ordered
-	 */
-	protected TypeDefn eReference0;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -322,30 +278,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<PrimitiveTypeDefn> getPrimitives() {
-		if (primitives == null) {
-			primitives = new EObjectContainmentEList<PrimitiveTypeDefn>(PrimitiveTypeDefn.class, this, FhirPackage.DEFINITIONS__PRIMITIVES);
-		}
-		return primitives;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<ConstrainedTypeDefn> getConstraints() {
-		if (constraints == null) {
-			constraints = new EObjectContainmentEList<ConstrainedTypeDefn>(ConstrainedTypeDefn.class, this, FhirPackage.DEFINITIONS__CONSTRAINTS);
-		}
-		return constraints;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<EventDefn> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList<EventDefn>(EventDefn.class, this, FhirPackage.DEFINITIONS__EVENTS);
@@ -363,87 +295,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			profiles = new EObjectContainmentEList<ProfileDefn>(ProfileDefn.class, this, FhirPackage.DEFINITIONS__PROFILES);
 		}
 		return profiles;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CompositeTypeDefn getStructs() {
-		return structs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetStructs(CompositeTypeDefn newStructs, NotificationChain msgs) {
-		CompositeTypeDefn oldStructs = structs;
-		structs = newStructs;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__STRUCTS, oldStructs, newStructs);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setStructs(CompositeTypeDefn newStructs) {
-		if (newStructs != structs) {
-			NotificationChain msgs = null;
-			if (structs != null)
-				msgs = ((InternalEObject)structs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEFINITIONS__STRUCTS, null, msgs);
-			if (newStructs != null)
-				msgs = ((InternalEObject)newStructs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEFINITIONS__STRUCTS, null, msgs);
-			msgs = basicSetStructs(newStructs, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__STRUCTS, newStructs, newStructs));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypeDefn getEReference0() {
-		if (eReference0 != null && eReference0.eIsProxy()) {
-			InternalEObject oldEReference0 = (InternalEObject)eReference0;
-			eReference0 = (TypeDefn)eResolveProxy(oldEReference0);
-			if (eReference0 != oldEReference0) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.DEFINITIONS__EREFERENCE0, oldEReference0, eReference0));
-			}
-		}
-		return eReference0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypeDefn basicGetEReference0() {
-		return eReference0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEReference0(TypeDefn newEReference0) {
-		TypeDefn oldEReference0 = eReference0;
-		eReference0 = newEReference0;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__EREFERENCE0, oldEReference0, eReference0));
 	}
 
 	/**
@@ -513,16 +364,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__TYPES:
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case FhirPackage.DEFINITIONS__PRIMITIVES:
-				return ((InternalEList<?>)getPrimitives()).basicRemove(otherEnd, msgs);
-			case FhirPackage.DEFINITIONS__CONSTRAINTS:
-				return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
-			case FhirPackage.DEFINITIONS__STRUCTS:
-				return basicSetStructs(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -546,19 +391,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return getDate();
 			case FhirPackage.DEFINITIONS__VERSION:
 				return getVersion();
-			case FhirPackage.DEFINITIONS__PRIMITIVES:
-				return getPrimitives();
-			case FhirPackage.DEFINITIONS__CONSTRAINTS:
-				return getConstraints();
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return getEvents();
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return getProfiles();
-			case FhirPackage.DEFINITIONS__STRUCTS:
-				return getStructs();
-			case FhirPackage.DEFINITIONS__EREFERENCE0:
-				if (resolve) return getEReference0();
-				return basicGetEReference0();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -589,14 +425,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__VERSION:
 				setVersion((String)newValue);
 				return;
-			case FhirPackage.DEFINITIONS__PRIMITIVES:
-				getPrimitives().clear();
-				getPrimitives().addAll((Collection<? extends PrimitiveTypeDefn>)newValue);
-				return;
-			case FhirPackage.DEFINITIONS__CONSTRAINTS:
-				getConstraints().clear();
-				getConstraints().addAll((Collection<? extends ConstrainedTypeDefn>)newValue);
-				return;
 			case FhirPackage.DEFINITIONS__EVENTS:
 				getEvents().clear();
 				getEvents().addAll((Collection<? extends EventDefn>)newValue);
@@ -604,12 +432,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__PROFILES:
 				getProfiles().clear();
 				getProfiles().addAll((Collection<? extends ProfileDefn>)newValue);
-				return;
-			case FhirPackage.DEFINITIONS__STRUCTS:
-				setStructs((CompositeTypeDefn)newValue);
-				return;
-			case FhirPackage.DEFINITIONS__EREFERENCE0:
-				setEReference0((TypeDefn)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -638,23 +460,11 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
-			case FhirPackage.DEFINITIONS__PRIMITIVES:
-				getPrimitives().clear();
-				return;
-			case FhirPackage.DEFINITIONS__CONSTRAINTS:
-				getConstraints().clear();
-				return;
 			case FhirPackage.DEFINITIONS__EVENTS:
 				getEvents().clear();
 				return;
 			case FhirPackage.DEFINITIONS__PROFILES:
 				getProfiles().clear();
-				return;
-			case FhirPackage.DEFINITIONS__STRUCTS:
-				setStructs((CompositeTypeDefn)null);
-				return;
-			case FhirPackage.DEFINITIONS__EREFERENCE0:
-				setEReference0((TypeDefn)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -678,18 +488,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 			case FhirPackage.DEFINITIONS__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case FhirPackage.DEFINITIONS__PRIMITIVES:
-				return primitives != null && !primitives.isEmpty();
-			case FhirPackage.DEFINITIONS__CONSTRAINTS:
-				return constraints != null && !constraints.isEmpty();
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return events != null && !events.isEmpty();
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return profiles != null && !profiles.isEmpty();
-			case FhirPackage.DEFINITIONS__STRUCTS:
-				return structs != null;
-			case FhirPackage.DEFINITIONS__EREFERENCE0:
-				return eReference0 != null;
 		}
 		return super.eIsSet(featureID);
 	}

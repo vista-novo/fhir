@@ -22,12 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getPrimitives <em>Primitives</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getStructs <em>Structs</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEReference0 <em>EReference0</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,38 +85,6 @@ public interface Definitions extends NameScope {
 	void setVersion(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Primitives</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Primitives</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Primitives</em>' containment reference list.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Primitives()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<PrimitiveTypeDefn> getPrimitives();
-
-	/**
-	 * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Constraints</em>' containment reference list.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Constraints()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<ConstrainedTypeDefn> getConstraints();
-
-	/**
 	 * Returns the value of the '<em><b>Events</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.EventDefn}.
 	 * <!-- begin-user-doc -->
@@ -151,57 +115,5 @@ public interface Definitions extends NameScope {
 	 * @generated
 	 */
 	EList<ProfileDefn> getProfiles();
-
-	/**
-	 * Returns the value of the '<em><b>Structs</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Structs</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Structs</em>' containment reference.
-	 * @see #setStructs(CompositeTypeDefn)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Structs()
-	 * @model containment="true"
-	 * @generated
-	 */
-	CompositeTypeDefn getStructs();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getStructs <em>Structs</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Structs</em>' containment reference.
-	 * @see #getStructs()
-	 * @generated
-	 */
-	void setStructs(CompositeTypeDefn value);
-
-	/**
-	 * Returns the value of the '<em><b>EReference0</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>EReference0</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>EReference0</em>' reference.
-	 * @see #setEReference0(TypeDefn)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_EReference0()
-	 * @model
-	 * @generated
-	 */
-	TypeDefn getEReference0();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEReference0 <em>EReference0</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>EReference0</em>' reference.
-	 * @see #getEReference0()
-	 * @generated
-	 */
-	void setEReference0(TypeDefn value);
 
 } // Definitions

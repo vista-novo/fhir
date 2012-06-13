@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.ecore.fhir.util;
+package org.hl7.fhir.definitions.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,7 +9,6 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.model.BindingSpecification;
 
 
 public class BindingConverter 

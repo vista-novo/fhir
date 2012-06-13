@@ -64,11 +64,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.hl7.fhir.definitions.Config;
-import org.hl7.fhir.definitions.ecore.fhir.Binding;
-import org.hl7.fhir.definitions.ecore.fhir.Constraint;
-import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
-import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
@@ -155,11 +150,11 @@ public class Publisher {
 		if (initialize(folder)) {
 			Utilities.clearDirectory(page.getFolders().dstDir);
 			Utilities.createDirectory(page.getFolders().dstDir + "html");
-			prsr.parse(isInternalRun, page.getGenDate());
+			prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
 			if (validate()) 
 			{
-				produceSpecification();
 				generateECore(prsr.getECoreParseResults());
+				produceSpecification();
 				validateXml();
 				validateJava();
 				System.out.println("Finished publishing FHIR");

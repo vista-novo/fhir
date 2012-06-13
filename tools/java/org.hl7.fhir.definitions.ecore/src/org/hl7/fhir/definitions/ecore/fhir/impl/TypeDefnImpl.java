@@ -25,6 +25,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getComment <em>Comment</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,26 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @ordered
 	 */
 	protected String definition = DEFINITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String COMMENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComment()
+	 * @generated
+	 * @ordered
+	 */
+	protected String comment = COMMENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +158,27 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setComment(String newComment) {
+		String oldComment = comment;
+		comment = newComment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__COMMENT, oldComment, comment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -144,6 +186,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getName();
 			case FhirPackage.TYPE_DEFN__DEFINITION:
 				return getDefinition();
+			case FhirPackage.TYPE_DEFN__COMMENT:
+				return getComment();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,6 +205,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return;
 			case FhirPackage.TYPE_DEFN__DEFINITION:
 				setDefinition((String)newValue);
+				return;
+			case FhirPackage.TYPE_DEFN__COMMENT:
+				setComment((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,6 +227,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__DEFINITION:
 				setDefinition(DEFINITION_EDEFAULT);
 				return;
+			case FhirPackage.TYPE_DEFN__COMMENT:
+				setComment(COMMENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,6 +246,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_DEFN__DEFINITION:
 				return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
+			case FhirPackage.TYPE_DEFN__COMMENT:
+				return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -214,6 +266,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		result.append(name);
 		result.append(", definition: ");
 		result.append(definition);
+		result.append(", comment: ");
+		result.append(comment);
 		result.append(')');
 		return result.toString();
 	}
