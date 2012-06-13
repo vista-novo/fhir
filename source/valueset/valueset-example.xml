@@ -1,30 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Valueset xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Valueset.xsd">
-  <id>34234</id>
-	
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Valueset.xsd">
+<!-- set of loinc codes for cholesterol for LONC 2.36 -->  
+  <id>5830aab7-b0c4-461f-9521-344000d51191</id>
+  <name>Loinc Codes for Cholesterol</name>
+  <author>
+    <name>FHIR project team (example)</name>
+    <reference>http://hl7.org/fhir</reference>
+  </author>
+  <description>This is an example value set that includes all the LOINC codes for serum cholesterol from v2.36</description>
+  <status>testing</status>
+  <date>2012-06-13</date>
+
+  <!-- this example, we elected to use a UUID. We could have used an OID, or a URI - depends on how it will be used. -->
+  <identifier>256a5231-a2bb-49bd-9fea-f349d428b70d</identifier>
+
+  <!-- for version, we are going to simply use the day of publication. This is also 
+    arbitrary - whatever is here is what people use to refer to the version. 
+    Could also be a UUID too -->
+  <version>20120613</version>
+
+  <!-- we claim that this value set is a constraint on this other value set 
+    this actual URL is a reference to a fictitious value set definition on a 
+    fictitious FHIR value set registry. We claim here, simply for illustrative 
+    purposes, that the value set referred to here is all LOINC codes for serum
+    tests, and that this value set is therefor a constraint on that one -->
+  <restricts>http://hl7.org/svc/fhir/valueset/@03acace4-5206-4c8f-a8b4-df27a4c18b09</restricts>
+  
+  <!-- given that this value set is small, it doesn't make 
+   sense to import another one - what would it say? But if that made sense, 
+   we'd do it like this: 
+  <import>http://hl7.org/svc/fhir/valueset/@f0f65621-ae8c-4c57-9f96-5326c2acefe3</import> -->
+  
+  <!-- you could have multiple includes, if you wanted to include codes from more than
+     one code system, or include codes with different modes. we don't, in this case -->
+  <include>
+    <system>http://hl7.org/fhir/sid/loinc</system>
+    <version>2.36</version>
+    <!-- given that it's LOINC, we simply include the listed codes - no subsumption in LOINC -->
+    <mode>just-code</mode>
+    <!-- these were selected by hand -->
+    <code>14647-2</code>
+    <code>2093-3</code>
+    <!-- <code>2565-0</code> is deprecated, don't list it -->
+    <code>35200-5</code>
+    <code>9342-7</code>   <!-- this is a little different (pop. %), but arbitrarily included in the list -->
+  </include>
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <table>
-        <tbody>
-          <tr>
-            <td>Name</td>
-            <td>Peter James <b>Chalmers</b> ("Jim")</td>
-          </tr>
-          <tr>
-            <td>Address</td>
-            <td>534 Erewhon, Pleasantville, Vic, 3999</td>
-          </tr>
-          <tr>
-            <td>Contacts</td>
-            <td>Home: unknown. Work: (03) 5555 6473</td>
-          </tr>
-          <tr>
-            <td>Id</td>
-            <td>MRN: 12345 (Acme Healthcare)</td>
-          </tr>
-        </tbody>
-      </table>
+     <p>Value set "Loinc Codes for Cholesterol": This is an example value set that includes all the LOINC codes for serum cholesterol from v2.36. Developed by: FHIR project team (example)</p>
+     <p>Published for testing on 13-June 2012</p>
+     <p>This is a restriction on <a href="http://hl7.org/svc/fhir/valueset/@03acace4-5206-4c8f-a8b4-df27a4c18b09?format=text/html">the value set "all serum test codes"</a>, and contains the following LOINC codes:</p>
+     <ul>
+      <li>14647-2</li>
+      <li>2093-3</li>
+      <li>35200-5</li>
+      <li>9342-7</li>   
+    </ul>
     </div>
   </text>
-</Valueset>
+</ValueSet>

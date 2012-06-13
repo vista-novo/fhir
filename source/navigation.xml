@@ -51,7 +51,7 @@
     </entry>
     <entry>
       <link>profile</link>
-      <name>Profiling Resources</name>
+      <name>Resource Profiles</name>
     </entry>
   </category>
   <category>
@@ -78,7 +78,7 @@
     </entry>
     <entry>
       <link>conformance</link>
-      <name>Conformance Statement</name>
+      <name>Conformance</name>
     </entry>
     <entry>
       <link>hdata</link>

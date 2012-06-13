@@ -79,14 +79,14 @@ public class ModelValidator {
 		rule(path, e.hasShortDefn() || e.getElements().size() > 0,
 					"Must have a short defn unless child elements exist");
 		checkType(path, e);
-		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
-				"Must have a binding if type is 'code'");
+//		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
+//				"Must have a binding if type is 'code'");
 
 		if (e.hasBinding()) {
 			BindingSpecification cd = definitions.getBindingByName(e
 					.getBindingName());
 			rule(path, cd != null,
-					"Unable to resolve concept domain " + e.getBindingName());
+					"Unable to resolve binding name " + e.getBindingName());
 			// if (cd != null)
 			// rule(path, (cd.getBinding() == ConceptDomain.Binding.CodeList &&
 			// (e.hasType("Coding") || e.hasType("CodeableConcept"))),

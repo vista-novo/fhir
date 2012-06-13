@@ -219,9 +219,8 @@ div.sidebar h2{
 	padding-bottom: 2px;
 	font-weight: normal;
 	margin-left: 8px;
-	x-padding: 1.25em 0.0em 1.25em 1.75em;
+	margin-bottom: 0px;
 	font-size: 12px;
-	x-font-family: sans serif;
 }
 
 div.sidebar p {
@@ -229,38 +228,28 @@ div.sidebar p {
 	padding-top: 10px;
 	font-weight: normal;
 	margin-left: 8px;
-	margin-bottom: 0px;
-	x-padding: 1.25em 0.0em 1.25em 1.75em;
 	font-size: 12px;
-	x-font-family: sans serif;
 }
 
 div.sidebar ul {
 	list-style: none;
-	padding: 0;
-	x-margin: 5px 0;
+	padding: 0px;
 	margin-left: 6px;
-	font-size: 12px;
-	line-height: 1.125em; 
-	x-font-family: sans serif;
+	font-size: 11px;
+	line-height: 2.125em; 
 }
 
 div.sidebar li {
-	margin-left: 6px;
-	font-size: 12px;
-	line-height: 1.125em; 
-	x-font-family: sans serif;
+	margin: 0px 0px 0px 6px;
+	padding: 0px;
+	font-size: 11px;
+	line-height: 2.125m; 
 }
 
 div.sidebar {
-	x-margin-top: 0px;
-	x-width: 175px;
-	x-float: right;
 	position: absolute;
 	width: 150px;
 	left: 0px;
-	font-family: font-family;
-
 }
 
 pre.spec             {
@@ -324,7 +313,6 @@ ul.navtop
   font-family: sans serif;
   margin: 0 0 8px 0;
   padding:0px;
-  x-border-bottom: 1px solid #adcbb9;
 }
 
 li.selected 
@@ -332,7 +320,6 @@ li.selected
   white-space: nowrap;
   display: inline-block;
   background-color: white;
-  x-border-left: 1px solid #adcbb9;
   border-right: 1px solid #adcbb9;
   margin: 0px;
   padding: 0px;
@@ -344,7 +331,6 @@ li.spacerleft
   display: inline-block;
   background-color: white;
   border-bottom: 1px solid #adcbb9;
-  x-border-left: 1px solid #adcbb9;
   border-right: 1px solid #adcbb9;
   margin: 0px;
   padding: 0px;
@@ -356,8 +342,6 @@ li.spacerright
   display: inline-block;
   background-color: white;
   border-bottom: 1px solid #adcbb9;
-  x-border-left: 1px solid #adcbb9;
-  x-border-right: 1px solid #adcbb9;
   margin: 0px;
   padding: 0px;
   width: 150px;
@@ -368,7 +352,6 @@ li.nselected
   white-space: nowrap;
   display: inline-block;
   background-color: #eeeeee;
-  x-border-left: 1px solid #adcbb9;
   border-right: 1px solid #adcbb9;
   margin: 0px;
   border-bottom: 1px solid #adcbb9;
@@ -382,13 +365,9 @@ li.wiki
   white-space: nowrap;
   display: inline-block;
   background-color: #fff;
-  x-border-left: 1px solid #adcbb9;
-  x-border-right: 1px solid #adcbb9;
   margin: 0px;
   border-bottom: 1px solid #adcbb9;
   padding: 0px;
-  x-background-image: url(strip.png);
-  x-background-repeat: x-repeat;
 }
 
 

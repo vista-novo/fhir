@@ -1,5 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- content goes here -->
+<p>A value set specifies a set of codes that may be drawn from one or more 
+code systems. Value sets don't actually define the code themselves - they 
+just define what codes are included or excluded from the set. Value sets are
+defined to control what codes or concepts can be used in a particular context.
+</p>
 
 </div>

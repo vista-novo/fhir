@@ -75,6 +75,7 @@ public class ZipGenerator {
     File tmp = File.createTempFile("tmp", ".tmp");
     TextFile.stringToFile(cnt, tmp.getAbsolutePath());
     addFileName(path, tmp.getAbsolutePath());
+    tmp.delete();
   }
 
   public void addFileName(String statedPath, String actualPath) throws Exception {
