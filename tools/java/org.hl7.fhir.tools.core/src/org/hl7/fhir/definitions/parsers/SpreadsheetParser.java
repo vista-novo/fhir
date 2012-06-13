@@ -46,6 +46,7 @@ import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
+import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -75,31 +76,69 @@ public class SpreadsheetParser {
 	}
 
 	private ResourceDefn parseCommonTypeColumns() throws Exception {
-		ResourceDefn root = new ResourceDefn();
+		ResourceDefn resource = new ResourceDefn();
 		Sheet sheet = xls.getSheets().get("Bindings");
 		if (sheet != null)
 			readBindings(sheet);
 		sheet = xls.getSheets().get("Invariants");
 		if (sheet != null)
-			readInvariants(root, sheet);
+			readInvariants(resource, sheet);
 
 		sheet = xls.getSheets().get("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(root, sheet, row, false);
+			processLine(resource, sheet, row, false);
 		}
-
-		return root;
+		
+		return resource;
 	}
+	
+	private void scanNestedTypes(ResourceDefn parent, ElementDefn root) throws Exception
+	{
+		for( ElementDefn element : root.getElements() )
+		{
+			if( element.hasNestedElements() )
+			{
+				scanNestedTypes( parent, element );
+				
+				if( element.typeCode().startsWith("=") )
+				{
+					String nestedTypeName = element.typeCode().substring(1);
+					
+					ElementDefn newCompositeType = new ElementDefn();
+					
+					newCompositeType.setName(nestedTypeName);
+					newCompositeType.setDefinition("A nested type in " + parent.getName());
+					newCompositeType.getElements().addAll(element.getElements());
+				
+					if( parent.getNestedTypes().containsKey(nestedTypeName) )
+						throw new Exception("Nested type " + nestedTypeName + 
+								" already exist in resource " + parent.getName());
+					
+					parent.getNestedTypes().put(nestedTypeName, newCompositeType );
+				
+					// Replace inline definition with reference to the newly
+					// generated resource-local type
+					//element.getElements().clear();
+					element.getTypes().clear();
+					element.setDeclaredTypeName(nestedTypeName);
+					//element.getTypes().add(new TypeRef(newCompositeType.getName()));
+				}
+			}			
+		}
+	}
+	
+	
 
-	public ElementDefn parseCompositeType() throws Exception {
+	public ResourceDefn parseCompositeType() throws Exception {
 		isProfile = false;
-
-		return parseCommonTypeColumns().getRoot();
+		return parseCommonTypeColumns();
 	}
 
 	public ResourceDefn parseResource() throws Exception {
 		isProfile = false;
 		ResourceDefn root = parseCommonTypeColumns();
+
+		scanNestedTypes(root, root.getRoot());
 
 		readEvents(xls.getSheets().get("Events"));
 		readExamples(root, xls.getSheets().get("Examples"));
@@ -417,6 +456,7 @@ public class SpreadsheetParser {
 		String t = sheet.getColumn(row, "Type");
 		TypeParser tp = new TypeParser();
 		e.getTypes().addAll(tp.parse(t));
+		
 		if (sheet.hasColumn(row, "Concept Domain"))
 			throw new Exception("Column 'Concept Domain' has been retired in "
 					+ path);

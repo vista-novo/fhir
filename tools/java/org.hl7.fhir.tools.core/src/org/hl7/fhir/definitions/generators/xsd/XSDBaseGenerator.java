@@ -305,7 +305,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				generateWrapperElement(elem, e);
 		}
 		write("    </xs:sequence>\r\n");
-		// write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+		write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
 		write("    <xs:attribute ref=\"xml:id\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 
@@ -631,7 +631,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
 	private String encodeType(ElementDefn e, TypeRef type, boolean params)
 			throws Exception {
-		if ("Resource".equals(type.getName()))
+		if (type.isResourceReference())
 			return "ResourceReference";
 		else if (type.isXmlId())
 			return "id-simple";

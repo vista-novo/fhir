@@ -31,10 +31,36 @@ package org.hl7.fhir.definitions.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+/*
+ * Syntax for type declarations
+ * 
+ * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' |
+ * 'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | type
+ * ('|' type)* | '*'
+ * 
+ * resourceParams = resourceType ('|' resourceType)* | Any type =
+ * primitiveType | dataType | structure
+ * 
+ * NB: mapping of primitive types is dependent on dataAbsenceAllowed. Is
+ * allowed, then the primitives must be mapped to a subclass of Type,
+ * otherwise to the corresponding C# primitive (or XsdDateTime).
+ */
+
 public class TypeRef {
 	private String name;
 	private List<String> params = new ArrayList<String>();
 
+	public TypeRef()
+	{
+	}
+	
+	public TypeRef(String name)
+	{
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -66,11 +92,16 @@ public class TypeRef {
 	public boolean isWildcardType() {
 		return name.equals("*");
 	}
-
+	
+	public boolean isResourceReference()
+	{
+		return name.equals("Resource");
+	}
+	
 	public boolean isSpecialType() {
 		return isXmlId() || isXhtml() || isUnboundGenericParam()
 				|| isWildcardType() || name.equals("Type")
-				|| name.equals("GenericType") || name.equals("Resource");
+				|| name.equals("GenericType") || isResourceReference();
 	}
 
 	public String summary() {

@@ -34,6 +34,7 @@ import java.util.List;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
 public class ModelValidator {
@@ -61,13 +62,13 @@ public class ModelValidator {
 	// }
 	// }
 
-	public List<String> check(String name, ElementDefn root) {
+	public List<String> check(String name, ResourceDefn parent) {
 		errors.clear();
-		checkElement(root.getName(), root);
+		checkElement(parent.getName(), parent.getRoot(), parent);
 		return errors;
 	}
 
-	private void checkElement(String path, ElementDefn e) {
+	private void checkElement(String path, ElementDefn e, ResourceDefn parent) {
 		rule(path, e.unbounded() || e.getMaxCardinality() == 1,
 				"Max Cardinality must be 1 or unbounded");
 		rule(path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1,
@@ -76,9 +77,10 @@ public class ModelValidator {
 		// !e.unbounded())
 		// rule(path, e.getMinCardinality() > 0,
 		// "Min Cardinality cannot be 0 when element is mandatory");
+		//TODO: Really? A composite element need not have a definition?
 		rule(path, e.hasShortDefn() || e.getElements().size() > 0,
 					"Must have a short defn unless child elements exist");
-		checkType(path, e);
+		checkType(path, e, parent);
 //		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
 //				"Must have a binding if type is 'code'");
 
@@ -93,28 +95,31 @@ public class ModelValidator {
 			// "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
 		}
 		for (ElementDefn c : e.getElements()) {
-			checkElement(path + "." + c.getName(), c);
+			checkElement(path + "." + c.getName(), c, parent);
 		}
 
 	}
 
-	private void checkType(String path, ElementDefn e) {
+	private void checkType(String path, ElementDefn e, ResourceDefn parent) {
 		if (e.getTypes().size() == 0) {
 			rule(path, path.contains("."), "Must have a type on a base element");
 			rule(path, e.getName().equals("extensions")
 					|| e.getElements().size() > 0,
 					"Must have a type unless sub-elements exist");
 		} else {
-			for (TypeRef t : e.getTypes()) {
+			for (TypeRef t : e.getTypes()) 
+			{
 				String s = t.getName();
 				if (s.charAt(0) == '@') {
-					// validate path
-				} else {
+					//TODO: validate path
+				} 
+				else 
+				{
 					if (s.charAt(0) == '#')
 						s = s.substring(1);
 					if (!t.isSpecialType()) {
-						rule(path, typeExists(s), "Illegal Type '" + s + "'");
-						if (s.equals("Resource")) {
+						rule(path, typeExists(s, parent), "Illegal Type '" + s + "'");
+						if (t.isResourceReference()) {
 							for (String p : t.getParams()) {
 								rule(path,
 										p.equals("Any")
@@ -129,8 +134,9 @@ public class ModelValidator {
 
 	}
 
-	private boolean typeExists(String name) {
-		return definitions.hasType(name);
+	private boolean typeExists(String name, ResourceDefn parent) {
+		return definitions.hasType(name) ||
+				parent.hasNestedType(name);
 	}
 
 	private void rule(String path, boolean b, String msg) {

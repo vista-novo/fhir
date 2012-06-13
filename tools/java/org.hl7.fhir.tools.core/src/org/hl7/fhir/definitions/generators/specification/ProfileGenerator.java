@@ -39,7 +39,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.model.Factory;
+//import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;

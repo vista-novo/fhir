@@ -29,10 +29,13 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
+import org.hl7.fhir.definitions.ecore.fhir.util.BindingConverter;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
@@ -88,9 +91,23 @@ public class SourceParser {
   }
 
   
-  public void parse(boolean isInternalRun) throws Exception {
+  private org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreParseResults = null;
+  
+  public org.hl7.fhir.definitions.ecore.fhir.Definitions getECoreParseResults()
+  {
+	  return eCoreParseResults;
+  }
+  
+  public void parse(boolean isInternalRun, Date genDate) throws Exception {
     logger.log("Loading");
-    loadConceptDomains();
+    
+    eCoreParseResults = DefinitionsImpl.Build(genDate, ini.getStringProperty("FHIR", "version"));
+        
+    loadGlobalConceptDomains();
+    
+    eCoreParseResults.getBindings()
+    	.addAll(BindingConverter.buildBindingsFromFhirModel(definitions.getBindings().values()));
+    
     loadPrimitives();
 
     for (String n : ini.getPropertyNames("types")) 
@@ -135,14 +152,17 @@ public class SourceParser {
   }
 
 
-  private void loadConceptDomains() throws Exception {
+  private void loadGlobalConceptDomains() throws Exception {
     logger.log("Load Concept Domains");
+    
     BindingsParser parser = new BindingsParser(new FileInputStream(new File(termDir+"bindings.xml")), termDir+"bindings.xml", srcDir);
     List<BindingSpecification> cds = parser.parse();
-    for (BindingSpecification cd : cds)
-    definitions.getBindings().put(cd.getName(), cd);
     
-    for (BindingSpecification cd : definitions.getBindings().values()) {
+    for (BindingSpecification cd : cds)
+    	definitions.getBindings().put(cd.getName(), cd);
+    
+    for (BindingSpecification cd : definitions.getBindings().values()) 
+    {
       if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
         File file = new File(termDir+cd.getReference().substring(1)+".csv");
         if (!file.exists())
@@ -151,7 +171,6 @@ public class SourceParser {
         cparser.parse(cd.getCodes());
       }
     }
-
   }
 
   private void loadPrimitives() throws Exception {
@@ -201,8 +220,15 @@ public class SourceParser {
     File csv = new File(dtDir+t.getName()+".xml");
     if (csv.exists()) {
       SpreadsheetParser p = new SpreadsheetParser(new FileInputStream(csv), csv.getName(), definitions, srcDir);
-      ElementDefn el = p.parseCompositeType();
-      map.put(t.getName(), el);
+      ResourceDefn el = p.parseCompositeType();
+      map.put(t.getName(), el.getRoot());
+      
+      //For now, add all resource-local types to the general definitions
+//      for( ElementDefn nestedType : el.getNestedTypes().values())
+//      {
+//    	  definitions.getStructures().put(nestedType.getName(),nestedType);
+//    	  definitions.getKnownTypes().add(new TypeRef(nestedType.getName()));
+//      }
     } else {
       String p = ini.getStringProperty("types", n);
       csv = new File(dtDir+p+".xml");
@@ -232,7 +258,6 @@ public class SourceParser {
     SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(spreadsheet), spreadsheet.getName(), definitions, src);
     ResourceDefn root = sparser.parseResource();
     root.setSandbox(sandbox);
-    definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
     for (EventDefn e : sparser.getEvents())
       processEvent(e, root.getRoot());
 
@@ -240,6 +265,14 @@ public class SourceParser {
     //is always called with definitions.getResources in its map argument.
     //definitions.getResources().put(root.getName(), root);
     map.put(root.getName(), root);
+    definitions.getKnownResources().put(root.getName(), new DefinedCode(root.getName(), root.getRoot().getDefinition(), n));
+
+    //For now, add all resource-local types to the general definitions
+//    for( ElementDefn nestedType : root.getNestedTypes().values())
+//    {
+//  	  definitions.getStructures().put(nestedType.getName(),nestedType);
+//  	  definitions.getKnownTypes().add(new TypeRef(nestedType.getName()));
+//    }
     
     root.setStatus(ini.getStringProperty("status", n));
   }

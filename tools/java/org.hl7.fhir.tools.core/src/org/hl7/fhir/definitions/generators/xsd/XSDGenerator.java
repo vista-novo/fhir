@@ -140,7 +140,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			write("        </xs:annotation>\r\n");
 		}
 		for (TypeRef t : datatypes) {
-			if (t.getName().equals("Resource"))
+			if (t.isResourceReference())
 				write("       <xs:element name=\"Resource\" type=\"ResourceReference\"/>\r\n");				
 			else if (t.hasParams()) {
 				for (String p : t.getParams()) {
@@ -344,7 +344,7 @@ public class XSDGenerator extends OutputStreamWriter {
 	}
 
 	private String encodeType(ElementDefn e, TypeRef type, boolean params) throws Exception {
-		if ("Resource".equals(type.getName()))
+		if (type.isResourceReference())
 			return "ResourceReference";
 		else if (type.getName().equals("code")) {
 			String en = null;

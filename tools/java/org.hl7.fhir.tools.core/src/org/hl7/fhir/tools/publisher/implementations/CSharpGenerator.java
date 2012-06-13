@@ -67,7 +67,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
 			cSharpGen.generate(resource.getRoot(), definitions.getBindings(), 
-					GenClass.Resource, genDate, version );
+					GenClass.Resource, genDate, version, resource );
 		}
 
 		// Generate a C# file for each "future" Resource
@@ -78,15 +78,6 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
 			cSharpGen.generateFutureResource(resource, genDate, version );
-			
-//	        ElementDefn e = new ElementDefn();
-//	        e.setName(cd.getCode());
-//	        new CSharpResourceGenerator(
-//	        	new FileOutputStream(modelGenerationDir+e.getName()+".cs"))
-//	        		.generate(e, definitions.getBindings(), 
-//	        				GenClass.Resource, genDate, version);
-//	        
-//			filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
 	    }
 		
 		// Generate infrastructure classes
@@ -96,7 +87,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		      new CSharpResourceGenerator(
 		    	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 		      		.generate(root, definitions.getBindings(), 
-		      				GenClass.Structure, genDate, version);
+		      				GenClass.Structure, genDate, version, null);
 				filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 		}
 
@@ -111,13 +102,13 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        if( root.getName().equals("Quantity"))
 	        	generationType = GenClass.Ordered;
 
-	        if( root.typeCode().equals("GenericType"))
+	        if( root.hasType("GenericType"))
 	        	generationType = GenClass.Generic;
 
 	        new CSharpResourceGenerator(
 	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 	        		.generate(root, definitions.getBindings(), 
-	        			generationType, genDate, version);
+	        			generationType, genDate, version, null);
 
 	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 	    }
@@ -129,11 +120,29 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        new CSharpResourceGenerator(
 	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
 	        		.generate(root, definitions.getBindings(), 
-	        				GenClass.Type, genDate, version);
+	        				GenClass.Type, genDate, version, null);
 
 	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
 	    }
 
+
+		// Generate a C# file for inline-defined structured types 
+	    // (these are resoure-locally defined structured types)
+//	    for (ResourceDefn resource : definitions.getResources().values()) 
+//	    {
+//		    for (ElementDefn e : resource.getNestedTypes().values())
+//		    {
+//		        new CSharpResourceGenerator(
+//		        	new FileOutputStream(modelGenerationDir+
+//		        			e.getName()+".cs"))
+//		        		.generate(e, definitions.getBindings(), 
+//		        				GenClass.Type, genDate, version, null);
+//	
+//		        filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
+//		    }
+//	    }
+
+	    
 	    // Generate a C# file for Constrained types (Money, Distance, ...)
 	    for (DefinedCode cd : definitions.getConstraints().values()) {
 	        ElementDefn root = definitions.getTypes().get(cd.getComment()); 

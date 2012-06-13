@@ -74,8 +74,9 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 	public void generate(ElementDefn root,
 			Map<String, BindingSpecification> conceptDomains,
-			GenClass generationType, Date genDate, String version)
-			throws Exception {
+			GenClass generationType, Date genDate, String version, ResourceDefn parent)
+			throws Exception 
+	{
 		elementToGeneratedTypeMapping.clear();
 		generatedTypesInScope.clear();
 		enumsToGenerate.clear();
@@ -102,6 +103,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			generateNestedClass(e);
 		}
 
+
 		// Generate the class' own properties
 		for (ElementDefn e : root.getElements()) {
 			if (!e.isBaseResourceElement())
@@ -120,12 +122,6 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 	
 	public void generateFutureResource(ResourceDefn resource, Date genDate, String version)
 			throws Exception {
-		elementToGeneratedTypeMapping.clear();
-		generatedTypesInScope.clear();
-		enumsToGenerate.clear();
-		strucs.clear();
-		enumNames.clear();
-
 		generateHeader(version, genDate);
 		beginClass(GenClass.Resource, resource.getName(), null, resource.getDefinition());
 		endClass();
@@ -345,20 +341,6 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			throw new Exception(exceptionPrefix + " which carries neither"
 					+ " a type nor child elements.");
 
-		/*
-		 * Syntax for type declarations
-		 * 
-		 * typeSpec = '@' elementreference | '[param]' | 'xhtml' | 'xml:ID' |
-		 * 'Interval(' orderedType ')' | 'Resource(' resourceParams ')' | type
-		 * ('|' type)* | '*'
-		 * 
-		 * resourceParams = resourceType ('|' resourceType)* | Any type =
-		 * primitiveType | dataType | structure
-		 * 
-		 * NB: mapping of primitive types is dependent on dataAbsenceAllowed. Is
-		 * allowed, then the primitives must be mapped to a subclass of Type,
-		 * otherwise to the corresponding C# primitive (or XsdDateTime).
-		 */
 		String tn = null;
 
 		TypeRef type = e.getTypes().get(0);
@@ -374,7 +356,7 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 			tn = "string";
 		else if (type.getName().startsWith("Interval"))
 			tn = buildIntervalMappedTypeName(type);
-		else if (type.getName().startsWith("Resource"))
+		else if (type.isResourceReference())
 			tn = buildResourceReferenceTypename(type);
 		else
 			// Not a special case, must be a type/list of types

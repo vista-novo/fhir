@@ -79,7 +79,22 @@ public class ResourceDefn  {
    }
    
    
-   private ElementDefn root;
+   
+   private Map<String, ElementDefn> nestedTypes = new HashMap<String, ElementDefn>();
+   
+   public Map<String, ElementDefn> getNestedTypes()
+   {
+	   return nestedTypes;
+   }
+   
+   public boolean hasNestedType(String typename)
+   {
+	   return nestedTypes.containsKey(typename);
+   }
+   
+   
+   
+   private ElementDefn root;   
    
    public ElementDefn getRoot()
    {

@@ -173,7 +173,6 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     strucs.clear();
     enumNames.clear();
     for (ElementDefn e : n.getElements()) {
-      // if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
         scanNestedTypes(n, n.getName(), e);
     }
     context = n.getName();
@@ -197,7 +196,6 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     
     typeNames.put(n, cd.getCode());
     for (ElementDefn e : n.getElements()) {
-//      if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
         scanNestedTypes(n, n.getName(), e);
     }
 
@@ -232,7 +230,6 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     write("    while (eventType != XmlPullParser.END_TAG) {\r\n");
     boolean first = true;
     for (ElementDefn e : n.getElements()) {
-//      if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text"))) {
         genElement(n, e, first, contentsHaveDataAbsentReason, bUseOwner, listsAreWrapped);
         first = false;
       //}

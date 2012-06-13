@@ -83,11 +83,11 @@ public class TypeParser {
 			cursor++;
 			if (c == '(' || c == ')' || c == '|' || c == '*')
 				return String.valueOf(c);
-			else if (Character.isLetter(c) || c == '['  || c == '#'  || c == '@') {
+			else if (Character.isLetter(c) || c == '['  || c == '='  || c == '@') {
 				StringBuilder b = new StringBuilder();
 				b.append(c);
 				while (more() && (Character.isLetter(source.charAt(cursor)) || Character.isDigit(source.charAt(cursor)) || source.charAt(cursor) == ':' 
-						|| source.charAt(cursor) == '[' || source.charAt(cursor) == ']' || source.charAt(cursor) == '@' || source.charAt(cursor) == '.')) {
+						|| source.charAt(cursor) == '[' || source.charAt(cursor) == ']' || source.charAt(cursor) == '@' || source.charAt(cursor) == '=' || source.charAt(cursor) == '.')) {
 					b.append(source.charAt(cursor));
 					cursor++;
 				}

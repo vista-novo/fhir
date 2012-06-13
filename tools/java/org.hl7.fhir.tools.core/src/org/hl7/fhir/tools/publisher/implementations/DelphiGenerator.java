@@ -1116,14 +1116,14 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
   private String getTypename(TypeRef type) throws Exception {
     if (type.getParams().size() == 1) {     
-      if (type.getName().equals("Resource"))
+      if (type.isResourceReference())
         return "TFHIRResourceReference{"+getTypeName(type.getParams().get(0))+"}";
       else if (type.getName().equals("Interval"))
         return "TInterval_"+type.getParams().get(0);
       else
         throw new Exception("not supported");
     } else if (type.getParams().size() > 1) {
-      if (type.getName().equals("Resource"))
+      if (type.isResourceReference())
         return "TFHIRResourceReference{Resource}";
       else
         throw new Exception("not supported");

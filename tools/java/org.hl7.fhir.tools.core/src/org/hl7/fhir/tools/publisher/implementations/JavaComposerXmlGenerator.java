@@ -177,7 +177,6 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     strucs.clear();
     enumNames.clear();
     for (ElementDefn e : n.getElements()) {
-      // if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
         scanNestedTypes(n, n.getName(), e);
     }
     context = n.getName();
@@ -201,7 +200,6 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     
     typeNames.put(n, cd.getCode());
     for (ElementDefn e : n.getElements()) {
-//      if (!n.typeCode().equals("Resource") || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
         scanNestedTypes(n, n.getName(), e);
     }
 

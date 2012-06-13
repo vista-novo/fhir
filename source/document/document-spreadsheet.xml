@@ -16,11 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6915</WindowHeight>
-  <WindowWidth>23235</WindowWidth>
+  <WindowHeight>6912</WindowHeight>
+  <WindowWidth>15576</WindowWidth>
   <WindowTopX>5040</WindowTopX>
-  <WindowTopY>5505</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
+  <WindowTopY>5508</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -79,15 +78,16 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="34" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="126.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27.6"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.4"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.6"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="126.6"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.8"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
+    ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.4"
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
@@ -275,6 +275,7 @@
     <Cell><Data ss:Type="String">Document.section</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=Section</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Document is broken into sections</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -370,11 +371,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
+   <TopRowVisible>27</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>31</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -384,11 +386,11 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="230.25"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="210.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.8"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60.6"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.6"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="230.4"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="210.6"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="306"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
@@ -431,8 +433,8 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -491,7 +493,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -506,11 +507,11 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="18.75">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="153.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="252.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="153.6"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="252.6"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="91.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="91.8"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="169.8"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
@@ -556,7 +557,7 @@
  <Worksheet ss:Name="document-authentication-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="580.5"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="580.79999999999995"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
