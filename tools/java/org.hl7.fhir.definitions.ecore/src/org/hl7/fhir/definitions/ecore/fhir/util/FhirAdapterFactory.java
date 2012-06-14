@@ -152,6 +152,10 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 				return createBindingRefAdapter();
 			}
 			@Override
+			public Adapter caseAnnotations(Annotations object) {
+				return createAnnotationsAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -378,6 +382,20 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBindingRefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations
+	 * @generated
+	 */
+	public Adapter createAnnotationsAdapter() {
 		return null;
 	}
 

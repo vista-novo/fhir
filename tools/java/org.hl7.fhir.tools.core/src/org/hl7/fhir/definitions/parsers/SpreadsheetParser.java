@@ -402,7 +402,10 @@ public class SpreadsheetParser {
 
 		String profileName = isProfile ? sheet.getColumn(row, "Profile Name")
 				: "";
-		if (!path.contains(".")) {
+		
+		boolean isRoot = !path.contains(".");
+		
+		if (isRoot) {
 			if (root.getRoot() != null)
 				throw new Exception("Definitions in " + getLocation(row)
 						+ " contain two roots: " + path + " in "
@@ -418,7 +421,7 @@ public class SpreadsheetParser {
 
 		String c = sheet.getColumn(row, "Card.");
 		if (c == null || c.equals("")) {
-			if (e != root.getRoot())
+			if (!isRoot)
 				throw new Exception("Missing cardinality");
 			e.setMinCardinality(1);
 			e.setMaxCardinality(1);
@@ -470,7 +473,7 @@ public class SpreadsheetParser {
 		e.setShortDefn(sheet.getColumn(row, "Short Name"));
 		e.setDefinition(sheet.getColumn(row, "Definition"));
 		
-		if (!path.contains(".")) {
+		if (isRoot) {
 			root.setDefinition(e.getDefinition());
 		} 
 		

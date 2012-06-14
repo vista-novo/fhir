@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
@@ -40,10 +41,9 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getStrength <em>Strength</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getArtifactName <em>Artifact Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getCodes <em>Codes</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  * </p>
  *
@@ -151,26 +151,6 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	protected String artifactName = ARTIFACT_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected String description = DESCRIPTION_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -201,24 +181,14 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	protected EList<DefinedCode> codes;
 
 	/**
-	 * The default value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
+	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
+	 * @see #getAnnotations()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String DEFINITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String definition = DEFINITION_EDEFAULT;
+	protected Annotations annotations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,27 +319,6 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDescription() {
-		return description;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__DESCRIPTION, oldDescription, description));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getSource() {
 		return source;
 	}
@@ -403,8 +352,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getDefinition() {
-		return definition;
+	public Annotations getAnnotations() {
+		return annotations;
 	}
 
 	/**
@@ -412,11 +361,33 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDefinition(String newDefinition) {
-		String oldDefinition = definition;
-		definition = newDefinition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__DEFINITION, oldDefinition, definition));
+	public NotificationChain basicSetAnnotations(Annotations newAnnotations, NotificationChain msgs) {
+		Annotations oldAnnotations = annotations;
+		annotations = newAnnotations;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__ANNOTATIONS, oldAnnotations, newAnnotations);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnnotations(Annotations newAnnotations) {
+		if (newAnnotations != annotations) {
+			NotificationChain msgs = null;
+			if (annotations != null)
+				msgs = ((InternalEObject)annotations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BINDING_DEFN__ANNOTATIONS, null, msgs);
+			if (newAnnotations != null)
+				msgs = ((InternalEObject)newAnnotations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.BINDING_DEFN__ANNOTATIONS, null, msgs);
+			msgs = basicSetAnnotations(newAnnotations, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__ANNOTATIONS, newAnnotations, newAnnotations));
 	}
 
 	/**
@@ -429,6 +400,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 		switch (featureID) {
 			case FhirPackage.BINDING_DEFN__CODES:
 				return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
+			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
+				return basicSetAnnotations(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -451,14 +424,12 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return getStrength();
 			case FhirPackage.BINDING_DEFN__ARTIFACT_NAME:
 				return getArtifactName();
-			case FhirPackage.BINDING_DEFN__DESCRIPTION:
-				return getDescription();
 			case FhirPackage.BINDING_DEFN__SOURCE:
 				return getSource();
 			case FhirPackage.BINDING_DEFN__CODES:
 				return getCodes();
-			case FhirPackage.BINDING_DEFN__DEFINITION:
-				return getDefinition();
+			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
+				return getAnnotations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -487,9 +458,6 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ARTIFACT_NAME:
 				setArtifactName((String)newValue);
 				return;
-			case FhirPackage.BINDING_DEFN__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
 			case FhirPackage.BINDING_DEFN__SOURCE:
 				setSource((String)newValue);
 				return;
@@ -497,8 +465,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				getCodes().clear();
 				getCodes().addAll((Collection<? extends DefinedCode>)newValue);
 				return;
-			case FhirPackage.BINDING_DEFN__DEFINITION:
-				setDefinition((String)newValue);
+			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
+				setAnnotations((Annotations)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -527,17 +495,14 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ARTIFACT_NAME:
 				setArtifactName(ARTIFACT_NAME_EDEFAULT);
 				return;
-			case FhirPackage.BINDING_DEFN__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
 			case FhirPackage.BINDING_DEFN__SOURCE:
 				setSource(SOURCE_EDEFAULT);
 				return;
 			case FhirPackage.BINDING_DEFN__CODES:
 				getCodes().clear();
 				return;
-			case FhirPackage.BINDING_DEFN__DEFINITION:
-				setDefinition(DEFINITION_EDEFAULT);
+			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
+				setAnnotations((Annotations)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -561,14 +526,12 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return strength != STRENGTH_EDEFAULT;
 			case FhirPackage.BINDING_DEFN__ARTIFACT_NAME:
 				return ARTIFACT_NAME_EDEFAULT == null ? artifactName != null : !ARTIFACT_NAME_EDEFAULT.equals(artifactName);
-			case FhirPackage.BINDING_DEFN__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FhirPackage.BINDING_DEFN__SOURCE:
 				return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
 			case FhirPackage.BINDING_DEFN__CODES:
 				return codes != null && !codes.isEmpty();
-			case FhirPackage.BINDING_DEFN__DEFINITION:
-				return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
+			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
+				return annotations != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -593,12 +556,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 		result.append(strength);
 		result.append(", artifactName: ");
 		result.append(artifactName);
-		result.append(", description: ");
-		result.append(description);
 		result.append(", source: ");
 		result.append(source);
-		result.append(", definition: ");
-		result.append(definition);
 		result.append(')');
 		return result.toString();
 	}

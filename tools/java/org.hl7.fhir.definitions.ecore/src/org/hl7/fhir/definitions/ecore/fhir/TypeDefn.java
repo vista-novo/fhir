@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getDefinition <em>Definition</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,55 +53,29 @@ public interface TypeDefn extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Definition</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Annotations</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Definition</em>' attribute.
-	 * @see #setDefinition(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Definition()
-	 * @model extendedMetaData="kind='element'"
+	 * @return the value of the '<em>Annotations</em>' containment reference.
+	 * @see #setAnnotations(Annotations)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Annotations()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getDefinition();
+	Annotations getAnnotations();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getDefinition <em>Definition</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations <em>Annotations</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definition</em>' attribute.
-	 * @see #getDefinition()
+	 * @param value the new value of the '<em>Annotations</em>' containment reference.
+	 * @see #getAnnotations()
 	 * @generated
 	 */
-	void setDefinition(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Comment</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Comment</em>' attribute.
-	 * @see #setComment(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Comment()
-	 * @model extendedMetaData="kind='element'"
-	 * @generated
-	 */
-	String getComment();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment <em>Comment</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comment</em>' attribute.
-	 * @see #getComment()
-	 * @generated
-	 */
-	void setComment(String value);
+	void setAnnotations(Annotations value);
 
 } // TypeDefn

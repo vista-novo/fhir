@@ -394,5 +394,14 @@ public class Utilities {
     else
       return name+ext;
   }
+  
+  public static String cleanupTextString( String contents )
+  {
+	  if( contents.trim().equals("") )
+		  return null;
+	  else
+		  return contents.trim();
+  }
+  
 	
 }

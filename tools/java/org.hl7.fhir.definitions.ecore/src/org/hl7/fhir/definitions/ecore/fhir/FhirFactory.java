@@ -188,6 +188,15 @@ public interface FhirFactory extends EFactory {
 	BindingRef createBindingRef();
 
 	/**
+	 * Returns a new object of class '<em>Annotations</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotations</em>'.
+	 * @generated
+	 */
+	Annotations createAnnotations();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

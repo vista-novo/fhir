@@ -104,6 +104,7 @@
   <xsd:complexType name="BindingDefn">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="codes" type="fhir:DefinedCode"/>
+      <xsd:element name="annotations" type="fhir:Annotations"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
@@ -113,13 +114,11 @@
     <xsd:attribute name="binding" type="fhir:BindingType" use="required"/>
     <xsd:attribute name="strength" type="fhir:BindingStrength" use="required"/>
     <xsd:attribute name="artifactName" type="xsd:string" use="required"/>
-    <xsd:attribute name="description" type="xsd:string"/>
     <xsd:attribute name="source" type="xsd:string" use="required">
       <xsd:annotation>
         <xsd:documentation>for useful error messages during the build process</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="definition" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="BindingDefn" type="fhir:BindingDefn"/>
   <xsd:complexType name="Mapping">
@@ -162,13 +161,12 @@
   <xsd:element name="Example" type="fhir:Example"/>
   <xsd:complexType name="DefinedCode">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="annotations" type="fhir:Annotations"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="code" type="xsd:string" use="required"/>
-    <xsd:attribute name="definition" type="xsd:string"/>
-    <xsd:attribute name="comment" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="DefinedCode" type="fhir:DefinedCode"/>
   <xsd:complexType name="PrimitiveTypeDefn">
@@ -249,13 +247,12 @@
   <xsd:element name="SearchParameter" type="fhir:SearchParameter"/>
   <xsd:complexType abstract="true" name="TypeDefn">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="annotations" type="fhir:Annotations"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
-    <xsd:attribute name="definition" type="xsd:string"/>
-    <xsd:attribute name="comment" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeDefn" type="fhir:TypeDefn"/>
   <xsd:complexType name="CompositeTypeDefn">
@@ -289,4 +286,20 @@
     <xsd:attribute name="name" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="BindingRef" type="fhir:BindingRef"/>
+  <xsd:complexType name="Annotations">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="shortDefinition" type="xsd:string"/>
+    <xsd:attribute name="definition" type="xsd:string"/>
+    <xsd:attribute name="comment" type="xsd:string"/>
+    <xsd:attribute name="requirements" type="xsd:string"/>
+    <xsd:attribute name="rimMapping" type="xsd:string"/>
+    <xsd:attribute name="v2Mapping" type="xsd:string"/>
+    <xsd:attribute name="todo" type="xsd:string"/>
+    <xsd:attribute name="committeeNotes" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="Annotations" type="fhir:Annotations"/>
 </xsd:schema>

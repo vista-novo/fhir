@@ -651,22 +651,13 @@ public interface FhirPackage extends EPackage {
 	int BINDING_DEFN__ARTIFACT_NAME = 4;
 
 	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BINDING_DEFN__DESCRIPTION = 5;
-
-	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__SOURCE = 6;
+	int BINDING_DEFN__SOURCE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Codes</b></em>' containment reference list.
@@ -675,16 +666,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__CODES = 7;
+	int BINDING_DEFN__CODES = 6;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__DEFINITION = 8;
+	int BINDING_DEFN__ANNOTATIONS = 7;
 
 	/**
 	 * The number of structural features of the '<em>Binding Defn</em>' class.
@@ -693,7 +684,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN_FEATURE_COUNT = 9;
+	int BINDING_DEFN_FEATURE_COUNT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
@@ -732,22 +723,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_DEFN__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN__DEFINITION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_DEFN__COMMENT = 2;
+	int TYPE_DEFN__ANNOTATIONS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Type Defn</em>' class.
@@ -756,7 +738,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN_FEATURE_COUNT = 3;
+	int TYPE_DEFN_FEATURE_COUNT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -768,22 +750,13 @@ public interface FhirPackage extends EPackage {
 	int RESOURCE_DEFN__NAME = TYPE_DEFN__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__DEFINITION = TYPE_DEFN__DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_DEFN__COMMENT = TYPE_DEFN__COMMENT;
+	int RESOURCE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -921,22 +894,13 @@ public interface FhirPackage extends EPackage {
 	int DEFINED_CODE__CODE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINED_CODE__DEFINITION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINED_CODE__COMMENT = 2;
+	int DEFINED_CODE__ANNOTATIONS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Defined Code</em>' class.
@@ -945,7 +909,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINED_CODE_FEATURE_COUNT = 3;
+	int DEFINED_CODE_FEATURE_COUNT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -957,22 +921,13 @@ public interface FhirPackage extends EPackage {
 	int PRIMITIVE_TYPE_DEFN__NAME = TYPE_DEFN__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN__DEFINITION = TYPE_DEFN__DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRIMITIVE_TYPE_DEFN__COMMENT = TYPE_DEFN__COMMENT;
+	int PRIMITIVE_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -1011,22 +966,13 @@ public interface FhirPackage extends EPackage {
 	int COMPOSITE_TYPE_DEFN__NAME = TYPE_DEFN__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__DEFINITION = TYPE_DEFN__DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_TYPE_DEFN__COMMENT = TYPE_DEFN__COMMENT;
+	int COMPOSITE_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -1083,22 +1029,13 @@ public interface FhirPackage extends EPackage {
 	int CONSTRAINED_TYPE_DEFN__NAME = COMPOSITE_TYPE_DEFN__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINED_TYPE_DEFN__DEFINITION = COMPOSITE_TYPE_DEFN__DEFINITION;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINED_TYPE_DEFN__COMMENT = COMPOSITE_TYPE_DEFN__COMMENT;
+	int CONSTRAINED_TYPE_DEFN__ANNOTATIONS = COMPOSITE_TYPE_DEFN__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -1431,6 +1368,97 @@ public interface FhirPackage extends EPackage {
 	int BINDING_REF_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl <em>Annotations</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getAnnotations()
+	 * @generated
+	 */
+	int ANNOTATIONS = 20;
+
+	/**
+	 * The feature id for the '<em><b>Short Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__SHORT_DEFINITION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Definition</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__DEFINITION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__COMMENT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Requirements</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__REQUIREMENTS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Rim Mapping</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__RIM_MAPPING = 4;
+
+	/**
+	 * The feature id for the '<em><b>V2 Mapping</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__V2_MAPPING = 5;
+
+	/**
+	 * The feature id for the '<em><b>Todo</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__TODO = 6;
+
+	/**
+	 * The feature id for the '<em><b>Committee Notes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS__COMMITTEE_NOTES = 7;
+
+	/**
+	 * The number of structural features of the '<em>Annotations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATIONS_FEATURE_COUNT = 8;
+
+	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingType <em>Binding Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1438,7 +1466,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingType()
 	 * @generated
 	 */
-	int BINDING_TYPE = 20;
+	int BINDING_TYPE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingStrength <em>Binding Strength</em>}' enum.
@@ -1448,7 +1476,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingStrength()
 	 * @generated
 	 */
-	int BINDING_STRENGTH = 21;
+	int BINDING_STRENGTH = 22;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchType <em>Search Type</em>}' enum.
@@ -1458,7 +1486,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchType()
 	 * @generated
 	 */
-	int SEARCH_TYPE = 22;
+	int SEARCH_TYPE = 23;
 
 
 	/**
@@ -1930,17 +1958,6 @@ public interface FhirPackage extends EPackage {
 	EAttribute getBindingDefn_ArtifactName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getDescription <em>Description</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getDescription()
-	 * @see #getBindingDefn()
-	 * @generated
-	 */
-	EAttribute getBindingDefn_Description();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getSource <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1963,15 +1980,15 @@ public interface FhirPackage extends EPackage {
 	EReference getBindingDefn_Codes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getDefinition <em>Definition</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Definition</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getDefinition()
+	 * @return the meta object for the containment reference '<em>Annotations</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getAnnotations()
 	 * @see #getBindingDefn()
 	 * @generated
 	 */
-	EAttribute getBindingDefn_Definition();
+	EReference getBindingDefn_Annotations();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getParam <em>Param</em>}'.
@@ -2157,26 +2174,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getDefinedCode_Code();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getDefinition <em>Definition</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Definition</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getDefinition()
+	 * @return the meta object for the containment reference '<em>Annotations</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getAnnotations()
 	 * @see #getDefinedCode()
 	 * @generated
 	 */
-	EAttribute getDefinedCode_Definition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getComment <em>Comment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Comment</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getComment()
-	 * @see #getDefinedCode()
-	 * @generated
-	 */
-	EAttribute getDefinedCode_Comment();
+	EReference getDefinedCode_Annotations();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn <em>Primitive Type Defn</em>}'.
@@ -2264,26 +2270,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeDefn_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getDefinition <em>Definition</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Definition</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getDefinition()
+	 * @return the meta object for the containment reference '<em>Annotations</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations()
 	 * @see #getTypeDefn()
 	 * @generated
 	 */
-	EAttribute getTypeDefn_Definition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment <em>Comment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Comment</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getComment()
-	 * @see #getTypeDefn()
-	 * @generated
-	 */
-	EAttribute getTypeDefn_Comment();
+	EReference getTypeDefn_Annotations();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn <em>Composite Type Defn</em>}'.
@@ -2369,6 +2364,104 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBindingRef_Name();
+
+	/**
+	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotations</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations
+	 * @generated
+	 */
+	EClass getAnnotations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getShortDefinition <em>Short Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Short Definition</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getShortDefinition()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_ShortDefinition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getDefinition <em>Definition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Definition</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getDefinition()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_Definition();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getComment <em>Comment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Comment</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getComment()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_Comment();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getRequirements <em>Requirements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Requirements</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getRequirements()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_Requirements();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getRimMapping <em>Rim Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rim Mapping</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getRimMapping()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_RimMapping();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getV2Mapping <em>V2 Mapping</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>V2 Mapping</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getV2Mapping()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_V2Mapping();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getTodo <em>Todo</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Todo</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getTodo()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_Todo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations#getCommitteeNotes <em>Committee Notes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Committee Notes</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Annotations#getCommitteeNotes()
+	 * @see #getAnnotations()
+	 * @generated
+	 */
+	EAttribute getAnnotations_CommitteeNotes();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.EventDefn <em>Event Defn</em>}'.
@@ -3003,14 +3096,6 @@ public interface FhirPackage extends EPackage {
 		EAttribute BINDING_DEFN__ARTIFACT_NAME = eINSTANCE.getBindingDefn_ArtifactName();
 
 		/**
-		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BINDING_DEFN__DESCRIPTION = eINSTANCE.getBindingDefn_Description();
-
-		/**
 		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3027,12 +3112,12 @@ public interface FhirPackage extends EPackage {
 		EReference BINDING_DEFN__CODES = eINSTANCE.getBindingDefn_Codes();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BINDING_DEFN__DEFINITION = eINSTANCE.getBindingDefn_Definition();
+		EReference BINDING_DEFN__ANNOTATIONS = eINSTANCE.getBindingDefn_Annotations();
 
 		/**
 		 * The meta object literal for the '<em><b>Param</b></em>' attribute list feature.
@@ -3179,20 +3264,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute DEFINED_CODE__CODE = eINSTANCE.getDefinedCode_Code();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DEFINED_CODE__DEFINITION = eINSTANCE.getDefinedCode_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute DEFINED_CODE__COMMENT = eINSTANCE.getDefinedCode_Comment();
+		EReference DEFINED_CODE__ANNOTATIONS = eINSTANCE.getDefinedCode_Annotations();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.PrimitiveTypeDefnImpl <em>Primitive Type Defn</em>}' class.
@@ -3265,20 +3342,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_DEFN__NAME = eINSTANCE.getTypeDefn_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_DEFN__DEFINITION = eINSTANCE.getTypeDefn_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPE_DEFN__COMMENT = eINSTANCE.getTypeDefn_Comment();
+		EReference TYPE_DEFN__ANNOTATIONS = eINSTANCE.getTypeDefn_Annotations();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl <em>Composite Type Defn</em>}' class.
@@ -3349,6 +3418,80 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BINDING_REF__NAME = eINSTANCE.getBindingRef_Name();
+
+		/**
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl <em>Annotations</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getAnnotations()
+		 * @generated
+		 */
+		EClass ANNOTATIONS = eINSTANCE.getAnnotations();
+
+		/**
+		 * The meta object literal for the '<em><b>Short Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__SHORT_DEFINITION = eINSTANCE.getAnnotations_ShortDefinition();
+
+		/**
+		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__DEFINITION = eINSTANCE.getAnnotations_Definition();
+
+		/**
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__COMMENT = eINSTANCE.getAnnotations_Comment();
+
+		/**
+		 * The meta object literal for the '<em><b>Requirements</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__REQUIREMENTS = eINSTANCE.getAnnotations_Requirements();
+
+		/**
+		 * The meta object literal for the '<em><b>Rim Mapping</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__RIM_MAPPING = eINSTANCE.getAnnotations_RimMapping();
+
+		/**
+		 * The meta object literal for the '<em><b>V2 Mapping</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__V2_MAPPING = eINSTANCE.getAnnotations_V2Mapping();
+
+		/**
+		 * The meta object literal for the '<em><b>Todo</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__TODO = eINSTANCE.getAnnotations_Todo();
+
+		/**
+		 * The meta object literal for the '<em><b>Committee Notes</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATIONS__COMMITTEE_NOTES = eINSTANCE.getAnnotations_CommitteeNotes();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.EventDefnImpl <em>Event Defn</em>}' class.
