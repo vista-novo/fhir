@@ -9,17 +9,17 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-06-13T13:25:44Z</LastSaved>
+  <LastSaved>2012-06-13T17:36:02Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9810</WindowHeight>
+  <WindowHeight>9750</WindowHeight>
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
-  <WindowTopY>945</WindowTopY>
+  <WindowTopY>1005</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -32,17 +32,17 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s57">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s58">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s59">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -52,26 +52,26 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s61">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="22" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="267.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="112.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   x:FullRows="1" ss:StyleID="s57" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="267.75"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="32.25"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="53.25"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="112.5"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s57" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s59">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -191,7 +191,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">logical if for this version of the value set</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">logical id for this version of the value set</Data></Cell>
     <Cell><Data ss:Type="String">The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design, or instance</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -201,7 +201,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">can replace these value sets when profiling</Data></Cell>
-    <Cell><Data ss:Type="String">An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows </Data></Cell>
+    <Cell><Data ss:Type="String">An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">In most cases, the claim of restriction could be validated in a particular context of use, but it is not necessary to do so</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -241,7 +241,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">specific version of the code system referred to</Data></Cell>
     <Cell><Data ss:Type="String">The version of the code system that the codes are selected from</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">This is used when selecting the descedents of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -250,7 +250,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">CodeSelectionMode</Data></Cell>
-    <Cell><Data ss:Type="String">just-code | and-descendents | only-descendents</Data></Cell>
+    <Cell><Data ss:Type="String">just-code | only-children | code-and-descendents | only-descendents </Data></Cell>
     <Cell><Data ss:Type="String">The mode of selection - whether the code itself, and/or it's descendents are being selected </Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">It is an error to include codes that are marked &quot;abstract&quot; in a value set that is used directly in a specification, but not an error to include an abstract code in a value set not destined for this use</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -307,8 +307,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -317,10 +317,10 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="309.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s61" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s61" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s61" ss:AutoFitWidth="0" ss:Width="309.75"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s59">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -331,13 +331,13 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">ValueSet</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A value set must have an include or an import and an exclude</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">A value set must have an include or an import and an exclude</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="4" ss:StyleID="s62"/>
+    <Cell ss:Index="4" ss:StyleID="s57"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="4" ss:StyleID="s62"/>
+    <Cell ss:Index="4" ss:StyleID="s57"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -363,7 +363,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s59">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -395,7 +395,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">a code contained in the include or exclude list of the value set</Data></Cell>
+    <Cell><Data ss:Type="String">a code contained in the include or exclude list of the value set (but not including descendent codes)</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -419,8 +419,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -437,15 +437,15 @@
    <Column ss:AutoFitWidth="0" ss:Width="140.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="160.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">CodeSelectionMode</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">CodeSelectionMode</Data></Cell>
     <Cell><Data ss:Type="String">The way in which the code is selected</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
@@ -476,23 +476,23 @@
    <Column ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="368.25"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s64"/>
-    <Cell ss:StyleID="s64"/>
-    <Cell ss:StyleID="s64"/>
-    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s59"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s59"/>
+    <Cell ss:StyleID="s59"/>
+    <Cell ss:StyleID="s59"/>
+    <Cell ss:StyleID="s59"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">just-code</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">just-code</Data></Cell>
     <Cell><Data ss:Type="String">Only this code is selected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">and-descendents</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">and-descendents</Data></Cell>
     <Cell><Data ss:Type="String">this code and any descendents (code with a is_a relationship) are selected</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">only-descendents</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">only-descendents</Data></Cell>
     <Cell><Data ss:Type="String">All descendents of this code are selected, but not this code itself</Data></Cell>
    </Row>
   </Table>

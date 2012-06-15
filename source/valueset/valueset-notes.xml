@@ -13,6 +13,9 @@ to compute the relationship, which may not be possible for a profile tool</li>
  CDA template, or V3 message (valueSet and valueSetVersion). These different contexts may make additional restrictions 
  on the possible values of these elements</li>
 </ul>
-
+<li>Using the property filters is only possible where the underlying code system defines appropriate properties. 
+  Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for 
+  the concepts; in such cases, the literal definitions may be provided by a third party</li>
+<li>Within an include or exclude criteria, multiple filters and concept selections are intersected; in other words, all the conditions specified must be true.</li>
 
 </div>
