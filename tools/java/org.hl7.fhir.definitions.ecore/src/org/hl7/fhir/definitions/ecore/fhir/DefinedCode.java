@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getCode <em>Code</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,29 +53,30 @@ public interface DefinedCode extends EObject {
 	void setCode(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Annotations</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Definition</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotations</em>' containment reference.
-	 * @see #setAnnotations(Annotations)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinedCode_Annotations()
-	 * @model containment="true" required="true"
+	 * @return the value of the '<em>Definition</em>' attribute.
+	 * @see #setDefinition(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinedCode_Definition()
+	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
-	Annotations getAnnotations();
+	String getDefinition();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getAnnotations <em>Annotations</em>}' containment reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode#getDefinition <em>Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Annotations</em>' containment reference.
-	 * @see #getAnnotations()
+	 * @param value the new value of the '<em>Definition</em>' attribute.
+	 * @see #getDefinition()
 	 * @generated
 	 */
-	void setAnnotations(Annotations value);
+	void setDefinition(String value);
 
 } // DefinedCode

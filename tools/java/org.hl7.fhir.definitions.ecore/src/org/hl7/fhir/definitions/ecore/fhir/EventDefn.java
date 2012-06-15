@@ -110,6 +110,7 @@ public interface EventDefn extends EObject {
 	 * @return the value of the '<em>Usages</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getEventDefn_Usages()
 	 * @model containment="true" required="true"
+	 *        extendedMetaData="name='usage'"
 	 * @generated
 	 */
 	EList<EventUsage> getUsages();

@@ -110,8 +110,9 @@ public class FhirSwitch<T> extends Switch<T> {
 			case FhirPackage.RESOURCE_DEFN: {
 				ResourceDefn resourceDefn = (ResourceDefn)theEObject;
 				T result = caseResourceDefn(resourceDefn);
-				if (result == null) result = caseTypeDefn(resourceDefn);
+				if (result == null) result = caseCompositeTypeDefn(resourceDefn);
 				if (result == null) result = caseNameScope(resourceDefn);
+				if (result == null) result = caseTypeDefn(resourceDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

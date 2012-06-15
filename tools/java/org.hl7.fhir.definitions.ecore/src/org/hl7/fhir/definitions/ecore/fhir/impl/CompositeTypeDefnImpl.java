@@ -17,7 +17,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,6 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +45,9 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getInvariants <em>Invariants</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getAllowedGenericTypes <em>Allowed Generic Types</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,14 +82,33 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 */
 	protected NameScope parent;
 	/**
-	 * The cached value of the '{@link #getContents() <em>Contents</em>}' containment reference list.
+	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getContents()
+	 * @see #getElements()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ElementDefn> contents;
+	protected EList<ElementDefn> elements;
+	/**
+	 * The cached value of the '{@link #getInvariants() <em>Invariants</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInvariants()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Invariant> invariants;
+
+	/**
+	 * The cached value of the '{@link #getAllowedGenericTypes() <em>Allowed Generic Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAllowedGenericTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TypeRef> allowedGenericTypes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,7 +136,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 */
 	public EList<BindingDefn> getBindings() {
 		if (bindings == null) {
-			bindings = new EObjectContainmentEList<BindingDefn>(BindingDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__BINDINGS);
+			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__BINDINGS, FhirPackage.BINDING_DEFN__CONTAINER);
 		}
 		return bindings;
 	}
@@ -172,11 +196,35 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ElementDefn> getContents() {
-		if (contents == null) {
-			contents = new EObjectContainmentEList<ElementDefn>(ElementDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS);
+	public EList<ElementDefn> getElements() {
+		if (elements == null) {
+			elements = new EObjectContainmentEList<ElementDefn>(ElementDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS);
 		}
-		return contents;
+		return elements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Invariant> getInvariants() {
+		if (invariants == null) {
+			invariants = new EObjectContainmentEList<Invariant>(Invariant.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS);
+		}
+		return invariants;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TypeRef> getAllowedGenericTypes() {
+		if (allowedGenericTypes == null) {
+			allowedGenericTypes = new EObjectContainmentEList<TypeRef>(TypeRef.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES);
+		}
+		return allowedGenericTypes;
 	}
 
 	/**
@@ -239,6 +287,21 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FhirPackage.COMPOSITE_TYPE_DEFN__BINDINGS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -246,8 +309,12 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.COMPOSITE_TYPE_DEFN__TYPES:
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS:
-				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
+				return ((InternalEList<?>)getInvariants()).basicRemove(otherEnd, msgs);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
+				return ((InternalEList<?>)getAllowedGenericTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -267,8 +334,12 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__PARENT:
 				if (resolve) return getParent();
 				return basicGetParent();
-			case FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS:
-				return getContents();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				return getElements();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
+				return getInvariants();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
+				return getAllowedGenericTypes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,9 +364,17 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__PARENT:
 				setParent((NameScope)newValue);
 				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS:
-				getContents().clear();
-				getContents().addAll((Collection<? extends ElementDefn>)newValue);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				getElements().clear();
+				getElements().addAll((Collection<? extends ElementDefn>)newValue);
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
+				getInvariants().clear();
+				getInvariants().addAll((Collection<? extends Invariant>)newValue);
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
+				getAllowedGenericTypes().clear();
+				getAllowedGenericTypes().addAll((Collection<? extends TypeRef>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -318,8 +397,14 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__PARENT:
 				setParent((NameScope)null);
 				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS:
-				getContents().clear();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				getElements().clear();
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
+				getInvariants().clear();
+				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
+				getAllowedGenericTypes().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -339,8 +424,12 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return types != null && !types.isEmpty();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__PARENT:
 				return parent != null;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__CONTENTS:
-				return contents != null && !contents.isEmpty();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				return elements != null && !elements.isEmpty();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
+				return invariants != null && !invariants.isEmpty();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
+				return allowedGenericTypes != null && !allowedGenericTypes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

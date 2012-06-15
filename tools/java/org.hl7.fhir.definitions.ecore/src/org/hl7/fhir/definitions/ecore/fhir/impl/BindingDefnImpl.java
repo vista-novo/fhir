@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
@@ -28,6 +29,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 
 /**
  * <!-- begin-user-doc -->
@@ -44,6 +46,7 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -395,6 +398,63 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NameScope getContainer() {
+		if (eContainerFeatureID() != FhirPackage.BINDING_DEFN__CONTAINER) return null;
+		return (NameScope)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetContainer(NameScope newContainer, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newContainer, FhirPackage.BINDING_DEFN__CONTAINER, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContainer(NameScope newContainer) {
+		if (newContainer != eInternalContainer() || (eContainerFeatureID() != FhirPackage.BINDING_DEFN__CONTAINER && newContainer != null)) {
+			if (EcoreUtil.isAncestor(this, newContainer))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newContainer != null)
+				msgs = ((InternalEObject)newContainer).eInverseAdd(this, FhirPackage.NAME_SCOPE__BINDINGS, NameScope.class, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__CONTAINER, newContainer, newContainer));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetContainer((NameScope)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -402,8 +462,24 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return basicSetAnnotations(null, msgs);
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				return basicSetContainer(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				return eInternalContainer().eInverseRemove(this, FhirPackage.NAME_SCOPE__BINDINGS, NameScope.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -430,6 +506,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return getCodes();
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return getAnnotations();
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				return getContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -468,6 +546,9 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)newValue);
 				return;
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				setContainer((NameScope)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -504,6 +585,9 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)null);
 				return;
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				setContainer((NameScope)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -532,6 +616,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return codes != null && !codes.isEmpty();
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return annotations != null;
+			case FhirPackage.BINDING_DEFN__CONTAINER:
+				return getContainer() != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -32,74 +32,54 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.utilities.Utilities;
 
 
-public class BindingConverter 
+public class ConstrainedTypeConverter 
 {
-	public static List<BindingDefn> buildBindingsFromFhirModel( Collection<org.hl7.fhir.definitions.model.BindingSpecification> bindings )
+	public static List<ConstrainedTypeDefn> buildConstrainedTypesFromFhirModel( 
+			Collection<org.hl7.fhir.definitions.model.DefinedCode> constrainedTypes,
+			Map<String,org.hl7.fhir.definitions.model.Invariant> invariants )
+				throws Exception
 	{
-		List<BindingDefn> result = new ArrayList<BindingDefn>();
+		List<ConstrainedTypeDefn> result = new ArrayList<ConstrainedTypeDefn>();
 		
-	    for (org.hl7.fhir.definitions.model.BindingSpecification binding : bindings) 
+	    for (org.hl7.fhir.definitions.model.DefinedCode constrainedType : constrainedTypes) 
 	    {
-	    	if( !binding.getName().equals("*unbound*") )
-	    	{
-	    		result.add(buildBindingFromFhirModel(binding));
-	    	}
+	    	org.hl7.fhir.definitions.model.Invariant inv = 
+	    			invariants.get(constrainedType.getCode());
+	    	
+	    	if( inv == null )
+	    		throw new Exception( "Invariants missing for constrained type" + constrainedType.getCode());
+	    	
+	    	result.add(buildConstrainedTypeFromFhirModel(constrainedType, inv));
 	    }
 	    
 	    return result;
 	}
 	
-	public static BindingDefn buildBindingFromFhirModel( org.hl7.fhir.definitions.model.BindingSpecification spec )
+	public static ConstrainedTypeDefn buildConstrainedTypeFromFhirModel( 
+			org.hl7.fhir.definitions.model.DefinedCode constrainedType,
+			org.hl7.fhir.definitions.model.Invariant invariant)
 	{
-		BindingDefn result = FhirFactory.eINSTANCE.createBindingDefn();
+		ConstrainedTypeDefn result = FhirFactory.eINSTANCE.createConstrainedTypeDefn();
 		
-		result.setId( Integer.parseInt( spec.getId() ) );
-		result.setName( spec.getName() );
-
-		result.setAnnotations( FhirFactory.eINSTANCE.createAnnotations() );		
-		result.getAnnotations().setShortDefinition( Utilities.cleanupTextString(spec.getDescription()));
-		result.getAnnotations().setDefinition( Utilities.cleanupTextString(spec.getDefinition()));
+		result.setBaseType( CompositeTypeConverter.buildTypeRef( constrainedType.getComment() ));
+		result.setName( constrainedType.getCode() );
 		
-		result.setBinding( BindingType.get(spec.getBinding().ordinal()) );
-		result.setStrength( BindingStrength.get(spec.getBindingStrength().ordinal()) );
-
-		String artifact = spec.getReference();
-		if( artifact != null && artifact.startsWith("#"))
-			artifact = artifact.substring(1);
-		
-		result.setArtifactName( artifact );
-		result.setSource( spec.getSource() );
-	
-		for( org.hl7.fhir.definitions.model.DefinedCode code : spec.getCodes() )
-		{
-			DefinedCode convertedCode = convertFromFhirDefinedCode( code );
-			result.getCodes().add( convertedCode );
-		}
+		//TODO: This could be multiple invariants, but current Fhir model only allows 1.
+		result.getDetails().add( 
+				CompositeTypeConverter.buildInvariantFromFhirModel(invariant) );
 		
 		return result;
-	}
-
-	
-	public static DefinedCode convertFromFhirDefinedCode( org.hl7.fhir.definitions.model.DefinedCode code) 
-	{
-		DefinedCode result = FhirFactory.eINSTANCE.createDefinedCode();
-		
-		result.setCode( code.getCode() );
-		result.setDefinition( Utilities.cleanupTextString(code.getDefinition()) );
-//		result.setAnnotations( FhirFactory.eINSTANCE.createAnnotations() );		
-//		result.getAnnotations().setDefinition(Utilities.cleanupTextString(code.getDefinition()));
-//		result.getAnnotations().setComment( Utilities.cleanupTextString(code.getComment()));
-		
-		return  result;
 	}
 }

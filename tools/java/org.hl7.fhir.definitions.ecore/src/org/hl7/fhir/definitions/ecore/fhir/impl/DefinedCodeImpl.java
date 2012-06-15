@@ -27,7 +27,7 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinedCodeImpl#getCode <em>Code</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinedCodeImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinedCodeImpl#getDefinition <em>Definition</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,14 +55,24 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	protected String code = CODE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference.
+	 * The default value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAnnotations()
+	 * @see #getDefinition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Annotations annotations;
+	protected static final String DEFINITION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefinition()
+	 * @generated
+	 * @ordered
+	 */
+	protected String definition = DEFINITION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,8 +119,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Annotations getAnnotations() {
-		return annotations;
+	public String getDefinition() {
+		return definition;
 	}
 
 	/**
@@ -118,47 +128,11 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAnnotations(Annotations newAnnotations, NotificationChain msgs) {
-		Annotations oldAnnotations = annotations;
-		annotations = newAnnotations;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINED_CODE__ANNOTATIONS, oldAnnotations, newAnnotations);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAnnotations(Annotations newAnnotations) {
-		if (newAnnotations != annotations) {
-			NotificationChain msgs = null;
-			if (annotations != null)
-				msgs = ((InternalEObject)annotations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEFINED_CODE__ANNOTATIONS, null, msgs);
-			if (newAnnotations != null)
-				msgs = ((InternalEObject)newAnnotations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.DEFINED_CODE__ANNOTATIONS, null, msgs);
-			msgs = basicSetAnnotations(newAnnotations, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINED_CODE__ANNOTATIONS, newAnnotations, newAnnotations));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FhirPackage.DEFINED_CODE__ANNOTATIONS:
-				return basicSetAnnotations(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setDefinition(String newDefinition) {
+		String oldDefinition = definition;
+		definition = newDefinition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINED_CODE__DEFINITION, oldDefinition, definition));
 	}
 
 	/**
@@ -171,8 +145,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 		switch (featureID) {
 			case FhirPackage.DEFINED_CODE__CODE:
 				return getCode();
-			case FhirPackage.DEFINED_CODE__ANNOTATIONS:
-				return getAnnotations();
+			case FhirPackage.DEFINED_CODE__DEFINITION:
+				return getDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -188,8 +162,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 			case FhirPackage.DEFINED_CODE__CODE:
 				setCode((String)newValue);
 				return;
-			case FhirPackage.DEFINED_CODE__ANNOTATIONS:
-				setAnnotations((Annotations)newValue);
+			case FhirPackage.DEFINED_CODE__DEFINITION:
+				setDefinition((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -206,8 +180,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 			case FhirPackage.DEFINED_CODE__CODE:
 				setCode(CODE_EDEFAULT);
 				return;
-			case FhirPackage.DEFINED_CODE__ANNOTATIONS:
-				setAnnotations((Annotations)null);
+			case FhirPackage.DEFINED_CODE__DEFINITION:
+				setDefinition(DEFINITION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -223,8 +197,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 		switch (featureID) {
 			case FhirPackage.DEFINED_CODE__CODE:
 				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
-			case FhirPackage.DEFINED_CODE__ANNOTATIONS:
-				return annotations != null;
+			case FhirPackage.DEFINED_CODE__DEFINITION:
+				return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -241,6 +215,8 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (code: ");
 		result.append(code);
+		result.append(", definition: ");
+		result.append(definition);
 		result.append(')');
 		return result.toString();
 	}

@@ -40,6 +40,7 @@ public interface ProfileDefn extends EObject {
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getProfileDefn_Resources()
 	 * @model containment="true" required="true"
+	 *        extendedMetaData="name='resource'"
 	 * @generated
 	 */
 	EList<ResourceDefn> getResources();

@@ -29,7 +29,9 @@ package org.hl7.fhir.definitions.model;
 
  */
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hl7.fhir.instance.model.Profile.Element_;
 
@@ -511,4 +513,51 @@ public class ElementDefn {
 		return res;
 	}
 
+	
+	   /**** 
+	    * Helper data for mapping the current model definitions to the
+	    * eCore model.  
+	    * 	NestedTypes() - The nested groups of elements which are reused within
+	    * 					the same resource/composite type and have been given an
+	    * 					explicit name using the new '=<typename>' construct.
+	    * 	NestedBindings() - The bindings as defined on the "Bindings" tab in
+	    * 					the resource/composite type specification xls.
+	    *   Invariants()  - The variants as referred to by the elements of
+	    *   				a resource or composite type			
+	    ****/
+	      
+	   private Map<String, ElementDefn> nestedTypes = new HashMap<String, ElementDefn>();
+	   
+	   public Map<String, ElementDefn> getNestedTypes()
+	   {
+		   return nestedTypes;
+	   }
+	   
+	   public boolean hasNestedType(String typename)
+	   {
+		   return nestedTypes.containsKey(typename);
+	   }
+
+	   
+	   private Map<String, BindingSpecification> nestedBindings = new HashMap<String, BindingSpecification>();
+	   
+	   public Map<String, BindingSpecification> getNestedBindings()
+	   {
+		   return nestedBindings;
+	   }
+
+	   private Map<String, Invariant> invariants = new HashMap<String, Invariant>();
+
+	   public Map<String, Invariant> getInvariants() 
+	   {
+			    return invariants;
+	   }
+	   
+	   private List<String> acceptableGenericTypes = new ArrayList<String>();
+
+	   public List<String> getAcceptableGenericTypes()
+	   {
+		   return acceptableGenericTypes;
+	   }
 }
+

@@ -136,7 +136,7 @@ public class ModelValidator {
 
 	private boolean typeExists(String name, ResourceDefn parent) {
 		return definitions.hasType(name) ||
-				parent.hasNestedType(name);
+				parent.getRoot().hasNestedType(name);
 	}
 
 	private void rule(String path, boolean b, String msg) {

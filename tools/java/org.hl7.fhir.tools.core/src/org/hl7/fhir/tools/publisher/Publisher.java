@@ -262,9 +262,9 @@ public class Publisher {
 					+ n + "-uml.xml";
 			if (new File(filename).exists()
 					|| !page.getDefinitions().getResources().get(n).isSandbox()) {
-				// List<String> dummyErrors = new ArrayList<String>();
+				 List<String> dummyErrors = new ArrayList<String>();
 				new UMLValidator(page.getDefinitions().getResources().get(n)
-						.getRoot(), filename, errors).validate();
+						.getRoot(), filename, dummyErrors).validate();
 			}
 		}
 		for (String e : errors)

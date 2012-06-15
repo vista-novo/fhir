@@ -96,6 +96,7 @@ public interface Definitions extends NameScope {
 	 * @return the value of the '<em>Events</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Events()
 	 * @model containment="true"
+	 *        extendedMetaData="name='event'"
 	 * @generated
 	 */
 	EList<EventDefn> getEvents();

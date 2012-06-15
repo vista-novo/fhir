@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isSandbox <em>Sandbox</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getRoot <em>Root</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getSearches <em>Searches</em>}</li>
  * </ul>
@@ -30,23 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ResourceDefn extends TypeDefn, NameScope {
-	/**
-	 * Returns the value of the '<em><b>Invariants</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.Invariant}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Invariants</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Invariants</em>' containment reference list.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getResourceDefn_Invariants()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Invariant> getInvariants();
-
+public interface ResourceDefn extends NameScope, CompositeTypeDefn {
 	/**
 	 * Returns the value of the '<em><b>Example</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.Example}.
@@ -127,6 +110,7 @@ public interface ResourceDefn extends TypeDefn, NameScope {
 	 * @return the value of the '<em>Searches</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getResourceDefn_Searches()
 	 * @model containment="true"
+	 *        extendedMetaData="name='search'"
 	 * @generated
 	 */
 	EList<SearchParameter> getSearches();

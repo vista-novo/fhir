@@ -32,9 +32,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+
 public class ResourceDefn  {
    private List<Example> examples = new ArrayList<Example>();
-   private Map<String, Invariant> invariants = new HashMap<String, Invariant>();
    private List<SearchParameter> searchParams = new ArrayList<SearchParameter>();
    
    private boolean sandbox;
@@ -68,7 +69,7 @@ public class ResourceDefn  {
    
    // EK: This function supports the new eCore model
    // It it still defined in terms of the old functionality,
-   // we need to refactor all references to getRoot()
+   // we need to refactor all references to getContents()
    // out of all generators.
    public List<ElementDefn> getContents()
    {
@@ -79,20 +80,8 @@ public class ResourceDefn  {
    }
    
    
-   
-   private Map<String, ElementDefn> nestedTypes = new HashMap<String, ElementDefn>();
-   
-   public Map<String, ElementDefn> getNestedTypes()
-   {
-	   return nestedTypes;
-   }
-   
-   public boolean hasNestedType(String typename)
-   {
-	   return nestedTypes.containsKey(typename);
-   }
-   
-   
+
+
    
    private ElementDefn root;   
    
@@ -105,10 +94,6 @@ public class ResourceDefn  {
    {
 	   this.root = root;
    }
-
-   
-   
-   
 
    private boolean forFutureUse = false;
    
@@ -132,10 +117,6 @@ public class ResourceDefn  {
 
   public void setSandbox(boolean sandbox) {
     this.sandbox = sandbox;
-  }
-
-  public Map<String, Invariant> getInvariants() {
-    return invariants;
   }
 
   public List<SearchParameter> getSearchParams() {

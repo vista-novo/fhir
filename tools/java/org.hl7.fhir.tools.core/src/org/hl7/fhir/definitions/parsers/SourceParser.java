@@ -42,6 +42,7 @@ import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -106,13 +107,11 @@ public class SourceParser {
 		eCoreParseResults = DefinitionsImpl.build(genDate, version);
 
 		loadGlobalConceptDomains();
-
 		eCoreParseResults.getBindings().addAll(
 				BindingConverter.buildBindingsFromFhirModel(definitions
 						.getBindings().values()));
 
 		loadPrimitives();
-
 		eCoreParseResults.getTypes().addAll(
 				PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
 						.getPrimitives().values()));
@@ -135,9 +134,16 @@ public class SourceParser {
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
 						.getInfrastructure().values()));
 		
+		eCoreParseResults.getTypes().addAll(
+				ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(
+						definitions.getConstraints().values(),
+						definitions.getConstraintInvariants()) );
+		
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
-		for (String n : ini.getPropertyNames("future-resources")) {
+		
+		for (String n : ini.getPropertyNames("future-resources")) 
+		{
 			DefinedCode cd = new DefinedCode(ini.getStringProperty(
 					"future-resources", n), "Yet to be defined", n);
 			definitions.getKnownResources().put(n, cd);
@@ -247,16 +253,9 @@ public class SourceParser {
 			SpreadsheetParser p = new SpreadsheetParser(
 					new FileInputStream(csv), csv.getName(), definitions,
 					srcDir);
-			ResourceDefn el = p.parseCompositeType();
-			map.put(t.getName(), el.getRoot());
-
-			// For now, add all resource-local types to the general definitions
-			// for( ElementDefn nestedType : el.getNestedTypes().values())
-			// {
-			// definitions.getStructures().put(nestedType.getName(),nestedType);
-			// definitions.getKnownTypes().add(new
-			// TypeRef(nestedType.getName()));
-			// }
+			ElementDefn el = p.parseCompositeType();
+			map.put(t.getName(), el);
+			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
 		} else {
 			String p = ini.getStringProperty("types", n);
 			csv = new File(dtDir + p + ".xml");
@@ -270,8 +269,14 @@ public class SourceParser {
 			for (int i = 0; i < sheet.rows.size(); i++) {
 				if (sheet.getColumn(i, "Name").equals(n)) {
 					found = true;
+					Invariant inv = new Invariant();
+					inv.setId(n);
+					inv.setEnglish(sheet.getColumn(i,"Rules"));
+					inv.setOcl(sheet.getColumn(i, "OCL"));
+					inv.setXpath(sheet.getColumn(i, "XPath"));
 					definitions.getConstraints().put(n,
 							new DefinedCode(n, sheet.getColumn(i, "Rules"), p));
+					definitions.getConstraintInvariants().put(n,inv);
 				}
 			}
 			if (!found)

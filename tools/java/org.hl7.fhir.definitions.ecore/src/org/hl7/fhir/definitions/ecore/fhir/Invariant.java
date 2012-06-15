@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getHuman <em>Human</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getOcl <em>Ocl</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getXpath <em>Xpath</em>}</li>
@@ -40,6 +41,7 @@ public interface Invariant extends EObject {
 	 * @see #setName(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariant_Name()
 	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getName();
@@ -55,6 +57,32 @@ public interface Invariant extends EObject {
 	void setName(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariant_Description()
+	 * @model extendedMetaData="kind='attribute'"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Invariant#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Human</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -66,6 +94,7 @@ public interface Invariant extends EObject {
 	 * @see #setHuman(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariant_Human()
 	 * @model required="true"
+	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getHuman();
@@ -91,7 +120,7 @@ public interface Invariant extends EObject {
 	 * @return the value of the '<em>Ocl</em>' attribute.
 	 * @see #setOcl(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariant_Ocl()
-	 * @model
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getOcl();
@@ -118,6 +147,7 @@ public interface Invariant extends EObject {
 	 * @see #setXpath(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariant_Xpath()
 	 * @model required="true"
+	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getXpath();

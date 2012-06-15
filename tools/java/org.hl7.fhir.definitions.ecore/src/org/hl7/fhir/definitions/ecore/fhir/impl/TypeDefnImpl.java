@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 /**
@@ -28,6 +29,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getContainer <em>Container</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +65,16 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @ordered
 	 */
 	protected Annotations annotations;
+
+	/**
+	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContainer()
+	 * @generated
+	 * @ordered
+	 */
+	protected NameScope container;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +164,55 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NameScope getContainer() {
+		if (container != null && container.eIsProxy()) {
+			InternalEObject oldContainer = (InternalEObject)container;
+			container = (NameScope)eResolveProxy(oldContainer);
+			if (container != oldContainer) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.TYPE_DEFN__CONTAINER, oldContainer, container));
+			}
+		}
+		return container;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NameScope basicGetContainer() {
+		return container;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setContainer(NameScope newContainer) {
+		NameScope oldContainer = container;
+		container = newContainer;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__CONTAINER, oldContainer, container));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFQN() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -173,6 +234,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getName();
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return getAnnotations();
+			case FhirPackage.TYPE_DEFN__CONTAINER:
+				if (resolve) return getContainer();
+				return basicGetContainer();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,6 +254,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return;
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)newValue);
+				return;
+			case FhirPackage.TYPE_DEFN__CONTAINER:
+				setContainer((NameScope)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -209,6 +276,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)null);
 				return;
+			case FhirPackage.TYPE_DEFN__CONTAINER:
+				setContainer((NameScope)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -225,6 +295,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return annotations != null;
+			case FhirPackage.TYPE_DEFN__CONTAINER:
+				return container != null;
 		}
 		return super.eIsSet(featureID);
 	}

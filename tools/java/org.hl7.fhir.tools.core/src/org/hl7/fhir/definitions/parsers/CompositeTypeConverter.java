@@ -11,6 +11,9 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.definitions.ecore.fhir.util.FhirAdapterFactory;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -76,36 +79,58 @@ public class CompositeTypeConverter
 		ann.setCommitteeNotes( Utilities.cleanupTextString(type.getCommitteeNotes()) );	
 		
 		result.setAnnotations( ann );
+
+		result.getBindings().addAll( 
+				BindingConverter.buildBindingsFromFhirModel( type.getNestedBindings().values() ));
+
+		result.getInvariants().addAll( 
+				buildInvariantsFromFhirModel( type.getInvariants().values() ) );
+	
+		for( String typeName : type.getAcceptableGenericTypes() )
+			result.getAllowedGenericTypes().add( buildTypeRef(typeName) );
 		
 		return result;
 	}
 	
-//	public static BindingDefn buildBindingFromFhirModel( org.hl7.fhir.definitions.model.BindingSpecification spec )
-//	{
-//		BindingDefn result = FhirFactory.eINSTANCE.createBindingDefn();
-//		
-//		result.setId( Integer.parseInt( spec.getId() ) );
-//		result.setName( spec.getName() );
-//		result.setDescription( spec.getDescription() );
-//		result.setBinding( BindingType.get(spec.getBinding().ordinal()) );
-//		result.setStrength( BindingStrength.get(spec.getBindingStrength().ordinal()) );
-//
-//		String artifact = spec.getReference();
-//		if( artifact != null && artifact.startsWith("#"))
-//			artifact = artifact.substring(1);
-//		
-//		result.setArtifactName( artifact );
-//		result.setDescription( spec.getDescription() );
-//		result.setSource( spec.getSource() );
-//		result.setDefinition( spec.getDefinition() );
-//	
-//		for( org.hl7.fhir.definitions.model.DefinedCode code : spec.getCodes() )
-//		{
-//			DefinedCode convertedCode = convertFromFhirDefinedCode( code );
-//			result.getCodes().add( convertedCode );
-//		}
-//		
-//		return result;
-//	}
+
+	public static List<Invariant> buildInvariantsFromFhirModel( Collection<org.hl7.fhir.definitions.model.Invariant> invariants )
+	{
+		List<Invariant> result = new ArrayList<Invariant>();
+		
+		for( org.hl7.fhir.definitions.model.Invariant invariant : invariants )
+			result.add( buildInvariantFromFhirModel(invariant) );
+		
+		return result;
+	}
+
+
+	public static Invariant buildInvariantFromFhirModel( org.hl7.fhir.definitions.model.Invariant invariant) {
+		Invariant result = FhirFactory.eINSTANCE.createInvariant();
+		
+		// In the old model, Id was actually a short identifying name
+		// and Name contained a short description.
+		result.setName( invariant.getId() );
+		result.setDescription( Utilities.cleanupTextString(invariant.getName()) );
+		result.setHuman( Utilities.cleanupTextString(invariant.getEnglish()) );
+		result.setOcl( Utilities.cleanupTextString(invariant.getOcl()) );
+		result.setXpath( Utilities.cleanupTextString(invariant.getXpath()) );
+
+		return result;
+	}
+	
+	
+	public static TypeRef buildTypeRef( String fhirTypeName )
+	{
+		TypeRef result = FhirFactory.eINSTANCE.createTypeRef();
+		
+		if( fhirTypeName.equals("*") )
+			result.setIsAnyDataType(true);
+		else if( fhirTypeName.equals("Any") )
+			result.setIsAnyResource(true);
+		else
+			result.setName(fhirTypeName);
+		
+		return result;
+	}
 
 }

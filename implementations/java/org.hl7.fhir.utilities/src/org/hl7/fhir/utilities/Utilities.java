@@ -397,7 +397,7 @@ public class Utilities {
   
   public static String cleanupTextString( String contents )
   {
-	  if( contents.trim().equals("") )
+	  if( contents == null || contents.trim().equals("") )
 		  return null;
 	  else
 		  return contents.trim();

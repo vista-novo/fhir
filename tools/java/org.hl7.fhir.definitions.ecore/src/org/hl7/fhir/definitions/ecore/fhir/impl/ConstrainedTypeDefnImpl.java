@@ -25,6 +25,7 @@ import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +34,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getConstrains <em>Constrains</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getBaseType <em>Base Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ConstrainedTypeDefnImpl#getDetails <em>Details</em>}</li>
  * </ul>
  * </p>
@@ -42,14 +43,14 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
  */
 public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements ConstrainedTypeDefn {
 	/**
-	 * The cached value of the '{@link #getConstrains() <em>Constrains</em>}' containment reference.
+	 * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConstrains()
+	 * @see #getBaseType()
 	 * @generated
 	 * @ordered
 	 */
-	protected CompositeTypeDefn constrains;
+	protected TypeRef baseType;
 
 	/**
 	 * The cached value of the '{@link #getDetails() <em>Details</em>}' containment reference list.
@@ -85,8 +86,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CompositeTypeDefn getConstrains() {
-		return constrains;
+	public TypeRef getBaseType() {
+		return baseType;
 	}
 
 	/**
@@ -94,11 +95,11 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetConstrains(CompositeTypeDefn newConstrains, NotificationChain msgs) {
-		CompositeTypeDefn oldConstrains = constrains;
-		constrains = newConstrains;
+	public NotificationChain basicSetBaseType(TypeRef newBaseType, NotificationChain msgs) {
+		TypeRef oldBaseType = baseType;
+		baseType = newBaseType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS, oldConstrains, newConstrains);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, oldBaseType, newBaseType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -109,18 +110,18 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setConstrains(CompositeTypeDefn newConstrains) {
-		if (newConstrains != constrains) {
+	public void setBaseType(TypeRef newBaseType) {
+		if (newBaseType != baseType) {
 			NotificationChain msgs = null;
-			if (constrains != null)
-				msgs = ((InternalEObject)constrains).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS, null, msgs);
-			if (newConstrains != null)
-				msgs = ((InternalEObject)newConstrains).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS, null, msgs);
-			msgs = basicSetConstrains(newConstrains, msgs);
+			if (baseType != null)
+				msgs = ((InternalEObject)baseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
+			if (newBaseType != null)
+				msgs = ((InternalEObject)newBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
+			msgs = basicSetBaseType(newBaseType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS, newConstrains, newConstrains));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, newBaseType, newBaseType));
 	}
 
 	/**
@@ -143,8 +144,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS:
-				return basicSetConstrains(null, msgs);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+				return basicSetBaseType(null, msgs);
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return ((InternalEList<?>)getDetails()).basicRemove(otherEnd, msgs);
 		}
@@ -159,8 +160,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS:
-				return getConstrains();
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+				return getBaseType();
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return getDetails();
 		}
@@ -176,8 +177,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS:
-				setConstrains((CompositeTypeDefn)newValue);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+				setBaseType((TypeRef)newValue);
 				return;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				getDetails().clear();
@@ -195,8 +196,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS:
-				setConstrains((CompositeTypeDefn)null);
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+				setBaseType((TypeRef)null);
 				return;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				getDetails().clear();
@@ -213,8 +214,8 @@ public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements Co
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__CONSTRAINS:
-				return constrains != null;
+			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+				return baseType != null;
 			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
 				return details != null && !details.isEmpty();
 		}

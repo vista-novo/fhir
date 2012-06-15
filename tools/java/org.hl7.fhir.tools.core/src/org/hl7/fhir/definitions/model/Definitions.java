@@ -109,6 +109,16 @@ public class Definitions {
 		return constraints;
 	}
 
+	
+	private Map<String, Invariant> constraintInvariants = new HashMap<String, Invariant>();
+	
+	// Actually, DefinedCode is not enough to specify constraint
+	// details, this list will hold the invariants.
+	public Map<String, Invariant> getConstraintInvariants() {
+		return constraintInvariants;
+	}
+	
+	
 	// List the CompositeTypes as found under [types] that aren't
 	// ConstrainedTypes.
 	public Map<String, ElementDefn> getTypes() {

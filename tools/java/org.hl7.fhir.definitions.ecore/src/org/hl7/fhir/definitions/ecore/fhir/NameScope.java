@@ -31,6 +31,7 @@ public interface NameScope extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Bindings</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn}.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bindings</em>' containment reference list isn't clear,
@@ -39,7 +40,8 @@ public interface NameScope extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bindings</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Bindings()
-	 * @model containment="true"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer
+	 * @model opposite="container" containment="true"
 	 *        extendedMetaData="name='binding'"
 	 * @generated
 	 */
@@ -57,6 +59,7 @@ public interface NameScope extends EObject {
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Types()
 	 * @model containment="true"
+	 *        extendedMetaData="name='type'"
 	 * @generated
 	 */
 	EList<TypeDefn> getTypes();

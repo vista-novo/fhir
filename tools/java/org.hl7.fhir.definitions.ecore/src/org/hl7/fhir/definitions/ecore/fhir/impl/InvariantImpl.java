@@ -24,6 +24,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantImpl#getHuman <em>Human</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantImpl#getOcl <em>Ocl</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantImpl#getXpath <em>Xpath</em>}</li>
@@ -52,6 +53,26 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getHuman() <em>Human</em>}' attribute.
@@ -158,6 +179,27 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.INVARIANT__DESCRIPTION, oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getHuman() {
 		return human;
 	}
@@ -226,6 +268,8 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 		switch (featureID) {
 			case FhirPackage.INVARIANT__NAME:
 				return getName();
+			case FhirPackage.INVARIANT__DESCRIPTION:
+				return getDescription();
 			case FhirPackage.INVARIANT__HUMAN:
 				return getHuman();
 			case FhirPackage.INVARIANT__OCL:
@@ -246,6 +290,9 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 		switch (featureID) {
 			case FhirPackage.INVARIANT__NAME:
 				setName((String)newValue);
+				return;
+			case FhirPackage.INVARIANT__DESCRIPTION:
+				setDescription((String)newValue);
 				return;
 			case FhirPackage.INVARIANT__HUMAN:
 				setHuman((String)newValue);
@@ -271,6 +318,9 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 			case FhirPackage.INVARIANT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case FhirPackage.INVARIANT__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
+				return;
 			case FhirPackage.INVARIANT__HUMAN:
 				setHuman(HUMAN_EDEFAULT);
 				return;
@@ -294,6 +344,8 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 		switch (featureID) {
 			case FhirPackage.INVARIANT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case FhirPackage.INVARIANT__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FhirPackage.INVARIANT__HUMAN:
 				return HUMAN_EDEFAULT == null ? human != null : !HUMAN_EDEFAULT.equals(human);
 			case FhirPackage.INVARIANT__OCL:
@@ -316,6 +368,8 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", description: ");
+		result.append(description);
 		result.append(", human: ");
 		result.append(human);
 		result.append(", ocl: ");

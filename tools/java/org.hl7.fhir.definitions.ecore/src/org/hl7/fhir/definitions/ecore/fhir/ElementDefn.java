@@ -244,6 +244,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Types()
 	 * @model containment="true"
+	 *        extendedMetaData="name='type'"
 	 * @generated
 	 */
 	EList<TypeRef> getTypes();
@@ -417,6 +418,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Mappings</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Mappings()
 	 * @model containment="true"
+	 *        extendedMetaData="name='mapping'"
 	 * @generated
 	 */
 	EList<Mapping> getMappings();
@@ -614,6 +616,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Elements()
 	 * @model containment="true"
+	 *        extendedMetaData="name='element'"
 	 * @generated
 	 */
 	EList<ElementDefn> getElements();

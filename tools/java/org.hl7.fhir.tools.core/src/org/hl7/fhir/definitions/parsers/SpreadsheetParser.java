@@ -32,7 +32,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -75,20 +77,33 @@ public class SpreadsheetParser {
 		this.folder = root + title + File.separator;
 	}
 
+
+	public ElementDefn parseCompositeType() throws Exception {
+		isProfile = false;
+		return parseCommonTypeColumns().getRoot();
+	}
+
 	private ResourceDefn parseCommonTypeColumns() throws Exception {
 		ResourceDefn resource = new ResourceDefn();
+		
 		Sheet sheet = xls.getSheets().get("Bindings");
+		Map<String, BindingSpecification> typeLocalBindings = null;
 		if (sheet != null)
-			readBindings(sheet);
+			typeLocalBindings = readBindings(sheet);
+			
 		sheet = xls.getSheets().get("Invariants");
+		Map<String,Invariant> invariants = null;
 		if (sheet != null)
-			readInvariants(resource, sheet);
-
+			invariants = readInvariants(sheet);
+		
 		sheet = xls.getSheets().get("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(resource, sheet, row, false);
+			processLine(resource, sheet, row, false, invariants);
 		}
 		
+		//TODO: Will fail if type has no root.
+		if( typeLocalBindings != null)
+			resource.getRoot().getNestedBindings().putAll(typeLocalBindings);
 		return resource;
 	}
 	
@@ -110,30 +125,23 @@ public class SpreadsheetParser {
 					newCompositeType.setDefinition("A nested type in " + parent.getName());
 					newCompositeType.getElements().addAll(element.getElements());
 				
-					if( parent.getNestedTypes().containsKey(nestedTypeName) )
+					if( parent.getRoot().getNestedTypes().containsKey(nestedTypeName) )
 						throw new Exception("Nested type " + nestedTypeName + 
 								" already exist in resource " + parent.getName());
 					
-					parent.getNestedTypes().put(nestedTypeName, newCompositeType );
-				
-					// Replace inline definition with reference to the newly
-					// generated resource-local type
-					//element.getElements().clear();
+					parent.getRoot().getNestedTypes().put(nestedTypeName, newCompositeType );
+
+					// Clear out the name of the local type, so old code
+					// will not see a change.
 					element.getTypes().clear();
 					element.setDeclaredTypeName(nestedTypeName);
-					//element.getTypes().add(new TypeRef(newCompositeType.getName()));
 				}
 			}			
 		}
 	}
 	
 	
-
-	public ResourceDefn parseCompositeType() throws Exception {
-		isProfile = false;
-		return parseCommonTypeColumns();
-	}
-
+	
 	public ResourceDefn parseResource() throws Exception {
 		isProfile = false;
 		ResourceDefn root = parseCommonTypeColumns();
@@ -147,23 +155,28 @@ public class SpreadsheetParser {
 		return root;
 	}
 
-	private void readInvariants(ResourceDefn root2, Sheet sheet)
+	private Map<String,Invariant> readInvariants(Sheet sheet)
 			throws Exception {
+		Map<String,Invariant> result = new HashMap<String,Invariant>();
+		
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			Invariant inv = new Invariant();
 
 			String s = sheet.getColumn(row, "Id");
+			inv.setId(s);
 			inv.setName(sheet.getColumn(row, "Name"));
 			inv.setContext(sheet.getColumn(row, "Context"));
 			inv.setEnglish(sheet.getColumn(row, "English"));
 			inv.setXpath(sheet.getColumn(row, "XPath"));
 			inv.setOcl(sheet.getColumn(row, "OCL"));
 			if (s == null || s.equals("")
-					|| root2.getInvariants().containsKey(s))
+					|| result.containsKey(s))
 				throw new Exception("duplicate or missing invariant id "
 						+ getLocation(row));
-			root2.getInvariants().put(s, inv);
+			result.put(s, inv);
 		}
+		
+		return result;
 	}
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
@@ -223,7 +236,11 @@ public class SpreadsheetParser {
 				+ getLocation(row));
 	}
 
-	private void readBindings(Sheet sheet) throws Exception {
+	// Adds bindings to global definition.bindings. Returns list of
+	// newly found bindings in the sheet.
+	private Map<String, BindingSpecification> readBindings(Sheet sheet) throws Exception {
+		Map<String, BindingSpecification> result = new HashMap<String,BindingSpecification>();
+		
 		for (int row = 0; row < sheet.rows.size(); row++) {
 			BindingSpecification cd = new BindingSpecification();
 
@@ -256,8 +273,10 @@ public class SpreadsheetParser {
 								.getSource());
 			}
 			definitions.getBindings().put(cd.getName(), cd);
+			result.put(cd.getName(), cd);
 		}
-
+		
+		return result;
 	}
 
 	private void parseCodes(List<DefinedCode> codes, Sheet sheet)
@@ -294,7 +313,7 @@ public class SpreadsheetParser {
 			ResourceDefn resource = new ResourceDefn();
 			sheet = xls.getSheets().get(n);
 			for (int row = 0; row < sheet.rows.size(); row++) {
-				processLine(resource, sheet, row, true);
+				processLine(resource, sheet, row, true, new HashMap<String,Invariant>());
 			}
 			sheet = xls.getSheets().get(n + "-Extensions");
 			if (sheet != null) {
@@ -394,7 +413,7 @@ public class SpreadsheetParser {
 	}
 
 	private void processLine(ResourceDefn root, Sheet sheet, int row,
-			boolean allowDAR) throws Exception {
+			boolean allowDAR, Map<String, Invariant> invariants) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (path.contains("#"))
@@ -415,6 +434,7 @@ public class SpreadsheetParser {
 			e = new ElementDefn();
 			e.setName(path);
 			root.setRoot(e);
+			e.getInvariants().putAll(invariants);
 		} else {
 			e = makeFromPath(root.getRoot(), path, row, profileName);
 		}
@@ -449,7 +469,7 @@ public class SpreadsheetParser {
 					+ getLocation(row));
 		s = sheet.getColumn(row, "Inv.");
 		if (s != null && !s.equals("")) {
-			Invariant inv = root.getInvariants().get(s);
+			Invariant inv = invariants.get(s);
 			if (inv == null)
 				throw new Exception("unable to find Invariant '" + s + "' "
 						+ getLocation(row));

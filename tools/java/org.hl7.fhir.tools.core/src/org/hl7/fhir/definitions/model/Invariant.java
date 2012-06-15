@@ -34,9 +34,19 @@ public class Invariant {
   private String english;
   private String ocl;
   private String xpath;
+  private String id;
   
-  private ElementDefn element;
-
+  
+  public String getId()
+  {
+	  return id;
+  }
+  
+  public void setId( String id )
+  {
+	  this.id = id;
+  }
+  
   public String getName() {
     return name;
   }
@@ -75,14 +85,6 @@ public class Invariant {
 
   public void setXpath(String xpath) {
     this.xpath = xpath;
-  }
-
-  public ElementDefn getElement() {
-    return element;
-  }
-
-  public void setElement(ElementDefn element) {
-    this.element = element;
   }
   
   

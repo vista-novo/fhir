@@ -32,6 +32,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getParam <em>Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsAnyResource <em>Is Any Resource</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsAnyDataType <em>Is Any Data Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -67,6 +69,46 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsAnyResource() <em>Is Any Resource</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAnyResource()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ANY_RESOURCE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsAnyResource() <em>Is Any Resource</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAnyResource()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isAnyResource = IS_ANY_RESOURCE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsAnyDataType() <em>Is Any Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAnyDataType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_ANY_DATA_TYPE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsAnyDataType() <em>Is Any Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsAnyDataType()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isAnyDataType = IS_ANY_DATA_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -113,10 +155,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isAnyResource() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public boolean isIsAnyResource() {
+		return isAnyResource;
 	}
 
 	/**
@@ -124,10 +164,32 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isAnyDataType() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void setIsAnyResource(boolean newIsAnyResource) {
+		boolean oldIsAnyResource = isAnyResource;
+		isAnyResource = newIsAnyResource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_ANY_RESOURCE, oldIsAnyResource, isAnyResource));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsAnyDataType() {
+		return isAnyDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsAnyDataType(boolean newIsAnyDataType) {
+		boolean oldIsAnyDataType = isAnyDataType;
+		isAnyDataType = newIsAnyDataType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE, oldIsAnyDataType, isAnyDataType));
 	}
 
 	/**
@@ -154,6 +216,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return getParam();
 			case FhirPackage.TYPE_REF__NAME:
 				return getName();
+			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
+				return isIsAnyResource();
+			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
+				return isIsAnyDataType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,6 +240,12 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__NAME:
 				setName((String)newValue);
 				return;
+			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
+				setIsAnyResource((Boolean)newValue);
+				return;
+			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
+				setIsAnyDataType((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -192,6 +264,12 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
+				setIsAnyResource(IS_ANY_RESOURCE_EDEFAULT);
+				return;
+			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
+				setIsAnyDataType(IS_ANY_DATA_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,6 +286,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return param != null && !param.isEmpty();
 			case FhirPackage.TYPE_REF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
+				return isAnyResource != IS_ANY_RESOURCE_EDEFAULT;
+			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
+				return isAnyDataType != IS_ANY_DATA_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -226,6 +308,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		result.append(param);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", isAnyResource: ");
+		result.append(isAnyResource);
+		result.append(", isAnyDataType: ");
+		result.append(isAnyDataType);
 		result.append(')');
 		return result.toString();
 	}
