@@ -6,4 +6,9 @@ just define what codes are included or excluded from the set. Value sets are
 defined to control what codes or concepts can be used in a particular context.
 </p>
 
+<p>
+A value set resource can be automatically converted into a CTS2 value set definition
+in order to use a CTS2 server to provide value set functionality
+</p>
+
 </div>
