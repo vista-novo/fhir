@@ -53,8 +53,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getParent <em>Parent</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getProfiles <em>Profiles</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEvents <em>Events</em>}</li>
  * </ul>
  * </p>
  *
@@ -132,16 +132,6 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	protected String version = VERSION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEvents()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EventDefn> events;
-
-	/**
 	 * The cached value of the '{@link #getProfiles() <em>Profiles</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -150,6 +140,16 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * @ordered
 	 */
 	protected EList<ProfileDefn> profiles;
+
+	/**
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EventDefn> events;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -380,10 +380,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__TYPES:
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case FhirPackage.DEFINITIONS__EVENTS:
-				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -407,10 +407,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return getDate();
 			case FhirPackage.DEFINITIONS__VERSION:
 				return getVersion();
-			case FhirPackage.DEFINITIONS__EVENTS:
-				return getEvents();
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return getProfiles();
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return getEvents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -441,13 +441,13 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__VERSION:
 				setVersion((String)newValue);
 				return;
-			case FhirPackage.DEFINITIONS__EVENTS:
-				getEvents().clear();
-				getEvents().addAll((Collection<? extends EventDefn>)newValue);
-				return;
 			case FhirPackage.DEFINITIONS__PROFILES:
 				getProfiles().clear();
 				getProfiles().addAll((Collection<? extends ProfileDefn>)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__EVENTS:
+				getEvents().clear();
+				getEvents().addAll((Collection<? extends EventDefn>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -476,11 +476,11 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__VERSION:
 				setVersion(VERSION_EDEFAULT);
 				return;
-			case FhirPackage.DEFINITIONS__EVENTS:
-				getEvents().clear();
-				return;
 			case FhirPackage.DEFINITIONS__PROFILES:
 				getProfiles().clear();
+				return;
+			case FhirPackage.DEFINITIONS__EVENTS:
+				getEvents().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -504,10 +504,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 			case FhirPackage.DEFINITIONS__VERSION:
 				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-			case FhirPackage.DEFINITIONS__EVENTS:
-				return events != null && !events.isEmpty();
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return profiles != null && !profiles.isEmpty();
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return events != null && !events.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

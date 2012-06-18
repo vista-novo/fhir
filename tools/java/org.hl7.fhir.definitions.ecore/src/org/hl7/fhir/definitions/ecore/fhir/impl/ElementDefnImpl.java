@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Binding;
@@ -38,7 +39,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getTodo <em>Todo</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMinCardinality <em>Min Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isAllowDAR <em>Allow DAR</em>}</li>
@@ -46,22 +47,12 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isMustSupport <em>Must Support</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getShortDefn <em>Short Defn</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getDefinition <em>Definition</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getRequirements <em>Requirements</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getComments <em>Comments</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMappings <em>Mappings</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getCommitteeNotes <em>Committee Notes</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getExampleValue <em>Example Value</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getProfileName <em>Profile Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getTargetUri <em>Target Uri</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getFixedValue <em>Fixed Value</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAggregation <em>Aggregation</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isInherited <em>Inherited</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getContent <em>Content</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getBinding <em>Binding</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAnnotation <em>Annotation</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,24 +60,24 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  */
 public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	/**
-	 * The default value of the '{@link #getTodo() <em>Todo</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTodo()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TODO_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getTodo() <em>Todo</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTodo()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String todo = TODO_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
@@ -116,7 +107,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_CARDINALITY_EDEFAULT = 0;
+	protected static final int MIN_CARDINALITY_EDEFAULT = -2;
 
 	/**
 	 * The cached value of the '{@link #getMinCardinality() <em>Min Cardinality</em>}' attribute.
@@ -209,106 +200,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected EList<TypeRef> types;
 
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getShortDefn() <em>Short Defn</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortDefn()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SHORT_DEFN_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getShortDefn() <em>Short Defn</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getShortDefn()
-	 * @generated
-	 * @ordered
-	 */
-	protected String shortDefn = SHORT_DEFN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DEFINITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDefinition() <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDefinition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String definition = DEFINITION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getRequirements() <em>Requirements</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequirements()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REQUIREMENTS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRequirements()
-	 * @generated
-	 * @ordered
-	 */
-	protected String requirements = REQUIREMENTS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getComments() <em>Comments</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComments()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String COMMENTS_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComments()
-	 * @generated
-	 * @ordered
-	 */
-	protected String comments = COMMENTS_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getMappings() <em>Mappings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,26 +208,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected EList<Mapping> mappings;
-
-	/**
-	 * The default value of the '{@link #getCommitteeNotes() <em>Committee Notes</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCommitteeNotes()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String COMMITTEE_NOTES_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getCommitteeNotes() <em>Committee Notes</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCommitteeNotes()
-	 * @generated
-	 * @ordered
-	 */
-	protected String committeeNotes = COMMITTEE_NOTES_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getExampleValue() <em>Example Value</em>}' attribute.
@@ -357,106 +228,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected String exampleValue = EXAMPLE_VALUE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getProfileName() <em>Profile Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProfileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PROFILE_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getProfileName() <em>Profile Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getProfileName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String profileName = PROFILE_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTargetUri() <em>Target Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargetUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TARGET_URI_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getTargetUri() <em>Target Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTargetUri()
-	 * @generated
-	 * @ordered
-	 */
-	protected String targetUri = TARGET_URI_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getFixedValue() <em>Fixed Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FIXED_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFixedValue() <em>Fixed Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFixedValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String fixedValue = FIXED_VALUE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAggregation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String AGGREGATION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAggregation() <em>Aggregation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAggregation()
-	 * @generated
-	 * @ordered
-	 */
-	protected String aggregation = AGGREGATION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isInherited() <em>Inherited</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInherited()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean INHERITED_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isInherited() <em>Inherited</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isInherited()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean inherited = INHERITED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
@@ -489,6 +260,16 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected BindingRef binding;
 
 	/**
+	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Annotations annotation;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -505,27 +286,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	protected EClass eStaticClass() {
 		return FhirPackage.Literals.ELEMENT_DEFN;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getTodo() {
-		return todo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTodo(String newTodo) {
-		String oldTodo = todo;
-		todo = newTodo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__TODO, oldTodo, todo));
 	}
 
 	/**
@@ -726,6 +486,49 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Annotations getAnnotation() {
+		return annotation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAnnotation(Annotations newAnnotation, NotificationChain msgs) {
+		Annotations oldAnnotation = annotation;
+		annotation = newAnnotation;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__ANNOTATION, oldAnnotation, newAnnotation);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAnnotation(Annotations newAnnotation) {
+		if (newAnnotation != annotation) {
+			NotificationChain msgs = null;
+			if (annotation != null)
+				msgs = ((InternalEObject)annotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__ANNOTATION, null, msgs);
+			if (newAnnotation != null)
+				msgs = ((InternalEObject)newAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__ANNOTATION, null, msgs);
+			msgs = basicSetAnnotation(newAnnotation, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__ANNOTATION, newAnnotation, newAnnotation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getName() {
 		return name;
 	}
@@ -747,116 +550,11 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getShortDefn() {
-		return shortDefn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setShortDefn(String newShortDefn) {
-		String oldShortDefn = shortDefn;
-		shortDefn = newShortDefn;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__SHORT_DEFN, oldShortDefn, shortDefn));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getDefinition() {
-		return definition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDefinition(String newDefinition) {
-		String oldDefinition = definition;
-		definition = newDefinition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__DEFINITION, oldDefinition, definition));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getRequirements() {
-		return requirements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRequirements(String newRequirements) {
-		String oldRequirements = requirements;
-		requirements = newRequirements;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__REQUIREMENTS, oldRequirements, requirements));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getComments() {
-		return comments;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setComments(String newComments) {
-		String oldComments = comments;
-		comments = newComments;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__COMMENTS, oldComments, comments));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Mapping> getMappings() {
 		if (mappings == null) {
 			mappings = new EObjectContainmentEList<Mapping>(Mapping.class, this, FhirPackage.ELEMENT_DEFN__MAPPINGS);
 		}
 		return mappings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getCommitteeNotes() {
-		return committeeNotes;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCommitteeNotes(String newCommitteeNotes) {
-		String oldCommitteeNotes = committeeNotes;
-		committeeNotes = newCommitteeNotes;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__COMMITTEE_NOTES, oldCommitteeNotes, committeeNotes));
 	}
 
 	/**
@@ -878,111 +576,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		exampleValue = newExampleValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE, oldExampleValue, exampleValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getProfileName() {
-		return profileName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setProfileName(String newProfileName) {
-		String oldProfileName = profileName;
-		profileName = newProfileName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PROFILE_NAME, oldProfileName, profileName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getTargetUri() {
-		return targetUri;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTargetUri(String newTargetUri) {
-		String oldTargetUri = targetUri;
-		targetUri = newTargetUri;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__TARGET_URI, oldTargetUri, targetUri));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getFixedValue() {
-		return fixedValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFixedValue(String newFixedValue) {
-		String oldFixedValue = fixedValue;
-		fixedValue = newFixedValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__FIXED_VALUE, oldFixedValue, fixedValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getAggregation() {
-		return aggregation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAggregation(String newAggregation) {
-		String oldAggregation = aggregation;
-		aggregation = newAggregation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__AGGREGATION, oldAggregation, aggregation));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isInherited() {
-		return inherited;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInherited(boolean newInherited) {
-		boolean oldInherited = inherited;
-		inherited = newInherited;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__INHERITED, oldInherited, inherited));
 	}
 
 	/**
@@ -1049,6 +642,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
+				return basicSetAnnotation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -1061,8 +656,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.ELEMENT_DEFN__TODO:
-				return getTodo();
+			case FhirPackage.ELEMENT_DEFN__NAME:
+				return getName();
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
 				return getMaxCardinality();
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
@@ -1078,32 +673,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return isMustSupport();
 			case FhirPackage.ELEMENT_DEFN__TYPES:
 				return getTypes();
-			case FhirPackage.ELEMENT_DEFN__NAME:
-				return getName();
-			case FhirPackage.ELEMENT_DEFN__SHORT_DEFN:
-				return getShortDefn();
-			case FhirPackage.ELEMENT_DEFN__DEFINITION:
-				return getDefinition();
-			case FhirPackage.ELEMENT_DEFN__REQUIREMENTS:
-				return getRequirements();
-			case FhirPackage.ELEMENT_DEFN__COMMENTS:
-				return getComments();
 			case FhirPackage.ELEMENT_DEFN__MAPPINGS:
 				return getMappings();
-			case FhirPackage.ELEMENT_DEFN__COMMITTEE_NOTES:
-				return getCommitteeNotes();
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				return getExampleValue();
-			case FhirPackage.ELEMENT_DEFN__PROFILE_NAME:
-				return getProfileName();
-			case FhirPackage.ELEMENT_DEFN__TARGET_URI:
-				return getTargetUri();
-			case FhirPackage.ELEMENT_DEFN__FIXED_VALUE:
-				return getFixedValue();
-			case FhirPackage.ELEMENT_DEFN__AGGREGATION:
-				return getAggregation();
-			case FhirPackage.ELEMENT_DEFN__INHERITED:
-				return isInherited();
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				return getElements();
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
@@ -1112,6 +685,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__BINDING:
 				if (resolve) return getBinding();
 				return basicGetBinding();
+			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
+				return getAnnotation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -1125,8 +700,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.ELEMENT_DEFN__TODO:
-				setTodo((String)newValue);
+			case FhirPackage.ELEMENT_DEFN__NAME:
+				setName((String)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
 				setMaxCardinality((Integer)newValue);
@@ -1150,45 +725,12 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				getTypes().clear();
 				getTypes().addAll((Collection<? extends TypeRef>)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFN__NAME:
-				setName((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__SHORT_DEFN:
-				setShortDefn((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__DEFINITION:
-				setDefinition((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__REQUIREMENTS:
-				setRequirements((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__COMMENTS:
-				setComments((String)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFN__MAPPINGS:
 				getMappings().clear();
 				getMappings().addAll((Collection<? extends Mapping>)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFN__COMMITTEE_NOTES:
-				setCommitteeNotes((String)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				setExampleValue((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__PROFILE_NAME:
-				setProfileName((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__TARGET_URI:
-				setTargetUri((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__FIXED_VALUE:
-				setFixedValue((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__AGGREGATION:
-				setAggregation((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__INHERITED:
-				setInherited((Boolean)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				getElements().clear();
@@ -1199,6 +741,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return;
 			case FhirPackage.ELEMENT_DEFN__BINDING:
 				setBinding((BindingRef)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
+				setAnnotation((Annotations)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -1212,8 +757,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.ELEMENT_DEFN__TODO:
-				setTodo(TODO_EDEFAULT);
+			case FhirPackage.ELEMENT_DEFN__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
 				setMaxCardinality(MAX_CARDINALITY_EDEFAULT);
@@ -1236,44 +781,11 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__TYPES:
 				getTypes().clear();
 				return;
-			case FhirPackage.ELEMENT_DEFN__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__SHORT_DEFN:
-				setShortDefn(SHORT_DEFN_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__DEFINITION:
-				setDefinition(DEFINITION_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__REQUIREMENTS:
-				setRequirements(REQUIREMENTS_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__COMMENTS:
-				setComments(COMMENTS_EDEFAULT);
-				return;
 			case FhirPackage.ELEMENT_DEFN__MAPPINGS:
 				getMappings().clear();
 				return;
-			case FhirPackage.ELEMENT_DEFN__COMMITTEE_NOTES:
-				setCommitteeNotes(COMMITTEE_NOTES_EDEFAULT);
-				return;
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				setExampleValue(EXAMPLE_VALUE_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__PROFILE_NAME:
-				setProfileName(PROFILE_NAME_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__TARGET_URI:
-				setTargetUri(TARGET_URI_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__FIXED_VALUE:
-				setFixedValue(FIXED_VALUE_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__AGGREGATION:
-				setAggregation(AGGREGATION_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__INHERITED:
-				setInherited(INHERITED_EDEFAULT);
 				return;
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				getElements().clear();
@@ -1283,6 +795,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return;
 			case FhirPackage.ELEMENT_DEFN__BINDING:
 				setBinding((BindingRef)null);
+				return;
+			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
+				setAnnotation((Annotations)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -1296,8 +811,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.ELEMENT_DEFN__TODO:
-				return TODO_EDEFAULT == null ? todo != null : !TODO_EDEFAULT.equals(todo);
+			case FhirPackage.ELEMENT_DEFN__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
 				return maxCardinality != MAX_CARDINALITY_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
@@ -1312,38 +827,18 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return mustSupport != MUST_SUPPORT_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__TYPES:
 				return types != null && !types.isEmpty();
-			case FhirPackage.ELEMENT_DEFN__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FhirPackage.ELEMENT_DEFN__SHORT_DEFN:
-				return SHORT_DEFN_EDEFAULT == null ? shortDefn != null : !SHORT_DEFN_EDEFAULT.equals(shortDefn);
-			case FhirPackage.ELEMENT_DEFN__DEFINITION:
-				return DEFINITION_EDEFAULT == null ? definition != null : !DEFINITION_EDEFAULT.equals(definition);
-			case FhirPackage.ELEMENT_DEFN__REQUIREMENTS:
-				return REQUIREMENTS_EDEFAULT == null ? requirements != null : !REQUIREMENTS_EDEFAULT.equals(requirements);
-			case FhirPackage.ELEMENT_DEFN__COMMENTS:
-				return COMMENTS_EDEFAULT == null ? comments != null : !COMMENTS_EDEFAULT.equals(comments);
 			case FhirPackage.ELEMENT_DEFN__MAPPINGS:
 				return mappings != null && !mappings.isEmpty();
-			case FhirPackage.ELEMENT_DEFN__COMMITTEE_NOTES:
-				return COMMITTEE_NOTES_EDEFAULT == null ? committeeNotes != null : !COMMITTEE_NOTES_EDEFAULT.equals(committeeNotes);
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				return EXAMPLE_VALUE_EDEFAULT == null ? exampleValue != null : !EXAMPLE_VALUE_EDEFAULT.equals(exampleValue);
-			case FhirPackage.ELEMENT_DEFN__PROFILE_NAME:
-				return PROFILE_NAME_EDEFAULT == null ? profileName != null : !PROFILE_NAME_EDEFAULT.equals(profileName);
-			case FhirPackage.ELEMENT_DEFN__TARGET_URI:
-				return TARGET_URI_EDEFAULT == null ? targetUri != null : !TARGET_URI_EDEFAULT.equals(targetUri);
-			case FhirPackage.ELEMENT_DEFN__FIXED_VALUE:
-				return FIXED_VALUE_EDEFAULT == null ? fixedValue != null : !FIXED_VALUE_EDEFAULT.equals(fixedValue);
-			case FhirPackage.ELEMENT_DEFN__AGGREGATION:
-				return AGGREGATION_EDEFAULT == null ? aggregation != null : !AGGREGATION_EDEFAULT.equals(aggregation);
-			case FhirPackage.ELEMENT_DEFN__INHERITED:
-				return inherited != INHERITED_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				return elements != null && !elements.isEmpty();
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				return content != null;
 			case FhirPackage.ELEMENT_DEFN__BINDING:
 				return binding != null;
+			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
+				return annotation != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1358,8 +853,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (todo: ");
-		result.append(todo);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(", maxCardinality: ");
 		result.append(maxCardinality);
 		result.append(", minCardinality: ");
@@ -1370,30 +865,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		result.append(mustUnderstand);
 		result.append(", mustSupport: ");
 		result.append(mustSupport);
-		result.append(", name: ");
-		result.append(name);
-		result.append(", shortDefn: ");
-		result.append(shortDefn);
-		result.append(", definition: ");
-		result.append(definition);
-		result.append(", requirements: ");
-		result.append(requirements);
-		result.append(", comments: ");
-		result.append(comments);
-		result.append(", committeeNotes: ");
-		result.append(committeeNotes);
 		result.append(", exampleValue: ");
 		result.append(exampleValue);
-		result.append(", profileName: ");
-		result.append(profileName);
-		result.append(", targetUri: ");
-		result.append(targetUri);
-		result.append(", fixedValue: ");
-		result.append(fixedValue);
-		result.append(", aggregation: ");
-		result.append(aggregation);
-		result.append(", inherited: ");
-		result.append(inherited);
 		result.append(')');
 		return result.toString();
 	}

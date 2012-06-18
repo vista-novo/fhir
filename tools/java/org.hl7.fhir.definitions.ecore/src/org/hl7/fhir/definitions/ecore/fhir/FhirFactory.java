@@ -197,6 +197,15 @@ public interface FhirFactory extends EFactory {
 	Annotations createAnnotations();
 
 	/**
+	 * Returns a new object of class '<em>Profiled Element Defn</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Profiled Element Defn</em>'.
+	 * @generated
+	 */
+	ProfiledElementDefn createProfiledElementDefn();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

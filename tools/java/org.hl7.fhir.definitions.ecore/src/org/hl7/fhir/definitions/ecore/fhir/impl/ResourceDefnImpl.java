@@ -55,7 +55,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getAllowedGenericTypes <em>Allowed Generic Types</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#isSandbox <em>Sandbox</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getRoot <em>Root</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getSearches <em>Searches</em>}</li>
  * </ul>
@@ -183,16 +182,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 	 * @ordered
 	 */
 	protected boolean sandbox = SANDBOX_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRoot()
-	 * @generated
-	 * @ordered
-	 */
-	protected ElementDefn root;
 
 	/**
 	 * The cached value of the '{@link #getExample() <em>Example</em>}' containment reference list.
@@ -471,49 +460,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementDefn getRoot() {
-		return root;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetRoot(ElementDefn newRoot, NotificationChain msgs) {
-		ElementDefn oldRoot = root;
-		root = newRoot;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_DEFN__ROOT, oldRoot, newRoot);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRoot(ElementDefn newRoot) {
-		if (newRoot != root) {
-			NotificationChain msgs = null;
-			if (root != null)
-				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_DEFN__ROOT, null, msgs);
-			if (newRoot != null)
-				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_DEFN__ROOT, null, msgs);
-			msgs = basicSetRoot(newRoot, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_DEFN__ROOT, newRoot, newRoot));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<SearchParameter> getSearches() {
 		if (searches == null) {
 			searches = new EObjectContainmentEList<SearchParameter>(SearchParameter.class, this, FhirPackage.RESOURCE_DEFN__SEARCHES);
@@ -622,8 +568,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				return ((InternalEList<?>)getInvariants()).basicRemove(otherEnd, msgs);
 			case FhirPackage.RESOURCE_DEFN__ALLOWED_GENERIC_TYPES:
 				return ((InternalEList<?>)getAllowedGenericTypes()).basicRemove(otherEnd, msgs);
-			case FhirPackage.RESOURCE_DEFN__ROOT:
-				return basicSetRoot(null, msgs);
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				return ((InternalEList<?>)getExample()).basicRemove(otherEnd, msgs);
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
@@ -662,8 +606,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				return getAllowedGenericTypes();
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				return isSandbox();
-			case FhirPackage.RESOURCE_DEFN__ROOT:
-				return getRoot();
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				return getExample();
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
@@ -716,9 +658,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				setSandbox((Boolean)newValue);
 				return;
-			case FhirPackage.RESOURCE_DEFN__ROOT:
-				setRoot((ElementDefn)newValue);
-				return;
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				getExample().clear();
 				getExample().addAll((Collection<? extends Example>)newValue);
@@ -769,9 +708,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				setSandbox(SANDBOX_EDEFAULT);
 				return;
-			case FhirPackage.RESOURCE_DEFN__ROOT:
-				setRoot((ElementDefn)null);
-				return;
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				getExample().clear();
 				return;
@@ -810,8 +746,6 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				return allowedGenericTypes != null && !allowedGenericTypes.isEmpty();
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				return sandbox != SANDBOX_EDEFAULT;
-			case FhirPackage.RESOURCE_DEFN__ROOT:
-				return root != null;
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				return example != null && !example.isEmpty();
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:

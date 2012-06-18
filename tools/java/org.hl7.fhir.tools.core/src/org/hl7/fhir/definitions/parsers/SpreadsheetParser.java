@@ -98,12 +98,15 @@ public class SpreadsheetParser {
 		
 		sheet = xls.getSheets().get("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(resource, sheet, row, false, invariants);
+			processLine(resource, sheet, row, true, invariants);
 		}
 		
 		//TODO: Will fail if type has no root.
 		if( typeLocalBindings != null)
 			resource.getRoot().getNestedBindings().putAll(typeLocalBindings);
+		
+		scanNestedTypes(resource, resource.getRoot());
+		
 		return resource;
 	}
 	
@@ -146,7 +149,7 @@ public class SpreadsheetParser {
 		isProfile = false;
 		ResourceDefn root = parseCommonTypeColumns();
 
-		scanNestedTypes(root, root.getRoot());
+		
 
 		readEvents(xls.getSheets().get("Events"));
 		readExamples(root, xls.getSheets().get("Examples"));

@@ -10,6 +10,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -68,16 +69,7 @@ public class CompositeTypeConverter
 		
 		result.setName( type.getName() );
 		
-		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
-		ann.setShortDefinition( Utilities.cleanupTextString(type.getShortDefn()) );
-		ann.setDefinition( Utilities.cleanupTextString(type.getDefinition()) );
-		ann.setComment( Utilities.cleanupTextString(type.getComments()) );
-		ann.setRequirements( Utilities.cleanupTextString(type.getRequirements()) );
-		ann.setV2Mapping( Utilities.cleanupTextString(type.getV2Mapping()) );
-		ann.setRimMapping( Utilities.cleanupTextString(type.getRimMapping()) );
-		ann.setTodo( Utilities.cleanupTextString(type.getTodo()) );
-		ann.setCommitteeNotes( Utilities.cleanupTextString(type.getCommitteeNotes()) );	
-		
+		Annotations ann = buildAnnotationsFromFhirElement(type);		
 		result.setAnnotations( ann );
 
 		result.getBindings().addAll( 
@@ -89,9 +81,71 @@ public class CompositeTypeConverter
 		for( String typeName : type.getAcceptableGenericTypes() )
 			result.getAllowedGenericTypes().add( buildTypeRef(typeName) );
 		
+		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements() ) );
+		
+		
+		//TODO: Add type-local types from type.getNestedTypes() to new CompositeType
+		
 		return result;
 	}
+
+
+	private static Annotations buildAnnotationsFromFhirElement(
+			org.hl7.fhir.definitions.model.ElementDefn type) {
+		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
+		ann.setShortDefinition( Utilities.cleanupTextString(type.getShortDefn()) );
+		ann.setDefinition( Utilities.cleanupTextString(type.getDefinition()) );
+		ann.setComment( Utilities.cleanupTextString(type.getComments()) );
+		ann.setRequirements( Utilities.cleanupTextString(type.getRequirements()) );
+		ann.setV2Mapping( Utilities.cleanupTextString(type.getV2Mapping()) );
+		ann.setRimMapping( Utilities.cleanupTextString(type.getRimMapping()) );
+		ann.setTodo( Utilities.cleanupTextString(type.getTodo()) );
+		ann.setCommitteeNotes( Utilities.cleanupTextString(type.getCommitteeNotes()) );
+		return ann;
+	}
 	
+
+
+	public static List<ElementDefn> buildElementDefnsFromFhirModel(
+			List<org.hl7.fhir.definitions.model.ElementDefn> elements) {
+
+		List<ElementDefn> result = new ArrayList<ElementDefn>();
+		
+		for( org.hl7.fhir.definitions.model.ElementDefn element : elements )
+			result.add( buildElementDefnFromFhirModel( element) );
+		
+		return result;
+	}
+
+
+	public static ElementDefn buildElementDefnFromFhirModel(
+			org.hl7.fhir.definitions.model.ElementDefn element) {
+
+		ElementDefn result = FhirFactory.eINSTANCE.createElementDefn();
+		
+		result.setName( element.getName() );
+		Annotations ann = buildAnnotationsFromFhirElement(element);
+		
+		result.setAnnotation(ann);
+		result.setAllowDAR( element.isAllowDAR() );
+		result.setMustUnderstand( element.isMustUnderstand() );
+		result.setMustSupport( element.isMustSupport() );
+		
+		
+		result.setMinCardinality( element.getMinCardinality() );
+		
+		if( element.getMaxCardinality() != null )
+			result.setMaxCardinality( element.getMaxCardinality() );
+		else
+			result.setMaxCardinality(-1);	// Adapt eCore convention for '*'
+		
+		
+		if( !element.getElements().isEmpty() )
+			result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
+		
+		return result;
+	}
+
 
 	public static List<Invariant> buildInvariantsFromFhirModel( Collection<org.hl7.fhir.definitions.model.Invariant> invariants )
 	{

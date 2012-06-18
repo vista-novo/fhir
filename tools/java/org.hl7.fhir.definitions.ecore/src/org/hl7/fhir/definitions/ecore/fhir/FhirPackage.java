@@ -282,22 +282,22 @@ public interface FhirPackage extends EPackage {
 	int DEFINITIONS__VERSION = NAME_SCOPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINITIONS__EVENTS = NAME_SCOPE_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Profiles</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITIONS__PROFILES = NAME_SCOPE_FEATURE_COUNT + 3;
+	int DEFINITIONS__PROFILES = NAME_SCOPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITIONS__EVENTS = NAME_SCOPE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Definitions</em>' class.
@@ -309,13 +309,13 @@ public interface FhirPackage extends EPackage {
 	int DEFINITIONS_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Todo</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__TODO = 0;
+	int ELEMENT_DEFN__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
@@ -381,67 +381,13 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__TYPES = 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__NAME = 8;
-
-	/**
-	 * The feature id for the '<em><b>Short Defn</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__SHORT_DEFN = 9;
-
-	/**
-	 * The feature id for the '<em><b>Definition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__DEFINITION = 10;
-
-	/**
-	 * The feature id for the '<em><b>Requirements</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__REQUIREMENTS = 11;
-
-	/**
-	 * The feature id for the '<em><b>Comments</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__COMMENTS = 12;
-
-	/**
 	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__MAPPINGS = 13;
-
-	/**
-	 * The feature id for the '<em><b>Committee Notes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__COMMITTEE_NOTES = 14;
+	int ELEMENT_DEFN__MAPPINGS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Example Value</b></em>' attribute.
@@ -450,52 +396,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__EXAMPLE_VALUE = 15;
-
-	/**
-	 * The feature id for the '<em><b>Profile Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__PROFILE_NAME = 16;
-
-	/**
-	 * The feature id for the '<em><b>Target Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__TARGET_URI = 17;
-
-	/**
-	 * The feature id for the '<em><b>Fixed Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__FIXED_VALUE = 18;
-
-	/**
-	 * The feature id for the '<em><b>Aggregation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__AGGREGATION = 19;
-
-	/**
-	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__INHERITED = 20;
+	int ELEMENT_DEFN__EXAMPLE_VALUE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -504,7 +405,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__ELEMENTS = 21;
+	int ELEMENT_DEFN__ELEMENTS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' reference.
@@ -513,7 +414,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__CONTENT = 22;
+	int ELEMENT_DEFN__CONTENT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Binding</b></em>' reference.
@@ -522,7 +423,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__BINDING = 23;
+	int ELEMENT_DEFN__BINDING = 12;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__ANNOTATION = 13;
 
 	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
@@ -531,7 +441,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 24;
+	int ELEMENT_DEFN_FEATURE_COUNT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -840,22 +750,13 @@ public interface FhirPackage extends EPackage {
 	int RESOURCE_DEFN__SANDBOX = NAME_SCOPE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Root</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_DEFN__ROOT = NAME_SCOPE_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>Example</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__EXAMPLE = NAME_SCOPE_FEATURE_COUNT + 8;
+	int RESOURCE_DEFN__EXAMPLE = NAME_SCOPE_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Searches</b></em>' containment reference list.
@@ -864,7 +765,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__SEARCHES = NAME_SCOPE_FEATURE_COUNT + 9;
+	int RESOURCE_DEFN__SEARCHES = NAME_SCOPE_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Resource Defn</em>' class.
@@ -873,7 +774,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 10;
+	int RESOURCE_DEFN_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1594,6 +1495,196 @@ public interface FhirPackage extends EPackage {
 	int ANNOTATIONS_FEATURE_COUNT = 8;
 
 	/**
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.ProfiledElementDefnImpl <em>Profiled Element Defn</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.ProfiledElementDefnImpl
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getProfiledElementDefn()
+	 * @generated
+	 */
+	int PROFILED_ELEMENT_DEFN = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__NAME = ELEMENT_DEFN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MAX_CARDINALITY = ELEMENT_DEFN__MAX_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Min Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MIN_CARDINALITY = ELEMENT_DEFN__MIN_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Allow DAR</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__ALLOW_DAR = ELEMENT_DEFN__ALLOW_DAR;
+
+	/**
+	 * The feature id for the '<em><b>Must Understand</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MUST_UNDERSTAND = ELEMENT_DEFN__MUST_UNDERSTAND;
+
+	/**
+	 * The feature id for the '<em><b>Invariant</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__INVARIANT = ELEMENT_DEFN__INVARIANT;
+
+	/**
+	 * The feature id for the '<em><b>Must Support</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MUST_SUPPORT = ELEMENT_DEFN__MUST_SUPPORT;
+
+	/**
+	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__TYPES = ELEMENT_DEFN__TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MAPPINGS = ELEMENT_DEFN__MAPPINGS;
+
+	/**
+	 * The feature id for the '<em><b>Example Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__EXAMPLE_VALUE = ELEMENT_DEFN__EXAMPLE_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__ELEMENTS = ELEMENT_DEFN__ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__CONTENT = ELEMENT_DEFN__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Binding</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__BINDING = ELEMENT_DEFN__BINDING;
+
+	/**
+	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__ANNOTATION = ELEMENT_DEFN__ANNOTATION;
+
+	/**
+	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__INHERITED = ELEMENT_DEFN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Aggregation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__AGGREGATION = ELEMENT_DEFN_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Fixed Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__FIXED_VALUE = ELEMENT_DEFN_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Target Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__TARGET_URI = ELEMENT_DEFN_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Profile Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__PROFILE_NAME = ELEMENT_DEFN_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Profiled Element Defn</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN_FEATURE_COUNT = ELEMENT_DEFN_FEATURE_COUNT + 5;
+
+	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingType <em>Binding Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1601,7 +1692,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingType()
 	 * @generated
 	 */
-	int BINDING_TYPE = 21;
+	int BINDING_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingStrength <em>Binding Strength</em>}' enum.
@@ -1611,7 +1702,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingStrength()
 	 * @generated
 	 */
-	int BINDING_STRENGTH = 22;
+	int BINDING_STRENGTH = 23;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchType <em>Search Type</em>}' enum.
@@ -1621,7 +1712,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchType()
 	 * @generated
 	 */
-	int SEARCH_TYPE = 23;
+	int SEARCH_TYPE = 24;
 
 
 	/**
@@ -1687,17 +1778,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getElementDefn();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTodo <em>Todo</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Todo</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTodo()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Todo();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}'.
@@ -1788,6 +1868,17 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_Binding();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Annotation</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation()
+	 * @see #getElementDefn()
+	 * @generated
+	 */
+	EReference getElementDefn_Annotation();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1797,50 +1888,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getElementDefn_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getShortDefn <em>Short Defn</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Short Defn</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getShortDefn()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_ShortDefn();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getDefinition <em>Definition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Definition</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getDefinition()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Definition();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getRequirements <em>Requirements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Requirements</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getRequirements()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Requirements();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getComments <em>Comments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Comments</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getComments()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Comments();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMappings <em>Mappings</em>}'.
@@ -1854,17 +1901,6 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_Mappings();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getCommitteeNotes <em>Committee Notes</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Committee Notes</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getCommitteeNotes()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_CommitteeNotes();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getExampleValue <em>Example Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1874,61 +1910,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getElementDefn_ExampleValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getProfileName <em>Profile Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Profile Name</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getProfileName()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_ProfileName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTargetUri <em>Target Uri</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Target Uri</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTargetUri()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_TargetUri();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getFixedValue <em>Fixed Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fixed Value</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getFixedValue()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_FixedValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAggregation <em>Aggregation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Aggregation</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAggregation()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Aggregation();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInherited <em>Inherited</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Inherited</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInherited()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EAttribute getElementDefn_Inherited();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements <em>Elements</em>}'.
@@ -2243,17 +2224,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResourceDefn_Sandbox();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getRoot <em>Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Root</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getRoot()
-	 * @see #getResourceDefn()
-	 * @generated
-	 */
-	EReference getResourceDefn_Root();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getSearches <em>Searches</em>}'.
@@ -2665,6 +2635,71 @@ public interface FhirPackage extends EPackage {
 	EAttribute getAnnotations_CommitteeNotes();
 
 	/**
+	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn <em>Profiled Element Defn</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Profiled Element Defn</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn
+	 * @generated
+	 */
+	EClass getProfiledElementDefn();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#isInherited <em>Inherited</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Inherited</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#isInherited()
+	 * @see #getProfiledElementDefn()
+	 * @generated
+	 */
+	EAttribute getProfiledElementDefn_Inherited();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getAggregation <em>Aggregation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Aggregation</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getAggregation()
+	 * @see #getProfiledElementDefn()
+	 * @generated
+	 */
+	EAttribute getProfiledElementDefn_Aggregation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getFixedValue <em>Fixed Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fixed Value</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getFixedValue()
+	 * @see #getProfiledElementDefn()
+	 * @generated
+	 */
+	EAttribute getProfiledElementDefn_FixedValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getTargetUri <em>Target Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Uri</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getTargetUri()
+	 * @see #getProfiledElementDefn()
+	 * @generated
+	 */
+	EAttribute getProfiledElementDefn_TargetUri();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getProfileName <em>Profile Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Profile Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn#getProfileName()
+	 * @see #getProfiledElementDefn()
+	 * @generated
+	 */
+	EAttribute getProfiledElementDefn_ProfileName();
+
+	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.EventDefn <em>Event Defn</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2995,14 +3030,6 @@ public interface FhirPackage extends EPackage {
 		EClass ELEMENT_DEFN = eINSTANCE.getElementDefn();
 
 		/**
-		 * The meta object literal for the '<em><b>Todo</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__TODO = eINSTANCE.getElementDefn_Todo();
-
-		/**
 		 * The meta object literal for the '<em><b>Max Cardinality</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3067,44 +3094,20 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__BINDING = eINSTANCE.getElementDefn_Binding();
 
 		/**
+		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_DEFN__ANNOTATION = eINSTANCE.getElementDefn_Annotation();
+
+		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute ELEMENT_DEFN__NAME = eINSTANCE.getElementDefn_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Short Defn</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__SHORT_DEFN = eINSTANCE.getElementDefn_ShortDefn();
-
-		/**
-		 * The meta object literal for the '<em><b>Definition</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__DEFINITION = eINSTANCE.getElementDefn_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Requirements</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__REQUIREMENTS = eINSTANCE.getElementDefn_Requirements();
-
-		/**
-		 * The meta object literal for the '<em><b>Comments</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__COMMENTS = eINSTANCE.getElementDefn_Comments();
 
 		/**
 		 * The meta object literal for the '<em><b>Mappings</b></em>' containment reference list feature.
@@ -3115,60 +3118,12 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__MAPPINGS = eINSTANCE.getElementDefn_Mappings();
 
 		/**
-		 * The meta object literal for the '<em><b>Committee Notes</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__COMMITTEE_NOTES = eINSTANCE.getElementDefn_CommitteeNotes();
-
-		/**
 		 * The meta object literal for the '<em><b>Example Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute ELEMENT_DEFN__EXAMPLE_VALUE = eINSTANCE.getElementDefn_ExampleValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Profile Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__PROFILE_NAME = eINSTANCE.getElementDefn_ProfileName();
-
-		/**
-		 * The meta object literal for the '<em><b>Target Uri</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__TARGET_URI = eINSTANCE.getElementDefn_TargetUri();
-
-		/**
-		 * The meta object literal for the '<em><b>Fixed Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__FIXED_VALUE = eINSTANCE.getElementDefn_FixedValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Aggregation</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__AGGREGATION = eINSTANCE.getElementDefn_Aggregation();
-
-		/**
-		 * The meta object literal for the '<em><b>Inherited</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT_DEFN__INHERITED = eINSTANCE.getElementDefn_Inherited();
 
 		/**
 		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
@@ -3411,14 +3366,6 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOURCE_DEFN__SANDBOX = eINSTANCE.getResourceDefn_Sandbox();
-
-		/**
-		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOURCE_DEFN__ROOT = eINSTANCE.getResourceDefn_Root();
 
 		/**
 		 * The meta object literal for the '<em><b>Searches</b></em>' containment reference list feature.
@@ -3741,6 +3688,56 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATIONS__COMMITTEE_NOTES = eINSTANCE.getAnnotations_CommitteeNotes();
+
+		/**
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.ProfiledElementDefnImpl <em>Profiled Element Defn</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.ProfiledElementDefnImpl
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getProfiledElementDefn()
+		 * @generated
+		 */
+		EClass PROFILED_ELEMENT_DEFN = eINSTANCE.getProfiledElementDefn();
+
+		/**
+		 * The meta object literal for the '<em><b>Inherited</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROFILED_ELEMENT_DEFN__INHERITED = eINSTANCE.getProfiledElementDefn_Inherited();
+
+		/**
+		 * The meta object literal for the '<em><b>Aggregation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROFILED_ELEMENT_DEFN__AGGREGATION = eINSTANCE.getProfiledElementDefn_Aggregation();
+
+		/**
+		 * The meta object literal for the '<em><b>Fixed Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROFILED_ELEMENT_DEFN__FIXED_VALUE = eINSTANCE.getProfiledElementDefn_FixedValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROFILED_ELEMENT_DEFN__TARGET_URI = eINSTANCE.getProfiledElementDefn_TargetUri();
+
+		/**
+		 * The meta object literal for the '<em><b>Profile Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROFILED_ELEMENT_DEFN__PROFILE_NAME = eINSTANCE.getProfiledElementDefn_ProfileName();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.EventDefnImpl <em>Event Defn</em>}' class.

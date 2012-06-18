@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isSandbox <em>Sandbox</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getRoot <em>Root</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getSearches <em>Searches</em>}</li>
  * </ul>
@@ -71,32 +70,6 @@ public interface ResourceDefn extends NameScope, CompositeTypeDefn {
 	 * @generated
 	 */
 	void setSandbox(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Root</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Root</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Root</em>' containment reference.
-	 * @see #setRoot(ElementDefn)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getResourceDefn_Root()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	ElementDefn getRoot();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getRoot <em>Root</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Root</em>' containment reference.
-	 * @see #getRoot()
-	 * @generated
-	 */
-	void setRoot(ElementDefn value);
 
 	/**
 	 * Returns the value of the '<em><b>Searches</b></em>' containment reference list.

@@ -206,6 +206,13 @@ public class FhirSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case FhirPackage.PROFILED_ELEMENT_DEFN: {
+				ProfiledElementDefn profiledElementDefn = (ProfiledElementDefn)theEObject;
+				T result = caseProfiledElementDefn(profiledElementDefn);
+				if (result == null) result = caseElementDefn(profiledElementDefn);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -447,6 +454,21 @@ public class FhirSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnnotations(Annotations object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Profiled Element Defn</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Profiled Element Defn</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProfiledElementDefn(ProfiledElementDefn object) {
 		return null;
 	}
 

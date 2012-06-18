@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getVersion <em>Version</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEvents <em>Events</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEvents <em>Events</em>}</li>
  * </ul>
  * </p>
  *

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTodo <em>Todo</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMinCardinality <em>Min Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isAllowDAR <em>Allow DAR</em>}</li>
@@ -26,22 +26,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustSupport <em>Must Support</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTypes <em>Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getShortDefn <em>Short Defn</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getDefinition <em>Definition</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getRequirements <em>Requirements</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getComments <em>Comments</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMappings <em>Mappings</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getCommitteeNotes <em>Committee Notes</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getExampleValue <em>Example Value</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getProfileName <em>Profile Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTargetUri <em>Target Uri</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getFixedValue <em>Fixed Value</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAggregation <em>Aggregation</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInherited <em>Inherited</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getContent <em>Content</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,32 +40,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ElementDefn extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Todo</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Todo</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Todo</em>' attribute.
-	 * @see #setTodo(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Todo()
-	 * @model
-	 * @generated
-	 */
-	String getTodo();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTodo <em>Todo</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Todo</em>' attribute.
-	 * @see #getTodo()
-	 * @generated
-	 */
-	void setTodo(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Max Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -104,6 +68,7 @@ public interface ElementDefn extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Min Cardinality</b></em>' attribute.
+	 * The default value is <code>"-2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min Cardinality</em>' attribute isn't clear,
@@ -113,7 +78,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Min Cardinality</em>' attribute.
 	 * @see #setMinCardinality(int)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MinCardinality()
-	 * @model
+	 * @model default="-2"
 	 * @generated
 	 */
 	int getMinCardinality();
@@ -276,6 +241,32 @@ public interface ElementDefn extends EObject {
 	void setBinding(BindingRef value);
 
 	/**
+	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Annotation</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Annotation</em>' containment reference.
+	 * @see #setAnnotation(Annotations)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Annotation()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Annotations getAnnotation();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Annotation</em>' containment reference.
+	 * @see #getAnnotation()
+	 * @generated
+	 */
+	void setAnnotation(Annotations value);
+
+	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -287,7 +278,7 @@ public interface ElementDefn extends EObject {
 	 * @see #setName(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Name()
 	 * @model required="true"
-	 *        extendedMetaData="kind='element'"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getName();
@@ -301,110 +292,6 @@ public interface ElementDefn extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Short Defn</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Short Defn</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Short Defn</em>' attribute.
-	 * @see #setShortDefn(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_ShortDefn()
-	 * @model
-	 * @generated
-	 */
-	String getShortDefn();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getShortDefn <em>Short Defn</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Short Defn</em>' attribute.
-	 * @see #getShortDefn()
-	 * @generated
-	 */
-	void setShortDefn(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Definition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Definition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Definition</em>' attribute.
-	 * @see #setDefinition(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Definition()
-	 * @model
-	 * @generated
-	 */
-	String getDefinition();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getDefinition <em>Definition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Definition</em>' attribute.
-	 * @see #getDefinition()
-	 * @generated
-	 */
-	void setDefinition(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Requirements</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Requirements</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Requirements</em>' attribute.
-	 * @see #setRequirements(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Requirements()
-	 * @model
-	 * @generated
-	 */
-	String getRequirements();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getRequirements <em>Requirements</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Requirements</em>' attribute.
-	 * @see #getRequirements()
-	 * @generated
-	 */
-	void setRequirements(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Comments</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Comments</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Comments</em>' attribute.
-	 * @see #setComments(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Comments()
-	 * @model
-	 * @generated
-	 */
-	String getComments();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getComments <em>Comments</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Comments</em>' attribute.
-	 * @see #getComments()
-	 * @generated
-	 */
-	void setComments(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Mappings</b></em>' containment reference list.
@@ -422,32 +309,6 @@ public interface ElementDefn extends EObject {
 	 * @generated
 	 */
 	EList<Mapping> getMappings();
-
-	/**
-	 * Returns the value of the '<em><b>Committee Notes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Committee Notes</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Committee Notes</em>' attribute.
-	 * @see #setCommitteeNotes(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_CommitteeNotes()
-	 * @model
-	 * @generated
-	 */
-	String getCommitteeNotes();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getCommitteeNotes <em>Committee Notes</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Committee Notes</em>' attribute.
-	 * @see #getCommitteeNotes()
-	 * @generated
-	 */
-	void setCommitteeNotes(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Example Value</b></em>' attribute.
@@ -474,135 +335,6 @@ public interface ElementDefn extends EObject {
 	 * @generated
 	 */
 	void setExampleValue(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Profile Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * only in a profile, for unpicking
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Profile Name</em>' attribute.
-	 * @see #setProfileName(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_ProfileName()
-	 * @model
-	 * @generated
-	 */
-	String getProfileName();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getProfileName <em>Profile Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Profile Name</em>' attribute.
-	 * @see #getProfileName()
-	 * @generated
-	 */
-	void setProfileName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Target Uri</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Uri</em>' attribute.
-	 * @see #setTargetUri(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_TargetUri()
-	 * @model
-	 * @generated
-	 */
-	String getTargetUri();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTargetUri <em>Target Uri</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Uri</em>' attribute.
-	 * @see #getTargetUri()
-	 * @generated
-	 */
-	void setTargetUri(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Fixed Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fixed Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fixed Value</em>' attribute.
-	 * @see #setFixedValue(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_FixedValue()
-	 * @model
-	 * @generated
-	 */
-	String getFixedValue();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getFixedValue <em>Fixed Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fixed Value</em>' attribute.
-	 * @see #getFixedValue()
-	 * @generated
-	 */
-	void setFixedValue(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Aggregation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Aggregation</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Aggregation</em>' attribute.
-	 * @see #setAggregation(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Aggregation()
-	 * @model
-	 * @generated
-	 */
-	String getAggregation();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAggregation <em>Aggregation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Aggregation</em>' attribute.
-	 * @see #getAggregation()
-	 * @generated
-	 */
-	void setAggregation(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Inherited</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Inherited</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inherited</em>' attribute.
-	 * @see #setInherited(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Inherited()
-	 * @model
-	 * @generated
-	 */
-	boolean isInherited();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isInherited <em>Inherited</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Inherited</em>' attribute.
-	 * @see #isInherited()
-	 * @generated
-	 */
-	void setInherited(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.

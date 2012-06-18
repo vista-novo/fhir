@@ -31,8 +31,8 @@
     <xsd:complexContent>
       <xsd:extension base="fhir:NameScope">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="events" type="fhir:EventDefn"/>
           <xsd:element name="profiles" type="fhir:ProfileDefn"/>
+          <xsd:element name="events" type="fhir:EventDefn"/>
         </xsd:choice>
         <xsd:attribute name="date" type="xsd:string" use="required"/>
         <xsd:attribute name="version" type="xsd:string" use="required"/>
@@ -48,32 +48,18 @@
       <xsd:element name="elements" type="fhir:ElementDefn"/>
       <xsd:element name="content" type="fhir:ElementDefn"/>
       <xsd:element name="binding" type="fhir:BindingRef"/>
+      <xsd:element name="annotation" type="fhir:Annotations"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="todo" type="xsd:string"/>
+    <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="maxCardinality" type="xsd:int"/>
     <xsd:attribute name="minCardinality" type="xsd:int"/>
     <xsd:attribute name="allowDAR" type="xsd:boolean"/>
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
-    <xsd:attribute name="name" type="xsd:string" use="required"/>
-    <xsd:attribute name="shortDefn" type="xsd:string"/>
-    <xsd:attribute name="definition" type="xsd:string"/>
-    <xsd:attribute name="requirements" type="xsd:string"/>
-    <xsd:attribute name="comments" type="xsd:string"/>
-    <xsd:attribute name="committeeNotes" type="xsd:string"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>
-    <xsd:attribute name="profileName" type="xsd:string">
-      <xsd:annotation>
-        <xsd:documentation>only in a profile, for unpicking</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="targetUri" type="xsd:string"/>
-    <xsd:attribute name="fixedValue" type="xsd:string"/>
-    <xsd:attribute name="aggregation" type="xsd:string"/>
-    <xsd:attribute name="inherited" type="xsd:boolean"/>
     <xsd:attribute name="invariant" type="xsd:string"/>
     <xsd:attribute name="content" type="xsd:string"/>
     <xsd:attribute name="binding" type="xsd:string"/>
@@ -145,7 +131,6 @@
           <xsd:element name="elements" type="fhir:ElementDefn"/>
           <xsd:element name="invariants" type="fhir:Invariant"/>
           <xsd:element name="allowedGenericTypes" type="fhir:TypeRef"/>
-          <xsd:element name="root" type="fhir:ElementDefn"/>
           <xsd:element name="example" type="fhir:Example"/>
           <xsd:element name="searches" type="fhir:SearchParameter"/>
         </xsd:choice>
@@ -315,4 +300,20 @@
     <xsd:attribute name="committeeNotes" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="Annotations" type="fhir:Annotations"/>
+  <xsd:complexType name="ProfiledElementDefn">
+    <xsd:complexContent>
+      <xsd:extension base="fhir:ElementDefn">
+        <xsd:attribute name="inherited" type="xsd:boolean"/>
+        <xsd:attribute name="aggregation" type="xsd:string"/>
+        <xsd:attribute name="fixedValue" type="xsd:string"/>
+        <xsd:attribute name="targetUri" type="xsd:string"/>
+        <xsd:attribute name="profileName" type="xsd:string">
+          <xsd:annotation>
+            <xsd:documentation>only in a profile, for unpicking</xsd:documentation>
+          </xsd:annotation>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="ProfiledElementDefn" type="fhir:ProfiledElementDefn"/>
 </xsd:schema>

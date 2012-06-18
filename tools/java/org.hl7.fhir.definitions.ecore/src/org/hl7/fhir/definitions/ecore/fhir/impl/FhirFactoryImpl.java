@@ -80,6 +80,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.COMPOSITE_TYPE_DEFN: return createCompositeTypeDefn();
 			case FhirPackage.BINDING_REF: return createBindingRef();
 			case FhirPackage.ANNOTATIONS: return createAnnotations();
+			case FhirPackage.PROFILED_ELEMENT_DEFN: return createProfiledElementDefn();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -311,6 +312,16 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	public Annotations createAnnotations() {
 		AnnotationsImpl annotations = new AnnotationsImpl();
 		return annotations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ProfiledElementDefn createProfiledElementDefn() {
+		ProfiledElementDefnImpl profiledElementDefn = new ProfiledElementDefnImpl();
+		return profiledElementDefn;
 	}
 
 	/**
