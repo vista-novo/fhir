@@ -5,10 +5,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
+import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
@@ -62,8 +64,7 @@ public class CompositeTypeConverter
 
 	public static Collection<ResourceDefn> buildResourcesFromFhirModel(
 			Collection<org.hl7.fhir.definitions.model.ResourceDefn> resources) throws Exception
-	{
-		
+	{	
 		List<ResourceDefn> result = new ArrayList<ResourceDefn>();
 		
 	    for (org.hl7.fhir.definitions.model.ResourceDefn resource : resources) 
@@ -92,12 +93,12 @@ public class CompositeTypeConverter
 
 		result.getInvariants().addAll( 
 				buildInvariantsFromFhirModel( type.getInvariants().values() ) );
-	
+		
 		for( String typeName : type.getAcceptableGenericTypes() )
 			result.getAllowedGenericTypes().addAll( 
 				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
-		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements() ) );
+		result.getElements().addAll( buildElementDefnsFromFhirModel( result, type.getElements() ) );
 		
 		if( type.getNestedTypes() != null )
 			result.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
@@ -124,19 +125,21 @@ public class CompositeTypeConverter
 
 
 	public static List<ElementDefn> buildElementDefnsFromFhirModel(
+			CompositeTypeDefn parent,
 			List<org.hl7.fhir.definitions.model.ElementDefn> elements) throws Exception
 	{
 
 		List<ElementDefn> result = new ArrayList<ElementDefn>();
 		
 		for( org.hl7.fhir.definitions.model.ElementDefn element : elements )
-			result.add( buildElementDefnFromFhirModel( element) );
+			result.add( buildElementDefnFromFhirModel( parent, element) );
 		
 		return result;
 	}
 
 
 	public static ElementDefn buildElementDefnFromFhirModel(
+			CompositeTypeDefn parent,
 			org.hl7.fhir.definitions.model.ElementDefn element) throws Exception
 	{
 
@@ -173,9 +176,23 @@ public class CompositeTypeConverter
 		if( element.getDeclaredTypeName() == null )
 		{
 			if( !element.getElements().isEmpty() )
-				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
+				result.getElements().addAll( buildElementDefnsFromFhirModel(parent, element.getElements()));
 		}
 		
+		if( element.getBindingName() != null && !element.getBindingName().equals("") )
+		{
+			BindingRef br = FhirFactory.eINSTANCE.createBindingRef();
+			br.setName( element.getBindingName() );
+			result.setBinding(br);
+		}
+
+		if( element.getInvariant() != null )
+		{
+			InvariantRef inv = FhirFactory.eINSTANCE.createInvariantRef();
+			inv.setName( element.getInvariant().getId() );
+			result.setInvariant( inv );
+		}
+			
 		return result;
 	}
 

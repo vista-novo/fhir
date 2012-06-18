@@ -30,17 +30,9 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingType;
-import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
-import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
-import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.utilities.Utilities;
 
 
 
@@ -85,9 +77,27 @@ public class TypeRefConverter
 			singleType.setName( ref.getResolvedTypeName() );
 			result.add(singleType);			
 		}
-		else if( ref.isUnboundGenericParam() );		
-		else if( ref.isXhtml() );
-		else if( ref.isXmlId() );
+		else if( ref.isUnboundGenericParam() )
+		{
+			TypeRef singleType = FhirFactory.eINSTANCE.createTypeRef();
+			singleType.setName( "param" );
+			singleType.setIsUnboundGeneric(true);
+			result.add(singleType);						
+		}
+		else if( ref.isXhtml() )
+		{
+			TypeRef singleType = FhirFactory.eINSTANCE.createTypeRef();
+			singleType.setName( "xhtml" );
+			singleType.setIsPseudoType(true);
+			result.add(singleType);	
+		}
+		else if( ref.isXmlId() )
+		{
+			TypeRef singleType = FhirFactory.eINSTANCE.createTypeRef();
+			singleType.setName( "xmlid" );
+			singleType.setIsPseudoType(true);
+			result.add(singleType);	
+		}
 		else if( ref.isBoundGeneric() )
 		{
 			// What looks like a single type, might actually be multiple declarations
@@ -96,20 +106,19 @@ public class TypeRefConverter
 			for( String param : ref.getParams() )
 			{
 				TypeRef boundRefType = FhirFactory.eINSTANCE.createTypeRef();
-
-				boundRefType.setName(ref.getName());
 				
-				if( param.equalsIgnoreCase("Any") )
-				{
-					if( ref.isResourceReference() )
-						boundRefType.setIsAnyResource(true);
-					else
-						throw new Exception( "Cannot specify Any as an argument to generic type " 
-									+ ref.getName() );
-					
-				}
+				if( !ref.isResourceReference() )
+					boundRefType.setName(ref.getName());
 				else
-					boundRefType.getParam().add(param);
+				{
+					boundRefType.setName("ResourceRef");
+					boundRefType.setIsPseudoType(true);
+				}
+					
+				if( ref.isResourceReference() && param.equalsIgnoreCase("Any") )
+					boundRefType.setTakesAnyResource(true);
+				else
+					boundRefType.getBoundParam().add(param);
 				
 				result.add(boundRefType);
 			}
@@ -117,7 +126,7 @@ public class TypeRefConverter
 		else if( ref.isWildcardType() )
 		{
 			TypeRef wildcardType = FhirFactory.eINSTANCE.createTypeRef();
-			wildcardType.setIsAnyDataType(true);
+			wildcardType.setTakesAnyDataType(true);
 			result.add(wildcardType);
 		}
 		else
@@ -126,13 +135,7 @@ public class TypeRefConverter
 			singleType.setName( ref.getName() );
 			result.add(singleType);
 		}
-
-		
-//	else if( fhirTypeName.equals("Any") )
-//		result.setIsAnyResource(true);
-//	else
-//		result.setName(fhirTypeName);
-		
+	
 		return result;
 	}
 	
@@ -144,6 +147,4 @@ public class TypeRefConverter
 		
 		return buildTypeRefsFromFhirModel(oldRef);
 	}
-
-
 }

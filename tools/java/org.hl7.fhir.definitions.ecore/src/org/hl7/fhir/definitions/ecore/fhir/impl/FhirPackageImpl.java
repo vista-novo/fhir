@@ -33,6 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
 import org.hl7.fhir.definitions.ecore.fhir.Mapping;
 import org.hl7.fhir.definitions.ecore.fhir.MetaDataItem;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
@@ -44,6 +45,7 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -170,6 +172,13 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	private EClass profiledElementDefnEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass invariantRefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -348,7 +357,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EAttribute getElementDefn_MaxCardinality() {
-		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -357,7 +366,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EAttribute getElementDefn_MinCardinality() {
-		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -384,7 +393,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Invariant() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(5);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -393,7 +402,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EAttribute getElementDefn_MustSupport() {
-		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -402,7 +411,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Types() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(7);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -411,7 +420,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Binding() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(12);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -420,7 +429,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Annotation() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(13);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -438,7 +447,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Mappings() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(8);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -447,7 +456,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EAttribute getElementDefn_ExampleValue() {
-		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(9);
+		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -456,7 +465,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Elements() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(10);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -465,7 +474,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EReference getElementDefn_Content() {
-		return (EReference)elementDefnEClass.getEStructuralFeatures().get(11);
+		return (EReference)elementDefnEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -537,6 +546,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	public EAttribute getTypeRef_Name() {
+		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeRef_BoundParam() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -545,7 +563,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTypeRef_IsAnyResource() {
+	public EAttribute getTypeRef_TakesAnyResource() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -554,8 +572,26 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTypeRef_IsAnyDataType() {
+	public EAttribute getTypeRef_TakesAnyDataType() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeRef_IsUnboundGeneric() {
+		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTypeRef_IsPseudoType() {
+		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -646,15 +682,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 */
 	public EReference getBindingDefn_Container() {
 		return (EReference)bindingDefnEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTypeRef_Param() {
-		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1112,6 +1139,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInvariantRef() {
+		return invariantRefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInvariantRef_Name() {
+		return (EAttribute)invariantRefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEventDefn() {
 		return eventDefnEClass;
 	}
@@ -1359,11 +1404,10 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		elementDefnEClass = createEClass(ELEMENT_DEFN);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__NAME);
-		createEAttribute(elementDefnEClass, ELEMENT_DEFN__MAX_CARDINALITY);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__MIN_CARDINALITY);
+		createEAttribute(elementDefnEClass, ELEMENT_DEFN__MAX_CARDINALITY);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__ALLOW_DAR);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__MUST_UNDERSTAND);
-		createEReference(elementDefnEClass, ELEMENT_DEFN__INVARIANT);
 		createEAttribute(elementDefnEClass, ELEMENT_DEFN__MUST_SUPPORT);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__TYPES);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__MAPPINGS);
@@ -1372,6 +1416,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEReference(elementDefnEClass, ELEMENT_DEFN__CONTENT);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__BINDING);
 		createEReference(elementDefnEClass, ELEMENT_DEFN__ANNOTATION);
+		createEReference(elementDefnEClass, ELEMENT_DEFN__INVARIANT);
 
 		invariantEClass = createEClass(INVARIANT);
 		createEAttribute(invariantEClass, INVARIANT__NAME);
@@ -1381,10 +1426,12 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(invariantEClass, INVARIANT__XPATH);
 
 		typeRefEClass = createEClass(TYPE_REF);
-		createEAttribute(typeRefEClass, TYPE_REF__PARAM);
 		createEAttribute(typeRefEClass, TYPE_REF__NAME);
-		createEAttribute(typeRefEClass, TYPE_REF__IS_ANY_RESOURCE);
-		createEAttribute(typeRefEClass, TYPE_REF__IS_ANY_DATA_TYPE);
+		createEAttribute(typeRefEClass, TYPE_REF__BOUND_PARAM);
+		createEAttribute(typeRefEClass, TYPE_REF__TAKES_ANY_RESOURCE);
+		createEAttribute(typeRefEClass, TYPE_REF__TAKES_ANY_DATA_TYPE);
+		createEAttribute(typeRefEClass, TYPE_REF__IS_UNBOUND_GENERIC);
+		createEAttribute(typeRefEClass, TYPE_REF__IS_PSEUDO_TYPE);
 
 		bindingDefnEClass = createEClass(BINDING_DEFN);
 		createEAttribute(bindingDefnEClass, BINDING_DEFN__ID);
@@ -1485,6 +1532,9 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(profiledElementDefnEClass, PROFILED_ELEMENT_DEFN__TARGET_URI);
 		createEAttribute(profiledElementDefnEClass, PROFILED_ELEMENT_DEFN__PROFILE_NAME);
 
+		invariantRefEClass = createEClass(INVARIANT_REF);
+		createEAttribute(invariantRefEClass, INVARIANT_REF__NAME);
+
 		// Create enums
 		bindingTypeEEnum = createEEnum(BINDING_TYPE);
 		bindingStrengthEEnum = createEEnum(BINDING_STRENGTH);
@@ -1538,19 +1588,19 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		initEClass(elementDefnEClass, ElementDefn.class, "ElementDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElementDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElementDefn_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MinCardinality(), ecorePackage.getEInt(), "minCardinality", "-2", 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDefn_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_AllowDAR(), ecorePackage.getEBoolean(), "allowDAR", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MustUnderstand(), ecorePackage.getEBoolean(), "mustUnderstand", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getElementDefn_Invariant(), this.getInvariant(), null, "invariant", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MustSupport(), ecorePackage.getEBoolean(), "mustSupport", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_Types(), this.getTypeRef(), null, "types", null, 0, -1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_Mappings(), this.getMapping(), null, "mappings", null, 0, -1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_ExampleValue(), ecorePackage.getEString(), "exampleValue", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_Elements(), this.getElementDefn(), null, "elements", null, 0, -1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_Content(), this.getElementDefn(), null, "content", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getElementDefn_Binding(), this.getBindingRef(), null, "binding", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getElementDefn_Binding(), this.getBindingRef(), null, "binding", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getElementDefn_Annotation(), this.getAnnotations(), null, "annotation", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getElementDefn_Invariant(), this.getInvariantRef(), null, "invariant", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(invariantEClass, Invariant.class, "Invariant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInvariant_Name(), ecorePackage.getEString(), "name", null, 1, 1, Invariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1560,10 +1610,12 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getInvariant_Xpath(), ecorePackage.getEString(), "xpath", null, 1, 1, Invariant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeRefEClass, TypeRef.class, "TypeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTypeRef_Param(), ecorePackage.getEString(), "param", null, 0, -1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeRef_IsAnyResource(), ecorePackage.getEBoolean(), "isAnyResource", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeRef_IsAnyDataType(), ecorePackage.getEBoolean(), "isAnyDataType", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_BoundParam(), ecorePackage.getEString(), "boundParam", null, 0, -1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_TakesAnyResource(), ecorePackage.getEBoolean(), "takesAnyResource", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_TakesAnyDataType(), ecorePackage.getEBoolean(), "takesAnyDataType", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_IsUnboundGeneric(), ecorePackage.getEBoolean(), "isUnboundGeneric", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_IsPseudoType(), ecorePackage.getEBoolean(), "isPseudoType", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(bindingDefnEClass, BindingDefn.class, "BindingDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBindingDefn_Id(), ecorePackage.getEInt(), "id", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1679,6 +1731,9 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getProfiledElementDefn_TargetUri(), ecorePackage.getEString(), "targetUri", null, 0, 1, ProfiledElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getProfiledElementDefn_ProfileName(), ecorePackage.getEString(), "profileName", null, 0, 1, ProfiledElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(invariantRefEClass, InvariantRef.class, "InvariantRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInvariantRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, InvariantRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Initialize enums and add enum literals
 		initEEnum(bindingTypeEEnum, BindingType.class, "BindingType");
 		addEEnumLiteral(bindingTypeEEnum, BindingType.UNBOUND);
@@ -1729,6 +1784,36 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 			 "kind", "attribute"
 		   });		
 		addAnnotation
+		  (getElementDefn_MinCardinality(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getElementDefn_MaxCardinality(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getElementDefn_AllowDAR(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getElementDefn_MustUnderstand(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getElementDefn_MustSupport(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
 		  (getElementDefn_Types(), 
 		   source, 
 		   new String[] {
@@ -1739,6 +1824,12 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		   source, 
 		   new String[] {
 			 "name", "mapping"
+		   });		
+		addAnnotation
+		  (getElementDefn_ExampleValue(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
 		   });		
 		addAnnotation
 		  (getElementDefn_Elements(), 
@@ -1855,6 +1946,12 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 			 "name", "type"
 		   });		
 		addAnnotation
+		  (getBindingRef_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
 		  (getAnnotations_ShortDefinition(), 
 		   source, 
 		   new String[] {
@@ -1901,7 +1998,13 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		   source, 
 		   new String[] {
 			 "kind", "element"
-		   });	
+		   });			
+		addAnnotation
+		  (getInvariantRef_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });
 	}
 
 } //FhirPackageImpl

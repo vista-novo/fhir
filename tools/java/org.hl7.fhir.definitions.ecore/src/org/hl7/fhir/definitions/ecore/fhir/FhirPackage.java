@@ -318,22 +318,22 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__MAX_CARDINALITY = 1;
-
-	/**
 	 * The feature id for the '<em><b>Min Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__MIN_CARDINALITY = 2;
+	int ELEMENT_DEFN__MIN_CARDINALITY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__MAX_CARDINALITY = 2;
 
 	/**
 	 * The feature id for the '<em><b>Allow DAR</b></em>' attribute.
@@ -354,22 +354,13 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__MUST_UNDERSTAND = 4;
 
 	/**
-	 * The feature id for the '<em><b>Invariant</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__INVARIANT = 5;
-
-	/**
 	 * The feature id for the '<em><b>Must Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__MUST_SUPPORT = 6;
+	int ELEMENT_DEFN__MUST_SUPPORT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -378,7 +369,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__TYPES = 7;
+	int ELEMENT_DEFN__TYPES = 6;
 
 	/**
 	 * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
@@ -387,7 +378,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__MAPPINGS = 8;
+	int ELEMENT_DEFN__MAPPINGS = 7;
 
 	/**
 	 * The feature id for the '<em><b>Example Value</b></em>' attribute.
@@ -396,7 +387,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__EXAMPLE_VALUE = 9;
+	int ELEMENT_DEFN__EXAMPLE_VALUE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -405,7 +396,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__ELEMENTS = 10;
+	int ELEMENT_DEFN__ELEMENTS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Content</b></em>' reference.
@@ -414,16 +405,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__CONTENT = 11;
+	int ELEMENT_DEFN__CONTENT = 10;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' reference.
+	 * The feature id for the '<em><b>Binding</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__BINDING = 12;
+	int ELEMENT_DEFN__BINDING = 11;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
@@ -432,7 +423,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__ANNOTATION = 13;
+	int ELEMENT_DEFN__ANNOTATION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Invariant</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__INVARIANT = 13;
 
 	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
@@ -498,40 +498,58 @@ public interface FhirPackage extends EPackage {
 	int INVARIANT_FEATURE_COUNT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Param</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REF__PARAM = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__NAME = 1;
+	int TYPE_REF__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Any Resource</b></em>' attribute.
+	 * The feature id for the '<em><b>Bound Param</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__IS_ANY_RESOURCE = 2;
+	int TYPE_REF__BOUND_PARAM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Is Any Data Type</b></em>' attribute.
+	 * The feature id for the '<em><b>Takes Any Resource</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__IS_ANY_DATA_TYPE = 3;
+	int TYPE_REF__TAKES_ANY_RESOURCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Takes Any Data Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REF__TAKES_ANY_DATA_TYPE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Is Unbound Generic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REF__IS_UNBOUND_GENERIC = 4;
+
+	/**
+	 * The feature id for the '<em><b>Is Pseudo Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REF__IS_PSEUDO_TYPE = 5;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -540,7 +558,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_FEATURE_COUNT = 4;
+	int TYPE_REF_FEATURE_COUNT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1514,15 +1532,6 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__NAME = ELEMENT_DEFN__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILED_ELEMENT_DEFN__MAX_CARDINALITY = ELEMENT_DEFN__MAX_CARDINALITY;
-
-	/**
 	 * The feature id for the '<em><b>Min Cardinality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1530,6 +1539,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROFILED_ELEMENT_DEFN__MIN_CARDINALITY = ELEMENT_DEFN__MIN_CARDINALITY;
+
+	/**
+	 * The feature id for the '<em><b>Max Cardinality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__MAX_CARDINALITY = ELEMENT_DEFN__MAX_CARDINALITY;
 
 	/**
 	 * The feature id for the '<em><b>Allow DAR</b></em>' attribute.
@@ -1548,15 +1566,6 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROFILED_ELEMENT_DEFN__MUST_UNDERSTAND = ELEMENT_DEFN__MUST_UNDERSTAND;
-
-	/**
-	 * The feature id for the '<em><b>Invariant</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILED_ELEMENT_DEFN__INVARIANT = ELEMENT_DEFN__INVARIANT;
 
 	/**
 	 * The feature id for the '<em><b>Must Support</b></em>' attribute.
@@ -1613,7 +1622,7 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__CONTENT = ELEMENT_DEFN__CONTENT;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' reference.
+	 * The feature id for the '<em><b>Binding</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1629,6 +1638,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROFILED_ELEMENT_DEFN__ANNOTATION = ELEMENT_DEFN__ANNOTATION;
+
+	/**
+	 * The feature id for the '<em><b>Invariant</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__INVARIANT = ELEMENT_DEFN__INVARIANT;
 
 	/**
 	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
@@ -1685,6 +1703,34 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN_FEATURE_COUNT = ELEMENT_DEFN_FEATURE_COUNT + 5;
 
 	/**
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantRefImpl <em>Invariant Ref</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.InvariantRefImpl
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getInvariantRef()
+	 * @generated
+	 */
+	int INVARIANT_REF = 22;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT_REF__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Invariant Ref</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVARIANT_REF_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingType <em>Binding Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1692,7 +1738,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingType()
 	 * @generated
 	 */
-	int BINDING_TYPE = 22;
+	int BINDING_TYPE = 23;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingStrength <em>Binding Strength</em>}' enum.
@@ -1702,7 +1748,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingStrength()
 	 * @generated
 	 */
-	int BINDING_STRENGTH = 23;
+	int BINDING_STRENGTH = 24;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchType <em>Search Type</em>}' enum.
@@ -1712,7 +1758,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchType()
 	 * @generated
 	 */
-	int SEARCH_TYPE = 24;
+	int SEARCH_TYPE = 25;
 
 
 	/**
@@ -1824,10 +1870,10 @@ public interface FhirPackage extends EPackage {
 	EAttribute getElementDefn_MustUnderstand();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Invariant</em>'.
+	 * @return the meta object for the containment reference '<em>Invariant</em>'.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant()
 	 * @see #getElementDefn()
 	 * @generated
@@ -1857,10 +1903,10 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_Types();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Binding</em>'.
+	 * @return the meta object for the containment reference '<em>Binding</em>'.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding()
 	 * @see #getElementDefn()
 	 * @generated
@@ -2020,26 +2066,59 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsAnyResource <em>Is Any Resource</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Any Resource</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsAnyResource()
+	 * @return the meta object for the attribute list '<em>Bound Param</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam()
 	 * @see #getTypeRef()
 	 * @generated
 	 */
-	EAttribute getTypeRef_IsAnyResource();
+	EAttribute getTypeRef_BoundParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsAnyDataType <em>Is Any Data Type</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Any Data Type</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsAnyDataType()
+	 * @return the meta object for the attribute '<em>Takes Any Resource</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource()
 	 * @see #getTypeRef()
 	 * @generated
 	 */
-	EAttribute getTypeRef_IsAnyDataType();
+	EAttribute getTypeRef_TakesAnyResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType <em>Takes Any Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Takes Any Data Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType()
+	 * @see #getTypeRef()
+	 * @generated
+	 */
+	EAttribute getTypeRef_TakesAnyDataType();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Unbound Generic</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric()
+	 * @see #getTypeRef()
+	 * @generated
+	 */
+	EAttribute getTypeRef_IsUnboundGeneric();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType <em>Is Pseudo Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Pseudo Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType()
+	 * @see #getTypeRef()
+	 * @generated
+	 */
+	EAttribute getTypeRef_IsPseudoType();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn <em>Binding Defn</em>}'.
@@ -2149,17 +2228,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getBindingDefn_Container();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getParam <em>Param</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Param</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getParam()
-	 * @see #getTypeRef()
-	 * @generated
-	 */
-	EAttribute getTypeRef_Param();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.Mapping <em>Mapping</em>}'.
@@ -2700,6 +2768,27 @@ public interface FhirPackage extends EPackage {
 	EAttribute getProfiledElementDefn_ProfileName();
 
 	/**
+	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.InvariantRef <em>Invariant Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Invariant Ref</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.InvariantRef
+	 * @generated
+	 */
+	EClass getInvariantRef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.InvariantRef#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.InvariantRef#getName()
+	 * @see #getInvariantRef()
+	 * @generated
+	 */
+	EAttribute getInvariantRef_Name();
+
+	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.EventDefn <em>Event Defn</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3062,7 +3151,7 @@ public interface FhirPackage extends EPackage {
 		EAttribute ELEMENT_DEFN__MUST_UNDERSTAND = eINSTANCE.getElementDefn_MustUnderstand();
 
 		/**
-		 * The meta object literal for the '<em><b>Invariant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Invariant</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3086,7 +3175,7 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__TYPES = eINSTANCE.getElementDefn_Types();
 
 		/**
-		 * The meta object literal for the '<em><b>Binding</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Binding</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3210,20 +3299,44 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__NAME = eINSTANCE.getTypeRef_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Any Resource</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Bound Param</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_REF__IS_ANY_RESOURCE = eINSTANCE.getTypeRef_IsAnyResource();
+		EAttribute TYPE_REF__BOUND_PARAM = eINSTANCE.getTypeRef_BoundParam();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Any Data Type</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Takes Any Resource</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_REF__IS_ANY_DATA_TYPE = eINSTANCE.getTypeRef_IsAnyDataType();
+		EAttribute TYPE_REF__TAKES_ANY_RESOURCE = eINSTANCE.getTypeRef_TakesAnyResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Takes Any Data Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REF__TAKES_ANY_DATA_TYPE = eINSTANCE.getTypeRef_TakesAnyDataType();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Unbound Generic</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REF__IS_UNBOUND_GENERIC = eINSTANCE.getTypeRef_IsUnboundGeneric();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Pseudo Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REF__IS_PSEUDO_TYPE = eINSTANCE.getTypeRef_IsPseudoType();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl <em>Binding Defn</em>}' class.
@@ -3306,14 +3419,6 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BINDING_DEFN__CONTAINER = eINSTANCE.getBindingDefn_Container();
-
-		/**
-		 * The meta object literal for the '<em><b>Param</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPE_REF__PARAM = eINSTANCE.getTypeRef_Param();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.MappingImpl <em>Mapping</em>}' class.
@@ -3738,6 +3843,24 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PROFILED_ELEMENT_DEFN__PROFILE_NAME = eINSTANCE.getProfiledElementDefn_ProfileName();
+
+		/**
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.InvariantRefImpl <em>Invariant Ref</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.InvariantRefImpl
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getInvariantRef()
+		 * @generated
+		 */
+		EClass INVARIANT_REF = eINSTANCE.getInvariantRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INVARIANT_REF__NAME = eINSTANCE.getInvariantRef_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.EventDefnImpl <em>Event Defn</em>}' class.

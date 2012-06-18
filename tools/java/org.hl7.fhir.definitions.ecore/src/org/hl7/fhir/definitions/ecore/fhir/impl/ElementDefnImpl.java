@@ -28,6 +28,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Binding;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
+import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.Mapping;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -40,11 +41,10 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMinCardinality <em>Min Cardinality</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isAllowDAR <em>Allow DAR</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isMustUnderstand <em>Must Understand</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#isMustSupport <em>Must Support</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMappings <em>Mappings</em>}</li>
@@ -53,6 +53,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getContent <em>Content</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,26 +81,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxCardinality()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int MAX_CARDINALITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxCardinality()
-	 * @generated
-	 * @ordered
-	 */
-	protected int maxCardinality = MAX_CARDINALITY_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getMinCardinality() <em>Min Cardinality</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -118,6 +99,26 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected int minCardinality = MIN_CARDINALITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxCardinality()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int MAX_CARDINALITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMaxCardinality()
+	 * @generated
+	 * @ordered
+	 */
+	protected int maxCardinality = MAX_CARDINALITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isAllowDAR() <em>Allow DAR</em>}' attribute.
@@ -158,16 +159,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected boolean mustUnderstand = MUST_UNDERSTAND_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInvariant() <em>Invariant</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInvariant()
-	 * @generated
-	 * @ordered
-	 */
-	protected Invariant invariant;
 
 	/**
 	 * The default value of the '{@link #isMustSupport() <em>Must Support</em>}' attribute.
@@ -250,7 +241,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected ElementDefn content;
 
 	/**
-	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' reference.
+	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBinding()
@@ -268,6 +259,16 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected Annotations annotation;
+
+	/**
+	 * The cached value of the '{@link #getInvariant() <em>Invariant</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInvariant()
+	 * @generated
+	 * @ordered
+	 */
+	protected InvariantRef invariant;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -377,15 +378,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Invariant getInvariant() {
-		if (invariant != null && invariant.eIsProxy()) {
-			InternalEObject oldInvariant = (InternalEObject)invariant;
-			invariant = (Invariant)eResolveProxy(oldInvariant);
-			if (invariant != oldInvariant) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.ELEMENT_DEFN__INVARIANT, oldInvariant, invariant));
-			}
-		}
+	public InvariantRef getInvariant() {
 		return invariant;
 	}
 
@@ -394,20 +387,33 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Invariant basicGetInvariant() {
-		return invariant;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInvariant(Invariant newInvariant) {
-		Invariant oldInvariant = invariant;
+	public NotificationChain basicSetInvariant(InvariantRef newInvariant, NotificationChain msgs) {
+		InvariantRef oldInvariant = invariant;
 		invariant = newInvariant;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__INVARIANT, oldInvariant, invariant));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__INVARIANT, oldInvariant, newInvariant);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInvariant(InvariantRef newInvariant) {
+		if (newInvariant != invariant) {
+			NotificationChain msgs = null;
+			if (invariant != null)
+				msgs = ((InternalEObject)invariant).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__INVARIANT, null, msgs);
+			if (newInvariant != null)
+				msgs = ((InternalEObject)newInvariant).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__INVARIANT, null, msgs);
+			msgs = basicSetInvariant(newInvariant, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__INVARIANT, newInvariant, newInvariant));
 	}
 
 	/**
@@ -449,14 +455,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 */
 	public BindingRef getBinding() {
-		if (binding != null && binding.eIsProxy()) {
-			InternalEObject oldBinding = (InternalEObject)binding;
-			binding = (BindingRef)eResolveProxy(oldBinding);
-			if (binding != oldBinding) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.ELEMENT_DEFN__BINDING, oldBinding, binding));
-			}
-		}
 		return binding;
 	}
 
@@ -465,8 +463,14 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BindingRef basicGetBinding() {
-		return binding;
+	public NotificationChain basicSetBinding(BindingRef newBinding, NotificationChain msgs) {
+		BindingRef oldBinding = binding;
+		binding = newBinding;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__BINDING, oldBinding, newBinding);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -475,10 +479,17 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 */
 	public void setBinding(BindingRef newBinding) {
-		BindingRef oldBinding = binding;
-		binding = newBinding;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__BINDING, oldBinding, binding));
+		if (newBinding != binding) {
+			NotificationChain msgs = null;
+			if (binding != null)
+				msgs = ((InternalEObject)binding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__BINDING, null, msgs);
+			if (newBinding != null)
+				msgs = ((InternalEObject)newBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__BINDING, null, msgs);
+			msgs = basicSetBinding(newBinding, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__BINDING, newBinding, newBinding));
 	}
 
 	/**
@@ -642,8 +653,12 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+			case FhirPackage.ELEMENT_DEFN__BINDING:
+				return basicSetBinding(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return basicSetAnnotation(null, msgs);
+			case FhirPackage.ELEMENT_DEFN__INVARIANT:
+				return basicSetInvariant(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -658,17 +673,14 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		switch (featureID) {
 			case FhirPackage.ELEMENT_DEFN__NAME:
 				return getName();
-			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				return getMaxCardinality();
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
 				return getMinCardinality();
+			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
+				return getMaxCardinality();
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				return isAllowDAR();
 			case FhirPackage.ELEMENT_DEFN__MUST_UNDERSTAND:
 				return isMustUnderstand();
-			case FhirPackage.ELEMENT_DEFN__INVARIANT:
-				if (resolve) return getInvariant();
-				return basicGetInvariant();
 			case FhirPackage.ELEMENT_DEFN__MUST_SUPPORT:
 				return isMustSupport();
 			case FhirPackage.ELEMENT_DEFN__TYPES:
@@ -683,10 +695,11 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				if (resolve) return getContent();
 				return basicGetContent();
 			case FhirPackage.ELEMENT_DEFN__BINDING:
-				if (resolve) return getBinding();
-				return basicGetBinding();
+				return getBinding();
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return getAnnotation();
+			case FhirPackage.ELEMENT_DEFN__INVARIANT:
+				return getInvariant();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -703,20 +716,17 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__NAME:
 				setName((String)newValue);
 				return;
-			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				setMaxCardinality((Integer)newValue);
-				return;
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
 				setMinCardinality((Integer)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
+				setMaxCardinality((Integer)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				setAllowDAR((Boolean)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MUST_UNDERSTAND:
 				setMustUnderstand((Boolean)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__INVARIANT:
-				setInvariant((Invariant)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MUST_SUPPORT:
 				setMustSupport((Boolean)newValue);
@@ -745,6 +755,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				setAnnotation((Annotations)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFN__INVARIANT:
+				setInvariant((InvariantRef)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -760,20 +773,17 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				setMaxCardinality(MAX_CARDINALITY_EDEFAULT);
-				return;
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
 				setMinCardinality(MIN_CARDINALITY_EDEFAULT);
+				return;
+			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
+				setMaxCardinality(MAX_CARDINALITY_EDEFAULT);
 				return;
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				setAllowDAR(ALLOW_DAR_EDEFAULT);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MUST_UNDERSTAND:
 				setMustUnderstand(MUST_UNDERSTAND_EDEFAULT);
-				return;
-			case FhirPackage.ELEMENT_DEFN__INVARIANT:
-				setInvariant((Invariant)null);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MUST_SUPPORT:
 				setMustSupport(MUST_SUPPORT_EDEFAULT);
@@ -799,6 +809,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				setAnnotation((Annotations)null);
 				return;
+			case FhirPackage.ELEMENT_DEFN__INVARIANT:
+				setInvariant((InvariantRef)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -813,16 +826,14 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		switch (featureID) {
 			case FhirPackage.ELEMENT_DEFN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				return maxCardinality != MAX_CARDINALITY_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
 				return minCardinality != MIN_CARDINALITY_EDEFAULT;
+			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
+				return maxCardinality != MAX_CARDINALITY_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				return allowDAR != ALLOW_DAR_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__MUST_UNDERSTAND:
 				return mustUnderstand != MUST_UNDERSTAND_EDEFAULT;
-			case FhirPackage.ELEMENT_DEFN__INVARIANT:
-				return invariant != null;
 			case FhirPackage.ELEMENT_DEFN__MUST_SUPPORT:
 				return mustSupport != MUST_SUPPORT_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__TYPES:
@@ -839,6 +850,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return binding != null;
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return annotation != null;
+			case FhirPackage.ELEMENT_DEFN__INVARIANT:
+				return invariant != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -855,10 +868,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", maxCardinality: ");
-		result.append(maxCardinality);
 		result.append(", minCardinality: ");
 		result.append(minCardinality);
+		result.append(", maxCardinality: ");
+		result.append(maxCardinality);
 		result.append(", allowDAR: ");
 		result.append(allowDAR);
 		result.append(", mustUnderstand: ");

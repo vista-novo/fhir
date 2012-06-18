@@ -30,26 +30,18 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getParam <em>Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsAnyResource <em>Is Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsAnyDataType <em>Is Any Data Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getBoundParam <em>Bound Param</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyResource <em>Takes Any Resource</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyDataType <em>Takes Any Data Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsUnboundGeneric <em>Is Unbound Generic</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsPseudoType <em>Is Pseudo Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class TypeRefImpl extends EObjectImpl implements TypeRef {
-	/**
-	 * The cached value of the '{@link #getParam() <em>Param</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParam()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<String> param;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,44 +63,94 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsAnyResource() <em>Is Any Resource</em>}' attribute.
+	 * The cached value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAnyResource()
+	 * @see #getBoundParam()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ANY_RESOURCE_EDEFAULT = false;
+	protected EList<String> boundParam;
 
 	/**
-	 * The cached value of the '{@link #isIsAnyResource() <em>Is Any Resource</em>}' attribute.
+	 * The default value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAnyResource()
+	 * @see #isTakesAnyResource()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAnyResource = IS_ANY_RESOURCE_EDEFAULT;
+	protected static final boolean TAKES_ANY_RESOURCE_EDEFAULT = false;
 
 	/**
-	 * The default value of the '{@link #isIsAnyDataType() <em>Is Any Data Type</em>}' attribute.
+	 * The cached value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAnyDataType()
+	 * @see #isTakesAnyResource()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_ANY_DATA_TYPE_EDEFAULT = false;
+	protected boolean takesAnyResource = TAKES_ANY_RESOURCE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #isIsAnyDataType() <em>Is Any Data Type</em>}' attribute.
+	 * The default value of the '{@link #isTakesAnyDataType() <em>Takes Any Data Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAnyDataType()
+	 * @see #isTakesAnyDataType()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isAnyDataType = IS_ANY_DATA_TYPE_EDEFAULT;
+	protected static final boolean TAKES_ANY_DATA_TYPE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTakesAnyDataType() <em>Takes Any Data Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTakesAnyDataType()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean takesAnyDataType = TAKES_ANY_DATA_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsUnboundGeneric() <em>Is Unbound Generic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsUnboundGeneric()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_UNBOUND_GENERIC_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsUnboundGeneric() <em>Is Unbound Generic</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsUnboundGeneric()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isUnboundGeneric = IS_UNBOUND_GENERIC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isIsPseudoType() <em>Is Pseudo Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsPseudoType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_PSEUDO_TYPE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsPseudoType() <em>Is Pseudo Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsPseudoType()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isPseudoType = IS_PSEUDO_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,53 +197,95 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsAnyResource() {
-		return isAnyResource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsAnyResource(boolean newIsAnyResource) {
-		boolean oldIsAnyResource = isAnyResource;
-		isAnyResource = newIsAnyResource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_ANY_RESOURCE, oldIsAnyResource, isAnyResource));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isIsAnyDataType() {
-		return isAnyDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsAnyDataType(boolean newIsAnyDataType) {
-		boolean oldIsAnyDataType = isAnyDataType;
-		isAnyDataType = newIsAnyDataType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE, oldIsAnyDataType, isAnyDataType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<String> getParam() {
-		if (param == null) {
-			param = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.TYPE_REF__PARAM);
+	public EList<String> getBoundParam() {
+		if (boundParam == null) {
+			boundParam = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.TYPE_REF__BOUND_PARAM);
 		}
-		return param;
+		return boundParam;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTakesAnyResource() {
+		return takesAnyResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTakesAnyResource(boolean newTakesAnyResource) {
+		boolean oldTakesAnyResource = takesAnyResource;
+		takesAnyResource = newTakesAnyResource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE, oldTakesAnyResource, takesAnyResource));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isTakesAnyDataType() {
+		return takesAnyDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTakesAnyDataType(boolean newTakesAnyDataType) {
+		boolean oldTakesAnyDataType = takesAnyDataType;
+		takesAnyDataType = newTakesAnyDataType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE, oldTakesAnyDataType, takesAnyDataType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsUnboundGeneric() {
+		return isUnboundGeneric;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsUnboundGeneric(boolean newIsUnboundGeneric) {
+		boolean oldIsUnboundGeneric = isUnboundGeneric;
+		isUnboundGeneric = newIsUnboundGeneric;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC, oldIsUnboundGeneric, isUnboundGeneric));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsPseudoType() {
+		return isPseudoType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsPseudoType(boolean newIsPseudoType) {
+		boolean oldIsPseudoType = isPseudoType;
+		isPseudoType = newIsPseudoType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_PSEUDO_TYPE, oldIsPseudoType, isPseudoType));
 	}
 
 	/**
@@ -212,14 +296,18 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.TYPE_REF__PARAM:
-				return getParam();
 			case FhirPackage.TYPE_REF__NAME:
 				return getName();
-			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
-				return isIsAnyResource();
-			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
-				return isIsAnyDataType();
+			case FhirPackage.TYPE_REF__BOUND_PARAM:
+				return getBoundParam();
+			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
+				return isTakesAnyResource();
+			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
+				return isTakesAnyDataType();
+			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
+				return isIsUnboundGeneric();
+			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
+				return isIsPseudoType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -233,18 +321,24 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.TYPE_REF__PARAM:
-				getParam().clear();
-				getParam().addAll((Collection<? extends String>)newValue);
-				return;
 			case FhirPackage.TYPE_REF__NAME:
 				setName((String)newValue);
 				return;
-			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
-				setIsAnyResource((Boolean)newValue);
+			case FhirPackage.TYPE_REF__BOUND_PARAM:
+				getBoundParam().clear();
+				getBoundParam().addAll((Collection<? extends String>)newValue);
 				return;
-			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
-				setIsAnyDataType((Boolean)newValue);
+			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
+				setTakesAnyResource((Boolean)newValue);
+				return;
+			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
+				setTakesAnyDataType((Boolean)newValue);
+				return;
+			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
+				setIsUnboundGeneric((Boolean)newValue);
+				return;
+			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
+				setIsPseudoType((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -258,17 +352,23 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.TYPE_REF__PARAM:
-				getParam().clear();
-				return;
 			case FhirPackage.TYPE_REF__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
-				setIsAnyResource(IS_ANY_RESOURCE_EDEFAULT);
+			case FhirPackage.TYPE_REF__BOUND_PARAM:
+				getBoundParam().clear();
 				return;
-			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
-				setIsAnyDataType(IS_ANY_DATA_TYPE_EDEFAULT);
+			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
+				setTakesAnyResource(TAKES_ANY_RESOURCE_EDEFAULT);
+				return;
+			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
+				setTakesAnyDataType(TAKES_ANY_DATA_TYPE_EDEFAULT);
+				return;
+			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
+				setIsUnboundGeneric(IS_UNBOUND_GENERIC_EDEFAULT);
+				return;
+			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
+				setIsPseudoType(IS_PSEUDO_TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -282,14 +382,18 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.TYPE_REF__PARAM:
-				return param != null && !param.isEmpty();
 			case FhirPackage.TYPE_REF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FhirPackage.TYPE_REF__IS_ANY_RESOURCE:
-				return isAnyResource != IS_ANY_RESOURCE_EDEFAULT;
-			case FhirPackage.TYPE_REF__IS_ANY_DATA_TYPE:
-				return isAnyDataType != IS_ANY_DATA_TYPE_EDEFAULT;
+			case FhirPackage.TYPE_REF__BOUND_PARAM:
+				return boundParam != null && !boundParam.isEmpty();
+			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
+				return takesAnyResource != TAKES_ANY_RESOURCE_EDEFAULT;
+			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
+				return takesAnyDataType != TAKES_ANY_DATA_TYPE_EDEFAULT;
+			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
+				return isUnboundGeneric != IS_UNBOUND_GENERIC_EDEFAULT;
+			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
+				return isPseudoType != IS_PSEUDO_TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -304,14 +408,18 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (param: ");
-		result.append(param);
-		result.append(", name: ");
+		result.append(" (name: ");
 		result.append(name);
-		result.append(", isAnyResource: ");
-		result.append(isAnyResource);
-		result.append(", isAnyDataType: ");
-		result.append(isAnyDataType);
+		result.append(", boundParam: ");
+		result.append(boundParam);
+		result.append(", takesAnyResource: ");
+		result.append(takesAnyResource);
+		result.append(", takesAnyDataType: ");
+		result.append(takesAnyDataType);
+		result.append(", isUnboundGeneric: ");
+		result.append(isUnboundGeneric);
+		result.append(", isPseudoType: ");
+		result.append(isPseudoType);
 		result.append(')');
 		return result.toString();
 	}

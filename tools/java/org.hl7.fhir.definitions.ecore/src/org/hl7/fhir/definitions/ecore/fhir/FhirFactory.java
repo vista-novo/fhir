@@ -206,6 +206,15 @@ public interface FhirFactory extends EFactory {
 	ProfiledElementDefn createProfiledElementDefn();
 
 	/**
+	 * Returns a new object of class '<em>Invariant Ref</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Invariant Ref</em>'.
+	 * @generated
+	 */
+	InvariantRef createInvariantRef();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -10,21 +10,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Binding Ref</b></em>'.
+ * A representation of the model object '<em><b>Invariant Ref</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingRef#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.InvariantRef#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingRef()
+ * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariantRef()
  * @model
  * @generated
  */
-public interface BindingRef extends EObject {
+public interface InvariantRef extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -35,14 +35,14 @@ public interface BindingRef extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingRef_Name()
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getInvariantRef_Name()
 	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingRef#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.InvariantRef#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -51,4 +51,4 @@ public interface BindingRef extends EObject {
 	 */
 	void setName(String value);
 
-} // BindingRef
+} // InvariantRef

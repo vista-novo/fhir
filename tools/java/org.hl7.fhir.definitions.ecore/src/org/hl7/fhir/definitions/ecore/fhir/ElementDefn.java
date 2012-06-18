@@ -19,11 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMinCardinality <em>Min Cardinality</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isAllowDAR <em>Allow DAR</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustUnderstand <em>Must Understand</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustSupport <em>Must Support</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getTypes <em>Types</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMappings <em>Mappings</em>}</li>
@@ -32,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getContent <em>Content</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,7 +51,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Max Cardinality</em>' attribute.
 	 * @see #setMaxCardinality(int)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MaxCardinality()
-	 * @model
+	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	int getMaxCardinality();
@@ -79,6 +79,7 @@ public interface ElementDefn extends EObject {
 	 * @see #setMinCardinality(int)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MinCardinality()
 	 * @model default="-2"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	int getMinCardinality();
@@ -104,7 +105,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Allow DAR</em>' attribute.
 	 * @see #setAllowDAR(boolean)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_AllowDAR()
-	 * @model
+	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	boolean isAllowDAR();
@@ -130,7 +131,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Must Understand</em>' attribute.
 	 * @see #setMustUnderstand(boolean)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MustUnderstand()
-	 * @model
+	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	boolean isMustUnderstand();
@@ -146,30 +147,30 @@ public interface ElementDefn extends EObject {
 	void setMustUnderstand(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Invariant</b></em>' reference.
+	 * Returns the value of the '<em><b>Invariant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Invariant</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Invariant</em>' reference.
-	 * @see #setInvariant(Invariant)
+	 * @return the value of the '<em>Invariant</em>' containment reference.
+	 * @see #setInvariant(InvariantRef)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Invariant()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	Invariant getInvariant();
+	InvariantRef getInvariant();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}' reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Invariant</em>' reference.
+	 * @param value the new value of the '<em>Invariant</em>' containment reference.
 	 * @see #getInvariant()
 	 * @generated
 	 */
-	void setInvariant(Invariant value);
+	void setInvariant(InvariantRef value);
 
 	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.
@@ -182,7 +183,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Must Support</em>' attribute.
 	 * @see #setMustSupport(boolean)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MustSupport()
-	 * @model
+	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	boolean isMustSupport();
@@ -215,26 +216,26 @@ public interface ElementDefn extends EObject {
 	EList<TypeRef> getTypes();
 
 	/**
-	 * Returns the value of the '<em><b>Binding</b></em>' reference.
+	 * Returns the value of the '<em><b>Binding</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Binding</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Binding</em>' reference.
+	 * @return the value of the '<em>Binding</em>' containment reference.
 	 * @see #setBinding(BindingRef)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Binding()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	BindingRef getBinding();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}' reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Binding</em>' reference.
+	 * @param value the new value of the '<em>Binding</em>' containment reference.
 	 * @see #getBinding()
 	 * @generated
 	 */
@@ -321,7 +322,7 @@ public interface ElementDefn extends EObject {
 	 * @return the value of the '<em>Example Value</em>' attribute.
 	 * @see #setExampleValue(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_ExampleValue()
-	 * @model
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getExampleValue();

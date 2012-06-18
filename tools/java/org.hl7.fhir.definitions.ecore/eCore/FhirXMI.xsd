@@ -42,27 +42,25 @@
   <xsd:element name="Definitions" type="fhir:Definitions"/>
   <xsd:complexType name="ElementDefn">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="invariant" type="fhir:Invariant"/>
       <xsd:element name="types" type="fhir:TypeRef"/>
       <xsd:element name="mappings" type="fhir:Mapping"/>
       <xsd:element name="elements" type="fhir:ElementDefn"/>
       <xsd:element name="content" type="fhir:ElementDefn"/>
       <xsd:element name="binding" type="fhir:BindingRef"/>
       <xsd:element name="annotation" type="fhir:Annotations"/>
+      <xsd:element name="invariant" type="fhir:InvariantRef"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
-    <xsd:attribute name="maxCardinality" type="xsd:int"/>
     <xsd:attribute name="minCardinality" type="xsd:int"/>
+    <xsd:attribute name="maxCardinality" type="xsd:int"/>
     <xsd:attribute name="allowDAR" type="xsd:boolean"/>
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>
-    <xsd:attribute name="invariant" type="xsd:string"/>
     <xsd:attribute name="content" type="xsd:string"/>
-    <xsd:attribute name="binding" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="ElementDefn" type="fhir:ElementDefn"/>
   <xsd:complexType name="Invariant">
@@ -80,14 +78,16 @@
   <xsd:element name="Invariant" type="fhir:Invariant"/>
   <xsd:complexType name="TypeRef">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="param" nillable="true" type="xsd:string"/>
+      <xsd:element name="boundParam" nillable="true" type="xsd:string"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
-    <xsd:attribute name="isAnyResource" type="xsd:boolean"/>
-    <xsd:attribute name="isAnyDataType" type="xsd:boolean"/>
+    <xsd:attribute name="takesAnyResource" type="xsd:boolean"/>
+    <xsd:attribute name="takesAnyDataType" type="xsd:boolean"/>
+    <xsd:attribute name="isUnboundGeneric" type="xsd:boolean"/>
+    <xsd:attribute name="isPseudoType" type="xsd:boolean"/>
   </xsd:complexType>
   <xsd:element name="TypeRef" type="fhir:TypeRef"/>
   <xsd:complexType name="BindingDefn">
@@ -316,4 +316,13 @@
     </xsd:complexContent>
   </xsd:complexType>
   <xsd:element name="ProfiledElementDefn" type="fhir:ProfiledElementDefn"/>
+  <xsd:complexType name="InvariantRef">
+    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element ref="xmi:Extension"/>
+    </xsd:choice>
+    <xsd:attribute ref="xmi:id"/>
+    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
+    <xsd:attribute name="name" type="xsd:string"/>
+  </xsd:complexType>
+  <xsd:element name="InvariantRef" type="fhir:InvariantRef"/>
 </xsd:schema>
