@@ -77,6 +77,19 @@ public class TypeRef {
 		return params.size() > 0;
 	}
 
+	
+	private String resolvedTypeName;
+	
+	public String getResolvedTypeName()
+	{
+		return resolvedTypeName;
+	}
+	
+	public void setResolvedTypeName(String value)
+	{
+		resolvedTypeName = value;
+	}
+	
 	public boolean isUnboundGenericParam() {
 		return name.equals("[param]");
 	}
@@ -96,6 +109,16 @@ public class TypeRef {
 	public boolean isResourceReference()
 	{
 		return name.equals("Resource");
+	}
+
+	public boolean isElementReference()
+	{
+		return name.startsWith("@");
+	}
+	
+	public boolean isBoundGeneric()
+	{
+		return params.size() > 0;
 	}
 	
 	public boolean isSpecialType() {

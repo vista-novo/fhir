@@ -47,6 +47,10 @@ import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
+import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
+import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
+import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -120,19 +124,19 @@ public class SourceParser {
 			loadCompositeType(n, definitions.getTypes());	
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getTypes().values()));
+						.getTypes().values() ));
 		
 		for (String n : ini.getPropertyNames("structures"))
 			loadCompositeType(n, definitions.getStructures());
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getStructures().values()));
+						.getStructures().values() ));
 			
 		for (String n : ini.getPropertyNames("infrastructure"))
 			loadCompositeType(n, definitions.getInfrastructure());
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getInfrastructure().values()));
+						.getInfrastructure().values() ));
 		
 		eCoreParseResults.getTypes().addAll(
 				ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(
@@ -141,6 +145,10 @@ public class SourceParser {
 		
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
+
+		eCoreParseResults.getTypes().addAll(
+				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
+						.getResources().values() ));
 		
 		for (String n : ini.getPropertyNames("future-resources")) 
 		{

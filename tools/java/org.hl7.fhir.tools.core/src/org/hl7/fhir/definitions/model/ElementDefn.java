@@ -488,6 +488,7 @@ public class ElementDefn {
 		return !types.isEmpty() && types.get(0).isXhtml();
 	}
 
+	
 	public ElementDefn getElementForPath(String pathname) throws Exception {
 		String[] path = pathname.split("\\.");
 
@@ -516,14 +517,16 @@ public class ElementDefn {
 	
 	   /**** 
 	    * Helper data for mapping the current model definitions to the
-	    * eCore model.  
+	    * eCore model. Are valid if this ElementDefn is the root of a type
 	    * 	NestedTypes() - The nested groups of elements which are reused within
 	    * 					the same resource/composite type and have been given an
 	    * 					explicit name using the new '=<typename>' construct.
 	    * 	NestedBindings() - The bindings as defined on the "Bindings" tab in
 	    * 					the resource/composite type specification xls.
 	    *   Invariants()  - The variants as referred to by the elements of
-	    *   				a resource or composite type			
+	    *   				a resource or composite type
+	    *   AcceptableGenericTypes() - The types that may be uses as generic parameter
+	    *   				to this type, as specified in fhir.ini (e.g. Interval(dateTime))			
 	    ****/
 	      
 	   private Map<String, ElementDefn> nestedTypes = new HashMap<String, ElementDefn>();

@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.parsers;
+package org.hl7.fhir.definitions.parsers.converters;
 
 /*
 Copyright (c) 2011-2012, HL7, Inc
@@ -40,6 +40,7 @@ import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -69,11 +70,17 @@ public class ConstrainedTypeConverter
 	
 	public static ConstrainedTypeDefn buildConstrainedTypeFromFhirModel( 
 			org.hl7.fhir.definitions.model.DefinedCode constrainedType,
-			org.hl7.fhir.definitions.model.Invariant invariant)
+			org.hl7.fhir.definitions.model.Invariant invariant) throws Exception
 	{
 		ConstrainedTypeDefn result = FhirFactory.eINSTANCE.createConstrainedTypeDefn();
 		
-		result.setBaseType( CompositeTypeConverter.buildTypeRef( constrainedType.getComment() ));
+		// Since the comment in the old Fhir model will not contain multiple types
+		// and none of them is a Resource(A|B|C) ref, we can be sure the buildTypes..()
+		// will only return 1 result;
+		TypeRef baseType = 
+				TypeRefConverter.buildTypeRefsFromFhirTypeName(constrainedType.getComment()).get(0);
+		
+		result.setBaseType( baseType );
 		result.setName( constrainedType.getCode() );
 		
 		//TODO: This could be multiple invariants, but current Fhir model only allows 1.

@@ -1,4 +1,4 @@
-package org.hl7.fhir.definitions.parsers;
+package org.hl7.fhir.definitions.parsers.converters;
 
 /*
 Copyright (c) 2011-2012, HL7, Inc

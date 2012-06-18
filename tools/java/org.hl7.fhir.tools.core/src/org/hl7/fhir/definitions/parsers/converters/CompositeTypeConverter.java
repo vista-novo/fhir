@@ -1,20 +1,17 @@
-package org.hl7.fhir.definitions.parsers;
+package org.hl7.fhir.definitions.parsers.converters;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
-import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
-import org.hl7.fhir.definitions.ecore.fhir.util.FhirAdapterFactory;
+
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -49,13 +46,29 @@ POSSIBILITY OF SUCH DAMAGE.
 public class CompositeTypeConverter
 {
 	public static List<CompositeTypeDefn> buildCompositeTypesFromFhirModel( 
-			Collection<org.hl7.fhir.definitions.model.ElementDefn> types )
+			Collection<org.hl7.fhir.definitions.model.ElementDefn> types ) throws Exception
 	{
 		List<CompositeTypeDefn> result = new ArrayList<CompositeTypeDefn>();
 		
 	    for (org.hl7.fhir.definitions.model.ElementDefn type : types) 
 	    {
-	    	result.add( buildCompositeTypeFromFhirModel(type) );
+	    	result.add( buildCompositeTypeFromFhirModel(type, false) );
+	    }
+	    
+	    return result;
+	}
+	
+	
+
+	public static Collection<ResourceDefn> buildResourcesFromFhirModel(
+			Collection<org.hl7.fhir.definitions.model.ResourceDefn> resources) throws Exception
+	{
+		
+		List<ResourceDefn> result = new ArrayList<ResourceDefn>();
+		
+	    for (org.hl7.fhir.definitions.model.ResourceDefn resource : resources) 
+	    {
+	    	result.add( (ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true) );
 	    }
 	    
 	    return result;
@@ -63,9 +76,11 @@ public class CompositeTypeConverter
 	
 	
 	public static CompositeTypeDefn buildCompositeTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.ElementDefn type )
+			org.hl7.fhir.definitions.model.ElementDefn type, boolean asResource ) throws Exception
 	{
-		CompositeTypeDefn result = FhirFactory.eINSTANCE.createCompositeTypeDefn();
+		CompositeTypeDefn result = asResource ?
+				FhirFactory.eINSTANCE.createResourceDefn() :
+				FhirFactory.eINSTANCE.createCompositeTypeDefn();
 		
 		result.setName( type.getName() );
 		
@@ -79,12 +94,14 @@ public class CompositeTypeConverter
 				buildInvariantsFromFhirModel( type.getInvariants().values() ) );
 	
 		for( String typeName : type.getAcceptableGenericTypes() )
-			result.getAllowedGenericTypes().add( buildTypeRef(typeName) );
+			result.getAllowedGenericTypes().addAll( 
+				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
 		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements() ) );
 		
-		
-		//TODO: Add type-local types from type.getNestedTypes() to new CompositeType
+		if( type.getNestedTypes() != null )
+			result.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
+					type.getNestedTypes().values()));
 		
 		return result;
 	}
@@ -107,7 +124,8 @@ public class CompositeTypeConverter
 
 
 	public static List<ElementDefn> buildElementDefnsFromFhirModel(
-			List<org.hl7.fhir.definitions.model.ElementDefn> elements) {
+			List<org.hl7.fhir.definitions.model.ElementDefn> elements) throws Exception
+	{
 
 		List<ElementDefn> result = new ArrayList<ElementDefn>();
 		
@@ -119,7 +137,8 @@ public class CompositeTypeConverter
 
 
 	public static ElementDefn buildElementDefnFromFhirModel(
-			org.hl7.fhir.definitions.model.ElementDefn element) {
+			org.hl7.fhir.definitions.model.ElementDefn element) throws Exception
+	{
 
 		ElementDefn result = FhirFactory.eINSTANCE.createElementDefn();
 		
@@ -131,17 +150,31 @@ public class CompositeTypeConverter
 		result.setMustUnderstand( element.isMustUnderstand() );
 		result.setMustSupport( element.isMustSupport() );
 		
-		
 		result.setMinCardinality( element.getMinCardinality() );
 		
 		if( element.getMaxCardinality() != null )
 			result.setMaxCardinality( element.getMaxCardinality() );
 		else
 			result.setMaxCardinality(-1);	// Adapt eCore convention for '*'
-		
-		
-		if( !element.getElements().isEmpty() )
-			result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
+	
+		// If this element is actually a type definition (a group of elements
+		// with a '=<typename>' in the type column, we'll have to make sure
+		// to not copy the nested elements, but just refer to the type
+		// these elements are declaring. Note that by now, to not confuse
+		// old code, the typename will have been cleared, and only the fact
+		// that getDeclaredTypeName() is set, reminds us of this explicit
+		// type declaration that was there before.
+		if( element.getTypes() != null )
+				result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirModel(element.getTypes()));		
+		if( element.getDeclaredTypeName() != null )
+			result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirTypeName(
+					element.getDeclaredTypeName() ) );
+
+		if( element.getDeclaredTypeName() == null )
+		{
+			if( !element.getElements().isEmpty() )
+				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
+		}
 		
 		return result;
 	}
@@ -171,20 +204,4 @@ public class CompositeTypeConverter
 
 		return result;
 	}
-	
-	
-	public static TypeRef buildTypeRef( String fhirTypeName )
-	{
-		TypeRef result = FhirFactory.eINSTANCE.createTypeRef();
-		
-		if( fhirTypeName.equals("*") )
-			result.setIsAnyDataType(true);
-		else if( fhirTypeName.equals("Any") )
-			result.setIsAnyResource(true);
-		else
-			result.setName(fhirTypeName);
-		
-		return result;
-	}
-
 }

@@ -110,14 +110,13 @@ public class SpreadsheetParser {
 		return resource;
 	}
 	
+	
 	private void scanNestedTypes(ResourceDefn parent, ElementDefn root) throws Exception
 	{
 		for( ElementDefn element : root.getElements() )
 		{
 			if( element.hasNestedElements() )
-			{
-				scanNestedTypes( parent, element );
-				
+			{			
 				if( element.typeCode().startsWith("=") )
 				{
 					String nestedTypeName = element.typeCode().substring(1);
@@ -139,10 +138,39 @@ public class SpreadsheetParser {
 					element.getTypes().clear();
 					element.setDeclaredTypeName(nestedTypeName);
 				}
-			}			
+				
+				scanNestedTypes( parent, element );
+			}
+			
+			resolveElementReferences(parent, element);
 		}
 	}
 	
+	private void resolveElementReferences(ResourceDefn parent, ElementDefn root)
+			throws Exception 
+	{
+		for (TypeRef ref : root.getTypes()) {
+			if (ref.isElementReference()) {
+				ElementDefn referredElement = parent.getRoot()
+						.getElementByName(ref.getName().substring(1));
+
+				if (referredElement == null)
+					throw new Exception("Element reference " + ref.getName()
+							+ " cannot be found in type " + parent.getName());
+
+				if (referredElement.getDeclaredTypeName() == null)
+					throw new Exception(
+							"Element reference "
+									+ ref.getName()
+									+ " in "
+									+ parent.getName()
+									+ " refers to an anonymous group of elements. Please specify names "
+									+ " with the '=<name>' construct in the typename column.");
+
+				ref.setResolvedTypeName(referredElement.getDeclaredTypeName());
+			}
+		}
+	}
 	
 	
 	public ResourceDefn parseResource() throws Exception {
