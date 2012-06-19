@@ -242,12 +242,14 @@ public class CSharpResourceGenerator extends OutputStreamWriter {
 
 		if (code.equals("<"))
 			return "lessThan";
-		else if (code.equals("<="))
-			return "lessOrEqual";
+    else if (code.equals("<="))
+      return "lessOrEqual";
 		else if (code.equals(">"))
 			return "greaterThan";
 		else if (code.equals(">="))
 			return "greaterOrEqual";
+    else if (code.equals("="))
+      return "equal";
 		else
 			return code.replace("-", "Minus").replace("+", "Plus");
 	}

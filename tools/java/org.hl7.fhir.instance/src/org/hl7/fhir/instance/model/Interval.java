@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 /**
  * A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime

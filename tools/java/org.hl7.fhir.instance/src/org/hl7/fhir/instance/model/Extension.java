@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -66,7 +66,7 @@ public class Extension extends Element {
     /**
      * Nested Extensions - further extensions that are part of the extension
      */
-    /*1*/private List<Extension> extension = new ArrayList<Extension>();
+    private List<Extension> extension = new ArrayList<Extension>();
 
     public String getCode() { 
       return this.code;
@@ -108,7 +108,7 @@ public class Extension extends Element {
       this.value = value;
     }
 
-    /*2*/public List<Extension> getExtension() { 
+    public List<Extension> getExtension() { 
       return this.extension;
     }
 

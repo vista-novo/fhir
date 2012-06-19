@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -43,18 +43,18 @@ public class Address extends Type {
         work, // An office address. First choice for business related contacts during business hours.
         temp, // A temporary address. The period can provide more detailed information.
         old; // This address is no longer in use (or was never correct, but retained for records)
-        public static AddressUse fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static AddressUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("home".equals(code))
+        if ("home".equals(codeString))
           return home;
-        if ("work".equals(code))
+        if ("work".equals(codeString))
           return work;
-        if ("temp".equals(code))
+        if ("temp".equals(codeString))
           return temp;
-        if ("old".equals(code))
+        if ("old".equals(codeString))
           return old;
-        throw new Exception("Unknown AddressUse code '"+code+"'");
+        throw new Exception("Unknown AddressUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -75,24 +75,24 @@ public class Address extends Type {
         country, // Country. ISO 3166 3 letter codes can be used in place of a full country name.
         zip, // A postal code designating a region defined by the postal service.
         dpid; // A value that uniquely identifies the postal address. (often used in barcodes). 
-        public static AddressPartType fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static AddressPartType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("part".equals(code))
+        if ("part".equals(codeString))
           return part;
-        if ("line".equals(code))
+        if ("line".equals(codeString))
           return line;
-        if ("city".equals(code))
+        if ("city".equals(codeString))
           return city;
-        if ("state".equals(code))
+        if ("state".equals(codeString))
           return state;
-        if ("country".equals(code))
+        if ("country".equals(codeString))
           return country;
-        if ("zip".equals(code))
+        if ("zip".equals(codeString))
           return zip;
-        if ("dpid".equals(code))
+        if ("dpid".equals(codeString))
           return dpid;
-        throw new Exception("Unknown AddressPartType code '"+code+"'");
+        throw new Exception("Unknown AddressPartType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

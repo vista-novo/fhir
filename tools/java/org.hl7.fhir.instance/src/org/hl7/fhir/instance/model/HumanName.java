@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -45,22 +45,22 @@ public class HumanName extends Type {
         anonymous, // Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)
         old, // This name is no longer in use (or was never correct, but retained for records)
         maiden; // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person‘s name, nor should the maiden name be determined algorithmically
-        public static NameUse fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static NameUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("usual".equals(code))
+        if ("usual".equals(codeString))
           return usual;
-        if ("official".equals(code))
+        if ("official".equals(codeString))
           return official;
-        if ("temp".equals(code))
+        if ("temp".equals(codeString))
           return temp;
-        if ("anonymous".equals(code))
+        if ("anonymous".equals(codeString))
           return anonymous;
-        if ("old".equals(code))
+        if ("old".equals(codeString))
           return old;
-        if ("maiden".equals(code))
+        if ("maiden".equals(codeString))
           return maiden;
-        throw new Exception("Unknown NameUse code '"+code+"'");
+        throw new Exception("Unknown NameUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -79,16 +79,16 @@ public class HumanName extends Type {
         family, // Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
         given, // Given name. NOTE Not to be called "first name" since given names do not always come first. .
         title; // Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. 
-        public static NamePartType fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static NamePartType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("family".equals(code))
+        if ("family".equals(codeString))
           return family;
-        if ("given".equals(code))
+        if ("given".equals(codeString))
           return given;
-        if ("title".equals(code))
+        if ("title".equals(codeString))
           return title;
-        throw new Exception("Unknown NamePartType code '"+code+"'");
+        throw new Exception("Unknown NamePartType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

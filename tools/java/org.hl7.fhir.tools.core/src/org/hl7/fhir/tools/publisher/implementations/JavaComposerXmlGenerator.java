@@ -251,7 +251,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         en = typeNames.get(e); // getCodeListType(cd.getBinding());
         comp = null;
       } else {   
-        if (name.equals("extensions")) {
+        if (name.equals("extension")) {
           name = "extension";
           tn = "Extension";
         }
@@ -278,10 +278,10 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       if (name.equals("extension")) {
         String s = contentsHaveDataAbsentReason ? "Extensions" : "Extension"; 
         write("      if (element.get"+s+"().size() > 0) {\r\n");
-        write("        xml.open(FHIR_NS, \"extensions\");\r\n");
+        write("        xml.open(FHIR_NS, \"extension\");\r\n");
         write("        for (Extension e : element.get"+s+"()) \r\n");
         write("          composeExtension(\"extension\", e);\r\n");
-        write("        xml.close(FHIR_NS, \"extensions\");\r\n");
+        write("        xml.close(FHIR_NS, \"extension\");\r\n");
         write("      }\r\n");
       } else if (e.unbounded()) {
         if (listsAreWrapped && !Config.SUPPRESS_WRAPPER_ELEMENTS) {          
@@ -425,7 +425,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         tn = upFirst(e.getName());
         if (tn.equals("Element"))
           tn = "Element_";
-        if (!e.getName().equals("extensions"))
+        if (!e.getName().equals("extension"))
           strucs.add(e);
         if (typeNameStrings.contains(tn)) {
           char i = 'A';

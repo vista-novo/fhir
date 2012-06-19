@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -111,7 +111,7 @@ public class Animal extends Resource {
     /**
      * The birth date for the animal
      */
-    private DateTime dob;
+    private String dob;
 
     /**
      * Species for the animal
@@ -141,11 +141,11 @@ public class Animal extends Resource {
       return this.name;
     }
 
-    public DateTime getDob() { 
+    public String getDob() { 
       return this.dob;
     }
 
-    public void setDob(DateTime value) { 
+    public void setDob(String value) { 
       this.dob = value;
     }
 

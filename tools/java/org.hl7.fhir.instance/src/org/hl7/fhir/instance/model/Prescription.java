@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -41,14 +41,14 @@ public class Prescription extends Resource {
     public enum PrescriptionStatus {
         active, // Patient is using the prescribed medicin
         completed; // Prescription is no longer current
-        public static PrescriptionStatus fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static PrescriptionStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("active".equals(code))
+        if ("active".equals(codeString))
           return active;
-        if ("completed".equals(code))
+        if ("completed".equals(codeString))
           return completed;
-        throw new Exception("Unknown PrescriptionStatus code '"+code+"'");
+        throw new Exception("Unknown PrescriptionStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -197,7 +197,7 @@ public class Prescription extends Resource {
         /**
          * Textual description of the use of the medication.
          */
-        private String_ description;
+        private String description;
 
         /**
          * Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.
@@ -207,12 +207,12 @@ public class Prescription extends Resource {
         /**
          * First moment on which medication should be taken
          */
-        private DateTime start;
+        private String start;
 
         /**
          * Last moment on which medication should be taken
          */
-        private DateTime end;
+        private String end;
 
         /**
          * Total duration of administration
@@ -222,18 +222,18 @@ public class Prescription extends Resource {
         /**
          * Maximum number of separate administrations before the instruction ends.
          */
-        private Integer numberOfAdministrations;
+        private int numberOfAdministrations;
 
         /**
          * Specification of dose and schedule for administration
          */
         private List<DosageInstruction> dosageInstruction = new ArrayList<DosageInstruction>();
 
-        public String_ getDescription() { 
+        public String getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String_ value) { 
+        public void setDescription(String value) { 
           this.description = value;
         }
 
@@ -245,19 +245,19 @@ public class Prescription extends Resource {
           this.totalPeriodicDosis = value;
         }
 
-        public DateTime getStart() { 
+        public String getStart() { 
           return this.start;
         }
 
-        public void setStart(DateTime value) { 
+        public void setStart(String value) { 
           this.start = value;
         }
 
-        public DateTime getEnd() { 
+        public String getEnd() { 
           return this.end;
         }
 
-        public void setEnd(DateTime value) { 
+        public void setEnd(String value) { 
           this.end = value;
         }
 
@@ -269,11 +269,11 @@ public class Prescription extends Resource {
           this.duration = value;
         }
 
-        public Integer getNumberOfAdministrations() { 
+        public int getNumberOfAdministrations() { 
           return this.numberOfAdministrations;
         }
 
-        public void setNumberOfAdministrations(Integer value) { 
+        public void setNumberOfAdministrations(int value) { 
           this.numberOfAdministrations = value;
         }
 

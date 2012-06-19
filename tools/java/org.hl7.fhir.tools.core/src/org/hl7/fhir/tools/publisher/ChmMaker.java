@@ -43,6 +43,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 public class ChmMaker {
 
@@ -145,7 +146,9 @@ public class ChmMaker {
     s.append("</BODY></HTML>\r\n");
   }
 
-  private void buildHHC(StringBuilder s) throws IOException {
+  private void buildHHC(StringBuilder s) throws Exception {
+    List<String> links = new ArrayList<String>();
+
     s.append("<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML//EN\">\r\n");
     s.append("<HTML>\r\n");
     s.append("<HEAD>\r\n");
@@ -159,6 +162,12 @@ public class ChmMaker {
     for (Category c : navigation.getCategories()) {
       s.append("  <LI> <OBJECT type=\"text/sitemap\">\r\n");
       s.append("      <param name=\"Name\" value=\""+c.getName()+"\">\r\n");
+      if (c.getLink() != null) {
+        Utilities.copyFile(new File(folders.dstDir+"print-"+c.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+c.getLink()+".htm"));
+        links.add(c.getLink());
+        s.append("       <param name=\"Local\" value=\""+c.getLink()+".htm\">\r\n");
+      }
+
       s.append("    </OBJECT>\r\n");
       s.append("  <UL>\r\n");
       for (Navigation.Entry e : c.getEntries()) {
@@ -167,6 +176,7 @@ public class ChmMaker {
         if (e.getLink() != null) {
           Utilities.copyFile(new File(folders.dstDir+"print-"+e.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+e.getLink()+".htm"));
           s.append("       <param name=\"Local\" value=\""+e.getLink()+".htm\">\r\n");
+          links.add(e.getLink());
         }
         s.append("      </OBJECT>\r\n");
         for (Navigation.Entry ce : e.getEntries()) {
@@ -175,6 +185,23 @@ public class ChmMaker {
           s.append("       <param name=\"Local\" value=\""+ce.getLink()+".htm\">\r\n");
           s.append("      </OBJECT>\r\n");
           Utilities.copyFile(new File(folders.dstDir+"print-"+ce.getLink()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+ce.getLink()+".htm"));
+          links.add(ce.getLink());
+        }
+      }
+      if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {
+        List<String> list = new ArrayList<String>();
+        list.addAll(page.getDefinitions().getResources().keySet());
+        Collections.sort(list);
+        
+        for (String rn : list) {
+          if (!links.contains(rn.toLowerCase())) {
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            s.append("    <LI> <OBJECT type=\"text/sitemap\">\r\n");
+            s.append("       <param name=\"Name\" value=\""+r.getName()+"\">\r\n");
+            s.append("       <param name=\"Local\" value=\""+rn.toLowerCase()+".htm\">\r\n");
+            s.append("      </OBJECT>\r\n");
+            Utilities.copyFile(new File(folders.dstDir+"print-"+rn.toLowerCase()+".htm"), new File(folders.rootDir+"\\temp\\chm\\"+rn.toLowerCase()+".htm"));
+          }
         }
       }
       s.append("  </UL>\r\n");

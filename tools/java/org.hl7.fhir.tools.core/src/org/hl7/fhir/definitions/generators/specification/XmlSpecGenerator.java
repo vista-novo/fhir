@@ -194,6 +194,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</b></a>");
 			if (elem.isAllowDAR())
 				write(" <span style=\"color: red\" title=\"dataAbsentReason attribute is allowed\">d?</span>");
+			if (elem.isXmlIDRef())
+			  write(" idref=\"<span style=\"color: navy\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\">["+elem.getShortDefn()+"]</span>\"/");
 			write("&gt;");
 
 			// If this is an unrolled element, show its profile name
@@ -276,7 +278,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 					i++;
 				}
 				write("</span>");
-			} else if (elem.getName().equals("extensions")) {
+			} else if (elem.getName().equals("extension")) {
 				write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">See Extensions</span></a> ");
 			} else if (elem.getTypes().size() == 1
 					&& elem.getTypes().get(0).isWildcardType()) {
@@ -286,14 +288,15 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 			write(" ");
 			if (elem.getElements().isEmpty()) {
-				if ("See Extensions".equals(elem.getShortDefn()))
-					write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">"
-							+ Utilities.escapeXml(elem.getShortDefn())
-							+ "</span></a> ");
-				else {
-					write("<span style=\"color: navy\">"
-							+ Utilities.escapeXml(elem.getShortDefn())
-							+ "</span>");
+				if ("See Extensions".equals(elem.getShortDefn())) {
+//					write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">"
+//							+ Utilities.escapeXml(elem.getShortDefn())
+//							+ "</span></a> ");
+				} else {
+				  if (!elem.isXmlIDRef()) 
+				    write("<span style=\"color: navy\">"
+				        + Utilities.escapeXml(elem.getShortDefn())
+				        + "</span>");
 				}
 			} else {
 				if (elem.unbounded() && !listed) { // isNolist()) {
@@ -330,9 +333,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 			if (elem.getElements().isEmpty())
 				write("<span style=\"color: Gray\"> --&gt;</span>");
-			write("&lt;/");
-			write(en);
-			write("&gt;");
+			if (!elem.isXmlIDRef()) {
+			  write("&lt;/");
+			  write(en);
+			  write("&gt;");
+			}
 			if (elem.isInherited())
 				write("</i>");
 			write("\r\n");

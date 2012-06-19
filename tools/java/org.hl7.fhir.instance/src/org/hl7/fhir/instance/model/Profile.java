@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -44,20 +44,20 @@ public class Profile extends Resource {
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn
         superceded; // This profile was superceded by a more recent version
-        public static ResourceProfileStatus fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ResourceProfileStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("draft".equals(code))
+        if ("draft".equals(codeString))
           return draft;
-        if ("testing".equals(code))
+        if ("testing".equals(codeString))
           return testing;
-        if ("production".equals(code))
+        if ("production".equals(codeString))
           return production;
-        if ("withdrawn".equals(code))
+        if ("withdrawn".equals(codeString))
           return withdrawn;
-        if ("superceded".equals(code))
+        if ("superceded".equals(codeString))
           return superceded;
-        throw new Exception("Unknown ResourceProfileStatus code '"+code+"'");
+        throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -77,20 +77,20 @@ public class Profile extends Resource {
         elements, // the extension is used on one or elements in one or more resources. The path consists of a series of element paths separated by commas
         mapping, // The extension is allowed to be used anywhere that makes sense given the identified mapping. The path identifies the mapping by name. The mapping should clearly identify where such an extension could be used, though this may not be computable
         extension; // The extension identifies another extension. The path consists of uri#name, where uri identifies the profile, and #name identifies the extension
-        public static ExtensionContextType fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ExtensionContextType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("resource".equals(code))
+        if ("resource".equals(codeString))
           return resource;
-        if ("datatype".equals(code))
+        if ("datatype".equals(codeString))
           return datatype;
-        if ("elements".equals(code))
+        if ("elements".equals(codeString))
           return elements;
-        if ("mapping".equals(code))
+        if ("mapping".equals(codeString))
           return mapping;
-        if ("extension".equals(code))
+        if ("extension".equals(codeString))
           return extension;
-        throw new Exception("Unknown ExtensionContextType code '"+code+"'");
+        throw new Exception("Unknown ExtensionContextType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -111,22 +111,22 @@ public class Profile extends Resource {
         Preferred, // The concept domain references a set of preferred terms
         Suggestion, // This profile was superceded by a more recent version
         External; // The concept domain is defined by an external authority identified in the reference
-        public static ConceptBindingType fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ConceptBindingType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("Unbound".equals(code))
+        if ("Unbound".equals(codeString))
           return Unbound;
-        if ("CodeList".equals(code))
+        if ("CodeList".equals(codeString))
           return CodeList;
-        if ("Reference".equals(code))
+        if ("Reference".equals(codeString))
           return Reference;
-        if ("Preferred".equals(code))
+        if ("Preferred".equals(codeString))
           return Preferred;
-        if ("Suggestion".equals(code))
+        if ("Suggestion".equals(codeString))
           return Suggestion;
-        if ("External".equals(code))
+        if ("External".equals(codeString))
           return External;
-        throw new Exception("Unknown ConceptBindingType code '"+code+"'");
+        throw new Exception("Unknown ConceptBindingType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

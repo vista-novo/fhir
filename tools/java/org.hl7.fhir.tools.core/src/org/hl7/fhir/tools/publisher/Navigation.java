@@ -64,6 +64,7 @@ public class Navigation {
   }
   public class Category {
     private String name;
+    private String link;
     private String mode;
     private List<Entry> entries = new ArrayList<Entry>();
     public String getName() {
@@ -80,6 +81,12 @@ public class Navigation {
     }
     public List<Entry> getEntries() {
       return entries;
+    }
+    public String getLink() {
+      return link;
+    }
+    public void setLink(String link) {
+      this.link = link;
     }
     
   }
@@ -122,6 +129,9 @@ public class Navigation {
    while (child != null) {
      if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("name")) {
        c.setName(child.getTextContent());
+     }
+     if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("link")) {
+       c.setLink(child.getTextContent());
      }
      if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("mode")) {
        c.setMode(child.getTextContent());

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -43,16 +43,16 @@ public class Narrative extends Element {
         generated, // The contents of the narrative are entirely generated from the structured data in the resource.
         extensions, // The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions
         additional; // The contents of the narrative contain additional information not found in the structured data
-        public static NarrativeStatus fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static NarrativeStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("generated".equals(code))
+        if ("generated".equals(codeString))
           return generated;
-        if ("extensions".equals(code))
+        if ("extensions".equals(codeString))
           return extensions;
-        if ("additional".equals(code))
+        if ("additional".equals(codeString))
           return additional;
-        throw new Exception("Unknown NarrativeStatus code '"+code+"'");
+        throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -67,14 +67,14 @@ public class Narrative extends Element {
     public enum NarrativeMapSource {
         text, // The text is the original data
         data; // The data is the original data
-        public static NarrativeMapSource fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static NarrativeMapSource fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("text".equals(code))
+        if ("text".equals(codeString))
           return text;
-        if ("data".equals(code))
+        if ("data".equals(codeString))
           return data;
-        throw new Exception("Unknown NarrativeMapSource code '"+code+"'");
+        throw new Exception("Unknown NarrativeMapSource code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

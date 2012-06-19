@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -99,7 +99,7 @@ public class AssessmentScale extends Resource {
         /**
          * when the value was measured
          */
-        private DateTime time;
+        private String time;
 
         /**
          * Reference to the actual measure in it's original context where additional information may be found
@@ -122,11 +122,11 @@ public class AssessmentScale extends Resource {
           this.value = value;
         }
 
-        public DateTime getTime() { 
+        public String getTime() { 
           return this.time;
         }
 
-        public void setTime(DateTime value) { 
+        public void setTime(String value) { 
           this.time = value;
         }
 
@@ -173,7 +173,7 @@ public class AssessmentScale extends Resource {
     /**
      * The reason that the assessment was performed
      */
-    private String_ reason;
+    private String reason;
 
     public ResourceReference getSubject() { 
       return this.subject;
@@ -219,11 +219,11 @@ public class AssessmentScale extends Resource {
       this.score = value;
     }
 
-    public String_ getReason() { 
+    public String getReason() { 
       return this.reason;
     }
 
-    public void setReason(String_ value) { 
+    public void setReason(String value) { 
       this.reason = value;
     }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -43,18 +43,18 @@ public class Person extends Resource {
         poor, // The person has minimal functional capability in the language
         useable, // The person can use the language, but may not be full conversant, particularly with regards to health concepts
         fluent; // The person is fully capable of using the language
-        public static LanguageUse fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static LanguageUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("none".equals(code))
+        if ("none".equals(codeString))
           return none;
-        if ("poor".equals(code))
+        if ("poor".equals(codeString))
           return poor;
-        if ("useable".equals(code))
+        if ("useable".equals(codeString))
           return useable;
-        if ("fluent".equals(code))
+        if ("fluent".equals(codeString))
           return fluent;
-        throw new Exception("Unknown LanguageUse code '"+code+"'");
+        throw new Exception("Unknown LanguageUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -225,7 +225,7 @@ public class Person extends Resource {
     /**
      * The birth date for the person
      */
-    private DateTime dob;
+    private String dob;
 
     /**
      * Administrative Gender
@@ -273,11 +273,11 @@ public class Person extends Resource {
       return this.contact;
     }
 
-    public DateTime getDob() { 
+    public String getDob() { 
       return this.dob;
     }
 
-    public void setDob(DateTime value) { 
+    public void setDob(String value) { 
       this.dob = value;
     }
 

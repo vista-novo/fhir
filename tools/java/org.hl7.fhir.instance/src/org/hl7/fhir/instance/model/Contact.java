@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
@@ -41,18 +41,18 @@ public class Contact extends Type {
         fax, // the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
         email, // the value is an email address
         url; // The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses
-        public static ContactSystem fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ContactSystem fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("phone".equals(code))
+        if ("phone".equals(codeString))
           return phone;
-        if ("fax".equals(code))
+        if ("fax".equals(codeString))
           return fax;
-        if ("email".equals(code))
+        if ("email".equals(codeString))
           return email;
-        if ("url".equals(code))
+        if ("url".equals(codeString))
           return url;
-        throw new Exception("Unknown ContactSystem code '"+code+"'");
+        throw new Exception("Unknown ContactSystem code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -71,20 +71,20 @@ public class Contact extends Type {
         temp, // A temporary contact. The period can provide more detailed information.
         old, // This contact is no longer in use (or was never correct, but retained for records)
         mobile; // A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business
-        public static ContactUse fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ContactUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("home".equals(code))
+        if ("home".equals(codeString))
           return home;
-        if ("work".equals(code))
+        if ("work".equals(codeString))
           return work;
-        if ("temp".equals(code))
+        if ("temp".equals(codeString))
           return temp;
-        if ("old".equals(code))
+        if ("old".equals(codeString))
           return old;
-        if ("mobile".equals(code))
+        if ("mobile".equals(codeString))
           return mobile;
-        throw new Exception("Unknown ContactUse code '"+code+"'");
+        throw new Exception("Unknown ContactUse code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

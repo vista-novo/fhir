@@ -149,7 +149,7 @@ public class UMLValidator {
     Map<String, ElementDefn> allDefns = new HashMap<String, ElementDefn>();
     List<ElementDefn> attrDefns = new ArrayList<ElementDefn>();
     for (ElementDefn c : e.getElements()) 
-      if (!root || !(c.getName().equals("id") || c.getName().equals("extensions") || c.getName().equals("text"))) {
+      if (!root || !(c.getName().equals("id") || c.getName().equals("extension") || c.getName().equals("text"))) {
         allDefns.put(c.getName(), c);
         if (c.getElements().size() == 0)
         attrDefns.add(c);

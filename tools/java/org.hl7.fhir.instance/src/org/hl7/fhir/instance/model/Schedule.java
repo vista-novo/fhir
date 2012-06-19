@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -49,30 +49,30 @@ public class Schedule extends Type {
         PCM, // event occurs duration after breakfast (from the latin post cibus matutinus)
         PCD, // event occurs duration after lunch (from the latin post cibus diurnus)
         PCV; // event occurs duration after dinner (from the latin post cibus vespertinus) 
-        public static EventTiming fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static EventTiming fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("HS".equals(code))
+        if ("HS".equals(codeString))
           return HS;
-        if ("WAKE".equals(code))
+        if ("WAKE".equals(codeString))
           return WAKE;
-        if ("AC".equals(code))
+        if ("AC".equals(codeString))
           return AC;
-        if ("ACM".equals(code))
+        if ("ACM".equals(codeString))
           return ACM;
-        if ("ACD".equals(code))
+        if ("ACD".equals(codeString))
           return ACD;
-        if ("ACV".equals(code))
+        if ("ACV".equals(codeString))
           return ACV;
-        if ("PC".equals(code))
+        if ("PC".equals(codeString))
           return PC;
-        if ("PCM".equals(code))
+        if ("PCM".equals(codeString))
           return PCM;
-        if ("PCD".equals(code))
+        if ("PCD".equals(codeString))
           return PCD;
-        if ("PCV".equals(code))
+        if ("PCV".equals(codeString))
           return PCV;
-        throw new Exception("Unknown EventTiming code '"+code+"'");
+        throw new Exception("Unknown EventTiming code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

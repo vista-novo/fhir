@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -43,18 +43,18 @@ public class Document extends Resource {
         professional, // The person authenticated the document in their professional capacity
         legal, // The person authenticated the document and accepted legal responsibility for it's content
         official; // The organization authenticated the document as consistent with their policies and procedures
-        public static DocumentAuthenticationMode fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static DocumentAuthenticationMode fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("personal".equals(code))
+        if ("personal".equals(codeString))
           return personal;
-        if ("professional".equals(code))
+        if ("professional".equals(codeString))
           return professional;
-        if ("legal".equals(code))
+        if ("legal".equals(codeString))
           return legal;
-        if ("official".equals(code))
+        if ("official".equals(codeString))
           return official;
-        throw new Exception("Unknown DocumentAuthenticationMode code '"+code+"'");
+        throw new Exception("Unknown DocumentAuthenticationMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -71,18 +71,18 @@ public class Document extends Resource {
         /**
          * When authoring happened
          */
-        private DateTime time;
+        private String time;
 
         /**
          * who/what authored the final document
          */
         private ResourceReference party;
 
-        public DateTime getTime() { 
+        public String getTime() { 
           return this.time;
         }
 
-        public void setTime(DateTime value) { 
+        public void setTime(String value) { 
           this.time = value;
         }
 
@@ -105,7 +105,7 @@ public class Document extends Resource {
         /**
          * When document attested
          */
-        private DateTime time;
+        private String time;
 
         /**
          * who attested the document
@@ -120,11 +120,11 @@ public class Document extends Resource {
           this.mode = value;
         }
 
-        public DateTime getTime() { 
+        public String getTime() { 
           return this.time;
         }
 
-        public void setTime(DateTime value) { 
+        public void setTime(String value) { 
           this.time = value;
         }
 
@@ -147,7 +147,7 @@ public class Document extends Resource {
         /**
          * the section creation time (sections are often re-used in several documents).
          */
-        private Instant instant;
+        private java.util.Date instant;
 
         /**
          * if section author different to document
@@ -187,11 +187,11 @@ public class Document extends Resource {
           this.type = value;
         }
 
-        public Instant getInstant() { 
+        public java.util.Date getInstant() { 
           return this.instant;
         }
 
-        public void setInstant(Instant value) { 
+        public void setInstant(java.util.Date value) { 
           this.instant = value;
         }
 
@@ -245,18 +245,18 @@ public class Document extends Resource {
         /**
          * When authoring happened
          */
-        private DateTime time;
+        private String time;
 
         /**
          * who/what authored the section
          */
         private ResourceReference party;
 
-        public DateTime getTime() { 
+        public String getTime() { 
           return this.time;
         }
 
-        public void setTime(DateTime value) { 
+        public void setTime(String value) { 
           this.time = value;
         }
 
@@ -283,7 +283,7 @@ public class Document extends Resource {
     /**
      * the title of the document
      */
-    private String_ title;
+    private String title;
 
     /**
      * Represents an identifier that is common across all document revisions
@@ -356,11 +356,11 @@ public class Document extends Resource {
       this.type = value;
     }
 
-    public String_ getTitle() { 
+    public String getTitle() { 
       return this.title;
     }
 
-    public void setTitle(String_ value) { 
+    public void setTitle(String value) { 
       this.title = value;
     }
 

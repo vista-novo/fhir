@@ -65,6 +65,9 @@ public class ModelValidator {
 	public List<String> check(String name, ResourceDefn parent) {
 		errors.clear();
 		checkElement(parent.getName(), parent.getRoot(), parent);
+		rule(parent.getName(), parent.getRoot().getElementByName("extensions") == null, "No element named \"extensions\"");
+		if (rule(parent.getName(), parent.getRoot().getElementByName("extension") != null, "Element named \"extension\" required"))
+		  rule(parent.getName(), parent.getRoot().getElementByName("extension").getMaxCardinality() == null, "Element named \"extension\", max cardinality != *");
 		return errors;
 	}
 
@@ -103,7 +106,7 @@ public class ModelValidator {
 	private void checkType(String path, ElementDefn e, ResourceDefn parent) {
 		if (e.getTypes().size() == 0) {
 			rule(path, path.contains("."), "Must have a type on a base element");
-			rule(path, e.getName().equals("extensions")
+			rule(path, e.getName().equals("extension")
 					|| e.getElements().size() > 0,
 					"Must have a type unless sub-elements exist");
 		} else {
@@ -139,9 +142,10 @@ public class ModelValidator {
 				parent.getRoot().hasNestedType(name);
 	}
 
-	private void rule(String path, boolean b, String msg) {
+	private boolean rule(String path, boolean b, String msg) {
 		if (!b)
 			errors.add(path + ": " + msg);
+		return b;
 
 	}
 

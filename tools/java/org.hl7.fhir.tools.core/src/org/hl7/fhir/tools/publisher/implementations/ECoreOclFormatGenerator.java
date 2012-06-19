@@ -113,7 +113,7 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
 
   private void generateElement(String name, ElementDefn e) throws Exception {
     if (e.getElements().size() == 0) {
-      if (e.getName().equals("extensions"))
+      if (e.getName().equals("extension"))
         writeLine(addDefn("    attribute "+e.getName()+" : Extensions;", e));
       else {
         if (e.getTypes().size() == 0)

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -44,20 +44,20 @@ public class Message extends Resource {
         rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is
         rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition
         undeliverable; // A middleware agent was unable to deliver the message to it's supposed destination
-        public static ResponseCode fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static ResponseCode fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("ok".equals(code))
+        if ("ok".equals(codeString))
           return ok;
-        if ("error".equals(code))
+        if ("error".equals(codeString))
           return error;
-        if ("rejection".equals(code))
+        if ("rejection".equals(codeString))
           return rejection;
-        if ("rules".equals(code))
+        if ("rules".equals(codeString))
           return rules;
-        if ("undeliverable".equals(code))
+        if ("undeliverable".equals(codeString))
           return undeliverable;
-        throw new Exception("Unknown ResponseCode code '"+code+"'");
+        throw new Exception("Unknown ResponseCode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -127,7 +127,7 @@ public class Message extends Resource {
         /**
          * Version of software running
          */
-        private String_ version;
+        private String version;
 
         /**
          * Human contact for problems
@@ -155,11 +155,11 @@ public class Message extends Resource {
           this.software = value;
         }
 
-        public String_ getVersion() { 
+        public String getVersion() { 
           return this.version;
         }
 
-        public void setVersion(String_ value) { 
+        public void setVersion(String value) { 
           this.version = value;
         }
 

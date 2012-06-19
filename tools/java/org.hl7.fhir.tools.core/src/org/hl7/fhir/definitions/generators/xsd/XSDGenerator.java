@@ -271,7 +271,7 @@ public class XSDGenerator extends OutputStreamWriter {
 			  generateAny(root, e, e.getName().replace("[x]", ""));
 			else
 			  for (TypeRef t : e.getTypes()) {
-			    String tn = encodeType(e, t, false);
+			    String tn = encodeType(e, t, true);
 			    String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
 			    write("        <xs:element name=\""+n+"\" >\r\n");
 			    write("          <xs:complexType>\r\n");
@@ -286,8 +286,8 @@ public class XSDGenerator extends OutputStreamWriter {
 			write("      </xs:choice>\r\n");
 		} else {
 		  String tn = null;
-			if ("extensions".equals(e.getName()))
-				write("<xs:element name=\""+e.getName()+"\" type=\"Extensions\" ");
+			if ("extension".equals(e.getName()))
+				write("<xs:element name=\""+e.getName()+"\" type=\"Extension\" ");
 			else if (e.usesCompositeType()) {
 			  ElementDefn ref = root.getElementByName(e.typeCode().substring(1));
 			  String rtn = types.get(ref);

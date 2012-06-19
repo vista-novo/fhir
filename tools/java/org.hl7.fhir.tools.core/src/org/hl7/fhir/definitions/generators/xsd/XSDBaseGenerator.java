@@ -75,6 +75,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		write("  <xs:import namespace=\"http://www.w3.org/XML/1998/namespace\"/>\r\n");
 		write("  <xs:import namespace=\"http://www.w3.org/1999/xhtml\" schemaLocation=\"xhtml1-strict.xsd\"/>\r\n");
 
+		genXmlIdRef();
 		genPrimitives();
 		genDataAbsentReason();
 		genResourceReference();
@@ -90,22 +91,27 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			genConstraint(cd);
 		for (ElementDefn e : definitions.getStructures().values())
 			genStructure(e);
-		genExtensionsElement();
 		write("</xs:schema>\r\n");
 		flush();
 	}
 
-	private void genExtensionsElement() throws Exception {
-		write("  <xs:complexType name=\"Extensions\">\r\n");
-		write("    <xs:sequence>\r\n");
-		write("      <xs:element name=\"extension\" type=\"Extension\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n");
-		write("        <xs:annotation>\r\n");
-		write("          <xs:documentation>An extension value</xs:documentation>\r\n");
-		write("        </xs:annotation>\r\n");
-		write("      </xs:element>\r\n");
-		write("    </xs:sequence>\r\n");
-		write("  </xs:complexType>\r\n");
-	}
+private void genXmlIdRef() throws Exception {
+    write("  <xs:complexType name=\"xmlIdRef\">\r\n");
+    write("    <xs:attribute name=\"idref\" type=\"xs:IDREF\"/>\r\n");
+    write("  </xs:complexType>\r\n");
+  }
+
+//	private void genExtensionsElement() throws Exception {
+//		write("  <xs:complexType name=\"Extensions\">\r\n");
+//		write("    <xs:sequence>\r\n");
+//		write("      <xs:element name=\"extension\" type=\"Extension\" minOccurs=\"0\" maxOccurs=\"unbounded\">\r\n");
+//		write("        <xs:annotation>\r\n");
+//		write("          <xs:documentation>An extension value</xs:documentation>\r\n");
+//		write("        </xs:annotation>\r\n");
+//		write("      </xs:element>\r\n");
+//		write("    </xs:sequence>\r\n");
+//		write("  </xs:complexType>\r\n");
+//	}
 
 	private void genResourceReference() throws Exception {
 		write("  <xs:simpleType name=\"ResourceType\">\r\n");
@@ -146,7 +152,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		write("      </xs:element>\r\n");
 		write("    </xs:sequence>\r\n");
 		// write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		write("    <xs:attribute ref=\"xml:id\"/>\r\n");
+		write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
@@ -168,7 +174,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 		}
 		write("        </xs:sequence>\r\n");
 
-		write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		write("      </xs:restriction>\r\n");
 		write("    </xs:complexContent>\r\n");
 		write("  </xs:complexType>\r\n");
@@ -184,7 +190,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				write("      <xs:extension base=\"xs:" + pt.getSchemaType()
 						+ "\">\r\n");
 				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-				write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+		    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
 				write("  </xs:complexType>\r\n");
@@ -201,7 +207,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				write("      <xs:extension base=\"" + sp.getCode()
 						+ "-simple\">\r\n");
 				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-				write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+		    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
 				write("  </xs:complexType>\r\n");
@@ -266,13 +272,13 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				generateWrapperElement(elem, e);
 		}
 		write("    </xs:sequence>\r\n");
-		write("    <xs:attribute ref=\"xml:id\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
 		// write("    <xs:complexContent>\r\n");
 		// write("      <xs:extension base=\"Core"+name+"\">\r\n");
 		// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		// write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+    // write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		// write("      </xs:extension>\r\n");
 		// write("    </xs:complexContent>\r\n");
 		// write("  </xs:complexType>\r\n");
@@ -305,8 +311,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				generateWrapperElement(elem, e);
 		}
 		write("    </xs:sequence>\r\n");
-		write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		write("    <xs:attribute ref=\"xml:id\"/>\r\n");
+		//write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 
 		while (!structures.isEmpty()) {
@@ -341,13 +347,13 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 							generateWrapperElement(elem, e);
 					}
 					write("    </xs:sequence>\r\n");
-					write("    <xs:attribute ref=\"xml:id\"/>\r\n");
+			    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 					write("  </xs:complexType>\r\n");
 					// write("  <xs:complexType name=\""+name+"\">\r\n");
 					// write("    <xs:complexContent>\r\n");
 					// write("      <xs:extension base=\"Core"+name+"\">\r\n");
 					// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-					// write("        <xs:attribute ref=\"xml:id\"/>\r\n");
+			    // write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 					// write("      </xs:extension>\r\n");
 					// write("    </xs:complexContent>\r\n");
 					// write("  </xs:complexType>\r\n");
@@ -398,7 +404,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				generateWrapperElement(root, e);
 		}
 		write("    </xs:sequence>\r\n");
-		write("    <xs:attribute ref=\"xml:id\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
@@ -572,9 +578,9 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			// write("      </xs:choice>\r\n");
 		} else {
 			write("      ");
-			if ("extensions".equals(e.getName()))
+			if ("extension".equals(e.getName()))
 				write("<xs:element name=\"" + e.getName()
-						+ "\" type=\"Extensions\" ");
+						+ "\" type=\"Extension\" ");
 			else if ("div".equals(e.getName()) && e.typeCode().equals("xhtml"))
 				write("<xs:element ref=\"xhtml:div\" ");
 			else if (e.usesCompositeType())
@@ -597,7 +603,9 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 				if (types.get(0).isUnboundGenericParam() && paramType != null)
 					write("<xs:element name=\"" + e.getName() + "\" type=\""
 							+ paramType + "\" ");
-				else
+				else if (types.get(0).getName().equals("xml:ID")) {
+          write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");				
+				} else
 					write("<xs:element name=\"" + e.getName() + "\" type=\""
 							+ encodeType(e, types.get(0), true) + "\" ");
 			} else

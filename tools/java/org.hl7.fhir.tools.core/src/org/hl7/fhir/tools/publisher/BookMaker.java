@@ -31,10 +31,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -142,68 +144,99 @@ public class BookMaker {
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
     body.getChildNodes().remove(e);
 
+    List<String> links = new ArrayList<String>();
+
     LevelCounter lvl = new LevelCounter();
     lvl.l1 = 0;
     for (Navigation.Category s : page.getNavigation().getCategories()) {
       lvl.l1++;
+      
 //      div.addTag("div").setAttribute("class", "page-break");
       XhtmlNode divS = div.addTag("div");
       divS.attribute("class", "section");
       XhtmlNode h1 = divS.addTag("h1");
       h1.addText(Integer.toString(lvl.l1)+": "+s.getName());
+      addPageContent(lvl, divS, s.getLink(), s.getName());
+      links.add(s.getLink());
 
       lvl.l2 = 0;
       for (Navigation.Entry n : s.getEntries()) {
         lvl.l2++;
         lvl.l3 = 0;
         if (n.getLink() != null) {
-          addPageContent(lvl, divS, n);
+          addPageContent(lvl, divS, n.getLink(), n.getName());
+          links.add(n.getLink());
         }
         for (Navigation.Entry g : n.getEntries()) {
           if (g.getLink() != null) {
-            addPageContent(lvl, divS, g);
+            addPageContent(lvl, divS, g.getLink(), g.getName());
+            links.add(g.getLink());
+          }
+        }
+      }
+      if (s.getEntries().size() ==0 && s.getLink().equals("resources")) {
+        lvl.l2++;
+        lvl.l3 = 0;
+        List<String> list = new ArrayList<String>();
+        list.addAll(page.getDefinitions().getResources().keySet());
+        Collections.sort(list);
+        
+        for (String rn : list) {
+          if (!links.contains(rn.toLowerCase())) {
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            addPageContent(lvl, divS, rn.toLowerCase(), r.getName());
           }
         }
       }
     }
   }
 
-  private void addPageContent(LevelCounter lvl, XhtmlNode divS, Navigation.Entry n) throws Exception, Error {
+  private void addPageContent(LevelCounter lvl, XhtmlNode divS, String link, String name) throws Exception, Error {
     XhtmlNode divT = divS.addTag("div");
     XhtmlNode a = divT.addTag("a");
-    a.attribute("name", n.getLink());
+    a.attribute("name", link);
     a.addText(" "); // work around for a browser bug
 
     boolean first = true;
-    XhtmlDocument page = pages.get(n.getLink()+".htm");
+    XhtmlDocument page = pages.get(link+".htm");
     if (page == null)
-      throw new Exception("No content found for "+n.getLink()+".htm");
+      throw new Exception("No content found for "+link+".htm");
     if (page.getElement("html") == null)
-      throw new Exception("No 'html' tag found in "+n.getLink()+".htm");
+      throw new Exception("No 'html' tag found in "+link+".htm");
     if (page.getElement("html").getElement("body") == null)
-      throw new Exception("No 'body' tag found in "+n.getLink()+".htm");
+      throw new Exception("No 'body' tag found in "+link+".htm");
     XhtmlNode pageBody = page.getElement("html").getElement("body");
+    
+    List<XhtmlNode> wantDelete = new ArrayList<XhtmlNode>();
+    for (XhtmlNode child : pageBody.getChildNodes()) {
+      if ("index-only-no-book".equals(child.getAttribute("class"))) 
+        wantDelete.add(child);
+    }    
+    for (XhtmlNode c : wantDelete) 
+      pageBody.getChildNodes().remove(c);
+    
     for (XhtmlNode child : pageBody.getChildNodes()) {
       if (child.getNodeType() == NodeType.Element) {
-        fixReferences(pageBody, child, n.getLink());
+        fixReferences(pageBody, child, link);
       }
+      
       if ("h1".equals(child.getName())) {
         if (!first)
-          throw new Error("?? ("+n.getLink()+".h1 repeated) ");
+          throw new Error("?? ("+link+".h1 repeated) ");
         first = false;
-        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h2");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+": ");
 
       } else if ("h2".equals(child.getName())) {
         lvl.l3++;
         lvl.l4 = 0;
-        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h3");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+": ");
       } else if ("h3".equals(child.getName())) {
         lvl.l4++;
-        chm.registerKeyWord(child.allText(), n.getLink()+".htm", n.getName());
+        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h4");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+"."+Integer.toString(lvl.l4)+": ");
       } else if ("h4".equals(child.getName())) {
@@ -217,11 +250,20 @@ public class BookMaker {
 
   
   private void fixReferences(XhtmlNode parent, XhtmlNode node, String name) throws Exception {
+
+    List<XhtmlNode> wantDelete = new ArrayList<XhtmlNode>();
+    
     for (XhtmlNode child : node.getChildNodes()) {
       if (child.getNodeType() == NodeType.Element) {
-        fixReferences(node, child, name);
+        if ("index-only-no-book".equals(child.getAttribute("class"))) 
+          wantDelete.add(child);
+        else
+          fixReferences(node, child, name);
       }    
     }
+    for (XhtmlNode c : wantDelete) 
+      node.getChildNodes().remove(c);
+    
     if (node.getName().equals("a")) {      
       if (node.getAttributes().containsKey("name")) {
         String lname = node.getAttributes().get("name");
@@ -267,7 +309,8 @@ public class BookMaker {
     }
   }
 
-  private void addTOC(XhtmlNode body) {
+  private void addTOC(XhtmlNode body) throws Exception {
+    List<String> links = new ArrayList<String>();
     XhtmlNode e = body.getElement("index");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
     body.getChildNodes().remove(e);
@@ -278,7 +321,10 @@ public class BookMaker {
     p.addText("\r\n    ");
     for (Navigation.Category c : page.getNavigation().getCategories()) {
       i1++;
-      p.addText(Integer.toString(i1)+": "+c.getName());
+      p.addText(Integer.toString(i1)+": ");
+      XhtmlNode a = p.addTag("a");
+      a.attribute("href", "#"+c.getLink());
+      a.addText(c.getName());
       p.addTag("br");
       p.addText("\r\n      ");
       int i2 = 0;
@@ -286,14 +332,34 @@ public class BookMaker {
         if (n.getLink() != null) {
           i2++;
           p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+          links.add(n.getLink());
 
-          XhtmlNode a = p.addTag("a");
+          a = p.addTag("a");
           a.attribute("href", "#"+n.getLink());
           a.addText(n.getName());
           p.addTag("br");
           p.addText("\r\n     ");
         }
       }
+      if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {
+        i2++;
+        List<String> list = new ArrayList<String>();
+        list.addAll(page.getDefinitions().getResources().keySet());
+        Collections.sort(list);
+        
+        for (String rn : list) {
+          if (!links.contains(rn.toLowerCase())) {
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+            a = p.addTag("a");
+            a.attribute("href", "#"+rn.toLowerCase());
+            a.addText(r.getName());
+            p.addTag("br");
+            p.addText("\r\n     ");
+          }
+        }
+      }
+      
     }
     div.addText("\r\n  ");
   }

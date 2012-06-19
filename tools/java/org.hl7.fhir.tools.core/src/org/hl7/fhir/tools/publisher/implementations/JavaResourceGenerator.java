@@ -110,7 +110,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 		if (clss != JavaGenClass.Constraint) {
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
 					scanNestedTypes(root, root.getName(), e, conceptDomains);
 			}
 			for (ElementDefn e : enums) {
@@ -121,12 +121,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			}
 
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
 					generateField(root, e, "    ");
 			}
 
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
 					generateAccessors(root, e, "    ");
 			}
 		}
@@ -149,7 +149,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	//		
 	//		boolean generics = false;
 	//		for (ElementDefn e : root.getElements()) 
-	//			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) 
+	//			if (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")) 
 	//				if (typeNames.get(e).contains("<"))
 	//					generics = true;
 	//
@@ -157,7 +157,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 	//			write(indent+"@SuppressWarnings(\"unchecked\")\r\n");
 	//		write(indent+"public void setProperty(String name, Object value) throws Exception {\r\n");
 	//		for (ElementDefn e : root.getElements()) {
-	//			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) {
+	//			if (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")) {
 	//				if (first)
 	//					write(indent+"    if (\""+e.getName()+"\".equals(name))\r\n");
 	//				else
@@ -179,7 +179,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 	private boolean hasList(ElementDefn root) {
 		for (ElementDefn e : root.getElements()) {
-			if (!e.getName().equals("id") && !e.getName().equals("extensions") && !e.getName().equals("text")) {
+			if (!e.getName().equals("id") && !e.getName().equals("text")) {
 				if (e.unbounded() || hasListInner(e))
 					return true;
 			}
@@ -233,6 +233,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				cc = "greaterThan";
 			else if (cc.equals(">="))
 				cc = "greaterOrEqual";
+      else if (cc.equals("="))
+        cc = "equal";
 			else
 				cc = cc.replace("-", "Minus").replace("+", "Plus");
 			if (i == l)
@@ -242,8 +244,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		}
 
 
-		write("        public static "+tn+" fromCode(String code) throws Exception {\r\n");
-		write("            if (code == null || \"\".equals(code))\r\n");
+		write("        public static "+tn+" fromCode(String codeString) throws Exception {\r\n");
+		write("            if (codeString == null || \"\".equals(codeString))\r\n");
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getCodes()) {
 			String cc = c.getCode();
@@ -257,12 +259,14 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				cc = "greaterThan";
 			else if (cc.equals(">="))
 				cc = "greaterOrEqual";
+      else if (cc.equals("="))
+        cc = "equal";
 			else
 				cc = cc.replace("-", "Minus").replace("+", "Plus");
-			write("        if (\""+c.getCode()+"\".equals(code))\r\n");
+			write("        if (\""+c.getCode()+"\".equals(codeString))\r\n");
 			write("          return "+cc+";\r\n");
 		}		
-		write("        throw new Exception(\"Unknown "+tn+" code '\"+code+\"'\");\r\n");
+		write("        throw new Exception(\"Unknown "+tn+" code '\"+codeString+\"'\");\r\n");
 		write("        }\r\n");	
 
 		write("        public String toCode() {\r\n");
@@ -279,6 +283,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				cc = "greaterThan";
 			else if (cc.equals(">="))
 				cc = "greaterOrEqual";
+      else if (cc.equals("="))
+        cc = "equal";
 			else
 				cc = cc.replace("-", "Minus").replace("+", "Plus");
 			write("            case "+cc+": return \""+c.getCode()+"\";\r\n");
@@ -428,15 +434,15 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write(indent+" * "+e.getDefinition()+"\r\n");
 			write(indent+" */\r\n");
 			if (tn == null && e.usesCompositeType())
-				write(indent+"/*1*/private List<"+root.getName()+"> "+getElementName(e.getName())+" = new ArrayList<"+root.getName()+">();\r\n");
+				write(indent+"/*1*/private List<"+root.getName()+"> "+getElementName(e.getName(), true)+" = new ArrayList<"+root.getName()+">();\r\n");
 			else
-				write(indent+"private List<"+tn+"> "+getElementName(e.getName())+" = new ArrayList<"+tn+">();\r\n");
+				write(indent+"private List<"+tn+"> "+getElementName(e.getName(), true)+" = new ArrayList<"+tn+">();\r\n");
 			write("\r\n");
 		} else {
 			write(indent+"/**\r\n");
 			write(indent+" * "+e.getDefinition()+"\r\n");
 			write(indent+" */\r\n");
-			write(indent+"private "+tn+" "+getElementName(e.getName())+";\r\n");
+			write(indent+"private "+tn+" "+getElementName(e.getName(), true)+";\r\n");
 			write("\r\n");
 		}
 
@@ -449,19 +455,19 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 		if (e.unbounded()) {
 			if (tn == null && e.usesCompositeType())
-				write(indent+"/*2*/public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
+				write(indent+"/*2*/public List<"+root.getName()+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
 			else
-				write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName()))+"() { \r\n");
-			write(indent+"  return this."+getElementName(e.getName())+";\r\n");
+				write(indent+"public List<"+tn+"> get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+			write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
 		} else {
-			write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName()))+"() { \r\n");
-			write(indent+"  return this."+getElementName(e.getName())+";\r\n");
+			write(indent+"public "+tn+" get"+getTitle(getElementName(e.getName(), false))+"() { \r\n");
+			write(indent+"  return this."+getElementName(e.getName(), true)+";\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
-			write(indent+"public void set"+getTitle(getElementName(e.getName()))+"("+tn+" value) { \r\n");
-			write(indent+"  this."+getElementName(e.getName())+" = value;\r\n");
+			write(indent+"public void set"+getTitle(getElementName(e.getName(), false))+"("+tn+" value) { \r\n");
+			write(indent+"  this."+getElementName(e.getName(), true)+" = value;\r\n");
 			write(indent+"}\r\n");
 			write("\r\n");
 		}

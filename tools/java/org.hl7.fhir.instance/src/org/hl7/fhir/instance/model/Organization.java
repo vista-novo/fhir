@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -136,7 +136,7 @@ public class Organization extends Resource {
         /**
          * A name should be specified for the related organization
          */
-        private String_ name;
+        private String name;
 
         /**
          * Postal addresses may be provided for the related organization
@@ -169,11 +169,11 @@ public class Organization extends Resource {
           this.code = value;
         }
 
-        public String_ getName() { 
+        public String getName() { 
           return this.name;
         }
 
-        public void setName(String_ value) { 
+        public void setName(String value) { 
           this.name = value;
         }
 

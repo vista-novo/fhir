@@ -448,10 +448,10 @@ public class ElementDefn {
 	 * for valid element names
 	 * 
 	 * @return if this element is a standard Resource element like 'id',
-	 *         'extensions' and 'text'
+	 *         'extension' and 'text'
 	 */
 	public boolean isBaseResourceElement() {
-		return getName().equals("id") || getName().equals("extensions")
+		return getName().equals("id") || getName().equals("extension")
 				|| getName().equals("text");
 	}
 
@@ -562,5 +562,9 @@ public class ElementDefn {
 	   {
 		   return acceptableGenericTypes;
 	   }
+
+    public boolean isXmlIDRef() {
+      return typeCode().equals("xml:ID");
+    }
 }
 

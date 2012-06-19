@@ -121,23 +121,47 @@ public class PageProcessor implements Logger  {
     return val; 
   }
 
-  private String generateSideBar() {
+  private String generateSideBar() throws Exception {
+    List<String> links = new ArrayList<String>();
+    
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
     s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> <a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> &copy; <a href=\"http://hl7.org\">HL7.org</a></p>\r\n");
     s.append("<p class=\"note\">Version v"+getVersion()+" - Under Development</p>\r\n"); 
 
     for (Navigation.Category c : navigation.getCategories()) {
-      s.append("  <h2>"+c.getName()+"</h2>\r\n");
+      if (c.getLink() != null) {
+        s.append("  <h2><a href=\""+c.getLink()+".htm\">"+c.getName()+"</a></h2>\r\n");
+        links.add(c.getLink());
+      }
+      else
+        s.append("  <h2>"+c.getName()+"</h2>\r\n");
       s.append("  <ul>\r\n");
       for (Navigation.Entry e : c.getEntries()) {
-        if (e.getLink() != null)
+        if (e.getLink() != null) {
+          links.add(e.getLink());
           s.append("    <li><a href=\""+e.getLink()+".htm\">"+Utilities.escapeXml(e.getName())+"</a></li>\r\n");
-        else
+        } else
           s.append("    <li>"+e.getName()+"</li>\r\n");
+      }
+      if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {
+        List<String> list = new ArrayList<String>();
+        list.addAll(definitions.getResources().keySet());
+        Collections.sort(list);
+        
+        for (String rn : list) {
+          if (!links.contains(rn.toLowerCase())) {
+            ResourceDefn r = definitions.getResourceByName(rn);
+            s.append("    <li><a href=\""+rn.toLowerCase()+".htm\">"+Utilities.escapeXml(r.getName())+"</a></li>\r\n");
+          }
+        }
+        
       }
       s.append("  </ul>\r\n");
     }
+    s.append("<p>&nbsp;</p>\r\n");
+    s.append("<p><a href=\"http://hl7.org\"><img src=\"hl7logo.png\"/></a></p>\r\n");
+
     s.append("</div>\r\n");
     return s.toString();
   }

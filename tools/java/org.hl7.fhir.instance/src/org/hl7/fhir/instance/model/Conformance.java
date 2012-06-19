@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -41,14 +41,14 @@ public class Conformance extends Resource {
     public enum RestfulConformanceMode {
         client, // The application acts as a server for this resource
         server; // The application acts as a client for this resource
-        public static RestfulConformanceMode fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static RestfulConformanceMode fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("client".equals(code))
+        if ("client".equals(codeString))
           return client;
-        if ("server".equals(code))
+        if ("server".equals(codeString))
           return server;
-        throw new Exception("Unknown RestfulConformanceMode code '"+code+"'");
+        throw new Exception("Unknown RestfulConformanceMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -62,14 +62,14 @@ public class Conformance extends Resource {
     public enum MessageConformanceEventMode {
         sender, // The application sends requests and receives responses
         receiver; // The application receives requests and sends responses
-        public static MessageConformanceEventMode fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static MessageConformanceEventMode fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("sender".equals(code))
+        if ("sender".equals(codeString))
           return sender;
-        if ("receiver".equals(code))
+        if ("receiver".equals(codeString))
           return receiver;
-        throw new Exception("Unknown MessageConformanceEventMode code '"+code+"'");
+        throw new Exception("Unknown MessageConformanceEventMode code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {

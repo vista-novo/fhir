@@ -265,7 +265,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         prsr = en+".fromCode(parseString(xpp))";
       } else {   
         String tn = typeName(root, e, !contentsHaveDataAbsentReason, false).replace(".", "");
-        if (name.equals("extensions")) {
+        if (name.equals("extension")) {
           name = "extension";
           tn = "Extension";
         }
@@ -290,7 +290,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       }
       
       if (name.equals("extension")) {
-        write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extensions\")) {\r\n");
+        write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) {\r\n");
         write("        eventType = nextNoWhitespace(xpp);\r\n");
         write("        while (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\"extension\")) {\r\n");
         if (contentsHaveDataAbsentReason) 
@@ -299,7 +299,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           write("          res.getExtension().add(parseExtension(xpp));\r\n");
         write("          eventType = nextNoWhitespace(xpp);\r\n");
         write("        }\r\n");
-        write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralizeMe(name)+"\"))\r\n");
+        write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+name+"\"))\r\n");
         write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
       } else if (e.unbounded()) {
         if (listsAreWrapped && !Config.SUPPRESS_WRAPPER_ELEMENTS) {          
@@ -431,7 +431,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           tn = upFirst(e.getName());
           if (tn.equals("Element"))
             tn = "Element_";
-          if (!e.getName().equals("extensions"))
+          if (!e.getName().equals("extension"))
             strucs.add(e);
           if (typeNameStrings.contains(tn)) {
             char i = 'A';

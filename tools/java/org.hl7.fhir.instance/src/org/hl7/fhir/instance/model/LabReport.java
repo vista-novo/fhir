@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -45,22 +45,22 @@ public class LabReport extends Resource {
         amended, // The result has been modified subsequent to being Final, and is complete and verified by the responsible pathologist
         cancelled, // The result is unavailable because the test was not started or not completed (also sometimes called "aborted")
         withdrawn; // The result has been withdrawn following previous Final release
-        public static LabReportStatus fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static LabReportStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("registered".equals(code))
+        if ("registered".equals(codeString))
           return registered;
-        if ("interim".equals(code))
+        if ("interim".equals(codeString))
           return interim;
-        if ("final".equals(code))
+        if ("final".equals(codeString))
           return final_;
-        if ("amended".equals(code))
+        if ("amended".equals(codeString))
           return amended;
-        if ("cancelled".equals(code))
+        if ("cancelled".equals(codeString))
           return cancelled;
-        if ("withdrawn".equals(code))
+        if ("withdrawn".equals(codeString))
           return withdrawn;
-        throw new Exception("Unknown LabReportStatus code '"+code+"'");
+        throw new Exception("Unknown LabReportStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -81,23 +81,32 @@ public class LabReport extends Resource {
         MinusMinusMinus, // 
         Plus, // 
         PlusPlus, // 
-        PlusPlusPlus; // 
-        public static LabResultFlag fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        PlusPlusPlus, // 
+        R, // Resistent
+        S, // Moderately  Susceptible
+        SS; // Very Susceptible
+        public static LabResultFlag fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("-".equals(code))
+        if ("-".equals(codeString))
           return Minus;
-        if ("--".equals(code))
+        if ("--".equals(codeString))
           return MinusMinus;
-        if ("---".equals(code))
+        if ("---".equals(codeString))
           return MinusMinusMinus;
-        if ("+".equals(code))
+        if ("+".equals(codeString))
           return Plus;
-        if ("++".equals(code))
+        if ("++".equals(codeString))
           return PlusPlus;
-        if ("+++".equals(code))
+        if ("+++".equals(codeString))
           return PlusPlusPlus;
-        throw new Exception("Unknown LabResultFlag code '"+code+"'");
+        if ("R".equals(codeString))
+          return R;
+        if ("S".equals(codeString))
+          return S;
+        if ("SS".equals(codeString))
+          return SS;
+        throw new Exception("Unknown LabResultFlag code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -107,6 +116,9 @@ public class LabReport extends Resource {
             case Plus: return "+";
             case PlusPlus: return "++";
             case PlusPlusPlus: return "+++";
+            case R: return "R";
+            case S: return "S";
+            case SS: return "SS";
             default: return "?";
           }
         }
@@ -238,7 +250,7 @@ public class LabReport extends Resource {
         /**
          * May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.
          */
-        private String_ comments;
+        private String comments;
 
         /**
          * Guidance on how to interpret the value by comparison to a normal or recommended range
@@ -277,11 +289,11 @@ public class LabReport extends Resource {
           this.status = value;
         }
 
-        public String_ getComments() { 
+        public String getComments() { 
           return this.comments;
         }
 
-        public void setComments(String_ value) { 
+        public void setComments(String value) { 
           this.comments = value;
         }
 
@@ -383,7 +395,7 @@ public class LabReport extends Resource {
     /**
      * Concise and clinically contextualised narrative interpretation of the pathology test results.
      */
-    private String_ conclusion;
+    private String conclusion;
 
     /**
      * Codes for the conclusion
@@ -479,11 +491,11 @@ public class LabReport extends Resource {
       return this.resultGroup;
     }
 
-    public String_ getConclusion() { 
+    public String getConclusion() { 
       return this.conclusion;
     }
 
-    public void setConclusion(String_ value) { 
+    public void setConclusion(String value) { 
       this.conclusion = value;
     }
 

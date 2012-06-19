@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Jun 12, 2012 01:08+1000 for FHIR v0.04
+// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
 
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units, and floating currencies
@@ -41,18 +41,18 @@ public class Quantity extends Ordered {
         lessOrEqual, // The actual value is less than or equal to the given value
         greaterOrEqual, // The actual value is greater than or equal to the given value
         greaterThan; // The actual value is greater than the given value
-        public static QuantityStatus fromCode(String code) throws Exception {
-            if (code == null || "".equals(code))
+        public static QuantityStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
                 return null;
-        if ("<".equals(code))
+        if ("<".equals(codeString))
           return lessThan;
-        if ("<=".equals(code))
+        if ("<=".equals(codeString))
           return lessOrEqual;
-        if (">=".equals(code))
+        if (">=".equals(codeString))
           return greaterOrEqual;
-        if (">".equals(code))
+        if (">".equals(codeString))
           return greaterThan;
-        throw new Exception("Unknown QuantityStatus code '"+code+"'");
+        throw new Exception("Unknown QuantityStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
