@@ -7,19 +7,20 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Ewout Kramer</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:17:14Z</Created>
-  <LastSaved>2012-05-24T10:49:07Z</LastSaved>
+  <LastSaved>2012-06-19T08:50:29Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6156</WindowHeight>
-  <WindowWidth>15576</WindowWidth>
+  <WindowHeight>6150</WindowHeight>
+  <WindowWidth>15570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6072</WindowTopY>
+  <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -90,16 +91,12 @@
     ss:WrapText="1"/>
    <Borders/>
   </Style>
-  <Style ss:ID="s77">
+  <Style ss:ID="s75">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s81">
-   <Alignment ss:Vertical="Top"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s156">
+  <Style ss:ID="s76">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
@@ -108,20 +105,33 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s160">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+  <Style ss:ID="s77">
+   <Alignment ss:Vertical="Top"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
   </Style>
-  <Style ss:ID="s161">
+  <Style ss:ID="s78">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s79">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s80">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Metadata">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="21" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Width="90.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="808.8"/>
+   <Column ss:Width="90.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="808.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Value</Data></Cell>
@@ -209,7 +219,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -222,18 +231,19 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Message">
-  <Table ss:ExpandedColumnCount="20" ss:ExpandedRowCount="20" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.55">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
-   <Column ss:AutoFitWidth="0" ss:Width="165.6"/>
+  <Table ss:ExpandedColumnCount="21" ss:ExpandedRowCount="16" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.4375">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="165.75"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="66"/>
-   <Column ss:AutoFitWidth="0" ss:Width="155.39999999999998"/>
-   <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
-   <Column ss:AutoFitWidth="0" ss:Width="208.2"/>
-   <Column ss:AutoFitWidth="0" ss:Width="221.4"/>
-   <Column ss:AutoFitWidth="0" ss:Width="188.4" ss:Span="2"/>
-   <Column ss:Index="15" ss:AutoFitWidth="0" ss:Width="129"/>
-   <Column ss:Index="17" ss:AutoFitWidth="0" ss:Width="146.39999999999998"/>
+   <Column ss:AutoFitWidth="0" ss:Width="155.25"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="102"/>
+   <Column ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="208.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="221.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="188.25" ss:Span="1"/>
+   <Column ss:Index="16" ss:AutoFitWidth="0" ss:Width="129"/>
+   <Column ss:Index="18" ss:AutoFitWidth="0" ss:Width="146.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s69">
     <Cell><Data ss:Type="String">Profile Name</Data></Cell>
     <Cell><Data ss:Type="String">Element</Data></Cell>
@@ -243,18 +253,11 @@
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Value</Data></Cell>
+    <Cell><Data ss:Type="String">Aggregated?</Data></Cell>
+    <Cell><Data ss:Type="String">Profile</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
-    <Cell><Data ss:Type="String">Definition</Data></Cell>
-    <Cell><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Comments</Data></Cell>
-    <Cell><Data ss:Type="String">Condition</Data></Cell>
-    <Cell><Data ss:Type="String">Aggregation</Data></Cell>
-    <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
-    <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
-    <Cell><Data ss:Type="String">To Do</Data></Cell>
-    <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.8" ss:StyleID="s70">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875" ss:StyleID="s70">
     <Cell><Data ss:Type="String">Labreport-provide</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Message</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
@@ -263,11 +266,10 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">A message that contains resources</Data></Cell>
-    <Cell><Data ss:Type="String">A message that contains FHIR resources</Data></Cell>
-    <Cell><Data ss:Type="String">Many implementations are not prepared to use REST, and need a message based infrastructure</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="14" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -276,58 +278,18 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="43.199999999999996" ss:StyleID="s70">
-    <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.id</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Master Resource Id = Message Id</Data></Cell>
-    <Cell><Data ss:Type="String">Unique Id for this message</Data></Cell>
-    <Cell><Data ss:Type="String">Each message needs a unique identifier so other messages and underlying infrastructure can reference it</Data></Cell>
-    <Cell><Data ss:Type="String">must be unique within a channel, but should be globally unique. UUIDs are recommended</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="43.199999999999996" ss:StyleID="s70">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.threadId</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">id</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Id of thread of conversation</Data></Cell>
-    <Cell><Data ss:Type="String">Id of the thread - a series of messages that pertain to the same logical sequence, and are all identified by the same thread identifier</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s73">
-    <Cell ss:StyleID="s74"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Message.instant</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">instant</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Instant the message was sent</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Instant the message was sent</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -345,52 +307,9 @@
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
     <Cell><Data ss:Type="String">labreport-provide</Data></Cell>
+    <Cell ss:Index="10" ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Code for the event his message represents</Data></Cell>
-    <Cell><Data ss:Type="String">Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s70">
-    <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.source</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Device)</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Message Source Application</Data></Cell>
-    <Cell><Data ss:Type="String">The source application from which this message originated</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90" ss:StyleID="s70">
-    <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.destination</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource(Device)</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Message Destination Application</Data></Cell>
-    <Cell><Data ss:Type="String">The destination application which the message is intended for</Data></Cell>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -403,16 +322,17 @@
    <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s73">
     <Cell ss:StyleID="s74"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">Message.enterer</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">0..0</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Person|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The source of the data entry</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The person or device that performd the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know for audit/traceback requirements</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="Default"/>
@@ -424,17 +344,15 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.author</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person|Device)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">The source of the decision</Data></Cell>
-    <Cell><Data ss:Type="String">The logical author of the message - the person or device that decided it should happen. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know for audit/traceback requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="11"><Data ss:Type="String">The source of the decision</Data></Cell>
+    <Cell ss:Index="16" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -443,17 +361,15 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.responsible</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Person|Organization)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">final responsibility for event</Data></Cell>
-    <Cell><Data ss:Type="String">The person or organization that accepts overall responsbility for the contents of the message. The implication is that the message event happened under the policies of the responsible party</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know for audit/traceback requirements</Data></Cell>
-    <Cell><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="11"><Data ss:Type="String">final responsibility for event</Data></Cell>
+    <Cell ss:Index="16" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -462,38 +378,33 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="72" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.effective</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">Interval(dateTime)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">time of effect</Data></Cell>
-    <Cell><Data ss:Type="String">The effective time - the real world time of the event that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know for understanding the content of the message</Data></Cell>
-    <Cell><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Grahame thinks this is not 80/20. Also, that it reall should be domain modeled, not tucked away here</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">time of effect</Data></Cell>
+    <Cell ss:Index="16" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:Index="20" ss:StyleID="Default"/>
+    <Cell ss:Index="19" ss:StyleID="Default"/>
+    <Cell ss:Index="21" ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.reason</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">0..0</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">EventReason</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Cause of event</Data></Cell>
-    <Cell><Data ss:Type="String">The cause of the event - a reason for why this message is being sent</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track why resources are being changed and report in the audit log / history of the resource</Data></Cell>
+    <Cell ss:Index="14" ss:StyleID="s80"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">ControlAct.reasonCode</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="17" ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75" ss:StyleID="s70">
     <Cell ss:Index="2" ss:StyleID="s71"><Data ss:Type="String">Message.data</Data></Cell>
@@ -502,72 +413,70 @@
     <Cell><Data ss:Type="String">Resource(LabReport)</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">The focal LabReport resource</Data></Cell>
-    <Cell><Data ss:Type="String">The actual data of the message - a reference to the focus class of the message. </Data></Cell>
-    <Cell><Data ss:Type="String">Every message event is about actual data, a single resource, that is identified in the definition of the event.</Data></Cell>
-    <Cell><Data ss:Type="String">The data is defined where the transaction type is defined. The transaction data is always aggregated with the transaction resource</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Aggregated-LabReport</Data></Cell>
-    <Cell ss:Index="17" ss:StyleID="Default"/>
+    <Cell ss:Index="9"><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">Aggregated-LabReport</Data></Cell>
+    <Cell><Data ss:Type="String">The focal LabReport resource</Data></Cell>
+    <Cell ss:Index="18" ss:StyleID="Default"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="57.45">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:Index="7" ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="14" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="16" ss:StyleID="s70"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="13" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="15" ss:StyleID="s70"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="13" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="15" ss:StyleID="s70"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="14" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="43.199999999999996">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="14" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="57.45">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell ss:Index="2" ss:StyleID="s71"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="9" ss:StyleID="s70"/>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="14" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -589,7 +498,6 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -597,24 +505,26 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Aggregated-LabReport">
-  <Table ss:ExpandedColumnCount="21" ss:ExpandedRowCount="36" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4">
-   <Column ss:AutoFitWidth="0" ss:Width="79.2"/>
-   <Column ss:AutoFitWidth="0" ss:Width="203.4"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="78.599999999999994"/>
-   <Column ss:AutoFitWidth="0" ss:Width="136.79999999999998"/>
+  <Table ss:ExpandedColumnCount="23" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.4375">
+   <Column ss:AutoFitWidth="0" ss:Width="79.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="203.25"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="78.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="136.5"/>
    <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="72" ss:Span="1"/>
-   <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="166.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="197.4"/>
+   <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="48.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="172.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="166.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="197.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="183"/>
-   <Column ss:AutoFitWidth="0" ss:Width="172.79999999999998" ss:Span="2"/>
-   <Column ss:Index="15" ss:AutoFitWidth="0" ss:Width="184.8"/>
-   <Column ss:Index="17" ss:AutoFitWidth="0" ss:Width="203.4"/>
-   <Column ss:Width="144.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="123.6"/>
-   <Column ss:AutoFitWidth="0" ss:Width="127.19999999999999"/>
+   <Column ss:AutoFitWidth="0" ss:Width="172.5" ss:Span="2"/>
+   <Column ss:Index="17" ss:AutoFitWidth="0" ss:Width="184.5"/>
+   <Column ss:Index="19" ss:AutoFitWidth="0" ss:Width="203.25"/>
+   <Column ss:Width="144.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="123.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="127.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="123"/>
-   <Row ss:Height="28.8">
+   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
     <Cell ss:StyleID="s69"><Data ss:Type="String">Profile Name</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Element</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Card.</Data></Cell>
@@ -623,76 +533,37 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Concept Domain</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Value</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Aggregated?</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Profile</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Short Name</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Comments</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Condition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Aggregation</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">RIM Mapping</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">v2 Mapping</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">To Do</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Committee Notes</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Notes for Lloyd</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Snomed-CT</Data></Cell>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"/>
    </Row>
-   <Row ss:Height="273.59999999999997">
-    <Cell ss:StyleID="s77"><Data ss:Type="String">Aggregated-LabReport</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="273.5625">
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Aggregated-LabReport</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s70"><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</Data></Cell>
+    <Cell ss:Index="10" ss:StyleID="s70"/>
+    <Cell ss:Index="12" ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s156"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="20" ss:StyleID="s76"/>
    </Row>
-   <Row ss:Height="28.8">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.id</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Master Resource Id, always first in all resources</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s156"/>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.status</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabReportStatus</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The status of the pathology test result as a whole</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Labs routinely issue provisional/incomplete reports, or withdraw previously released reports</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s156"/>
-    <Cell ss:Index="18" ss:StyleID="s156"/>
-   </Row>
-   <Row ss:Height="57.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.issued</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">instant</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">date issed for current status</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The date and/or time that the result was issued from the source for the recorded ‘Test result status</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Clinicians need to be able to check the date that the report was released</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">May be different from LabReport.updated, because that is the status of this record, not the report the record is about</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s71"/>
-   </Row>
-   <Row ss:Height="43.199999999999996">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.patient</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
@@ -700,428 +571,71 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Patient)</Data></Cell>
     <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
     <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Aggregated-Patient</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">The patient the report is about</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The patient about who the report is about</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Must know the patient context</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s70"><Data ss:Type="String">Aggregated-Patient</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">need to check the wording -is it about, upon, for?</Data></Cell>
-    <Cell ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
-       html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="17" ss:StyleID="s70"/>
+    <Cell ss:Index="19" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
-   <Row ss:Height="43.199999999999996">
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.admission</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Admission)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Admission Context</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The admission that this diagnostic investigation is associated with</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Some institutions track and file diagnostic reports under a specific admission</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s70"><Data ss:Type="String">admission-profile#Admission</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
-    <Cell ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
-       html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Admission Context</Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="17" ss:StyleID="s70"/>
+    <Cell ss:Index="19" ss:StyleID="s70"/>
+    <Cell ss:StyleID="s76"/>
    </Row>
-   <Row ss:Height="57.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.laboratory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Responsible Laboratory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The laboratory service that issued the report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know how to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">This is not necessarily the source of the atomic reports - it's the lab that takes responsibility for the clinical report</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
-       html:Color="#000000">Said this should be highest priority.  Is that appropriate?</Font></ss:Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.reportId</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Id for external references to this report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know what identifier to use when making queries about this report from the source laboratory</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="72">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s70"><Data ss:Type="String">Details concerning a single pathology test requested.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
-       html:Color="#000000">Should this be by priorityCode too?</Font></ss:Data></Cell>
-   </Row>
-   <Row ss:Height="28.8">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail.requestOrderId</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Id assigned by requester</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The local ID assigned to the order by the order requester.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Equivalent to the Placer Order Identifier</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
-    <Cell ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">Question: </Font></B><Font
-       html:Color="#000000">Should this be by priorityCode too?</Font></ss:Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail.receiverOrderId</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Receiver's Id for the request</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS).</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to track completion of requests based on reports issued</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">Reckon this is not 80%</Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail.requestTest</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabRequests</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Test Requested</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identification of pathology test requested,</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to report what diagnostic test swere requested (not always the same as what is delivered)</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Useful where the test requested differs from the test actually performed.</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="57.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail.requester</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Agent|Organization)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Responsible for request</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Details of the clinician or organisation requesting the laboratory test.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The requesting clinician may need to be contacted concerning the interpretation of the lab report</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s156"/>
-   </Row>
-   <Row ss:Height="100.8">
+   <Row ss:AutoFitHeight="0" ss:Height="100.6875">
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.requestDetail.clinicalInfo</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Any)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Clinical information provided</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Details of the clinical information provided to the laboratory along with the original request</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Knowing the clinical information may influence the interpretation of the result</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s70"><Data ss:Type="String">** ouch **  any-profile#Any ;-)</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">This isn't really *ANY* resource.  You can't send a drug or an Animal or a bunch of other things.  What you really want here are &quot;acts&quot;, and I suspect there's a constraint that the subject of the LabReport must have participated in them as subject or perhaps in some other way.</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Clinical information provided</Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:Index="17" ss:StyleID="s70"/>
+    <Cell ss:Index="19" ss:StyleID="s70"/>
    </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.reportName</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabReportNames</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Name for the entire report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identification of the pathology test performed, sometimes including specimen type.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know what report this is, so clinicians can filter/find the reports they are looking for</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">A test result may be for a single analyte, or a group of items, including panel tests.</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.service</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabServices</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Biochemistry, Haematology etc</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The diagnostic service that performs the examination e.g. biochemistry, haematology.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Help clinicians filter/find the reports they are looking for</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">I'm not sure this is in the 80%.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Could also model this via observation</Data></Cell>
-   </Row>
-   <Row ss:Height="86.399999999999991">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.diagnosticTime</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Effective time of diagnostic report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The diagnostically relevant time for this report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know where in the patient history to file/present this report</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="86.399999999999991">
+   <Row ss:AutoFitHeight="0" ss:Height="86.4375">
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.specimen</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s70"><Data ss:Type="String">Resource(Specimen)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Specimen (incl. time of collection)</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Details about the specimen if all individual test results are derived from the same specimen</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per 'Result group'</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">specimen-profile#Specimen</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Specimen (incl. time of collection)</Data></Cell>
     <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="57.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="10" ss:StyleID="s70"><Data ss:Type="String">A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to report groups of results, where the result grouping is arbitrary, but meaningful</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Many (most) lab reports don't really have a meaningful group. In these cases, just create a single group with no specimen or name</Data></Cell>
+    <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
    </Row>
-   <Row ss:Height="86.399999999999991">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.name</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabResultGroupNames</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">What defines the group</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">A code or name that describes the group of results</Data></Cell>
-    <Cell ss:Index="12" ss:StyleID="s70"><Data ss:Type="String">For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="57.6">
+   <Row ss:AutoFitHeight="0" ss:Height="57.5625">
     <Cell ss:StyleID="s71"/>
     <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.specimen</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Specimen)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Specimen details</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Details about the individual specimen to which these ‘Result group’ test results refer, where testing of multiple specimens is required.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to report information about the collected specimens on which the report is based</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s70"><Data ss:Type="String">specimen-profile#Specimen</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="100.8">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="10" ss:StyleID="s70"><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to report results with information that assist with interpretation</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.name</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabResultNames</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Name or code of the result</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Identifies the meaning of the value</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to know what the result is about</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">results are fundamentally a name - value pair with additional clarifying information</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Specimen details</Data></Cell>
     <Cell ss:StyleID="s70"/>
     <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="129.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.value[x]</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Interval(dateTime)|string</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">*unbound*</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Result. [x] = type name</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Actual value of the result. Most result values will be numerical measurements, but others may be coded concepts, free text, or multimedia images</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need a value for the result</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="28.8">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.flag</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabResultFlag</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">+ | ++ | +++ | - | &#45;- | &#45;&#45;- </Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Flag indicating the abnormal status of the result</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">The proposed set of codes are too narrow (and doesn't map well to v3.)</Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.status</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabReportStatus</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Registered|Interim|Final|Amended|Cancelled|Withdrawn</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">The status of the result value</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to track the status of individual results - some results are finalised before the whole report is finalised</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="72">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.comments</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Comments about result</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to provide free text additional information</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-    <Cell ss:Index="18" ss:StyleID="s156"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><B><Font html:Color="#000000">mapsTo</Font></B><Font
-       html:Color="#000000"> is a short-cut indicating that any code that maps to the specified code or any code subsumed by the specified code may be used.</Font></ss:Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="10" ss:StyleID="s70"><Data ss:Type="String">Guidance on how to interpret the value by comparison to a normal or recommended range</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to provide multiple reference ranges</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Most results only have one reference range. Some non-numerical results don't have a reference range</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">Are multiple reference ranges in the 80%?</Data></Cell>
-   </Row>
-   <Row ss:Height="72">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.meaning</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabReferenceRanges</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">The meaning of this range</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Code for the meaning of the reference range</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to say what kind of reference range this is - normal, recommended, therapeutic, or perhaps what state this reference range applies to (i.e. hormonal cycles)</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="57.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.resultGroup.result.referenceRange.range[x]</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Quantity|Interval(Quantity)|string</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to report numerical or text reference ranges, and handle legacy data</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Text reference ranges are typically used in endocrinology, or for legacy data with string reference ranges</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.conclusion</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Clinical Interpretation of test results</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Concise and clinically contextualised narrative interpretation of the pathology test results.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Need to be able to provide a conclusion that is not lost amongst the basic result data</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">common reports don't have a conclusion, but some do</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:Index="17" ss:StyleID="s70"><Data ss:Type="String">Is this in the 80%?</Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.codedDiagnosis</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s70"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">LabDiagnosisCodes</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Codes for the conclusion</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="129.6">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.representation</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s70"><Data ss:Type="String">Attachment</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s70"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Entire Report as issued</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent.</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Laboratory needs to be able to provide it's own fully formatted report for clinical fidelity</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</Data></Cell>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-    <Cell ss:StyleID="s70"/>
-   </Row>
-   <Row>
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.extensions</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">See Extensions</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
-   </Row>
-   <Row ss:Height="28.8">
-    <Cell ss:StyleID="s71"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">LabReport.text</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s70"><Data ss:Type="String">Text summary of report, for human interpretation</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s70"/>
+    <Cell ss:Index="17" ss:StyleID="s70"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1130,10 +644,11 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>2</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -1142,8 +657,8 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>0</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1151,14 +666,12 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Aggregated-Patient">
-  <Table ss:ExpandedColumnCount="22" ss:ExpandedRowCount="14" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4">
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.4375">
    <Column ss:StyleID="s68" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="106.80000000000001"/>
-   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="71.400000000000006"/>
-   <Column ss:Index="13" ss:AutoFitWidth="0" ss:Width="63.599999999999994"/>
-   <Column ss:AutoFitWidth="0" ss:Width="121.2"/>
-   <Row ss:Height="43.199999999999996">
+   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:Index="10" ss:AutoFitWidth="0" ss:Width="121.5"/>
+   <Row ss:AutoFitHeight="0" ss:Height="43.3125">
     <Cell ss:StyleID="s69"><Data ss:Type="String">Profile Name</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Element</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Card.</Data></Cell>
@@ -1168,152 +681,34 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Value</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Short Name</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Requirements</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Comments</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Condition</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Aggregation</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">RIM Mapping</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">v2 Mapping</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">To Do</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Committee Notes</Data></Cell>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"/>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Aggregated</Data></Cell>
    </Row>
-   <Row ss:Height="100.8">
-    <Cell ss:StyleID="s81"><Data ss:Type="String">Aggregated-Patient</Data></Cell>
-    <Cell ss:StyleID="s161"><Data ss:Type="String">Patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="10" ss:StyleID="s160"><Data ss:Type="String">A patient is a person or animal that is receiving care</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Tracking patient is the center of the healthcare process</Data></Cell>
-    <Cell ss:Index="15" ss:StyleID="s160"><Data ss:Type="String">Patient</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="100.6875">
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Aggregated-Patient</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">Patient</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource</Data></Cell>
    </Row>
-   <Row ss:Height="86.399999999999991">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.id</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">Master Resource Id, always first in all resources</Data></Cell>
-    <Cell ss:Index="17" ss:StyleID="s160"><Data ss:Type="String">.id(scope=OBJ)</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="144">
+    <Cell ss:Index="2" ss:StyleID="s78"><Data ss:Type="String">Patient.subject</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Conditional</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource(Person|Animal)</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s79"><Data ss:Type="Boolean">1</Data></Cell>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">The person who is the patient</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Y</Data></Cell>
    </Row>
-   <Row ss:Height="345.59999999999997">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.link</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Resource(Patient)</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s160"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s160"/>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Other patients linked to this resource</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Due to the clerical errors associated with the difficulties of identifying humans consistently, duplicate patient records are frequently created in error</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">More then two patient records may be linked. Note that there is a special transaction for linking patient records in the RESTful context, as record linking consistency must be maintained</Data></Cell>
-   </Row>
-   <Row ss:Height="244.79999999999998">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.active</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s160"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s160"/>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Whether this patient record is active (in use)</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Whether the patient record is in use, or has been removed from active use</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Need to be able to mark a patient record as not to be used because it was created in error</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">If a record is inactive, and linked to an active record, then future patient/person/record updates should occur on the other patient</Data></Cell>
-   </Row>
-   <Row ss:Height="144">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.person</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Conditional</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Resource(Person)</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s160"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s160"/>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">The person who is the patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">The person that this patient record is about</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Need to link this patient record to a known and identifiable person (or animal)</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s160"><Data ss:Type="String">Either an animal or a person must be provided, but not both</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">person-profile#Person</Data></Cell>
-   </Row>
-   <Row ss:Height="144">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.animal</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Conditional</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Resource(Animal)</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">The animal which is the patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">The animal that this patient record is about</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Need to link this patient record to a known and identifiable animal (or person)</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s160"><Data ss:Type="String">Either an animal or a person must be provided, but not both</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">animal-profile#Animal</Data></Cell>
-   </Row>
-   <Row ss:Height="100.8">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.provider</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s160"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s160"/>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Organization managing the patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">The provider for whom this is a patient record</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Need to know who recognises this patient record</Data></Cell>
-    <Cell ss:Index="17" ss:StyleID="s160"><Data ss:Type="String">But is thie same as institution above?</Data></Cell>
-   </Row>
-   <Row ss:Height="144">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.identifier</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5" ss:StyleID="s160"><Data ss:Type="String">HumanId</Data></Cell>
-    <Cell ss:Index="7" ss:StyleID="s160"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="s160"/>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">An identifier for the person as this patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">An identifier that applies to this person as a patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Patients are almos always assigned specific numerical identifiers</Data></Cell>
-   </Row>
-   <Row ss:Height="201.6">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.diet</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">PatientDiet</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Dietary restrictions for the patient</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Track patients reported dietary restrictions to help with catering requirements</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">not for specifying medical diets, but for casual dietary restrictions such as vegetarian, diary-free, nut-free, etc</Data></Cell>
-   </Row>
-   <Row ss:Height="158.4">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.confidentiality</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">PatientConfidentiality</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">Confidentiality of the patient records</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Confidentiality of the patient records</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Need to be able to track which patient records are particularly sensitive</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Confidentiality tracking also occurs at more detailed points in the medical record</Data></Cell>
-   </Row>
-   <Row ss:Height="86.399999999999991">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.recordLocation</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">PaperRecordLocation</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">Where the paper record is</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">The location of the paper record for the patient, if there is one</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Track old paper records where these are still in use</Data></Cell>
-   </Row>
-   <Row ss:Height="43.199999999999996">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.extensions</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">See Extensions</Data></Cell>
-   </Row>
-   <Row ss:Height="115.2">
-    <Cell ss:Index="2" ss:StyleID="s161"><Data ss:Type="String">Patient.text</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell ss:StyleID="s160"><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="9" ss:StyleID="s160"><Data ss:Type="String">Text summary of person, for human interpretation</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="100.6875">
+    <Cell ss:Index="2" ss:StyleID="s78"><Data ss:Type="String">Patient.provider</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Resource(Organization)</Data></Cell>
+    <Cell ss:Index="7" ss:StyleID="s79"><Data ss:Type="Boolean">1</Data></Cell>
+    <Cell ss:StyleID="s79"/>
+    <Cell ss:StyleID="s79"><Data ss:Type="String">Organization managing the patient</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1322,12 +717,14 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
