@@ -786,13 +786,22 @@ public interface FhirPackage extends EPackage {
 	int RESOURCE_DEFN__SEARCHES = NAME_SCOPE_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Future</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__FUTURE = NAME_SCOPE_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Resource Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 9;
+	int RESOURCE_DEFN_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2305,6 +2314,17 @@ public interface FhirPackage extends EPackage {
 	EReference getResourceDefn_Searches();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isFuture <em>Future</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Future</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isFuture()
+	 * @see #getResourceDefn()
+	 * @generated
+	 */
+	EAttribute getResourceDefn_Future();
+
+	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.Example <em>Example</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3479,6 +3499,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESOURCE_DEFN__SEARCHES = eINSTANCE.getResourceDefn_Searches();
+
+		/**
+		 * The meta object literal for the '<em><b>Future</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOURCE_DEFN__FUTURE = eINSTANCE.getResourceDefn_Future();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl <em>Example</em>}' class.

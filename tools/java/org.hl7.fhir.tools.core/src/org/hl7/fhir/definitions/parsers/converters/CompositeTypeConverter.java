@@ -69,10 +69,31 @@ public class CompositeTypeConverter
 		
 	    for (org.hl7.fhir.definitions.model.ResourceDefn resource : resources) 
 	    {
-	    	result.add( (ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true) );
+	    	result.add( (ResourceDefn)buildResourceFromFhirModel(resource) );
 	    }
 	    
 	    return result;
+	}
+	
+	
+	public static ResourceDefn buildResourceFromFhirModel(
+			org.hl7.fhir.definitions.model.ResourceDefn resource) throws Exception
+	{				
+	    if( resource.isForFutureUse() )
+	    {
+    		org.hl7.fhir.definitions.model.ElementDefn futureResource = new org.hl7.fhir.definitions.model.ElementDefn();
+    		futureResource.setName( resource.getName() );
+    		futureResource.setDefinition( resource.getDefinition() );
+    		ResourceDefn resultResource = (ResourceDefn)buildCompositeTypeFromFhirModel(futureResource, true);
+    		resultResource.setFuture(true);
+    		return resultResource;
+	    }
+	    else
+	    {
+			ResourceDefn newResource = (ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true);  	
+			newResource.setSandbox( resource.isSandbox() );
+	    	return newResource;    
+	    }
 	}
 	
 	
@@ -104,6 +125,10 @@ public class CompositeTypeConverter
 			result.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
 					type.getNestedTypes().values()));
 		
+		// TODO: Fix the corner-case <Parent>.extension in resources, its type should
+		// be set to 'Extension' for now. This code can be removed if we explicitly
+		// put this into the xls files.
+
 		return result;
 	}
 

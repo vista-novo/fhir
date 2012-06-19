@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isSandbox <em>Sandbox</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#getSearches <em>Searches</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isFuture <em>Future</em>}</li>
  * </ul>
  * </p>
  *
@@ -87,5 +88,31 @@ public interface ResourceDefn extends NameScope, CompositeTypeDefn {
 	 * @generated
 	 */
 	EList<SearchParameter> getSearches();
+
+	/**
+	 * Returns the value of the '<em><b>Future</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Future</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Future</em>' attribute.
+	 * @see #setFuture(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getResourceDefn_Future()
+	 * @model
+	 * @generated
+	 */
+	boolean isFuture();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ResourceDefn#isFuture <em>Future</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Future</em>' attribute.
+	 * @see #isFuture()
+	 * @generated
+	 */
+	void setFuture(boolean value);
 
 } // ResourceDefn

@@ -137,6 +137,7 @@
         <xsd:attribute name="name" type="xsd:string" use="required"/>
         <xsd:attribute name="container" type="xsd:string"/>
         <xsd:attribute name="sandbox" type="xsd:boolean" use="required"/>
+        <xsd:attribute name="future" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

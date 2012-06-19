@@ -106,8 +106,6 @@ public class SourceParser {
 			throws Exception {
 		logger.log("Loading");
 
-		//TODO: all getXXX().addAll should check for double names within
-		//the same scope
 		eCoreParseResults = DefinitionsImpl.build(genDate, version);
 
 		loadGlobalConceptDomains();
@@ -163,10 +161,18 @@ public class SourceParser {
 			futureResource.setForFutureUse(true);
 			definitions.getFutureResources().put(cd.getCode(), futureResource);
 		}
+		
+		eCoreParseResults.getTypes().addAll(
+				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
+						.getFutureResources().values() ));
 
 		if (isInternalRun) {
 			for (String n : ini.getPropertyNames("sandbox"))
 				loadResource(n, definitions.getResources(), true);
+			
+			eCoreParseResults.getTypes().addAll(
+					CompositeTypeConverter.buildResourcesFromFhirModel(definitions
+							.getResources().values() ));
 		}
 
 		for (String n : ini.getPropertyNames("special-resources"))
@@ -317,13 +323,6 @@ public class SourceParser {
 				root.getName(),
 				new DefinedCode(root.getName(), root.getRoot().getDefinition(),
 						n));
-
-		// For now, add all resource-local types to the general definitions
-		// for( ElementDefn nestedType : root.getNestedTypes().values())
-		// {
-		// definitions.getStructures().put(nestedType.getName(),nestedType);
-		// definitions.getKnownTypes().add(new TypeRef(nestedType.getName()));
-		// }
 
 		root.setStatus(ini.getStringProperty("status", n));
 	}

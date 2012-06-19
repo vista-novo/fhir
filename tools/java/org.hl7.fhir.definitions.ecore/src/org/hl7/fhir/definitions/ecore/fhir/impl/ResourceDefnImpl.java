@@ -57,6 +57,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#isSandbox <em>Sandbox</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getSearches <em>Searches</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#isFuture <em>Future</em>}</li>
  * </ul>
  * </p>
  *
@@ -202,6 +203,26 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 	 * @ordered
 	 */
 	protected EList<SearchParameter> searches;
+
+	/**
+	 * The default value of the '{@link #isFuture() <em>Future</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFuture()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean FUTURE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isFuture() <em>Future</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFuture()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean future = FUTURE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -472,6 +493,27 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isFuture() {
+		return future;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFuture(boolean newFuture) {
+		boolean oldFuture = future;
+		future = newFuture;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_DEFN__FUTURE, oldFuture, future));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getFQN() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -610,6 +652,8 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				return getExample();
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
 				return getSearches();
+			case FhirPackage.RESOURCE_DEFN__FUTURE:
+				return isFuture();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -666,6 +710,9 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				getSearches().clear();
 				getSearches().addAll((Collection<? extends SearchParameter>)newValue);
 				return;
+			case FhirPackage.RESOURCE_DEFN__FUTURE:
+				setFuture((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -714,6 +761,9 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
 				getSearches().clear();
 				return;
+			case FhirPackage.RESOURCE_DEFN__FUTURE:
+				setFuture(FUTURE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -750,6 +800,8 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 				return example != null && !example.isEmpty();
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
 				return searches != null && !searches.isEmpty();
+			case FhirPackage.RESOURCE_DEFN__FUTURE:
+				return future != FUTURE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -820,6 +872,8 @@ public class ResourceDefnImpl extends EObjectImpl implements ResourceDefn {
 		result.append(name);
 		result.append(", sandbox: ");
 		result.append(sandbox);
+		result.append(", future: ");
+		result.append(future);
 		result.append(')');
 		return result.toString();
 	}
