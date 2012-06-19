@@ -42,6 +42,7 @@ public interface EventDefn extends EObject {
 	 * @see #setCode(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getEventDefn_Code()
 	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getCode();
@@ -68,6 +69,7 @@ public interface EventDefn extends EObject {
 	 * @see #setDefinition(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getEventDefn_Definition()
 	 * @model required="true"
+	 *        extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getDefinition();
@@ -93,7 +95,7 @@ public interface EventDefn extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Follow Ups</em>' attribute list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getEventDefn_FollowUps()
-	 * @model
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	EList<String> getFollowUps();

@@ -36,7 +36,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,21 +47,13 @@ import java.util.Map;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
@@ -71,7 +62,6 @@ import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerat
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -99,7 +89,6 @@ import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
-import org.hl7.fhir.utilities.xml.JsonGenerator;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Document;
@@ -108,9 +97,6 @@ import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.*;
-import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
 /**
  * This is the entry point for the publication method for FHIR The general order
@@ -153,7 +139,7 @@ public class Publisher {
 			prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
 			if (validate()) 
 			{
-				generateECore(prsr.getECoreParseResults());
+				generateECore(prsr.getECoreParseResults(), page.getFolders().dstDir + "ECoreDefinitions.xml");
 				produceSpecification();
 				validateXml();
 				validateJava();
@@ -168,16 +154,14 @@ public class Publisher {
 
 	}
 
-	private void generateECore(org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions) throws IOException {
+	private void generateECore(org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions, String filename) throws IOException {
 		 Resource resource = new XMLResourceImpl();
 		 Map<String, String> options = new HashMap<String, String>();
 		 options.put(XMLResource.OPTION_ENCODING, "UTF-8");
 		 options.put(XMLResource.OPTION_XML_VERSION, "1.0");
 		
 		 resource.getContents().add(eCoreDefinitions);
-		 resource.save(new FileOutputStream("c:\\temp\\ecore.xml"), options);
-		 	new XMLProcessor().save(new FileOutputStream("c:\\temp\\ecore.xml"),
-		 		resource, options);
+		 resource.save(new FileOutputStream(filename), options);
 	}
 
 	private void registerReferencePlatforms() {

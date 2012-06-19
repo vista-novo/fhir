@@ -26,7 +26,7 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#isInBook <em>In Book</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,24 +94,24 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	protected String path = PATH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
+	 * The default value of the '{@link #isInBook() <em>In Book</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSource()
+	 * @see #isInBook()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SOURCE_EDEFAULT = null;
+	protected static final boolean IN_BOOK_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
+	 * The cached value of the '{@link #isInBook() <em>In Book</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSource()
+	 * @see #isInBook()
 	 * @generated
 	 * @ordered
 	 */
-	protected String source = SOURCE_EDEFAULT;
+	protected boolean inBook = IN_BOOK_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -200,8 +200,8 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getSource() {
-		return source;
+	public boolean isInBook() {
+		return inBook;
 	}
 
 	/**
@@ -209,11 +209,11 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSource(String newSource) {
-		String oldSource = source;
-		source = newSource;
+	public void setInBook(boolean newInBook) {
+		boolean oldInBook = inBook;
+		inBook = newInBook;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.EXAMPLE__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.EXAMPLE__IN_BOOK, oldInBook, inBook));
 	}
 
 	/**
@@ -230,8 +230,8 @@ public class ExampleImpl extends EObjectImpl implements Example {
 				return getDescription();
 			case FhirPackage.EXAMPLE__PATH:
 				return getPath();
-			case FhirPackage.EXAMPLE__SOURCE:
-				return getSource();
+			case FhirPackage.EXAMPLE__IN_BOOK:
+				return isInBook();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,8 +253,8 @@ public class ExampleImpl extends EObjectImpl implements Example {
 			case FhirPackage.EXAMPLE__PATH:
 				setPath((String)newValue);
 				return;
-			case FhirPackage.EXAMPLE__SOURCE:
-				setSource((String)newValue);
+			case FhirPackage.EXAMPLE__IN_BOOK:
+				setInBook((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -277,8 +277,8 @@ public class ExampleImpl extends EObjectImpl implements Example {
 			case FhirPackage.EXAMPLE__PATH:
 				setPath(PATH_EDEFAULT);
 				return;
-			case FhirPackage.EXAMPLE__SOURCE:
-				setSource(SOURCE_EDEFAULT);
+			case FhirPackage.EXAMPLE__IN_BOOK:
+				setInBook(IN_BOOK_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -298,8 +298,8 @@ public class ExampleImpl extends EObjectImpl implements Example {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FhirPackage.EXAMPLE__PATH:
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-			case FhirPackage.EXAMPLE__SOURCE:
-				return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
+			case FhirPackage.EXAMPLE__IN_BOOK:
+				return inBook != IN_BOOK_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -320,10 +320,16 @@ public class ExampleImpl extends EObjectImpl implements Example {
 		result.append(description);
 		result.append(", path: ");
 		result.append(path);
-		result.append(", source: ");
-		result.append(source);
+		result.append(", inBook: ");
+		result.append(inBook);
 		result.append(')');
 		return result.toString();
 	}
 
+	
+	public String getFileTitle() 
+	{
+		    String s = this.getName();
+		    return s.substring(0, s.indexOf("."));
+	}
 } //ExampleImpl

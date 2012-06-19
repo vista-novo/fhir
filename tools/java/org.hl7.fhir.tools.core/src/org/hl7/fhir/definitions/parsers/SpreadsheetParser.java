@@ -29,7 +29,6 @@ package org.hl7.fhir.definitions.parsers;
 
  */
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -176,8 +175,6 @@ public class SpreadsheetParser {
 	public ResourceDefn parseResource() throws Exception {
 		isProfile = false;
 		ResourceDefn root = parseCommonTypeColumns();
-
-		
 
 		readEvents(xls.getSheets().get("Events"));
 		readExamples(root, xls.getSheets().get("Examples"));
@@ -392,9 +389,12 @@ public class SpreadsheetParser {
 			defn.getExamples().add(
 					new Example("General", "Example of " + title, file, null,
 							true));
-		}
+		}		
 	}
 
+	
+	
+	
 	private void readEvents(Sheet sheet) throws Exception {
 		if (sheet != null) {
 			for (int row = 0; row < sheet.rows.size(); row++) {

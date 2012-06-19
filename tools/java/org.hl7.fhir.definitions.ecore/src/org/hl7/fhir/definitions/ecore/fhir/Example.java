@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getPath <em>Path</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getSource <em>Source</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#isInBook <em>In Book</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,6 +40,7 @@ public interface Example extends EObject {
 	 * @see #setName(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Name()
 	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getName();
@@ -65,7 +66,7 @@ public interface Example extends EObject {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Description()
-	 * @model
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getDescription();
@@ -92,6 +93,7 @@ public interface Example extends EObject {
 	 * @see #setPath(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Path()
 	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getPath();
@@ -107,29 +109,30 @@ public interface Example extends EObject {
 	void setPath(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Source</b></em>' attribute.
+	 * Returns the value of the '<em><b>In Book</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source</em>' attribute isn't clear,
+	 * If the meaning of the '<em>In Book</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' attribute.
-	 * @see #setSource(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Source()
-	 * @model
+	 * @return the value of the '<em>In Book</em>' attribute.
+	 * @see #setInBook(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_InBook()
+	 * @model extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
-	String getSource();
+	boolean isInBook();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getSource <em>Source</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Example#isInBook <em>In Book</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' attribute.
-	 * @see #getSource()
+	 * @param value the new value of the '<em>In Book</em>' attribute.
+	 * @see #isInBook()
 	 * @generated
 	 */
-	void setSource(String value);
+	void setInBook(boolean value);
 
+	String getFileTitle();
 } // Example

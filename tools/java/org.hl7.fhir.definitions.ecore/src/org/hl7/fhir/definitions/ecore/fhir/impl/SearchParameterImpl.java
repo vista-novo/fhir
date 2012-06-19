@@ -24,7 +24,7 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getType <em>Type</em>}</li>
  * </ul>
@@ -34,24 +34,24 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchType;
  */
 public class SearchParameterImpl extends EObjectImpl implements SearchParameter {
 	/**
-	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCode()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String CODE_EDEFAULT = null;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCode()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String code = CODE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
@@ -94,6 +94,15 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	protected SearchType type = TYPE_EDEFAULT;
 
 	/**
+	 * This is true if the Type attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean typeESet;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -117,8 +126,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getCode() {
-		return code;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -126,11 +135,11 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCode(String newCode) {
-		String oldCode = code;
-		code = newCode;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__CODE, oldCode, code));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__NAME, oldName, name));
 	}
 
 	/**
@@ -171,8 +180,33 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	public void setType(SearchType newType) {
 		SearchType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
+		boolean oldTypeESet = typeESet;
+		typeESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, type, !oldTypeESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetType() {
+		SearchType oldType = type;
+		boolean oldTypeESet = typeESet;
+		type = TYPE_EDEFAULT;
+		typeESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, TYPE_EDEFAULT, oldTypeESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetType() {
+		return typeESet;
 	}
 
 	/**
@@ -183,8 +217,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.SEARCH_PARAMETER__CODE:
-				return getCode();
+			case FhirPackage.SEARCH_PARAMETER__NAME:
+				return getName();
 			case FhirPackage.SEARCH_PARAMETER__DESCRIPTION:
 				return getDescription();
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
@@ -201,8 +235,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.SEARCH_PARAMETER__CODE:
-				setCode((String)newValue);
+			case FhirPackage.SEARCH_PARAMETER__NAME:
+				setName((String)newValue);
 				return;
 			case FhirPackage.SEARCH_PARAMETER__DESCRIPTION:
 				setDescription((String)newValue);
@@ -222,14 +256,14 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.SEARCH_PARAMETER__CODE:
-				setCode(CODE_EDEFAULT);
+			case FhirPackage.SEARCH_PARAMETER__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 			case FhirPackage.SEARCH_PARAMETER__DESCRIPTION:
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
-				setType(TYPE_EDEFAULT);
+				unsetType();
 				return;
 		}
 		super.eUnset(featureID);
@@ -243,12 +277,12 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.SEARCH_PARAMETER__CODE:
-				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
+			case FhirPackage.SEARCH_PARAMETER__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.SEARCH_PARAMETER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
-				return type != TYPE_EDEFAULT;
+				return isSetType();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -263,12 +297,12 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (code: ");
-		result.append(code);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(", description: ");
 		result.append(description);
 		result.append(", type: ");
-		result.append(type);
+		if (typeESet) result.append(type); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

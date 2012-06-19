@@ -797,7 +797,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getExample_Source() {
+	public EAttribute getExample_InBook() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1328,7 +1328,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSearchParameter_Code() {
+	public EAttribute getSearchParameter_Name() {
 		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -1467,7 +1467,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(exampleEClass, EXAMPLE__NAME);
 		createEAttribute(exampleEClass, EXAMPLE__DESCRIPTION);
 		createEAttribute(exampleEClass, EXAMPLE__PATH);
-		createEAttribute(exampleEClass, EXAMPLE__SOURCE);
+		createEAttribute(exampleEClass, EXAMPLE__IN_BOOK);
 
 		definedCodeEClass = createEClass(DEFINED_CODE);
 		createEAttribute(definedCodeEClass, DEFINED_CODE__CODE);
@@ -1503,7 +1503,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(metaDataItemEClass, META_DATA_ITEM__VALUE);
 
 		searchParameterEClass = createEClass(SEARCH_PARAMETER);
-		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__CODE);
+		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__NAME);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__DESCRIPTION);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__TYPE);
 
@@ -1598,8 +1598,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		initEClass(elementDefnEClass, ElementDefn.class, "ElementDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElementDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElementDefn_MinCardinality(), ecorePackage.getEInt(), "minCardinality", "-2", 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getElementDefn_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDefn_MinCardinality(), ecorePackage.getEInt(), "minCardinality", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getElementDefn_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 1, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_AllowDAR(), ecorePackage.getEBoolean(), "allowDAR", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MustUnderstand(), ecorePackage.getEBoolean(), "mustUnderstand", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getElementDefn_MustSupport(), ecorePackage.getEBoolean(), "mustSupport", null, 0, 1, ElementDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1652,7 +1652,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getExample_Name(), ecorePackage.getEString(), "name", null, 1, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExample_Description(), ecorePackage.getEString(), "description", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExample_Path(), ecorePackage.getEString(), "path", null, 1, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getExample_Source(), ecorePackage.getEString(), "source", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExample_InBook(), ecorePackage.getEBoolean(), "inBook", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(definedCodeEClass, DefinedCode.class, "DefinedCode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDefinedCode_Code(), ecorePackage.getEString(), "code", null, 1, 1, DefinedCode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1688,9 +1688,9 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getMetaDataItem_Value(), ecorePackage.getEString(), "value", null, 0, -1, MetaDataItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(searchParameterEClass, SearchParameter.class, "SearchParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSearchParameter_Code(), ecorePackage.getEString(), "code", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 1, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefnEClass, TypeDefn.class, "TypeDefn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1761,8 +1761,9 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		initEEnum(searchTypeEEnum, SearchType.class, "SearchType");
 		addEEnumLiteral(searchTypeEEnum, SearchType.INTEGER);
-		addEEnumLiteral(searchTypeEEnum, SearchType.NAME);
+		addEEnumLiteral(searchTypeEEnum, SearchType.STRING);
 		addEEnumLiteral(searchTypeEEnum, SearchType.TEXT);
+		addEEnumLiteral(searchTypeEEnum, SearchType.DATE);
 		addEEnumLiteral(searchTypeEEnum, SearchType.TOKEN);
 		addEEnumLiteral(searchTypeEEnum, SearchType.QTOKEN);
 
@@ -1897,6 +1898,36 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 			 "name", "search"
 		   });		
 		addAnnotation
+		  (getExample_Name(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getExample_Description(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getExample_Path(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getExample_InBook(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getDefinedCode_Code(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
 		  (getDefinedCode_Definition(), 
 		   source, 
 		   new String[] {
@@ -1913,6 +1944,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		   source, 
 		   new String[] {
 			 "name", "detail"
+		   });		
+		addAnnotation
+		  (getEventDefn_Code(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute"
+		   });		
+		addAnnotation
+		  (getEventDefn_Definition(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
+		   });		
+		addAnnotation
+		  (getEventDefn_FollowUps(), 
+		   source, 
+		   new String[] {
+			 "kind", "element"
 		   });		
 		addAnnotation
 		  (getEventDefn_Usages(), 

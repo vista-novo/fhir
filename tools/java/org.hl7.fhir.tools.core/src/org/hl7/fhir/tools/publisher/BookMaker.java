@@ -38,7 +38,6 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.TextFile;
-import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;

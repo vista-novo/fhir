@@ -831,13 +831,13 @@ public interface FhirPackage extends EPackage {
 	int EXAMPLE__PATH = 2;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' attribute.
+	 * The feature id for the '<em><b>In Book</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE__SOURCE = 3;
+	int EXAMPLE__IN_BOOK = 3;
 
 	/**
 	 * The number of structural features of the '<em>Example</em>' class.
@@ -1367,13 +1367,13 @@ public interface FhirPackage extends EPackage {
 	int SEARCH_PARAMETER = 15;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_PARAMETER__CODE = 0;
+	int SEARCH_PARAMETER__NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -2368,15 +2368,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getExample_Path();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getSource <em>Source</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Example#isInBook <em>In Book</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Source</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.Example#getSource()
+	 * @return the meta object for the attribute '<em>In Book</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Example#isInBook()
 	 * @see #getExample()
 	 * @generated
 	 */
-	EAttribute getExample_Source();
+	EAttribute getExample_InBook();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode <em>Defined Code</em>}'.
@@ -3002,15 +3002,15 @@ public interface FhirPackage extends EPackage {
 	EClass getSearchParameter();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getCode <em>Code</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Code</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getCode()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getName()
 	 * @see #getSearchParameter()
 	 * @generated
 	 */
-	EAttribute getSearchParameter_Code();
+	EAttribute getSearchParameter_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getDescription <em>Description</em>}'.
@@ -3543,12 +3543,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute EXAMPLE__PATH = eINSTANCE.getExample_Path();
 
 		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>In Book</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EXAMPLE__SOURCE = eINSTANCE.getExample_Source();
+		EAttribute EXAMPLE__IN_BOOK = eINSTANCE.getExample_InBook();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinedCodeImpl <em>Defined Code</em>}' class.
@@ -4045,12 +4045,12 @@ public interface FhirPackage extends EPackage {
 		EClass SEARCH_PARAMETER = eINSTANCE.getSearchParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEARCH_PARAMETER__CODE = eINSTANCE.getSearchParameter_Code();
+		EAttribute SEARCH_PARAMETER__NAME = eINSTANCE.getSearchParameter_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.

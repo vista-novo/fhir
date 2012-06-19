@@ -34,11 +34,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
+import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.utilities.Utilities;
 
 

@@ -28,7 +28,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,7 +42,6 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
-import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 
 public class ChmMaker {
 

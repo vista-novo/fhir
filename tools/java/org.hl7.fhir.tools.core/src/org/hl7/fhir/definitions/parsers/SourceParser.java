@@ -31,7 +31,6 @@ package org.hl7.fhir.definitions.parsers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,6 +49,7 @@ import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
 import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
+import org.hl7.fhir.definitions.parsers.converters.EventConverter;
 import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
@@ -76,11 +76,9 @@ public class SourceParser {
 	private String imgDir;
 	private String termDir;
 	public String dtDir;
-	private Map<String, String> csvSrcs;
 	private String rootDir;
 
 	public SourceParser(Logger logger, String root, Definitions definitions) {
-		csvSrcs = new HashMap<String, String>();
 		this.logger = logger;
 
 		this.definitions = definitions;
@@ -175,6 +173,9 @@ public class SourceParser {
 							.getResources().values() ));
 		}
 
+		eCoreParseResults.getEvents().addAll(
+				EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
+		
 		for (String n : ini.getPropertyNames("special-resources"))
 			definitions.getAggregationEndpoints().add(n);
 

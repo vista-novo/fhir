@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getCode <em>Code</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}</li>
  * </ul>
@@ -28,30 +28,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface SearchParameter extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Code</b></em>' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Code</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Code</em>' attribute.
-	 * @see #setCode(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getSearchParameter_Code()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getSearchParameter_Name()
 	 * @model
 	 * @generated
 	 */
-	String getCode();
+	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getCode <em>Code</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Code</em>' attribute.
-	 * @see #getCode()
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
 	 * @generated
 	 */
-	void setCode(String value);
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
@@ -90,9 +90,11 @@ public interface SearchParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchType
+	 * @see #isSetType()
+	 * @see #unsetType()
 	 * @see #setType(SearchType)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getSearchParameter_Type()
-	 * @model
+	 * @model unsettable="true" required="true"
 	 * @generated
 	 */
 	SearchType getType();
@@ -103,9 +105,34 @@ public interface SearchParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchType
+	 * @see #isSetType()
+	 * @see #unsetType()
 	 * @see #getType()
 	 * @generated
 	 */
 	void setType(SearchType value);
+
+	/**
+	 * Unsets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetType()
+	 * @see #getType()
+	 * @see #setType(SearchType)
+	 * @generated
+	 */
+	void unsetType();
+
+	/**
+	 * Returns whether the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Type</em>' attribute is set.
+	 * @see #unsetType()
+	 * @see #getType()
+	 * @see #setType(SearchType)
+	 * @generated
+	 */
+	boolean isSetType();
 
 } // SearchParameter

@@ -49,9 +49,12 @@ public interface ElementDefn extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Cardinality</em>' attribute.
+	 * @see #isSetMaxCardinality()
+	 * @see #unsetMaxCardinality()
 	 * @see #setMaxCardinality(int)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MaxCardinality()
-	 * @model extendedMetaData="kind='attribute'"
+	 * @model unsettable="true" required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	int getMaxCardinality();
@@ -61,14 +64,38 @@ public interface ElementDefn extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Max Cardinality</em>' attribute.
+	 * @see #isSetMaxCardinality()
+	 * @see #unsetMaxCardinality()
 	 * @see #getMaxCardinality()
 	 * @generated
 	 */
 	void setMaxCardinality(int value);
 
 	/**
+	 * Unsets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetMaxCardinality()
+	 * @see #getMaxCardinality()
+	 * @see #setMaxCardinality(int)
+	 * @generated
+	 */
+	void unsetMaxCardinality();
+
+	/**
+	 * Returns whether the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMaxCardinality <em>Max Cardinality</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Max Cardinality</em>' attribute is set.
+	 * @see #unsetMaxCardinality()
+	 * @see #getMaxCardinality()
+	 * @see #setMaxCardinality(int)
+	 * @generated
+	 */
+	boolean isSetMaxCardinality();
+
+	/**
 	 * Returns the value of the '<em><b>Min Cardinality</b></em>' attribute.
-	 * The default value is <code>"-2"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min Cardinality</em>' attribute isn't clear,
@@ -76,9 +103,11 @@ public interface ElementDefn extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Cardinality</em>' attribute.
+	 * @see #isSetMinCardinality()
+	 * @see #unsetMinCardinality()
 	 * @see #setMinCardinality(int)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_MinCardinality()
-	 * @model default="-2"
+	 * @model unsettable="true" required="true"
 	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
@@ -89,10 +118,35 @@ public interface ElementDefn extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Min Cardinality</em>' attribute.
+	 * @see #isSetMinCardinality()
+	 * @see #unsetMinCardinality()
 	 * @see #getMinCardinality()
 	 * @generated
 	 */
 	void setMinCardinality(int value);
+
+	/**
+	 * Unsets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMinCardinality <em>Min Cardinality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetMinCardinality()
+	 * @see #getMinCardinality()
+	 * @see #setMinCardinality(int)
+	 * @generated
+	 */
+	void unsetMinCardinality();
+
+	/**
+	 * Returns whether the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getMinCardinality <em>Min Cardinality</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Min Cardinality</em>' attribute is set.
+	 * @see #unsetMinCardinality()
+	 * @see #getMinCardinality()
+	 * @see #setMinCardinality(int)
+	 * @generated
+	 */
+	boolean isSetMinCardinality();
 
 	/**
 	 * Returns the value of the '<em><b>Allow DAR</b></em>' attribute.

@@ -32,54 +32,35 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.utilities.Utilities;
 
 
-public class ConstrainedTypeConverter 
+public class ExampleConverter 
 {
-	public static List<ConstrainedTypeDefn> buildConstrainedTypesFromFhirModel( 
-			Collection<org.hl7.fhir.definitions.model.DefinedCode> constrainedTypes,
-			Map<String,org.hl7.fhir.definitions.model.Invariant> invariants )
-				throws Exception
+	public static List<Example> buildExamplesFromFhirModel( Collection<org.hl7.fhir.definitions.model.Example> examples )
 	{
-		List<ConstrainedTypeDefn> result = new ArrayList<ConstrainedTypeDefn>();
+		List<Example> result = new ArrayList<Example>();
 		
-	    for (org.hl7.fhir.definitions.model.DefinedCode constrainedType : constrainedTypes) 
+	    for (org.hl7.fhir.definitions.model.Example example : examples) 
 	    {
-	    	org.hl7.fhir.definitions.model.Invariant inv = 
-	    			invariants.get(constrainedType.getCode());
-	    	
-	    	if( inv == null )
-	    		throw new Exception( "Invariants missing for constrained type" + constrainedType.getCode());
-	    	
-	    	result.add(buildConstrainedTypeFromFhirModel(constrainedType, inv));
+    		result.add(buildExampleFromFhirModel(example));
 	    }
 	    
 	    return result;
 	}
 	
-	public static ConstrainedTypeDefn buildConstrainedTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.DefinedCode constrainedType,
-			org.hl7.fhir.definitions.model.Invariant invariant) throws Exception
+	
+	public static Example buildExampleFromFhirModel( org.hl7.fhir.definitions.model.Example example )
 	{
-		ConstrainedTypeDefn result = FhirFactory.eINSTANCE.createConstrainedTypeDefn();
+		Example result = FhirFactory.eINSTANCE.createExample();
 		
-		// Since the comment in the old Fhir model will not contain multiple types
-		// and none of them is a Resource(A|B|C) ref, we can be sure the buildTypes..()
-		// will only return 1 result;
-		TypeRef baseType = 
-				TypeRefConverter.buildTypeRefsFromFhirTypeName(constrainedType.getComment()).get(0);
-		
-		result.setBaseType( baseType );
-		result.setName( constrainedType.getCode() );
-		
-		//TODO: This could be multiple invariants, but current Fhir model only allows 1.
-		result.getDetails().add( 
-				CompositeTypeConverter.buildInvariantFromFhirModel(invariant) );
+		result.setName( example.getName() );
+		result.setDescription( Utilities.cleanupTextString(example.getDescription()) );
+		result.setPath( example.getPath().getName() );
+		result.setInBook( example.isInBook() );
 		
 		return result;
 	}

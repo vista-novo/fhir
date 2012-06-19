@@ -34,9 +34,6 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
-import org.hl7.fhir.definitions.model.DefinedCode;
-import org.hl7.fhir.definitions.model.DefinedStringPattern;
-import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.utilities.Utilities;
 
 

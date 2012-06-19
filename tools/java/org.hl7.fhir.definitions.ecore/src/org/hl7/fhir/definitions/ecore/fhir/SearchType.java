@@ -33,16 +33,14 @@ public enum SearchType implements Enumerator {
 	INTEGER(0, "integer", "integer"),
 
 	/**
-	 * The '<em><b>Name</b></em>' literal object.
+	 * The '<em><b>String</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #NAME_VALUE
+	 * @see #STRING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	NAME(1, "name", "name"),
-
-	/**
+	STRING(1, "string", "string"), /**
 	 * The '<em><b>Text</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -53,6 +51,14 @@ public enum SearchType implements Enumerator {
 	TEXT(2, "text", "text"),
 
 	/**
+	 * The '<em><b>Date</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DATE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DATE(3, "date", "date"), /**
 	 * The '<em><b>Token</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +66,7 @@ public enum SearchType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TOKEN(3, "token", "token"),
+	TOKEN(4, "token", "token"),
 
 	/**
 	 * The '<em><b>Qtoken</b></em>' literal object.
@@ -70,7 +76,7 @@ public enum SearchType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	QTOKEN(4, "qtoken", "EEnumLiteral0");
+	QTOKEN(5, "qtoken", "qtoken");
 
 	/**
 	 * The '<em><b>Integer</b></em>' literal value.
@@ -88,19 +94,19 @@ public enum SearchType implements Enumerator {
 	public static final int INTEGER_VALUE = 0;
 
 	/**
-	 * The '<em><b>Name</b></em>' literal value.
+	 * The '<em><b>String</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>Name</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>String</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #NAME
-	 * @model name="name"
+	 * @see #STRING
+	 * @model name="string"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int NAME_VALUE = 1;
+	public static final int STRING_VALUE = 1;
 
 	/**
 	 * The '<em><b>Text</b></em>' literal value.
@@ -118,6 +124,21 @@ public enum SearchType implements Enumerator {
 	public static final int TEXT_VALUE = 2;
 
 	/**
+	 * The '<em><b>Date</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>Date</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DATE
+	 * @model name="date"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DATE_VALUE = 3;
+
+	/**
 	 * The '<em><b>Token</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -130,7 +151,7 @@ public enum SearchType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int TOKEN_VALUE = 3;
+	public static final int TOKEN_VALUE = 4;
 
 	/**
 	 * The '<em><b>Qtoken</b></em>' literal value.
@@ -141,11 +162,11 @@ public enum SearchType implements Enumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #QTOKEN
-	 * @model name="qtoken" literal="EEnumLiteral0"
+	 * @model name="qtoken"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int QTOKEN_VALUE = 4;
+	public static final int QTOKEN_VALUE = 5;
 
 	/**
 	 * An array of all the '<em><b>Search Type</b></em>' enumerators.
@@ -156,8 +177,9 @@ public enum SearchType implements Enumerator {
 	private static final SearchType[] VALUES_ARRAY =
 		new SearchType[] {
 			INTEGER,
-			NAME,
+			STRING,
 			TEXT,
+			DATE,
 			TOKEN,
 			QTOKEN,
 		};
@@ -211,8 +233,9 @@ public enum SearchType implements Enumerator {
 	public static SearchType get(int value) {
 		switch (value) {
 			case INTEGER_VALUE: return INTEGER;
-			case NAME_VALUE: return NAME;
+			case STRING_VALUE: return STRING;
 			case TEXT_VALUE: return TEXT;
+			case DATE_VALUE: return DATE;
 			case TOKEN_VALUE: return TOKEN;
 			case QTOKEN_VALUE: return QTOKEN;
 		}

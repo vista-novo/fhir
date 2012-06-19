@@ -12,8 +12,6 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
-
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -91,7 +89,11 @@ public class CompositeTypeConverter
 	    else
 	    {
 			ResourceDefn newResource = (ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true);  	
-			newResource.setSandbox( resource.isSandbox() );
+			newResource.setSandbox( resource.isSandbox() );		
+			newResource.getExample().addAll(ExampleConverter.buildExamplesFromFhirModel(resource.getExamples()));
+			newResource.getSearches().addAll(
+					SearchParameterConverter.buildSearchParametersFromFhirModel(resource.getSearchParams()));
+			
 	    	return newResource;    
 	    }
 	}
@@ -170,7 +172,11 @@ public class CompositeTypeConverter
 
 		ElementDefn result = FhirFactory.eINSTANCE.createElementDefn();
 		
-		result.setName( element.getName() );
+		String name = element.getName();
+		if( name.endsWith("[x]") ) 
+			name = name.replace("[x]","");
+		
+		result.setName( name );
 		Annotations ann = buildAnnotationsFromFhirElement(element);
 		
 		result.setAnnotation(ann);

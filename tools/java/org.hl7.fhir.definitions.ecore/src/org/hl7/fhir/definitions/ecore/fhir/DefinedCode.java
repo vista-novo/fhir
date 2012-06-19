@@ -38,6 +38,7 @@ public interface DefinedCode extends EObject {
 	 * @see #setCode(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinedCode_Code()
 	 * @model required="true"
+	 *        extendedMetaData="kind='attribute'"
 	 * @generated
 	 */
 	String getCode();

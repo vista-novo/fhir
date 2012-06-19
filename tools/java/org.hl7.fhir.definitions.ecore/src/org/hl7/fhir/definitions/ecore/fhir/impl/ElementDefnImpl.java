@@ -88,7 +88,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_CARDINALITY_EDEFAULT = -2;
+	protected static final int MIN_CARDINALITY_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getMinCardinality() <em>Min Cardinality</em>}' attribute.
@@ -99,6 +99,15 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected int minCardinality = MIN_CARDINALITY_EDEFAULT;
+
+	/**
+	 * This is true if the Min Cardinality attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean minCardinalityESet;
 
 	/**
 	 * The default value of the '{@link #getMaxCardinality() <em>Max Cardinality</em>}' attribute.
@@ -119,6 +128,15 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected int maxCardinality = MAX_CARDINALITY_EDEFAULT;
+
+	/**
+	 * This is true if the Max Cardinality attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean maxCardinalityESet;
 
 	/**
 	 * The default value of the '{@link #isAllowDAR() <em>Allow DAR</em>}' attribute.
@@ -306,8 +324,33 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	public void setMaxCardinality(int newMaxCardinality) {
 		int oldMaxCardinality = maxCardinality;
 		maxCardinality = newMaxCardinality;
+		boolean oldMaxCardinalityESet = maxCardinalityESet;
+		maxCardinalityESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY, oldMaxCardinality, maxCardinality));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY, oldMaxCardinality, maxCardinality, !oldMaxCardinalityESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetMaxCardinality() {
+		int oldMaxCardinality = maxCardinality;
+		boolean oldMaxCardinalityESet = maxCardinalityESet;
+		maxCardinality = MAX_CARDINALITY_EDEFAULT;
+		maxCardinalityESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY, oldMaxCardinality, MAX_CARDINALITY_EDEFAULT, oldMaxCardinalityESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMaxCardinality() {
+		return maxCardinalityESet;
 	}
 
 	/**
@@ -327,8 +370,33 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	public void setMinCardinality(int newMinCardinality) {
 		int oldMinCardinality = minCardinality;
 		minCardinality = newMinCardinality;
+		boolean oldMinCardinalityESet = minCardinalityESet;
+		minCardinalityESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY, oldMinCardinality, minCardinality));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY, oldMinCardinality, minCardinality, !oldMinCardinalityESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetMinCardinality() {
+		int oldMinCardinality = minCardinality;
+		boolean oldMinCardinalityESet = minCardinalityESet;
+		minCardinality = MIN_CARDINALITY_EDEFAULT;
+		minCardinalityESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY, oldMinCardinality, MIN_CARDINALITY_EDEFAULT, oldMinCardinalityESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetMinCardinality() {
+		return minCardinalityESet;
 	}
 
 	/**
@@ -774,10 +842,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				setName(NAME_EDEFAULT);
 				return;
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
-				setMinCardinality(MIN_CARDINALITY_EDEFAULT);
+				unsetMinCardinality();
 				return;
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				setMaxCardinality(MAX_CARDINALITY_EDEFAULT);
+				unsetMaxCardinality();
 				return;
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				setAllowDAR(ALLOW_DAR_EDEFAULT);
@@ -827,9 +895,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.ELEMENT_DEFN__MIN_CARDINALITY:
-				return minCardinality != MIN_CARDINALITY_EDEFAULT;
+				return isSetMinCardinality();
 			case FhirPackage.ELEMENT_DEFN__MAX_CARDINALITY:
-				return maxCardinality != MAX_CARDINALITY_EDEFAULT;
+				return isSetMaxCardinality();
 			case FhirPackage.ELEMENT_DEFN__ALLOW_DAR:
 				return allowDAR != ALLOW_DAR_EDEFAULT;
 			case FhirPackage.ELEMENT_DEFN__MUST_UNDERSTAND:
@@ -869,9 +937,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", minCardinality: ");
-		result.append(minCardinality);
+		if (minCardinalityESet) result.append(minCardinality); else result.append("<unset>");
 		result.append(", maxCardinality: ");
-		result.append(maxCardinality);
+		if (maxCardinalityESet) result.append(maxCardinality); else result.append("<unset>");
 		result.append(", allowDAR: ");
 		result.append(allowDAR);
 		result.append(", mustUnderstand: ");
