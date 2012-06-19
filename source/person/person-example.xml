@@ -77,11 +77,12 @@
   <dob>1974-12-25</dob> 
 	
 	<race>
-	  <coding>
+	  <coding id="a25">
 	    <code>EUR</code>
-    <system>urn:hl7.org::v2/0200</system>
-    <display>European</display>
-  </coding>
+      <system>urn:hl7.org::v2/0200</system>
+      <display>European</display>
+    </coding>
+    <primary idref="a25"/>
 	</race>
 	<text>
     <status>generated</status>

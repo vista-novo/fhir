@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>10335</WindowHeight>
+  <WindowHeight>10275</WindowHeight>
   <WindowWidth>26115</WindowWidth>
   <WindowTopX>2160</WindowTopX>
-  <WindowTopY>2085</WindowTopY>
+  <WindowTopY>2145</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -62,7 +62,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -130,6 +130,18 @@
     <Cell><Data ss:Type="String">The identity is a uri. It may be an OID or a UUID, which must be references to the HL7 OID registry, or a URI which either comes from the list of FHIR defined special URIs, or from some system defined elsewhere, in which case the URI should de-reference to establish the system unambiguously</Data></Cell>
     <Cell><Data ss:Type="String">CV.codeSystem</Data></Cell>
     <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="133.5">
+    <Cell><Data ss:Type="String">Coding.version</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">minor release. Ignore when comparing codes</Data></Cell>
+    <Cell><Data ss:Type="String">Tracks which minor release is in use, or which the code was taken from. The format of the version is that specified by the code system, or if nothing is specified, the date of the release of that version. If the code system changes the meaning of an existing code, then this is not a minor release, and a system must change, not the version</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:Index="11"><Data ss:Type="String">The version number is not provided in order to allow for variations in meaning of the code, but to support various implementation related activities (such as value set checking)</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>

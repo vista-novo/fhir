@@ -580,9 +580,9 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Prescription.extensions</Data><NamedCell
+    <Cell><Data ss:Type="String">Prescription.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -609,8 +609,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>32</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>30</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -695,7 +694,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">reason</Data></Cell>
     <Cell><Data ss:Type="String">code or text in reason for prescription</Data></Cell>
-    <Cell><Data ss:Type="String">text</Data></Cell>
+    <Cell><Data ss:Type="String">qtoken</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -709,8 +708,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -232,6 +232,35 @@ images are used, they must include an appropriate caption).
 The <i>dataAbsentReason</i> is not used on the narrative element, or any elements 
 contained in it. The xhtml element must have some non-whitespace content.
 </p>
+<h3>Styling the XHTML</h3>
+<p>
+The XHTML fragment in the narrative may be styled using CSS in the normal fashion, using a mix of classes, ids, 
+and in-line style elements. Specific CSS stylesheets will be applied to the XHTML when it is extracted from
+the resource to be displayed to a human to create the presentation desired in the context of use. Authors
+may fix the following styling aspects of the content:
+</p>
+<ul>
+  <li>bold, italic, underline, strikethrough</li>
+  <li>font color, family, and size</li>
+  <li>background colour, text alignment</li>
+  <li>whitespace intrepretation</li>
+  <li>ordered list number format (since it may be referred to in text)</li>
+</ul>
+<p>
+These style properties are specified in-line using the style attribute. If an equivalent 
+html element exists, such as "i", or "pre", it may be used instead, but note that some of these 
+elements are deprecated in HTML 4 and may not be used in Narrative XHTML (including "u", and "font").
+</p>
+<p>
+Rendering systems are required to respect any of these rendering styles when they are specified in 
+the XHTML, though appropriate interpretation is allowed (e.g. a low-contrast display for dark 
+room contexts may adjust colors accordingly). 
+</p>
+<p>
+Authors are allowed to specify additional styles and style properties as specified in the CSS specification,
+but these are extensions to this specification, and authors are not required to honour them. Note, however,
+the additional rules around styling that apply in the context of <a href="document.htm#refs">documents</a>.
+</p>
 <a name="Resource"></a>
 <h2>Resource References</h2>
 <p>

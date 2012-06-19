@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6912</WindowHeight>
-  <WindowWidth>15576</WindowWidth>
+  <WindowHeight>6915</WindowHeight>
+  <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
-  <WindowTopY>5508</WindowTopY>
+  <WindowTopY>5505</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -65,29 +65,28 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s69">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="34" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.4"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27.6"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.4"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.6"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="126.6"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
-    ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.4"
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="27.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="126.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
@@ -350,8 +349,8 @@
     <Cell ss:Index="8"><Data ss:Type="String">nested Section</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Document.extensions</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Document.extension</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -385,13 +384,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="25.8"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60.6"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.6"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="230.4"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="210.6"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="306"/>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="60.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="96.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="230.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="210.75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="306"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -433,8 +432,8 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -506,13 +505,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="18.75">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="153.6"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="252.6"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="91.8"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="169.8"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="18.75">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="153.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="252.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="91.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="169.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -522,25 +521,25 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentAuthenticationMode</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#document-authentication-mode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DocumentAuthenticationMode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The way in which a person authenticated a document</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#document-authentication-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentSectionType</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Type of a clinical document section</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">LOINC Section Types</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DocumentSectionType</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Type of a clinical document section</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Section Types</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">DocumentType</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Type of a clinical document</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">LOINC Document Types</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DocumentType</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Type of a clinical document</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Document Types</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -557,7 +556,7 @@
  <Worksheet ss:Name="document-authentication-mode">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="580.79999999999995"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="580.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>

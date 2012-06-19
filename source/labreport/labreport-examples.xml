@@ -57,14 +57,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -85,14 +85,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -113,14 +113,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -141,14 +141,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -169,14 +169,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -197,14 +197,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -225,14 +225,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -253,14 +253,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -282,14 +282,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -310,14 +310,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -338,14 +338,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -366,14 +366,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -394,14 +394,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -423,14 +423,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -451,14 +451,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -479,14 +479,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -507,14 +507,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -535,14 +535,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -563,14 +563,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -591,14 +591,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -619,14 +619,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -647,14 +647,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -676,14 +676,14 @@
             <flag>--</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -705,14 +705,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -733,14 +733,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -813,14 +813,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -841,14 +841,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -869,14 +869,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -897,14 +897,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -925,14 +925,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -953,14 +953,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -982,14 +982,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1010,14 +1010,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1039,14 +1039,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1067,14 +1067,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1095,14 +1095,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1124,14 +1124,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1153,14 +1153,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1182,14 +1182,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1211,14 +1211,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1239,14 +1239,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1267,14 +1267,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1295,14 +1295,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1323,14 +1323,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1351,14 +1351,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1379,14 +1379,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1407,14 +1407,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1436,14 +1436,14 @@
             <flag>-</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1465,14 +1465,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1493,14 +1493,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -1573,14 +1573,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1601,14 +1601,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1629,14 +1629,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1657,14 +1657,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1685,14 +1685,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1713,14 +1713,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1741,14 +1741,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1769,14 +1769,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1798,14 +1798,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1826,14 +1826,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1854,14 +1854,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1883,14 +1883,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1912,14 +1912,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1941,14 +1941,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1969,14 +1969,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -1997,14 +1997,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2025,14 +2025,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2053,14 +2053,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2081,14 +2081,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2109,14 +2109,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2137,14 +2137,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2165,14 +2165,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2194,14 +2194,14 @@
             <flag>--</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2223,14 +2223,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2251,14 +2251,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <!-- OBX|28|FT|TXT^^AUSPDI||                                Units  Ref Range\.br\ \.br\   SERUM CHEMISTRY\.br\ Sodium                 142      mmol/L 137-147\.br\ Serum Potassium        4.0      mmol/L 3.5-5.0\.br\ Chloride               105      mmol/L 96-109\.br\ Bicarbonate            28       mmol/L 25-33\.br\ Other Anions           13       mmol/L 4-17\.br\ Glucose                5.2      mmol/L 3.0-7.7\.br\ Urea                   6.4      mmol/L 2.0-7.0\.br\ Serum Creatinine       0.09     mmol/L 0.04-0.11\.br\ Serum Uric Acid        0.46 +++ mmol/L 0.14-0.35\.br\ Total Bilirubin        13       umol/L 2-20\.br\ Direct Bilirubin       6        umol/L 0-8\.br\ Total Alk. Phosphatase 204 +++  U/L    30-115\.br\ Gamma G.T.             192 +++  U/L    0-45\.br\ ALT                    70 +     U/L    0-45\.br\ AST                    26       U/L    0-41\.br\ LD                     150      U/L    80-250\.br\ Serum Calcium          2.37     mmol/L 2.25-2.65\.br\ Corrected Calcium      2.47     mmol/L 2.25-2.65\.br\ Serum Phosphate        1.4      mmol/L 0.8-1.5\.br\ Total Protein          67       g/L    60-82\.br\ Serum Albumin          39       g/L    35-50\.br\ Globulins              28       g/L    20-40\.br\ Iron                   5 - -     umol/L 10-33\.br\ Cholesterol            4.4      mmol/L 3.6-6.7\.br\ \.br\ Revised NHF cholesterol guidelines (Nov.,2001):\.br\   Target below 4.0 mmol/L if high risk patient.\.br\   Consider lipid lowering treatment if cholesterol above 6.0 mmol/L\.br\   and no other risk factor of CHD.\.br\ \.br\ Triglycerides          1.1      mmol/L 0.3-4.0\.br\|| -->
@@ -2332,14 +2332,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2360,14 +2360,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2388,14 +2388,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2416,14 +2416,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2444,14 +2444,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2472,14 +2472,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2500,14 +2500,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2528,14 +2528,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2557,14 +2557,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2585,14 +2585,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2613,14 +2613,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2642,14 +2642,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2671,14 +2671,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2699,14 +2699,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2727,14 +2727,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2755,14 +2755,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2783,14 +2783,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2811,14 +2811,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2839,14 +2839,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2867,14 +2867,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2895,14 +2895,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2923,14 +2923,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2952,14 +2952,14 @@
             <flag>---</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -2981,14 +2981,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3009,14 +3009,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <!-- OBX|28|FT|PIT^^AUSPDI||001 Medical-Objects                                            07 01/07/1996\.br\002   \.br\003 Report Run Number: 1    Created:   19/04/2005     at    22:58:15\.br\004 Surgery: XXX    Reports: 23/02/2005 10:04:00  to  23/02/2005 10:04:00       \.br\009 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\010 ANDERSON,DR. THOMAS                          0191322W\.br\019 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\020 Your Ref.   Patient Name                   Lab Ref.       Test\.br\021             JONES,June                      04-4154148     E/LFT (MASTER)\.br\029 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\100 Start Patient  :      JONES,June                      \.br\101                       24 Sutherland Street, BUDERIM QLD 4556               \.br\104                       Birthdate: 08/01/1976     Age: Y29     Sex:F\.br\105                       Telephone: 07              \.br\109   \.br\110 Your Reference :      \.br\111 MO  Reference  :      04-4154148-25T-0\.br\112 Medicare Number:                \.br\115 Phone Enquiries:       (DR MARCUS WELBY)                           \.br\119   \.br\121 Referred by    :      WHITE,DR. WILSON                \.br\122 Copy to        :      ANDERSON,DR. THOMAS             \.br\123 Addressee      :      ANDERSON,DR. THOMAS               0191322W\.br\129   \.br\200 Start of Result:\.br\201 Specimen       :\.br\203 Requested      :      21/12/2004\.br\204 Collected      :      22/12/2004  07:45\.br\205 Name of Test   :      E/LFT (MASTER)                                       \.br\206 Reported       :      23/02/2005  10:04\.br\207 Confidential   :      N\.br\208 Test Category  :      N\.br\209   \.br\210 Normal Result  :      N\.br\299   \.br\301                               Units  Ref Range\.br\301 \.br\301   SERUM CHEMISTRY\.br\301 Sodium                 142     mmol/L 137-147\.br\301 Serum Potassium        4.0     mmol/L 3.5-5.0\.br\301 Chloride               107     mmol/L 96-109\.br\301 Bicarbonate            26      mmol/L 25-33\.br\301 Other Anions           13      mmol/L 4-17\.br\301 Glucose                6.3     mmol/L 3.0-7.7\.br\301 Urea                   6.7     mmol/L 2.0-7.0\.br\301 Serum Creatinine       0.08    mmol/L 0.04-0.11\.br\301 \R\FG04\R\Serum Uric Acid        0.40 ++ mmol/L 0.14-0.35\R\FG99\R\\.br\301 Total Bilirubin        9       umol/L 2-20\.br\301 Direct Bilirubin       4       umol/L 0-8\.br\301 \R\FG04\R\Total Alk. Phosphatase 144 +   U/L    30-115\R\FG99\R\\.br\301 \R\FG04\R\Gamma G.T.             106 +++ U/L    0-45\R\FG99\R\\.br\301 ALT                    30      U/L    0-45\.br\301 AST                    18      U/L    0-41\.br\301 LD                     143     U/L    80-250\.br\301 Serum Calcium          2.28    mmol/L 2.25-2.65\.br\301 Corrected Calcium      2.32    mmol/L 2.25-2.65\.br\301 Serum Phosphate        1.3     mmol/L 0.8-1.5\.br\301 Total Protein          66      g/L    60-82\.br\301 Serum Albumin          41      g/L    35-50\.br\301 Globulins              25      g/L    20-40\.br\301 \R\FG04\R\Iron                   3 - - -   umol/L 10-33\R\FG99\R\\.br\301 Cholesterol            4.0     mmol/L 3.6-6.7\.br\301 \.br\301 Revised NHF cholesterol guidelines (Nov.,2001):\.br\301   Target below 4.0 mmol/L if high risk patient.\.br\301   Consider lipid lowering treatment if cholesterol above 6.0 mmol/L\.br\301   and no other risk factor of CHD.\.br\301 \.br\301 Triglycerides          1.0     mmol/L 0.3-4.0\.br\309   \.br\319   \.br\390 End of Report  :\.br\399 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\999 END OF LISTING - Run Number:1     19/04/2005  22:58:15\.br\|| -->
@@ -3090,14 +3090,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3118,14 +3118,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3146,14 +3146,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3174,14 +3174,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3202,14 +3202,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3230,14 +3230,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3258,14 +3258,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3286,14 +3286,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3314,14 +3314,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3343,14 +3343,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3372,14 +3372,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3401,14 +3401,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3430,14 +3430,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3459,14 +3459,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3488,14 +3488,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3516,14 +3516,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3544,14 +3544,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3572,14 +3572,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3600,14 +3600,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3628,14 +3628,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3656,14 +3656,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3684,14 +3684,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3714,14 +3714,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3742,14 +3742,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -3822,14 +3822,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3850,14 +3850,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3878,14 +3878,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3906,14 +3906,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3934,14 +3934,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3962,14 +3962,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -3990,14 +3990,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4018,14 +4018,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4047,14 +4047,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4076,14 +4076,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4105,14 +4105,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4134,14 +4134,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4163,14 +4163,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4192,14 +4192,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4221,14 +4221,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4249,14 +4249,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4277,14 +4277,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4305,14 +4305,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4333,14 +4333,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4361,14 +4361,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4389,14 +4389,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4417,14 +4417,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4447,14 +4447,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4475,14 +4475,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -4555,14 +4555,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4583,14 +4583,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4611,14 +4611,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4639,14 +4639,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4667,14 +4667,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4695,14 +4695,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4723,14 +4723,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4751,14 +4751,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4780,14 +4780,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4809,14 +4809,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4838,14 +4838,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4867,14 +4867,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4896,14 +4896,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4925,14 +4925,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4953,14 +4953,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -4981,14 +4981,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5009,14 +5009,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5037,14 +5037,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5065,14 +5065,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5093,14 +5093,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5121,14 +5121,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5150,14 +5150,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5180,14 +5180,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5208,14 +5208,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -5288,14 +5288,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5316,14 +5316,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5344,14 +5344,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5372,14 +5372,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5400,14 +5400,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5428,14 +5428,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5456,14 +5456,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5484,14 +5484,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5513,14 +5513,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5541,14 +5541,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5569,14 +5569,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5597,14 +5597,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5625,14 +5625,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5654,14 +5654,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5682,14 +5682,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5710,14 +5710,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5738,14 +5738,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5766,14 +5766,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5794,14 +5794,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5822,14 +5822,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5850,14 +5850,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5878,14 +5878,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5907,14 +5907,14 @@
             <flag>--</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5936,14 +5936,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -5964,14 +5964,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -6044,14 +6044,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6072,14 +6072,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6100,14 +6100,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6128,14 +6128,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6156,14 +6156,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6184,14 +6184,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6213,14 +6213,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6241,14 +6241,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6270,14 +6270,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6298,14 +6298,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6326,14 +6326,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6355,14 +6355,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6384,14 +6384,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6413,14 +6413,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6442,14 +6442,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6470,14 +6470,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6498,14 +6498,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6526,14 +6526,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6554,14 +6554,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6582,14 +6582,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6610,14 +6610,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6638,14 +6638,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6667,14 +6667,14 @@
             <flag>-</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6696,14 +6696,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6724,14 +6724,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -6804,14 +6804,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6832,14 +6832,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6860,14 +6860,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6888,14 +6888,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6916,14 +6916,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6944,14 +6944,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -6972,14 +6972,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7000,14 +7000,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7029,14 +7029,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7057,14 +7057,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7085,14 +7085,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7114,14 +7114,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7143,14 +7143,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7172,14 +7172,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7200,14 +7200,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7228,14 +7228,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7256,14 +7256,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7284,14 +7284,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7312,14 +7312,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7340,14 +7340,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7368,14 +7368,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7396,14 +7396,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7425,14 +7425,14 @@
             <flag>--</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7454,14 +7454,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7482,14 +7482,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <!-- OBX|28|FT|TXT^^AUSPDI||                                Units  Ref Range\.br\ \.br\   SERUM CHEMISTRY\.br\ Sodium                 142      mmol/L 137-147\.br\ Serum Potassium        4.0      mmol/L 3.5-5.0\.br\ Chloride               105      mmol/L 96-109\.br\ Bicarbonate            28       mmol/L 25-33\.br\ Other Anions           13       mmol/L 4-17\.br\ Glucose                5.2      mmol/L 3.0-7.7\.br\ Urea                   6.4      mmol/L 2.0-7.0\.br\ Serum Creatinine       0.09     mmol/L 0.04-0.11\.br\ Serum Uric Acid        0.46 +++ mmol/L 0.14-0.35\.br\ Total Bilirubin        13       umol/L 2-20\.br\ Direct Bilirubin       6        umol/L 0-8\.br\ Total Alk. Phosphatase 204 +++  U/L    30-115\.br\ Gamma G.T.             192 +++  U/L    0-45\.br\ ALT                    70 +     U/L    0-45\.br\ AST                    26       U/L    0-41\.br\ LD                     150      U/L    80-250\.br\ Serum Calcium          2.37     mmol/L 2.25-2.65\.br\ Corrected Calcium      2.47     mmol/L 2.25-2.65\.br\ Serum Phosphate        1.4      mmol/L 0.8-1.5\.br\ Total Protein          67       g/L    60-82\.br\ Serum Albumin          39       g/L    35-50\.br\ Globulins              28       g/L    20-40\.br\ Iron                   5 - -     umol/L 10-33\.br\ Cholesterol            4.4      mmol/L 3.6-6.7\.br\ \.br\ Revised NHF cholesterol guidelines (Nov.,2001):\.br\   Target below 4.0 mmol/L if high risk patient.\.br\   Consider lipid lowering treatment if cholesterol above 6.0 mmol/L\.br\   and no other risk factor of CHD.\.br\ \.br\ Triglycerides          1.1      mmol/L 0.3-4.0\.br\|| -->
@@ -7563,14 +7563,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7591,14 +7591,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7619,14 +7619,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7647,14 +7647,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7675,14 +7675,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7703,14 +7703,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7731,14 +7731,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7759,14 +7759,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7788,14 +7788,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7816,14 +7816,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7844,14 +7844,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>8</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7873,14 +7873,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7902,14 +7902,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7930,14 +7930,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7958,14 +7958,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -7986,14 +7986,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8014,14 +8014,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8042,14 +8042,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8070,14 +8070,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8098,14 +8098,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8126,14 +8126,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8154,14 +8154,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8183,14 +8183,14 @@
             <flag>---</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8212,14 +8212,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8240,14 +8240,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <!-- OBX|28|FT|PIT^^AUSPDI||001 Medical-Objects                                            07 01/07/1996\.br\002   \.br\003 Report Run Number: 1    Created:   19/04/2005     at    22:58:15\.br\004 Surgery: XXX    Reports: 23/02/2005 10:04:00  to  23/02/2005 10:04:00       \.br\009 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\010 ANDERSON,DR. THOMAS                          0191322W\.br\019 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\020 Your Ref.   Patient Name                   Lab Ref.       Test\.br\021             JONES,June                      04-4154148     E/LFT (MASTER)\.br\029 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\100 Start Patient  :      JONES,June                      \.br\101                       24 Sutherland Street, BUDERIM QLD 4556               \.br\104                       Birthdate: 08/01/1976     Age: Y29     Sex:F\.br\105                       Telephone: 07              \.br\109   \.br\110 Your Reference :      \.br\111 MO  Reference  :      04-4154148-25T-0\.br\112 Medicare Number:                \.br\115 Phone Enquiries:       (DR MARCUS WELBY)                           \.br\119   \.br\121 Referred by    :      WHITE,DR. WILSON                \.br\122 Copy to        :      ANDERSON,DR. THOMAS             \.br\123 Addressee      :      ANDERSON,DR. THOMAS               0191322W\.br\129   \.br\200 Start of Result:\.br\201 Specimen       :\.br\203 Requested      :      21/12/2004\.br\204 Collected      :      22/12/2004  07:45\.br\205 Name of Test   :      E/LFT (MASTER)                                       \.br\206 Reported       :      23/02/2005  10:04\.br\207 Confidential   :      N\.br\208 Test Category  :      N\.br\209   \.br\210 Normal Result  :      N\.br\299   \.br\301                               Units  Ref Range\.br\301 \.br\301   SERUM CHEMISTRY\.br\301 Sodium                 142     mmol/L 137-147\.br\301 Serum Potassium        4.0     mmol/L 3.5-5.0\.br\301 Chloride               107     mmol/L 96-109\.br\301 Bicarbonate            26      mmol/L 25-33\.br\301 Other Anions           13      mmol/L 4-17\.br\301 Glucose                6.3     mmol/L 3.0-7.7\.br\301 Urea                   6.7     mmol/L 2.0-7.0\.br\301 Serum Creatinine       0.08    mmol/L 0.04-0.11\.br\301 \R\FG04\R\Serum Uric Acid        0.40 ++ mmol/L 0.14-0.35\R\FG99\R\\.br\301 Total Bilirubin        9       umol/L 2-20\.br\301 Direct Bilirubin       4       umol/L 0-8\.br\301 \R\FG04\R\Total Alk. Phosphatase 144 +   U/L    30-115\R\FG99\R\\.br\301 \R\FG04\R\Gamma G.T.             106 +++ U/L    0-45\R\FG99\R\\.br\301 ALT                    30      U/L    0-45\.br\301 AST                    18      U/L    0-41\.br\301 LD                     143     U/L    80-250\.br\301 Serum Calcium          2.28    mmol/L 2.25-2.65\.br\301 Corrected Calcium      2.32    mmol/L 2.25-2.65\.br\301 Serum Phosphate        1.3     mmol/L 0.8-1.5\.br\301 Total Protein          66      g/L    60-82\.br\301 Serum Albumin          41      g/L    35-50\.br\301 Globulins              25      g/L    20-40\.br\301 \R\FG04\R\Iron                   3 - - -   umol/L 10-33\R\FG99\R\\.br\301 Cholesterol            4.0     mmol/L 3.6-6.7\.br\301 \.br\301 Revised NHF cholesterol guidelines (Nov.,2001):\.br\301   Target below 4.0 mmol/L if high risk patient.\.br\301   Consider lipid lowering treatment if cholesterol above 6.0 mmol/L\.br\301   and no other risk factor of CHD.\.br\301 \.br\301 Triglycerides          1.0     mmol/L 0.3-4.0\.br\309   \.br\319   \.br\390 End of Report  :\.br\399 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\.br\999 END OF LISTING - Run Number:1     19/04/2005  22:58:15\.br\|| -->
@@ -8321,14 +8321,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8349,14 +8349,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8377,14 +8377,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8405,14 +8405,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8433,14 +8433,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8461,14 +8461,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8489,14 +8489,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8517,14 +8517,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8545,14 +8545,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8574,14 +8574,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8603,14 +8603,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8632,14 +8632,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8661,14 +8661,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8690,14 +8690,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8719,14 +8719,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8747,14 +8747,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8775,14 +8775,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8803,14 +8803,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8831,14 +8831,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8859,14 +8859,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8887,14 +8887,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8915,14 +8915,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8945,14 +8945,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -8973,14 +8973,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -9053,14 +9053,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9081,14 +9081,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9109,14 +9109,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9137,14 +9137,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9165,14 +9165,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9193,14 +9193,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9221,14 +9221,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9249,14 +9249,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9278,14 +9278,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9307,14 +9307,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9336,14 +9336,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9365,14 +9365,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9394,14 +9394,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9423,14 +9423,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9452,14 +9452,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9480,14 +9480,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9508,14 +9508,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9536,14 +9536,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9564,14 +9564,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9592,14 +9592,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9620,14 +9620,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9648,14 +9648,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9678,14 +9678,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9706,14 +9706,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>
@@ -9786,14 +9786,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>137</value>
                 </low>
                 <high>
                   <value>147</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9814,14 +9814,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.5</value>
                 </low>
                 <high>
                   <value>5.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9842,14 +9842,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>96</value>
                 </low>
                 <high>
                   <value>109</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9870,14 +9870,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>25</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9898,14 +9898,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>4</value>
                 </low>
                 <high>
                   <value>17</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9926,14 +9926,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.0</value>
                 </low>
                 <high>
                   <value>7.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9954,14 +9954,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.0</value>
                 </low>
                 <high>
                   <value>7.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -9982,14 +9982,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.04</value>
                 </low>
                 <high>
                   <value>0.11</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10011,14 +10011,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.14</value>
                 </low>
                 <high>
                   <value>0.35</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10040,14 +10040,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2</value>
                 </low>
                 <high>
                   <value>20</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10069,14 +10069,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>30</value>
                 </low>
                 <high>
                   <value>115</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10098,14 +10098,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10127,14 +10127,14 @@
             <flag>+++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>45</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10156,14 +10156,14 @@
             <flag>++</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0</value>
                 </low>
                 <high>
                   <value>41</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10184,14 +10184,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>80</value>
                 </low>
                 <high>
                   <value>250</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10212,14 +10212,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10240,14 +10240,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>2.25</value>
                 </low>
                 <high>
                   <value>2.65</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10268,14 +10268,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.8</value>
                 </low>
                 <high>
                   <value>1.5</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10296,14 +10296,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>60</value>
                 </low>
                 <high>
                   <value>82</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10324,14 +10324,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>35</value>
                 </low>
                 <high>
                   <value>50</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10352,14 +10352,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>20</value>
                 </low>
                 <high>
                   <value>40</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10381,14 +10381,14 @@
             <flag>+</flag>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>10</value>
                 </low>
                 <high>
                   <value>33</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10411,14 +10411,14 @@
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>3.6</value>
                 </low>
                 <high>
                   <value>6.7</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
           <result>
@@ -10439,14 +10439,14 @@
             </valueQuantity>
             <status>final</status>
             <referenceRange>
-              <rangeInterval>
+              <rangeInterval_Quantity>
                 <low>
                   <value>0.3</value>
                 </low>
                 <high>
                   <value>4.0</value>
                 </high>
-              </rangeInterval>
+              </rangeInterval_Quantity>
             </referenceRange>
           </result>
         </resultGroup>

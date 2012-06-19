@@ -54,8 +54,8 @@ any differently.
 
 <a name="primitive"></a>
 <h2>Primitive Types</h2>
-<p>
-<img src="dt1.png" align="left"/>
+<p style="text-alignment: left">
+<img src="dt1.png"/>
 </p>
 <p>
 The following table summarises the primitive types that 
@@ -285,14 +285,9 @@ or a formal ontology.
 <p>
 There must be a <i>system</i> the identifies the terminology or ontology the <i>code</i> is defined by. 
 The <i>system</i> is a URI that may be an OID (oid:) or a UUID (uuid:), a specially defined URI from 
-<a href="terminologies.htm#codesystems"> the named systems list</a>, or a url that references 
+<a href="terminologies.htm#codesystems">the named systems list</a>, or a url that references 
 a definition of the system, or any other URI. OIDs and UUIDs may be registered in the HL7 OID 
 registry, and should be if the content is shared or exchanged across institutional boundaries.
-The <i>system</i> reference is version independent; applications are never required to process 
-the content of the system URI in order to determine whether two codes are the same. 
-Note though, that merely because a code/system pair is different does not mean that concept
-is different - applications have to consult the ontologies or terminologies to make those kind 
-of comparisons. 
 </p>
 <p>
 If present, the <i>code</i> must be a syntactically correct symbol as defined by the <i>system</i>. 
@@ -302,12 +297,46 @@ the concept cannot be encoded in the identified system. The <i>display</i> is a 
 of the code that is  defined by the <i>system</i>, which can be used to display the code by
 an application that is not aware of the <i>system</i>. 
 </p>
-
+<p>
+If two Codings have the same the <i>system</i> and <i>code</i> then they have the same meaning.
+If either the <i>system</i> or the <i>code</i> differ, then how they are related can only be 
+determined by consulting the definitions of the system(s) and any mappings provided.
+</p>
+<p>
+The correct value of the <i>system</i> for a given code system can be determined by:
+</p>
+<ul>
+ <li>the <a href="terminologies.htm#codesystems">System Identifiers</a> section</li>
+ <li>the <a href="http://www.hl7.org/oid/index.cfm?ref=common">HL7 OID Registry</a></li>
+ <li>the documentation associated with the code system</li>
+ <li>consulting the owner of the code system</li>
+ <li>asking on the HL7 vocabulary mailing list</li>
+</ul>
+<h3>Version Management</h3>
+<p>
+Some code systems have periodic releases where the meanings of the codes are changed between
+each release. Other code systems provide multiple releases where only minor consistent change 
+are allowed, most the addition of new codes. Finally, a few code systems provide an elaborate 
+set of policies and procedures to allow concepts to be refined and modified within a single
+definitional space. For the second two types of code system, it may help with implementation 
+and interpretation tasks to track which minor release (version) of the code system is in use. 
+</p>
+<p>
+For SNOMED-CT, the minor release (and optionally module/release) are indicated as part of the 
+<i>system</i> element using the http://snomed.info identifier as defined by Snomed-CT. For
+all other code systems, the <i>version</i> element is used to indicate the minor release. 
+In the absence of a specified version release format by the code system (such as 2.36 for 
+LOINC), the release date is to be used.
+</p>
+<p>
+The <i>version</i> element must always be ignored when comparing <i>Coding</i> values
+</p>
 <div class="use">
 <p><b>Use</b></p>
 <p>
 Unless the Coding element has a dataAbsentReason flag, it must contain a <i>system</i> element, 
-and it should contain a <i>display</i> if it contains a <i>code</i>.
+and it should contain a <i>display</i> if it contains a <i>code</i>. It can only contain a
+<i>version</i> element if it contains a <i>system</i> element.
 </p>
 <p>
 The context of use usually makes rules about what codes and systems are allowed or required in a 

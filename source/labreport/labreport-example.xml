@@ -58,7 +58,7 @@
       </valueQuantity>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>135</value>
             <units>g/L</units>
@@ -71,7 +71,7 @@
             <code>g/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -91,7 +91,7 @@
       </valueQuantity>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>4.2</value>
             <units>x10*12/L</units>
@@ -104,7 +104,7 @@
             <code>10*12/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -122,14 +122,14 @@
       <flag>+</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>0.38</value>
           </low>
           <high>
             <value>0.52</value>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -150,7 +150,7 @@
       <flag>+</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>80</value>
             <units>fL</units>
@@ -163,7 +163,7 @@
             <code>fL</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -184,7 +184,7 @@
       <flag>+</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>27</value>
             <units>pg</units>
@@ -197,7 +197,7 @@
             <code>pg</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -217,7 +217,7 @@
       </valueQuantity>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>150</value>
             <units>x10*9/L</units>
@@ -230,7 +230,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -250,7 +250,7 @@
       </valueQuantity>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>4.0</value>
             <units>x10*9/L</units>
@@ -263,7 +263,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -301,7 +301,7 @@
       <flag>---</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>2.0</value>
             <units>x10*9/L</units>
@@ -314,7 +314,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -352,7 +352,7 @@
       <flag>-</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>1.1</value>
             <units>x10*9/L</units>
@@ -365,7 +365,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -402,7 +402,7 @@
       </valueQuantity>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>0.2</value>
             <units>x10*9/L</units>
@@ -415,7 +415,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
@@ -453,7 +453,7 @@
       <flag>++</flag>
       <status>final</status>
       <referenceRange>
-        <rangeInterval>
+        <rangeInterval_Quantity>
           <low>
             <value>0.04</value>
             <units>x10*9/L</units>
@@ -466,7 +466,7 @@
             <code>10*9/L</code>
             <system>http://hl7.org/fhir/sid/ucum</system>
           </high>
-        </rangeInterval>
+        </rangeInterval_Quantity>
       </referenceRange>
     </result>
 
