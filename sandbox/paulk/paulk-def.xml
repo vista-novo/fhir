@@ -19,7 +19,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -115,8 +114,8 @@
     <Cell ss:Index="7"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">PaulK.extensions</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">PaulK.extension</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
@@ -135,10 +134,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -225,7 +225,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

@@ -114,8 +114,8 @@
     <Cell ss:Index="7"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">AndyB.extensions</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">AndyB.extension</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">Optional</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
@@ -138,7 +138,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
