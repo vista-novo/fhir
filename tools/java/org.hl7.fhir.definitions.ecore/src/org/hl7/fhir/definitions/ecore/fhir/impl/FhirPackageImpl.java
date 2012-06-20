@@ -572,7 +572,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTypeRef_TakesAnyDataType() {
+	public EAttribute getTypeRef_IsUnboundGeneric() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -581,17 +581,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTypeRef_IsUnboundGeneric() {
-		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTypeRef_IsPseudoType() {
-		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1438,7 +1429,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(typeRefEClass, TYPE_REF__NAME);
 		createEAttribute(typeRefEClass, TYPE_REF__BOUND_PARAM);
 		createEAttribute(typeRefEClass, TYPE_REF__TAKES_ANY_RESOURCE);
-		createEAttribute(typeRefEClass, TYPE_REF__TAKES_ANY_DATA_TYPE);
 		createEAttribute(typeRefEClass, TYPE_REF__IS_UNBOUND_GENERIC);
 		createEAttribute(typeRefEClass, TYPE_REF__IS_PSEUDO_TYPE);
 
@@ -1623,7 +1613,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getTypeRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_BoundParam(), ecorePackage.getEString(), "boundParam", null, 0, -1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_TakesAnyResource(), ecorePackage.getEBoolean(), "takesAnyResource", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeRef_TakesAnyDataType(), ecorePackage.getEBoolean(), "takesAnyDataType", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_IsUnboundGeneric(), ecorePackage.getEBoolean(), "isUnboundGeneric", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_IsPseudoType(), ecorePackage.getEBoolean(), "isPseudoType", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2015,7 +2004,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		  (getAnnotations_ShortDefinition(), 
 		   source, 
 		   new String[] {
-			 "kind", "element"
+			 "kind", "attribute"
 		   });		
 		addAnnotation
 		  (getAnnotations_Definition(), 

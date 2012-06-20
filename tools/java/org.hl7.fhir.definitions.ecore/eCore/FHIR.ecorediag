@@ -119,10 +119,6 @@
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//TypeRef/takesAnyResource"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_06T-Ubc5EeGi8OOleCJ6fQ"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_2yXFELc5EeGi8OOleCJ6fQ" type="2001">
-        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//TypeRef/takesAnyDataType"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_2yXFEbc5EeGi8OOleCJ6fQ"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_tfub4LmFEeGokubgOwjgwQ" type="2001">
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//TypeRef/isUnboundGeneric"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_tfub4bmFEeGokubgOwjgwQ"/>
@@ -585,7 +581,7 @@
     <element xmi:type="ecore:EClass" href="FHIR.ecore#//BindingRef"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_59A4MrVBEeG_SPBX5vk3wA" x="1260" y="555"/>
   </children>
-  <children xmi:type="notation:Node" xmi:id="_6grjQLZwEeGo4tHs7A_Eug" type="1001">
+  <children xmi:type="notation:Node" xmi:id="_6grjQLZwEeGo4tHs7A_Eug" visible="false" type="1001">
     <children xmi:type="notation:Node" xmi:id="_6grjQ7ZwEeGo4tHs7A_Eug" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_6grjRLZwEeGo4tHs7A_Eug" type="5001">
       <children xmi:type="notation:Node" xmi:id="__n1DQLZwEeGo4tHs7A_Eug" type="2001">
@@ -734,7 +730,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_CMuPk6_CEeGrAaDwyEdjfA" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_CMuPlK_CEeGrAaDwyEdjfA" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="FHIR.ecore#//CompositeTypeDefn/invariant"/>
+    <element xmi:type="ecore:EReference" href="FHIR.ecore#//CompositeTypeDefn/invariants"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CMuPla_CEeGrAaDwyEdjfA" points="[0, 0, 0, 643]$[0, -643, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CTHyWa_CEeGrAaDwyEdjfA" id="(0.9485714285714286,0.10204081632653061)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CTHyWq_CEeGrAaDwyEdjfA" id="(0.525974025974026,0.9242424242424242)"/>

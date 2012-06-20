@@ -33,7 +33,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getBoundParam <em>Bound Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyDataType <em>Takes Any Data Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsUnboundGeneric <em>Is Unbound Generic</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsPseudoType <em>Is Pseudo Type</em>}</li>
  * </ul>
@@ -91,26 +90,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * @ordered
 	 */
 	protected boolean takesAnyResource = TAKES_ANY_RESOURCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isTakesAnyDataType() <em>Takes Any Data Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isTakesAnyDataType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean TAKES_ANY_DATA_TYPE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isTakesAnyDataType() <em>Takes Any Data Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isTakesAnyDataType()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean takesAnyDataType = TAKES_ANY_DATA_TYPE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsUnboundGeneric() <em>Is Unbound Generic</em>}' attribute.
@@ -230,27 +209,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isTakesAnyDataType() {
-		return takesAnyDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTakesAnyDataType(boolean newTakesAnyDataType) {
-		boolean oldTakesAnyDataType = takesAnyDataType;
-		takesAnyDataType = newTakesAnyDataType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE, oldTakesAnyDataType, takesAnyDataType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isIsUnboundGeneric() {
 		return isUnboundGeneric;
 	}
@@ -302,8 +260,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return getBoundParam();
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return isTakesAnyResource();
-			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
-				return isTakesAnyDataType();
 			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
 				return isIsUnboundGeneric();
 			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
@@ -330,9 +286,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return;
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource((Boolean)newValue);
-				return;
-			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
-				setTakesAnyDataType((Boolean)newValue);
 				return;
 			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
 				setIsUnboundGeneric((Boolean)newValue);
@@ -361,9 +314,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource(TAKES_ANY_RESOURCE_EDEFAULT);
 				return;
-			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
-				setTakesAnyDataType(TAKES_ANY_DATA_TYPE_EDEFAULT);
-				return;
 			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
 				setIsUnboundGeneric(IS_UNBOUND_GENERIC_EDEFAULT);
 				return;
@@ -388,8 +338,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return boundParam != null && !boundParam.isEmpty();
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return takesAnyResource != TAKES_ANY_RESOURCE_EDEFAULT;
-			case FhirPackage.TYPE_REF__TAKES_ANY_DATA_TYPE:
-				return takesAnyDataType != TAKES_ANY_DATA_TYPE_EDEFAULT;
 			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
 				return isUnboundGeneric != IS_UNBOUND_GENERIC_EDEFAULT;
 			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
@@ -414,8 +362,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		result.append(boundParam);
 		result.append(", takesAnyResource: ");
 		result.append(takesAnyResource);
-		result.append(", takesAnyDataType: ");
-		result.append(takesAnyDataType);
 		result.append(", isUnboundGeneric: ");
 		result.append(isUnboundGeneric);
 		result.append(", isPseudoType: ");

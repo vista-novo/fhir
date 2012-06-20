@@ -121,6 +121,14 @@ public class TypeRef {
 		return params.size() > 0;
 	}
 	
+	public boolean isAnyResource()
+	{
+		return  isResourceReference() && 
+				hasParams() && 
+				getParams().size() == 1 &&
+				getParams().get(0).equals("Any");
+	}
+	
 	public boolean isSpecialType() {
 		return isXmlId() || isXhtml() || isUnboundGenericParam()
 				|| isWildcardType() || name.equals("Type")

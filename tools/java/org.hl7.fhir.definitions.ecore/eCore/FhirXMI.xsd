@@ -86,7 +86,6 @@
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
     <xsd:attribute name="takesAnyResource" type="xsd:boolean"/>
-    <xsd:attribute name="takesAnyDataType" type="xsd:boolean"/>
     <xsd:attribute name="isUnboundGeneric" type="xsd:boolean"/>
     <xsd:attribute name="isPseudoType" type="xsd:boolean"/>
   </xsd:complexType>

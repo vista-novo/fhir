@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType <em>Takes Any Data Type</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType <em>Is Pseudo Type</em>}</li>
  * </ul>
@@ -99,32 +98,6 @@ public interface TypeRef extends EObject {
 	 * @generated
 	 */
 	void setTakesAnyResource(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Takes Any Data Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Takes Any Data Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Takes Any Data Type</em>' attribute.
-	 * @see #setTakesAnyDataType(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_TakesAnyDataType()
-	 * @model
-	 * @generated
-	 */
-	boolean isTakesAnyDataType();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType <em>Takes Any Data Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Takes Any Data Type</em>' attribute.
-	 * @see #isTakesAnyDataType()
-	 * @generated
-	 */
-	void setTakesAnyDataType(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Unbound Generic</b></em>' attribute.

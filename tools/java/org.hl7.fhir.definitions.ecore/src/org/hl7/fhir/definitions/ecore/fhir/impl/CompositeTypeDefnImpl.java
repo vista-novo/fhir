@@ -99,7 +99,6 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * @ordered
 	 */
 	protected EList<Invariant> invariants;
-
 	/**
 	 * The cached value of the '{@link #getAllowedGenericTypes() <em>Allowed Generic Types</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

@@ -142,10 +142,15 @@ public class SourceParser {
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
 
+		if (isInternalRun) {
+			for (String n : ini.getPropertyNames("sandbox"))
+				loadResource(n, definitions.getResources(), true);			
+		}
+		
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getResources().values() ));
-		
+
 		for (String n : ini.getPropertyNames("future-resources")) 
 		{
 			DefinedCode cd = new DefinedCode(ini.getStringProperty(
@@ -163,15 +168,6 @@ public class SourceParser {
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
 						.getFutureResources().values() ));
-
-		if (isInternalRun) {
-			for (String n : ini.getPropertyNames("sandbox"))
-				loadResource(n, definitions.getResources(), true);
-			
-			eCoreParseResults.getTypes().addAll(
-					CompositeTypeConverter.buildResourcesFromFhirModel(definitions
-							.getResources().values() ));
-		}
 
 		eCoreParseResults.getEvents().addAll(
 				EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));

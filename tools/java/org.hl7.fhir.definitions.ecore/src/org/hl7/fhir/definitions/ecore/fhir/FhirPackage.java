@@ -525,22 +525,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__TAKES_ANY_RESOURCE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Takes Any Data Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REF__TAKES_ANY_DATA_TYPE = 3;
-
-	/**
 	 * The feature id for the '<em><b>Is Unbound Generic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__IS_UNBOUND_GENERIC = 4;
+	int TYPE_REF__IS_UNBOUND_GENERIC = 3;
 
 	/**
 	 * The feature id for the '<em><b>Is Pseudo Type</b></em>' attribute.
@@ -549,7 +540,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__IS_PSEUDO_TYPE = 5;
+	int TYPE_REF__IS_PSEUDO_TYPE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -558,7 +549,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_FEATURE_COUNT = 6;
+	int TYPE_REF_FEATURE_COUNT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2097,17 +2088,6 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_TakesAnyResource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType <em>Takes Any Data Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Takes Any Data Type</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyDataType()
-	 * @see #getTypeRef()
-	 * @generated
-	 */
-	EAttribute getTypeRef_TakesAnyDataType();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3333,14 +3313,6 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE_REF__TAKES_ANY_RESOURCE = eINSTANCE.getTypeRef_TakesAnyResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Takes Any Data Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPE_REF__TAKES_ANY_DATA_TYPE = eINSTANCE.getTypeRef_TakesAnyDataType();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Unbound Generic</b></em>' attribute feature.

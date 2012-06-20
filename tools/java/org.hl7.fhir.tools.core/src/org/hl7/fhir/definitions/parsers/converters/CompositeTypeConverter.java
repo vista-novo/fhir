@@ -190,20 +190,23 @@ public class CompositeTypeConverter
 			result.setMaxCardinality( element.getMaxCardinality() );
 		else
 			result.setMaxCardinality(-1);	// Adapt eCore convention for '*'
-	
-		// If this element is actually a type definition (a group of elements
-		// with a '=<typename>' in the type column, we'll have to make sure
-		// to not copy the nested elements, but just refer to the type
-		// these elements are declaring. Note that by now, to not confuse
+
+		if( element.getTypes() != null )
+			result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirModel(element.getTypes()));		
+
+		// If this element is actually a nested type definition (a group of elements
+		// with a '=<typename>' in the type column, these nested elements 
+		// will have been put into a separately defined type, so we'll just 
+		// refer to this newly defined type here. Note that by now, to not confuse
 		// old code, the typename will have been cleared, and only the fact
 		// that getDeclaredTypeName() is set, reminds us of this explicit
 		// type declaration that was there before.
-		if( element.getTypes() != null )
-				result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirModel(element.getTypes()));		
 		if( element.getDeclaredTypeName() != null )
 			result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirTypeName(
 					element.getDeclaredTypeName() ) );
 
+		// Make sure we will only process the nested elements
+		// if this was not a nested type definition.
 		if( element.getDeclaredTypeName() == null )
 		{
 			if( !element.getElements().isEmpty() )
