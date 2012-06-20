@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-06-04T10:21:45Z</LastSaved>
+  <LastSaved>2012-06-20T22:39:03Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -62,7 +62,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="64" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="67" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="267.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32.25"/>
@@ -372,14 +372,22 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=ElementDefinition</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">more specific definition of the element </Data></Cell>
+    <Cell><Data ss:Type="String">Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource.</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.resource.element.shortDefn</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.short</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Concise definition (for use in this slice)</Data></Cell>
+    <Cell><Data ss:Type="String">Concise definition for xml presentation</Data></Cell>
     <Cell><Data ss:Type="String">A concise definition that  is shown in the concise XML format that summarises profiles</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -389,14 +397,14 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.formal</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">More specific definition</Data></Cell>
-    <Cell><Data ss:Type="String">a more specific definition than the definition for the same element in the base resource. The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource</Data></Cell>
+    <Cell><Data ss:Type="String">formal definition</Data></Cell>
+    <Cell><Data ss:Type="String"> The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource</Data></Cell>
     <Cell><Data ss:Type="String">To allow a user to clarify the usageof an element in a particular context</Data></Cell>
     <Cell><Data ss:Type="String">It is easy for a different definition to change the meaning of an element, and this can have nasty downstream consequences. Please be careful when providing definitions</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -405,7 +413,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.resource.element.comments</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.comments</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -421,7 +429,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.min</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.min</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -437,7 +445,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.max</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.max</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -453,7 +461,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Profile.resource.element.type</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.type</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -469,7 +477,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.resource.element.dataAbsentReason</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.dataAbsentReason</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -484,7 +492,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.resource.element.condition</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.condition</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -495,7 +503,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.constraint</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.constraint</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -506,7 +514,7 @@
     <Cell ss:StyleID="Default"><Data ss:Type="String">The rules expressed in the xpath statements should be described in the definition or comments, or in the conditions on the children elements</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.constraint.id</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.constraint.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -518,7 +526,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.constraint.human</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.constraint.human</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -530,7 +538,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.constraint.xpath</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.constraint.xpath</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -542,7 +550,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.mustSupport</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.mustSupport</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -554,7 +562,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.mustUnderstand</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.mustUnderstand</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -566,7 +574,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.mapping</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.mapping</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -578,7 +586,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.resource.element.mapping.target</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.mapping.target</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -590,7 +598,7 @@
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.resource.element.mapping.map</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.resource.element.definition.mapping.map</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -710,6 +718,30 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String" x:Ticked="1">code</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">identifies the extension in the instance</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Profile.extensionDefn.context</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">where the extension can be used in instances</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.extensionDefn.contextType</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
@@ -717,19 +749,19 @@
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">ExtensionContextType</Data></Cell>
-    <Cell><Data ss:Type="String">How the path of the extension is understood</Data></Cell>
+    <Cell><Data ss:Type="String">How the context of the extension is interpreted</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">Profile.extensionDefn.element</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.extensionDefn.definition</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String" x:Ticked="1">@Profile.resource.element</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String" x:Ticked="1">@Profile.resource.element.definition</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell><Data ss:Type="String">Details of the extension</Data></Cell>
+    <Cell><Data ss:Type="String">Definition of the extension and it's content</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -807,11 +839,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>54</TopRowVisible>
+   <TopRowVisible>21</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>61</ActiveRow>
+     <ActiveRow>29</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -19,13 +19,15 @@
     <element>
       <path>LabReport</path>
       <name>Lipids</name>
-      <definition>The findings and interpretation of a general lipd lab profile</definition>
+      <definition>
+        <short>The findings and interpretation of a general lipid lab profile</short>
       <min>1</min>
       <max>1</max>
       <type>Resource</type>
       <dataAbsentReason>false</dataAbsentReason>
       <mustSupport>false</mustSupport>
       <mustUnderstand>false</mustUnderstand>
+      </definition>
       <closed>false</closed>
     </element>
     <element>
