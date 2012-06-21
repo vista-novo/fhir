@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -71,18 +71,18 @@ public class Document extends Resource {
         /**
          * When authoring happened
          */
-        private String time;
+        private DateTime time;
 
         /**
          * who/what authored the final document
          */
         private ResourceReference party;
 
-        public String getTime() { 
+        public DateTime getTime() { 
           return this.time;
         }
 
-        public void setTime(String value) { 
+        public void setTime(DateTime value) { 
           this.time = value;
         }
 
@@ -105,7 +105,7 @@ public class Document extends Resource {
         /**
          * When document attested
          */
-        private String time;
+        private DateTime time;
 
         /**
          * who attested the document
@@ -120,11 +120,11 @@ public class Document extends Resource {
           this.mode = value;
         }
 
-        public String getTime() { 
+        public DateTime getTime() { 
           return this.time;
         }
 
-        public void setTime(String value) { 
+        public void setTime(DateTime value) { 
           this.time = value;
         }
 
@@ -147,7 +147,7 @@ public class Document extends Resource {
         /**
          * the section creation time (sections are often re-used in several documents).
          */
-        private java.util.Date instant;
+        private Instant instant;
 
         /**
          * if section author different to document
@@ -187,11 +187,11 @@ public class Document extends Resource {
           this.type = value;
         }
 
-        public java.util.Date getInstant() { 
+        public Instant getInstant() { 
           return this.instant;
         }
 
-        public void setInstant(java.util.Date value) { 
+        public void setInstant(Instant value) { 
           this.instant = value;
         }
 
@@ -245,18 +245,18 @@ public class Document extends Resource {
         /**
          * When authoring happened
          */
-        private String time;
+        private DateTime time;
 
         /**
          * who/what authored the section
          */
         private ResourceReference party;
 
-        public String getTime() { 
+        public DateTime getTime() { 
           return this.time;
         }
 
-        public void setTime(String value) { 
+        public void setTime(DateTime value) { 
           this.time = value;
         }
 
@@ -283,7 +283,7 @@ public class Document extends Resource {
     /**
      * the title of the document
      */
-    private String title;
+    private String_ title;
 
     /**
      * Represents an identifier that is common across all document revisions
@@ -356,11 +356,11 @@ public class Document extends Resource {
       this.type = value;
     }
 
-    public String getTitle() { 
+    public String_ getTitle() { 
       return this.title;
     }
 
-    public void setTitle(String value) { 
+    public void setTitle(String_ value) { 
       this.title = value;
     }
 

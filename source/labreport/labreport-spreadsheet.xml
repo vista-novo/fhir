@@ -139,7 +139,9 @@
     <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Report of laboratory test results</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The findings and interpretation of pathology tests performed on tissues and body fluids. This is typically done in a laboratory but may be done in other environments such as at the point of care</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Use to record any pathology test result, including the result of a test on a specimen taken as part of a composite procedure or operation.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -318,7 +320,9 @@
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Details concerning a single pathology test requested.</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">What was requested</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Details concerning a single pathology test requested.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to be able to track completion of requests based on reports issued, and also to report what diagnostic test swere requested (not always the same as what is delivered)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -512,7 +516,9 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Results grouped by specimen/kind/category</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">A group of results. Results may be grouped by specimen, or by some value in LabReport.resultGroup.name to describe what binds all the results together.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to be able to report groups of results, where the result grouping is arbitrary, but meaningful</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -561,7 +567,9 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">A particular result</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Specific detailed result, including both the value of the result item, and additional information that may be useful for clinical interpretation. Results include whatever specific data items pathology labs report as part of the clinical service; it is not confined to measurements.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to report results with information that assist with interpretation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -673,7 +681,9 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">y</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Guidance on how to interpret the value by comparison to a normal or recommended range</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Guide for interpretation</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Guidance on how to interpret the value by comparison to a normal or recommended range</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to be able to provide multiple reference ranges</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -812,7 +822,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>31</TopRowBottomPane>
+   <TopRowBottomPane>22</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -829,8 +839,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>33</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveRow>29</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

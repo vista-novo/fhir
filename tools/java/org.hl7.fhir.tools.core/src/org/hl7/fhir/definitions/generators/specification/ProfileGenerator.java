@@ -43,6 +43,7 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.Definition;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -111,25 +112,26 @@ public class ProfileGenerator {
     ce.setPath(path);
     if (!"".equals(e.getProfileName()))
       ce.setName(e.getProfileName());
+    ce.setDefinition(p.new Definition());
     if (!"".equals(e.getComments()))
-      ce.setComments(e.getComments());
+      ce.getDefinition().setComments(e.getComments());
     if (!"".equals(e.getShortDefn()))
-      ce.setShortDefn(e.getShortDefn());
+      ce.getDefinition().setShort(e.getShortDefn());
     if (!"".equals(e.getDefinition()))
-      ce.setDefinition(e.getDefinition());
+      ce.getDefinition().setFormal(e.getDefinition());
     
     
     // no purpose here
-    ce.setMin(e.getMinCardinality());
-    ce.setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
+    ce.getDefinition().setMin(e.getMinCardinality());
+    ce.getDefinition().setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
     for (TypeRef t : e.getTypes())
-      ce.getType().add(t.summaryFormal()); 
+      ce.getDefinition().getType().add(t.summaryFormal()); 
     // ce.setConformance(getType(e.getConformance()));
     if (!"".equals(e.getCondition()))
-      ce.setCondition(e.getCondition());
+      ce.getDefinition().setCondition(e.getCondition());
     // we don't know mustSupport here
     if (e.isMustUnderstand()) 
-      ce.setMustUnderstand(e.isMustUnderstand());
+      ce.getDefinition().setMustUnderstand(e.isMustUnderstand());
     // todo: mappings
     // we don't have anything to say about constraints on resources
     if (!"".equals(e.getBindingName()))

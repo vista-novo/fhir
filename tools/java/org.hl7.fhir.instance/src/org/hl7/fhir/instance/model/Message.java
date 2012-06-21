@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -127,7 +127,7 @@ public class Message extends Resource {
         /**
          * Version of software running
          */
-        private String version;
+        private String_ version;
 
         /**
          * Human contact for problems
@@ -155,11 +155,11 @@ public class Message extends Resource {
           this.software = value;
         }
 
-        public String getVersion() { 
+        public String_ getVersion() { 
           return this.version;
         }
 
-        public void setVersion(String value) { 
+        public void setVersion(String_ value) { 
           this.version = value;
         }
 

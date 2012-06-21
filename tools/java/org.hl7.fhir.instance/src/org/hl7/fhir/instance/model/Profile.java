@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -72,11 +72,11 @@ public class Profile extends Resource {
     }
 
     public enum ExtensionContextType {
-        resource, // The extension can be used in the resource or resources provided in the path. The path consists of one or more resource names, seaprated by commas
-        datatype, // The extension can be used anywhere a data type is used. The path has the form [DataType](.name) where (.name) is used to refer to a context within the data type
-        elements, // the extension is used on one or elements in one or more resources. The path consists of a series of element paths separated by commas
-        mapping, // The extension is allowed to be used anywhere that makes sense given the identified mapping. The path identifies the mapping by name. The mapping should clearly identify where such an extension could be used, though this may not be computable
-        extension; // The extension identifies another extension. The path consists of uri#name, where uri identifies the profile, and #name identifies the extension
+        resource, // The extension can be used in the resource or resources provided in the context. The context consists of one or more resource names, seaprated by commas
+        datatype, // The extension can be used anywhere a data type is used. The context has the form [DataType](.name) where (.name) is used to refer to an element within the data type if required
+        elements, // The extension is used on one or elements in one or more resources. The context consists of a series of element paths separated by commas
+        mapping, // The extension is allowed to be used anywhere that makes sense given the identified mapping. The context identifies the mapping target. The mapping should clearly identify where such an extension could be used, though this may not be computable
+        extension; // The extension identifies another extension. The context consists of uri#name, where uri identifies the profile, and #name identifies the extension code in that other profile
         public static ExtensionContextType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -275,14 +275,94 @@ public class Profile extends Resource {
         private String name;
 
         /**
-         * A concise definition that  is shown in the concise XML format that summarises profiles
+         * Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource.
          */
-        private String shortDefn;
+        private Definition definition;
 
         /**
-         * a more specific definition than the definition for the same element in the base resource. The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
+         * If context includes aggregation and type=Resource()
          */
-        private String definition;
+        private ResourceA resource;
+
+        /**
+         * Value set id (only if coded)
+         */
+        private String binding;
+
+        /**
+         * Name (internal ref) or fixed value but not both
+         */
+        private List<Content> content = new ArrayList<Content>();
+
+        /**
+         * if list, whether derived profiles can slice more
+         */
+        private boolean closed;
+
+        public String getPath() { 
+          return this.path;
+        }
+
+        public void setPath(String value) { 
+          this.path = value;
+        }
+
+        public String getName() { 
+          return this.name;
+        }
+
+        public void setName(String value) { 
+          this.name = value;
+        }
+
+        public Definition getDefinition() { 
+          return this.definition;
+        }
+
+        public void setDefinition(Definition value) { 
+          this.definition = value;
+        }
+
+        public ResourceA getResource() { 
+          return this.resource;
+        }
+
+        public void setResource(ResourceA value) { 
+          this.resource = value;
+        }
+
+        public String getBinding() { 
+          return this.binding;
+        }
+
+        public void setBinding(String value) { 
+          this.binding = value;
+        }
+
+        public List<Content> getContent() { 
+          return this.content;
+        }
+
+        public boolean getClosed() { 
+          return this.closed;
+        }
+
+        public void setClosed(boolean value) { 
+          this.closed = value;
+        }
+
+    }
+
+    public class Definition extends Element {
+        /**
+         * A concise definition that  is shown in the concise XML format that summarises profiles
+         */
+        private String short_;
+
+        /**
+         *  The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
+         */
+        private String formal;
 
         /**
          * Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc
@@ -334,56 +414,20 @@ public class Profile extends Resource {
          */
         private List<Mapping> mapping = new ArrayList<Mapping>();
 
-        /**
-         * If context includes aggregation and type=Resource()
-         */
-        private ResourceA resource;
-
-        /**
-         * Value set id (only if coded)
-         */
-        private String binding;
-
-        /**
-         * Name (internal ref) or fixed value but not both
-         */
-        private List<Content> content = new ArrayList<Content>();
-
-        /**
-         * if list, whether derived profiles can slice more
-         */
-        private boolean closed;
-
-        public String getPath() { 
-          return this.path;
+        public String getShort() { 
+          return this.short_;
         }
 
-        public void setPath(String value) { 
-          this.path = value;
+        public void setShort(String value) { 
+          this.short_ = value;
         }
 
-        public String getName() { 
-          return this.name;
+        public String getFormal() { 
+          return this.formal;
         }
 
-        public void setName(String value) { 
-          this.name = value;
-        }
-
-        public String getShortDefn() { 
-          return this.shortDefn;
-        }
-
-        public void setShortDefn(String value) { 
-          this.shortDefn = value;
-        }
-
-        public String getDefinition() { 
-          return this.definition;
-        }
-
-        public void setDefinition(String value) { 
-          this.definition = value;
+        public void setFormal(String value) { 
+          this.formal = value;
         }
 
         public String getComments() { 
@@ -452,34 +496,6 @@ public class Profile extends Resource {
 
         public List<Mapping> getMapping() { 
           return this.mapping;
-        }
-
-        public ResourceA getResource() { 
-          return this.resource;
-        }
-
-        public void setResource(ResourceA value) { 
-          this.resource = value;
-        }
-
-        public String getBinding() { 
-          return this.binding;
-        }
-
-        public void setBinding(String value) { 
-          this.binding = value;
-        }
-
-        public List<Content> getContent() { 
-          return this.content;
-        }
-
-        public boolean getClosed() { 
-          return this.closed;
-        }
-
-        public void setClosed(boolean value) { 
-          this.closed = value;
         }
 
     }
@@ -615,14 +631,40 @@ public class Profile extends Resource {
 
     public class ExtensionDefn extends Element {
         /**
-         * How the path of the extension is understood
+         * identifies the extension in the instance
+         */
+        private String code;
+
+        /**
+         * where the extension can be used in instances
+         */
+        private String context;
+
+        /**
+         * How the context of the extension is interpreted
          */
         private ExtensionContextType contextType;
 
         /**
-         * Details of the extension
+         * Definition of the extension and it's content
          */
-        private Element_ element;
+        private Definition definition;
+
+        public String getCode() { 
+          return this.code;
+        }
+
+        public void setCode(String value) { 
+          this.code = value;
+        }
+
+        public String getContext() { 
+          return this.context;
+        }
+
+        public void setContext(String value) { 
+          this.context = value;
+        }
 
         public ExtensionContextType getContextType() { 
           return this.contextType;
@@ -632,12 +674,12 @@ public class Profile extends Resource {
           this.contextType = value;
         }
 
-        public Element_ getElement() { 
-          return this.element;
+        public Definition getDefinition() { 
+          return this.definition;
         }
 
-        public void setElement(Element_ value) { 
-          this.element = value;
+        public void setDefinition(Definition value) { 
+          this.definition = value;
         }
 
     }

@@ -566,5 +566,13 @@ public class ElementDefn {
     public boolean isXmlIDRef() {
       return typeCode().equals("xml:ID");
     }
+
+    public boolean hasComments() {
+      return comments != null && !"".equals(comments);
+    }
+
+    public boolean hasBindingName() {
+      return bindingName != null && !"".equals(bindingName);
+    }
 }
 

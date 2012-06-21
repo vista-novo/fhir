@@ -110,7 +110,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">A patient is a person or animal that is receiving care</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Person or animal receiving care</Data></Cell>
+    <Cell><Data ss:Type="String">A patient is a person or animal that is receiving care</Data></Cell>
     <Cell><Data ss:Type="String">Tracking patient is the center of the healthcare process</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Patient</Data></Cell>
    </Row>
@@ -227,8 +228,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

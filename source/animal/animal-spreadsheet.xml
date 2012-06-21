@@ -105,7 +105,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">An animal that has relevance to the care process -usually this is for animals that are patients.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An animal involved in the healthcare process</Data></Cell>
+    <Cell><Data ss:Type="String">An animal that has relevance to the care process -usually this is for animals that are patients.</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track animals - vetinary medicine is an active user of HL7 standards</Data></Cell>
     <Cell><Data ss:Type="String">Animals differ because you need to track species and strain, and also different kind of relationships - owners</Data></Cell>
     <Cell><Data ss:Type="String">NonPersonLivingSubject(classCode=ANM, determinerCode=INST)</Data></Cell>
@@ -248,11 +249,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

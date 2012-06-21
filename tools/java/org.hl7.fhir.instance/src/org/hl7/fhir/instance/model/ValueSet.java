@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -38,13 +38,13 @@ import java.util.*;
  */
 public class ValueSet extends Resource {
 
-    public enum ResourceProfileStatus {
-        draft, // This profile is still under development
-        testing, // this profile was authored for testing purposes (or education/evaluation/evangelisation)
-        production, // This profile is ready for use in production systems
-        withdrawn, // This profile has been withdrawn
-        superceded; // This profile was superceded by a more recent version
-        public static ResourceProfileStatus fromCode(String codeString) throws Exception {
+    public enum ValuesetStatus {
+        draft, // This valueset is still under development
+        testing, // this valueset was authored for testing purposes (or education/evaluation/evangelisation)
+        production, // This valueset is ready for use in production systems
+        withdrawn, // This valueset has been withdrawn
+        superceded; // This valueset was superceded by a more recent version
+        public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("draft".equals(codeString))
@@ -57,7 +57,7 @@ public class ValueSet extends Resource {
           return withdrawn;
         if ("superceded".equals(codeString))
           return superceded;
-        throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
+        throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -278,7 +278,7 @@ public class ValueSet extends Resource {
     /**
      * The status of the value set
      */
-    private ResourceProfileStatus status;
+    private ValuesetStatus status;
 
     /**
      * The date that the value set was last published
@@ -339,11 +339,11 @@ public class ValueSet extends Resource {
       this.description = value;
     }
 
-    public ResourceProfileStatus getStatus() { 
+    public ValuesetStatus getStatus() { 
       return this.status;
     }
 
-    public void setStatus(ResourceProfileStatus value) { 
+    public void setStatus(ValuesetStatus value) { 
       this.status = value;
     }
 

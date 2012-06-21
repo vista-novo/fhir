@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -225,7 +225,7 @@ public class Person extends Resource {
     /**
      * The birth date for the person
      */
-    private String dob;
+    private DateTime dob;
 
     /**
      * Administrative Gender
@@ -273,11 +273,11 @@ public class Person extends Resource {
       return this.contact;
     }
 
-    public String getDob() { 
+    public DateTime getDob() { 
       return this.dob;
     }
 
-    public void setDob(String value) { 
+    public void setDob(DateTime value) { 
       this.dob = value;
     }
 

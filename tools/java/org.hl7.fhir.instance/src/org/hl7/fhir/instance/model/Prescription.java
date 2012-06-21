@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -197,7 +197,7 @@ public class Prescription extends Resource {
         /**
          * Textual description of the use of the medication.
          */
-        private String description;
+        private String_ description;
 
         /**
          * Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.
@@ -207,12 +207,12 @@ public class Prescription extends Resource {
         /**
          * First moment on which medication should be taken
          */
-        private String start;
+        private DateTime start;
 
         /**
          * Last moment on which medication should be taken
          */
-        private String end;
+        private DateTime end;
 
         /**
          * Total duration of administration
@@ -222,18 +222,18 @@ public class Prescription extends Resource {
         /**
          * Maximum number of separate administrations before the instruction ends.
          */
-        private int numberOfAdministrations;
+        private Integer numberOfAdministrations;
 
         /**
          * Specification of dose and schedule for administration
          */
         private List<DosageInstruction> dosageInstruction = new ArrayList<DosageInstruction>();
 
-        public String getDescription() { 
+        public String_ getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String value) { 
+        public void setDescription(String_ value) { 
           this.description = value;
         }
 
@@ -245,19 +245,19 @@ public class Prescription extends Resource {
           this.totalPeriodicDosis = value;
         }
 
-        public String getStart() { 
+        public DateTime getStart() { 
           return this.start;
         }
 
-        public void setStart(String value) { 
+        public void setStart(DateTime value) { 
           this.start = value;
         }
 
-        public String getEnd() { 
+        public DateTime getEnd() { 
           return this.end;
         }
 
-        public void setEnd(String value) { 
+        public void setEnd(DateTime value) { 
           this.end = value;
         }
 
@@ -269,11 +269,11 @@ public class Prescription extends Resource {
           this.duration = value;
         }
 
-        public int getNumberOfAdministrations() { 
+        public Integer getNumberOfAdministrations() { 
           return this.numberOfAdministrations;
         }
 
-        public void setNumberOfAdministrations(int value) { 
+        public void setNumberOfAdministrations(Integer value) { 
           this.numberOfAdministrations = value;
         }
 

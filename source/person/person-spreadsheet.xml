@@ -114,7 +114,8 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">A person who is involved in the healthcare process</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Person involved in healthcare</Data></Cell>
+    <Cell><Data ss:Type="String">A person who is involved in the healthcare process</Data></Cell>
     <Cell><Data ss:Type="String">Need to track persons across multiple roles</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Person(classCode=PSN, determinerCode=INST)</Data></Cell>
    </Row>
@@ -266,7 +267,8 @@
     <Cell><Data ss:Type="String">Person.language</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">A language spoken by the person, with proficiency</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">language (with proficiency)</Data></Cell>
+    <Cell><Data ss:Type="String">A language spoken by the person, with proficiency</Data></Cell>
     <Cell><Data ss:Type="String">If a patient does not speak the local language, interpreters may be required, so languages spoken and profiency is an important things to keep track of both for patient and other persons of interest</Data></Cell>
     <Cell><Data ss:Type="String">If no language is specified, this *implies* that the default local language is spoken</Data></Cell>
     <Cell><Data ss:Type="String">.LanguageCommunicationCode</Data></Cell>
@@ -358,12 +360,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>22</TopRowVisible>
+   <TopRowVisible>15</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>24</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

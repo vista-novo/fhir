@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 17, 2012 00:08+1000 for FHIR v0.04
+// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -250,7 +250,7 @@ public class LabReport extends Resource {
         /**
          * May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.
          */
-        private String comments;
+        private String_ comments;
 
         /**
          * Guidance on how to interpret the value by comparison to a normal or recommended range
@@ -289,11 +289,11 @@ public class LabReport extends Resource {
           this.status = value;
         }
 
-        public String getComments() { 
+        public String_ getComments() { 
           return this.comments;
         }
 
-        public void setComments(String value) { 
+        public void setComments(String_ value) { 
           this.comments = value;
         }
 
@@ -395,7 +395,7 @@ public class LabReport extends Resource {
     /**
      * Concise and clinically contextualised narrative interpretation of the pathology test results.
      */
-    private String conclusion;
+    private String_ conclusion;
 
     /**
      * Codes for the conclusion
@@ -491,11 +491,11 @@ public class LabReport extends Resource {
       return this.resultGroup;
     }
 
-    public String getConclusion() { 
+    public String_ getConclusion() { 
       return this.conclusion;
     }
 
-    public void setConclusion(String value) { 
+    public void setConclusion(String_ value) { 
       this.conclusion = value;
     }
 

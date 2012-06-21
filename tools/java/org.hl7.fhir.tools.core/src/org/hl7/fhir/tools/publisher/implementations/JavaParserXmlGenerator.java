@@ -238,6 +238,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
     write("        unknownContent(xpp);\r\n");
     write("      eventType = nextNoWhitespace(xpp);\r\n");
     write("    }\r\n");
+    write("    xpp.next();\r\n");
     write("    return res;\r\n");
     write("  }\r\n\r\n");    
   }
@@ -297,6 +298,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           write("          res.getExtensions().add(parseExtension(xpp));\r\n");
         else
           write("          res.getExtension().add(parseExtension(xpp));\r\n");
+        write("          xpp.next();\r\n");
         write("          eventType = nextNoWhitespace(xpp);\r\n");
         write("        }\r\n");
         write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+name+"\"))\r\n");
@@ -311,6 +313,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
           write("        }\r\n");
           write("        if (eventType != XmlPullParser.END_TAG || !xpp.getName().equals(\""+Utilities.pluralizeMe(name)+"\"))\r\n");
           write("          throw new Exception(\"XML Error in requestDetails\");\r\n");          
+          write("        xpp.next();\r\n");
         } else {
           write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
           write("        res.get"+upFirst(name)+"().add("+prsr+");\r\n");

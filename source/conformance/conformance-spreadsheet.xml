@@ -69,6 +69,15 @@
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s72">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="44" x:FullColumns="1"
@@ -105,7 +114,8 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A conformance statement about how an application supports FHIR</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A conformance statement</Data></Cell>
+    <Cell><Data ss:Type="String">A conformance statement about how an application supports FHIR</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.id</Data></Cell>
@@ -127,7 +137,8 @@
     <Cell><Data ss:Type="String">Conformance.publisher</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The organization that publishes this conformance statement</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Publisher of the statement</Data></Cell>
+    <Cell><Data ss:Type="String">The organization that publishes this conformance statement</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.publisher.name</Data></Cell>
@@ -157,7 +168,8 @@
     <Cell><Data ss:Type="String">Conformance.software</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The software that is covered by this conformance statement</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">software/application described</Data></Cell>
+    <Cell><Data ss:Type="String">The software that is covered by this conformance statement</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.software.name</Data></Cell>
@@ -205,6 +217,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">if the endpoint is a RESTful one</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.mode</Data></Cell>
@@ -218,6 +231,7 @@
     <Cell><Data ss:Type="String">Conformance.rest.resource</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">resource served on the REST interface</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource.type</Data></Cell>
@@ -318,7 +332,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">if messaging is supported</Data></Cell>
     <Cell><Data ss:Type="String">An event supported by the application</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -484,12 +498,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>30</TopRowVisible>
+   <TopRowVisible>16</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>38</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>31</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -116,7 +116,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Assessment scales or scores combine the findings of individual values into a total score which can be interpreted more easily against a reference population</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Combined Score to help interpret patient condition</Data></Cell>
+    <Cell><Data ss:Type="String">Assessment scales or scores combine the findings of individual values into a total score which can be interpreted more easily against a reference population</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AssessmentScale.id</Data></Cell>
@@ -282,11 +283,11 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>17</ActiveRow>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

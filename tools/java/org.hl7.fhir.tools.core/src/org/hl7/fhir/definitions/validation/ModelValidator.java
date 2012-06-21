@@ -81,8 +81,7 @@ public class ModelValidator {
 		// rule(path, e.getMinCardinality() > 0,
 		// "Min Cardinality cannot be 0 when element is mandatory");
 		//TODO: Really? A composite element need not have a definition?
-		rule(path, e.hasShortDefn() || e.getElements().size() > 0,
-					"Must have a short defn unless child elements exist");
+		rule(path, e.hasShortDefn(), "Must have a short defn");
 		checkType(path, e, parent);
 //		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
 //				"Must have a binding if type is 'code'");
