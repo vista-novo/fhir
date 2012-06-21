@@ -52,15 +52,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s69">
-   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
-    ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-  </Style>
-  <Style ss:ID="s70">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s71">
+  <Style ss:ID="s67">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders/>
@@ -68,6 +60,14 @@
    <Interior/>
    <NumberFormat/>
    <Protection/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s71">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -340,7 +340,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"><Data ss:Type="String" x:Ticked="1">=Element</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Definition of elements in the resource</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Definition of elements in the resource</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -589,7 +589,7 @@
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Map element to another set of definitions</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Map element to another set of definitions</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -768,7 +768,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String" x:Ticked="1">@Profile.resource.element.definition</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String" x:Ticked="1">@Profile.resource.element.definition</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">Definition of the extension and it's content</Data></Cell>
     <Cell ss:StyleID="Default"/>
@@ -825,6 +825,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Profile.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -849,12 +851,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>45</TopRowVisible>
+   <TopRowVisible>54</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>53</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>66</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -863,9 +865,9 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="309.75"/>
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="309.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>

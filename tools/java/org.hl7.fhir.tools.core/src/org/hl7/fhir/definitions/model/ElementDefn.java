@@ -564,7 +564,7 @@ public class ElementDefn {
 	   }
 
     public boolean isXmlIDRef() {
-      return typeCode().equals("xml:ID");
+      return typeCode().equals("idref");
     }
 
     public boolean hasComments() {

@@ -61,15 +61,6 @@
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s67">
-   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Top"/>
-  </Style>
-  <Style ss:ID="s69">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s72">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders/>
@@ -77,6 +68,15 @@
    <Interior/>
    <NumberFormat/>
    <Protection/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -332,7 +332,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">if messaging is supported</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">if messaging is supported</Data></Cell>
     <Cell><Data ss:Type="String">An event supported by the application</Data></Cell>
     <Cell ss:StyleID="Default"/>
     <Cell ss:StyleID="Default"/>
@@ -480,6 +480,7 @@
     <Cell><Data ss:Type="String">Conformance.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -498,12 +499,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>16</TopRowVisible>
+   <TopRowVisible>25</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>31</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>43</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -512,8 +513,8 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="144"/>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:Index="4" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="144"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -617,13 +618,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="134.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="48.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="178.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="324"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="134.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="48.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="178.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="324"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -633,18 +634,18 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ConformanceEventMode</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">ConformanceEventMode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

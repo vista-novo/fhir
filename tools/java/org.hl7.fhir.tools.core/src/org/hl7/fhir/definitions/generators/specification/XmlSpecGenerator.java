@@ -289,9 +289,9 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			write(" ");
 			if (elem.getElements().isEmpty()) {
 				if ("See Extensions".equals(elem.getShortDefn())) {
-//					write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">"
-//							+ Utilities.escapeXml(elem.getShortDefn())
-//							+ "</span></a> ");
+					write(" <a href=\"extensibility.htm\"><span style=\"color: navy\">"
+							+ Utilities.escapeXml(elem.getShortDefn())
+							+ "</span></a> ");
 				} else {
 				  if (!elem.isXmlIDRef()) 
 				    write("<span style=\"color: navy\">"
@@ -463,14 +463,18 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("sid"))
 			return "datatypes";
-		if (name.equals("id"))
-			return "datatypes";
+    if (name.equals("id"))
+      return "datatypes";
+    if (name.equals("idref"))
+      return "xml";
 		if (name.equals("date"))
 			return "datatypes";
 		if (name.equals("dateTime"))
 			return "datatypes";
 		if (name.equals("narrative"))
 			return "xml";
+    if (name.equals("Extension"))
+      return "extensibility";
 		if (name.equals("Resource"))
 			return "xml";
 		if (name.equals("Constraint"))

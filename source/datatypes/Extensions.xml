@@ -16,8 +16,8 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9228</WindowHeight>
-  <WindowWidth>15576</WindowWidth>
+  <WindowHeight>9225</WindowHeight>
+  <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -64,15 +64,14 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.6"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="28.8"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="28.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.8"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
-    ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.4"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
@@ -124,7 +123,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Extension.ref</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">idref</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Internal reference to context of the extension (xml:id)</Data></Cell>
     <Cell><Data ss:Type="String">Internal reference to context of the extension - a pointer to an xml:id in the same resource</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</Data></Cell>
@@ -135,7 +134,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">if you must know what this means to safely process the data</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">if you must know this to safely read the resource</Data></Cell>
     <Cell><Data ss:Type="String">If this element is set to true, then the resource data is only safe to process if the reader understands this extension. </Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -171,7 +170,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

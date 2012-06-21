@@ -67,23 +67,30 @@
    </Borders>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s147">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="26" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="4"/>
+   <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
-    <Cell><Data ss:Type="String">Conf.</Data></Cell>
+    <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
@@ -102,29 +109,133 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PaulK</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:StyleID="s147"/>
+    <Cell ss:StyleID="s147"/>
+    <Cell ss:StyleID="s147"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">[Template] Master Definition</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">PaulK's resource</Data></Cell>
+    <Cell><Data ss:Type="String">[Template] Master Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PaulK.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="Default"/>
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">PaulK.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">PaulK.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text summary of [template] for human interpretation</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Text summary of [template] for human interpretation</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="3" ss:StyleID="Default"/>
+    <Cell ss:Index="5" ss:StyleID="Default"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -138,7 +249,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

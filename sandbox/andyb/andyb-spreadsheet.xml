@@ -69,21 +69,23 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="5" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="4"/>
+   <Column ss:Index="7" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="61.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
-    <Cell><Data ss:Type="String">Conf.</Data></Cell>
+    <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
@@ -102,29 +104,30 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AndyB</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">[Template] Master Definition</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">AndyB's Resource</Data></Cell>
+    <Cell><Data ss:Type="String">[Template] Master Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AndyB.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">AndyB.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell><Data ss:Type="String">Optional</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">AndyB.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell><Data ss:Type="String">Mandatory</Data></Cell>
-    <Cell><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text summary of [template] for human interpretation</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Text summary of [template] for human interpretation</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -138,8 +141,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -96,8 +96,10 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	}
 
 private void genXmlIdRef() throws Exception {
+    write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
+    write("       but note that this can't work in aggregations (see comments in Resource Format section) -->\r\n");
     write("  <xs:complexType name=\"xmlIdRef\">\r\n");
-    write("    <xs:attribute name=\"idref\" type=\"xs:IDREF\"/>\r\n");
+    write("    <xs:attribute name=\"idref\" type=\"id-simple\"/>\r\n");
     write("  </xs:complexType>\r\n");
   }
 
@@ -152,7 +154,7 @@ private void genXmlIdRef() throws Exception {
 		write("      </xs:element>\r\n");
 		write("    </xs:sequence>\r\n");
 		// write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+		write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
@@ -174,7 +176,7 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("        </xs:sequence>\r\n");
 
-    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("      </xs:restriction>\r\n");
 		write("    </xs:complexContent>\r\n");
 		write("  </xs:complexType>\r\n");
@@ -190,7 +192,7 @@ private void genXmlIdRef() throws Exception {
 				write("      <xs:extension base=\"xs:" + pt.getSchemaType()
 						+ "\">\r\n");
 				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
 				write("  </xs:complexType>\r\n");
@@ -207,7 +209,7 @@ private void genXmlIdRef() throws Exception {
 				write("      <xs:extension base=\"" + sp.getCode()
 						+ "-simple\">\r\n");
 				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		    write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
 				write("  </xs:complexType>\r\n");
@@ -272,13 +274,13 @@ private void genXmlIdRef() throws Exception {
 				generateWrapperElement(elem, e);
 		}
 		write("    </xs:sequence>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
 		// write("    <xs:complexContent>\r\n");
 		// write("      <xs:extension base=\"Core"+name+"\">\r\n");
 		// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-    // write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+    // write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		// write("      </xs:extension>\r\n");
 		// write("    </xs:complexContent>\r\n");
 		// write("  </xs:complexType>\r\n");
@@ -312,7 +314,7 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:sequence>\r\n");
 		//write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 
 		while (!structures.isEmpty()) {
@@ -347,13 +349,13 @@ private void genXmlIdRef() throws Exception {
 							generateWrapperElement(elem, e);
 					}
 					write("    </xs:sequence>\r\n");
-			    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+			    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 					write("  </xs:complexType>\r\n");
 					// write("  <xs:complexType name=\""+name+"\">\r\n");
 					// write("    <xs:complexContent>\r\n");
 					// write("      <xs:extension base=\"Core"+name+"\">\r\n");
 					// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-			    // write("        <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+			    // write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 					// write("      </xs:extension>\r\n");
 					// write("    </xs:complexContent>\r\n");
 					// write("  </xs:complexType>\r\n");
@@ -404,7 +406,7 @@ private void genXmlIdRef() throws Exception {
 				generateWrapperElement(root, e);
 		}
 		write("    </xs:sequence>\r\n");
-    write("    <xs:attribute name=\"id\" type=\"xs:ID\"/>\r\n");
+    write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 	}
 
@@ -603,7 +605,7 @@ private void genXmlIdRef() throws Exception {
 				if (types.get(0).isUnboundGenericParam() && paramType != null)
 					write("<xs:element name=\"" + e.getName() + "\" type=\""
 							+ paramType + "\" ");
-				else if (types.get(0).getName().equals("xml:ID")) {
+				else if (types.get(0).getName().equals("idref")) {
           write("<xs:element name=\"" + e.getName() + "\" type=\"xmlIdRef\" ");				
 				} else
 					write("<xs:element name=\"" + e.getName() + "\" type=\""

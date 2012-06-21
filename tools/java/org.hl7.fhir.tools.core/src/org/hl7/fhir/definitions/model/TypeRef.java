@@ -132,10 +132,14 @@ public class TypeRef {
 	public boolean isSpecialType() {
 		return isXmlId() || isXhtml() || isUnboundGenericParam()
 				|| isWildcardType() || name.equals("Type")
-				|| name.equals("GenericType") || isResourceReference();
+				|| name.equals("GenericType") || isResourceReference() || isExtension();
 	}
 
-	public String summary() {
+	private boolean isExtension() {
+    return name.equals("Extension");
+  }
+
+  public String summary() {
 		String s = name;
 		if (hasParams()) {
 			s = s + "(";

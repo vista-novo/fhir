@@ -584,6 +584,10 @@
     <Cell><Data ss:Type="String">Prescription.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
@@ -607,11 +611,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>30</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>37</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
