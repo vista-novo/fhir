@@ -231,6 +231,13 @@ images are used, they must include an appropriate caption).
 The <i>dataAbsentReason</i> is not used on the narrative element, or any elements 
 contained in it. The xhtml element must have some non-whitespace content.
 </p>
+<p>
+Note: the XHTML is contained in general XML, and there is no support for HTML entities
+like &amp;nbsp; or &amp;copy; etc. Unicode characters should be used instead. Note that 
+&amp;#160; substitutes for &amp;nbsp;.
+</p>
+
+<a name="css"></a>
 <h3>Styling the XHTML</h3>
 <p>
 The XHTML fragment in the narrative may be styled using CSS in the normal fashion, using a mix of classes, ids, 
@@ -469,7 +476,7 @@ is represented in JSON as
 <ul>
  <li>There is no namespaces in the JSON representation</li>
  <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form could also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
- <li>The xml attributes <i>id</i> (xml:id) and <i>dataAbsentReason</i> become JSON object attributes with the names "id" and "dataAbsentReason"; they come in that order before other defined elements</li>
+ <li>The xml attributes <i>id</i>, <i>idref</i> and <i>dataAbsentReason</i> become JSON object attributes with the same names; they come in that order before other defined elements</li>
  <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such a string, decimal etc are identical between the XML and the JSON form (including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
  <li>JSON property attributes never have empty values; omit a value if it is empty (same as for the xml)</li>
  <li>Items that may repeat are represented as arrays even if they do not repeat in the actual instance</li>

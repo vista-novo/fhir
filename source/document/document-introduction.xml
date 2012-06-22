@@ -32,8 +32,28 @@ In addition, Document Profiles can specify what sections a document contains, an
 constraints on their contents are. Applications should consider publishing <a href="conformance.htm">conformance 
 statements</a> that identify particular documents they support.
 </p>
-<p>The resource name as it appears in a RESTful URL is /document/. This resource name is for aggregated
-documents - <a href="#rest">see below</a> for details.
-</p>
 
+<h2>Document End-Points</h2>
+
+<p>There are two RESTful end-points defined for Documents:</p>
+
+<ul>
+ <li>[baseurl]/document/: a normal RESTful end point for document resources</li> 
+ <li>[baseurl]/bundles/document/: a RESTful end point that serves whole documents as <a href="atom.htm">aggregates</a>. <a href="#rest">This is described below</a></li> 
+</ul>
+<p>
+The first end-point is used for working within the document contents, for instance, for building 
+documents piecemeal, or for auditing received documents, or for providing a document registry. 
+The second end-point is used for working with whole documents, such as providing a document 
+repository. Servers may un-bundle documents received through the /bundles/document/ end-point, 
+and make the document resources they contain available through the /document/ end-point, but 
+are not required to do so. 
+</p>
+<p>
+RESTful systems may also accept documents through their <a href="message.htm#mailbox">mailbox</a>.
+</p>
+<p>
+Note: While the end-points above are defined for use with document resources and aggregated documents, 
+it is not necessary to use them; documents may be transferred between systems using any method desired.
+</p>
 </div>

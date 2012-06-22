@@ -17,4 +17,36 @@ Notes:
 
 [%events%]
 
+<a name="mailbox"></a>
+<h2>MailBox</h2>
+<p>
+The mailbox is the standard name for a service hosted on a RESTful server that accepts messages and processes 
+them as transactions, and returns a message response appropriate for the message received. The server is under
+no obligation to do anything particular with the resources except as required by the semantics of the event code in the 
+message resource. A server may choose to retain the resources and make them available on a RESTful interface, but 
+is not required to do so. If the server returns 200 Ok, it must return a valid message that indicates what the outcome
+of the event processing is. An HTTP error indicates that the message was not processed successfully, and that it should
+be resubmitted (and doing so should not result in a duplicate message response).
+</p>
+<p>
+The mail box can also be used to accept documents. In this case, the document is "accepted" (the server 
+takes responsibility for custody of the recieved document), and an HTTP status of 204 No Content is returned, 
+or an HTTP error is returned. The server is under no obligation to do anything with the document except as 
+specific trading partner agreements dictate.
+</p>
+<p>
+The following rules apply to the mailbox:
+</p>
+<ul>
+ <li>The mailbox only accepts POST transactions - any other HTTP method will result in an HTTP error</li>
+ <li>The request content type submitted is always an atom aggregation containing a message or document resource as the first resource</li>
+ <li>The response content type returned is always an error, an atom aggregation containing a message as the first resource, or empty (if a document was received)</li>
+ <li>The URL never takes any parameters</li>
+ <li>The mailbox may be authenticated using standard HTTP authentication methods, including OAuth</li>
+</ul>
+<p>
+This simple mailbox profile can be used by any http end point that accepts FHIR messages or documents, not just 
+FHIR RESTful servers.
+</p>
+
 </div>

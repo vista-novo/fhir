@@ -169,53 +169,15 @@ re-identification frequently occurs. For this reason, it is recommended that onl
 are signed, and then only when all the related resources are found in the aggregation.</li>
 <a name="Ids"></a>
 <li>
-FHIR resources make use of XML id attributes as targets for pointers elsewhere in the document. XML id attributes must be unique 
-in the context of a single XML document, and the atom feed is a single XML document. it can be difficult and time consuming - or
-impossible in the presence of a digital signature - to fix the id attributes so they are unique when aggregating resources.
-For this reason, it is highly recommended that all XML id attributes are prefixed with the type and master id of the resource, like
-this: [Type]_[master id]_id (e.g. Person_23442_1). 
+FHIR resources make use of id attributes as targets for <a href="xml.htm#idref">internal references with resources</a>. 
+These id attributes are unique and resolved within the context of a single resource. When resources are 
+combined into an aggregation, different resources may contain duplicate id attributes. 
 </li>
 <a name="json"></a>
 <li>There is no JSON representation of an atom feed. Atom feeds are always in XML format, though the resources may be in <a href="xml.htm#json">JSON</a>.</li>
+<a name="rest"></a>
+<li>The <a href="document.htm#rest">Document</a> framework defines an additional RESTful end-point that works like a <a href="http.htm">normal RESTful interface</a> but serves aggregated documents instead of a document resource.</li>
 </ul>
-<!--
-Grahame: drop this out - no one is asking for it. Lets see if anyone actually wants this. Other than me, that is. 
-
-<a name="endpoint"></a>
-<h2>RESTful support for Aggregations</h2>
-<p>
-The standard RESTful endpoints (such as [baseurl]/people/#{id}.xml for a Person resource, or [baseurl]/documents/#{id}.xml) handle
-the individual resources, and not aggregations (though, per the restful spec, they may serve up aggregations for the <a href="http.htm#history">history</a> and <a href="http.htm#update">update</a> operations). 
-There is a special end-point for aggregations at the relative url "/assemblies", which supports the following operations:
-</p>
-<table class="list"> 
-  <tr><td><b>Instance</b></td><td></td></tr>
-  <tr><td>read</td><td>Retrieve an aggregation</td></tr>
-  <tr><td>vread</td><td>Not supported - aggregations have no version history</td></tr>
-  <tr><td>update</td><td>Not supported - aggregations never change</td></tr>
-  <tr><td>delete</td><td>Delete an aggregation</td></tr>
-  <tr><td>validate</td><td>Check that the content would be acceptable as an update</td></tr>
-  <tr><td>history</td><td>Not supported - aggregations never change</td></tr>
-  <tr><td colspan="2"><b>Manager</b></td></tr>
-  <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
-  <tr><td>search</td><td>Search the aggregations based on some filter criteria. Supported search parameters<br/>
-              <ul>
-	        <li>document.id - an id of a document. There should only be one aggregation for each document (optional, for systems that support documents)</li>
-	        <li>message.id - an id of a message. There is usually only one aggregation per message. (optional, for systems that archive messages and make them available in this fashion)</li>
-		<li>[ResourceType].id - an id of a resource that may be brought into an aggregation. Multiple aggregations should be expected in the response. (also optional)</li>
-	      </ul>
-	      </td></tr>
-  <tr><td>create</td><td>Create an aggregation (i.e. post to the server. The ID is assigned by the client)</td></tr>
-  <tr><td>conformance</td><td>Not supported (no conformance statement for aggregations directly)</td></tr>
-</table>
-<p>
-For all these resources, the id (as used in the <a href="http.htm">RESTful transactions</a>) is the 
-unique id of the aggregation. Note that creating an aggregation does not mean that any apparent 
-implied transactions in the resources found in the aggregation should be applied to the server resources and/or 
-executed by any system - specific transaction are required, either using the RESTful or messaging frameworks, 
-or a SOA implementation.
-</p>
--->
 
 <%footer%>
 <%/maindiv%>    

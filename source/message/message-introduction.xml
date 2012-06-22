@@ -20,7 +20,7 @@ The events supported in FHIR, along with the resources that are included in them
 <p>
 The destination application processes the request, and returns one or more response messages 
 which are also an <a href="atom.htm#Aggregation">aggregation</a> of resources, with the first 
-resource in the aggregation being a <a href="message.htm">Message</a> resource with a response
+resource in the aggregation being a <a href="#resource">Message</a> resource with a response
 section that reports the outcome of processing the message and any additional response resources 
 required. 
 </p>
@@ -84,4 +84,32 @@ statement is a <a href="conformance.htm">resource with the name
 "Conformance"</a>.
 </p>
 
+<a name="endpoints"></a>
+<h2>Messaging End-points</h2>
+
+<p>There are two end-points defined for a RESTful server that supports Messages:</p>
+
+<ul>
+ <li>[baseurl]/message/: a normal RESTful end point for message resources</li> 
+ <li>[baseurl]/mailbox: an address at which messages can be delivered</li> 
+</ul>
+<p>
+The first end-point is used for working within the message contents, for instance, for building 
+messages piecemeal, or for auditing received messages. <b>Creating or updating Message resources
+to this end point does not represent the actual occurance of any event, not can it trigger
+any logic associated with the actual event</b>; it is just for managing message resources.
+</p>
+<p>
+The second end-point is used for actually sending messages as atom aggregations, to indicate 
+that the event identified by the code has occured. The end-point responds with a message
+response as defined for the particular event, or an error indicating that the attempt to 
+process the message was unsuccesful. The functionality of this end-point <a href="#mailbox">is described below</a>.
+</p>
+<p>
+Note: While the end-points above are defined for use with message resources, and for delivering
+messages to a RESTful server, it is not necessary to use them; messages may be transported 
+between systems using any method desired.
+</p>
+
+<a name="resource"></a>
 </div>
