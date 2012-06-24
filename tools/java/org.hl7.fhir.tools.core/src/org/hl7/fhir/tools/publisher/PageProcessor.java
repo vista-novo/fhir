@@ -106,10 +106,10 @@ public class PageProcessor implements Logger  {
   }
 
   
-  private String xmlForDt(String dt) throws Exception {
+  private String xmlForDt(String dt, String pn) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
     FileOutputStream fos = new FileOutputStream(tmp);
-    XmlSpecGenerator gen = new XmlSpecGenerator(fos, false);
+    XmlSpecGenerator gen = new XmlSpecGenerator(fos, pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null);
     TypeParser tp = new TypeParser();
     TypeRef t = tp.parse(dt).get(0);
     ElementDefn e = definitions.getElementDefn(t.getName());
@@ -209,11 +209,13 @@ public class PageProcessor implements Logger  {
 
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt")) 
-        src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
+        src = s1+xmlForDt(com[1], file)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("dtheader"))
         src = s1+dtHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("xmlheader"))
+        src = s1+xmlHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("txheader"))
         src = s1+txHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("extheader"))
@@ -264,6 +266,30 @@ public class PageProcessor implements Logger  {
   }
   
   private String dtHeader(String n, String mode) {
+    if (n.contains("-"))
+      n = n.substring(0, n.indexOf('-'));
+    StringBuilder b = new StringBuilder();
+    b.append("<div class=\"navtop\">");
+    b.append("<ul class=\"navtop\"><li class=\"spacerleft\"><span>&nbsp;</span></li>");
+    if (mode == null || mode.equals("content"))
+      b.append("<li class=\"selected\"><span>Content</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("examples".equals(mode))
+      b.append("<li class=\"selected\"><span>Examples</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-examples.htm\">Examples</a></span></li>");
+    if ("definitions".equals(mode))
+      b.append("<li class=\"selected\"><span>Formal Definitions</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-definitions.htm\">Formal Definitions</a></span></li>");
+    b.append("<li class=\"spacerright\" style=\"width: 270px\"><span>&nbsp;</span></li>");
+    b.append("<li class=\"wiki\"><span><a href=\"http://wiki.hl7.org/index.php?title=FHIR_"+n.toUpperCase().substring(0, 1)+n.substring(1)+"_Page\">Community Input (wiki)</a></span></li>");
+    b.append("</ul></div>\r\n");
+    return b.toString();
+  }
+
+  private String xmlHeader(String n, String mode) {
     if (n.contains("-"))
       n = n.substring(0, n.indexOf('-'));
     StringBuilder b = new StringBuilder();
@@ -536,10 +562,10 @@ public class PageProcessor implements Logger  {
 
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt"))
-        src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
+        src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
@@ -589,10 +615,10 @@ public class PageProcessor implements Logger  {
 
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt"))
-        src = s1+xmlForDt(com[1])+tsForDt(com[1])+s3;
+        src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
-      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+      else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);

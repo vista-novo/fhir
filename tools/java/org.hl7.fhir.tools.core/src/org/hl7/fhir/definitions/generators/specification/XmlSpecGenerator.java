@@ -45,12 +45,13 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {
 
-	private boolean links;
+	private String defPage;
+	private String dtRoot;
 
-  public XmlSpecGenerator(OutputStream out, boolean links)
-			throws UnsupportedEncodingException {
+  public XmlSpecGenerator(OutputStream out, String defPage, String dtRoot) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
-		this.links = links;
+    this.defPage = defPage;
+    this.dtRoot = dtRoot == null ? "" : dtRoot;
 	}
 
 	public void generate(ElementDefn root) throws Exception {
@@ -72,15 +73,17 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			rn = root.getName();
 
 		write("&lt;");
-		if (links && (rn == null || "x".equals(rn)))
-			write("<b>");
+		if (defPage == null)
+			write("<span title=\""
+          + Utilities.escapeXml(root.getDefinition())
+          + "\"><b>");
 		else
-			write("<a href=\"#" + root.getName() + "\" title=\""
+			write("<a href=\""+defPage+"#" + root.getName() + "\" title=\""
 					+ Utilities.escapeXml(root.getDefinition())
 					+ "\" class=\"dict\"><b>");
 		write(rn);
-		if (links && (rn == null || "x".equals(rn)))
-			write("</b>");
+		if ((defPage == null))
+			write("</b></span>");
 		else
 			write("</b></a>");
 
@@ -206,7 +209,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				&& !elem.getTypes().get(0).isWildcardType())
 			en = en.replace("[x]", elem.typeCode());
 
-		if (!links || rootName == null || "x".equals(rootName)) {
+		if (defPage == null) {
 			if (elem.isMustUnderstand() || elem.isMustSupport())
 				write("&lt;<span style=\"text-decoration: underline\" title=\""
 						+ Utilities
@@ -217,7 +220,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("&lt;<span title=\""
 						+ Utilities.escapeXml(elem.getDefinition()) + "\">");
 		} else if (elem.isMustUnderstand() || elem.isMustSupport())
-			write("&lt;<a href=\"#"
+			write("&lt;<a href=\""+defPage+"#"
 					+ pathName
 					+ "."
 					+ en
@@ -227,7 +230,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 									+ " (this element must be supported or understood)")
 					+ "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
-			write("&lt;<a href=\"#" + pathName + "." + en + "\" title=\""
+			write("&lt;<a href=\""+defPage+"#" + pathName + "." + en + "\" title=\""
 					+ Utilities.escapeXml(elem.getDefinition())
 					+ "\" class=\"dict\">");
 
@@ -235,13 +238,13 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
 			write("<b title=\""
 					+ Utilities.escapeXml(elem.getDefinition())
-					+ "\">div</b></span> xmlns=\"http://www.w3.org/1999/xhtml\"> <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
+					+ "\">div</b></span>"+(defPage == null? "" : "</a>")+" xmlns=\"http://www.w3.org/1999/xhtml\"> <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
 					+ Utilities.escapeXml(elem.getShortDefn())
 					+ "</span><span style=\"color: Gray\">&lt; --&gt;</span> &lt;/div&gt;\r\n");
 		}
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) {
-	    if (!links || rootName == null || "x".equals(rootName)) {
+	    if (defPage == null) {
         write("</span>");
 	    } else if (elem.isMustUnderstand() || elem.isMustSupport())
 				write(en + "</span></a>&gt;");
@@ -258,11 +261,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write(elem.getValue() + "&lt;" + en + "/&gt;\r\n");
 		} else {
 			write("<b>" + en);
-			if (!links || rootName == null || "x".equals(rootName)) {
-				if (elem.isMustUnderstand() || elem.isMustSupport())
-					write("</b></span>");
-				else
-					write("</b></span>");
+			if (defPage == null) {
+  			write("</b></span>");
 			} else if (elem.isMustUnderstand() || elem.isMustSupport())
 				write("</b></span></a>");
 			else
@@ -322,7 +322,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 					if (t.isXhtml() || t.getName().equals("list"))
 						write(t.getName());
 					else
-						write("<a href=\"" + getSrcFile(t.getName()) + ".htm#"
+						write("<a href=\"" + dtRoot+getSrcFile(t.getName()) + ".htm#"
 								+ t.getName() + "\">" + t.getName() + "</a>");
 					if (t.hasParams()) {
 						write("(");
@@ -338,11 +338,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 								// of the profile as specified
 								// in the aggregation. For now it links to the
 								// base resource.
-								write("<a href=\"" + getSrcFile(p) + ".htm#"
+								write("<a href=\"" + dtRoot+getSrcFile(p) + ".htm#"
 										+ p + "\">" + elem.getAggregation()
 										+ "</a>");
 							} else
-								write("<a href=\"" + getSrcFile(p) + ".htm#"
+								write("<a href=\"" + dtRoot+getSrcFile(p) + ".htm#"
 										+ p + "\">" + p + "</a>");
 
 							firstp = false;

@@ -13,7 +13,8 @@
 
 
 <%maindiv%>
-<%pageheader%>
+
+<%xmlheader%>
 
 <h1>Resource Format</h1>
 
@@ -53,7 +54,7 @@ Notes:
  <li>The elements are assigned one or more types. All the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
  <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
    If the element name is underlined, then applications are required to support and/or understand it</li>
- <li>Any of the XML elements may have <a href="#id">an id attribute</a> to serve as the target of a reference. The id attribute is not shown </li>
+ <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown </li>
  <li>The root element of a resource may have an xml:lang the specifies the primary language of the resource</li>
  <li>In addition to this description, other definitional forms are available, including W3C schema, Relax NG schema, RDF, and eCore.</li>
 </ul>
@@ -158,7 +159,7 @@ structured data, which may have one of the following codes:
 </table> 
 <p>
 In addition to this general flag that specifies the status of the narrative, there is an optional mapping between the 
-narrative and the structured data. Each mapping has narrative id, and structured data id which <a href="#id">provide internal references</a> 
+narrative and the structured data. Each mapping has narrative id, and structured data id which <a href="#idref">provide internal references</a> 
 to the narrative and the structured data respectively, and a flag for whether the text was generated from the 
 data, or the data was generated from the text (by some form of retrospective processing, whether human or computer), 
 or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason

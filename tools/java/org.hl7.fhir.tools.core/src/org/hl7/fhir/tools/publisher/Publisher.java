@@ -398,7 +398,7 @@ public class Publisher {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		String n = resource.getName().toLowerCase();
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), true);
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n+"-definitions.htm", null);
 		gen.generate(resource.getRoot());
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
@@ -620,7 +620,7 @@ public class Publisher {
 		// base resource to fill out all the missing bits
 		validateProfile(profile);
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), false);
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), null, "http://hl7.org/fhir/");
 		gen.generate(profile, page.getDefinitions());
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
@@ -733,7 +733,7 @@ public class Publisher {
 			book.getPages().put(filename, new XhtmlParser().parse(source));
 		} catch (Exception e) {
 			throw new Exception("error parsing page " + filename + ": "
-					+ e.getMessage());
+					+ e.getMessage()+"in source\r\n"+source);
 		}
 	}
 
