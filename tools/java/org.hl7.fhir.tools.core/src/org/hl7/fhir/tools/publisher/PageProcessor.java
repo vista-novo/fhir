@@ -49,6 +49,7 @@ import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
@@ -108,7 +109,7 @@ public class PageProcessor implements Logger  {
   private String xmlForDt(String dt) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
     FileOutputStream fos = new FileOutputStream(tmp);
-    XmlSpecGenerator gen = new XmlSpecGenerator(fos);
+    XmlSpecGenerator gen = new XmlSpecGenerator(fos, false);
     TypeParser tp = new TypeParser();
     TypeRef t = tp.parse(dt).get(0);
     ElementDefn e = definitions.getElementDefn(t.getName());
@@ -659,6 +660,8 @@ public class PageProcessor implements Logger  {
         src = s1+loadXmlNotes(name, "introduction")+s3;
       else if (com[0].equals("examples")) 
         src = s1+produceExamples(resource)+s3;
+      else if (com[0].equals("profiles")) 
+        src = s1+produceProfiles(resource)+s3;
       else if (com[0].equals("example-list")) 
         src = s1+produceExampleList(resource)+s3;
       else if (com[0].equals("examples-book")) 
@@ -723,6 +726,14 @@ public class PageProcessor implements Logger  {
     return s.toString();
   }
 
+  private String produceProfiles(ResourceDefn resource) {
+    StringBuilder s = new StringBuilder();
+    for (RegisteredProfile p: resource.getProfiles()) {
+        s.append("<tr><td><a href=\""+p.getFilename()+".htm\">"+Utilities.escapeXml(p.getName())+"</a></td><td>"+Utilities.escapeXml(p.getDescription())+"</td></tr>");
+    }
+    return s.toString();
+  }
+
   private String produceExampleList(ResourceDefn resource) {
     StringBuilder s = new StringBuilder();
     boolean started = false;
@@ -783,7 +794,7 @@ public class PageProcessor implements Logger  {
     }
 }
 
-  String processProfileIncludes(String filename, ProfileDefn profile, String xml, String src) throws Exception {
+  String processProfileIncludes(String filename, ProfileDefn profile, String xml, String tx, String src) throws Exception {
     while (src.contains("<%"))
     {
       int i1 = src.indexOf("<%");
@@ -820,10 +831,13 @@ public class PageProcessor implements Logger  {
         src = s1+profile.getMetadata().get("author.name").get(0)+s3;
       else if (com[0].equals("xml"))
         src = s1+xml+s3;
-      else if (com[0].equals("profilelist"))
-        src = s1+"profiles the "+profile.getMetadata().get("resource").get(0)+" Resource"+s3;
-      else if (com[0].equals("tx"))
-        src = s1+"todo"+s3;
+      else if (com[0].equals("profilelist")) {
+        if (profile.getMetadata().containsKey("resource"))
+          src = s1+"profiles the "+profile.getMetadata().get("resource").get(0)+" Resource"+s3;
+        else
+          src = s1+s3;
+      } else if (com[0].equals("tx"))
+        src = s1+tx+s3;
       else if (com[0].equals("plural"))
         src = s1+Utilities.pluralizeMe(filename)+s3;
       else if (com[0].equals("notes"))

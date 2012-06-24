@@ -93,7 +93,7 @@ public class XhtmlGenerator {
 	}
 
 	private void writeText(OutputStreamWriter out, Text node) throws DOMException, IOException {
-		out.write("<b>"+escapeHtml(node.getTextContent())+"</b>");
+		out.write("<b>"+escapeHtml(Utilities.escapeXml(node.getTextContent()))+"</b>");
 	}
 
 	private void writeElement(OutputStreamWriter out, Element node) throws Exception {
@@ -125,7 +125,7 @@ public class XhtmlGenerator {
 		for (char c : doco.toCharArray()) {
 		  if (c == '<')
 			  b.append("&lt;");
-		  else if (c == '<')
+		  else if (c == '>')
 			  b.append("&gt;");
 		  else if (c == '&')
 			  b.append("&amp;");

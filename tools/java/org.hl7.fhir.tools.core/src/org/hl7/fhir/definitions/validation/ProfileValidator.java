@@ -123,7 +123,7 @@ public class ProfileValidator {
     n.setName(terminalName(e));
     n.setInherited(true);
     n.setComments(e.getDefinition().getComments());
-    n.setBindingName(e.getBinding());
+    n.setBindingName(e.getDefinition().getBinding());
     n.setShortDefn(e.getDefinition().getShort());
     n.setDefinition(e.getDefinition().getFormal());
     n.setMaxCardinality("*".equals(e.getDefinition().getMax()) ? null : Integer.parseInt(e.getDefinition().getMax()));
@@ -180,7 +180,7 @@ public class ProfileValidator {
     if (!target.hasComments())
       target.setComments(source.getDefinition().getComments());
     if (!target.hasBindingName())
-      target.setBindingName(source.getBinding());
+      target.setBindingName(source.getDefinition().getBinding());
     if (!target.hasShortDefn())
       target.setShortDefn(source.getDefinition().getShort());
     if (!target.hasDefinition())

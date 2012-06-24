@@ -72,22 +72,23 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="6" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="79.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33" ss:Span="2"/>
+   <Column ss:Index="5" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="57"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="77.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -105,30 +106,33 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc</Data></Cell>
     <Cell><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc</Data></Cell>
     <Cell><Data ss:Type="String">Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">TEL</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">TEL</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="42.75">
     <Cell><Data ss:Type="String">Contact.system</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ContactSystem</Data></Cell>
     <Cell><Data ss:Type="String">What kind of contact this is</Data></Cell>
     <Cell><Data ss:Type="String">What kind of contact this is - what communications system is required to make use of the contact</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">TEL.scheme</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">TEL.scheme</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Contact.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The actual contact details</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The actual contact details</Data></Cell>
     <Cell><Data ss:Type="String">The actual contact details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).</Data></Cell>
     <Cell><Data ss:Type="String">Need to support legacy numbers that are not in a tightly controlled format </Data></Cell>
     <Cell><Data ss:Type="String">additional out of band data such as extensions, or notes about use of the contact are sometimes included in the value</Data></Cell>
@@ -137,21 +141,23 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Contact.use</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ContactUse</Data></Cell>
     <Cell><Data ss:Type="String">How to use this address</Data></Cell>
     <Cell><Data ss:Type="String">How to use this address</Data></Cell>
     <Cell><Data ss:Type="String">Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">TEL.use</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">TEL.use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Contact.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">TEL.useablePeriod</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">TEL.useablePeriod</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -162,11 +168,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

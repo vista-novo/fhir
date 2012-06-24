@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * For any organization/institution/government department that has relevance to the care process
+ * For any company/corporation/institution/government department that has relevance to the care process
  */
 public class Organization extends Resource {
 
@@ -226,7 +226,7 @@ public class Organization extends Resource {
     private CodeableConcept industryCode;
 
     /**
-     * The qualifications a person has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+     * The qualifications/certifications an organisation has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organisation may play in a healthcare environment
      */
     private List<Accreditation> accreditation = new ArrayList<Accreditation>();
 

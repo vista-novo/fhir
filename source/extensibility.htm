@@ -85,9 +85,10 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li>string</li>
  <li>uri</li>
  <li>humanDate</li>
- <li>Attachment</li>
- <li>CodeableConcept</li>
+ <li>code - if the extension definition provides a binding to a suitable set of codes</li>
  <li>Coding</li>
+ <li>CodeableConcept</li>
+ <li>Attachment</li>
  <li>Identifier</li>
  <li>Quantity</li>
  <li>Choice</li>
@@ -104,6 +105,7 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
 Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extension codes make rules about it. Extensions can never have a default value.
 </p>
 
+<a name="define"></a>
 <h2>Defining Extensions</h2>
 
 <p>
@@ -126,14 +128,14 @@ Extensions SHALL only be used on a target for which they are defined.
 Each extension is defined using the following fields:
 </p>
 <table class="codes">
- <tr><td>Name</td><td>Required</td><td>The name that is used as a code in a resource to identify this extension</td></tr>
+ <tr><td>Code</td><td>Required</td><td>The name that is used as a code in a resource to identify this extension</td></tr>
  <tr><td>Context</td><td>Required</td><td>The context of this extension. See above. The context has two parts: a type, and a path which supplies the details</td></tr>
  <tr><td>Short Defn</td><td>Required</td><td>A brief description of the resource used in the XML descriptions</td></tr>
  <tr><td>Definition</td><td>Required</td><td>A formal statement of the meaning of the content of the field</td></tr>
  <tr><td>Comments</td><td>Optional</td><td>Additional other information about the extension, including information such as requirements or use notes</td></tr>
  <tr><td>Cardinality</td><td>Required</td><td>The cardinality of this extension.<br/> Specifying a minimum cardinality of 1 means that if the source system declares that, if it conforms to the set of extensions containing this extension, the extension must be included in the resource</td></tr>
  <tr><td>Type</td><td>Required</td><td>The type(s) of the extension. This must be a valid FHIR data type as described above, or "Extension: x,y,z" which indicates that the extension codes x,y, and z will be contained in the extension</td></tr>
- <tr><td>Conformance</td><td>Required</td><td>Whether the use of the extension is mandatory, conditional, optional, or prohibited. If the extension is conditional, the conditions must be described in the comments field. This field overlaps with the cardinality, and must be consistent with it.</td></tr>
+ <tr><td>DateAbsentReason?</td><td>Required</td><td>Whether the the data absent reason is allowed on the value of the extension.</td></tr>
  <tr><td>XPaths</td><td>Optional</td><td>One or more XPath statements that must evaluate to true when the extension is used</td></tr>
  <tr><td>Must Understand</td><td>Required</td><td>Whether the extension must be understood by any system reading the resource. There are 3 possible values: "true" - the extension must be understood, "false" - the extension does not need to be understood, and "sender" - the sender can decide whether the extension needs to be understood</td></tr>
  <tr><td>RIM Mapping</td><td>Conditional</td><td>The formal mapping from this extension to the RIM. Required for HL7-defined extensions, but may be optional in other contexts</td></tr>

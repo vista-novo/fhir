@@ -37,6 +37,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 public class ResourceDefn  {
    private List<Example> examples = new ArrayList<Example>();
    private List<SearchParameter> searchParams = new ArrayList<SearchParameter>();
+   private List<RegisteredProfile> profiles = new ArrayList<RegisteredProfile>();
    
    private boolean sandbox;
    private String status;
@@ -130,5 +131,10 @@ public class ResourceDefn  {
   public void setStatus(String status) {
     this.status = status;
   } 
-   
+
+  public List<RegisteredProfile> getProfiles() {
+    return profiles;
+  }
+
+
 }

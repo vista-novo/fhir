@@ -34,37 +34,52 @@ import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ExtensionDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 public class XmlSpecGenerator extends OutputStreamWriter {
 
-	public XmlSpecGenerator(OutputStream out)
+	private boolean links;
+
+  public XmlSpecGenerator(OutputStream out, boolean links)
 			throws UnsupportedEncodingException {
 		super(out, "UTF-8");
+		this.links = links;
 	}
 
 	public void generate(ElementDefn root) throws Exception {
+    write("<pre class=\"spec\">\r\n");
 
-		String rn;
+		generateInner(root);
+
+		write("</pre>\r\n");
+		flush();
+		close();
+	}
+
+  private void generateInner(ElementDefn root) throws IOException, Exception {
+    String rn;
 		if (root.getTypes().get(0).getName().equals("Type")
 				|| (root.getTypes().get(0).getName().equals("Structure")))
 			rn = "x";
 		else
 			rn = root.getName();
-		write("<pre class=\"spec\">\r\n");
 
 		write("&lt;");
-		if (rn == null || "x".equals(rn))
+		if (links && (rn == null || "x".equals(rn)))
 			write("<b>");
 		else
 			write("<a href=\"#" + root.getName() + "\" title=\""
 					+ Utilities.escapeXml(root.getDefinition())
 					+ "\" class=\"dict\"><b>");
 		write(rn);
-		if (rn == null || "x".equals(rn))
+		if (links && (rn == null || "x".equals(rn)))
 			write("</b>");
 		else
 			write("</b></a>");
@@ -78,15 +93,73 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		write("&lt;/");
 		write(rn);
 		write("&gt;\r\n");
-		write("</pre>\r\n");
-		flush();
-		close();
+  }
+
+	public void generate(ProfileDefn profile, Definitions definitions) throws Exception {
+    write("<pre class=\"spec\">\r\n");
+    
+    if (profile.getResources().size() > 0) {
+      write("  <span style=\"color: Gray\">&lt;!-- Resources --&gt;</span>\r\n");
+      for (ResourceDefn r : profile.getResources()) {
+        generateInner(r.getRoot());
+      } 
+	  }
+    
+    if (profile.getExtensions().size() > 0) {
+      write(" <span style=\" color: Gray\">&lt;!-- Extensions --&gt;</span>\r\n");
+      for (ExtensionDefn ex : profile.getExtensions()) {
+        generateExtension(ex, definitions);
+      } 
+    }
+    
+    write("</pre>\r\n");
+    flush();
+    close();
 	}
 
-	public void generate(ProfileDefn profile) throws Exception {
-		generate(profile.getResources().get(0).getRoot());
-	}
+  private void generateExtension(ExtensionDefn ex, Definitions definitions) throws Exception {
+	   write("&lt;<b>extension</b>>  &lt;!-- ");
+     writeCardinality(ex.getDefinition());
+	   write(" -->\r\n");
+	   write(" &lt;<b>code</b>>"+ex.getCode()+"&lt;/code>\r\n"); 
+	   write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.htm#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
+	   write(" &lt;<b>ref</b> idref=\"<span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"xml.htm#idref\">Ref</a></span> to a "+ex.getContext()+" ("+ex.getType().toString()+")</span>\">  \r\n");
+	   if (ex.getDefinition().isMustUnderstand())
+	     write(" &lt;<b>mustUnderstand</b>>true&lt;/mustUnderstand>\r\n");
+	   String vn = "value[x]";
+	   if (ex.getDefinition().getTypes().size() == 1)
+	     vn = "value"+upFirst(ex.getDefinition().typeCode());
+	   
+	   write(" &lt;<b>"+vn+"</b>");
+	   if (ex.getDefinition().isAllowDAR())
+       write(" <span style=\"color: red\" title=\"dataAbsentReason attribute is allowed\">d?</span>");
+	   write(">");
+	   if (ex.getDefinition().getTypes().size() == 1 && definitions.hasElementDefn(ex.getDefinition().typeCode())) {
+	     write(" (todo: fixed values, fix links)\r\n");
+	     ElementDefn vt = definitions.getElementDefn(ex.getDefinition().typeCode());
+	     for (ElementDefn elem : vt.getElements()) {
+	       generateCoreElem(elem, 2, "?", "?");
+	     }
+       write(" &lt;/"+vn+">\r\n"); 
+	   } else if (ex.getDefinition().getTypes().size() == 1) {
+       write("<span style=\" color: Gray\">&lt;!-- </span>");
+       write("<span style=\"color: navy\">"
+           + Utilities.escapeXml(ex.getDefinition().getShortDefn())
+           + "</span>");
+       write("<span style=\" color: Gray\"> --></span>");
+       write("&lt;/"+vn+">\r\n"); 
+	   } else
+	     write("[todo: type and short defn]&lt;/"+vn+">\r\n"); 
+	   write("&lt;/extension>\r\n");
+  }
 
+  private String upFirst(String s) {
+    return s.substring(0,1).toUpperCase()+s.substring(1);
+  }
+
+  /*
+	 */
+	
 	// private void generateElem(ElementDefn elem, int indent, String rootName,
 	// String pathName) throws Exception {
 	// // if ((!elem.unbounded() && 1 == elem.getMaxCardinality()) ||
@@ -133,7 +206,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				&& !elem.getTypes().get(0).isWildcardType())
 			en = en.replace("[x]", elem.typeCode());
 
-		if (rootName == null || "x".equals(rootName)) {
+		if (!links || rootName == null || "x".equals(rootName)) {
 			if (elem.isMustUnderstand() || elem.isMustSupport())
 				write("&lt;<span style=\"text-decoration: underline\" title=\""
 						+ Utilities
@@ -162,13 +235,15 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
 			write("<b title=\""
 					+ Utilities.escapeXml(elem.getDefinition())
-					+ "\">div</b></span> xmlns=\"http://www.w3.org/1999/xhtml\"> <span style=\"color: Gray\">&lt;!--</span> <a href=\"xml.htm#Control\" class=\"cf\">mand</a> <span style=\"color: navy\">"
+					+ "\">div</b></span> xmlns=\"http://www.w3.org/1999/xhtml\"> <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: navy\">"
 					+ Utilities.escapeXml(elem.getShortDefn())
 					+ "</span><span style=\"color: Gray\">&lt; --&gt;</span> &lt;/div&gt;\r\n");
 		}
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) {
-			if (elem.isMustUnderstand() || elem.isMustSupport())
+	    if (!links || rootName == null || "x".equals(rootName)) {
+        write("</span>");
+	    } else if (elem.isMustUnderstand() || elem.isMustSupport())
 				write(en + "</span></a>&gt;");
 			else
 				write(en + "</a>&gt;");
@@ -183,7 +258,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write(elem.getValue() + "&lt;" + en + "/&gt;\r\n");
 		} else {
 			write("<b>" + en);
-			if (rootName == null || "x".equals(rootName)) {
+			if (!links || rootName == null || "x".equals(rootName)) {
 				if (elem.isMustUnderstand() || elem.isMustSupport())
 					write("</b></span>");
 				else
@@ -471,8 +546,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("dateTime"))
 			return "datatypes";
-		if (name.equals("narrative"))
-			return "xml";
+    if (name.equals("narrative"))
+      return "xml";
+    if (name.equals("Narrative"))
+      return "xml";
     if (name.equals("Extension"))
       return "extensibility";
 		if (name.equals("Resource"))

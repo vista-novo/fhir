@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * Directions provided by a prescribing practitioner for a specific medication to be administered to an individual
+ * Directions provided by a prescribing practitioner for a specific medication to be administered (and possibly) supplied to an individual
  */
 public class Prescription extends Resource {
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -104,38 +104,55 @@ public class Profile extends Resource {
         }
     }
 
-    public enum ConceptBindingType {
-        Unbound, // The concept domain is not bound to anything
-        CodeList, // The concept domain is bound to a list of supplied codes - only those codes are allowed
-        Reference, // The concept domain references some external definition by a provided reference
-        Preferred, // The concept domain references a set of preferred terms
-        Suggestion, // This profile was superceded by a more recent version
-        External; // The concept domain is defined by an external authority identified in the reference
-        public static ConceptBindingType fromCode(String codeString) throws Exception {
+    public enum BindingType {
+        valueset, // The binding name has an associated URL which is a reference to a Value Set Resource that provides a formal definition of the set of possible codes
+        codelist, // The binding name is associated with a simple list of codes, and definitions from some identified code system (SID, URI, OID, UUID). In resource definitions, the system reference may be omitted, and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know)
+        reference, // The binding name has an associated URL which refers to some external standard or specification that defines the possible codes
+        special; // The binding points to a list of concepts defined as part of FHIR itself (see below for possible values)
+        public static BindingType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
-        if ("Unbound".equals(codeString))
-          return Unbound;
-        if ("CodeList".equals(codeString))
-          return CodeList;
-        if ("Reference".equals(codeString))
-          return Reference;
-        if ("Preferred".equals(codeString))
-          return Preferred;
-        if ("Suggestion".equals(codeString))
-          return Suggestion;
-        if ("External".equals(codeString))
-          return External;
-        throw new Exception("Unknown ConceptBindingType code '"+codeString+"'");
+        if ("valueset".equals(codeString))
+          return valueset;
+        if ("codelist".equals(codeString))
+          return codelist;
+        if ("reference".equals(codeString))
+          return reference;
+        if ("special".equals(codeString))
+          return special;
+        throw new Exception("Unknown BindingType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
-            case Unbound: return "Unbound";
-            case CodeList: return "CodeList";
-            case Reference: return "Reference";
-            case Preferred: return "Preferred";
-            case Suggestion: return "Suggestion";
-            case External: return "External";
+            case valueset: return "valueset";
+            case codelist: return "codelist";
+            case reference: return "reference";
+            case special: return "special";
+            default: return "?";
+          }
+        }
+    }
+
+    public enum BindingStrength {
+        required, // Only codes in the set are allowed. Profiles can only specify a subset of the defined codes
+        preferred, // Codes in the set must be used when their meaning is appropriate. Other codes can be used if no appropriate code is in the set. Profiles can specify a subset of the codes and include other codes that do not overlap in meaning with the codes in the codes in the set
+        suggested; // The codes in the set are an example to illustrate the meaning of the field. Other codes may be used, and profiles may choose other sets of codes
+        public static BindingStrength fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("required".equals(codeString))
+          return required;
+        if ("preferred".equals(codeString))
+          return preferred;
+        if ("suggested".equals(codeString))
+          return suggested;
+        throw new Exception("Unknown BindingStrength code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case required: return "required";
+            case preferred: return "preferred";
+            case suggested: return "suggested";
             default: return "?";
           }
         }
@@ -221,7 +238,7 @@ public class Profile extends Resource {
         private String purpose;
 
         /**
-         * 
+         * Definition of elements in the resource
          */
         private List<Element_> element = new ArrayList<Element_>();
 
@@ -285,11 +302,6 @@ public class Profile extends Resource {
         private ResourceA resource;
 
         /**
-         * Value set id (only if coded)
-         */
-        private String binding;
-
-        /**
          * Name (internal ref) or fixed value but not both
          */
         private List<Content> content = new ArrayList<Content>();
@@ -329,14 +341,6 @@ public class Profile extends Resource {
 
         public void setResource(ResourceA value) { 
           this.resource = value;
-        }
-
-        public String getBinding() { 
-          return this.binding;
-        }
-
-        public void setBinding(String value) { 
-          this.binding = value;
         }
 
         public List<Content> getContent() { 
@@ -410,7 +414,12 @@ public class Profile extends Resource {
         private boolean mustUnderstand;
 
         /**
-         * 
+         * Binding - see bindings below (only if coded)
+         */
+        private String binding;
+
+        /**
+         * Map element to another set of definitions
          */
         private List<Mapping> mapping = new ArrayList<Mapping>();
 
@@ -492,6 +501,14 @@ public class Profile extends Resource {
 
         public void setMustUnderstand(boolean value) { 
           this.mustUnderstand = value;
+        }
+
+        public String getBinding() { 
+          return this.binding;
+        }
+
+        public void setBinding(String value) { 
+          this.binding = value;
         }
 
         public List<Mapping> getMapping() { 
@@ -686,19 +703,24 @@ public class Profile extends Resource {
 
     public class Binding extends Element {
         /**
-         * The name of the concept domain that this profile is declaring a constraint on
+         * The binding name that this profile is defining
          */
         private String name;
 
         /**
-         * The form of the binding
+         * human explanation of the binding name
          */
-        private ConceptBindingType type;
+        private String definition;
 
         /**
-         * extra details - see notes
+         * The form of the binding
          */
-        private String details;
+        private BindingType type;
+
+        /**
+         * whether the binding is extensible or not, or just suggestive
+         */
+        private BindingStrength strength;
 
         /**
          * source of binding content
@@ -708,7 +730,7 @@ public class Profile extends Resource {
         /**
          * enumerated codes that are the binding
          */
-        private List<Coding> code = new ArrayList<Coding>();
+        private List<Concept> concept = new ArrayList<Concept>();
 
         public String getName() { 
           return this.name;
@@ -718,20 +740,28 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public ConceptBindingType getType() { 
+        public String getDefinition() { 
+          return this.definition;
+        }
+
+        public void setDefinition(String value) { 
+          this.definition = value;
+        }
+
+        public BindingType getType() { 
           return this.type;
         }
 
-        public void setType(ConceptBindingType value) { 
+        public void setType(BindingType value) { 
           this.type = value;
         }
 
-        public String getDetails() { 
-          return this.details;
+        public BindingStrength getStrength() { 
+          return this.strength;
         }
 
-        public void setDetails(String value) { 
-          this.details = value;
+        public void setStrength(BindingStrength value) { 
+          this.strength = value;
         }
 
         public java.net.URI getReference() { 
@@ -742,8 +772,63 @@ public class Profile extends Resource {
           this.reference = value;
         }
 
-        public List<Coding> getCode() { 
+        public List<Concept> getConcept() { 
+          return this.concept;
+        }
+
+    }
+
+    public class Concept extends Element {
+        /**
+         * code to use for this concept
+         */
+        private String code;
+
+        /**
+         * source for the code, if taken from another system
+         */
+        private java.net.URI system;
+
+        /**
+         * print name. defaults to code if not provided
+         */
+        private String display;
+
+        /**
+         * meaning of the concept
+         */
+        private String definition;
+
+        public String getCode() { 
           return this.code;
+        }
+
+        public void setCode(String value) { 
+          this.code = value;
+        }
+
+        public java.net.URI getSystem() { 
+          return this.system;
+        }
+
+        public void setSystem(java.net.URI value) { 
+          this.system = value;
+        }
+
+        public String getDisplay() { 
+          return this.display;
+        }
+
+        public void setDisplay(String value) { 
+          this.display = value;
+        }
+
+        public String getDefinition() { 
+          return this.definition;
+        }
+
+        public void setDefinition(String value) { 
+          this.definition = value;
         }
 
     }
@@ -824,7 +909,7 @@ public class Profile extends Resource {
     private List<ExtensionDefn> extensionDefn = new ArrayList<ExtensionDefn>();
 
     /**
-     * 
+     * provide a binding for a name used in an element
      */
     private List<Binding> binding = new ArrayList<Binding>();
 

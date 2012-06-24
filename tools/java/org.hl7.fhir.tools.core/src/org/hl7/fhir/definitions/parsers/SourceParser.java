@@ -44,6 +44,7 @@ import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.PrimitiveType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.converters.BindingConverter;
@@ -178,6 +179,13 @@ public class SourceParser {
 		for (String n : ini.getPropertyNames("profiles")) {
 			loadProfile(n, definitions.getProfiles());
 		}
+		
+		for (ResourceDefn r : definitions.getResources().values()) {
+		  for (RegisteredProfile p : r.getProfiles()) {
+		    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(p.getFilepath()), p.getName(), definitions, srcDir);
+		    p.setProfile(sparser.parseProfile(definitions));
+		  }
+		}
 	}
 
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
@@ -264,7 +272,7 @@ public class SourceParser {
 			SpreadsheetParser p = new SpreadsheetParser(
 					new FileInputStream(csv), csv.getName(), definitions,
 					srcDir);
-			ElementDefn el = p.parseCompositeType();
+			ElementDefn el = p.parseCompositeType(true);
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
 		} else {

@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:23:41Z</Created>
-  <LastSaved>2012-05-13T13:51:03Z</LastSaved>
+  <LastSaved>2012-06-22T21:45:54Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -58,17 +58,20 @@
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s66">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="28.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="28.5" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
@@ -79,10 +82,10 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
+    <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
@@ -93,77 +96,60 @@
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Extension</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Optional Extensions Element - found in all resources</Data></Cell>
-    <Cell><Data ss:Type="String">The ability to add extensions in a structured way is what keeps FHIR resources simple</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">A reference from one resource to another</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.code</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Code that identifies the meaning of the extension</Data></Cell>
-    <Cell><Data ss:Type="String">The code that identifies the meaning of the extension by reference to the definitions</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The only codes that can be used are those defined using the approved extensibility definitions</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference.type</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceType</Data></Cell>
+    <Cell><Data ss:Type="String">Resource Type</Data></Cell>
+    <Cell><Data ss:Type="String">The name of one of the resources defined in this specification the defines the type of the resource being referenced</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Whether or not the type of the resource reference is fixed for a particular element, the reference includes the resource type</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">Extension.definition</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference.id</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Source of the definition for the code</Data></Cell>
-    <Cell><Data ss:Type="String">Source of the definition for the code - a namespace or a URL</Data></Cell>
-    <Cell><Data ss:Type="String">Everyone needs to be able to define extensions, but they also must be governed properly</Data></Cell>
-    <Cell><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">URL/Id of the reference</Data></Cell>
+    <Cell><Data ss:Type="String">A literal URL that resolves to the location of the resource. The URL may be relative or absolule. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use when trading across closed eco-system boundaries. Absolute URLs do not need to point to a FHIR RESTful server, though this is the preferred approach</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">Extension.ref</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">idref</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Internal reference to context of the extension (xml:id)</Data></Cell>
-    <Cell><Data ss:Type="String">Internal reference to context of the extension - a pointer to an xml:id in the same resource</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.mustUnderstand</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">if you must know this to safely read the resource</Data></Cell>
-    <Cell><Data ss:Type="String">If this element is set to true, then the resource data is only safe to process if the reader understands this extension. </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Specific version URL/Id of resource referenced</Data></Cell>
+    <Cell><Data ss:Type="String">A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolule. Relative Ids contain the logical version id of the resource. </Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Version Specific references are generally used for audit trail purposes, or when building attested content. The uniqueness of the version id may be scoped by the logical id</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.value[x]</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Value of extension</Data></Cell>
-    <Cell><Data ss:Type="String">Value of extension - any of the types defined in the data types</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.extension</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Nested Extensions</Data></Cell>
-    <Cell><Data ss:Type="String">Nested Extensions - further extensions that are part of the extension</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Text alternative for the resource</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Plain text narrative that describes the resource in addition to the resource reference </Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">May be used in place of the actual reference, if a dataAbsentReason is allowed</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30"/>
   </Table>
@@ -174,12 +160,19 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
    <Selected/>
+   <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -187,8 +180,9 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="249"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -198,8 +192,18 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">Content Rule</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Either a value or nested extensions may be present, but not both</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a reference is provided</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">reference</Data></Cell>
+    <Cell><Data ss:Type="String">A reference (id or version) must be provided if there is no dataAbsentReason</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">version</Data></Cell>
+    <Cell><Data ss:Type="String">If the version url is provided, and local, then a logical id must be provided too</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -212,7 +216,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

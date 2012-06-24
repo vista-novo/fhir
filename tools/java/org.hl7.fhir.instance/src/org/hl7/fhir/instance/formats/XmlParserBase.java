@@ -206,28 +206,7 @@ public abstract class XmlParserBase extends XmlBase {
     result.setValue(parseString(xpp));
     return result;
   }
- 
-  protected ResourceReference parseResourceReference(XmlPullParser xpp) throws Exception {
-    ResourceReference res = new ResourceReference();
-    parseTypeAttributes(xpp, res);
 
-    int eventType = nextNoWhitespace(xpp);
-    while (eventType != XmlPullParser.END_TAG) {
-      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
-        res.setType(parseString(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
-        res.setId(parseString(xpp));
-      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("version"))
-        res.setVersion(parseString(xpp));
-      else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("text"))
-        res.setText(parseString(xpp));
-      else
-        throw new Exception("Bad Xml parsing Agent");
-      eventType = nextNoWhitespace(xpp);
-    }
-
-    return res;
-  }
 
   protected Sid parseSid(XmlPullParser xpp) throws Exception {
     Sid result = new Sid();

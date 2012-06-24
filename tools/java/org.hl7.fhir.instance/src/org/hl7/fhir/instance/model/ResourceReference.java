@@ -1,87 +1,93 @@
 package org.hl7.fhir.instance.model;
+
 /*
-Copyright (c) 2011-2012, HL7, Inc
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification, 
-are permitted provided that the following conditions are met:
-
- * Redistributions of source code must retain the above copyright notice, this 
-   list of conditions and the following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, 
-   this list of conditions and the following disclaimer in the documentation 
-   and/or other materials provided with the distribution.
- * Neither the name of HL7 nor the names of its contributors may be used to 
-   endorse or promote products derived from this software without specific 
-   prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
-IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
-INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
-WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-POSSIBILITY OF SUCH DAMAGE.
-
+  Copyright (c) 2011-2012, HL7, Inc.
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, 
+  are permitted provided that the following conditions are met:
+  
+   * Redistributions of source code must retain the above copyright notice, this 
+     list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, 
+     this list of conditions and the following disclaimer in the documentation 
+     and/or other materials provided with the distribution.
+   * Neither the name of HL7 nor the names of its contributors may be used to 
+     endorse or promote products derived from this software without specific 
+     prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+  POSSIBILITY OF SUCH DAMAGE.
+  
 */
 
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
+
+/**
+ * A reference from one resource to another
+ */
 public class ResourceReference extends Type {
 
-  /**
-   * The type of the resource
-   */
-  private String type;
-  
-	/**
-	 * Id of the reference
-	 */
-	private String id;
+    /**
+     * The name of one of the resources defined in this specification the defines the type of the resource being referenced
+     */
+    private String type;
 
-	/**
-	 * Specific version Id of resource referenced
-	 */
-	private String version;
+    /**
+     * A literal URL that resolves to the location of the resource. The URL may be relative or absolule. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource
+     */
+    private java.net.URI id;
 
-	/**
-	 * Text alternative for the resource
-	 */
-	private String text;
-	
-	
-	public String getId() {
-		return id;
-	}
+    /**
+     * A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolule. Relative Ids contain the logical version id of the resource. 
+     */
+    private java.net.URI version;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * Plain text narrative that describes the resource in addition to the resource reference 
+     */
+    private String text;
 
-	public String getVersion() {
-		return version;
-	}
+    public String getType() { 
+      return this.type;
+    }
 
-	public void setVersion(String version) {
-		this.version = version;
-	}
+    public void setType(String value) { 
+      this.type = value;
+    }
 
-	public String getText() {
-		return text;
-	}
+    public java.net.URI getId() { 
+      return this.id;
+    }
 
-	public void setText(String text) {
-		this.text = text;
-	}
+    public void setId(java.net.URI value) { 
+      this.id = value;
+    }
 
-  public String getType() {
-    return type;
-  }
+    public java.net.URI getVersion() { 
+      return this.version;
+    }
 
-  public void setType(String type) {
-    this.type = type;
-  }
+    public void setVersion(java.net.URI value) { 
+      this.version = value;
+    }
 
-	
+    public String getText() { 
+      return this.text;
+    }
+
+    public void setText(String value) { 
+      this.text = value;
+    }
+
+
 }
+

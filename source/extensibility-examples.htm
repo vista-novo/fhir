@@ -14,9 +14,185 @@
 <%maindiv%>
 <%extheader examples%>
 
-<h2>Extensibility - Examples</h2>
+<h2>Person - Examples</h2>
 
-<p>todo</p>
+<p>
+This page contains two examples that demonstrate how to use extensions
+</p>
+
+<h3>Patient Name Parts</h3>
+
+<p>
+ISO 21090 (Healthcare Data Types) defines a concept called a "name part qualifier" that contains extra 
+information about how a particular name part should be used or interpreted. In practice, this field
+is used rarely, except in particular cultural contexts, where certain part qualifiers are used as a 
+matter of practice. Following the <a href="extensibility.htm">FHIR design policy</a>, such a field 
+is not included in the overall definition of the core name data type, instead is it added as an 
+extension.
+</p>
+<p>
+In order to use an extension, there is a three step process:
+</p>
+<ol>
+  <li>Define the extension</li>
+  <li>Register the extension</li>
+  <li>Use it in the instance</li>
+</ol>
+<p>
+In practice, for cases such as these in ISO 21090, HL7 provides common extensions, and these 
+are defined at [location still to be finalised].
+</p>
+<h4>Define the Extension</h4>
+<p>
+For each extension, the first thing to do is to fill out the <a href="extensibility.htm#define">definitional properties of the 
+extension</a>:
+</p>
+<table class="codes">
+ <tr><td>Code</td><td>"name-qualifier"</td></tr>
+ <tr><td>Context</td><td>This extension can be used anywhere a HumanName.part appears</td></tr>
+ <tr><td>Short Defn</td><td>(one of the codes) AD | SP | BR | CL | IN | LS | MID | PFX | SFX</td></tr>
+ <tr><td>Definition</td><td>A set of codes each of which specifies a certain subcategory of the name part in addition to the main name part type</td></tr>
+ <tr><td>Comments</td><td>Used to indicate additional information about the name part and how it should be used</td></tr>
+ <tr><td>Cardinality</td><td>0..* (this s always optional, but more than one can be used if required)</td></tr>
+ <tr><td>Type</td><td>code</td></tr>
+ <tr><td>dataAbsentReason?</td><td>No. (If the qualifier isn't known, don't include it)</td></tr>
+ <tr><td>XPaths</td><td>N/A</td></tr>
+ <tr><td>Must Understand</td><td>No (Qualifiers are not required to be understood)</td></tr>
+ <tr><td>RIM Mapping</td><td>ENXP.qualifier</td></tr>
+ <tr><td>v2 Mapping</td><td>N/A</td></tr>
+ <tr><td>Binding</td><td>Bound to a subset of the codes specified for  <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2 in ISO 21090</a> </td></tr>
+</table>
+<p>
+Not all the codes of the EntityNamePartQualifierR2 are required in this context, 
+because prefix and suffix are explicitly part of the name types. Rather than 
+simply refer to the OID for EntityNamePartQualifierR2 (2.16.840.1.113883.5.1122), 
+in this case we enumerate the available codes, and set the type of the extension to 
+code. The type of "code" is only allowed if the profile itself defines the codes that 
+can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2</a> reference for the full definitions):
+</p>
+<table class="codes">
+<tr><td>LS</td><td>Legal status </td><td>For organizations a suffix...</td></tr>
+<tr><td>AC</td><td>Academic</td><td>Indicates that a prefix like "D...</td></tr>
+<tr><td>NB</td><td>Nobility</td><td>In Europe and Asia, there are s...</td></tr>
+<tr><td>PR</td><td>Professional</td><td>Primarily in the British Im...</td></tr>
+<tr><td>HON</td><td>Honorific</td><td>An honorific such as ?The Rig...</td></tr>
+<tr><td>BR</td><td>Birth</td><td>A name that a person was given at ...</td></tr>
+<tr><td>AD</td><td>Acquired</td><td>A name part a person acquired. ...</td></tr>
+<tr><td>SP</td><td>Spouse</td><td>The name assumed from the partner...</td></tr>
+<tr><td>MID</td><td>Middle Name</td><td>Indicates that the name par...</td></tr>
+<tr><td>CL</td><td>Call me</td><td>Callme is used to indicate which...</td></tr>
+<tr><td>IN</td><td>Initial</td><td>Indicates that a name part is ju...</td></tr>
+</table>
+
+<p>
+This is all then represented formally in a profile. Such profiles do not need to include constraint statements of resources; instead, they include just extension declarations 
+and their associated bindings. In this case, the profile looks like this:
+</p>
+
+<pre class="xml">
+&lt;Profile xmlns="http://hl7.org/fhir">
+  &lt;id>iso-21090&lt;/id>
+  &lt;-- snip other metadata -->
+  &lt;extensionDefn>
+    &lt;code>name-qualifier&lt;/code>
+    &lt;context>HumanName.part&lt;/context>
+    &lt;contextType>datatype&lt;/contextType>
+    &lt;definition>
+      &lt;short>AD | SP | BR | CL | IN | LS | MID | PFX | SFX&lt;/short>
+      &lt;formal>A set of codes each of which specifies a certain subcategory 
+          of the name part in addition to the main name part type&lt;/formal>
+      &lt;comments>Used to indicate additional information about the 
+             name part and how it should be used&lt;/comments>
+      &lt;min>0&lt;/min>
+      &lt;max>*&lt;/max>
+      &lt;type>code&lt;/type>
+      &lt;dataAbsentReason>false&lt;/dataAbsentReason>
+      &lt;mustSupport>false&lt;/mustSupport>
+      &lt;mustUnderstand>false&lt;/mustUnderstand>
+      &lt;binding>EntityNamePartQualifier&lt;/binding>
+      &lt;mapping>
+        &lt;target>ENXP.qualifier&lt;/target>
+        &lt;map>RIM&lt;/map>
+      &lt;/mapping>
+    &lt;/definition>
+  &lt;/extensionDefn>
+
+  &lt;binding>
+    &lt;name>EntityNamePartQualifier&lt;/name>
+    &lt;definition>A set of codes each of which specifies a certain subcategory 
+        of the name part in addition to the main name part type&lt;/definition>
+    &lt;type>codelist&lt;/type>
+    &lt;strength>required&lt;/strength>
+    &lt;reference>#name-part-qualifier&lt;/reference>
+    &lt;concept>
+      &lt;code>LS&lt;/code>
+      &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
+      &lt;display>Legal status&lt;/display>
+      &lt;definition>For ... &lt;-- snip definition -->&lt;/definition>
+    &lt;/concept>
+    &lt;-- snip other codes -->
+  &lt;/binding>
+  &lt;-- snip narrative -->
+&lt;/Profile>  
+  
+</pre>
+<p>
+Note that usually you would build the actual profile using some tool. This example was built from a spreadsheet definition by the FHIR build tooling.
+</p>
+<h4>Register the Extension</h4>
+<p>
+Before extensions can be used in instances, they must be published. HL7 maintains two 
+extension registries, and users are encouraged to register their extensions there. But 
+this is not required; all that is required is that the extension is published in a 
+context that is available for users of the extension. So, for example, if a particular
+extension is used exchanged within a single institution, the definition of the extension
+can be placed on the instition's intranet. However since, by their nature, resources
+tend to travel well, it's always better to use the HL7 extension registries.
+</p>
+<p>
+HL7 provides two extension registries. The first is for HL7 approved extensions. These 
+have been approved by an appropriate part of the HL7 community following a review process,
+and have formal standing. The other registry is provided as a service to the community,
+and anyone can register an extension on it. 
+</p>
+<table class="codes">
+ <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
+ <tr><td>HL7 Approved</td><td>{tbd]</td><td>[tbd]</td></tr>
+ <tr><td>Community</td><td>[tbd]</td><td>[tbd]</td></tr>
+ <tr><td>Interim</td><td>http://hl7connect.healthintersections.com.au/svc/fhir/profile/search</td><td>https://hl7connect.healthintersections.com.au/svc/fhir/profile/upload</td></tr>
+</table>
+<p>
+For this example, it is registered at <a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090?format=text/html">http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090</a>.
+This is the url that will appear in the definition element when the extension is used.
+</p>
+<h4>Use it in the instance</h4>
+<p>
+To using the extension in an instance, you firstly mark the name part that is being extended with 
+an id attribute, so that the extension can be connected to it:
+</p>
+<pre class="xml">
+&lt;name&gt;
+  &lt;use&gt;official&lt;/use&gt;  
+  &lt;part id="n1"&gt;
+    &lt;type&gt;given&lt;/type&gt;
+    &lt;value&gt;Östlund&lt;/value&gt;
+  &lt;part&gt;
+&lt;/name&gt;
+</pre>
+<p>
+Then, in the extensions section of the resource, you add an extension. The code and the definition have been defined above; all that is needed is the idref to the part above, and the actual value.
+</p>
+<pre class="xml">
+&lt;extension>
+  &lt;code>name-qualifier&lt;/code>
+  &lt;definition>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090&lt;/definition>
+  &lt;ref idref="n1">
+  &lt;valueCode>MID&lt;/valueCode>
+&lt;extension>
+</pre>
+<p>
+This particular example is a Scandavian mellannamn. See <a href="datatypes-examples.htm"> for additional examples</a>.
+</p>
 
 <%footer%>
 

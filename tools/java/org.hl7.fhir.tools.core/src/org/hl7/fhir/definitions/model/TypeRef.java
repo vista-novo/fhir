@@ -95,7 +95,7 @@ public class TypeRef {
 	}
 
 	public boolean isXmlId() {
-		return name.equalsIgnoreCase("xml:ID");
+		return name.equalsIgnoreCase("idref");
 	}
 
 	public boolean isXhtml() {

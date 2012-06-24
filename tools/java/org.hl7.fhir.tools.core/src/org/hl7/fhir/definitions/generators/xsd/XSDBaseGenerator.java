@@ -129,33 +129,6 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:restriction>\r\n");
 		write("  </xs:simpleType>\r\n");
-
-		write("  <xs:complexType name=\"ResourceReference\" block=\"extension\">\r\n");
-		write("    <xs:sequence>\r\n");
-		write("      <xs:element name=\"type\" type=\"ResourceType\" minOccurs=\"0\">\r\n");
-		write("        <xs:annotation>\r\n");
-		write("          <xs:documentation>the mime type of the content</xs:documentation>\r\n");
-		write("        </xs:annotation>\r\n");
-		write("      </xs:element>\r\n");
-		write("      <xs:element name=\"id\" type=\"id-simple\" minOccurs=\"0\">\r\n");
-		write("        <xs:annotation>\r\n");
-		write("          <xs:documentation>Id of the reference</xs:documentation>\r\n");
-		write("        </xs:annotation>\r\n");
-		write("      </xs:element>\r\n");
-		write("      <xs:element name=\"version\" type=\"id-simple\" minOccurs=\"0\">\r\n");
-		write("        <xs:annotation>\r\n");
-		write("          <xs:documentation>Version specific Id of the reference</xs:documentation>\r\n");
-		write("        </xs:annotation>\r\n");
-		write("      </xs:element>\r\n");
-		write("      <xs:element name=\"text\" type=\"xs:string\" minOccurs=\"0\">\r\n");
-		write("        <xs:annotation>\r\n");
-		write("          <xs:documentation>Text summary for the reference</xs:documentation>\r\n");
-		write("        </xs:annotation>\r\n");
-		write("      </xs:element>\r\n");
-		write("    </xs:sequence>\r\n");
-		// write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
-		write("  </xs:complexType>\r\n");
 	}
 
 	private void genConstraint(DefinedCode cd) throws Exception {

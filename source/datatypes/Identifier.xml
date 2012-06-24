@@ -62,24 +62,25 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="92.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="30" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="45"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="13" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
@@ -98,10 +99,11 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">An identifier </Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An identifier </Data></Cell>
     <Cell><Data ss:Type="String">A technical identifier - identifies some entity uniquely and unambiguously</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Need to be able toi identify things with confidence, and be sure that the identification is not subject to misinterpretation</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Need to be able toi identify things with confidence, and be sure that the identification is not subject to misinterpretation</Data></Cell>
     <Cell><Data ss:Type="String">the Identifier class is a little looser than II because it allows URIs as well as registered OIDs or GUIDs</Data></Cell>
     <Cell><Data ss:Type="String">II</Data></Cell>
    </Row>
@@ -109,25 +111,27 @@
     <Cell><Data ss:Type="String">Identifier.system</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The system that defines the id</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The system that defines the id</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data</Data></Cell>
     <Cell><Data ss:Type="String">http://www.acme.com/identifiers/patient</Data></Cell>
     <Cell><Data ss:Type="String">Processors of the data need to be able to tell what the data is</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">II.root</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">II.root</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Identifier.id</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">the actual identifier</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">the actual identifier</Data></Cell>
     <Cell><Data ss:Type="String">The actual data of the attachment</Data></Cell>
     <Cell><Data ss:Type="Number">123456</Data></Cell>
     <Cell><Data ss:Type="String">The data needs to able to be transmitted inline</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">II.extension, or II.root if system indicates OID or GUID</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">II.extension, or II.root if system indicates OID or GUID</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -141,8 +145,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

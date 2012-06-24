@@ -6,10 +6,10 @@ Metadata Notes:
 <ul>
 <li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc (USA), Allergy List)</li>
 <li>Multiple codes may be assigned to the profile. These may either describe the template, or the focus of the template, or both. They are solely to help find the profile by searching for structured concepts</li>
-<li>If other profiles are referenced, then any constraints in those profiles also apply to this profile. If a resource or binding is 
-found in this profile, the constraints described must include all the constraints found in the referenced profiles, so 
-that it is not necessary to search the referenced profiles and merge the constraints. The primary use of referencing other 
-profiles is to re-use vocabulary binding constraints</li>
+<li>
+When importing from other profiles, only the extensions and bindings defined in the other profiles are imported. 
+Any extensions and bindings that are defined in other resources must have import statements referencing the location of the profile. 
+</li>
 
 </ul>  
 
@@ -17,21 +17,20 @@ profiles is to re-use vocabulary binding constraints</li>
 Interpretation Notes:
 </p>
 <ul>
-<li>The name of the resource (Profile.resource.name) is only used as a logical target for .element.aggregation.reference. A reference may reference another resource 
-  constraint in same resource by Profile.resource.name as #[name]), or a different resource constraint in another profile by an absolute uri. In the case of an absolute uri, it 
-  must resolve literally or logically to a <a href="profile.htm">Resource Profile</a> and specify a #[name] portion in the URI</li>
+<li>The name of a resource constraint (Profile.resource.name) is only used as a logical target for .element.aggregation.reference. A reference may reference another resource 
+  constraint in same Resource Profile by Profile.resource.name as #[name]), or a different resource constraint in another profile by an absolute uri. In the case of an absolute uri, it 
+  must resolve literally or logically to a <a href="profile.htm">Resource Profile</a> and specify a #[name] portion in the URI that references a particular constraint in the target profile</li>
   
 <li>The constraint statement has a flat list of elements. The path element provides the overall structure and it must match the structure and names in the resource structure exactly</li>
 
-<li>The condition element must be present if the conformance value is conditional. There is no formal computable grammar for the condition, though it may be accompanied by an xpath statement, often on the parent element</li>
+<li>The condition element is used to assert that a constraint defined on another element affects the allowed cardinality of this element</li>
 
 <li>The type is used to specify which types apply when the underlying resource allows a choice of types. 
 When the type of the element is fixed in the underlying resource definitions, it should still be stated in the profile. The type is optional because repeating groups of elements do not have a type. </li>
 
-<li>Definition is provided so that the constraint statement can provide a more specific definition for the field in a specific context. 
+<li>The definition (short, formal, comments and the mappings) for an element are provided so that the resource profile can provide a more specific definition for the field in a specific context. 
   For instance, the underlying resource definition might be "Result value", and the more specific resource definition could be "Plasma Cholesterol Test Value".
-  The meaning needs to be consistent with the underlying definition, but narrower - a constraint on it. If no definition is provided, the inherited definition
-  still applies</li>
+  The meaning needs to be consistent with the underlying definition, but narrower - a constraint on it. </li>
   
 <li>For an element with a maximum cardinality of 1, there can only be one entry in the value list, which is either a literal fixed type (with an element name matching the type of the fixed value), or a name,
   which is a reference to a named constraint pattern. If the element has a type of "list", then there can be multiple values - again, either fixed values with a type, or a named constraint. 

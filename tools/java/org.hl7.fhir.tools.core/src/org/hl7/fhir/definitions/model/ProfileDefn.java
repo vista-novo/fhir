@@ -37,6 +37,8 @@ public class ProfileDefn {
 
   private List<ResourceDefn> resources = new ArrayList<ResourceDefn>();
   private Map<String, ArrayList<String>> metadata = new HashMap<String, ArrayList<String>>();
+  private List<ExtensionDefn> extensions = new ArrayList<ExtensionDefn>();
+  private List<BindingSpecification> bindings = new ArrayList<BindingSpecification>();
   
   public Map<String, ArrayList<String>> getMetadata() {
     return metadata;
@@ -70,6 +72,14 @@ public class ProfileDefn {
       metadata.put(name, a);
     }
     a.add(value);
+  }
+
+  public List<ExtensionDefn> getExtensions() {
+    return extensions;
+  }
+
+  public List<BindingSpecification> getBindings() {
+    return bindings;
   }
 
 

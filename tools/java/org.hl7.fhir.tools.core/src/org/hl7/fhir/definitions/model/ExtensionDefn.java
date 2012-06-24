@@ -1,4 +1,5 @@
 package org.hl7.fhir.definitions.model;
+
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -27,26 +28,45 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-public class Profile {
+public class ExtensionDefn {
 
-
-  private List<ElementDefn> resources = new ArrayList<ElementDefn>();
-  private Map<String, ArrayList<String>> metadata = new HashMap<String, ArrayList<String>>();
+  public enum ContextType {
+    Resource, //  particular element in a single resource
+    DataType, // Anywhere a particular data type is used
+    Elements, // A set of elements across one or more resources
+    Mapping, // A particular context in one of the mapped reference models
+    Extension // Another extension
+  }
+  private ElementDefn definition;
+  private String code;
+  private ContextType type;
+  private String context;
+  public ElementDefn getDefinition() {
+    return definition;
+  }
+  public void setDefinition(ElementDefn definition) {
+    this.definition = definition;
+  }
+  public String getCode() {
+    return code;
+  }
+  public void setCode(String code) {
+    this.code = code;
+  }
+  public ContextType getType() {
+    return type;
+  }
+  public void setType(ContextType type) {
+    this.type = type;
+  }
+  public String getContext() {
+    return context;
+  }
+  public void setContext(String context) {
+    this.context = context;
+  }
   
-  public Map<String, ArrayList<String>> getMetadata() {
-    return metadata;
-  }
-
-  public List<ElementDefn> getResources() {
-    return resources;
-  }
-
-
   
   
 }

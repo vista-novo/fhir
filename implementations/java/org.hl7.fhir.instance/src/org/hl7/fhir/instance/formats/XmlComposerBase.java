@@ -80,19 +80,7 @@ public abstract class XmlComposerBase extends XmlBase {
     if (type.getDataAbsentReason() != null) 
       xml.attribute("dataAbsentReason", type.getDataAbsentReason().toCode());
   }
-  
-  protected void composeResourceReference(String name, ResourceReference value) throws Exception {
-    if (value != null) {
-      composeTypeAttributes(value);
-      xml.open(FHIR_NS, name);
-      composeString("type", value.getType());
-      composeString("id", value.getId());
-      composeString("version", value.getVersion());
-      composeString("text", value.getText());
-      xml.close(FHIR_NS, name);
-    }    
-  }
-  
+    
   protected void composeString(String name, String value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value);

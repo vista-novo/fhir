@@ -85,7 +85,7 @@ public class Utilities {
 		for (char c : doco.toCharArray()) {
 		  if (c == '<')
 			  b.append("&lt;");
-		  else if (c == '<')
+		  else if (c == '>')
 			  b.append("&gt;");
 		  else if (c == '&')
 			  b.append("&amp;");

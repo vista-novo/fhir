@@ -62,23 +62,24 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="100.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="29.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="27.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="27.75" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="53.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="42"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="136.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25" ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
@@ -96,31 +97,34 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A ratio of two Quantity values - a numerator and a denominator. </Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A ratio of two Quantity values - a numerator and a denominator. </Data></Cell>
     <Cell><Data ss:Type="String">A ratio of two Quantity values - a numerator and a denominator. </Data></Cell>
     <Cell><Data ss:Type="String">Need to able to capture ratios for some measurements (titers) and some rates (costs)</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">RTO</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">RTO</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Ratio.numerator</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The numerator</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The numerator</Data></Cell>
     <Cell><Data ss:Type="String">The numerator</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">RTO.numerator</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">RTO.numerator</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Ratio.denominator</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The denominator</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The denominator</Data></Cell>
     <Cell><Data ss:Type="String">The denominator</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">RTO.denominator</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">RTO.denominator</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -131,11 +135,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

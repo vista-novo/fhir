@@ -81,7 +81,6 @@ to this specification. A document recipient has the following obligations:
      SHOULD contain a <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo 
      element</a> that contains a KeyName element, whose value is a URI that matches the Atom <i>link</i> 
      element value for the attestor.</li>
- <li>TODO: how images and attachments work</li>
 </ul>
 
 <a name="endpoint"></a>

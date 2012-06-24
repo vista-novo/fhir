@@ -76,23 +76,24 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="11" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -111,14 +112,16 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A human readable formatted text, including images</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A human readable formatted text, including images</Data></Cell>
     <Cell><Data ss:Type="String">A human readable formatted text, including images</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Narrative.status</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NarrativeStatus</Data></Cell>
     <Cell><Data ss:Type="String">generated | extensions | additional</Data></Cell>
@@ -127,22 +130,25 @@
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Narrative.div</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">xhtml</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">limited xhtml content</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">limited xhtml content</Data></Cell>
     <Cell><Data ss:Type="String">The actual narrative content, a stripped down version of XHTML</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images, and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes, and objects. </Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images, and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes, and objects. </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.image</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An image referred to directly in the xhtml</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">An image referred to directly in the xhtml</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.image.mimeType</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MediaType</Data></Cell>
     <Cell><Data ss:Type="String">mime type of image</Data></Cell>
@@ -151,34 +157,39 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Narrative.image.content</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">base64Binary</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">base64 image data</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">base64 image data</Data></Cell>
     <Cell><Data ss:Type="String">base64 image data</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Narrative.map</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.map.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">idref</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Narrative source (by id attribute)</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">idref</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Narrative source (by id attribute)</Data></Cell>
     <Cell><Data ss:Type="String">The narrative end of the mapping</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.map.data</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">idref</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Data source (by id attribute)</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">idref</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Data source (by id attribute)</Data></Cell>
     <Cell><Data ss:Type="String">The resource element end of the mapping</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Narrative.map.source</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NarrativeMapSource</Data></Cell>
     <Cell><Data ss:Type="String">text | data</Data></Cell>
     <Cell><Data ss:Type="String">Which end of the mapping is the source</Data></Cell>
@@ -195,8 +206,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

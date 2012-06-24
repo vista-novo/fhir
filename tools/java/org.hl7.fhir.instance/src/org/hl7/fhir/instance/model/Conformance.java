@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -163,7 +163,7 @@ public class Conformance extends Resource {
         private RestfulConformanceMode mode;
 
         /**
-         * 
+         * resource served on the REST interface
          */
         private List<Resource> resource = new ArrayList<Resource>();
 
@@ -503,7 +503,7 @@ public class Conformance extends Resource {
     private boolean acceptUnknown;
 
     /**
-     * 
+     * if the endpoint is a RESTful one
      */
     private Rest rest;
 

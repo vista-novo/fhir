@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Jun 21, 2012 20:27+1000 for FHIR v0.04
+// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
 
 public class ResourceFactory {
 
@@ -81,12 +81,12 @@ public class ResourceFactory {
             return new Extension();
         if ("Coding".equals(name))
             return new Coding();
+        if ("Count".equals(name))
+            return new Count();
         if ("Quantity".equals(name))
             return new Quantity();
         if ("Attachment".equals(name))
             return new Attachment();
-        if ("Count".equals(name))
-            return new Count();
         if ("Money".equals(name))
             return new Money();
         if ("Distance".equals(name))
@@ -109,6 +109,8 @@ public class ResourceFactory {
             return new Duration();
         if ("Ratio".equals(name))
             return new Ratio();
+        if ("ResourceReference".equals(name))
+            return new ResourceReference();
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
         if ("Interval<Date>".equals(name))

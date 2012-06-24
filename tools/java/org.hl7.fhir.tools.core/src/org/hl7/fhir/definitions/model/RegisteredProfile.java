@@ -1,4 +1,5 @@
 package org.hl7.fhir.definitions.model;
+
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -27,67 +28,64 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-public class DefinedCode {
 
-	private String code;
-	private String definition;
-	private String comment;
-	private String display;
-	private String system;
-	
-	public DefinedCode(String code, String definition, String comment) {
-		super();
-		this.code = code;
-		this.definition = definition;
-		this.comment = comment;
-	}
-	
-	public DefinedCode() {
-		super();
-	}
+import java.io.File;
 
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	public String getCode() {
-		return code;
-	}
-	public void setCode(String code) {
-		this.code = code;
-	}
-	public String getDefinition() {
-		return definition;
-	}
-	public void setDefinition(String definition) {
-		this.definition = definition;
-	}
-	public boolean hasDefinition() {
-		return definition != null && !definition.equals("");
-	}
-	public boolean hasComment() {
-		return comment != null && !comment.equals("");
-	}
+/**
+ * a profile registered against a resource as part of FHIR itself
+ *   
+ * @author Grahame
+ *
+ */
+public class RegisteredProfile {
 
-  public String getDisplay() {
-    return display;
+  private String name;
+  private String description;
+  private String filename;
+  private String filepath;
+  private ProfileDefn profile;
+  
+  
+  public RegisteredProfile(String name, String description, String filename, String filepath) {
+    super();
+    this.name = name;
+    this.description = description;
+    this.filename = filename;
+    this.filepath = filepath;
+  }
+  
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public String getDescription() {
+    return description;
+  }
+  public void setDescription(String description) {
+    this.description = description;
+  }
+  public String getFilename() {
+    return filename;
+  }
+  public void setFilename(String filename) {
+    this.filename = filename;
+  }
+  public ProfileDefn getProfile() {
+    return profile;
+  }
+  public void setProfile(ProfileDefn profile) {
+    this.profile = profile;
   }
 
-  public void setDisplay(String display) {
-    this.display = display;
+  public String getFilepath() {
+    return filepath;
   }
 
-  public String getSystem() {
-    return system;
+  public void setFilepath(String filepath) {
+    this.filepath = filepath;
   }
-
-  public void setSystem(String system) {
-    this.system = system;
-  }
-	
-  public boolean hasSystem() {
-    return system != null || !system.equals("");
-  }
+  
+  
 }

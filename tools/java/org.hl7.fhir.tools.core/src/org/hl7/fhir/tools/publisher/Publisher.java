@@ -64,6 +64,7 @@ import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
@@ -348,8 +349,9 @@ public class Publisher {
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
 		new AtomComposer().compose(new FileOutputStream(
-				page.getFolders().dstDir + "profiles.xml"), profileFeed, true,
+				page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true,
 				false);
+		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");		
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
 
@@ -396,7 +398,7 @@ public class Publisher {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		String n = resource.getName().toLowerCase();
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), true);
 		gen.generate(resource.getRoot());
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
@@ -414,7 +416,10 @@ public class Publisher {
 				page.getFolders().dstDir + n + ".dict.xml"));
 		dxgen.generate(resource.getRoot(), "HL7");
 
-		generateProfile(resource, n, xml);
+    generateProfile(resource, n, xml);
+		for (RegisteredProfile p : resource.getProfiles()) 
+		  produceProfile(p.getFilename(), p.getProfile());
+		
 
 		for (Example e : resource.getExamples()) {
 			processExample(e);
@@ -473,53 +478,71 @@ public class Publisher {
 
 	}
 
-	private void processExample(Example e) throws Exception {
-		if (!e.getPath().exists())
-			throw new Exception("unable to find example file");
-		String n = e.getFileTitle();
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setNamespaceAware(true);
-		DocumentBuilder builder = factory.newDocumentBuilder();
+	private void cloneToXhtml(String n, String description) throws Exception {
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    DocumentBuilder builder = factory.newDocumentBuilder();
 
-		if ("csv".equals(e.getType())) {
-			CSVProcessor csv = new CSVProcessor();
-			csv.setSource(new FileInputStream(e.getPath()));
-			csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath()
-					.getAbsolutePath(), ".csv")));
-			csv.setOutput(new FileOutputStream(page.getFolders().dstDir + n
-					+ ".xml"));
-			csv.process();
-		} else {
-			// strip the xsi: stuff. seems to need double processing in order to
-			// delete namespace crap
-			Document xdoc = builder.parse(new FileInputStream(e.getPath()));
-			XmlGenerator xmlgen = new XmlGenerator();
-			if (xdoc.getDocumentElement().getLocalName().equals("feed"))
-				xmlgen.generate(xdoc.getDocumentElement(),
-						new File(page.getFolders().dstDir + n + ".xml"),
-						"http://www.w3.org/2005/Atom", xdoc
-								.getDocumentElement().getLocalName());
-			else
-				xmlgen.generate(xdoc.getDocumentElement(),
-						new File(page.getFolders().dstDir + n + ".xml"),
-						"http://hl7.org/fhir", xdoc.getDocumentElement()
-								.getLocalName());
-		}
+    Document xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
+    XhtmlGenerator xhtml = new XhtmlGenerator();
+    xhtml.generate(xdoc,
+        new File(page.getFolders().dstDir + n + ".xml.htm"), n
+            .toUpperCase().substring(0, 1) + n.substring(1),
+        description);
+	}
+	
+	private void processExample(Example e) throws Exception {
+    if ("tool".equals(e.getType())) 
+      return;
+    
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    String n = e.getFileTitle();
+
+    if (!e.getPath().exists())
+      throw new Exception("unable to find example file");
+
+    if ("csv".equals(e.getType())) {
+      CSVProcessor csv = new CSVProcessor();
+      csv.setSource(new FileInputStream(e.getPath()));
+      csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath()
+          .getAbsolutePath(), ".csv")));
+      csv.setOutput(new FileOutputStream(page.getFolders().dstDir + n
+          + ".xml"));
+      csv.process();
+    } else {
+      // strip the xsi: stuff. seems to need double processing in order to
+      // delete namespace crap
+      Document xdoc = builder.parse(new FileInputStream(e.getPath()));
+      XmlGenerator xmlgen = new XmlGenerator();
+      if (xdoc.getDocumentElement().getLocalName().equals("feed"))
+        xmlgen.generate(xdoc.getDocumentElement(),
+            new File(page.getFolders().dstDir + n + ".xml"),
+            "http://www.w3.org/2005/Atom", xdoc
+            .getDocumentElement().getLocalName());
+      else
+        xmlgen.generate(xdoc.getDocumentElement(),
+            new File(page.getFolders().dstDir + n + ".xml"),
+            "http://hl7.org/fhir", xdoc.getDocumentElement()
+            .getLocalName());
+    }
 
 		// reload it now, xml to xhtml of xml
 		builder = factory.newDocumentBuilder();
-		Document xdoc = builder.parse(new FileInputStream(new File(page
-				.getFolders().dstDir + n + ".xml")));
+		Document xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
 		XhtmlGenerator xhtml = new XhtmlGenerator();
 		xhtml.generate(xdoc,
 				new File(page.getFolders().dstDir + n + ".xml.htm"), n
 						.toUpperCase().substring(0, 1) + n.substring(1),
 				e.getDescription());
-		XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page
-				.getFolders().dstDir + n + ".xml.htm"));
-		XhtmlNode pre = d.getElement("html").getElement("body")
-				.getElement("div");
-		e.setXhtm(new XhtmlComposer().compose(pre));
+		if (e.isInBook()) {
+		  XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page
+		      .getFolders().dstDir + n + ".xml.htm"));
+		  XhtmlNode pre = d.getElement("html").getElement("body")
+		      .getElement("div");
+		  e.setXhtm(new XhtmlComposer().compose(pre));
+		}
 	}
 
 	private void generateProfile(ResourceDefn root, String n, String xmlSpec)
@@ -589,26 +612,24 @@ public class Publisher {
 		profileFeed.getEntryList().add(e);
 	}
 
-	private void produceProfile(String filename, ProfileDefn profile)
-			throws Exception {
+	private void produceProfile(String filename, ProfileDefn profile) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
+		tmp.deleteOnExit();
 
 		// you have to validate a profile, because it has to merged with it's
 		// base resource to fill out all the missing bits
 		validateProfile(profile);
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp));
-		gen.generate(profile);
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), false);
+		gen.generate(profile, page.getDefinitions());
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
 		ProfileGenerator pgen = new ProfileGenerator();
-		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir
-				+ filename + ".profile.xml"), xml);
-		//
-		// TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new
-		// FileOutputStream(tmp));
-		// tgen.generate(root, page.getDefinitions().getConceptDomains());
-		// String tx = Utilities.fileToString(tmp.getAbsolutePath());
+		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+ filename + ".profile.xml"), xml);
+		
+		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
+		tgen.generate(profile);
+		String tx = TextFile.fileToString(tmp.getAbsolutePath());
 		//
 		// DictHTMLGenerator dgen = new DictHTMLGenerator(new
 		// FileOutputStream(tmp));
@@ -623,9 +644,8 @@ public class Publisher {
 		// File(page.getFolders().srcDir+n+File.separatorChar+"example.xml");
 		// File umlf = new File(page.getFolders().imgDir+n+".png");
 		//
-		String src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-profile.htm");
-		src = page.processProfileIncludes(filename, profile, xml, src);
+		String src = TextFile.fileToString(page.getFolders().srcDir	+ "template-profile.htm");
+		src = page.processProfileIncludes(filename, profile, xml, tx, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + filename + ".htm");
 		//
 		// src = Utilities.fileToString(page.getFolders().srcDir +
@@ -642,26 +662,21 @@ public class Publisher {
 		// src = processResourceIncludes(n, root, xml, tx, dict, src);
 		// cachePage(n+".htm", src);
 		//
-		// // xml to xhtml of xml
-		// // first pass is to strip the xsi: stuff. seems to need double
-		// processing in order to delete namespace crap
-		// DocumentBuilderFactory factory =
-		// DocumentBuilderFactory.newInstance();
-		// factory.setNamespaceAware(true);
-		// DocumentBuilder builder = factory.newDocumentBuilder();
-		// Document xdoc = builder.parse(new FileInputStream(xmlf));
-		// XmlGenerator xmlgen = new XmlGenerator();
-		// xmlgen.generate(xdoc.getDocumentElement(), new
-		// File(page.getFolders().dstDir+n+".xml"), "http://hl7.org/fhir",
-		// xdoc.getDocumentElement().getLocalName());
-		//
-		// // reload it now
-		// builder = factory.newDocumentBuilder();
-		// xdoc = builder.parse(new FileInputStream(new
-		// File(page.getFolders().dstDir+n+".xml")));
-		// XhtmlGenerator xhtml = new XhtmlGenerator();
-		// xhtml.generate(xdoc, new File(page.getFolders().dstDir+n+".xml.htm"),
-		// n.toUpperCase().substring(0, 1)+n.substring(1));
+		 // xml to xhtml of xml
+		 // first pass is to strip the xsi: stuff. seems to need double
+		 // processing in order to delete namespace crap
+		 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		 factory.setNamespaceAware(true);
+		 DocumentBuilder builder = factory.newDocumentBuilder();
+		 Document xdoc = builder.parse(new FileInputStream(page.getFolders().dstDir+ filename + ".profile.xml"));
+		 XmlGenerator xmlgen = new XmlGenerator();
+		 xmlgen.generate(xdoc.getDocumentElement(), tmp, "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+		
+		 // reload it now
+		 builder = factory.newDocumentBuilder();
+		 xdoc = builder.parse(new FileInputStream(tmp));
+		 XhtmlGenerator xhtml = new XhtmlGenerator();
+		 xhtml.generate(xdoc, new File(page.getFolders().dstDir+ filename + ".profile.xml.htm"), "Profile", profile.metadata("name"));
 		// // xml to json
 		// JsonGenerator jsongen = new JsonGenerator();
 		// jsongen.generate(new File(page.getFolders().dstDir+n+".xml"), new
@@ -896,7 +911,7 @@ public class Publisher {
 				validateXmlFile(schema, n);
 			}
 		}
-		validateXmlFile(schema, "profiles");
+		validateXmlFile(schema, "profiles-resources");
 	}
 
 	private void validateXmlFile(Schema schema, String n) throws Exception {

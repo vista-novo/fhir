@@ -57,8 +57,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReportStatus</binding>
       </definition>
-      <binding>LabReportStatus</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -189,8 +189,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabRequests</binding>
       </definition>
-      <binding>LabRequests</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -233,8 +233,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabReportNames</binding>
       </definition>
-      <binding>LabReportNames</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -248,8 +248,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabServices</binding>
       </definition>
-      <binding>LabServices</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -308,8 +308,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultGroupNames</binding>
       </definition>
-      <binding>LabResultGroupNames</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -352,8 +352,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultNames</binding>
       </definition>
-      <binding>LabResultNames</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -367,8 +367,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>*unbound*</binding>
       </definition>
-      <binding>*unbound*</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -382,8 +382,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultFlag</binding>
       </definition>
-      <binding>LabResultFlag</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -397,8 +397,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReportStatus</binding>
       </definition>
-      <binding>LabReportStatus</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -441,8 +441,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReferenceRanges</binding>
       </definition>
-      <binding>LabReferenceRanges</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -486,8 +486,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultNames</binding>
       </definition>
-      <binding>LabResultNames</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -501,8 +501,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>*unbound*</binding>
       </definition>
-      <binding>*unbound*</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -516,8 +516,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultFlag</binding>
       </definition>
-      <binding>LabResultFlag</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -560,8 +560,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReferenceRanges</binding>
       </definition>
-      <binding>LabReferenceRanges</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -605,8 +605,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultNames</binding>
       </definition>
-      <binding>LabResultNames</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -620,8 +620,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>*unbound*</binding>
       </definition>
-      <binding>*unbound*</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -635,8 +635,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultFlag</binding>
       </definition>
-      <binding>LabResultFlag</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -679,8 +679,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReferenceRanges</binding>
       </definition>
-      <binding>LabReferenceRanges</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -724,8 +724,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>Loinc 35198-1 | Loinc 13457-7</binding>
       </definition>
-      <binding>Loinc 35198-1 | Loinc 13457-7</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -739,8 +739,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>*unbound*</binding>
       </definition>
-      <binding>*unbound*</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -754,8 +754,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
+        <binding>LabResultFlag</binding>
       </definition>
-      <binding>LabResultFlag</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -798,8 +798,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabReferenceRanges</binding>
       </definition>
-      <binding>LabReferenceRanges</binding>
       <closed>false</closed>
     </element>
     <element>
@@ -843,8 +843,8 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
+        <binding>LabDiagnosisCodes</binding>
       </definition>
-      <binding>LabDiagnosisCodes</binding>
       <closed>false</closed>
     </element>
     <element>

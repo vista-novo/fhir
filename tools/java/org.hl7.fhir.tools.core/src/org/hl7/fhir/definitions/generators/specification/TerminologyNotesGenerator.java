@@ -27,6 +27,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -40,6 +41,7 @@ import java.util.Map;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.utilities.Utilities;
 
 public class TerminologyNotesGenerator extends OutputStreamWriter {
@@ -76,6 +78,18 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		close();
 	}
 
+  public void generate(ProfileDefn profile) throws Exception
+  {
+    write("<p>\r\nDefined Bindings\r\n</p>\r\n<ul>\r\n");
+    for (BindingSpecification b : profile.getBindings()) {
+      genBinding(b, "", false);
+    }
+    write("</ul>\r\n");
+    flush();
+    close();
+  }
+
+	
 	private void gen(Map<BindingSpecification, List<CDUsage>> txusages2) throws Exception {
 		List<BindingSpecification> cds = new ArrayList<BindingSpecification>();
 		cds.addAll(txusages.keySet());
@@ -93,73 +107,77 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 			}
 
 			if (list.size() == 2)
-				path = list.get(1).path+" is ";
+				path = list.get(1).path+" has the definition ";
 			else {
 				path = list.get(1).path;
 				for (int i = 2; i < list.size() - 1; i++) {
 					path = path+", "+list.get(i).path;
 				}
-				path = path+" and "+list.get(list.size()-1).path+" are ";
+				path = path+" and "+list.get(list.size()-1).path+" share the definition ";
 			}
 	
-			if (cd.getName().equals("*unbound*")) {
-				write("  <li>"+path+" not bound to a concept domain (Error)</li>\r\n");
-			} else if (cd.getBinding() == BindingSpecification.Binding.Unbound) {
-				write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\"</li>\r\n");
-			} else if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
-				String sid = "";
-				if (!list.get(1).element.typeCode().equals("code")) {
-					sid = "urn:hl7-org:sid/fhir/"+cd.getBinding();
-//					if (!sids.contains(sid))
-//						sids.put(sid, new DefinedCode())
-					sid = " (sid = "+sid+")";
-				}
-					
-  			write("  <li>"+path+" bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
-				write("    <table class=\"codes\">\r\n");
-				boolean hasComment = false;
-				boolean hasDefinition = false;
-				for (DefinedCode c : cd.getCodes()) {
-					hasComment = hasComment || c.hasComment();
-					hasDefinition = hasDefinition || c.hasDefinition();
-				}
-//				if (hasComment)
-//					write("    <tr><td><b>Code</b></td><td><b>Title</b></td><td><b>Comment</b></td></tr>");
-//				else if (hasDefinition)
-//					write("    <tr><td><b>Code</b></td><td colspan=\"2\"><b>Title</b></td></tr>");
-					
-
-				for (DefinedCode c : cd.getCodes()) {
-					if (hasComment)
-						write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
-					else if (hasDefinition)
-						write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-					else
-						write("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
-				}
-				write("    </table>\r\n");
-				write("  </li>\r\n");
-				
-      } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
-        if (cd.getName().equals("MessageEvent"))
-          write("<li>"+path+" bound to the concept domain <i>MessageEvent</i> which has the allowed values defined for <a href=\"message.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
-        else if (cd.getName().equals("ResourceType"))
-          write("  <li>"+path+" bound to the concept domain <i>ResourceType</i> which has the allowed values of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
-        else 
-          write("  <li>"+path+" bound to the concept domain <i>DataType</i> which has the allowed values of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
-        
-			} else {
-			  if (cd.getBindingStrength() == BindingSpecification.BindingStrength.Required)
-	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". For example values, see "+ref(cd)+"</li>\r\n");
-			  else if (cd.getBindingStrength() == BindingSpecification.BindingStrength.Preferred)
-	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". If an appropriate code exists in "+ref(cd)+" then it should be used</li>\r\n");
-			  else // if (cd.getBindingStrength() = ConceptDomain.BindingStrength.Suggested)
-	        write("  <li>"+path+" is bound to the concept domain <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". A good candidate for codes is "+ref(cd)+"</li>\r\n");
-			}
+			genBinding(cd, path, list.get(1).element.typeCode().equals("code"));
 		}
 		write("</ul>\r\n");
 		
 	}
+
+  private void genBinding(BindingSpecification cd, String path, boolean isCode) throws IOException {
+    if (cd.getName().equals("*unbound*")) {
+    	write("  <li>"+path+" (Error!!!)</li>\r\n");
+    } else if (cd.getBinding() == BindingSpecification.Binding.Unbound) {
+    	write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\"</li>\r\n");
+    } else if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
+    	String sid = "";
+    	if (!isCode) {
+    		sid = "urn:hl7-org:sid/fhir/"+cd.getBinding();
+//					if (!sids.contains(sid))
+//						sids.put(sid, new DefinedCode())
+    		sid = " (sid = "+sid+")";
+    	}
+    		
+    	write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
+    	write("    <table class=\"codes\">\r\n");
+    	boolean hasComment = false;
+    	boolean hasDefinition = false;
+    	for (DefinedCode c : cd.getCodes()) {
+    		hasComment = hasComment || c.hasComment();
+    		hasDefinition = hasDefinition || c.hasDefinition();
+    	}
+//				if (hasComment)
+//					write("    <tr><td><b>Code</b></td><td><b>Title</b></td><td><b>Comment</b></td></tr>");
+//				else if (hasDefinition)
+//					write("    <tr><td><b>Code</b></td><td colspan=\"2\"><b>Title</b></td></tr>");
+    		
+
+    	for (DefinedCode c : cd.getCodes()) {
+    		if (hasComment)
+    			write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+    		else if (hasDefinition)
+    			write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+    		else
+    			write("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
+    	}
+    	write("    </table>\r\n");
+    	write("  </li>\r\n");
+    	
+    } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
+      if (cd.getName().equals("MessageEvent"))
+        write("<li>"+path+" of the <a href=\"message.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
+      else if (cd.getName().equals("ResourceType"))
+        write("  <li>"+path+" of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
+      else 
+        write("  <li>"+path+" of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
+      
+    } else {
+      if (cd.getBindingStrength() == BindingSpecification.BindingStrength.Required)
+        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". For example values, see "+ref(cd)+"</li>\r\n");
+      else if (cd.getBindingStrength() == BindingSpecification.BindingStrength.Preferred)
+        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". If an appropriate code exists in "+ref(cd)+" then it should be used</li>\r\n");
+      else // if (cd.getBindingStrength() = ConceptDomain.BindingStrength.Suggested)
+        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". A good candidate for codes is "+ref(cd)+"</li>\r\n");
+    }
+  }
 
 	private String ref(BindingSpecification cd) {
     if (cd.hasReference())

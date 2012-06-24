@@ -61,7 +61,6 @@ public class ElementDefn {
 	private String condition;
 	private String example;
 	private String profileName; // only in a profile, for unpicking
-	private String target; // only in extensions
 	private String value; // only in a profile
 	private String aggregation; // only in a profile
 	private Element_ derivation;
@@ -99,7 +98,6 @@ public class ElementDefn {
 		condition = pattern.condition;
 		example = pattern.example;
 		profileName = pattern.profileName;
-		target = pattern.target;
 		value = pattern.value;
 		inherited = pattern.inherited;
 
@@ -389,14 +387,6 @@ public class ElementDefn {
 		this.profileName = profileName;
 	}
 
-	public String getTarget() {
-		return target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
-	}
-
 	public String getValue() {
 		return value;
 	}
@@ -573,6 +563,10 @@ public class ElementDefn {
 
     public boolean hasBindingName() {
       return bindingName != null && !"".equals(bindingName);
+    }
+
+    public boolean hasRimMapping() {
+      return rimMapping != null && !"".equals(rimMapping);
     }
 }
 

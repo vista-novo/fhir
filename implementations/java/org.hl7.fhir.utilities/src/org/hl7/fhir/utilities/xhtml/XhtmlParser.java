@@ -274,7 +274,7 @@ public class XhtmlParser {
 
   
   private void skipWhiteSpaceAndComments(XhtmlNode focus) throws Exception {
-    while (Character.isWhitespace(peekChar()))
+    while (Character.isWhitespace(peekChar()) || (peekChar() == 0xfeff))
       readChar();
     if (peekChar() == '<')
     {
@@ -301,7 +301,7 @@ public class XhtmlParser {
   
   private void skipWhiteSpace() throws IOException {
     if (trimWhitespace)
-      while (Character.isWhitespace(peekChar()))
+      while (Character.isWhitespace(peekChar()) || (peekChar() == 0xfeff))
         readChar();
   }
   

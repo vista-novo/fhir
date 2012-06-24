@@ -33,7 +33,11 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.definitions.model.ExtensionDefn;
+import org.hl7.fhir.definitions.model.ExtensionDefn.ContextType;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -43,7 +47,13 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
+import org.hl7.fhir.instance.model.Profile.Binding;
+import org.hl7.fhir.instance.model.Profile.BindingStrength;
+import org.hl7.fhir.instance.model.Profile.BindingType;
+import org.hl7.fhir.instance.model.Profile.Concept;
 import org.hl7.fhir.instance.model.Profile.Definition;
+import org.hl7.fhir.instance.model.Profile.ExtensionContextType;
+import org.hl7.fhir.instance.model.Profile.Mapping;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -92,7 +102,10 @@ public class ProfileGenerator {
       // no purpose element here
       defineElement(p, c, resource.getRoot(), resource.getName());
     }
-    
+    for (ExtensionDefn ex : profile.getExtensions())
+      p.getExtensionDefn().add(generateExtensionDefn(ex, p));
+    for (BindingSpecification b : profile.getBindings()) 
+      p.getBinding().add(generateBinding(b, p));
     XhtmlNode div = new XhtmlNode();
     div.setName("div");
     div.setNodeType(NodeType.Element);
@@ -104,6 +117,98 @@ public class ProfileGenerator {
     comp.compose(stream, p, true, false);
     
     return p;
+  }
+
+  private Binding generateBinding(BindingSpecification src, Profile p) throws Exception {
+    Binding dst = p.new Binding();
+    dst.setName(src.getName());
+    dst.setDefinition(src.getDefinition());
+    dst.setType(convert(src.getBinding()));
+    dst.setStrength(convert(src.getBindingStrength()));
+    dst.setReference(new URI(src.getReference()));
+    for (DefinedCode dc : src.getCodes()) {
+      Concept cd = p.new Concept();
+      cd.setCode(dc.getCode());
+      cd.setDisplay(dc.getDisplay());
+      cd.setDefinition(dc.getDefinition());
+      cd.setSystem(dc.hasSystem() ? new URI(dc.getSystem()) : null);
+      dst.getConcept().add(cd);
+   }
+    
+    return dst;
+  }
+
+  private BindingStrength convert(org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength bindingStrength) throws Exception {
+    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Preferred)
+      return BindingStrength.preferred;
+    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Required)
+      return BindingStrength.required;
+    if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Suggested)
+      return BindingStrength.suggested;
+    throw new Exception("unknown value BindingStrength."+bindingStrength.toString());
+  }
+
+  private BindingType convert(org.hl7.fhir.definitions.model.BindingSpecification.Binding binding) throws Exception {
+    if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.CodeList)
+      return BindingType.codelist;
+    if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.Reference)
+      return BindingType.reference;
+    if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.Special)
+      return BindingType.special;
+    if (binding == org.hl7.fhir.definitions.model.BindingSpecification.Binding.ValueSet)
+      return BindingType.valueset;
+
+    throw new Exception("unknown value Binding."+binding.toString());
+  }
+
+  private org.hl7.fhir.instance.model.Profile.ExtensionDefn generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
+    org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
+    dst.setCode(src.getCode());
+    dst.setContext(src.getContext());
+    dst.setContextType(convertContextType(src.getType()));
+    
+    ElementDefn dSrc = src.getDefinition();
+    Definition dDst = p.new Definition();
+    dst.setDefinition(dDst);
+    
+    dDst.setShort(dSrc.getShortDefn());
+    dDst.setFormal(dSrc.getDefinition());
+    dDst.setComments(dSrc.getComments());
+    dDst.setDataAbsentReason(dSrc.isAllowDAR());
+    if (dSrc.getMaxCardinality() == null)
+      dDst.setMax("*");
+    else
+      dDst.setMax(dSrc.getMaxCardinality().toString());
+    dDst.setMin(dSrc.getMinCardinality());
+    dDst.setMustSupport(dSrc.isMustSupport());
+    dDst.setMustUnderstand(dSrc.isMustUnderstand());
+    // dDst.
+    for (TypeRef t : dSrc.getTypes())
+      dDst.getType().add(t.summary());
+    if (dSrc.hasRimMapping()) {
+      Mapping m = p.new Mapping();
+      m.setMap("RIM");
+      m.setTarget(dSrc.getRimMapping());
+      dDst.getMapping().add(m);
+    }
+    dDst.setBinding(dSrc.getBindingName());
+    return dst;
+  }
+
+
+  private ExtensionContextType convertContextType(ContextType type) throws Exception {
+    if (type == ContextType.DataType)
+      return ExtensionContextType.datatype;
+    if (type == ContextType.Resource)
+      return ExtensionContextType.resource;
+    if (type == ContextType.Elements)
+      return ExtensionContextType.elements;
+    if (type == ContextType.Extension)
+      return ExtensionContextType.extension;
+    if (type == ContextType.Mapping)
+      return ExtensionContextType.mapping;
+    
+    throw new Exception("unknown value ContextType."+type.toString());
   }
 
   private void defineElement(Profile p, Profile.Resource c, ElementDefn e, String path) throws Exception {
@@ -135,7 +240,7 @@ public class ProfileGenerator {
     // todo: mappings
     // we don't have anything to say about constraints on resources
     if (!"".equals(e.getBindingName()))
-      ce.setBinding(e.getBindingName());
+      ce.getDefinition().setBinding(e.getBindingName());
     
     if( e.hasAggregation() )
     {

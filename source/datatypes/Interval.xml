@@ -62,23 +62,24 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="75.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="23.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="23.25" ss:Span="1"/>
+   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
@@ -96,8 +97,9 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">GenericType</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A set of ordered values defined by a low and high limit.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A set of ordered values defined by a low and high limit.</Data></Cell>
     <Cell><Data ss:Type="String">A set of ordered values defined by a low and high limit. The values may be of type Quantity, date, or dateTime</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to specify ranges of values or time periods</Data></Cell>
     <Cell><Data ss:Type="String">Not a duration - that's a measure of time, but a duration that occurs at a fixed value of time. An interval specifies a range of values; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give the patient between 2 and 4 tablets&quot;). If a duration might be required, specify the type as Interval|Duration</Data></Cell>
@@ -107,22 +109,24 @@
     <Cell><Data ss:Type="String">Interval.low</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">[param]</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Low value (Text or elements from specified type)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Low value (Text or elements from specified type)</Data></Cell>
     <Cell><Data ss:Type="String">The low value. The boundary is inclusive.</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
     <Cell><Data ss:Type="String">IVL.low</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Interval.high</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">[param]</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">High value (Text or elements from specified type)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">High value (Text or elements from specified type)</Data></Cell>
     <Cell><Data ss:Type="String">The high value. The boundary is inclusive. See discussion in specification regarding how the high value boundary is interpreted for dates</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">If the high elements is missing, the meaning is that the high boundary is not known. On intervals over a time period, if the high is missing, it means that the interval is current and ongoing. When the interval applies to a HumanDate, the high value includes any matching date/time. When the interval applies to  other types, the high value is assumed to have arbitrarily high precision</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">If the high elements is missing, the meaning is that the high boundary is not known. On intervals over a time period, if the high is missing, it means that the interval is current and ongoing. When the interval applies to a HumanDate, the high value includes any matching date/time. When the interval applies to  other types, the high value is assumed to have arbitrarily high precision</Data></Cell>
     <Cell><Data ss:Type="String">IVL.high</Data></Cell>
    </Row>
   </Table>
@@ -137,8 +141,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

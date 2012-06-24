@@ -831,8 +831,8 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
 HumanName
 </h2>
 <p>
-</p>
 A name of a human, or a name given to an animal by a human.
+</p>
 <p>
 Names may be changed, or repudiated, or people may have different names in different 
 contexts. Names may be divided into parts of different type that have variable 
@@ -848,8 +848,11 @@ The <i>text</i> element specifies the entire name as it should be represented. T
 may be provided instead of or as well as specific <i>part</i> elements. Every <i>part</i>
 must have a <i>value</i>.
 </p>
-      
-
+<p>
+Note that the order of the parts within a given part type has significance and must be observed.
+The different part types may be re-ordered between different contexts of use, and the order 
+between part types is not expected to be meaningful.
+</p>
 <div class="use">
 <p><b>Use</b></p>
 <p>
@@ -877,7 +880,7 @@ flag is provided on the name element.
     &lt;/part&gt;
   &lt;/x&gt;
 </pre>
-<p>See <a href="datatypes-examples.htm">further examples</a></p>
+<p>See <a href="datatypes-examples.htm#HumanName">further examples</a></p>
 </div>
 <a name="Address"></a>
 <h2>
@@ -885,8 +888,9 @@ Address
 </h2>
 <p>
 A postal address. There is a variety of postal address formats defined around the world. 
-This format defines a superset that is the basis for addresses all around the world 
-Note: address is for <b>postal addresses</b>, not physical locations. 
+This format defines a superset that is the basis for addresses all around the world.
+Postal addresses are often used to record a location that can be
+visited to find a patient or person.
 </p>
 
 <%dt Address%>

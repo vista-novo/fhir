@@ -339,7 +339,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					else if (tn.equals("uri")) tn = "java.net.URI";
 					else if (tn.equals("code")) tn = "String";
 					else if (tn.equals("oid")) tn = "String";
-					else if (tn.equals("uuid")) tn = "String";
+          else if (tn.equals("uuid")) tn = "String";
+          else if (tn.equals("idref")) tn = "String";
 					else if (tn.equals("sid")) tn = "String";
 					else if (tn.equals("id")) tn = "String";
 					else if (tn.equals("date")) tn = "String";

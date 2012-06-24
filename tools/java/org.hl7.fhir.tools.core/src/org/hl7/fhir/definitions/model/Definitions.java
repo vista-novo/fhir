@@ -82,6 +82,21 @@ public class Definitions {
 		return root;
 	}
 
+  // Returns true if the root ElementDefn of a CompositeType or Resource can be found, 
+  // excluding future Resources (as they don't have definitions yet).
+  public boolean hasElementDefn(String name) throws Exception {
+    ElementDefn root = null;
+    if (types.containsKey(name))
+      root = types.get(name);
+    if (structures.containsKey(name))
+      root = structures.get(name);
+    if (infrastructure.containsKey(name))
+      root = infrastructure.get(name);
+    if (resources.containsKey(name))
+      root = resources.get(name).getRoot();
+    return root != null;
+  }
+
 	// Returns a list of Bindings as found on the "Bindings" tab in
 	// terminologies/bindings.xml and the "Binding" column on
 	// CompositeTypes and Resources.

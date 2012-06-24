@@ -31,7 +31,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s67" ss:Name="Normal 2">
+  <Style ss:ID="s62" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -39,17 +39,17 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
+  <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s64">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s65">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -59,34 +59,43 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s129">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70" ss:Parent="s62">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="120"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="41.25" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="37.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="85.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="182.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="8" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="120"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="41.25" ss:Span="2"/>
+   <Column ss:Index="5" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="37.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="85.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="78.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="182.25"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -101,11 +110,12 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="237.75">
     <Cell><Data ss:Type="String">HumanName</Data></Cell>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A name of a human, or a name given to an animal by a human.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A name of a human, or a name given to an animal by a human.</Data></Cell>
     <Cell><Data ss:Type="String">A name of a human, or a name given to an animal by a human.</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to record names, along with notes about their use</Data></Cell>
     <Cell><Data ss:Type="String">Names may be changed, or repudiated, or people may have different names in different contexts. Names may be divided into parts of different type that have variable significance depending on context, though the division into parts does not always matter. With personal names, the different parts may or may not be imbued with some implicit meaning; various cultures associate different importance with the name parts, and the degree to which systems must care about name parts around the world varies widely.</Data></Cell>
@@ -114,61 +124,67 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">HumanName.use</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NameUse</Data></Cell>
     <Cell><Data ss:Type="String">The use of this name</Data></Cell>
     <Cell><Data ss:Type="String">The use of this name</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">EN.use</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">EN.use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">HumanName.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text representation of the full name</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Text representation of the full name</Data></Cell>
     <Cell><Data ss:Type="String">a full text representation of the name</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
     <Cell><Data ss:Type="String">EN.formatted</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">HumanName.part</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A part of a name</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A part of a name</Data></Cell>
     <Cell><Data ss:Type="String">A part of a name</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
     <Cell><Data ss:Type="String">ENXP</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">HumanName.part.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NamePartType</Data></Cell>
     <Cell><Data ss:Type="String">Type of name part (see below)</Data></Cell>
     <Cell><Data ss:Type="String">Type of name part</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">ENXP.type</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">ENXP.type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">HumanName.part.value</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The content of the name part</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The content of the name part</Data></Cell>
     <Cell><Data ss:Type="String">The content of the name part</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">ENXP.value</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">ENXP.value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">HumanName.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Time period when name was/is in use</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Time period when name was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">Time period when name was/is in use</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">EN.usablePeriod</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">EN.usablePeriod</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -179,11 +195,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -192,11 +209,11 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="198.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="405.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="381"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="198.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="405.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="381"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
@@ -206,7 +223,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory Content</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Either text or at least one part with a value is required unless a dataAbsentReason flag is provided on the name element</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Either text or at least one part with a value is required unless a dataAbsentReason flag is provided on the name element</Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
    </Row>
   </Table>
@@ -236,27 +253,27 @@
    <Column ss:AutoFitWidth="0" ss:Width="123"/>
    <Column ss:AutoFitWidth="0" ss:Width="141.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="242.25"/>
-   <Row>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">NamePartType</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">Type of a part of a human name</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">#name-part-type</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">NamePartType</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Type of a part of a human name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">#name-part-type</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">NameUse</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">The use of a human name</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s129"><Data ss:Type="String">#name-use</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">NameUse</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The use of a human name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">#name-use</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -265,10 +282,11 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <RangeSelection>R1</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -276,35 +294,41 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="name-use">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultColumnWidth="72.75"
+   ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="348"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">usual</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Known as/conventional/the one you normally use</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">usual</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Known as/conventional/the one you normally use</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">official</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called &quot;legal name&quot;.</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">official</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The formal name as registered in an official (government) registry, but which name might not be commonly used. May be called &quot;legal name&quot;.</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">temp</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">temp</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">anonymous</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">anonymous</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">old</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">This name is no longer in use (or was never correct, but retained for records)</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">old</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">This name is no longer in use (or was never correct, but retained for records)</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">maiden</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store &quot;maiden&quot; names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person‘s name, nor should the maiden name be determined algorithmically</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">maiden</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store &quot;maiden&quot; names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person‘s name, nor should the maiden name be determined algorithmically</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -313,10 +337,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1C1:R7C2</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -326,21 +352,21 @@
  <Worksheet ss:Name="name-part-type">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Definition</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">family</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">family</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">given</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Given name. NOTE Not to be called &quot;first name&quot; since given names do not always come first. .</Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">given</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Given name. NOTE Not to be called &quot;first name&quot; since given names do not always come first. .</Data></Cell>
    </Row>
-   <Row>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">title</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. </Data></Cell>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">title</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -349,6 +375,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
