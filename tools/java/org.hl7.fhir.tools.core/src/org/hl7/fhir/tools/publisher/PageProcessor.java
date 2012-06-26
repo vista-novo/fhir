@@ -127,7 +127,7 @@ public class PageProcessor implements Logger  {
     
     StringBuilder s = new StringBuilder();
     s.append("<div class=\"sidebar\">\r\n");
-    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> <a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> &copy; <a href=\"http://hl7.org\">HL7.org</a></p>\r\n");
+    s.append("<p><a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><img border=\"0\" src=\"flame16.png\" style=\"vertical-align: text-bottom\"/></a> <a href=\"http://hl7.org/fhir\" title=\"Fast Healthcare Interoperability Resources - Home Page\"><b>FHIR</b></a> &copy; <a href=\"http://hl7.org\">HL7.org</a></p>\r\n");
     s.append("<p class=\"note\">Version v"+getVersion()+" - Under Development</p>\r\n"); 
 
     for (Navigation.Category c : navigation.getCategories()) {

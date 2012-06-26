@@ -67,6 +67,8 @@ public class XhtmlComposer {
   }
 
   public void compose(OutputStream stream, XhtmlDocument doc) throws Exception {
+    byte[] bom = new byte[] { (byte)0xEF, (byte)0xBB, (byte)0xBF };
+    stream.write(bom);
     dst = new OutputStreamWriter(stream, "UTF-8");
     composeDoc(doc);
     dst.flush();
