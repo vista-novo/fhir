@@ -41,7 +41,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *
  * @generated
  */
-public class ConstrainedTypeDefnImpl extends CompositeTypeDefnImpl implements ConstrainedTypeDefn {
+public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements ConstrainedTypeDefn {
 	/**
 	 * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->

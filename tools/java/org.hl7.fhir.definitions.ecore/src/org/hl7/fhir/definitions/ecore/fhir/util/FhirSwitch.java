@@ -111,8 +111,8 @@ public class FhirSwitch<T> extends Switch<T> {
 				ResourceDefn resourceDefn = (ResourceDefn)theEObject;
 				T result = caseResourceDefn(resourceDefn);
 				if (result == null) result = caseCompositeTypeDefn(resourceDefn);
-				if (result == null) result = caseNameScope(resourceDefn);
 				if (result == null) result = caseTypeDefn(resourceDefn);
+				if (result == null) result = caseNameScope(resourceDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,9 +138,7 @@ public class FhirSwitch<T> extends Switch<T> {
 			case FhirPackage.CONSTRAINED_TYPE_DEFN: {
 				ConstrainedTypeDefn constrainedTypeDefn = (ConstrainedTypeDefn)theEObject;
 				T result = caseConstrainedTypeDefn(constrainedTypeDefn);
-				if (result == null) result = caseCompositeTypeDefn(constrainedTypeDefn);
 				if (result == null) result = caseTypeDefn(constrainedTypeDefn);
-				if (result == null) result = caseNameScope(constrainedTypeDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

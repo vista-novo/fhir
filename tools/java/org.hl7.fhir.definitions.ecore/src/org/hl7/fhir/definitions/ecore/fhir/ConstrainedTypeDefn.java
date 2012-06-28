@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ConstrainedTypeDefn extends CompositeTypeDefn, TypeDefn {
+public interface ConstrainedTypeDefn extends TypeDefn {
 	/**
 	 * Returns the value of the '<em><b>Base Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->

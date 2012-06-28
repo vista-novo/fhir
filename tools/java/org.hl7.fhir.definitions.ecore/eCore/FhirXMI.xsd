@@ -94,7 +94,7 @@
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="codes" type="fhir:DefinedCode"/>
       <xsd:element name="annotations" type="fhir:Annotations"/>
-      <xsd:element name="container" type="fhir:NameScope"/>
+      <xsd:element name="parent" type="fhir:NameScope"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
@@ -109,7 +109,7 @@
         <xsd:documentation>for useful error messages during the build process</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-    <xsd:attribute name="container" type="xsd:string"/>
+    <xsd:attribute name="parent" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="BindingDefn" type="fhir:BindingDefn"/>
   <xsd:complexType name="Mapping">
@@ -124,18 +124,11 @@
   <xsd:element name="Mapping" type="fhir:Mapping"/>
   <xsd:complexType name="ResourceDefn">
     <xsd:complexContent>
-      <xsd:extension base="fhir:NameScope">
+      <xsd:extension base="fhir:CompositeTypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="annotations" type="fhir:Annotations"/>
-          <xsd:element name="container" type="fhir:NameScope"/>
-          <xsd:element name="elements" type="fhir:ElementDefn"/>
-          <xsd:element name="invariants" type="fhir:Invariant"/>
-          <xsd:element name="allowedGenericTypes" type="fhir:TypeRef"/>
           <xsd:element name="example" type="fhir:Example"/>
           <xsd:element name="searches" type="fhir:SearchParameter"/>
         </xsd:choice>
-        <xsd:attribute name="name" type="xsd:string" use="required"/>
-        <xsd:attribute name="container" type="xsd:string"/>
         <xsd:attribute name="sandbox" type="xsd:boolean" use="required"/>
         <xsd:attribute name="future" type="xsd:boolean"/>
       </xsd:extension>
@@ -175,7 +168,7 @@
   <xsd:element name="PrimitiveTypeDefn" type="fhir:PrimitiveTypeDefn"/>
   <xsd:complexType name="ConstrainedTypeDefn">
     <xsd:complexContent>
-      <xsd:extension base="fhir:CompositeTypeDefn">
+      <xsd:extension base="fhir:TypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
           <xsd:element name="baseType" type="fhir:TypeRef"/>
           <xsd:element name="details" type="fhir:Invariant"/>
@@ -243,21 +236,21 @@
   <xsd:complexType abstract="true" name="TypeDefn">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="annotations" type="fhir:Annotations"/>
-      <xsd:element name="container" type="fhir:NameScope"/>
+      <xsd:element name="parent" type="fhir:NameScope"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
-    <xsd:attribute name="container" type="xsd:string"/>
+    <xsd:attribute name="parent" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeDefn" type="fhir:TypeDefn"/>
   <xsd:complexType name="CompositeTypeDefn">
     <xsd:complexContent>
       <xsd:extension base="fhir:TypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="types" type="fhir:TypeDefn"/>
+          <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="elements" type="fhir:ElementDefn"/>
           <xsd:element name="invariants" type="fhir:Invariant"/>
           <xsd:element name="allowedGenericTypes" type="fhir:TypeRef"/>
@@ -268,8 +261,8 @@
   <xsd:element name="CompositeTypeDefn" type="fhir:CompositeTypeDefn"/>
   <xsd:complexType abstract="true" name="NameScope">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element name="bindings" type="fhir:BindingDefn"/>
       <xsd:element name="types" type="fhir:TypeDefn"/>
+      <xsd:element name="bindings" type="fhir:BindingDefn"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>

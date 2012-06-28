@@ -46,7 +46,7 @@ import org.hl7.fhir.definitions.ecore.fhir.NameScope;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -398,8 +398,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NameScope getContainer() {
-		if (eContainerFeatureID() != FhirPackage.BINDING_DEFN__CONTAINER) return null;
+	public NameScope getParent() {
+		if (eContainerFeatureID() != FhirPackage.BINDING_DEFN__PARENT) return null;
 		return (NameScope)eContainer();
 	}
 
@@ -408,8 +408,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetContainer(NameScope newContainer, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newContainer, FhirPackage.BINDING_DEFN__CONTAINER, msgs);
+	public NotificationChain basicSetParent(NameScope newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, FhirPackage.BINDING_DEFN__PARENT, msgs);
 		return msgs;
 	}
 
@@ -418,20 +418,20 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setContainer(NameScope newContainer) {
-		if (newContainer != eInternalContainer() || (eContainerFeatureID() != FhirPackage.BINDING_DEFN__CONTAINER && newContainer != null)) {
-			if (EcoreUtil.isAncestor(this, newContainer))
+	public void setParent(NameScope newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != FhirPackage.BINDING_DEFN__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newContainer != null)
-				msgs = ((InternalEObject)newContainer).eInverseAdd(this, FhirPackage.NAME_SCOPE__BINDINGS, NameScope.class, msgs);
-			msgs = basicSetContainer(newContainer, msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, FhirPackage.NAME_SCOPE__BINDINGS, NameScope.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__CONTAINER, newContainer, newContainer));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -442,10 +442,10 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.BINDING_DEFN__CONTAINER:
+			case FhirPackage.BINDING_DEFN__PARENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetContainer((NameScope)otherEnd, msgs);
+				return basicSetParent((NameScope)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -462,8 +462,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return ((InternalEList<?>)getCodes()).basicRemove(otherEnd, msgs);
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return basicSetAnnotations(null, msgs);
-			case FhirPackage.BINDING_DEFN__CONTAINER:
-				return basicSetContainer(null, msgs);
+			case FhirPackage.BINDING_DEFN__PARENT:
+				return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -476,7 +476,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case FhirPackage.BINDING_DEFN__CONTAINER:
+			case FhirPackage.BINDING_DEFN__PARENT:
 				return eInternalContainer().eInverseRemove(this, FhirPackage.NAME_SCOPE__BINDINGS, NameScope.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -506,8 +506,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return getCodes();
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return getAnnotations();
-			case FhirPackage.BINDING_DEFN__CONTAINER:
-				return getContainer();
+			case FhirPackage.BINDING_DEFN__PARENT:
+				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -546,8 +546,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)newValue);
 				return;
-			case FhirPackage.BINDING_DEFN__CONTAINER:
-				setContainer((NameScope)newValue);
+			case FhirPackage.BINDING_DEFN__PARENT:
+				setParent((NameScope)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -585,8 +585,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)null);
 				return;
-			case FhirPackage.BINDING_DEFN__CONTAINER:
-				setContainer((NameScope)null);
+			case FhirPackage.BINDING_DEFN__PARENT:
+				setParent((NameScope)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -616,8 +616,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return codes != null && !codes.isEmpty();
 			case FhirPackage.BINDING_DEFN__ANNOTATIONS:
 				return annotations != null;
-			case FhirPackage.BINDING_DEFN__CONTAINER:
-				return getContainer() != null;
+			case FhirPackage.BINDING_DEFN__PARENT:
+				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

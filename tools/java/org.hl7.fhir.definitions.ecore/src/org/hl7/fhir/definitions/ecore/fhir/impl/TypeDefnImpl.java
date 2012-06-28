@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
@@ -29,7 +30,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,16 +66,6 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @ordered
 	 */
 	protected Annotations annotations;
-
-	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainer()
-	 * @generated
-	 * @ordered
-	 */
-	protected NameScope container;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,37 +155,40 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NameScope getContainer() {
-		if (container != null && container.eIsProxy()) {
-			InternalEObject oldContainer = (InternalEObject)container;
-			container = (NameScope)eResolveProxy(oldContainer);
-			if (container != oldContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.TYPE_DEFN__CONTAINER, oldContainer, container));
-			}
+	public NameScope getParent() {
+		if (eContainerFeatureID() != FhirPackage.TYPE_DEFN__PARENT) return null;
+		return (NameScope)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParent(NameScope newParent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParent, FhirPackage.TYPE_DEFN__PARENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParent(NameScope newParent) {
+		if (newParent != eInternalContainer() || (eContainerFeatureID() != FhirPackage.TYPE_DEFN__PARENT && newParent != null)) {
+			if (EcoreUtil.isAncestor(this, newParent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParent != null)
+				msgs = ((InternalEObject)newParent).eInverseAdd(this, FhirPackage.NAME_SCOPE__TYPES, NameScope.class, msgs);
+			msgs = basicSetParent(newParent, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		return container;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NameScope basicGetContainer() {
-		return container;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainer(NameScope newContainer) {
-		NameScope oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__CONTAINER, oldContainer, container));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__PARENT, newParent, newParent));
 	}
 
 	/**
@@ -214,12 +208,44 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FhirPackage.TYPE_DEFN__PARENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParent((NameScope)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return basicSetAnnotations(null, msgs);
+			case FhirPackage.TYPE_DEFN__PARENT:
+				return basicSetParent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case FhirPackage.TYPE_DEFN__PARENT:
+				return eInternalContainer().eInverseRemove(this, FhirPackage.NAME_SCOPE__TYPES, NameScope.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -234,9 +260,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getName();
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return getAnnotations();
-			case FhirPackage.TYPE_DEFN__CONTAINER:
-				if (resolve) return getContainer();
-				return basicGetContainer();
+			case FhirPackage.TYPE_DEFN__PARENT:
+				return getParent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -255,8 +280,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)newValue);
 				return;
-			case FhirPackage.TYPE_DEFN__CONTAINER:
-				setContainer((NameScope)newValue);
+			case FhirPackage.TYPE_DEFN__PARENT:
+				setParent((NameScope)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -276,8 +301,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)null);
 				return;
-			case FhirPackage.TYPE_DEFN__CONTAINER:
-				setContainer((NameScope)null);
+			case FhirPackage.TYPE_DEFN__PARENT:
+				setParent((NameScope)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -295,8 +320,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return annotations != null;
-			case FhirPackage.TYPE_DEFN__CONTAINER:
-				return container != null;
+			case FhirPackage.TYPE_DEFN__PARENT:
+				return getParent() != null;
 		}
 		return super.eIsSet(featureID);
 	}

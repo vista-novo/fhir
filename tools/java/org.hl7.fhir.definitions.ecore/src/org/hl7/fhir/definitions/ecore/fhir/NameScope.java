@@ -17,9 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getTypes <em>Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getBindings <em>Bindings</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,7 +30,7 @@ public interface NameScope extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Bindings</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn}.
-	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer <em>Container</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bindings</em>' containment reference list isn't clear,
@@ -40,8 +39,8 @@ public interface NameScope extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Bindings</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Bindings()
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer
-	 * @model opposite="container" containment="true"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getParent
+	 * @model opposite="parent" containment="true"
 	 *        extendedMetaData="name='binding'"
 	 * @generated
 	 */
@@ -50,6 +49,7 @@ public interface NameScope extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn}.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Types</em>' reference list isn't clear,
@@ -58,37 +58,12 @@ public interface NameScope extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Types()
-	 * @model containment="true"
-	 *        extendedMetaData="name='type'"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent
+	 * @model opposite="parent" containment="true"
+	 *        extendedMetaData="name='type' namespace=''"
 	 * @generated
 	 */
 	EList<TypeDefn> getTypes();
-
-	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parent</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' reference.
-	 * @see #setParent(NameScope)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Parent()
-	 * @model transient="true"
-	 * @generated
-	 */
-	NameScope getParent();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getParent <em>Parent</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' reference.
-	 * @see #getParent()
-	 * @generated
-	 */
-	void setParent(NameScope value);
 
 	/**
 	 * <!-- begin-user-doc -->

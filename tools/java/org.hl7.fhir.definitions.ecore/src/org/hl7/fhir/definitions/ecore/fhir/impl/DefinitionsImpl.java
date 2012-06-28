@@ -48,9 +48,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getProfiles <em>Profiles</em>}</li>
@@ -62,16 +61,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  */
 public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
-	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<BindingDefn> bindings;
-
-	/**
 	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -82,14 +71,14 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	protected EList<TypeDefn> types;
 
 	/**
-	 * The cached value of the '{@link #getParent() <em>Parent</em>}' reference.
+	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParent()
+	 * @see #getBindings()
 	 * @generated
 	 * @ordered
 	 */
-	protected NameScope parent;
+	protected EList<BindingDefn> bindings;
 
 	/**
 	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
@@ -177,7 +166,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 */
 	public EList<BindingDefn> getBindings() {
 		if (bindings == null) {
-			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.DEFINITIONS__BINDINGS, FhirPackage.BINDING_DEFN__CONTAINER);
+			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.DEFINITIONS__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
 		}
 		return bindings;
 	}
@@ -231,47 +220,9 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 */
 	public EList<TypeDefn> getTypes() {
 		if (types == null) {
-			types = new EObjectContainmentEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES);
+			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__PARENT);
 		}
 		return types;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NameScope getParent() {
-		if (parent != null && parent.eIsProxy()) {
-			InternalEObject oldParent = (InternalEObject)parent;
-			parent = (NameScope)eResolveProxy(oldParent);
-			if (parent != oldParent) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.DEFINITIONS__PARENT, oldParent, parent));
-			}
-		}
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NameScope basicGetParent() {
-		return parent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParent(NameScope newParent) {
-		NameScope oldParent = parent;
-		parent = newParent;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__PARENT, oldParent, parent));
 	}
 
 	/**
@@ -362,6 +313,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__BINDINGS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
 		}
@@ -376,10 +329,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.DEFINITIONS__BINDINGS:
-				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__TYPES:
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__PROFILES:
 				return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
 			case FhirPackage.DEFINITIONS__EVENTS:
@@ -396,13 +349,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.DEFINITIONS__BINDINGS:
-				return getBindings();
 			case FhirPackage.DEFINITIONS__TYPES:
 				return getTypes();
-			case FhirPackage.DEFINITIONS__PARENT:
-				if (resolve) return getParent();
-				return basicGetParent();
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return getBindings();
 			case FhirPackage.DEFINITIONS__DATE:
 				return getDate();
 			case FhirPackage.DEFINITIONS__VERSION:
@@ -424,16 +374,13 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.DEFINITIONS__BINDINGS:
-				getBindings().clear();
-				getBindings().addAll((Collection<? extends BindingDefn>)newValue);
-				return;
 			case FhirPackage.DEFINITIONS__TYPES:
 				getTypes().clear();
 				getTypes().addAll((Collection<? extends TypeDefn>)newValue);
 				return;
-			case FhirPackage.DEFINITIONS__PARENT:
-				setParent((NameScope)newValue);
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				getBindings().clear();
+				getBindings().addAll((Collection<? extends BindingDefn>)newValue);
 				return;
 			case FhirPackage.DEFINITIONS__DATE:
 				setDate((Date)newValue);
@@ -461,14 +408,11 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.DEFINITIONS__BINDINGS:
-				getBindings().clear();
-				return;
 			case FhirPackage.DEFINITIONS__TYPES:
 				getTypes().clear();
 				return;
-			case FhirPackage.DEFINITIONS__PARENT:
-				setParent((NameScope)null);
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				getBindings().clear();
 				return;
 			case FhirPackage.DEFINITIONS__DATE:
 				setDate(DATE_EDEFAULT);
@@ -494,12 +438,10 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.DEFINITIONS__BINDINGS:
-				return bindings != null && !bindings.isEmpty();
 			case FhirPackage.DEFINITIONS__TYPES:
 				return types != null && !types.isEmpty();
-			case FhirPackage.DEFINITIONS__PARENT:
-				return parent != null;
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return bindings != null && !bindings.isEmpty();
 			case FhirPackage.DEFINITIONS__DATE:
 				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
 			case FhirPackage.DEFINITIONS__VERSION:

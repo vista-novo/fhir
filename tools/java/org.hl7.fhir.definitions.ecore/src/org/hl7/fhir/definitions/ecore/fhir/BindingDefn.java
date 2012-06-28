@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getSource <em>Source</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getCodes <em>Codes</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer <em>Container</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
  *
@@ -241,31 +241,31 @@ public interface BindingDefn extends EObject {
 	void setAnnotations(Annotations value);
 
 	/**
-	 * Returns the value of the '<em><b>Container</b></em>' container reference.
+	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getBindings <em>Bindings</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Container</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Container</em>' container reference.
-	 * @see #setContainer(NameScope)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingDefn_Container()
+	 * @return the value of the '<em>Parent</em>' container reference.
+	 * @see #setParent(NameScope)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingDefn_Parent()
 	 * @see org.hl7.fhir.definitions.ecore.fhir.NameScope#getBindings
 	 * @model opposite="bindings" required="true" transient="false"
 	 * @generated
 	 */
-	NameScope getContainer();
+	NameScope getParent();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getContainer <em>Container</em>}' container reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getParent <em>Parent</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' container reference.
-	 * @see #getContainer()
+	 * @param value the new value of the '<em>Parent</em>' container reference.
+	 * @see #getParent()
 	 * @generated
 	 */
-	void setContainer(NameScope value);
+	void setParent(NameScope value);
 
 } // BindingDefn
