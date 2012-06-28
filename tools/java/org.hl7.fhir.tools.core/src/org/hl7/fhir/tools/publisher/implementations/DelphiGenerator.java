@@ -30,7 +30,6 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -48,7 +47,6 @@ import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
-import org.xmlpull.v1.builder.xpath.jaxen.function.ext.UpperFunction;
 
 /**
  * Generates the delphi reference implementation
@@ -1601,5 +1599,15 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   public String getTitle() {
     return "Delphi";
   }
+
+public boolean isECoreGenerator() {
+	return false;
+}
+
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+		String implDir, Logger logger) throws Exception {
+	
+	throw new UnsupportedOperationException("Delphi generator uses ElementDefn-style definitions.");
+}
 
 }

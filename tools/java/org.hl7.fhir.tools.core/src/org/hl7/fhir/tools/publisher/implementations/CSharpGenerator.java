@@ -28,19 +28,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.definitions.model.ResourceDefn;
-import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
-import org.hl7.fhir.tools.publisher.implementations.CSharpResourceGenerator.GenClass;
-import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.ZipGenerator;
 
@@ -50,15 +43,38 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			String implDir, String version, Date genDate, Logger logger)
 			throws Exception {
 
+		throw new UnsupportedOperationException("The C# generator uses eCore, not ElementDefn-style definition.");
+	}
+
+	public String getName() {
+		return "csharp";
+	}
+
+	public String getDescription() {
+		return "Resource definitions (+ more todo)";
+	}
+
+	public String getTitle() {
+		return "C#";
+	}
+
+	public boolean isECoreGenerator() {
+		return true;
+	}
+
+	public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+			String implDir, Logger logger) throws Exception {
+
+		
 		char sl = File.separatorChar;
 		String modelGenerationDir =  implDir + sl + "HL7.Fhir.Instance.Model" + sl;
 		
 		File f = new File(modelGenerationDir);
-		if( !f.exists() )
-			f.mkdir();
+		if( !f.exists() ) f.mkdir();
 		
 		List<String> filenames = new ArrayList<String>();
 		
+/*
 		// Generate a C# file for each Resource class
 		for (ResourceDefn resource : definitions.getResources().values()) 
 		{
@@ -152,7 +168,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	        				cd.getDefinition(), genDate, version);
 			filenames.add("HL7.Fhir.Instance.Model" + sl + cd.getCode()+".cs" );  
 	    }
-
+*/
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
 	    projGen.build(implDir, filenames);
@@ -163,19 +179,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
 		zip.addFiles(implDir + sl, "", ".csproj");
 		zip.addFiles(implDir + sl, "", ".sln");
-		zip.close();
-	}
-
-	public String getName() {
-		return "csharp";
-	}
-
-	public String getDescription() {
-		return "Resource definitions (+ more todo)";
-	}
-
-	public String getTitle() {
-		return "C#";
+		zip.close();		
 	}
 
 }

@@ -29,11 +29,14 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.util.Date;
 
+import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.utilities.Logger;
 
 public interface PlatformGenerator {
 
+	
+	
   /**
    * @return The name of the generator - used to show progress in log reports - must be a valid java token, and a filename, all lowercase    
    */
@@ -49,6 +52,12 @@ public interface PlatformGenerator {
    * @return a string description of what the reference implementation produces for an implementer, along with an estimate of status, and dependencies
    */
   public String getDescription();
+
+  
+  /**
+   * @return returns true if this generator uses eCore for the FHIR definitions, false if it uses ElementDefn
+   */
+  public boolean isECoreGenerator();
   
   /**
    * Actually generate the reference implementation. The reference generator must generate a zip file [name].zip in the dst dir where
@@ -64,5 +73,15 @@ public interface PlatformGenerator {
    */
   public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger)  throws Exception;
 
-  
+  /**
+   * Actually generate the reference implementation. The reference generator must generate a zip file [name].zip in the dst dir where
+   * [name] is the name returned by getName(), and the zip file contains the contents of the reference implementation. The routine should 
+   * throw an exception if the generation fails.
+   * 
+   * @param definitions - the logical definitions that are FHIR
+   * @param destDir - the destination directory, where the .zip file is to go (has a path separator appended)
+   * @param implDir - the folder in the /implementations directory in the FHIR subversion tree, if the generator wants to store stuff in subversion (has a path separator appended)
+   * @param logger - so that the generator can log issues/errors/progress to the same place as the overall build process
+   */
+  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir, String implDir, Logger logger)  throws Exception;  
 }

@@ -34,6 +34,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -52,7 +53,9 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
@@ -140,8 +143,9 @@ public class Publisher {
 			prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
 			if (validate()) 
 			{
-				generateECore(prsr.getECoreParseResults(), page.getFolders().dstDir + "ECoreDefinitions.xml");
-				produceSpecification();
+				String eCorePath =  page.getFolders().dstDir + "ECoreDefinitions.xml";
+				generateECore(prsr.getECoreParseResults(), eCorePath);
+				produceSpecification(eCorePath);
 				validateXml();
 				validateJava();
 				System.out.println("Finished publishing FHIR");
@@ -257,7 +261,7 @@ public class Publisher {
 		return errors.size() == 0;
 	}
 
-	private void produceSpecification() throws Exception {
+	private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
 		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml",
 				isInternalRun);
@@ -265,12 +269,25 @@ public class Publisher {
 				page.getDefinitions(), page);
 		book = new BookMaker(page, chm);
 
-		for (PlatformGenerator gen : page.getReferenceImplementations()) {
+		XMIResource resource = new XMIResourceImpl();
+		resource.load( new FileInputStream(eCorePath), null );
+		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = 
+				(org.hl7.fhir.definitions.ecore.fhir.Definitions)resource.getContents().get(0);	
+		
+		for (PlatformGenerator gen : page.getReferenceImplementations()) 
+		{
 			log("Produce " + gen.getName() + " Reference Implementation");
-			gen.generate(page.getDefinitions(), page.getFolders().dstDir, page
-					.getFolders().implDir(gen.getName()), page.getVersion(),
-					page.getGenDate(), page);
+		
+			String destDir = page.getFolders().dstDir;
+			String implDir = page.getFolders().implDir(gen.getName());
+			
+			if( !gen.isECoreGenerator() )
+				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(),
+						page.getGenDate(), page);
+			else
+				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
+		
 		log("Produce Schemas");
 		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(),
 				page.getFolders().tmpResDir, page.getFolders().xsdDir,

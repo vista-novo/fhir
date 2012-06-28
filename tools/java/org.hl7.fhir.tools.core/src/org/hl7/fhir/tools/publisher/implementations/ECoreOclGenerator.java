@@ -30,6 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.FileOutputStream;
 import java.util.Date;
 
+import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
@@ -57,5 +58,14 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
     zip.close();    
     
   }
+
+public boolean isECoreGenerator() {
+	return false;
+}
+
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+		String implDir, Logger logger) throws Exception {
+	throw new UnsupportedOperationException("Ocl generator uses ElementDefn-style definitions.");
+}
 
 }

@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 
+import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -134,5 +135,14 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   public String getTitle() {
     return "Java";
   }
+
+public boolean isECoreGenerator() {
+	return false;
+}
+
+public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+		String implDir, Logger logger) throws Exception {
+	throw new UnsupportedOperationException("Java generator uses ElementDefn-style definitions.");	
+}
 
 }

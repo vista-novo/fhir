@@ -356,7 +356,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Annotations">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortDefinition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="kind" value="attribute"/>
+        <details key="kind" value="element"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
