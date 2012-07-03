@@ -4,12 +4,11 @@
 Notes:
 </p>
 <ul>
-<li>The Message resource is a special case; it is only defined for the messaging framework, and is not encountered in other contexts</li>
-<li>The Message resource is always found in an aggregation. The resource references enterer, author, and responsible may 
-  all be included in the aggregation or left out on the basis that the recipient (and any intermediaries) are able to locate/resolve the resources
+<li>The resource references enterer, author, and responsible may 
+  all be included in the bundle or left out on the basis that the recipient (and any intermediaries) are able to locate/resolve the resources
   independently. The former would be suitable for loosely coupled systems, and the latter for tightly coupled systems. The messaging conformance 
-  statement for an application may describe what aggregation occurs or is required here</li>
-<li>The actual content of the data is specified per message event. The data resource is always aggregated</li>
+  statement for an application may reference <a href="profile.htm">a profile</a> that describes how the bundling occurs</li>
+<li>The actual content of the data resource is specified for each message event. The data resource is always included in the bundle</li>
 </ul>  
 
 <a name="Events"></a>
@@ -39,8 +38,8 @@ The following rules apply to the mailbox:
 </p>
 <ul>
  <li>The mailbox only accepts POST transactions - any other HTTP method will result in an HTTP error</li>
- <li>The request content type submitted is always an atom aggregation containing a message or document resource as the first resource</li>
- <li>The response content type returned is always an error, an atom aggregation containing a message as the first resource, or empty (if a document was received)</li>
+ <li>The request content type submitted is always a bundle (i.e. an <a href="atom.htm">atom feed</a>) containing a message or document resource as the first resource</li>
+ <li>The response content type returned is always an HTTP error, a bundle (i.e. an <a href="atom.htm">atom feed</a>) containing a message as the first resource, or empty (if a document was received)</li>
  <li>The URL never takes any parameters</li>
  <li>The mailbox may be authenticated using standard HTTP authentication methods, including OAuth</li>
 </ul>

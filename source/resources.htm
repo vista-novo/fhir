@@ -25,6 +25,17 @@ The FHIR specification defines the following resources:
 <img id="resmap1" src="res-map.png" usemap="#resmap2" border="0" height="322" width="562" alt="Data Types Concept Map"/>
 </p>
 
+<table class="list">
+<tr><td>Person</td><td>Identifies a person, the languages and qualifications, and other people who are related to them by birth, social or employment context</td></tr>
+<tr><td>Animal</td><td>Identifies an animal, it's species, and other animals or people that are related to it by birth or ownership arrangements</td></tr>
+<tr><td>Organization</td><td>Identifies an organization, it's formal accreditations, and sub, super, and partner organizations</td></tr>
+<tr><td>Patient</td><td>Subject A (person/animal) is under the care of Organization B</td></tr>
+<tr><td>Agent</td><td>Person A fills role R for Organization B</td></tr>
+<tr><td>LabReport</td><td>Lab A provides a report (text and/or structured data with analysis and specimen details) concerning Patient B as requested by Agent C for reason D</td></tr>
+<tr><td>AssessmentScale</td><td>Agent A reports a score (outcome, method reference, and supporting data) for Patient B at a specific time</td></tr>
+<tr><td>Prescription</td><td>Agent A prescribes a medication (code and/or ingredients) to patient B with administration instructions and optionally dispensing instructions for Agent of Organization C</td></tr>
+</table>
+
 
 <%footer%>
 

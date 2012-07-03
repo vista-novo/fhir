@@ -8,19 +8,19 @@ claim to be conformant to "FHIR messaging".
 <p>
 In FHIR messaging, a "request message" is sent from a source application to a destination
 application when an event happens. Events mostly correspond to things that happen in the 
-real world. The request message consists of an <a href="atom.htm#Aggregation">aggregation</a>
-of resources, with the first resource in the aggregation being this <i>Message</i> resource. The 
+real world. The request message consists of an <a href="atom.htm#bundle">bundle</a>
+of resources, with the first resource in the bundle being this <i>Message</i> resource. The 
 Message resource has a code - the message event - that identifies the nature of the 
 request message and carries additional request metadata. The other resources in the 
-aggregation depend on the type of the request.
+bundle depend on the type of the request.
 </p>
 <p>
 The events supported in FHIR, along with the resources that are included in them, are defined below. 
 </p>
 <p>
 The destination application processes the request, and returns one or more response messages 
-which are also an <a href="atom.htm#Aggregation">aggregation</a> of resources, with the first 
-resource in the aggregation being a <a href="#resource">Message</a> resource with a response
+which are also an <a href="atom.htm#bundle">bundle</a> of resources, with the first 
+resource in the bundle being a <a href="#resource">Message</a> resource with a response
 section that reports the outcome of processing the message and any additional response resources 
 required. 
 </p>
@@ -61,15 +61,15 @@ FHIR messaging describes a simple approach to handle this that applications
 must conform to, whether messaging appears to be reliable or not.
 </p>
 <p>
-A message receiver must always check the incoming aggregation package ids,
+A message receiver must always check the incoming bundle identifier (atom feed.id),
 and check them against a store of previously received messages (going back 
 a reasonable period in time). If it receives a duplicate message id that 
 it has already responded to, it should assume that the original response 
 was lost (failed to return to the request issuer), and resend the original 
-response in a new aggregation package with Message.response.duplicate set 
+response in a new bundle with Message.response.duplicate set 
 to true. If the source application gets no response to it's request from 
 the destination application, the source application should resend the 
-same aggregation with the same aggregation package id. 
+same bundle with the same atom feed.id. 
 </p>
 
 <h2>Conformance Statement</h2>
@@ -77,8 +77,8 @@ same aggregation with the same aggregation package id.
 Applications claiming to be conformant to "FHIR messaging" may choose 
 to publish a conformance statement that lists all the message events 
 they support, either as sender or listener, and for each event, a 
-profile that states which  resources are aggregated (sender), or 
-are required to be aggregated (listener), and any rules about the 
+profile that states which resources are bundled (sender), or 
+are required to be bundled (listener), and any rules about the 
 information content of the individual resources. The conformance 
 statement is a <a href="conformance.htm">resource with the name 
 "Conformance"</a>.
@@ -100,7 +100,7 @@ to this end point does not represent the actual occurance of any event, not can 
 any logic associated with the actual event</b>; it is just for managing message resources.
 </p>
 <p>
-The second end-point is used for actually sending messages as atom aggregations, to indicate 
+The second end-point is used for actually sending messages as <a href="atom.htm#bundle">bundles</a>, to indicate 
 that the event identified by the code has occured. The end-point responds with a message
 response as defined for the particular event, or an error indicating that the attempt to 
 process the message was unsuccesful. The functionality of this end-point <a href="#mailbox">is described below</a>.

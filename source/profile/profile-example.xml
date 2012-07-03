@@ -6,13 +6,9 @@
     <name>Grahame Grieve</name>
     <reference>grahame@healthintersections.com.au</reference>
   </author>
-  <intention>Describes how the lab report is used for a Lipid Profile</intention>
   <description>Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</description>
   <status>testing</status>
   <date>2012-05-12</date>
-  <endorser>
-    <name></name>
-  </endorser>
   <resource>
     <type>Resource</type>
     <name>Lipids</name>

@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -53,7 +53,7 @@ extension</a>:
  <tr><td>Short Defn</td><td>(one of the codes) AD | SP | BR | CL | IN | LS | MID | PFX | SFX</td></tr>
  <tr><td>Definition</td><td>A set of codes each of which specifies a certain subcategory of the name part in addition to the main name part type</td></tr>
  <tr><td>Comments</td><td>Used to indicate additional information about the name part and how it should be used</td></tr>
- <tr><td>Cardinality</td><td>0..* (this s always optional, but more than one can be used if required)</td></tr>
+ <tr><td>Cardinality</td><td>0..* (this is always optional, but more than one can be used if required)</td></tr>
  <tr><td>Type</td><td>code</td></tr>
  <tr><td>dataAbsentReason?</td><td>No. (If the qualifier isn't known, don't include it)</td></tr>
  <tr><td>XPaths</td><td>N/A</td></tr>
@@ -157,7 +157,7 @@ and anyone can register an extension on it.
 </p>
 <table class="codes">
  <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
- <tr><td>HL7 Approved</td><td>{tbd]</td><td>[tbd]</td></tr>
+ <tr><td>HL7 Approved</td><td>[tbd]</td><td>[tbd]</td></tr>
  <tr><td>Community</td><td>[tbd]</td><td>[tbd]</td></tr>
  <tr><td>Interim</td><td>http://hl7connect.healthintersections.com.au/svc/fhir/profile/search</td><td>https://hl7connect.healthintersections.com.au/svc/fhir/profile/upload</td></tr>
 </table>
@@ -175,7 +175,7 @@ an id attribute, so that the extension can be connected to it:
   &lt;use&gt;official&lt;/use&gt;  
   &lt;part id="n1"&gt;
     &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;�stlund&lt;/value&gt;
+    &lt;value&gt;Östlund&lt;/value&gt;
   &lt;part&gt;
 &lt;/name&gt;
 </pre>
@@ -191,7 +191,7 @@ Then, in the extensions section of the resource, you add an extension. The code 
 &lt;extension>
 </pre>
 <p>
-This particular example is a Scandavian mellannamn. See <a href="datatypes-examples.htm"> for additional examples</a>.
+This particular example is a Scandavian mellannamn. See <a href="datatypes-examples.htm">Datatypes examples for additional examples</a>.
 </p>
 
 <%footer%>

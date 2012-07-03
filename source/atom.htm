@@ -3,7 +3,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Aggregations - FHIR v<%version%></title>
+    <title>Atom Feeds - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css"/>
     <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
 </head>
@@ -16,34 +16,36 @@
 <%atomheader%>
 
 
-<a name="Aggregation"></a>
-<h1>Aggregation</h1>
+<a name="bundle"></a> <!-- here in case we want to move the specific reference to a bundle further down -->
+<h1>Atom Feeds</h1>
 <p>
-One basic operation performed with resources is to aggregate all the content of a group of resources 
-into a single XML document. This is performed in many of the implementation frameworks. Aggregated 
-resources are useful for grouping resources together for a variety of different reasons, including:
+One basic operation performed with resources is to gather all a list of resources into a single XML document.
+In FHIR, this is referred to as "bundling" the resources together. The resource bundle is not just a list of 
+references to resources, but includes their whole content. These resource bundles are useful for a variety of 
+different reasons, including:
 </p>
 <ul>
-  <li>Listing a set of resources that have changed since a given instant in time </li>
-  <li>Exchanging a set of resources as a single batch</li>
+  <li>Returning a set of resources that meet some criteria as part of a server operation</li>
+  <li>Storing a list of resources</li>
+  <li>Exchanging a set of resources as part of a message transaction</li>
   <li>Grouping a self contained set of resources to act as an exchangeable and persistable group with clinical integrity (i.e. a clinical document)</li>
 </ul>
 <p>
-Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
+Whenever resources are gethered into a list, this is done using the Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
 </p>
 <pre class="spec">
 &lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
   &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
-  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">when aggregation happened</font>&lt;/updated&gt;
-  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">unique id for this aggregation</font>&lt;/id&gt;
-  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="via" href="<font color="navy">aggregating application url</font>"/&gt;
+  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
+  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">unique id for this bundle</font>&lt;/id&gt;
+  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="via" href="<font color="navy">building application url</font>"/&gt;
 
   &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
     &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
     &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">Master Location for Resource</font>"/&gt;
     &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Id for this resource</font>&lt;/id&gt;
     &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
-    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Time resource sourced for aggregation</font>&lt;/updated&gt;
+    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
     &lt;<b>author</b>&gt;
       &lt;<b>name</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
       &lt;<b>uri</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
@@ -66,21 +68,21 @@ Resources are aggregated using the Atom format (<a href="http://tools.ietf.org/h
 </pre>
 <p>Notes:</p>
 <ul>
- <li>Logically, an aggregation is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
+ <li>Logically, a bundle is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
  <li>The order of elements does not matter in an atom feed. The order of elements in the atom namespace as documented here does not need to be followed</li>
  <li>The title for the feed and the entry are arbitary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
- <li>Every aggregation must have a unique id, which must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
+ <li>Every bundle must have a unique id, which must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
  <li>The link elements are mandatory in the atom feed format.</li>
  <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom type, not a FHIR type)</li>
  <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Version Id, Last Updated, and Master Location</li>
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author, or a device. The uri is a link to the resource for the author</li>
  <li>In a RESTful implementation, the Master Location is the URL of the resource on a system that is the master for that resource. In the absence of a known master, or a RESTful implementation, some other location may be used.</li>
  <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
- <li>The entire aggregation can be signed with a single Enveloped Digital Signature as described in the Atom specification. See below for further comment</li>
+ <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification. See below for further comment</li>
 </ul>
 
 <p>
-Readers of the aggregated resources should always look through the resources in the 
+Readers of the resources bundles should always look through the resources in the 
 atom feed when a <a href="xml.htm#Resource">resource reference</a> is encountered. 
 The resource reference may have the resource type and a relative url, which is the id of the target, like this:
 </p>
@@ -162,21 +164,21 @@ is not required.
 <h2>Implementation Notes</h2>
 <ul>
 <a name="digsig"></a>
-<li>Aggregations may be signed following the rules described in the Atom specification. One consequence of 
+<li>Atom Feeds may be signed following the rules described in the Atom specification. One consequence of 
 signing the document is that URLs, Identifiers, and internal references are frozen, and cannot be changed.
 This might be a good feature, but it may also cripple interoperability between closed eco-systems where
-re-identification frequently occurs. For this reason, it is recommended that only Document Aggregations 
-are signed, and then only when all the related resources are found in the aggregation.</li>
+re-identification frequently occurs. For this reason, it is recommended that only Document Bundles
+are signed, and then only when all the related resources are found in the bundle.</li>
 <a name="Ids"></a>
 <li>
 FHIR resources make use of id attributes as targets for <a href="xml.htm#idref">internal references with resources</a>. 
 These id attributes are unique and resolved within the context of a single resource. When resources are 
-combined into an aggregation, different resources may contain duplicate id attributes. 
+combined into a bundle, different resources may contain duplicate id attributes. 
 </li>
 <a name="json"></a>
 <li>There is no JSON representation of an atom feed. Atom feeds are always in XML format, though the resources may be in <a href="xml.htm#json">JSON</a>.</li>
 <a name="rest"></a>
-<li>The <a href="document.htm#rest">Document</a> framework defines an additional RESTful end-point that works like a <a href="http.htm">normal RESTful interface</a> but serves aggregated documents instead of a document resource.</li>
+<li>The <a href="document.htm#rest">Document</a> framework defines an additional RESTful end-point that works like a <a href="http.htm">normal RESTful interface</a> but serves document bundles instead of document resources.</li>
 </ul>
 
 <%footer%>

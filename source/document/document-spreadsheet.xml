@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:20:02Z</Created>
-  <LastSaved>2012-05-26T22:15:35Z</LastSaved>
+  <LastSaved>2012-06-29T21:53:14Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -115,7 +115,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A document that contains resources</Data></Cell>
-    <Cell><Data ss:Type="String">A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole</Data></Cell>
+    <Cell><Data ss:Type="String">A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed</Data></Cell>
     <Cell><Data ss:Type="String">For document based framework</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Confidentiality? Language? Consent? Signatures</Data></Cell>
    </Row>
@@ -373,12 +373,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>27</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>33</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

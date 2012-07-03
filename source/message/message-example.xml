@@ -19,9 +19,11 @@
   </source>
   <destination>
     <name>Acme Message Gateway</name>
-    <!-- this is to indicate to the message delivery service identified by the name that 
-       this particular message is intended for Person 34 - it would make sense for that 
-       resource to also be in the aggregation. 
+    
+    <!-- this is to indicate to the Acme Message Gateway that this particular message 
+       is intended for Person 34 - usually it would make sense for the resource for 
+       Person 34 to be included in the bundle of the message as well, in case 
+       the Acme Message Gateway doesn't know who person 34 is. 
 
        Of course, it doesn't make sense to send a person update message to a particular 
        person, but it might very well make sense to do this with targetted clinical content -->
@@ -30,15 +32,18 @@
       <id>34</id>
     </target>
   </destination>
-	<author>
-	  <type>Person</type>
-	  <id>3455bc23</id>
-	</author>
+  <author>
+    <type>Person</type>
+    <id>3455bc23</id>
+  </author>
+  
+  <!-- Here's the payload, the resource that this admin-update concerns -->
   <data>
     <type>Person</type>
     <id>342356</id>
   </data>
-	<text>
+  
+  <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Update Person resource for Peter James CHALMERS ("Jim"), MRN: 12345 (Acme Healthcare)</p>

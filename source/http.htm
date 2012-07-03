@@ -227,8 +227,8 @@ The history interaction retrieves the history of the resource. The interaction i
   GET [service-url]/[resourcetype]/{@id}/history (?format=mimeType)
 </pre>
 <p>
-The return content is an <a href="atom.htm#Aggregation">Atom feed aggregration</a> containing the version history for that 
-resource, sorted with oldest versions first. See the aggregation documentation for how deletions are represented.
+The return content is an <a href="atom.htm">Atom feed</a> containing the version history for that 
+resource, sorted with oldest versions first. ToDo: how deletions are represented.
 </p>
 
 
@@ -276,8 +276,8 @@ The updates interaction retrieves a list of changes to the resource type. The in
   GET [service-url]/[resourcetype] (?format=mimeType)
 </pre>
 <p>
-The return content is an <a href="atom.htm#Aggregation">Atom feed aggregration</a> containing the update history for that 
-resource type, sorted with oldest updates first. 
+The return content is an <a href="atom.htm">Atom feed </a> containing the update history for that 
+resource type as a list of resources, sorted with oldest updates first. 
 </p>
 <p>
 The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be 
@@ -312,7 +312,7 @@ increase it's usefulness. Note that which parameters to support is at the
 discretion of the server.
 </p>
 <p>
-The return content is an <a href="atom.htm#Aggregation">Atom feed aggregration</a> containing the results of the search
+The return content is an <a href="atom.htm">Atom feed </a> containing the results of the search as a list of resources
 in a defined order. This specification does not assign any particular meaning to the order of the resources.
 </p>
 

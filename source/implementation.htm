@@ -28,7 +28,7 @@ as well as documenting how <a href="hdata.htm">FHIR resources are used with hDat
 <p>
 Alternatively, it is not necessary to use any of these approaches; resources can be exchanged or persisted
 using any technical means that is appropriate to the context at hand. A common use of FHIR 
-resources or aggregations is as parameters of service interfaces. FHIR itself does not define
+resources or <a href="atom.htm">bundles</a> is as parameters of service interfaces. FHIR itself does not define
 any particular service interface; instead, other standards and implementations define their 
 own service interfaces and architecture that use FHIR resources. As long as the resources that
 are used are conformant with regard to this specification, and the rules for authoring and
@@ -36,7 +36,7 @@ reading applications are followed, then the implementation can claim conformance
 "FHIR Resources". Such implementations will need to resolve several issues:
 </p>
 <ul>
-  <li>Resource references need to be able to be resolved. There are a variety of solutions to this, from ensuring that the all the relevant resources are aggregated together, or that all relevent resources are passed as parameters in a service call, through to a resource repository that provides access to all reference resources. </li>
+  <li>Resource references need to be able to be resolved. There are a variety of solutions to this, from ensuring that the all the relevant resources are bundled together, or that all relevent resources are passed as parameters in a service call, through to a resource repository that provides access to all reference resources. </li>
   <li>The <a href="xml.htm#metadata">Resource metadata</a> items "Version Id" and "Last Modified Date" are provided for use in resolving resource versioning and concurrency issues, both from a technical and human perspective. Most contexts of use will require at least one if not both of these attributes for some uses, and the implementation framework will need to resolve how and when they are exchanged</li>
   <li>The <a href="xml.htm#metadata">resource metadata</a> item "Master Location" may be useful as part of a solution towards resolving resource references, and/or handling issues pertaining to distrubed use and re-use of resources, and implementations should describe how this data item is handlded</li>
   <li>The <a href="conformance.htm">conformance statement</a> allows authoring and reading applications to describe their rules concerning the use and contents of a resource. 
@@ -53,7 +53,7 @@ There are many ways to use resources to build working systems:
 <ul>
 <li>A RESTful paradigm where resources are exchanged separately using http transactions directly as defined in this specification. Implementations can use both push and pull, or a mix of the two</li>
 <li>The resources can be exchanged in messages or some other SOA implementation, where the resources are directly the contents/parameters that are exchanged</li>
-<li>The resources can be "aggregated" into documents that are self-contained and complete collections of linked resources, and then these documents can be exchanged and/or persisted</li>
+<li>The resources can be "bundled" into documents that are self-contained and complete collections of linked resources, and then these documents can be exchanged and/or persisted</li>
 <li>The resources can be embedded in HTML pages or other web content such as content feeds</li>
 </ul>
 

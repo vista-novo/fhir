@@ -2,8 +2,8 @@
 
 <p>
 FHIR resources can be used to build clinical documents that document clinical observations and services. 
-A clinical document is a aggregated collection of resources that is fixed in scope and frozen in time, 
-and authored and/or attested as an aggregate by humans, organisations and devices. Documents built in 
+A clinical document is a bundle (a list of resources in an <a href="atom.htm">atom feed</a>) that is 
+fixed in scope and frozen in time, and authored and/or attested as a set of logically contained resource by humans, organisations and devices. Documents built in 
 this fashion may be exchanged between systems, and also persisted in document storage and management 
 systems, including systems such as IHE XDS. Applications claiming conformance to this framework claim 
 to be conformant to "FHIR documents". 
@@ -11,23 +11,23 @@ to be conformant to "FHIR documents".
 
 <h2>Document Content</h2>
 <p>
-All documents have the same structure: an <a href="atom.htm">aggregation</a> that has <i>Document
+All documents have the same structure: a <a href="atom.htm">bundle</a> that has <i>Document
 Header</i> (below) first, followed by a series of other resources referenced from the Document 
-header that provides guidance for how they fit together. The aggregation gathers all the content
+header that provides guidance for how they fit together. The bundle gathers all the content
 of the document into a single XML document which maybe signed and managed as required. The resources
-nclude both human and computer readable portions.
+include both human and computer readable portions.
 </p>
 <p>
 The document header identifies the document and it's purpose, sets the context of the document, and 
 carries key information such as the subject and author. It also divides the document up into a 
 series of sections that each contain some other resource identified in this specification that 
 carries the content. Any resource referenced directly in the Document resource must be included
-in the aggregation when the document is assembled; other resources that these documents refer to
-may also be aggregated if the document originator chooses to. 
+in the bundle when the document is assembled; other resources that these documents refer to
+may also be included in the bundled if the document originator chooses to. 
 </p>
 <p>
 <a href="profile.htm">Document profiles</a> can make additional rules about which resources
-must be aggregated along with the resources that are directly referenced in the Document resource. 
+must be included in the bundle along with the resources that are directly referenced in the Document resource. 
 In addition, Document Profiles can specify what sections a document contains, and what the 
 constraints on their contents are. Applications should consider publishing <a href="conformance.htm">conformance 
 statements</a> that identify particular documents they support.
@@ -39,7 +39,7 @@ statements</a> that identify particular documents they support.
 
 <ul>
  <li>[baseurl]/document/: a normal RESTful end point for document resources</li> 
- <li>[baseurl]/bundles/document/: a RESTful end point that serves whole documents as <a href="atom.htm">aggregates</a>. <a href="#rest">This is described below</a></li> 
+ <li>[baseurl]/bundles/document/: a RESTful end point that serves documents as <a href="atom.htm">bundles</a>. <a href="#rest">This is described below</a></li> 
 </ul>
 <p>
 The first end-point is used for working within the document contents, for instance, for building 
@@ -53,7 +53,7 @@ are not required to do so.
 RESTful systems may also accept documents through their <a href="message.htm#mailbox">mailbox</a>.
 </p>
 <p>
-Note: While the end-points above are defined for use with document resources and aggregated documents, 
+Note: While the end-points above are defined for use with document resources and document bundles, 
 it is not necessary to use them; documents may be transferred between systems using any method desired.
 </p>
 </div>

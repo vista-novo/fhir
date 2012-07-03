@@ -62,7 +62,7 @@ The document user is responsible for ensuring that received CDA documents are pr
 to this specification. A document recipient has the following obligations:
 </p>
 <ul>
- <li>When storing/transmitting a document, any method may be used as long as the aggregated document can be (re-)assembled with sufficient integrity to validate a digital signature</li>
+ <li>When storing/transmitting a document, any method may be used as long as the bundled document can be (re-)assembled with sufficient integrity to validate a digital signature (i.e, it is legitimate to unbundle the resources and store them on a FHIR RESTful server, but this is not required)</li>
  <li>When presenting the narrative of the document, the rules described above must be followed</li>
  <li>A user is allowed to extract resources or data from the document for other use, but the data is no longer attested by the document author.</li>
  <li>Where ever the data (or information derived from it) is displayed to a user, there should always be a way for the user to access a presentation of the original document</li>
@@ -84,36 +84,36 @@ to this specification. A document recipient has the following obligations:
 </ul>
 
 <a name="endpoint"></a>
-<h2>RESTful support for Aggregated Documents</h2>
+<h2>RESTful support for Document Bundles</h2>
 <p>
-The standard RESTful endpoints (such as [baseurl]/person/@{id} for a Person resource, or [baseurl]/document/@{id}) handle
-the individual resources, and not aggregations (though, per the RESTful spec, they may serve up aggregations for 
+The standard RESTful endpoints (such as [baseurl]/person/@{id} for a Person resource, or [baseurl]/document/@{id} for the Document resource) handle
+the individual resources, and not bundles (though, per the RESTful spec, they serve up atom feeds for 
 the <a href="http.htm#history">history</a>, <a href="http.htm#search">search</a> and <a href="http.htm#update">update</a> operations). 
-The <a href="document.htm">Document</a> framework defines an additional end-point for handling aggregated documents at 
-[baseurl]/bundles/document/@{id}). In this context, the id is the id of the atom aggregation itself. The end-point supports the following operations:
+The <a href="document.htm">Document</a> framework defines an additional end-point for handling document bundles at 
+[baseurl]/bundles/document/@{id}). In this context, the id is the id of the bundle itself (atom feed.id). The end-point supports the following operations:
 </p>
 <table class="list"> 
   <tr><td><b>Instance</b></td><td></td></tr>
-  <tr><td>read</td><td>Retrieve an aggregation</td></tr>
+  <tr><td>read</td><td>Retrieve a document bundle</td></tr>
   <tr><td>vread</td><td>Not supported - documents have no version history</td></tr>
   <tr><td>update</td><td>post a document to the server. Note that if a document is already found at the specified id (which must match the atom id), the the server SHALL return a 409 Conflict</td></tr>
-  <tr><td>delete</td><td>Delete an aggregation. A document may be undeleted by reposting it (the same document exactly)</td></tr>
+  <tr><td>delete</td><td>Delete a bundle. A document may be undeleted by reposting it (the same document exactly)</td></tr>
   <tr><td>validate</td><td>Check that the content would be acceptable as a submission</td></tr>
   <tr><td>history</td><td>Supported, but only deletions and un-deletions will be in the history after the first update.</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
   <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
-  <tr><td>search</td><td>Search the aggregations based on some filter criteria. Supported search parameters<br/>
+  <tr><td>search</td><td>Search the document bundles based on some filter criteria. Supported search parameters<br/>
               <ul>
-	        <li>atom.id - an id of a document (i.e. the id in the atom). There SHALL only be one aggregation for each document</li>
+	        <li>atom.id - an id of a document (i.e. the feed.id in the atom)</li>
 		<li>other parameters as for the document resource apply</li>
 	      </ul>
 	      </td></tr>
-  <tr><td>create</td><td>Not supported - document ids are always provided by the author, and the document must be provided as an updated</td></tr>
+  <tr><td>create</td><td>Not supported - document ids are always provided by the author, and the document must be provided as an update</td></tr>
 </table>
 <p>
-Note that the history, updates and search methods all returns aggregations of aggregations - that is, atom feeds that contain entries where
+Note that the history, updates and search methods all return atom feeds that contain bundles - that is, atom feeds that contain entries where
 the content type is another atom feed. Atom feeds are only ever nested two levels deep (i.e. one atom feed containing a series of atom feeds
-that contain resources).
+that are bundles that contain resources).
 </p>
 
 

@@ -314,7 +314,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">The actual content of the message</Data></Cell>
     <Cell><Data ss:Type="String">The actual data of the message - a reference to the focus class of the message. </Data></Cell>
     <Cell><Data ss:Type="String">Every message event is about actual data, a single resource, that is identified in the definition of the event, and perhaps some or all linked resources</Data></Cell>
-    <Cell><Data ss:Type="String">The data is defined where the transaction type is defined. The transaction data is always aggregated with the transaction resource</Data></Cell>
+    <Cell><Data ss:Type="String">The data is defined where the transaction type is defined. The transaction data is always included in the bundle that is the full message</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Message.extension</Data></Cell>
@@ -345,7 +345,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>26</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -93,7 +93,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Metadata">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="19" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="808.5"/>
    <Row ss:AutoFitHeight="0">
@@ -118,22 +118,11 @@
       ss:Type="String">grahame@healthintersections.com.au</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">intention</Data></Cell>
-    <Cell ss:StyleID="s64"><Data ss:Type="String">Describes how the lab report is used for a Lipid Profile</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">description</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">evidence</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">comments</Data></Cell>
-    <Cell ss:StyleID="s64"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">status</Data></Cell>
@@ -142,20 +131,6 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">date</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="DateTime">2012-05-12T00:00:00.000</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">endorser.name</Data></Cell>
-    <Cell ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">endorser.reference</Data></Cell>
-    <Cell ss:StyleID="s64"/>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">changes</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s64"><Data ss:Type="String">supercedes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">profile</Data></Cell>
@@ -179,7 +154,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
