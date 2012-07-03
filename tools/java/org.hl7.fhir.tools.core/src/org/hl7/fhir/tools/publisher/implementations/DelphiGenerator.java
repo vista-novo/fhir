@@ -1011,7 +1011,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   private void defineList(String tn, String tnl) {
-    if (!lists.contains(tnl) && !tnl.startsWith("TFHIRResourceReference") && !tnl.equals("TStringList")) {
+    if (tnl.contains("{"))
+      tnl = tnl.substring(0, tnl.indexOf("{"));
+    if (tn.contains("{"))
+      tn = tn.substring(0, tn.indexOf("{"));
+    if (!lists.contains(tnl) && !tnl.equals("TStringList")) {
       lists.add(tn+"List");
       String tt = tn.substring(1);
       defCode.classFwds.add("  "+tn+"List = class;\r\n");
@@ -1210,14 +1214,14 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private String getTypename(TypeRef type) throws Exception {
     if (type.getParams().size() == 1) {     
       if (type.isResourceReference())
-        return "TFHIRResourceReference{"+getTypeName(type.getParams().get(0))+"}";
+        return "TResourceReference{"+getTypeName(type.getParams().get(0))+"}";
       else if (type.getName().equals("Interval"))
         return "TInterval_"+type.getParams().get(0);
       else
         throw new Exception("not supported");
     } else if (type.getParams().size() > 1) {
       if (type.isResourceReference())
-        return "TFHIRResourceReference{Resource}";
+        return "TResourceReference{Resource}";
       else
         throw new Exception("not supported");
     } else {
@@ -1250,8 +1254,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       return "TSmartDecimal";      
     } else if (tn.equals("xhtml")) {
       return "TFhirXHtmlNode"; 
-    } else if (tn.equals("xml:ID")) {
-      return "TXmlIdReference";
+    } else if (tn.equals("idref")) {
+      return "String";
     } else if (tn.equals("base64Binary")) {
       return "TAdvBuffer";
     } else if (tn.equals("*")) {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
+// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -916,24 +916,17 @@ public class XmlComposer extends XmlComposerBase {
       xml.open(FHIR_NS, name);
       composeString("id", element.getId());
       composeString("name", element.getName());
+      composeString("version", element.getVersion());
       composeProfileAuthor("author", element.getAuthor());
-      composeString("intention", element.getIntention());
+      composeString("description", element.getDescription());
       for (Coding e : element.getCode()) 
         composeCoding("code", e);
-      composeString("description", element.getDescription());
-      for (URI e : element.getEvidence()) 
-        composeURI("evidence", e);
-      composeString("comments", element.getComments());
       if (element.getStatus() != null)
         composeString("status", element.getStatus().toCode());
       composeString("date", element.getDate());
-      for (Profile.Endorser e : element.getEndorser()) 
-        composeProfileEndorser("endorser", e);
-      composeString("changes", element.getChanges());
-      for (URI e : element.getSupercedes()) 
-        composeURI("supercedes", e);
-      for (URI e : element.getProfile()) 
-        composeURI("profile", e);
+      for (URI e : element.getImport()) 
+        composeURI("import", e);
+      composeString("bundle", element.getBundle());
       for (Profile.Resource e : element.getResource()) 
         composeProfileResource("resource", e);
       for (Profile.ExtensionDefn e : element.getExtensionDefn()) 
@@ -956,17 +949,8 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeString("name", element.getName());
-      composeURI("reference", element.getReference());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeProfileEndorser(String name, Profile.Endorser element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeString("name", element.getName());
-      composeURI("reference", element.getReference());
+      for (URI e : element.getReference()) 
+        composeURI("reference", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -1049,7 +1033,7 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBool("aggregated", element.getAggregated());
+      composeBool("bundled", element.getBundled());
       composeURI("profile", element.getProfile());
       xml.close(FHIR_NS, name);
     }

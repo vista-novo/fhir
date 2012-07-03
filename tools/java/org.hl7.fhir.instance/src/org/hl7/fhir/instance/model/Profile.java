@@ -29,18 +29,19 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
+// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A Resource Profile - a statement of constraint on one or more Resources and/or Concept Domains
+ * A Resource Profile - a statement of use of FHIR. May include constraints on Resources, Terminology Binding Statements, and Extension Definitions
  */
 public class Profile extends Resource {
 
     public enum ResourceProfileStatus {
         draft, // This profile is still under development
         testing, // this profile was authored for testing purposes (or education/evaluation/evangelisation)
+        review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn
         superceded; // This profile was superceded by a more recent version
@@ -51,6 +52,8 @@ public class Profile extends Resource {
           return draft;
         if ("testing".equals(codeString))
           return testing;
+        if ("review".equals(codeString))
+          return review;
         if ("production".equals(codeString))
           return production;
         if ("withdrawn".equals(codeString))
@@ -63,6 +66,7 @@ public class Profile extends Resource {
           switch (this) {
             case draft: return "draft";
             case testing: return "testing";
+            case review: return "review";
             case production: return "production";
             case withdrawn: return "withdrawn";
             case superceded: return "superceded";
@@ -167,7 +171,7 @@ public class Profile extends Resource {
         /**
          * Reference to the author to assist a user in finding and communicating with the author
          */
-        private java.net.URI reference;
+        private List<java.net.URI> reference = new ArrayList<java.net.URI>();
 
         public String getName() { 
           return this.name;
@@ -177,41 +181,8 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public java.net.URI getReference() { 
+        public List<java.net.URI> getReference() { 
           return this.reference;
-        }
-
-        public void setReference(java.net.URI value) { 
-          this.reference = value;
-        }
-
-    }
-
-    public class Endorser extends Element {
-        /**
-         * The name of the endorsing body
-         */
-        private String name;
-
-        /**
-         * Reference to the author to assist a user in finding and communicating with the endorsing body
-         */
-        private java.net.URI reference;
-
-        public String getName() { 
-          return this.name;
-        }
-
-        public void setName(String value) { 
-          this.name = value;
-        }
-
-        public java.net.URI getReference() { 
-          return this.reference;
-        }
-
-        public void setReference(java.net.URI value) { 
-          this.reference = value;
         }
 
     }
@@ -228,7 +199,7 @@ public class Profile extends Resource {
         private java.net.URI profile;
 
         /**
-         * The name of this aggregation profile
+         * The name of this resource constraint statement (to refer to it from other resource constraints)
          */
         private String name;
 
@@ -297,7 +268,7 @@ public class Profile extends Resource {
         private Definition definition;
 
         /**
-         * If context includes aggregation and type=Resource()
+         * If the type is Resource(*)
          */
         private ResourceA resource;
 
@@ -590,21 +561,21 @@ public class Profile extends Resource {
 
     public class ResourceA extends Element {
         /**
-         * Whether this resource is aggregated
+         * Whether this resource is included in the bundle, if the profile is specifying a bundle
          */
-        private boolean aggregated;
+        private boolean bundled;
 
         /**
          * Reference to a Resource Profile
          */
         private java.net.URI profile;
 
-        public boolean getAggregated() { 
-          return this.aggregated;
+        public boolean getBundled() { 
+          return this.bundled;
         }
 
-        public void setAggregated(boolean value) { 
-          this.aggregated = value;
+        public void setBundled(boolean value) { 
+          this.bundled = value;
         }
 
         public java.net.URI getProfile() { 
@@ -839,37 +810,27 @@ public class Profile extends Resource {
     private String name;
 
     /**
+     * The offiical version of this profile - for external version specific references
+     */
+    private String version;
+
+    /**
      * Details of the author who accepts responsibility for publishing the profile
      */
     private Author author;
 
     /**
-     * A free text natural language description of the intent and scope of the Template. The purpose is to provide the author’s initial intent for the Template in the language specified below.
-     */
-    private String intention;
-
-    /**
-     * A set of terms from a controlled reference terminology that may be used to assist with indexing and searching of templates
-     */
-    private List<Coding> code = new ArrayList<Coding>();
-
-    /**
-     * A free text natural language description of the Template. Generally, this field should be used for things such as goals, variable lists, instructions for clinical use and interpretation, literature, examples from paper world, mapping from natural language to HL7 and the model itself, etc
+     * A free text natural language description of the Template and it's use
      */
     private String description;
 
     /**
-     * A description, reference or link to a published medical knowledge that was used in the definition of this Template
+     * A set of terms from external terminologies that may be used to assist with indexing and searching of templates
      */
-    private List<java.net.URI> evidence = new ArrayList<java.net.URI>();
+    private List<Coding> code = new ArrayList<Coding>();
 
     /**
-     * A statement regarding when this Template should not be used, or may be used erroneously. To define roles where the Template should not be used, or should be used with care. This field is used to expand in detail on the iIntention
-     */
-    private String comments;
-
-    /**
-     * draft | testing | production | withdrawn | superceded
+     * draft | testing | review | production | withdrawn | superceded
      */
     private ResourceProfileStatus status;
 
@@ -879,27 +840,17 @@ public class Profile extends Resource {
     private String date;
 
     /**
-     * A list of bodies who have reviewed the Template for clinical accuracy and relevance, and endorsed it for use.
+     * Other profiles that define extensions and bindings that are used in this profile
      */
-    private List<Endorser> endorser = new ArrayList<Endorser>();
+    private List<java.net.URI> import_ = new ArrayList<java.net.URI>();
 
     /**
-     * A free text description describing the changes in this version of the profile as compared to the previous version. 
+     * If this profile describes a bundle, the first resource in the bundle (usually a Message or a Document)
      */
-    private String changes;
+    private String bundle;
 
     /**
-     * A template that is superceded by this template (may be a  previous version)
-     */
-    private List<java.net.URI> supercedes = new ArrayList<java.net.URI>();
-
-    /**
-     * Additional other profiles that apply to this conformance statement.
-     */
-    private List<java.net.URI> profile = new ArrayList<java.net.URI>();
-
-    /**
-     * Resource Type with constraints
+     * A constraint statement about what contents a profile may have
      */
     private List<Resource> resource = new ArrayList<Resource>();
 
@@ -921,24 +872,20 @@ public class Profile extends Resource {
       this.name = value;
     }
 
+    public String getVersion() { 
+      return this.version;
+    }
+
+    public void setVersion(String value) { 
+      this.version = value;
+    }
+
     public Author getAuthor() { 
       return this.author;
     }
 
     public void setAuthor(Author value) { 
       this.author = value;
-    }
-
-    public String getIntention() { 
-      return this.intention;
-    }
-
-    public void setIntention(String value) { 
-      this.intention = value;
-    }
-
-    public List<Coding> getCode() { 
-      return this.code;
     }
 
     public String getDescription() { 
@@ -949,16 +896,8 @@ public class Profile extends Resource {
       this.description = value;
     }
 
-    public List<java.net.URI> getEvidence() { 
-      return this.evidence;
-    }
-
-    public String getComments() { 
-      return this.comments;
-    }
-
-    public void setComments(String value) { 
-      this.comments = value;
+    public List<Coding> getCode() { 
+      return this.code;
     }
 
     public ResourceProfileStatus getStatus() { 
@@ -977,24 +916,16 @@ public class Profile extends Resource {
       this.date = value;
     }
 
-    public List<Endorser> getEndorser() { 
-      return this.endorser;
+    public List<java.net.URI> getImport() { 
+      return this.import_;
     }
 
-    public String getChanges() { 
-      return this.changes;
+    public String getBundle() { 
+      return this.bundle;
     }
 
-    public void setChanges(String value) { 
-      this.changes = value;
-    }
-
-    public List<java.net.URI> getSupercedes() { 
-      return this.supercedes;
-    }
-
-    public List<java.net.URI> getProfile() { 
-      return this.profile;
+    public void setBundle(String value) { 
+      this.bundle = value;
     }
 
     public List<Resource> getResource() { 

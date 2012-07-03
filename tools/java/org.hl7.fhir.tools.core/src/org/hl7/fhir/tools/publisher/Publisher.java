@@ -569,13 +569,10 @@ public class Publisher {
 		p.putMetadata("name", n);
 		p.putMetadata("author.name", "todo (committee)");
 		p.putMetadata("author.ref", "todo");
-		p.putMetadata("description", root.getRoot().getDefinition());
-		p.putMetadata("comments", "Basic Profile for ");
+		p.putMetadata("description", "Basic Profile. "+root.getRoot().getDefinition());
 		p.putMetadata("status", "testing");
 		p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale(
 				"en", "US")).format(new Date()));
-		p.putMetadata("endorser.name", "HL7");
-		p.putMetadata("endorser.ref", "http://hl7.org");
 		p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
 		Profile rp = pgen.generate(p, new FileOutputStream(

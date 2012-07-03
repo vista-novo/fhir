@@ -124,6 +124,7 @@ public abstract class XmlParserBase extends XmlBase {
     return res;
   }
 
+
   protected String_ parseString_(XmlPullParser xpp) throws Exception {
     String_ result = new String_();
     parseTypeAttributes(xpp, result);

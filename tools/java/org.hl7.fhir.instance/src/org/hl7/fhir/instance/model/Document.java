@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jun 24, 2012 20:48+1000 for FHIR v0.04
+// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A documentation of clinical observations and services that are aggregated together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole
+ * A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
  */
 public class Document extends Resource {
 

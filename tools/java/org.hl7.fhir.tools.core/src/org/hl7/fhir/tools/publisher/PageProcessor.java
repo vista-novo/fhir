@@ -62,6 +62,7 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class PageProcessor implements Logger  {
 
+  private static final String SIDEBAR_SPACER = "<p>&nbsp;</p>\r\n";
   private Definitions definitions;
   private FolderManager folders;
   private String version;
@@ -160,8 +161,8 @@ public class PageProcessor implements Logger  {
       }
       s.append("  </ul>\r\n");
     }
-    s.append("<p>&nbsp;</p>\r\n");
-    s.append("<p><a href=\"http://hl7.org\"><img src=\"hl7logo.png\"/></a></p>\r\n");
+    s.append(SIDEBAR_SPACER);
+    s.append("<p><a href=\"http://hl7.org\"><img border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
     return s.toString();

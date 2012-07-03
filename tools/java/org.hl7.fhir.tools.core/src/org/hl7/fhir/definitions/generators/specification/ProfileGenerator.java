@@ -68,26 +68,18 @@ public class ProfileGenerator {
     p.setAuthor(p.new Author());
     p.getAuthor().setName(profile.metadata("author.name"));
     if (profile.hasMetadata("author.reference"))
-      p.getAuthor().setReference(new URI(profile.metadata("author.reference")));
+      p.getAuthor().getReference().add(new URI(profile.metadata("author.reference")));
 //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
-      p.setIntention(profile.metadata("intention"));
+      throw new Exception("profile intention is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("description"))
       p.setDescription(profile.metadata("description"));
     if (profile.hasMetadata("evidence"))
-      p.getEvidence().add(new URI(profile.metadata("evidence")));
+      throw new Exception("profile evidence is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("comments"))
-      p.setComments(profile.metadata("comments"));
+      throw new Exception("profile comments is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("date"))
       p.setDate(profile.metadata("date").substring(0, 10));
-    p.getEndorser().add(p.new Endorser());
-    p.getEndorser().get(0).setName(profile.metadata("endorser.name"));
-    if (profile.hasMetadata("endorser.reference"))
-      p.getEndorser().get(0).setReference(new URI(profile.metadata("endorser.reference")));
-    if (profile.hasMetadata("changes"))
-      p.setIntention(profile.metadata("changes"));
-    if (profile.hasMetadata("supercedes"))
-      p.getSupercedes().add(new URI(profile.metadata("supercedes")));
 
     if (profile.hasMetadata("status")) 
       p.setStatus(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
@@ -245,7 +237,7 @@ public class ProfileGenerator {
     if( e.hasAggregation() )
     {
     	Profile.ResourceA res = p.new ResourceA();
-    	res.setAggregated(true);
+    	res.setBundled(true);
    		res.setProfile(new URI(e.getAggregation()) );
     	ce.setResource(res);
     }

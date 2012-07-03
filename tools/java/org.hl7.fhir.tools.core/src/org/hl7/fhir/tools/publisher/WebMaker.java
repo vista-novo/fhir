@@ -60,6 +60,8 @@ public class WebMaker {
     this.version = version;
   }
 
+  private static final String SEARCH_FORM_HOLDER = "<p id=\"srch\">&nbsp;</p>";
+
   public void produceHL7Copy() throws Exception {
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
@@ -77,6 +79,8 @@ public class WebMaker {
         if (src.contains("<!--archive-->")) {
           src = src.replace("<!--archive-->", makeArchives());
         }
+        if (src.contains(SEARCH_FORM_HOLDER)) 
+          src = src.replace(SEARCH_FORM_HOLDER, googleSearch());
         int i = src.indexOf("</body>");
         if (i > 0)
           src = src.substring(0, i) + google()+src.substring(i);
@@ -103,6 +107,21 @@ public class WebMaker {
     zip.close();    
   }
 
+  private String googleSearch() {
+    return "<h2>Search FHIR</h2>\r\n"+
+        "<div id=\"cse\" style=\"width: 100%;\">Loading</div>\r\n"+
+        "<script src=\"http://www.google.com/jsapi\" type=\"text/javascript\"> </script>\r\n"+
+        "<script type=\"text/javascript\"> \r\n"+
+        "  google.load('search', '1', {language : 'en', style : google.loader.themes.V2_DEFAULT});\r\n"+
+        "  google.setOnLoadCallback(function() {\r\n"+
+        "    var customSearchOptions = {};  var customSearchControl = new google.search.CustomSearchControl(\r\n"+
+        "      '014445770867062802174:lufw2afc2og', customSearchOptions);\r\n"+
+        "    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);\r\n"+
+        "    customSearchControl.draw('cse');\r\n"+
+        "  }, true);\r\n"+
+        "</script>\r\n";
+
+  }
   private CharSequence makeArchives() throws Exception {
     IniFile ini = new IniFile(folders.rootDir+"publish.ini"); 
     StringBuilder s = new StringBuilder();
