@@ -11,6 +11,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
@@ -47,6 +49,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getAllowedGenericTypes <em>Allowed Generic Types</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#isIsUnnamedComponent <em>Is Unnamed Component</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,6 +103,25 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	protected EList<TypeRef> allowedGenericTypes;
 
 	/**
+	 * The default value of the '{@link #isIsUnnamedComponent() <em>Is Unnamed Component</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsUnnamedComponent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_UNNAMED_COMPONENT_EDEFAULT = false;
+	/**
+	 * The cached value of the '{@link #isIsUnnamedComponent() <em>Is Unnamed Component</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsUnnamedComponent()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isUnnamedComponent = IS_UNNAMED_COMPONENT_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +171,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 */
 	public EList<ElementDefn> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<ElementDefn>(ElementDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS);
+			elements = new EObjectContainmentWithInverseEList<ElementDefn>(ElementDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS, FhirPackage.ELEMENT_DEFN__PARENT_TYPE);
 		}
 		return elements;
 	}
@@ -183,10 +205,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeDefn resolveType() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public boolean isIsUnnamedComponent() {
+		return isUnnamedComponent;
 	}
 
 	/**
@@ -194,43 +214,75 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TypeDefn> getTypeByName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public void setIsUnnamedComponent(boolean newIsUnnamedComponent) {
+		boolean oldIsUnnamedComponent = isUnnamedComponent;
+		isUnnamedComponent = newIsUnnamedComponent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT, oldIsUnnamedComponent, isUnnamedComponent));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList<TypeDefn> filterTypes(String name, String scope, String typeKind) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public boolean isGenericType() {
+		return getAllowedGenericTypes().size() > 0 &&
+					!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public BindingDefn resolveBinding() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public TypeDefn resolveType(String name) {
+		return ns().resolveType(name);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public BindingDefn getBindingByName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public BindingDefn resolveBinding(String name) {
+		return ns().resolveBinding(name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
+		return ns().getLocalCompositeTypes();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<ConstrainedTypeDefn> getLocalConstrainedTypes() {
+		return ns().getLocalConstrainedTypes();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public NameScope getContainingScope() {
+		return this.getParent();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<ResourceDefn> getLocalResources() {
+		return ns().getLocalResources();
 	}
 
 	/**
@@ -246,6 +298,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
 			case FhirPackage.COMPOSITE_TYPE_DEFN__BINDINGS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -290,6 +344,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return getInvariants();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
 				return getAllowedGenericTypes();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
+				return isIsUnnamedComponent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -323,6 +379,9 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				getAllowedGenericTypes().clear();
 				getAllowedGenericTypes().addAll((Collection<? extends TypeRef>)newValue);
 				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
+				setIsUnnamedComponent((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -350,6 +409,9 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
 				getAllowedGenericTypes().clear();
 				return;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
+				setIsUnnamedComponent(IS_UNNAMED_COMPONENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -372,6 +434,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return invariants != null && !invariants.isEmpty();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
 				return allowedGenericTypes != null && !allowedGenericTypes.isEmpty();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
+				return isUnnamedComponent != IS_UNNAMED_COMPONENT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -408,6 +472,35 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (isUnnamedComponent: ");
+		result.append(isUnnamedComponent);
+		result.append(')');
+		return result.toString();
+	}
+	
+	
+	private NameScopeImpl nameScope;
+	
+	private NameScopeImpl ns()
+	{
+		if( nameScope == null )
+		{
+			nameScope = new NameScopeImpl(this);
+		}
+		
+		return nameScope;
 	}
 
 } //CompositeTypeDefnImpl

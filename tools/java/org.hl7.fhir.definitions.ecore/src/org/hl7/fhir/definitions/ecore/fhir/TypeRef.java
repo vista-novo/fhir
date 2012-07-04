@@ -21,8 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType <em>Is Pseudo Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric <em>Unbound Generic</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,7 +29,14 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TypeRef extends EObject {
+public interface TypeRef extends EObject {	
+	public final static String PRIMITIVE_PSEUDOTYPE_NAME = "Primitive";
+	public final static String COMPOSITE_PSEUDOTYPE_NAME = "Composite";
+	public final static String XHTML_PSEUDOTYPE_NAME = "xhtml";
+	public final static String IDREF_PSEUDOTYPE_NAME = "idref";
+
+	public final static String RESOURCEREF_TYPE_NAME = "ResourceReference";
+	
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -58,20 +64,30 @@ public interface TypeRef extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Bound Param</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+	 * Returns the value of the '<em><b>Bound Param</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bound Param</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bound Param</em>' attribute list.
+	 * @return the value of the '<em>Bound Param</em>' attribute.
+	 * @see #setBoundParam(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_BoundParam()
 	 * @model
 	 * @generated
 	 */
-	EList<String> getBoundParam();
+	String getBoundParam();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Bound Param</em>' attribute.
+	 * @see #getBoundParam()
+	 * @generated
+	 */
+	void setBoundParam(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Takes Any Resource</b></em>' attribute.
@@ -100,55 +116,37 @@ public interface TypeRef extends EObject {
 	void setTakesAnyResource(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Is Unbound Generic</b></em>' attribute.
+	 * Returns the value of the '<em><b>Unbound Generic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Unbound Generic</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Unbound Generic</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Unbound Generic</em>' attribute.
-	 * @see #setIsUnboundGeneric(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_IsUnboundGeneric()
+	 * @return the value of the '<em>Unbound Generic</em>' attribute.
+	 * @see #setUnboundGeneric(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_UnboundGeneric()
 	 * @model
 	 * @generated
 	 */
-	boolean isIsUnboundGeneric();
+	boolean isUnboundGeneric();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric <em>Unbound Generic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Unbound Generic</em>' attribute.
-	 * @see #isIsUnboundGeneric()
+	 * @param value the new value of the '<em>Unbound Generic</em>' attribute.
+	 * @see #isUnboundGeneric()
 	 * @generated
 	 */
-	void setIsUnboundGeneric(boolean value);
+	void setUnboundGeneric(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Is Pseudo Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Is Pseudo Type</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Pseudo Type</em>' attribute.
-	 * @see #setIsPseudoType(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_IsPseudoType()
-	 * @model
-	 * @generated
-	 */
-	boolean isIsPseudoType();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType <em>Is Pseudo Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Pseudo Type</em>' attribute.
-	 * @see #isIsPseudoType()
+	 * @model kind="operation"
 	 * @generated
 	 */
-	void setIsPseudoType(boolean value);
+	boolean isGenericTypeRef();
 
 } // TypeRef

@@ -456,7 +456,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       cc = cc.replace("-", "Minus").replace("+", "Plus").replace(">=", "greaterOrEquals").replace("<=", "lessOrEquals").replace("<", "lessThan").replace(">", "greaterThan").replace("=", "equal");
 
       cc = prefix + getTitle(cc);
-      if (Utilities.isDelphiReservedWord(cc))
+      if (GeneratorUtils.isDelphiReservedWord(cc))
         cc = cc + "_";
       if (i == l) {
         def.append("    "+cc+"); {@enum.value "+cc+" "+c.getDefinition()+" }\r\n");
@@ -1196,7 +1196,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   private String getElementName(String name) {
-    if (Utilities.isDelphiReservedWord(name))
+    if (GeneratorUtils.isDelphiReservedWord(name))
       return name+"_";
     return name.replace("[x]", "").replace("[type]", "value");
   }
@@ -1352,7 +1352,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     for (String s : definitions.getResources().keySet()) {
       i++;
       String s2 = prefix + getTitle(s);
-      if (Utilities.isDelphiReservedWord(s2))
+      if (GeneratorUtils.isDelphiReservedWord(s2))
         s2 = s2 + "_";
       if (i == l) {
         def.append("    "+s2+"); {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");

@@ -1,0 +1,39 @@
+<%@ jet 
+	package="org.hl7.fhir.tools.publisher.implementations.templated"
+	class="CsConstrainedTypeGenerator" 
+	imports ="org.hl7.fhir.definitions.Config 
+			  org.hl7.fhir.definitions.ecore.fhir.*
+			  org.eclipse.emf.common.util.EList
+			  org.hl7.fhir.utilities.Utilities
+			  java.util.*
+			  org.hl7.fhir.tools.publisher.implementations.GeneratorUtils
+			  org.hl7.fhir.tools.publisher.implementations.ConstrainedTypeGeneratorInput"
+%>
+<% 
+	ConstrainedTypeGeneratorInput getInput = (ConstrainedTypeGeneratorInput)argument; 
+	ConstrainedTypeDefn constrained = getInput.getSubject();
+	Definitions definitions = getInput.getDefinition();
+%>
+using System;
+using System.Collections.Generic;
+using HL7.Fhir.Instance.Support;
+using System.Xml.Linq;
+
+/*
+<%=Config.FULL_LICENSE_CODE%>
+*/
+
+//Generated on <%=Config.DATE_FORMAT().format(definitions.getDate())%> for FHIR v<%=definitions.getVersion()%>
+
+namespace HL7.Fhir.Instance.Model
+{
+	/*
+	 * <%=constrained.getAnnotations().getDefinition()%>
+	 */
+	public partial class <%=GeneratorUtils.generateCSharpTypeName(constrained.getName())
+			%> : <%=GeneratorUtils.generateCSharpTypeName(constrained.getBaseType().getName())%>
+	{
+		// TODO: Add code to enforce these constraints:
+		<% for( Invariant inv : constrained.getDetails() ) { %>// * <%= inv.getHuman() %><%}%> 
+	}
+}

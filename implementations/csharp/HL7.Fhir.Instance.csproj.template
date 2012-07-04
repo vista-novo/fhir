@@ -43,9 +43,12 @@
 		@@@PROJECTFILES@@@
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HL7.Fhir.Instance.Support\Infrastructure.cs" />
-    <Compile Include="HL7.Fhir.Instance.Support\XsdDateTime.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+   <Compile Include="HL7.Fhir.Instance.Support\Absentable.cs" />
+   <Compile Include="HL7.Fhir.Instance.Support\FhirDateTime.cs" />
+   <Compile Include="HL7.Fhir.Instance.Support\FhirTypes.cs" />
+   <Compile Include="HL7.Fhir.Instance.Support\Primitives.cs" />
+   <Compile Include="HL7.Fhir.Instance.Support\Resource.cs" />
+   <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

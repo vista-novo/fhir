@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
@@ -194,12 +195,37 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public String getFQN() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public boolean isResource() {
+		return this.getClass().equals(ResourceDefnImpl.class);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isComposite() {	
+		return this.getClass().equals(CompositeTypeDefnImpl.class);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isPrimitive() {
+		return this.getClass().equals(PrimitiveTypeDefnImpl.class);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isConstrained() {
+		return this.getClass().equals(ConstrainedTypeDefnImpl.class);
 	}
 
 	/**

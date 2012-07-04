@@ -47,6 +47,22 @@ public interface NameScope extends EObject {
 	EList<BindingDefn> getBindings();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TypeDefn resolveType(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	BindingDefn resolveBinding(String name);
+
+	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn}.
 	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}'.
@@ -68,10 +84,10 @@ public interface NameScope extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model kind="operation"
 	 * @generated
 	 */
-	TypeDefn resolveType();
+	EList<CompositeTypeDefn> getLocalCompositeTypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -79,23 +95,7 @@ public interface NameScope extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	EList<TypeDefn> getTypeByName();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	EList<TypeDefn> filterTypes(String name, String scope, String typeKind);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	BindingDefn resolveBinding();
+	EList<ConstrainedTypeDefn> getLocalConstrainedTypes();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -103,6 +103,14 @@ public interface NameScope extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	BindingDefn getBindingByName();
+	NameScope getContainingScope();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<ResourceDefn> getLocalResources();
 
 } // NameScope

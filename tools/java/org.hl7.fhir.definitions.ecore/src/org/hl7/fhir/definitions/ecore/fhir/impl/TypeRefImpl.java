@@ -33,8 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getBoundParam <em>Bound Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsUnboundGeneric <em>Is Unbound Generic</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isIsPseudoType <em>Is Pseudo Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isUnboundGeneric <em>Unbound Generic</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,14 +61,24 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute list.
+	 * The default value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBoundParam()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<String> boundParam;
+	protected static final String BOUND_PARAM_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBoundParam()
+	 * @generated
+	 * @ordered
+	 */
+	protected String boundParam = BOUND_PARAM_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
@@ -92,44 +101,24 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	protected boolean takesAnyResource = TAKES_ANY_RESOURCE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIsUnboundGeneric() <em>Is Unbound Generic</em>}' attribute.
+	 * The default value of the '{@link #isUnboundGeneric() <em>Unbound Generic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsUnboundGeneric()
+	 * @see #isUnboundGeneric()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNBOUND_GENERIC_EDEFAULT = false;
+	protected static final boolean UNBOUND_GENERIC_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsUnboundGeneric() <em>Is Unbound Generic</em>}' attribute.
+	 * The cached value of the '{@link #isUnboundGeneric() <em>Unbound Generic</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsUnboundGeneric()
+	 * @see #isUnboundGeneric()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isUnboundGeneric = IS_UNBOUND_GENERIC_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsPseudoType() <em>Is Pseudo Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsPseudoType()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_PSEUDO_TYPE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsPseudoType() <em>Is Pseudo Type</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsPseudoType()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isPseudoType = IS_PSEUDO_TYPE_EDEFAULT;
+	protected boolean unboundGeneric = UNBOUND_GENERIC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -176,11 +165,20 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<String> getBoundParam() {
-		if (boundParam == null) {
-			boundParam = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.TYPE_REF__BOUND_PARAM);
-		}
+	public String getBoundParam() {
 		return boundParam;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBoundParam(String newBoundParam) {
+		String oldBoundParam = boundParam;
+		boundParam = newBoundParam;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__BOUND_PARAM, oldBoundParam, boundParam));
 	}
 
 	/**
@@ -209,8 +207,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsUnboundGeneric() {
-		return isUnboundGeneric;
+	public boolean isUnboundGeneric() {
+		return unboundGeneric;
 	}
 
 	/**
@@ -218,32 +216,21 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsUnboundGeneric(boolean newIsUnboundGeneric) {
-		boolean oldIsUnboundGeneric = isUnboundGeneric;
-		isUnboundGeneric = newIsUnboundGeneric;
+	public void setUnboundGeneric(boolean newUnboundGeneric) {
+		boolean oldUnboundGeneric = unboundGeneric;
+		unboundGeneric = newUnboundGeneric;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC, oldIsUnboundGeneric, isUnboundGeneric));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__UNBOUND_GENERIC, oldUnboundGeneric, unboundGeneric));
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public boolean isIsPseudoType() {
-		return isPseudoType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsPseudoType(boolean newIsPseudoType) {
-		boolean oldIsPseudoType = isPseudoType;
-		isPseudoType = newIsPseudoType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__IS_PSEUDO_TYPE, oldIsPseudoType, isPseudoType));
+	public boolean isGenericTypeRef() {
+		return getBoundParam() != null && 
+				!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
 	}
 
 	/**
@@ -260,10 +247,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return getBoundParam();
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return isTakesAnyResource();
-			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
-				return isIsUnboundGeneric();
-			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
-				return isIsPseudoType();
+			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
+				return isUnboundGeneric();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,17 +266,13 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				setName((String)newValue);
 				return;
 			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				getBoundParam().clear();
-				getBoundParam().addAll((Collection<? extends String>)newValue);
+				setBoundParam((String)newValue);
 				return;
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource((Boolean)newValue);
 				return;
-			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
-				setIsUnboundGeneric((Boolean)newValue);
-				return;
-			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
-				setIsPseudoType((Boolean)newValue);
+			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
+				setUnboundGeneric((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -309,16 +290,13 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				setName(NAME_EDEFAULT);
 				return;
 			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				getBoundParam().clear();
+				setBoundParam(BOUND_PARAM_EDEFAULT);
 				return;
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource(TAKES_ANY_RESOURCE_EDEFAULT);
 				return;
-			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
-				setIsUnboundGeneric(IS_UNBOUND_GENERIC_EDEFAULT);
-				return;
-			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
-				setIsPseudoType(IS_PSEUDO_TYPE_EDEFAULT);
+			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
+				setUnboundGeneric(UNBOUND_GENERIC_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -335,13 +313,11 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				return boundParam != null && !boundParam.isEmpty();
+				return BOUND_PARAM_EDEFAULT == null ? boundParam != null : !BOUND_PARAM_EDEFAULT.equals(boundParam);
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return takesAnyResource != TAKES_ANY_RESOURCE_EDEFAULT;
-			case FhirPackage.TYPE_REF__IS_UNBOUND_GENERIC:
-				return isUnboundGeneric != IS_UNBOUND_GENERIC_EDEFAULT;
-			case FhirPackage.TYPE_REF__IS_PSEUDO_TYPE:
-				return isPseudoType != IS_PSEUDO_TYPE_EDEFAULT;
+			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
+				return unboundGeneric != UNBOUND_GENERIC_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -362,10 +338,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		result.append(boundParam);
 		result.append(", takesAnyResource: ");
 		result.append(takesAnyResource);
-		result.append(", isUnboundGeneric: ");
-		result.append(isUnboundGeneric);
-		result.append(", isPseudoType: ");
-		result.append(isPseudoType);
+		result.append(", unboundGeneric: ");
+		result.append(unboundGeneric);
 		result.append(')');
 		return result.toString();
 	}

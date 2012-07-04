@@ -43,7 +43,7 @@ public interface Annotations extends EObject {
 	 * @return the value of the '<em>Short Definition</em>' attribute.
 	 * @see #setShortDefinition(String)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getAnnotations_ShortDefinition()
-	 * @model extendedMetaData="kind='attribute'"
+	 * @model extendedMetaData="kind='element'"
 	 * @generated
 	 */
 	String getShortDefinition();

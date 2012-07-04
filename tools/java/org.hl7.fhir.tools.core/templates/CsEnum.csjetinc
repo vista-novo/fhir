@@ -1,0 +1,18 @@
+<% for( BindingDefn binding : bindingsParam ) 
+		{
+			if( binding.getBinding() == BindingType.CODE_LIST )
+			{
+	%>
+	/*
+	 * <%=binding.getAnnotations().getDefinition()%>
+	 */
+	public enum <%=GeneratorUtils.generateCSharpTypeName(binding.getName())%>
+	{
+		<% for( DefinedCode code : binding.getCodes() ) {
+			%><%=GeneratorUtils.generateCSharpMemberName(null,code.getCode()) %>, // <%=code.getDefinition()%>
+		<% } %>
+	}
+	
+	<%		}
+		} 
+%>

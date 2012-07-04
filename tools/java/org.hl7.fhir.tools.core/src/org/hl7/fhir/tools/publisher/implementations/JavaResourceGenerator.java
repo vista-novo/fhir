@@ -223,7 +223,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		for (DefinedCode c : cd.getCodes()) {
 			i++;
 			String cc = c.getCode();
-			if (Utilities.isJavaReservedWord(cc))
+			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
 			if (cc.equals("<"))
 				cc = "lessThan";
@@ -249,7 +249,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("                return null;\r\n");
 		for (DefinedCode c : cd.getCodes()) {
 			String cc = c.getCode();
-			if (Utilities.isJavaReservedWord(cc))
+			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
 			if (cc.equals("<"))
 				cc = "lessThan";
@@ -273,7 +273,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write("          switch (this) {\r\n");
 		for (DefinedCode c : cd.getCodes()) {
 			String cc = c.getCode();
-			if (Utilities.isJavaReservedWord(cc))
+			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
 			if (cc.equals("<"))
 				cc = "lessThan";
@@ -351,7 +351,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					tn = getTypeName(e);
 				if (e.getTypes().get(0).isUnboundGenericParam())
 					tn = "T";
-				else if (e.getTypes().get(0).isXmlId())
+				else if (e.getTypes().get(0).isIdRef())
 					tn ="String";
 				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";

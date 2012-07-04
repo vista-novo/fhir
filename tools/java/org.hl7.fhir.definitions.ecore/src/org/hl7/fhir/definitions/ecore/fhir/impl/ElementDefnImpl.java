@@ -20,10 +20,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Binding;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
@@ -54,6 +57,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentType <em>Parent Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentElement <em>Parent Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -489,6 +494,188 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CompositeTypeDefn getParentTypeGen() {
+		if (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_TYPE) return null;
+		return (CompositeTypeDefn)eContainer();
+	}
+	
+	public CompositeTypeDefn getParentType() {
+		CompositeTypeDefn parent = getParentTypeGen();
+		
+		if( parent != null ) return parent;
+		
+		if( getParentElement() != null )
+			return getParentElement().getParentType();
+		else
+			return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParentType(CompositeTypeDefn newParentType, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParentType, FhirPackage.ELEMENT_DEFN__PARENT_TYPE, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParentType(CompositeTypeDefn newParentType) {
+		if (newParentType != eInternalContainer() || (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_TYPE && newParentType != null)) {
+			if (EcoreUtil.isAncestor(this, newParentType))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParentType != null)
+				msgs = ((InternalEObject)newParentType).eInverseAdd(this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS, CompositeTypeDefn.class, msgs);
+			msgs = basicSetParentType(newParentType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PARENT_TYPE, newParentType, newParentType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ElementDefn getParentElement() {
+		if (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT) return null;
+		return (ElementDefn)eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParentElement(ElementDefn newParentElement, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newParentElement, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParentElement(ElementDefn newParentElement) {
+		if (newParentElement != eInternalContainer() || (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT && newParentElement != null)) {
+			if (EcoreUtil.isAncestor(this, newParentElement))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newParentElement != null)
+				msgs = ((InternalEObject)newParentElement).eInverseAdd(this, FhirPackage.ELEMENT_DEFN__ELEMENTS, ElementDefn.class, msgs);
+			msgs = basicSetParentElement(newParentElement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, newParentElement, newParentElement));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean hasNestedElements() {
+		return getElements() != null && getElements().size() > 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isXhtmlElement() {
+		return getTypes().size() != 0 && getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isXmlIdElement() {
+		return getTypes().size() != 0 && getTypes().get(0).getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME);
+	}
+
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated NOT
+//	 */
+//	public boolean isResourceReference() {
+//		return getTypes().size() > 0 &&
+//				getTypes().get(0).getName().equals( TypeRef.RESOURCEREF_TYPE_NAME );
+//	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isBoundCode() {
+		return this.getTypes().size() == 1 &&
+				this.getTypes().get(0).getName().equals("code") &&
+				this.getBinding() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public String getElementPath() {
+		if( getParentElement() != null )
+			return getParentElement().getElementPath() + "." + this.getName();
+		else
+		{
+			if( getParentType() != null )
+				return getParentType().getName() + "." + this.getName();
+			else
+				return "?." + this.getName();
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd, msgs);
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParentType((CompositeTypeDefn)otherEnd, msgs);
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetParentElement((ElementDefn)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isMustSupport() {
 		return mustSupport;
 	}
@@ -664,7 +851,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 */
 	public EList<ElementDefn> getElements() {
 		if (elements == null) {
-			elements = new EObjectContainmentEList<ElementDefn>(ElementDefn.class, this, FhirPackage.ELEMENT_DEFN__ELEMENTS);
+			elements = new EObjectContainmentWithInverseEList<ElementDefn>(ElementDefn.class, this, FhirPackage.ELEMENT_DEFN__ELEMENTS, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT);
 		}
 		return elements;
 	}
@@ -727,8 +914,28 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return basicSetAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				return basicSetInvariant(null, msgs);
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				return basicSetParentType(null, msgs);
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				return basicSetParentElement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				return eInternalContainer().eInverseRemove(this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS, CompositeTypeDefn.class, msgs);
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				return eInternalContainer().eInverseRemove(this, FhirPackage.ELEMENT_DEFN__ELEMENTS, ElementDefn.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -768,6 +975,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return getAnnotation();
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				return getInvariant();
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				return getParentType();
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				return getParentElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -826,6 +1037,12 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				setInvariant((InvariantRef)newValue);
 				return;
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				setParentType((CompositeTypeDefn)newValue);
+				return;
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				setParentElement((ElementDefn)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -880,6 +1097,12 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				setInvariant((InvariantRef)null);
 				return;
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				setParentType((CompositeTypeDefn)null);
+				return;
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				setParentElement((ElementDefn)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -920,6 +1143,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return annotation != null;
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				return invariant != null;
+			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
+				return getParentType() != null;
+			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
+				return getParentElement() != null;
 		}
 		return super.eIsSet(featureID);
 	}

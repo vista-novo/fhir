@@ -616,7 +616,7 @@ private void genXmlIdRef() throws Exception {
 			throws Exception {
 		if (type.isResourceReference())
 			return "ResourceReference";
-		else if (type.isXmlId())
+		else if (type.isIdRef())
 			return "id-simple";
 		else if (params
 				&& definitions.getPrimitives().containsKey(type.getName())

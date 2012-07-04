@@ -45,7 +45,7 @@ public class JavaBaseGenerator extends OutputStreamWriter {
 	protected String getElementName(String name, boolean alone) {
 	  if (name.equals("[type]"))
 	    return "value";
-	  else if (alone && Utilities.isJavaReservedWord(name))
+	  else if (alone && GeneratorUtils.isJavaReservedWord(name))
 	    return name+"_";
 	  else
 	    return name.replace("[x]", "");

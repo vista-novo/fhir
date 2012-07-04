@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -227,6 +229,102 @@ public interface ElementDefn extends EObject {
 	void setInvariant(InvariantRef value);
 
 	/**
+	 * Returns the value of the '<em><b>Parent Type</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent Type</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent Type</em>' container reference.
+	 * @see #setParentType(CompositeTypeDefn)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_ParentType()
+	 * @see org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getElements
+	 * @model opposite="elements" transient="false"
+	 * @generated
+	 */
+	CompositeTypeDefn getParentType();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent Type</em>' container reference.
+	 * @see #getParentType()
+	 * @generated
+	 */
+	void setParentType(CompositeTypeDefn value);
+
+	/**
+	 * Returns the value of the '<em><b>Parent Element</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parent Element</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parent Element</em>' container reference.
+	 * @see #setParentElement(ElementDefn)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_ParentElement()
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements
+	 * @model opposite="elements" transient="false"
+	 * @generated
+	 */
+	ElementDefn getParentElement();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parent Element</em>' container reference.
+	 * @see #getParentElement()
+	 * @generated
+	 */
+	void setParentElement(ElementDefn value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean hasNestedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isXhtmlElement();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isXmlIdElement();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isBoundCode();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getElementPath();
+
+	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -394,6 +492,7 @@ public interface ElementDefn extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn}.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
@@ -402,7 +501,8 @@ public interface ElementDefn extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Elements()
-	 * @model containment="true"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement
+	 * @model opposite="parentElement" containment="true"
 	 *        extendedMetaData="name='element'"
 	 * @generated
 	 */

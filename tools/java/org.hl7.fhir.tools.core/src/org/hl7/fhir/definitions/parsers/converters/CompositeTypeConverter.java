@@ -123,6 +123,7 @@ public class CompositeTypeConverter
 		
 		result.getElements().addAll( buildElementDefnsFromFhirModel( result, type.getElements() ) );
 		
+		// Add nested types for explicitly declared nested types ('=<typename>')
 		if( type.getNestedTypes() != null )
 			result.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
 					type.getNestedTypes().values()));
@@ -159,7 +160,11 @@ public class CompositeTypeConverter
 		List<ElementDefn> result = new ArrayList<ElementDefn>();
 		
 		for( org.hl7.fhir.definitions.model.ElementDefn element : elements )
-			result.add( buildElementDefnFromFhirModel( parent, element) );
+		{
+			// Skip elements that are part of the Resource "base" class
+			if( !element.isBaseResourceElement() )
+				result.add( buildElementDefnFromFhirModel( parent, element) );
+		}
 		
 		return result;
 	}
@@ -213,7 +218,9 @@ public class CompositeTypeConverter
 				result.getElements().addAll( buildElementDefnsFromFhirModel(parent, element.getElements()));
 		}
 		
-		if( element.getBindingName() != null && !element.getBindingName().equals("") )
+		if( element.getBindingName() != null && 
+				!element.getBindingName().equals("") &&
+				!element.getBindingName().equals("*unbound*") )
 		{
 			BindingRef br = FhirFactory.eINSTANCE.createBindingRef();
 			br.setName( element.getBindingName() );

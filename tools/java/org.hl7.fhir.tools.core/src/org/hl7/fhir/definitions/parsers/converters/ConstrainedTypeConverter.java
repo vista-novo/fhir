@@ -34,6 +34,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -76,6 +77,10 @@ public class ConstrainedTypeConverter
 		
 		result.setBaseType( baseType );
 		result.setName( constrainedType.getCode() );
+		
+		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
+		ann.setDefinition("A constrained type based on " + baseType.getName());
+		result.setAnnotations(ann);
 		
 		//TODO: This could be multiple invariants, but current Fhir model only allows 1.
 		result.getDetails().add( 

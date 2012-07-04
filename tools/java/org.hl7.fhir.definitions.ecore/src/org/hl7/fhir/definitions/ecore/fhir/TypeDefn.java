@@ -113,6 +113,30 @@ public interface TypeDefn extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	String getFQN();
+	boolean isResource();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isComposite();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isPrimitive();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isConstrained();
 
 } // TypeDefn

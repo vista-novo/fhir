@@ -158,7 +158,7 @@ public class ECoreOclFormatGenerator  extends OutputStreamWriter {
       return "T";
     else if (typeDefn.isWildcardType())
       return "object";
-    else if (typeDefn.isXmlId())
+    else if (typeDefn.isIdRef())
       return "String";  
     else if (typeDefn.getName().charAt(0) == '@')
       return typeDefn.getName().substring(1).replace('.', '_');  

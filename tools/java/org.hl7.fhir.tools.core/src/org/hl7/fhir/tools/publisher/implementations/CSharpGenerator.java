@@ -31,10 +31,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.ZipGenerator;
 
 public class CSharpGenerator extends BaseGenerator implements PlatformGenerator {
@@ -73,6 +78,38 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		if( !f.exists() ) f.mkdir();
 		
 		List<String> filenames = new ArrayList<String>();
+	
+		{
+			CSharpResourceGenerator gen = new CSharpResourceGenerator();
+			String enumsFilename = modelGenerationDir + "Bindings.cs";
+			TextFile.stringToFile(gen.generateGlobalEnums(definitions.getBindings(),definitions).buildContents(), enumsFilename);						 
+			filenames.add(enumsFilename);
+		}
+	
+		List<CompositeTypeDefn> allComplexTypes = new ArrayList<CompositeTypeDefn>();
+		allComplexTypes.addAll(definitions.getLocalCompositeTypes());
+		allComplexTypes.addAll(definitions.getLocalResources());
+		
+		for( CompositeTypeDefn composite : allComplexTypes )
+		{
+			Map<ElementDefn,GeneratorUtils.NamedElementGroup> components =
+					GeneratorUtils.generateNamedGroupsForNestedElements(composite);			
+			
+			CSharpResourceGenerator gen = new CSharpResourceGenerator();
+			String compositeFilename = modelGenerationDir + composite.getName() + ".cs";			
+			TextFile.stringToFile(gen.generateComposite(composite, definitions, components).buildContents(), compositeFilename);			
+			filenames.add(compositeFilename);
+		}
+
+		
+		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
+		{
+			CSharpResourceGenerator gen = new CSharpResourceGenerator();
+			String constrainedFilename = modelGenerationDir + constrained.getName() + ".cs";
+			TextFile.stringToFile(gen.generateConstrained(constrained, definitions).buildContents(), constrainedFilename);						 
+			filenames.add(constrainedFilename);
+		}
+
 		
 /*
 		// Generate a C# file for each Resource class

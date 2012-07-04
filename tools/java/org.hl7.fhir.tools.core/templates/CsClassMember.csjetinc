@@ -1,0 +1,40 @@
+		<% for( ElementDefn member : elementsParam )
+		{%>// <%= member.getAnnotation().getShortDefinition() %>
+		public <%
+			if( member.getMaxCardinality() == -1 ) {%>List<<%}
+
+			if( member.isAllowDAR() ) {%>Absentable<<%}
+			
+			if( nestedComponents.containsKey(member) ) {
+				%><%= nestedComponents.get(member).getName() %><%
+			} else if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) {
+				%>T<%
+			} else if( member.isXhtmlElement() ) {
+				%>XDocument<%
+			} else if( member.isXmlIdElement() ) {
+				%>string<%
+			} else if( member.isBoundCode() ) {
+				BindingDefn binding = member.getParentType().resolveBinding(member.getBinding().getName());
+				if( binding != null &&  binding.getBinding() == BindingType.CODE_LIST ){	
+					%>Code<<%= GeneratorUtils.generateCSharpTypeName(binding.getName())%>><%
+				}
+				else {
+					%>Code<%
+				}%><%
+			} else if( member.getTypes().size() == 1 ) {
+				%><%=GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getName())%><%	
+					if( member.getTypes().get(0).getBoundParam() != null && 
+						!member.getTypes().get(0).getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) ) { 
+						%><<%=GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getBoundParam())%>><%
+					}%><%		
+			} else {
+				%><%=GeneratorUtils.generateCSharpTypeName(
+						GeneratorUtils.getMostSpecializedCommonBaseForElement(member).getName()) %><%
+			}
+
+			%><% if( member.isAllowDAR() ) {%>><%}
+			%><% if( member.getMaxCardinality() == -1 ) {%>><%}
+			%> <%= GeneratorUtils.generateCSharpMemberName(contextParam, member.getName())
+			%> { get; set; }
+			
+			<%	}%>

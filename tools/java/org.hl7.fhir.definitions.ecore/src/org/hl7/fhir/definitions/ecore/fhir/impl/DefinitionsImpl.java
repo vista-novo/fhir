@@ -12,6 +12,7 @@ import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,16 +23,13 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Binding;
-import org.hl7.fhir.definitions.ecore.fhir.Constraint;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
-import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
@@ -240,6 +238,24 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public TypeDefn resolveType(String name) {
+		return ns().resolveType(name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public BindingDefn resolveBinding(String name) {
+		return ns().resolveBinding(name);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<ProfileDefn> getProfiles() {
@@ -251,57 +267,39 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * List all CompositeTypes that are defined in this scope. This excludes the types
+	 * inherited from parent scopes.
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
-	public TypeDefn resolveType() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
+		return ns().getLocalCompositeTypes();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList<TypeDefn> getTypeByName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<ConstrainedTypeDefn> getLocalConstrainedTypes() {
+		return ns().getLocalConstrainedTypes();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public EList<TypeDefn> filterTypes(String name, String scope, String typeKind) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public NameScope getContainingScope() {
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public BindingDefn resolveBinding() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BindingDefn getBindingByName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<ResourceDefn> getLocalResources() {
+		return ns().getLocalResources();
 	}
 
 	/**
@@ -483,4 +481,17 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 		return result;
 	}
 
+	
+	private NameScopeImpl nameScope;
+	
+	private NameScopeImpl ns()
+	{
+		if( nameScope == null )
+		{
+			nameScope = new NameScopeImpl(this);
+		}
+		
+		return nameScope;
+	}
+	
 } //DefinitionsImpl

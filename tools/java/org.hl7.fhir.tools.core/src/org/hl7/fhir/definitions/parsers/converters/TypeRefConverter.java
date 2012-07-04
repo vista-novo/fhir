@@ -53,13 +53,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 public class TypeRefConverter 
 {
-	public final static String PRIMITIVE_PSEUDOTYPE_NAME = "Primitive";
-	public final static String COMPOSITE_PSEUDOTYPE_NAME = "Composite";
-	public final static String RESOURCEREF_PSEUDOTYPE_NAME = "ResourceRef";
-	public final static String XHTML_PSEUDOTYPE_NAME = "xhtml";
-	public final static String XMLID_PSEUDOTYPE_NAME = "xmlid";
-	public final static String ANY_RESOURCE_GENERIC_ARG = "Any";
-	
 	public static List<TypeRef> buildTypeRefsFromFhirModel( 
 						List<org.hl7.fhir.definitions.model.TypeRef> refs ) throws Exception
 	{
@@ -73,6 +66,7 @@ public class TypeRefConverter
 		return result;
 	}
 	
+
 	
 	// Some TypeRefs, like TypeX(A|B|C) and "*" are actually short-hands for
 	// multiple TypeRefs: TypeX(A|B|C) will be expanded to TypeX(A) | TypeX(B) | TypeX(C)
@@ -95,33 +89,34 @@ public class TypeRefConverter
 			else if( ref.isUnboundGenericParam() )
 			{
 				convertedType.setName( "param" );
-				convertedType.setIsUnboundGeneric(true);
+				convertedType.setUnboundGeneric(true);
 			}
 			
 			else if( ref.isXhtml() )
-				convertedType.setName( XHTML_PSEUDOTYPE_NAME );
+				convertedType.setName( TypeRef.XHTML_PSEUDOTYPE_NAME );
 			
-			else if( ref.isXmlId() )
-				convertedType.setName( XMLID_PSEUDOTYPE_NAME );
-			
-			else if( ref.isResourceReference() )
-			{			
-				convertedType.setName(RESOURCEREF_PSEUDOTYPE_NAME);
+			else if( ref.isIdRef() )
+				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
 
-				if( ref.hasParams() && ref.getParams().size() == 1 )
+			else
+			{
+				// Excel mentions "Resource", but this is actually a "ResourceReference"
+				if( ref.isResourceReference() )
+					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
+				else
+					convertedType.setName( ref.getName() );
+				
+				if( ref.isBoundGeneric() )
 				{
+					if( ref.hasParams() && ref.getParams().size() > 1 )
+						throw new Exception( "Don't know how to handle a generic typeref with > 1 generic param.");
+				
 					if( ref.isAnyResource() )
 						convertedType.setTakesAnyResource(true);
 					else
-						convertedType.getBoundParam().add(ref.getParams().get(0));					
+						convertedType.setBoundParam( ref.getParams().get(0) );					
 				}
-				else
-					throw new Exception( "Resource references can only have a single generic parameter");
 			}
-			else
-				convertedType.setName( ref.getName() );
-
-			convertedType.setIsPseudoType( checkIsPseudoType(convertedType) );
 			
 			result.add(convertedType);
 		}
@@ -130,15 +125,14 @@ public class TypeRefConverter
 	}
 	
 	
-	private static boolean checkIsPseudoType( TypeRef candidate )
-	{
-		return
-			candidate.getName().equals(PRIMITIVE_PSEUDOTYPE_NAME) ||
-			candidate.getName().equals(COMPOSITE_PSEUDOTYPE_NAME) ||
-			candidate.getName().equals(RESOURCEREF_PSEUDOTYPE_NAME) ||
-			candidate.getName().equals(XHTML_PSEUDOTYPE_NAME) ||
-			candidate.getName().equals(XMLID_PSEUDOTYPE_NAME);
-	}
+//	private static boolean checkIsPseudoType( TypeRef candidate )
+//	{
+//		return
+//			candidate.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
+//			candidate.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
+//			candidate.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) ||
+//			candidate.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME);
+//	}
 	
 	
 	private static List<org.hl7.fhir.definitions.model.TypeRef> 
@@ -152,12 +146,12 @@ public class TypeRefConverter
 			// "*" becomes pseudo-types Primitive | Composite | Resource(Any)
 			org.hl7.fhir.definitions.model.TypeRef primitivePseudoType = 
 					new org.hl7.fhir.definitions.model.TypeRef();
-			primitivePseudoType.setName( PRIMITIVE_PSEUDOTYPE_NAME );
+			primitivePseudoType.setName( TypeRef.PRIMITIVE_PSEUDOTYPE_NAME );
 			expandedTypeRefs.add(primitivePseudoType);
 			
 			org.hl7.fhir.definitions.model.TypeRef compositePseudoType = 
 					new org.hl7.fhir.definitions.model.TypeRef();
-			compositePseudoType.setName( COMPOSITE_PSEUDOTYPE_NAME );
+			compositePseudoType.setName( TypeRef.COMPOSITE_PSEUDOTYPE_NAME );
 			expandedTypeRefs.add(compositePseudoType);
 			
 			// Note: we use the type "Resource" here and not "ResourceRef"
@@ -167,7 +161,7 @@ public class TypeRefConverter
 			org.hl7.fhir.definitions.model.TypeRef resourceRefPseudoType = 
 					new org.hl7.fhir.definitions.model.TypeRef();
 			resourceRefPseudoType.setName( "Resource" );
-			resourceRefPseudoType.getParams().add( ANY_RESOURCE_GENERIC_ARG );
+			resourceRefPseudoType.getParams().add( org.hl7.fhir.definitions.model.TypeRef.ANY_RESOURCE_GENERIC_ARG );
 			expandedTypeRefs.add(resourceRefPseudoType);
 		}
 		else if( ref.isBoundGeneric() && ref.hasParams() &&

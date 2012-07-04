@@ -410,7 +410,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         
         if (tr.isUnboundGenericParam())
           tn = genparam;
-        else if (tr.isXmlId())
+        else if (tr.isIdRef())
           tn ="String";
         else if (tr.isXhtml()) 
           tn = "char[]";

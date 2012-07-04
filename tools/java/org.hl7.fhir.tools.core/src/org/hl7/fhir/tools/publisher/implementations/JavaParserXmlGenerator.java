@@ -417,7 +417,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         TypeRef tr = e.getTypes().get(0);
         if (tr.isUnboundGenericParam())
           tn = genparam;
-        else if (tr.isXmlId())
+        else if (tr.isIdRef())
           tn ="String";
         else if (tr.isXhtml()) 
           tn = "char[]";

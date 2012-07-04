@@ -417,13 +417,31 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__INVARIANT = 13;
 
 	/**
+	 * The feature id for the '<em><b>Parent Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__PARENT_TYPE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Parent Element</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_DEFN__PARENT_ELEMENT = 15;
+
+	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 14;
+	int ELEMENT_DEFN_FEATURE_COUNT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -489,7 +507,7 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Bound Param</b></em>' attribute list.
+	 * The feature id for the '<em><b>Bound Param</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -507,22 +525,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__TAKES_ANY_RESOURCE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Is Unbound Generic</b></em>' attribute.
+	 * The feature id for the '<em><b>Unbound Generic</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__IS_UNBOUND_GENERIC = 3;
-
-	/**
-	 * The feature id for the '<em><b>Is Pseudo Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REF__IS_PSEUDO_TYPE = 4;
+	int TYPE_REF__UNBOUND_GENERIC = 3;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -531,7 +540,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_FEATURE_COUNT = 5;
+	int TYPE_REF_FEATURE_COUNT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -759,13 +768,22 @@ public interface FhirPackage extends EPackage {
 	int COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES = TYPE_DEFN_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Is Unnamed Component</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT = TYPE_DEFN_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Composite Type Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 5;
+	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -838,6 +856,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_DEFN__ALLOWED_GENERIC_TYPES = COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Is Unnamed Component</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__IS_UNNAMED_COMPONENT = COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT;
 
 	/**
 	 * The feature id for the '<em><b>Sandbox</b></em>' attribute.
@@ -1559,6 +1586,24 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__INVARIANT = ELEMENT_DEFN__INVARIANT;
 
 	/**
+	 * The feature id for the '<em><b>Parent Type</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__PARENT_TYPE = ELEMENT_DEFN__PARENT_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Parent Element</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROFILED_ELEMENT_DEFN__PARENT_ELEMENT = ELEMENT_DEFN__PARENT_ELEMENT;
+
+	/**
 	 * The feature id for the '<em><b>Inherited</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1791,6 +1836,28 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_Invariant();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType()
+	 * @see #getElementDefn()
+	 * @generated
+	 */
+	EReference getElementDefn_ParentType();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Parent Element</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement()
+	 * @see #getElementDefn()
+	 * @generated
+	 */
+	EReference getElementDefn_ParentElement();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#isMustSupport <em>Must Support</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1976,10 +2043,10 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_Name();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Bound Param</em>'.
+	 * @return the meta object for the attribute '<em>Bound Param</em>'.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam()
 	 * @see #getTypeRef()
 	 * @generated
@@ -1998,26 +2065,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_TakesAnyResource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric <em>Is Unbound Generic</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric <em>Unbound Generic</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Unbound Generic</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsUnboundGeneric()
+	 * @return the meta object for the attribute '<em>Unbound Generic</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric()
 	 * @see #getTypeRef()
 	 * @generated
 	 */
-	EAttribute getTypeRef_IsUnboundGeneric();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType <em>Is Pseudo Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Pseudo Type</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isIsPseudoType()
-	 * @see #getTypeRef()
-	 * @generated
-	 */
-	EAttribute getTypeRef_IsPseudoType();
+	EAttribute getTypeRef_UnboundGeneric();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn <em>Binding Defn</em>}'.
@@ -2449,6 +2505,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCompositeTypeDefn_AllowedGenericTypes();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isIsUnnamedComponent <em>Is Unnamed Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Unnamed Component</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isIsUnnamedComponent()
+	 * @see #getCompositeTypeDefn()
+	 * @generated
+	 */
+	EAttribute getCompositeTypeDefn_IsUnnamedComponent();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}'.
@@ -3058,6 +3125,22 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__INVARIANT = eINSTANCE.getElementDefn_Invariant();
 
 		/**
+		 * The meta object literal for the '<em><b>Parent Type</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_DEFN__PARENT_TYPE = eINSTANCE.getElementDefn_ParentType();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent Element</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT_DEFN__PARENT_ELEMENT = eINSTANCE.getElementDefn_ParentElement();
+
+		/**
 		 * The meta object literal for the '<em><b>Must Support</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3198,7 +3281,7 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__NAME = eINSTANCE.getTypeRef_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Bound Param</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>Bound Param</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3214,20 +3297,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__TAKES_ANY_RESOURCE = eINSTANCE.getTypeRef_TakesAnyResource();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Unbound Generic</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Unbound Generic</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_REF__IS_UNBOUND_GENERIC = eINSTANCE.getTypeRef_IsUnboundGeneric();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Pseudo Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPE_REF__IS_PSEUDO_TYPE = eINSTANCE.getTypeRef_IsPseudoType();
+		EAttribute TYPE_REF__UNBOUND_GENERIC = eINSTANCE.getTypeRef_UnboundGeneric();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl <em>Binding Defn</em>}' class.
@@ -3566,6 +3641,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES = eINSTANCE.getCompositeTypeDefn_AllowedGenericTypes();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Unnamed Component</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT = eINSTANCE.getCompositeTypeDefn_IsUnnamedComponent();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope <em>Name Scope</em>}' class.

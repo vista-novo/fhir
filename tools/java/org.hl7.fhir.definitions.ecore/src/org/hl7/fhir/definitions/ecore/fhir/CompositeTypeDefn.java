@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getInvariants <em>Invariants</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#getAllowedGenericTypes <em>Allowed Generic Types</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isIsUnnamedComponent <em>Is Unnamed Component</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,6 +31,7 @@ public interface CompositeTypeDefn extends TypeDefn, NameScope {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn}.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
@@ -38,7 +40,8 @@ public interface CompositeTypeDefn extends TypeDefn, NameScope {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_Elements()
-	 * @model containment="true"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType
+	 * @model opposite="parentType" containment="true"
 	 *        extendedMetaData="name='element'"
 	 * @generated
 	 */
@@ -77,5 +80,39 @@ public interface CompositeTypeDefn extends TypeDefn, NameScope {
 	 * @generated
 	 */
 	EList<TypeRef> getAllowedGenericTypes();
+
+	/**
+	 * Returns the value of the '<em><b>Is Unnamed Component</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Is Unnamed Component</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Unnamed Component</em>' attribute.
+	 * @see #setIsUnnamedComponent(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_IsUnnamedComponent()
+	 * @model
+	 * @generated
+	 */
+	boolean isIsUnnamedComponent();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isIsUnnamedComponent <em>Is Unnamed Component</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Unnamed Component</em>' attribute.
+	 * @see #isIsUnnamedComponent()
+	 * @generated
+	 */
+	void setIsUnnamedComponent(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isGenericType();
 
 } // CompositeTypeDefn
