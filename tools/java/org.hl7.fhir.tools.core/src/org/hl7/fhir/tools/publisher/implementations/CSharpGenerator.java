@@ -72,7 +72,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		
 		char sl = File.separatorChar;
-		String modelGenerationDir =  implDir + sl + "Model" + sl;
+		String modelGenerationDir =  implDir + "Model" + sl;
 		
 		File f = new File(modelGenerationDir);
 		if( !f.exists() ) f.mkdir();

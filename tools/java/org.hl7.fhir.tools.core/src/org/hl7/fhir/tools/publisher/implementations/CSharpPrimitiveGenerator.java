@@ -2,7 +2,6 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 import java.util.List;
 
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 
@@ -68,7 +67,7 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		{
 			String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
 			
-			ln("public class "); 
+			ln("public partial class "); 
 				nl( className ); 
 				nl( " : ");
 				nl( "Primitive<" );

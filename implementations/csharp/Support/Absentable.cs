@@ -92,6 +92,7 @@ namespace HL7.Fhir.Instance.Support
             return new Absentable<T>(value);
         }
 
+
         public static explicit operator T(Absentable<T> value)
         {
             return value.Value;

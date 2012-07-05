@@ -40,14 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-		@@@PROJECTFILES@@@
+		@@@MODELFILES@@@
   </ItemGroup>
   <ItemGroup>
-   <Compile Include="HL7.Fhir.Instance.Support\Absentable.cs" />
-   <Compile Include="HL7.Fhir.Instance.Support\FhirDateTime.cs" />
-   <Compile Include="HL7.Fhir.Instance.Support\FhirTypes.cs" />
-   <Compile Include="HL7.Fhir.Instance.Support\Primitives.cs" />
-   <Compile Include="HL7.Fhir.Instance.Support\Resource.cs" />
+   <Compile Include="Support\Absentable.cs" />
+   <Compile Include="Support\Code.cs" />
+   <Compile Include="Support\FhirDateTime.cs" />
+   <Compile Include="Support\FhirTypes.cs" />
+   <Compile Include="Support\Primitive.cs" />   
+   <Compile Include="Support\Resource.cs" />
+   <Compile Include="Support\XmlPrimitiveParser.cs" />
+   <Compile Include="Support\XmlUtils.cs" />
+   <Compile Include="Model.Support\Base64Binary.cs" />
+   <Compile Include="Model.Support\FhirBoolean.cs" />
+   <Compile Include="Model.Support\FhirDecimal.cs" />
+   <Compile Include="Model.Support\Integer.cs" />
    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

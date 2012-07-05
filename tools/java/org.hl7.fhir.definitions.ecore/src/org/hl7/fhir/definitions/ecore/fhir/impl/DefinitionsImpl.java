@@ -240,6 +240,23 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public EList<PrimitiveTypeDefn> getPrimitives() {
+		EList<PrimitiveTypeDefn> result = new BasicEList<PrimitiveTypeDefn>();
+		
+		for( TypeDefn t : getTypes() )
+		{		
+			if( t.isPrimitive() )
+				result.add((PrimitiveTypeDefn)t);
+		}
+		
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	public TypeDefn resolveType(String name) {
 		return ns().resolveType(name);
 	}

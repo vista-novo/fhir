@@ -102,6 +102,14 @@ public interface Definitions extends NameScope {
 	EList<EventDefn> getEvents();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	EList<PrimitiveTypeDefn> getPrimitives();
+
+	/**
 	 * Returns the value of the '<em><b>Profiles</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ProfileDefn}.
 	 * <!-- begin-user-doc -->

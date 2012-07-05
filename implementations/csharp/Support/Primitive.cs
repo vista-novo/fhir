@@ -28,7 +28,6 @@
 
 */
 
-
 namespace HL7.Fhir.Instance.Support
 {
     public class Primitive<T> : Primitive
@@ -36,10 +35,6 @@ namespace HL7.Fhir.Instance.Support
         public Primitive(T value)
         {
             this.Value = value;
-        }
-
-        public Primitive()
-        {
         }
 
         public T Value { get; set; }
@@ -71,17 +66,16 @@ namespace HL7.Fhir.Instance.Support
         }
     }
 
-    public class Base64Binary : Primitive<byte[]> { }
-    public class FhirBoolean : Primitive<bool> { }
-    public class Id : Primitive<string> { }
-    public class Oid : Primitive<string> { }
-    public class Uuid : Primitive<string> { }
-    public class FhirUri : Primitive<System.Uri> { }
-    public class Sid : Primitive<System.Uri> { }
-    public class FhirString : Primitive<System.String> { }
-    public class Code : Code<string> { }
-    public class Code<T> : Primitive<T> { }
-    public class Instant : Primitive<FhirDateTime> { }
-    public class FhirDecimal : Primitive<decimal> { }
-    public class Integer : Primitive<int> { }
+
+    [System.Serializable]
+    public class FhirValueFormatException : System.Exception
+    {
+        public FhirValueFormatException() { }
+        public FhirValueFormatException(string message) : base(message) { }
+        public FhirValueFormatException(string message, System.Exception inner) : base(message, inner) { }
+        protected FhirValueFormatException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+    }
 }

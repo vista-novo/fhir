@@ -4,6 +4,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fhir"
     nsURI="http://hl7.org/fhir/definitions" nsPrefix="fhir">
   <eClassifiers xsi:type="ecore:EClass" name="Definitions" eSuperTypes="#//NameScope">
+    <eOperations name="getPrimitives" upperBound="-1" eType="#//PrimitiveTypeDefn"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

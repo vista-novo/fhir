@@ -31,7 +31,6 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
