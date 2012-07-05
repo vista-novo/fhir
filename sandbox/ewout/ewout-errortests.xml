@@ -3,26 +3,42 @@
   Actual exchanged FHIR resources aren't allowed to have a xsi namespace, nor the schema location. but putting it here makes
   editing the resource much easier, and it will get stripped out during the build process
 -->
-<Ewout xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\ewout.xsd">
+<Ewout xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <id>3141</id>
+  <stringErr>
+    <nested/>
+  </stringErr>
+  <stringErr><mixed/>mixed</stringErr>
+  <stringErr unknown="attr">hi</stringErr>
   <stringCorr>nice</stringCorr>
   <stringCorr id="09az">nice</stringCorr>
+  <booleanErr>FALSE</booleanErr>
+  <booleanErr>TRUE</booleanErr>
+  <booleanErr>yes</booleanErr>
+  <booleanErr>no</booleanErr>
   <booleanCorr>false</booleanCorr>
   <booleanCorr>true</booleanCorr>
   <booleanCorr>0</booleanCorr>
   <booleanCorr>1</booleanCorr>
+  <integerErr>21474836470</integerErr>
+  <integerErr>2aha3</integerErr>
   <integerCorr>2147483647</integerCorr>  
   <integerCorr>+1</integerCorr> 
   <integerCorr>-0</integerCorr> 
+  <decimalErr>3.141592653.5</decimalErr>
+  <decimalErr>3.aha.5</decimalErr>
+  <decimalErr>3.14E+2</decimalErr>
+  <decimalErr>3.14+2</decimalErr>  
   <decimalCorr>1234567890123456.1234567890123456</decimalCorr>
   <decimalCorr>1234</decimalCorr>
   <decimalCorr>0.5</decimalCorr>
   <decimalCorr>.314</decimalCorr>
+  <b64Err>ThisIsNotB64Encoded!</b64Err>
+  <b64Err>c3VyZS4===</b64Err>
   <b64Corr>cGxlYXN1cmUu</b64Corr>
   <b64Corr>YW55IGNhcm5hbCBwbGVhc3VyZQ==</b64Corr>
   <text>
     <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">This contains correct corner-cases</div>
+    <div xmlns="http://www.w3.org/1999/xhtml"> Fill this out.... </div>
   </text>
 </Ewout>
