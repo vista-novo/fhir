@@ -51,32 +51,31 @@ public class CSharpResourceGenerator extends GenBlock
 	public GenBlock generateComposite( CompositeTypeDefn composite, 
 			Definitions definitions, 
 			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements )
-				throws Exception
 	{
 		begin();
 		
 		header(definitions.getDate(), definitions.getVersion());
 		
 		ln("namespace HL7.Fhir.Instance.Model");
-		ln("{");
-		ln("	"); compositeClass( composite, nestedElements ); 
-		ln("}");
+		bs("{");
+			compositeClass( composite, nestedElements ); 
+		es("}");
 		
 		return end();
 	}
 
 	
 	public GenBlock generateGlobalEnums( List<BindingDefn> globalEnums, 
-			Definitions definitions ) throws Exception
+			Definitions definitions )
 	{
 		begin();
 		
 		header(definitions.getDate(), definitions.getVersion());
 		
 		ln("namespace HL7.Fhir.Instance.Model");
-		ln("{");
-		ln("	"); enums(globalEnums); 
-		ln("}");
+		bs("{");
+			enums(globalEnums); 
+		es("}");
 		
 		return end();
 	}
@@ -84,38 +83,31 @@ public class CSharpResourceGenerator extends GenBlock
 	
 
 	public GenBlock generateConstrained( ConstrainedTypeDefn constrained, 
-			Definitions definitions) throws Exception
+			Definitions definitions)
 	{
 		begin();
 		
 		header(definitions.getDate(), definitions.getVersion());
 		
 		ln("namespace HL7.Fhir.Instance.Model");
-		ln("{");
-		ln("	"); 
-		begin();
+		bs("{");
 			ln("/*");
 			ln("* " +  constrained.getAnnotations().getDefinition());
 			ln("*/");
-			ln("public partial class " + 
-				GeneratorUtils.generateCSharpTypeName(constrained.getName()) );
-			nl(" : ");
-			nl(GeneratorUtils.generateCSharpTypeName(constrained.getBaseType().getName()));
-			ln("{");
-			ln("	");
-			begin();
+			ln("public partial class " +  GeneratorUtils.generateCSharpTypeName(constrained.getName()) );
+				nl(" : ");
+				nl(GeneratorUtils.generateCSharpTypeName(constrained.getBaseType().getName()));
+			bs("{");
 				ln("// TODO: Add code to enforce these constraints:");
 				for( Invariant inv : constrained.getDetails() ) 
 					ln("// * " + inv.getHuman() );
-			end();
-			ln("}");
-		end();
-		ln("}");
+			es("}");
+		es("}");
 				
 		return end();
 	}
 	
-	public GenBlock header(Date genDate, String version) throws Exception
+	public GenBlock header(Date genDate, String version)
 	{
 		begin();
 		
@@ -123,21 +115,21 @@ public class CSharpResourceGenerator extends GenBlock
 		ln("using System.Collections.Generic;");
 		ln("using HL7.Fhir.Instance.Support;");
 		ln("using System.Xml.Linq;");
-		ln("");
+		ln();
 		ln("/*");
 		ln(Config.FULL_LICENSE_CODE);
 		ln("*/");
-		ln("");
+		ln();
 		ln("//");
-		ln("// Generated on " + Config.DATE_FORMAT().format(genDate))
-				.nl(" for FHIR v" + version);
+		ln("// Generated on " + Config.DATE_FORMAT().format(genDate));
+				nl(" for FHIR v" + version);
 		ln("//");
 		
 		return end();
 	}
 	
 	public GenBlock compositeClass( CompositeTypeDefn composite,
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
+			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements)
 	{
 		begin();
 		
@@ -153,36 +145,24 @@ public class CSharpResourceGenerator extends GenBlock
 
 		// Generate the class itself		
 		compositeClassHeader( composite );
-		ln("{");		
-
-		// Generate local bindings
-		if( composite.getBindings().size() > 0)
-		{
-			ln("	"); enums( composite.getBindings() );
-		}
+		bs("{");		
+			// Generate local bindings
+			if( composite.getBindings().size() > 0)
+				enums( composite.getBindings() );
 		
-		// Generate the nested local types in this scope
-		if( composite.getLocalCompositeTypes().size() > 0)
-		{
-			ln("	"); nestedLocalTypes( composite.getLocalCompositeTypes(), nestedElements ); 
-			ln();
-		}
+			// Generate the nested local types in this scope
+			if( composite.getLocalCompositeTypes().size() > 0)
+				nestedLocalTypes( composite.getLocalCompositeTypes(), nestedElements ); 
 		
-		// Generate the nested types that correspond to anonymous
-		// nested blocks (Elements with children).
-		if( nestedElements != null && nestedElements.values().size() > 0 )
-		{
-			ln("	"); nestedComponents( nestedElements.values(), nestedElements, composite );
-			ln();
-		}
+			// Generate the nested types that correspond to anonymous
+			// nested blocks (Elements with children).
+			if( nestedElements != null && nestedElements.values().size() > 0 )
+				nestedComponents( nestedElements.values(), nestedElements, composite );
 		
-		// Generate this classes properties
-		if( composite.getElements().size() > 0)
-		{
-			ln("	"); memberProperties( composite.getElements(), nestedElements, composite  );
-		}
-		
-		ln("}");
+			// Generate this classes properties
+			if( composite.getElements().size() > 0)
+				memberProperties( composite.getElements(), nestedElements, composite  );	
+		es("}");
 		ln();
 		
 		return end();
@@ -190,13 +170,13 @@ public class CSharpResourceGenerator extends GenBlock
 
 	
 	public GenBlock memberProperties( List<ElementDefn> elements, Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-					CompositeTypeDefn context ) throws Exception
+					CompositeTypeDefn context )
 	{
 		begin();
 		
 		for( ElementDefn member : elements )
 		{
-			ln("// " + member.getAnnotation().getShortDefinition() );
+			ln("// " + member.getAnnotation().getShortDefinition());
 			ln("public ");
 			if( member.getMaxCardinality() == -1 ) nl("List<");
 			if( member.isAllowDAR() ) nl("Absentable<");
@@ -247,13 +227,14 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 	
 	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes, 
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
+			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements)
 	{
 		begin();
 
 		for( CompositeTypeDefn nested : nestedTypes )
 		{
 			compositeClass( nested, nestedElements );
+			ln();
 		}
 		
 		end();
@@ -261,7 +242,7 @@ public class CSharpResourceGenerator extends GenBlock
 	
 	private void nestedComponents( Collection<GeneratorUtils.NamedElementGroup> nestedGroups,
 			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-						CompositeTypeDefn composite ) throws Exception
+						CompositeTypeDefn composite ) 
 	{
 		begin();
 
@@ -269,9 +250,9 @@ public class CSharpResourceGenerator extends GenBlock
 		{
 			ln("public class " +
 					GeneratorUtils.generateCSharpTypeName(group.getName()) );
-			ln("{");
-			ln("\t"); memberProperties( group.getElements(), nestedElements, composite  );
-			ln("}");
+			bs("{");
+				memberProperties( group.getElements(), nestedElements, composite  );
+			es("}");
 			ln();
 		}
 			
@@ -279,7 +260,7 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 		
 	
-	public GenBlock genericBaseClass( CompositeTypeDefn genericType ) throws Exception
+	public GenBlock genericBaseClass( CompositeTypeDefn genericType )
 	{
 		begin();
 		
@@ -288,7 +269,7 @@ public class CSharpResourceGenerator extends GenBlock
 		return end();
 	}
 	
-	private void compositeClassHeader(CompositeTypeDefn composite) throws Exception
+	private void compositeClassHeader(CompositeTypeDefn composite)
 	{
 		ln( "public partial class " +
 				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
@@ -307,7 +288,7 @@ public class CSharpResourceGenerator extends GenBlock
 			nl( "Composite" );
 	}
 	
-	public GenBlock enums( List<BindingDefn> bindings ) throws Exception
+	public GenBlock enums( List<BindingDefn> bindings )
 	{
 		begin();
 		
@@ -320,9 +301,7 @@ public class CSharpResourceGenerator extends GenBlock
 				ln("*/");
 				ln("public enum " + 
 						GeneratorUtils.generateCSharpTypeName(binding.getName()));
-				ln("{");
-				ln("	");
-				begin();
+				bs("{");
 					for( DefinedCode code : binding.getCodes() ) 
 					{
 						String definition = code.getDefinition();
@@ -330,12 +309,9 @@ public class CSharpResourceGenerator extends GenBlock
 						ln(GeneratorUtils.generateCSharpMemberName(null,code.getCode()) + ",");
 						
 						if( definition != null )
-							nl(" // " + code.getDefinition());
-						
+							nl(" // " + code.getDefinition());		
 					}
-				end();
-				
-				ln("}");
+				es("}");
 				ln();
 			}
 

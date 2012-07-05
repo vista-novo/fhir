@@ -82,7 +82,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			CSharpResourceGenerator gen = new CSharpResourceGenerator();
 			String enumsFilename = modelGenerationDir + "Bindings.cs";
-			TextFile.stringToFile(gen.generateGlobalEnums(definitions.getBindings(),definitions).buildContents(), enumsFilename);						 
+			TextFile.stringToFile(gen.generateGlobalEnums(definitions.getBindings(),definitions).toString(), enumsFilename);						 
 			filenames.add(enumsFilename);
 		}
 	
@@ -97,7 +97,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			
 			CSharpResourceGenerator gen = new CSharpResourceGenerator();
 			String compositeFilename = modelGenerationDir + composite.getName() + ".cs";			
-			TextFile.stringToFile(gen.generateComposite(composite, definitions, components).buildContents(), compositeFilename);			
+			TextFile.stringToFile(gen.generateComposite(composite, definitions, components).toString(), compositeFilename);			
 			filenames.add(compositeFilename);
 		}
 
@@ -106,7 +106,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			CSharpResourceGenerator gen = new CSharpResourceGenerator();
 			String constrainedFilename = modelGenerationDir + constrained.getName() + ".cs";
-			TextFile.stringToFile(gen.generateConstrained(constrained, definitions).buildContents(), constrainedFilename);						 
+			TextFile.stringToFile(gen.generateConstrained(constrained, definitions).toString(), constrainedFilename);						 
 			filenames.add(constrainedFilename);
 		}
 

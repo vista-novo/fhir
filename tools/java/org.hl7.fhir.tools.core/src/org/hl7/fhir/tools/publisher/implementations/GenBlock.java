@@ -1,6 +1,8 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 /*
@@ -32,82 +34,121 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 public class GenBlock {
-
-	Stack<Integer> leftMargin = new Stack<Integer>();
 	
-	private int currentMargin = 0;
-	private int currentPos = 0;
+	protected Stack<Integer> marginHistory = new Stack<Integer>();
+	protected Stack<Integer> scopeHistory = new Stack<Integer>();
 	
-	private StringBuilder block = new StringBuilder();
+	protected int margin = 0;
 	
-	public GenBlock()
-	{
-	}
-	
+	protected List<String> lines = new ArrayList<String>();
+			
 	public void begin()
 	{
-		leftMargin.push(currentMargin);
-		currentMargin = currentPos;
+		scopeHistory.push( lines.size() );
 	}
  
-	public GenBlock end() throws Exception
+	public GenBlock end()
 	{
-		if( leftMargin.isEmpty() )
-			throw new Exception( "Unmatched number of begin/end blocks: end without begin");
+		int scopeBegin = 0;
 		
-		currentMargin = leftMargin.pop();
-		//currentPos = currentMargin;
-		
-		return this;
-	}
-	
-	public GenBlock ln(String line)
-	{
-		if( line == null ) line = "(null)";
-		
-		if( currentPos > currentMargin )
-		{
-			block.append("\r\n");
-			block.append(genMargin(currentMargin));
-			currentPos = currentMargin;
-		}
-		
-		if( line.equals("") )
-		{
-			block.append("\r\n");
-			block.append(genMargin(currentMargin));
-		}
+		if( scopeHistory.isEmpty() )
+			ln("?unmatched begin/end: end found without begin?");
 		else
-			nl(line);
-	
-		return this;
-	}
-	
-	public GenBlock ln() throws Exception
-	{
-		return ln("");
-	}
-	
-	public GenBlock nl(String literal)
-	{
-		if( literal == null ) literal = "(null)";
+			scopeBegin = scopeHistory.pop();
 		
-		literal = literal.replace("\t", "    ");
-		
-		block.append(literal);
-		currentPos += literal.length();
-		
-		return this;
+		GenBlock result = new GenBlock();
+			
+		for( int linenr = scopeBegin; linenr < lines.size(); linenr++ )
+				result.addLine(lines.get(linenr));
+
+		return result;
 	}
 	
-	public String buildContents() throws Exception
+	public void inc(GenBlock other)
 	{
-		if( !leftMargin.isEmpty() )
-			throw new Exception( "Unmatched number of begin/end blocks: begin without end" );
-		return block.toString();
+		if( other == this )
+			ln("?circular include?");
+		
+		for( String line : other.lines )
+			ln(line);
 	}
 	
-	private String genMargin(int size)
+	public void bs()
+	{
+		marginHistory.push(margin);
+		margin += 4;		
+	}
+	
+	public void bs(String start)
+	{
+		ln(start);
+		bs();
+	}
+	
+	public void es()
+	{
+		if( marginHistory.isEmpty() )
+			ln( "?Unmatched number of bs/es blocks: es without bs?");
+		else
+			margin = marginHistory.pop();
+	}
+	
+	public void es(String end)
+	{
+		es();
+		ln(end);
+	}
+	
+	
+	public void ln(String line)
+	{	
+		addLine(genMargin(margin));
+		
+		nl(line);
+	}
+	
+	public void ln()
+	{
+		ln("");
+	}
+	
+	public void nl(String literal)
+	{
+		if( literal == null ) literal = "?null?";
+		
+		if( lines.size() == 0 ) ln();
+		
+		concat(literal);		
+	}
+	
+	protected void addLine(String line)
+	{
+		lines.add(line);
+	}
+	
+	protected void concat(String literal)
+	{
+		lines.set(lines.size()-1, 
+				lines.get(lines.size()-1).concat(literal));
+	}
+	
+	@Override
+	public String toString()
+	{
+		if( !marginHistory.isEmpty() )
+			ln( "?Unmatched number of bs/es blocks: bs without es?" );
+
+		if( lines.size() == 0) return "";
+		
+		StringBuffer result = new StringBuffer();
+			
+		for( String line : lines)
+			result.append(line + "\r\n");
+				
+		return result.toString();
+	}
+	
+	private static String genMargin(int size)
 	{
 		if( size == 0 ) return "";
 		
