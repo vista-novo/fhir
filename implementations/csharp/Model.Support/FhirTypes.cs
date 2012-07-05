@@ -25,8 +25,8 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
   POSSIBILITY OF SUCH DAMAGE.
   
-
 */
+
 
 using System;
 using System.Collections.Generic;
@@ -35,54 +35,70 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Base64Binary
+    public abstract class Data
     {
-        // Explicit default: null
-        public Base64Binary() : base(null)
+        public virtual List<string> Validate()
         {
-
-        }
-
-        public static bool TryParse( string value, out Base64Binary result)
-        {
-            byte[] b64Value = null;
-            bool success = true;
-
-            try
-            {
-                b64Value = Convert.FromBase64String(value);
-            }
-            catch
-            {
-                success = false;
-            }
-
-            if(success)
-            {
-                result = new Base64Binary(b64Value);
-                return true;
-            }
-            else
-            {
-                result = null;
-                return false;
-            }
-        }
-
-        public static Base64Binary Parse(string value)
-        {
-            Base64Binary result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else 
-                throw new FhirValueFormatException("Not an correctly base64 encoded value");
-        }
-
-        public override List<string> Validate()
-        {
-            return new List<string>();    // cannot contain illegal values and may be empty
+            //TODO: When ready, this method must be made abstract
+            return new List<string>();
         }
     }
-  
+
+    public abstract class Composite : Data
+    {
+    }
+
+
+    public abstract class Primitive : Data
+    {
+    }
+
+
+    public abstract class Primitive<T> : Primitive
+    {
+        public Primitive(T value)
+        {
+            this.Value = value;
+        }
+
+        public T Value { get; set; }
+
+        public override bool Equals(object other)
+        {
+            if (other == null) return false;
+            return Value.Equals(other);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
+        //public static implicit operator Primitive<T>(T value)
+        //{
+        //    return new Primitive<T>(value);
+        //}
+
+        //public static implicit operator T(Primitive<T> value)
+        //{
+        //    return value.Value;
+        //}
+    }
+
+    [System.Serializable]
+    public class FhirValueFormatException : System.Exception
+    {
+        public FhirValueFormatException() { }
+        public FhirValueFormatException(string message) : base(message) { }
+        public FhirValueFormatException(string message, System.Exception inner) : base(message, inner) { }
+        protected FhirValueFormatException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+    }
 }

@@ -32,70 +32,57 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HL7.Fhir.Instance.Support;
 
-namespace HL7.Fhir.Instance.Support
+namespace HL7.Fhir.Instance.Model
 {
-    public class Absentable
+    public partial class Instant
     {
-        public Nullable<HL7.Fhir.Instance.Model.DataAbsentReason> Dar { get; set; }
-    }
+        // No empty constructor - no explicit default value
 
-    public class Absentable<T> : Absentable
-    {
-        public T Value { get; set; }
-
-
-        public Absentable(T value)
+        public static bool TryParse( string value, out Instant result)
         {
-            this.Value = value;
-        }
+            XsdDateTime instantValue;  
 
-        public Absentable()
-        {
-        }
+            // Check for full precision
+            bool succ = XsdDateTime.TryParse(value, XsdDateTime.XsdDateTimeKind.DateTime, out instantValue);
 
-        public Absentable(T value, HL7.Fhir.Instance.Model.DataAbsentReason dar)
-        {
-            this.Value = value;
-            this.Dar = dar;
-        }
-
-        public override bool Equals(object other)
-        {
-            if (other == null) return false;
-
-            if (Value.Equals(other) && typeof(Absentable).IsAssignableFrom(other.GetType()))
+            if (succ)
             {
-                return Dar.Equals(((Absentable)other).Dar);
+                result = new Instant(instantValue);
+                return true;
             }
             else
+            {
+                result = null;
                 return false;
+            }
         }
 
-        public override int GetHashCode()
+        public static Instant Parse(string value)
         {
-            return Value.GetHashCode() ^ Dar.GetHashCode();
+            Instant result = null;
+
+            if (TryParse(value, out result))
+                return result;
+            else 
+                throw new FhirValueFormatException("Instant must be a date/time value with full precision and timezone");
         }
+       
 
-        public override string ToString()
+
+        public override List<string> Validate()
         {
-            string result = Value.ToString();
+            var result = new List<string>();
 
-            if (Dar.HasValue)
-                result += " (dar: " + Dar.ToString() + ")";
+            if(this.Value == null)
+                result.Add("Instant must have a value");
+
+            if(this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
+                result.Add("Instant must be a date/time value with full precision and timezone");
 
             return result;
         }
-
-        public static implicit operator Absentable<T>(T value)
-        {
-            return new Absentable<T>(value);
-        }
-
-
-        public static explicit operator T(Absentable<T> value)
-        {
-            return value.Value;
-        }
     }
+  
 }

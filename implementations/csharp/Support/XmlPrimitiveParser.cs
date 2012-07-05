@@ -36,6 +36,21 @@ namespace HL7.Fhir.Instance.Support
             return FhirDecimal.Parse(value);
         }
 
+        public static XsdDateTime ParseInstant(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+
+            return Instant.Parse(value);
+        }
+
+
+        public static FhirUri ParseUri(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+
+            return FhirUri.Parse(value);
+        }
+
         private static string parsePrimitiveElement(XElement primitive, out string id)
         {
             if (primitive.HasElements)

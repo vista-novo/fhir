@@ -43,19 +43,21 @@
 		@@@MODELFILES@@@
   </ItemGroup>
   <ItemGroup>
-   <Compile Include="Support\Absentable.cs" />
-   <Compile Include="Support\Code.cs" />
-   <Compile Include="Support\FhirDateTime.cs" />
-   <Compile Include="Support\FhirTypes.cs" />
-   <Compile Include="Support\Primitive.cs" />   
-   <Compile Include="Support\Resource.cs" />
-   <Compile Include="Support\XmlPrimitiveParser.cs" />
-   <Compile Include="Support\XmlUtils.cs" />
-   <Compile Include="Model.Support\Base64Binary.cs" />
-   <Compile Include="Model.Support\FhirBoolean.cs" />
-   <Compile Include="Model.Support\FhirDecimal.cs" />
-   <Compile Include="Model.Support\Integer.cs" />
-   <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model.Support\FhirUri.cs" />
+    <Compile Include="Model.Support\Instant.cs" />
+    <Compile Include="Model.Support\FhirString.cs" />
+    <Compile Include="Model.Support\Absentable.cs" />
+    <Compile Include="Model.Support\Code.cs" />
+    <Compile Include="Model.Support\FhirTypes.cs" />
+    <Compile Include="Model.Support\Resource.cs" />
+    <Compile Include="Model.Support\Base64Binary.cs" />
+    <Compile Include="Model.Support\FhirBoolean.cs" />
+    <Compile Include="Model.Support\FhirDecimal.cs" />
+    <Compile Include="Model.Support\Integer.cs" />
+    <Compile Include="Model.Support\XsdDateTime.cs" />
+    <Compile Include="Support\XmlPrimitiveParser.cs" />
+    <Compile Include="Support\XmlUtils.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

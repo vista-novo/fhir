@@ -289,7 +289,7 @@ public class GeneratorUtils {
 		else if (name.equals("base64Binary"))
 			return "byte[]";
 		else if (name.equals("instant"))
-			return "FhirDateTime";
+			return "XsdDateTime";
 		else if (name.equals("string"))
 			return "string";
 		else if (name.equals("uri"))
@@ -305,9 +305,9 @@ public class GeneratorUtils {
 		else if (name.equals("id"))
 			return "string";
 		else if (name.equals("date"))
-			return "FhirDateTime";
+			return "XsdDateTime";
 		else if (name.equals("dateTime"))
-			return "FhirDateTime";
+			return "XsdDateTime";
 		else
 			throw new Exception( "Unrecognized primitive" );
 	}
@@ -338,7 +338,7 @@ public class GeneratorUtils {
 		else if (name.equals("id"))
 			return "Id";
 		else if (name.equals("date"))
-			return "FhirDateTime";
+			return "Date";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
 		else

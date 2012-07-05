@@ -28,54 +28,74 @@
 
 */
 
-namespace HL7.Fhir.Instance.Support
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace HL7.Fhir.Instance.Model
 {
-    public class Primitive<T> : Primitive
+    public class Absentable
     {
-        public Primitive(T value)
+        public Nullable<HL7.Fhir.Instance.Model.DataAbsentReason> Dar { get; set; }
+    }
+
+    public class Absentable<T> : Absentable
+    {
+        public T Value { get; set; }
+
+
+        public Absentable(T value)
         {
             this.Value = value;
         }
 
-        public T Value { get; set; }
+        public Absentable()
+        {
+        }
+
+        public Absentable(T value, HL7.Fhir.Instance.Model.DataAbsentReason dar)
+        {
+            this.Value = value;
+            this.Dar = dar;
+        }
 
         public override bool Equals(object other)
         {
-            if(other == null) return false;
-            return Value.Equals(other);
+            if (other == null) return false;
+
+            if (Value.Equals(other) && typeof(Absentable).IsAssignableFrom(other.GetType()))
+            {
+                return Dar.Equals(((Absentable)other).Dar);
+            }
+            else
+                return false;
         }
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return Value.GetHashCode() ^ Dar.GetHashCode();
         }
 
         public override string ToString()
         {
-            return Value.ToString();
+            string result = Value.ToString();
+
+            if (Dar.HasValue)
+                result += " (dar: " + Dar.ToString() + ")";
+
+            return result;
         }
 
-        public static implicit operator Primitive<T>(T value)
+        public static implicit operator Absentable<T>(T value)
         {
-            return new Primitive<T>(value);
+            return new Absentable<T>(value);
         }
 
-        public static implicit operator T(Primitive<T> value)
+
+        public static explicit operator T(Absentable<T> value)
         {
             return value.Value;
         }
-    }
-
-
-    [System.Serializable]
-    public class FhirValueFormatException : System.Exception
-    {
-        public FhirValueFormatException() { }
-        public FhirValueFormatException(string message) : base(message) { }
-        public FhirValueFormatException(string message, System.Exception inner) : base(message, inner) { }
-        protected FhirValueFormatException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context)
-            : base(info, context) { }
     }
 }

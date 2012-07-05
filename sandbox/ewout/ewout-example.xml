@@ -21,6 +21,16 @@
   <decimalCorr>.314</decimalCorr>
   <b64Corr>cGxlYXN1cmUu</b64Corr>
   <b64Corr>YW55IGNhcm5hbCBwbGVhc3VyZQ==</b64Corr>
+  <instantCorr>2012-12-31T12:01:24+05:00</instantCorr> 
+  <instantCorr>2012-12-31T12:01:24Z</instantCorr> 
+  <instantCorr>2012-12-31T12:01:24-01:30</instantCorr>
+  <uriCorr>www.hl7.org/fhir</uriCorr>
+  <uriCorr>http://www.hl7.org/fhir#somewhere</uriCorr>
+  <uriCorr>https://www.hl7.org/fhir:81</uriCorr>
+  <uriCorr>https://www.hl7.org/fhir:81?param=25</uriCorr>
+  <uriCorr>http://myUrl/%2E%2E/%2E%2E</uriCorr>
+  <uriCorr>ftp://ftp.student.vu.nl</uriCorr>
+  <uriCorr>/new/index.htm</uriCorr>
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">This contains correct corner-cases</div>

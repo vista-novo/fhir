@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("HL7.Fhir.Instance")]
 [assembly: AssemblyDescription("FHIR Resource model, parsers and support for C#")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("HL7 International")]
 [assembly: AssemblyProduct("FHIR")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]

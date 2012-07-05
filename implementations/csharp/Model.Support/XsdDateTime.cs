@@ -32,10 +32,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HL7.Fhir.Instance.Model;
 
-namespace HL7.Fhir.Instance.Support
+namespace HL7.Fhir.Instance.Model
 {
-    public class FhirDateTime
+    public class XsdDateTime
     {
         public enum XsdDateTimeKind
         {
@@ -46,15 +47,15 @@ namespace HL7.Fhir.Instance.Support
             DateTimeHHMM    // datetime, without seconds
         }
 
-        private FhirDateTime()
+        private XsdDateTime()
         {
             // prohibit direct construction
         }
 
 
-        public static FhirDateTime ForYear(int year)
+        public static XsdDateTime ForYear(int year)
         {
-            return new FhirDateTime() 
+            return new XsdDateTime() 
                 { 
                     Kind = XsdDateTimeKind.Year,
                     Year = year
@@ -62,9 +63,9 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public static FhirDateTime ForYearMonth(int year, int month)
+        public static XsdDateTime ForYearMonth(int year, int month)
         {
-            return new FhirDateTime()
+            return new XsdDateTime()
             {
                 Kind = XsdDateTimeKind.YearMonth,
                 Year = year, Month = month
@@ -72,9 +73,9 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public static FhirDateTime ForDate(int year, int month, int day)
+        public static XsdDateTime ForDate(int year, int month, int day)
         {
-            return new FhirDateTime()
+            return new XsdDateTime()
             {
                 Kind = XsdDateTimeKind.Date,
                 Year = year, Month = month, Day = day
@@ -82,7 +83,7 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public static FhirDateTime ForLocalDateTime(int year, int month, int day,
+        public static XsdDateTime ForLocalDateTime(int year, int month, int day,
                             int hour, int min, int sec = -1)
         {
             // Take current offset for the local offset. Might be incorrect because of DST.
@@ -90,17 +91,17 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public static FhirDateTime ForDateTimeUtc(int year, int month, int day,
+        public static XsdDateTime ForDateTimeUtc(int year, int month, int day,
                                             int hour, int min, int sec = -1)
         {
             return ForDateTime(new TimeSpan(0, 0, 0), year, month, day, hour, min, sec);
         }
 
 
-        public static FhirDateTime ForDateTime(TimeSpan utcOffset, int year, int month, int day,
+        public static XsdDateTime ForDateTime(TimeSpan utcOffset, int year, int month, int day,
             int hour, int min, int sec = -1)
         {
-            var originalDateTime = FhirDateTime.ForDate(year, month, day);
+            var originalDateTime = XsdDateTime.ForDate(year, month, day);
 
             originalDateTime.Hour = hour; originalDateTime.Minutes = min;
 
@@ -124,7 +125,7 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public static FhirDateTime FromDateTime(DateTime value, XsdDateTimeKind precision)
+        public static XsdDateTime FromDateTime(DateTime value, XsdDateTimeKind precision)
         {
             if( isTimePrecision(precision) )
             {
@@ -133,7 +134,7 @@ namespace HL7.Fhir.Instance.Support
                                 "Please explicitly convert to Utc or local time");
             }
 
-            FhirDateTime result = new FhirDateTime();
+            XsdDateTime result = new XsdDateTime();
 
             result.copyFromDateTimeUtc(value.ToUniversalTime());
             result.Kind = precision;
@@ -142,42 +143,8 @@ namespace HL7.Fhir.Instance.Support
         }
 
         public XsdDateTimeKind Kind { private set; get; }
-        
-        public static bool TryParse(string xsdDate, out FhirDateTime result )
-        {
-            result = new FhirDateTime();
 
-            int dateLength = xsdDate.Length;
-
-            // Due to shortcut evaluation with dateLength, calling the 
-            // expensive parse operation unneccessary is avoided
-            if (dateLength >= 20 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mm:sszzz"))
-                result.Kind = XsdDateTimeKind.DateTime;
-            else if (dateLength >= 17 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mmzzz"))
-                result.Kind = XsdDateTimeKind.DateTimeHHMM;
-            else if (dateLength == 10 && result.tryParse(xsdDate, "yyyy-mm-dd"))
-                result.Kind = XsdDateTimeKind.Date;
-            else if (dateLength == 7 && result.tryParse(xsdDate, "yyyy-mm"))
-                result.Kind = XsdDateTimeKind.YearMonth;
-            else if (dateLength == 4 && result.tryParse(xsdDate, "yyyy"))
-                result.Kind = XsdDateTimeKind.Year;
-            else
-                return false;
-
-            return true;
-        }
-
-        public static FhirDateTime Parse(string xsdDate)
-        {
-            FhirDateTime result;
-
-            if (FhirDateTime.TryParse(xsdDate, out result))
-                return result;
-            else
-                throw new FormatException("Given date/time is not in expected format");
-        }
-
-
+      
         private void copyFromDateTimeUtc(DateTime source)
         {
             if (source.Kind != DateTimeKind.Utc)
@@ -319,10 +286,6 @@ namespace HL7.Fhir.Instance.Support
             return precision == XsdDateTimeKind.DateTime || precision != XsdDateTimeKind.DateTimeHHMM;
         }
 
-        public string AsString()
-        {
-            return ToString();
-        }
 
         public override string ToString()
         {
@@ -341,6 +304,57 @@ namespace HL7.Fhir.Instance.Support
                 default:
                     throw new Exception("Internal error: unrecognized date/time kind.");
             }
+        }
+
+        public static bool TryParse(string xsdDate, XsdDateTimeKind requiredPrecision, out XsdDateTime result)
+        {
+            bool success = TryParse(xsdDate, out result);
+
+            return success && (requiredPrecision == result.Kind);
+        }
+
+        public static bool TryParse(string xsdDate, out XsdDateTime result)
+        {
+            result = new XsdDateTime();
+
+            int dateLength = xsdDate.Length;
+
+            // Due to shortcut evaluation with dateLength, calling the 
+            // expensive parse operation unneccessary is avoided
+            if (dateLength >= 20 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mm:sszzz"))
+                result.Kind = XsdDateTimeKind.DateTime;
+            else if (dateLength >= 17 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mmzzz"))
+                result.Kind = XsdDateTimeKind.DateTimeHHMM;
+            else if (dateLength == 10 && result.tryParse(xsdDate, "yyyy-mm-dd"))
+                result.Kind = XsdDateTimeKind.Date;
+            else if (dateLength == 7 && result.tryParse(xsdDate, "yyyy-mm"))
+                result.Kind = XsdDateTimeKind.YearMonth;
+            else if (dateLength == 4 && result.tryParse(xsdDate, "yyyy"))
+                result.Kind = XsdDateTimeKind.Year;
+            else
+                return false;
+
+            return true;
+        }
+
+        public static XsdDateTime Parse(string xsdDate)
+        {
+            XsdDateTime result;
+
+            if (XsdDateTime.TryParse(xsdDate, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Date/time is not in expected format");
+        }
+
+        public static XsdDateTime Parse(string xsdDate, XsdDateTimeKind requiredPrecision)
+        {
+            XsdDateTime result = Parse(xsdDate);
+
+            if (result.Kind == requiredPrecision)
+                return result;
+
+            throw new FhirValueFormatException("Date/time is not of required precision");
         }
     }
 }

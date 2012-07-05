@@ -63,44 +63,41 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		
 		String className = GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName());
 		
-		if( !className.equals("FhirDateTime") )
-		{
-			String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
-			
-			ln("public partial class "); 
-				nl( className ); 
-				nl( " : ");
-				nl( "Primitive<" );
-					nl( csharpPrimitive );
-				nl(">");
-		    bs("{");
-		    	// Generate constructor, taking one parameter - the primitive value
-		        ln("public " + className);
-		        	nl("(" + csharpPrimitive + " value)");
-		        	nl(": base(value) { }");
-		        ln();
-		        
-		        // Generate the cast from a C# primitive to the Fhir primitive
-		        ln("public static implicit operator ");
-		        	nl(className);
-		        	nl("(" + csharpPrimitive + " value)");
-		        bs("{");
-		            ln( "return new " );
-		            	nl(className + "(value);");
-		        es("}");
-		        ln();
-		        
-		        // Generate the cast from the Fhir primitive to the C# primitive
-		        ln("public static implicit operator ");
-		        	nl(csharpPrimitive);
-		        	nl("(" + className + " value)");
-		        bs("{");
-		            ln("return value.Value;");
-		        es("}");
-		        ln();
-		        
-		    es("}");
-		}
+		String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
+		
+		ln("public partial class "); 
+			nl( className ); 
+			nl( " : ");
+			nl( "Primitive<" );
+				nl( csharpPrimitive );
+			nl(">");
+	    bs("{");
+	    	// Generate constructor, taking one parameter - the primitive value
+	        ln("public " + className);
+	        	nl("(" + csharpPrimitive + " value)");
+	        	nl(": base(value) { }");
+	        ln();
+	        
+	        // Generate the cast from a C# primitive to the Fhir primitive
+	        ln("public static implicit operator ");
+	        	nl(className);
+	        	nl("(" + csharpPrimitive + " value)");
+	        bs("{");
+	            ln( "return new " );
+	            	nl(className + "(value);");
+	        es("}");
+	        ln();
+	        
+	        // Generate the cast from the Fhir primitive to the C# primitive
+	        ln("public static implicit operator ");
+	        	nl(csharpPrimitive);
+	        	nl("(" + className + " value)");
+	        bs("{");
+	            ln("return value.Value;");
+	        es("}");
+	        ln();
+	        
+	    es("}");
 		
 	    return end();
 	}

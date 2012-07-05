@@ -30,59 +30,31 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Base64Binary
+    public class Resource
     {
-        // Explicit default: null
-        public Base64Binary() : base(null)
+        public Resource()
         {
-
+            extensions = new List<Extension>();
+            text = new Narrative();
         }
 
-        public static bool TryParse( string value, out Base64Binary result)
-        {
-            byte[] b64Value = null;
-            bool success = true;
+        /**
+	     * Master resource Id, in all resources
+	     */
+        public Id id { get; set; }
 
-            try
-            {
-                b64Value = Convert.FromBase64String(value);
-            }
-            catch
-            {
-                success = false;
-            }
+        /**
+         * Extensions
+         */
+        public List<Extension> extensions { get; set; }
 
-            if(success)
-            {
-                result = new Base64Binary(b64Value);
-                return true;
-            }
-            else
-            {
-                result = null;
-                return false;
-            }
-        }
+        /**
+         * Text summary of resource, for human interpretation
+         */
+        public Narrative text { get; set; }
 
-        public static Base64Binary Parse(string value)
-        {
-            Base64Binary result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else 
-                throw new FhirValueFormatException("Not an correctly base64 encoded value");
-        }
-
-        public override List<string> Validate()
-        {
-            return new List<string>();    // cannot contain illegal values and may be empty
-        }
     }
-  
 }

@@ -30,32 +30,50 @@
 
 using System;
 using System.Collections.Generic;
-using HL7.Fhir.Instance.Model;
+using System.Linq;
+using System.Text;
 
-namespace HL7.Fhir.Instance.Support
+namespace HL7.Fhir.Instance.Model
 {
-    public class Resource
+    public partial class FhirUri
     {
-        public Resource()
+        // Explicit default: null
+        public FhirUri() : base(null)
         {
-            extensions = new List<Extension>();
-            text = new Narrative();
+
         }
 
-        /**
-	     * Master resource Id, in all resources
-	     */
-        public Id id { get; set; }
+        public static bool TryParse( string value, out FhirUri result)
+        {
+            System.Uri uriValue = null;
+            bool succ = System.Uri.TryCreate(value, UriKind.RelativeOrAbsolute, out uriValue );
 
-        /**
-         * Extensions
-         */
-        public List<Extension> extensions { get; set; }
+            if (succ)
+            {
+                result = new FhirUri(uriValue);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
 
-        /**
-         * Text summary of resource, for human interpretation
-         */
-        public Narrative text { get; set; }
+        public static FhirUri Parse(string value)
+        {
+            FhirUri result = null;
 
+            if (TryParse(value, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Not a correctly formatted Uri");
+        }
+
+        public override List<string> Validate()
+        {
+            return new List<string>();    // cannot contain illegal values and may be empty.
+        }
     }
+  
 }
