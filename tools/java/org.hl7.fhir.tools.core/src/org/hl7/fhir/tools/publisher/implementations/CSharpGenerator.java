@@ -72,7 +72,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		
 		char sl = File.separatorChar;
-		String modelGenerationDir =  implDir + sl + "HL7.Fhir.Instance.Model" + sl;
+		String modelGenerationDir =  implDir + sl + "Model" + sl;
 		
 		File f = new File(modelGenerationDir);
 		if( !f.exists() ) f.mkdir();
@@ -85,7 +85,14 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			TextFile.stringToFile(gen.generateGlobalEnums(definitions.getBindings(),definitions).toString(), enumsFilename);						 
 			filenames.add(enumsFilename);
 		}
-	
+
+		{
+			CSharpPrimitiveGenerator gen = new CSharpPrimitiveGenerator();
+			String primFilename = modelGenerationDir + "Primitives.cs";
+			TextFile.stringToFile(gen.generatePrimitives(definitions.getPrimitives(),definitions).toString(), primFilename);						 
+			filenames.add(primFilename);
+		}
+		
 		List<CompositeTypeDefn> allComplexTypes = new ArrayList<CompositeTypeDefn>();
 		allComplexTypes.addAll(definitions.getLocalCompositeTypes());
 		allComplexTypes.addAll(definitions.getLocalResources());
@@ -211,8 +218,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	    projGen.build(implDir, filenames);
 	    
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");
-		zip.addFiles(modelGenerationDir, "HL7.Fhir.Instance.Model" +sl, ".cs");
-		zip.addFiles(implDir + sl + "HL7.Fhir.Instance.Support" + sl, "HL7.Fhir.Instance.Support" +sl, ".cs");
+		zip.addFiles(modelGenerationDir, "Model" +sl, ".cs");
+		zip.addFiles(implDir + sl + "Support" + sl, "Support" +sl, ".cs");
 		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
 		zip.addFiles(implDir + sl, "", ".csproj");
 		zip.addFiles(implDir + sl, "", ".sln");

@@ -278,7 +278,41 @@ public class GeneratorUtils {
 	}
 
 	
-	private static String mapPrimitiveToCSharpType(String name) {
+	public static String mapPrimitiveToCSharpType(String name) throws Exception
+	{
+		if (name.equals("boolean"))
+			return "bool";
+		else if (name.equals("integer"))
+			return "int";
+		else if (name.equals("decimal"))
+			return "decimal";
+		else if (name.equals("base64Binary"))
+			return "byte[]";
+		else if (name.equals("instant"))
+			return "FhirDateTime";
+		else if (name.equals("string"))
+			return "string";
+		else if (name.equals("uri"))
+			return "System.Uri";
+		else if (name.equals("code"))
+			return "string";
+		else if (name.equals("oid"))
+			return "string";
+		else if (name.equals("uuid"))
+			return "string";
+		else if (name.equals("sid"))
+			return "string";
+		else if (name.equals("id"))
+			return "string";
+		else if (name.equals("date"))
+			return "FhirDateTime";
+		else if (name.equals("dateTime"))
+			return "FhirDateTime";
+		else
+			throw new Exception( "Unrecognized primitive" );
+	}
+	
+	public static String mapPrimitiveToFhirCSharpType(String name) {
 		if (name.equals("boolean"))
 			return "FhirBoolean";
 		else if (name.equals("integer"))
@@ -312,8 +346,44 @@ public class GeneratorUtils {
 	}
 	
 	
+	/*
+	  private static String mapPrimitiveToCSharpType(String name) {
+		if (name.equals("boolean"))
+			return "bool";
+		else if (name.equals("integer"))
+			return "int";
+		else if (name.equals("decimal"))
+			return "decimal";
+		else if (name.equals("base64Binary"))
+			return "byte[]";
+		else if (name.equals("instant"))
+			return "FhirDateTime";
+		else if (name.equals("string"))
+			return "string";
+		else if (name.equals("uri"))
+			return "System.Uri";
+		else if (name.equals("code"))
+			return "string";
+		else if (name.equals("oid"))
+			return "Oid";
+		else if (name.equals("uuid"))
+			return "Uuid";
+		else if (name.equals("sid"))
+			return "Sid";
+		else if (name.equals("id"))
+			return "Id";
+		else if (name.equals("date"))
+			return "FhirDateTime";
+		else if (name.equals("dateTime"))
+			return "FhirDateTime";
+		else
+			return null;
+	}
+	*/
+	
+	
 	public static String generateCSharpTypeName(String name) {
-		String result = mapPrimitiveToCSharpType(name);
+		String result = mapPrimitiveToFhirCSharpType(name);
 		
 		if( result == null )
 			result = Utilities.capitalize(name);

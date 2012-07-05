@@ -43,7 +43,7 @@ public class CSharpProjectGenerator
 		
 		List<String> templateContents = TextFile.readAllLines(destDir + "HL7.Fhir.Instance.csproj.template"); 	
 		List<String> itemGroup = buildItemGroupContents(cSharpProjectFiles);
-		List<String> outputLines = replaceTemplateVar( templateContents, "@@@PROJECTFILES@@@", itemGroup);
+		List<String> outputLines = replaceTemplateVar( templateContents, "@@@MODELFILES@@@", itemGroup);
 		TextFile.writeAllLines(destDir + "HL7.Fhir.Instance.csproj", outputLines);
 	}
 	
@@ -69,8 +69,6 @@ public class CSharpProjectGenerator
 		
 		for( String fileName : files)
 		{
-			//  <Compile Include="HL7.Fhir.Instance.Model\Prescription.cs" />
-
 			StringBuilder b = new StringBuilder();
 			b.append("\t<Compile Include=\"");
 			b.append(fileName);
