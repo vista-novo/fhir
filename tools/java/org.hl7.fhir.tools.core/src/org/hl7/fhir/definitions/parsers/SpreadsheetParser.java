@@ -50,6 +50,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
@@ -64,9 +65,10 @@ public class SpreadsheetParser {
 	private Definitions definitions;
 	private String title;
 	private String folder;
+	private Logger log;
 
 	public SpreadsheetParser(InputStream in, String name,
-			Definitions definitions, String root) throws Exception {
+			Definitions definitions, String root, Logger log) throws Exception {
 		this.name = name;
 		xls = new XLSXmlParser(in, name);
 		this.root = root;
@@ -78,6 +80,7 @@ public class SpreadsheetParser {
 		else
 		  title = name;
 		this.folder = root + title + File.separator;
+		this.log = log;
 	}
 
 
@@ -104,7 +107,18 @@ public class SpreadsheetParser {
 			processLine(resource, sheet, row, allowDAR, invariants);
 		}
 		
-		//TODO: Will fail if type has no root.
+		for (Invariant inv : invariants.values()) {
+		  if (Utilities.noString(inv.getContext())) 
+		    log.log("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" has no context");
+		  else {
+		    ElementDefn ed = findContext(resource.getRoot(), inv.getContext(), "Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" Context");
+		    ed.getInvariants().put(inv.getId(), inv);
+		    if (Utilities.noString(inv.getXpath()))
+	        log.log("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") has no XPath statement");
+		  }
+		}
+		
+		//TODO: Will fail if type has no root. - GG: so? when could that be
 		if( typeLocalBindings != null)
 			resource.getRoot().getNestedBindings().putAll(typeLocalBindings);
 		
@@ -184,7 +198,6 @@ public class SpreadsheetParser {
 		readExamples(root, xls.getSheets().get("Examples"));
     readSearchParams(root, xls.getSheets().get("Search"));
     readProfiles(root, xls.getSheets().get("Profiles"));
-    
 
 		return root;
 	}
@@ -370,12 +383,17 @@ public class SpreadsheetParser {
 			}
 		}
 
+    sheet = xls.getSheets().get("Invariants");
+    Map<String,Invariant> invariants = null;
+    if (sheet != null)
+      invariants = readInvariants(sheet);
+		
 		if (p.getMetadata().containsKey("resource")) {
 		  for (String n : p.getMetadata().get("resource")) {
 		    ResourceDefn resource = new ResourceDefn();
 		    sheet = xls.getSheets().get(n);
 		    for (int row = 0; row < sheet.rows.size(); row++) {
-		      processLine(resource, sheet, row, true, new HashMap<String,Invariant>());
+		      processLine(resource, sheet, row, true, invariants);
 		    }
 		    sheet = xls.getSheets().get(n + "-Extensions");
 		    if (sheet != null) {
@@ -511,9 +529,8 @@ public class SpreadsheetParser {
 			e = new ElementDefn();
 			e.setName(path);
 			root.setRoot(e);
-			e.getInvariants().putAll(invariants);
 		} else {
-			e = makeFromPath(root.getRoot(), path, row, profileName);
+			e = makeFromPath(root.getRoot(), path, row, profileName, true);
 		}
 
 		String c = sheet.getColumn(row, "Card.");
@@ -695,9 +712,30 @@ public class SpreadsheetParser {
     throw new Exception("Unable to read context type '"+value+"' at "+getLocation(row));
   }
 
+	 private ElementDefn findContext(ElementDefn root, String pathname, String source) throws Exception {
+	    String[] path = pathname.split("\\.");
+	    boolean n = false;
+	    if (!path[0].equals(root.getName()))
+	      throw new Exception("Element Path '" + pathname + "' is not legal found at " + source);
+	    ElementDefn res = root;
+	    for (int i = 1; i < path.length; i++) {
+	      String en = path[i];
+	      if (en.length() == 0)
+	        throw new Exception("Improper path " + pathname + " found at " + source);
+	      if (en.charAt(en.length() - 1) == '*') 
+	        throw new Exception("no-list wrapper found at " + source);
 
+	      ElementDefn t = res.getElementByName(en);
+
+	      if (t == null) {
+          throw new Exception("Reference to undefined Element "+ pathname+ " found at " + source);
+	      }
+	      res = t;
+	    }
+	    return res;
+	  }
   private ElementDefn makeFromPath(ElementDefn root, String pathname,
-			int row, String profileName) throws Exception {
+			int row, String profileName, boolean allowMake) throws Exception {
 		String[] path = pathname.split("\\.");
 		boolean n = false;
 		if (!path[0].equals(root.getName()))
@@ -724,11 +762,10 @@ public class SpreadsheetParser {
 							+ " @ " + getLocation(row));
 				n = true;
 				if (i < path.length - 1)
-					throw new Exception(
-							"Encounter Element "
-									+ pathname
-									+ " before all the elements in the path are defined in "
-									+ getLocation(row));
+					throw new Exception("Encounter Element "+ pathname+ " before all the elements in the path are defined in "+ getLocation(row));
+			  if (!allowMake)
+          throw new Exception("Reference to undefined Element "+ pathname+ " in "+ getLocation(row));
+			    
 				t = new ElementDefn();
 				t.setName(en);
 				res.getElements().add(t);

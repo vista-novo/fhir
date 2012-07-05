@@ -20,6 +20,7 @@
   <WindowWidth>24675</WindowWidth>
   <WindowTopX>3600</WindowTopX>
   <WindowTopY>3855</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -141,7 +142,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -153,15 +153,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="102"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="386.25"/>
+   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="102"
+    ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="386.25"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="347.25"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="292.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -169,6 +171,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have Id</Data></Cell>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Unless an Identifier element has a dataAbsentReason flag, it must contain an id</Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or id.size &gt; 0</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or id</Data></Cell>
@@ -176,6 +179,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Must have System</Data></Cell>
+    <Cell><Data ss:Type="String">Identifier</Data></Cell>
     <Cell><Data ss:Type="String">If the Identifier element is marked as mandatory, it must contain a system</Data></Cell>
     <Cell><Data ss:Type="String">IsMandatory implies system.size &gt; 0</Data></Cell>
    </Row>
@@ -187,11 +191,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

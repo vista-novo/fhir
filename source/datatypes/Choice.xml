@@ -19,6 +19,7 @@
   <WindowWidth>26595</WindowWidth>
   <WindowTopX>1680</WindowTopX>
   <WindowTopY>1515</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -165,8 +166,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -179,15 +178,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="162.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="322.5"/>
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="162.75"
+    ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="322.5"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="357.75"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="313.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -195,6 +196,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have a code</Data></Cell>
+    <Cell><Data ss:Type="String">Choice</Data></Cell>
     <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Choice element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">code</Font></I></ss:Data></Cell>
@@ -202,8 +204,8 @@
     <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or data or url</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:Index="3" ss:StyleID="Default"/>
-    <Cell ss:Index="5" ss:StyleID="Default"/>
+    <Cell ss:Index="4" ss:StyleID="Default"/>
+    <Cell ss:Index="6" ss:StyleID="Default"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -213,11 +215,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

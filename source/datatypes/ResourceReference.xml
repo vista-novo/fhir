@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -166,7 +167,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
@@ -180,12 +180,13 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="249"/>
+   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="249"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -193,16 +194,19 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a reference is provided</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">A reference (id or version) must be provided if there is no dataAbsentReason</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">version</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">If the version url is provided, and local, then a logical id must be provided too</Data></Cell>
    </Row>
   </Table>
@@ -213,10 +217,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>

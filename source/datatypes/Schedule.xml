@@ -20,6 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -197,8 +198,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>4</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -211,15 +210,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="144.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="324.75"/>
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="144.75"
+    ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="324.75"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="319.5"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="312.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -227,18 +228,21 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Multiple or repeating events</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">There can only be a repeat element if there is none or one event</Data></Cell>
     <Cell><Data ss:Type="String">repeat.oclIsDefined implies event.count &lt; 2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Repeat cycle</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of frequency and when can be present</Data></Cell>
     <Cell><Data ss:Type="String">repeat.frequency.oclIsDefined xor repeat.when.oclIsDefined</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">End condition</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of count and end can be present</Data></Cell>
     <Cell><Data ss:Type="String">repeat.count.oclIsDefined xor repeat.end.oclIsDefined</Data></Cell>
    </Row>
@@ -250,11 +254,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

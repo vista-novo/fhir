@@ -503,8 +503,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>43</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>34</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -526,7 +526,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Content Required</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s63"><Data ss:Type="String">A Conformance profile must have at least one of rest, messages, or document</Data></Cell>
+    <Cell><Data ss:Type="String">Conformance</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">A Conformance profile must have at least one of rest, messages, or document</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -539,7 +540,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>

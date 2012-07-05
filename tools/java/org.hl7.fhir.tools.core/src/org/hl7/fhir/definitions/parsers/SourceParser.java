@@ -182,7 +182,7 @@ public class SourceParser {
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
 		  for (RegisteredProfile p : r.getProfiles()) {
-		    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(p.getFilepath()), p.getName(), definitions, srcDir);
+		    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger);
 		    p.setProfile(sparser.parseProfile(definitions));
 		  }
 		}
@@ -193,7 +193,7 @@ public class SourceParser {
 		File spreadsheet = new File(rootDir
 				+ ini.getStringProperty("profiles", n));
 		SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, srcDir);
+				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger);
 		ProfileDefn profile = sparser.parseProfile(definitions);
 		definitions.getProfiles().put(n, profile);
 	}
@@ -271,7 +271,7 @@ public class SourceParser {
 		if (csv.exists()) {
 			SpreadsheetParser p = new SpreadsheetParser(
 					new FileInputStream(csv), csv.getName(), definitions,
-					srcDir);
+					srcDir, logger);
 			ElementDefn el = p.parseCompositeType(true);
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
@@ -313,7 +313,7 @@ public class SourceParser {
 					+ File.separatorChar + n + "-def.xml");
 
 		SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(
-				spreadsheet), spreadsheet.getName(), definitions, src);
+				spreadsheet), spreadsheet.getName(), definitions, src, logger);
 		ResourceDefn root = sparser.parseResource();
 		root.setSandbox(sandbox);
 		for (EventDefn e : sparser.getEvents())

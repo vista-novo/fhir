@@ -20,6 +20,7 @@
   <WindowWidth>23715</WindowWidth>
   <WindowTopX>4560</WindowTopX>
   <WindowTopY>4935</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -134,8 +135,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -148,14 +147,16 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="163.5"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="426.75"/>
+   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="163.5"
+    ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="426.75"/>
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="405.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -163,6 +164,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - numerator</Data></Cell>
+    <Cell><Data ss:Type="String">Ratio</Data></Cell>
     <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Ratio element has a </Font><I><Font
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
@@ -172,6 +174,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - denominator</Data></Cell>
+    <Cell><Data ss:Type="String">Ratio</Data></Cell>
     <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Ratio element has a </Font><I><Font
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
@@ -187,11 +190,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -43,7 +43,7 @@ public class ElementDefn {
 	private Integer minCardinality;
 	private Integer maxCardinality;
 	private boolean allowDAR;
-	private Invariant invariant;
+	private Invariant invariant; // a reference to an invariant defined on another element, but which constrains this one
 	private boolean mustUnderstand;
 	private boolean mustSupport;
 

@@ -202,6 +202,11 @@ public class Utilities {
 	  else
 		  return contents.trim();
   }
+
+
+  public static boolean noString(String v) {
+    return v == null || v.equals("");
+  }
   
 	
 }

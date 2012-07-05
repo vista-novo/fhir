@@ -20,6 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -216,7 +217,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <TopRowVisible>4</TopRowVisible>
    <Panes>
     <Pane>
@@ -230,15 +230,16 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="125.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="392.25"/>
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="125.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="392.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="397.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="230.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s67">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Name</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Context</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">English</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">OCL</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">XPath</Data></Cell>
@@ -246,6 +247,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Mandatory Content</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Address</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Either text or at least one part is required unless a dataAbsentReason flag is provided on the address element</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
    </Row>
@@ -263,11 +265,12 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

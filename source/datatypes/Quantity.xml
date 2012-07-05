@@ -20,6 +20,7 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -184,8 +185,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>5</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -198,15 +197,17 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="153"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="350.25"/>
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="153"
+    ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="350.25"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="346.5"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="383.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
@@ -214,6 +215,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have a value</Data></Cell>
+    <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">code</Font></I></ss:Data></Cell>
@@ -223,6 +225,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Must Have units</Data></Cell>
+    <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">units element</Font></I></ss:Data></Cell>
@@ -232,6 +235,7 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Must have a system </Data></Cell>
+    <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell><Data ss:Type="String">If a code for the units is present, the system must also be present</Data></Cell>
     <Cell><Data ss:Type="String">code.oclIsDefined implies system.oclIsDefined</Data></Cell>
    </Row>
@@ -243,11 +247,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
