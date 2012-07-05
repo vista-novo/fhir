@@ -1,0 +1,9 @@
+[21-6-2012 1:11:52] Grahame Grieve: file.. export... find runnable jar file
+[21-6-2012 1:12:06] Grahame Grieve: choose your launch configuration.
+[21-6-2012 1:12:12] Grahame Grieve: export destination
+[21-6-2012 1:12:22] Grahame Grieve: [root]\tools\bin\org.hl7.fhir.tools.jar
+[21-6-2012 1:12:35] Grahame Grieve: package required libraries into generated jar
+[21-6-2012 1:12:42] Grahame Grieve: finish
+[21-6-2012 1:12:52] Grahame Grieve: it remembers all the settings for next time.
+[21-6-2012 1:12:58] Grahame Grieve: so it's a 3 click process for me
+[21-6-2012 1:13:19] Grahame Grieve: and it generates warnings... 5 clicks
