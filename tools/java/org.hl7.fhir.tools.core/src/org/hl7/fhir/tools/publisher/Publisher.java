@@ -61,6 +61,7 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
+import org.hl7.fhir.definitions.generators.specification.SchematronGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
@@ -429,15 +430,17 @@ public class Publisher {
 		dgen.generate(resource.getRoot());
 		String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
-		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(
-				page.getFolders().dstDir + n + ".dict.xml"));
+		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".dict.xml"));
 		dxgen.generate(resource.getRoot(), "HL7");
 
     generateProfile(resource, n, xml);
 		for (RegisteredProfile p : resource.getProfiles()) 
 		  produceProfile(p.getFilename(), p.getProfile());
 		
+		SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"));
+    sch.generate(resource.getRoot());
 
+		
 		for (Example e : resource.getExamples()) {
 			processExample(e);
 		}

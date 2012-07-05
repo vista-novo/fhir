@@ -115,6 +115,8 @@ public class SpreadsheetParser {
 		    ed.getInvariants().put(inv.getId(), inv);
 		    if (Utilities.noString(inv.getXpath()))
 	        log.log("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") has no XPath statement");
+		    else if (inv.getXpath().contains("\""))
+          log.log("Type "+resource.getRoot().getName()+" Invariant "+inv.getId()+" ("+inv.getEnglish()+") contains a \" character");
 		  }
 		}
 		
