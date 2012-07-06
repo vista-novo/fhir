@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ResourceDefn extends CompositeTypeDefn {
+public interface ResourceDefn extends CompositeTypeDefn, NameScope {
 	/**
 	 * Returns the value of the '<em><b>Example</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.Example}.

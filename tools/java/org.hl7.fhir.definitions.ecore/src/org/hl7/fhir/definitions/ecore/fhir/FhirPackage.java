@@ -678,13 +678,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_DEFN__ANNOTATIONS = 1;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Scope</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN__PARENT = 2;
+	int TYPE_DEFN__SCOPE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Type Defn</em>' class.
@@ -714,31 +714,13 @@ public interface FhirPackage extends EPackage {
 	int COMPOSITE_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Scope</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__PARENT = TYPE_DEFN__PARENT;
-
-	/**
-	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_TYPE_DEFN__TYPES = TYPE_DEFN_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPOSITE_TYPE_DEFN__BINDINGS = TYPE_DEFN_FEATURE_COUNT + 1;
+	int COMPOSITE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -747,7 +729,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__ELEMENTS = TYPE_DEFN_FEATURE_COUNT + 2;
+	int COMPOSITE_TYPE_DEFN__ELEMENTS = TYPE_DEFN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Invariants</b></em>' containment reference list.
@@ -756,7 +738,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__INVARIANTS = TYPE_DEFN_FEATURE_COUNT + 3;
+	int COMPOSITE_TYPE_DEFN__INVARIANTS = TYPE_DEFN_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Allowed Generic Types</b></em>' containment reference list.
@@ -765,7 +747,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES = TYPE_DEFN_FEATURE_COUNT + 4;
+	int COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES = TYPE_DEFN_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Is Unnamed Component</b></em>' attribute.
@@ -774,7 +756,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT = TYPE_DEFN_FEATURE_COUNT + 5;
+	int COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT = TYPE_DEFN_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Composite Type Defn</em>' class.
@@ -783,7 +765,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 6;
+	int COMPOSITE_TYPE_DEFN_FEATURE_COUNT = TYPE_DEFN_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -804,31 +786,13 @@ public interface FhirPackage extends EPackage {
 	int RESOURCE_DEFN__ANNOTATIONS = COMPOSITE_TYPE_DEFN__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Scope</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__PARENT = COMPOSITE_TYPE_DEFN__PARENT;
-
-	/**
-	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_DEFN__TYPES = COMPOSITE_TYPE_DEFN__TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE_DEFN__BINDINGS = COMPOSITE_TYPE_DEFN__BINDINGS;
+	int RESOURCE_DEFN__SCOPE = COMPOSITE_TYPE_DEFN__SCOPE;
 
 	/**
 	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
@@ -867,13 +831,31 @@ public interface FhirPackage extends EPackage {
 	int RESOURCE_DEFN__IS_UNNAMED_COMPONENT = COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT;
 
 	/**
+	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__TYPES = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__BINDINGS = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Sandbox</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__SANDBOX = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 0;
+	int RESOURCE_DEFN__SANDBOX = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Example</b></em>' containment reference list.
@@ -882,7 +864,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__EXAMPLE = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 1;
+	int RESOURCE_DEFN__EXAMPLE = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Searches</b></em>' containment reference list.
@@ -891,7 +873,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__SEARCHES = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 2;
+	int RESOURCE_DEFN__SEARCHES = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Future</b></em>' attribute.
@@ -900,7 +882,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN__FUTURE = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 3;
+	int RESOURCE_DEFN__FUTURE = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Resource Defn</em>' class.
@@ -909,7 +891,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_DEFN_FEATURE_COUNT = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 4;
+	int RESOURCE_DEFN_FEATURE_COUNT = COMPOSITE_TYPE_DEFN_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1002,13 +984,13 @@ public interface FhirPackage extends EPackage {
 	int PRIMITIVE_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Scope</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRIMITIVE_TYPE_DEFN__PARENT = TYPE_DEFN__PARENT;
+	int PRIMITIVE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
 
 	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
@@ -1056,13 +1038,13 @@ public interface FhirPackage extends EPackage {
 	int CONSTRAINED_TYPE_DEFN__ANNOTATIONS = TYPE_DEFN__ANNOTATIONS;
 
 	/**
-	 * The feature id for the '<em><b>Parent</b></em>' container reference.
+	 * The feature id for the '<em><b>Scope</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINED_TYPE_DEFN__PARENT = TYPE_DEFN__PARENT;
+	int CONSTRAINED_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
 
 	/**
 	 * The feature id for the '<em><b>Base Type</b></em>' containment reference.
@@ -2453,15 +2435,15 @@ public interface FhirPackage extends EPackage {
 	EReference getTypeDefn_Annotations();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}'.
+	 * Returns the meta object for the container reference '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent()
+	 * @return the meta object for the container reference '<em>Scope</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope()
 	 * @see #getTypeDefn()
 	 * @generated
 	 */
-	EReference getTypeDefn_Parent();
+	EReference getTypeDefn_Scope();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn <em>Composite Type Defn</em>}'.
@@ -3601,12 +3583,12 @@ public interface FhirPackage extends EPackage {
 		EReference TYPE_DEFN__ANNOTATIONS = eINSTANCE.getTypeDefn_Annotations();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Scope</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TYPE_DEFN__PARENT = eINSTANCE.getTypeDefn_Parent();
+		EReference TYPE_DEFN__SCOPE = eINSTANCE.getTypeDefn_Scope();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl <em>Composite Type Defn</em>}' class.

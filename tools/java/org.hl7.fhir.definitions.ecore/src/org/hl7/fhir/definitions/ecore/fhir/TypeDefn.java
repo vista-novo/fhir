@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,32 +80,32 @@ public interface TypeDefn extends EObject {
 	void setAnnotations(Annotations value);
 
 	/**
-	 * Returns the value of the '<em><b>Parent</b></em>' container reference.
+	 * Returns the value of the '<em><b>Scope</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.NameScope#getTypes <em>Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Parent</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Scope</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parent</em>' container reference.
-	 * @see #setParent(NameScope)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Parent()
+	 * @return the value of the '<em>Scope</em>' container reference.
+	 * @see #setScope(NameScope)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Scope()
 	 * @see org.hl7.fhir.definitions.ecore.fhir.NameScope#getTypes
 	 * @model opposite="types" transient="false"
 	 * @generated
 	 */
-	NameScope getParent();
+	NameScope getScope();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}' container reference.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Parent</em>' container reference.
-	 * @see #getParent()
+	 * @param value the new value of the '<em>Scope</em>' container reference.
+	 * @see #getScope()
 	 * @generated
 	 */
-	void setParent(NameScope value);
+	void setScope(NameScope value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,6 +114,14 @@ public interface TypeDefn extends EObject {
 	 * @generated
 	 */
 	boolean isResource();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	NameScope getNearestScope();
 
 	/**
 	 * <!-- begin-user-doc -->

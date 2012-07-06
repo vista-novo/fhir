@@ -98,13 +98,10 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		allComplexTypes.addAll(definitions.getLocalResources());
 		
 		for( CompositeTypeDefn composite : allComplexTypes )
-		{
-			Map<ElementDefn,GeneratorUtils.NamedElementGroup> components =
-					GeneratorUtils.generateNamedGroupsForNestedElements(composite);			
-			
+		{		
 			CSharpResourceGenerator gen = new CSharpResourceGenerator();
 			String compositeFilename = modelGenerationDir + composite.getName() + ".cs";			
-			TextFile.stringToFile(gen.generateComposite(composite, definitions, components).toString(), compositeFilename);			
+			TextFile.stringToFile(gen.generateComposite(composite, definitions).toString(), compositeFilename);			
 			filenames.add(compositeFilename);
 		}
 

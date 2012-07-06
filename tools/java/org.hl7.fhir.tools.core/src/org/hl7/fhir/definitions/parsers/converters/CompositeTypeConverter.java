@@ -11,6 +11,7 @@ import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -46,20 +47,20 @@ POSSIBILITY OF SUCH DAMAGE.
 public class CompositeTypeConverter
 {
 	public static List<CompositeTypeDefn> buildCompositeTypesFromFhirModel( 
-			Collection<org.hl7.fhir.definitions.model.ElementDefn> types ) throws Exception
+			Collection<org.hl7.fhir.definitions.model.ElementDefn> types, 
+			NameScope scope ) throws Exception
 	{
 		List<CompositeTypeDefn> result = new ArrayList<CompositeTypeDefn>();
 		
 	    for (org.hl7.fhir.definitions.model.ElementDefn type : types) 
 	    {
-	    	result.add( buildCompositeTypeFromFhirModel(type, false) );
+	    	result.add( buildCompositeTypeFromFhirModel(type, scope) );
 	    }
 	    
 	    return result;
 	}
 	
 	
-
 	public static Collection<ResourceDefn> buildResourcesFromFhirModel(
 			Collection<org.hl7.fhir.definitions.model.ResourceDefn> resources) throws Exception
 	{	
@@ -79,16 +80,18 @@ public class CompositeTypeConverter
 	{				
 	    if( resource.isForFutureUse() )
 	    {
-    		org.hl7.fhir.definitions.model.ElementDefn futureResource = new org.hl7.fhir.definitions.model.ElementDefn();
-    		futureResource.setName( resource.getName() );
-    		futureResource.setDefinition( resource.getDefinition() );
-    		ResourceDefn resultResource = (ResourceDefn)buildCompositeTypeFromFhirModel(futureResource, true);
+	    	// Build a shallow, empty ResourceDefn
+    		ResourceDefn resultResource = FhirFactory.eINSTANCE.createResourceDefn();
+    		resultResource.setName( resource.getName() );
+    		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();		
+    		resultResource.setAnnotations( ann );
     		resultResource.setFuture(true);
     		return resultResource;
 	    }
 	    else
 	    {
-			ResourceDefn newResource = (ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true);  	
+			ResourceDefn newResource = 
+					(ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), null);  	
 			newResource.setSandbox( resource.isSandbox() );		
 			newResource.getExample().addAll(ExampleConverter.buildExamplesFromFhirModel(resource.getExamples()));
 			newResource.getSearches().addAll(
@@ -100,20 +103,31 @@ public class CompositeTypeConverter
 	
 	
 	public static CompositeTypeDefn buildCompositeTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.ElementDefn type, boolean asResource ) throws Exception
+			org.hl7.fhir.definitions.model.ElementDefn type, NameScope scope ) throws Exception
 	{
-		CompositeTypeDefn result = asResource ?
-				FhirFactory.eINSTANCE.createResourceDefn() :
-				FhirFactory.eINSTANCE.createCompositeTypeDefn();
+		// If there's no containing scope, we deduce that we are building a
+		// ResourceDefn not a CompositeTypeDefn. A bit of a hack. Sorry.
+		CompositeTypeDefn result;
+		
+		if( scope == null )
+		{
+			result = FhirFactory.eINSTANCE.createResourceDefn();
+			scope = (ResourceDefn)result;
+		}
+		else
+			result = FhirFactory.eINSTANCE.createCompositeTypeDefn();
 		
 		result.setName( type.getName() );
 		
 		Annotations ann = buildAnnotationsFromFhirElement(type);		
 		result.setAnnotations( ann );
 
-		result.getBindings().addAll( 
+		// Add bindings defined in this type to the nearest NameScope,
+		// which is a resource and could even be us.
+		scope.getBindings().addAll( 
 				BindingConverter.buildBindingsFromFhirModel( type.getNestedBindings().values() ));
 
+		// Invariants are local to the type, so add them here.
 		result.getInvariants().addAll( 
 				buildInvariantsFromFhirModel( type.getInvariants().values() ) );
 		
@@ -121,16 +135,21 @@ public class CompositeTypeConverter
 			result.getAllowedGenericTypes().addAll( 
 				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
+		// Build my properties and add.
 		result.getElements().addAll( buildElementDefnsFromFhirModel( result, type.getElements() ) );
 		
-		// Add nested types for explicitly declared nested types ('=<typename>')
+		// Recursively add nested types for explicitly declared nested types ('=<typename>')
+		// to the nearest NameScope (a Resource)
 		if( type.getNestedTypes() != null )
-			result.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
-					type.getNestedTypes().values()));
+			scope.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
+					type.getNestedTypes().values(), scope));
+		
 		
 		// TODO: Fix the corner-case <Parent>.extension in resources, its type should
 		// be set to 'Extension' for now. This code can be removed if we explicitly
 		// put this into the xls files.
+		// NB: Since all "base" Resource attributes (like .extension) do not get
+		// put into the eCore types list, we will not encounter this corner-case
 
 		return result;
 	}
@@ -199,8 +218,7 @@ public class CompositeTypeConverter
 		if( element.getTypes() != null )
 			result.getTypes().addAll( TypeRefConverter.buildTypeRefsFromFhirModel(element.getTypes()));		
 
-		// If this element is actually a nested type definition (a group of elements
-		// with a '=<typename>' in the type column, these nested elements 
+		// If this element is actually a nested type definition, these nested elements 
 		// will have been put into a separately defined type, so we'll just 
 		// refer to this newly defined type here. Note that by now, to not confuse
 		// old code, the typename will have been cleared, and only the fact

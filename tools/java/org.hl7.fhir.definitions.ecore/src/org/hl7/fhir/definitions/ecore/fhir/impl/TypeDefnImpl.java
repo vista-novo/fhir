@@ -20,6 +20,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 /**
@@ -31,7 +32,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getAnnotations <em>Annotations</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getScope <em>Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -156,8 +157,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NameScope getParent() {
-		if (eContainerFeatureID() != FhirPackage.TYPE_DEFN__PARENT) return null;
+	public NameScope getScope() {
+		if (eContainerFeatureID() != FhirPackage.TYPE_DEFN__SCOPE) return null;
 		return (NameScope)eContainer();
 	}
 
@@ -166,8 +167,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParent(NameScope newParent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParent, FhirPackage.TYPE_DEFN__PARENT, msgs);
+	public NotificationChain basicSetScope(NameScope newScope, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newScope, FhirPackage.TYPE_DEFN__SCOPE, msgs);
 		return msgs;
 	}
 
@@ -176,20 +177,20 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParent(NameScope newParent) {
-		if (newParent != eInternalContainer() || (eContainerFeatureID() != FhirPackage.TYPE_DEFN__PARENT && newParent != null)) {
-			if (EcoreUtil.isAncestor(this, newParent))
+	public void setScope(NameScope newScope) {
+		if (newScope != eInternalContainer() || (eContainerFeatureID() != FhirPackage.TYPE_DEFN__SCOPE && newScope != null)) {
+			if (EcoreUtil.isAncestor(this, newScope))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newParent != null)
-				msgs = ((InternalEObject)newParent).eInverseAdd(this, FhirPackage.NAME_SCOPE__TYPES, NameScope.class, msgs);
-			msgs = basicSetParent(newParent, msgs);
+			if (newScope != null)
+				msgs = ((InternalEObject)newScope).eInverseAdd(this, FhirPackage.NAME_SCOPE__TYPES, NameScope.class, msgs);
+			msgs = basicSetScope(newScope, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__PARENT, newParent, newParent));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__SCOPE, newScope, newScope));
 	}
 
 	/**
@@ -199,6 +200,18 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 */
 	public boolean isResource() {
 		return this.getClass().equals(ResourceDefnImpl.class);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public NameScope getNearestScope() {
+		if( this.isResource() )
+			return (ResourceDefn)this;
+		else
+			return getScope();
 	}
 
 	/**
@@ -236,10 +249,10 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.TYPE_DEFN__PARENT:
+			case FhirPackage.TYPE_DEFN__SCOPE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParent((NameScope)otherEnd, msgs);
+				return basicSetScope((NameScope)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -254,8 +267,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		switch (featureID) {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return basicSetAnnotations(null, msgs);
-			case FhirPackage.TYPE_DEFN__PARENT:
-				return basicSetParent(null, msgs);
+			case FhirPackage.TYPE_DEFN__SCOPE:
+				return basicSetScope(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -268,7 +281,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case FhirPackage.TYPE_DEFN__PARENT:
+			case FhirPackage.TYPE_DEFN__SCOPE:
 				return eInternalContainer().eInverseRemove(this, FhirPackage.NAME_SCOPE__TYPES, NameScope.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -286,8 +299,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getName();
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return getAnnotations();
-			case FhirPackage.TYPE_DEFN__PARENT:
-				return getParent();
+			case FhirPackage.TYPE_DEFN__SCOPE:
+				return getScope();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -306,8 +319,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)newValue);
 				return;
-			case FhirPackage.TYPE_DEFN__PARENT:
-				setParent((NameScope)newValue);
+			case FhirPackage.TYPE_DEFN__SCOPE:
+				setScope((NameScope)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -327,8 +340,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				setAnnotations((Annotations)null);
 				return;
-			case FhirPackage.TYPE_DEFN__PARENT:
-				setParent((NameScope)null);
+			case FhirPackage.TYPE_DEFN__SCOPE:
+				setScope((NameScope)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -346,8 +359,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_DEFN__ANNOTATIONS:
 				return annotations != null;
-			case FhirPackage.TYPE_DEFN__PARENT:
-				return getParent() != null;
+			case FhirPackage.TYPE_DEFN__SCOPE:
+				return getScope() != null;
 		}
 		return super.eIsSet(featureID);
 	}

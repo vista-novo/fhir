@@ -7,6 +7,7 @@ import java.util.Map;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
@@ -425,14 +426,16 @@ public class GeneratorUtils {
 
 		if( context != null )
 		{
-			// An attribute cannot have the same name as a nested type
-			for( CompositeTypeDefn composite : context.getLocalCompositeTypes() )
-				if( composite.getName().equals(result) )
-				{
-					result += "_";
-					break;
-				}
-			
+			if( context.isResource() )
+			{
+				// An attribute cannot have the same name as a nested type
+				for( CompositeTypeDefn composite : ((ResourceDefn)context).getLocalCompositeTypes() )
+					if( composite.getName().equals(result) )
+					{
+						result += "_";
+						break;
+					}
+			}
 			// An attribute cannot have the same name as its enclosing type
 			if( result.equals( context.getName() ) )
 				result += "_";
@@ -442,55 +445,55 @@ public class GeneratorUtils {
 	}
 
 	
-	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements(CompositeTypeDefn composite)
-	{
-		return generateNamedGroupsForNestedElements("", composite);
-	}
-	
-
-	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements( String rootName, CompositeTypeDefn composite )
-	{
-		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
-
-		for( ElementDefn childElem : composite.getElements() )
-		{
-			if( childElem.hasNestedElements() )
-			{
-				String childTypeName = rootName + Utilities.capitalize(childElem.getName());
-				result.putAll( generateNamedGroupForNestedElements(childTypeName, childElem) );
-			}
-		}
-
-		for( CompositeTypeDefn childComponent : composite.getLocalCompositeTypes() )
-		{
-			result.putAll( generateNamedGroupsForNestedElements(rootName + childComponent.getName(), childComponent));
-		}
-		
-		return result;
-	}
-	
-	
-	private static Map<ElementDefn, NamedElementGroup> generateNamedGroupForNestedElements( String name,  ElementDefn root )
-	{
-		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
-
-		for( ElementDefn elem : root.getElements() )
-		{
-			if( elem.hasNestedElements() )
-			{
-				String childGroupName = name.concat( Utilities.capitalize(elem.getName()) );
-				result.putAll( generateNamedGroupForNestedElements(childGroupName, elem) );
-			}
-		}
-
-		NamedElementGroup newGroup = new NamedElementGroup();
-		newGroup.setName(name.concat("Component"));
-		newGroup.setElements(root.getElements());
-		
-		result.put( root, newGroup );
-		
-		return result;
-	}
+//	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements(CompositeTypeDefn composite)
+//	{
+//		return generateNamedGroupsForNestedElements("", composite);
+//	}
+//	
+//
+//	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements( String rootName, CompositeTypeDefn composite )
+//	{
+//		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
+//
+//		for( ElementDefn childElem : composite.getElements() )
+//		{
+//			if( childElem.hasNestedElements() )
+//			{
+//				String childTypeName = rootName + Utilities.capitalize(childElem.getName());
+//				result.putAll( generateNamedGroupForNestedElements(childTypeName, childElem) );
+//			}
+//		}
+//
+//		for( CompositeTypeDefn childComponent : composite.getLocalCompositeTypes() )
+//		{
+//			result.putAll( generateNamedGroupsForNestedElements(rootName + childComponent.getName(), childComponent));
+//		}
+//		
+//		return result;
+//	}
+//	
+//	
+//	private static Map<ElementDefn, NamedElementGroup> generateNamedGroupForNestedElements( String name,  ElementDefn root )
+//	{
+//		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
+//
+//		for( ElementDefn elem : root.getElements() )
+//		{
+//			if( elem.hasNestedElements() )
+//			{
+//				String childGroupName = name.concat( Utilities.capitalize(elem.getName()) );
+//				result.putAll( generateNamedGroupForNestedElements(childGroupName, elem) );
+//			}
+//		}
+//
+//		NamedElementGroup newGroup = new NamedElementGroup();
+//		newGroup.setName(name.concat("Component"));
+//		newGroup.setElements(root.getElements());
+//		
+//		result.put( root, newGroup );
+//		
+//		return result;
+//	}
 	
 
 		
@@ -530,7 +533,7 @@ public class GeneratorUtils {
 				hasOthers = true;
 			else
 			{
-				TypeDefn def = parent.resolveType(ref.getName());
+				TypeDefn def = parent.getNearestScope().resolveType(ref.getName());
 			
 				if( def == null )
 					return null;

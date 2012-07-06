@@ -65,7 +65,7 @@ public interface NameScope extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn}.
-	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent <em>Parent</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Types</em>' reference list isn't clear,
@@ -74,8 +74,8 @@ public interface NameScope extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getNameScope_Types()
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getParent
-	 * @model opposite="parent" containment="true"
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope
+	 * @model opposite="scope" containment="true"
 	 *        extendedMetaData="name='type' namespace=''"
 	 * @generated
 	 */

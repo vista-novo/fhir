@@ -914,7 +914,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTypeDefn_Parent() {
+	public EReference getTypeDefn_Scope() {
 		return (EReference)typeDefnEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1510,7 +1510,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		typeDefnEClass = createEClass(TYPE_DEFN);
 		createEAttribute(typeDefnEClass, TYPE_DEFN__NAME);
 		createEReference(typeDefnEClass, TYPE_DEFN__ANNOTATIONS);
-		createEReference(typeDefnEClass, TYPE_DEFN__PARENT);
+		createEReference(typeDefnEClass, TYPE_DEFN__SCOPE);
 
 		compositeTypeDefnEClass = createEClass(COMPOSITE_TYPE_DEFN);
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__ELEMENTS);
@@ -1581,10 +1581,10 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		// Add supertypes to classes
 		definitionsEClass.getESuperTypes().add(this.getNameScope());
 		resourceDefnEClass.getESuperTypes().add(this.getCompositeTypeDefn());
+		resourceDefnEClass.getESuperTypes().add(this.getNameScope());
 		primitiveTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
 		constrainedTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
 		compositeTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
-		compositeTypeDefnEClass.getESuperTypes().add(this.getNameScope());
 		profiledElementDefnEClass.getESuperTypes().add(this.getElementDefn());
 
 		// Initialize classes and features; add operations and parameters
@@ -1705,7 +1705,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEClass(typeDefnEClass, TypeDefn.class, "TypeDefn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTypeDefn_Annotations(), this.getAnnotations(), null, "annotations", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypeDefn_Parent(), this.getNameScope(), this.getNameScope_Types(), "parent", null, 0, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTypeDefn_Scope(), this.getNameScope(), this.getNameScope_Types(), "scope", null, 0, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isPrimitive", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1714,6 +1714,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isConstrained", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isResource", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(typeDefnEClass, this.getNameScope(), "getNearestScope", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(compositeTypeDefnEClass, CompositeTypeDefn.class, "CompositeTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeTypeDefn_Elements(), this.getElementDefn(), this.getElementDefn_ParentType(), "elements", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1724,7 +1726,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		addEOperation(compositeTypeDefnEClass, ecorePackage.getEBoolean(), "isGenericType", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nameScopeEClass, NameScope.class, "NameScope", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNameScope_Types(), this.getTypeDefn(), this.getTypeDefn_Parent(), "types", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNameScope_Types(), this.getTypeDefn(), this.getTypeDefn_Scope(), "types", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNameScope_Bindings(), this.getBindingDefn(), this.getBindingDefn_Parent(), "bindings", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(nameScopeEClass, this.getTypeDefn(), "resolveType", 0, 1, IS_UNIQUE, IS_ORDERED);

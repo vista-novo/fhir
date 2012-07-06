@@ -43,13 +43,12 @@ import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 
 
 public class CSharpResourceGenerator extends GenBlock
 {
-	public GenBlock generateComposite( CompositeTypeDefn composite, 
-			Definitions definitions, 
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements ) throws Exception
+	public GenBlock generateComposite( CompositeTypeDefn composite, Definitions definitions ) throws Exception
 	{
 		begin();
 		
@@ -57,7 +56,7 @@ public class CSharpResourceGenerator extends GenBlock
 		
 		ln("namespace HL7.Fhir.Instance.Model");
 		bs("{");
-			compositeClass( composite, nestedElements ); 
+			compositeClass( composite ); 
 		es("}");
 		
 		return end();
@@ -127,8 +126,7 @@ public class CSharpResourceGenerator extends GenBlock
 		return end();
 	}
 	
-	public GenBlock compositeClass( CompositeTypeDefn composite,
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
+	public GenBlock compositeClass( CompositeTypeDefn composite ) throws Exception
 	{
 		begin();
 		
@@ -145,22 +143,21 @@ public class CSharpResourceGenerator extends GenBlock
 		// Generate the class itself		
 		compositeClassHeader( composite );
 		bs("{");		
-			// Generate local bindings
-			if( composite.getBindings().size() > 0)
-				enums( composite.getBindings() );
-		
-			// Generate the nested local types in this scope
-			if( composite.getLocalCompositeTypes().size() > 0)
-				nestedLocalTypes( composite.getLocalCompositeTypes(), nestedElements ); 
-		
-			// Generate the nested types that correspond to anonymous
-			// nested blocks (Elements with children).
-			if( nestedElements != null && nestedElements.values().size() > 0 )
-				nestedComponents( nestedElements.values(), nestedElements, composite );
-		
+			if( composite.isResource() )
+			{
+				ResourceDefn me = (ResourceDefn)composite;
+				// Generate local bindings
+				if( me.getBindings().size() > 0)
+					enums( me.getBindings() );
+			
+				// Generate the nested local types in this scope
+				if( me.getLocalCompositeTypes().size() > 0)
+					nestedLocalTypes( me.getLocalCompositeTypes() ); 			
+			}
+			
 			// Generate this classes properties
 			if( composite.getElements().size() > 0)
-				memberProperties( composite.getElements(), nestedElements, composite  );	
+				memberProperties( composite.getElements(), composite  );	
 		es("}");
 		ln();
 		
@@ -168,8 +165,8 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 
 	
-	public GenBlock memberProperties( List<ElementDefn> elements, Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-					CompositeTypeDefn context ) throws Exception
+	public GenBlock memberProperties( List<ElementDefn> elements, 
+								CompositeTypeDefn context ) throws Exception
 	{
 		begin();
 		
@@ -180,15 +177,13 @@ public class CSharpResourceGenerator extends GenBlock
 			if( member.getMaxCardinality() == -1 ) nl("List<");
 			if( member.isAllowDAR() ) nl("Absentable<");
 			
-			if( nestedElements.containsKey(member) ) 
-				nl(nestedElements.get(member).getName());
-			else if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
+			if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
 				nl("T");
 			else if( member.isXmlIdElement() ) 
 				nl("string");
 			else if( member.isBoundCode() ) 
 			{
-				BindingDefn binding = member.getParentType()
+				BindingDefn binding = member.getParentType().getNearestScope()
 						.resolveBinding(member.getBinding().getName());
 				
 				if( binding != null &&  binding.getBinding() == BindingType.CODE_LIST )
@@ -223,39 +218,38 @@ public class CSharpResourceGenerator extends GenBlock
 		return end();
 	}
 	
-	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes, 
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
+	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes) throws Exception
 	{
 		begin();
 
 		for( CompositeTypeDefn nested : nestedTypes )
 		{
-			compositeClass( nested, nestedElements );
+			compositeClass( nested );
 			ln();
 		}
 		
 		end();
 	}
 	
-	private void nestedComponents( Collection<GeneratorUtils.NamedElementGroup> nestedGroups,
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-						CompositeTypeDefn composite ) throws Exception
-	{
-		begin();
-
-		for( GeneratorUtils.NamedElementGroup group : nestedGroups )
-		{
-			ln("public class "); 
-				nl( GeneratorUtils.generateCSharpTypeName(group.getName()) );
-				nl( " : Composite");
-			bs("{");
-				memberProperties( group.getElements(), nestedElements, composite  );
-			es("}");
-			ln();
-		}
-			
-		end();
-	}
+//	private void nestedComponents( Collection<GeneratorUtils.NamedElementGroup> nestedGroups,
+//			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
+//						CompositeTypeDefn composite ) throws Exception
+//	{
+//		begin();
+//
+//		for( GeneratorUtils.NamedElementGroup group : nestedGroups )
+//		{
+//			ln("public class "); 
+//				nl( GeneratorUtils.generateCSharpTypeName(group.getName()) );
+//				nl( " : Composite");
+//			bs("{");
+//				memberProperties( group.getElements(), composite  );
+//			es("}");
+//			ln();
+//		}
+//			
+//		end();
+//	}
 		
 	
 	public GenBlock genericBaseClass( CompositeTypeDefn genericType )

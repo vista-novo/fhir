@@ -218,7 +218,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 */
 	public EList<TypeDefn> getTypes() {
 		if (types == null) {
-			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__PARENT);
+			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
 		}
 		return types;
 	}

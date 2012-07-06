@@ -121,44 +121,52 @@ public class SpreadsheetParser {
 		}
 		
 		//TODO: Will fail if type has no root. - GG: so? when could that be
+		// EK: Future types. But those won't get there.
 		if( typeLocalBindings != null)
 			resource.getRoot().getNestedBindings().putAll(typeLocalBindings);
 		
-		scanNestedTypes(resource, resource.getRoot());
+		scanNestedTypes(resource, resource.getRoot(), resource.getName());
 		
 		return resource;
 	}
 	
 	
-	private void scanNestedTypes(ResourceDefn parent, ElementDefn root) throws Exception
+	private void scanNestedTypes(ResourceDefn parent, ElementDefn root, String parentName) throws Exception
 	{
 		for( ElementDefn element : root.getElements() )
 		{
 			if( element.hasNestedElements() )
-			{			
+			{	
+				String nestedTypeName;
+				
+				// If user has given an explicit name, use it, otherwise  automatically
+				// generated name for this nested type
 				if( element.typeCode().startsWith("=") )
-				{
-					String nestedTypeName = element.typeCode().substring(1);
-					
-					ElementDefn newCompositeType = new ElementDefn();
-					
-					newCompositeType.setName(nestedTypeName);
-					newCompositeType.setDefinition("A nested type in " + parent.getName());
-					newCompositeType.getElements().addAll(element.getElements());
+					nestedTypeName = element.typeCode().substring(1);
+				else
+					nestedTypeName = parentName + Utilities.capitalize(element.getName());
 				
-					if( parent.getRoot().getNestedTypes().containsKey(nestedTypeName) )
-						throw new Exception("Nested type " + nestedTypeName + 
-								" already exist in resource " + parent.getName());
-					
-					parent.getRoot().getNestedTypes().put(nestedTypeName, newCompositeType );
+				ElementDefn newCompositeType = new ElementDefn();
+		
+				// Add Component to the actually generated name to avoid
+				// confusing between the element name and the element's type
+				newCompositeType.setName(nestedTypeName+"Component");
+				newCompositeType.setDefinition("A nested type in " + parent.getName() + ": "
+								+ element.getDefinition() );
+				newCompositeType.getElements().addAll(element.getElements());
+			
+				if( parent.getRoot().getNestedTypes().containsKey(nestedTypeName) )
+					throw new Exception("Nested type " + nestedTypeName + 
+							" already exist in resource " + parent.getName());
+				
+				parent.getRoot().getNestedTypes().put(nestedTypeName, newCompositeType );
 
-					// Clear out the name of the local type, so old code
-					// will not see a change.
-					element.getTypes().clear();
-					element.setDeclaredTypeName(nestedTypeName);
-				}
+				// Clear out the name of the local type, so old code
+				// will not see a change.
+				element.getTypes().clear();
+				element.setDeclaredTypeName(newCompositeType.getName());
 				
-				scanNestedTypes( parent, element );
+				scanNestedTypes( parent, element, nestedTypeName  );
 			}
 			
 			resolveElementReferences(parent, element);
