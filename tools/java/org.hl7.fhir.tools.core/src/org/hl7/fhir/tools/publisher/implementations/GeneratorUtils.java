@@ -426,16 +426,16 @@ public class GeneratorUtils {
 
 		if( context != null )
 		{
-			if( context.isResource() )
+			// An attribute cannot have the same name as a nested type
+			for( CompositeTypeDefn composite : context.getLocalCompositeTypes() )
 			{
-				// An attribute cannot have the same name as a nested type
-				for( CompositeTypeDefn composite : ((ResourceDefn)context).getLocalCompositeTypes() )
-					if( composite.getName().equals(result) )
-					{
-						result += "_";
-						break;
-					}
+				if( composite.getName().equals(result) )
+				{
+					result += "_";
+					break;
+				}
 			}
+			
 			// An attribute cannot have the same name as its enclosing type
 			if( result.equals( context.getName() ) )
 				result += "_";
@@ -533,7 +533,7 @@ public class GeneratorUtils {
 				hasOthers = true;
 			else
 			{
-				TypeDefn def = parent.getNearestScope().resolveType(ref.getName());
+				TypeDefn def = parent.getScope().resolveType(ref.getName());
 			
 				if( def == null )
 					return null;

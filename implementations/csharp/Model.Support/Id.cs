@@ -28,29 +28,27 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirDecimal
+    public partial class Id
     {
-        // Explicit default: 0
-        public FhirDecimal() : base(0)
-        {
-        }
+        // Must conform to the pattern "[a-z0-9\-\.]{1,36}"
+        private const string PATTERN = @"[a-z0-9\-\.]{1,36}";
 
+        public static bool TryParse(string value, out Id result)
+        {       
+            Regex idRegEx = new Regex(PATTERN);
 
-        public static bool TryParse( string value, out FhirDecimal result)
-        {
-            decimal decimalValue;  
-
-            if (Decimal.TryParse(value, out decimalValue))
+            if (idRegEx.IsMatch(value))
             {
-                result = new FhirDecimal(decimalValue);
+                result = new Id(value);
                 return true;
             }
             else
@@ -60,20 +58,27 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static FhirDecimal Parse(string value)
+        public static Id Parse(string value)
         {
-            FhirDecimal result = null;
+            Id result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else 
-                throw new FhirValueFormatException("Not a decimal value");
+            else
+                throw new FhirValueFormatException("Not an correctly formatted id value");
         }
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values
+            if (Value == null)
+                return "Id values cannot be empty";
+
+            Id dummy;
+
+            if (!TryParse( this.Value, out dummy ))
+                return "Not an correctly formatted id value";
+            
+            return null; 
         }
     }
-  
 }

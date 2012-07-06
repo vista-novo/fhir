@@ -33,14 +33,64 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public class Code<T> : Primitive<T>
+    public partial class Code
+    {
+        // Must conform to the pattern [^\s]+([\s]+[^\s]+)*
+        private const string PATTERN = @"[^\s]+([\s]+[^\s]+)*";
+
+        public static bool TryParse(string value, out Code result)
+        {       
+            Regex codeRegEx = new Regex(PATTERN);
+
+            if (codeRegEx.IsMatch(value))
+            {
+                result = new Code(value);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
+
+        public static Code Parse(string value)
+        {
+            Code result = null;
+
+            if (TryParse(value, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Not an correctly formatted code value");
+        }
+
+        public override string ValidateData()
+        {
+            if (Value == null)
+                return "Code values cannot be empty";
+
+            Code dummy;
+
+            if (!TryParse( this.Value, out dummy ))
+                return "Not an correctly formatted code value";
+            
+            return null; 
+        }
+    }
+
+
+
+
+    public class Code<T> : Primitive<T>  where T : struct, IConvertible
     {
         public Code(T value)
             : base(value)
         {
+            if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
         }
 
         public static implicit operator Code<T>(T value)
@@ -51,6 +101,37 @@ namespace HL7.Fhir.Instance.Model
         public static implicit operator T(Code<T> value)
         {
             return value.Value;
+        }
+
+        public static bool TryParse(string value, out Code<T> result)
+        {
+            T enumValue;
+
+            if (Enum.TryParse<T>(value, false, out enumValue))
+            {
+                result = new Code<T>(enumValue);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
+
+        public static Code<T> Parse(string value)
+        {
+            Code<T> result = null;
+
+            if (TryParse(value, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Not an correct value for enum " + typeof(T).Name );
+        }
+
+        public override string ValidateData()
+        {
+            return null;        // cannot be empty and cannot be set to illegal values
         }
     }
 }

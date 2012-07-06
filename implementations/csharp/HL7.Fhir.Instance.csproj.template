@@ -42,7 +42,11 @@
   <ItemGroup>
 		@@@MODELFILES@@@
   </ItemGroup>
-  <ItemGroup>
+<ItemGroup>
+    <Compile Include="Model.Support\Id.cs" />
+    <Compile Include="Model.Support\Sid.cs" />
+    <Compile Include="Model.Support\Uuid.cs" />
+    <Compile Include="Model.Support\Oid.cs" />
     <Compile Include="Model.Support\FhirUri.cs" />
     <Compile Include="Model.Support\Instant.cs" />
     <Compile Include="Model.Support\FhirString.cs" />
@@ -54,6 +58,7 @@
     <Compile Include="Model.Support\FhirBoolean.cs" />
     <Compile Include="Model.Support\FhirDecimal.cs" />
     <Compile Include="Model.Support\Integer.cs" />
+    <Compile Include="Model.Support\XHtml.cs" />
     <Compile Include="Model.Support\XsdDateTime.cs" />
     <Compile Include="Support\XmlPrimitiveParser.cs" />
     <Compile Include="Support\XmlUtils.cs" />

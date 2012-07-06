@@ -123,19 +123,19 @@ public class SourceParser {
 			loadCompositeType(n, definitions.getTypes());	
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getTypes().values(), eCoreParseResults ));
+						.getTypes().values(), null ));
 		
 		for (String n : ini.getPropertyNames("structures"))
 			loadCompositeType(n, definitions.getStructures());
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getStructures().values(), eCoreParseResults ));
+						.getStructures().values(), null ));
 			
 		for (String n : ini.getPropertyNames("infrastructure"))
 			loadCompositeType(n, definitions.getInfrastructure());
 		eCoreParseResults.getTypes().addAll(
 				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getInfrastructure().values(), eCoreParseResults ));
+						.getInfrastructure().values(), null ));
 		
 		eCoreParseResults.getTypes().addAll(
 				ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(

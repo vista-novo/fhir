@@ -28,29 +28,27 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirDecimal
+    public partial class Sid
     {
-        // Explicit default: 0
-        public FhirDecimal() : base(0)
-        {
-        }
+        // Must conform to the pattern "[A-Za-z]+:[^s]*"
+        private const string PATTERN = @"[A-Za-z]+:[^s]*";
 
+        public static bool TryParse(string value, out Sid result)
+        {       
+            Regex sidRegEx = new Regex(PATTERN);
 
-        public static bool TryParse( string value, out FhirDecimal result)
-        {
-            decimal decimalValue;  
-
-            if (Decimal.TryParse(value, out decimalValue))
+            if (sidRegEx.IsMatch(value))
             {
-                result = new FhirDecimal(decimalValue);
+                result = new Sid(value);
                 return true;
             }
             else
@@ -60,20 +58,27 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static FhirDecimal Parse(string value)
+        public static Sid Parse(string value)
         {
-            FhirDecimal result = null;
+            Sid result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else 
-                throw new FhirValueFormatException("Not a decimal value");
+            else
+                throw new FhirValueFormatException("Not an correctly formatted sid value");
         }
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values
+            if (Value == null)
+                return "Sid values cannot be empty";
+
+            Sid dummy;
+
+            if (!TryParse( this.Value, out dummy ))
+                return "Not an correctly formatted sid value";
+            
+            return null; 
         }
     }
-  
 }

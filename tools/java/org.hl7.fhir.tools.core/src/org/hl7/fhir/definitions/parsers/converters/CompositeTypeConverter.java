@@ -54,7 +54,7 @@ public class CompositeTypeConverter
 		
 	    for (org.hl7.fhir.definitions.model.ElementDefn type : types) 
 	    {
-	    	result.add( buildCompositeTypeFromFhirModel(type, scope) );
+	    	result.add( buildCompositeTypeFromFhirModel(type, false, scope) );
 	    }
 	    
 	    return result;
@@ -91,7 +91,7 @@ public class CompositeTypeConverter
 	    else
 	    {
 			ResourceDefn newResource = 
-					(ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), null);  	
+					(ResourceDefn)buildCompositeTypeFromFhirModel(resource.getRoot(), true, null);  	
 			newResource.setSandbox( resource.isSandbox() );		
 			newResource.getExample().addAll(ExampleConverter.buildExamplesFromFhirModel(resource.getExamples()));
 			newResource.getSearches().addAll(
@@ -103,19 +103,18 @@ public class CompositeTypeConverter
 	
 	
 	public static CompositeTypeDefn buildCompositeTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.ElementDefn type, NameScope scope ) throws Exception
+			org.hl7.fhir.definitions.model.ElementDefn type, boolean isResource, NameScope scope ) throws Exception
 	{
-		// If there's no containing scope, we deduce that we are building a
-		// ResourceDefn not a CompositeTypeDefn. A bit of a hack. Sorry.
-		CompositeTypeDefn result;
-		
+
+		CompositeTypeDefn result = isResource ? FhirFactory.eINSTANCE.createResourceDefn() : 
+			FhirFactory.eINSTANCE.createCompositeTypeDefn();
+			
 		if( scope == null )
 		{
-			result = FhirFactory.eINSTANCE.createResourceDefn();
-			scope = (ResourceDefn)result;
+			// If there's no containing scope, we deduce that we are building the
+			// "root" type, so we are the scope.
+			scope = result;
 		}
-		else
-			result = FhirFactory.eINSTANCE.createCompositeTypeDefn();
 		
 		result.setName( type.getName() );
 		

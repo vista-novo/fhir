@@ -202,17 +202,17 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		return this.getClass().equals(ResourceDefnImpl.class);
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public NameScope getNearestScope() {
-		if( this.isResource() )
-			return (ResourceDefn)this;
-		else
-			return getScope();
-	}
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated NOT
+//	 */
+//	public NameScope getNearestScope() {
+//		if( this.isResource() )
+//			return (ResourceDefn)this;
+//		else
+//			return getScope();
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->

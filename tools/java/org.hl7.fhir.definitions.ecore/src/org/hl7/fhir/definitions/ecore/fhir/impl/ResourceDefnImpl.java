@@ -46,8 +46,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#isSandbox <em>Sandbox</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getExample <em>Example</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ResourceDefnImpl#getSearches <em>Searches</em>}</li>
@@ -58,26 +56,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * @generated
  */
 public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceDefn {
-	/**
-	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TypeDefn> types;
-
-	/**
-	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBindings()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<BindingDefn> bindings;
-
 	/**
 	 * The default value of the '{@link #isSandbox() <em>Sandbox</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -162,30 +140,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TypeDefn> getTypes() {
-		if (types == null) {
-			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.RESOURCE_DEFN__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
-		}
-		return types;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<BindingDefn> getBindings() {
-		if (bindings == null) {
-			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.RESOURCE_DEFN__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
-		}
-		return bindings;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Example> getExample() {
 		if (example == null) {
 			example = new EObjectContainmentEList<Example>(Example.class, this, FhirPackage.RESOURCE_DEFN__EXAMPLE);
@@ -247,76 +201,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_DEFN__FUTURE, oldFuture, future));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public TypeDefn resolveType(String name) {
-		return ns().resolveType(name);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public BindingDefn resolveBinding(String name) {
-		return ns().resolveBinding(name);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
-		return ns().getLocalCompositeTypes();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EList<ConstrainedTypeDefn> getLocalConstrainedTypes() {
-		return ns().getLocalConstrainedTypes();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public NameScope getContainingScope() {
-		return this.getScope();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public EList<ResourceDefn> getLocalResources() {
-		return ns().getLocalResources();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+	
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -326,10 +211,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
 				return ((InternalEList<?>)getExample()).basicRemove(otherEnd, msgs);
 			case FhirPackage.RESOURCE_DEFN__SEARCHES:
@@ -346,10 +227,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				return getTypes();
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				return getBindings();
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				return isSandbox();
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
@@ -371,14 +248,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				getTypes().clear();
-				getTypes().addAll((Collection<? extends TypeDefn>)newValue);
-				return;
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				getBindings().clear();
-				getBindings().addAll((Collection<? extends BindingDefn>)newValue);
-				return;
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				setSandbox((Boolean)newValue);
 				return;
@@ -405,12 +274,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				getTypes().clear();
-				return;
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				getBindings().clear();
-				return;
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				setSandbox(SANDBOX_EDEFAULT);
 				return;
@@ -435,10 +298,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FhirPackage.RESOURCE_DEFN__TYPES:
-				return types != null && !types.isEmpty();
-			case FhirPackage.RESOURCE_DEFN__BINDINGS:
-				return bindings != null && !bindings.isEmpty();
 			case FhirPackage.RESOURCE_DEFN__SANDBOX:
 				return sandbox != SANDBOX_EDEFAULT;
 			case FhirPackage.RESOURCE_DEFN__EXAMPLE:
@@ -449,40 +308,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 				return future != FUTURE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == NameScope.class) {
-			switch (derivedFeatureID) {
-				case FhirPackage.RESOURCE_DEFN__TYPES: return FhirPackage.NAME_SCOPE__TYPES;
-				case FhirPackage.RESOURCE_DEFN__BINDINGS: return FhirPackage.NAME_SCOPE__BINDINGS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == NameScope.class) {
-			switch (baseFeatureID) {
-				case FhirPackage.NAME_SCOPE__TYPES: return FhirPackage.RESOURCE_DEFN__TYPES;
-				case FhirPackage.NAME_SCOPE__BINDINGS: return FhirPackage.RESOURCE_DEFN__BINDINGS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -504,16 +329,6 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	}
 
 	
-	private NameScopeImpl nameScope;
-	
-	private NameScopeImpl ns()
-	{
-		if( nameScope == null )
-		{
-			nameScope = new NameScopeImpl(this);
-		}
-		
-		return nameScope;
-	}
+
 	
 } //ResourceDefnImpl

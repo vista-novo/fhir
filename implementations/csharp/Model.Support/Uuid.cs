@@ -28,29 +28,27 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirDecimal
+    public partial class Uuid
     {
-        // Explicit default: 0
-        public FhirDecimal() : base(0)
-        {
-        }
+        // Must conform to the pattern "[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}"
+        private const string PATTERN = @"[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}";
 
+        public static bool TryParse(string value, out Uuid result)
+        {       
+            Regex uuidRegEx = new Regex(PATTERN);
 
-        public static bool TryParse( string value, out FhirDecimal result)
-        {
-            decimal decimalValue;  
-
-            if (Decimal.TryParse(value, out decimalValue))
+            if (uuidRegEx.IsMatch(value))
             {
-                result = new FhirDecimal(decimalValue);
+                result = new Uuid(value);
                 return true;
             }
             else
@@ -60,20 +58,27 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static FhirDecimal Parse(string value)
+        public static Uuid Parse(string value)
         {
-            FhirDecimal result = null;
+            Uuid result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else 
-                throw new FhirValueFormatException("Not a decimal value");
+            else
+                throw new FhirValueFormatException("Not an correctly formatted uuid value");
         }
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values
+            if (Value == null)
+                return "Uuid values cannot be empty";
+
+            Uuid dummy;
+
+            if (!TryParse( this.Value, out dummy ))
+                return "Not an correctly formatted uuid value";
+            
+            return null; 
         }
     }
-  
 }

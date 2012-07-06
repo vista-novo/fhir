@@ -28,29 +28,27 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirDecimal
+    public partial class Oid
     {
-        // Explicit default: 0
-        public FhirDecimal() : base(0)
-        {
-        }
+        // Must conform to the pattern "([1-9][0-9]*)(\.[1-9][0-9]*)*"
+        private const string PATTERN = @"([1-9][0-9]*)(\.[1-9][0-9]*)*";
 
+        public static bool TryParse(string value, out Oid result)
+        {       
+            Regex oidRegEx = new Regex(PATTERN);
 
-        public static bool TryParse( string value, out FhirDecimal result)
-        {
-            decimal decimalValue;  
-
-            if (Decimal.TryParse(value, out decimalValue))
+            if (oidRegEx.IsMatch(value))
             {
-                result = new FhirDecimal(decimalValue);
+                result = new Oid(value);
                 return true;
             }
             else
@@ -60,20 +58,27 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static FhirDecimal Parse(string value)
+        public static Oid Parse(string value)
         {
-            FhirDecimal result = null;
+            Oid result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else 
-                throw new FhirValueFormatException("Not a decimal value");
+            else
+                throw new FhirValueFormatException("Not an correctly formatted oid value");
         }
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values
+            if (Value == null)
+                return "Oid values cannot be empty";
+
+            Oid dummy;
+
+            if (!TryParse( this.Value, out dummy ))
+                return "Not an correctly formatted oid value";
+            
+            return null; 
         }
     }
-  
 }

@@ -143,18 +143,14 @@ public class CSharpResourceGenerator extends GenBlock
 		// Generate the class itself		
 		compositeClassHeader( composite );
 		bs("{");		
-			if( composite.isResource() )
-			{
-				ResourceDefn me = (ResourceDefn)composite;
-				// Generate local bindings
-				if( me.getBindings().size() > 0)
-					enums( me.getBindings() );
+			// Generate local bindings
+			if( composite.getBindings().size() > 0)
+				enums( composite.getBindings() );
 			
-				// Generate the nested local types in this scope
-				if( me.getLocalCompositeTypes().size() > 0)
-					nestedLocalTypes( me.getLocalCompositeTypes() ); 			
-			}
-			
+			// Generate the nested local types in this scope
+			if( composite.getLocalCompositeTypes().size() > 0)
+				nestedLocalTypes( composite.getLocalCompositeTypes() ); 			
+	
 			// Generate this classes properties
 			if( composite.getElements().size() > 0)
 				memberProperties( composite.getElements(), composite  );	
@@ -183,7 +179,7 @@ public class CSharpResourceGenerator extends GenBlock
 				nl("string");
 			else if( member.isBoundCode() ) 
 			{
-				BindingDefn binding = member.getParentType().getNearestScope()
+				BindingDefn binding = member.getParentType().getScope()
 						.resolveBinding(member.getBinding().getName());
 				
 				if( binding != null &&  binding.getBinding() == BindingType.CODE_LIST )
@@ -230,28 +226,8 @@ public class CSharpResourceGenerator extends GenBlock
 		
 		end();
 	}
-	
-//	private void nestedComponents( Collection<GeneratorUtils.NamedElementGroup> nestedGroups,
-//			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-//						CompositeTypeDefn composite ) throws Exception
-//	{
-//		begin();
-//
-//		for( GeneratorUtils.NamedElementGroup group : nestedGroups )
-//		{
-//			ln("public class "); 
-//				nl( GeneratorUtils.generateCSharpTypeName(group.getName()) );
-//				nl( " : Composite");
-//			bs("{");
-//				memberProperties( group.getElements(), composite  );
-//			es("}");
-//			ln();
-//		}
-//			
-//		end();
-//	}
-		
-	
+
+			
 	public GenBlock genericBaseClass( CompositeTypeDefn genericType )
 	{
 		begin();

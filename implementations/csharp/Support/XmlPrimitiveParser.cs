@@ -51,6 +51,50 @@ namespace HL7.Fhir.Instance.Support
             return FhirUri.Parse(value);
         }
 
+        public static Code ParseCode(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+
+            return Code.Parse(value);
+        }
+
+        public static Code<T> ParseCode<T>(XElement elem, out string id)
+            where T : struct, IConvertible
+        {
+            string value = parsePrimitiveElement(elem, out id);
+
+            return Code<T>.Parse(value);
+        }
+
+
+        public static Oid ParseOid(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+
+            return Oid.Parse(value);
+        }
+
+
+        public static Uuid ParseUuid(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+            return Uuid.Parse(value);
+        }
+
+
+        public static Sid ParseSid(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+            return Sid.Parse(value);
+        }
+
+        public static Id ParseId(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+            return Id.Parse(value);
+        }
+
+
         private static string parsePrimitiveElement(XElement primitive, out string id)
         {
             if (primitive.HasElements)

@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
@@ -74,7 +75,15 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values and may be empty
+            if (Value != null)
+            {
+                if (Value.Name != XmlUtil.DIVELEM)
+                    return "The xml must have <div> as its root element";
+
+                // TODO: Check whether only "simple" elements are used.
+            }
+            
+            return null;   
         }
     }
   

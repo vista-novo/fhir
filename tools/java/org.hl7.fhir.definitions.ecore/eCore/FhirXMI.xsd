@@ -129,8 +129,6 @@
     <xsd:complexContent>
       <xsd:extension base="fhir:CompositeTypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
-          <xsd:element name="types" type="fhir:TypeDefn"/>
-          <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="example" type="fhir:Example"/>
           <xsd:element name="searches" type="fhir:SearchParameter"/>
         </xsd:choice>
@@ -254,6 +252,8 @@
     <xsd:complexContent>
       <xsd:extension base="fhir:TypeDefn">
         <xsd:choice maxOccurs="unbounded" minOccurs="0">
+          <xsd:element name="types" type="fhir:TypeDefn"/>
+          <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="elements" type="fhir:ElementDefn"/>
           <xsd:element name="invariants" type="fhir:Invariant"/>
           <xsd:element name="allowedGenericTypes" type="fhir:TypeRef"/>

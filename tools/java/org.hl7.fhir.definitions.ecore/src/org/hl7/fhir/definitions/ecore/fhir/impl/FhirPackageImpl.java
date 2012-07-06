@@ -1581,10 +1581,10 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		// Add supertypes to classes
 		definitionsEClass.getESuperTypes().add(this.getNameScope());
 		resourceDefnEClass.getESuperTypes().add(this.getCompositeTypeDefn());
-		resourceDefnEClass.getESuperTypes().add(this.getNameScope());
 		primitiveTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
 		constrainedTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
 		compositeTypeDefnEClass.getESuperTypes().add(this.getTypeDefn());
+		compositeTypeDefnEClass.getESuperTypes().add(this.getNameScope());
 		profiledElementDefnEClass.getESuperTypes().add(this.getElementDefn());
 
 		// Initialize classes and features; add operations and parameters
@@ -1714,8 +1714,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isConstrained", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(typeDefnEClass, ecorePackage.getEBoolean(), "isResource", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		addEOperation(typeDefnEClass, this.getNameScope(), "getNearestScope", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(compositeTypeDefnEClass, CompositeTypeDefn.class, "CompositeTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeTypeDefn_Elements(), this.getElementDefn(), this.getElementDefn_ParentType(), "elements", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

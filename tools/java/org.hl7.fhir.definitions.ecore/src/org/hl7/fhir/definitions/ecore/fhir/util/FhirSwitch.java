@@ -111,8 +111,8 @@ public class FhirSwitch<T> extends Switch<T> {
 				ResourceDefn resourceDefn = (ResourceDefn)theEObject;
 				T result = caseResourceDefn(resourceDefn);
 				if (result == null) result = caseCompositeTypeDefn(resourceDefn);
-				if (result == null) result = caseNameScope(resourceDefn);
 				if (result == null) result = caseTypeDefn(resourceDefn);
+				if (result == null) result = caseNameScope(resourceDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -182,6 +182,7 @@ public class FhirSwitch<T> extends Switch<T> {
 				CompositeTypeDefn compositeTypeDefn = (CompositeTypeDefn)theEObject;
 				T result = caseCompositeTypeDefn(compositeTypeDefn);
 				if (result == null) result = caseTypeDefn(compositeTypeDefn);
+				if (result == null) result = caseNameScope(compositeTypeDefn);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
