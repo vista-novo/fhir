@@ -36,19 +36,23 @@ using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Instant
+    public partial class Date
     {
         // No empty constructor - no explicit default value
 
-        public static bool TryParse( string value, out Instant result)
+        public static bool TryParse( string value, out Date result)
         {
-            XsdDateTime instantValue;  
+            XsdDateTime dateValue;  
 
-            bool succ = XsdDateTime.TryParse(value, out instantValue);
+            bool succ = XsdDateTime.TryParse(value, out dateValue);
 
-            if (succ && instantValue.Kind == XsdDateTime.XsdDateTimeKind.DateTime)
+            if (succ && 
+                ( dateValue.Kind == XsdDateTime.XsdDateTimeKind.Year ||
+                  dateValue.Kind == XsdDateTime.XsdDateTimeKind.YearMonth ||
+                  dateValue.Kind == XsdDateTime.XsdDateTimeKind.Date ))
             {
-                result = new Instant(instantValue);
+                
+                result = new Date(dateValue);
                 return true;
             }
             else
@@ -58,14 +62,14 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static Instant Parse(string value)
+        public static Date Parse(string value)
         {
-            Instant result = null;
+            Date result = null;
 
             if (TryParse(value, out result))
                 return result;
             else 
-                throw new FhirValueFormatException("Instant must be a date/time value with full precision and timezone");
+                throw new FhirValueFormatException("Date must be a date/time value with year and/or month and/or day");
         }
        
 
@@ -73,10 +77,10 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             if(this.Value == null)
-                return "Instant must have a value; ";
+                return "Date must have a value";
 
             if (this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
-                return "Instant must be a date/time value with full precision and timezone";
+                return "Date must be a date/time value with year and/or month and/or day";
 
             return null;
         }

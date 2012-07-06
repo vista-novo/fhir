@@ -94,6 +94,17 @@ namespace HL7.Fhir.Instance.Support
             return Id.Parse(value);
         }
 
+        public static Date ParseDate(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+            return Date.Parse(value);
+        }
+
+        public static FhirDateTime ParseDateTime(XElement elem, out string id)
+        {
+            string value = parsePrimitiveElement(elem, out id);
+            return FhirDateTime.Parse(value);
+        }
 
         private static string parsePrimitiveElement(XElement primitive, out string id)
         {

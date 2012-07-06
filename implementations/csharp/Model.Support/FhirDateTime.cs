@@ -36,19 +36,17 @@ using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Instant
+    public partial class FhirDateTime
     {
         // No empty constructor - no explicit default value
 
-        public static bool TryParse( string value, out Instant result)
+        public static bool TryParse( string value, out FhirDateTime result)
         {
-            XsdDateTime instantValue;  
+            XsdDateTime dateValue;  
 
-            bool succ = XsdDateTime.TryParse(value, out instantValue);
-
-            if (succ && instantValue.Kind == XsdDateTime.XsdDateTimeKind.DateTime)
-            {
-                result = new Instant(instantValue);
+            if (XsdDateTime.TryParse(value, out dateValue))
+            {    
+                result = new FhirDateTime(dateValue);
                 return true;
             }
             else
@@ -58,14 +56,14 @@ namespace HL7.Fhir.Instance.Model
             }
         }
 
-        public static Instant Parse(string value)
+        public static FhirDateTime Parse(string value)
         {
-            Instant result = null;
+            FhirDateTime result = null;
 
             if (TryParse(value, out result))
                 return result;
             else 
-                throw new FhirValueFormatException("Instant must be a date/time value with full precision and timezone");
+                throw new FhirValueFormatException("Date must be a date/time with any precision");
         }
        
 
@@ -73,10 +71,7 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             if(this.Value == null)
-                return "Instant must have a value; ";
-
-            if (this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
-                return "Instant must be a date/time value with full precision and timezone";
+                return "Date must have a value";
 
             return null;
         }
