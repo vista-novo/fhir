@@ -67,7 +67,7 @@ public class CompositeTypeConverter
 		
 	    for (org.hl7.fhir.definitions.model.ResourceDefn resource : resources) 
 	    {
-	    	result.add( (ResourceDefn)buildResourceFromFhirModel(resource) );
+	    	result.add( buildResourceFromFhirModel(resource) );
 	    }
 	    
 	    return result;

@@ -49,6 +49,10 @@ public class PrimitiveConverter
 			result.add(buildPrimitiveTypeFromFhirModel( primitive ) );
 		}
 		
+		// Add "xhtml" as a primitive. Could do this by changing fhir.ini,
+		// but don't know consequences for old code, so for now, do it like this.
+		result.add( buildXhtmlPrimitiveType() );
+				
 		return result;
 	}
 
@@ -78,5 +82,17 @@ public class PrimitiveConverter
 
 		return result;
 	}
-	
+
+	private static PrimitiveTypeDefn buildXhtmlPrimitiveType()
+	{
+		PrimitiveTypeDefn xhtml = FhirFactory.eINSTANCE.createPrimitiveTypeDefn();
+		xhtml.setName("xhtml");
+		xhtml.setXsdtype("string");
+		
+		xhtml.setAnnotations(FhirFactory.eINSTANCE.createAnnotations());
+		xhtml.getAnnotations().setDefinition( "A string of xhtml data, with a <div> as root" );
+		xhtml.getAnnotations().setComment( "Can contain only the basic html formatting elements described in chapters 7-11 (except section 4 of chapter 9) and 15 of the HTML 4.0 standard, <a> elements (either name or href), images, and internally contained style attributes." );
+		
+		return xhtml;
+	}
 }

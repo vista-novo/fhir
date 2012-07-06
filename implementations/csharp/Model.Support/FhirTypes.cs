@@ -37,10 +37,10 @@ namespace HL7.Fhir.Instance.Model
 {
     public abstract class Data
     {
-        public virtual List<string> Validate()
+        public virtual string ValidateData()
         {
             //TODO: When ready, this method must be made abstract
-            return new List<string>();
+            return null;
         }
     }
 

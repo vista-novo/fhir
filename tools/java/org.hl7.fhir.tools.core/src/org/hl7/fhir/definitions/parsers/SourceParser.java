@@ -34,6 +34,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -115,7 +117,7 @@ public class SourceParser {
 		loadPrimitives();
 		eCoreParseResults.getTypes().addAll(
 				PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
-						.getPrimitives().values()));
+						.getPrimitives().values()));	
 
 		for (String n : ini.getPropertyNames("types"))
 			loadCompositeType(n, definitions.getTypes());	

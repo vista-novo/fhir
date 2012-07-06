@@ -91,10 +91,7 @@ public class TypeRefConverter
 				convertedType.setName( "param" );
 				convertedType.setUnboundGeneric(true);
 			}
-			
-			else if( ref.isXhtml() )
-				convertedType.setName( TypeRef.XHTML_PSEUDOTYPE_NAME );
-			
+					
 			else if( ref.isIdRef() )
 				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
 

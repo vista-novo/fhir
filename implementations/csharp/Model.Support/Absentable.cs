@@ -40,7 +40,7 @@ namespace HL7.Fhir.Instance.Model
         public Nullable<HL7.Fhir.Instance.Model.DataAbsentReason> Dar { get; set; }
     }
 
-    public class Absentable<T> : Absentable
+    public class Absentable<T> : Absentable where T: Data
     {
         public T Value { get; set; }
 
@@ -96,6 +96,13 @@ namespace HL7.Fhir.Instance.Model
         public static explicit operator T(Absentable<T> value)
         {
             return value.Value;
+        }
+
+        public string ValidateData()
+        {
+            // Cannot introduce incorrect data, so validation depends
+            // on our nested actual value of the element
+            return Value.ValidateData();
         }
     }
 }

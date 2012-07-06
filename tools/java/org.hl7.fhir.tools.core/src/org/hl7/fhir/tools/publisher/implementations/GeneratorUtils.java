@@ -304,6 +304,8 @@ public class GeneratorUtils {
 			return "string";
 		else if (name.equals("id"))
 			return "string";
+		else if (name.equals("xhtml"))
+			return "XElement";
 		else if (name.equals("date"))
 			return "XsdDateTime";
 		else if (name.equals("dateTime"))
@@ -312,7 +314,8 @@ public class GeneratorUtils {
 			throw new Exception( "Unrecognized primitive" );
 	}
 	
-	public static String mapPrimitiveToFhirCSharpType(String name) {
+	public static String mapPrimitiveToFhirCSharpType(String name) throws Exception 
+	{
 		if (name.equals("boolean"))
 			return "FhirBoolean";
 		else if (name.equals("integer"))
@@ -337,12 +340,14 @@ public class GeneratorUtils {
 			return "Sid";
 		else if (name.equals("id"))
 			return "Id";
+		else if (name.equals("xhtml"))
+			return "XHtml";
 		else if (name.equals("date"))
 			return "Date";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
 		else
-			return null;
+			throw new Exception( "Unrecognized primitive" );
 	}
 	
 	
@@ -382,10 +387,12 @@ public class GeneratorUtils {
 	*/
 	
 	
-	public static String generateCSharpTypeName(String name) {
-		String result = mapPrimitiveToFhirCSharpType(name);
+	public static String generateCSharpTypeName(String name) throws Exception {
+		String result;
 		
-		if( result == null )
+		if( Character.isLowerCase(name.charAt(0)) )
+			result = mapPrimitiveToFhirCSharpType(name);
+		else
 			result = Utilities.capitalize(name);
 		
 		return result;
@@ -519,8 +526,7 @@ public class GeneratorUtils {
 				hasComposites = true;
 			else if( ref.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) )
 				hasPrimitives = true;
-			else if( ref.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) ||
-					 ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
+			else if( ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
 				hasOthers = true;
 			else
 			{

@@ -32,47 +32,49 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirBoolean
+    public partial class XHtml
     {
-        // Explicit default: false
-        public FhirBoolean() : base(false)
+        // Explicit default: null
+        public XHtml() : base(null)
         {
+
         }
 
-        public static bool TryParse( string value, out FhirBoolean result)
+        public static bool TryParse( string value, out XHtml result)
         {
-            if (value == "1" || value == "true")
+            XElement xmlValue = null;
+
+            try
             {
-                result = new FhirBoolean(true);
-                return true;
+                xmlValue = XElement.Parse(value);
+            }
+            catch
+            {
+                result = null;
+                return false;
             }
 
-            if (value == "0" || value == "false")
-            {
-                result = new FhirBoolean(false);
-                return true;
-            }
-
-            result = null;
-            return false; 
+            result = new XHtml(xmlValue);
+            return true;
         }
 
-        public static FhirBoolean Parse(string value)
+        public static XHtml Parse(string value)
         {
-            FhirBoolean result = null;
+            XHtml result = null;
 
             if (TryParse(value, out result))
                 return result;
-            else
-                throw new FhirValueFormatException("Booleans can be either 0, 1, true of false");
+            else 
+                throw new FhirValueFormatException("Content is not valid xhtml");
         }
 
         public override string ValidateData()
         {
-            return null;    // cannot contain illegal values
+            return null;    // cannot contain illegal values and may be empty
         }
     }
   

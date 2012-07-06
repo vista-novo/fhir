@@ -71,17 +71,15 @@ namespace HL7.Fhir.Instance.Model
        
 
 
-        public override List<string> Validate()
+        public override string ValidateData()
         {
-            var result = new List<string>();
-
             if(this.Value == null)
-                result.Add("Instant must have a value");
+                return "Instant must have a value; ";
 
-            if(this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
-                result.Add("Instant must be a date/time value with full precision and timezone");
+            if (this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
+                return "Instant must be a date/time value with full precision and timezone";
 
-            return result;
+            return null;
         }
     }
   

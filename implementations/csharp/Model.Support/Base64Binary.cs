@@ -46,27 +46,19 @@ namespace HL7.Fhir.Instance.Model
         public static bool TryParse( string value, out Base64Binary result)
         {
             byte[] b64Value = null;
-            bool success = true;
-
+         
             try
             {
                 b64Value = Convert.FromBase64String(value);
             }
             catch
             {
-                success = false;
-            }
-
-            if(success)
-            {
-                result = new Base64Binary(b64Value);
-                return true;
-            }
-            else
-            {
                 result = null;
                 return false;
             }
+
+            result = new Base64Binary(b64Value);
+            return true;
         }
 
         public static Base64Binary Parse(string value)
@@ -79,9 +71,9 @@ namespace HL7.Fhir.Instance.Model
                 throw new FhirValueFormatException("Not an correctly base64 encoded value");
         }
 
-        public override List<string> Validate()
+        public override string ValidateData()
         {
-            return new List<string>();    // cannot contain illegal values and may be empty
+            return null;    // cannot contain illegal values and may be empty
         }
     }
   

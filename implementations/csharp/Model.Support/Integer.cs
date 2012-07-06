@@ -70,9 +70,9 @@ namespace HL7.Fhir.Instance.Model
         }
 
 
-        public override List<string> Validate()
+        public override string ValidateData()
         {
-            return new List<string>();    // cannot contain illegal values
+            return null;    // cannot contain illegal values
         }
     }
   

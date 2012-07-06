@@ -591,14 +591,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		return getElements() != null && getElements().size() > 0;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isXhtmlElement() {
-		return getTypes().size() != 0 && getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -68,10 +68,6 @@
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/hasNestedElements"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_46MKosQmEeG3nNAQ1_DUMA"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_Q1lPIMRbEeG3nNAQ1_DUMA" type="2002">
-        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/isXhtmlElement"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_Q1lPIcRbEeG3nNAQ1_DUMA"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_SmM4MMRbEeG3nNAQ1_DUMA" type="2002">
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/isXmlIdElement"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_SmM4McRbEeG3nNAQ1_DUMA"/>

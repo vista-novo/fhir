@@ -1616,8 +1616,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "hasNestedElements", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isXhtmlElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isXmlIdElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(elementDefnEClass, ecorePackage.getEBoolean(), "isBoundCode", 0, 1, IS_UNIQUE, IS_ORDERED);

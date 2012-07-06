@@ -49,7 +49,7 @@ public class CSharpResourceGenerator extends GenBlock
 {
 	public GenBlock generateComposite( CompositeTypeDefn composite, 
 			Definitions definitions, 
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements )
+			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements ) throws Exception
 	{
 		begin();
 		
@@ -65,7 +65,7 @@ public class CSharpResourceGenerator extends GenBlock
 
 	
 	public GenBlock generateGlobalEnums( List<BindingDefn> globalEnums, 
-			Definitions definitions )
+			Definitions definitions ) throws Exception
 	{
 		begin();
 		
@@ -82,7 +82,7 @@ public class CSharpResourceGenerator extends GenBlock
 	
 
 	public GenBlock generateConstrained( ConstrainedTypeDefn constrained, 
-			Definitions definitions)
+			Definitions definitions) throws Exception
 	{
 		begin();
 		
@@ -128,7 +128,7 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 	
 	public GenBlock compositeClass( CompositeTypeDefn composite,
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements)
+			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
 	{
 		begin();
 		
@@ -169,7 +169,7 @@ public class CSharpResourceGenerator extends GenBlock
 
 	
 	public GenBlock memberProperties( List<ElementDefn> elements, Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-					CompositeTypeDefn context )
+					CompositeTypeDefn context ) throws Exception
 	{
 		begin();
 		
@@ -184,8 +184,6 @@ public class CSharpResourceGenerator extends GenBlock
 				nl(nestedElements.get(member).getName());
 			else if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
 				nl("T");
-			else if( member.isXhtmlElement() ) 
-				nl("XDocument");
 			else if( member.isXmlIdElement() ) 
 				nl("string");
 			else if( member.isBoundCode() ) 
@@ -226,7 +224,7 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 	
 	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes, 
-			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements)
+			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements) throws Exception
 	{
 		begin();
 
@@ -241,14 +239,15 @@ public class CSharpResourceGenerator extends GenBlock
 	
 	private void nestedComponents( Collection<GeneratorUtils.NamedElementGroup> nestedGroups,
 			Map<ElementDefn, GeneratorUtils.NamedElementGroup> nestedElements,
-						CompositeTypeDefn composite ) 
+						CompositeTypeDefn composite ) throws Exception
 	{
 		begin();
 
 		for( GeneratorUtils.NamedElementGroup group : nestedGroups )
 		{
-			ln("public class " +
-					GeneratorUtils.generateCSharpTypeName(group.getName()) );
+			ln("public class "); 
+				nl( GeneratorUtils.generateCSharpTypeName(group.getName()) );
+				nl( " : Composite");
 			bs("{");
 				memberProperties( group.getElements(), nestedElements, composite  );
 			es("}");
@@ -263,12 +262,12 @@ public class CSharpResourceGenerator extends GenBlock
 	{
 		begin();
 		
-		ln("public partial class " + genericType.getName() + "{ }");
+		ln("public partial class " + genericType.getName() + ": Composite { }");
 		
 		return end();
 	}
 	
-	private void compositeClassHeader(CompositeTypeDefn composite)
+	private void compositeClassHeader(CompositeTypeDefn composite) throws Exception
 	{
 		ln( "public partial class " +
 				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
@@ -287,7 +286,7 @@ public class CSharpResourceGenerator extends GenBlock
 			nl( "Composite" );
 	}
 	
-	public GenBlock enums( List<BindingDefn> bindings )
+	public GenBlock enums( List<BindingDefn> bindings ) throws Exception
 	{
 		begin();
 		

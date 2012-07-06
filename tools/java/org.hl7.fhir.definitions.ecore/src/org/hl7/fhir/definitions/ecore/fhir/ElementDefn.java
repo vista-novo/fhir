@@ -298,14 +298,6 @@ public interface ElementDefn extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	boolean isXhtmlElement();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
 	boolean isXmlIdElement();
 
 	/**

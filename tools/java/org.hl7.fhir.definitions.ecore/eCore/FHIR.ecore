@@ -19,7 +19,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ElementDefn">
     <eOperations name="hasNestedElements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eOperations name="isXhtmlElement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isXmlIdElement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isBoundCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="getElementPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

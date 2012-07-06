@@ -70,9 +70,9 @@ namespace HL7.Fhir.Instance.Model
                 throw new FhirValueFormatException("Not a correctly formatted Uri");
         }
 
-        public override List<string> Validate()
+        public override string ValidateData()
         {
-            return new List<string>();    // cannot contain illegal values and may be empty.
+            return null;    // cannot contain illegal values and may be empty.
         }
     }
   
