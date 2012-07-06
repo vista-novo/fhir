@@ -65,11 +65,19 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s77">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -181,11 +189,11 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultColumnWidth="330"
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultColumnWidth="330"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="33.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="136.5" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="33.75"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="136.5" ss:Span="1"/>
+   <Row ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -193,25 +201,27 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Value is required</Data></Cell>
     <Cell><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s77"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">A </Font><I><Font
         html:Color="#000000">value</Font></I><Font html:Color="#000000"> is required unless a </Font><I><Font
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag is provided on the contact element</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReasons.oclIsDefined or value.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:value)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">System is required</Data></Cell>
     <Cell><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s77"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">A </Font><I><Font
         html:Color="#000000">system</Font></I><Font html:Color="#000000"> is required if a </Font><I><Font
         html:Color="#000000">value</Font></I><Font html:Color="#000000"> is provided.</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">value.oclIsDefined implies system.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">not(exists(f:value)) or exists(f:system)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -220,13 +230,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

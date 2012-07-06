@@ -245,7 +245,7 @@
         html:Color="#000000">data</Font></I><Font html:Color="#000000"> or a </Font><I><Font
         html:Color="#000000">url</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or data.size &gt; 0 or url.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or data or url</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or f:data or f:url</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="28.5">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -265,8 +265,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

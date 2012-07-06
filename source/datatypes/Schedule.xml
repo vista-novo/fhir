@@ -231,20 +231,23 @@
     <Cell><Data ss:Type="String">Schedule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">There can only be a repeat element if there is none or one event</Data></Cell>
     <Cell><Data ss:Type="String">repeat.oclIsDefined implies event.count &lt; 2</Data></Cell>
+    <Cell><Data ss:Type="String">not(exists(f:repeat)) or count(f:event)&amp;lt;2</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Repeat cycle</Data></Cell>
-    <Cell><Data ss:Type="String">Schedule</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of frequency and when can be present</Data></Cell>
-    <Cell><Data ss:Type="String">repeat.frequency.oclIsDefined xor repeat.when.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">frequency.oclIsDefined xor when.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:frequency) != exists(f:when)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">End condition</Data></Cell>
-    <Cell><Data ss:Type="String">Schedule</Data></Cell>
+    <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of count and end can be present</Data></Cell>
-    <Cell><Data ss:Type="String">repeat.count.oclIsDefined xor repeat.end.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">count.oclIsDefined xor end.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:count) != exists(f:end)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -258,7 +261,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>

@@ -373,11 +373,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <TopRowVisible>18</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>31</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -406,12 +406,14 @@
     <Cell><Data ss:Type="String">Versioning Rule</Data></Cell>
     <Cell><Data ss:Type="String">Document</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">cannot have both setId and replaces</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:setId) and exists(f:replaces))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Section Rule</Data></Cell>
     <Cell><Data ss:Type="String">Document.section</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">a section must have content or one or more sections</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:content) or exists(f:section)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -426,7 +428,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

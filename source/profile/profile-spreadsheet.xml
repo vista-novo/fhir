@@ -888,13 +888,13 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">reference must be present and may only be present if binding type is &quot;reference&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type=&quot;reference&quot;) = exists(f:reference)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type='reference') = exists(f:reference)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">4</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.binding</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">concepts must be present and may only be present if binding type is &quot;codelists&quot;</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">(f:type=&quot;codelist&quot;) = exists(f:concept)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(f:type='codelist') = exists(f:concept)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:20:53Z</Created>
-  <LastSaved>2012-05-17T06:03:20Z</LastSaved>
+  <LastSaved>2012-07-06T19:16:59Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -220,7 +220,7 @@
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">code</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or value.oclIsDefined</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or value</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or f:value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -230,7 +230,7 @@
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">units element</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or units.oclIsDefined</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or units</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or f:units</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -238,6 +238,7 @@
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell><Data ss:Type="String">If a code for the units is present, the system must also be present</Data></Cell>
     <Cell><Data ss:Type="String">code.oclIsDefined implies system.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">not(exists(f:code)) or exists(f:system)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -248,13 +249,6 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>

@@ -61,6 +61,14 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
@@ -173,6 +181,7 @@
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
         html:Color="#000000">low</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or low.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:low)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -183,7 +192,7 @@
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
         html:Color="#000000">high</Font></I><Font html:Color="#000000">.</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">(dataAbsentReason.oclIsDefined and low.oclIsKindOf(Quantity) implies high.oclIsDefined</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:high)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
@@ -191,7 +200,7 @@
     <Cell><Data ss:Type="String">Interval</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Quantity values cannot have a status when used in an interval</Data></Cell>
     <Cell><Data ss:Type="String">(low.oclIsKindOf(Quantity) implies low.status.oclIsUndefined) and (high.oclIsKindOf(Quantity) implies high.status.oclIsUndefined)</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">not(exists(f:low/f:status) or exists(f:high/f:status))</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="4" ss:StyleID="Default"/>
@@ -210,11 +219,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

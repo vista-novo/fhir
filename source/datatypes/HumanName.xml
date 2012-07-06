@@ -65,9 +65,6 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
@@ -78,6 +75,9 @@
    <Interior/>
    <NumberFormat/>
    <Protection/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -209,11 +209,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="198.75"
-    ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="405.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="381"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="24.75"/>
+   <Column ss:StyleID="s74" ss:Width="96.75"/>
+   <Column ss:StyleID="s74" ss:Width="66"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="405.75"/>
+   <Column ss:StyleID="s74" ss:Width="325.5"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="233.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -222,12 +224,13 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Mandatory Content</Data></Cell>
     <Cell><Data ss:Type="String">HumanName</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Either text or at least one part with a value is required unless a dataAbsentReason flag is provided on the name element</Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -241,8 +244,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <RangeSelection>R1:R1048576</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

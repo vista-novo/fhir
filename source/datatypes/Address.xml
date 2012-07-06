@@ -62,14 +62,6 @@
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Borders>
-    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
-   </Borders>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
-    ss:Bold="1"/>
-   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
-  </Style>
   <Style ss:ID="s68">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -86,6 +78,21 @@
   </Style>
   <Style ss:ID="s70">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s73">
+   <Alignment ss:Vertical="Top"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -231,12 +238,14 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="125.25" ss:Span="1"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="392.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="397.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="230.25"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s67">
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="24"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="125.25"/>
+   <Column ss:StyleID="s74" ss:Width="42.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="392.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="329.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="230.25"/>
+   <Row ss:StyleID="s73">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Context</Data></Cell>
@@ -244,12 +253,13 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">OCL</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Mandatory Content</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Mandatory Content</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Address</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Either text or at least one part is required unless a dataAbsentReason flag is provided on the address element</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -258,7 +268,6 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Print>
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
@@ -269,8 +278,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

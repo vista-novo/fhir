@@ -174,7 +174,7 @@
     <Cell><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:StyleID="Default"><Data ss:Type="String">Unless an Identifier element has a dataAbsentReason flag, it must contain an id</Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or id.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or id</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or f:id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -195,8 +195,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -58,8 +58,16 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -148,11 +156,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="163.5"
-    ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="426.75"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="405.75"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="26.25"/>
+   <Column ss:StyleID="s69" ss:Width="166.5"/>
+   <Column ss:StyleID="s69" ss:Width="42"/>
+   <Column ss:StyleID="s69" ss:Width="417"/>
+   <Column ss:StyleID="s69" ss:Width="302.25"/>
+   <Column ss:StyleID="s69" ss:Width="151.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -161,26 +171,27 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - numerator</Data></Cell>
     <Cell><Data ss:Type="String">Ratio</Data></Cell>
-    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s70"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Ratio element has a </Font><I><Font
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
         html:Color="#000000">numerator</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or numerator.oclIsDefined</Data></Cell>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:numerator)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - denominator</Data></Cell>
     <Cell><Data ss:Type="String">Ratio</Data></Cell>
-    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s70"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Ratio element has a </Font><I><Font
         html:Color="#000000">dataAbsentReason</Font></I><Font html:Color="#000000"> flag, it must contain a </Font><I><Font
         html:Color="#000000">denominator</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">(dataAbsentReason.oclIsDefined or denominator.oclIsDefined</Data></Cell>
-    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:denominator)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -194,8 +205,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
