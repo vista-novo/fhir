@@ -53,11 +53,11 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -354,10 +354,10 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="309.75"/>
-   <Column ss:Index="6" ss:StyleID="s67" ss:Width="86.25"/>
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="309.75"/>
+   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="136.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -366,19 +366,19 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A value set must have an include or an import</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">count(f:include|f:import)!=0</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:include) or exists(f:import)</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:Height="45">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A value set with only one import must also have an include and/or an exclude</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">count(f:include)!=1 or exists(f:include) or exists(f:exclude)</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">ValueSet.include</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A selection criteria must have at least one code or filter</Data></Cell>
@@ -396,8 +396,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <RangeSelection>R1:R1048576</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

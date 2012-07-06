@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -65,14 +66,14 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
   </Style>
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -610,7 +611,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>30</TopRowVisible>
    <Panes>
     <Pane>
@@ -625,7 +625,11 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:Width="14.25"/>
+   <Column ss:Index="3" ss:StyleID="s74" ss:Width="174.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="207.75"/>
+   <Column ss:Index="6" ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="210.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -634,10 +638,11 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="90">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Prescription.administrationRequest</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Duration is given OR (Start is given AND (Duration OR End is given)) OR (Duration, Start and End are not given)</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Restrictions on the combinations of Duration, Start and End are as follows: Duration may be specified alone or with Start.  Alternatively, Start may be specified if End is specified.  No other combinations are allowed.</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">(exists(f:duration) and not (exists(f:start) or exists(f:end))) or (exists(f:start) and exists(f:duration)) != (exists(f:start))</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -647,10 +652,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
+   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>23</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>

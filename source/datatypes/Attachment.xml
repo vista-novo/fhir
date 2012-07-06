@@ -62,7 +62,15 @@
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s67">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
   <Style ss:ID="s70">
    <Alignment ss:Vertical="Top"/>
@@ -236,18 +244,18 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have Data</Data></Cell>
     <Cell><Data ss:Type="String">Attachment</Data></Cell>
-    <Cell ss:StyleID="Default"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Attachment element has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">data</Font></I><Font html:Color="#000000"> or a </Font><I><Font
-        html:Color="#000000">url</Font></I></ss:Data></Cell>
+        html:Color="#000000">url</Font></I><Font html:Color="#000000"> (or both)</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or data.size &gt; 0 or url.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or f:data or f:url</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:data) or exists(f:url)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.5">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">URL must point to data</Data></Cell>
     <Cell><Data ss:Type="String">Attachment</Data></Cell>
@@ -261,6 +269,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
    <Selected/>
    <Panes>
     <Pane>

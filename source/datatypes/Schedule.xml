@@ -237,7 +237,10 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Repeat cycle</Data></Cell>
     <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of frequency and when can be present</Data></Cell>
+    <Cell ss:StyleID="s63"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Either </Font><I><Font
+        html:Color="#000000">frequency</Font></I><Font html:Color="#000000"> or </Font><I><Font
+        html:Color="#000000">when</Font></I><Font html:Color="#000000"> must be present, but not both</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">frequency.oclIsDefined xor when.oclIsDefined</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:frequency) != exists(f:when)</Data></Cell>
    </Row>
@@ -245,7 +248,10 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">End condition</Data></Cell>
     <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">Only one of count and end can be present</Data></Cell>
+    <Cell ss:StyleID="s63"><ss:Data ss:Type="String"
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Either </Font><I><Font
+        html:Color="#000000">count</Font></I><Font html:Color="#000000"> or </Font><I><Font
+        html:Color="#000000">end</Font></I><Font html:Color="#000000"> must be present, but not both</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">count.oclIsDefined xor end.oclIsDefined</Data></Cell>
     <Cell><Data ss:Type="String">exists(f:count) != exists(f:end)</Data></Cell>
    </Row>
@@ -257,12 +263,16 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>600</VerticalResolution>
+   </Print>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

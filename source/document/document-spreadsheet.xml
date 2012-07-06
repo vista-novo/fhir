@@ -412,8 +412,8 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Section Rule</Data></Cell>
     <Cell><Data ss:Type="String">Document.section</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">a section must have content or one or more sections</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">exists(f:content) or exists(f:section)</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">a section must have content or one or more sections, but not both.</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:content) != exists(f:section)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -427,7 +427,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

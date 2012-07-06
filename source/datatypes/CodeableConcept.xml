@@ -193,7 +193,7 @@
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the CodeableConcept has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">coding</Font></I><Font html:Color="#000000"> with a code or a text</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or (coding.size &gt; 0 and coding-&gt;collect(code.size() &gt; 0).size &gt; 0) or text.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">@dataAbsentReason or exists(f:coding\f:code) or exists(f:text)</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:coding\f:code) or exists(f:text)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -216,7 +216,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

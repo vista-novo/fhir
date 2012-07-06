@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:23:41Z</Created>
-  <LastSaved>2012-06-22T21:45:54Z</LastSaved>
+  <LastSaved>2012-07-06T22:46:44Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -61,7 +61,7 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
  </Styles>
@@ -167,11 +167,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <TopRowVisible>3</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>1</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
@@ -181,13 +180,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="24.75"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="52.5"/>
-   <Column ss:StyleID="s70" ss:Width="97.5"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="249"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="191.25"/>
-   <Row ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="24.75"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="52.5"/>
+   <Column ss:StyleID="s67" ss:Width="97.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="249"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="191.25"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -195,23 +194,26 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:Height="30">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if a reference is provided</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Must have a type if an id is provided</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:type) or not(exists(f:id) or exists(f:version))</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">reference</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">A reference (id or version) must be provided if there is no dataAbsentReason</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:id) or exists(f:version)</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">version</Data></Cell>
     <Cell><Data ss:Type="String">ResourceReference</Data></Cell>
     <Cell><Data ss:Type="String">If the version url is provided, and local, then a logical id must be provided too</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(contains(f:version, ':')) or exists(f:id)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -220,11 +222,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
