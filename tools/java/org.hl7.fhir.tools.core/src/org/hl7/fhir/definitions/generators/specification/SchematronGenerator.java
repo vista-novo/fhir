@@ -37,6 +37,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -58,14 +59,14 @@ public class SchematronGenerator  extends OutputStreamWriter {
 //
 //	}
 
-	public void generate(ElementDefn root) throws Exception	{
+	public void generate(ElementDefn root, Definitions definitions) throws Exception	{
 		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
 		write("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">\r\n");
 		write("  <sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>\r\n");
 		write("  <sch:pattern>\r\n");
 		write("    <sch:title>"+root.getName()+"</sch:title>\r\n");
 
-		generateInvariants(root.getName(), root);
+		generateInvariants(root.getName(), root, definitions);
 		write("  </sch:pattern>\r\n");
 		write("</sch:schema>\r\n");
 		write("\r\n");
@@ -73,7 +74,7 @@ public class SchematronGenerator  extends OutputStreamWriter {
 		close();
 	}
 
-	private void generateInvariants(String path, ElementDefn ed) throws Exception {
+	private void generateInvariants(String path, ElementDefn ed, Definitions definitions) throws Exception {
 	  if (ed.getInvariants().size() > 0) {
 	    write("      <sch:rule context=\""+path+"\">\r\n");
 	    for (Invariant inv : ed.getInvariants().values()) {
@@ -81,8 +82,26 @@ public class SchematronGenerator  extends OutputStreamWriter {
 	    }
       write("      </sch:rule>\r\n");
 	  }
-	  for (ElementDefn cd : ed.getElements()) {
-	    generateInvariants(path+"/"+cd.getName(), cd);
+	  if (ed.getElements().size() > 0) {
+	    for (ElementDefn cd : ed.getElements()) {
+	      generateInvariants(path+"/"+cd.getName(), cd, definitions);
+	    }
+	  } else if (ed.getName().contains("[x]")) {
+	    // todo...
+	  } else {
+	    if (ed.getTypes().size() != 1) 
+	      throw new Exception("can't generate schematron for "+path+": type mismatch");
+	    String tn = ed.getTypes().get(0).getName();
+      if (tn.equals("Resource"))
+        tn = "ResourceReference";
+      if (!definitions.getPrimitives().containsKey(tn) && !tn.contains("@")) {
+	      ElementDefn td = definitions.getElementDefn(tn);
+	      if (td == null)
+	        throw new Exception("can't generate schematron for "+path+": type "+tn+" unknown");
+	      for (ElementDefn cd : ed.getElements()) {
+	        generateInvariants(path+"/"+cd.getName(), cd, definitions);
+	      }
+      }
 	  }
 
 	}

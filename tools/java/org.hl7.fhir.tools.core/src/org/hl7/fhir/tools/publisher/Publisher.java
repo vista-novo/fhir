@@ -438,7 +438,7 @@ public class Publisher {
 		  produceProfile(p.getFilename(), p.getProfile());
 		
 		SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"));
-    sch.generate(resource.getRoot());
+    sch.generate(resource.getRoot(), page.getDefinitions());
 
 		
 		for (Example e : resource.getExamples()) {
