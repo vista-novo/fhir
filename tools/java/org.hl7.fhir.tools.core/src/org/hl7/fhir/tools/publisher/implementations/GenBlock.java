@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+import org.hl7.fhir.utilities.TextFile;
+
 /*
 Copyright (c) 2011-2012, HL7, Inc
 All rights reserved.
@@ -146,6 +148,11 @@ public class GenBlock {
 			result.append(line + "\r\n");
 				
 		return result.toString();
+	}
+	
+	public void toFile(String path) throws Exception
+	{
+		TextFile.stringToFile(this.toString(),path);
 	}
 	
 	private static String genMargin(int size)

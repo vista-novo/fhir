@@ -43,6 +43,12 @@ namespace HL7.Fhir.Instance.Model
         {
         }
 
+        // Just here for consistency in the parser generators
+        public static FhirString Parse(string value)
+        {
+            return value;
+        }
+
         public override string ValidateData()
         {
             return null;    // cannot contain illegal values

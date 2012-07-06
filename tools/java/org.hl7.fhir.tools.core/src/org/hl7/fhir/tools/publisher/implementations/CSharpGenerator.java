@@ -69,28 +69,36 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 	public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
 			String implDir, Logger logger) throws Exception {
+	
+		char sl = File.separatorChar;
+		String modelDir = "Model" + sl;
+		String parsersDir = "Parsers" + sl;
 
 		
-		char sl = File.separatorChar;
-		String modelGenerationDir =  implDir + "Model" + sl;
+		File f = new File(implDir + modelDir);	if( !f.exists() ) f.mkdir();
+		File p = new File(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
 		
-		File f = new File(modelGenerationDir);
-		if( !f.exists() ) f.mkdir();
-		
-		List<String> filenames = new ArrayList<String>();
+		List<String> generatedFilenames = new ArrayList<String>();
 	
 		{
-			CSharpResourceGenerator gen = new CSharpResourceGenerator();
-			String enumsFilename = modelGenerationDir + "Bindings.cs";
-			TextFile.stringToFile(gen.generateGlobalEnums(definitions.getBindings(),definitions).toString(), enumsFilename);						 
-			filenames.add(enumsFilename);
+			String enumsFilename = modelDir + "Bindings.cs";
+			new CSharpResourceGenerator()
+				.generateGlobalEnums(definitions.getBindings(),definitions).toFile(implDir+enumsFilename);						 
+			generatedFilenames.add(enumsFilename);
 		}
 
 		{
-			CSharpPrimitiveGenerator gen = new CSharpPrimitiveGenerator();
-			String primFilename = modelGenerationDir + "Primitives.cs";
-			TextFile.stringToFile(gen.generatePrimitives(definitions.getPrimitives(),definitions).toString(), primFilename);						 
-			filenames.add(primFilename);
+			String primFilename = modelDir + "Primitives.cs";
+			 new CSharpPrimitiveGenerator()
+			 	.generatePrimitives(definitions.getPrimitives(),definitions).toFile(implDir+primFilename);						 
+			generatedFilenames.add(primFilename);
+		}
+
+		{
+			String primFilename = parsersDir + "XmlPrimitiveParser.cs";
+			 new CSharpPrimitiveParserGenerator()
+			 	.generatePrimitiveParser(definitions.getPrimitives(),definitions).toFile(implDir+primFilename);						 
+			generatedFilenames.add(primFilename);
 		}
 		
 		List<CompositeTypeDefn> allComplexTypes = new ArrayList<CompositeTypeDefn>();
@@ -99,124 +107,32 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
-			CSharpResourceGenerator gen = new CSharpResourceGenerator();
-			String compositeFilename = modelGenerationDir + composite.getName() + ".cs";			
-			TextFile.stringToFile(gen.generateComposite(composite, definitions).toString(), compositeFilename);			
-			filenames.add(compositeFilename);
+			String compositeFilename = modelDir + composite.getName() + ".cs";			
+			new CSharpResourceGenerator()
+				.generateComposite(composite, definitions).toFile(implDir+compositeFilename);			
+			generatedFilenames.add(compositeFilename);
 		}
 
-		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
 		{
-			CSharpResourceGenerator gen = new CSharpResourceGenerator();
-			String constrainedFilename = modelGenerationDir + constrained.getName() + ".cs";
-			TextFile.stringToFile(gen.generateConstrained(constrained, definitions).toString(), constrainedFilename);						 
-			filenames.add(constrainedFilename);
+			String constrainedFilename = modelDir + constrained.getName() + ".cs";
+			new CSharpResourceGenerator()
+				.generateConstrained(constrained, definitions).toFile(implDir+constrainedFilename);						 
+			generatedFilenames.add(constrainedFilename);
 		}
 
-		
-/*
-		// Generate a C# file for each Resource class
-		for (ResourceDefn resource : definitions.getResources().values()) 
-		{
-			CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
-					new FileOutputStream(modelGenerationDir + resource.getName() + ".cs" ));
-		
-			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
-			cSharpGen.generate(resource.getRoot(), definitions.getBindings(), 
-					GenClass.Resource, genDate, version, resource );
-		}
-
-		// Generate a C# file for each "future" Resource
-	    for (ResourceDefn resource : definitions.getFutureResources().values()) 
-	    {
-	    	CSharpResourceGenerator cSharpGen = new CSharpResourceGenerator(
-					new FileOutputStream(modelGenerationDir + resource.getName() + ".cs" ));
-		
-			filenames.add("HL7.Fhir.Instance.Model" + sl + resource.getName()+".cs" );
-			cSharpGen.generateFutureResource(resource, genDate, version );
-	    }
-		
-		// Generate infrastructure classes
-		for (String n : definitions.getInfrastructure().keySet()) 
-		{
-		      ElementDefn root = definitions.getInfrastructure().get(n); 
-		      new CSharpResourceGenerator(
-		    	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
-		      		.generate(root, definitions.getBindings(), 
-		      				GenClass.Structure, genDate, version, null);
-				filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
-		}
-
-		
-		// Generate a C# file for basic types
-	    for (String n : definitions.getTypes().keySet())
-	    {
-	        ElementDefn root = definitions.getTypes().get(n); 
-	     
-	        GenClass generationType = GenClass.Type;
-	        
-	        if( root.getName().equals("Quantity"))
-	        	generationType = GenClass.Ordered;
-
-	        if( root.hasType("GenericType"))
-	        	generationType = GenClass.Generic;
-
-	        new CSharpResourceGenerator(
-	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
-	        		.generate(root, definitions.getBindings(), 
-	        			generationType, genDate, version, null);
-
-	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
-	    }
-
-		// Generate a C# file for structured types (HumanName, Address)
-	    for (String n : definitions.getStructures().keySet())
-	    {
-	        ElementDefn root = definitions.getStructures().get(n); 
-	        new CSharpResourceGenerator(
-	        	new FileOutputStream(modelGenerationDir+root.getName()+".cs"))
-	        		.generate(root, definitions.getBindings(), 
-	        				GenClass.Type, genDate, version, null);
-
-	        filenames.add("HL7.Fhir.Instance.Model" + sl + root.getName()+".cs" );
-	    }
-
-
-		// Generate a C# file for inline-defined structured types 
-	    // (these are resoure-locally defined structured types)
-//	    for (ResourceDefn resource : definitions.getResources().values()) 
-//	    {
-//		    for (ElementDefn e : resource.getNestedTypes().values())
-//		    {
-//		        new CSharpResourceGenerator(
-//		        	new FileOutputStream(modelGenerationDir+
-//		        			e.getName()+".cs"))
-//		        		.generate(e, definitions.getBindings(), 
-//		        				GenClass.Type, genDate, version, null);
-//	
-//		        filenames.add("HL7.Fhir.Instance.Model" + sl + e.getName()+".cs" );
-//		    }
-//	    }
-
-	    
-	    // Generate a C# file for Constrained types (Money, Distance, ...)
-	    for (DefinedCode cd : definitions.getConstraints().values()) {
-	        ElementDefn root = definitions.getTypes().get(cd.getComment()); 
-	        new CSharpResourceGenerator(
-	        	new FileOutputStream(modelGenerationDir+cd.getCode()+".cs"))
-	        		.generateConstraint(cd.getCode(), root.getName(),
-	        				cd.getDefinition(), genDate, version);
-			filenames.add("HL7.Fhir.Instance.Model" + sl + cd.getCode()+".cs" );  
-	    }
-*/
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
-	    projGen.build(implDir, filenames);
+	    projGen.build(implDir, generatedFilenames);
 	    
+		String modelSupportDir = "Model.Support" + sl;
+		String parsersSupportDir = "Parsers.Support" + sl;
+		
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");
-		zip.addFiles(modelGenerationDir, "Model" +sl, ".cs");
-		zip.addFiles(implDir + sl + "Support" + sl, "Support" +sl, ".cs");
+		zip.addFiles(implDir+modelDir, modelDir, ".cs");
+		zip.addFiles(implDir+parsersDir, parsersDir, ".cs");
+		zip.addFiles(implDir+modelSupportDir, modelSupportDir, ".cs");
+		zip.addFiles(implDir+parsersSupportDir, parsersSupportDir, ".cs");
 		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
 		zip.addFiles(implDir + sl, "", ".csproj");
 		zip.addFiles(implDir + sl, "", ".sln");

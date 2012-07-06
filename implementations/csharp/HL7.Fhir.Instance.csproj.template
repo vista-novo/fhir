@@ -62,7 +62,8 @@
     <Compile Include="Model.Support\Integer.cs" />
     <Compile Include="Model.Support\XHtml.cs" />
     <Compile Include="Model.Support\XsdDateTime.cs" />
-    <Compile Include="Support\XmlPrimitiveParser.cs" />
+    <Compile Include="Parsers.Support\XmlCompositeTypeParser.cs" />
+    <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
     <Compile Include="Support\XmlUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

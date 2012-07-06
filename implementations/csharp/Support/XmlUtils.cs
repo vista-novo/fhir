@@ -7,10 +7,10 @@ namespace HL7.Fhir.Instance.Support
 {
     public class XmlUtil
     {
-        public const string FHIRNS = "{http://hl7.org/fhir}";
-        public const string IDATTR = FHIRNS + "id";
-        public const string XHTMLNS = "{http://www.w3.org/1999/xhtml}";
-        public const string DIVELEM = XHTMLNS + "div";      
+        public const string FHIRNS = "http://hl7.org/fhir";
+        public const string IDATTR = "id";
+        public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
+        public const string DIVELEM = "div";      
     }
 
     [Serializable]
