@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -129,6 +129,24 @@ public class XmlParser extends XmlParserBase {
     return res;
   }
 
+  private Period parsePeriod(XmlPullParser xpp) throws Exception {
+    Period res = new Period();
+    parseTypeAttributes(xpp, res);
+    xpp.next();
+    int eventType = nextNoWhitespace(xpp);
+    while (eventType != XmlPullParser.END_TAG) {
+      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("start")) {
+        res.setStart(parseString(xpp));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("end")) {
+        res.setEnd(parseString(xpp));
+      } else
+        unknownContent(xpp);
+      eventType = nextNoWhitespace(xpp);
+    }
+    xpp.next();
+    return res;
+  }
+
   private Coding parseCoding(XmlPullParser xpp) throws Exception {
     Coding res = new Coding();
     parseTypeAttributes(xpp, res);
@@ -151,8 +169,8 @@ public class XmlParser extends XmlParserBase {
     return res;
   }
 
-  private Interval<Quantity> parseInterval_Quantity(XmlPullParser xpp) throws Exception {
-    Interval<Quantity> res = new Interval<Quantity>("Quantity");
+  private Range parseRange(XmlPullParser xpp) throws Exception {
+    Range res = new Range();
     parseTypeAttributes(xpp, res);
     xpp.next();
     int eventType = nextNoWhitespace(xpp);
@@ -161,42 +179,6 @@ public class XmlParser extends XmlParserBase {
         res.setLow(parseQuantity(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("high")) {
         res.setHigh(parseQuantity(xpp));
-      } else
-        unknownContent(xpp);
-      eventType = nextNoWhitespace(xpp);
-    }
-    xpp.next();
-    return res;
-  }
-
-  private Interval<DateTime> parseInterval_DateTime(XmlPullParser xpp) throws Exception {
-    Interval<DateTime> res = new Interval<DateTime>("DateTime");
-    parseTypeAttributes(xpp, res);
-    xpp.next();
-    int eventType = nextNoWhitespace(xpp);
-    while (eventType != XmlPullParser.END_TAG) {
-      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("low")) {
-        res.setLow(parseDateTime(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("high")) {
-        res.setHigh(parseDateTime(xpp));
-      } else
-        unknownContent(xpp);
-      eventType = nextNoWhitespace(xpp);
-    }
-    xpp.next();
-    return res;
-  }
-
-  private Interval<Date> parseInterval_Date(XmlPullParser xpp) throws Exception {
-    Interval<Date> res = new Interval<Date>("Date");
-    parseTypeAttributes(xpp, res);
-    xpp.next();
-    int eventType = nextNoWhitespace(xpp);
-    while (eventType != XmlPullParser.END_TAG) {
-      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("low")) {
-        res.setLow(parseDate(xpp));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("high")) {
-        res.setHigh(parseDate(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -474,7 +456,7 @@ public class XmlParser extends XmlParserBase {
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("event")) {
-        res.getEvent().add(parseInterval_DateTime(xpp));
+        res.getEvent().add(parsePeriod(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("repeat")) {
         res.setRepeat(parseScheduleRepeat(xpp, res));
       } else
@@ -522,7 +504,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("use")) {
         res.setUse(Contact.ContactUse.fromCode(parseString(xpp)));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_DateTime(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -544,7 +526,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("part")) {
         res.getPart().add(parseAddressPart(xpp, res));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_DateTime(xpp));
+        res.setPeriod(parseAddress(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -584,7 +566,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("part")) {
         res.getPart().add(parseHumanNamePart(xpp, res));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_DateTime(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -622,7 +604,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identifier")) {
         res.setIdentifier(parseIdentifier(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_DateTime(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("assigner")) {
         res.setAssigner(parseResourceReference(xpp));
       } else
@@ -1030,7 +1012,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("responsible")) {
         res.setResponsible(parseResourceReference(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("effective")) {
-        res.setEffective(parseInterval_DateTime(xpp));
+        res.setEffective(parsePeriod(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("reason")) {
         res.setReason(parseCodeableConcept(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("data")) {
@@ -1198,7 +1180,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("role")) {
         res.getRole().add(parseCodeableConcept(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_Date(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identifier")) {
         res.getIdentifier().add(parseHumanId(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("address")) {
@@ -1276,7 +1258,7 @@ public class XmlParser extends XmlParserBase {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("value")) {
         res.setValue(parseString(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_Date(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -1298,7 +1280,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("institution")) {
         res.setInstitution(parseResourceReference(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_Date(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -1324,7 +1306,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("contact")) {
         res.getContact().add(parseContact(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_Date(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -2114,7 +2096,7 @@ public class XmlParser extends XmlParserBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("institution")) {
         res.setInstitution(parseResourceReference(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {
-        res.setPeriod(parseInterval_Date(xpp));
+        res.setPeriod(parsePeriod(xpp));
       } else
         unknownContent(xpp);
       eventType = nextNoWhitespace(xpp);
@@ -2340,14 +2322,12 @@ public class XmlParser extends XmlParserBase {
   }
 
   protected Type parseType(String prefix, XmlPullParser xpp) throws Exception {
-    if (xpp.getName().equals(prefix+"Coding"))
+    if (xpp.getName().equals(prefix+"Period"))
+      return parsePeriod(xpp);
+    else if (xpp.getName().equals(prefix+"Coding"))
       return parseCoding(xpp);
-    else if (xpp.getName().equals(prefix+"Interval_Quantity"))
-      return parseInterval_Quantity(xpp);
-    else if (xpp.getName().equals(prefix+"Interval_DateTime"))
-      return parseInterval_DateTime(xpp);
-    else if (xpp.getName().equals(prefix+"Interval_Date"))
-      return parseInterval_Date(xpp);
+    else if (xpp.getName().equals(prefix+"Range"))
+      return parseRange(xpp);
     else if (xpp.getName().equals(prefix+"Quantity"))
       return parseQuantity(xpp);
     else if (xpp.getName().equals(prefix+"Choice"))
@@ -2412,13 +2392,11 @@ public class XmlParser extends XmlParserBase {
   }
 
   private boolean nameIsTypeName(XmlPullParser xpp, String prefix) {
-        if (xpp.getName().equals(prefix+"Coding"))
+        if (xpp.getName().equals(prefix+"Period"))
       return true;
-    if (xpp.getName().equals(prefix+"Interval_Quantity"))
+    if (xpp.getName().equals(prefix+"Coding"))
       return true;
-    if (xpp.getName().equals(prefix+"Interval_DateTime"))
-      return true;
-    if (xpp.getName().equals(prefix+"Interval_Date"))
+    if (xpp.getName().equals(prefix+"Range"))
       return true;
     if (xpp.getName().equals(prefix+"Quantity"))
       return true;

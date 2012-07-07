@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -47,7 +47,7 @@ public class Organization extends Resource {
         /**
          * The period that this name was in use by the organization
          */
-        private Interval<Date> period;
+        private Period period;
 
         public String getValue() { 
           return this.value;
@@ -57,11 +57,11 @@ public class Organization extends Resource {
           this.value = value;
         }
 
-        public Interval<Date> getPeriod() { 
+        public Period getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<Date> value) { 
+        public void setPeriod(Period value) { 
           this.period = value;
         }
 
@@ -86,7 +86,7 @@ public class Organization extends Resource {
         /**
          * The period for which the accreditation is held
          */
-        private Interval<Date> period;
+        private Period period;
 
         public Identifier getId() { 
           return this.id;
@@ -112,11 +112,11 @@ public class Organization extends Resource {
           this.institution = value;
         }
 
-        public Interval<Date> getPeriod() { 
+        public Period getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<Date> value) { 
+        public void setPeriod(Period value) { 
           this.period = value;
         }
 
@@ -151,7 +151,7 @@ public class Organization extends Resource {
         /**
          * The period during which the organizations were related in this fashion
          */
-        private Interval<Date> period;
+        private Period period;
 
         public HumanId getId() { 
           return this.id;
@@ -185,11 +185,11 @@ public class Organization extends Resource {
           return this.contact;
         }
 
-        public Interval<Date> getPeriod() { 
+        public Period getPeriod() { 
           return this.period;
         }
 
-        public void setPeriod(Interval<Date> value) { 
+        public void setPeriod(Period value) { 
           this.period = value;
         }
 

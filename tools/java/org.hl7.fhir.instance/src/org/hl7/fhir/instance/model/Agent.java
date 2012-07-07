@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -56,7 +56,7 @@ public class Agent extends Resource {
     /**
      * The time period during which the agent was/is authorised to represent the organisation.
      */
-    private Interval<Date> period;
+    private Period period;
 
     /**
      * An identifier that applies to this person in this role
@@ -93,11 +93,11 @@ public class Agent extends Resource {
       return this.role;
     }
 
-    public Interval<Date> getPeriod() { 
+    public Period getPeriod() { 
       return this.period;
     }
 
-    public void setPeriod(Interval<Date> value) { 
+    public void setPeriod(Period value) { 
       this.period = value;
     }
 

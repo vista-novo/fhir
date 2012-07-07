@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
@@ -116,7 +116,7 @@ public class Contact extends Type {
     /**
      * Time period when the contact was/is in use
      */
-    private Interval<DateTime> period;
+    private Period period;
 
     public ContactSystem getSystem() { 
       return this.system;
@@ -142,11 +142,11 @@ public class Contact extends Type {
       this.use = value;
     }
 
-    public Interval<DateTime> getPeriod() { 
+    public Period getPeriod() { 
       return this.period;
     }
 
-    public void setPeriod(Interval<DateTime> value) { 
+    public void setPeriod(Period value) { 
       this.period = value;
     }
 

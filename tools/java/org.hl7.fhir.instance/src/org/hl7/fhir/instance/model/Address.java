@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -155,7 +155,7 @@ public class Address extends Type {
     /**
      * Time period when address was/is in use
      */
-    private Interval<DateTime> period;
+    private Address period;
 
     public AddressUse getUse() { 
       return this.use;
@@ -177,11 +177,11 @@ public class Address extends Type {
       return this.part;
     }
 
-    public Interval<DateTime> getPeriod() { 
+    public Address getPeriod() { 
       return this.period;
     }
 
-    public void setPeriod(Interval<DateTime> value) { 
+    public void setPeriod(Address value) { 
       this.period = value;
     }
 

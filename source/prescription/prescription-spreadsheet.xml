@@ -533,7 +533,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Quantity|Interval(Quantity)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity|Range</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Dose per administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -611,11 +611,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>30</TopRowVisible>
+   <TopRowVisible>27</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>37</ActiveRow>
+     <ActiveRow>34</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

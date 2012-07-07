@@ -37,7 +37,7 @@ import java.math.BigDecimal;
  * @author Grahame
  *
  */
-public class Decimal extends Ordered {
+public class Decimal extends Type {
 
 	private BigDecimal value;
 

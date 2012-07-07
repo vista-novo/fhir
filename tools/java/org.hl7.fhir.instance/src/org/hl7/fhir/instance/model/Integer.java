@@ -35,7 +35,7 @@ package org.hl7.fhir.instance.model;
  * @author Grahame
  *
  */
-public class Integer extends Ordered {
+public class Integer extends Type {
 
 	private int value;
 

@@ -37,7 +37,7 @@ import java.util.Date;
  * @author Grahame
  *
  */
-public class Instant extends Ordered {
+public class Instant extends Type {
 
 	private Date value;
 

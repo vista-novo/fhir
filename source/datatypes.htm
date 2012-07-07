@@ -24,7 +24,8 @@ be exchanged.
 <map id="dtmap2" name="dtmap">
 <area shape="rect" coords="114, 1, 200, 28" href="#Attachment"/>
 <area shape="rect" coords="260, 0, 309, 26" href="#Ratio"/>
-<area shape="rect" coords="337, 1, 399, 28" href="#Interval"/>
+<area shape="rect" coords="337, 1, 399, 28" href="#Period"/>
+<area shape="rect" coords="337, 1, 399, 28" href="#Range"/>
 <area shape="rect" coords="360, 46, 432, 73" href="#Identifier"/>
 <area shape="rect" coords="9, 7, 66, 34" href="#Choice"/>
 <area shape="rect" coords="9, 56, 67, 83" href="#Coding"/>
@@ -606,58 +607,42 @@ These are used as types in resource content models, but they are really just Qua
 
 
 
-<a name="Interval"></a>
+<a name="Range"></a>
 <h2>
-Interval
+Range
 </h2>
 <p>
-A set of ordered values defined by a low and high limit.
+A set of ordered Quantity values defined by a low and high limit.
 </p>
 <p>
-An interval may be applied to <a href="#Quantity">Quantity</a>, 
-<a href="#dateTime">dateTime</a>, and <a href="#date">date</a>. 
-The context where the type is used must specify which of these 
-types is used. An interval specifies a range of values; the context
-of use will specify whether the entire range applies (e.g. "the patient
-was an inpatient of the hospital for this time range") or one value 
+A Range specifies a set of possible values; usually, one value 
 from the range applies (e.g. "give the patient between 2 and 4 tablets").
 </p>
-<%dt Interval%>
+<%dt Range%>
 <p>
+The <i>units</i> and <i>code</i>/<i>system</i> elements of the <i>low</i> or <i>high</i> elements must match. 
 If the <i>low</i> or <i>high</i> elements are missing, the meaning
-is that the low or high boundaries are not known. A 
-<i>dataAbsentReason</i> flag may be used on the <i>low</i> or <i>high</i>
-elements in this case. On intervals over a time period, if the <i>high</i> is missing, 
-it means that the interval is current and ongoing.
+is that the low or high boundaries are not known, and therefore neither is the range. A 
+<i>dataAbsentReason</i> flag must be provided on the <i>Range</i> in this case. 
 </p>
 <p>
-If the interval applies to the <a href="#Quantity">Quantity</a> type, the <i>status</i> flag on 
-the quantity cannot have the values &lt;, &lt;=, =&gt;, or &gt;. Note that the Interval type should not be 
+The <i>status</i> flag on the <i>low</i> or <i>high</i> elements cannot have the values &lt;, &lt;=, =&gt;, or &gt;. Note that the Range type should not be 
 used to represent measurements where the status flag might be used instead.
 </p>
 <p>
-When the interval applies to a date or dateTime, the high value includes any matching date/time. 
-When the interval applies to the other types, the high value is assumed to have arbitrarily high precision.
-For example:
+The low and the high values are inclusive, and are assumed to have arbitrarily high precision. e.g. the range 1.5 to 2.5 
+includes 1.50, and 2.50 but not 1.49 or 2.51.
 </p>
-<table class="list">   
-  <tr><td>1.5 to 2.5</td><td>
-    includes 1.50, and 2.50 but not 1.49 or 2.51</td></tr>
-  
-  <tr><td>2011-05-23 to 2011-05-27 </td><td>
-   includes all the times of 23rd May through to the end of the 27th May </td></tr>
-
-</table>
 <div class="use">
 <p><b>Use</b></p>
 <p>
-Unless the Interval element has a <i>dataAbsentReason</i> flag, it must contain 
-a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
+Unless the Range element has a <i>dataAbsentReason</i> flag, it must contain 
+a <i>low</i> and a <i>high</i>.
 </p>
 </div>
 <div class="example">
 <p><b>Examples</b></p>
-<p>Interval of Quantity (distance):</p>
+<p>Range of Quantity (distance):</p>
 <pre class="xml">
   &lt;x&gt;
    &lt;low&gt;
@@ -667,17 +652,6 @@ a <i>low</i> and, if it does not apply to a date or dateTime, a <i>high</i>.
    &lt;high&gt;
      &lt;value&gt;4.6&lt;/value&gt;
      &lt;unit&gt;m&lt;/unit&gt;
-   &lt;/high&gt;
-  &lt;/x&gt;
-</pre>
-<p>23rd May 2011 to 27th May, including 27th May:</p>
-<pre class="xml">
-  &lt;x&gt;
-   &lt;low&gt;
-     &lt;date&gt;2011-05-23&lt;/date&gt;
-   &lt;/low&gt;
-   &lt;high&gt;
-     &lt;date&gt;2011-05-27&lt;/date&gt;
    &lt;/high&gt;
   &lt;/x&gt;
 </pre>
@@ -735,6 +709,55 @@ particular types of Quantity for the numerator or denominator.
   &lt;/x&gt;
 </pre>
 </div>
+
+<a name="Period"></a>
+<h2>
+Period
+</h2>
+<p>
+A time period defined by a start and and end time.
+</p>
+<p>
+An period specifies a range of times; the context
+of use will specify whether the entire range applies (e.g. "the patient
+was an inpatient of the hospital for this time range") or one value 
+from the period applies (e.g. "give to the patient between 2 and 4 pm").
+</p>
+<%dt Period%>
+<p>
+If the <i>low</i> or <i>high</i> elements are missing, the meaning
+is that the low or high boundaries are not known. If the low 
+element is missing, a <i>dataAbsentReason</i> flag must be provided 
+on the <i>Period</i> element in this case. If the <i>high</i> is missing, 
+it means that the period is ongoing.
+</p>
+<p>
+The high value includes any matching date/time. For example, the period 
+2011-05-23 to 2011-05-27 includes all the times of 23rd May through to 
+the end of the 27th May.
+</p>
+<div class="use">
+<p><b>Use</b></p>
+<p>
+Unless the Period element has a <i>dataAbsentReason</i> flag, it must contain 
+a <i>low</i>.
+</p>
+</div>
+<div class="example">
+<p><b>Examples</b></p>
+<p>23rd May 2011 to 27th May, including 27th May:</p>
+<pre class="xml">
+  &lt;x&gt;
+   &lt;low&gt;
+     &lt;date&gt;2011-05-23&lt;/date&gt;
+   &lt;/low&gt;
+   &lt;high&gt;
+     &lt;date&gt;2011-05-27&lt;/date&gt;
+   &lt;/high&gt;
+  &lt;/x&gt;
+</pre>
+</div>
+
 
 <hr/>
 <h2>Structures</h2>
@@ -1005,7 +1028,7 @@ Schedule
 </h2>
 <p>
 A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.
-A schedule can be either a list of events - intervals on which the event occurs, 
+A schedule can be either a list of events - periods on which the event occurs, 
 or a single event with repeating criteria, or just repeating criteria with no actual event. 
 </p>
 <p>
@@ -1092,7 +1115,7 @@ flag is provided on the Schedule element. If a <i>repeat</i> is present, either 
   &lt;/x&gt;
 </pre>
 <p>
-Note that the end date is inclusive like the high date of an Interval.
+Note that the end date is inclusive like the high date of a Period.
 </p>
 
 </div>

@@ -66,7 +66,7 @@ public class SchematronGenerator  extends OutputStreamWriter {
 		write("  <sch:pattern>\r\n");
 		write("    <sch:title>"+root.getName()+"</sch:title>\r\n");
 
-		generateInvariants(root.getName(), root, definitions);
+		generateInvariants("/f:"+root.getName(), root, definitions);
 		write("  </sch:pattern>\r\n");
 		write("</sch:schema>\r\n");
 		write("\r\n");
@@ -84,7 +84,7 @@ public class SchematronGenerator  extends OutputStreamWriter {
 	  }
 	  if (ed.getElements().size() > 0) {
 	    for (ElementDefn cd : ed.getElements()) {
-	      generateInvariants(path+"/"+cd.getName(), cd, definitions);
+	      generateInvariants(path+"/f:"+cd.getName(), cd, definitions);
 	    }
 	  } else if (ed.getName().contains("[x]")) {
 	    // todo...
@@ -99,7 +99,7 @@ public class SchematronGenerator  extends OutputStreamWriter {
 	      if (td == null)
 	        throw new Exception("can't generate schematron for "+path+": type "+tn+" unknown");
 	      for (ElementDefn cd : ed.getElements()) {
-	        generateInvariants(path+"/"+cd.getName(), cd, definitions);
+	        generateInvariants(path+"/f:"+cd.getName(), cd, definitions);
 	      }
       }
 	  }

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 /**
  * An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
@@ -49,7 +49,7 @@ public class HumanId extends Type {
     /**
      * Time period during which identifier was valid for use
      */
-    private Interval<DateTime> period;
+    private Period period;
 
     /**
      * Organisation that issued/manages the identifier
@@ -72,11 +72,11 @@ public class HumanId extends Type {
       this.identifier = value;
     }
 
-    public Interval<DateTime> getPeriod() { 
+    public Period getPeriod() { 
       return this.period;
     }
 
-    public void setPeriod(Interval<DateTime> value) { 
+    public void setPeriod(Period value) { 
       this.period = value;
     }
 

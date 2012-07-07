@@ -20,7 +20,6 @@
   <WindowWidth>25155</WindowWidth>
   <WindowTopX>3120</WindowTopX>
   <WindowTopY>3225</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -154,7 +153,7 @@
     <Cell><Data ss:Type="String">HumanId.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Time period when id was valid for use</Data></Cell>
     <Cell><Data ss:Type="String">Time period during which identifier was valid for use</Data></Cell>
    </Row>
@@ -181,12 +180,13 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -228,7 +228,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <LeftColumnVisible>4</LeftColumnVisible>
    <Panes>
     <Pane>

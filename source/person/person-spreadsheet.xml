@@ -226,7 +226,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">.plays:Role(classCode='QUAL')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.qualification.id</Data></Cell>
+    <Cell><Data ss:Type="String">Person.qualification.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for the qualification</Data></Cell>
@@ -256,8 +256,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Person.qualification.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Interval(date)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the qualification is valid</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When the qualification is valid (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period for which a qualification is held</Data></Cell>
     <Cell><Data ss:Type="String">Some qualifications are only conferred for a limited time period and must be re-acquired or forfeited</Data></Cell>
     <Cell><Data ss:Type="String">Formal degrees may have a known start date, but no end date</Data></Cell>
@@ -304,7 +304,7 @@
     <Cell ss:Index="12"><Data ss:Type="String">.plays:Role(classCode='REL')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.relatedPerson.id</Data></Cell>
+    <Cell><Data ss:Type="String">Person.relatedPerson.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for the person</Data></Cell>
@@ -362,12 +362,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>15</TopRowVisible>
+   <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>25</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>21</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -150,8 +150,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.name.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Interval(date)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When this name is/was in use</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When this name is/was in use (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period that this name was in use by the organization</Data></Cell>
     <Cell><Data ss:Type="String">Organizations have a habit of renaming themselves, and the current and past names are required</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.validTime</Data></Cell>
@@ -211,7 +211,7 @@
     <Cell ss:Index="14"><Data ss:Type="String">Not sure if qualified &amp; accredited are the same.  Could potentially propose a new classCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Organization.accreditation.id</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.accreditation.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for the accreditation</Data></Cell>
@@ -243,8 +243,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.accreditation.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Interval(date)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the accreditation is valid</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When the accreditation is valid (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period for which the accreditation is held</Data></Cell>
     <Cell><Data ss:Type="String">Most accreditations are only conferred for a limited time period and must be re-acquired or forfeited</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.effectiveTime[IVL&lt;TS&gt;]</Data></Cell>
@@ -259,7 +259,7 @@
     <Cell ss:Index="14"><Data ss:Type="String">There's no reason why this wouldn't point to another resource.  Will map when updated accordingly.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Organization.relatedOrganization.id</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.relatedOrganization.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for the organization</Data></Cell>
@@ -300,8 +300,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Interval(date)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the organizations were related</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When the organizations were related (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period during which the organizations were related in this fashion</Data></Cell>
     <Cell><Data ss:Type="String">Organization relationships are changing all the time</Data></Cell>
    </Row>
@@ -331,12 +331,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>15</TopRowVisible>
+   <TopRowVisible>10</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>24</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>11</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

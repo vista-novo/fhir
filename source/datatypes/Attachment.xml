@@ -165,7 +165,7 @@
     <Cell><Data ss:Type="String">An alternative location where the data can be accessed</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">http://www.acme.com/logo-small.png</Data></Cell>
     <Cell><Data ss:Type="String">The data needs to be transmitted by reference</Data></Cell>
-    <Cell><Data ss:Type="String">If both data and url are provided, the url must point to the same content as the data contains. Urls may be relative references, or may be made to transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures</Data></Cell>
+    <Cell><Data ss:Type="String">If both data and url are provided, the url must point to the same content as the data contains. Urls may be relative references, or may be made to transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. If a URL is provided, it must resolve to actual data. </Data></Cell>
     <Cell><Data ss:Type="String">ED.reference</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">Sort out relative URL references</Data></Cell>
    </Row>
@@ -221,7 +221,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -229,7 +229,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="102"
     ss:Span="1"/>
@@ -255,12 +255,6 @@
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or data.size &gt; 0 or url.size &gt; 0</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:data) or exists(f:url)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">URL must point to data</Data></Cell>
-    <Cell><Data ss:Type="String">Attachment</Data></Cell>
-    <Cell><Data ss:Type="String">If a URL is provided, it must resolve to actual data. </Data></Cell>
-   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -278,7 +272,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>10</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>

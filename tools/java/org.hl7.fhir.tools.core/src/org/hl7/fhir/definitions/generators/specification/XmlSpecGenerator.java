@@ -492,8 +492,10 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			return "datatypes";
 		if (name.equals("Identifier"))
 			return "datatypes";
-		if (name.equals("Interval"))
-			return "datatypes";
+    if (name.equals("Period"))
+      return "datatypes";
+    if (name.equals("Range"))
+      return "datatypes";
 		if (name.equals("HumanId"))
 			return "datatypes";
 		if (name.equals("Contact"))

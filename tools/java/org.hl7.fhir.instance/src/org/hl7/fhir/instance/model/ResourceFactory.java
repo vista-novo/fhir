@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 public class ResourceFactory {
 
@@ -77,26 +77,28 @@ public class ResourceFactory {
     }
 
     public static Element createType(String name) throws Exception {
-        if ("Extensions".equals(name))
-            return new Extension();
+        if ("Period".equals(name))
+            return new Period();
         if ("Coding".equals(name))
             return new Coding();
-        if ("Count".equals(name))
-            return new Count();
+        if ("Range".equals(name))
+            return new Range();
         if ("Quantity".equals(name))
             return new Quantity();
         if ("Attachment".equals(name))
             return new Attachment();
+        if ("Count".equals(name))
+            return new Count();
         if ("Money".equals(name))
             return new Money();
         if ("Distance".equals(name))
             return new Distance();
         if ("Contact".equals(name))
             return new Contact();
-        if ("Interval<Quantity>".equals(name))
-            return new Interval<Quantity>("Quantity");
         if ("HumanId".equals(name))
             return new HumanId();
+        if ("Extension".equals(name))
+            return new Extension();
         if ("Schedule".equals(name))
             return new Schedule();
         if ("Choice".equals(name))
@@ -113,14 +115,10 @@ public class ResourceFactory {
             return new ResourceReference();
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
-        if ("Interval<Date>".equals(name))
-            return new Interval<Date>("Date");
         if ("Identifier".equals(name))
             return new Identifier();
         if ("Narrative".equals(name))
             return new Narrative();
-        if ("Interval<DateTime>".equals(name))
-            return new Interval<DateTime>("DateTime");
         else
             throw new Exception("Unknown Type Name '"+name+"'");
     }

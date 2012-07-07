@@ -288,7 +288,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="240">
     <Cell><Data ss:Type="String">Message.effective</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Interval(dateTime)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">time of effect</Data></Cell>
     <Cell><Data ss:Type="String">The effective time - the real world time of the even that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)</Data></Cell>
     <Cell><Data ss:Type="String">Need to know for understanding the content of the message</Data></Cell>
@@ -340,12 +340,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>24</TopRowVisible>
+   <TopRowVisible>18</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>26</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

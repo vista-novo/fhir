@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -162,14 +162,14 @@ public class Schedule extends Type {
     /**
      * When the event occurs
      */
-    private List<Interval<DateTime>> event = new ArrayList<Interval<DateTime>>();
+    private List<Period> event = new ArrayList<Period>();
 
     /**
      * Only if there is none or one event
      */
     private Repeat repeat;
 
-    public List<Interval<DateTime>> getEvent() { 
+    public List<Period> getEvent() { 
       return this.event;
     }
 

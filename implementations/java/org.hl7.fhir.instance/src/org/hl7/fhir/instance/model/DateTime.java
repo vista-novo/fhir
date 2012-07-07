@@ -33,7 +33,7 @@ package org.hl7.fhir.instance.model;
  * @author Grahame
  *
  */
-public class DateTime extends Ordered {
+public class DateTime extends Type {
 
 	private String value;
 

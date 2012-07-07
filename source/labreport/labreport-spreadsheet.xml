@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>8</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -604,7 +603,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">y</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Interval(dateTime)|string</Data><NamedCell
+    <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Period|string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">*unbound*</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -718,11 +717,11 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Quantity|Interval(Quantity)|string</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity|Range|string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Reference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Actual value of the reference range.  May be a quantity (&lt;20mg/L), an interval (10-20 umol/L), or some text</Data><NamedCell
+    <Cell><Data ss:Type="String">Actual value of the reference range.  May be a quantity (&lt;20mg/L), an range (10-20 umol/L), or some text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Need to be able to report numerical or text reference ranges, and handle legacy data</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -823,10 +822,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>28</TopRowBottomPane>
+   <TopRowBottomPane>25</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -843,8 +843,8 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>35</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>29</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1275,14 +1275,14 @@
    <Column ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="208.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="137.25"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Filename</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Example Lipid Profile</Data></Cell>
     <Cell><Data ss:Type="String">General Profile for a simple lipid panel</Data></Cell>
     <Cell><Data ss:Type="String">profile-example-lipids</Data></Cell>
@@ -1294,7 +1294,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>

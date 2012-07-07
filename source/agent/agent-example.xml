@@ -20,8 +20,8 @@
   </role>
   
   <period>
-    <low>2012-01-01</low>
-    <high>2012-03-31</high>
+    <start>2012-01-01</start>
+    <end>2012-03-31</end>
   </period>
   
   <identifier>

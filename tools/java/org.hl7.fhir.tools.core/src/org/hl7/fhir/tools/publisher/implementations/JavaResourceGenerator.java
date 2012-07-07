@@ -103,7 +103,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("  };\r\n");
 			write("  \r\n");
 		} else if (root.getName().equals("Quantity"))
-			write("public class "+upFirst(root.getName())+" extends Ordered {\r\n");
+			write("public class "+upFirst(root.getName())+" extends Type {\r\n");
 		else
 			write("public class "+upFirst(root.getName())+" extends Type {\r\n");
 		write("\r\n");

@@ -30,7 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.instance.model;
 
 
-public class Date extends Ordered {
+public class Date extends Type {
 
 	private String value;
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -271,7 +271,7 @@ public class Message extends Resource {
     /**
      * The effective time - the real world time of the even that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)
      */
-    private Interval<DateTime> effective;
+    private Period effective;
 
     /**
      * The cause of the event - a reason for why this message is being sent
@@ -355,11 +355,11 @@ public class Message extends Resource {
       this.responsible = value;
     }
 
-    public Interval<DateTime> getEffective() { 
+    public Period getEffective() { 
       return this.effective;
     }
 
-    public void setEffective(Interval<DateTime> value) { 
+    public void setEffective(Period value) { 
       this.effective = value;
     }
 

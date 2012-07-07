@@ -13,7 +13,7 @@
       <id>12345</id>	    
     </identifier>
     <period>
-      <low>2001-05-06</low>
+      <start>2001-05-06</start>
     </period>
     <assigner>
       <text>Acme Healthcare</text>

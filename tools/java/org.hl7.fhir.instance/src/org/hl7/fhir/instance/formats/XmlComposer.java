@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jun 30, 2012 08:13+1000 for FHIR v0.04
+// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -94,6 +94,16 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composePeriod(String name, Period element) throws Exception {
+    if (element != null) {
+      composeTypeAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString("start", element.getStart());
+      composeString("end", element.getEnd());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composeCoding(String name, Coding element) throws Exception {
     if (element != null) {
       composeTypeAttributes(element);
@@ -106,32 +116,12 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
-  private void composeInterval_Quantity(String name, Interval<Quantity> element) throws Exception {
+  private void composeRange(String name, Range element) throws Exception {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeQuantity("low", element.getLow());
       composeQuantity("high", element.getHigh());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeInterval_DateTime(String name, Interval<DateTime> element) throws Exception {
-    if (element != null) {
-      composeTypeAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeDateTime("low", element.getLow());
-      composeDateTime("high", element.getHigh());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeInterval_Date(String name, Interval<Date> element) throws Exception {
-    if (element != null) {
-      composeTypeAttributes(element);
-      xml.open(FHIR_NS, name);
-      composeDate("low", element.getLow());
-      composeDate("high", element.getHigh());
       xml.close(FHIR_NS, name);
     }
   }
@@ -290,8 +280,8 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      for (Interval<DateTime> e : element.getEvent()) 
-        composeInterval_DateTime("event", e);
+      for (Period e : element.getEvent()) 
+        composePeriod("event", e);
       composeScheduleRepeat("repeat", element.getRepeat());
       xml.close(FHIR_NS, name);
     }
@@ -320,7 +310,7 @@ public class XmlComposer extends XmlComposerBase {
       composeString("value", element.getValue());
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
-      composeInterval_DateTime("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -334,7 +324,7 @@ public class XmlComposer extends XmlComposerBase {
       composeString("text", element.getText());
       for (Address.Part e : element.getPart()) 
         composeAddressPart("part", e);
-      composeInterval_DateTime("period", element.getPeriod());
+      composeAddress("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -359,7 +349,7 @@ public class XmlComposer extends XmlComposerBase {
       composeString("text", element.getText());
       for (HumanName.Part e : element.getPart()) 
         composeHumanNamePart("part", e);
-      composeInterval_DateTime("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -381,7 +371,7 @@ public class XmlComposer extends XmlComposerBase {
       xml.open(FHIR_NS, name);
       composeCoding("type", element.getType());
       composeIdentifier("identifier", element.getIdentifier());
-      composeInterval_DateTime("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       composeResourceReference("assigner", element.getAssigner());
       xml.close(FHIR_NS, name);
     }
@@ -618,7 +608,7 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceReference("enterer", element.getEnterer());
       composeResourceReference("author", element.getAuthor());
       composeResourceReference("responsible", element.getResponsible());
-      composeInterval_DateTime("effective", element.getEffective());
+      composePeriod("effective", element.getEffective());
       composeCodeableConcept("reason", element.getReason());
       for (ResourceReference e : element.getData()) 
         composeResourceReference("data", e);
@@ -719,7 +709,7 @@ public class XmlComposer extends XmlComposerBase {
       composeResourceReference("organization", element.getOrganization());
       for (CodeableConcept e : element.getRole()) 
         composeCodeableConcept("role", e);
-      composeInterval_Date("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       for (HumanId e : element.getIdentifier()) 
         composeHumanId("identifier", e);
       for (Address e : element.getAddress()) 
@@ -772,7 +762,7 @@ public class XmlComposer extends XmlComposerBase {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
       composeString("value", element.getValue());
-      composeInterval_Date("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -784,7 +774,7 @@ public class XmlComposer extends XmlComposerBase {
       composeIdentifier("id", element.getId());
       composeCodeableConcept("code", element.getCode());
       composeResourceReference("institution", element.getInstitution());
-      composeInterval_Date("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -800,7 +790,7 @@ public class XmlComposer extends XmlComposerBase {
         composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
-      composeInterval_Date("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -1279,7 +1269,7 @@ public class XmlComposer extends XmlComposerBase {
       composeIdentifier("id", element.getId());
       composeCodeableConcept("code", element.getCode());
       composeResourceReference("institution", element.getInstitution());
-      composeInterval_Date("period", element.getPeriod());
+      composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);
     }
   }
@@ -1434,14 +1424,12 @@ public class XmlComposer extends XmlComposerBase {
   protected void composeType(String prefix, Type type) throws Exception {
     if (type == null)
       ;
+    else if (type instanceof Period)
+       composePeriod(prefix+"Period", (Period) type);
     else if (type instanceof Coding)
        composeCoding(prefix+"Coding", (Coding) type);
-    else if (type instanceof Interval && ((Interval<Ordered>) type).getType().equals("Quantity"))
-      composeInterval_Quantity(prefix+"Interval_Quantity", (Interval<Quantity>) type);
-    else if (type instanceof Interval && ((Interval<Ordered>) type).getType().equals("DateTime"))
-      composeInterval_DateTime(prefix+"Interval_DateTime", (Interval<DateTime>) type);
-    else if (type instanceof Interval && ((Interval<Ordered>) type).getType().equals("Date"))
-      composeInterval_Date(prefix+"Interval_Date", (Interval<Date>) type);
+    else if (type instanceof Range)
+       composeRange(prefix+"Range", (Range) type);
     else if (type instanceof Quantity)
        composeQuantity(prefix+"Quantity", (Quantity) type);
     else if (type instanceof Choice)
