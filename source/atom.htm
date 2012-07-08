@@ -36,16 +36,16 @@ Whenever resources are gethered into a list, this is done using the Atom format 
 <pre class="spec">
 &lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
   &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
-  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
-  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">unique id for this bundle</font>&lt;/id&gt;
-  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="via" href="<font color="navy">building application url</font>"/&gt;
+  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
+  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">unique uri for this bundle</font>&lt;/id&gt;
+  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">building application url</font>"/&gt;
 
   &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
     &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
     &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">Master Location for Resource</font>"/&gt;
-    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Master Id for this resource</font>&lt;/id&gt;
-    &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
-    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#dateTime">dateTime</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
+    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Master Id (uri) for this resource</font>&lt;/id&gt;
+    &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
+    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
     &lt;<b>author</b>&gt;
       &lt;<b>name</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
       &lt;<b>uri</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
@@ -58,7 +58,7 @@ Whenever resources are gethered into a list, this is done using the Atom format 
       &lt;/[ResourceName]>
     &lt;/content>
     &lt;<b>summary</b> <a href="xml.htm#Control" class="cf">opt</a> type="xhtml">
-         <font color="Gray">&lt;!-- Narrative from resource for a browser. Must be wrapped in a &lt;div&gt; --&gt;</font>
+         <font color="Gray">&lt;!-- Narrative from resource for a browser. Must be wrapped in a &lt;xhtml:div&gt; --&gt;</font>
     &lt;/summary>
   &lt;/entry&gt;
   &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <a href="xml.htm#Control" class="cf">opt</a>&gt;

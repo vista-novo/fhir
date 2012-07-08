@@ -35,7 +35,7 @@ public class Invariant {
   private String ocl;
   private String xpath;
   private String id;
-  
+  private boolean onlyIfNoDar;
   
   public String getId()
   {
@@ -85,6 +85,14 @@ public class Invariant {
 
   public void setXpath(String xpath) {
     this.xpath = xpath;
+  }
+
+  public boolean isOnlyIfNoDar() {
+    return onlyIfNoDar;
+  }
+
+  public void setOnlyIfNoDar(boolean onlyIfNoDar) {
+    this.onlyIfNoDar = onlyIfNoDar;
   }
   
   

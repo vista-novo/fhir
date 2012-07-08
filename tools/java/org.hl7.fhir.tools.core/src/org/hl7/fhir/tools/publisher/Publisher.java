@@ -295,6 +295,12 @@ public class Publisher {
 				page.getFolders().dstDir, page.getFolders().srcDir,
 				page.getVersion(),
 				Config.DATE_FORMAT().format(page.getGenDate()));
+    for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+      String n = r.getName().toLowerCase();
+      SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
+      sch.generate(r.getRoot(), page.getDefinitions());
+    }
+		new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir+"fhir-atom.sch"), page).generate(page.getDefinitions());
 		produceSchemaZip();
 		log("Produce Specification");
 		produceSpec();
@@ -364,6 +370,7 @@ public class Publisher {
 					new File(page.getFolders().dstDir + n));
 
 		profileFeed = new AtomFeed();
+		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
 		new AtomComposer().compose(new FileOutputStream(
@@ -406,7 +413,8 @@ public class Publisher {
 			f.delete();
 		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir
 				+ "fhir-all-xsd.zip");
-		zip.addFiles(page.getFolders().dstDir, "", ".xsd");
+    zip.addFiles(page.getFolders().dstDir, "", ".xsd");
+    zip.addFiles(page.getFolders().dstDir, "", ".sch");
 		zip.close();
 		Utilities.copyFile(new File(page.getFolders().tmpResDir
 				+ "fhir-all-xsd.zip"), f);
@@ -437,8 +445,6 @@ public class Publisher {
 		for (RegisteredProfile p : resource.getProfiles()) 
 		  produceProfile(p.getFilename(), p.getProfile());
 		
-		SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"));
-    sch.generate(resource.getRoot(), page.getDefinitions());
 
 		
 		for (Example e : resource.getExamples()) {
@@ -614,9 +620,8 @@ public class Publisher {
 
 	private void addToResourceFeed(Profile profile) {
 		AtomEntry e = new AtomEntry();
-		e.setId(profile.getId());
-		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId()
-				+ ".xml");
+		e.setId("http://hl7.org/fhir/profile/"+profile.getId());
+		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId() + ".profile.xml");
 		e.setTitle("Resource \"" + profile.getId()
 				+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());

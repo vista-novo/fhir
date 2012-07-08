@@ -77,8 +77,11 @@ public class AtomComposer extends XmlBase {
       xml.element(ATOM_NS, "updated", new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(feed.getUpdated()));
     if (feed.getId() != null)
       xml.element(ATOM_NS, "id", feed.getId());
-    if (feed.getLink() != null)
-      xml.element(ATOM_NS, "link", feed.getLink());
+    if (feed.getLink() != null) {
+      xml.attribute("rel", "self");
+      xml.attribute("href", feed.getLink());
+      xml.element(ATOM_NS, "link", null);
+    }
     for (AtomEntry e : feed.getEntryList())
       composeEntry(e);
     xml.close(ATOM_NS, "feed");
@@ -94,6 +97,7 @@ public class AtomComposer extends XmlBase {
     if (e.getTitle() != null)
       xml.element(ATOM_NS, "title", e.getTitle());
     if (e.getLink() != null) {
+      xml.attribute("rel", "self");
       xml.attribute("href", e.getLink());
       xml.element(ATOM_NS, "link", null);
     }
@@ -117,7 +121,6 @@ public class AtomComposer extends XmlBase {
 
     xml.attribute("type", "text/xml");
     xml.open(ATOM_NS, "content");
-    xml.namespace(FHIR_NS, null);
     new XmlComposer().compose(xml, e.getResource(), htmlPretty);
     xml.close(ATOM_NS, "content");
     

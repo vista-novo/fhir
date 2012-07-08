@@ -23,13 +23,13 @@ be exchanged.
 </p>
 <map id="dtmap2" name="dtmap">
 <area shape="rect" coords="114, 1, 200, 28" href="#Attachment"/>
-<area shape="rect" coords="260, 0, 309, 26" href="#Ratio"/>
-<area shape="rect" coords="337, 1, 399, 28" href="#Period"/>
-<area shape="rect" coords="337, 1, 399, 28" href="#Range"/>
-<area shape="rect" coords="360, 46, 432, 73" href="#Identifier"/>
-<area shape="rect" coords="9, 7, 66, 34" href="#Choice"/>
-<area shape="rect" coords="9, 56, 67, 83" href="#Coding"/>
-<area shape="rect" coords="11, 106, 129, 133" href="#CodeableConcept"/>
+<area shape="rect" coords="341, 3, 388, 31" href="#Ratio"/>
+<area shape="rect" coords="20, 122, 75, 152" href="#Period"/>
+<area shape="rect" coords="360, 53, 415, 80" href="#Range"/>
+<area shape="rect" coords="221, 3, 294, 31" href="#Identifier"/>
+<area shape="rect" coords="3, 2, 66, 34" href="#Choice"/>
+<area shape="rect" coords="3, 46, 60, 74" href="#Coding"/>
+<area shape="rect" coords="1, 85, 118, 113" href="#CodeableConcept"/>
 <area shape="rect" coords="264, 142, 331, 169" href="#Quantity"/>
 <area shape="rect" coords="373, 91, 430, 120" href="#Distance"/>
 <area shape="rect" coords="396, 188, 449, 217" href="#Count"/>
@@ -83,7 +83,7 @@ them (and only where that attribute is allowed).
  <tr><td>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td><td>0</td></tr>
  <tr><td>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>0</td></tr>
  <tr><td>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>null / empty</td></tr>
- <tr><td>instant</td><td>An instant in time - known at least to the second. Note: For system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
+ <tr><td>instant</td><td>An instant in time - known at least to the second. The format is the XML dateTime type, including a full timezone. Note: This type is for system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
  <tr><td>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td>null / empty</td></tr>
  <tr><td>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>null / no reference</td></tr>
  <tr><td></td><td></td><td></td></tr>

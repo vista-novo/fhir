@@ -187,7 +187,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="27"/>
    <Column ss:StyleID="s66" ss:Width="66"/>
@@ -209,6 +209,13 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">Either a value or nested extensions must be present, but not both</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:*[starts-with(local-name(.), 'value')]) != exists(f:extension))</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">Nested Extensions No Refs</Data></Cell>
+    <Cell><Data ss:Type="String">Extension</Data></Cell>
+    <Cell><Data ss:Type="String">Nexted Extensions cannot have references</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">!exists(extension.ref)</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -221,7 +228,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>

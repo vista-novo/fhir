@@ -29,82 +29,133 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.hl7.fhir.definitions.model.BindingSpecification;
-import org.hl7.fhir.definitions.model.DefinedCode;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.TextStreamWriter;
 import org.hl7.fhir.utilities.Utilities;
 
-public class SchematronGenerator  extends OutputStreamWriter {
+public class SchematronGenerator  extends TextStreamWriter {
 
 			
-	private Map<String, BindingSpecification> conceptDomains;
+	private Logger logger;
 
-	public SchematronGenerator(OutputStream out) throws UnsupportedEncodingException {
-		super(out, "UTF-8");
+  public SchematronGenerator(OutputStream out, Logger logger) throws UnsupportedEncodingException {
+    super(out);
+    this.logger = logger;
+  }
+
+	public void generate(Definitions definitions) throws Exception
+	{
+    ln("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+    ln_i("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">");
+    ln("<sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>");
+    ln("<sch:ns prefix=\"a\" uri=\"http://www.w3.org/2005/Atom\"/>");
+    for (ResourceDefn root : definitions.getResources().values()) {
+      ln_i("<sch:pattern>");
+      ln("<sch:title>"+root.getName()+"</sch:title>");
+
+      ArrayList<String> l = new ArrayList<String>();
+      generateInvariants("/a:feed/a:entry/a:content", root.getRoot(), definitions, l);
+      ln_o("  </sch:pattern>");
+    }
+    ln_o("</sch:schema>");
+    flush();
+    close();
+
 	}
 
-//	public void generate(Collection<ResourceDefn> resources, String author) throws Exception
-//	{
-//
-//
-//	}
-
 	public void generate(ElementDefn root, Definitions definitions) throws Exception	{
-		write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-		write("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">\r\n");
-		write("  <sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>\r\n");
-		write("  <sch:pattern>\r\n");
-		write("    <sch:title>"+root.getName()+"</sch:title>\r\n");
+		ln("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		ln_i("<sch:schema xmlns:sch=\"http://purl.oclc.org/dsdl/schematron\">");
+		ln("<sch:ns prefix=\"f\" uri=\"http://hl7.org/fhir\"/>");
+		ln_i("<sch:pattern>");
+		ln("<sch:title>"+root.getName()+"</sch:title>");
 
-		generateInvariants("/f:"+root.getName(), root, definitions);
-		write("  </sch:pattern>\r\n");
-		write("</sch:schema>\r\n");
-		write("\r\n");
+		ArrayList<String> parents = new ArrayList<String>();
+    generateInvariants("", root, definitions, parents);
+		ln_o("</sch:pattern>");
+		ln_o("</sch:schema>");
 		flush();
 		close();
 	}
 
-	private void generateInvariants(String path, ElementDefn ed, Definitions definitions) throws Exception {
-	  if (ed.getInvariants().size() > 0) {
-	    write("      <sch:rule context=\""+path+"\">\r\n");
-	    for (Invariant inv : ed.getInvariants().values()) {
-	      write("        <sch:assert test=\""+inv.getXpath().replace("\"", "'")+"\">"+inv.getEnglish()+"</sch:assert>\r\n");	      
-	    }
-      write("      </sch:rule>\r\n");
-	  }
-	  if (ed.getElements().size() > 0) {
-	    for (ElementDefn cd : ed.getElements()) {
-	      generateInvariants(path+"/f:"+cd.getName(), cd, definitions);
-	    }
-	  } else if (ed.getName().contains("[x]")) {
-	    // todo...
-	  } else {
-	    if (ed.getTypes().size() != 1) 
-	      throw new Exception("can't generate schematron for "+path+": type mismatch");
-	    String tn = ed.getTypes().get(0).getName();
-      if (tn.equals("Resource"))
-        tn = "ResourceReference";
-      if (!definitions.getPrimitives().containsKey(tn) && !tn.contains("@")) {
-	      ElementDefn td = definitions.getElementDefn(tn);
-	      if (td == null)
-	        throw new Exception("can't generate schematron for "+path+": type "+tn+" unknown");
-	      for (ElementDefn cd : ed.getElements()) {
-	        generateInvariants(path+"/f:"+cd.getName(), cd, definitions);
-	      }
-      }
-	  }
-
+	private ElementDefn getType(TypeRef tr, Definitions definitions) throws Exception {
+    String tn = tr.getName();
+    if (tn.equals("Resource"))
+      tn = "ResourceReference";
+    if (definitions.getPrimitives().containsKey(tn) || isSpecialType(tn) || tn.contains("@")) 
+      return null;
+    
+    if (definitions.getConstraints().containsKey(tn)) 
+      return definitions.getElementDefn(definitions.getConstraints().get(tn).getComment());
+    else
+      return definitions.getElementDefn(tn);    
 	}
+	
+	private void genChildren(String path, String typeCode, ElementDefn ed, Definitions definitions, List<String> parents) throws Exception {
+	  // the problem with this test is that we don't actually want to stop here, we want to stop next time to sort that out
+	  if (!path.contains("//")) {
+	    ArrayList<String> l = new ArrayList<String>(parents);
+	    l.add(typeCode);
+
+	    for (ElementDefn cd : ed.getElements()) {
+	      if (!Utilities.noString(cd.typeCode()) && parents.contains(cd.typeCode())) {
+	        // well, we've recursed. What's going to happen now is that we're going to write this as // because we're going to keep recursing.
+	        // the next call will write this rule, and then terminate
+	        generateInvariants(path+"//f:"+cd.getName(), cd, definitions, l);
+	      } else
+	        generateInvariants(path+"/f:"+cd.getName(), cd, definitions, l);
+	    }
+	  }
+	}
+	
+	private void generateInvariants(String path, ElementDefn ed, Definitions definitions, List<String> parents) throws Exception {
+	  //logger.log("generate: "+path+" ("+parents.toString()+")");
+	  if (ed.getElements().size() > 0) {
+	    path = path + "/f:"+ed.getName();
+	    genInvs(path, ed);
+	    genChildren(path, null, ed, definitions, parents);
+	  } else {
+	    for (TypeRef tr : ed.typeCode().equals("*") ? allTypes() : ed.getTypes()) {
+	      String en = ed.getName().replace("[x]", tr.summary());
+	      String sPath = path + "/f:"+en;
+	      genInvs(sPath, ed);
+	      ElementDefn td = getType(tr, definitions);
+	      if (td != null) {
+	        genInvs(sPath, td);
+	        genChildren(sPath, tr.summary(), td, definitions, parents);
+	      }
+	    }
+	  }
+	}
+
+  private List<TypeRef> allTypes() {
+    return new ArrayList<TypeRef>();
+  }
+
+  private void genInvs(String path, ElementDefn ed) throws IOException {
+    if (ed.getInvariants().size() > 0) {
+	    ln_i("<sch:rule context=\""+path+"\">");
+	    for (Invariant inv : ed.getInvariants().values()) {
+	      ln("<sch:assert test=\""+inv.getXpath().replace("\"", "'")+"\">"+inv.getEnglish()+"</sch:assert>");	      
+	    }
+      ln_o("</sch:rule>");
+      //"/f:"+root.getName()
+	  }
+  }
+
+  private boolean isSpecialType(String tn) {
+    return tn.equals("idref") || tn.equals("xhtml");
+  }
 
 //	private void generateElement(String name, ElementDefn e) throws IOException {
 //		writeEntry(name+"."+e.getName(), e.getMinCardinality(), e.getMaxCardinality(), e.getTypes(), e.getBindingName(), e);

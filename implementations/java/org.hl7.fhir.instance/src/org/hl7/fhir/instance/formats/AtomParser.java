@@ -78,7 +78,7 @@ public class AtomParser extends XmlBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
         res.setId(parseString(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link"))
-        res.setLink(parseString(xpp));
+        throw new Exception("fixme"); // res.setLink(parseString(xpp));
       else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
         res.setUpdated(parseDate(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("entry"))
@@ -101,7 +101,7 @@ public class AtomParser extends XmlBase {
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
         res.setId(parseString(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link"))
-        res.setLink(parseString(xpp));
+        throw new Exception("fixme"); // res.setLink(parseString(xpp));
       else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
         res.setUpdated(parseDate(xpp));
       else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("published"))
