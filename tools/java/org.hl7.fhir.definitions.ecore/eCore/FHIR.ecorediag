@@ -368,7 +368,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_CMRjca_CEeGrAaDwyEdjfA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="FHIR.ecore#//ConstrainedTypeDefn"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CMRjcq_CEeGrAaDwyEdjfA" x="1005" y="390"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CMRjcq_CEeGrAaDwyEdjfA" x="960" y="315"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_CMRjgK_CEeGrAaDwyEdjfA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_CMRjg6_CEeGrAaDwyEdjfA" type="4001"/>
@@ -921,7 +921,7 @@
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_myS-8bcyEeGi8OOleCJ6fQ" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_myS-8rcyEeGi8OOleCJ6fQ" fontName="Segoe UI"/>
     <element xsi:nil="true"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_myS-87cyEeGi8OOleCJ6fQ" points="[-23, -9, 285, 102]$[-175, -9, 133, 102]$[-175, -109, 133, 2]$[-261, -109, 47, 2]"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_myS-87cyEeGi8OOleCJ6fQ" points="[-23, 16, 240, 52]$[-174, 16, 89, 52]$[-174, -24, 89, 12]$[-216, -24, 47, 12]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_myZFkLcyEeGi8OOleCJ6fQ" id="(0.12972972972972974,0.5102040816326531)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_myZFkbcyEeGi8OOleCJ6fQ" id="(0.7972027972027972,0.2222222222222222)"/>
   </edges>
