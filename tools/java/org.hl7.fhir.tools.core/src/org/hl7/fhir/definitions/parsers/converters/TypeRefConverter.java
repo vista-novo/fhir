@@ -86,11 +86,11 @@ public class TypeRefConverter
 			if( ref.isElementReference() )
 				convertedType.setName( ref.getResolvedTypeName() );
 
-			else if( ref.isUnboundGenericParam() )
-			{
-				convertedType.setName( "param" );
-				convertedType.setUnboundGeneric(true);
-			}
+//			else if( ref.isUnboundGenericParam() )
+//			{
+//				convertedType.setName( "param" );
+//				convertedType.setUnboundGeneric(true);
+//			}
 					
 			else if( ref.isIdRef() )
 				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
@@ -99,20 +99,23 @@ public class TypeRefConverter
 			{
 				// Excel mentions "Resource", but this is actually a "ResourceReference"
 				if( ref.isResourceReference() )
-					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
-				else
-					convertedType.setName( ref.getName() );
-				
-				if( ref.isBoundGeneric() )
 				{
-					if( ref.hasParams() && ref.getParams().size() > 1 )
-						throw new Exception( "Don't know how to handle a generic typeref with > 1 generic param.");
-				
+					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
+					
 					if( ref.isAnyResource() )
 						convertedType.setTakesAnyResource(true);
 					else
-						convertedType.setBoundParam( ref.getParams().get(0) );					
+						convertedType.setResourceParam( ref.getParams().get(0) );					
 				}
+				else
+					convertedType.setName( ref.getName() );
+				
+//				if( ref.isBoundGeneric() )
+//				{
+//					if( ref.hasParams() && ref.getParams().size() > 1 )
+//						throw new Exception( "Don't know how to handle a generic typeref with > 1 generic param.");
+//				
+					
 			}
 			
 			result.add(convertedType);

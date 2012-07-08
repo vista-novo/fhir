@@ -48,8 +48,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getBindings <em>Bindings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getInvariants <em>Invariants</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#getAllowedGenericTypes <em>Allowed Generic Types</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#isIsUnnamedComponent <em>Is Unnamed Component</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl#isUnnamedElementGroup <em>Unnamed Element Group</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,34 +92,23 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 */
 	protected EList<Invariant> invariants;
 	/**
-	 * The cached value of the '{@link #getAllowedGenericTypes() <em>Allowed Generic Types</em>}' containment reference list.
+	 * The default value of the '{@link #isUnnamedElementGroup() <em>Unnamed Element Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAllowedGenericTypes()
+	 * @see #isUnnamedElementGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TypeRef> allowedGenericTypes;
-
+	protected static final boolean UNNAMED_ELEMENT_GROUP_EDEFAULT = false;
 	/**
-	 * The default value of the '{@link #isIsUnnamedComponent() <em>Is Unnamed Component</em>}' attribute.
+	 * The cached value of the '{@link #isUnnamedElementGroup() <em>Unnamed Element Group</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsUnnamedComponent()
+	 * @see #isUnnamedElementGroup()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_UNNAMED_COMPONENT_EDEFAULT = false;
-	/**
-	 * The cached value of the '{@link #isIsUnnamedComponent() <em>Is Unnamed Component</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsUnnamedComponent()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isUnnamedComponent = IS_UNNAMED_COMPONENT_EDEFAULT;
-
+	protected boolean unnamedElementGroup = UNNAMED_ELEMENT_GROUP_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -193,11 +181,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<TypeRef> getAllowedGenericTypes() {
-		if (allowedGenericTypes == null) {
-			allowedGenericTypes = new EObjectContainmentEList<TypeRef>(TypeRef.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES);
-		}
-		return allowedGenericTypes;
+	public boolean isUnnamedElementGroup() {
+		return unnamedElementGroup;
 	}
 
 	/**
@@ -205,31 +190,22 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsUnnamedComponent() {
-		return isUnnamedComponent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsUnnamedComponent(boolean newIsUnnamedComponent) {
-		boolean oldIsUnnamedComponent = isUnnamedComponent;
-		isUnnamedComponent = newIsUnnamedComponent;
+	public void setUnnamedElementGroup(boolean newUnnamedElementGroup) {
+		boolean oldUnnamedElementGroup = unnamedElementGroup;
+		unnamedElementGroup = newUnnamedElementGroup;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT, oldIsUnnamedComponent, isUnnamedComponent));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP, oldUnnamedElementGroup, unnamedElementGroup));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isGenericType() {
-		return getAllowedGenericTypes().size() > 0 &&
-					!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
-	}
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated NOT
+//	 */
+//	public boolean isGenericType() {
+//		return getAllowedGenericTypes().size() > 0 &&
+//					!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
+//	}
 
 
 
@@ -322,8 +298,6 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
 				return ((InternalEList<?>)getInvariants()).basicRemove(otherEnd, msgs);
-			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
-				return ((InternalEList<?>)getAllowedGenericTypes()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -344,10 +318,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return getElements();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
 				return getInvariants();
-			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
-				return getAllowedGenericTypes();
-			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
-				return isIsUnnamedComponent();
+			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
+				return isUnnamedElementGroup();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,12 +349,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				getInvariants().clear();
 				getInvariants().addAll((Collection<? extends Invariant>)newValue);
 				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
-				getAllowedGenericTypes().clear();
-				getAllowedGenericTypes().addAll((Collection<? extends TypeRef>)newValue);
-				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
-				setIsUnnamedComponent((Boolean)newValue);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
+				setUnnamedElementGroup((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -408,11 +376,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
 				getInvariants().clear();
 				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
-				getAllowedGenericTypes().clear();
-				return;
-			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
-				setIsUnnamedComponent(IS_UNNAMED_COMPONENT_EDEFAULT);
+			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
+				setUnnamedElementGroup(UNNAMED_ELEMENT_GROUP_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -434,10 +399,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 				return elements != null && !elements.isEmpty();
 			case FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS:
 				return invariants != null && !invariants.isEmpty();
-			case FhirPackage.COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES:
-				return allowedGenericTypes != null && !allowedGenericTypes.isEmpty();
-			case FhirPackage.COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT:
-				return isUnnamedComponent != IS_UNNAMED_COMPONENT_EDEFAULT;
+			case FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP:
+				return unnamedElementGroup != UNNAMED_ELEMENT_GROUP_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -486,8 +449,8 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isUnnamedComponent: ");
-		result.append(isUnnamedComponent);
+		result.append(" (unnamedElementGroup: ");
+		result.append(unnamedElementGroup);
 		result.append(')');
 		return result.toString();
 	}

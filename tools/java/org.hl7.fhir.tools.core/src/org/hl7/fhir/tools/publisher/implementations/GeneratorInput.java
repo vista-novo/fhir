@@ -1,8 +1,6 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
-import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
-import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 /*
 Copyright (c) 2011-2012, HL7, Inc

@@ -31,15 +31,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
-import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.ZipGenerator;
 
 public class CSharpGenerator extends BaseGenerator implements PlatformGenerator {

@@ -39,7 +39,6 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
-import org.hl7.fhir.utilities.Utilities;
 
 public class JavaResourceGenerator extends JavaBaseGenerator {
 

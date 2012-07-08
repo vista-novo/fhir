@@ -31,9 +31,8 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getBoundParam <em>Bound Param</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getResourceParam <em>Resource Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isUnboundGeneric <em>Unbound Generic</em>}</li>
  * </ul>
  * </p>
  *
@@ -61,24 +60,24 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute.
+	 * The default value of the '{@link #getResourceParam() <em>Resource Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoundParam()
+	 * @see #getResourceParam()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BOUND_PARAM_EDEFAULT = null;
+	protected static final String RESOURCE_PARAM_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getBoundParam() <em>Bound Param</em>}' attribute.
+	 * The cached value of the '{@link #getResourceParam() <em>Resource Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBoundParam()
+	 * @see #getResourceParam()
 	 * @generated
 	 * @ordered
 	 */
-	protected String boundParam = BOUND_PARAM_EDEFAULT;
+	protected String resourceParam = RESOURCE_PARAM_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
@@ -99,26 +98,6 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * @ordered
 	 */
 	protected boolean takesAnyResource = TAKES_ANY_RESOURCE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isUnboundGeneric() <em>Unbound Generic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnboundGeneric()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean UNBOUND_GENERIC_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isUnboundGeneric() <em>Unbound Generic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isUnboundGeneric()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean unboundGeneric = UNBOUND_GENERIC_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,8 +144,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBoundParam() {
-		return boundParam;
+	public String getResourceParam() {
+		return resourceParam;
 	}
 
 	/**
@@ -174,11 +153,11 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBoundParam(String newBoundParam) {
-		String oldBoundParam = boundParam;
-		boundParam = newBoundParam;
+	public void setResourceParam(String newResourceParam) {
+		String oldResourceParam = resourceParam;
+		resourceParam = newResourceParam;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__BOUND_PARAM, oldBoundParam, boundParam));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__RESOURCE_PARAM, oldResourceParam, resourceParam));
 	}
 
 	/**
@@ -202,36 +181,15 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE, oldTakesAnyResource, takesAnyResource));
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isUnboundGeneric() {
-		return unboundGeneric;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUnboundGeneric(boolean newUnboundGeneric) {
-		boolean oldUnboundGeneric = unboundGeneric;
-		unboundGeneric = newUnboundGeneric;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__UNBOUND_GENERIC, oldUnboundGeneric, unboundGeneric));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isGenericTypeRef() {
-		return getBoundParam() != null && 
-				!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
-	}
+//	/**
+//	 * <!-- begin-user-doc -->
+//	 * <!-- end-user-doc -->
+//	 * @generated NOT
+//	 */
+//	public boolean isGenericTypeRef() {
+//		return getBoundParam() != null && 
+//				!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
+//	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,12 +201,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		switch (featureID) {
 			case FhirPackage.TYPE_REF__NAME:
 				return getName();
-			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				return getBoundParam();
+			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
+				return getResourceParam();
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return isTakesAnyResource();
-			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
-				return isUnboundGeneric();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -265,14 +221,11 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__NAME:
 				setName((String)newValue);
 				return;
-			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				setBoundParam((String)newValue);
+			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
+				setResourceParam((String)newValue);
 				return;
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource((Boolean)newValue);
-				return;
-			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
-				setUnboundGeneric((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -289,14 +242,11 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				setBoundParam(BOUND_PARAM_EDEFAULT);
+			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
+				setResourceParam(RESOURCE_PARAM_EDEFAULT);
 				return;
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				setTakesAnyResource(TAKES_ANY_RESOURCE_EDEFAULT);
-				return;
-			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
-				setUnboundGeneric(UNBOUND_GENERIC_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -312,12 +262,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		switch (featureID) {
 			case FhirPackage.TYPE_REF__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FhirPackage.TYPE_REF__BOUND_PARAM:
-				return BOUND_PARAM_EDEFAULT == null ? boundParam != null : !BOUND_PARAM_EDEFAULT.equals(boundParam);
+			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
+				return RESOURCE_PARAM_EDEFAULT == null ? resourceParam != null : !RESOURCE_PARAM_EDEFAULT.equals(resourceParam);
 			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
 				return takesAnyResource != TAKES_ANY_RESOURCE_EDEFAULT;
-			case FhirPackage.TYPE_REF__UNBOUND_GENERIC:
-				return unboundGeneric != UNBOUND_GENERIC_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -334,12 +282,10 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", boundParam: ");
-		result.append(boundParam);
+		result.append(", resourceParam: ");
+		result.append(resourceParam);
 		result.append(", takesAnyResource: ");
 		result.append(takesAnyResource);
-		result.append(", unboundGeneric: ");
-		result.append(unboundGeneric);
 		result.append(')');
 		return result.toString();
 	}

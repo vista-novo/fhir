@@ -88,9 +88,8 @@
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
-    <xsd:attribute name="boundParam" type="xsd:string"/>
+    <xsd:attribute name="resourceParam" type="xsd:string"/>
     <xsd:attribute name="takesAnyResource" type="xsd:boolean"/>
-    <xsd:attribute name="unboundGeneric" type="xsd:boolean"/>
   </xsd:complexType>
   <xsd:element name="TypeRef" type="fhir:TypeRef"/>
   <xsd:complexType name="BindingDefn">
@@ -256,9 +255,8 @@
           <xsd:element name="bindings" type="fhir:BindingDefn"/>
           <xsd:element name="elements" type="fhir:ElementDefn"/>
           <xsd:element name="invariants" type="fhir:Invariant"/>
-          <xsd:element name="allowedGenericTypes" type="fhir:TypeRef"/>
         </xsd:choice>
-        <xsd:attribute name="isUnnamedComponent" type="xsd:boolean"/>
+        <xsd:attribute name="unnamedElementGroup" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>

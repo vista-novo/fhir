@@ -30,7 +30,6 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.FileOutputStream;
 import java.util.Date;
 
-import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;

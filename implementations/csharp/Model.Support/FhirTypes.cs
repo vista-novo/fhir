@@ -42,12 +42,30 @@ namespace HL7.Fhir.Instance.Model
             //TODO: When ready, this method must be made abstract
             return null;
         }
+
+        public List<Extension> Extensions { get; set; }
     }
+
 
     public abstract class Composite : Data
     {
     }
 
+
+    // Resource is not a subclass of Composite, since it
+    // cannot be used in places where you can use composites.
+    public abstract class Resource : Data
+    {
+        /**
+	     * Master resource Id, in all resources
+	     */
+        public Id id { get; set; }
+
+        /**
+         * Text summary of resource, for human interpretation
+         */
+        public Narrative text { get; set; }
+    }
 
     public abstract class Primitive : Data
     {

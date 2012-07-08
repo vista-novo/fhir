@@ -55,13 +55,13 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
   private List<ElementDefn> enums = new ArrayList<ElementDefn>();
   private List<String> enumNames = new ArrayList<String>();
   private List<ElementDefn> strucs  = new ArrayList<ElementDefn>();
-  private List<String> lists = new ArrayList<String>();
+//  private List<String> lists = new ArrayList<String>();
 
   private String context;
 
   private StringBuilder reg = new StringBuilder();
   private StringBuilder regt = new StringBuilder();
-  private StringBuilder regn = new StringBuilder();
+//  private StringBuilder regn = new StringBuilder();
   private String genparam;
   
   public JavaComposerXmlGenerator(OutputStream out) throws UnsupportedEncodingException {

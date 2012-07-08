@@ -1,13 +1,10 @@
 package org.hl7.fhir.tools.publisher.implementations;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;

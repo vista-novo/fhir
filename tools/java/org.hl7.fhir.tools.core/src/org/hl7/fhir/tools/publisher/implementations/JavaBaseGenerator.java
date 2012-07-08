@@ -33,7 +33,6 @@ import java.io.UnsupportedEncodingException;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.utilities.Utilities;
 
 public class JavaBaseGenerator extends OutputStreamWriter {
 

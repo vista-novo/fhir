@@ -572,7 +572,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTypeRef_BoundParam() {
+	public EAttribute getTypeRef_ResourceParam() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -583,15 +583,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 */
 	public EAttribute getTypeRef_TakesAnyResource() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTypeRef_UnboundGeneric() {
-		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -950,17 +941,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompositeTypeDefn_AllowedGenericTypes() {
-		return (EReference)compositeTypeDefnEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCompositeTypeDefn_IsUnnamedComponent() {
-		return (EAttribute)compositeTypeDefnEClass.getEStructuralFeatures().get(3);
+	public EAttribute getCompositeTypeDefn_UnnamedElementGroup() {
+		return (EAttribute)compositeTypeDefnEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1438,9 +1420,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		typeRefEClass = createEClass(TYPE_REF);
 		createEAttribute(typeRefEClass, TYPE_REF__NAME);
-		createEAttribute(typeRefEClass, TYPE_REF__BOUND_PARAM);
+		createEAttribute(typeRefEClass, TYPE_REF__RESOURCE_PARAM);
 		createEAttribute(typeRefEClass, TYPE_REF__TAKES_ANY_RESOURCE);
-		createEAttribute(typeRefEClass, TYPE_REF__UNBOUND_GENERIC);
 
 		bindingDefnEClass = createEClass(BINDING_DEFN);
 		createEAttribute(bindingDefnEClass, BINDING_DEFN__ID);
@@ -1515,8 +1496,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		compositeTypeDefnEClass = createEClass(COMPOSITE_TYPE_DEFN);
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__ELEMENTS);
 		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__INVARIANTS);
-		createEReference(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__ALLOWED_GENERIC_TYPES);
-		createEAttribute(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__IS_UNNAMED_COMPONENT);
+		createEAttribute(compositeTypeDefnEClass, COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP);
 
 		nameScopeEClass = createEClass(NAME_SCOPE);
 		createEReference(nameScopeEClass, NAME_SCOPE__TYPES);
@@ -1631,11 +1611,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		initEClass(typeRefEClass, TypeRef.class, "TypeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeRef_BoundParam(), ecorePackage.getEString(), "boundParam", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTypeRef_ResourceParam(), ecorePackage.getEString(), "resourceParam", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTypeRef_TakesAnyResource(), ecorePackage.getEBoolean(), "takesAnyResource", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypeRef_UnboundGeneric(), ecorePackage.getEBoolean(), "unboundGeneric", null, 0, 1, TypeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(typeRefEClass, ecorePackage.getEBoolean(), "isGenericTypeRef", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(bindingDefnEClass, BindingDefn.class, "BindingDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBindingDefn_Id(), ecorePackage.getEInt(), "id", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1718,10 +1695,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEClass(compositeTypeDefnEClass, CompositeTypeDefn.class, "CompositeTypeDefn", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositeTypeDefn_Elements(), this.getElementDefn(), this.getElementDefn_ParentType(), "elements", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeTypeDefn_Invariants(), this.getInvariant(), null, "invariants", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompositeTypeDefn_AllowedGenericTypes(), this.getTypeRef(), null, "allowedGenericTypes", null, 0, -1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCompositeTypeDefn_IsUnnamedComponent(), ecorePackage.getEBoolean(), "isUnnamedComponent", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(compositeTypeDefnEClass, ecorePackage.getEBoolean(), "isGenericType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getCompositeTypeDefn_UnnamedElementGroup(), ecorePackage.getEBoolean(), "unnamedElementGroup", null, 0, 1, CompositeTypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nameScopeEClass, NameScope.class, "NameScope", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNameScope_Types(), this.getTypeDefn(), this.getTypeDefn_Scope(), "types", null, 0, -1, NameScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2005,12 +1979,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		   source, 
 		   new String[] {
 			 "name", "invariant"
-		   });		
-		addAnnotation
-		  (getCompositeTypeDefn_AllowedGenericTypes(), 
-		   source, 
-		   new String[] {
-			 "name", "allowedGenericType"
 		   });		
 		addAnnotation
 		  (getNameScope_Types(), 

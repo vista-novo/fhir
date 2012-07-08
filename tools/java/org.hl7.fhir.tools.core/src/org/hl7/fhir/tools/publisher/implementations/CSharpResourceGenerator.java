@@ -29,10 +29,8 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 */
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
@@ -43,7 +41,6 @@ import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
-import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 
 
 public class CSharpResourceGenerator extends GenBlock
@@ -134,11 +131,11 @@ public class CSharpResourceGenerator extends GenBlock
 		ln("* " + composite.getAnnotations().getDefinition());
 		ln("*/");
 		
-		// If this is a generic type, also generate an empty
-		// base class which is not generic for the purpose of
-		// polymorphic properties
-		if( composite.isGenericType() )
-			genericBaseClass(composite);
+//		// If this is a generic type, also generate an empty
+//		// base class which is not generic for the purpose of
+//		// polymorphic properties
+//		if( composite.isGenericType() )
+//			genericBaseClass(composite);
 
 		// Generate the class itself		
 		compositeClassHeader( composite );
@@ -173,9 +170,9 @@ public class CSharpResourceGenerator extends GenBlock
 			if( member.getMaxCardinality() == -1 ) nl("List<");
 			if( member.isAllowDAR() ) nl("Absentable<");
 			
-			if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
-				nl("T");
-			else if( member.isXmlIdElement() ) 
+//			if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
+//				nl("T");
+			if( member.isXmlIdElement() ) 
 				nl("string");
 			else if( member.isBoundCode() ) 
 			{
@@ -190,12 +187,12 @@ public class CSharpResourceGenerator extends GenBlock
 			else if( member.getTypes().size() == 1 ) 
 			{
 				nl( GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getName()) );
-				if( member.getTypes().get(0).isGenericTypeRef() ) 
-				{ 
-					nl("<");
-					nl(GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getBoundParam()));
-					nl(">");
-				}	
+//				if( member.getTypes().get(0).isGenericTypeRef() ) 
+//				{ 
+//					nl("<");
+//					nl(GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getBoundParam()));
+//					nl(">");
+//				}	
 			} 
 			else 
 			{
@@ -205,6 +202,7 @@ public class CSharpResourceGenerator extends GenBlock
 
 			if( member.isAllowDAR() ) nl(">");
 			if( member.getMaxCardinality() == -1 ) nl(">");
+		//	if( member.getMinCardinality() == 0 ) nl("?");
 			
 			nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
 			nl(" { get; set; }");
@@ -243,14 +241,14 @@ public class CSharpResourceGenerator extends GenBlock
 				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
 		
 		// Optionally, add generic parameter
-		if( composite.isGenericType() ) nl("<T>");
+//		if( composite.isGenericType() ) nl("<T>");
 		
 		// Derive from appropriate baseclass
 		nl(" : ");
 		
-		if( composite.isGenericType() ) 
-			nl( composite.getName() );
-		else if( composite.isResource() ) 
+//		if( composite.isGenericType() ) 
+//			nl( composite.getName() );
+		if( composite.isResource() ) 
 			nl( "Resource" );
 		else if( composite.isComposite() ) 
 			nl( "Composite" );

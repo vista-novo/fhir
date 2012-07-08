@@ -65,6 +65,7 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		
 		String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
 		
+		ln( "// " + primitive.getAnnotations().getDefinition() );
 		ln("public partial class "); 
 			nl( className ); 
 			nl( " : ");

@@ -329,6 +329,19 @@ public class ElementDefn {
 	{
 		this.declaredTypeName = typeName;
 	}
+	
+	
+	private boolean isAnonymousTypedGroup = false;
+	
+	public boolean isAnonymousTypedGroup()
+	{
+		return this.isAnonymousTypedGroup;
+	}
+	
+	public void setAnonymousTypedGroup(boolean value)
+	{
+		this.isAnonymousTypedGroup = value;
+	}
 
 	public List<TypeRef> getTypes() {
 		return types;

@@ -139,15 +139,18 @@ public class SpreadsheetParser {
 			{	
 				String nestedTypeName;
 				
+				ElementDefn newCompositeType = new ElementDefn();
+		
 				// If user has given an explicit name, use it, otherwise  automatically
 				// generated name for this nested type
 				if( element.typeCode().startsWith("=") )
 					nestedTypeName = element.typeCode().substring(1);
 				else
+				{
 					nestedTypeName = parentName + Utilities.capitalize(element.getName());
+					newCompositeType.setAnonymousTypedGroup(true);
+				}
 				
-				ElementDefn newCompositeType = new ElementDefn();
-		
 				// Add Component to the actually generated name to avoid
 				// confusing between the element name and the element's type
 				newCompositeType.setName(nestedTypeName+"Component");

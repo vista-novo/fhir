@@ -19,9 +19,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric <em>Unbound Generic</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,30 +62,30 @@ public interface TypeRef extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Bound Param</b></em>' attribute.
+	 * Returns the value of the '<em><b>Resource Param</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Bound Param</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Resource Param</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bound Param</em>' attribute.
-	 * @see #setBoundParam(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_BoundParam()
+	 * @return the value of the '<em>Resource Param</em>' attribute.
+	 * @see #setResourceParam(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_ResourceParam()
 	 * @model
 	 * @generated
 	 */
-	String getBoundParam();
+	String getResourceParam();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBoundParam <em>Bound Param</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Bound Param</em>' attribute.
-	 * @see #getBoundParam()
+	 * @param value the new value of the '<em>Resource Param</em>' attribute.
+	 * @see #getResourceParam()
 	 * @generated
 	 */
-	void setBoundParam(String value);
+	void setResourceParam(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Takes Any Resource</b></em>' attribute.
@@ -113,39 +112,5 @@ public interface TypeRef extends EObject {
 	 * @generated
 	 */
 	void setTakesAnyResource(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Unbound Generic</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Unbound Generic</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unbound Generic</em>' attribute.
-	 * @see #setUnboundGeneric(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_UnboundGeneric()
-	 * @model
-	 * @generated
-	 */
-	boolean isUnboundGeneric();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isUnboundGeneric <em>Unbound Generic</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unbound Generic</em>' attribute.
-	 * @see #isUnboundGeneric()
-	 * @generated
-	 */
-	void setUnboundGeneric(boolean value);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	boolean isGenericTypeRef();
 
 } // TypeRef

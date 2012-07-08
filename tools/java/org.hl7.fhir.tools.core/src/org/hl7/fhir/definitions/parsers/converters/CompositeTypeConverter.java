@@ -130,9 +130,9 @@ public class CompositeTypeConverter
 		result.getInvariants().addAll( 
 				buildInvariantsFromFhirModel( type.getInvariants().values() ) );
 		
-		for( String typeName : type.getAcceptableGenericTypes() )
-			result.getAllowedGenericTypes().addAll( 
-				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
+//		for( String typeName : type.getAcceptableGenericTypes() )
+//			result.getAllowedGenericTypes().addAll( 
+//				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
 		// Build my properties and add.
 		result.getElements().addAll( buildElementDefnsFromFhirModel( result, type.getElements() ) );
@@ -143,6 +143,7 @@ public class CompositeTypeConverter
 			scope.getTypes().addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(
 					type.getNestedTypes().values(), scope));
 		
+		result.setUnnamedElementGroup( type.isAnonymousTypedGroup() );
 		
 		// TODO: Fix the corner-case <Parent>.extension in resources, its type should
 		// be set to 'Extension' for now. This code can be removed if we explicitly
