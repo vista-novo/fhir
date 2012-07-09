@@ -10,7 +10,7 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public class XmlCompositeTypeParser
     {
-        public Address.AddressPartComponent parseAddressPartComponent( XmlReader reader )
+        public Address.AddressPartComponent parseAddressPartComponent( XmlTextReader reader )
         {
             string id;
 

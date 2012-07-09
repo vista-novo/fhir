@@ -47,7 +47,6 @@
       <xsd:element name="mappings" type="fhir:Mapping"/>
       <xsd:element name="elements" type="fhir:ElementDefn"/>
       <xsd:element name="content" type="fhir:ElementDefn"/>
-      <xsd:element name="binding" type="fhir:BindingRef"/>
       <xsd:element name="annotation" type="fhir:Annotations"/>
       <xsd:element name="invariant" type="fhir:InvariantRef"/>
       <xsd:element name="parentType" type="fhir:CompositeTypeDefn"/>
@@ -89,7 +88,7 @@
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
     <xsd:attribute name="resourceParam" type="xsd:string"/>
-    <xsd:attribute name="takesAnyResource" type="xsd:boolean"/>
+    <xsd:attribute name="bindingRef" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeRef" type="fhir:TypeRef"/>
   <xsd:complexType name="BindingDefn">
@@ -271,15 +270,6 @@
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
   </xsd:complexType>
   <xsd:element name="NameScope" type="fhir:NameScope"/>
-  <xsd:complexType name="BindingRef">
-    <xsd:choice maxOccurs="unbounded" minOccurs="0">
-      <xsd:element ref="xmi:Extension"/>
-    </xsd:choice>
-    <xsd:attribute ref="xmi:id"/>
-    <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
-    <xsd:attribute name="name" type="xsd:string"/>
-  </xsd:complexType>
-  <xsd:element name="BindingRef" type="fhir:BindingRef"/>
   <xsd:complexType name="Annotations">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element ref="xmi:Extension"/>

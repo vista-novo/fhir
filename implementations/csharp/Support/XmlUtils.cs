@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace HL7.Fhir.Instance.Support
 {
@@ -10,7 +11,14 @@ namespace HL7.Fhir.Instance.Support
         public const string FHIRNS = "http://hl7.org/fhir";
         public const string IDATTR = "id";
         public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
-        public const string DIVELEM = "div";      
+        public const string DIVELEM = "div";
+
+
+        public static string ParseError(XmlTextReader reader, String text)
+        {
+            return String.Format("At ({0},{1}): {2}", reader.LineNumber,
+                    reader.LinePosition, text);
+        }
     }
 
     [Serializable]

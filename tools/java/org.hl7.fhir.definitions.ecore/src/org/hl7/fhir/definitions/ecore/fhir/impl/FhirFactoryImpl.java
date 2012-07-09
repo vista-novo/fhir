@@ -78,7 +78,6 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.META_DATA_ITEM: return createMetaDataItem();
 			case FhirPackage.SEARCH_PARAMETER: return createSearchParameter();
 			case FhirPackage.COMPOSITE_TYPE_DEFN: return createCompositeTypeDefn();
-			case FhirPackage.BINDING_REF: return createBindingRef();
 			case FhirPackage.ANNOTATIONS: return createAnnotations();
 			case FhirPackage.PROFILED_ELEMENT_DEFN: return createProfiledElementDefn();
 			case FhirPackage.INVARIANT_REF: return createInvariantRef();
@@ -293,16 +292,6 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	public CompositeTypeDefn createCompositeTypeDefn() {
 		CompositeTypeDefnImpl compositeTypeDefn = new CompositeTypeDefnImpl();
 		return compositeTypeDefn;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BindingRef createBindingRef() {
-		BindingRefImpl bindingRef = new BindingRefImpl();
-		return bindingRef;
 	}
 
 	/**

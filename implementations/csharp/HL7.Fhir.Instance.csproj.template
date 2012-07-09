@@ -46,6 +46,7 @@
     <Compile Include="Model.Support\FhirDateTime.cs" />
     <Compile Include="Model.Support\Date.cs" />
     <Compile Include="Model.Support\Id.cs" />
+    <Compile Include="Model.Support\IdRef.cs" />
     <Compile Include="Model.Support\Sid.cs" />
     <Compile Include="Model.Support\Uuid.cs" />
     <Compile Include="Model.Support\Oid.cs" />

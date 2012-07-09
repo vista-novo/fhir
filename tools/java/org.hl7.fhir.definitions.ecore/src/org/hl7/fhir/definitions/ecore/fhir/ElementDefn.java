@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getExampleValue <em>Example Value</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getContent <em>Content</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}</li>
@@ -298,22 +297,6 @@ public interface ElementDefn extends EObject {
 	 * @model kind="operation"
 	 * @generated
 	 */
-	boolean isXmlIdElement();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	boolean isBoundCode();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
 	String getElementPath();
 
 	/**
@@ -358,32 +341,6 @@ public interface ElementDefn extends EObject {
 	 * @generated
 	 */
 	EList<TypeRef> getTypes();
-
-	/**
-	 * Returns the value of the '<em><b>Binding</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Binding</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Binding</em>' containment reference.
-	 * @see #setBinding(BindingRef)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getElementDefn_Binding()
-	 * @model containment="true"
-	 * @generated
-	 */
-	BindingRef getBinding();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Binding</em>' containment reference.
-	 * @see #getBinding()
-	 * @generated
-	 */
-	void setBinding(BindingRef value);
 
 	/**
 	 * Returns the value of the '<em><b>Annotation</b></em>' containment reference.

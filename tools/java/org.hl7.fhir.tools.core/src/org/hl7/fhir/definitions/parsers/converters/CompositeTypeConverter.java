@@ -135,7 +135,7 @@ public class CompositeTypeConverter
 //				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
 		// Build my properties and add.
-		result.getElements().addAll( buildElementDefnsFromFhirModel( result, type.getElements() ) );
+		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements() ) );
 		
 		// Recursively add nested types for explicitly declared nested types ('=<typename>')
 		// to the nearest NameScope (a Resource)
@@ -172,7 +172,6 @@ public class CompositeTypeConverter
 
 
 	public static List<ElementDefn> buildElementDefnsFromFhirModel(
-			CompositeTypeDefn parent,
 			List<org.hl7.fhir.definitions.model.ElementDefn> elements) throws Exception
 	{
 
@@ -182,7 +181,7 @@ public class CompositeTypeConverter
 		{
 			// Skip elements that are part of the Resource "base" class
 			if( !element.isBaseResourceElement() )
-				result.add( buildElementDefnFromFhirModel( parent, element) );
+				result.add( buildElementDefnFromFhirModel( element) );
 		}
 		
 		return result;
@@ -190,7 +189,6 @@ public class CompositeTypeConverter
 
 
 	public static ElementDefn buildElementDefnFromFhirModel(
-			CompositeTypeDefn parent,
 			org.hl7.fhir.definitions.model.ElementDefn element) throws Exception
 	{
 
@@ -233,16 +231,19 @@ public class CompositeTypeConverter
 		if( element.getDeclaredTypeName() == null )
 		{
 			if( !element.getElements().isEmpty() )
-				result.getElements().addAll( buildElementDefnsFromFhirModel(parent, element.getElements()));
+				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
 		}
 		
 		if( element.getBindingName() != null && 
 				!element.getBindingName().equals("") &&
 				!element.getBindingName().equals("*unbound*") )
 		{
-			BindingRef br = FhirFactory.eINSTANCE.createBindingRef();
-			br.setName( element.getBindingName() );
-			result.setBinding(br);
+			// Bindings only work for non-polymorphic types,
+			// since we currently have only one binding name.
+			if( result.getTypes().size() == 1)
+				result.getTypes().get(0).setBindingRef(element.getBindingName());
+			else
+				throw new Exception("Cannot specify binding for a polymorphic element");
 		}
 
 		if( element.getInvariant() != null )

@@ -32,7 +32,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getResourceParam <em>Resource Param</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#isTakesAnyResource <em>Takes Any Resource</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeRefImpl#getBindingRef <em>Binding Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -80,24 +80,24 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	protected String resourceParam = RESOURCE_PARAM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
+	 * The default value of the '{@link #getBindingRef() <em>Binding Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTakesAnyResource()
+	 * @see #getBindingRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean TAKES_ANY_RESOURCE_EDEFAULT = false;
+	protected static final String BINDING_REF_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isTakesAnyResource() <em>Takes Any Resource</em>}' attribute.
+	 * The cached value of the '{@link #getBindingRef() <em>Binding Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTakesAnyResource()
+	 * @see #getBindingRef()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean takesAnyResource = TAKES_ANY_RESOURCE_EDEFAULT;
+	protected String bindingRef = BINDING_REF_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,8 +165,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isTakesAnyResource() {
-		return takesAnyResource;
+	public String getBindingRef() {
+		return bindingRef;
 	}
 
 	/**
@@ -174,14 +174,14 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTakesAnyResource(boolean newTakesAnyResource) {
-		boolean oldTakesAnyResource = takesAnyResource;
-		takesAnyResource = newTakesAnyResource;
+	public void setBindingRef(String newBindingRef) {
+		String oldBindingRef = bindingRef;
+		bindingRef = newBindingRef;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE, oldTakesAnyResource, takesAnyResource));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_REF__BINDING_REF, oldBindingRef, bindingRef));
 	}
 
-//	/**
+	//	/**
 //	 * <!-- begin-user-doc -->
 //	 * <!-- end-user-doc -->
 //	 * @generated NOT
@@ -203,8 +203,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return getName();
 			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
 				return getResourceParam();
-			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
-				return isTakesAnyResource();
+			case FhirPackage.TYPE_REF__BINDING_REF:
+				return getBindingRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,8 +224,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
 				setResourceParam((String)newValue);
 				return;
-			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
-				setTakesAnyResource((Boolean)newValue);
+			case FhirPackage.TYPE_REF__BINDING_REF:
+				setBindingRef((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -245,8 +245,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
 				setResourceParam(RESOURCE_PARAM_EDEFAULT);
 				return;
-			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
-				setTakesAnyResource(TAKES_ANY_RESOURCE_EDEFAULT);
+			case FhirPackage.TYPE_REF__BINDING_REF:
+				setBindingRef(BINDING_REF_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -264,8 +264,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case FhirPackage.TYPE_REF__RESOURCE_PARAM:
 				return RESOURCE_PARAM_EDEFAULT == null ? resourceParam != null : !RESOURCE_PARAM_EDEFAULT.equals(resourceParam);
-			case FhirPackage.TYPE_REF__TAKES_ANY_RESOURCE:
-				return takesAnyResource != TAKES_ANY_RESOURCE_EDEFAULT;
+			case FhirPackage.TYPE_REF__BINDING_REF:
+				return BINDING_REF_EDEFAULT == null ? bindingRef != null : !BINDING_REF_EDEFAULT.equals(bindingRef);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -284,8 +284,8 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 		result.append(name);
 		result.append(", resourceParam: ");
 		result.append(resourceParam);
-		result.append(", takesAnyResource: ");
-		result.append(takesAnyResource);
+		result.append(", bindingRef: ");
+		result.append(bindingRef);
 		result.append(')');
 		return result.toString();
 	}

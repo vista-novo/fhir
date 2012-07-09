@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public interface TypeRef extends EObject {
 	 * Returns the value of the '<em><b>Resource Param</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Resource Param</em>' attribute list isn't clear,
+	 * If the meaning of the '<em>Resource Param</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -88,29 +88,29 @@ public interface TypeRef extends EObject {
 	void setResourceParam(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Takes Any Resource</b></em>' attribute.
+	 * Returns the value of the '<em><b>Binding Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Takes Any Resource</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Binding Ref</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Takes Any Resource</em>' attribute.
-	 * @see #setTakesAnyResource(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_TakesAnyResource()
+	 * @return the value of the '<em>Binding Ref</em>' attribute.
+	 * @see #setBindingRef(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_BindingRef()
 	 * @model
 	 * @generated
 	 */
-	boolean isTakesAnyResource();
+	String getBindingRef();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}' attribute.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Takes Any Resource</em>' attribute.
-	 * @see #isTakesAnyResource()
+	 * @param value the new value of the '<em>Binding Ref</em>' attribute.
+	 * @see #getBindingRef()
 	 * @generated
 	 */
-	void setTakesAnyResource(boolean value);
+	void setBindingRef(String value);
 
 } // TypeRef

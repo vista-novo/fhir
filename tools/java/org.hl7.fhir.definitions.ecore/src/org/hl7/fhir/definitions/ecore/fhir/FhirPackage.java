@@ -390,22 +390,13 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__CONTENT = 10;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__BINDING = 11;
-
-	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__ANNOTATION = 12;
+	int ELEMENT_DEFN__ANNOTATION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Invariant</b></em>' containment reference.
@@ -414,7 +405,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__INVARIANT = 13;
+	int ELEMENT_DEFN__INVARIANT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Parent Type</b></em>' container reference.
@@ -423,7 +414,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__PARENT_TYPE = 14;
+	int ELEMENT_DEFN__PARENT_TYPE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Parent Element</b></em>' container reference.
@@ -432,7 +423,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__PARENT_ELEMENT = 15;
+	int ELEMENT_DEFN__PARENT_ELEMENT = 14;
 
 	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
@@ -441,7 +432,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 16;
+	int ELEMENT_DEFN_FEATURE_COUNT = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -516,13 +507,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__RESOURCE_PARAM = 1;
 
 	/**
-	 * The feature id for the '<em><b>Takes Any Resource</b></em>' attribute.
+	 * The feature id for the '<em><b>Binding Ref</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__TAKES_ANY_RESOURCE = 2;
+	int TYPE_REF__BINDING_REF = 2;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -1304,34 +1295,6 @@ public interface FhirPackage extends EPackage {
 	int SEARCH_PARAMETER_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingRefImpl <em>Binding Ref</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.BindingRefImpl
-	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingRef()
-	 * @generated
-	 */
-	int BINDING_REF = 19;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BINDING_REF__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>Binding Ref</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BINDING_REF_FEATURE_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl <em>Annotations</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1339,7 +1302,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getAnnotations()
 	 * @generated
 	 */
-	int ANNOTATIONS = 20;
+	int ANNOTATIONS = 19;
 
 	/**
 	 * The feature id for the '<em><b>Short Definition</b></em>' attribute.
@@ -1430,7 +1393,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getProfiledElementDefn()
 	 * @generated
 	 */
-	int PROFILED_ELEMENT_DEFN = 21;
+	int PROFILED_ELEMENT_DEFN = 20;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1532,15 +1495,6 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__CONTENT = ELEMENT_DEFN__CONTENT;
 
 	/**
-	 * The feature id for the '<em><b>Binding</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILED_ELEMENT_DEFN__BINDING = ELEMENT_DEFN__BINDING;
-
-	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1638,7 +1592,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getInvariantRef()
 	 * @generated
 	 */
-	int INVARIANT_REF = 22;
+	int INVARIANT_REF = 21;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1666,7 +1620,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingType()
 	 * @generated
 	 */
-	int BINDING_TYPE = 23;
+	int BINDING_TYPE = 22;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingStrength <em>Binding Strength</em>}' enum.
@@ -1676,7 +1630,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingStrength()
 	 * @generated
 	 */
-	int BINDING_STRENGTH = 24;
+	int BINDING_STRENGTH = 23;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchType <em>Search Type</em>}' enum.
@@ -1686,7 +1640,7 @@ public interface FhirPackage extends EPackage {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchType()
 	 * @generated
 	 */
-	int SEARCH_TYPE = 25;
+	int SEARCH_TYPE = 24;
 
 
 	/**
@@ -1853,17 +1807,6 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_Types();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding <em>Binding</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Binding</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getBinding()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EReference getElementDefn_Binding();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getAnnotation <em>Annotation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2027,15 +1970,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_ResourceParam();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource <em>Takes Any Resource</em>}'.
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Takes Any Resource</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#isTakesAnyResource()
+	 * @return the meta object for the attribute '<em>Binding Ref</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef()
 	 * @see #getTypeRef()
 	 * @generated
 	 */
-	EAttribute getTypeRef_TakesAnyResource();
+	EAttribute getTypeRef_BindingRef();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn <em>Binding Defn</em>}'.
@@ -2499,27 +2442,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNameScope_Types();
-
-	/**
-	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingRef <em>Binding Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Binding Ref</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingRef
-	 * @generated
-	 */
-	EClass getBindingRef();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingRef#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingRef#getName()
-	 * @see #getBindingRef()
-	 * @generated
-	 */
-	EAttribute getBindingRef_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.Annotations <em>Annotations</em>}'.
@@ -3108,14 +3030,6 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__TYPES = eINSTANCE.getElementDefn_Types();
 
 		/**
-		 * The meta object literal for the '<em><b>Binding</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ELEMENT_DEFN__BINDING = eINSTANCE.getElementDefn_Binding();
-
-		/**
 		 * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3240,12 +3154,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__RESOURCE_PARAM = eINSTANCE.getTypeRef_ResourceParam();
 
 		/**
-		 * The meta object literal for the '<em><b>Takes Any Resource</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Binding Ref</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_REF__TAKES_ANY_RESOURCE = eINSTANCE.getTypeRef_TakesAnyResource();
+		EAttribute TYPE_REF__BINDING_REF = eINSTANCE.getTypeRef_BindingRef();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl <em>Binding Defn</em>}' class.
@@ -3610,24 +3524,6 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NAME_SCOPE__TYPES = eINSTANCE.getNameScope_Types();
-
-		/**
-		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingRefImpl <em>Binding Ref</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.BindingRefImpl
-		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getBindingRef()
-		 * @generated
-		 */
-		EClass BINDING_REF = eINSTANCE.getBindingRef();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BINDING_REF__NAME = eINSTANCE.getBindingRef_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl <em>Annotations</em>}' class.

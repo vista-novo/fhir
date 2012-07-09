@@ -103,7 +103,7 @@ public class TypeRefConverter
 					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
 					
 					if( ref.isAnyResource() )
-						convertedType.setTakesAnyResource(true);
+						convertedType.setResourceParam(null);
 					else
 						convertedType.setResourceParam( ref.getParams().get(0) );					
 				}

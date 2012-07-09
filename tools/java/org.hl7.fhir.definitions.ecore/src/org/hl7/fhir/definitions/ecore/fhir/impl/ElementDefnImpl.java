@@ -54,7 +54,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getExampleValue <em>Example Value</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getContent <em>Content</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getParentType <em>Parent Type</em>}</li>
@@ -262,16 +261,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected ElementDefn content;
-
-	/**
-	 * The cached value of the '{@link #getBinding() <em>Binding</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBinding()
-	 * @generated
-	 * @ordered
-	 */
-	protected BindingRef binding;
 
 	/**
 	 * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
@@ -592,15 +581,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	}
 
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isXmlIdElement() {
-		return getTypes().size() != 0 && getTypes().get(0).getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME);
-	}
-
 //	/**
 //	 * <!-- begin-user-doc -->
 //	 * <!-- end-user-doc -->
@@ -611,17 +591,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 //				getTypes().get(0).getName().equals( TypeRef.RESOURCEREF_TYPE_NAME );
 //	}
 
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public boolean isBoundCode() {
-		return this.getTypes().size() == 1 &&
-				this.getTypes().get(0).getName().equals("code") &&
-				this.getBinding() != null;
-	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -694,49 +663,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			types = new EObjectContainmentEList<TypeRef>(TypeRef.class, this, FhirPackage.ELEMENT_DEFN__TYPES);
 		}
 		return types;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BindingRef getBinding() {
-		return binding;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetBinding(BindingRef newBinding, NotificationChain msgs) {
-		BindingRef oldBinding = binding;
-		binding = newBinding;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__BINDING, oldBinding, newBinding);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBinding(BindingRef newBinding) {
-		if (newBinding != binding) {
-			NotificationChain msgs = null;
-			if (binding != null)
-				msgs = ((InternalEObject)binding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__BINDING, null, msgs);
-			if (newBinding != null)
-				msgs = ((InternalEObject)newBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.ELEMENT_DEFN__BINDING, null, msgs);
-			msgs = basicSetBinding(newBinding, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__BINDING, newBinding, newBinding));
 	}
 
 	/**
@@ -900,8 +826,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
 				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
-			case FhirPackage.ELEMENT_DEFN__BINDING:
-				return basicSetBinding(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return basicSetAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
@@ -961,8 +885,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				if (resolve) return getContent();
 				return basicGetContent();
-			case FhirPackage.ELEMENT_DEFN__BINDING:
-				return getBinding();
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return getAnnotation();
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
@@ -1019,9 +941,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return;
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				setContent((ElementDefn)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__BINDING:
-				setBinding((BindingRef)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				setAnnotation((Annotations)newValue);
@@ -1080,9 +999,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				setContent((ElementDefn)null);
 				return;
-			case FhirPackage.ELEMENT_DEFN__BINDING:
-				setBinding((BindingRef)null);
-				return;
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				setAnnotation((Annotations)null);
 				return;
@@ -1129,8 +1045,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return elements != null && !elements.isEmpty();
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				return content != null;
-			case FhirPackage.ELEMENT_DEFN__BINDING:
-				return binding != null;
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return annotation != null;
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:

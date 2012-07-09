@@ -148,10 +148,6 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 				return createNameScopeAdapter();
 			}
 			@Override
-			public Adapter caseBindingRef(BindingRef object) {
-				return createBindingRefAdapter();
-			}
-			@Override
 			public Adapter caseAnnotations(Annotations object) {
 				return createAnnotationsAdapter();
 			}
@@ -376,20 +372,6 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNameScopeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingRef <em>Binding Ref</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingRef
-	 * @generated
-	 */
-	public Adapter createBindingRefAdapter() {
 		return null;
 	}
 

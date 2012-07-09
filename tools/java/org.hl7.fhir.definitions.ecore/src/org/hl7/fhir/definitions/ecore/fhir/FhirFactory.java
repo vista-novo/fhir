@@ -179,15 +179,6 @@ public interface FhirFactory extends EFactory {
 	CompositeTypeDefn createCompositeTypeDefn();
 
 	/**
-	 * Returns a new object of class '<em>Binding Ref</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Binding Ref</em>'.
-	 * @generated
-	 */
-	BindingRef createBindingRef();
-
-	/**
 	 * Returns a new object of class '<em>Annotations</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

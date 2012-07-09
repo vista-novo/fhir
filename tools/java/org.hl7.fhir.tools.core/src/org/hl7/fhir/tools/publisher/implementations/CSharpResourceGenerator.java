@@ -41,6 +41,7 @@ import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
 public class CSharpResourceGenerator extends GenBlock
@@ -165,44 +166,37 @@ public class CSharpResourceGenerator extends GenBlock
 		
 		for( ElementDefn member : elements )
 		{
+			//boolean isNullable = true;
+			
 			ln("// " + member.getAnnotation().getShortDefinition());
 			ln("public ");
-			if( member.getMaxCardinality() == -1 ) nl("List<");
-			if( member.isAllowDAR() ) nl("Absentable<");
 			
-//			if( member.getTypes().size() == 1 && member.getTypes().get(0).isUnboundGeneric() ) 
-//				nl("T");
-			if( member.isXmlIdElement() ) 
-				nl("string");
-			else if( member.isBoundCode() ) 
+			if( member.getMaxCardinality() == -1 )  nl("List<");		
+			if( member.isAllowDAR() ) nl("Absentable<");
+
+			// Determine the most appropriate FHIR type to use for this
+			// (possibly polymorphic) element.
+			TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
+			
+			if( GeneratorUtils.isCodeWithCodeList( member.getParentType(), tref ) )
 			{
-				BindingDefn binding = member.getParentType().getScope()
-						.resolveBinding(member.getBinding().getName());
-				
-				if( binding != null &&  binding.getBinding() == BindingType.CODE_LIST )
-					nl("Code<" + GeneratorUtils.generateCSharpTypeName(binding.getName()) + ">");
-				else 
-					nl("Code");
-			} 
-			else if( member.getTypes().size() == 1 ) 
-			{
-				nl( GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getName()) );
-//				if( member.getTypes().get(0).isGenericTypeRef() ) 
-//				{ 
-//					nl("<");
-//					nl(GeneratorUtils.generateCSharpTypeName(member.getTypes().get(0).getBoundParam()));
-//					nl(">");
-//				}	
-			} 
+				nl("Code<" + GeneratorUtils.generateCSharpTypeName(tref.getBindingRef()) + ">");
+				//isNullable = false;
+			}
 			else 
 			{
-				nl(GeneratorUtils.generateCSharpTypeName(
-						GeneratorUtils.getMostSpecializedCommonBaseForElement(member).getName()));
+				nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
+				//isNullable = mapsToNullableFhirPrimitive(tref.getName());
 			}
-
+						
 			if( member.isAllowDAR() ) nl(">");
 			if( member.getMaxCardinality() == -1 ) nl(">");
-		//	if( member.getMinCardinality() == 0 ) nl("?");
+		
+			// All generated members should be nullable, to indicate whether
+			// the element has data or not. This means cardinality needs to be 
+			// checked by the validation routines and is not converted to
+			// a structural aspect here.
+			//if( !isNullable ) nl("?");
 			
 			nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
 			nl(" { get; set; }");
@@ -212,6 +206,14 @@ public class CSharpResourceGenerator extends GenBlock
 		return end();
 	}
 	
+	
+	private boolean mapsToNullableFhirPrimitive( String name )
+	{
+		return !(name.equals("boolean") ||
+			name.equals("integer") ||
+			name.equals("decimal")); 
+	}
+
 	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes) throws Exception
 	{
 		begin();

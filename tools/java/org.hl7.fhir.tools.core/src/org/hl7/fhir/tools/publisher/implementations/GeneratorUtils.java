@@ -2,9 +2,12 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 import java.util.List;
 
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
@@ -275,7 +278,7 @@ public class GeneratorUtils {
     return false;
 	}
 
-	
+		
 	public static String mapPrimitiveToCSharpType(String name) throws Exception
 	{
 		if (name.equals("boolean"))
@@ -308,8 +311,10 @@ public class GeneratorUtils {
 			return "XsdDateTime";
 		else if (name.equals("dateTime"))
 			return "XsdDateTime";
+		else if (name.equals("idref"))
+			return "string";
 		else
-			throw new Exception( "Unrecognized primitive" );
+			throw new Exception( "Unrecognized primitive" + name );
 	}
 	
 	public static String mapPrimitiveToFhirCSharpType(String name) throws Exception 
@@ -344,46 +349,13 @@ public class GeneratorUtils {
 			return "Date";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
+		else if (name.equals("idref"))
+			return "IdRef";
 		else
-			throw new Exception( "Unrecognized primitive" );
+			throw new Exception( "Unrecognized primitive " + name );
 	}
 	
-	
-	/*
-	  private static String mapPrimitiveToCSharpType(String name) {
-		if (name.equals("boolean"))
-			return "bool";
-		else if (name.equals("integer"))
-			return "int";
-		else if (name.equals("decimal"))
-			return "decimal";
-		else if (name.equals("base64Binary"))
-			return "byte[]";
-		else if (name.equals("instant"))
-			return "FhirDateTime";
-		else if (name.equals("string"))
-			return "string";
-		else if (name.equals("uri"))
-			return "System.Uri";
-		else if (name.equals("code"))
-			return "string";
-		else if (name.equals("oid"))
-			return "Oid";
-		else if (name.equals("uuid"))
-			return "Uuid";
-		else if (name.equals("sid"))
-			return "Sid";
-		else if (name.equals("id"))
-			return "Id";
-		else if (name.equals("date"))
-			return "FhirDateTime";
-		else if (name.equals("dateTime"))
-			return "FhirDateTime";
-		else
-			return null;
-	}
-	*/
-	
+		
 	
 	public static String generateCSharpTypeName(String name) throws Exception {
 		String result;
@@ -395,11 +367,34 @@ public class GeneratorUtils {
 		
 		return result;
 	}
+		
 	
-//	public static String generateCSharpMemberName(String name) {
-//		return generateCSharpMemberName(null, name);
-//	}
-	
+	public static String buildFullyScopedTypeName( CompositeTypeDefn context, String name )
+			throws Exception
+	{
+		NameScope scope = context.resolveType(name).getScope();
+		
+		if( scope.getContainingScope() == null )
+			return GeneratorUtils.generateCSharpTypeName(name);
+		else
+			return GeneratorUtils.generateCSharpTypeName(
+				((CompositeTypeDefn)scope).getName()) + "." + 
+				GeneratorUtils.generateCSharpTypeName(name);
+	}
+
+
+	public static String buildFullyScopedEnumName( CompositeTypeDefn context, String name )
+			throws Exception
+	{
+		NameScope scope = context.resolveBinding(name).getParent();
+		
+		if( scope.getContainingScope() == null )
+			return GeneratorUtils.generateCSharpTypeName(name);
+		else
+			return GeneratorUtils.generateCSharpTypeName(
+				((CompositeTypeDefn)scope).getName()) + "." + 
+				GeneratorUtils.generateCSharpTypeName(name);
+	}
 	
 	public static String generateCSharpMemberName(CompositeTypeDefn context, String name) {
 		String result;
@@ -498,44 +493,37 @@ public class GeneratorUtils {
 	 * the element to have a type of the most specialized possible supertype.
 	 * 
 	 * If categories of types are mixed (primitives/composites), the function
-	 * will return the appropriate supertype. Polymorphic combinations
-	 * with other categories are not supported.
-	 * 
-	 * NB: If the element has multiple typerefs of the same type (only possible for
-	 * generic types), it will map to a common typename without generic parameters.
-	 * This function will work incorrectly for other cases, like multiple codes
-	 * with different CodeList bindings, these will be mapped to Code.  
+	 * will return the appropriate supertype.
 	 */
 	public static TypeRef getMostSpecializedCommonBaseForElement( ElementDefn elem )
-			//	throws Exception
+			throws Exception
 	{
+		if( elem.getTypes().size() == 1 )
+			return elem.getTypes().get(0); 
+
 		boolean hasPrimitives = false;
 		boolean hasComposites = false; // includes ResourceRefs
-		boolean hasOthers = false;
-		
-		String sharedGenericTypeName = elem.getTypes().get(0).getName();
-		
+		boolean hasCodeWithCodeList = false;  // becomes special Code<T> type. is also a primitive
+								
 		CompositeTypeDefn parent = elem.getParentType();
 		
 		for( TypeRef ref : elem.getTypes() )
-		{
-			if( !ref.getName().equals(sharedGenericTypeName) )
-				sharedGenericTypeName = null;
-			
+		{			
 			if( ref.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) )
 				hasComposites = true;
 			else if( ref.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) )
 				hasPrimitives = true;
 			else if( ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
-				hasOthers = true;
+				throw new Exception("There is not common basetype if element also has idref as type");
+			else if( isCodeWithCodeList(parent, ref) )
+				hasCodeWithCodeList = true;
 			else
 			{
-				TypeDefn def = parent.getScope().resolveType(ref.getName());
+				TypeDefn def = parent.resolveType(ref.getName());
 			
 				if( def == null )
-					return null;
-//					throw new Exception( "Cannot find common base for a typeref of type " + ref.getName() +
-//								" in " + elem.getElementPath());
+					throw new Exception( "Unknown element type found looking for common basetype: " + ref.getName() +
+								" in " + elem.getElementPath());
 				
 				if( def.isPrimitive() ) hasPrimitives = true;
 				else if( def.isComposite() ) hasComposites = true;
@@ -545,27 +533,37 @@ public class GeneratorUtils {
 					// Note that we cannot actually encounter a TypeRef to a
 					// resource, since these are always ResourceReferences,
 					// and thus Composites
-					hasOthers = true;
+					throw new Exception("Unknown category of element found while looking for common basetype");
 				}
 			}
 		}
 		
-		if( sharedGenericTypeName != null )
-			return newTypeRef(sharedGenericTypeName);
-					
-		if( hasOthers )
-			return null;
-		//	throw new Exception( "Cannot find common base for the type combination of " + elem.getElementPath());
-		else if( hasPrimitives && !hasComposites )
+		if( hasCodeWithCodeList && !hasPrimitives && !hasComposites )
+			return newTypeRef("code");
+		if( (hasPrimitives || hasCodeWithCodeList) && !hasComposites )
 			return newTypeRef("Primitive");
-		else if( !hasPrimitives && hasComposites )
+		else if( !(hasPrimitives || hasCodeWithCodeList) && hasComposites )
 			return newTypeRef("Composite");
-		else if( hasPrimitives && hasComposites )
+		else if( (hasPrimitives || hasCodeWithCodeList) && hasComposites )
 			return newTypeRef("Data");
-		else // Huh? Shouldn't happen.
-			return null;
-		//	throw new Exception( "Cannot find common base for the types of " + elem.getElementPath());
-
+		else 
+			// Huh? Shouldn't happen.
+			throw new Exception( "Cannot find common base for the types of " + elem.getElementPath());
+	}
+		
+		
+	public static boolean isCodeWithCodeList( NameScope resolver, TypeRef ref )
+	{
+		if( ref.getName().equals("code") )
+		{
+			BindingDefn bindingDef = resolver.resolveBinding(ref.getBindingRef());
+			
+			if( bindingDef != null )
+				return bindingDef.getBinding() == BindingType.CODE_LIST;
+		}
+		
+		// All other cases
+		return false;
 	}
 		
 	private static TypeRef newTypeRef(String name)
