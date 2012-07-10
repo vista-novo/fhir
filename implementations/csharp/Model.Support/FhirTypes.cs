@@ -59,12 +59,17 @@ namespace HL7.Fhir.Instance.Model
         /**
 	     * Master resource Id, in all resources
 	     */
-        public Id id { get; set; }
+        public Id Id { get; set; }
 
         /**
          * Text summary of resource, for human interpretation
          */
-        public Narrative text { get; set; }
+        public Narrative Text { get; set; }
+
+        /*
+         * Extensions
+         */
+        public List<Extension> Extension { get; set; }
     }
 
     public abstract class Primitive : Data

@@ -292,15 +292,15 @@ namespace HL7.Fhir.Instance.Model
             switch (Kind)
             {
                 case XsdDateTimeKind.Year:
-                    return String.Format("{0:yyyy}",Year);
+                    return String.Format("{0:D4}",Year);
                 case XsdDateTimeKind.YearMonth:
-                    return String.Format("{0:yyyy}-{1:MM}", Year, Month);
+                    return String.Format("{0:D4}-{1:D2}", Year, Month);
                 case XsdDateTimeKind.Date:
-                    return String.Format("{0:yyyy}-{1:MM}-{2:dd}", Year, Month, Day);
+                    return String.Format("{0:D4}-{1:D2}-{2:D2}", Year, Month, Day);
                 case XsdDateTimeKind.DateTimeHHMM:
-                    return String.Format("{0:yyyy}-{1:MM}-{2:dd}T{3:HH}:{4:mm}Z", Year, Month, Day, Hour, Minutes);
+                    return String.Format("{0:D4}-{1:D2}-{2:D2}T{3:D2}:{4:D2}Z", Year, Month, Day, Hour, Minutes);
                 case XsdDateTimeKind.DateTime:
-                    return String.Format("{0:yyyy}-{1:MM}-{2:dd}T{3:HH}:{4:mm}:{5:ss}Z", Year, Month, Day, Hour, Minutes, Seconds);
+                    return String.Format("{0:D4}-{1:D2}-{2:D2}T{3:D2}:{4:D2}:{5:D2}Z", Year, Month, Day, Hour, Minutes, Seconds);
                 default:
                     throw new Exception("Internal error: unrecognized date/time kind.");
             }
@@ -321,13 +321,13 @@ namespace HL7.Fhir.Instance.Model
 
             // Due to shortcut evaluation with dateLength, calling the 
             // expensive parse operation unneccessary is avoided
-            if (dateLength >= 20 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mm:sszzz"))
+            if (dateLength >= 20 && result.tryParse(xsdDate, "yyyy-MM-dd'T'hh:mm:ssK"))
                 result.Kind = XsdDateTimeKind.DateTime;
-            else if (dateLength >= 17 && result.tryParse(xsdDate, "yyyy-mm-dd'T'hh:mmzzz"))
+            else if (dateLength >= 17 && result.tryParse(xsdDate, "yyyy-MM-dd'T'hh:mmK"))
                 result.Kind = XsdDateTimeKind.DateTimeHHMM;
-            else if (dateLength == 10 && result.tryParse(xsdDate, "yyyy-mm-dd"))
+            else if (dateLength == 10 && result.tryParse(xsdDate, "yyyy-MM-dd"))
                 result.Kind = XsdDateTimeKind.Date;
-            else if (dateLength == 7 && result.tryParse(xsdDate, "yyyy-mm"))
+            else if (dateLength == 7 && result.tryParse(xsdDate, "yyyy-MM"))
                 result.Kind = XsdDateTimeKind.YearMonth;
             else if (dateLength == 4 && result.tryParse(xsdDate, "yyyy"))
                 result.Kind = XsdDateTimeKind.Year;

@@ -15,28 +15,9 @@ namespace HL7.Fhir.Instance.Parsers
             where T : struct, IConvertible
         {
             string value = parsePrimitiveElement(reader, out id);
-
+            
             return Code<T>.Parse(value);
         }
-
-
-        //private static string parsePrimitiveElement(XElement primitive, out string id)
-        //{
-        //    if (primitive.HasElements)
-        //        throw new ResourceXmlParseError("Primitives cannot contain nested elements");
-
-        //    if (primitive.HasAttributes)
-        //    {
-        //        if (primitive.FirstAttribute.Name == XmlUtil.IDATTR)
-        //            id = primitive.FirstAttribute.Value;
-        //        else
-        //            throw new ResourceXmlParseError("Primitive cannot have attributes other than 'id'");
-        //    }
-        //    else
-        //        id = null;
-
-        //    return primitive.Value;
-        //}
 
 
         private static string parsePrimitiveElement(XmlReader reader, out string id)

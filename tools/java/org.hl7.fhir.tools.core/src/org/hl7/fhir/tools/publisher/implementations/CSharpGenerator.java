@@ -32,8 +32,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.utilities.Logger;
@@ -126,6 +128,21 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(constrainedFilename);
 		}
 
+		// Collect all bindings to generate the EnumHelper class
+		List<BindingDefn> allBindings = new ArrayList<BindingDefn>();
+		allBindings.addAll(definitions.getBindings());
+		for( NameScope ns : definitions.getLocalCompositeTypes() )
+			allBindings.addAll(ns.getBindings());
+		for( NameScope ns : definitions.getLocalResources() )
+			allBindings.addAll(ns.getBindings());
+		{
+			String enumHelperFilename = modelDir + "EnumHelper.cs";
+			
+			new CSharpEnumHelperGenerator()
+				.generateEnumHelper(definitions, allBindings).toFile(implDir+enumHelperFilename);						 
+			generatedFilenames.add(enumHelperFilename);			
+		}
+		
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
 	    projGen.build(implDir, generatedFilenames);

@@ -135,7 +135,7 @@ public class CompositeTypeConverter
 //				TypeRefConverter.buildTypeRefsFromFhirTypeName(typeName) );
 		
 		// Build my properties and add.
-		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements() ) );
+		result.getElements().addAll( buildElementDefnsFromFhirModel( type.getElements(), isResource ) );
 		
 		// Recursively add nested types for explicitly declared nested types ('=<typename>')
 		// to the nearest NameScope (a Resource)
@@ -145,12 +145,6 @@ public class CompositeTypeConverter
 		
 		result.setUnnamedElementGroup( type.isAnonymousTypedGroup() );
 		
-		// TODO: Fix the corner-case <Parent>.extension in resources, its type should
-		// be set to 'Extension' for now. This code can be removed if we explicitly
-		// put this into the xls files.
-		// NB: Since all "base" Resource attributes (like .extension) do not get
-		// put into the eCore types list, we will not encounter this corner-case
-
 		return result;
 	}
 
@@ -172,7 +166,8 @@ public class CompositeTypeConverter
 
 
 	public static List<ElementDefn> buildElementDefnsFromFhirModel(
-			List<org.hl7.fhir.definitions.model.ElementDefn> elements) throws Exception
+			List<org.hl7.fhir.definitions.model.ElementDefn> elements,
+			boolean isResource) throws Exception
 	{
 
 		List<ElementDefn> result = new ArrayList<ElementDefn>();
@@ -180,8 +175,8 @@ public class CompositeTypeConverter
 		for( org.hl7.fhir.definitions.model.ElementDefn element : elements )
 		{
 			// Skip elements that are part of the Resource "base" class
-			if( !element.isBaseResourceElement() )
-				result.add( buildElementDefnFromFhirModel( element) );
+			//if( !(isResource && element.isBaseResourceElement()) )
+			result.add( buildElementDefnFromFhirModel(element, isResource) );
 		}
 		
 		return result;
@@ -189,7 +184,8 @@ public class CompositeTypeConverter
 
 
 	public static ElementDefn buildElementDefnFromFhirModel(
-			org.hl7.fhir.definitions.model.ElementDefn element) throws Exception
+			org.hl7.fhir.definitions.model.ElementDefn element,
+			boolean isResource) throws Exception
 	{
 
 		ElementDefn result = FhirFactory.eINSTANCE.createElementDefn();
@@ -231,7 +227,7 @@ public class CompositeTypeConverter
 		if( element.getDeclaredTypeName() == null )
 		{
 			if( !element.getElements().isEmpty() )
-				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements()));
+				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements(), isResource));
 		}
 		
 		if( element.getBindingName() != null && 

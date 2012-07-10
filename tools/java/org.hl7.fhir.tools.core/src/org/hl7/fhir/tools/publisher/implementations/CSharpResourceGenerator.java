@@ -131,12 +131,6 @@ public class CSharpResourceGenerator extends GenBlock
 		ln("/*");
 		ln("* " + composite.getAnnotations().getDefinition());
 		ln("*/");
-		
-//		// If this is a generic type, also generate an empty
-//		// base class which is not generic for the purpose of
-//		// polymorphic properties
-//		if( composite.isGenericType() )
-//			genericBaseClass(composite);
 
 		// Generate the class itself		
 		compositeClassHeader( composite );
@@ -150,60 +144,58 @@ public class CSharpResourceGenerator extends GenBlock
 				nestedLocalTypes( composite.getLocalCompositeTypes() ); 			
 	
 			// Generate this classes properties
-			if( composite.getElements().size() > 0)
-				memberProperties( composite.getElements(), composite  );	
+			for( ElementDefn member : composite.getElements() )
+			{
+				// Generate members, except for resource-specific
+				// members as they are already defined in the abstract
+				// and hand-made Resource class
+				if( !GeneratorUtils.isBaseResourceMember(member) )
+					generateMemberProperty(composite, member);
+			}
 		es("}");
 		ln();
 		
 		return end();
 	}
 
-	
-	public GenBlock memberProperties( List<ElementDefn> elements, 
-								CompositeTypeDefn context ) throws Exception
-	{
-		begin();
-		
-		for( ElementDefn member : elements )
-		{
-			//boolean isNullable = true;
-			
-			ln("// " + member.getAnnotation().getShortDefinition());
-			ln("public ");
-			
-			if( member.getMaxCardinality() == -1 )  nl("List<");		
-			if( member.isAllowDAR() ) nl("Absentable<");
 
-			// Determine the most appropriate FHIR type to use for this
-			// (possibly polymorphic) element.
-			TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
-			
-			if( GeneratorUtils.isCodeWithCodeList( member.getParentType(), tref ) )
-			{
-				nl("Code<" + GeneratorUtils.generateCSharpTypeName(tref.getBindingRef()) + ">");
-				//isNullable = false;
-			}
-			else 
-			{
-				nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
-				//isNullable = mapsToNullableFhirPrimitive(tref.getName());
-			}
-						
-			if( member.isAllowDAR() ) nl(">");
-			if( member.getMaxCardinality() == -1 ) nl(">");
+	
+	
+	private void generateMemberProperty(CompositeTypeDefn context, ElementDefn member)
+			throws Exception {
+		ln("// " + member.getAnnotation().getShortDefinition());
+		ln("public ");
 		
-			// All generated members should be nullable, to indicate whether
-			// the element has data or not. This means cardinality needs to be 
-			// checked by the validation routines and is not converted to
-			// a structural aspect here.
-			//if( !isNullable ) nl("?");
-			
-			nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
-			nl(" { get; set; }");
-			ln();
+		if( member.getMaxCardinality() == -1 )  nl("List<");		
+		if( member.isAllowDAR() ) nl("Absentable<");
+
+		// Determine the most appropriate FHIR type to use for this
+		// (possibly polymorphic) element.
+		TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
+		
+		if( GeneratorUtils.isCodeWithCodeList( member.getParentType(), tref ) )
+		{
+			nl("Code<" + GeneratorUtils.generateCSharpTypeName(tref.getBindingRef()) + ">");
+			//isNullable = false;
 		}
+		else 
+		{
+			nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
+			//isNullable = mapsToNullableFhirPrimitive(tref.getName());
+		}
+					
+		if( member.isAllowDAR() ) nl(">");
+		if( member.getMaxCardinality() == -1 ) nl(">");
+
+		// All generated members should be nullable, to indicate whether
+		// the element has data or not. This means cardinality needs to be 
+		// checked by the validation routines and is not converted to
+		// a structural aspect here.
+		//if( !isNullable ) nl("?");
 		
-		return end();
+		nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
+		nl(" { get; set; }");
+		ln();
 	}
 	
 	
@@ -264,27 +256,91 @@ public class CSharpResourceGenerator extends GenBlock
 		{
 			if( binding.getBinding() == BindingType.CODE_LIST )
 			{	
-				ln("/*");
-				ln("* " + binding.getAnnotations().getDefinition() );
-				ln("*/");
-				ln("public enum " + 
-						GeneratorUtils.generateCSharpTypeName(binding.getName()));
-				bs("{");
-					for( DefinedCode code : binding.getCodes() ) 
-					{
-						String definition = code.getDefinition();
-						
-						ln(GeneratorUtils.generateCSharpMemberName(null,code.getCode()) + ",");
-						
-						if( definition != null )
-							nl(" // " + code.getDefinition());		
-					}
-				es("}");
+				generateEnum(binding);
+				ln();
+				
+				generateEnumParser(binding);
 				ln();
 			}
-
 		}
 	
+		return end();
+	}
+
+
+	public GenBlock generateEnumParser(BindingDefn binding) {
+		begin();
+		
+		ln("/*");
+		ln("* Parse string into " + binding.getName());
+		ln("*/");
+		ln("public static class " + binding.getName() + "Handling");
+		bs("{"); 
+			ln("public static bool TryParse");
+				nl("(string value, ");
+				nl("out " + binding.getName() + " result)");
+			bs("{");
+				ln( "result = default(" + binding.getName() + ");");
+				ln();					
+				enumValueCases(binding);
+				ln();
+				ln("return true;");					
+			es("}");
+		es("}");
+		ln();
+		
+		return end();
+	}
+
+
+	private void enumValueCases(BindingDefn binding) 
+	{
+		boolean isFirstClause = true;
+			
+		for( DefinedCode code : binding.getCodes() ) 
+		{					
+			if( !isFirstClause )
+				ln("else ");
+			else
+				ln();
+					
+			isFirstClause = false;
+			
+			nl("if( value ==");
+				nl("\"" + code.getCode() + "\")");
+			bs();
+				ln("result = " + binding.getName());
+					nl("." + GeneratorUtils.generateCSharpMemberName(null,code.getCode()));
+					nl(";");
+			es();						
+		}
+		ln("else");
+		bs();
+			ln("return false;");
+		es();
+	}
+
+
+	public GenBlock generateEnum(BindingDefn binding) throws Exception {
+		begin();
+		
+		ln("/*");
+		ln("* " + binding.getAnnotations().getDefinition() );
+		ln("*/");
+		ln("public enum " + 
+				GeneratorUtils.generateCSharpTypeName(binding.getName()));
+		bs("{");
+			for( DefinedCode code : binding.getCodes() ) 
+			{
+				String definition = code.getDefinition();
+				
+				ln(GeneratorUtils.generateCSharpMemberName(null,code.getCode()) + ",");
+				
+				if( definition != null )
+					nl(" // " + code.getDefinition());		
+			}
+		es("}");
+		
 		return end();
 	}
 }

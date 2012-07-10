@@ -82,9 +82,6 @@ namespace HL7.Fhir.Instance.Model
         }
     }
 
-
-
-
     public class Code<T> : Primitive<T>  where T : struct, IConvertible
     {
         public Code(T value)
@@ -105,11 +102,11 @@ namespace HL7.Fhir.Instance.Model
 
         public static bool TryParse(string value, out Code<T> result)
         {
-            T enumValue;
+            object enumValue;
 
-            if (Enum.TryParse<T>(value, false, out enumValue))
+            if (EnumHelper.TryParseEnum(value, typeof(T), out enumValue))
             {
-                result = new Code<T>(enumValue);
+                result = new Code<T>((T)enumValue);
                 return true;
             }
             else
@@ -126,7 +123,8 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else
-                throw new FhirValueFormatException("Not an correct value for enum " + typeof(T).Name );
+                throw new FhirValueFormatException("'" + value + "' is not a correct value for " +
+                            "enum " + typeof(T).Name );
         }
 
         public override string ValidateData()

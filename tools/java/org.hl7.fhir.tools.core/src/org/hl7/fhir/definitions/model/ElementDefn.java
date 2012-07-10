@@ -454,8 +454,8 @@ public class ElementDefn {
 	 *         'extension' and 'text'
 	 */
 	public boolean isBaseResourceElement() {
-		return (getName().equals("id") && hasType("id")) || getName().equals("extension")
-				|| (getName().equals("text") && hasType("Narrative") );
+		return getName().equals("id") || getName().equals("extension")
+				|| getName().equals("text");
 	}
 
 	public boolean isBoundCode() {
