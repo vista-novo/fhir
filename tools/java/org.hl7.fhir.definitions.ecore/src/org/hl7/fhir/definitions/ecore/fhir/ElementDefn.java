@@ -300,6 +300,14 @@ public interface ElementDefn extends EObject {
 	String getElementPath();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isRepeating();
+
+	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>

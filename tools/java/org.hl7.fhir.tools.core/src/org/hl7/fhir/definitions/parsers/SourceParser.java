@@ -30,12 +30,18 @@ package org.hl7.fhir.definitions.parsers;
  */
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -103,6 +109,38 @@ public class SourceParser {
 		return eCoreParseResults;
 	}
 
+	
+	private List<BindingDefn> sortBindings(List<BindingDefn> unsorted)
+	{
+		List<BindingDefn> sorted = new ArrayList<BindingDefn>();
+		sorted.addAll(unsorted);
+		
+		Collections.sort(sorted, new Comparator<BindingDefn>() {
+			public int compare( BindingDefn a, BindingDefn b )
+			{
+				return a.getName().compareTo(b.getName());
+			}
+		});
+		
+		return sorted;
+	}
+	
+
+	private List<TypeDefn> sortTypes(List unsorted)
+	{
+		List<TypeDefn> sorted = new ArrayList<TypeDefn>();
+		sorted.addAll(unsorted);
+		
+		Collections.sort(sorted, new Comparator() {
+			public int compare( Object a, Object b )
+			{
+				return ((TypeDefn)a).getName().compareTo(((TypeDefn)b).getName());
+			}
+		});
+		
+		return sorted;
+	}
+	
 	public void parse(boolean isInternalRun, Date genDate, String version)
 			throws Exception {
 		logger.log("Loading");
@@ -111,36 +149,39 @@ public class SourceParser {
 
 		loadGlobalConceptDomains();
 		eCoreParseResults.getBindings().addAll(
-				BindingConverter.buildBindingsFromFhirModel(definitions
-						.getBindings().values()));
+				sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions
+						.getBindings().values())));
 
 		loadPrimitives();
 		eCoreParseResults.getTypes().addAll(
-				PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
-						.getPrimitives().values()));	
+				sortTypes(PrimitiveConverter.buildPrimitiveTypesFromFhirModel(definitions
+						.getPrimitives().values())));	
 
 		for (String n : ini.getPropertyNames("types"))
 			loadCompositeType(n, definitions.getTypes());	
-		eCoreParseResults.getTypes().addAll(
-				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getTypes().values(), null ));
-		
 		for (String n : ini.getPropertyNames("structures"))
 			loadCompositeType(n, definitions.getStructures());
-		eCoreParseResults.getTypes().addAll(
-				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getStructures().values(), null ));
-			
 		for (String n : ini.getPropertyNames("infrastructure"))
 			loadCompositeType(n, definitions.getInfrastructure());
-		eCoreParseResults.getTypes().addAll(
-				CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
-						.getInfrastructure().values(), null ));
 		
-		eCoreParseResults.getTypes().addAll(
-				ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(
+		List<TypeDefn> allFhirComposites = new ArrayList<TypeDefn>();
+		
+		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
+						.getTypes().values(), null ));
+		
+		allFhirComposites.addAll( CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
+						.getStructures().values(), null ));
+
+		List<CompositeTypeDefn> infra = CompositeTypeConverter.buildCompositeTypesFromFhirModel(definitions
+				.getInfrastructure().values(), null ); 
+		for( CompositeTypeDefn composite : infra ) composite.setInfrastructure(true);
+		allFhirComposites.addAll( infra );
+		
+		allFhirComposites.addAll( ConstrainedTypeConverter.buildConstrainedTypesFromFhirModel(
 						definitions.getConstraints().values(),
 						definitions.getConstraintInvariants()) );
+		
+		eCoreParseResults.getTypes().addAll( sortTypes(allFhirComposites) );
 		
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
@@ -151,8 +192,8 @@ public class SourceParser {
 		}
 		
 		eCoreParseResults.getTypes().addAll(
-				CompositeTypeConverter.buildResourcesFromFhirModel(definitions
-						.getResources().values() ));
+				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions
+						.getResources().values() )));
 
 		for (String n : ini.getPropertyNames("future-resources")) 
 		{

@@ -368,33 +368,45 @@ public class GeneratorUtils {
 		return result;
 	}
 		
+	public static String buildFullyScopedTypeName( NameScope resolver, TypeRef type ) throws Exception
+	{
+		if( type.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
+				type.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
+				type.getName().equals(TypeRef.DATA_PSEUDOTYPE_NAME) )
+			return type.getName();
+		else
+			return buildFullyScopedTypeName(resolver.resolveType(type.getName())); 
+	}
 	
-	public static String buildFullyScopedTypeName( CompositeTypeDefn context, String name )
+	
+	public static String buildFullyScopedTypeName( TypeDefn type )
 			throws Exception
-	{
-		NameScope scope = context.resolveType(name).getScope();
+	{		
+		NameScope scope = type.getScope();
 		
-		if( scope.getContainingScope() == null )
-			return GeneratorUtils.generateCSharpTypeName(name);
+		if( type.isGloballyDefined() )
+			return GeneratorUtils.generateCSharpTypeName(type.getName());
 		else
 			return GeneratorUtils.generateCSharpTypeName(
 				((CompositeTypeDefn)scope).getName()) + "." + 
-				GeneratorUtils.generateCSharpTypeName(name);
+				GeneratorUtils.generateCSharpTypeName(type.getName());
 	}
 
 
-	public static String buildFullyScopedEnumName( CompositeTypeDefn context, String name )
+	public static String buildFullyScopedEnumName( BindingDefn binding )
 			throws Exception
 	{
-		NameScope scope = context.resolveBinding(name).getParent();
+		String name = binding.getName();
 		
-		if( scope.getContainingScope() == null )
+		if( binding.isGloballyDefined() )
 			return GeneratorUtils.generateCSharpTypeName(name);
 		else
 			return GeneratorUtils.generateCSharpTypeName(
-				((CompositeTypeDefn)scope).getName()) + "." + 
+				((CompositeTypeDefn)binding.getParent()).getName()) + "." + 
 				GeneratorUtils.generateCSharpTypeName(name);
 	}
+	
+	
 	
 	public static String generateCSharpMemberName(CompositeTypeDefn context, String name) {
 		String result;
@@ -436,57 +448,6 @@ public class GeneratorUtils {
 		return result;
 	}
 
-	
-//	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements(CompositeTypeDefn composite)
-//	{
-//		return generateNamedGroupsForNestedElements("", composite);
-//	}
-//	
-//
-//	public static Map<ElementDefn, NamedElementGroup> generateNamedGroupsForNestedElements( String rootName, CompositeTypeDefn composite )
-//	{
-//		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
-//
-//		for( ElementDefn childElem : composite.getElements() )
-//		{
-//			if( childElem.hasNestedElements() )
-//			{
-//				String childTypeName = rootName + Utilities.capitalize(childElem.getName());
-//				result.putAll( generateNamedGroupForNestedElements(childTypeName, childElem) );
-//			}
-//		}
-//
-//		for( CompositeTypeDefn childComponent : composite.getLocalCompositeTypes() )
-//		{
-//			result.putAll( generateNamedGroupsForNestedElements(rootName + childComponent.getName(), childComponent));
-//		}
-//		
-//		return result;
-//	}
-//	
-//	
-//	private static Map<ElementDefn, NamedElementGroup> generateNamedGroupForNestedElements( String name,  ElementDefn root )
-//	{
-//		Map<ElementDefn, NamedElementGroup> result = new HashMap<ElementDefn, NamedElementGroup>();
-//
-//		for( ElementDefn elem : root.getElements() )
-//		{
-//			if( elem.hasNestedElements() )
-//			{
-//				String childGroupName = name.concat( Utilities.capitalize(elem.getName()) );
-//				result.putAll( generateNamedGroupForNestedElements(childGroupName, elem) );
-//			}
-//		}
-//
-//		NamedElementGroup newGroup = new NamedElementGroup();
-//		newGroup.setName(name.concat("Component"));
-//		newGroup.setElements(root.getElements());
-//		
-//		result.put( root, newGroup );
-//		
-//		return result;
-//	}
-	
 
 		
 	/* If we have a combination of types for an element, we should generate
@@ -502,7 +463,8 @@ public class GeneratorUtils {
 			return elem.getTypes().get(0); 
 
 		boolean hasPrimitives = false;
-		boolean hasComposites = false; // includes ResourceRefs
+		boolean hasComposites = false; // includes constrained types
+		boolean hasResourceRef = false;
 		boolean hasCodeWithCodeList = false;  // becomes special Code<T> type. is also a primitive
 								
 		CompositeTypeDefn parent = elem.getParentType();
@@ -511,6 +473,8 @@ public class GeneratorUtils {
 		{			
 			if( ref.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) )
 				hasComposites = true;
+			else if( ref.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) )
+				hasResourceRef = true;
 			else if( ref.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) )
 				hasPrimitives = true;
 			else if( ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
@@ -538,17 +502,16 @@ public class GeneratorUtils {
 			}
 		}
 		
-		if( hasCodeWithCodeList && !hasPrimitives && !hasComposites )
+		if( hasCodeWithCodeList && !hasPrimitives && !hasComposites && !hasResourceRef )
 			return newTypeRef("code");
-		if( (hasPrimitives || hasCodeWithCodeList) && !hasComposites )
+		if( (hasPrimitives || hasCodeWithCodeList) && !hasComposites && !hasResourceRef )
 			return newTypeRef("Primitive");
-		else if( !(hasPrimitives || hasCodeWithCodeList) && hasComposites )
+		else if( hasComposites && !(hasPrimitives || hasCodeWithCodeList) && !hasResourceRef )
 			return newTypeRef("Composite");
-		else if( (hasPrimitives || hasCodeWithCodeList) && hasComposites )
+		else if( hasResourceRef && !(hasPrimitives || hasCodeWithCodeList) && !hasComposites)
+			return newTypeRef("ResourceReference");
+		else
 			return newTypeRef("Data");
-		else 
-			// Huh? Shouldn't happen.
-			throw new Exception( "Cannot find common base for the types of " + elem.getElementPath());
 	}
 		
 		

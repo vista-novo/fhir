@@ -45,7 +45,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 public class CompositeTypeConverter
-{
+{			
 	public static List<CompositeTypeDefn> buildCompositeTypesFromFhirModel( 
 			Collection<org.hl7.fhir.definitions.model.ElementDefn> types, 
 			NameScope scope ) throws Exception
@@ -61,7 +61,7 @@ public class CompositeTypeConverter
 	}
 	
 	
-	public static Collection<ResourceDefn> buildResourcesFromFhirModel(
+	public static List<ResourceDefn> buildResourcesFromFhirModel(
 			Collection<org.hl7.fhir.definitions.model.ResourceDefn> resources) throws Exception
 	{	
 		List<ResourceDefn> result = new ArrayList<ResourceDefn>();

@@ -33,6 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#isInfrastructure <em>Infrastructure</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +69,26 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @ordered
 	 */
 	protected Annotations annotations;
+
+	/**
+	 * The default value of the '{@link #isInfrastructure() <em>Infrastructure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInfrastructure()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INFRASTRUCTURE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInfrastructure() <em>Infrastructure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInfrastructure()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean infrastructure = INFRASTRUCTURE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -196,13 +217,43 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInfrastructure() {
+		return infrastructure;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInfrastructure(boolean newInfrastructure) {
+		boolean oldInfrastructure = infrastructure;
+		infrastructure = newInfrastructure;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__INFRASTRUCTURE, oldInfrastructure, infrastructure));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public boolean isResource() {
 		return this.getClass().equals(ResourceDefnImpl.class);
 	}
 
-//	/**
+/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isGloballyDefined() {
+		return getScope().getContainingScope() == null;
+	}
+
+	//	/**
 //	 * <!-- begin-user-doc -->
 //	 * <!-- end-user-doc -->
 //	 * @generated NOT
@@ -301,6 +352,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getAnnotations();
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				return getScope();
+			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
+				return isInfrastructure();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -321,6 +374,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return;
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				setScope((NameScope)newValue);
+				return;
+			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
+				setInfrastructure((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -343,6 +399,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				setScope((NameScope)null);
 				return;
+			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
+				setInfrastructure(INFRASTRUCTURE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -361,6 +420,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return annotations != null;
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				return getScope() != null;
+			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
+				return infrastructure != INFRASTRUCTURE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -377,6 +438,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", infrastructure: ");
+		result.append(infrastructure);
 		result.append(')');
 		return result.toString();
 	}

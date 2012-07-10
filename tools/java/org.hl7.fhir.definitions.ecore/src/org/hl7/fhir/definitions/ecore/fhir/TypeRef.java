@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParams <em>Resource Params</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}</li>
  * </ul>
  * </p>
@@ -34,6 +34,7 @@ public interface TypeRef extends EObject {
 	public final static String IDREF_PSEUDOTYPE_NAME = "idref";
 
 	public final static String RESOURCEREF_TYPE_NAME = "ResourceReference";
+	public static final Object DATA_PSEUDOTYPE_NAME = "Data";
 	
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -62,30 +63,20 @@ public interface TypeRef extends EObject {
 	void setName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Resource Param</b></em>' attribute.
+	 * Returns the value of the '<em><b>Resource Params</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Resource Param</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Resource Params</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resource Param</em>' attribute.
-	 * @see #setResourceParam(String)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_ResourceParam()
+	 * @return the value of the '<em>Resource Params</em>' attribute list.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_ResourceParams()
 	 * @model
 	 * @generated
 	 */
-	String getResourceParam();
-
-	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resource Param</em>' attribute.
-	 * @see #getResourceParam()
-	 * @generated
-	 */
-	void setResourceParam(String value);
+	EList<String> getResourceParams();
 
 	/**
 	 * Returns the value of the '<em><b>Binding Ref</b></em>' attribute.

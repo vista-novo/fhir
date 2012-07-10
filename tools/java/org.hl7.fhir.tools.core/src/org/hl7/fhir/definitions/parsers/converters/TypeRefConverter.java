@@ -68,9 +68,8 @@ public class TypeRefConverter
 	
 
 	
-	// Some TypeRefs, like TypeX(A|B|C) and "*" are actually short-hands for
-	// multiple TypeRefs: TypeX(A|B|C) will be expanded to TypeX(A) | TypeX(B) | TypeX(C)
-	// and "*" to pseudo-types Primitive | Composite | Resource(Any). Therefore,
+	// Some TypeRefs, like "*" are actually short-hands fo multiple TypeRefs: 
+	// "*" will be expanded to pseudo-types Primitive | Composite | (NOT)Resource(Any)(NOT). Therefore,
 	// although this method takes one single model.TypeRef, it can return
 	// multiple eCore.TypeRefs.
 	public static List<TypeRef> buildTypeRefsFromFhirModel( org.hl7.fhir.definitions.model.TypeRef original )
@@ -85,16 +84,8 @@ public class TypeRefConverter
 			
 			if( ref.isElementReference() )
 				convertedType.setName( ref.getResolvedTypeName() );
-
-//			else if( ref.isUnboundGenericParam() )
-//			{
-//				convertedType.setName( "param" );
-//				convertedType.setUnboundGeneric(true);
-//			}
-					
 			else if( ref.isIdRef() )
 				convertedType.setName( TypeRef.IDREF_PSEUDOTYPE_NAME );
-
 			else
 			{
 				// Excel mentions "Resource", but this is actually a "ResourceReference"
@@ -102,20 +93,11 @@ public class TypeRefConverter
 				{
 					convertedType.setName(TypeRef.RESOURCEREF_TYPE_NAME);
 					
-					if( ref.isAnyResource() )
-						convertedType.setResourceParam(null);
-					else
-						convertedType.setResourceParam( ref.getParams().get(0) );					
+					if( !ref.isAnyResource() )					
+						convertedType.getResourceParams().addAll(ref.getParams());					
 				}
 				else
 					convertedType.setName( ref.getName() );
-				
-//				if( ref.isBoundGeneric() )
-//				{
-//					if( ref.hasParams() && ref.getParams().size() > 1 )
-//						throw new Exception( "Don't know how to handle a generic typeref with > 1 generic param.");
-//				
-					
 			}
 			
 			result.add(convertedType);
@@ -158,27 +140,30 @@ public class TypeRefConverter
 			// since it is called "Resource" in the Excel. This type is
 			// then mapped to the pseudotype "ResourceRef" pseudotype
 			// in the next stages of processing.
-			org.hl7.fhir.definitions.model.TypeRef resourceRefPseudoType = 
-					new org.hl7.fhir.definitions.model.TypeRef();
-			resourceRefPseudoType.setName( "Resource" );
-			resourceRefPseudoType.getParams().add( org.hl7.fhir.definitions.model.TypeRef.ANY_RESOURCE_GENERIC_ARG );
-			expandedTypeRefs.add(resourceRefPseudoType);
+			// IMPORTANT: Removed this, allowing Resource where we put *
+			// gives confusing results, many times double inclusions.
+			// So * is now Primitive | Composite
+//			org.hl7.fhir.definitions.model.TypeRef resourceRefPseudoType = 
+//					new org.hl7.fhir.definitions.model.TypeRef();
+//			resourceRefPseudoType.setName( "Resource" );
+//			resourceRefPseudoType.getParams().add( org.hl7.fhir.definitions.model.TypeRef.ANY_RESOURCE_GENERIC_ARG );
+//			expandedTypeRefs.add(resourceRefPseudoType);
 		}
-		else if( ref.isBoundGeneric() && ref.hasParams() &&
-					ref.getParams().size() > 1)
-		{
-			// TypeX(A|B|C) becomes TypeX(A) | TypeX(B) | TypeX(C)
-			for( String param : ref.getParams() )
-			{
-				org.hl7.fhir.definitions.model.TypeRef newRef = 
-						new org.hl7.fhir.definitions.model.TypeRef();
-
-				newRef.setName(ref.getName());
-				newRef.getParams().add(param);
-				
-				expandedTypeRefs.add(newRef);
-			}				
-		}
+//		else if( ref.isBoundGeneric() && ref.hasParams() &&
+//					ref.getParams().size() > 1)
+//		{
+//			// TypeX(A|B|C) becomes TypeX(A) | TypeX(B) | TypeX(C)
+//			for( String param : ref.getParams() )
+//			{
+//				org.hl7.fhir.definitions.model.TypeRef newRef = 
+//						new org.hl7.fhir.definitions.model.TypeRef();
+//
+//				newRef.setName(ref.getName());
+//				newRef.getParams().add(param);
+//				
+//				expandedTypeRefs.add(newRef);
+//			}				
+//		}
 		else
 		{
 			// Do nothing

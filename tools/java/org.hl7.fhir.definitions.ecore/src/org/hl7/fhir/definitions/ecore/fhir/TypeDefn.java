@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#isInfrastructure <em>Infrastructure</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,12 +109,46 @@ public interface TypeDefn extends EObject {
 	void setScope(NameScope value);
 
 	/**
+	 * Returns the value of the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Infrastructure</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Infrastructure</em>' attribute.
+	 * @see #setInfrastructure(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeDefn_Infrastructure()
+	 * @model
+	 * @generated
+	 */
+	boolean isInfrastructure();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#isInfrastructure <em>Infrastructure</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Infrastructure</em>' attribute.
+	 * @see #isInfrastructure()
+	 * @generated
+	 */
+	void setInfrastructure(boolean value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	boolean isResource();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isGloballyDefined();
 
 	/**
 	 * <!-- begin-user-doc -->

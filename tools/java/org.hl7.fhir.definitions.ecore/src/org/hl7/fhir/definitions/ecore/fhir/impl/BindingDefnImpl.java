@@ -437,6 +437,15 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isGloballyDefined() {
+		return getParent().getContainingScope() == null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

@@ -82,12 +82,12 @@
   <xsd:element name="Invariant" type="fhir:Invariant"/>
   <xsd:complexType name="TypeRef">
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
+      <xsd:element name="resourceParams" nillable="true" type="xsd:string"/>
       <xsd:element ref="xmi:Extension"/>
     </xsd:choice>
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
-    <xsd:attribute name="resourceParam" type="xsd:string"/>
     <xsd:attribute name="bindingRef" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeRef" type="fhir:TypeRef"/>
@@ -243,6 +243,7 @@
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="infrastructure" type="xsd:boolean"/>
     <xsd:attribute name="scope" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeDefn" type="fhir:TypeDefn"/>

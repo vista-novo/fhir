@@ -29,19 +29,23 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 */
 
-import java.util.Date;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.hl7.fhir.definitions.Config;
+import org.eclipse.emf.common.util.EList;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.Invariant;
+import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.utilities.Utilities;
 
 
 public class CSharpResourceParserGenerator extends GenBlock
@@ -75,25 +79,26 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		begin();
 		
-		String returnType = GeneratorUtils.buildFullyScopedTypeName(composite,composite.getName());
+		String returnType = GeneratorUtils.buildFullyScopedTypeName(composite);
 				
 		ln("public static ");
 			nl( returnType );
 			nl(" ");
-			nl("parse" + composite.getName());
-			nl("( XmlTextReader reader)");
+			nl("Parse" + composite.getName());
+			nl("(XmlTextReader reader)");
 		bs("{");		
 			ln("string id;");
 			ln( returnType );
 				nl(" result = ");
 				nl("new " + returnType + "();");
+			ln();
+			
+			// Generate this classes properties
+			if( composite.getElements().size() > 0)
+				memberProperties( composite.getElements() );
 	
-				// Generate this classes properties
-				if( composite.getElements().size() > 0)
-					memberProperties( composite.getElements(), composite );
-	
-				ln("");
-				ln("return result;");
+			ln();
+			ln("return result;");
 		es("}");
 		ln();
 	
@@ -109,93 +114,288 @@ public class CSharpResourceParserGenerator extends GenBlock
 
 	
 	
-	public GenBlock memberProperties( List<ElementDefn> elements, 
-								CompositeTypeDefn context ) throws Exception
+	public GenBlock memberProperties( List<ElementDefn> elements ) throws Exception
 	{
 		begin();
 		
 		for( ElementDefn member : elements )
 		{			
 			ln("// Parse element " + member.getElementPath());
-			if( member.getMaxCardinality() == 1 && member.getTypes().size() == 1 &&
-					Character.isLowerCase( member.getTypes().get(0).getName().charAt(0) ) )
-			{
-				TypeRef tref = member.getTypes().get(0);
-				
-				ln("if( reader.LocalName == ");
-					nl("\"" + member.getName() + "\"");
-					nl(" && reader.NamespaceURI == XmlUtil.FHIRNS)");
-				ln("	result." + 
-					GeneratorUtils.generateCSharpMemberName(member.getParentType(), member.getName()) );
-					nl(" = XmlPrimitiveParser.");
-					nl("Parse");
-					
-					if( GeneratorUtils.isCodeWithCodeList(member.getParentType(), tref) )
-					{
-						String enumType = 
-						   GeneratorUtils.buildFullyScopedEnumName(context, tref.getBindingRef());
-											
-						nl("Code<" + enumType + ">");
-					}
-					else
-					{
-						nl(GeneratorUtils.mapPrimitiveToFhirCSharpType(tref.getName()));
-					}
-					nl("(reader, out id);");
-				
-				if( member.getMinCardinality() == 1 )
-				{
-					ln("else");
-					ln("; // string error = XmlUtil.ParseError(reader, ");
-						nl("\"Missing required element '" + member.getName() + "'\");");
-				}
-				
-				ln();
-			}
+
+			// First determine the possible names of the properties in the
+			// instance, which might be multiple because of polymorph elements 
+			Map<String,TypeRef> possibleElementNames = 
+				determinePossibleElementNames(member.getParentType(), member.getName(), member.getTypes());
 			
-//			if( member.getMaxCardinality() == -1 )  nl("List<");		
-//			if( member.isAllowDAR() ) nl("Absentable<");
-//
-//			// Determine the most appropriate FHIR type to use for this
-//			// (possibly polymorphic) element.
-//			TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
-//			
-//			if( tref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
-//				nl("string");
-//			else if( GeneratorUtils.isCodeWithCodeList( member.getParentType(), tref ) )
-//			{
-//				nl("Code<" + GeneratorUtils.generateCSharpTypeName(tref.getBindingRef()) + ">");
-//				//isNullable = false;
-//			}
-//			else 
-//			{
-//				nl( GeneratorUtils.generateCSharpTypeName(tref.getName()) );
-//				//isNullable = mapsToNullableFhirPrimitive(tref.getName());
-//			}
-//						
-//			if( member.isAllowDAR() ) nl(">");
-//			if( member.getMaxCardinality() == -1 ) nl(">");
-//		
-//			// All generated members should be nullable, to indicate whether
-//			// the element has data or not. This means cardinality needs to be 
-//			// checked by the validation routines and is not converted to
-//			// a structural aspect here.
-//			//if( !isNullable ) nl("?");
-//			
-//			nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
-//			nl(" { get; set; }");
-//			ln();
+			if( member.isRepeating() )
+			{
+				TypeRef resultType = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
+				parseRepeatingElement(member.getParentType(), possibleElementNames,
+						member.isAllowDAR(), member.getName(), resultType );
+			}
+			else
+				parseSingleElement(member.getParentType(), possibleElementNames, member.getName());			
+						
+			ln();
 		}
 		
 		return end();
 	}
 	
 	
-//	private boolean mapsToNullableFhirPrimitive( String name )
-//	{
-//		return !(name.equals("boolean") ||
-//			name.equals("integer") ||
-//			name.equals("decimal")); 
-//	}
+	private NameScope findGlobalScope(NameScope context)
+	{
+		while( context.getContainingScope() != null )
+			context = context.getContainingScope();
+			
+		return context;
+	}
 	
+		
+	private Map<String,TypeRef> determinePossibleElementNames(NameScope context, String elementName, 
+								List<TypeRef> types) 
+	{
+		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
+			
+		// "Special case": no polymorphism.	
+		if( types.size() == 1 )
+		{
+			result.put( elementName, types.get(0) );
+			return result;
+		}
+						
+		for( TypeRef possibleType : types )
+		{					
+			if( possibleType.getName().equals(TypeRef.RESOURCEREF_TYPE_NAME) ) 
+				result.put(elementName + "Resource", possibleType);
+			else if( possibleType.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME ) )
+			{
+				// If the type of element is "Primitive" we can expect ANY primitive type
+				for( PrimitiveTypeDefn prim : ((Definitions)findGlobalScope(context)).getPrimitives())
+				{
+					TypeRef newRef = FhirFactory.eINSTANCE.createTypeRef();
+					newRef.setName(prim.getName());
+					result.put( elementName + Utilities.capitalize(prim.getName()), newRef );
+				} 
+			}
+			else if( possibleType.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME ) )
+			{
+				// If the type of element is "Composite" we can expect ANY composite type....
+				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+						findGlobalScope(context).getLocalCompositeTypes()) );
+				
+				// .... and ANY constraint type
+				result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+						findGlobalScope(context).getLocalConstrainedTypes()) );
+				
+				// .... and ANY nested composites/contraints
+				// If the type of element is "Composite" we can expect ANY composite type....
+				// Ouch...value[x] is not defined for local types...will still work though...
+				if( context != findGlobalScope(context) )
+				{
+					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+							context.getLocalCompositeTypes()) );
+					result.putAll( makeTypeRefsWithElementNamePrefix(elementName, 
+							context.getLocalConstrainedTypes()) );					
+				}					
+			}
+			else
+				result.put(elementName + Utilities.capitalize(possibleType.getName()), possibleType);	
+		}
+		
+		return result;
+	}
+
+	
+	private Map<String,TypeRef> makeTypeRefsWithElementNamePrefix( String elementName, List types )
+	{
+		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
+		
+		for(Object defo : types)
+		{
+			TypeDefn def = (TypeDefn)defo;
+			if( !def.isInfrastructure() )
+			{
+				TypeRef newRef = FhirFactory.eINSTANCE.createTypeRef();
+				newRef.setName(def.getName());
+				result.put( elementName + Utilities.capitalize(def.getName()), newRef );
+			}
+		}
+		
+		return result;
+	}
+
+	private String buildCheckForElementClause( Collection<String> possibleElementNames )
+	{
+		String clause = "reader.NamespaceURI == XmlUtil.FHIRNS && ";
+		
+		if( possibleElementNames.size() > 1 ) clause += "(";
+		boolean firstClause = true;
+		
+		for( String name : possibleElementNames )
+		{
+			if( !firstClause ) clause += " || ";
+			firstClause = false;
+			
+			clause += "reader.LocalName == \"" + name + "\"";
+		}
+
+		if( possibleElementNames.size() > 1 ) clause += ")";
+		
+		return clause;
+	}
+
+	private void parseRepeatingElement( CompositeTypeDefn scope, 
+					Map<String,TypeRef> possibleElementNames, boolean allowDar, 
+					String memberName, TypeRef resultType  ) throws Exception
+	{
+
+		String resultMember = "result." + 
+				GeneratorUtils.generateCSharpMemberName(scope, memberName);
+		
+		ln("while( ");
+			nl( buildCheckForElementClause(possibleElementNames.keySet()) );
+			nl(" )");
+		bs("{");
+			// The first iteration, allocate an List in the property 
+			// we are going to fill. 
+			ln("if(" + resultMember + " == null)");
+			bs();
+				ln(resultMember);
+					nl(" = ");
+					nl("new List<");
+					if( allowDar ) nl("Absentable<");
+					nl(GeneratorUtils.buildFullyScopedTypeName(scope,resultType));
+					if( allowDar ) nl(">");
+					nl(">();");
+			es();
+			ln();
+			
+			// Add the found element to the list.
+			// Check for all posibilities in a polymorphic type,
+			// or just grab the value when its not polymorphic.
+			for( String name : possibleElementNames.keySet() )
+			{
+				if( possibleElementNames.size() > 1 )
+				{
+					ln("if( reader.LocalName == \"" + name + "\")" );
+					bs();
+				}
+				ln(resultMember + ".Add(");
+				nl( buildParserCall(scope, possibleElementNames.get(name)) );
+				nl(");");
+				if( possibleElementNames.size() > 1 )
+				{
+					es();
+				}
+			}
+			
+		es("}");
+	}
+	
+	private void parseSingleElement( CompositeTypeDefn scope, Map<String,TypeRef> possibleElementNames,
+					String memberName ) throws Exception
+	{
+		ln("if( " );
+			nl( buildCheckForElementClause(possibleElementNames.keySet()) );
+			nl(" )");
+
+		if( possibleElementNames.size() > 1 )
+			bs("{");
+			
+		// Check for all posibilities in a polymorphic type,
+		// or just grab the value when its not polymorphic.
+		for( String name : possibleElementNames.keySet() )
+		{
+			if( possibleElementNames.size() > 1 )
+			{
+				ln("if( reader.LocalName == \"" + name + "\")" );
+			}
+			bs();
+				ln("result." + 
+					GeneratorUtils.generateCSharpMemberName(scope, memberName) );
+				nl(" = ");
+				nl( buildParserCall(scope, possibleElementNames.get(name)) );
+				nl(";");
+			es();
+		}
+		
+		if( possibleElementNames.size() > 1 )
+			es("}");
+	}
+	
+	
+	private String buildParserCall(NameScope resolver, TypeRef ref) throws Exception
+	{
+		TypeDefn typeToParse = resolver.resolveType(ref.getName());
+				
+		if( GeneratorUtils.isCodeWithCodeList(resolver, ref) )
+			return buildEnumeratedCodeParserCall(resolver,ref);	
+		else if( typeToParse.isPrimitive() )
+			return buildPrimitiveParserCall((PrimitiveTypeDefn)typeToParse);
+		else if( typeToParse.isConstrained() )
+			return buildConstrainedParserCall((ConstrainedTypeDefn)typeToParse);
+		else if( typeToParse.isComposite() )
+			return buildCompositeParserCall((CompositeTypeDefn)typeToParse); 
+		else
+			throw new Exception( "Cannot handle category of type " + typeToParse.getName() + " to generate parser call." );
+			
+	}
+	
+	
+	private String buildConstrainedParserCall(ConstrainedTypeDefn constrained) throws Exception
+	{
+		CompositeTypeDefn baseType = 
+			((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
+		
+		// Generate upcast to constrained type 
+		String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")"
+				+ buildCompositeParserCall( baseType );
+				
+		return result;
+	}
+	
+	private String buildCompositeParserCall(CompositeTypeDefn composite) throws Exception
+	{		
+		StringBuilder result = new StringBuilder();
+		
+		if( composite.isGloballyDefined() )
+		{
+			// A type defined on the global level, child of Definitions
+			result.append("Xml" + composite.getName() + "Parser" );	
+		}
+		else
+		{
+			// A type defined inside a globally defined composite 
+			result.append("Xml" + ((CompositeTypeDefn)composite.getScope()).getName() + "Parser");
+		}
+
+		result.append(".Parse" + composite.getName() );
+		result.append("(reader)");
+		
+		return result.toString(); 
+	}
+	
+
+	private String buildEnumeratedCodeParserCall(NameScope scope, TypeRef ref) throws Exception
+	{
+		StringBuffer result = new StringBuffer();
+		
+		result.append("XmlPrimitiveParser.Parse");
+		
+		BindingDefn binding = scope.resolveBinding(ref.getBindingRef());
+		String enumType = GeneratorUtils.buildFullyScopedEnumName(binding);
+								
+		result.append("Code<" + enumType + ">");
+		result.append("(reader, out id)");
+		
+		return result.toString();
+	}
+
+	private String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
+	{
+		return "XmlPrimitiveParser.Parse" +
+				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
+				"(reader, out id)";
+	}
 }

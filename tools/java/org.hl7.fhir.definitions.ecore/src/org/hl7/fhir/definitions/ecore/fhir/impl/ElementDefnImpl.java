@@ -612,6 +612,15 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isRepeating() {
+		return getMaxCardinality() == -1 || getMaxCardinality() > 1;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")

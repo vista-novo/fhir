@@ -498,13 +498,13 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__NAME = 0;
 
 	/**
-	 * The feature id for the '<em><b>Resource Param</b></em>' attribute.
+	 * The feature id for the '<em><b>Resource Params</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__RESOURCE_PARAM = 1;
+	int TYPE_REF__RESOURCE_PARAMS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Binding Ref</b></em>' attribute.
@@ -669,13 +669,22 @@ public interface FhirPackage extends EPackage {
 	int TYPE_DEFN__SCOPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFN__INFRASTRUCTURE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Type Defn</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN_FEATURE_COUNT = 3;
+	int TYPE_DEFN_FEATURE_COUNT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -703,6 +712,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOSITE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__INFRASTRUCTURE = TYPE_DEFN__INFRASTRUCTURE;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -784,6 +802,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_DEFN__SCOPE = COMPOSITE_TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__INFRASTRUCTURE = COMPOSITE_TYPE_DEFN__INFRASTRUCTURE;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -975,6 +1002,15 @@ public interface FhirPackage extends EPackage {
 	int PRIMITIVE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
 
 	/**
+	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_DEFN__INFRASTRUCTURE = TYPE_DEFN__INFRASTRUCTURE;
+
+	/**
 	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1027,6 +1063,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRAINED_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINED_TYPE_DEFN__INFRASTRUCTURE = TYPE_DEFN__INFRASTRUCTURE;
 
 	/**
 	 * The feature id for the '<em><b>Base Type</b></em>' containment reference.
@@ -1959,15 +2004,15 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam <em>Resource Param</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParams <em>Resource Params</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resource Param</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParam()
+	 * @return the meta object for the attribute list '<em>Resource Params</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParams()
 	 * @see #getTypeRef()
 	 * @generated
 	 */
-	EAttribute getTypeRef_ResourceParam();
+	EAttribute getTypeRef_ResourceParams();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}'.
@@ -2367,6 +2412,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTypeDefn_Scope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#isInfrastructure <em>Infrastructure</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Infrastructure</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#isInfrastructure()
+	 * @see #getTypeDefn()
+	 * @generated
+	 */
+	EAttribute getTypeDefn_Infrastructure();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn <em>Composite Type Defn</em>}'.
@@ -3146,12 +3202,12 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__NAME = eINSTANCE.getTypeRef_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Resource Param</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Resource Params</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TYPE_REF__RESOURCE_PARAM = eINSTANCE.getTypeRef_ResourceParam();
+		EAttribute TYPE_REF__RESOURCE_PARAMS = eINSTANCE.getTypeRef_ResourceParams();
 
 		/**
 		 * The meta object literal for the '<em><b>Binding Ref</b></em>' attribute feature.
@@ -3464,6 +3520,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPE_DEFN__SCOPE = eINSTANCE.getTypeDefn_Scope();
+
+		/**
+		 * The meta object literal for the '<em><b>Infrastructure</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_DEFN__INFRASTRUCTURE = eINSTANCE.getTypeDefn_Infrastructure();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.CompositeTypeDefnImpl <em>Composite Type Defn</em>}' class.

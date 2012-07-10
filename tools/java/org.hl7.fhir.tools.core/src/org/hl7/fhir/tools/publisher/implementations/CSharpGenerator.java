@@ -76,9 +76,9 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		File p = new File(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
 		
 		List<String> generatedFilenames = new ArrayList<String>();
-	
 		{
 			String enumsFilename = modelDir + "Bindings.cs";
+		
 			new CSharpResourceGenerator()
 				.generateGlobalEnums(definitions.getBindings(),definitions).toFile(implDir+enumsFilename);						 
 			generatedFilenames.add(enumsFilename);

@@ -268,4 +268,12 @@ public interface BindingDefn extends EObject {
 	 */
 	void setParent(NameScope value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isGloballyDefined();
+
 } // BindingDefn
