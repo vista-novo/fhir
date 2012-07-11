@@ -18,8 +18,8 @@ bundle depend on the type of the request.
 The events supported in FHIR, along with the resources that are included in them, are defined below. 
 </p>
 <p>
-The destination application processes the request, and returns one or more response messages 
-which are also an <a href="atom.htm#bundle">bundle</a> of resources, with the first 
+The destination application processes the request and returns one or more response messages 
+which are also a <a href="atom.htm#bundle">bundle</a> of resources, with the first 
 resource in the bundle being a <a href="#resource">Message</a> resource with a response
 section that reports the outcome of processing the message and any additional response resources 
 required. 
@@ -31,9 +31,9 @@ This specification assumes that content will be delivered from one application
 to another by some delivery mechanism, and then a response will be returned 
 to the source application. The exact mechanism of transfer is irrelevant to
 this specification, but may include file transfer, http based transfer, LLP
-(HL7 minimal lower layer protocol), MQ series messaging, or anything else. 
+(HL7 minimal lower layer protocol), MQ series messaging or anything else. 
 The only requirement for the transfer layer is that requests are sent to 
-a known location, and responses are returned to the source of the request. 
+a known location and responses are returned to the source of the request. 
 This specification considers the source and destination applications as logical
 entites, and the mapping from logical source and destination to implementation
 specific addresses is outside the scope of this specification.
@@ -47,7 +47,7 @@ may require sequential delivery of messages.
 <p>
 This specification ignores the existence of interface engines and message transfer agents that 
 exist between the <i>source</i> and <i>destination</i>. Either they are transparent to the message/transaction 
-content, and irrelevant to this specification, or they are actively involved in manipulating the 
+content and irrelevant to this specification, or they are actively involved in manipulating the 
 message content. If these middleware agents are modifying the message content, then they become
 responsible for honoring the contract described below in both directions.
 </p>
@@ -67,7 +67,7 @@ a reasonable period in time). If it receives a duplicate message id that
 it has already responded to, it should assume that the original response 
 was lost (failed to return to the request issuer), and resend the original 
 response in a new bundle with Message.response.duplicate set 
-to true. If the source application gets no response to it's request from 
+to true. If the source application gets no response to its request from 
 the destination application, the source application should resend the 
 same bundle with the same atom feed.id. 
 </p>
@@ -95,9 +95,9 @@ statement is a <a href="conformance.htm">resource with the name
 </ul>
 <p>
 The first end-point is used for working within the message contents, for instance, for building 
-messages piecemeal, or for auditing received messages. <b>Creating or updating Message resources
-to this end point does not represent the actual occurance of any event, not can it trigger
-any logic associated with the actual event</b>; it is just for managing message resources.
+messages piecemeal or for auditing received messages. <b>Creating or updating Message resources
+to this end point does not represent the actual occurance of any event, nor can it trigger
+any logic associated with the actual event.</b> It is just for managing message resources.
 </p>
 <p>
 The second end-point is used for actually sending messages as <a href="atom.htm#bundle">bundles</a>, to indicate 
@@ -106,7 +106,7 @@ response as defined for the particular event, or an error indicating that the at
 process the message was unsuccesful. The functionality of this end-point <a href="#mailbox">is described below</a>.
 </p>
 <p>
-Note: While the end-points above are defined for use with message resources, and for delivering
+Note: While the end-points above are defined for use with message resources and for delivering
 messages to a RESTful server, it is not necessary to use them; messages may be transported 
 between systems using any method desired.
 </p>

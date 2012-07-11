@@ -4,7 +4,7 @@
 Notes:
 </p>
 <ul>
-<li>The resource references enterer, author, and responsible may 
+<li>The resource references enterer, author and responsible may 
   all be included in the bundle or left out on the basis that the recipient (and any intermediaries) are able to locate/resolve the resources
   independently. The former would be suitable for loosely coupled systems, and the latter for tightly coupled systems. The messaging conformance 
   statement for an application may reference <a href="profile.htm">a profile</a> that describes how the bundling occurs</li>
@@ -25,7 +25,8 @@ no obligation to do anything particular with the resources except as required by
 message resource. A server may choose to retain the resources and make them available on a RESTful interface, but 
 is not required to do so. If the server returns 200 Ok, it must return a valid message that indicates what the outcome
 of the event processing is. An HTTP error indicates that the message was not processed successfully, and that it should
-be resubmitted (and doing so should not result in a duplicate message response).
+be resubmitted (and doing so should not result in a duplicate message response).  Repeated failures indicate either a
+fatal problem with the message or a problem with the receiving application.
 </p>
 <p>
 The mail box can also be used to accept documents. In this case, the document is "accepted" (the server 
