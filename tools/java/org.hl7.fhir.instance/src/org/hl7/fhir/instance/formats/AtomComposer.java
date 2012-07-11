@@ -74,7 +74,7 @@ public class AtomComposer extends XmlBase {
     if (feed.getTitle() != null)
       xml.element(ATOM_NS, "title", feed.getTitle());
     if (feed.getUpdated() != null)
-      xml.element(ATOM_NS, "updated", new SimpleDateFormat("YYYY-MM-DDTHH:NN:SSZ").format(feed.getUpdated()));
+      xml.element(ATOM_NS, "updated", dateToXml(feed.getUpdated()));
     if (feed.getId() != null)
       xml.element(ATOM_NS, "id", feed.getId());
     if (feed.getLink() != null) {

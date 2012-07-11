@@ -48,6 +48,7 @@ import java.util.Map;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -75,7 +76,10 @@ import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.UMLValidator;
 import org.hl7.fhir.instance.formats.AtomComposer;
+import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.formats.XmlParserBase;
+import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Profile;
@@ -97,6 +101,8 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.ls.LSInput;
 import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
@@ -120,16 +126,25 @@ public class Publisher {
 	private BookMaker book;
 
 	private boolean isInternalRun;
+	private boolean isGenerate;
 	private AtomFeed profileFeed;
 
 	public static void main(String[] args) throws Exception {
 		//
 		Publisher pub = new Publisher();
-		pub.isInternalRun = !(args.length > 1 && args[1].equals("-web"));
+		pub.isInternalRun = !(args.length > 1 && hasParam(args, "-web"));
+    pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
 		pub.execute(args[0]);
 	}
 
-	public void execute(String folder) throws Exception {
+	private static boolean hasParam(String[] args, String param) {
+    for (String a : args) 
+      if (a.equals(param))
+        return true;
+    return false;
+  }
+
+  public void execute(String folder) throws Exception {
 
 		log("Publish FHIR in folder "
 				+ folder
@@ -139,28 +154,28 @@ public class Publisher {
 		registerReferencePlatforms();
 
 		if (initialize(folder)) {
-			Utilities.clearDirectory(page.getFolders().dstDir);
-			Utilities.createDirectory(page.getFolders().dstDir + "html");
-			prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
+      if (isGenerate) {
+        Utilities.clearDirectory(page.getFolders().dstDir);
+        Utilities.createDirectory(page.getFolders().dstDir + "html");
+      }
+      prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
+      
 			if (validate()) 
 			{
-				String eCorePath =  page.getFolders().dstDir + "ECoreDefinitions.xml";
-				generateECore(prsr.getECoreParseResults(), eCorePath);
-				produceSpecification(eCorePath);
+			  if (isGenerate) {
+			    String eCorePath =  page.getFolders().dstDir + "ECoreDefinitions.xml";
+			    generateECore(prsr.getECoreParseResults(), eCorePath);
+			    produceSpecification(eCorePath);
+			  }
 				validateXml();
-				validateJava();
 				System.out.println("Finished publishing FHIR");
 			} else
 				System.out.println("Didn't publish FHIR due to errors");
 		}
 	}
 
-	private void validateJava() {
-		// todo.. compile resource code... javax.tools.
 
-	}
-
-	private void generateECore(org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions, String filename) throws IOException {
+  private void generateECore(org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions, String filename) throws IOException {
 		 Resource resource = new XMLResourceImpl();
 		 Map<String, String> options = new HashMap<String, String>();
 		 options.put(XMLResource.OPTION_ENCODING, "UTF-8");
@@ -284,7 +299,7 @@ public class Publisher {
 			
 			if( !gen.isECoreGenerator() )
 				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(),
-						page.getGenDate(), page);
+						page.getGenDate().getTime(), page);
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
@@ -294,7 +309,7 @@ public class Publisher {
 				page.getFolders().tmpResDir, page.getFolders().xsdDir,
 				page.getFolders().dstDir, page.getFolders().srcDir,
 				page.getVersion(),
-				Config.DATE_FORMAT().format(page.getGenDate()));
+				Config.DATE_FORMAT().format(page.getGenDate().getTime()));
     for (ResourceDefn r : page.getDefinitions().getResources().values()) {
       String n = r.getName().toLowerCase();
       SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
@@ -912,6 +927,12 @@ public class Publisher {
 
 	private void validateXml() throws Exception {
 		log("Validating XML");
+    log(" .. Java too. Note that for now, Java validation runs a build behind.");
+
+
+		
+		
+		
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
 		sources[0] = new StreamSource(new FileInputStream(
@@ -944,14 +965,78 @@ public class Publisher {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		MyErrorHandler err = new MyErrorHandler(true);
 		builder.setErrorHandler(err);
-		builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n
-				+ ".xml")));
+		builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
 		if (err.getErrors().size() > 0)
-			throw new Exception("Resource Example " + n
-					+ " failed schema validation");
+			throw new Exception("Resource Example " + n	+ " failed schema validation");
+
+		// now, load and save in java and compare source
+    FileInputStream in = new FileInputStream(new File(page.getFolders().dstDir + n + ".xml"));
+    XmlParser p = new XmlParser();
+    ResourceOrFeed rf =  p.parseGeneral(in);
+    if (rf.getFeed() != null)
+      new AtomComposer().compose(new FileOutputStream(page.getFolders().tmpResDir+"tmp.xml"), rf.getFeed(), true);
+    else
+      new XmlComposer().compose(new FileOutputStream(page.getFolders().tmpResDir+"tmp.xml"), rf.getResource(), true);
+    compareXml(page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
 	}
 
-	private void produceCombinedDictionary() throws FileNotFoundException,
+	 private void compareXml(String fn1, String fn2) throws Exception {
+	   DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+	   dbf.setNamespaceAware(true);
+	   dbf.setCoalescing(true);
+	   dbf.setIgnoringElementContentWhitespace(true);
+	   dbf.setIgnoringComments(true);
+	   DocumentBuilder db = dbf.newDocumentBuilder();
+
+	   Document doc1 = db.parse(new File(fn1));
+	   doc1.normalizeDocument();
+	   stripWhitespaceAndComments(doc1);
+
+	   Document doc2 = db.parse(new File(fn2));
+	   doc2.normalizeDocument();
+	   stripWhitespaceAndComments(doc2);
+
+	   if (!doc1.isEqualNode(doc2)) {
+	     page.log("file "+fn1+" did not round trip perfectly in XML");
+//	     List<String> command = new ArrayList<String>();
+//	     command.add("\"c:\\program files (x86)\\WinMerge\\WinMergeU.exe\" \""+fn1+"\" \""+fn2+"\"");
+//	 
+//	     ProcessBuilder builder = new ProcessBuilder(command);
+//	     builder.directory(new File(page.getFolders().rootDir));
+//	     final Process process = builder.start();
+//	     process.waitFor();
+
+	   }
+  }
+
+
+	private void stripWhitespaceAndComments(Node node) {
+	  if (node.getNodeType() == Node.ELEMENT_NODE) {
+	    Element e = (Element) node;
+	    Map<String, String> attrs = new HashMap<String, String>();
+	    for (int i = e.getAttributes().getLength() - 1; i >= 0; i--) { 
+	      attrs.put(e.getAttributes().item(i).getNodeName(), e.getAttributes().item(i).getNodeValue());
+  	    e.removeAttribute(e.getAttributes().item(i).getNodeName());
+	    }
+	    for (String n : attrs.keySet()) {
+	      e.setAttribute(n, attrs.get(n));
+	    }
+	  }
+    for (int i = node.getChildNodes().getLength()-1; i >= 0; i--) {
+      Node c = node.getChildNodes().item(i);
+      if (c.getNodeType() == Node.TEXT_NODE && c.getTextContent().trim().length() == 0)
+        node.removeChild(c);
+      else if (c.getNodeType() == Node.TEXT_NODE)
+        c.setTextContent(c.getTextContent().trim());
+      else if (c.getNodeType() == Node.COMMENT_NODE)
+        node.removeChild(c);
+      else if (c.getNodeType() == Node.ELEMENT_NODE)
+        stripWhitespaceAndComments(c);
+    }
+    
+  }
+
+  private void produceCombinedDictionary() throws FileNotFoundException,
 			UnsupportedEncodingException, Exception, IOException {
 		FileOutputStream fos = new FileOutputStream(page.getFolders().dstDir
 				+ "fhir.dict.xml");

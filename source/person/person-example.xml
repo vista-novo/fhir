@@ -82,7 +82,7 @@
       <system>urn:hl7.org::v2/0200</system>
       <display>European</display>
     </coding>
-    <primary idref="a25"/>
+    <primary>a25</primary>
 	</race>
 	<text>
     <status>generated</status>

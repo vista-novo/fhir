@@ -67,6 +67,9 @@ public class XhtmlParser {
     res.setNodeType(NodeType.Element);
     res.setName(xpp.getName());
     
+    for (int i = 0; i < xpp.getAttributeCount(); i++) {
+      res.getAttributes().put(xpp.getAttributeName(i), xpp.getAttributeValue(i));
+    }
     int eventType = xpp.next();
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.TEXT) {

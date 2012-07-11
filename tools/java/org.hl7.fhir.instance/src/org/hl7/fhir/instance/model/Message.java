@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
+// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A message that contains FHIR resources
+ * A transmission requesting action on a bundle of one or more resources or a response to such a request
  */
 public class Message extends Resource {
 
@@ -43,7 +43,7 @@ public class Message extends Resource {
         error, // Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
         rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is
         rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition
-        undeliverable; // A middleware agent was unable to deliver the message to it's supposed destination
+        undeliverable; // A middleware agent was unable to deliver the message to its intended destination
         public static ResponseCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -83,7 +83,7 @@ public class Message extends Resource {
         private ResponseCode code;
 
         /**
-         * True if this is not the first response, because the request message has been received more than once
+         * True if this is not the first response, because the identical request message has been received more than once
          */
         private boolean duplicate;
 
@@ -115,7 +115,7 @@ public class Message extends Resource {
 
     public class Source extends Element {
         /**
-         * Name of system
+         * Formal name for the target system
          */
         private String name;
 
@@ -231,7 +231,7 @@ public class Message extends Resource {
     /**
      * Instant the message was sent
      */
-    private java.util.Date instant;
+    private java.util.Calendar instant;
 
     /**
      * Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification
@@ -239,7 +239,7 @@ public class Message extends Resource {
     private String event;
 
     /**
-     * Information about the the message that this message is a response to - if it is a response
+     * Information about the the message that this message is a response to.  Only present if this message is a response.
      */
     private Response response;
 
@@ -254,12 +254,12 @@ public class Message extends Resource {
     private Destination destination;
 
     /**
-     * The person or device that performd the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions
+     * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions
      */
     private ResourceReference enterer;
 
     /**
-     * The logical author of the message - the person or device that decided it should happen. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions
+     * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the message. Can provide other authors in extensions
      */
     private ResourceReference author;
 
@@ -269,12 +269,12 @@ public class Message extends Resource {
     private ResourceReference responsible;
 
     /**
-     * The effective time - the real world time of the even that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)
+     * The effective time - the real world time of the event that the message represents. Usually this is just a starting time, but some message events also have an end time (do x for period y)
      */
     private Period effective;
 
     /**
-     * The cause of the event - a reason for why this message is being sent
+     * The cause of the event - a reason for the event that is a focus of this message occurred
      */
     private CodeableConcept reason;
 
@@ -291,11 +291,11 @@ public class Message extends Resource {
       this.threadId = value;
     }
 
-    public java.util.Date getInstant() { 
+    public java.util.Calendar getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(java.util.Date value) { 
+    public void setInstant(java.util.Calendar value) { 
       this.instant = value;
     }
 

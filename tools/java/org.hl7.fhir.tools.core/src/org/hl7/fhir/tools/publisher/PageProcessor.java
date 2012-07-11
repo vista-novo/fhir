@@ -31,6 +31,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -69,7 +70,7 @@ public class PageProcessor implements Logger  {
   private Navigation navigation;
   private List<PlatformGenerator> referenceImplementations = new ArrayList<PlatformGenerator>();
   private IniFile ini;
-  private Date genDate = new Date();
+  private Calendar genDate = Calendar.getInstance();
   
   
   private String dictForDt(String dt) throws Exception {
@@ -938,7 +939,7 @@ public class PageProcessor implements Logger  {
     this.ini = ini;
   }
 
-  public Date getGenDate() {
+  public Calendar getGenDate() {
     return genDate;
   }
 

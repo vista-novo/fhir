@@ -326,7 +326,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       else if (t.equals("base64Binary"))
         return formal ? "byte[]" : "bytes";
       else if (t.equals("instant"))
-        return formal ? "java.util.Date" : "Date";
+        return formal ? "java.util.Calendar" : "Date";
       else if (t.equals("uri"))
         return formal ? "java.net.URI" : "Uri";
       else 

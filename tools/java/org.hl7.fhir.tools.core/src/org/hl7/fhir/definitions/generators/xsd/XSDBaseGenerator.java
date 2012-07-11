@@ -96,11 +96,13 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	}
 
 private void genXmlIdRef() throws Exception {
-    write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
-    write("       but note that this can't work in aggregations (see comments in Resource Format section) -->\r\n");
-    write("  <xs:complexType name=\"xmlIdRef\">\r\n");
-    write("    <xs:attribute name=\"idref\" type=\"id-simple\"/>\r\n");
-    write("  </xs:complexType>\r\n");
+  write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
+  write("       but note that this can't work in aggregations (see comments in Resource Format section) -->\r\n");
+  write("    <xs:simpleType name=\"xmlIdRef\">\r\n");
+  write("      <xs:restriction base=\"id-simple\">\r\n");
+  write("        <xs:pattern value=\"[a-z0-9\\-\\.]{1,36}\"/>\r\n"); 
+  write("      </xs:restriction>\r\n");
+  write("    </xs:simpleType>\r\n");
   }
 
 //	private void genExtensionsElement() throws Exception {

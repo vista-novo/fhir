@@ -38,8 +38,8 @@ public class AtomEntry {
   private String category;
   private String authorName;
   private String authorUri;
-  private java.util.Date published;
-  private java.util.Date updated;
+  private java.util.Calendar published;
+  private java.util.Calendar updated;
   private Resource resource;
   private XhtmlNode summary;
   
@@ -86,16 +86,16 @@ public class AtomEntry {
   public void setAuthorUri(String authorUri) {
     this.authorUri = authorUri;
   }
-  public java.util.Date getPublished() {
+  public java.util.Calendar getPublished() {
     return published;
   }
-  public void setPublished(java.util.Date published) {
+  public void setPublished(java.util.Calendar published) {
     this.published = published;
   }
-  public java.util.Date getUpdated() {
+  public java.util.Calendar getUpdated() {
     return updated;
   }
-  public void setUpdated(java.util.Date updated) {
+  public void setUpdated(java.util.Calendar updated) {
     this.updated = updated;
   }
   public Resource getResource() {

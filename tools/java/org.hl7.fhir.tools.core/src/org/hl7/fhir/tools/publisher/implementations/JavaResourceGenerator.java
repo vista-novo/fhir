@@ -333,7 +333,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 					else if (tn.equals("integer")) tn = "int";
 					else if (tn.equals("decimal")) tn = "java.math.BigDecimal";
 					else if (tn.equals("base64Binary")) tn = "byte[]";
-					else if (tn.equals("instant")) tn = "java.util.Date";
+					else if (tn.equals("instant")) tn = "java.util.Calendar";
 					else if (tn.equals("string")) tn = "String";
 					else if (tn.equals("uri")) tn = "java.net.URI";
 					else if (tn.equals("code")) tn = "String";

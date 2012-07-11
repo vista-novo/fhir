@@ -28,9 +28,11 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.hl7.fhir.instance.model.AtomEntry;
@@ -39,6 +41,7 @@ import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.instance.model.ResourceReference;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
 public class AtomParser extends XmlBase {
   public AtomFeed parse(InputStream input) throws Exception {
@@ -56,11 +59,12 @@ public class AtomParser extends XmlBase {
   }
 
   private String parseString(XmlPullParser xpp) throws Exception {
-    if (xpp.next() != XmlPullParser.TEXT)
-      throw new Exception("No text in String");
-    String res = xpp.getText();
-    if (xpp.next() != XmlPullParser.END_TAG)
-      throw new Exception("Bad String Structure");
+    String res = null;
+    if (xpp.next() == XmlPullParser.TEXT) {
+      res = xpp.getText();
+      if (xpp.next() != XmlPullParser.END_TAG)
+        throw new Exception("Bad String Structure");
+    }
     xpp.next();
     return res;
   }
@@ -70,6 +74,7 @@ public class AtomParser extends XmlBase {
 
     if (!xpp.getName().equals("feed"))
       throw new Exception("This does not appear to be an atom feed (wrong name '"+xpp.getName()+"') (@ /)");
+    xpp.next();
     
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
@@ -77,14 +82,15 @@ public class AtomParser extends XmlBase {
         res.setTitle(parseString(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
         res.setId(parseString(xpp));
-      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link"))
-        throw new Exception("fixme"); // res.setLink(parseString(xpp));
-      else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
+      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link")){
+        res.setLink(xpp.getAttributeValue(null, "href"));
+        skipEmptyElement(xpp);
+      } else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
         res.setUpdated(parseDate(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("entry"))
         res.getEntryList().add(parseEntry(xpp));
       else
-        throw new Exception("Bad Xml parsing Agent");
+        throw new Exception("Bad Xml parsing Atom Feed");
       eventType = nextNoWhitespace(xpp);
     }
 
@@ -93,22 +99,26 @@ public class AtomParser extends XmlBase {
 
   private AtomEntry parseEntry(XmlPullParser xpp) throws Exception {
     AtomEntry res = new AtomEntry();
-    
+    xpp.next();    
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
       if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("title")) {
         res.setTitle(parseString(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("id"))
         res.setId(parseString(xpp));
-      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link"))
-        throw new Exception("fixme"); // res.setLink(parseString(xpp));
-      else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
+      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("link")) {
+        res.setLink(xpp.getAttributeValue(null, "href"));
+        skipEmptyElement(xpp);
+      } else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("updated"))
         res.setUpdated(parseDate(xpp));
       else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("published"))
         res.setPublished(parseDate(xpp));
-      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("category"))
-        res.setCategory(parseString(xpp));
-      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("author")) {
+      else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("category")) {
+        if ("http://hl7.org/fhir/sid/fhir/resource-types".equals(xpp.getAttributeValue(null, "scheme"))) 
+         res.setCategory(xpp.getAttributeValue(null, "term"));
+         skipEmptyElement(xpp);
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("author")) {
+        xpp.next();
         eventType = nextNoWhitespace(xpp);
         while (eventType != XmlPullParser.END_TAG) {
           if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("name")) {
@@ -119,23 +129,34 @@ public class AtomParser extends XmlBase {
             throw new Exception("Bad Xml parsing entry.author");
           eventType = nextNoWhitespace(xpp);
         }
+        xpp.next();
       }
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("content")) {
+        xpp.next();
         nextNoWhitespace(xpp);
         XmlParser p = new XmlParser();
         res.setResource(p.parse(xpp));
+        xpp.next();
+        nextNoWhitespace(xpp);
+        xpp.next();
+        
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("summary")) {
+        xpp.next();
         nextNoWhitespace(xpp);
         res.setSummary(new XhtmlParser().parseHtmlNode(xpp));
+        xpp.next();
+        nextNoWhitespace(xpp);
+        xpp.next();
       } else
         throw new Exception("Bad Xml parsing entry");
       eventType = nextNoWhitespace(xpp);
     }
 
+    xpp.next();
     return res;  
   }
 
-  private Date parseDate(XmlPullParser xpp) throws Exception {
+  private Calendar parseDate(XmlPullParser xpp) throws Exception {
     return xmlToDate(parseString(xpp));    
   }
 

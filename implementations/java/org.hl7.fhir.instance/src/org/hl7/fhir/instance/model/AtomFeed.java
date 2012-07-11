@@ -35,7 +35,7 @@ public class AtomFeed {
   private String id;
   private String title;
   private String link;
-  private java.util.Date updated;
+  private java.util.Calendar updated;
 
   private List<AtomEntry> entryList = new ArrayList<AtomEntry>();
 
@@ -63,11 +63,11 @@ public class AtomFeed {
     this.link = link;
   }
 
-  public java.util.Date getUpdated() {
+  public java.util.Calendar getUpdated() {
     return updated;
   }
 
-  public void setUpdated(java.util.Date updated) {
+  public void setUpdated(java.util.Calendar updated) {
     this.updated = updated;
   }
 

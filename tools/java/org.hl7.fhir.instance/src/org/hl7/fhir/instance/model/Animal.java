@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
+// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -42,7 +42,7 @@ public class Animal extends Resource {
         /**
          * Identifier for the entity
          */
-        private HumanId id;
+        private HumanId identifier;
 
         /**
          * Type of relationship
@@ -64,12 +64,12 @@ public class Animal extends Resource {
          */
         private List<Contact> contact = new ArrayList<Contact>();
 
-        public HumanId getId() { 
-          return this.id;
+        public HumanId getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(HumanId value) { 
-          this.id = value;
+        public void setIdentifier(HumanId value) { 
+          this.identifier = value;
         }
 
         public CodeableConcept getRole() { 

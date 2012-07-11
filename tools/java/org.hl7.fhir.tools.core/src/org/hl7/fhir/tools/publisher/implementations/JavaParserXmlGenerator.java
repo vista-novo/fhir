@@ -342,7 +342,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       else if (t.equals("base64Binary"))
         return formal ? "byte[]" : "bytes";
       else if (t.equals("instant"))
-        return formal ? "java.util.Date" : "Instant";
+        return formal ? "java.util.Calendar" : "Instant";
       else if (t.equals("uri"))
         return formal ? "java.net.URI" : "Uri";
       else 

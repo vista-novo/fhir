@@ -782,8 +782,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         parse = "XMLDateTimeStringToDateTime(child.text)";
       else if (tn.equals("TFhirXHtmlNode"))
         parse = "ParseXhtml(child)";
-      else if (tn.equals("TXmlIdReference"))
-        parse = "TMsXmlParser.GetAttribute(child, 'idref')";
+//      else if (tn.equals("TXmlIdReference"))
+//        parse = "TMsXmlParser.GetAttribute(child, 'idref')";
       else
         parse = "child.text";
     }
@@ -906,13 +906,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         assign.append("  F"+getTitle(s)+" := "+cn+"(oSource).F"+getTitle(s)+";\r\n");
         workingParserX.append("      else if (child.nodeName = '"+e.getName()+"') then\r\n        result."+s+" := "+parse+"\r\n");
         workingParserJ.append("      else if (FJson.ItemName = '"+e.getName()+"') then\r\n        result."+s+" := "+parseJ+"\r\n");
-        if (tn.equals("TXmlIdReference")) {
-          workingComposerX.append("  if (elem."+e.getName()+" <> '') then\r\n");
-          workingComposerX.append("  begin\r\n");
-          workingComposerX.append("    attribute(xml, 'idref', elem."+e.getName()+");\r\n");
-          workingComposerX.append("    xml.Tag('"+e.getName()+"');\r\n");
-          workingComposerX.append("  end;\r\n");
-        } else
+//        if (tn.equals("TXmlIdReference")) {
+//          workingComposerX.append("  if (elem."+e.getName()+" <> '') then\r\n");
+//          workingComposerX.append("  begin\r\n");
+//          workingComposerX.append("    attribute(xml, 'idref', elem."+e.getName()+");\r\n");
+//          workingComposerX.append("    xml.Tag('"+e.getName()+"');\r\n");
+//          workingComposerX.append("  end;\r\n");
+//        } else
           workingComposerX.append("  Text(xml, '"+e.getName()+"',"+srls.replace("#", "elem."+s)+");\r\n");
         workingComposerJ.append("  Prop(json, '"+e.getName()+"',"+srls.replace("#", "elem."+s)+");\r\n");
       }

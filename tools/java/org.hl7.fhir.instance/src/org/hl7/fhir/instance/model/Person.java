@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
+// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -71,7 +71,7 @@ public class Person extends Resource {
         /**
          * The identifier of a qualification
          */
-        private Identifier id;
+        private Identifier identifier;
 
         /**
          * The type of the qualification
@@ -88,12 +88,12 @@ public class Person extends Resource {
          */
         private Period period;
 
-        public Identifier getId() { 
-          return this.id;
+        public Identifier getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(Identifier value) { 
-          this.id = value;
+        public void setIdentifier(Identifier value) { 
+          this.identifier = value;
         }
 
         public CodeableConcept getCode() { 
@@ -155,7 +155,7 @@ public class Person extends Resource {
         /**
          * Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
          */
-        private HumanId id;
+        private HumanId identifier;
 
         /**
          * Code that specifies how this person is related to the subject. A code is required.
@@ -172,12 +172,12 @@ public class Person extends Resource {
          */
         private List<Contact> contact = new ArrayList<Contact>();
 
-        public HumanId getId() { 
-          return this.id;
+        public HumanId getIdentifier() { 
+          return this.identifier;
         }
 
-        public void setId(HumanId value) { 
-          this.id = value;
+        public void setIdentifier(HumanId value) { 
+          this.identifier = value;
         }
 
         public CodeableConcept getRole() { 

@@ -33,6 +33,7 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -70,15 +71,27 @@ public class XmlBase {
     this.allowUnknownContent = allowUnknownContent;
   }
   
-  protected String dateToXml(java.util.Date date) {
+  protected String dateToXml(java.util.Calendar date) {
     // there's a better way to do this in java 1.7, but for now going java 1.7 is too hard for implementers
-    String res = new SimpleDateFormat(XML_DATE_PATTERN).format(date);
-    return res.substring(0, 22)+":"+res.substring(22);  
+    // String res = new SimpleDateFormat(XML_DATE_PATTERN).format(date);
+    // return res.substring(0, 22)+":"+res.substring(22);
+ 
+    return javax.xml.bind.DatatypeConverter.printDateTime(date);
   }
   
-  protected java.util.Date xmlToDate(String date) throws ParseException {
+  protected java.util.Calendar xmlToDate(String date) throws ParseException {
     // there's a better way to do this in java 1.7, but for now going java 1.7 is too hard for implementers
-    date = date.substring(0, 22)+date.substring(23);  
-    return new SimpleDateFormat(XML_DATE_PATTERN).parse(date);
+    //if (date.length() > 23)
+    //  date = date.substring(0, 22)+date.substring(23);  
+    //return new SimpleDateFormat(XML_DATE_PATTERN).parse(date);
+    return javax.xml.bind.DatatypeConverter.parseDateTime(date);
+
   }
+
+  protected void skipEmptyElement(XmlPullParser xpp) throws Exception {
+    while (xpp.getEventType() != XmlPullParser.END_TAG) 
+      xpp.next();
+    xpp.next();
+  }
+
 }

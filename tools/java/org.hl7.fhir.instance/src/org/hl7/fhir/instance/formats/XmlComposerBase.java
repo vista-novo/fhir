@@ -202,7 +202,7 @@ public abstract class XmlComposerBase extends XmlBase {
     }
   }
   
-  protected void composeDate(String name, java.util.Date value) throws Exception {
+  protected void composeDate(String name, java.util.Calendar value) throws Exception {
 	  if (value != null) {
 	      xml.element(FHIR_NS, name, dateToXml(value));
 	  }

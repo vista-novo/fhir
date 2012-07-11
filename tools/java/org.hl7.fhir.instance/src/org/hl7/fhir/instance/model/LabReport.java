@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
+// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -310,7 +310,7 @@ public class LabReport extends Resource {
         private CodeableConcept meaning;
 
         /**
-         * Actual value of the reference range.  May be a quantity (<20mg/L), an interval (10-20 umol/L), or some text
+         * Actual value of the reference range.  May be a quantity (<20mg/L), an range (10-20 umol/L), or some text
          */
         private Type range;
 
@@ -340,7 +340,7 @@ public class LabReport extends Resource {
     /**
      * The date and/or time that the result was issued from the source for the recorded ‘Test result status
      */
-    private java.util.Date issued;
+    private java.util.Calendar issued;
 
     /**
      * The patient about who the report is about
@@ -415,11 +415,11 @@ public class LabReport extends Resource {
       this.status = value;
     }
 
-    public java.util.Date getIssued() { 
+    public java.util.Calendar getIssued() { 
       return this.issued;
     }
 
-    public void setIssued(java.util.Date value) { 
+    public void setIssued(java.util.Calendar value) { 
       this.issued = value;
     }
 

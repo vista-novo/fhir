@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 7, 2012 09:49+1000 for FHIR v0.04
+// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -273,7 +273,7 @@ public class Document extends Resource {
     /**
      * the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
      */
-    private java.util.Date instant;
+    private java.util.Calendar instant;
 
     /**
      * specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
@@ -340,11 +340,11 @@ public class Document extends Resource {
      */
     private List<Section> section = new ArrayList<Section>();
 
-    public java.util.Date getInstant() { 
+    public java.util.Calendar getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(java.util.Date value) { 
+    public void setInstant(java.util.Calendar value) { 
       this.instant = value;
     }
 

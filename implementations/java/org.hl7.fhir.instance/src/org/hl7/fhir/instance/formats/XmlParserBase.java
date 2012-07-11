@@ -50,6 +50,16 @@ public abstract class XmlParserBase extends XmlBase {
 
  
 
+  public class ResourceOrFeed {
+    private Resource resource;
+    private AtomFeed feed;
+    public Resource getResource() {
+      return resource;
+    }
+    public AtomFeed getFeed() {
+      return feed;
+    }
+  }
   private Map<String, Object> idMap = new HashMap<String, Object>();
 
   /** -- worker routines --------------------------------------------------- */
@@ -82,6 +92,19 @@ public abstract class XmlParserBase extends XmlBase {
   }
   
   abstract protected Resource parseResource(XmlPullParser xpp) throws Exception;
+
+  public ResourceOrFeed parseGeneral(InputStream input) throws Exception {
+    XmlPullParser xpp = loadXml(input);
+    ResourceOrFeed r = new ResourceOrFeed();
+    
+    if (xpp.getNamespace().equals(FHIR_NS))
+      r.resource = parseResource(xpp);
+    else if (xpp.getNamespace().equals(ATOM_NS)) 
+      r.feed = new AtomParser().parse(xpp);
+    else
+      throw new Exception("This does not appear to be a FHIR resource (wrong namespace '"+xpp.getNamespace()+"') (@ /)");
+    return r;    
+  }
 
   public Resource parse(InputStream input) throws Exception {
     XmlPullParser xpp = loadXml(input);
@@ -146,7 +169,7 @@ public abstract class XmlParserBase extends XmlBase {
 	    return result;    
 	  }
 	  
-  protected java.util.Date parseInstantSimple(XmlPullParser xpp) throws Exception {
+  protected java.util.Calendar parseInstantSimple(XmlPullParser xpp) throws Exception {
 	  return xmlToDate(parseString(xpp));    
   }
 	  

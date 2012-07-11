@@ -31,7 +31,7 @@ POSSIBILITY OF SUCH DAMAGE.
  */
 package org.hl7.fhir.instance.model;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * @author Grahame
@@ -39,13 +39,13 @@ import java.util.Date;
  */
 public class Instant extends Type {
 
-	private Date value;
+	private Calendar value;
 
-	public Date getValue() {
+	public Calendar getValue() {
 		return value;
 	}
 
-	public void setValue(Date value) {
+	public void setValue(Calendar value) {
 		this.value = value;
 	} 
 	

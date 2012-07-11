@@ -126,7 +126,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	   write(" -->\r\n");
 	   write(" &lt;<b>code</b>>"+ex.getCode()+"&lt;/code>\r\n"); 
 	   write(" &lt;<b>definition</b>><span style=\" color: Gray\">&lt;!-- </span> <span style=\"color: brown;\"><b>1..1</b></span> <span style=\"color: darkgreen;\"><a href=\"datatypes.htm#uri\">uri</a></span> <span style=\"color: navy\">where registered</span> <span style=\" color: Gray\">--&gt;</span>&lt;/definition>\r\n");
-	   write(" &lt;<b>ref</b> idref=\"<span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"xml.htm#idref\">Ref</a></span> to a "+ex.getContext()+" ("+ex.getType().toString()+")</span>\">  \r\n");
+	   write(" &lt;<b>ref</b>&gt; <span style=\"color: navy\"><span style=\"color: darkgreen;\"><a href=\"xml.htm#idref\">Ref</a></span> to a "+ex.getContext()+" ("+ex.getType().toString()+")</span>\">  \r\n");
 	   if (ex.getDefinition().isMustUnderstand())
 	     write(" &lt;<b>mustUnderstand</b>>true&lt;/mustUnderstand>\r\n");
 	   String vn = "value[x]";
@@ -269,8 +269,8 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</b></a>");
 			if (elem.isAllowDAR())
 				write(" <span style=\"color: red\" title=\"dataAbsentReason attribute is allowed\">d?</span>");
-			if (elem.isXmlIDRef())
-			  write(" idref=\"<span style=\"color: navy\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\">["+elem.getShortDefn()+"]</span>\"/");
+//			if (elem.isXmlIDRef())
+//			  write(" idref=\"<span style=\"color: navy\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\">["+elem.getShortDefn()+"]</span>\"/");
 			write("&gt;");
 
 			// If this is an unrolled element, show its profile name
@@ -368,7 +368,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 							+ Utilities.escapeXml(elem.getShortDefn())
 							+ "</span></a> ");
 				} else {
-				  if (!elem.isXmlIDRef()) 
+//				  if (!elem.isXmlIDRef()) 
 				    write("<span style=\"color: navy\">"
 				        + Utilities.escapeXml(elem.getShortDefn())
 				        + "</span>");
@@ -408,11 +408,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 			if (elem.getElements().isEmpty())
 				write("<span style=\"color: Gray\"> --&gt;</span>");
-			if (!elem.isXmlIDRef()) {
+//			if (!elem.isXmlIDRef()) {
 			  write("&lt;/");
 			  write(en);
 			  write("&gt;");
-			}
+//			}
 			if (elem.isInherited())
 				write("</i>");
 			write("\r\n");

@@ -253,6 +253,8 @@ public class SpreadsheetParser {
 			inv.setContext(sheet.getColumn(row, "Context"));
 			inv.setEnglish(sheet.getColumn(row, "English"));
 			inv.setXpath(sheet.getColumn(row, "XPath"));
+			if (!Utilities.noString(sheet.getColumn(row,  "Schematron")))
+			  log.log("Value found for schematron "+getLocation(row));  
 			inv.setOcl(sheet.getColumn(row, "OCL"));
 			if (s == null || s.equals("")
 					|| result.containsKey(s))

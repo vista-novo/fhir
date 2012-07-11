@@ -31,6 +31,7 @@ package org.hl7.fhir.definitions.parsers;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -141,11 +142,11 @@ public class SourceParser {
 		return sorted;
 	}
 	
-	public void parse(boolean isInternalRun, Date genDate, String version)
+	public void parse(boolean isInternalRun, Calendar genDate, String version)
 			throws Exception {
 		logger.log("Loading");
 
-		eCoreParseResults = DefinitionsImpl.build(genDate, version);
+		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
 
 		loadGlobalConceptDomains();
 		eCoreParseResults.getBindings().addAll(
