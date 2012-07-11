@@ -44,14 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model.Support\FhirDateTime.cs" />
-    <Compile Include="Model.Support\Date.cs" />
     <Compile Include="Model.Support\Id.cs" />
     <Compile Include="Model.Support\IdRef.cs" />
     <Compile Include="Model.Support\Sid.cs" />
     <Compile Include="Model.Support\Uuid.cs" />
     <Compile Include="Model.Support\Oid.cs" />
     <Compile Include="Model.Support\FhirUri.cs" />
-    <Compile Include="Model.Support\Instant.cs" />
     <Compile Include="Model.Support\FhirString.cs" />
     <Compile Include="Model.Support\Absentable.cs" />
     <Compile Include="Model.Support\Code.cs" />
@@ -61,12 +59,13 @@
     <Compile Include="Model.Support\FhirDecimal.cs" />
     <Compile Include="Model.Support\Integer.cs" />
     <Compile Include="Model.Support\XHtml.cs" />
-    <Compile Include="Model.Support\XsdDateTime.cs" />
-    <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
-    <Compile Include="Support\XmlUtils.cs" />
+	<Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
+    <Compile Include="Parsers.Support\XmlNarrativeParser.cs" />
+    <Compile Include="Support\ElementContent.cs" />
+    <Compile Include="Support\ErrorList.cs" />
+    <Compile Include="Support\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

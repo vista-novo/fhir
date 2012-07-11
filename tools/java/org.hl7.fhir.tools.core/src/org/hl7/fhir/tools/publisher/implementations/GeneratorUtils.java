@@ -293,8 +293,8 @@ public class GeneratorUtils {
 			return "decimal";
 		else if (name.equals("base64Binary"))
 			return "byte[]";
-		else if (name.equals("instant"))
-			return "XsdDateTime";
+//		else if (name.equals("instant"))
+//			return "Instant";
 		else if (name.equals("string"))
 			return "string";
 		else if (name.equals("uri"))
@@ -311,10 +311,10 @@ public class GeneratorUtils {
 			return "string";
 		else if (name.equals("xhtml"))
 			return "XElement";
-		else if (name.equals("date"))
-			return "XsdDateTime";
-		else if (name.equals("dateTime"))
-			return "XsdDateTime";
+//		else if (name.equals("date"))
+//			return "XsdDateTime";
+//		else if (name.equals("dateTime"))
+//			return "XsdDateTime";
 		else if (name.equals("idref"))
 			return "string";
 		else
@@ -332,7 +332,7 @@ public class GeneratorUtils {
 		else if (name.equals("base64Binary"))
 			return "Base64Binary";
 		else if (name.equals("instant"))
-			return "Instant";
+			return "FhirDateTime";
 		else if (name.equals("string"))
 			return "FhirString";
 		else if (name.equals("uri"))
@@ -350,7 +350,7 @@ public class GeneratorUtils {
 		else if (name.equals("xhtml"))
 			return "XHtml";
 		else if (name.equals("date"))
-			return "Date";
+			return "FhirDateTime";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
 		else if (name.equals("idref"))

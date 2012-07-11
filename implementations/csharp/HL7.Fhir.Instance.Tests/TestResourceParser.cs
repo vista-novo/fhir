@@ -7,6 +7,7 @@ using HL7.Fhir.Instance.Model;
 using HL7.Fhir.Instance.Parsers;
 using System.Xml;
 using System.IO;
+using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Tests
 {
@@ -31,9 +32,8 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestInstantParsing()
         {
-            Instant i = Instant.Parse("2011-03-04T11:45:33+11:00");
-
-            //Assert.AreEqual("2011-03-04T11:45:33+11:00", i.ToString());
+            FhirDateTime dt= FhirDateTime.Parse("2011-03-04T11:45:33+11:00");
+            Assert.AreEqual("2011-03-04 00:45:33Z", dt.AsUtcDateTime().ToString("u"));
         }
 
 
@@ -42,10 +42,9 @@ namespace HL7.Fhir.Instance.Tests
         {
             string xmlString = "<someElem>true</someElem>";
 
-            XmlReader r = fromString(xmlString);
-
-            XmlPrimitiveParser.FhirElementAttributes attrs;
-            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, out attrs);
+            XmlReader r = fromString(xmlString); r.Read();
+            ErrorList errors = new ErrorList();
+            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, errors);
             Assert.AreEqual(true,result.Value);
         }
 
@@ -59,31 +58,22 @@ namespace HL7.Fhir.Instance.Tests
 
             XmlReader r = XmlReader.Create(new StringReader(s), settings);
 
-            r.MoveToContent();
-
             return r;
         }
 
         [TestMethod]
         public void TestAttributesParsing()
         {
-            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' idref='1234' dataAbsentReason='6'>true</someElem>";
+            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " + 
+                                    "dataAbsentReason='asked'>1234</someElem>";
 
-            XmlReader r = fromString(xmlString);
+            XmlReader r = fromString(xmlString); r.Read();
 
-            XmlPrimitiveParser.FhirElementAttributes attrs;
-            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, out attrs);
-            Assert.AreEqual(true, result.Value);
-            Assert.AreEqual("12", attrs.Id);
-            Assert.AreEqual("1234", attrs.IdRef);
-            Assert.AreEqual("6", attrs.Dar);
-
-            xmlString = "<someElem idref='1234'/>";
-
-            XmlReader r2 = fromString(xmlString);
-
-            IdRef ir = XmlPrimitiveParser.ParseIdRef(r2, out attrs);
-            Assert.AreEqual("1234", ir.Value);
+            ErrorList errors = new ErrorList();
+            IdRef result = XmlPrimitiveParser.ParseIdRef(r, errors);
+            Assert.AreEqual("1234", result.Value);
+            Assert.AreEqual("12", result.ReferralId);
+            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
         }
 
         [TestMethod]
@@ -94,15 +84,44 @@ namespace HL7.Fhir.Instance.Tests
                                     <system>http://hl7.org/fhir/sid/icd-10</system>
                                  </x>";
 
-            XmlReader r = fromString(xmlString);
-  
-            Coding result = XmlCodingParser.ParseCoding(r);
+            XmlReader r = fromString(xmlString); r.Read();
+
+            ErrorList errors = new ErrorList();
+            Coding result = XmlCodingParser.ParseCoding(r, errors);
             Assert.AreEqual("G44.1", result.Code.Value);
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Value.ToString());
             Assert.IsNull(result.Display);
         }
 
+        [TestMethod]
+        public void TestParseUnknownMembersAndRecover()
+        {
+            string xmlString = @"<a xmlns='http://hl7.org/fhir'>
+                                 <x>
+                                    <code>G44.1</code>
+                                    <ewout>hoi</ewout>
+                                    <system>http://hl7.org/fhir/sid/icd-10</system>
+                                 </x>
+                                 <y>
+                                    <code>G44.2</code>
+                                    <system>http://hl7.org/fhir/sid/icd-10</system>
+                                 </y>
+                                 </a>";
 
+            XmlReader r = fromString(xmlString); r.Read();
+            r.Read();
+
+            ErrorList errors = new ErrorList();
+            Coding result = XmlCodingParser.ParseCoding(r, errors);
+            Assert.IsNull(result);
+            Assert.IsTrue(errors.Count > 0);
+
+            errors.Clear();
+            result = XmlCodingParser.ParseCoding(r, errors);
+            Assert.IsTrue(errors.Count == 0, errors.ToString()); 
+            Assert.AreEqual("G44.2", result.Code.Value);
+        }
+    
         [TestMethod]
         public void TestParseLargeComposite()
         {
@@ -112,13 +131,54 @@ namespace HL7.Fhir.Instance.Tests
             settings.IgnoreWhitespace = true;
 
             XmlReader r = XmlReader.Create(new StreamReader(@"C:\Users\Ewout\Documents\tst.xml"), settings);
-            r.MoveToContent();
+ 
+            ErrorList errors = new ErrorList();
+            LabReport rep = (LabReport)XmlResourceParser.ParseResource(r, errors);
 
-            LabReport rep = (LabReport)XmlResourceParser.ParseResource(r);
-
-            
+            Assert.IsNotNull(rep);
+            Assert.IsTrue(errors.Count() == 0, errors.ToString());
         }
-          
 
+        [TestMethod]
+        public void TestParseNameWithExtensions()
+        {
+            string xmlString =
+@"<Person xmlns='http://hl7.org/fhir'>
+    <id>34234</id>
+    <name>
+      <use>official</use>  
+      <part id='n1'>
+        <type>prefix</type>
+        <value>Dr. phil..</value>
+      </part>
+      <part>
+        <type>given</type>
+        <value>Regina</value>
+      </part>
+    </name>
+    <extension>
+      <code>name-qualifier</code>
+      <definition>http://hl7.org/fhir/profile/@iso-20190</definition>
+      <ref>n1</ref>
+      <valueCoding>
+        <code>AC</code>
+        <system>oid:2.16.840.1.113883.5.1122</system>
+      </valueCoding>
+    </extension>
+    <text>
+        <status>generated</status>
+        <div xmlns='http://www.w3.org/1999/xhtml'>Whatever</div>
+    </text>
+</Person>";
+
+            XmlReader r = fromString(xmlString);
+
+            ErrorList errors = new ErrorList();
+            Person p = (Person)XmlResourceParser.ParseResource(r, errors);
+
+            Assert.IsNotNull(p);
+            Assert.IsTrue(errors.Count() == 0, errors.ToString());
+            Assert.AreEqual(1,p.Extension.Count());
+        }
     }
 }

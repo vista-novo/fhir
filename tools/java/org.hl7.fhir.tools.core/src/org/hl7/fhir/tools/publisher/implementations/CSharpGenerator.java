@@ -114,10 +114,15 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
-			String compositeFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
-			new CSharpResourceParserGenerator()
-				.generateCompositeParser(composite, definitions).toFile(implDir+compositeFilename);			
-			generatedFilenames.add(compositeFilename);
+			// Make an exception for Narrative, this one is
+			// handcrafted because of the @%#$%@$%@@$ div element
+			if( !composite.getName().equals("Narrative") )
+			{
+				String compositeFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
+				new CSharpResourceParserGenerator()
+					.generateCompositeParser(composite, definitions).toFile(implDir+compositeFilename);			
+				generatedFilenames.add(compositeFilename);
+			}
 		}
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )

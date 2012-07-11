@@ -77,7 +77,7 @@ namespace HL7.Fhir.Instance.Model
         {
             if (Value != null)
             {
-                if (Value.Name != XmlUtil.DIVELEM)
+                if (Value.Name != Util.DIVELEM)
                     return "The xml must have <div> as its root element";
 
                 // TODO: Check whether only "simple" elements are used.

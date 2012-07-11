@@ -48,8 +48,15 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		bs("{");
 			for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
 			{
-				primitiveType(primitive);
-				ln();
+				// All time types reuse FhirDateTime and
+				// don't need their own primitive classes
+				if( !primitive.getName().equals("date") && 
+					 !primitive.getName().equals("dateTime") &&
+					 !primitive.getName().equals("instant"))
+				{
+					primitiveType(primitive);
+					ln();
+				}
 			}
 		es("}");
 		

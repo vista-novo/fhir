@@ -36,50 +36,45 @@ using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Date
+    // A date, or partial date (e.g. just year or year + month). There is no timezone. 
+    // The format is a union of the schema types gYear, gYearMonth, and date.  
+    // Dates must be valid dates.
+    public class Date : FhirDateTime
     {
         // No empty constructor - no explicit default value
 
-        public static bool TryParse( string value, out Date result)
-        {
-            XsdDateTime dateValue;  
+        //public static bool TryParse( string value, out Date result)
+        //{
+  
+        //    bool succ = TryParse(value, out result);
 
-            bool succ = XsdDateTime.TryParse(value, out dateValue);
+        //    if (succ &&
+        //        (result.Kind == FhirDateTime.FhirDateTimeKind.Year ||
+        //          result.Kind == FhirDateTime.FhirDateTimeKind.YearMonth ||
+        //          result.Kind == FhirDateTime.FhirDateTimeKind.Date))
+        //        return true;
+        //    else
+        //    {
+        //        result = null;
+        //        return false;
+        //    }
+        //}
 
-            if (succ && 
-                ( dateValue.Kind == XsdDateTime.XsdDateTimeKind.Year ||
-                  dateValue.Kind == XsdDateTime.XsdDateTimeKind.YearMonth ||
-                  dateValue.Kind == XsdDateTime.XsdDateTimeKind.Date ))
-            {
-                
-                result = new Date(dateValue);
-                return true;
-            }
-            else
-            {
-                result = null;
-                return false;
-            }
-        }
+        //public static Date Parse(string value)
+        //{
+        //    Date result = null;
 
-        public static Date Parse(string value)
-        {
-            Date result = null;
-
-            if (TryParse(value, out result))
-                return result;
-            else 
-                throw new FhirValueFormatException("Date must be a date/time value with year and/or month and/or day");
-        }
+        //    if (TryParse(value, out result))
+        //        return result;
+        //    else 
+        //        throw new FhirValueFormatException("Date must be a date/time value with year and/or month and/or day");
+        //}
        
 
 
         public override string ValidateData()
         {
-            if(this.Value == null)
-                return "Date must have a value";
-
-            if (this.Value.Kind != XsdDateTime.XsdDateTimeKind.DateTime)
+            if (this.Kind != FhirDateTimeKind.DateTime)
                 return "Date must be a date/time value with year and/or month and/or day";
 
             return null;

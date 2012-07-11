@@ -68,7 +68,7 @@ namespace HL7.Fhir.Instance.Model
             if (TryParse(value, out result))
                 return result;
             else 
-                throw new FhirValueFormatException("Not an correctly base64 encoded value");
+                throw new FhirValueFormatException("Not a correctly base64 encoded value");
         }
 
         public override string ValidateData()

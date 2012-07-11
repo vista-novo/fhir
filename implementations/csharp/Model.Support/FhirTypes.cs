@@ -38,6 +38,7 @@ namespace HL7.Fhir.Instance.Model
     public abstract class Data : IReferrable
     {
         public string ReferralId { get; set; }
+        public DataAbsentReason? Dar { get; set; }
 
         public virtual string ValidateData()
         {

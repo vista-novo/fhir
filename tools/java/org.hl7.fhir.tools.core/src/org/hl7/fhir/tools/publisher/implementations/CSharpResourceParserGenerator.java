@@ -30,23 +30,19 @@ package org.hl7.fhir.tools.publisher.implementations;
 */
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.EList;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
-import org.hl7.fhir.utilities.Utilities;
 
 
 public class CSharpResourceParserGenerator extends GenBlock
@@ -69,9 +65,11 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln("*/");
 			ln("public static partial class XmlResourceParser");
 			bs("{");
-				ln( "public static Resource ParseResource(XmlReader reader)");
+				ln("public static Resource ParseResource(XmlReader reader, ErrorList errors)");
 				bs("{");
-						generateResourceCases(definitions.getLocalResources());
+					ln("reader.MoveToContent();");
+					ln();
+					generateResourceCases(definitions.getLocalResources());
 				es("}");
 				ln();
 				generateInformationProperties(definitions);
@@ -120,15 +118,14 @@ public class CSharpResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( reader.LocalName == \"");
+			nl("( reader.NodeType == XmlNodeType.Element && reader.LocalName == \"");
 				nl( resource.getName() );
-				nl("\" && reader.NamespaceURI == XmlUtil.FHIRNS )");
+				nl("\" && reader.NamespaceURI == Util.FHIRNS )");
 			bs();
 				ln("return Xml" + resource.getName() + "Parser");
 					nl(".Parse" + resource.getName());
-					nl("(reader);");
-			es();
-				
+					nl("(reader, errors);");
+			es();				
 		}
 		
 		ln("else");
@@ -172,28 +169,30 @@ public class CSharpResourceParserGenerator extends GenBlock
 			nl( returnType );
 			nl(" ");
 			nl("Parse" + composite.getName());
-			nl("(XmlReader reader)");
-		bs("{");		
-			ln("XmlPrimitiveParser.FhirElementAttributes attrs;");
+			nl("(XmlReader reader, ErrorList errors)");
+		bs("{");	
 			ln( returnType );
 				nl(" result = ");
 				nl("new " + returnType + "();");
-			ln( "string dummyError;");
+			ln( "string elementName = reader.LocalName;");
 			ln();
+			ln("// Read starttag");
 			ln("reader.Read();");
 			ln();
 			
 			// Generate this classes properties
 			if( composite.getElements().size() > 0)
 			{
-				ln("while( reader.NodeType != XmlNodeType.EndElement )");
-				bs("{");
-						generateMemberParsers( composite.getElements() );
-					ln();
-				es("}");
+//				ln("while( reader.NodeType != XmlNodeType.EndElement )");
+//				bs("{");
+				generateMemberParsers( composite.getElements() );
 				ln();
+//				es("}");
+//				ln();
 			}
+			ln("// Read endtag");
 			ln("reader.Read();");
+			ln();
 			ln("return result;");
 		es("}");
 		ln();
@@ -214,33 +213,36 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		begin();
 		
-		boolean isFirst = true;
-	
-		ln("if( reader.EOF )");
-		bs("{");
-			ln("dummyError = \"Unexpected end-of-file\";");
-			ln("return null;");
-		es("}");
-		ln();
+//		boolean isFirst = true;
+//	
+//		ln("if( reader.EOF )");
+//		bs("{");
+//			ln("dummyError = \"Unexpected end-of-file\";");
+//			ln("return null;");
+//		es("}");
+//		ln();
 		
 		for( ElementDefn member : elements )
 		{			
 			ln("// Parse element " + member.getElementPath());	
-			generateMemberParser(member, isFirst);
-			isFirst = false;
+			generateMemberParser(member);
+	//		isFirst = false;
 		}
 		
-		ln("else");
-		bs("{");
-			ln("reader.Skip();");
-			ln("dummyError = \"Encountered unrecognized element \" + reader.LocalName;");
+		ln("if (reader.NodeType != XmlNodeType.EndElement)" );
+        bs("{");
+			ln("errors.Add(String.Format(");
+				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
+                nl("	reader.LocalName, elementName), (IXmlLineInfo)reader);");
+            ln("while (reader.NodeType != XmlNodeType.EndElement) reader.Skip();");
+            ln("result = null;");
 		es("}");
-		
+	         
 		return end();
 	}
 
 
-	private void generateMemberParser(ElementDefn member, boolean isFirstIfStatement) throws Exception 
+	private void generateMemberParser(ElementDefn member) throws Exception 
 	{
 		// First determine the possible names of the properties in the
 		// instance, which might be multiple because of polymorph elements 
@@ -248,10 +250,10 @@ public class CSharpResourceParserGenerator extends GenBlock
 			GeneratorUtils.determinePossibleElementNames(member.getParentType(),
 				member.getName(), member.getTypes());
 
-		if( isFirstIfStatement )
+	//	if( isFirstIfStatement )
 			ln("if( " );
-		else
-			ln("else if(");
+	//	else
+	//		ln("else if(");
 		
 		nl( buildCheckForElementClause(possibleElementNames.keySet()) );
 		nl(" )");
@@ -260,7 +262,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		{
 			TypeRef resultType = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
 			parseRepeatingElement(member.getParentType(), possibleElementNames,
-					member.isAllowDAR(), member.getName(), resultType );
+					member.getName(), resultType );
 		}
 		else
 			parseSingleElement(member.getParentType(), possibleElementNames, member.getName());			
@@ -271,7 +273,8 @@ public class CSharpResourceParserGenerator extends GenBlock
 	
 	private String buildCheckForElementClause( Collection<String> possibleElementNames )
 	{
-		String clause = "reader.NamespaceURI == XmlUtil.FHIRNS && ";
+		String clause = "reader.NodeType == XmlNodeType.Element && " +
+							"reader.NamespaceURI == Util.FHIRNS && ";
 		
 		if( possibleElementNames.size() > 1 ) clause += "(";
 		boolean firstClause = true;
@@ -290,7 +293,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 
 	private void parseRepeatingElement( CompositeTypeDefn scope, 
-					Map<String,TypeRef> possibleElementNames, boolean allowDar, 
+					Map<String,TypeRef> possibleElementNames,  
 					String memberName, TypeRef resultType  ) throws Exception
 	{
 
@@ -302,9 +305,9 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln(resultMember);
 				nl(" = ");
 				nl("new List<");
-				if( allowDar ) nl("Absentable<");
+//				if( allowDar ) nl("Absentable<");
 					nl(GeneratorUtils.buildFullyScopedTypeName(scope,resultType));
-				if( allowDar ) nl(">");
+//				if( allowDar ) nl(">");
 					nl(">();");
 			ln();
 			ln("while( ");
@@ -314,7 +317,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			if( possibleElementNames.size() > 1 ) 
 				bs("{");
 			else
-				bs("");
+				bs();
 	
 			// Add the found element to the list.
 			// Check for all posibilities in a polymorphic type,
@@ -417,7 +420,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		}
 
 		result.append(".Parse" + composite.getName() );
-		result.append("(reader)");
+		result.append("(reader, errors)");
 		
 		return result.toString(); 
 	}
@@ -433,7 +436,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		String enumType = GeneratorUtils.buildFullyScopedEnumName(binding);
 								
 		result.append("Code<" + enumType + ">");
-		result.append("(reader, out attrs)");
+		result.append("(reader, errors)");
 		
 		return result.toString();
 	}
@@ -442,6 +445,6 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		return "XmlPrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
-				"(reader, out attrs)";
+				"(reader, errors)";
 	}
 }

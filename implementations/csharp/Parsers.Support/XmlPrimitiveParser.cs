@@ -11,71 +11,104 @@ namespace HL7.Fhir.Instance.Parsers
 {
     public static partial class XmlPrimitiveParser
     {
-        public class FhirElementAttributes
-        {
-            public string Id { get; set; }
-            public string Dar { get; set; }
-            public string IdRef { get; set; }
+        public static XHtml ParseXHtml(XmlReader reader, ErrorList errors)
+        {       
+            try
+            {
+                var result = XHtml.Parse(reader.ReadOuterXml());
+                return result;
+            }
+            catch (FhirValueFormatException ex)
+            {
+                errors.Add(ex.Message, (IXmlLineInfo)reader);
+            }
+
+            return null;
         }
 
-        public static IdRef ParseIdRef(XmlReader elem, out FhirElementAttributes attrs)
-        {
-            string value = parsePrimitiveElement(elem, out attrs);
 
-            elem.Read();
-
-            return IdRef.Parse(attrs.IdRef);
-        }
-
-        public static Code<T> ParseCode<T>(XmlReader reader, out FhirElementAttributes attrs)
+        public static Code<T> ParseCode<T>(XmlReader reader, ErrorList errors)
             where T : struct, IConvertible
         {
-            string value = parsePrimitiveElement(reader, out attrs);
-            
-            return Code<T>.Parse(value);
+            ElementContent content = parsePrimitiveElement(reader, errors);
+
+            try
+            {
+                var result = Code<T>.Parse(content.Value);
+
+                if (content.Id != null) result.ReferralId = content.Id;
+                if (content.Dar.HasValue) result.Dar = content.Dar;
+
+                return result;
+            }
+            catch (FhirValueFormatException ex)
+            {
+                errors.Add(ex.Message, (IXmlLineInfo)reader);
+            }
+
+            return null;
         }
 
 
-        private static string parsePrimitiveElement(XmlReader reader, out FhirElementAttributes attrs)
+        public static FhirDateTime ParseFhirDateTime(XmlReader reader, ErrorList errors)
         {
-            attrs = null;
+            ElementContent content = parsePrimitiveElement(reader, errors);
+
+            try
+            {
+                var result = FhirDateTime.Parse(content.Value);
+
+                if (content.Id != null) result.ReferralId = content.Id;
+                if (content.Dar.HasValue) result.Dar = content.Dar;
+
+                return result;
+            }
+            catch (FhirValueFormatException ex)
+            {
+                errors.Add(ex.Message, (IXmlLineInfo)reader);
+            }
+
+            return null;
+        }
+
+
+        private static ElementContent parsePrimitiveElement(XmlReader reader, ErrorList errors)
+        {
+            var result = new ElementContent();
+            var elementName = reader.LocalName;
 
             if (reader.HasAttributes)
             {
-                attrs = new FhirElementAttributes();
-
                 while (reader.MoveToNextAttribute())
                 {
-                    if (reader.LocalName == XmlUtil.IDATTR)
-                        attrs.Id = reader.Value;
-                    else if (reader.LocalName == XmlUtil.IDREFATTR)
-                        attrs.IdRef = reader.Value;
-                    else if (reader.LocalName == XmlUtil.DARATTR)
-                        attrs.Dar = reader.Value;
+                    if (reader.LocalName == Util.IDATTR)
+                        result.Id = reader.Value;
+                    else if (reader.LocalName == Util.DARATTR)
+                        result.Dar = Code<DataAbsentReason>.Parse(reader.Value);
                     else if (reader.LocalName == "xmlns")
                         #pragma warning disable 642
                         ;
                         #pragma warning restore 642
                     else
-
-                        throw new ResourceXmlParseError(
-                            XmlUtil.ParseError(reader,
-                                String.Format("Unsupported attribute '{0}' on element.",
-                                    reader.LocalName)));      
+                        errors.Add( String.Format("Unsupported attribute '{0}' on element {1}",
+                            reader.LocalName, elementName), (IXmlLineInfo)reader);      
                 }
 
                 reader.MoveToElement();
             }
 
-
             try
             {
-                return reader.ReadElementContentAsString();
+                result.Value = reader.ReadElementContentAsString();
             }
             catch (XmlException xe)
             {
-                throw new ResourceXmlParseError("Primitives cannot be read: " + xe.Message);
+                errors.Add( 
+                    String.Format("Primitive content cannot be read from element {0}: {1}", elementName,
+                        xe.Message), (IXmlLineInfo)reader );
             }
+
+            return result;
         }
     }
 }

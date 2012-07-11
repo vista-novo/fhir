@@ -53,10 +53,11 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 	    	bs("{");
 	    		for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
 				{
-	    			// Idref requires a hand-crafter parser because its
-	    			// value is not in the element but is serialized as 
-	    			// an attribute
-	    			if( !primitive.getName().equals("idref") )
+	    			// Xhtml and Date/times require a hand-crafted parser.
+	    			if( !primitive.getName().equals("xhtml") &&
+	    				!primitive.getName().equals("date") && 
+	    				!primitive.getName().equals("dateTime") &&
+	    				!primitive.getName().equals("instant")) 
 	    			{
 	    				primitiveTypeParser(primitive);
 	    				ln();
@@ -68,9 +69,8 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		return end();
 	}
  
-	
-        
-	
+
+              
 	public GenBlock primitiveTypeParser( PrimitiveTypeDefn primitive ) throws Exception
 	{
 		begin();
@@ -80,11 +80,26 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		ln("public static ");
 			nl(csharpPrimitive);
 			nl(" Parse" + csharpPrimitive);
-			nl("(XmlReader elem, out FhirElementAttributes attrs)");
+			nl("(XmlReader reader, ErrorList errors)");
 		bs("{");
-            ln( "string value = parsePrimitiveElement(elem, out attrs);" );
-            ln( "return " );
-            	nl(csharpPrimitive + ".Parse(value);");
+            ln( "ElementContent content = parsePrimitiveElement(reader, errors);" );
+            ln();
+            ln("try");
+            bs("{");
+            	ln( "var result = " );
+            		nl(csharpPrimitive + ".Parse(content.Value);");
+            	ln();
+            	ln("if(content.Id != null) result.ReferralId = content.Id;");
+            	ln("if(content.Dar.HasValue) result.Dar = content.Dar;");
+            	ln();
+            	ln( "return result;" );
+            es("}");
+            ln("catch (FhirValueFormatException ex)");
+            bs("{");
+                ln("errors.Add(ex.Message, (IXmlLineInfo)reader);");
+            es("}");
+            ln();
+            ln("return null;");
         es("}");
 		
 	    return end();

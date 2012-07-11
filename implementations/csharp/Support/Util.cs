@@ -1,5 +1,5 @@
 ﻿/*
-  Copyright (c) 2011-2012, HL7, Inc
+  Copyright (c) 2011-2012, HL7, Inc.
   All rights reserved.
   
   Redistribution and use in source and binary forms, with or without modification, 
@@ -28,57 +28,22 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Xml;
 
-namespace HL7.Fhir.Instance.Model
+namespace HL7.Fhir.Instance.Support
 {
-    // An instant in time - known at least to the second
-    public class Instant : FhirDateTime
+    public class Util
     {
-        // No empty constructor - no explicit default value
-
-        //public static bool TryParse( string value, out Instant result)
-        //{
-        //    FhirDateTime parsed = null;
-
-        //    bool succ = FhirDateTime.TryParse(value, out parsed);
-
-        //    if (succ && result.Kind == FhirDateTime.FhirDateTimeKind.DateTime)
-        //    {
-        //        result = new Instant();
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        result = null;
-        //        return false;
-        //    }
-        //}
-
-        //new public static Instant Parse(string value)
-        //{
-        //    Instant result = null;
-
-        //    if (TryParse(value, out result))
-        //        return result;
-        //    else 
-        //        throw new FhirValueFormatException("Instant must be a date/time value with full precision and timezone");
-        //}
-       
-
-
-        public override string ValidateData()
-        {
-            if (this.Kind != FhirDateTimeKind.DateTime)
-                return "Instant must be a date/time value with full precision and timezone";
-
-            return null;
-        }
+        public const string FHIRNS = "http://hl7.org/fhir";
+        public const string IDATTR = "id";
+        public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
+        public const string DIVELEM = "div";
+        public static string IDREFATTR = "idref";
+        public static string DARATTR = "dataAbsentReason";
     }
-  
 }

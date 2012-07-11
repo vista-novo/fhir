@@ -167,7 +167,7 @@ public class CSharpResourceGenerator extends GenBlock
 		ln("public ");
 		
 		if( member.getMaxCardinality() == -1 )  nl("List<");		
-		if( member.isAllowDAR() ) nl("Absentable<");
+//		if( member.isAllowDAR() ) nl("Absentable<");
 
 		// Determine the most appropriate FHIR type to use for this
 		// (possibly polymorphic) element.
@@ -184,7 +184,7 @@ public class CSharpResourceGenerator extends GenBlock
 			//isNullable = mapsToNullableFhirPrimitive(tref.getName());
 		}
 					
-		if( member.isAllowDAR() ) nl(">");
+//		if( member.isAllowDAR() ) nl(">");
 		if( member.getMaxCardinality() == -1 ) nl(">");
 
 		// All generated members should be nullable, to indicate whether
