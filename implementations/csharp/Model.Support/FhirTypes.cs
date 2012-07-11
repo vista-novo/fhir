@@ -35,15 +35,17 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public abstract class Data
+    public abstract class Data : IReferrable
     {
+        public string ReferralId { get; set; }
+
         public virtual string ValidateData()
         {
             //TODO: When ready, this method must be made abstract
             return null;
         }
 
-        public List<Extension> Extensions { get; set; }
+        //public List<Extension> Extensions { get; set; }
     }
 
 
@@ -111,6 +113,11 @@ namespace HL7.Fhir.Instance.Model
         //{
         //    return value.Value;
         //}
+    }
+
+    public interface IReferrable
+    {
+        string ReferralId { get; set; }
     }
 
     [System.Serializable]

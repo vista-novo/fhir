@@ -233,15 +233,10 @@ public class CSharpResourceGenerator extends GenBlock
 	{
 		ln( "public partial class " +
 				GeneratorUtils.generateCSharpTypeName(composite.getName()) );
-		
-		// Optionally, add generic parameter
-//		if( composite.isGenericType() ) nl("<T>");
-		
+				
 		// Derive from appropriate baseclass
 		nl(" : ");
 		
-//		if( composite.isGenericType() ) 
-//			nl( composite.getName() );
 		if( composite.isResource() ) 
 			nl( "Resource" );
 		else if( composite.isComposite() ) 

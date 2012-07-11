@@ -57,7 +57,6 @@
   <uriCorr>http://myUrl/%2E%2E/%2E%2E</uriCorr>
   <uriCorr>ftp://ftp.student.vu.nl</uriCorr>
   <uriCorr>/new/index.htm</uriCorr>
-  <status>generated</status>
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">This contains correct corner-cases</div>

@@ -143,6 +143,16 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(enumHelperFilename);			
 		}
 		
+		// Generate resource parser entrypoint
+		{
+			String filename = parsersDir + "XmlResourceParser.cs";
+			
+			new CSharpResourceParserGenerator()
+				.generateResourceParser(definitions).toFile(implDir+filename);						 
+			generatedFilenames.add(filename);			
+		}
+		
+		
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
 	    projGen.build(implDir, generatedFilenames);

@@ -12,12 +12,16 @@ namespace HL7.Fhir.Instance.Support
         public const string IDATTR = "id";
         public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
         public const string DIVELEM = "div";
+        public static string IDREFATTR = "idref";
+        public static string DARATTR = "dataAbsentReason";
 
-
-        public static string ParseError(XmlTextReader reader, String text)
+        public static string ParseError(XmlReader reader, String text)
         {
-            return String.Format("At ({0},{1}): {2}", reader.LineNumber,
-                    reader.LinePosition, text);
+            IXmlLineInfo line = (IXmlLineInfo)reader;
+          
+
+            return String.Format("At ({0},{1}): {2}", line.LineNumber,
+                    line.LinePosition, text);
         }
     }
 

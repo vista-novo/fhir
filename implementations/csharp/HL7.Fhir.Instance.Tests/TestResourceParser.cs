@@ -36,18 +36,54 @@ namespace HL7.Fhir.Instance.Tests
             //Assert.AreEqual("2011-03-04T11:45:33+11:00", i.ToString());
         }
 
+
         [TestMethod]
         public void TestParsePrimitive()
         {
-            string xmlString = "<someElem id='piet'>true</someElem>";
+            string xmlString = "<someElem>true</someElem>";
 
-            XmlTextReader r = new XmlTextReader(new StringReader(xmlString));
-            r.Read();
+            XmlReader r = fromString(xmlString);
 
-            string id;
-            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, out id);
+            XmlPrimitiveParser.FhirElementAttributes attrs;
+            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, out attrs);
             Assert.AreEqual(true,result.Value);
-            Assert.AreEqual("piet",id);
+        }
+
+
+        private XmlReader fromString(string s)
+        {
+            var settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.IgnoreProcessingInstructions = true;
+            settings.IgnoreWhitespace = true;
+
+            XmlReader r = XmlReader.Create(new StringReader(s), settings);
+
+            r.MoveToContent();
+
+            return r;
+        }
+
+        [TestMethod]
+        public void TestAttributesParsing()
+        {
+            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' idref='1234' dataAbsentReason='6'>true</someElem>";
+
+            XmlReader r = fromString(xmlString);
+
+            XmlPrimitiveParser.FhirElementAttributes attrs;
+            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, out attrs);
+            Assert.AreEqual(true, result.Value);
+            Assert.AreEqual("12", attrs.Id);
+            Assert.AreEqual("1234", attrs.IdRef);
+            Assert.AreEqual("6", attrs.Dar);
+
+            xmlString = "<someElem idref='1234'/>";
+
+            XmlReader r2 = fromString(xmlString);
+
+            IdRef ir = XmlPrimitiveParser.ParseIdRef(r2, out attrs);
+            Assert.AreEqual("1234", ir.Value);
         }
 
         [TestMethod]
@@ -58,14 +94,7 @@ namespace HL7.Fhir.Instance.Tests
                                     <system>http://hl7.org/fhir/sid/icd-10</system>
                                  </x>";
 
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            XmlReader r =  XmlReader.Create(new StringReader(xmlString), settings);
-    
-            r.Read();
+            XmlReader r = fromString(xmlString);
   
             Coding result = XmlCodingParser.ParseCoding(r);
             Assert.AreEqual("G44.1", result.Code.Value);
@@ -83,10 +112,11 @@ namespace HL7.Fhir.Instance.Tests
             settings.IgnoreWhitespace = true;
 
             XmlReader r = XmlReader.Create(new StreamReader(@"C:\Users\Ewout\Documents\tst.xml"), settings);
+            r.MoveToContent();
 
-            while (!r.IsStartElement()) ;           
+            LabReport rep = (LabReport)XmlResourceParser.ParseResource(r);
 
-            LabReport rep = XmlLabReportParser.ParseLabReport(r);
+            
         }
           
 

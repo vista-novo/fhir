@@ -53,8 +53,14 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 	    	bs("{");
 	    		for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
 				{
-					primitiveTypeParser(primitive);
-					ln();
+	    			// Idref requires a hand-crafter parser because its
+	    			// value is not in the element but is serialized as 
+	    			// an attribute
+	    			if( !primitive.getName().equals("idref") )
+	    			{
+	    				primitiveTypeParser(primitive);
+	    				ln();
+	    			}
 				}
 			es("}");
 		es("}");
@@ -74,9 +80,9 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		ln("public static ");
 			nl(csharpPrimitive);
 			nl(" Parse" + csharpPrimitive);
-			nl("(XmlReader elem, out string id)");
+			nl("(XmlReader elem, out FhirElementAttributes attrs)");
 		bs("{");
-            ln( "string value = parsePrimitiveElement(elem, out id);" );
+            ln( "string value = parsePrimitiveElement(elem, out attrs);" );
             ln( "return " );
             	nl(csharpPrimitive + ".Parse(value);");
         es("}");

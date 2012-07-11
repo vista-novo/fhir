@@ -43,6 +43,7 @@ import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
@@ -51,7 +52,92 @@ import org.hl7.fhir.utilities.Utilities;
 public class CSharpResourceParserGenerator extends GenBlock
 {
 	private CSharpResourceGenerator rgen = new CSharpResourceGenerator();
+
+	public GenBlock generateResourceParser( Definitions definitions ) throws Exception
+	{
+		begin();
+		
+		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
+		ln();
+		ln("using HL7.Fhir.Instance.Model;");
+		ln("using System.Xml;");
+		ln();
+		ln("namespace HL7.Fhir.Instance.Parsers");
+		bs("{");		
+			ln("/*");
+			ln("* Starting point for parsing resources");
+			ln("*/");
+			ln("public static partial class XmlResourceParser");
+			bs("{");
+				ln( "public static Resource ParseResource(XmlReader reader)");
+				bs("{");
+						generateResourceCases(definitions.getLocalResources());
+				es("}");
+				ln();
+				generateInformationProperties(definitions);
+			es("}");
+		es("}");
 	
+		return end();
+	}
+	
+	
+	private void generateInformationProperties(Definitions definitions) 
+	{
+		ln("public static List<string> SupportedResources");
+        bs("{");
+        	ln("get");
+        	bs("{");
+        		ln("List<string> result = new List<string>();");
+				ln();
+				
+				for( ResourceDefn resource : definitions.getLocalResources() )
+                	ln("result.Add(\"" + resource.getName() + "\");");
+				ln();
+				
+                ln("return result;");
+            es("}");
+        es("}");
+		ln();
+		
+		ln("public static string Version");
+        bs("{");
+        	ln("get { return \"" + definitions.getVersion() + "\"; }");
+        es("}");
+	}
+
+
+	private void generateResourceCases(List<ResourceDefn> localResources)
+	{
+		boolean firstTime = true;
+		
+		for( ResourceDefn resource : localResources)
+		{
+			if( firstTime )
+				ln("if");
+			else
+				ln("else if");
+			
+			firstTime = false;
+			
+			nl("( reader.LocalName == \"");
+				nl( resource.getName() );
+				nl("\" && reader.NamespaceURI == XmlUtil.FHIRNS )");
+			bs();
+				ln("return Xml" + resource.getName() + "Parser");
+					nl(".Parse" + resource.getName());
+					nl("(reader);");
+			es();
+				
+		}
+		
+		ln("else");
+		bs();
+			ln("return null;");
+		es();
+	}
+
+
 	public GenBlock generateCompositeParser( CompositeTypeDefn composite, Definitions definitions ) throws Exception
 	{
 		begin();
@@ -88,7 +174,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			nl("Parse" + composite.getName());
 			nl("(XmlReader reader)");
 		bs("{");		
-			ln("string dummyId;");
+			ln("XmlPrimitiveParser.FhirElementAttributes attrs;");
 			ln( returnType );
 				nl(" result = ");
 				nl("new " + returnType + "();");
@@ -347,7 +433,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 		String enumType = GeneratorUtils.buildFullyScopedEnumName(binding);
 								
 		result.append("Code<" + enumType + ">");
-		result.append("(reader, out dummyId)");
+		result.append("(reader, out attrs)");
 		
 		return result.toString();
 	}
@@ -356,6 +442,6 @@ public class CSharpResourceParserGenerator extends GenBlock
 	{
 		return "XmlPrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
-				"(reader, out dummyId)";
+				"(reader, out attrs)";
 	}
 }
