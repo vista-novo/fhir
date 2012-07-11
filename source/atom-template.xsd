@@ -9,9 +9,8 @@
 				This is a reduced form of the atom schema, that only supports the features profiled in the FHIR specification
 			</xs:documentation>
   </xs:annotation>
-  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/03/xml.xsd"/>
-  <xs:import namespace="http://hl7.org/fhir" schemaLocation="fhir-base.xsd"/>
-<!--%atom.imports%-->
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" /> <!-- schemaLocation="http://www.w3.org/2001/03/xml.xsd" -->
+  <xs:import namespace="http://hl7.org/fhir" schemaLocation="fhir-all.xsd"/>
   <xs:element name="feed" type="atom:FeedType"/>
   <xs:complexType name="TestType" mixed="true">
     <xs:annotation>

@@ -19,6 +19,7 @@
   <WindowWidth>24915</WindowWidth>
   <WindowTopX>3360</WindowTopX>
   <WindowTopY>3510</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -194,7 +195,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>4</TopRowVisible>
    <Panes>
     <Pane>
@@ -356,7 +356,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="name-part-type">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">Code</Data></Cell>
@@ -371,8 +371,12 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">Given name. NOTE Not to be called &quot;first name&quot; since given names do not always come first. .</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">title</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. </Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">suffix</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc, and that comes at the end of the name</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">prefix</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc, and that comes at the start of the name</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -382,10 +386,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
