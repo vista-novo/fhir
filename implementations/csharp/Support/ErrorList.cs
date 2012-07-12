@@ -45,6 +45,32 @@ namespace HL7.Fhir.Instance.Support
             public int? Pos { get; set; }
             public string Message { get; set; }
             public string Context { get; set; }
+
+            public override string ToString()
+            {
+                StringBuilder result = new StringBuilder();
+
+                result.Append( Message );
+                result.Append( " (");
+                bool hasPos = false;
+
+                if( Line != null )
+                {
+                    result.Append("line " + Line.ToString());
+                    if (Pos != null) result.Append(", pos " + Pos.ToString());
+                    hasPos = true;
+                }
+
+               
+                if (Context != null)
+                {
+                    if (hasPos) result.Append(": ");
+                    result.Append(Context);
+                }
+
+                result.Append( ")" );
+                return result.ToString();
+            }
         }
 
 
@@ -80,10 +106,13 @@ namespace HL7.Fhir.Instance.Support
 
         public override string ToString()
         {
-            if (this.Count() == 0)
+            if(this.Count() == 0)
                 return "No errors.";
 
-            return String.Join(", ", this.Select( e => e.Message ));
+            int errNr = 0;
+
+            return String.Join(System.Environment.NewLine, 
+                this.Select(e => String.Format("({0}) {1}", ++errNr, e.ToString())));
         }
     }
 }

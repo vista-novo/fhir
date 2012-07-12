@@ -74,28 +74,8 @@ namespace HL7.Fhir.Instance.Parsers
 
         private static ElementContent parsePrimitiveElement(XmlReader reader, ErrorList errors)
         {
-            var result = new ElementContent();
-            var elementName = reader.LocalName;
-
-            if (reader.HasAttributes)
-            {
-                while (reader.MoveToNextAttribute())
-                {
-                    if (reader.LocalName == Util.IDATTR)
-                        result.Id = reader.Value;
-                    else if (reader.LocalName == Util.DARATTR)
-                        result.Dar = Code<DataAbsentReason>.Parse(reader.Value);
-                    else if (reader.LocalName == "xmlns")
-                        #pragma warning disable 642
-                        ;
-                        #pragma warning restore 642
-                    else
-                        errors.Add( String.Format("Unsupported attribute '{0}' on element {1}",
-                            reader.LocalName, elementName), (IXmlLineInfo)reader);      
-                }
-
-                reader.MoveToElement();
-            }
+            ElementContent result = XmlUtils.ParseElementContent(reader, errors);
+            string elementName = reader.LocalName;
 
             try
             {

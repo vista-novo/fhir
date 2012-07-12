@@ -67,9 +67,17 @@ public class CSharpResourceParserGenerator extends GenBlock
 			bs("{");
 				ln("public static Resource ParseResource(XmlReader reader, ErrorList errors)");
 				bs("{");
-					ln("reader.MoveToContent();");
-					ln();
-					generateResourceCases(definitions.getLocalResources());
+					ln("try");
+					bs("{");
+						ln("reader.MoveToContent();");
+						ln();
+						generateResourceCases(definitions.getLocalResources());
+					es("}");
+					ln("catch( XmlException xe )");
+					bs("{");
+						ln("errors.Add( xe.Message, (IXmlLineInfo)reader);");
+						ln("return null;");
+					es("}");
 				es("}");
 				ln();
 				generateInformationProperties(definitions);
@@ -174,8 +182,17 @@ public class CSharpResourceParserGenerator extends GenBlock
 			ln( returnType );
 				nl(" result = ");
 				nl("new " + returnType + "();");
-			ln( "string elementName = reader.LocalName;");
+			ln("string en = reader.LocalName;");
+	        ln("string ns = reader.NamespaceURI;");
 			ln();
+			if( !composite.isResource() )
+			{
+				ln("// Read id/dar from element's attributes");
+	            ln("ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);");
+	            ln("if (attrs.Id != null) result.ReferralId = attrs.Id;");
+	            ln("if (attrs.Dar.HasValue) result.Dar = attrs.Dar;");
+				ln();
+			}
 			ln("// Read starttag");
 			ln("reader.Read();");
 			ln();
@@ -183,12 +200,8 @@ public class CSharpResourceParserGenerator extends GenBlock
 			// Generate this classes properties
 			if( composite.getElements().size() > 0)
 			{
-//				ln("while( reader.NodeType != XmlNodeType.EndElement )");
-//				bs("{");
 				generateMemberParsers( composite.getElements() );
 				ln();
-//				es("}");
-//				ln();
 			}
 			ln("// Read endtag");
 			ln("reader.Read();");
@@ -212,29 +225,20 @@ public class CSharpResourceParserGenerator extends GenBlock
 	public GenBlock generateMemberParsers( List<ElementDefn> elements ) throws Exception
 	{
 		begin();
-		
-//		boolean isFirst = true;
-//	
-//		ln("if( reader.EOF )");
-//		bs("{");
-//			ln("dummyError = \"Unexpected end-of-file\";");
-//			ln("return null;");
-//		es("}");
-//		ln();
-		
+				
 		for( ElementDefn member : elements )
 		{			
 			ln("// Parse element " + member.getElementPath());	
 			generateMemberParser(member);
-	//		isFirst = false;
 		}
 		
-		ln("if (reader.NodeType != XmlNodeType.EndElement)" );
+		ln("if( !XmlUtils.IsEndElement(reader,en,ns) )" );
         bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
-                nl("	reader.LocalName, elementName), (IXmlLineInfo)reader);");
-            ln("while (reader.NodeType != XmlNodeType.EndElement) reader.Skip();");
+                nl("	reader.LocalName, en), (IXmlLineInfo)reader);");
+            ln("while (!XmlUtils.IsEndElement(reader, en, ns) || reader.EOF)");
+            ln("	reader.Skip();");
             ln("result = null;");
 		es("}");
 	         
@@ -250,11 +254,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 			GeneratorUtils.determinePossibleElementNames(member.getParentType(),
 				member.getName(), member.getTypes());
 
-	//	if( isFirstIfStatement )
-			ln("if( " );
-	//	else
-	//		ln("else if(");
-		
+		ln("if( " );		
 		nl( buildCheckForElementClause(possibleElementNames.keySet()) );
 		nl(" )");
 		
