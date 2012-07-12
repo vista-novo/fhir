@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -140,27 +140,6 @@ and their associated bindings. In this case, the profile looks like this:
 Note that usually you would build the actual profile using some tool. This example was built from a spreadsheet definition by the FHIR build tooling.
 </p>
 <h4>Register the Extension</h4>
-<p>
-Before extensions can be used in instances, they must be published. HL7 maintains two 
-extension registries, and users are encouraged to register their extensions there. But 
-this is not required; all that is required is that the extension is published in a 
-context that is available for users of the extension. So, for example, if a particular
-extension is used exchanged within a single institution, the definition of the extension
-can be placed on the instition's intranet. However since, by their nature, resources
-tend to travel well, it's always better to use the HL7 extension registries.
-</p>
-<p>
-HL7 provides two extension registries. The first is for HL7 approved extensions. These 
-have been approved by an appropriate part of the HL7 community following a review process,
-and have formal standing. The other registry is provided as a service to the community,
-and anyone can register an extension on it. 
-</p>
-<table class="codes">
- <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
- <tr><td>HL7 Approved</td><td>[tbd]</td><td>[tbd]</td></tr>
- <tr><td>Community</td><td>[tbd]</td><td>[tbd]</td></tr>
- <tr><td>Interim</td><td>http://hl7connect.healthintersections.com.au/svc/fhir/profile/search</td><td>https://hl7connect.healthintersections.com.au/svc/fhir/profile/upload</td></tr>
-</table>
 <p>
 For this example, it is registered at <a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090?format=text/html">http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090</a>.
 This is the url that will appear in the definition element when the extension is used.

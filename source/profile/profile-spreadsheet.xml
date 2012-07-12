@@ -20,7 +20,8 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>945</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>6</ActiveSheet>
+  <FirstVisibleSheet>1</FirstVisibleSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -852,8 +853,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>49</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>51</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -898,7 +899,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">concepts must be present and may only be present if binding type is &quot;codelists&quot;</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">(f:type='codelist') = exists(f:concept)</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
     <Cell><Data ss:Type="String">Codes must be unique in the context of a profile</Data></Cell>
@@ -912,7 +913,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
@@ -1010,7 +1010,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="81"/>
    <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="282.75"/>
@@ -1040,6 +1040,13 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#binding-strength</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ExtensionContext</Data></Cell>
+    <Cell><Data ss:Type="String">The type of context expression applicable</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">#extension-context</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1051,7 +1058,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1143,6 +1150,58 @@
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="extension-context">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Width="90.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="474.75"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s72">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">resource</Data></Cell>
+    <Cell><Data ss:Type="String">The context is all elements matching a particular resource element path</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">element</Data></Cell>
+    <Cell><Data ss:Type="String">The context is all nodes matching a particular data type element path or all elements referencing a particular primitive data type</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">mapping</Data></Cell>
+    <Cell><Data ss:Type="String">The context is all nodes whose mapping to a specified reference model corresponds to a particular mapping structure</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">extension</Data></Cell>
+    <Cell><Data ss:Type="String">The context is a particular extension from a particular profile</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">multiple</Data></Cell>
+    <Cell><Data ss:Type="String">The context is a set of other context types</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
