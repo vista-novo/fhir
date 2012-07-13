@@ -102,18 +102,17 @@ public class SchematronGenerator  extends TextStreamWriter {
 	}
 	
 	private void genChildren(String path, String typeCode, ElementDefn ed, Definitions definitions, List<String> parents) throws Exception {
-	  // the problem with this test is that we don't actually want to stop here, we want to stop next time to sort that out
 	  if (!path.contains("//")) {
 	    ArrayList<String> l = new ArrayList<String>(parents);
 	    l.add(typeCode);
 
 	    for (ElementDefn cd : ed.getElements()) {
-	      if (!Utilities.noString(cd.typeCode()) && parents.contains(cd.typeCode())) {
+	      if (!Utilities.noString(cd.typeCode()) && l.contains(cd.typeCode())) {
 	        // well, we've recursed. What's going to happen now is that we're going to write this as // because we're going to keep recursing.
 	        // the next call will write this rule, and then terminate
-	        generateInvariants(path+"//f:"+cd.getName(), cd, definitions, l);
+	        generateInvariants(path+"/", cd, definitions, l);
 	      } else
-	        generateInvariants(path+"/f:"+cd.getName(), cd, definitions, l);
+	        generateInvariants(path, cd, definitions, l);
 	    }
 	  }
 	}

@@ -270,18 +270,16 @@ should consult the full discussion of the operation in the OMG REST specificatio
 <a name="updates"> </a>
 <h2>updates</h2>
 <p>
-The updates interaction retrieves a list of changes to the resource type. The interaction is performed by an HTTP Get operation as shown:
+The updates interaction retrieves a list of the resources of a particular type, ordered by the date of last update in reverse (most recently changed first). The interaction is performed by an HTTP Get operation as shown:
 </p>
 <pre>
   GET [service-url]/[resourcetype] (?format=mimeType)
 </pre>
 <p>
-The return content is an <a href="atom.htm">Atom feed </a> containing the update history for that 
-resource type as a list of resources, sorted with oldest updates first. 
+The return content is an <a href="atom.htm">Atom feed </a> containing list of resources, sorted with oldest updates first. 
 </p>
 <p>
-The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be 
-used to filter the updates list using the search parameters defined by the resource type.
+The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
 </p>
 
 <a name="search"> </a>
