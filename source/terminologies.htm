@@ -19,22 +19,22 @@
 
 <p>
 Many elements in the FHIR resources are assigned a type of either <a href="datatypes.htm#code">code</a>, 
-<a href="datatypes.htm#Coding">Coding</a>, or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
-These elements contain codes that have defined meanings, and come from lists of codes of varying sophistication
-and size. In many simple cases, the list of codes is a short list defined specifically for the element; in other cases,
+<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
+These elements contain codes that have defined meanings and come from sets of codes of varying sophistication
+and size. In many simple cases, the set of codes is a short list defined specifically for the element. In other cases,
 the list of codes is taken from a large and complex terminology or ontology such as SNOMED-CT or OBO. 
 </p>
 <p>
-All these elements of type <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a>, 
-or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> are given a "binding name", which defines the 
+All these elements of type <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a> 
+or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> are given a "binding name" that defines the 
 set of possible codes that can be used in the element in question. In <a href="profile.htm">Resource Profiles</a>, 
-the elements can be assigned a new binding name which defines a new set of possible codes. The set of codes 
-defined by a profile must be a subset of the set of codes defined in the base resource, and those defined by 
-any other profiles the profile references. Binding Names can identify sets of codes in the following ways:
+the elements can be assigned a new binding name that defines a new set of possible codes. The set of codes 
+defined by a profile must be a subset of the set of codes defined in the base resource and those defined by 
+any imported profiles. Binding Names can identify sets of codes in the following ways:
 </p>
 <table class="grid">
  <tr><td>value set</td><td>The binding name has an associated URL which is a reference to a <a href="valueset.htm">Value Set Resource</a> that provides a formal definition of the set of possible codes</td></tr>
- <tr><td>code list</td><td>The binding name is associated with a simple list of codes, and definitions from some identified code system (<a href="datatypes.htm#codesystem">SID, URI, OID, UUID</a>). In resource definitions, the system reference may be omitted, and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know)</td></tr>
+ <tr><td>code list</td><td>The binding name is associated with a simple list of codes and definitions from some identified code system (<a href="datatypes.htm#codesystem">SID, URI, OID, UUID</a>). In resource definitions, the system reference may be omitted and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know).  In formal terms, this is merely a locally-defined value set.</td></tr>
  <tr><td>reference</td><td>The binding name has an associated URL which refers to some external standard or specification that defines the possible codes</td></tr>
  <tr><td>special</td><td>The binding points to a list of concepts defined as part of FHIR itself (<a href="#localsystems">see below for possible values</a>)</td></tr>
 <!-- <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr> -->
@@ -56,8 +56,10 @@ See below for a full list of the binding names defined for all FHIR resources.
 <h2>Named Systems List</h2>
 <p>
 This specification defines the following names (URIs) as fixed names that may 
-be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>,
-<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> data types. 
+be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">Identifier</a>
+<a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> data types.
+If a URI is defined here, it must be used in preference to other identifying mechanisms such as OIDs found in the
+HL7 OID registry.
 </p>
 
 <table class="grid">
@@ -74,13 +76,13 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
  <tr>
    <td>http://snomed.info</td>
    <td>SNOMED-CT: (<a href="http://ihtsdo.org">IHTSDO</a>)</td>
-   <td>The version, module etc may be appended to this uri following the IHTSDO specifications<br/>OID=2.16.840.1.113883.6.96</td>
+   <td>The version, module, etc. may be appended to this uri following the IHTSDO specifications<br/>OID=2.16.840.1.113883.6.96</td>
  </tr>
  <tr>
    <td>http://hl7.org/fhir/sid/loinc</td>
    <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
    <td><p>
-       The LOINC sid can also be used to indicate a LOINC property value by append one of the following values to the URL:</p>
+       The LOINC sid can also be used to indicate a LOINC property value by appending one of the following values to the URL:</p>
        <table class="codes">
          <tr><td>/property</td><td>PROPERTY</td></tr>
          <tr><td>/time-aspect</td><td>TIME_ASPCT</td></tr>
@@ -111,7 +113,7 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
  <tr>
    <td>http://hl7.org/fhir/sid/v2-[X]</td>
    <td>Version 2 table code</td>
-   <td>[X] is the 4 digit identifier for a table. i.e. http://hl7.org/fhir/sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
+   <td>[X] is the 4 digit identifier for a table. e.g. http://hl7.org/fhir/sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
  </tr>
  <tr>
    <td>http://hl7.org/fhir/sid/iso-[X]</td>
@@ -156,7 +158,7 @@ be used in the <i>system</i> element of the <a href="datatypes.htm#Identifier">I
 <h2>Internal Code Systems</h2>
 <p>
 In addition to this, a number of code sytems are defined informally through 
-the specification. This table enumerates them, and assigns sid and OID values 
+the specification. This table enumerates them and assigns sid and OID values 
 for them, though these are not generally used directly in this specification:
 </p>
 <table class="list">
@@ -187,8 +189,8 @@ for them, though these are not generally used directly in this specification:
  </tr>
 </table>
 <p>
-Note that all the codes in these code systems are case sensitive, and must be used in lowercase.
-All the codes in these code systems have the own uri, which is http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
+Note that all the codes in these code systems are case sensitive and must be used in lowercase.
+All the codes in these code systems have the own uri of the format http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
 </p>
 <a name="specialvalues"/>
 <h2>Special Values</h2>
@@ -200,7 +202,7 @@ These are defined by the code system "http://hl7.org/fhir/sid/special-values" wh
   <tr><td>true</td><td>Boolean true</td></tr>
   <tr><td>false</td><td>Boolean false</td></tr>
   <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified (used in formulations)</td></tr>
-  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' The null flavor would be used to express the quantity of water. )</td></tr>
+  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )</td></tr>
   <tr><td>withdrawn</td><td>The correct value is no longer available</td></tr>
 </table>
 
@@ -208,7 +210,7 @@ These are defined by the code system "http://hl7.org/fhir/sid/special-values" wh
 <a name="ResourceType"/>
 <h2>Resource Types</h2>
 <p>
-In several places, the resource types themselves are used as either codes or identifiers, with the sid, where required, of "http://hl7.org/fhir/sid/fhir/resource-types". This is a formal list of the resource type codes: 
+In several places, the resource types themselves are used as either codes or identifiers.  These should be referenced with the sid "http://hl7.org/fhir/sid/fhir/resource-types". This is a formal list of the resource type codes: 
 </p>
 <table class="codes">
 <%resourcecodes%>
