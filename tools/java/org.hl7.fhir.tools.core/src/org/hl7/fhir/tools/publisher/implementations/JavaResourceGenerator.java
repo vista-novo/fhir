@@ -329,8 +329,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
 				tn = e.typeCode();
 				if (clss != JavaGenClass.Resource || !e.isAllowDAR()) {
-					if (tn.equals("boolean")) tn = "boolean";
-					else if (tn.equals("integer")) tn = "int";
+					if (tn.equals("boolean")) tn = "java.lang.Boolean";
+					else if (tn.equals("integer")) tn = "java.lang.Integer";
 					else if (tn.equals("decimal")) tn = "java.math.BigDecimal";
 					else if (tn.equals("base64Binary")) tn = "byte[]";
 					else if (tn.equals("instant")) tn = "java.util.Calendar";

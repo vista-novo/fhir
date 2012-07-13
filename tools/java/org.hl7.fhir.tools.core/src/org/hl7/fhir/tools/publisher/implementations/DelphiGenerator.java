@@ -1597,7 +1597,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   public String getDescription() {
-    return "Resource Definitions, and XML & JSON parsers. D5+. TODO: remove dependencies on unpublished code.";
+    return "Resource Definitions and XML & JSON parsers. D5+. TODO: remove dependencies on unpublished code.";
   }
 
   public String getTitle() {

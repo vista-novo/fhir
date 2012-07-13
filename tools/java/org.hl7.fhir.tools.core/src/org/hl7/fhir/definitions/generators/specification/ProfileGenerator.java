@@ -227,12 +227,12 @@ public class ProfileGenerator {
     if (!"".equals(e.getCondition()))
       ce.getDefinition().setCondition(e.getCondition());
     // we don't know mustSupport here
-    if (e.isMustUnderstand()) 
-      ce.getDefinition().setMustUnderstand(e.isMustUnderstand());
+    ce.getDefinition().setMustUnderstand(e.isMustUnderstand());
     // todo: mappings
     // we don't have anything to say about constraints on resources
     if (!"".equals(e.getBindingName()))
       ce.getDefinition().setBinding(e.getBindingName());
+    ce.getDefinition().setDataAbsentReason(e.isAllowDAR());
     
     if( e.hasAggregation() )
     {

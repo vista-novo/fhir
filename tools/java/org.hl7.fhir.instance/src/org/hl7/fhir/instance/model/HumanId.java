@@ -29,20 +29,20 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 /**
- * An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
+ * An identifier that humans use. This is different from a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that a human identifier may be a system identifier on some master system but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license numbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
  */
 public class HumanId extends Type {
 
     /**
-     * The type of the identifier - to allow a particular identifier to be picked elsewhere
+     * The type of the identifier - to allow a particular identifier to be selected elsewhere
      */
     private Coding type;
 
     /**
-     * The Actual identifier
+     * The identifier itself
      */
     private Identifier identifier;
 

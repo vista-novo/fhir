@@ -128,7 +128,7 @@ public class ProfileValidator {
     n.setDefinition(e.getDefinition().getFormal());
     n.setMaxCardinality("*".equals(e.getDefinition().getMax()) ? null : Integer.parseInt(e.getDefinition().getMax()));
     n.setMinCardinality(e.getDefinition().getMin());
-    n.setMustUnderstand(e.getDefinition().getMustSupport());
+    n.setMustUnderstand(e.getDefinition().getMustSupport() == null ? false : e.getDefinition().getMustSupport());
     for (String t : e.getDefinition().getType()) {
       TypeParser tp = new TypeParser();
       try {

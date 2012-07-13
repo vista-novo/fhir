@@ -202,11 +202,11 @@ public abstract class XmlParserBase extends XmlBase {
     return result;    
   }
  
-  protected int parseInt(XmlPullParser xpp) throws Exception {
-    return java.lang.Integer.valueOf(parseString(xpp));
+  protected java.lang.Integer parseInt(XmlPullParser xpp) throws Exception {
+    return new java.lang.Integer(parseString(xpp));
   }
    
-  protected boolean parseBool(XmlPullParser xpp) throws Exception {
+  protected java.lang.Boolean parseBool(XmlPullParser xpp) throws Exception {
     return java.lang.Boolean.valueOf(parseString(xpp));
   }
 

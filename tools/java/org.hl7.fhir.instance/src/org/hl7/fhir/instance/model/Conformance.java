@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -195,22 +195,22 @@ public class Conformance extends Resource {
         /**
          * if supported
          */
-        private boolean update;
+        private java.lang.Boolean update;
 
         /**
          * if supported
          */
-        private boolean delete;
+        private java.lang.Boolean delete;
 
         /**
          * if supported
          */
-        private boolean validate;
+        private java.lang.Boolean validate;
 
         /**
          * if supported
          */
-        private boolean history;
+        private java.lang.Boolean history;
 
         /**
          * only if supported
@@ -220,12 +220,12 @@ public class Conformance extends Resource {
         /**
          * if supported
          */
-        private boolean create;
+        private java.lang.Boolean create;
 
         /**
          * if supported
          */
-        private boolean updates;
+        private java.lang.Boolean updates;
 
         public String getType() { 
           return this.type;
@@ -243,35 +243,35 @@ public class Conformance extends Resource {
           this.profile = value;
         }
 
-        public boolean getUpdate() { 
+        public java.lang.Boolean getUpdate() { 
           return this.update;
         }
 
-        public void setUpdate(boolean value) { 
+        public void setUpdate(java.lang.Boolean value) { 
           this.update = value;
         }
 
-        public boolean getDelete() { 
+        public java.lang.Boolean getDelete() { 
           return this.delete;
         }
 
-        public void setDelete(boolean value) { 
+        public void setDelete(java.lang.Boolean value) { 
           this.delete = value;
         }
 
-        public boolean getValidate() { 
+        public java.lang.Boolean getValidate() { 
           return this.validate;
         }
 
-        public void setValidate(boolean value) { 
+        public void setValidate(java.lang.Boolean value) { 
           this.validate = value;
         }
 
-        public boolean getHistory() { 
+        public java.lang.Boolean getHistory() { 
           return this.history;
         }
 
-        public void setHistory(boolean value) { 
+        public void setHistory(java.lang.Boolean value) { 
           this.history = value;
         }
 
@@ -283,19 +283,19 @@ public class Conformance extends Resource {
           this.search = value;
         }
 
-        public boolean getCreate() { 
+        public java.lang.Boolean getCreate() { 
           return this.create;
         }
 
-        public void setCreate(boolean value) { 
+        public void setCreate(java.lang.Boolean value) { 
           this.create = value;
         }
 
-        public boolean getUpdates() { 
+        public java.lang.Boolean getUpdates() { 
           return this.updates;
         }
 
-        public void setUpdates(boolean value) { 
+        public void setUpdates(java.lang.Boolean value) { 
           this.updates = value;
         }
 
@@ -500,7 +500,7 @@ public class Conformance extends Resource {
     /**
      * Whether the application accepts unknown elements as part of a resource. This does not include extensions, but genuine new additions to a resource
      */
-    private boolean acceptUnknown;
+    private java.lang.Boolean acceptUnknown;
 
     /**
      * if the endpoint is a RESTful one
@@ -549,11 +549,11 @@ public class Conformance extends Resource {
       this.version = value;
     }
 
-    public boolean getAcceptUnknown() { 
+    public java.lang.Boolean getAcceptUnknown() { 
       return this.acceptUnknown;
     }
 
-    public void setAcceptUnknown(boolean value) { 
+    public void setAcceptUnknown(java.lang.Boolean value) { 
       this.acceptUnknown = value;
     }
 

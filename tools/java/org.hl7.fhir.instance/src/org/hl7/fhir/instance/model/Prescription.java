@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -63,7 +63,7 @@ public class Prescription extends Resource {
         /**
          * Requested number of repeats
          */
-        private int repeats;
+        private java.lang.Integer repeats;
 
         /**
          * Requested quantity per repeat
@@ -75,11 +75,11 @@ public class Prescription extends Resource {
          */
         private ResourceReference dispenser;
 
-        public int getRepeats() { 
+        public java.lang.Integer getRepeats() { 
           return this.repeats;
         }
 
-        public void setRepeats(int value) { 
+        public void setRepeats(java.lang.Integer value) { 
           this.repeats = value;
         }
 
@@ -292,7 +292,7 @@ public class Prescription extends Resource {
         /**
          * Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient
          */
-        private boolean prn;
+        private java.lang.Boolean prn;
 
         /**
          * Additional details to guide administration. Especially relevant for medicine administered by patient
@@ -323,11 +323,11 @@ public class Prescription extends Resource {
           return this.precondition;
         }
 
-        public boolean getPrn() { 
+        public java.lang.Boolean getPrn() { 
           return this.prn;
         }
 
-        public void setPrn(boolean value) { 
+        public void setPrn(java.lang.Boolean value) { 
           this.prn = value;
         }
 

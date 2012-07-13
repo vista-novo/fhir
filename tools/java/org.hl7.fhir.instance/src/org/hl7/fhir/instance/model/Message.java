@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -85,7 +85,7 @@ public class Message extends Resource {
         /**
          * True if this is not the first response, because the identical request message has been received more than once
          */
-        private boolean duplicate;
+        private java.lang.Boolean duplicate;
 
         public String getId() { 
           return this.id;
@@ -103,11 +103,11 @@ public class Message extends Resource {
           this.code = value;
         }
 
-        public boolean getDuplicate() { 
+        public java.lang.Boolean getDuplicate() { 
           return this.duplicate;
         }
 
-        public void setDuplicate(boolean value) { 
+        public void setDuplicate(java.lang.Boolean value) { 
           this.duplicate = value;
         }
 

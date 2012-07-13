@@ -29,19 +29,19 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 /**
- * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units, and floating currencies
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units and floating currencies
  */
 public class Quantity extends Type {
 
-    public enum QuantityStatus {
+    public enum QuantityRange {
         lessThan, // The actual value is less than the given value
         lessOrEqual, // The actual value is less than or equal to the given value
         greaterOrEqual, // The actual value is greater than or equal to the given value
         greaterThan; // The actual value is greater than the given value
-        public static QuantityStatus fromCode(String codeString) throws Exception {
+        public static QuantityRange fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("<".equals(codeString))
@@ -52,7 +52,7 @@ public class Quantity extends Type {
           return greaterOrEqual;
         if (">".equals(codeString))
           return greaterThan;
-        throw new Exception("Unknown QuantityStatus code '"+codeString+"'");
+        throw new Exception("Unknown QuantityRange code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -71,9 +71,9 @@ public class Quantity extends Type {
     private java.math.BigDecimal value;
 
     /**
-     * how the value should be understood and represented - whether the actual value is greater or less than the mesaure due to measurement issues
+     * How the value should be understood and represented - whether the actual value is greater or less than the mesaure due to measurement issues
      */
-    private QuantityStatus status;
+    private QuantityRange range;
 
     /**
      * A human readable form of the units
@@ -98,12 +98,12 @@ public class Quantity extends Type {
       this.value = value;
     }
 
-    public QuantityStatus getStatus() { 
-      return this.status;
+    public QuantityRange getRange() { 
+      return this.range;
     }
 
-    public void setStatus(QuantityStatus value) { 
-      this.status = value;
+    public void setRange(QuantityRange value) { 
+      this.range = value;
     }
 
     public String getUnits() { 

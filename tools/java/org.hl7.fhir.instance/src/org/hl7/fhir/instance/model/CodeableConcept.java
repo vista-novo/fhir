@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A concept that may be defined by a formal reference to a terminology or ontology, or may be provided by text
+ * A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text
  */
 public class CodeableConcept extends Type {
 
@@ -44,7 +44,7 @@ public class CodeableConcept extends Type {
     private List<Coding> coding = new ArrayList<Coding>();
 
     /**
-     * A human language representation of the concept as seen/selected/uttered by the user who entered the data, and/or which represents the intended meaning of the user or concept
+     * A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user or concept
      */
     private String text;
 

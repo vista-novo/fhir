@@ -61,7 +61,7 @@
       <path>LabReport.issued</path>
       <definition>
         <short>date issed for current status</short>
-        <formal>The date and/or time that the result was issued from the source for the recorded â€˜Test result status</formal>
+        <formal>The date and/or time that the result was issued from the source for the recorded Test result status</formal>
         <comments>May be different from LabReport.updated, because that is the status of this record, not the report the record is about</comments>
         <min>1</min>
         <max>1</max>
@@ -312,7 +312,7 @@
       <path>LabReport.resultGroup.specimen</path>
       <definition>
         <short>Specimen details</short>
-        <formal>Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required.</formal>
+        <formal>Details about the individual specimen to which these Result group test results refer, where testing of multiple specimens is required.</formal>
         <min>0</min>
         <max>1</max>
         <type>Resource(Specimen)</type>

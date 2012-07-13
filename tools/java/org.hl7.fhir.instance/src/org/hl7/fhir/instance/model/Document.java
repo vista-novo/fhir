@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -293,7 +293,7 @@ public class Document extends Resource {
     /**
      * used to version successive replacement documents
      */
-    private int version;
+    private java.lang.Integer version;
 
     /**
      * If this document replaces another
@@ -372,11 +372,11 @@ public class Document extends Resource {
       this.setId = value;
     }
 
-    public int getVersion() { 
+    public java.lang.Integer getVersion() { 
       return this.version;
     }
 
-    public void setVersion(int value) { 
+    public void setVersion(java.lang.Integer value) { 
       this.version = value;
     }
 

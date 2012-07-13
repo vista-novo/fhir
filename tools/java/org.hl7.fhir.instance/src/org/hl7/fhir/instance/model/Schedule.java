@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -41,14 +41,14 @@ public class Schedule extends Type {
     public enum EventTiming {
         HS, // event occurs duration before the hour of sleep (or trying to)
         WAKE, // event occurs duration after waking
-        AC, // event occurs duration before a meal (from the latin ante cibus)
-        ACM, // event occurs duration before breakfast (from the latin ante cibus matutinus)
-        ACD, // event occurs duration before lunch (from the latin ante cibus diurnus)
-        ACV, // event occurs duration before dinner (from the latin ante cibus vespertinus)
-        PC, // event occurs duration after a meal (from the latin post cibus)
-        PCM, // event occurs duration after breakfast (from the latin post cibus matutinus)
-        PCD, // event occurs duration after lunch (from the latin post cibus diurnus)
-        PCV; // event occurs duration after dinner (from the latin post cibus vespertinus) 
+        AC, // event occurs duration before a meal (from the Latin ante cibus)
+        ACM, // event occurs duration before breakfast (from the Latin ante cibus matutinus)
+        ACD, // event occurs duration before lunch (from the Latin ante cibus diurnus)
+        ACV, // event occurs duration before dinner (from the Latin ante cibus vespertinus)
+        PC, // event occurs duration after a meal (from the Latin post cibus)
+        PCM, // event occurs duration after breakfast (from the Latin post cibus matutinus)
+        PCD, // event occurs duration after lunch (from the Latin post cibus diurnus)
+        PCV; // event occurs duration after dinner (from the Latin post cibus vespertinus) 
         public static EventTiming fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -93,35 +93,35 @@ public class Schedule extends Type {
 
     public class Repeat extends Element {
         /**
-         * Event occurs frequency times per duration
+         * Indicates how often the event should occur.
          */
-        private int frequency;
+        private java.lang.Integer frequency;
 
         /**
-         * Event occurs duration from common life event
+         * Identifies the occurrence of daily life that determine timing
          */
         private EventTiming when;
 
         /**
-         * repeating or event-related duration
+         * How long each repetition should last
          */
         private Duration duration;
 
         /**
-         * number of times to repeat
+         * A total count of the desired number of repetitions
          */
-        private int count;
+        private java.lang.Integer count;
 
         /**
          * when to stop repeats
          */
         private String end;
 
-        public int getFrequency() { 
+        public java.lang.Integer getFrequency() { 
           return this.frequency;
         }
 
-        public void setFrequency(int value) { 
+        public void setFrequency(java.lang.Integer value) { 
           this.frequency = value;
         }
 
@@ -141,11 +141,11 @@ public class Schedule extends Type {
           this.duration = value;
         }
 
-        public int getCount() { 
+        public java.lang.Integer getCount() { 
           return this.count;
         }
 
-        public void setCount(int value) { 
+        public void setCount(java.lang.Integer value) { 
           this.count = value;
         }
 
@@ -160,12 +160,12 @@ public class Schedule extends Type {
     }
 
     /**
-     * When the event occurs
+     * Identifies specific time periods when the event should occur
      */
     private List<Period> event = new ArrayList<Period>();
 
     /**
-     * Only if there is none or one event
+     * Identifies a repeating pattern to the intended time periods. 
      */
     private Repeat repeat;
 

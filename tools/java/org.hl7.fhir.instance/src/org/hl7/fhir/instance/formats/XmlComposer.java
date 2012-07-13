@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -131,8 +131,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeBigDecimal("value", element.getValue());
-      if (element.getStatus() != null)
-        composeString("status", element.getStatus().toCode());
+      if (element.getRange() != null)
+        composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
       composeString("code", element.getCode());
       composeURI("system", element.getSystem());
@@ -225,8 +225,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeBigDecimal("value", element.getValue());
-      if (element.getStatus() != null)
-        composeString("status", element.getStatus().toCode());
+      if (element.getRange() != null)
+        composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
       composeString("code", element.getCode());
       composeURI("system", element.getSystem());
@@ -239,8 +239,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeBigDecimal("value", element.getValue());
-      if (element.getStatus() != null)
-        composeString("status", element.getStatus().toCode());
+      if (element.getRange() != null)
+        composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
       composeString("code", element.getCode());
       composeURI("system", element.getSystem());
@@ -253,8 +253,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeBigDecimal("value", element.getValue());
-      if (element.getStatus() != null)
-        composeString("status", element.getStatus().toCode());
+      if (element.getRange() != null)
+        composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
       composeString("code", element.getCode());
       composeURI("system", element.getSystem());
@@ -267,8 +267,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeBigDecimal("value", element.getValue());
-      if (element.getStatus() != null)
-        composeString("status", element.getStatus().toCode());
+      if (element.getRange() != null)
+        composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
       composeString("code", element.getCode());
       composeURI("system", element.getSystem());

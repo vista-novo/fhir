@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 /**
  * A technical identifier - identifies some entity uniquely and unambiguously
@@ -37,12 +37,12 @@ package org.hl7.fhir.instance.model;
 public class Identifier extends Type {
 
     /**
-     * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data
+     * Establishes the namespace in which set of possible id values is unique.
      */
     private java.net.URI system;
 
     /**
-     * The actual data of the attachment
+     * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
      */
     private String id;
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -39,9 +39,9 @@ import java.util.*;
 public class Address extends Type {
 
     public enum AddressUse {
-        home, // A communication address at a home.
-        work, // An office address. First choice for business related contacts during business hours.
-        temp, // A temporary address. The period can provide more detailed information.
+        home, // A communication address at a home
+        work, // An office address. First choice for business related contacts during business hours
+        temp, // A temporary address. The period can provide more detailed information
         old; // This address is no longer in use (or was never correct, but retained for records)
         public static AddressUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -69,12 +69,12 @@ public class Address extends Type {
 
     public enum AddressPartType {
         part, // Part of an address line (typically used with an extension that further defines the meaning of the part).
-        line, // A line of an address (typically used for street names & numbers, unit details, delivery hints etc) .
+        line, // A line of an address (typically used for street names & numbers, unit details, delivery hints, etc.) .
         city, // The name of the city, town, village, or other community or delivery centre.
-        state, // sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).
+        state, // Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).
         country, // Country. ISO 3166 3 letter codes can be used in place of a full country name.
         zip, // A postal code designating a region defined by the postal service.
-        dpid; // A value that uniquely identifies the postal address. (often used in barcodes). 
+        dpid; // A value that uniquely identifies the postal address. (Often used in barcodes). 
         public static AddressPartType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -138,7 +138,7 @@ public class Address extends Type {
     }
 
     /**
-     * The use of this address
+     * Identifies the intended purpose of this address
      */
     private AddressUse use;
 

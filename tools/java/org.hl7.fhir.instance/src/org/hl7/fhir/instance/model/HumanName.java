@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -44,7 +44,7 @@ public class HumanName extends Type {
         temp, // A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.
         anonymous, // Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)
         old, // This name is no longer in use (or was never correct, but retained for records)
-        maiden; // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person‘s name, nor should the maiden name be determined algorithmically
+        maiden; // A name used prior to marriage. Marriage naming customs vary greatly around the world. This name use is for use by applications that collect and store "maiden" names. Though the concept of maiden name is often gender specific, the use of this term is not gender specific. The use of this term does not imply any particular history for a person's name, nor should the maiden name be determined algorithmically.
         public static NameUse fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -77,8 +77,9 @@ public class HumanName extends Type {
 
     public enum NamePartType {
         family, // Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
-        given, // Given name. NOTE Not to be called "first name" since given names do not always come first. .
-        title; // Part of the name that is acquired as a title due to academic, legal, employment or nobility status etc. NOTE Title name parts include name parts that come after the name, such as qualifications. 
+        given, // Given name. NOTE: Not to be called "first name" since given names do not always come first.
+        suffix, // Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the end of the name
+        prefix; // Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the start of the name
         public static NamePartType fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -86,15 +87,18 @@ public class HumanName extends Type {
           return family;
         if ("given".equals(codeString))
           return given;
-        if ("title".equals(codeString))
-          return title;
+        if ("suffix".equals(codeString))
+          return suffix;
+        if ("prefix".equals(codeString))
+          return prefix;
         throw new Exception("Unknown NamePartType code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
             case family: return "family";
             case given: return "given";
-            case title: return "title";
+            case suffix: return "suffix";
+            case prefix: return "prefix";
             default: return "?";
           }
         }
@@ -130,7 +134,7 @@ public class HumanName extends Type {
     }
 
     /**
-     * The use of this name
+     * Identifies the purpose for this name
      */
     private NameUse use;
 
@@ -140,12 +144,12 @@ public class HumanName extends Type {
     private String text;
 
     /**
-     * A part of a name
+     * Subdivision of the name at a level of granularity useful for analysis, sorting, matching or other purposes.
      */
     private List<Part> part = new ArrayList<Part>();
 
     /**
-     * Time period when name was/is in use
+     * Indicates the period of time when this name was valid for the named person.
      */
     private Period period;
 

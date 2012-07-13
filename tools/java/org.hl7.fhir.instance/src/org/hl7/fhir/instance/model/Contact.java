@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc
@@ -37,10 +37,10 @@ package org.hl7.fhir.instance.model;
 public class Contact extends Type {
 
     public enum ContactSystem {
-        phone, // the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
-        fax, // the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
-        email, // the value is an email address
-        url; // The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses
+        phone, // The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+        fax, // The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.
+        email, // The value is an email address
+        url; // The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses
         public static ContactSystem fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -109,7 +109,7 @@ public class Contact extends Type {
     private String value;
 
     /**
-     * How to use this address
+     * Identifies the context for the address
      */
     private ContactUse use;
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 11, 2012 23:44+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -280,7 +280,7 @@ public class Profile extends Resource {
         /**
          * if list, whether derived profiles can slice more
          */
-        private boolean closed;
+        private java.lang.Boolean closed;
 
         public String getPath() { 
           return this.path;
@@ -318,11 +318,11 @@ public class Profile extends Resource {
           return this.content;
         }
 
-        public boolean getClosed() { 
+        public java.lang.Boolean getClosed() { 
           return this.closed;
         }
 
-        public void setClosed(boolean value) { 
+        public void setClosed(java.lang.Boolean value) { 
           this.closed = value;
         }
 
@@ -347,7 +347,7 @@ public class Profile extends Resource {
         /**
          * Minimum Cardinality
          */
-        private int min;
+        private java.lang.Integer min;
 
         /**
          * Maximum Cardinality (a number or *)
@@ -362,7 +362,7 @@ public class Profile extends Resource {
         /**
          * if @dataAbsentReason is allowed
          */
-        private boolean dataAbsentReason;
+        private java.lang.Boolean dataAbsentReason;
 
         /**
          * A reference to an invariant that may make additional statements about the cardinality in the instance
@@ -377,12 +377,12 @@ public class Profile extends Resource {
         /**
          * If the element must be usable
          */
-        private boolean mustSupport;
+        private java.lang.Boolean mustSupport;
 
         /**
          * If the element must be understood
          */
-        private boolean mustUnderstand;
+        private java.lang.Boolean mustUnderstand;
 
         /**
          * Binding - see bindings below (only if coded)
@@ -418,11 +418,11 @@ public class Profile extends Resource {
           this.comments = value;
         }
 
-        public int getMin() { 
+        public java.lang.Integer getMin() { 
           return this.min;
         }
 
-        public void setMin(int value) { 
+        public void setMin(java.lang.Integer value) { 
           this.min = value;
         }
 
@@ -438,11 +438,11 @@ public class Profile extends Resource {
           return this.type;
         }
 
-        public boolean getDataAbsentReason() { 
+        public java.lang.Boolean getDataAbsentReason() { 
           return this.dataAbsentReason;
         }
 
-        public void setDataAbsentReason(boolean value) { 
+        public void setDataAbsentReason(java.lang.Boolean value) { 
           this.dataAbsentReason = value;
         }
 
@@ -458,19 +458,19 @@ public class Profile extends Resource {
           return this.constraint;
         }
 
-        public boolean getMustSupport() { 
+        public java.lang.Boolean getMustSupport() { 
           return this.mustSupport;
         }
 
-        public void setMustSupport(boolean value) { 
+        public void setMustSupport(java.lang.Boolean value) { 
           this.mustSupport = value;
         }
 
-        public boolean getMustUnderstand() { 
+        public java.lang.Boolean getMustUnderstand() { 
           return this.mustUnderstand;
         }
 
-        public void setMustUnderstand(boolean value) { 
+        public void setMustUnderstand(java.lang.Boolean value) { 
           this.mustUnderstand = value;
         }
 
@@ -563,18 +563,18 @@ public class Profile extends Resource {
         /**
          * Whether this resource is included in the bundle, if the profile is specifying a bundle
          */
-        private boolean bundled;
+        private java.lang.Boolean bundled;
 
         /**
          * Reference to a Resource Profile
          */
         private java.net.URI profile;
 
-        public boolean getBundled() { 
+        public java.lang.Boolean getBundled() { 
           return this.bundled;
         }
 
-        public void setBundled(boolean value) { 
+        public void setBundled(java.lang.Boolean value) { 
           this.bundled = value;
         }
 

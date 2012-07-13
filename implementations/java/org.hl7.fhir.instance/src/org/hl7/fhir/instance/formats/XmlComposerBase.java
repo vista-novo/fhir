@@ -96,12 +96,14 @@ public abstract class XmlComposerBase extends XmlBase {
   }
   
 
-  protected void composeInt(String name, int value) throws Exception {
-    xml.element(FHIR_NS, name, java.lang.Integer.toString(value));
+  protected void composeInt(String name, java.lang.Integer value) throws Exception {
+    if (value != null)
+      xml.element(FHIR_NS, name, value.toString());
   }
 
-  protected void composeBool(String name, boolean value) throws Exception {
-    xml.element(FHIR_NS, name, java.lang.Boolean.toString(value));
+  protected void composeBool(String name, java.lang.Boolean value) throws Exception {
+    if (value != null)
+      xml.element(FHIR_NS, name, value.toString());
   }
   
   protected void composeXhtml(String name, XhtmlNode html) throws Exception {
