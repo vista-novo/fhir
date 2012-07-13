@@ -77,15 +77,15 @@ them (and only where that attribute is allowed).
 <a name="uri"> </a>
 
  
-<table class="list">
- <tr><th>type</th><th>description</th><th>default value</th></tr>
- <tr><td>boolean</td><td>values can be true or false</td><td>false</td></tr>
- <tr><td>integer</td><td>A whole number (32 bit number; for values larger than this, use decimal)</td><td>0</td></tr>
- <tr><td>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>0</td></tr>
- <tr><td>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>null / empty</td></tr>
- <tr><td>instant</td><td>An instant in time - known at least to the second. The format is the XML dateTime type, including a full timezone. Note: This type is for system times, not human times (see below). Timezone is always required</td><td>N/A - systems must track missing/null</td></tr>
- <tr><td>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td>null / empty</td></tr>
- <tr><td>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>null / no reference</td></tr>
+<table class="list">   finite-length sequence of decimal digits (#x30-#x39) with an optional leading sign
+ <tr><th>type</th><th width='40%'>description</th><th>spec</th><th>example</th><th>default value</th></tr>
+ <tr><td>boolean</td><td>values can be true or false</td><td>{true, false}</td><td>true</td><td>false</td></tr>
+ <tr><td>integer</td><td>A signed 32-bit integer (for larger values, use decimal)</td><td>{-2147483648,...,-2,-1,0,1,2,...,2147483647}</td><td>1066</td><td>0</td></tr>
+ <tr><td>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</td><td>a sequence of decimal digits separated by a period as a decimal indicator. Optional negative sign. No leading zeroes.</td><td>-1.23, 12678967.543233</td><td>0</td></tr>
+ <tr><td>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>see <a href='http://en.wikipedia.org/wiki/Base64'>wikipedia</a></td><td>cGxlYXN1cmUu</td><td>null / empty</td></tr>
+ <tr><td>instant</td><td>An instant in time - known at least to the second. The format is the XML dateTime type, including a full timezone. Note: This type is for system times, not human times (see below). Timezone is always required</td><td></td><td></td><td>N/A - systems must track missing/null</td></tr>
+ <tr><td>string</td><td>Unicode. Note that FHIR strings may not exceed 1MB in size</td><td></td><td></td><td>null / empty</td></tr>
+ <tr><td>uri</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td></td><td></td><td>null / no reference</td></tr>
  <tr><td></td><td></td><td></td></tr>
 </table>
 <p>
