@@ -16,19 +16,29 @@
 <h1>Resources</h1>
 
 <p>
-The FHIR specification defines the following resources:
+The FHIR specification presently defines the following resources:
 </p>
-<map id="resmap2" name="resmap">
+<map id="resmap2" name="resmap2">
+<!-- Todo -->
 </map>            
 <p align="left">
  <!-- 997 * 1743 -->
-<img id="resmap1" src="res-map.png" usemap="#resmap2" border="0" height="322" width="562" alt="Data Types Concept Map"/>
+<img id="resmap1" src="res-map.png" usemap="#resmap2" border="0" height="322" width="562" alt="Resources Concept Map"/>
+</p>
+
+<p>
+Of these, only the <i>Infrastructure</i> resources have undergone any degree of vetting.  The remaining administrative and clinical resources
+exist to provide a sense of what such resources will look like eventually.  Over the coming months, the number of resources and the number of
+those that have been vetted by HL7 committees will grow.  A list of hypothesized list of resources can be found on the 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">HL7 wiki</a>.  Feel free to add any you feel are missing or engage with one 
+of the <a href="http://www.hl7.org/Special/committees/index.cfm">HL7 Work Groups</a> to submit a 
+<a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">proposal</a> to define a resource of particular interest.
 </p>
 
 <table class="list">
 <tr><td>Person</td><td>Identifies a person, the languages and qualifications, and other people who are related to them by birth, social or employment context</td></tr>
-<tr><td>Animal</td><td>Identifies an animal, it's species, and other animals or people that are related to it by birth or ownership arrangements</td></tr>
-<tr><td>Organization</td><td>Identifies an organization, it's formal accreditations, and sub, super, and partner organizations</td></tr>
+<tr><td>Animal</td><td>Identifies an animal and charactersistics such as species as well as other animals or people that are related to it by birth or ownership arrangements</td></tr>
+<tr><td>Organization</td><td>Identifies an organization, its formal accreditations and sub, super and partner organizations</td></tr>
 <tr><td>Patient</td><td>Subject A (person/animal) is under the care of Organization B</td></tr>
 <tr><td>Agent</td><td>Person A fills role R for Organization B</td></tr>
 <tr><td>LabReport</td><td>Lab A provides a report (text and/or structured data with analysis and specimen details) concerning Patient B as requested by Agent C for reason D</td></tr>
