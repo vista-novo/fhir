@@ -505,7 +505,7 @@
       <referenceRange>
         <rangeQuantity>
           <value>0.21</value>
-          <status>&lt;</status>
+          <range>&lt;</range>
           <units>x10*9/L</units>
           <code>10*9/L</code>
           <system>http://hl7.org/fhir/sid/ucum</system>
