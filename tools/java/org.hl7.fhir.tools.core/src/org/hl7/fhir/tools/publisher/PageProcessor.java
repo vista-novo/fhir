@@ -93,6 +93,7 @@ public class PageProcessor implements Logger  {
 
   private String tsForDt(String dt) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
+    tmp.deleteOnExit();
     FileOutputStream fos = new FileOutputStream(tmp);
     TerminologyNotesGenerator gen = new TerminologyNotesGenerator(fos);
     TypeParser tp = new TypeParser();
@@ -110,6 +111,7 @@ public class PageProcessor implements Logger  {
   
   private String xmlForDt(String dt, String pn) throws Exception {
     File tmp = File.createTempFile("tmp", ".tmp");
+    tmp.deleteOnExit();
     FileOutputStream fos = new FileOutputStream(tmp);
     XmlSpecGenerator gen = new XmlSpecGenerator(fos, pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null);
     TypeParser tp = new TypeParser();
@@ -742,6 +744,7 @@ public class PageProcessor implements Logger  {
           b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
       }
       b.append("</table>\r\n");
+      b.append("<p>(See <a href=\"http.htm#search\">Searching</a>).</p>\r\n");
       return b.toString();
     }
   }
@@ -906,7 +909,6 @@ public class PageProcessor implements Logger  {
   public FolderManager getFolders() {
     return folders;
   }
-
   public String getVersion() {
     return version;
   }

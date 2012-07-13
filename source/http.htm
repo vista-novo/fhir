@@ -309,12 +309,22 @@ the client may request a particular number of a <i>count</i> parameter. If
 the client wishes for more results, it should use the <i>n</i> parameter.
 More generally, the client uses parameters to narrow the search and 
 increase it's usefulness. Note that which parameters to support is at the 
-discretion of the server.
+discretion of the server. 
 </p>
 <p>
 The return content is an <a href="atom.htm">Atom feed </a> containing the results of the search as a list of resources
 in a defined order. This specification does not assign any particular meaning to the order of the resources.
 </p>
+
+<h3>Search Parameter Types</h3>
+<table class="codes">
+ <tr><td>integer</td><td>search parameter must be a simple whole number</td></tr>
+ <tr><td>string</td><td>search parameter is a simple string, like a name part (i.e. search usually functions on partial matches)</td></tr>
+ <tr><td>text</td><td>search parameter is into a long string (i.e. a text filter type search)</td></tr>
+ <tr><td>date</td><td>search parameter is onto a date (and should support -before and -after variants)</td></tr>
+ <tr><td>token</td><td>search parameter is on a fixed value string (i.e. search has an exact match)</td></tr>
+ <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, space and value, separated by a ":". The space is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a>, and is optional when searching</td></tr>
+</table>
 
 <a name="create"> </a>
 <h2>create</h2>

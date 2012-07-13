@@ -157,6 +157,7 @@ public class Publisher {
       if (isGenerate) {
         Utilities.clearDirectory(page.getFolders().dstDir);
         Utilities.createDirectory(page.getFolders().dstDir + "html");
+        Utilities.createDirectory(page.getFolders().dstDir + "examples");
       }
       prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
       
@@ -319,6 +320,7 @@ public class Publisher {
 		produceSchemaZip();
 		log("Produce Specification");
 		produceSpec();
+
 		log("Produce fhir.chm");
 		chm.produce();
 		if (!isInternalRun) {
@@ -388,9 +390,8 @@ public class Publisher {
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
-		new AtomComposer().compose(new FileOutputStream(
-				page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true,
-				false);
+		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
+		Utilities.copyFile(new File(page.getFolders().dstDir + "profiles-resources.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ "profiles-resources.xml"));
 		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");		
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
@@ -405,6 +406,11 @@ public class Publisher {
 		// Utilities.copyFile(new File(page.getFolders().umlDir + "fhir.xmi"),
 		// new File(page.getFolders().dstDir + "fhir.xmi"));
 
+		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
+    zip.addFiles(page.getFolders().dstDir+"examples"+File.separator, "", null);
+    zip.close();
+
+		
 		produceZip();
 		book.produce();
 
@@ -437,6 +443,7 @@ public class Publisher {
 
 	private void produceResource(ResourceDefn resource) throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
+		tmp.deleteOnExit();
 		String n = resource.getName().toLowerCase();
 
 		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n+"-definitions.htm", null);
@@ -584,6 +591,7 @@ public class Publisher {
 		      .getElement("div");
 		  e.setXhtm(new XhtmlComposer().compose(pre));
 		}
+		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
 	}
 
 	private void generateProfile(ResourceDefn root, String n, String xmlSpec)
@@ -599,8 +607,8 @@ public class Publisher {
 				"en", "US")).format(new Date()));
 		p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
-		Profile rp = pgen.generate(p, new FileOutputStream(
-				page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
+		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
+    Utilities.copyFile(new File(page.getFolders().dstDir + n + ".profile.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ n + ".profile.xml"));
 		addToResourceFeed(rp);
 		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir
 				+ "html" + File.separator + n + ".htm"));
@@ -663,6 +671,7 @@ public class Publisher {
 
 		ProfileGenerator pgen = new ProfileGenerator();
 		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+ filename + ".profile.xml"), xml);
+    Utilities.copyFile(new File(page.getFolders().dstDir + filename + ".profile.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ filename + ".profile.xml"));
 		
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 		tgen.generate(profile);

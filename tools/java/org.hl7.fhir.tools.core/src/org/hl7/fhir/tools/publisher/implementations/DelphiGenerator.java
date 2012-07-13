@@ -888,10 +888,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 
       workingComposerJ.append("  if elem."+s+".Count > 0 then\r\n"+
           "  begin\r\n"+
-          "    json.valueObject('"+Utilities.pluralizeMe(e.getName())+"');\r\n"+
+          "    json.valueArray('"+Utilities.pluralizeMe(e.getName())+"');\r\n"+
           "    for i := 0 to elem."+s+".Count - 1 do\r\n"+
-          "      "+srlsdJ+"(json, '"+e.getName()+"',"+srls.replace("#", "elem."+s+"[i]")+");\r\n"+
-          "    json.FinishObject;\r\n"+
+          "      "+srlsdJ+"(json, '',"+srls.replace("#", "elem."+s+"[i]")+");\r\n"+
+          "    json.FinishArray;\r\n"+
           "  end;\r\n");
     } else {
       defPriv1.append("    F"+getTitle(s)+" : "+tn+";\r\n");

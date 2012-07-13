@@ -91,7 +91,7 @@ public class ChmMaker {
 
     String[] files = new File(folders.dstDir).list();
     for (String f : files) {
-      if ((!f.endsWith("htm") || f.endsWith("xml.htm")) && !f.matches(Config.VERSION_REGEX) && !f.equals("html"))
+      if ((!f.endsWith("htm") || f.endsWith("xml.htm")) && !f.matches(Config.VERSION_REGEX) && !f.equals("html")  && !f.equals("examples"))
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp\\chm\\"+f));
     }
     

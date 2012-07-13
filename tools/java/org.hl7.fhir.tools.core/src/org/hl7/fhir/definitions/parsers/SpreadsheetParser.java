@@ -280,7 +280,7 @@ public class SpreadsheetParser {
 						SearchType.integer));
 		root2.getSearchParams().add(
 				new SearchParameter("id",
-						"An identifier associated with the resource",
+						"The id of the resource",
 						SearchType.token));
 
 		if (sheet != null)

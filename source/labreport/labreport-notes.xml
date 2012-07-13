@@ -1,4 +1,5 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+ï»¿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
 Notes:
@@ -24,7 +25,7 @@ withdrawn by replacing every result value with the Concept "withdrawn" in the in
 </ul>
 <h3>Relationship between results, narrative, and synoptic reports</h3>
 <p>
-One difficult aspect of the design of this resource can be captured with a simple question: “just what is a result?” There 
+One difficult aspect of the design of this resource can be captured with a simple question: "just what is a result?" There 
 is a wide range of variation in the answers to this question; some respond that a result is inherently measurement based, 
 while others focus on the clinical utility of the data item. 
 </p>
@@ -43,22 +44,5 @@ as they have a formal code or name that has a clinical meaning, and some kind of
 </p>
 
 
-<h2>
-Searching Criteria
-</h2>
-<p>
-The following simple search/filter parameters are defined for person:
-</p>
-<table class="list">
-  <tr><td>id          </td><td>an identifier associated with the report</td></tr>
-  <tr><td>test        </td><td>the name or code of either a requested test, the report or a report group</td></tr>
-  <tr><td>result      </td><td>the name or code or result value of a <i>result</i></td></tr>
-  <tr><td>specimen    </td><td>Either of the specimens. The parameter is then followed by an additional parameter (separated for a ".") that species search/filter inside specimen</td></tr>
-  <tr><td>patient     </td><td>The identity of a patient</td></tr>
-  <tr><td>laboratory  </td><td>The identity of an laboratory</td></tr>
-</table>
-<p>
-The standard search parameters also apply (see <a href="http.htm#search">Searching</a>).
-</p>
-
+</div>
 </div>

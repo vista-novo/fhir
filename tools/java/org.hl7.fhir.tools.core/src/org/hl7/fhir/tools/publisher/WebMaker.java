@@ -93,7 +93,7 @@ public class WebMaker {
         }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
-      else if (!f.matches(Config.VERSION_REGEX) && !f.equals("html"))
+      else if (!f.matches(Config.VERSION_REGEX) && !f.equals("html") && !f.equals("examples") )
         Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
     }
 
