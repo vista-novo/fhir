@@ -20,6 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -116,7 +117,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">A schedule that specifies an event that may occur multiple times</Data></Cell>
     <Cell><Data ss:Type="String">A schedule that specifies an event that may occur multiple times. Schedules are not used for recording when things did happen, but when they are expected or requested to occur.</Data></Cell>
     <Cell><Data ss:Type="String">Need to able to track schedules. There are several different ways to do scheduling: one or more specified times, a simple rules like three times a day, or to say, x before/after meals, or something like that</Data></Cell>
-    <Cell><Data ss:Type="String">  A schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria, or just repeating criteria with no actual event. </Data></Cell>
+    <Cell><Data ss:Type="String">  A schedule can be either a list of events - intervals on which the event occurs, or a single event with repeating criteria or just repeating criteria with no actual event. </Data></Cell>
     <Cell><Data ss:Type="String">GTS</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -126,7 +127,8 @@
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">When the event occurs</Data></Cell>
-    <Cell><Data ss:Type="String">When the event occurs</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies specific time periods when the event should occur</Data></Cell>
+    <Cell><Data ss:Type="String">Some schedules are just explicit lists of times</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Schedule.repeat</Data></Cell>
@@ -135,7 +137,9 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Only if there is none or one event</Data></Cell>
-    <Cell><Data ss:Type="String">Only if there is none or one event</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies a repeating pattern to the intended time periods. </Data></Cell>
+    <Cell><Data ss:Type="String">Many schedules are determined by regular repetitions</Data></Cell>
+    <Cell><Data ss:Type="String">If present, the Schedule.event indicates the time of the first occurrence.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.repeat.frequency</Data></Cell>
@@ -145,7 +149,7 @@
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Event occurs frequency times per duration</Data></Cell>
-    <Cell><Data ss:Type="String">Event occurs frequency times per duration</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates how often the event should occur.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.repeat.when</Data></Cell>
@@ -156,16 +160,18 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">EventTiming</Data></Cell>
     <Cell><Data ss:Type="String">Event occurs duration from common life event</Data></Cell>
-    <Cell><Data ss:Type="String">Event occurs duration from common life event</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the occurrence of daily life that determine timing</Data></Cell>
+    <Cell><Data ss:Type="String">Timings are frequently determined by occurrences such as waking, eating and sleep</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Schedule.repeat.duration</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Duration</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">repeating or event-related duration</Data></Cell>
-    <Cell><Data ss:Type="String">repeating or event-related duration</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Repeating or event-related duration</Data></Cell>
+    <Cell><Data ss:Type="String">How long each repetition should last</Data></Cell>
+    <Cell><Data ss:Type="String">Some activities are not instantanious and need to be maintained for a period of time</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Schedule.repeat.count</Data></Cell>
@@ -174,9 +180,10 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">number of times to repeat</Data></Cell>
-    <Cell><Data ss:Type="String">number of times to repeat</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">An end need not be specified</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Number of times to repeat</Data></Cell>
+    <Cell><Data ss:Type="String">A total count of the desired number of repetitions</Data></Cell>
+    <Cell><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data></Cell>
+    <Cell><Data ss:Type="String">An end need not be specified</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Schedule.repeat.end</Data></Cell>
@@ -185,9 +192,10 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">when to stop repeats</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">When to stop repeats</Data></Cell>
     <Cell><Data ss:Type="String">when to stop repeats</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">An end need not be specified</Data></Cell>
+    <Cell><Data ss:Type="String">Repetitions may be limited by end time or total occurrences</Data></Cell>
+    <Cell><Data ss:Type="String">An end need not be specified</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -197,14 +205,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -339,35 +339,35 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">AC</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before a meal (from the latin ante cibus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before a meal (from the Latin ante cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACM</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before breakfast (from the latin ante cibus matutinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before breakfast (from the Latin ante cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACD</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before lunch (from the latin ante cibus diurnus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before lunch (from the Latin ante cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACV</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before dinner (from the latin ante cibus vespertinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before dinner (from the Latin ante cibus vespertinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PC</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after a meal (from the latin post cibus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after a meal (from the Latin post cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCM</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after breakfast (from the latin post cibus matutinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after breakfast (from the Latin post cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCD</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after lunch (from the latin post cibus diurnus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after lunch (from the Latin post cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCV</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after dinner (from the latin post cibus vespertinus) </Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after dinner (from the Latin post cibus vespertinus) </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -377,11 +377,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
      <ActiveCol>1</ActiveCol>
+     <RangeSelection>C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

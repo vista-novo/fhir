@@ -61,8 +61,8 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s67">
-   <Alignment ss:Vertical="Top"/>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
    <Interior/>
@@ -109,23 +109,24 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A concept - a reference to a terminology or just  text</Data></Cell>
-    <Cell><Data ss:Type="String">A concept that may be defined by a formal reference to a terminology or ontology, or may be provided by text</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Concept - reference to a terminology or just  text</Data></Cell>
+    <Cell><Data ss:Type="String">A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED-CT, and/or defined by the provision of text that captures a human sense of the concept</Data></Cell>
     <Cell><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations, and the relationship between elements and pre- and post-coordination</Data></Cell>
-    <Cell><Data ss:Type="String">CD.displayName</Data></Cell>
+    <Cell><Data ss:Type="String">CD</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="77.25">
+   <Row ss:Height="105">
     <Cell><Data ss:Type="String">CodeableConcept.coding</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A reference to a code defined by a terminology system </Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Code defined by a terminology system </Data></Cell>
     <Cell><Data ss:Type="String">A reference to a code defined by a terminology system </Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Codes may defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED-CT - see the v3 core principles for more information</Data></Cell>
-    <Cell><Data ss:Type="String">CD or CD.translation</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings.</Data></Cell>
+    <Cell><Data ss:Type="String">Codes may defined very casually in enumerations, or code lists, up to very formal definitions such as SNOMED-CT - see the v3 core principles for more information.  Ordering of codings is undefined and must not be used to infer meaning.</Data></Cell>
+    <Cell><Data ss:Type="String">union(., ./translation)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">CodeableConcept.text</Data></Cell>
@@ -134,21 +135,21 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A plain text representation of the concept</Data></Cell>
-    <Cell><Data ss:Type="String">A human language representation of the concept as seen/selected/uttered by the user who entered the data, and/or which represents the intended meaning of the user or concept</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Plain text representation of the concept</Data></Cell>
+    <Cell><Data ss:Type="String">A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user or concept</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The codes from the terminologies do not always capture the correct meaning with all the nuances of the human, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source</Data></Cell>
     <Cell><Data ss:Type="String">Very often the text is the same as a displayName of one of the codings</Data></Cell>
-    <Cell><Data ss:Type="String">CD.originalText</Data></Cell>
+    <Cell><Data ss:Type="String">./originalText[mediaType/code=&quot;text/plain&quot;]/data</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:Height="90">
     <Cell><Data ss:Type="String">CodeableConcept.primary</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">idref</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Which code was chosen directly by the user</Data></Cell>
     <Cell><Data ss:Type="String">Indicates which of the codes in the codings was chosen by a user, if one was chosen directly</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Where a user picks an actual code directly, it is useful to note that this is the primary input</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">root CD</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Where a user picks an actual code directly, it is useful to note that this is the primary input.  It's also the most appropriate starting point for new translations (unless re-coding directly from 'text').</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">special(&quot;The id assigned to the coding that corresponds to the root code of the CD&quot;)</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -158,13 +159,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>3</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -189,7 +183,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have Data</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s67"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s69"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the CodeableConcept has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">coding</Font></I><Font html:Color="#000000"> with a code or a text</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or (coding.size &gt; 0 and coding-&gt;collect(code.size() &gt; 0).size &gt; 0) or text.size &gt; 0</Data></Cell>
@@ -212,12 +206,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <LeftColumnVisible>4</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

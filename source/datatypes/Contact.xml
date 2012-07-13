@@ -19,6 +19,7 @@
   <WindowWidth>25635</WindowWidth>
   <WindowTopX>2640</WindowTopX>
   <WindowTopY>2655</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -78,6 +79,17 @@
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s70">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s72" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="6" x:FullColumns="1"
@@ -116,7 +128,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.</Data></Cell>
     <Cell><Data ss:Type="String">All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc</Data></Cell>
     <Cell><Data ss:Type="String">Need to track phone, fax, mobile, sms numbers, email addresses, twitter tags, etc</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">TEL</Data></Cell>
@@ -131,7 +143,7 @@
     <Cell><Data ss:Type="String">ContactSystem</Data></Cell>
     <Cell><Data ss:Type="String">What kind of contact this is</Data></Cell>
     <Cell><Data ss:Type="String">What kind of contact this is - what communications system is required to make use of the contact</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">TEL.scheme</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./scheme</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Contact.value</Data></Cell>
@@ -144,7 +156,7 @@
     <Cell><Data ss:Type="String">The actual contact details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).</Data></Cell>
     <Cell><Data ss:Type="String">Need to support legacy numbers that are not in a tightly controlled format </Data></Cell>
     <Cell><Data ss:Type="String">additional out of band data such as extensions, or notes about use of the contact are sometimes included in the value</Data></Cell>
-    <Cell><Data ss:Type="String">TEL.url</Data></Cell>
+    <Cell><Data ss:Type="String">./url</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Contact.use</Data></Cell>
@@ -154,9 +166,9 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ContactUse</Data></Cell>
     <Cell><Data ss:Type="String">How to use this address</Data></Cell>
-    <Cell><Data ss:Type="String">How to use this address</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the context for the address</Data></Cell>
     <Cell><Data ss:Type="String">Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">TEL.use</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">unique(./use)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Contact.period</Data></Cell>
@@ -165,7 +177,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">Time period when the contact was/is in use</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">TEL.useablePeriod</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./useablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -175,14 +187,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -293,9 +297,9 @@
  </Worksheet>
  <Worksheet ss:Name="contact-use">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="511.5"/>
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="511.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -304,25 +308,25 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">home</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">home</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">A communication contact at a home; attempted contacts for business purposes might intrude privacy and chances are one will contact family or other household members instead of the person one wishes to call. Typically used with urgent cases, or if no other contacts are available.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">work</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">An office contact. First choice for business related contacts during business hours.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">work</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">An office contact. First choice for business related contacts during business hours.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">temp</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A temporary contact. The period can provide more detailed information.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">temp</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">A temporary contact. The period can provide more detailed information.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">old</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">This contact is no longer in use (or was never correct, but retained for records)</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">old</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">This contact is no longer in use (or was never correct, but retained for records)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">mobile</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">mobile</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">A telecommunication device that moves and stays with its owner. May have characteristics of all other use codes, suitable for urgent matters, not the first choice for routine business</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -345,8 +349,8 @@
  </Worksheet>
  <Worksheet ss:Name="contact-system">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="491.25"/>
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="491.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -355,21 +359,21 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">phone</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">the value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">phone</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">The value is a telephone number used for voice calls. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">fax</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">The value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">fax</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">the value is a fax machine. Use of full international numbers starting with + is recommended to enable automatic dialing support but not required.</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">email</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">The value is an email address</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">email</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">the value is an email address</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">url</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The value is a url. This is intended for various personal contacts including blogs, twitter, facebook etc. Do not use for email addresses</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s72"><Data ss:Type="String">url</Data></Cell>
+    <Cell ss:StyleID="s72"><Data ss:Type="String">The value is a url. This is intended for various personal contacts including blogs, Twitter, Facebook, etc. Do not use for email addresses</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -379,10 +383,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

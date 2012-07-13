@@ -20,20 +20,20 @@ Fast Healthcare Interoperability Resources (FHIR) defines a set of resources for
 Resources are:
 </p>
 <ul class="dense">
- <li>Granular - they are the smallest unit of operation, and a transaction scope of their own</li>
+ <li>Granular - they are the smallest unit of operation and a transaction scope of their own</li>
  <li>Independent - the content of a resource can be understood without reference to other resources</li>
  <li>Simple - each resource is easy to understand and implement without needing tooling or infrastructure (though that can be used if desired)</li>
  <li>RESTful - resources are able to be used in a RESTful exchange context</li>
  <li>Flexible - resources can also be used in other contexts, such as messaging or SOA architectures, and moved in and out of RESTful paradigms as convenient</li>
  <li>Extensible - resources can be extended to cater for local requirements without impacting on interoperability</li>
- <li>Web Enabled - where possible or appropriate, open internet standards are used for data representation </li>
+ <li>Web Enabled - where possible or appropriate, open internet standards are used for data representation</li>
  <li>Free for use - the FHIR specification itself is open - anyone can implement FHIR or derive related specifications without any IP restrictions</li>
 </ul>
 <p>
 In addition to the basic resources, FHIR defines a lightweight implementation framework that supports the use of these 
-resources in RESTful environments, classic message exchanges, human-centric clinical documents, and enterprise SOA 
-architectures. Each of these approaches provides it's own benefits - FHIR provides the underpinning enablement that
-makes the choosing one of these painless, and enables enterprises to choose their own paradigm without forsaking 
+resources in RESTful environments, classic message exchanges, human-centric clinical documents and enterprise SOA 
+architectures. Each of these approaches provides its own benefits - FHIR provides the underpinning enablement that
+makes the choosing one of these painless and enables enterprises to choose their own paradigm without forsaking 
 interoperability with other paradigms.
 </p>
 <p>
@@ -45,15 +45,15 @@ resources can be leveraged by computational analysis and conversion processes.
 </p>
 <p>
 FHIR also provides an underlying conformance framework and tooling that allows different implementation
-contexts and enterprises to describe their context and use of resources in formal computable ways, and
+contexts and enterprises to describe their context and use of resources in formal computable ways and
 to empower computed interoperability that leverages both the conformance and definitional frameworks. 
 </p>
 <p>
 The combination of the resources and the 3 supporting layers (implementation frameworks, definitional
-thoroughness, and conformance tooling) frees healthcare data, so that it can easily flow to where it 
+thoroughness, and conformance tooling) frees healthcare data so that it can easily flow to where it 
 needs to be (hospital production systems, mobile clinical systems, cloud based data stores, 
-national health repositories, research databases, etc) without having to pass through format 
-and semantic interconversion hurdles along the way. 
+national health repositories, research databases, etc.) without having to pass through format 
+and semantic inter-conversion hurdles along the way. 
 </p>
 <p>
 Compared to the all the other approaches, FHIR... [-- Obligatory: insert your <span style="text-decoration: line-through">FHIR</span> FIRE related joke here --]. 
@@ -61,34 +61,34 @@ Compared to the all the other approaches, FHIR... [-- Obligatory: insert your <s
 
 <h2>Roadmap</h2>
 <p>
-This specification is structured into 3 parts, the introduction, the implementation section, and the resource definitions. 
+This specification is structured into 3 parts, the introduction, the implementation section and the resource definitions. 
 </p>
 <h3>Introduction</h3>
 <p>
 The introduction provides foundational material that is required to understand and use resources:
 </p>
 <ul>
-  <li><b><a href="index.htm">Introduction</a></b>: Overall introduction, useful links, and the FHIR license</li>
+  <li><b><a href="index.htm">Introduction</a></b>: Overall introduction, useful links and the FHIR license</li>
   <li>This roadmap</li>
-  <li><b><a href="xml.htm">Resource Formats</a></b>: An explanation of the general content and format of all resources, and how they are described</li>
+  <li><b><a href="xml.htm">Resource Formats</a></b>: An explanation of the general content and format of all resources and how they are described</li>
   <li><b><a href="datatypes.htm">Data Types</a></b>: Common re-usable patterns encountered throughout healthcare data and used in the resources</li>
-  <li><b><a href="terminologies.htm">Using Codes</a></b>: explains how the use of codes (code systems, terminologies, classifications, ontologies) is managed in FHIR</li>
-  <li><b><a href="extensibility.htm">Extensibility</a></b>: Describes the extension section of the resource, and specifies the rules that apply to it's use</li>
+  <li><b><a href="terminologies.htm">Using Codes</a></b>: Explains how the use of codes (code systems, terminologies, classifications, ontologies) is managed in FHIR</li>
+  <li><b><a href="extensibility.htm">Extensibility</a></b>: Describes the extension section of the resource and specifies the rules that apply to its use</li>
   <li><b><a href="profile.htm">Resource Profiles</a></b>: Describes how resources are profiled to describe their use in a particular context</li>
 </ul>
 
 <h3>Implementation</h3>
 <p>
-The implemetation section explains how resources are used in various contexts:
+The implementation section explains how resources are used in various contexts:
 </p>
 <ul>
-  <li><b><a href="implementation.htm">Implementation</a></b>: general requirements for using resources, and various useful things including schema packs and reference implementations</li>
+  <li><b><a href="implementation.htm">Implementation</a></b>: General requirements for using resources and various useful things including schema packs and reference implementations</li>
   <li><b><a href="http.htm">REST (HTTP)</a></b>: Defines a lightweight HTTP based paradigm for using resources</li>
   <li><b><a href="message.htm">Messaging</a></b>: A simple request/response message based transactional framework (equivalent to HL7 v2)</li>
-  <li><b><a href="document.htm">Documents</a></b>: Clinical documents contain attested content that are both human readable and computer processible, and can be exchanged and signed as single bundles (equivalent to CDA)</li>
+  <li><b><a href="document.htm">Documents</a></b>: Clinical documents contain attested content that are both human readable and computer processable and can be exchanged and signed as single bundles (equivalent to CDA)</li>
   <li><b><a href="hdata.htm">hData Integration</a></b>: An explanation of how to use resources in a the context of an hData RESTful service</li>
   <li><b><a href="atom.htm">Atom Feeds</a></b>: Atom feeds are used to gather a set of resources into a single XML document when they are transferred as a group - these are called "bundles"</li>
-  <li><b><a href="valueset.htm">Value Set</a></b>: A resource that describes a set of codes - used in association with profiles to specify resource contents</li>
+  <li><b><a href="valueset.htm">Value Set</a></b>: A resource that describes a set of codes - used in association with profiles to specify resource contents and potentially usable in other contexts</li>
   <li><b><a href="conformance.htm">Conformance</a></b>: A resource that describes how an application does, can, or should use FHIR resources</li>
 </ul>
 
@@ -98,24 +98,24 @@ The resources section enumerates the resources:
 </p>
 <ul>
   <li><b><a href="resources.htm">Resources</a></b>: An index of the defined resources</li>
-  <li><b>etc</b>: The resources in alphabetical order</li>
+  <li><b>etc.</b>: The resources in alphabetical order</li>
 </ul>
 <p>
 For each resource, the following pages are provided:
 </p>
 <ul>
- <li><b>Content</b>: defines the content of the resource with a simple XML format and some additional description. Formal definitions such as W3C schema and others are also provided</li>
- <li><b>Examples</b>: provides one or more examples that show how the resource is used</li>
- <li><b>Formal Definitions</b>: A table of the full formal definitions for each element in the resource, along with mappings to other standards and ontologies</li>
- <li><b>Design Notes</b>: Explanations of some of the less obvious aspects of the resource, and explanation of why the resource is structured in a particular way. Not all resources have design notes, and implementers do not need to read them</li>
- <li><b>Profiles</b>: A list of profiles of the resource that are provided as part of the standard. Profiles may be provided to illustrate some aspect of the use of a resource, or because certain particular uses of a resource are sufficiently common to warrant a standard profile</li>
+ <li><b>Content</b>: Provides context for the resource and defines its content with a simple XML format and some additional description. Formal definitions such as W3C schema and others are also provided.  Also describes events and search criteria associated with the resource.</li>
+ <li><b>Examples</b>: Provides one or more examples that show how the resource is used.</li>
+ <li><b>Formal Definitions</b>: A table of the full formal definitions for each element in the resource along with mappings to other standards and ontologies.</li>
+ <li><b>Design Notes</b>: Explanations of some of the less obvious aspects of the resource and explanation of why the resource is structured in a particular way. Not all resources have design notes and implementers do not need to read them.</li>
+ <li><b>Profiles</b>: A list of profiles of the resource that are provided as part of the standard. Profiles may be provided to illustrate some aspect of the use of a resource or because certain particular uses of a resource are sufficiently common to warrant a standard profile.</li>
 </ul>
 
 <h2>Community</h2>
 <p>
-The FHIR community meets inside the wider <a href="http://hl7.org">HL7 community</a>, and 
-draws on it's extensive human resources, institutional memory, previous standards, and corporate support.
-HL7 itself owns FHIR and makes it freely available, and the community relies on HL7 provided infrastructure.
+The FHIR community meets inside the wider <a href="http://hl7.org">HL7 community</a> and 
+draws on its extensive human resources, institutional memory, previous standards and corporate support.
+HL7 itself owns FHIR and makes it freely available and the community relies on HL7 provided infrastructure.
 </p>
 <p>
 The primary resources used by the FHIR community are the <a href="http://wiki.hl7.org/index.php?title=FHIR">HL7 wiki</a>,
@@ -124,7 +124,7 @@ addition, the community holds regular face to face meetings as part of the <a hr
 The formal governance arrangements that manage FHIR development are documented (where?)
 </p>
 <p>
-Note that each page contains a direct link it's matching wiki page where input from the wider community is managed. Community input is very welcome - please consider making comments.
+Note that each page contains a direct link its matching wiki page where input from the wider community is managed. Community input is very welcome - please consider making comments.
 </p>
 
 <%footer%>

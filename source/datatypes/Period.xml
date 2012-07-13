@@ -81,8 +81,8 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
-    ss:Span="1"/>
+   <Column ss:Index="12" ss:StyleID="s62" ss:Width="96.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -107,10 +107,10 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A time period defined by a start and and end time.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Time range defined by start and end time</Data></Cell>
     <Cell><Data ss:Type="String">A time period defined by a start and and end time.</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. An Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If a duration might be required, specify the type as Interval|Duration</Data></Cell>
-    <Cell><Data ss:Type="String">IVL</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If a duration might be required, specify the type as Interval|Duration</Data></Cell>
+    <Cell><Data ss:Type="String">IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Period.start</Data></Cell>
@@ -122,7 +122,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">The start of the period</Data></Cell>
     <Cell><Data ss:Type="String">The start of the period. The boundary is inclusive.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
-    <Cell><Data ss:Type="String">IVL.low</Data></Cell>
+    <Cell><Data ss:Type="String">./low</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Period.end</Data></Cell>
@@ -133,7 +133,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">The end of the period, if not ongoing</Data></Cell>
     <Cell><Data ss:Type="String">The end of the period. If the high is missing, it means that the period is ongoing</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03</Data></Cell>
-    <Cell><Data ss:Type="String">IVL.high</Data></Cell>
+    <Cell><Data ss:Type="String">./high</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -147,8 +147,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -158,11 +158,12 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="191.25"
-    ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="425.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="323.25"/>
-   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="378"/>
+   <Column ss:StyleID="s66" ss:AutoFitWidth="0" ss:Width="32.25"/>
+   <Column ss:StyleID="s66" ss:Width="126"/>
+   <Column ss:StyleID="s66" ss:Width="42"/>
+   <Column ss:StyleID="s66" ss:Width="384"/>
+   <Column ss:StyleID="s66" ss:Width="257.25"/>
+   <Column ss:StyleID="s66" ss:Width="218.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Id</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Name</Data></Cell>

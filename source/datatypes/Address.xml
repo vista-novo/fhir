@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T08:56:59Z</Created>
-  <LastSaved>2012-05-31T05:32:53Z</LastSaved>
+  <LastSaved>2012-07-09T00:53:45Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,6 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -41,15 +42,15 @@
    <Protection/>
   </Style>
   <Style ss:ID="s63">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s64">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
   <Style ss:ID="s65">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Borders>
     <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
@@ -58,7 +59,7 @@
    <Interior ss:Color="#F2F2F2" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s66">
-   <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
+   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s67">
@@ -84,14 +85,22 @@
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s70">
-   <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s71">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s72">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s75" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -141,7 +150,7 @@
     <Cell><Data ss:Type="String">Note: address is for postal addresses, not physical locations</Data></Cell>
     <Cell><Data ss:Type="String">AD</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.use</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -149,9 +158,11 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">AddressUse</Data></Cell>
     <Cell><Data ss:Type="String">The use of this address</Data></Cell>
-    <Cell><Data ss:Type="String">The use of this address</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the intended purpose of this address</Data></Cell>
     <Cell><Data ss:Type="String">Home, Work</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">AD.use</Data></Cell>
+    <Cell><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">unique(./use)</Data></Cell>
+    <Cell ss:Index="16"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.text</Data></Cell>
@@ -163,8 +174,9 @@
     <Cell ss:Index="8"><Data ss:Type="String">Text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">a full text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
-    <Cell><Data ss:Type="String">AD.formatted</Data></Cell>
+    <Cell><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
+    <Cell><Data ss:Type="String">./formatted</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.part</Data></Cell>
@@ -173,8 +185,9 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">A part of an address</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
-    <Cell><Data ss:Type="String">ADXP</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Breaks an address into parts for matching, validation and analysis</Data></Cell>
+    <Cell><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
+    <Cell><Data ss:Type="String">./item</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.part.type</Data></Cell>
@@ -186,7 +199,7 @@
     <Cell><Data ss:Type="String">Type of address part (see below)</Data></Cell>
     <Cell><Data ss:Type="String">Type of address part (see below)</Data></Cell>
     <Cell><Data ss:Type="String">Erewhon</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">ADXP.type</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./partType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.part.value</Data></Cell>
@@ -197,7 +210,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">The content of the address part</Data></Cell>
     <Cell><Data ss:Type="String">The content of the address part</Data></Cell>
     <Cell><Data ss:Type="String">City</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">ADXP.value</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./data</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.period</Data></Cell>
@@ -207,7 +220,8 @@
     <Cell ss:Index="8"><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">23-Mar 2010 -&gt; 1-Jul 2010</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">AD.usablePeriod</Data></Cell>
+    <Cell><Data ss:Type="String">Allows addresses to be placed in historical context</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -223,14 +237,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -254,11 +260,11 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Mandatory Content</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Either text or at least one part is required unless a dataAbsentReason flag is provided on the address element</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Mandatory Content</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Either text or at least one part is required unless a dataAbsentReason flag is provided on the address element</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -274,13 +280,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -302,19 +301,19 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="21.75">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">AddressPartType</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Type of address part</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">#address-part-type</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">AddressPartType</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Type of address part</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">#address-part-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">AddressUse</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The use of an address</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">#address-use</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">AddressUse</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The use of an address</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">#address-use</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -348,15 +347,15 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">home</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A communication address at a home.</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">A communication address at a home</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">work</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">An office address. First choice for business related contacts during business hours.</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">An office address. First choice for business related contacts during business hours</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">temp</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A temporary address. The period can provide more detailed information.</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">A temporary address. The period can provide more detailed information</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">old</Data></Cell>
@@ -373,7 +372,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -382,8 +382,8 @@
  </Worksheet>
  <Worksheet ss:Name="address-part-type">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="8" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="476.25"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="476.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">Definition</Data></Cell>
@@ -392,33 +392,33 @@
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s69"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">part</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Part of an address line (typically used with an extension that further defines the meaning of the part).</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s75"><Data ss:Type="String">part</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Part of an address line (typically used with an extension that further defines the meaning of the part).</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">line</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints etc) .</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">line</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">A line of an address (typically used for street names &amp; numbers, unit details, delivery hints, etc.) .</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">city</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The name of the city, town, village, or other community or delivery centre.</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">city</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">The name of the city, town, village, or other community or delivery centre.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell ss:StyleID="s75"><Data ss:Type="String">state</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">state</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">country</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">country</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Country. ISO 3166 3 letter codes can be used in place of a full country name.</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">zip</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">zip</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A postal code designating a region defined by the postal service.</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">dpid</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">A value that uniquely identifies the postal address. (often used in barcodes). </Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">dpid</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">A value that uniquely identifies the postal address. (Often used in barcodes). </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -428,10 +428,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>7</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

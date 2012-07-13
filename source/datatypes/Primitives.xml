@@ -56,7 +56,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">boolean</Data><NamedCell ss:Name="boolean"/></Cell>
-    <Cell><Data ss:Type="String">value can be true or false</Data></Cell>
+    <Cell><Data ss:Type="String">Value of true or false</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">boolean</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -67,8 +67,8 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">decimal</Data></Cell>
-    <Cell><Data ss:Type="String">A rational number, with implicit precision</Data></Cell>
-    <Cell><Data ss:Type="String">Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (i.e. Java BigInteger)</Data></Cell>
+    <Cell><Data ss:Type="String">A rational number with implicit precision</Data></Cell>
+    <Cell><Data ss:Type="String">Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigInteger)</Data></Cell>
     <Cell><Data ss:Type="String">decimal</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -91,7 +91,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell><Data ss:Type="String">is a string of characters used to identify a name or a resource</Data></Cell>
+    <Cell><Data ss:Type="String">String of characters used to identify a name or a resource</Data></Cell>
     <Cell><Data ss:Type="String">see http://en.wikipedia.org/wiki/Uniform_resource_identifier</Data></Cell>
     <Cell><Data ss:Type="String">anyURI</Data></Cell>
    </Row>
@@ -106,7 +106,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>

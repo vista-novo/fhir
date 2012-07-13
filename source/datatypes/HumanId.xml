@@ -125,7 +125,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">An identifier that humans use</Data></Cell>
-    <Cell><Data ss:Type="String">An identifier that humans use. This is different to a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that an human identifier may be a system identifier on some master system, but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license nunmbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. </Data></Cell>
+    <Cell><Data ss:Type="String">An identifier that humans use. This is different from a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that a human identifier may be a system identifier on some master system but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license numbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. </Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Need to be able to work with the many vagaries of human identifiers - that is, identifiers that humans use for things, with the attendent uncertainty and correction features</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
@@ -136,7 +136,7 @@
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">IdentifierType</Data></Cell>
     <Cell><Data ss:Type="String">Code for identifier type</Data></Cell>
-    <Cell><Data ss:Type="String">The type of the identifier - to allow a particular identifier to be picked elsewhere</Data></Cell>
+    <Cell><Data ss:Type="String">The type of the identifier - to allow a particular identifier to be selected elsewhere</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Human identifiers often have some type associated with them that is important to allow the identifier to be picked as a basis for exchange elsewhere, either in other electronic interchanges, or paper forms</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -147,7 +147,8 @@
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Actual identifier</Data></Cell>
-    <Cell><Data ss:Type="String">The Actual identifier</Data></Cell>
+    <Cell><Data ss:Type="String">The identifier itself</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Allows for matching of objects</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">HumanId.period</Data></Cell>
@@ -181,12 +182,11 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -228,14 +228,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <LeftColumnVisible>4</LeftColumnVisible>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -285,7 +277,8 @@
  <Worksheet ss:Name="identifier-type">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="12" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="423"/>
+   <Column ss:Width="57.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="423"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -320,11 +313,11 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ssn </Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">National Social Security Number</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">National Social Security Number (or equivalent)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">state </Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">State Healthcare Identifier</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">jurisdiction</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Jurisdictional Healthcare Identifier</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">patient </Data></Cell>
@@ -349,7 +342,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>17</ActiveRow>
+     <ActiveRow>8</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
