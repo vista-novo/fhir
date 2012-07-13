@@ -16,10 +16,11 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>9810</WindowHeight>
-  <WindowWidth>15570</WindowWidth>
+  <WindowHeight>9816</WindowHeight>
+  <WindowWidth>15576</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>240</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -42,9 +43,9 @@
   </Names>
   <Table ss:ExpandedColumnCount="8" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="66.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="66.600000000000009"/>
    <Column ss:AutoFitWidth="0" ss:Width="177"/>
-   <Column ss:AutoFitWidth="0" ss:Width="362.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="362.4"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="117"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Span="3"/>
    <Row ss:AutoFitHeight="0">
@@ -102,7 +103,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -126,10 +126,10 @@
   </Names>
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="74.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="233.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="142.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="199.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="74.400000000000006"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="233.4"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="142.80000000000001"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="199.79999999999998"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="108"/>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Data Type</Data></Cell>
@@ -153,7 +153,7 @@
     <Cell><Data ss:Type="String">uuid</Data><NamedCell ss:Name="uuid"/></Cell>
     <Cell><Data ss:Type="String">A UUID</Data></Cell>
     <Cell><Data ss:Type="String">See The Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A.</Data></Cell>
-    <Cell><Data ss:Type="String">[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}</Data></Cell>
+    <Cell><Data ss:Type="String">[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">sid</Data><NamedCell ss:Name="sid"/></Cell>
@@ -198,7 +198,9 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <TopRowVisible>5</TopRowVisible>
+   <Selected/>
+   <TopRowVisible>6</TopRowVisible>
+   <LeftColumnVisible>2</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
