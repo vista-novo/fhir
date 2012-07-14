@@ -1,34 +1,34 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
 <p>
-FHIR resources can be used to build clinical documents that document clinical observations and services. 
+FHIR resources can be used to build clinical documents that capture information about clinical observations and services. 
 A clinical document is a bundle (a list of resources in an <a href="atom.htm">atom feed</a>) that is 
-fixed in scope and frozen in time, and authored and/or attested as a set of logically contained resource by humans, organisations and devices. Documents built in 
-this fashion may be exchanged between systems, and also persisted in document storage and management 
+fixed in scope, frozen in time and authored and/or attested as a set of logically contained resources by humans, organisations and devices. Documents built in 
+this fashion may be exchanged between systems and also persisted in document storage and management 
 systems, including systems such as IHE XDS. Applications claiming conformance to this framework claim 
 to be conformant to "FHIR documents". 
 </p>
 
 <h2>Document Content</h2>
 <p>
-All documents have the same structure: a <a href="atom.htm">bundle</a> that has <i>Document
-Header</i> (below) first, followed by a series of other resources referenced from the Document 
-header that provides guidance for how they fit together. The bundle gathers all the content
-of the document into a single XML document which maybe signed and managed as required. The resources
+All documents have the same structure: a <a href="atom.htm">bundle</a> that has a <i>Document
+Header</i> resource (below) first, followed by a series of other resources referenced from the Document 
+header that provides guidance on how they fit together. The bundle gathers all the content
+of the document into a single XML document which may be signed and managed as required. The resources
 include both human and computer readable portions.
 </p>
 <p>
-The document header identifies the document and it's purpose, sets the context of the document, and 
+The document header identifies the document and its purpose, sets the context of the document and 
 carries key information such as the subject and author. It also divides the document up into a 
-series of sections that each contain some other resource identified in this specification that 
-carries the content. Any resource referenced directly in the Document resource must be included
-in the bundle when the document is assembled; other resources that these documents refer to
-may also be included in the bundled if the document originator chooses to. 
+series of sections that contain other resources identified in this specification that 
+carry the content. Any resource referenced directly in the Document resource must be included
+in the bundle when the document is assembled. Other resources that these referenced resources refer to
+may also be included in the bundle if the document originator chooses to. 
 </p>
 <p>
 <a href="profile.htm">Document profiles</a> can make additional rules about which resources
 must be included in the bundle along with the resources that are directly referenced in the Document resource. 
-In addition, Document Profiles can specify what sections a document contains, and what the 
+In addition, Document Profiles can specify what sections a document contains and what the 
 constraints on their contents are. Applications should consider publishing <a href="conformance.htm">conformance 
 statements</a> that identify particular documents they support.
 </p>
@@ -54,6 +54,6 @@ RESTful systems may also accept documents through their <a href="message.htm#mai
 </p>
 <p>
 Note: While the end-points above are defined for use with document resources and document bundles, 
-it is not necessary to use them; documents may be transferred between systems using any method desired.
+it is not necessary to use them. Documents may be transferred between systems using any method desired.
 </p>
 </div>

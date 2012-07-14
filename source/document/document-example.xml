@@ -23,14 +23,14 @@
       <text>Robert Dolin MD</text>
     </party>
   </author>
-  <attestor>
+  <attester>
     <mode>legal</mode>    
     <party>
       <type>Person</type>
       <id>233123</id>
       <text>Robert Dolin MD</text>
     </party>
-  </attestor>
+  </attester>
   <custodian>
     <type>Organization</type>
     <id>2.16.840.1.113883.19.5</id>
