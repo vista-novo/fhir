@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:21:04Z</Created>
-  <LastSaved>2012-04-26T13:29:11Z</LastSaved>
+  <LastSaved>2012-07-14T16:02:18Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -74,6 +74,22 @@
   <Style ss:ID="s69">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
+  <Style ss:ID="s77" ss:Parent="s62">
+   <Alignment ss:Vertical="Top"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s78" ss:Parent="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="11" x:FullColumns="1"
@@ -116,6 +132,7 @@
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A human readable formatted text, including images</Data></Cell>
     <Cell><Data ss:Type="String">A human readable formatted text, including images</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Narrative.status</Data></Cell>
@@ -125,7 +142,8 @@
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">NarrativeStatus</Data></Cell>
     <Cell><Data ss:Type="String">generated | extensions | additional</Data></Cell>
-    <Cell><Data ss:Type="String">The status of the narrative - whether it is entirely generated (from just the defined data or the extensions too), or whether a human authored it, and it may contain additional data</Data></Cell>
+    <Cell><Data ss:Type="String">The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Narrative.div</Data></Cell>
@@ -133,16 +151,20 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">xhtml</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">limited xhtml content</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Limited xhtml content</Data></Cell>
     <Cell><Data ss:Type="String">The actual narrative content, a stripped down version of XHTML</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The contents of the html element are an XHTML fragment containing only the basic html formatting elements described in chapters 7-11 and 15 of the HTML 4.0 standard, &lt;a&gt; elements (either name or href), images, and internally contained stylesheets. The XHTML content may not contain a head, a body, external stylesheet references, scripts, forms, base/link/xlink, frames, iframes, and objects. </Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:Height="30">
     <Cell><Data ss:Type="String">Narrative.image</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">An image referred to directly in the xhtml</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Images referenced in xhtml</Data></Cell>
+    <Cell><Data ss:Type="String">An image referred to directly in the xhtml</Data></Cell>
+    <Cell><Data ss:Type="String">Allows image content to be conveyed inline</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.image.mimeType</Data></Cell>
@@ -151,8 +173,9 @@
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">MediaType</Data></Cell>
-    <Cell><Data ss:Type="String">mime type of image</Data></Cell>
-    <Cell><Data ss:Type="String">mime type of image</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of image</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of image</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Narrative.image.content</Data></Cell>
@@ -162,12 +185,15 @@
     <Cell><Data ss:Type="String">base64Binary</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">base64 image data</Data></Cell>
     <Cell><Data ss:Type="String">base64 image data</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Narrative.map</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes</Data></Cell>
+    <Cell><Data ss:Type="String">Allows linking between discrete data in the resource and content within the text</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.map.text</Data></Cell>
@@ -176,6 +202,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">idref</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Narrative source (by id attribute)</Data></Cell>
     <Cell><Data ss:Type="String">The narrative end of the mapping</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Narrative.map.data</Data></Cell>
@@ -184,6 +211,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">idref</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Data source (by id attribute)</Data></Cell>
     <Cell><Data ss:Type="String">The resource element end of the mapping</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Narrative.map.source</Data></Cell>
@@ -193,6 +221,7 @@
     <Cell><Data ss:Type="String">NarrativeMapSource</Data></Cell>
     <Cell><Data ss:Type="String">text | data</Data></Cell>
     <Cell><Data ss:Type="String">Which end of the mapping is the source</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -203,10 +232,25 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -293,8 +337,10 @@
  </Worksheet>
  <Worksheet ss:Name="narrative-status">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:Width="56.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="454.5"/>
+   <Row>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -302,17 +348,17 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">generated</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource.</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">generated</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource.</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">extensions</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions</Data></Cell>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s77"><Data ss:Type="String">extensions</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">additional</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The contents of the narrative contain additional information not found in the structured data</Data></Cell>
+   <Row>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">additional</Data></Cell>
+    <Cell ss:StyleID="s78"><Data ss:Type="String">The contents of the narrative contain additional information not found in the structured data</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -321,11 +367,11 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -335,6 +381,7 @@
  <Worksheet ss:Name="narrative-map-source">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:Width="135.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -362,7 +409,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>1</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

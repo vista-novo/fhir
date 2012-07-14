@@ -41,10 +41,10 @@
     <!-- for LOINC, we simply include the listed codes - no subsumption in LOINC -->
     <mode>code</mode>
     <!-- these were selected by hand -->
-<!--    <code>14647-2</code>
+    <code>14647-2</code>
     <code>2093-3</code>
     <code>35200-5</code>
-    <code>9342-7</code>   -->
+    <code>9342-7</code>
   </include>
   <text>
     <status>generated</status>

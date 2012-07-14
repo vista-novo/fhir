@@ -171,8 +171,7 @@ consumer choose between multiple different Attachment elements.
 </p>
 <p>
 In many cases where Attachment is used, the cardinality is &gt;1; repeats
-are used to convey the same content in different mime types and languages,
-or to provide a thumbnail of a large image.
+are used to convey the same content in different mime types and languages.
 </p>
 <div class="use">
 <p><b>Use</b></p>
@@ -254,10 +253,10 @@ to some organisation to further sub-allocate):</p>
    &lt;id&gt;123&lt;/id&gt;
   &lt;/x&gt;
 </pre>
-<p>An identifier of a resource defined by this specification, on a particular system:</p>
+<p>An identifier of a patient FHIR resource on a particular system:</p>
 <pre class="xml">
   &lt;x&gt;
-   &lt;system&gt;http://pas-server/xxx/patients&lt;/system&gt;
+   &lt;system&gt;http://pas-server/xxx/patient&lt;/system&gt;
    &lt;id&gt;443556&lt;/id&gt;
   &lt;/x&gt;
 </pre>
@@ -429,27 +428,32 @@ Codings appearing in a particular sequence.
 
 <div class="example">
 <p><b>Examples</b></p>
-<p>A simple code for headache, in ICD-10, with the text on which the coding is based:</p>
+<p>A simple code for headache initially coded in SNOMED-CT and translated to ICD-10:</p>
 <pre class="xml">
   &lt;x&gt;
     &lt;coding&gt;
-      &lt;code&gt;G44.1&lt;/code&gt;
+      &lt;code&gt;R51&lt;/code&gt;
       &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
     &lt;/coding&gt;
+    &lt;coding id="1"&gt;
+      &lt;code&gt;25064002&lt;/code&gt;
+      &lt;system&gt;http://snomed.info&lt;/system&gt;
+    &lt;/coding&gt;
     &lt;text&gt;general headache&lt;/text&gt;
+    &lt;primary&gt;1&lt;/primary&gt;
   &lt;/x&gt;
 </pre>
-<p>A concept represented in an institution's local coding systems for which no SNOMED-CT equivalent exists:</p>
+<p>A concept represented in an institution's local coding systems for unit for which no UCUM equivalent exists:</p>
 <pre class="xml">
   &lt;x&gt;
     &lt;coding&gt;
-      &lt;code&gt;burn&lt;/code&gt;
+      &lt;code&gt;tab&lt;/code&gt;
       &lt;system&gt;oid:2.16.840.1.113883.19.5.2&lt;/system&gt;
+      &lt;display&gt;Tablet&lt;/display&gt;
     &lt;/coding&gt;
     &lt;coding&gt;
-      &lt;system&gt;http://snomed.info&lt;/system&gt;
+      &lt;system&gt;http://hl7.org/fhir/sid/ucum&lt;/system&gt;
     &lt;/coding&gt;
-    &lt;text&gt;Burnt ear with iron. Burnt other ear calling for ambulance&lt;/text&gt;
   &lt;/x&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
@@ -863,7 +867,7 @@ The <i>assigner</i>.<i>id</i> may be replaced with <i>assigner</i>.<i>text</i> w
 HumanName
 </h2>
 <p>
-A name of a human or a name given to an animal by a human.
+A name of a human with parts and usage information.
 </p>
 <p>
 Names may be changed or repudiated.  People may have different names in different 

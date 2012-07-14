@@ -28,26 +28,26 @@ than those marked mandatory".
 In Object-Orientated paradigms, the <i>dataAbsentReason</i> is a mixin. 
 The <a href="http://en.wikipedia.org/wiki/Mixin#">definition of a mix-in</a> is that 
 it is an abstract class that provides functionality that is not inherited by specialization but rather by collecting functionality.
-A mixin can be thought of as a generic class that specializes it's parameter class:
+A mixin can be thought of as a generic class that specializes its parameter class:
 </p>
 <p><img src="mixin-pure.png"/></p>
 <p>
 This shows a mixin called "DataQualityAspect" which expresses the attribute "dataAbsentReason". The 
 two derived classes, DataQualityAspectQuantity which inherits both Quantity and DataQualityAspect
-and DataQualityAspect(Quantity), which binds Quantity to the paramter T on the DataQualityAspect mixin
+and DataQualityAspect(Quantity), which binds Quantity to the parameter T on the DataQualityAspect mixin
 both have the same semantics (are identical other than their type derivation). 
 </p>
 <p>
 The problem with this approach is that not only is the &lt;&lt;mixin&gt;&gt; stereotype
-not a recognised standard UML sytnax, but most mainstream programming languages cannot 
-implement multiple inheritence in this form. There is two alternative approaches for 
-implementing this in these platforms. The first is using a wrapper class:
+not a recognised standard UML syntax, but most mainstream programming languages cannot 
+implement multiple inheritance in this form. There are two alternative approaches for 
+implementing mixins in object-oriented platforms. The first is using a wrapper class:
 </p>
 <p><img src="mixin-wrapper.png"/></p>
 <p>
 The problem with this variation is that Quantity and DataQualityAspect(Quantity) are 
-no longer both types of Quantity, as with a pure mixin, and this will have a series of 
-knock on effects in implementations. The other alternative is simply to make DataQualityAspect
+no longer both types of Quantity, as with a pure mixin and this will have a series of 
+effects on implementations. The other alternative is simply to make DataQualityAspect
 a base class:
 </p>
 <p><img src="mixin-base.png"/></p>
@@ -57,13 +57,13 @@ the Quantity data type carry the dataAbsentReason attribute, whether it is
 appropriate or not. 
 </p>
 <p>
-Implementors that use these objects in an environment where mixins are not supported
-must choose either of these two approaches. For simplicity, the object models defined
+Implementers that use these objects in an environment where mixins are not supported
+must choose one of these two approaches. For simplicity, the object models defined
 in this specification simply bind the target type directly to the specified data type,
 and ignore the issue of the dataAbsentReason mixin.</p>
 <p>
 Note that the dataAbsentReason may also be associated with primitive 
-types as well.
+types as well so use of one of these mixin mechanisms will be required there as well.
 </p>
 
 

@@ -101,7 +101,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An identifier </Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An identifier intended for computation</Data></Cell>
     <Cell><Data ss:Type="String">A technical identifier - identifies some entity uniquely and unambiguously</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation</Data></Cell>
     <Cell><Data ss:Type="String">the Identifier class is a little looser than II because it allows URIs as well as registered OIDs or GUIDs</Data></Cell>
@@ -144,8 +144,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>10</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

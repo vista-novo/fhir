@@ -24,6 +24,7 @@ These elements contain codes that have defined meanings and come from sets of co
 and size. In many simple cases, the set of codes is a short list defined specifically for the element. In other cases,
 the list of codes is taken from a large and complex terminology or ontology such as SNOMED-CT or OBO. 
 </p>
+<h2>Bindings</h2>
 <p>
 All these elements of type <a href="datatypes.htm#code">code</a>, <a href="datatypes.htm#Coding">Coding</a> 
 or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> are given a "binding name" that defines the 
@@ -40,17 +41,44 @@ any imported profiles. Binding Names can identify sets of codes in the following
 <!-- <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr> -->
 </table>
 <p>
-Value set and code list bindings also have a strength property:
+Value set and code list bindings also have two properties that govern their use - <i>extensibility</i> and <i>conformance</i>:
 </p>
-<table class="grid">
- <tr><td>required</td><td>Only codes in the set are allowed. Profiles can only specify a subset of the defined codes</td></tr>
- <tr><td>preferred</td><td>Codes in the set must be used when their meaning is appropriate. Other codes can be used 
-   if no appropriate code is in the set. Profiles can specify a subset of the codes and include other codes that do 
-   not overlap in meaning with the codes in the codes in the set</td></tr>
- <tr><td>suggested</td><td>The codes in the set are an example to illustrate the meaning of the field. Other codes may be used, and profiles may choose other sets of codes</td></tr>
-</table>
-<p>
-See below for a full list of the binding names defined for all FHIR resources.
+<ul>
+  <li><b>Extensibility</b> indicates whether additional codes are expected to be needed beyond those listed.  
+   It has two values:<br/><br/>
+    <table>
+      <tr><td>complete</td>
+          <td>No additional codes are to be used beyond the list provided</td></tr>
+      <tr><td>extensible</td>
+          <td>Some concepts won't be covered by the provided value set, so supplemental codes 
+          or plain text may be needed</td>
+    </table>
+  <li><b>Conformance</b> indicates the expectations for implementers of the specification.  
+    There are three possible values:<br/><br/>
+    <table>
+      <tr><td>required</td><td>
+        Only codes in the specified set are allowed. Profiles can only specify a subset of the 
+        defined codes.<br/>
+        If the strength is 'extensible', other codes may be used for concepts not covered by the 
+        value set but cannot be used for concepts covered by the bound code list, even 
+        if a profile constrains out some of those codes).<br/>
+        Specifications may render this as "SHALL"
+      </td></tr>
+      <tr><td>preferred</td><td>
+        For greater interoperability, implementers are strongly encouraged to use the bound set of
+        codes, however alternate codes may be used in profiles if necessary without being considered
+        non-conformant.<br/>
+        Specifications may render this as "SHOULD"
+      </td></tr>
+      <tr><td>example</td><td>
+        The codes in the set are an example to illustrate the meaning of the field.
+        There is no particular preference for its use.<br/>
+        Specifications may render this as "MAY"
+      </td></tr>
+    </table>
+  </li>
+</ul>
+See the second tab of this page for a full list of the binding names defined for all FHIR resources.
 </p>
 <a name="codesystems"></a>
 <h2>Named Systems List</h2>
@@ -82,17 +110,50 @@ HL7 OID registry.
    <td>http://hl7.org/fhir/sid/loinc</td>
    <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
    <td><p>
-       The LOINC sid can also be used to indicate a LOINC property value by appending one of the following values to the URL:</p>
-       <table class="codes">
-         <tr><td>/property</td><td>PROPERTY</td></tr>
-         <tr><td>/time-aspect</td><td>TIME_ASPCT</td></tr>
-         <tr><td>/system</td><td>SYSTEM</td></tr>
-         <tr><td>/scale</td><td>SCALE_TYPE</td></tr>
-         <tr><td>/method</td><td>METHOD_TYPE</td></tr>
-         <tr><td>/class</td><td>CLASS</td></tr>
-       </table>
-       <p>The acceptable values for these URLs are the literal values found in the definition of LOINC for the given column name. <br/><br/>
+       See following rows for sids based on the various LOINC properties<br/>
        The version of LOINC may be appended to this uri like so: http://hl7.org/fhir/sid/loinc?v=2.36<br/><br/>OID=2.16.840.1.113883.6.1.</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/property</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property PROPERTY<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/time-aspect</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property TIME_ASPCT<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/system</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property SYSTEM<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/scale</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property SCALE_TYPE<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/method</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property METHOD_TYPE<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
+   </td>
+ </tr>
+ <tr>
+   <td>http://hl7.org/fhir/sid/loinc/class</td>
+   <td>LOINC (<a href="http://loinc.org">LOINC.org</a>)</td>
+   <td><p>
+       List of allowed values for LOINC property CLASS<br/>Version may be appended as per the LOINC sid.<br/>No OID yet assigned</p>
    </td>
  </tr>
  <tr>
@@ -117,8 +178,8 @@ HL7 OID registry.
  </tr>
  <tr>
    <td>http://hl7.org/fhir/sid/iso-[X]</td>
-   <td>Codes as defined in the ISO standard with the given number. Two important ISO standards are the 2-3 
-     letter language codes (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>-3), and the currency codes (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
+   <td>Codes as defined in the ISO standard with the given number.<br/> Two important ISO standards are the 2-3 
+     letter language codes (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>-3)<br/> and the currency codes (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
    <td>OID=1.0.[X](.tail as specified) <br/> (1.0.639.3 for 3 letter language codes </td>
  </tr>
  <tr>
@@ -154,6 +215,14 @@ HL7 OID registry.
  
  
 </table>
+
+<p>
+<b>Important Note:</b> The set of sids listed above is incomplete and subject to change.
+Some values may be dropped and others will likely be added in the coming months as HL7
+institutes a formal process for determining what code systems and identifier types should
+be handled in this manner rather than as OIDs or other identifiers.
+</p>
+
 <a name="localsystems"/>
 <h2>Internal Code Systems</h2>
 <p>

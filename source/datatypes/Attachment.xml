@@ -149,11 +149,11 @@
     <Cell ss:Index="8"><Data ss:Type="String">Data inline, base64ed</Data></Cell>
     <Cell><Data ss:Type="String">The actual data of the attachment - a sequence of bytes. In XML, represented using base64</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">The data needs to able to be transmitted inline</Data></Cell>
-    <Cell><Data ss:Type="String">When represented in XML, text/? must have the same character encoding as the XML. </Data></Cell>
+    <Cell><Data ss:Type="String">The base64-encoded data must be expressed in the same character set as the base resource XML</Data></Cell>
     <Cell><Data ss:Type="String">./data</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">Should this be handled by an extension? How common is it?</Data></Cell>
    </Row>
-   <Row ss:Height="150">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Attachment.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -217,6 +217,13 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>11</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
