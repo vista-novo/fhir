@@ -115,7 +115,9 @@ public class XmlGenerator {
 			if (attr.getNamespaceURI() != null) {
 				//xml.namespace(attr.getNamespaceURI());
      			//xml.attribute(attr.getNamespaceURI(), attr.getLocalName(), attr.getNodeValue());
-			} else 
+			} else if (attr.getLocalName() != null)
+//        xml.attribute("xmlns", attr.getNodeValue());
+//			else
      			xml.attribute(attr.getLocalName(), attr.getNodeValue());
 		}
 		

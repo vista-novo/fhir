@@ -49,7 +49,7 @@ public class XmlBase {
     XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
     factory.setNamespaceAware(true);
     XmlPullParser xpp = factory.newPullParser();
-    xpp.setInput(input, "UTF-8");
+    xpp.setInput(input, null);
     xpp.next();
     
     return xpp;

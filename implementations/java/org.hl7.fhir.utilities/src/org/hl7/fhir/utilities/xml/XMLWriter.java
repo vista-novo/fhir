@@ -132,7 +132,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 
 	private void addAttribute(String name, String value, boolean noLines) throws IOException {
 		if (!XMLUtil.isNMToken(name))
-			throw new IOException("XML name "+name+" is not valid");
+			throw new IOException("XML name "+name+" is not valid for value '"+value+"'");
 
 		newLevelIfRequired();
 		value = XMLUtil.escapeXML(value, charset, noLines);
@@ -142,7 +142,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 		else {
 			String[][] newattr = new String[attributes.length+1][];
 			for (int i = 0; i < attributes.length; i++) {
-				condition(!attributes[i][0].equals(name), "attempt to define attribute with name "+name+" more than once");
+				condition(!attributes[i][0].equals(name), "attempt to define attribute with name "+name+" more than once for value '"+value+"'");
 				newattr[i] = attributes[i];
 			}
 			attributes = newattr;

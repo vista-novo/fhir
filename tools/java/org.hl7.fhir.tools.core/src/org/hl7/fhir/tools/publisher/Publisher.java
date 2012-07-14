@@ -964,6 +964,15 @@ public class Publisher {
 			}
 		}
 		validateXmlFile(schema, "profiles-resources");
+
+    for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+      for (Example e : r.getExamples()) {
+        String n = e.getFileTitle();
+        log("Check Java Round-Trip " + n);
+        validateJavaFile(schema, n);
+      }
+    }
+    validateJavaFile(schema, "profiles-resources");
 	}
 
 	private void validateXmlFile(Schema schema, String n) throws Exception {
@@ -977,8 +986,9 @@ public class Publisher {
 		builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
 		if (err.getErrors().size() > 0)
 			throw new Exception("Resource Example " + n	+ " failed schema validation");
+	}
 
-		// now, load and save in java and compare source
+	private void validateJavaFile(Schema schema, String n) throws Exception {
     FileInputStream in = new FileInputStream(new File(page.getFolders().dstDir + n + ".xml"));
     XmlParser p = new XmlParser();
     ResourceOrFeed rf =  p.parseGeneral(in);
@@ -1007,13 +1017,23 @@ public class Publisher {
 
 	   if (!doc1.isEqualNode(doc2)) {
 	     page.log("file "+fn1+" did not round trip perfectly in XML");
-//	     List<String> command = new ArrayList<String>();
-//	     command.add("\"c:\\program files (x86)\\WinMerge\\WinMergeU.exe\" \""+fn1+"\" \""+fn2+"\"");
-//	 
-//	     ProcessBuilder builder = new ProcessBuilder(command);
-//	     builder.directory(new File(page.getFolders().rootDir));
-//	     final Process process = builder.start();
-//	     process.waitFor();
+	     if (new File("c:\\program files (x86)\\WinMerge\\WinMergeU.exe").exists()) {
+	       XmlGenerator xmlgen = new XmlGenerator();
+	       File tmp1 = File.createTempFile("xml", ".xml");
+	       tmp1.deleteOnExit();
+	       xmlgen.generate(doc1.getDocumentElement(), tmp1, doc1.getDocumentElement().getNamespaceURI(), doc1.getDocumentElement().getLocalName());
+	       File tmp2 = File.createTempFile("xml", ".xml");
+	       tmp2.deleteOnExit();
+	       xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2.getDocumentElement().getNamespaceURI(), doc2.getDocumentElement().getLocalName());
+
+	       List<String> command = new ArrayList<String>();
+	       command.add("\"c:\\program files (x86)\\WinMerge\\WinMergeU.exe\" \""+tmp1.getAbsolutePath()+"\" \""+tmp2.getAbsolutePath()+"\"");
+
+	       ProcessBuilder builder = new ProcessBuilder(command);
+	       builder.directory(new File(page.getFolders().rootDir));
+	       final Process process = builder.start();
+	       process.waitFor();
+	     }
 
 	   }
   }

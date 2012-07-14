@@ -13,3 +13,14 @@
 * sort out the hdata page
 
 
+- Apply agreed changes to Profile resource (see previous note)
+- Fix problem with schematron paths, including:
+-- Capturing resources and datatypes used in extensions (by looking for valuexxx)
+- Investigate whether we can reliably use timestamps to determine whether the exported graphics images are up-to-date with the XMI source.  If not, maybe add a prompt in the official (non-sandbox) build process to check the images.
+- Get constraints rendering in the HTML (presume if it's there, book view follows automatically)
+- Spit out a warning if you encounter an unrecognized column name rather than just deprecated names
+- Decide what our policy is on including formatting in Excel columns (e.g. italics in formal constraints).
+- Figure out what Profile.binding.description is trying to represent and then give it a better name.
+- Figure out what we're doing with Profile.resource.element.content on the grounds that referencing constraints by name is bad when we can reference by id, we already have a way to reference constraint by id, constraints are specific to a single context.
+
+

@@ -29,19 +29,19 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes it's own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
+ * A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes its own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
  */
 public class Document extends Resource {
 
     public enum DocumentAuthenticationMode {
         personal, // The person authenticated the document in their personal capacity
         professional, // The person authenticated the document in their professional capacity
-        legal, // The person authenticated the document and accepted legal responsibility for it's content
+        legal, // The person authenticated the document and accepted legal responsibility for its content
         official; // The organization authenticated the document as consistent with their policies and procedures
         public static DocumentAuthenticationMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -69,12 +69,12 @@ public class Document extends Resource {
 
     public class Author extends Element {
         /**
-         * When authoring happened
+         * The time a specific author was involved with the creation of the document content.
          */
         private DateTime time;
 
         /**
-         * who/what authored the final document
+         * Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)
          */
         private ResourceReference party;
 
@@ -96,19 +96,19 @@ public class Document extends Resource {
 
     }
 
-    public class Attestor extends Element {
+    public class Attester extends Element {
         /**
          * The type of attestation the authenticator offers
          */
         private DocumentAuthenticationMode mode;
 
         /**
-         * When document attested
+         * When document was attested by the party
          */
         private DateTime time;
 
         /**
-         * who attested the document
+         * Who attested the document in the specified way
          */
         private ResourceReference party;
 
@@ -140,42 +140,42 @@ public class Document extends Resource {
 
     public class Section extends Element {
         /**
-         * type of section (recommended)
+         * A code identifying the kind of content contained within the section
          */
         private CodeableConcept type;
 
         /**
-         * the section creation time (sections are often re-used in several documents).
+         * Identifies when the content of the section was created
          */
         private Instant instant;
 
         /**
-         * if section author different to document
+         * Describes the creation of the section
          */
         private AuthorA author;
 
         /**
-         * The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions
+         * The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the message. 
          */
         private ResourceReference enterer;
 
         /**
-         * if section different to document
+         * Identifies the primary subject of the section.  
          */
         private ResourceReference subject;
 
         /**
-         * provided information in section
+         * Identifies the source that recounted the information recorded
          */
         private ResourceReference informant;
 
         /**
-         * the actual content of the section
+         * Identifies the discrete data that provides the content for the section.
          */
         private ResourceReference content;
 
         /**
-         * nested Section
+         * Identifies a subtopic within the section as part of the document's table of contents
          */
         private List<Section> section = new ArrayList<Section>();
 
@@ -243,12 +243,12 @@ public class Document extends Resource {
 
     public class AuthorA extends Element {
         /**
-         * When authoring happened
+         * The time a specific author was involved with the creation of the section content
          */
         private DateTime time;
 
         /**
-         * who/what authored the section
+         * Identifies who is responsible for the information in the section.  (Not necessarily who typed it in.)
          */
         private ResourceReference party;
 
@@ -276,17 +276,17 @@ public class Document extends Resource {
     private java.util.Calendar instant;
 
     /**
-     * specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
+     * Specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
      */
     private CodeableConcept type;
 
     /**
-     * the title of the document
+     * Official human-readable label for the document
      */
     private String_ title;
 
     /**
-     * Represents an identifier that is common across all document revisions
+     * Represents an identifier that is common across all document revision and applies to the Document resource combined with all of its contained resources.
      */
     private String setId;
 
@@ -296,47 +296,47 @@ public class Document extends Resource {
     private java.lang.Integer version;
 
     /**
-     * If this document replaces another
+     * Identifies the document this document supersedes, if any.
      */
     private String replaces;
 
     /**
-     * who/what the document is about
+     * Identifies the primary subject of the document.  
      */
     private ResourceReference subject;
 
     /**
-     * Author (contributed content to document)
+     * Describes the creation of the document
      */
     private List<Author> author = new ArrayList<Author>();
 
     /**
-     * a participant who has attested to the accuracy of the document
+     * A participant who has attested to the accuracy of the document
      */
-    private List<Attestor> attestor = new ArrayList<Attestor>();
+    private List<Attester> attester = new ArrayList<Attester>();
 
     /**
-     * expected to receive a copy 
+     * Identifies the people and organizzations for whom the document is intended
      */
     private List<ResourceReference> recipient = new ArrayList<ResourceReference>();
 
     /**
-     * org which maintains the document.
+     * Identifies the organization or group who is responsible for ongoing maintenance of and access to the document.
      */
     private ResourceReference custodian;
 
     /**
-     * the main Act, such as a colonoscopy or an appendectomy, being documented
+     * The main Act, such as a colonoscopy or an appendectomy, being documented
      */
     private ResourceReference event;
 
     /**
-     * context of the document
+     * Describes the clinical encounter or type of care this document is associated with.
      */
     private ResourceReference encounter;
 
     /**
-     * Document is broken into sections
+     * Identifies a main topic within the document's table of contents
      */
     private List<Section> section = new ArrayList<Section>();
 
@@ -400,8 +400,8 @@ public class Document extends Resource {
       return this.author;
     }
 
-    public List<Attestor> getAttestor() { 
-      return this.attestor;
+    public List<Attester> getAttester() { 
+      return this.attester;
     }
 
     public List<ResourceReference> getRecipient() { 

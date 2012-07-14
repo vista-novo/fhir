@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
 
 /**
  * A set of ordered Quantities defined by a low and high limit. 

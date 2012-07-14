@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Jul 14, 2012 09:02+1000 for FHIR v0.04
+// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -868,8 +868,8 @@ public class XmlParser extends XmlParserBase {
         res.setSubject(parseResourceReference(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("author")) {
         res.getAuthor().add(parseDocumentAuthor(xpp, res));
-      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("attestor")) {
-        res.getAttestor().add(parseDocumentAttestor(xpp, res));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("attester")) {
+        res.getAttester().add(parseDocumentAttester(xpp, res));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("recipient")) {
         res.getRecipient().add(parseResourceReference(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("custodian")) {
@@ -917,8 +917,8 @@ public class XmlParser extends XmlParserBase {
     return res;
   }
 
-  private Document.Attestor parseDocumentAttestor(XmlPullParser xpp, Document owner) throws Exception {
-    Document.Attestor res = owner.new Attestor();
+  private Document.Attester parseDocumentAttester(XmlPullParser xpp, Document owner) throws Exception {
+    Document.Attester res = owner.new Attester();
     parseElementAttributes(xpp, res);
     xpp.next();
     int eventType = nextNoWhitespace(xpp);
