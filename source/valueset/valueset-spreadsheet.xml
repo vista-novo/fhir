@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-07-05T03:37:05Z</LastSaved>
+  <LastSaved>2012-07-14T07:20:45Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -53,11 +53,22 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s68">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -75,7 +86,7 @@
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
+   <Row ss:AutoFitHeight="0" ss:Height="45" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -98,17 +109,16 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Value Set - a set of defined codes that may be bound to a context</Data></Cell>
-    <Cell><Data ss:Type="String">Value Set - a set of defined codes that may be bound to a context</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Often called a clinical template</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">Value Set - a set of defined codes from one or more code systems that may be bound to a context</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Yes</Data></Cell>
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">fixed identifier for this value set resource</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Fixed identifier for this value set resource</Data></Cell>
     <Cell><Data ss:Type="String">Identifier for this resource that represents the value set</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -117,9 +127,10 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">informal name for this value set</Data></Cell>
-    <Cell><Data ss:Type="String">A free text natural language name identifying the value set.</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Not expected to be unique</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Informal name for this value set</Data></Cell>
+    <Cell><Data ss:Type="String">A free text natural language name identifying the value set</Data></Cell>
+    <Cell><Data ss:Type="String">Support human navigation</Data></Cell>
+    <Cell><Data ss:Type="String">Not expected to be unique</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -128,7 +139,8 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">(Organisation or individual)</Data></Cell>
     <Cell><Data ss:Type="String">Details of the author who accepts responsibility for publishing the value set</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Usually an organisation, but may be an individual</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies responsibility</Data></Cell>
+    <Cell><Data ss:Type="String">Usually an organisation, but may be an individual</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -136,7 +148,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">name of the recognised author</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Name of the recognised author</Data></Cell>
     <Cell><Data ss:Type="String">The name of the author</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -145,18 +157,20 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">web reference to the author</Data></Cell>
-    <Cell><Data ss:Type="String">Reference to the author to assist a user in finding and communicating with the author</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">may be a web site, an email address, a telephone number</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Author contact</Data></Cell>
+    <Cell><Data ss:Type="String">Some way of reaching or finding the author.</Data></Cell>
+    <Cell><Data ss:Type="String">Allow a user to find and communicate with the author</Data></Cell>
+    <Cell><Data ss:Type="String">May be a web site, an email address, a telephone number</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.description</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">human language description of the value set</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Human language description of the value set</Data></Cell>
     <Cell><Data ss:Type="String">A free text natural language description of the value set - contents, reason for definition, conditions of use etc</Data></Cell>
+    <Cell><Data ss:Type="String">Human understandibility</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -166,45 +180,46 @@
     <Cell><Data ss:Type="String">Yes</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ValueSetStatus</Data></Cell>
-    <Cell><Data ss:Type="String">draft | testing | production | withdrawn | superceded</Data></Cell>
+    <Cell><Data ss:Type="String">draft | testing | production | withdrawn | superseded</Data></Cell>
     <Cell><Data ss:Type="String">The status of the value set</Data></Cell>
+    <Cell><Data ss:Type="String">Identify when/if the value set should be used.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">ValueSet.date</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">date for given status</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Date for given status</Data></Cell>
     <Cell><Data ss:Type="String">The date that the value set was last published</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Note that this is not the same as the resource last-modified-date, since the resource may be a secondary representation of the value set</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">ValueSet.identifier</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">logical id to reference this value set</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Logical id to reference this value set</Data></Cell>
     <Cell><Data ss:Type="String">The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance </Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This is not the same as the resource id because the resource may not be the definitive representation of the value set. If the resource is the definitive representation, this may have the same value as the .id. There may be multiple versions of the value set that have this same identifier</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">ValueSet.version</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">logical id for this version of the value set</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Logical id for this version of the value set</Data></Cell>
     <Cell><Data ss:Type="String">The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design, or instance</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="String">ValueSet.restricts</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">can replace these value sets when profiling</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Can replace these value sets when profiling</Data></Cell>
     <Cell><Data ss:Type="String">An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">In most cases, the claim of restriction could be validated in a particular context of use, but it is not necessary to do so</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -215,48 +230,48 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">import the contents of another value set</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Import the contents of another value set</Data></Cell>
     <Cell><Data ss:Type="String">Includes the contents of the referenced value set as part of the contents of this value set</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">=ConceptSet</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">include one or more codes from a code system</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Include one or more codes from a code system</Data></Cell>
     <Cell><Data ss:Type="String">Include one or more codes from a code system</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include.system</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">the system the codes come from</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The system the codes come from</Data></Cell>
     <Cell><Data ss:Type="String">The code system from which the selected codes come from</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">See [[Coding.system]] for further documentation</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">ValueSet.include.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">specific version of the code system referred to</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Specific version of the code system referred to</Data></Cell>
     <Cell><Data ss:Type="String">The version of the code system that the codes are selected from</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This is used when selecting the descedents of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">ValueSet.include.mode</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">CodeSelectionMode</Data></Cell>
-    <Cell><Data ss:Type="String">code | children | descendents | all</Data></Cell>
-    <Cell><Data ss:Type="String">The mode of selection - whether the code itself, and/or it's descendents are being selected </Data></Cell>
+    <Cell><Data ss:Type="String">code | children | descendants | all</Data></Cell>
+    <Cell><Data ss:Type="String">The mode of selection - whether the code itself, and/or its descendants are being selected </Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">It is an error to include codes that are marked &quot;abstract&quot; in a value set that is used directly in a specification, but not an error to include an abstract code in a value set not destined for this use</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -266,48 +281,52 @@
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">code or concept</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Code or concept</Data></Cell>
     <Cell><Data ss:Type="String">Specifies a code or concept to be included or excluded as specified by the mode from the value set</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">expressions are allowed if defined by the underlying code system</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="String">ValueSet.include.filter</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">select codes/concepts by their properties</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">Select concepts by specify a matching criteria based on the properties defined by the system. If multiple filters are specified, they must all be true</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Celect codes/concepts by their properties</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Select concepts by specify a matching criteria based on the properties defined by the system. If multiple filters are specified, they must all be true</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Selecting codes by specifying filters based on properties is only possible where the underlying code system defines appropriate properties. Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for the concepts. In such cases, the literal definitions may be provided by a third party</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include.filter.property</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:Index="8"><ss:Data ss:Type="String"
-      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">a property defined by the code system</Font><Font
+      xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">A property defined by the code system</Font><Font
        html:Face="Arial Unicode MS" x:Family="Swiss" html:Size="10"
        html:Color="#808080"> </Font></ss:Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">A code that identifies a property defined in the code system</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">A code that identifies a property defined in the code system</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.include.filter.op</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">FilterOperator</Data></Cell>
     <Cell><Data ss:Type="String">= | is_a | is_not_a | regex</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">the kind of operation to perform as part of the filter criteria</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">The kind of operation to perform as part of the filter criteria</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">ValueSet.include.filter.value</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">code from the system, or regex criteria</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">the match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="Default"><Data ss:Type="String">Use regex matching with care - full regex matching on every snomed term is prohibitive, for example</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Code from the system, or regex criteria</Data></Cell>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Use regex matching with care - full regex matching on every snomed term is prohibitive, for example</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">ValueSet.exclude</Data></Cell>
@@ -315,7 +334,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@ValueSet.include</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">explicitly exclude codes</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Explicitly exclude codes</Data></Cell>
     <Cell><Data ss:Type="String">Exclude one or more codes from the value set</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">usually this is used to selectively exlude codes that were included by subsumption in the inclusions</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -326,6 +345,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.text</Data></Cell>
@@ -333,6 +353,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Text summary of value set for human interpretation</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -348,16 +369,40 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>13</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
+     <ActiveRow>17</ActiveRow>
+     <ActiveCol>8</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:Index="3" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="118.5"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="309.75"/>
-   <Column ss:Index="6" ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="136.5"/>
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="118.5"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="309.75"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="136.5"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -372,7 +417,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">A value set must have an include or an import</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:include) or exists(f:import)</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">ValueSet</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">A value set with only one import must also have an include and/or an exclude</Data></Cell>
@@ -392,11 +437,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1:R1048576</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -405,10 +450,10 @@
  </Worksheet>
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -438,9 +483,9 @@
     <Cell><Data ss:Type="String">a code system included or excluded in the value set</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">a code contained in the include or exclude list of the value set (but not including descendent codes)</Data></Cell>
+    <Cell><Data ss:Type="String">a code contained in the include or exclude list of the value set (but not including descendant codes)</Data></Cell>
     <Cell><Data ss:Type="String">token</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -474,14 +519,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="112.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="208.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="78.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:AutoFitWidth="0" ss:Width="140.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="160.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="112.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="208.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="78.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="140.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="160.5"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
@@ -489,7 +534,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">CodeSelectionMode</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The way in which the code is selected</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">code list</Data></Cell>
@@ -497,7 +542,7 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">#code-selection-mode</Data></Cell>
     <Cell ss:StyleID="s62"/>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s62"><Data ss:Type="String">FilterOperator</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">The kind of operation to perform as part of a property based filter</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">code list</Data></Cell>
@@ -506,11 +551,11 @@
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">ValueSetStatus</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The lifecycle status of a Value Set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">#valueset-status</Data></Cell>
+    <Cell><Data ss:Type="String">ValueSetStatus</Data></Cell>
+    <Cell><Data ss:Type="String">The lifecycle status of a Value Set</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">#valueset-status</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -523,7 +568,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -535,7 +580,7 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="89.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="368.25"/>
+   <Column ss:Width="468"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -553,12 +598,12 @@
     <Cell><Data ss:Type="String">Only the immediate children (codes with a is_a relationship) are selected, but not this code itself</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">descendents</Data></Cell>
-    <Cell><Data ss:Type="String">All descendents of this code are selected, but not this code itself</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">descendants</Data></Cell>
+    <Cell><Data ss:Type="String">All descendants of this code are selected, but not this code itself</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">all</Data></Cell>
-    <Cell><Data ss:Type="String">this code and any descendents are selected</Data></Cell>
+    <Cell><Data ss:Type="String">This code and any descendants are selected</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -571,7 +616,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>39</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -582,7 +628,7 @@
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="174"/>
+   <Column ss:Width="418.5"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -593,19 +639,19 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String" x:Ticked="1">=</Data></Cell>
-    <Cell><Data ss:Type="String">the property value has the concept specified by the value</Data></Cell>
+    <Cell><Data ss:Type="String">The property value has the concept specified by the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">is_a</Data></Cell>
-    <Cell><Data ss:Type="String">the property value has a concept that has an is_a relationship with the value</Data></Cell>
+    <Cell><Data ss:Type="String">The property value has a concept that has an is_a relationship with the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">is_not_a</Data></Cell>
-    <Cell><Data ss:Type="String">the property value has a concept that does not have an is_a relationship with the value</Data></Cell>
+    <Cell><Data ss:Type="String">The property value has a concept that does not have an is_a relationship with the value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">regex</Data></Cell>
-    <Cell><Data ss:Type="String">the property value represenation matches the regex specified in the value</Data></Cell>
+    <Cell><Data ss:Type="String">The property value representation matches the regex specified in the value</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -615,10 +661,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -644,7 +692,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">testing</Data></Cell>
-    <Cell><Data ss:Type="String">this valueset was authored for testing purposes (or education/evaluation/evangelisation)</Data></Cell>
+    <Cell><Data ss:Type="String">This valueset was authored for testing purposes (or education/evaluation/evangelisation)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">production</Data></Cell>
@@ -652,11 +700,11 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">withdrawn</Data></Cell>
-    <Cell><Data ss:Type="String">This valueset has been withdrawn</Data></Cell>
+    <Cell><Data ss:Type="String">This valueset should no longer be used</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">superceded</Data></Cell>
-    <Cell><Data ss:Type="String">This valueset was superceded by a more recent version</Data></Cell>
+    <Cell><Data ss:Type="String">This valueset has been replaced and a different valueset should be used in its place</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -669,7 +717,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

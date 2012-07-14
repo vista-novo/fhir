@@ -4,18 +4,18 @@
 Notes:
 </p>
 <ul>
-<li>The content of the value set is a union of all the import and include statements, and then with any excluded codes eliminated</li>
-<li>A value set needs to do something - either to include some codes, or import another value set and exclude some codes</li>
+<li>The content of the value set is a union of all the import and include statements and then with any excluded codes eliminated</li>
+<li>A value set needs to do something.  It can't simply include an existing value set without also including additional content or excluding content</li>
 <li>The point of declaring that this value set restricts another is that this value set can then replace the other in a profile 
 without changing the meaning. Declaring this explicitly allows profile tools to reason about the relationship without having 
-to compute the relationship, which may not be possible for a profile tool</li>
-<li>the <i>identifier</i> and <i>version</i> elements may be used to reference this value set in a design, a profile, a 
- CDA template, or V3 message (valueSet and valueSetVersion). These different contexts may make additional restrictions 
+to compute the relationship, which might not be possible for a profile tool</li>
+<li>The <i>identifier</i> and <i>version</i> elements may be used to reference this value set in a design, a profile, a 
+ CDA template or V3 message (valueSet and valueSetVersion). These different contexts may make additional restrictions 
  on the possible values of these elements</li>
 </ul>
 <li>Using the property filters is only possible where the underlying code system defines appropriate properties. 
   Note that in some cases, the underlying code system defines the logical concepts but not the literal codes for 
-  the concepts; in such cases, the literal definitions may be provided by a third party</li>
-<li>Within an include or exclude criteria, multiple filters and concept selections are intersected; in other words, all the conditions specified must be true.</li>
+  the concepts. In such cases, the literal definitions may be provided by a third party</li>
+<li>Within an include or exclude criterion, multiple filters and concept selections are intersected.  In other words, all the conditions specified must be true.</li>
 
 </div>

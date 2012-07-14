@@ -89,7 +89,7 @@
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
@@ -118,15 +118,15 @@
     <Cell ss:Index="8"><Data ss:Type="String">Person involved in healthcare</Data></Cell>
     <Cell><Data ss:Type="String">A person who is involved in the healthcare process</Data></Cell>
     <Cell><Data ss:Type="String">Need to track persons across multiple roles</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Person(classCode=PSN, determinerCode=INST)</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Person(classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot; and quantity=&quot;1&quot;)</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Person.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Master Resource Id, always first in all resources</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.id(scope=OBJ)</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Person.identifier</Data></Cell>
@@ -148,7 +148,7 @@
     <Cell><Data ss:Type="String">A name associated with the person</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track the person by multiple names</Data></Cell>
     <Cell><Data ss:Type="String">Person may have multiple names with different uses or applicable periods</Data></Cell>
-    <Cell><Data ss:Type="String">.name</Data></Cell>
+    <Cell><Data ss:Type="String">./name</Data></Cell>
     <Cell><Data ss:Type="String">PID-5, PID-9</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -159,7 +159,7 @@
     <Cell><Data ss:Type="String">An address for the person</Data></Cell>
     <Cell><Data ss:Type="String">May need to keep track of persons addresses for contacting, billing or reporting requirements and also to help with identification</Data></Cell>
     <Cell><Data ss:Type="String">Person may have multiple addresses with different uses or applicable periods</Data></Cell>
-    <Cell><Data ss:Type="String">.addr</Data></Cell>
+    <Cell><Data ss:Type="String">./addr</Data></Cell>
     <Cell><Data ss:Type="String">PID-11</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -170,7 +170,7 @@
     <Cell><Data ss:Type="String">A contact detail for the person</Data></Cell>
     <Cell><Data ss:Type="String">May need to have options for contacting the person urgently, and also to help with identification</Data></Cell>
     <Cell><Data ss:Type="String">Person may have multiple contacts with different uses or applicable periods</Data></Cell>
-    <Cell><Data ss:Type="String">.telecom</Data></Cell>
+    <Cell><Data ss:Type="String">./telecom</Data></Cell>
     <Cell><Data ss:Type="String">PID-13, PID-14</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -182,7 +182,7 @@
     <Cell><Data ss:Type="String">The birth date for the person</Data></Cell>
     <Cell><Data ss:Type="String">Age of person drives many clinical processes.</Data></Cell>
     <Cell><Data ss:Type="String">At least a estimated year should be provided as a guess if the real dob is unknown</Data></Cell>
-    <Cell><Data ss:Type="String">.birthTime</Data></Cell>
+    <Cell><Data ss:Type="String">./birthTime</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Person.gender</Data></Cell>
@@ -362,11 +362,25 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>12</TopRowVisible>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>21</ActiveRow>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

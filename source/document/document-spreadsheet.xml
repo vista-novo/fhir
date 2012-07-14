@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:20:02Z</Created>
-  <LastSaved>2012-07-14T05:50:32Z</LastSaved>
+  <LastSaved>2012-07-14T07:39:13Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -115,7 +115,7 @@
     <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A document that contains resources</Data></Cell>
-    <Cell><Data ss:Type="String">A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes its own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed</Data></Cell>
+    <Cell><Data ss:Type="String">A documentation of healthcare-related information that is assembled together into a single statement of meaning that establishes its own context. A document is composed of a set of resources that include both human and computer readable portions. A human may attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed</Data></Cell>
     <Cell><Data ss:Type="String">For document based framework</Data></Cell>
     <Cell><Data ss:Type="String">While the focus of this specification is on patient-specific clinical documents, this resource can also apply to other healthcare-related documents such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical</Data></Cell>
     <Cell><Data ss:Type="String">Document[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct()]</Data></Cell>
@@ -458,7 +458,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>13</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -471,12 +471,10 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>17</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

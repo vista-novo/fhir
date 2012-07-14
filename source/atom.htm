@@ -20,7 +20,7 @@
 <h1>Atom Feeds</h1>
 <p>
 One basic operation performed with resources is to gather all a list of resources into a single XML document.
-In FHIR, this is referred to as "bundling" the resources together. The resource bundle is not just a list of 
+In FHIR this is referred to as "bundling" the resources together. The resource bundle is not just a list of 
 references to resources, but includes their whole content. These resource bundles are useful for a variety of 
 different reasons, including:
 </p>
@@ -71,12 +71,12 @@ Whenever resources are gethered into a list, this is done using the Atom format 
  <li>Logically, a bundle is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
  <li>The order of elements does not matter in an atom feed. The order of elements in the atom namespace as documented here does not need to be followed</li>
  <li>The title for the feed and the entry are arbitary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
- <li>Every bundle must have a unique id, which must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
+ <li>Every bundle must have a unique id and that id must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
  <li>The link elements are mandatory in the atom feed format.</li>
  <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom type, not a FHIR type)</li>
  <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Version Id, Last Updated, and Master Location</li>
- <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author, or a device. The uri is a link to the resource for the author</li>
- <li>In a RESTful implementation, the Master Location is the URL of the resource on a system that is the master for that resource. In the absence of a known master, or a RESTful implementation, some other location may be used.</li>
+ <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author</li>
+ <li>In a RESTful implementation, the Master Location is the URL of the resource on a system that is the master for that resource. In the absence of a known master or a RESTful implementation, some other location may be used.</li>
  <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
  <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification. See below for further comment</li>
 </ul>
@@ -156,8 +156,8 @@ patient is in the feed, it would look like this:
 </div>
 <p>
 If there is no resource in the atom feed with an appropriate URL, then 
-the application may try accessing the provided URL directly, or use some 
-other implementation specific method for resolving how to find the resource.
+the application may try accessing the provided URL directly or use some 
+other implementation-specific method for resolving how to find the resource.
 Note that this example used a <a href="http.htm">FHIR RESTful URL</a>, but this 
 is not required.
 </p>
@@ -165,7 +165,7 @@ is not required.
 <ul>
 <a name="digsig"></a>
 <li>Atom Feeds may be signed following the rules described in the Atom specification. One consequence of 
-signing the document is that URLs, Identifiers, and internal references are frozen, and cannot be changed.
+signing the document is that URLs, Identifiers, and internal references are frozen and cannot be changed.
 This might be a good feature, but it may also cripple interoperability between closed eco-systems where
 re-identification frequently occurs. For this reason, it is recommended that only Document Bundles
 are signed, and then only when all the related resources are found in the bundle.</li>
@@ -173,7 +173,8 @@ are signed, and then only when all the related resources are found in the bundle
 <li>
 FHIR resources make use of id attributes as targets for <a href="xml.htm#idref">internal references with resources</a>. 
 These id attributes are unique and resolved within the context of a single resource. When resources are 
-combined into a bundle, different resources may contain duplicate id attributes. 
+combined into a bundle, different resources may contain duplicate id attributes. Thus it is important to limit
+the scope of resolution to the resource in which the <i>id</i> attribute is declared.
 </li>
 <a name="json"></a>
 <li>There is no JSON representation of an atom feed. Atom feeds are always in XML format, though the resources may be in <a href="xml.htm#json">JSON</a>.</li>
