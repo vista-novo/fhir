@@ -10658,7 +10658,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10673,7 +10673,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10688,7 +10688,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10703,7 +10703,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10718,7 +10718,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10733,7 +10733,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10748,7 +10748,7 @@
             </name>
             <valueQuantity>
               <value>0.25</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10763,7 +10763,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10778,7 +10778,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10793,7 +10793,7 @@
             </name>
             <valueQuantity>
               <value>0.25</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10822,7 +10822,7 @@
             </name>
             <valueQuantity>
               <value>4</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10837,7 +10837,7 @@
             </name>
             <valueQuantity>
               <value>20</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>SS</flag>
             <status>final</status>
@@ -10852,7 +10852,7 @@
             </name>
             <valueQuantity>
               <value>1</value>
-              <status>&lt;=</status>
+              <range>&lt;=</range>
             </valueQuantity>
             <flag>S</flag>
             <status>final</status>

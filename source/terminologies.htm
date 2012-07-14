@@ -15,10 +15,10 @@
 <%maindiv%>
 <%txheader%>
 
-<h1>Terminologies : Using Codes</h1>
+<h1>Terminologies: Using Codes</h1>
 
 <p>
-Many elements in the FHIR resources are assigned a type of either <a href="datatypes.htm#code">code</a>, 
+Many elements in the FHIR resources are assigned a type of <a href="datatypes.htm#code">code</a>, 
 <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>.
 These elements contain codes that have defined meanings and come from sets of codes of varying sophistication
 and size. In many simple cases, the set of codes is a short list defined specifically for the element. In other cases,
@@ -34,7 +34,7 @@ any imported profiles. Binding Names can identify sets of codes in the following
 </p>
 <table class="grid">
  <tr><td>value set</td><td>The binding name has an associated URL which is a reference to a <a href="valueset.htm">Value Set Resource</a> that provides a formal definition of the set of possible codes</td></tr>
- <tr><td>code list</td><td>The binding name is associated with a simple list of codes and definitions from some identified code system (<a href="datatypes.htm#codesystem">SID, URI, OID, UUID</a>). In resource definitions, the system reference may be omitted and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know).  In formal terms, this is merely a locally-defined value set.</td></tr>
+ <tr><td>code list</td><td>The binding name is associated with a simple list of codes and definitions from some identified code system (by <a href="datatypes.htm#codesystem">SID, URI, OID or UUID</a>). In resource definitions, the system reference may be omitted and a list of custom codes with definitions supplied (this is for status and workflow fields that applications need to know).  In formal terms, this is merely a locally-defined value set.</td></tr>
  <tr><td>reference</td><td>The binding name has an associated URL which refers to some external standard or specification that defines the possible codes</td></tr>
  <tr><td>special</td><td>The binding points to a list of concepts defined as part of FHIR itself (<a href="#localsystems">see below for possible values</a>)</td></tr>
 <!-- <tr><td>definition</td><td>Defines the kind of codes that would be appropriate in the field, but doesn't provide any further guidance about where to find such codes</td></tr> -->
@@ -157,7 +157,7 @@ HL7 OID registry.
 <a name="localsystems"/>
 <h2>Internal Code Systems</h2>
 <p>
-In addition to this, a number of code sytems are defined informally through 
+In addition to this, a number of code systems are defined informally through 
 the specification. This table enumerates them and assigns sid and OID values 
 for them, though these are not generally used directly in this specification:
 </p>
@@ -190,7 +190,7 @@ for them, though these are not generally used directly in this specification:
 </table>
 <p>
 Note that all the codes in these code systems are case sensitive and must be used in lowercase.
-All the codes in these code systems have the own uri of the format http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
+All the codes in these code systems have their own uri of the format http://hl7.org/fhir/sid/[system]/[code]. E.g. The resource type "Person" has the full uri http://hl7.org/fhir/sid/resource-types/person. 
 </p>
 <a name="specialvalues"/>
 <h2>Special Values</h2>

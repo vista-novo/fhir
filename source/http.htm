@@ -20,8 +20,8 @@ todo:
 <h1>RESTful HTTP Details</h1>
 
 <p>
-In addition to the set of base resources, FHIR also provides a RESTful implementation using <a href="http://w3.org">HTTP</a>, which 
-is an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a>. 
+In addition to the set of base resources, FHIR also provides a RESTful implementation using <a href="http://w3.org">HTTP</a> - 
+an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a>. 
 Each resource type has the same set of interactions defined that can be used to manage the resources 
 in a highly granular fashion. Applications claiming conformance to this framework
 claim to be conformant to "RESTful FHIR".
@@ -30,14 +30,14 @@ claim to be conformant to "RESTful FHIR".
 Note that in this RESTful framework, transactions are performed directly on the server resource using an 
 HTTP request/response. These HTTP calls may be authenticated against a single user account (including 
 using <a href="http://www.oauth.org">OAuth</a>), but this arrangement doesn't cater for common transaction metadata such as multiple users, 
-responsible party, reasons, and consents etc that are commonly encountered in healthcare. Instead, 
+responsible party, reasons, consents, etc. that are commonly encountered in healthcare. Instead, 
 use of this protocol assumes that appropriate security and logs are managed by the client (perhaps 
-through using ATNA), and the server trusts the client to maintain these. One implication of this is 
+through using ATNA), and that the server trusts the client to maintain these. One implication is 
 that this RESTful framework is only suitable for use where such trust relationships exist (e.g. in 
-a single institution), and not suitable where such trust does not exist (e.g. state &amp; national 
-EHR systems, and health record systems that support disparate systems). Similarly, this simple 
-RESTful interface has no support for explicit archiving, for instance. These type of more sophisticated usages
-should consider a <a href="message.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a>, or 
+a single institution) and is not suitable where such trust does not exist (e.g. state &amp; national 
+EHR systems and health record systems that support disparate systems). Similarly, this simple 
+RESTful interface has no support for explicit archiving and similar functions. These types of more sophisticated usages
+should consider a <a href="message.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a> or 
 some kind of profiled REST interface, such as <a href="hdata.htm">hData</a>.
 </p>
 <p>
@@ -47,13 +47,13 @@ The following logical interactions are supported:
 <table class="list"> 
   <tr><td><b>Instance</b></td><td></td></tr>
   <tr><td><a href="#read">read</a></td><td>Read the current state of the resource</td></tr>
-  <tr><td><a href="#vread">vread</a></td><td>A version specific read of the resource</td></tr>
-  <tr><td><a href="#update">update</a></td><td>Update an existing resource by it's id (or create it if it is new)</td></tr>
+  <tr><td><a href="#vread">vread</a></td><td>Read the state of a specific version of the resource</td></tr>
+  <tr><td><a href="#update">update</a></td><td>Update an existing resource by its id (or create it if it is new)</td></tr>
   <tr><td><a href="#delete">delete</a></td><td>Delete a resource</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for the resource</td></tr>
   <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
-  <tr><td><a href="#updates">updates</a></td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
+  <tr><td><a href="#updates">updates</a></td><td>Get a list of prior updates to resources of this type, optionally with some filter criteria</td></tr>
   <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
   <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
   <tr><td colspan="2"><b>System</b></td></tr>
@@ -63,12 +63,12 @@ The following logical interactions are supported:
 <p>
 Note that while these same logical interactions are defined on all resources, applications are 
 not required to implement all of them. Applications must provide a <a href="conformance.htm">conformance 
-statement</a> that must say what logical interactions are supported.
+statement</a> that says what interactions are supported.
 </p>
 
 <h2>Service Root URL</h2>
 <p>
-The Service Root URL is the address at which all the 
+The Service Root URL is the address where all of the 
 resources defined by this interface are found. The Service 
 Root URL takes the form of 
 </p>
@@ -80,7 +80,7 @@ The path may end with a trailing slash or not. Each
 resource type defined in this specification has a manager (or "entity set")
 that lives at the address "/[name]" where the
 name is the name of the resource type in lower case. 
-So, for instance, the resource manager for the type 
+For instance, the resource manager for the type 
 "Patient" will live at:
 </p>
 <pre>
@@ -90,7 +90,7 @@ http://server/path/patient
 All the logical operations are defined relative to the service root
 URL below. Note that this means that given the address of any one FHIR
 resource on a system, the correct address for all the other resources 
-may be determined. However since application URLs may change, and because in some uses of FHIR within internal eco-systems,
+may be determined. However since application URLs may change and because in some uses of FHIR within internal eco-systems,
 local configuration may dictate that the provider of a resource is different
 to that claimed by any particular provider or consumer, 
 applications may need to replace Service Root URLs.
@@ -99,14 +99,14 @@ applications may need to replace Service Root URLs.
 Note: except for the Service Root Portion of the URL, all the URLs (and ids that form part of the URL) defined by 
 this specification are case sensitive and are required to be in lowercase. 
 </p>
-<h2>Resource Metadata &amp; Versioning</h2>
+<h2>Resource Metadata and Versioning</h2>
 <p>
-Each resource has an associated set of <a href="xml.htm#metadata">resource metadata</a>. These map to the http request and response using the following fields:
+Each resource has an associated set of <a href="xml.htm#metadata">resource metadata elements</a>. These map to the http request and response using the following fields:
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>HTTP Response Header</th></tr>
-  <tr><td>Version Id</td><td>The version Id is represented by the full canonical URL in the master location(see <a href="#vread">vread</a> below. 
-     The Version Id may also be represented in the http ETag, but the ETag is not used by the this specification</td></tr>
+  <tr><td>Version Id</td><td>The Version Id is represented by the full canonical URL in the master location (see <a href="#vread">vread</a> below). 
+     The Version Id may also be represented in the http ETag, but the use of ETag is not needed by this specification</td></tr>
   <tr><td>Last Modified Date</td><td>HTTP Last-Modified header</td></tr>
   <tr><td>Master Location</td><td>HTTP Content-Location header</td></tr>
 </table>
@@ -115,16 +115,16 @@ Each resource has an associated set of <a href="xml.htm#metadata">resource metad
 <h2>Security</h2>
 <p>
 For this specification, normal HTTP security and authentication rules apply. The Service Root URL will specify 
-whether SSL is required. HTTP authentication, including possibly the requirement for client certificates, may 
-be required by the server. It is a matter of application requirements and local configuration whether all 
-interactions run under the account of a trusted system user, or whether each interaction runs under the 
-account of the individual user, or whether some other arrangement is required. 
+whether SSL is required. HTTP authentication may be required by the server, possibly including the requirement for 
+client certificates. It is a matter of application requirements and local configuration whether all 
+interactions run under the account of a trusted system user whether each interaction runs under the 
+account of the individual user or whether some other arrangement is required. 
 </p>
 <p>
 <a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
 that do not require URL parameters, but these may be used if necessary.
 </p>
-<h2>Content Types &amp; File Extensions</h2>
+<h2>Content Types and File Extensions</h2>
 <p>
 The formal mime type for FHIR resources is text/xml+fhir (still to be registered) and SHOULD be use by clients and servers.
 Servers are required to support the XML format of the resources defined in this specification, but may support other
@@ -132,7 +132,7 @@ alternatives, including the informative <a href="xml.htm#json">JSON</a> represen
 content-type negotiation support described by the HTTP specification, but in order to support various implementation
 limitations, may choose to support the (?format=) parameter to specify alternative return formats by their mime types.
 For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
-defined by FHIR, and application/json must be interpreted to mean the informative JSON format.
+defined by FHIR and application/json must be interpreted to mean the informative JSON format.
 </p>
 
 <a name="read"> </a>
@@ -145,7 +145,7 @@ is performed by an HTTP GET operation as shown:
   GET [service-url]/[resourcetype]/{@id} (?format=mimeType) 
 </pre>
 <p>
-This returns a single instance with the content that which is specified for the resource type.
+This returns a single instance with the content specified for the resource type.
 This url may be accessed by a browser. The logical id is preceded by a "@" to make parsing the url easier.
 The possible values for the id itself are described in the <a href="datatypes.htm#id">id type</a>.
 Servers are required to return a content-location header with the response which is the full version 
@@ -161,14 +161,14 @@ is performed by an HTTP GET operation as shown:
   GET [service-url]/[resourcetype]/{@id}/history/{@vid} (?format=mimeType)
 </pre>
 <p>
-This returns a single instance with the content that which is specified for the resource type.
+This returns a single instance with the content specified for the resource type.
 Servers may return a content-location header with the response which is the url 
 requested and a Last-Modified header.
 </p>
 <p>
 The version id is an opaque identifier that conforms to the same format requirements as 
 a resource id. The id may have been found by performing a history operation (see below), by recording the 
-version id from a content location returned from a read, or from a version specific reference in a 
+version id from a content location returned from a read or from a version specific reference in a 
 content model. The vread interaction should succeed even after a resource is deleted as long as a 
 correct version identifier is provided. 
 </p>
@@ -176,22 +176,22 @@ correct version identifier is provided.
 <a name="update"> </a>
 <h2>update</h2>
 <p>
-The update interaction changes an existing resource, or creates a new resource if it doesn't already exist. 
+The update interaction changes an existing resource or creates a new resource if it doesn't already exist. 
 The update interaction is performed by an HTTP PUT operation as shown:
 </p>
 <pre>
   PUT [service-url]/[resourcetype]/{@id} (?format=mimeType)
 </pre>
 <p>
-The server must return a copy of the newly updated resource (which may not be the same as that submitted) 
+The server must return a copy of the newly updated resource (which might not be the same as that submitted) 
 with the response, along with a Last-Modified header, and a Content-Location header that refers to the version created by the 
 updated operation.
 </p>
 <p>
-Servers may choose to implement version aware updates, where the only updates that are accepted quote the 
+Servers may choose to implement version-aware updates, where the only updates that are accepted quote the 
 current version of the resource. In this case, the client must submit the currently correct version specific
 URL in the Content-Location in the PUT request. If the value is incorrect, the server SHALL return  
-a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location header, and SHALL 
+a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location header and SHALL 
 correctly understand a 412 response as an update conflict. 
 </p>
 
@@ -206,7 +206,7 @@ is performed by an HTTP DELETE operation as shown:
 </pre>
 <p>
 A delete operation means that <a href="#read">non-version specific reads</a> of a resource 
-return a 410 error, and the resource is no longer found through search operations. If a server 
+return a 410 error and that the resource is no longer found through search operations. If a server 
 refuses to delete resources of that type on principle, then it should return the status code 
 405 method not allowed. If the server refuses to delete a resource because of reasons specific 
 to that resource, such as referential integrity, it should return the status code 409 Conflict.
@@ -236,7 +236,7 @@ resource, sorted with oldest versions first. ToDo: how deletions are represented
 <h2>validate</h2>
 <p>
 The validate interaction checks whether the attached content would be acceptable as an 
-update to an existing resource. The validation operation may be the first part of a light two
+update to an existing resource. The validation operation may be the first part of a light two-
 phase commit process. The interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
@@ -245,10 +245,10 @@ phase commit process. The interaction is performed by an HTTP POST operation as 
 </pre>
 <p>
 The content is first checked against the general specification and against the conformance 
-profile that applies to the application. How muc checking is performed is at the discretion 
-of the server. Then the resource is considered as a proposed update, and additional instance 
-specific rules such as referential integrity and update logic is applied as well.
-The return content has status 200 OK if the content validates ok, or 409 Conflict,
+profile that applies to the application. How much checking is performed is at the discretion 
+of the server. Then the resource is considered as a proposed update and additional instance 
+specific rules such as referential integrity and update logic are applied as well.
+The return content has status 200 OK if the content validates ok or 409 Conflict,
 with the following content:
 </p>
 <pre>
@@ -293,7 +293,7 @@ This interaction searches a resource type based on some filter criteria. The int
 <p>
 Because of the way that some user agents treat POST requests, POST submissions are also allowed, though the semantics are exactly the 
 same as a GET operation. Search operations take a series of parameters that are encoded in the URL or as an x-multi-part-form submission
-for a POST. Each FHIR resource type defines a set of applicable search parameters with their meanings, and servers may declare additional 
+for a POST. Each FHIR resource type defines a set of applicable search parameters with their meanings and servers may declare additional 
 parameters in their conformance statements. In addition, the following common search parameters apply to all resource types:
 </p>
 <table class="list">
@@ -303,10 +303,10 @@ parameters in their conformance statements. In addition, the following common se
 </table>
 <p>
 It is at the discretion of the server how many results to return, though
-the client may request a particular number of a <i>count</i> parameter. If
+the client may request a particular number with the <i>count</i> parameter. If
 the client wishes for more results, it should use the <i>n</i> parameter.
 More generally, the client uses parameters to narrow the search and 
-increase it's usefulness. Note that which parameters to support is at the 
+increase its usefulness. Note that which parameters to support is at the 
 discretion of the server. 
 </p>
 <p>
@@ -317,11 +317,11 @@ in a defined order. This specification does not assign any particular meaning to
 <h3>Search Parameter Types</h3>
 <table class="codes">
  <tr><td>integer</td><td>search parameter must be a simple whole number</td></tr>
- <tr><td>string</td><td>search parameter is a simple string, like a name part (i.e. search usually functions on partial matches)</td></tr>
+ <tr><td>string</td><td>search parameter is a simple string, like a name part (search usually functions on partial matches)</td></tr>
  <tr><td>text</td><td>search parameter is into a long string (i.e. a text filter type search)</td></tr>
  <tr><td>date</td><td>search parameter is onto a date (and should support -before and -after variants)</td></tr>
  <tr><td>token</td><td>search parameter is on a fixed value string (i.e. search has an exact match)</td></tr>
- <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, space and value, separated by a ":". The space is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a>, and is optional when searching</td></tr>
+ <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, namespace and value, separated by a ":". The namespace is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a> and is optional when searching</td></tr>
 </table>
 
 <a name="create"> </a>
@@ -333,7 +333,7 @@ The create interaction creates a new resource. The interaction is performed by a
   POST [service-url]/[resourcetype] (?format=mimeType)
 </pre>
 <p>
-The server returns a a copy of the newly created resource (which may not be the same as that submitted) 
+The server returns a copy of the newly created resource (which might not be the same as that submitted) 
 with the acknowledgement, along with a Location: header which also contains the new location and id of the created resource:
 </p>
 <pre>
@@ -366,18 +366,18 @@ human manual interaction with the server would be appropriate.
 <p>
 The HTTP protocol may be routed through an HTTP proxy such as 
 squid. Such proxies are transparent to the applications, though
-implementors should be alert to the effects of rogue caching.
+implementers should be alert to the effects of rogue caching.
 </p>
 <p>
 Interface engines may also be placed between the consumer and
-the provider; these differ from proxies because they actively
+the provider. These differ from proxies because they actively
 alter the content and/or destination of the HTTP exchange and are
 not bound the rules that apply to HTTP proxies. Such agents are allowed, 
 but must mark the http header to assist with troubleshooting.
 </p>
 <p>
 Any agent that modifies an HTTP request or Response content other
-than under the rules for HTTP proxie must add a stamp to the HTTP 
+than under the rules for HTTP proxies must add a stamp to the HTTP 
 headers like this:
 </p>
 <pre>
@@ -387,8 +387,8 @@ headers like this:
 <p>
 The identity must a single token defined by the administrator of the agent
 that will sufficiently identify the agent in the context of use. The header
-must specify the agents purpose in modifying the content. End point systems must
-not use this header for any purpose; it's aim is to assist with 
+must specify the agent's purpose in modifying the content. End point systems must
+not use this header for any purpose. Its aim is to assist with 
 system troubleshooting.
 </p>
 
@@ -399,5 +399,3 @@ system troubleshooting.
 <%/maindiv%>    
 </body>
 </html>
-
-

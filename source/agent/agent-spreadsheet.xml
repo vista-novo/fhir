@@ -107,7 +107,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A person acting on behalf of an organisation</Data></Cell>
-    <Cell><Data ss:Type="String">A person who represents an organisation, and is authorised to perform actions on it's behalf</Data></Cell>
+    <Cell><Data ss:Type="String">A person who represents an organisation, and is authorised to perform actions on its behalf</Data></Cell>
     <Cell><Data ss:Type="String">Need to track doctors, staff, locums etc for both healthcare providers, funders, etc.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Role</Data></Cell>
     <Cell><Data ss:Type="String">PRD (as one example)</Data></Cell>
@@ -217,12 +217,12 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>3</TopRowVisible>
+   <LeftColumnVisible>4</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

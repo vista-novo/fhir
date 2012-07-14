@@ -20,40 +20,39 @@
 <p>
 While the FHIR Resources are designed with a simple <a href="http.htm">RESTful HTTP-based implementation</a> 
 in mind, it is not necessary to use this implementation framework. This specification also defines a 
-straight <a href="message.htm">messaging based implementation framework</a> for FHIR resources, and a <a href="document.htm">document-based framework</a>, 
+straight <a href="message.htm">messaging based implementation framework</a> for FHIR resources and a <a href="document.htm">document-based framework</a>, 
 as well as documenting how <a href="hdata.htm">FHIR resources are used with hData</a>.
 </p>
 <a name="SOA"></a>
 <h2>SOA</h2>
 <p>
-Alternatively, it is not necessary to use any of these approaches; resources can be exchanged or persisted
+Alternatively, it is not necessary to use any of these approaches. Resources can be exchanged or persisted
 using any technical means that is appropriate to the context at hand. A common use of FHIR 
 resources or <a href="atom.htm">bundles</a> is as parameters of service interfaces. FHIR itself does not define
-any particular service interface; instead, other standards and implementations define their 
+any particular service interface. Instead, other standards and implementations define their 
 own service interfaces and architecture that use FHIR resources. As long as the resources that
-are used are conformant with regard to this specification, and the rules for authoring and
+are used are conformant with this specification and the rules for authoring and
 reading applications are followed, then the implementation can claim conformance to
 "FHIR Resources". Such implementations will need to resolve several issues:
 </p>
 <ul>
-  <li>Resource references need to be able to be resolved. There are a variety of solutions to this, from ensuring that the all the relevant resources are bundled together, or that all relevent resources are passed as parameters in a service call, through to a resource repository that provides access to all reference resources. </li>
-  <li>The <a href="xml.htm#metadata">Resource metadata</a> items "Version Id" and "Last Modified Date" are provided for use in resolving resource versioning and concurrency issues, both from a technical and human perspective. Most contexts of use will require at least one if not both of these attributes for some uses, and the implementation framework will need to resolve how and when they are exchanged</li>
-  <li>The <a href="xml.htm#metadata">resource metadata</a> item "Master Location" may be useful as part of a solution towards resolving resource references, and/or handling issues pertaining to distrubed use and re-use of resources, and implementations should describe how this data item is handlded</li>
+  <li>Resource references need to be able to be resolved. There are a variety of solutions to this, from ensuring that the all the relevant resources are bundled together or that all relevant resources are passed as parameters in a service call, through to a resource repository that provides access to all referenced resources. </li>
+  <li>The <a href="xml.htm#metadata">Resource metadata</a> items "Version Id" and "Last Modified Date" are provided for use in resolving resource versioning and concurrency issues, both from a technical and human perspective. Most contexts of use will require at least one if not both of these attributes for some uses, and the implementation framework will need to resolve how and when they are exchanged.</li>
+  <li>The <a href="xml.htm#metadata">resource metadata</a> item "Master Location" may be useful as part of a solution towards resolving resource references and/or handling issues pertaining to distributed use and re-use of resources and implementations should describe how this data item is handled.</li>
   <li>The <a href="conformance.htm">conformance statement</a> allows authoring and reading applications to describe their rules concerning the use and contents of a resource. 
       The implementation will need to describe how this conformance statement or some other equivalent fits into the exchange/persistence context.</li>
-  <li>How transactional information such as data enterer, author(s), responsible party, consent, and approvals is treated</li>
+  <li>How transactional information such as data enterer, author(s), responsible party, consent and approvals is treated</li>
 </ul>
 <p>
 The resolution to these issues should be documented and published with the service specification.
 </p>
 <p>
-Given these options, there are many ways to implement any particular workflow. 
-There are many ways to use resources to build working systems:
+There are many ways to implement any particular workflow and there are many ways to use resources to build working systems:
 </p>
 <ul>
-<li>A RESTful paradigm where resources are exchanged separately using http transactions directly as defined in this specification. Implementations can use both push and pull, or a mix of the two</li>
-<li>The resources can be exchanged in messages or some other SOA implementation, where the resources are directly the contents/parameters that are exchanged</li>
-<li>The resources can be "bundled" into documents that are self-contained and complete collections of linked resources, and then these documents can be exchanged and/or persisted</li>
+<li>A RESTful paradigm where resources are exchanged separately using http transactions directly as defined in this specification. Implementations can use both push and pull or a mix of the two</li>
+<li>The resources can be exchanged in messages or some other SOA implementation where the resources form the contents/parameters that are exchanged</li>
+<li>The resources can be "bundled" into documents that are self-contained and complete collections of linked resources and then these documents can be exchanged and/or persisted</li>
 <li>The resources can be embedded in HTML pages or other web content such as content feeds</li>
 </ul>
 
@@ -63,9 +62,9 @@ There are many ways to use resources to build working systems:
 This section contains links to content that assist implementers make FHIR work in production:
 </p>
 <ul>
- <li><a href="fhir-all-xsd.zip">All schemas as a .zip</a> (includes base schemas, resource schemas, schematrons, and FHIR-specific atom schemas and schematrons)</li>
- <li><a href="fhir.dict.xml">Single combined definitions, including data types</a></li>
- <li><a href="profiles.xml">Single combined resource profiles</a>. The resource profiles may be useful as a starting point for authoring profiles on the resources, or with conformance statements</li>
+ <li><a href="fhir-all-xsd.zip">All schemas as a .zip</a> (includes base schemas, resource schemas, Schematrons and FHIR-specific atom schemas and Schematrons)</li>
+ <li><a href="fhir.dict.xml">Single combined definitions of resources and data types as processable XML</a></li>
+ <li><a href="profiles.xml">Single combined resource profiles</a>. The resource profiles may be useful as a starting point for authoring profiles on the resources or with conformance statements</li>
  <li><a href="examples.zip">All resource examples as a zip file</a></li>
 </ul>
 <p>
@@ -75,19 +74,19 @@ TODO: add RDF &amp; OWL renditions, eCore definitions, ADL versions, anything an
 <h3>Reference Implementations</h3>
 <p>
 These reference implementations are provided for implementer interest and assistance. 
-They may be used in production instances, though HL7 accepts no liability for this 
+They may be used in production instances, though HL7 and its contributors accept no liability for this 
 use.  All these implementations are provided under a standard OSI approved BSD license (BSD-3-Clause).
 </p>
 <p>
 These reference implementations are limited to code for representing the 
-resource contents in their native form, and parsing &amp; serializing them as 
-XML and JSON. In addition, some of them provide support for 
+resource contents in their native form and parsing &amp; serializing them as 
+XML and JSON. In addition, some of the implementations provide support for 
 building, using and reasoning with resource definitions. 
 Full blown open source implementations for FHIR, some of which use these reference implementations, are
 listed on the <a href="http://wiki.hl7.org/index.php?title=Open_Source_FHIR_implementations">HL7 wiki</a>.
 </p>
 <p>
-It is not necessary to use these particular implementations in order to be conformant; any other approach 
+It is not necessary to use these particular implementations in order to be conformant. Any other approach 
 may be used, including code generated from the schemas.
 </p>
 <ul>
