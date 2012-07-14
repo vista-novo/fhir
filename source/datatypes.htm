@@ -317,7 +317,7 @@ The correct value of the <i>system</i> for a given code system can be determined
  <li>consulting the owner of the code system</li>
  <li>asking on the HL7 vocabulary mailing list</li>
 </ul>
-<h3>Version Management</h3>
+<!--<h3>Version Management</h3>
 <p>
 Some code systems have periodic releases where the meanings of the codes are changed between
 each release. Other code systems provide multiple releases where only minor consistent changes 
@@ -335,13 +335,14 @@ LOINC), the release date is to be used.
 </p>
 <p>
 The <i>version</i> element must always be ignored when comparing <i>Coding</i> values
-</p>
+</p>-->
 <div class="use">
 <p><b>Use</b></p>
 <p>
 Unless the Coding element has a dataAbsentReason flag, it must contain a <i>system</i> element 
-and it should contain a <i>display</i> if it contains a <i>code</i>. It can only contain a
-<i>version</i> element if it contains a <i>system</i> element.
+and it should contain a <i>display</i> if it contains a <i>code</i>.
+<!-- It can only contain a
+<i>version</i> element if it contains a <i>system</i> element.-->
 </p>
 <p>
 The context of use usually makes rules about what codes and systems are allowed or required in a 
