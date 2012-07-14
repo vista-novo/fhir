@@ -1,14 +1,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/atom.xsd">
 	<title>Standard Person Examples</title>
-	<updated>2012-05-29T23:45:32</updated>
+	<updated>2012-05-29T23:45:32Z</updated>
 	<id>b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
 	<link rel="via" href="http://www.hl7.org/fhir/patient-examples.xml"/>
 	<entry>
 		<title>patient, female</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#1"/>
 		<id>1</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve / HL7 publishing committee</name>
 		</author>
@@ -67,7 +67,7 @@
 		<title>patient, male</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#2"/>
 		<id>2</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -125,7 +125,7 @@
 		<title>patient, child</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#3"/>
 		<id>3</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -183,7 +183,7 @@
 		<title>family, daughter</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#4"/>
 		<id>4</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -241,7 +241,7 @@
 		<title>family, husband</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#5"/>
 		<id>5</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -299,7 +299,7 @@
 		<title>family, son</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#6"/>
 		<id>6</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -357,7 +357,7 @@
 		<title>family, wife</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#7"/>
 		<id>7</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -415,7 +415,7 @@
 		<title>next of kin (parent)</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#8"/>
 		<id>8</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -473,7 +473,7 @@
 		<title>next of kin (child)</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#9"/>
 		<id>9</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -531,7 +531,7 @@
 		<title>next of kin (spouse)</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#10"/>
 		<id>10</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -589,7 +589,7 @@
 		<title>next of kin (other)</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#11"/>
 		<id>11</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -647,7 +647,7 @@
 		<title>contact person</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#12"/>
 		<id>12</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -705,7 +705,7 @@
 		<title>healthcare provider</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#13"/>
 		<id>13</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -763,7 +763,7 @@
 		<title>assigned practitioner</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#14"/>
 		<id>14</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -821,7 +821,7 @@
 		<title>physician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#15"/>
 		<id>15</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -879,7 +879,7 @@
 		<title>primary care physician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#16"/>
 		<id>16</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -937,7 +937,7 @@
 		<title>admitting physician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#17"/>
 		<id>17</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -995,7 +995,7 @@
 		<title>attending physician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#18"/>
 		<id>18</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1053,7 +1053,7 @@
 		<title>referring physician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#19"/>
 		<id>19</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1111,7 +1111,7 @@
 		<title>intern</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#20"/>
 		<id>20</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1169,7 +1169,7 @@
 		<title>resident</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#21"/>
 		<id>21</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1227,7 +1227,7 @@
 		<title>chief of staff</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#22"/>
 		<id>22</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1285,7 +1285,7 @@
 		<title>authenticator</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#23"/>
 		<id>23</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1343,7 +1343,7 @@
 		<title>specialist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#24"/>
 		<id>24</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1401,7 +1401,7 @@
 		<title>allergist/immunologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#25"/>
 		<id>25</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1459,7 +1459,7 @@
 		<title>anesthesiologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#26"/>
 		<id>26</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1517,7 +1517,7 @@
 		<title>cardiologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#27"/>
 		<id>27</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1575,7 +1575,7 @@
 		<title>cardiovascular surgeon</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#28"/>
 		<id>28</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1633,7 +1633,7 @@
 		<title>dermatologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#29"/>
 		<id>29</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1691,7 +1691,7 @@
 		<title>emergency medicine specialist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#30"/>
 		<id>30</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1749,7 +1749,7 @@
 		<title>endocrinologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#31"/>
 		<id>31</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1807,7 +1807,7 @@
 		<title>family practitioner</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#32"/>
 		<id>32</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1865,7 +1865,7 @@
 		<title>gastroenterologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#33"/>
 		<id>33</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1923,7 +1923,7 @@
 		<title>geriatrician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#34"/>
 		<id>34</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -1981,7 +1981,7 @@
 		<title>hematologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#35"/>
 		<id>35</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2039,7 +2039,7 @@
 		<title>infectious disease specialist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#36"/>
 		<id>36</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2097,7 +2097,7 @@
 		<title>internist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#37"/>
 		<id>37</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2155,7 +2155,7 @@
 		<title>nephrologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#38"/>
 		<id>38</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2213,7 +2213,7 @@
 		<title>neurologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#39"/>
 		<id>39</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2271,7 +2271,7 @@
 		<title>neurosurgeon</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#40"/>
 		<id>40</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2329,7 +2329,7 @@
 		<title>OB/GYN</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#41"/>
 		<id>41</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2387,7 +2387,7 @@
 		<title>oncologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#42"/>
 		<id>42</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2445,7 +2445,7 @@
 		<title>ophthalmologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#43"/>
 		<id>43</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2503,7 +2503,7 @@
 		<title>orthopedic surgeon</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#44"/>
 		<id>44</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2561,7 +2561,7 @@
 		<title>otolaryngologist (ENT)</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#45"/>
 		<id>45</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2619,7 +2619,7 @@
 		<title>pathologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#46"/>
 		<id>46</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2677,7 +2677,7 @@
 		<title>pediatrician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#47"/>
 		<id>47</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2735,7 +2735,7 @@
 		<title>plastic surgeon</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#48"/>
 		<id>48</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2793,7 +2793,7 @@
 		<title>psychiatrist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#49"/>
 		<id>49</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2851,7 +2851,7 @@
 		<title>pulmonologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#50"/>
 		<id>50</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2909,7 +2909,7 @@
 		<title>radiologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#51"/>
 		<id>51</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -2967,7 +2967,7 @@
 		<title>rheumatologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#52"/>
 		<id>52</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3025,7 +3025,7 @@
 		<title>surgeon</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#53"/>
 		<id>53</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3083,7 +3083,7 @@
 		<title>urologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#54"/>
 		<id>54</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3141,7 +3141,7 @@
 		<title>physician assistant</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#55"/>
 		<id>55</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3199,7 +3199,7 @@
 		<title>registered nurse</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#56"/>
 		<id>56</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3257,7 +3257,7 @@
 		<title>nursing assistant</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#57"/>
 		<id>57</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3315,7 +3315,7 @@
 		<title>chiropractor</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#58"/>
 		<id>58</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3373,7 +3373,7 @@
 		<title>dentist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#59"/>
 		<id>59</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3431,7 +3431,7 @@
 		<title>orthodontist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#60"/>
 		<id>60</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3489,7 +3489,7 @@
 		<title>optometrist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#61"/>
 		<id>61</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3547,7 +3547,7 @@
 		<title>pharmacist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#62"/>
 		<id>62</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3605,7 +3605,7 @@
 		<title>podiatrist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#63"/>
 		<id>63</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3663,7 +3663,7 @@
 		<title>psychologist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#64"/>
 		<id>64</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3721,7 +3721,7 @@
 		<title>lab technician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#65"/>
 		<id>65</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3779,7 +3779,7 @@
 		<title>dietician</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#66"/>
 		<id>66</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3837,7 +3837,7 @@
 		<title>social worker</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#67"/>
 		<id>67</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3895,7 +3895,7 @@
 		<title>occupational therapist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#68"/>
 		<id>68</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -3953,7 +3953,7 @@
 		<title>physical therapist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#69"/>
 		<id>69</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -4011,7 +4011,7 @@
 		<title>transcriptionist</title>
 		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#70"/>
 		<id>70</id>
-		<updated>2012-05-29T23:45:32</updated>
+		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>

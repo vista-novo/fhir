@@ -34,6 +34,7 @@ import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 
+import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
@@ -117,13 +118,17 @@ public abstract class XmlComposerBase extends XmlBase {
     xml.setPretty(oldPretty);
   }
   
-  protected void composeBytes(String name, byte[] content) {
+  protected void composeBytes(String name, byte[] content) throws Exception {
+    if (content != null) {
+      byte[] encodeBase64 = Base64.encodeBase64(content);
+      composeString(name, new String(encodeBase64));
+    }
   }  
 
   protected void composeBase64Binary(String name, Base64Binary value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      // xml.element(FHIR_NS, name, value.getValue());
+      composeBytes(name, value.getValue());
     }
   }
   

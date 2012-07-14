@@ -1,13 +1,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2005/Atom ../../schema/atom.xsd">
   <title>Assorted Lab Examples</title>
-  <updated>2012-04-14T10:35:23</updated>
+  <updated>2012-04-14T10:35:23Z</updated>
   <id>72ac8493-52ac-41bd-8d5d-7258c289b5ea</id>
   <link rel="via" href="http://www.hl7.org/fhir/labreport-examples.xml"/>
   <entry>
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#3"/>
     <id>3</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -16,7 +16,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>3</id>
         <status>final</status>
-        <issued>2005-01-27T06:40:01</issued>
+        <issued>2005-01-27T06:40:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>1</id>
@@ -845,7 +845,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#4"/>
     <id>4</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -854,7 +854,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>4</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>2</id>
@@ -1605,7 +1605,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#5"/>
     <id>5</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -1614,7 +1614,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>5</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>3</id>
@@ -2364,7 +2364,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#6"/>
     <id>6</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -2373,7 +2373,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>6</id>
         <status>final</status>
-        <issued>2004-12-21T00:00:01</issued>
+        <issued>2004-12-21T00:00:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>4</id>
@@ -3122,7 +3122,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#7"/>
     <id>7</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -3131,7 +3131,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>7</id>
         <status>final</status>
-        <issued>2004-12-03T00:00:01</issued>
+        <issued>2004-12-03T00:00:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>5</id>
@@ -3854,7 +3854,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#8"/>
     <id>8</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -3863,7 +3863,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>8</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>6</id>
@@ -4587,7 +4587,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#9"/>
     <id>9</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -4596,7 +4596,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>9</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>7</id>
@@ -5320,7 +5320,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#15"/>
     <id>15</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -5329,7 +5329,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>15</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>8</id>
@@ -6076,7 +6076,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#16"/>
     <id>16</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -6085,7 +6085,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>16</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>9</id>
@@ -6836,7 +6836,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#17"/>
     <id>17</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -6845,7 +6845,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>17</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>10</id>
@@ -7595,7 +7595,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#18"/>
     <id>18</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -7604,7 +7604,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>18</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>1</id>
@@ -8353,7 +8353,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#19"/>
     <id>19</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -8362,7 +8362,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>19</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>2</id>
@@ -9085,7 +9085,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#20"/>
     <id>20</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -9094,7 +9094,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>20</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>3</id>
@@ -9818,7 +9818,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#21"/>
     <id>21</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -9827,7 +9827,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>21</id>
         <status>final</status>
-        <issued>2005-02-23T10:04:01</issued>
+        <issued>2005-02-23T10:04:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>4</id>
@@ -10551,7 +10551,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#25"/>
     <id>25</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -10560,7 +10560,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>25</id>
         <status>final</status>
-        <issued>2005-11-07T23:38:01</issued>
+        <issued>2005-11-07T23:38:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>5</id>
@@ -10874,7 +10874,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#26"/>
     <id>26</id>
-    <updated>2012-04-14T10:35:23</updated>
+    <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -10883,7 +10883,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>26</id>
         <status>final</status>
-        <issued>2005-03-07T14:02:01</issued>
+        <issued>2005-03-07T14:02:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>6</id>
@@ -10944,7 +10944,7 @@
     <title>Example Lab Report</title>
     <link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#27"/>
     <id>27</id>
-    <updated>2012-05-23T14:27:01</updated>
+    <updated>2012-05-23T14:27:01Z</updated>
     <author>
       <name>FHIR Project Team</name>
     </author>
@@ -10953,7 +10953,7 @@
       <LabReport xmlns="http://hl7.org/fhir">
         <id>27</id>
         <status>final</status>
-        <issued>2012-05-23T14:27:01</issued>
+        <issued>2012-05-23T14:27:01Z</issued>
         <patient>
           <type>Patient</type>
           <id>1</id>

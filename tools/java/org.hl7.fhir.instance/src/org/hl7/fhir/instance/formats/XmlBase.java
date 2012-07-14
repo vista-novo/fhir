@@ -42,14 +42,13 @@ public class XmlBase {
   protected static final String FHIR_NS = "http://hl7.org/fhir";
   protected static final String ATOM_NS = "http://www.w3.org/2005/Atom";
   protected static final String GDATA_NS = "http://schemas.google.com/g/2005";
-  private static final String XML_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
-  
+ 
   protected XmlPullParser loadXml(InputStream stream) throws Exception {
     BufferedInputStream input = new BufferedInputStream(stream);
     XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
     factory.setNamespaceAware(true);
     XmlPullParser xpp = factory.newPullParser();
-    xpp.setInput(input, null);
+    xpp.setInput(input, "UTF-8");
     xpp.next();
     
     return xpp;

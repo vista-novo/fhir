@@ -1,6 +1,6 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Standard Person Examples</title>
-  <updated>2012-05-29T23:45:32</updated>
+  <updated>2012-05-29T23:45:32Z</updated>
   <id>b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
   <link href="http://www.hl7.org/fhir/patient-examples.xml" rel="via"/>
 [%loop count=200%]
@@ -8,7 +8,7 @@
     <title>patient, female</title>
     <link href="http://www.hl7.org/fhir/patient-examples.xml#[%count%]" rel="self"/>
     <id>[%count%]</id>
-    <updated>2012-06-03T23:45:32</updated>
+    <updated>2012-06-03T23:45:32Z</updated>
     <author>
       <name>Cypress Project</name>
       <uri>https://github.com/projectcypress/cypress/downloads</uri>

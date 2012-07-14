@@ -1015,16 +1015,17 @@ public class Publisher {
 	   doc2.normalizeDocument();
 	   stripWhitespaceAndComments(doc2);
 
-	   if (!doc1.isEqualNode(doc2)) {
+     XmlGenerator xmlgen = new XmlGenerator();
+     File tmp1 = File.createTempFile("xml", ".xml");
+     tmp1.deleteOnExit();
+     xmlgen.generate(doc1.getDocumentElement(), tmp1, doc1.getDocumentElement().getNamespaceURI(), doc1.getDocumentElement().getLocalName());
+     File tmp2 = File.createTempFile("xml", ".xml");
+     tmp2.deleteOnExit();
+     xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2.getDocumentElement().getNamespaceURI(), doc2.getDocumentElement().getLocalName());
+	   
+	   if (!TextFile.fileToString(tmp1.getAbsolutePath()).equals(TextFile.fileToString(tmp2.getAbsolutePath()))) {
 	     page.log("file "+fn1+" did not round trip perfectly in XML");
 	     if (new File("c:\\program files (x86)\\WinMerge\\WinMergeU.exe").exists()) {
-	       XmlGenerator xmlgen = new XmlGenerator();
-	       File tmp1 = File.createTempFile("xml", ".xml");
-	       tmp1.deleteOnExit();
-	       xmlgen.generate(doc1.getDocumentElement(), tmp1, doc1.getDocumentElement().getNamespaceURI(), doc1.getDocumentElement().getLocalName());
-	       File tmp2 = File.createTempFile("xml", ".xml");
-	       tmp2.deleteOnExit();
-	       xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2.getDocumentElement().getNamespaceURI(), doc2.getDocumentElement().getLocalName());
 
 	       List<String> command = new ArrayList<String>();
 	       command.add("\"c:\\program files (x86)\\WinMerge\\WinMergeU.exe\" \""+tmp1.getAbsolutePath()+"\" \""+tmp2.getAbsolutePath()+"\"");
@@ -1061,6 +1062,9 @@ public class Publisher {
         node.removeChild(c);
       else if (c.getNodeType() == Node.ELEMENT_NODE)
         stripWhitespaceAndComments(c);
+    }
+    if (node.getNodeType() == Node.ELEMENT_NODE) {
+      node.appendChild(node.getOwnerDocument().createTextNode("\r\n"));
     }
     
   }
