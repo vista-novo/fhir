@@ -1,9 +1,6 @@
 Pre freeze:
 
-* update atom feed format
 * Fix problem with schematron paths capturing resources and datatypes used in extensions (by looking for valuexxx)?
-* check that the book is generated properly
-* add ballot preamble
 
 Post freeze:
 

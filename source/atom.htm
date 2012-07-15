@@ -35,33 +35,33 @@ Whenever resources are gethered into a list, this is done using the Atom format 
 </p>
 <pre class="spec">
 &lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
-  &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
-  &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
-  &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">unique uri for this bundle</font>&lt;/id&gt;
-  &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">building application url</font>"/&gt;
+  &lt;<b>title</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
+  &lt;<b>updated</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
+  &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">unique uri for this bundle</font>&lt;/id&gt;
+  &lt;<b>link</b> <span style="color: brown;"><b>1..1</b></span> rel="self" href="<font color="navy">[building application url]</font>"/&gt;
 
   &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-    &lt;<b>title</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
-    &lt;<b>link</b> <a href="xml.htm#Control" class="cf">mand</a> rel="self" href="<font color="navy">Master Location for Resource</font>"/&gt;
-    &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Master Id (uri) for this resource</font>&lt;/id&gt;
-    &lt;<b>updated</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
-    &lt;<b>published</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
+    &lt;<b>title</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
+    &lt;<b>link</b> <span style="color: brown;"><b>1..1</b></span> rel="self" href="<font color="navy">Master Location for Resource</font>"/&gt;
+    &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Master Id (uri) for this resource</font>&lt;/id&gt;
+    &lt;<b>updated</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
+    &lt;<b>published</b> <span style="color: brown;"><b>0..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
     &lt;<b>author</b>&gt;
-      &lt;<b>name</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
-      &lt;<b>uri</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
+      &lt;<b>name</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
+      &lt;<b>uri</b> <span style="color: brown;"><b>0..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
     &lt;/author>
-    &lt;<b>category</b> term="<font color="navy">[Resource Type]</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
-    &lt;<b>content</b> <a href="xml.htm#Control" class="cf">mand</a> type="text/xml">
+    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">[Resource Type]</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
+    &lt;<b>content</b> <span style="color: brown;"><b>1..1</b></span> type="text/xml">
       &lt;<b>[ResourceName]</b> xmlns="http://hl7.org/fhir">
-         &lt;<b>id</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Resource Id (i.e. normal resource content)</font>&lt;/id&gt;
+         &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#id">id</a>"</font>&gt;<font color="navy">Resource Id (i.e. normal resource content)</font>&lt;/id&gt;
          &lt;!-- Content for the resource --&gt;
       &lt;/[ResourceName]>
     &lt;/content>
-    &lt;<b>summary</b> <a href="xml.htm#Control" class="cf">opt</a> type="xhtml">
+    &lt;<b>summary</b> <span style="color: brown;"><b>0..1</b></span> type="xhtml">
          <font color="Gray">&lt;!-- Narrative from resource for a browser. Must be wrapped in a &lt;xhtml:div&gt; --&gt;</font>
     &lt;/summary>
   &lt;/entry&gt;
-  &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <a href="xml.htm#Control" class="cf">opt</a>&gt;
+  &lt;<b>Signature</b> xmlns="http://www.w3.org/2000/09/xmldsig#" <span style="color: brown;"><b>0..1</b></span>&gt;
        <font color="Gray">&lt;!-- Enveloped Digital Signature (see Atom section 5.1) --&gt;</font>
   &lt;/Signature&gt;
 &lt;/feed&gt;
@@ -177,7 +177,7 @@ combined into a bundle, different resources may contain duplicate id attributes.
 the scope of resolution to the resource in which the <i>id</i> attribute is declared.
 </li>
 <a name="json"></a>
-<li>There is no JSON representation of an atom feed. Atom feeds are always in XML format, though the resources may be in <a href="xml.htm#json">JSON</a>.</li>
+<li>When representing the atom feed as JSON, use the method described <a href="http://www.ibm.com/developerworks/library/x-atom2json/index.html">here</a>.</li>
 <a name="rest"></a>
 <li>The <a href="document.htm#rest">Document</a> framework defines an additional RESTful end-point that works like a <a href="http.htm">normal RESTful interface</a> but serves document bundles instead of document resources.</li>
 </ul>
