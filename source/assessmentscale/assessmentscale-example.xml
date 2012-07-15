@@ -31,7 +31,7 @@ For simplicitly, this example uses BMI as the assessment scale
     <code>  
       <coding>
         <code>39156-5</code>
-        <system>http://hl7.org/fhir/sid/loinc</system>
+        <system>http://loinc.org</system>
         <display>Body mass index</display>
       </coding>
       <coding>

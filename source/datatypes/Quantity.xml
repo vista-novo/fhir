@@ -287,17 +287,17 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Duration</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be an amount of time, and a UCUM unit must be provided.</Data></Cell>
-    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://hl7.org/fhir/sid/ucum'</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Distance</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be an amount of length, and a UCUM unit must be provided.</Data></Cell>
-    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://hl7.org/fhir/sid/ucum'</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Count</Data></Cell>
     <Cell><Data ss:Type="String">The value must a whole number, and the UCUM unit must be &quot;1&quot;</Data></Cell>
-    <Cell><Data ss:Type="String">f:code='1' and f:system='http://hl7.org/fhir/sid/ucum'</Data></Cell>
+    <Cell><Data ss:Type="String">f:code='1' and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Money</Data></Cell>

@@ -793,7 +793,7 @@ OBX|8|ST|TOB^TOBRAMYCIN^^|3|2|||SS|||F||3|200511091000|M3^CEN     MICROBIOL|2605
         <reportName>
           <coding>
             <code>6412-1</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>GIARDIA LAMBLIA AG</display>
           </coding>
         </reportName>
@@ -1039,7 +1039,7 @@ OBX|2|NM|21612-7^REPORTED PATIENT AGE^2.16.840.1.113883.6.1||20|d^Days^2.16.840.
         <reportName>
           <coding>
             <code>13951-9</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>HEPATITIS A VIRUS AB</display>
           </coding>
         </reportName>
@@ -1096,7 +1096,7 @@ NTE|1|L|POSITIVE
         <reportName>
           <coding>
             <code>13951-9</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>HEPATITIS A VIRUS AB</display>
           </coding>
         </reportName>
@@ -1153,7 +1153,7 @@ NTE|1|L|POSITIVE
         <reportName>
           <coding>
             <code>13951-9</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>HEPATITIS A VIRUS AB</display>
           </coding>
         </reportName>
@@ -1275,7 +1275,7 @@ NTE|4|L|      endocervical specimens only.
         <reportName>
           <coding>
             <code>5292-8</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>REAGIN AB</display>
           </coding>
         </reportName>
@@ -1334,7 +1334,7 @@ OBX|2|SN|11084-1^REAGIN AB^2.16.840.1.113883.6.1^006464^RPR, Quant.^L|1|^1^:^80|
         <reportName>
           <coding>
             <code>20447-9</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>HIV 1 RNA</display>
           </coding>
         </reportName>
@@ -1515,7 +1515,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
         <reportName>
           <coding>
             <code>6412-1</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>GIARDIA LAMBLIA AG</display>
           </coding>
         </reportName>
@@ -1943,7 +1943,7 @@ NTE|1|L|NEGATIVE UPON RETEST:
         <reportName>
           <coding>
             <code>6412-1</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>GIARDIA LAMBLIA AG</display>
           </coding>
         </reportName>
@@ -2377,7 +2377,7 @@ NTE|3|L|    .
         <reportName>
           <coding>
             <code>5196-1</code>
-            <system>http://hl7.org/fhir/sid/loinc</system>
+            <system>http://loinc.org</system>
             <display>HEPATITIS B VIRUS SURFACE AG</display>
           </coding>
         </reportName>

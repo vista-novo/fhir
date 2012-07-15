@@ -56,12 +56,12 @@
         <numerator>
           <value>125</value>
           <code>mg</code>
-          <system>http://hl7.org/fhir/sid/ucum</system>
+          <system>http://unitsofmeasure.org</system>
         </numerator>
         <denominator>
           <value>5</value>
           <code>ml</code>
-          <system>http://hl7.org/fhir/sid/ucum</system>
+          <system>http://unitsofmeasure.org</system>
         </denominator>
       </quantity>
     </activeIngredient>
@@ -77,7 +77,7 @@
         <numerator>
           <value>5</value>
           <code>ml</code>
-          <system>http://hl7.org/fhir/sid/ucum</system>
+          <system>http://unitsofmeasure.org</system>
         </numerator>
       </quantity>
     </inactiveIngredient>
@@ -90,19 +90,19 @@
       <numerator>
         <value>750</value>
         <code>mg</code>
-        <system>http://hl7.org/fhir/sid/ucum</system>
+        <system>http://unitsofmeasure.org</system>
       </numerator>
       <denominator>
         <value>1</value>
         <code>d</code>
-        <system>http://hl7.org/fhir/sid/ucum</system>
+        <system>http://unitsofmeasure.org</system>
       </denominator>
     </totalPeriodicDosis>
     
     <duration>
       <value>10</value>
       <code>d</code>
-      <system>http://hl7.org/fhir/sid/ucum</system>
+      <system>http://unitsofmeasure.org</system>
     </duration>
     
     <dosageInstruction>
@@ -116,7 +116,7 @@
       <doseQuantity>
         <value>250</value>
         <code>mg</code>
-        <system>http://hl7.org/fhir/sid/ucum</system>
+        <system>http://unitsofmeasure.org</system>
       </doseQuantity>
       <schedule>
         <repeat>
@@ -125,7 +125,7 @@
             <value>1</value>
             <units>day</units>
             <code>d</code>
-            <system>http://hl7.org/fhir/sid/ucum</system>
+            <system>http://unitsofmeasure.org</system>
           </duration>
         </repeat>
       </schedule>

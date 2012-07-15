@@ -5,7 +5,7 @@
   <type>
     <coding>
       <code>11488-4</code>
-      <system>http://hl7.org/fhir/sid/loinc</system>
+      <system>http://loinc.org</system>
       <display>Consultation note</display>    
     </coding>
   </type>
@@ -38,7 +38,7 @@
     <type>
       <coding>
         <code>10164-2</code>
-        <system>http://hl7.org/fhir/sid/loinc</system>
+        <system>http://loinc.org</system>
       </coding>
     </type>
     <content dataAbsentReason="error">

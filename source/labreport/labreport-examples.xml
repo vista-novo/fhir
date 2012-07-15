@@ -43,7 +43,7 @@
             <name>
               <coding>
                 <code>2951-2</code>
-                <system>http://hl7.org/fhir/sid/loinc</system>
+                <system>http://loinc.org</system>
                 <display>Sodium</display>
               </coding>
               <coding>
@@ -10980,7 +10980,7 @@
             <name>
               <coding>
                 <code>30522-7</code>
-                <system>http://hl7.org/fhir/sid/loinc</system>
+                <system>http://loinc.org</system>
                 <display>C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method</display>
               </coding>
               <coding>
