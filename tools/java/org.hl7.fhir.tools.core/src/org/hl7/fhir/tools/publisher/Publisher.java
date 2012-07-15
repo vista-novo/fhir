@@ -475,52 +475,27 @@ public class Publisher {
 		for (RegisteredProfile p : resource.getProfiles()) 
 		  produceProfile(p.getFilename(), p.getProfile());
 		
-
-		
 		for (Example e : resource.getExamples()) {
 			processExample(e);
 		}
 
-		String src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + ".htm");
+		String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + ".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-examples.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-examples.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir+ "template-definitions.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-definitions.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir+ "template-explanations.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),  page.getFolders().dstDir + n + "-explanations.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir+ "template-profiles.htm"); 
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-profiles.htm");
 
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-examples.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-examples.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-definitions.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-definitions.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-explanations.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-explanations.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-profiles.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-profiles.htm");
-
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-print.htm").replace(
-				"<body>", "<body class=\"book\">");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + "print-" + n + ".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
 
 		File umlf = new File(page.getFolders().imgDir + n + ".png");
-		Utilities.copyFile(umlf,
-				new File(page.getFolders().dstDir + n + ".png"));
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-book.htm").replace(
-				"<body>", "<body style=\"margin: 10px\">");
+		Utilities.copyFile(umlf, new File(page.getFolders().dstDir + n + ".png"));
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
 

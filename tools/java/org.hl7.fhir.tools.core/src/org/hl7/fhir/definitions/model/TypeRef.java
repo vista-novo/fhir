@@ -133,7 +133,7 @@ public class TypeRef {
 	
 	public boolean isSpecialType() {
 		return isIdRef() || isXhtml() || isUnboundGenericParam()
-				|| isWildcardType() || name.equals("Type")
+				|| isWildcardType() || name.equals("Type") || name.equals("Narrative")
 				|| name.equals("GenericType") || isResourceReference() || isExtension();
 	}
 
