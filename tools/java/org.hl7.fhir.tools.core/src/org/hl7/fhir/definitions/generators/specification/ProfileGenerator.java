@@ -48,12 +48,14 @@ import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.Binding;
-import org.hl7.fhir.instance.model.Profile.BindingStrength;
+import org.hl7.fhir.instance.model.Profile.BindingConformance;
 import org.hl7.fhir.instance.model.Profile.BindingType;
 import org.hl7.fhir.instance.model.Profile.Concept;
 import org.hl7.fhir.instance.model.Profile.Definition;
-import org.hl7.fhir.instance.model.Profile.ExtensionContextType;
+import org.hl7.fhir.instance.model.Profile.ExtensionContext;
 import org.hl7.fhir.instance.model.Profile.Mapping;
+import org.hl7.fhir.instance.model.Profile.Status;
+import org.hl7.fhir.instance.model.Profile.Type;
 import org.hl7.fhir.instance.model.Resource;
 import org.hl7.fhir.utilities.xhtml.NodeType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -78,11 +80,13 @@ public class ProfileGenerator {
       throw new Exception("profile evidence is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("comments"))
       throw new Exception("profile comments is not supported any more ("+p.getName()+")");
+    Status s = p.new Status();
+    p.setStatus(s);
     if (profile.hasMetadata("date"))
-      p.setDate(profile.metadata("date").substring(0, 10));
+      s.setDate(profile.metadata("date").substring(0, 10));
 
     if (profile.hasMetadata("status")) 
-      p.setStatus(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
+      s.setCode(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
     
     for (ResourceDefn resource : profile.getResources()) {
       Profile.Resource c = p.new Resource();
@@ -116,7 +120,7 @@ public class ProfileGenerator {
     dst.setName(src.getName());
     dst.setDefinition(src.getDefinition());
     dst.setType(convert(src.getBinding()));
-    dst.setStrength(convert(src.getBindingStrength()));
+    dst.setConformance(convert(src.getBindingStrength()));
     dst.setReference(new URI(src.getReference()));
     for (DefinedCode dc : src.getCodes()) {
       Concept cd = p.new Concept();
@@ -130,13 +134,13 @@ public class ProfileGenerator {
     return dst;
   }
 
-  private BindingStrength convert(org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength bindingStrength) throws Exception {
+  private BindingConformance convert(org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength bindingStrength) throws Exception {
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Preferred)
-      return BindingStrength.preferred;
+      return BindingConformance.preferred;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Required)
-      return BindingStrength.required;
+      return BindingConformance.required;
     if (bindingStrength == org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength.Suggested)
-      return BindingStrength.suggested;
+      return BindingConformance.example;
     throw new Exception("unknown value BindingStrength."+bindingStrength.toString());
   }
 
@@ -156,7 +160,7 @@ public class ProfileGenerator {
   private org.hl7.fhir.instance.model.Profile.ExtensionDefn generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
     org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
     dst.setCode(src.getCode());
-    dst.setContext(src.getContext());
+    dst.getContext().add(src.getContext());
     dst.setContextType(convertContextType(src.getType()));
     
     ElementDefn dSrc = src.getDefinition();
@@ -175,8 +179,11 @@ public class ProfileGenerator {
     dDst.setMustSupport(dSrc.isMustSupport());
     dDst.setMustUnderstand(dSrc.isMustUnderstand());
     // dDst.
-    for (TypeRef t : dSrc.getTypes())
-      dDst.getType().add(t.summary());
+    for (TypeRef t : dSrc.getTypes()) {
+      Type type = p.new Type();
+      type.setCode(t.summary());
+      dDst.getType().add(type);
+    }
     if (dSrc.hasRimMapping()) {
       Mapping m = p.new Mapping();
       m.setMap("RIM");
@@ -188,17 +195,15 @@ public class ProfileGenerator {
   }
 
 
-  private ExtensionContextType convertContextType(ContextType type) throws Exception {
+  private ExtensionContext convertContextType(ContextType type) throws Exception {
     if (type == ContextType.DataType)
-      return ExtensionContextType.datatype;
+      return ExtensionContext.datatype;
     if (type == ContextType.Resource)
-      return ExtensionContextType.resource;
-    if (type == ContextType.Elements)
-      return ExtensionContextType.elements;
+      return ExtensionContext.resource;
     if (type == ContextType.Extension)
-      return ExtensionContextType.extension;
+      return ExtensionContext.extension;
     if (type == ContextType.Mapping)
-      return ExtensionContextType.mapping;
+      return ExtensionContext.mapping;
     
     throw new Exception("unknown value ContextType."+type.toString());
   }
@@ -221,11 +226,14 @@ public class ProfileGenerator {
     // no purpose here
     ce.getDefinition().setMin(e.getMinCardinality());
     ce.getDefinition().setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
-    for (TypeRef t : e.getTypes())
-      ce.getDefinition().getType().add(t.summaryFormal()); 
+    for (TypeRef t : e.getTypes()) {
+      Type type = p.new Type();
+      type.setCode(t.summaryFormal());
+      ce.getDefinition().getType().add(type);
+    }
     // ce.setConformance(getType(e.getConformance()));
     if (!"".equals(e.getCondition()))
-      ce.getDefinition().setCondition(e.getCondition());
+      ce.getDefinition().getCondition().add(e.getCondition());
     // we don't know mustSupport here
     ce.getDefinition().setMustUnderstand(e.isMustUnderstand());
     // todo: mappings
@@ -236,10 +244,10 @@ public class ProfileGenerator {
     
     if( e.hasAggregation() )
     {
-    	Profile.ResourceA res = p.new ResourceA();
-    	res.setBundled(true);
-   		res.setProfile(new URI(e.getAggregation()) );
-    	ce.setResource(res);
+      ce.setBundled(true);
+      Type t = p.new Type();
+      ce.getDefinition().getType().add(t);
+      t.setProfile(new URI(e.getAggregation()));
     }
     
     for (ElementDefn child : e.getElements()) {

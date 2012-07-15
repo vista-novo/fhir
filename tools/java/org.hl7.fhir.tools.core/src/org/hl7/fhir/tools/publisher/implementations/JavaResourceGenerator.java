@@ -355,7 +355,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 				else if (e.isXhtmlElement()) 
 					tn = "XhtmlNode";
 				else if (e.getTypes().get(0).isWildcardType())
-					tn ="Type";
+					tn ="org.hl7.fhir.instance.model.Type";
 
 				typeNames.put(e,  tn);
 			} else {

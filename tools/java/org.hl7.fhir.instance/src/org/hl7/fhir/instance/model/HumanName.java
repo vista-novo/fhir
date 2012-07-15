@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
+// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A name of a human, or a name given to an animal by a human.
+ * A human's name with the ability to identify parts and usage
  */
 public class HumanName extends Type {
 

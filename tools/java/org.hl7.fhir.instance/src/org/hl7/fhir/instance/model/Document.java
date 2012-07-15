@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
+// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * A documentation of clinical observations and services that are assembled together into a single statement of clinical meaning that establishes its own context. A clinical document is composed of a set of resources that include both human and computer readable portions. A human must attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
+ * A documentation of healthcare-related information that is assembled together into a single statement of meaning that establishes its own context. A document is composed of a set of resources that include both human and computer readable portions. A human may attest to the accuracy of the human readable portion, and may authenticate and/or sign the entire whole. A document may be kept as a set of logically linked resources, or they may be bundled together in an atom feed
  */
 public class Document extends Resource {
 
@@ -286,16 +286,6 @@ public class Document extends Resource {
     private String_ title;
 
     /**
-     * Represents an identifier that is common across all document revision and applies to the Document resource combined with all of its contained resources.
-     */
-    private String setId;
-
-    /**
-     * used to version successive replacement documents
-     */
-    private java.lang.Integer version;
-
-    /**
      * Identifies the document this document supersedes, if any.
      */
     private String replaces;
@@ -336,6 +326,16 @@ public class Document extends Resource {
     private ResourceReference encounter;
 
     /**
+     * A fixed stylesheet to use when rendering the documents
+     */
+    private Attachment stylesheet;
+
+    /**
+     * An alternative representation of the document that can be used in place of the html based rendering
+     */
+    private Attachment representation;
+
+    /**
      * Identifies a main topic within the document's table of contents
      */
     private List<Section> section = new ArrayList<Section>();
@@ -362,22 +362,6 @@ public class Document extends Resource {
 
     public void setTitle(String_ value) { 
       this.title = value;
-    }
-
-    public String getSetId() { 
-      return this.setId;
-    }
-
-    public void setSetId(String value) { 
-      this.setId = value;
-    }
-
-    public java.lang.Integer getVersion() { 
-      return this.version;
-    }
-
-    public void setVersion(java.lang.Integer value) { 
-      this.version = value;
     }
 
     public String getReplaces() { 
@@ -430,6 +414,22 @@ public class Document extends Resource {
 
     public void setEncounter(ResourceReference value) { 
       this.encounter = value;
+    }
+
+    public Attachment getStylesheet() { 
+      return this.stylesheet;
+    }
+
+    public void setStylesheet(Attachment value) { 
+      this.stylesheet = value;
+    }
+
+    public Attachment getRepresentation() { 
+      return this.representation;
+    }
+
+    public void setRepresentation(Attachment value) { 
+      this.representation = value;
     }
 
     public List<Section> getSection() { 

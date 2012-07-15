@@ -9,8 +9,6 @@
       <display>Consultation note</display>    
     </coding>
   </type>
-  <setId>2.16.840.1.113883.19.7.bb35</setId>
-  <version>2</version>
   <subject>
     <type>Patient</type>
     <id>12.123.451.23.1.23</id>

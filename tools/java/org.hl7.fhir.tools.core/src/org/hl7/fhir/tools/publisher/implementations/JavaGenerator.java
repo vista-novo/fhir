@@ -28,14 +28,23 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Date;
+import java.util.List;
+
+import javax.tools.JavaCompiler;
+import javax.tools.ToolProvider;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.instance.formats.AtomComposer;
+import org.hl7.fhir.instance.formats.XmlComposer;
+import org.hl7.fhir.instance.formats.XmlParser;
+import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.Logger;
@@ -45,6 +54,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
   private String javaDir;
   private String javaParserDir;
+  private Definitions definitions;
 
   public String getName() {
     return "java";
@@ -58,6 +68,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     char sl = File.separatorChar;
     javaDir       =  implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
     javaParserDir =  implDir+"org.hl7.fhir.instance"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
+    this.definitions = definitions;
 
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
@@ -135,13 +146,62 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     return "Java";
   }
 
-public boolean isECoreGenerator() {
-	return false;
-}
+  public boolean isECoreGenerator() {
+    return false;
+  }
 
-public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
-		String implDir, Logger logger) throws Exception {
-	throw new UnsupportedOperationException("Java generator uses ElementDefn-style definitions.");	
-}
+  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+      String implDir, Logger logger) throws Exception {
+    throw new UnsupportedOperationException("Java generator uses ElementDefn-style definitions.");	
+  }
+
+  public boolean doesCompile() {
+    return ToolProvider.getSystemJavaCompiler() != null;
+  }
+
+  public boolean c(String name) {
+    int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src\\org\\hl7\\fhir\\instance\\model\\Type.java");
+    return r == 0;
+  }
+  
+  public boolean compile(List<String> errors) throws Exception {
+   
+    boolean ok = true;
+    for (String n : definitions.getResources().keySet()) 
+      ok = ok && c(javaDir+definitions.getResourceByName(n).getName()+".java");
+    for (ResourceDefn resource : definitions.getFutureResources().values()) 
+      ok = ok && c(javaDir+resource.getName()+".java");
+    for (String n : definitions.getInfrastructure().keySet()) 
+      ok = ok && c(javaDir+ definitions.getInfrastructure().get(n).getName()+".java");
+    for (String n : definitions.getTypes().keySet()) 
+      ok = ok && c(javaDir+ definitions.getTypes().get(n).getName()+".java");
+    for (DefinedCode cd : definitions.getConstraints().values()) 
+      ok = ok && c(javaDir+ cd.getCode()+".java");
+    for (String n : definitions.getStructures().keySet()) 
+      ok = ok && c(javaDir+ definitions.getStructures().get(n).getName()+".java");
+
+    ok = ok && c(javaParserDir+"XmlParser.java");
+    ok = ok && c(javaParserDir+"XmlComposer.java");
+    ok = ok && c(javaDir+"ResourceFactory.java");
+    
+    return ok;
+  }
+
+  public boolean doesTest() {
+    return true;
+  }
+
+  public void loadAndSave(String sourceFile, String destFile) throws Exception {
+    // todo: what does it mean to load classes that have the same name as classes already in the build path?
+    // for now, we use what's bound in, even though it runs a cycle behind
+
+    FileInputStream in = new FileInputStream(sourceFile);
+    XmlParser p = new XmlParser();
+    ResourceOrFeed rf =  p.parseGeneral(in);
+    if (rf.getFeed() != null)
+      new AtomComposer().compose(new FileOutputStream(destFile), rf.getFeed(), true);
+    else
+      new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
+    }
 
 }

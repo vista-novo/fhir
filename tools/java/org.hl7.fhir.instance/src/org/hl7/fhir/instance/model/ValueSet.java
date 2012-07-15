@@ -29,21 +29,21 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
+// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
 
 import java.util.*;
 
 /**
- * Value Set - a set of defined codes that may be bound to a context
+ * Value Set - a set of defined codes from one or more code systems that may be bound to a context
  */
 public class ValueSet extends Resource {
 
     public enum ValuesetStatus {
         draft, // This valueset is still under development
-        testing, // this valueset was authored for testing purposes (or education/evaluation/evangelisation)
+        testing, // This valueset was authored for testing purposes (or education/evaluation/evangelisation)
         production, // This valueset is ready for use in production systems
-        withdrawn, // This valueset has been withdrawn
-        superceded; // This valueset was superceded by a more recent version
+        withdrawn, // This valueset should no longer be used
+        superceded; // This valueset has been replaced and a different valueset should be used in its place
         public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -74,8 +74,8 @@ public class ValueSet extends Resource {
     public enum CodeSelectionMode {
         code, // Only this code is selected
         children, // Only the immediate children (codes with a is_a relationship) are selected, but not this code itself
-        descendents, // All descendents of this code are selected, but not this code itself
-        all; // this code and any descendents are selected
+        descendants, // All descendants of this code are selected, but not this code itself
+        all; // This code and any descendants are selected
         public static CodeSelectionMode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -83,8 +83,8 @@ public class ValueSet extends Resource {
           return code;
         if ("children".equals(codeString))
           return children;
-        if ("descendents".equals(codeString))
-          return descendents;
+        if ("descendants".equals(codeString))
+          return descendants;
         if ("all".equals(codeString))
           return all;
         throw new Exception("Unknown CodeSelectionMode code '"+codeString+"'");
@@ -93,7 +93,7 @@ public class ValueSet extends Resource {
           switch (this) {
             case code: return "code";
             case children: return "children";
-            case descendents: return "descendents";
+            case descendants: return "descendants";
             case all: return "all";
             default: return "?";
           }
@@ -101,10 +101,10 @@ public class ValueSet extends Resource {
     }
 
     public enum FilterOperator {
-        equal, // the property value has the concept specified by the value
-        is_a, // the property value has a concept that has an is_a relationship with the value
-        is_not_a, // the property value has a concept that does not have an is_a relationship with the value
-        regex; // the property value represenation matches the regex specified in the value
+        equal, // The property value has the concept specified by the value
+        is_a, // The property value has a concept that has an is_a relationship with the value
+        is_not_a, // The property value has a concept that does not have an is_a relationship with the value
+        regex; // The property value representation matches the regex specified in the value
         public static FilterOperator fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -136,7 +136,7 @@ public class ValueSet extends Resource {
         private String name;
 
         /**
-         * Reference to the author to assist a user in finding and communicating with the author
+         * Some way of reaching or finding the author.
          */
         private java.net.URI reference;
 
@@ -170,7 +170,7 @@ public class ValueSet extends Resource {
         private String version;
 
         /**
-         * The mode of selection - whether the code itself, and/or it's descendents are being selected 
+         * The mode of selection - whether the code itself, and/or its descendants are being selected 
          */
         private CodeSelectionMode mode;
 
@@ -225,12 +225,12 @@ public class ValueSet extends Resource {
         private String property;
 
         /**
-         * the kind of operation to perform as part of the filter criteria
+         * The kind of operation to perform as part of the filter criteria
          */
         private FilterOperator op;
 
         /**
-         * the match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value
+         * The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value
          */
         private String value;
 
@@ -261,7 +261,7 @@ public class ValueSet extends Resource {
     }
 
     /**
-     * A free text natural language name identifying the value set.
+     * A free text natural language name identifying the value set
      */
     private String name;
 
@@ -281,7 +281,7 @@ public class ValueSet extends Resource {
     private ValuesetStatus status;
 
     /**
-     * The date that the value set was last published
+     * The date that the value set status was last changed
      */
     private String date;
 

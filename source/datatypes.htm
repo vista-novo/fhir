@@ -184,9 +184,9 @@ are used to convey the same content in different mime types and languages.
 </p>
 <div class="use">
 <p><b>Use</b></p>
+<%dt.constraints Attachment%>
 <p>
-Unless the Attachment element has a dataAbsentReason flag, it must contain 
-a <i>data</i> or a <i>url</i>. If neither <i>data</i> nor a <i>url</i> 
+If neither <i>data</i> nor a <i>url</i> 
 is provided, the value should be understood as an assertion that no content for 
 the specified <i>mimeType</i> and/or <i>lang</i> is available for the reason stated.
 </p>
@@ -245,12 +245,7 @@ element. Ids are always case sensitive. UUIDs must be represented in lower case.
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the Identifier element has a dataAbsentReason flag, it must contain 
-an <i>id</i>.
-</p>
-<p>Unless the Identifier element is marked as mandatory, it must 
-contain a <i>system</i>.</p>
+<%dt.constraints Identifier%>
 </div>
 <div class="example">
 <p><b>Examples</b></p>
@@ -347,6 +342,7 @@ The <i>version</i> element must always be ignored when comparing <i>Coding</i> v
 </p>-->
 <div class="use">
 <p><b>Use</b></p>
+<%dt.constraints Coding%>
 <p>
 Unless the Coding element has a dataAbsentReason flag, it must contain a <i>system</i> element 
 and it should contain a <i>display</i> if it contains a <i>code</i>.
@@ -420,10 +416,7 @@ on one of the codings.
 
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the CodeableConcept element has a dataAbsentReason flag, it must contain 
-at least one <i>coding</i> with a <i>code</i>, or a <i>text</i>. 
-</p>
+<%dt.constraints CodeableConcept%>
 <p>
 The context of use usually makes rules about what codes and systems are allowed or required in a 
 particular context by <a href="terminologies.htm">binding</a> the element to a value set.
@@ -498,10 +491,7 @@ If isOrdered is true, then the values have an inherent meaningful order and the 
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the Choice element has a dataAbsentReason flag, it must contain a <i>code</i>.
-The Choice element must always contain at least one possible value.
-</p>
+<%dt.constraints Choice%>
 </div>
 <div class="example">
 <p><b>Example</b></p>
@@ -558,11 +548,7 @@ contain text that is actually a valid UCUM unit, but it cannot be assumed that i
 
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the Quantity element has a dataAbsentReason flag, it must contain 
-at a <i>value</i> and a <i>unit</i>. If a <i>code</i> is present, a <i>system</i>
-is also required.
-</p>
+<%dt.constraints Quantity%>
 <p>
 The context of use may frequently define what kind of quantity
 this is and therefore what kind of units can be used. The context 
@@ -658,10 +644,7 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the Range element has a <i>dataAbsentReason</i> flag, it must contain 
-a <i>low</i> and a <i>high</i>.
-</p>
+<%dt.constraints Range%>
 </div>
 <div class="example">
 <p><b>Examples</b></p>
@@ -695,10 +678,9 @@ cancel out. The most common example of this is where the ratio represents a unit
 </p>
 <div class="use">
 <p><b>Use</b></p>
+<%dt.constraints Ratio%>
 <p>
-Unless the Ratio element has a <i>dataAbsentReason</i> flag, it must contain 
-a <i>numerator</i> and a <i>denominator</i>. The context of use may require 
-particular types of Quantity for the numerator or denominator.
+The context of use may require particular types of Quantity for the numerator or denominator.
 </p>
 </div>
 <div class="example">
@@ -761,10 +743,7 @@ the end of the 27th May.
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Unless the Period element has a <i>dataAbsentReason</i> flag, it must contain 
-a <i>low</i>.
-</p>
+<%dt.constraints Period%>
 </div>
 <div class="example">
 <p><b>Examples</b></p>
@@ -822,9 +801,9 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 </p>
 <div class="use">
 <p><b>Use</b></p>
+<%dt.constraints HumanId%>
 <p>
-An <i>identifier</i> with an <i>id</i> element is required unless a <i>dataAbsentReason</i>
-flag is provided on the <i>identifier</i> element. If the HumanId is mandatory, then either an 
+If the HumanId is mandatory, then either an 
 <i>identifier.system</i> or an <i>type</i> must be provided (In some cases, the <i>type</i> of the 
 identifier will be known, but not the <i>identifier</i>.<i>system</i>. For instance, 
 a driver's license number, where the state, province or country that issues
@@ -902,10 +881,7 @@ between part types is not expected to be meaningful.
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Either <i>text</i> or at least one <i>part</i> is required unless a <i>dataAbsentReason</i>
-flag is provided on the name element. 
-</p>
+<%dt.constraints HumanName%>
 </div>
 <div class="example">
 <p><b>Example</b></p>
@@ -950,10 +926,7 @@ must have a <i>value</i>.
 
 <div class="use">
 <p><b>Use</b></p>
-<p>
-Either <i>text</i> or at least one <i>part</i> is required unless a <i>dataAbsentReason</i>
-flag is provided on the address element. 
-</p>
+<%dt.constraints Address%>
 </div>
 <div class="example">
 <p><b>Example</b></p>
@@ -998,10 +971,7 @@ However, this is frequently not possible due to legacy data and/or recording met
 </p>
 <div class="use">
 <p><b>Use</b></p>
-<p>
-A <i>value</i> is required unless a <i>dataAbsentReason</i>
-flag is provided on the contact element. A <i>system</i> is required if a <i>value</i> is provided.
-</p>
+<%dt.constraints Contact%>
 </div>
 <div class="example">
 <p><b>Example</b></p>
@@ -1082,10 +1052,8 @@ There are 3 rules concerning the contents of a <i>Schedule</i>:
 
 <div class="use">
 <p><b>Use</b></p>
-<p>
-At least one <i>event</i> or a <i>repeat</i> is required unless a <i>dataAbsentReason</i>
-flag is provided on the Schedule element. If a <i>repeat</i> is present, either <i>frequency</i> or <i>when</i> is required.
-</p>
+<%dt.constraints Schedule%>
+
 </div>
 <div class="example">
 <p><b>Example</b></p>

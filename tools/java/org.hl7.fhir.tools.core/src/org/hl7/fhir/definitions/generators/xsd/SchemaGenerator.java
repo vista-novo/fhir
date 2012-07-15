@@ -85,7 +85,7 @@ public class SchemaGenerator {
   private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {
     String src = TextFile.fileToString(srcDir + "atom-template.xsd");
     src = processSchemaIncludes(definitions, "atom-templates.xsd", src);
-    TextFile.stringToFile(src, xsdDir + "atom.xsd");
+    TextFile.stringToFile(src, xsdDir + "fhir-atom.xsd");
   }
 
   private void produceCombinedSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {

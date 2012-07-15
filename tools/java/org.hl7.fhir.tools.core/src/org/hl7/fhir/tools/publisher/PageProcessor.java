@@ -49,6 +49,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.EventDefn;
 import org.hl7.fhir.definitions.model.EventUsage;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -214,6 +215,8 @@ public class PageProcessor implements Logger  {
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt")) 
         src = s1+xmlForDt(com[1], file)+tsForDt(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.constraints")) 
+        src = s1+genConstraints(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("dtheader"))
@@ -263,6 +266,49 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String genProfileConstraints(ResourceDefn res) throws Exception {
+    ElementDefn e = res.getRoot();
+    StringBuilder b = new StringBuilder();
+    generateConstraints("", e, b);
+    if (b.length() > 0)
+      return "<p>Constraints</p><ul>"+b+"</ul>";
+    else
+      return "";
+  }
+  
+  private String genResourceConstraints(ResourceDefn res) throws Exception {
+    ElementDefn e = res.getRoot();
+    StringBuilder b = new StringBuilder();
+    generateConstraints("", e, b);
+    if (b.length() > 0)
+      return "<p>Constraints</p><ul>"+b+"</ul>";
+    else
+      return "";
+  }
+  
+  private String genConstraints(String name) throws Exception {
+    ElementDefn e = definitions.getElementDefn(name);
+    StringBuilder b = new StringBuilder();
+    generateConstraints("", e, b);
+    if (b.length() > 0)
+      return "<ul>"+b+"</ul>";
+    else
+      return "";
+  }
+
+  private void generateConstraints(String path, ElementDefn e, StringBuilder b) {
+    for (String n : e.getInvariants().keySet()) {
+      Invariant inv = e.getInvariants().get(n);
+      if ("".equals(path))
+        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath: "+Utilities.escapeXml(inv.getXpath())+")</li>");
+      else
+        b.append("<li>"+Utilities.escapeXml(inv.getEnglish())+" (xpath on "+path+": "+Utilities.escapeXml(inv.getXpath())+")</li>");
+    }
+    for (ElementDefn c : e.getElements()) {
+      generateConstraints(path+"/"+c.getName(), c, b);
+    }    
   }
 
   private String pageHeader(String n) {
@@ -567,6 +613,8 @@ public class PageProcessor implements Logger  {
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt"))
         src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.constraints")) 
+        src = s1+genConstraints(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
@@ -620,6 +668,8 @@ public class PageProcessor implements Logger  {
       String[] com = s2.split(" ");
       if (com.length == 2 && com[0].equals("dt"))
         src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.constraints")) 
+        src = s1+genConstraints(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
@@ -710,6 +760,8 @@ public class PageProcessor implements Logger  {
         src = s1+xml+s3;
       else if (com[0].equals("tx"))
         src = s1+tx+s3;
+      else if (com[0].equals("inv"))
+        src = s1+genResourceConstraints(resource)+s3;
       else if (com[0].equals("plural"))
         src = s1+Utilities.pluralizeMe(name)+s3;
       else if (com[0].equals("notes")) {
@@ -727,6 +779,8 @@ public class PageProcessor implements Logger  {
     }
     return src;
   }
+
+ 
 
   private String getSearch(ResourceDefn resource) {
     if (resource.getSearchParams().size() == 0)
@@ -869,6 +923,8 @@ public class PageProcessor implements Logger  {
           src = s1+s3;
       } else if (com[0].equals("tx"))
         src = s1+tx+s3;
+      else if (com[0].equals("inv"))
+        src = s1+(profile.getResources().size() == 0 ? "" : genProfileConstraints(profile.getResources().get(0)))+s3;      
       else if (com[0].equals("plural"))
         src = s1+Utilities.pluralizeMe(filename)+s3;
       else if (com[0].equals("notes"))

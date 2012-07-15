@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
+// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
 
 /**
  * A reference from one resource to another
@@ -37,7 +37,7 @@ package org.hl7.fhir.instance.model;
 public class ResourceReference extends Type {
 
     /**
-     * The name of one of the resources defined in this specification the defines the type of the resource being referenced
+     * The name of one of the resource types defined in this specification to identify the type of the resource being referenced
      */
     private String type;
 

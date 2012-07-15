@@ -90,16 +90,16 @@ The standard RESTful endpoints (such as [baseurl]/person/@{id} for a Person reso
 the individual resources and not bundles (though, per the RESTful spec, they serve up atom feeds for 
 the <a href="http.htm#history">history</a>, <a href="http.htm#search">search</a> and <a href="http.htm#update">update</a> operations). 
 The <a href="document.htm">Document</a> framework defines an additional end-point for handling document bundles at 
-[baseurl]/bundles/document/@{id}). In this context, the id is the id of the bundle itself (atom feed.id). The end-point supports the following operations:
+[baseurl]/bundles/document/@{id}). In this context, the id is the id of the Document Resource. The end-point supports the following operations:
 </p>
 <table class="list"> 
   <tr><td><b>Instance</b></td><td></td></tr>
   <tr><td>read</td><td>Retrieve a document bundle</td></tr>
-  <tr><td>vread</td><td>Not supported - documents have no version history</td></tr>
-  <tr><td>update</td><td>Post a document to the server. Note that if a document is already found at the specified id (which must match the atom id), the server SHALL return a 409 Conflict</td></tr>
-  <tr><td>delete</td><td>Delete a bundle. A document may be undeleted by reposting it (the same document exactly)</td></tr>
+  <tr><td>vread</td><td>Retrieve a particular version of a document</td></tr>
+  <tr><td>update</td><td>Post a document to the server.</td></tr>
+  <tr><td>delete</td><td>Delete a bundle. </td></tr>
   <tr><td>validate</td><td>Check that the content would be acceptable as a submission</td></tr>
-  <tr><td>history</td><td>Supported, but only deletions and un-deletions will be in the history after the first update.</td></tr>
+  <tr><td>history</td><td>Returns a history for the document.</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
   <tr><td>updates</td><td>Get a list of updates to resources of this type, optionally with some filter criteria</td></tr>
   <tr><td>search</td><td>Search the document bundles based on some filter criteria. Supported search parameters<br/>

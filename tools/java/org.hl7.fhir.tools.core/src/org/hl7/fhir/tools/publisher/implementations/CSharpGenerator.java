@@ -176,4 +176,19 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.close();		
 	}
 
+  public boolean doesCompile() {
+    return false;
+  }
+
+  public boolean compile(List<String> errors) {
+    return false;
+  }
+
+  public boolean doesTest() {
+    return false;
+  }
+
+  public void loadAndSave(String sourceFile, String destFile) {
+  }
+
 }

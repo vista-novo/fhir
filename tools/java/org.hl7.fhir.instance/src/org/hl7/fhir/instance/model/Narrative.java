@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Jul 14, 2012 16:52+1000 for FHIR v0.04
+// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -41,7 +41,7 @@ public class Narrative extends Element {
 
     public enum NarrativeStatus {
         generated, // The contents of the narrative are entirely generated from the structured data in the resource.
-        extensions, // The contents of the narrative are entirely generated from the structured data in the resource, and some of the structured data is contained in extensions
+        extensions, // The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions
         additional; // The contents of the narrative contain additional information not found in the structured data
         public static NarrativeStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -87,7 +87,7 @@ public class Narrative extends Element {
 
     public class Image extends Element {
         /**
-         * mime type of image
+         * Mime type of image
          */
         private String mimeType;
 
@@ -157,7 +157,7 @@ public class Narrative extends Element {
     }
 
     /**
-     * The status of the narrative - whether it is entirely generated (from just the defined data or the extensions too), or whether a human authored it, and it may contain additional data
+     * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data
      */
     private NarrativeStatus status;
 

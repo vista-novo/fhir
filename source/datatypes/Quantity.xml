@@ -20,6 +20,7 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -76,10 +77,10 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s75">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s76">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
@@ -195,7 +196,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -223,7 +230,7 @@
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the Quantity element has a dataAbsentReason flag, it must contain a </Font><I><Font
-        html:Color="#000000">code</Font></I></ss:Data></Cell>
+        html:Color="#000000">value</Font></I></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or value.oclIsDefined</Data></Cell>
     <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:value)</Data></Cell>
    </Row>
@@ -253,11 +260,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -317,14 +325,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s75" ss:DefaultColumnWidth="120"
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultColumnWidth="120"
    ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s75" ss:Width="75"/>
-   <Column ss:StyleID="s75" ss:Width="108.75"/>
-   <Column ss:StyleID="s75" ss:Width="44.25"/>
-   <Column ss:StyleID="s75" ss:Width="83.25"/>
-   <Column ss:StyleID="s75" ss:Width="81.75"/>
-   <Column ss:StyleID="s75" ss:Width="58.5"/>
+   <Column ss:StyleID="s70" ss:Width="75"/>
+   <Column ss:StyleID="s70" ss:Width="108.75"/>
+   <Column ss:StyleID="s70" ss:Width="44.25"/>
+   <Column ss:StyleID="s70" ss:Width="83.25"/>
+   <Column ss:StyleID="s70" ss:Width="81.75"/>
+   <Column ss:StyleID="s70" ss:Width="58.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -333,12 +341,12 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row ss:Height="45">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">QuantityRange</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">#quantity-range</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s71"><Data ss:Type="String">QuantityRange</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">how the Quantity should be understood and represented</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">#quantity-range</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

@@ -37,6 +37,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.TypeParser;
 import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.Element_;
+import org.hl7.fhir.instance.model.Profile.Type;
 
 public class ProfileValidator {
 
@@ -129,10 +130,10 @@ public class ProfileValidator {
     n.setMaxCardinality("*".equals(e.getDefinition().getMax()) ? null : Integer.parseInt(e.getDefinition().getMax()));
     n.setMinCardinality(e.getDefinition().getMin());
     n.setMustUnderstand(e.getDefinition().getMustSupport() == null ? false : e.getDefinition().getMustSupport());
-    for (String t : e.getDefinition().getType()) {
+    for (Type t : e.getDefinition().getType()) {
       TypeParser tp = new TypeParser();
       try {
-        n.getTypes().addAll(tp.parse(t));
+        n.getTypes().addAll(tp.parse(t.getCode()));
       } catch (Exception ex) {
         errors.add("invalid type "+t+" on "+e.getPath()+" in underlying resource definition");
       }

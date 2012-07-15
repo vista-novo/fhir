@@ -26,6 +26,11 @@ in the bundle when the document is assembled. Other resources that these referen
 may also be included in the bundle if the document originator chooses to. 
 </p>
 <p>
+The <i>Document.id</i> identifies the logical documentl multiple versions of the document 
+may exist, each with their own unique bundle identifier (Atom feed.id). The means the <i>Document.id</i>
+maps to CDA ClinicalDocument.setId and the <i>feed.id</i> to ClinicalDocument.id.
+</p>
+<p>
 <a href="profile.htm">Document profiles</a> can make additional rules about which resources
 must be included in the bundle along with the resources that are directly referenced in the Document resource. 
 In addition, Document Profiles can specify what sections a document contains and what the 

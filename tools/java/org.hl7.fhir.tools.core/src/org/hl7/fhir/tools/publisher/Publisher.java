@@ -304,7 +304,15 @@ public class Publisher {
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
-		
+    for (PlatformGenerator gen : page.getReferenceImplementations()) 
+    {
+      if (gen.doesCompile()) {
+        log("Compile " + gen.getName() + " Reference Implementation");
+        if (!gen.compile(new ArrayList<String>())) 
+          log("Compile " + gen.getName() + " failed");
+      }
+    }
+    
 		log("Produce Schemas");
 		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(),
 				page.getFolders().tmpResDir, page.getFolders().xsdDir,
@@ -936,18 +944,12 @@ public class Publisher {
 
 	private void validateXml() throws Exception {
 		log("Validating XML");
-    log(" .. Java too. Note that for now, Java validation runs a build behind.");
-
-
-		
-		
-		
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
 		sources[0] = new StreamSource(new FileInputStream(
 				page.getFolders().dstDir + "fhir-all.xsd"));
 		sources[1] = new StreamSource(new FileInputStream(
-				page.getFolders().dstDir + "atom.xsd"));
+				page.getFolders().dstDir + "fhir-atom.xsd"));
 		SchemaFactory schemaFactory = SchemaFactory
 				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		schemaFactory.setErrorHandler(new MyErrorHandler(false));
@@ -959,20 +961,20 @@ public class Publisher {
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 			for (Example e : r.getExamples()) {
 				String n = e.getFileTitle();
-				log("Validate " + n);
 				validateXmlFile(schema, n);
 			}
 		}
 		validateXmlFile(schema, "profiles-resources");
 
+    log("Reference Platform Validation.");
+		
     for (ResourceDefn r : page.getDefinitions().getResources().values()) {
       for (Example e : r.getExamples()) {
         String n = e.getFileTitle();
-        log("Check Java Round-Trip " + n);
-        validateJavaFile(schema, n);
+        validateRoundTrip(schema, n);
       }
     }
-    validateJavaFile(schema, "profiles-resources");
+    validateRoundTrip(schema, "profiles-resources");
 	}
 
 	private void validateXmlFile(Schema schema, String n) throws Exception {
@@ -986,20 +988,20 @@ public class Publisher {
 		builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
 		if (err.getErrors().size() > 0)
 			throw new Exception("Resource Example " + n	+ " failed schema validation");
+		// todo: schematron validation
 	}
 
-	private void validateJavaFile(Schema schema, String n) throws Exception {
-    FileInputStream in = new FileInputStream(new File(page.getFolders().dstDir + n + ".xml"));
-    XmlParser p = new XmlParser();
-    ResourceOrFeed rf =  p.parseGeneral(in);
-    if (rf.getFeed() != null)
-      new AtomComposer().compose(new FileOutputStream(page.getFolders().tmpResDir+"tmp.xml"), rf.getFeed(), true);
-    else
-      new XmlComposer().compose(new FileOutputStream(page.getFolders().tmpResDir+"tmp.xml"), rf.getResource(), true);
-    compareXml(page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
+	private void validateRoundTrip(Schema schema, String n) throws Exception {
+    for (PlatformGenerator gen : page.getReferenceImplementations()) 
+    {
+      if (gen.doesTest()) {
+        gen.loadAndSave(page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
+        compareXml(n, gen.getName(), page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
+      }
+    }
 	}
 
-	 private void compareXml(String fn1, String fn2) throws Exception {
+	 private void compareXml(String t, String n, String fn1, String fn2) throws Exception {
 	   DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 	   dbf.setNamespaceAware(true);
 	   dbf.setCoalescing(true);
@@ -1024,7 +1026,7 @@ public class Publisher {
      xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2.getDocumentElement().getNamespaceURI(), doc2.getDocumentElement().getLocalName());
 	   
 	   if (!TextFile.fileToString(tmp1.getAbsolutePath()).equals(TextFile.fileToString(tmp2.getAbsolutePath()))) {
-	     page.log("file "+fn1+" did not round trip perfectly in XML");
+	     page.log("file "+t+" did not round trip perfectly in XML in platform "+n);
 	     if (new File("c:\\program files (x86)\\WinMerge\\WinMergeU.exe").exists()) {
 
 	       List<String> command = new ArrayList<String>();

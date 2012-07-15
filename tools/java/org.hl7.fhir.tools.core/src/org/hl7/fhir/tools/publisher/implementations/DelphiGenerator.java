@@ -1604,14 +1604,30 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     return "Delphi";
   }
 
-public boolean isECoreGenerator() {
-	return false;
-}
+  public boolean isECoreGenerator() {
+    return false;
+  }
 
-public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
-		String implDir, Logger logger) throws Exception {
-	
-	throw new UnsupportedOperationException("Delphi generator uses ElementDefn-style definitions.");
-}
+  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir,
+      String implDir, Logger logger) throws Exception {
+
+    throw new UnsupportedOperationException("Delphi generator uses ElementDefn-style definitions.");
+  }
+
+  public boolean doesCompile() {
+    return false;
+  }
+
+  public boolean compile(List<String> errors) {
+    return false;
+  }
+
+  public boolean doesTest() {
+    return false;
+  }
+
+  public void loadAndSave(String sourceFile, String destFile) {
+    
+  }
 
 }

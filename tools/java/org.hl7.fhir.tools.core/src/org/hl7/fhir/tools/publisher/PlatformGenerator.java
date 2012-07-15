@@ -28,9 +28,11 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.util.Date;
+import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.Definitions;
+import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.utilities.Logger;
 
 public interface PlatformGenerator {
@@ -83,5 +85,38 @@ public interface PlatformGenerator {
    * @param implDir - the folder in the /implementations directory in the FHIR subversion tree, if the generator wants to store stuff in subversion (has a path separator appended)
    * @param logger - so that the generator can log issues/errors/progress to the same place as the overall build process
    */
-  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir, String implDir, Logger logger)  throws Exception;  
+  public void generate(org.hl7.fhir.definitions.ecore.fhir.Definitions definitions, String destDir, String implDir, Logger logger)  throws Exception;
+  
+  /**
+   * todo: should this be part of the generate or not?
+   * 
+   * @return true if the platform generator is able to take a compile and build the generated code.
+   */
+  public boolean doesCompile();
+  
+  /**
+   * Compile the generated code.
+   * 
+   * @param errors - a list of errors from the compile
+   * @return true if the compile succeeded
+   * @throws Exception 
+   */
+  public boolean compile(List<String> errors) throws Exception;
+  
+  /**
+   * 
+   * @return true if this platform can be tested as part of the run-time tests i.e. supports loadAndSave
+   */
+  public boolean doesTest();
+
+  /**
+   * Load the source File to the object model, then save it to the dest file 
+   * Both dest and source should be XML. The build tool will check if the 
+   * canonical XML of the source and dest are the same. If so, it passes
+   * 
+   * @param sourceFile
+   * @param destFile
+   * @throws Exception 
+   */
+  public void loadAndSave(String sourceFile, String destFile) throws Exception;
 }
