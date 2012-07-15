@@ -1472,7 +1472,7 @@ public class XmlComposer extends XmlComposerBase {
     else if (resource instanceof LabReport)
       composeLabReport("LabReport", (LabReport)resource);
     else
-      throw new Exception("Unhanded resource type");
+      throw new Exception("Unhanded resource type "+resource.getClass().getName());
   }
 
   @SuppressWarnings("unchecked")

@@ -921,15 +921,11 @@ public class Publisher {
 		log("Validating XML");
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
-		sources[0] = new StreamSource(new FileInputStream(
-				page.getFolders().dstDir + "fhir-all.xsd"));
-		sources[1] = new StreamSource(new FileInputStream(
-				page.getFolders().dstDir + "fhir-atom.xsd"));
-		SchemaFactory schemaFactory = SchemaFactory
-				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		sources[0] = new StreamSource(new FileInputStream(page.getFolders().dstDir + "fhir-all.xsd"));
+		sources[1] = new StreamSource(new FileInputStream(page.getFolders().dstDir + "fhir-atom.xsd"));
+		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		schemaFactory.setErrorHandler(new MyErrorHandler(false));
-		schemaFactory.setResourceResolver(new MyResourceResolver(page
-				.getFolders().dstDir));
+		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
 		Schema schema = schemaFactory.newSchema(sources);
 		log(".... done");
 
@@ -960,10 +956,24 @@ public class Publisher {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		MyErrorHandler err = new MyErrorHandler(true);
 		builder.setErrorHandler(err);
-		builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
+		Document doc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
 		if (err.getErrors().size() > 0)
 			throw new Exception("Resource Example " + n	+ " failed schema validation");
-		// todo: schematron validation
+    File tmpTransform = File.createTempFile("tmp", ".xslt");
+    tmpTransform.deleteOnExit();
+    File tmpOutput = File.createTempFile("tmp", ".xml");
+    tmpOutput.deleteOnExit();
+    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir+doc.getDocumentElement().getNodeName().toLowerCase()+".sch", page.getFolders().rootDir+"tools\\schematron\\iso_svrl_for_xslt2.xsl", tmpTransform.getAbsolutePath());
+    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir + n + ".xml", tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
+
+    List<String> command = new ArrayList<String>();
+    command.add("notepad.exe \""+tmpOutput.getAbsolutePath()+"\"");
+
+    ProcessBuilder pbuilder = new ProcessBuilder(command);
+    pbuilder.directory(new File(page.getFolders().rootDir));
+    final Process process = pbuilder.start();
+    process.waitFor();
+    
 	}
 
 	private void validateRoundTrip(Schema schema, String n) throws Exception {

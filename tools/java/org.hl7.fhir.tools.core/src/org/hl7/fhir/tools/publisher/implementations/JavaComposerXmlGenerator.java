@@ -349,7 +349,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     write("  protected void composeResource(Resource resource) throws Exception {\r\n");
     write("    "+reg.toString().substring(9));
     write("    else\r\n");
-    write("      throw new Exception(\"Unhanded resource type\");\r\n");
+    write("      throw new Exception(\"Unhanded resource type \"+resource.getClass().getName());\r\n");
     write("  }\r\n\r\n");
     write("  @SuppressWarnings(\"unchecked\")\r\n");
     write("  protected void composeType(String prefix, Type type) throws Exception {\r\n");

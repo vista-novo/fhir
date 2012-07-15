@@ -30,12 +30,18 @@ package org.hl7.fhir.utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 import java.util.List;
+
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 public class Utilities {
 
@@ -206,6 +212,19 @@ public class Utilities {
 
   public static boolean noString(String v) {
     return v == null || v.equals("");
+  }
+
+
+  public static void transform(String xsltDir, String source, String xslt, String dest) throws Exception {
+    TransformerFactory f = TransformerFactory.newInstance();
+    StreamSource xsrc = new StreamSource(new FileInputStream(xslt));
+    f.setURIResolver(new MyURIResolver(xsltDir));
+    Transformer t = f.newTransformer(xsrc);
+
+    t.setURIResolver(new MyURIResolver(xsltDir));
+    StreamSource src = new StreamSource(new FileInputStream(source));
+    StreamResult res = new StreamResult(new FileOutputStream(dest));
+    t.transform(src, res);
   }
   
 	
