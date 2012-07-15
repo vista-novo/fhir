@@ -31,6 +31,7 @@ i.inherited {
 }
 
 p, li {
+	clear:both;
 	font-size: 12px;
 	line-height: 1.4em;
 	font-family: verdana;
@@ -114,6 +115,7 @@ table.codes td {
 }
 
 table.grid{
+	float:left;
 	margin-bottom: 10px;
         border: 1px black solid;
         margin-left: auto;

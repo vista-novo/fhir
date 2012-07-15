@@ -208,7 +208,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">urn:hl7-org:sid/loinc#57698-3|Lipid panel with direct LDL</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://loinc.org#57698-3|Lipid panel with direct LDL</Data></Cell>
     <Cell><Data ss:Type="String">Loinc Code for Lipid Report with LDL</Data></Cell>
     <Cell><Data ss:Type="String">Loinc Code for Lipid Report with LDL</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Loinc code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</Data></Cell>
@@ -245,7 +245,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">urn:hl7-org:sid/loinc#35200-5|Cholesterol</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://loinc.org#35200-5|Cholesterol</Data></Cell>
     <Cell><Data ss:Type="String">Cholesterol</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -314,7 +314,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">urn:hl7-org:sid/loinc#35217-9|Triglyceride</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://loinc.org#35217-9|Triglyceride</Data></Cell>
     <Cell><Data ss:Type="String">Triglyceride</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -382,7 +382,7 @@
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="Boolean">1</Data></Cell>
-    <Cell ss:StyleID="Default"><Data ss:Type="String">urn:hl7-org:sid/loinc#2085-9|Cholesterol.in HDL</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://loinc.org#2085-9|Cholesterol.in HDL</Data></Cell>
     <Cell><Data ss:Type="String">HDL Cholesterol</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">

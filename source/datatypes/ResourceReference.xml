@@ -118,7 +118,7 @@
     <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Whether or not the type of the resource reference is fixed for a particular element, the reference includes the resource type</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="180">
+   <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="String">ResourceReference.id</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -141,14 +141,14 @@
     <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Version Specific references are generally used for audit trail purposes, or when building attested content. The uniqueness of the version id may be scoped by the logical id</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:Height="135">
     <Cell><Data ss:Type="String">ResourceReference.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Text alternative for the resource</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">Plain text narrative that describes the resource in addition to the resource reference </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">May be used in place of the actual reference if a dataAbsentReason is allowed</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">May be used in place of the actual reference if a dataAbsentReason is allowed.  This is generally not the same as the Resource.text of the referenced resource.  The purpose is to identify what's being referenced, not to fully describe it.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30"/>
@@ -170,7 +170,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
+     <ActiveRow>6</ActiveRow>
      <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>

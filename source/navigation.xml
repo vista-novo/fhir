@@ -67,11 +67,11 @@
       <name>REST (HTTP)</name>
     </entry>
     <entry>
-      <link>message</link>
+      <link>messageHeader</link>
       <name>Messaging</name>
     </entry>
     <entry>
-      <link>document</link>
+      <link>documentHeader</link>
       <name>Documents</name>
     </entry>
     <entry>

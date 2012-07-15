@@ -1,0 +1,28 @@
+QA Steps:
+
+Automated
+* Ensure the build runs successfully with no warnings
+** All examples & fragments are schema-valid and schematron valid
+** All resource definitions and profiles are valid against their schemas & schematrons + additional rules
+** All links resolve in the HTML
+** All coded datatypes have bindings
+** Fixed values only exist for simple types
+** All OCL constraints compile
+** Definitions, etc. only end with periods when they ought to
+** UML views of everything (including data types) agrees with definitions
+** sid values are legal.  All non-sid/guid/oid ids are flagged as warnings unless part of a pre-defined example space
+
+Manual
+(Some of these can be focused only on those resources & sections that have changed from prior release)
+* Test that the xpath assertions for Schematrons are valid using Saxon SA
+* Ensure all content that's supposed to make it into the book form actually does
+* Ensure all content from the website that doesn't appear in the book form appears in a secondary form for review
+* Place both forms into MS Word and run grammar & spelling checks (U.S. English)
+* Ensure all definitions for code sets are mutually exclusive (and comprehensive)
+* Ensure definitions are non-tautological and clear
+* Ensure definition, rationale & notes are properly split
+* Ensure definitions include examples when appropriate
+* Ensure statuses on resources & profiles are accurate for ballot
+* Ensure text is clear and reads well, with references to other topics when appropriate
+* Ensure style guide is followed for use of formatting
+* Ensure that constraints (cardinality, vocabulary, invariants, etc.) do not constrain extensibility more than necessary to allow safe base interoperability

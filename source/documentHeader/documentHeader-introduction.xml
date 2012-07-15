@@ -26,7 +26,7 @@ in the bundle when the document is assembled. Other resources that these referen
 may also be included in the bundle if the document originator chooses to. 
 </p>
 <p>
-The <i>Document.id</i> identifies the logical documentl multiple versions of the document 
+The <i>Document.id</i> identifies the logical document.  Multiple versions of the document 
 may exist, each with their own unique bundle identifier (Atom feed.id). The means the <i>Document.id</i>
 maps to CDA ClinicalDocument.setId and the <i>feed.id</i> to ClinicalDocument.id.
 </p>
@@ -43,19 +43,19 @@ statements</a> that identify particular documents they support.
 <p>There are two RESTful end-points defined for Documents:</p>
 
 <ul>
- <li>[baseurl]/document/: a normal RESTful end point for document resources</li> 
- <li>[baseurl]/bundles/document/: a RESTful end point that serves documents as <a href="atom.htm">bundles</a>. <a href="#rest">This is described below</a></li> 
+ <li>[baseurl]/documentHeader/: a normal RESTful end point for document header resources</li> 
+ <li>[baseurl]/document/: a RESTful end point that serves documents as <a href="atom.htm">bundles</a>. <a href="#rest">This is described below</a></li> 
 </ul>
 <p>
 The first end-point is used for working within the document contents, for instance, for building 
-documents piecemeal, or for auditing received documents, or for providing a document registry. 
+documents piecemeal, for auditing received documents or for providing a document registry. 
 The second end-point is used for working with whole documents, such as providing a document 
-repository. Servers may un-bundle documents received through the /bundles/document/ end-point, 
-and make the document resources they contain available through the /document/ end-point, but 
+repository. Servers may un-bundle documents received through the /document/ end-point, 
+and make the document resources they contain available through the /documentHeader/ end-point, but 
 are not required to do so. 
 </p>
 <p>
-RESTful systems may also accept documents through their <a href="message.htm#mailbox">mailbox</a>.
+RESTful systems may also accept documents through their <a href="messageHeader.htm#mailbox">mailbox</a>.
 </p>
 <p>
 Note: While the end-points above are defined for use with document resources and document bundles, 

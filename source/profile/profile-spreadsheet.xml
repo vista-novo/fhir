@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-07-15T08:44:09Z</LastSaved>
+  <LastSaved>2012-07-15T19:32:36Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -102,9 +102,9 @@
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="297.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="53.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
+   <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="53.25"/>
+   <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s63" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="36"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="112.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
@@ -841,18 +841,6 @@
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Profile.extensionDefn.context</Data></Cell>
-    <Cell><Data ss:Type="String">1..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">Where the extension can be used in instances</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Identifies the types of resourse or data type elements to which the extension can be applied.</Data></Cell>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.extensionDefn.contextType</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
@@ -862,6 +850,18 @@
     <Cell ss:StyleID="s67"><Data ss:Type="String">ExtensionContext</Data></Cell>
     <Cell><Data ss:Type="String">resource | datatype | mapping | extension</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Identifies the type of context to which the extension applies</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Profile.extensionDefn.context</Data></Cell>
+    <Cell><Data ss:Type="String">1..*</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell><Data ss:Type="String">Where the extension can be used in instances</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Identifies the types of resourse or data type elements to which the extension can be applied.</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
@@ -1013,7 +1013,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>64</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1026,12 +1026,9 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>62</ActiveRow>
-     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

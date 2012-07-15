@@ -89,8 +89,8 @@ to this specification. A document recipient has the following obligations:
 The standard RESTful endpoints (such as [baseurl]/person/@{id} for a Person resource or [baseurl]/document/@{id} for the Document resource) handle
 the individual resources and not bundles (though, per the RESTful spec, they serve up atom feeds for 
 the <a href="http.htm#history">history</a>, <a href="http.htm#search">search</a> and <a href="http.htm#update">update</a> operations). 
-The <a href="document.htm">Document</a> framework defines an additional end-point for handling document bundles at 
-[baseurl]/bundles/document/@{id}). In this context, the id is the id of the Document Resource. The end-point supports the following operations:
+The <a href="documentHeader.htm">Document</a> framework defines an additional end-point for handling document bundles at 
+[baseurl]/document/@{id}). In this context, the id is the id of the Document Header resource. The end-point supports the following operations:
 </p>
 <table class="list"> 
   <tr><td><b>Instance</b></td><td></td></tr>

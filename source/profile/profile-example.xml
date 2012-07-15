@@ -1130,7 +1130,7 @@
         </a>&gt;
    &lt;coding&gt;
      &lt;code&gt;57698-3&lt;/code&gt;
-     &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
+     &lt;system&gt;http://loinc.org&lt;/system&gt;
      &lt;display&gt;Lipid panel with direct LDL&lt;/display&gt;
    &lt;/coding&gt;
  &lt;reportName/&gt;
@@ -1210,7 +1210,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35200-5&lt;/code&gt;
-       &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
+       &lt;system&gt;http://loinc.org&lt;/system&gt;
        &lt;display&gt;Cholesterol&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1290,7 +1290,7 @@
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
       &lt;code&gt;mmol/L&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
@@ -1308,7 +1308,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35217-9&lt;/code&gt;
-       &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
+       &lt;system&gt;http://loinc.org&lt;/system&gt;
        &lt;display&gt;Triglyceride&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1377,7 +1377,7 @@
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
       &lt;code&gt;mmol/L&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
@@ -1395,7 +1395,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;2085-9&lt;/code&gt;
-       &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
+       &lt;system&gt;http://loinc.org&lt;/system&gt;
        &lt;display&gt;Cholesterol.in HDL&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1464,7 +1464,7 @@
       &lt;status&gt;&gt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
       &lt;code&gt;mmol/L&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
@@ -1556,7 +1556,7 @@
       &lt;status&gt;&amp;lt;&lt;/status&gt;
       &lt;units&gt;mmol/L&lt;/units&gt;
       &lt;code&gt;mmol/L&lt;/code&gt;
-      &lt;system&gt;urn:hl7-org:sid/ucum&lt;/system&gt;
+      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
