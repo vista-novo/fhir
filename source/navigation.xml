@@ -10,6 +10,14 @@
       <link>xml</link>
       <name>Resource Format</name>
       <entry>
+        <link>xml-examples</link>
+        <name>Examples</name>
+      </entry>
+      <entry>
+        <link>xml-definitions</link>
+        <name>Definitions</name>
+      </entry>
+      <entry>
         <link>mixins</link>
         <name>Mixins</name>
       </entry>
