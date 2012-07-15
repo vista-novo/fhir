@@ -441,7 +441,7 @@
     <Cell><Data ss:Type="String">DocumentHeader.section.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">narrative</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Human Readable Text Summary of the section</Data></Cell>
     <Cell><Data ss:Type="String">Provides the text view of the section.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This will most commonly be used when there is no &quot;content&quot; resource or when the content resource does not provide a &quot;text&quot; element.</Data></Cell>
@@ -488,7 +488,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>31</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -501,9 +501,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>34</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
