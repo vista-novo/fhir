@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/profile.xsd">
- <id>15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</id>
+  <id>15046b9c-2da0-4b80-82ef-c6af6fcfd2bf</id>
   <name>Lipid Profile</name>
   <author>
     <name>Grahame Grieve</name>
     <reference>grahame@healthintersections.com.au</reference>
   </author>
   <description>Describes how the lab report is used for a standard Lipid Profile - Cholesterol, Triglyceride, and Cholesterol fractions. Uses LOINC codes</description>
-  <status>testing</status>
-  <date>2012-05-12</date>
+  <status>
+    <code>testing</code>
+    <date>2012-05-12</date>
+    <comment>Sample, never intended for real use</comment>
+  </status>
   <resource>
     <type>Resource</type>
     <name>Lipids</name>
@@ -21,7 +24,9 @@
         <comments>Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</comments>
         <min>1</min>
         <max>1</max>
-        <type>Resource</type>
+        <type>
+          <code>Resource</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -35,7 +40,9 @@
         <formal>Master Resource Id, always first in all resources</formal>
         <min>1</min>
         <max>1</max>
-        <type>id</type>
+        <type>
+          <code>id</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -49,7 +56,9 @@
         <formal>The status of the pathology test result as a whole</formal>
         <min>1</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -65,7 +74,9 @@
         <comments>May be different from LabReport.updated, because that is the status of this record, not the report the record is about</comments>
         <min>1</min>
         <max>1</max>
-        <type>instant</type>
+        <type>
+          <code>instant</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -79,7 +90,9 @@
         <formal>The patient about who the report is about</formal>
         <min>1</min>
         <max>1</max>
-        <type>Resource(Patient)</type>
+        <type>
+          <code>Resource(Patient)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -93,7 +106,9 @@
         <formal>The admission that this diagnostic investigation is associated with</formal>
         <min>0</min>
         <max>1</max>
-        <type>Resource(Admission)</type>
+        <type>
+          <code>Resource(Admission)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -108,7 +123,9 @@
         <comments>This is not necessarily the source of the atomic reports - it&#39;s the lab that takes responsibility for the clinical report</comments>
         <min>1</min>
         <max>1</max>
-        <type>Resource(Organization)</type>
+        <type>
+          <code>Resource(Organization)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -122,7 +139,9 @@
         <formal>The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS).</formal>
         <min>0</min>
         <max>1</max>
-        <type>Identifier</type>
+        <type>
+          <code>Identifier</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -151,7 +170,9 @@
         <comments>Equivalent to the Placer Order Identifier</comments>
         <min>0</min>
         <max>1</max>
-        <type>Identifier</type>
+        <type>
+          <code>Identifier</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -166,7 +187,9 @@
         <comments>Usually equivalent to the DICOM Accession Number and the Filler Order Identifier.</comments>
         <min>0</min>
         <max>1</max>
-        <type>Identifier</type>
+        <type>
+          <code>Identifier</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -181,7 +204,9 @@
         <comments>Useful where the test requested differs from the test actually performed.</comments>
         <min>0</min>
         <max>*</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -196,7 +221,9 @@
         <formal>Details of the clinician or organisation requesting the laboratory test.</formal>
         <min>0</min>
         <max>1</max>
-        <type>Resource(Agent|Organization)</type>
+        <type>
+          <code>Resource(Agent|Organization)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -210,7 +237,9 @@
         <formal>Details of the clinical information provided to the laboratory along with the original request</formal>
         <min>0</min>
         <max>1</max>
-        <type>Resource(Any)</type>
+        <type>
+          <code>Resource(Any)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -225,7 +254,9 @@
         <comments>Loinc code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</comments>
         <min>1</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -240,7 +271,9 @@
         <formal>The diagnostic service that performs the examination e.g. biochemistry, haematology.</formal>
         <min>0</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -256,7 +289,9 @@
         <comments>The diagnostically relevant time can be derived from the specimen collection times, but the specimen information is not always available, and the exact relationship is not always automatic</comments>
         <min>1</min>
         <max>1</max>
-        <type>dateTime</type>
+        <type>
+          <code>dateTime</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -271,7 +306,9 @@
         <comments>If the specimen is sufficiently specified with a code in the Test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per &#39;Result group&#39;</comments>
         <min>0</min>
         <max>*</max>
-        <type>Resource(Specimen)</type>
+        <type>
+          <code>Resource(Specimen)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -300,7 +337,9 @@
         <comments>For example, the antibody code for a goup of antibody related test, or the organism code for a group of isolate/sensitivities. Leave blank if there is no particular meaning associated with the group</comments>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -315,7 +354,9 @@
         <formal>Details about the individual specimen to which these Result group test results refer, where testing of multiple specimens is required.</formal>
         <min>0</min>
         <max>1</max>
-        <type>Resource(Specimen)</type>
+        <type>
+          <code>Resource(Specimen)</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -344,7 +385,9 @@
         <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
         <min>1</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -359,7 +402,9 @@
         <formal>Cholesterol value. If a result is not available, use the comments field</formal>
         <min>0</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -374,7 +419,9 @@
         <formal>+ | ++ | +++ | - | -- | --- </formal>
         <min>0</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -389,7 +436,9 @@
         <formal>The status of the result value</formal>
         <min>1</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -404,7 +453,9 @@
         <formal>May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result.</formal>
         <min>0</min>
         <max>1</max>
-        <type>string</type>
+        <type>
+          <code>string</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -433,7 +484,9 @@
         <comments>yeah, so I suppose it should be coded, right? But coded how? No publically available terminologies include an appropriate code…</comments>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -449,7 +502,9 @@
         <comments>Per Australian NHF Recommendations</comments>
         <min>1</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -478,7 +533,9 @@
         <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
         <min>1</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -493,7 +550,9 @@
         <formal>Triglyceride value. If a result is not available, use the comments field</formal>
         <min>0</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -508,7 +567,9 @@
         <formal>+ | ++ | +++ | - | -- | --- </formal>
         <min>0</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -523,7 +584,9 @@
         <formal>Comments about result</formal>
         <min>0</min>
         <max>1</max>
-        <type>string</type>
+        <type>
+          <code>string</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -552,7 +615,9 @@
         <comments>see note above</comments>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -568,7 +633,9 @@
         <comments>Per Australian NHF Recommendations</comments>
         <min>1</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -597,7 +664,9 @@
         <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
         <min>1</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -612,7 +681,9 @@
         <formal>HDL Cholesterol value. If a result is not available, use the comments field</formal>
         <min>0</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -627,7 +698,9 @@
         <formal>+ | ++ | +++ | - | -- | --- </formal>
         <min>0</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -642,7 +715,9 @@
         <formal>Comments about result</formal>
         <min>0</min>
         <max>1</max>
-        <type>string</type>
+        <type>
+          <code>string</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -671,7 +746,9 @@
         <comments>See note above</comments>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -687,7 +764,9 @@
         <comments>Per Australian NHF Recommendations</comments>
         <min>1</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -716,7 +795,9 @@
         <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
         <min>1</min>
         <max>1</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -731,7 +812,9 @@
         <formal>LDL Cholesterol value. If a result is not available, use the comments field</formal>
         <min>0</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -746,7 +829,9 @@
         <formal>+ | ++ | +++ | - | -- | --- </formal>
         <min>0</min>
         <max>1</max>
-        <type>code</type>
+        <type>
+          <code>code</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -761,7 +846,9 @@
         <formal>Comments about result</formal>
         <min>0</min>
         <max>1</max>
-        <type>string</type>
+        <type>
+          <code>string</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -790,7 +877,9 @@
         <comments>See Note above</comments>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -806,7 +895,9 @@
         <comments>Per Australian NHF Recommendations</comments>
         <min>1</min>
         <max>1</max>
-        <type>Quantity</type>
+        <type>
+          <code>Quantity</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -821,7 +912,9 @@
         <comments>common reports don&#39;t have a conclusion, but some do</comments>
         <min>0</min>
         <max>1</max>
-        <type>Narrative</type>
+        <type>
+          <code>Narrative</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
@@ -835,7 +928,9 @@
         <formal>Codes for the conclusion</formal>
         <min>0</min>
         <max>0</max>
-        <type>CodeableConcept</type>
+        <type>
+          <code>CodeableConcept</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -851,7 +946,9 @@
         <comments>Possible formats: text/html, text/plain, text/rtf, application/msword, application/pdf, application/rtf, application/vnd.oasis.opendocument.text, application/vnd.openxmlformats-officedocument.wordprocessingml.document</comments>
         <min>0</min>
         <max>*</max>
-        <type>Attachment</type>
+        <type>
+          <code>Attachment</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -878,7 +975,9 @@
         <formal>Text summary of report, for human interpretation</formal>
         <min>1</min>
         <max>1</max>
-        <type>Narrative</type>
+        <type>
+          <code>Narrative</code>
+        </type>
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
@@ -887,49 +986,305 @@
     </element>
   </resource>
   <text>
-    <status>generated</status><div xmlns="http://www.w3.org/1999/xhtml"><pre>
-&lt;<a title="The findings and interpretation of a general lipd lab profile" class="dict" href="#LabReport"><b>LabReport</b></a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
- <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id"><b>id</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#id">id</a></span> <span style="color: navy">Master Resource Id, always first in all resources</span><span style="color: Gray"> --&gt;</span>&lt;/id&gt;</i>
- <i class="inherited">&lt;<a title="The status of the pathology test result as a whole" class="dict" href="#LabReport.status"><b>status</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">registered|interim|final|amended|cancelled|withdrawn</span><span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
- <i class="inherited">&lt;<a title="The date and/or time that the result was issued from the source for the recorded â€˜Test result status" class="dict" href="#LabReport.issued"><b>issued</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#instant">instant</a></span> <span style="color: navy">date issed for current status</span><span style="color: Gray"> --&gt;</span>&lt;/issued&gt;</i>
- <i class="inherited">&lt;<a title="The patient about who the report is about" class="dict" href="#LabReport.patient"><b>patient</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Patient.htm#Patient">Patient</a>)</span> <span style="color: navy">The patient the report is about</span><span style="color: Gray"> --&gt;</span>&lt;/patient&gt;</i>
- <i class="inherited">&lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#LabReport.admission"><b>admission</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Admission.htm#Admission">Admission</a>)</span> <span style="color: navy">Admission Context</span><span style="color: Gray"> --&gt;</span>&lt;/admission&gt;</i>
- <i class="inherited">&lt;<a title="The laboratory service that issued the report" class="dict" href="#LabReport.laboratory"><b>laboratory</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Organization.htm#Organization">Organization</a>)</span> <span style="color: navy">Responsible Laboratory</span><span style="color: Gray"> --&gt;</span>&lt;/laboratory&gt;</i>
- <i class="inherited">&lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.reportId"><b>reportId</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></span> <span style="color: navy">Id for external references to this report</span><span style="color: Gray"> --&gt;</span>&lt;/reportId&gt;</i>
- <i class="inherited">&lt;<a title="Details concerning a single pathology test requested." class="dict" href="#LabReport.requestDetail"><b>requestDetail</b></a>&gt;  <span style="color: Gray">&lt;!-- <span style="color: brown"><b>0..*</b></span> What was requested --&gt;</span>
-  <i class="inherited">&lt;<a title="The local ID assigned to the order by the order requester." class="dict" href="#LabReport.requestDetail.requestOrderId"><b>requestOrderId</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></span> <span style="color: navy">Id assigned by requester</span><span style="color: Gray"> --&gt;</span>&lt;/requestOrderId&gt;</i>
-  <i class="inherited">&lt;<a title="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.requestDetail.receiverOrderId"><b>receiverOrderId</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Identifier">Identifier</a></span> <span style="color: navy">Receiver&#39;s Id for the request</span><span style="color: Gray"> --&gt;</span>&lt;/receiverOrderId&gt;</i>
-  <i class="inherited">&lt;<a title="Identification of pathology test requested," class="dict" href="#LabReport.requestDetail.requestTest"><b>requestTest</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Test Requested</span><span style="color: Gray"> --&gt;</span>&lt;/requestTest&gt;</i>
-  <i class="inherited">&lt;<a title="Details of the clinician or organisation requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester"><b>requester</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Agent.htm#Agent">Agent</a>|<a href="Organization.htm#Organization">Organization</a>)</span> <span style="color: navy">Responsible for request</span><span style="color: Gray"> --&gt;</span>&lt;/requester&gt;</i>
-  <i class="inherited">&lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#LabReport.requestDetail.clinicalInfo"><b>clinicalInfo</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Any.htm#Any">Any</a>)</span> <span style="color: navy">Clinical information provided</span><span style="color: Gray"> --&gt;</span>&lt;/clinicalInfo&gt;</i>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <pre>
+&lt;<a title="The findings and interpretation of a general lipd lab profile" class="dict" href="#LabReport">
+          <b>LabReport</b>
+        </a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+ <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id">
+            <b>id</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#id">id</a>
+          </span>
+          <span style="color: navy">Master Resource Id, always first in all resources</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/id&gt;</i>
+        <i class="inherited">&lt;<a title="The status of the pathology test result as a whole" class="dict" href="#LabReport.status">
+            <b>status</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#code">code</a>
+          </span>
+          <span style="color: navy">registered|interim|final|amended|cancelled|withdrawn</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
+        <i class="inherited">&lt;<a title="The date and/or time that the result was issued from the source for the recorded â€˜Test result status" class="dict" href="#LabReport.issued">
+            <b>issued</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#instant">instant</a>
+          </span>
+          <span style="color: navy">date issed for current status</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/issued&gt;</i>
+        <i class="inherited">&lt;<a title="The patient about who the report is about" class="dict" href="#LabReport.patient">
+            <b>patient</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="xml.htm#Resource">Resource</a>(<a href="Patient.htm#Patient">Patient</a>)</span>
+          <span style="color: navy">The patient the report is about</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/patient&gt;</i>
+        <i class="inherited">&lt;<a title="The admission that this diagnostic investigation is associated with" class="dict" href="#LabReport.admission">
+            <b>admission</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="xml.htm#Resource">Resource</a>(<a href="Admission.htm#Admission">Admission</a>)</span>
+          <span style="color: navy">Admission Context</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/admission&gt;</i>
+        <i class="inherited">&lt;<a title="The laboratory service that issued the report" class="dict" href="#LabReport.laboratory">
+            <b>laboratory</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="xml.htm#Resource">Resource</a>(<a href="Organization.htm#Organization">Organization</a>)</span>
+          <span style="color: navy">Responsible Laboratory</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/laboratory&gt;</i>
+        <i class="inherited">&lt;<a title="The local ID assigned to the report by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.reportId">
+            <b>reportId</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#Identifier">Identifier</a>
+          </span>
+          <span style="color: navy">Id for external references to this report</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/reportId&gt;</i>
+        <i class="inherited">&lt;<a title="Details concerning a single pathology test requested." class="dict" href="#LabReport.requestDetail">
+            <b>requestDetail</b>
+          </a>&gt;  <span style="color: Gray">&lt;!-- <span style="color: brown">
+              <b>0..*</b>
+            </span> What was requested --&gt;</span>
+          <i class="inherited">&lt;<a title="The local ID assigned to the order by the order requester." class="dict" href="#LabReport.requestDetail.requestOrderId">
+              <b>requestOrderId</b>
+            </a>&gt;<span style="color: Gray">&lt;!--</span>
+            <span style="color: brown">
+              <b>0..1</b>
+            </span>
+            <span style="color: darkgreen">
+              <a href="datatypes.htm#Identifier">Identifier</a>
+            </span>
+            <span style="color: navy">Id assigned by requester</span>
+            <span style="color: Gray"> --&gt;</span>&lt;/requestOrderId&gt;</i>
+          <i class="inherited">&lt;<a title="The local ID assigned to the test order by the order filler, usually by the Laboratory Information System (LIS)." class="dict" href="#LabReport.requestDetail.receiverOrderId">
+              <b>receiverOrderId</b>
+            </a>&gt;<span style="color: Gray">&lt;!--</span>
+            <span style="color: brown">
+              <b>0..1</b>
+            </span>
+            <span style="color: darkgreen">
+              <a href="datatypes.htm#Identifier">Identifier</a>
+            </span>
+            <span style="color: navy">Receiver&#39;s Id for the request</span>
+            <span style="color: Gray"> --&gt;</span>&lt;/receiverOrderId&gt;</i>
+          <i class="inherited">&lt;<a title="Identification of pathology test requested," class="dict" href="#LabReport.requestDetail.requestTest">
+              <b>requestTest</b>
+            </a>&gt;<span style="color: Gray">&lt;!--</span>
+            <span style="color: brown">
+              <b>0..*</b>
+            </span>
+            <span style="color: darkgreen">
+              <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+            </span>
+            <span style="color: navy">Test Requested</span>
+            <span style="color: Gray"> --&gt;</span>&lt;/requestTest&gt;</i>
+          <i class="inherited">&lt;<a title="Details of the clinician or organisation requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester">
+              <b>requester</b>
+            </a>&gt;<span style="color: Gray">&lt;!--</span>
+            <span style="color: brown">
+              <b>0..1</b>
+            </span>
+            <span style="color: darkgreen">
+              <a href="xml.htm#Resource">Resource</a>(<a href="Agent.htm#Agent">Agent</a>|<a href="Organization.htm#Organization">Organization</a>)</span>
+            <span style="color: navy">Responsible for request</span>
+            <span style="color: Gray"> --&gt;</span>&lt;/requester&gt;</i>
+          <i class="inherited">&lt;<a title="Details of the clinical information provided to the laboratory along with the original request" class="dict" href="#LabReport.requestDetail.clinicalInfo">
+              <b>clinicalInfo</b>
+            </a>&gt;<span style="color: Gray">&lt;!--</span>
+            <span style="color: brown">
+              <b>0..1</b>
+            </span>
+            <span style="color: darkgreen">
+              <a href="xml.htm#Resource">Resource</a>(<a href="Any.htm#Any">Any</a>)</span>
+            <span style="color: navy">Clinical information provided</span>
+            <span style="color: Gray"> --&gt;</span>&lt;/clinicalInfo&gt;</i>
  &lt;/requestDetail&gt;</i>
- &lt;<a title="Loinc Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#LabReport.reportName"><span style="text-decoration: underline">reportName</span></a>&gt;
+ &lt;<a title="Loinc Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#LabReport.reportName">
+          <span style="text-decoration: underline">reportName</span>
+        </a>&gt;
    &lt;coding&gt;
      &lt;code&gt;57698-3&lt;/code&gt;
      &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
      &lt;display&gt;Lipid panel with direct LDL&lt;/display&gt;
    &lt;/coding&gt;
  &lt;reportName/&gt;
- <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, haematology." class="dict" href="#LabReport.service"><b>service</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Biochemistry, Haematology etc</span><span style="color: Gray"> --&gt;</span>&lt;/service&gt;</i>
- <i class="inherited">&lt;<a title="The diagnostically relevant time for this report" class="dict" href="#LabReport.diagnosticTime"><b>diagnosticTime</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#dateTime">dateTime</a></span> <span style="color: navy">Effective time of diagnostic report</span><span style="color: Gray"> --&gt;</span>&lt;/diagnosticTime&gt;</i>
- <i class="inherited">&lt;<a title="Details about the specimen if all individual test results are derived from the same specimen" class="dict" href="#LabReport.specimen"><b>specimen</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span> <span style="color: navy">Specimen (incl. time of collection)</span><span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
- &lt;<a title="All the lipid panel results (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup"><span style="text-decoration: underline"><b>resultGroup</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- All the results in one group --&gt;</span>
-  &lt;<a title="No name needed for the result group (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.name"><span style="text-decoration: underline"><b>name</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">No name needed for the result group</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-  <i class="inherited">&lt;<a title="Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required." class="dict" href="#LabReport.resultGroup.specimen"><b>specimen</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span> <span style="color: navy">Specimen details</span><span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
-  &lt;<a title="Group of elements for Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result"><span style="text-decoration: underline"><b>result</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span> <span style="color: blue">&quot;Cholesterol Group&quot;</span>  <span style="color: Gray"> --&gt;</span>  <span style="color: Gray">&lt;!-- Cholesterol Result --&gt;</span>
-   &lt;<a title="Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name"><span style="text-decoration: underline">name</span></a>&gt;
+ <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, haematology." class="dict" href="#LabReport.service">
+            <b>service</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+          </span>
+          <span style="color: navy">Biochemistry, Haematology etc</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/service&gt;</i>
+        <i class="inherited">&lt;<a title="The diagnostically relevant time for this report" class="dict" href="#LabReport.diagnosticTime">
+            <b>diagnosticTime</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#dateTime">dateTime</a>
+          </span>
+          <span style="color: navy">Effective time of diagnostic report</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/diagnosticTime&gt;</i>
+        <i class="inherited">&lt;<a title="Details about the specimen if all individual test results are derived from the same specimen" class="dict" href="#LabReport.specimen">
+            <b>specimen</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..*</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
+          <span style="color: navy">Specimen (incl. time of collection)</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
+ &lt;<a title="All the lipid panel results (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup">
+          <span style="text-decoration: underline">
+            <b>resultGroup</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- All the results in one group --&gt;</span>
+  &lt;<a title="No name needed for the result group (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.name">
+          <span style="text-decoration: underline">
+            <b>name</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">No name needed for the result group</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/name&gt;
+  <i class="inherited">&lt;<a title="Details about the individual specimen to which these â€˜Result groupâ€™ test results refer, where testing of multiple specimens is required." class="dict" href="#LabReport.resultGroup.specimen">
+            <b>specimen</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="xml.htm#Resource">Resource</a>(<a href="Specimen.htm#Specimen">Specimen</a>)</span>
+          <span style="color: navy">Specimen details</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/specimen&gt;</i>
+  &lt;<a title="Group of elements for Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+          <span style="text-decoration: underline">
+            <b>result</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
+        <span style="color: blue">&quot;Cholesterol Group&quot;</span>
+        <span style="color: Gray"> --&gt;</span>
+        <span style="color: Gray">&lt;!-- Cholesterol Result --&gt;</span>
+   &lt;<a title="Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+          <span style="text-decoration: underline">name</span>
+        </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35200-5&lt;/code&gt;
        &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
        &lt;display&gt;Cholesterol&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity"><span style="text-decoration: underline"><b>valueQuantity</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></span> <span style="color: navy">Cholesterol value</span><span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag"><span style="text-decoration: underline"><b>flag</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">+ | ++ | +++ | - | -- | --- </span><span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   <i class="inherited">&lt;<a title="The status of the result value" class="dict" href="#LabReport.resultGroup.result.status"><b>status</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">Registered|Interim|Final|Amended|Cancelled|Withdrawn</span><span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
-   &lt;<a title="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result. (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments"><span style="text-decoration: underline"><b>comments</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#string">string</a></span> <span style="color: navy">Comments about result</span><span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange"><span style="text-decoration: underline"><b>referenceRange</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning"><b>meaning</b></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Range is a recommended range</span><span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
+   &lt;<a title="Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+          <span style="text-decoration: underline">
+            <b>valueQuantity</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#Quantity">Quantity</a>
+        </span>
+        <span style="color: navy">Cholesterol value</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+          <span style="text-decoration: underline">
+            <b>flag</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#code">code</a>
+        </span>
+        <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
+        <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
+   <i class="inherited">&lt;<a title="The status of the result value" class="dict" href="#LabReport.resultGroup.result.status">
+            <b>status</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#code">code</a>
+          </span>
+          <span style="color: navy">Registered|Interim|Final|Amended|Cancelled|Withdrawn</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/status&gt;</i>
+   &lt;<a title="May include statements about significant, unexpected or unreliable. values, or information about the source of the value where this may be relevant to the interpretation of the result. (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+          <span style="text-decoration: underline">
+            <b>comments</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#string">string</a>
+        </span>
+        <span style="color: navy">Comments about result</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+          <span style="text-decoration: underline">
+            <b>referenceRange</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
+    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+          <b>meaning</b>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">Range is a recommended range</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
     &lt;<a title="&lt;4.5 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;4.5&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
@@ -939,19 +1294,84 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="Group of elements for Triglyceride result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result"><span style="text-decoration: underline"><b>result</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span> <span style="color: blue">&quot;Triglyceride Group&quot;</span>  <span style="color: Gray"> --&gt;</span>  <span style="color: Gray">&lt;!-- Triglyceride Result --&gt;</span>
-   &lt;<a title="Triglyceride (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name"><span style="text-decoration: underline">name</span></a>&gt;
+  &lt;<a title="Group of elements for Triglyceride result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+          <span style="text-decoration: underline">
+            <b>result</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
+        <span style="color: blue">&quot;Triglyceride Group&quot;</span>
+        <span style="color: Gray"> --&gt;</span>
+        <span style="color: Gray">&lt;!-- Triglyceride Result --&gt;</span>
+   &lt;<a title="Triglyceride (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+          <span style="text-decoration: underline">name</span>
+        </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35217-9&lt;/code&gt;
        &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
        &lt;display&gt;Triglyceride&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="Triglyceride value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity"><span style="text-decoration: underline"><b>valueQuantity</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></span> <span style="color: navy">Triglyceride value</span><span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag"><span style="text-decoration: underline"><b>flag</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">+ | ++ | +++ | - | -- | --- </span><span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments"><span style="text-decoration: underline"><b>comments</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#string">string</a></span> <span style="color: navy">Comments about result</span><span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange"><span style="text-decoration: underline"><b>referenceRange</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning"><b>meaning</b></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Range is a recommended range</span><span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
+   &lt;<a title="Triglyceride value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+          <span style="text-decoration: underline">
+            <b>valueQuantity</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#Quantity">Quantity</a>
+        </span>
+        <span style="color: navy">Triglyceride value</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+          <span style="text-decoration: underline">
+            <b>flag</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#code">code</a>
+        </span>
+        <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
+        <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+          <span style="text-decoration: underline">
+            <b>comments</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#string">string</a>
+        </span>
+        <span style="color: navy">Comments about result</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+          <span style="text-decoration: underline">
+            <b>referenceRange</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
+    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+          <b>meaning</b>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">Range is a recommended range</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
     &lt;<a title="&lt;2.0 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;2.0&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
@@ -961,19 +1381,84 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="Group of elements for HDL Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result"><span style="text-decoration: underline"><b>result</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span> <span style="color: blue">&quot;HDL Cholesteral Group&quot;</span>  <span style="color: Gray"> --&gt;</span>  <span style="color: Gray">&lt;!-- HDL Cholesterol Result --&gt;</span>
-   &lt;<a title="HDL Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name"><span style="text-decoration: underline">name</span></a>&gt;
+  &lt;<a title="Group of elements for HDL Cholesterol result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+          <span style="text-decoration: underline">
+            <b>result</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
+        <span style="color: blue">&quot;HDL Cholesteral Group&quot;</span>
+        <span style="color: Gray"> --&gt;</span>
+        <span style="color: Gray">&lt;!-- HDL Cholesterol Result --&gt;</span>
+   &lt;<a title="HDL Cholesterol (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+          <span style="text-decoration: underline">name</span>
+        </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;2085-9&lt;/code&gt;
        &lt;system&gt;urn:hl7-org:sid/loinc&lt;/system&gt;
        &lt;display&gt;Cholesterol.in HDL&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
-   &lt;<a title="HDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity"><span style="text-decoration: underline"><b>valueQuantity</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></span> <span style="color: navy">HDL Cholesterol value</span><span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag"><span style="text-decoration: underline"><b>flag</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">+ | ++ | +++ | - | -- | --- </span><span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments"><span style="text-decoration: underline"><b>comments</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#string">string</a></span> <span style="color: navy">Comments about result</span><span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange"><span style="text-decoration: underline"><b>referenceRange</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning"><b>meaning</b></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Range is a recommended range</span><span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
+   &lt;<a title="HDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+          <span style="text-decoration: underline">
+            <b>valueQuantity</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#Quantity">Quantity</a>
+        </span>
+        <span style="color: navy">HDL Cholesterol value</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+          <span style="text-decoration: underline">
+            <b>flag</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#code">code</a>
+        </span>
+        <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
+        <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+          <span style="text-decoration: underline">
+            <b>comments</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#string">string</a>
+        </span>
+        <span style="color: navy">Comments about result</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+          <span style="text-decoration: underline">
+            <b>referenceRange</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
+    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+          <b>meaning</b>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">Range is a recommended range</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
     &lt;<a title="" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">1.5 mmol/L&quot; class=&quot;dict&quot;&gt;rangeQuantity</a>&gt;
       &lt;value&gt;1.5&lt;/value&gt;
       &lt;status&gt;&gt;&lt;/status&gt;
@@ -983,13 +1468,89 @@
     &lt;rangeQuantity/&gt;
    &lt;/referenceRange&gt;
   &lt;/result&gt;
-  &lt;<a title="LDL Cholesterol result, if reported (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result"><span style="text-decoration: underline"><b>result</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span> <span style="color: blue">&quot;LDL Cholesteral Group&quot;</span>  <span style="color: Gray"> --&gt;</span>  <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
-   &lt;<a title="Group of elements for LDL Cholesterol. Loinc code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name"><span style="text-decoration: underline"><b>name</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">LDL Cholesterol. LOINC code defines measured or calc</span><span style="color: Gray"> --&gt;</span>&lt;/name&gt;
-   &lt;<a title="LDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity"><span style="text-decoration: underline"><b>valueQuantity</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Quantity">Quantity</a></span> <span style="color: navy">LDL Cholesterol value</span><span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
-   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag"><span style="text-decoration: underline"><b>flag</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#code">code</a></span> <span style="color: navy">+ | ++ | +++ | - | -- | --- </span><span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
-   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments"><span style="text-decoration: underline"><b>comments</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="datatypes.htm#string">string</a></span> <span style="color: navy">Comments about result</span><span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
-   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange"><span style="text-decoration: underline"><b>referenceRange</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
-    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning"><b>meaning</b></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Range is a recommended range</span><span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
+  &lt;<a title="LDL Cholesterol result, if reported (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result">
+          <span style="text-decoration: underline">
+            <b>result</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
+        <span style="color: blue">&quot;LDL Cholesteral Group&quot;</span>
+        <span style="color: Gray"> --&gt;</span>
+        <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
+   &lt;<a title="Group of elements for LDL Cholesterol. Loinc code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+          <span style="text-decoration: underline">
+            <b>name</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>1..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">LDL Cholesterol. LOINC code defines measured or calc</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/name&gt;
+   &lt;<a title="LDL Cholesterol value. If a result is not available, use the comments field (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.valueQuantity">
+          <span style="text-decoration: underline">
+            <b>valueQuantity</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#Quantity">Quantity</a>
+        </span>
+        <span style="color: navy">LDL Cholesterol value</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/valueQuantity&gt;
+   &lt;<a title="+ | ++ | +++ | - | -- | ---  (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.flag">
+          <span style="text-decoration: underline">
+            <b>flag</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#code">code</a>
+        </span>
+        <span style="color: navy">+ | ++ | +++ | - | -- | --- </span>
+        <span style="color: Gray"> --&gt;</span>&lt;/flag&gt;
+   &lt;<a title="Comments about result (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.comments">
+          <span style="text-decoration: underline">
+            <b>comments</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#string">string</a>
+        </span>
+        <span style="color: navy">Comments about result</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/comments&gt;
+   &lt;<a title="Guide for interpretation (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.referenceRange">
+          <span style="text-decoration: underline">
+            <b>referenceRange</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
+    &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
+          <b>meaning</b>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">Range is a recommended range</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/meaning&gt;
     &lt;<a title="&lt;3.0 mmol/L" class="dict" href="#LabReport.resultGroup.result.referenceRange.rangeQuantity">rangeQuantity</a>&gt;
       &lt;value&gt;3.0&lt;/value&gt;
       &lt;status&gt;&amp;lt;&lt;/status&gt;
@@ -1000,11 +1561,63 @@
    &lt;/referenceRange&gt;
   &lt;/result&gt;
  &lt;/resultGroup&gt;
- &lt;<a title="May include diagnosis or suggestions for follow up testing (this element must be supported or understood)" class="dict" href="#LabReport.conclusion"><span style="text-decoration: underline"><b>conclusion</b></span></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..1</b></span> <span style="color: darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></span> <span style="color: navy">Clinical Interpretation of Lipid Panel</span><span style="color: Gray"> --&gt;</span>&lt;/conclusion&gt;
- &lt;<a title="Codes for the conclusion" class="dict" href="#LabReport.codedDiagnosis"><b>codedDiagnosis</b></a> <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..0</b></span> <span style="color: darkgreen"><a href="datatypes.htm#CodeableConcept">CodeableConcept</a></span> <span style="color: navy">Codes for the conclusion</span><span style="color: Gray"> --&gt;</span>&lt;/codedDiagnosis&gt;
- <i class="inherited">&lt;<a title="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent." class="dict" href="#LabReport.representation"><b>representation</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>0..*</b></span> <span style="color: darkgreen"><a href="datatypes.htm#Attachment">Attachment</a></span> <span style="color: navy">Entire Report as issued</span><span style="color: Gray"> --&gt;</span>&lt;/representation&gt;</i>
- <i class="inherited">&lt;<a title="See Extensions" class="dict" href="#LabReport.extension"><b>extension</b></a>&gt;<span style="color: Gray">&lt;!--</span> <a href="extensibility.htm"><span style="color: navy">See Extensions</span></a>  <span style="color: Gray"> --&gt;</span>&lt;/extension&gt;</i>
- <i class="inherited">&lt;<a title="Text summary of report, for human interpretation" class="dict" href="#LabReport.text"><b>text</b></a>&gt;<span style="color: Gray">&lt;!--</span> <span style="color: brown"><b>1..1</b></span> <span style="color: darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></span> <span style="color: navy">Text summary of report, for human interpretation</span><span style="color: Gray"> --&gt;</span>&lt;/text&gt;</i>
+ &lt;<a title="May include diagnosis or suggestions for follow up testing (this element must be supported or understood)" class="dict" href="#LabReport.conclusion">
+          <span style="text-decoration: underline">
+            <b>conclusion</b>
+          </span>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..1</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="Narrative.htm#Narrative">Narrative</a>
+        </span>
+        <span style="color: navy">Clinical Interpretation of Lipid Panel</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/conclusion&gt;
+ &lt;<a title="Codes for the conclusion" class="dict" href="#LabReport.codedDiagnosis">
+          <b>codedDiagnosis</b>
+        </a>
+        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
+        <span style="color: brown">
+          <b>0..0</b>
+        </span>
+        <span style="color: darkgreen">
+          <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
+        </span>
+        <span style="color: navy">Codes for the conclusion</span>
+        <span style="color: Gray"> --&gt;</span>&lt;/codedDiagnosis&gt;
+ <i class="inherited">&lt;<a title="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they must be semantically equivalent." class="dict" href="#LabReport.representation">
+            <b>representation</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>0..*</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="datatypes.htm#Attachment">Attachment</a>
+          </span>
+          <span style="color: navy">Entire Report as issued</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/representation&gt;</i>
+        <i class="inherited">&lt;<a title="See Extensions" class="dict" href="#LabReport.extension">
+            <b>extension</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <a href="extensibility.htm">
+            <span style="color: navy">See Extensions</span>
+          </a>
+          <span style="color: Gray"> --&gt;</span>&lt;/extension&gt;</i>
+        <i class="inherited">&lt;<a title="Text summary of report, for human interpretation" class="dict" href="#LabReport.text">
+            <b>text</b>
+          </a>&gt;<span style="color: Gray">&lt;!--</span>
+          <span style="color: brown">
+            <b>1..1</b>
+          </span>
+          <span style="color: darkgreen">
+            <a href="Narrative.htm#Narrative">Narrative</a>
+          </span>
+          <span style="color: navy">Text summary of report, for human interpretation</span>
+          <span style="color: Gray"> --&gt;</span>&lt;/text&gt;</i>
 &lt;/LabReport&gt;
-</pre></div>
-  </text></Profile>
+</pre>
+    </div>
+  </text>
+</Profile>

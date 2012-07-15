@@ -1,4 +1,0 @@
-Code,Definition
-client,The client must provide a unique resource id
-server,The server defines the id and will reject any client attempt to define it
-either,"The client can provide a unique resource id, or the server will define it instead"

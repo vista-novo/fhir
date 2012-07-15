@@ -32,9 +32,6 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
-  </Style>
   <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -45,16 +42,19 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s65">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="219"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s65" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="157.5"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s63">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -85,34 +85,6 @@
     <Cell><Data ss:Type="String">#DataType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">ExtensionContextType</Data></Cell>
-    <Cell><Data ss:Type="String">How the path of an extension should be understood</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#extension-context-type</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ExtensionState</Data></Cell>
-    <Cell><Data ss:Type="String">The state of an extension</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#extension-state</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">ResourceIdSource</Data></Cell>
-    <Cell><Data ss:Type="String">The system responsible for the provision of a resource unique id</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#resource-id-source</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
-    <Cell><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
-    <Cell><Data ss:Type="String">code list</Data></Cell>
-    <Cell><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#resource-profile-status</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ResourceType</Data></Cell>
     <Cell><Data ss:Type="String">One of the resource types defined in FHIR messaging</Data></Cell>
     <Cell><Data ss:Type="String">special</Data></Cell>
@@ -131,8 +103,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <RangeSelection>R5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

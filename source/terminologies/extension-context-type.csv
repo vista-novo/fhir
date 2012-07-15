@@ -1,6 +1,0 @@
-Code,Definition
-resource,"The extension can be used in the resource or resources provided in the context. The context consists of one or more resource names, seaprated by commas"
-datatype,The extension can be used anywhere a data type is used. The context has the form [DataType](.name) where (.name) is used to refer to an element within the data type if required
-elements,The extension is used on one or elements in one or more resources. The context consists of a series of element paths separated by commas
-mapping,"The extension is allowed to be used anywhere that makes sense given the identified mapping. The context identifies the mapping target. The mapping should clearly identify where such an extension could be used, though this may not be computable"
-extension,"The extension identifies another extension. The context consists of uri#name, where uri identifies the profile, and #name identifies the extension code in that other profile"

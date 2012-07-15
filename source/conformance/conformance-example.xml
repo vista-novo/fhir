@@ -34,11 +34,24 @@
            with HL7. For the simplest case of a FHIR REST Server, just delete this profile reference. Profile 
            references do not need to be a UUID, though a profile registry could insist that they are -->
       <profile>http://fhir.hl7.org/base/profile/@7896271d-57f6-4231-89dc-dcc91eab2416</profile>
-      <!-- read and vread are mandatory, so there's no conformance statement for them -->
-      <update>true</update>
-      <delete>false</delete>
-      <validate>false</validate>
-      <history>true</history>
+      <operation>
+        <code>read</code>
+      </operation>
+      <operation>
+        <code>vread</code>
+      </operation>
+      <operation>
+        <code>update</code>
+      </operation>
+      <operation>
+        <code>history</code>
+      </operation>
+      <operation>
+        <code>create</code>
+      </operation>
+      <operation>
+        <code>updates</code>
+      </operation>
       <search>
         <!-- this list is incomplete - there's more parameters than name, but this suffices for an example -->
         <param>
@@ -46,8 +59,6 @@
           <documentation>Search for a person by name (any part of their name)</documentation>
         </param>
       </search>
-      <create>true</create>
-      <updates>true</updates>
     </resource>
   </rest>
 
@@ -67,8 +78,8 @@
   
   <!-- a document conformance statement -->
   <document>
-    <name>General</name>
-    <purpose>Basic rules for all documents in the EHR system</purpose>
+    <mode>consumer</mode>
+    <documentation>Basic rules for all documents in the EHR system</documentation>
     <!-- this is the important element: a reference to a published document profile 
        note that this is a version specific reference.
       -->
