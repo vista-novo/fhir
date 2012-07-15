@@ -22,6 +22,11 @@ ubiquitous throughout the scope of the healthcare data that will
 be exchanged.
 </p>
 <map id="dtmap2" name="dtmap2">
+<area shape="rect" coords="200, 60, 252, 90" href="#Types"/>
+<area shape="rect" coords="182, 308, 252, 339" href="#Structures"/>
+<area shape="rect" coords="24, 238, 130, 268" href="#primitive"/>
+<area shape="rect" coords="1, 160, 110, 188" href="#imports"/>
+<area shape="rect" coords="1, 310, 95, 333" href="#patterns"/>
 <area shape="rect" coords="114, 1, 200, 28" href="#Attachment"/>
 <area shape="rect" coords="341, 3, 388, 31" href="#Ratio"/>
 <area shape="rect" coords="20, 122, 75, 152" href="#Period"/>
@@ -58,11 +63,14 @@ any differently.
 <a name="primitive"></a>
 <h2>Primitive Types</h2>
 <p style="text-alignment: left">
-<img src="dt1.png"/>
+<img src="dt-primitives.png"/>
 </p>
+<a name="imports"></a>
+<h2>Imported Types</h2>
 <p>
-The following table summarises the primitive types that 
-are used in the exchange specifications. The possible values for 
+The following table summarises the primitive types that are used by
+are used in the exchange specifications and are directly imported from
+w3c schema (though sometimes aliased). The possible values for 
 these types are those specified in the W3C Schema specification part 2. 
 All elements that contain text content have one of these primitive types.
 Elements of this type can only be empty if they have a
@@ -80,14 +88,14 @@ them (and only where that attribute is allowed).
 
  
 <table class="list">
- <tr><th>Type</th><th width='40%'>Description</th><th>Spec</th><th>Example</th><th>Default value</th></tr>
- <tr><td>boolean</td><td>Values can be either true or false</td><td>{true, false}</td><td>true</td><td>false</td></tr>
- <tr><td>integer</td><td>A signed 32-bit integer (for larger values, use decimal)</td><td>{-2147483648,...,-2,-1,0,1,2,...,2147483647}</td><td>1066</td><td>0</td></tr>
- <tr><td>decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigDecimal)</td><td>('-'? [1-9][0-9]* '.' [0-9]+) | '0'</td><td>-1.23, 12678967.543233</td><td>0</td></tr>
- <tr><td>base64Binary</td><td>A stream of bytes, base64 encoded</td><td>see <a href='http://en.wikipedia.org/wiki/Base64'>Wikipedia</a></td><td>cGxlYXN1cmUu</td><td>null / empty</td></tr>
- <tr><td>instant</td><td>An instant in time - known at least to the second including with a timezone. Note: This type is for system times, not human times (see below).</td><td>'-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ('Z' | (('+' | '-') hh ':' ss))</td><td>2002-10-10T17:00:00Z</td><td>N/A - systems must track missing/null</td></tr>
- <tr><td>string</td><td>A sequence of Unicode characters. Note that FHIR strings may not exceed 1MB in size</td><td></td><td></td><td>null / empty</td></tr>
- <tr><td>uri</td><td>A uniform Resource  Identifier Reference. It can be absolute or relative, and may have an optional fragment identifier.</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>http://www.hl7.org/fhir</td><td>null / no reference</td></tr>
+ <tr><th>Type</th><th>Base type</th><th width='40%'>Description</th><th>Spec</th><th>Example</th><th>Default value</th></tr>
+ <tr><td>boolean</td><td>xs:boolean</td><td>Values can be either true or false</td><td>{true, false}</td><td>true</td><td>false</td></tr>
+ <tr><td>integer</td><td>xs:int</td><td>A signed 32-bit integer (for larger values, use decimal)</td><td>{-2147483648,...,-2,-1,0,1,2,...,2147483647}</td><td>1066</td><td>0</td></tr>
+ <tr><td>decimal</td><td>xs:decimal</td><td>A rational number. Do not use a IEEE type floating point type, instead use something that works like a true decimal, with inbuilt precision (e.g. Java BigDecimal)</td><td>('-'? [1-9][0-9]* '.' [0-9]+) | '0'</td><td>-1.23, 12678967.543233</td><td>0</td></tr>
+ <tr><td>base64Binary</td><td>xs:base64Binary</td><td>A stream of bytes, base64 encoded</td><td>see <a href='http://en.wikipedia.org/wiki/Base64'>Wikipedia</a></td><td>cGxlYXN1cmUu</td><td>null / empty</td></tr>
+ <tr><td>instant</td><td>xs:dateTime</td><td>An instant in time - known at least to the second including with a timezone. Note: This type is for system times, not human times (see below).</td><td>'-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ('Z' | (('+' | '-') hh ':' ss))</td><td>2002-10-10T17:00:00Z</td><td>N/A - systems must track missing/null</td></tr>
+ <tr><td>string</td><td>xs:string</td><td>A sequence of Unicode characters. Note that FHIR strings may not exceed 1MB in size</td><td></td><td></td><td>null / empty</td></tr>
+ <tr><td>uri</td><td>xs:anyURI</td><td>A uniform Resource  Identifier Reference. It can be absolute or relative, and may have an optional fragment identifier.</td><td><a href="http://tools.ietf.org/html/rfc3986">See RFC 3986</a></td><td>http://www.hl7.org/fhir</td><td>null / no reference</td></tr>
 </table>
 <p>
 The default value specifies the implicit semantic meaning of 
@@ -101,8 +109,8 @@ and all the rest of the types have a default value of null.
 Implementations that convert the xml described in this specification to other formats such as 
 JSON or some object based notation will have to find equivalent types.
 </p>
-<a name="strings"></a>
-<h2>String Patterns</h2>
+<a name="patterns"></a>
+<h3>String Patterns</h3>
 
 <p>
 In addition to these assumed primitive types, this specification defines a few simple
@@ -138,9 +146,10 @@ string patterns that are commonly used:
 </div>
 
 <hr/>
+<a name="Types"/>
 <h2>Types</h2>
 <p>
-<img src="dt2.png"/>
+<img src="dt-types.png"/>
 </p>
 <a name="Attachment"></a>
 <h2>
@@ -774,9 +783,10 @@ a <i>low</i>.
 
 
 <hr/>
+<a name="Structures"/>
 <h2>Structures</h2>
 <p>
-<img src="dt3.png"/>
+<img src="dt-structures.png"/>
 </p>
 <a name="HumanId"></a>
 <h2>HumanId</h2>

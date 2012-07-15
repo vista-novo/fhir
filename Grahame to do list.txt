@@ -13,14 +13,39 @@
 * sort out the hdata page
 
 
-- Apply agreed changes to Profile resource (see previous note)
-- Fix problem with schematron paths, including:
--- Capturing resources and datatypes used in extensions (by looking for valuexxx)
-- Investigate whether we can reliably use timestamps to determine whether the exported graphics images are up-to-date with the XMI source.  If not, maybe add a prompt in the official (non-sandbox) build process to check the images.
-- Get constraints rendering in the HTML (presume if it's there, book view follows automatically)
-- Spit out a warning if you encounter an unrecognized column name rather than just deprecated names
-- Decide what our policy is on including formatting in Excel columns (e.g. italics in formal constraints).
 - Figure out what Profile.binding.description is trying to represent and then give it a better name.
 - Figure out what we're doing with Profile.resource.element.content on the grounds that referencing constraints by name is bad when we can reference by id, we already have a way to reference constraint by id, constraints are specific to a single context.
+- Apply agreed changes to Profile resource (see previous note)
+- Get constraints rendering in the HTML (presume if it's there, book view follows automatically)
+- Figure out how to get the "id" attribute to show up in Narrative.image in the spec
+- Fix the Atom XML so it renders using the new format
+- Get search working in a pop-up
+- Fix problem with schematron paths, including:
+-- Capturing resources and datatypes used in extensions (by looking for valuexxx)
+- Spit out a warning if you encounter an unrecognized column name rather than just deprecated names
+- Document the JSON representation of an atom feed (or at least indicate one is coming)
+- Investigate whether we can reliably use timestamps to determine whether the exported graphics images are up-to-date with the XMI source.  If not, maybe add a prompt in the official (non-sandbox) build process to check the images.
 
+Lloyd
+- Change the CSS so grid tables stay left-aligned rather than centered.
+- Change name of Document to DocumentHeader and message to MessageHeader and the REST interface of 
 
+Post freeze
+- Raise issue of whether mailbox needs to support async on the wiki
+- Decide what our policy is on including formatting in Excel columns (e.g. italics in formal constraints).
+- Import table contents for base simple types in datatypes.htm from Primitives.xml
+- Import textual content for complex datatype descriptions (rationale, notes, etc.) from the datatypes source rather than maintaining duplicate copies in datatypes.htm
+- Clean up how examples are handled for datatypes
+- Clean up how the tables look in terminologies-bindings
+- Maintain datatype examples in XML files so we can actually validate them against the schemas and schematrons
+- Add schematron validation to the build process
+- Play with the CSS so that with the datatype examples the label is closer to the example it describes than the one above it
+- Come up with guidelines for:
+-- How formatting gets used (bold, italics, hyperlinks, quotes)
+-- When do we start with capital letters vs. not
+-- When do we end with periods vs. not
+-- What should go in short name, definition, rationale & notes
+- Have someone go through all the content and enforce the guidelines
+- Have someone who's good with web styles look at our pages and think about how we can improve readability and aesthetics through better use of color, background, whitespace, etc.
+- Add support for validation of UML views of datatypes against definitions too
+- Ensure that where elements get used in multiple paths that the schematron context generators take into account all possible paths

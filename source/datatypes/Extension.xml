@@ -103,7 +103,7 @@
     <Cell><Data ss:Type="String">The ability to add extensions in a structured way is what keeps FHIR resources simple</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
@@ -113,13 +113,13 @@
     <Cell ss:Index="11"><Data ss:Type="String">The only codes that can be used are those defined using the approved extensibility definitions.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="150">
-    <Cell><Data ss:Type="String">Extension.definition</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="150">
+    <Cell><Data ss:Type="String">Extension.profile</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Source of the definition for the code</Data></Cell>
-    <Cell><Data ss:Type="String">Source of the definition for the code - a namespace or a URL</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Profile that defines the extension</Data></Cell>
+    <Cell><Data ss:Type="String">Source of the definition for the extension code - a namespace or a URL</Data></Cell>
     <Cell><Data ss:Type="String">Everyone needs to be able to define extensions, but they also must be governed properly</Data></Cell>
     <Cell><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -178,7 +178,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
