@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Document xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Document.xsd">
+<DocumentHeader xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\DocumentHeader.xsd">
   <id>1cbdfb97-5859-48a4-8301-d54eab818d68</id>
   <instant>2012-01-04T09:10:14Z</instant>
   <type>
     <coding>
       <code>11488-4</code>
       <system>http://loinc.org</system>
-      <display>Consultation note</display>    
+      <display>Consultation note</display>
     </coding>
   </type>
   <subject>
@@ -15,14 +15,12 @@
     <text>Henry Levin the 7th</text>
   </subject>
   <author>
-    <party>
-      <type>Person</type>
-      <id>233123</id>
-      <text>Robert Dolin MD</text>
-    </party>
+    <type>Person</type>
+    <id>233123</id>
+    <text>Robert Dolin MD</text>
   </author>
   <attester>
-    <mode>legal</mode>    
+    <mode>legal</mode>
     <party>
       <type>Person</type>
       <id>233123</id>
@@ -46,10 +44,10 @@
       <id>34124</id>
     </content>
   </section>
-	<text>
+  <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <p>Consultation note for Henry Levin the 7th</p>
     </div>
   </text>
-</Document>
+</DocumentHeader>
