@@ -66,7 +66,6 @@
     messaging, though there is active argument that they should.  -->
   <messaging>
     <!-- how to tell whether this llp is a server or a client? -->
-    <endpoint>llp:acme-1:2345</endpoint>
     <event>
       <code>admin-notify</code>
       <mode>receiver</mode> <!-- this a a receiver - i.e. answers. Not necessariy a server -->
