@@ -216,6 +216,7 @@ public class Utilities {
 
 
   public static void transform(String xsltDir, String source, String xslt, String dest) throws Exception {
+    /* default java approach, but this doesn't support xslt2
     TransformerFactory f = TransformerFactory.newInstance();
     StreamSource xsrc = new StreamSource(new FileInputStream(xslt));
     f.setURIResolver(new MyURIResolver(xsltDir));
@@ -225,6 +226,17 @@ public class Utilities {
     StreamSource src = new StreamSource(new FileInputStream(source));
     StreamResult res = new StreamResult(new FileOutputStream(dest));
     t.transform(src, res);
+    */
+    TransformerFactory f = net.sf.saxon.TransformerFactoryImpl.newInstance();
+    StreamSource xsrc = new StreamSource(new FileInputStream(xslt));
+    f.setURIResolver(new MyURIResolver(xsltDir));
+    Transformer t = f.newTransformer(xsrc);
+
+    t.setURIResolver(new MyURIResolver(xsltDir));
+    StreamSource src = new StreamSource(new FileInputStream(source));
+    StreamResult res = new StreamResult(new FileOutputStream(dest));
+    t.transform(src, res);
+    
   }
   
 	

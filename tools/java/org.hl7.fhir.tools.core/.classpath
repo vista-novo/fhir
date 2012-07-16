@@ -13,5 +13,6 @@
 	<classpathentry kind="src" path="/org.hl7.fhir.implementation"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.utilities"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.definitions.ecore"/>
+	<classpathentry kind="lib" path="C:/workspace/projects/org.hl7.fhir/tools/java/imports/saxon9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
