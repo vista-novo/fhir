@@ -15,7 +15,7 @@
     <period>
       <start>2010-05-31</start>
     </period>
-    <assigner>
+    <assigner dataAbsentReason="asText">
       <text>Maroondah City Council</text>
     </assigner>
   </identifier>

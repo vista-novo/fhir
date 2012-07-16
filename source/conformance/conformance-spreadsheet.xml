@@ -20,6 +20,7 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -60,6 +61,14 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
+  <Style ss:ID="s66">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
   <Style ss:ID="s67">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -72,16 +81,8 @@
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s69">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
-  <Style ss:ID="s80">
-   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
-   <Borders/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
-   <Interior/>
-   <NumberFormat/>
-   <Protection/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
@@ -99,7 +100,7 @@
    <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="146.25"/>
-   <Row ss:Height="30" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -115,7 +116,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -125,7 +126,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Need to capture wire format (XML vs. JSON) and character set.  Probably separately for each rest, messaging &amp; document repetition.</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -134,7 +135,7 @@
     <Cell><Data ss:Type="String">Identifier for this specific conformance statement.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.date</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -143,7 +144,7 @@
     <Cell><Data ss:Type="String">Date that the conformance statement is published</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.publisher</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -151,7 +152,7 @@
     <Cell><Data ss:Type="String">The organization that publishes this conformance statement</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.publisher.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -160,7 +161,7 @@
     <Cell><Data ss:Type="String">Name of Organization</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.publisher.address</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -169,7 +170,7 @@
     <Cell><Data ss:Type="String">Address of Organization</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.publisher.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -178,7 +179,7 @@
     <Cell><Data ss:Type="String">Contacts for Organization relevant to this conformance statement.  May be website, email, phone numbers, etc.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.implementation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -187,7 +188,7 @@
     <Cell><Data ss:Type="String">Describes the implementation that is covered by this conformance statement.  Used when the profile describes the capabilities of a specific implementation instance.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.implementation.description</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -196,7 +197,7 @@
     <Cell><Data ss:Type="String">Information about the specific implementation </Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.implementation.url</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -205,7 +206,7 @@
     <Cell><Data ss:Type="String">The base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.software</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -214,7 +215,7 @@
     <Cell><Data ss:Type="String">Describes the software that is covered by this conformance statement.  Used when the profile describes the capabilities of a particular software version, independent of an installation.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.software.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -223,7 +224,7 @@
     <Cell><Data ss:Type="String">Name software is known by</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Conformance.software.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -233,7 +234,7 @@
     <Cell ss:Index="10"><Data ss:Type="String">If possible, version should be specified, as statements are likely to be different for different versions of software</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.software.releaseDate</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -242,7 +243,7 @@
     <Cell><Data ss:Type="String">Date this version of the software released</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Conformance.proposal</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -251,7 +252,7 @@
     <Cell><Data ss:Type="String">Describes the proposed solution described by this conformance statement.  Used when the profile describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.proposal.description</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -260,7 +261,7 @@
     <Cell><Data ss:Type="String">Provides details about the intention and scope of the proposal</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.version</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -269,7 +270,7 @@
     <Cell><Data ss:Type="String">The version of the FHIR specification on which this conformance profile is based</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.acceptUnknown</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -278,7 +279,7 @@
     <Cell><Data ss:Type="String">Whether the application accepts unknown non-&quot;must understand&quot; elements as part of a resource. This does not include extensions, but genuine new additions to a resource</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Conformance.rest</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -288,7 +289,7 @@
     <Cell ss:Index="10"><Data ss:Type="String">Multiple repetitions allow definition of both client and server behaviors or possibly behaviors under different configuration settings (for software or requirements statements)</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.rest.mode</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -298,7 +299,7 @@
     <Cell><Data ss:Type="String">Identifies whether this portion of the statement is describing ability to initiate or receive restful operations</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.rest.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -307,7 +308,7 @@
     <Cell><Data ss:Type="String">Provides documentation about the system's restful capabilites that apply across all applications, such as security</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Do we need something more formal for security capabilities?</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -316,7 +317,7 @@
     <Cell ss:Index="10"><Data ss:Type="String">Max of one repetition per resource type</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -326,7 +327,7 @@
     <Cell><Data ss:Type="String">Identifies the resource exposed via the restful interface</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Conformance.rest.resource.profile</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -335,7 +336,7 @@
     <Cell><Data ss:Type="String">Identifies the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource.operation</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -344,7 +345,7 @@
     <Cell ss:Index="10"><Data ss:Type="String">The 'search' operation is handled separately</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.rest.resource.operation.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -354,7 +355,7 @@
     <Cell><Data ss:Type="String">Identifies which operation is supported</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Conformance.rest.resource.operation.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -364,7 +365,7 @@
     <Cell><Data ss:Type="String">REST allows a degree of variability in the implementation of RESTful solutions that is useful for exchange partners to be aware of.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.rest.resource.search</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -372,7 +373,7 @@
     <Cell><Data ss:Type="String">If present, indicates that search operations are supported on the resource and describes the search capabilities.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.rest.resource.search.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -381,7 +382,7 @@
     <Cell><Data ss:Type="String">Provides solution-specific information on searching that isn't tied to a single parameter.  For example, security requirements for executing search, allowed combinations of parameters, etc.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.rest.resource.search.param</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -389,7 +390,7 @@
     <Cell><Data ss:Type="String">Identifies all of the search parameters supported, including standard ones as well as those specific to this solution.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.rest.resource.search.param.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -400,7 +401,7 @@
     <Cell><Data ss:Type="String">N/A</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">May need to add profile uri if profiles are allowed to define search parameters</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.rest.resource.search.param.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -410,66 +411,66 @@
     <Cell ss:Index="10"><Data ss:Type="String">This must be provided if the parameter is a custom parameter</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s67"><Data ss:Type="String">If messaging is supported</Data></Cell>
     <Cell><Data ss:Type="String">Describes the messaging capabilities of the solution</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Multiple repetitions allow the documentation of multiple endpoints per solution</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Multiple repetitions allow the documentation of multiple endpoints per solution</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.endpoint</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Actual endpoint being described</Data></Cell>
     <Cell><Data ss:Type="String">The address to which messages and/or replies are to be sent.</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Can be just an identifier for solutions that do not use network addresses for routing.</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Can be just an identifier for solutions that do not use network addresses for routing.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Conformance.messaging.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Messaging interface behavior details</Data></Cell>
     <Cell><Data ss:Type="String">Provides documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:Index="12" ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:Index="12" ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event</Data></Cell>
     <Cell><Data ss:Type="String">1..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Declare support for this event</Data></Cell>
     <Cell><Data ss:Type="String">Describes the solution's support for an event at this end point.</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">The same event may be listed up to two times - once as sender and once as receiver.</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">The same event may be listed up to two times - once as sender and once as receiver.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">Need to add follow-ups and need to do more to flesh out messaging dynamic model</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">Need to add follow-ups and need to do more to flesh out messaging dynamic model</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -477,14 +478,14 @@
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
     <Cell><Data ss:Type="String">Event type</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the supported messaging event</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"><Data ss:Type="String">May need profile id as well if profiles can define message events</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"><Data ss:Type="String">May need profile id as well if profiles can define message events</Data></Cell>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.messaging.event.mode</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -494,7 +495,7 @@
     <Cell><Data ss:Type="String">The mode of this event declaration - whether application is sender or receiver</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.messaging.event.protocol</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -504,7 +505,7 @@
     <Cell><Data ss:Type="String">Identifies the messaging transport protocol(s) supported by this endpoint</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Loosen this to &quot;extensible&quot; once tooling supports that.</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event.focus</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -515,52 +516,52 @@
     <Cell ss:Index="10"><Data ss:Type="String">This must be provided if the event type supports multiple different resource types</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.messaging.event.request</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Profile that describes the request</Data></Cell>
     <Cell><Data ss:Type="String">Information about the request for this event</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.messaging.event.response</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Profile that describes the response</Data></Cell>
     <Cell><Data ss:Type="String">Information about the response for this event</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Endpoint-specific event documentation</Data></Cell>
     <Cell><Data ss:Type="String">Guidance on how this event is handled, such as internal system trigger points, business rules, etc.</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.document</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">document definition</Data></Cell>
     <Cell><Data ss:Type="String">A document definition</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.document.mode</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -570,34 +571,34 @@
     <Cell><Data ss:Type="String">The mode of this event declaration - whether application is sender or receiver</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Conformance.document.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Description of document support</Data></Cell>
     <Cell><Data ss:Type="String">Describes how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s66"/>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.document.profile</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Constraint on a resource used in the document</Data></Cell>
     <Cell><Data ss:Type="String">Constraint on a resource used in the document</Data></Cell>
-    <Cell ss:StyleID="s80"/>
+    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">The first resource is the document resource</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Conformance.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -605,7 +606,7 @@
     <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -620,7 +621,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -656,7 +657,7 @@
    <Column ss:StyleID="s68" ss:Width="67.5"/>
    <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="144"/>
    <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="147"/>
-   <Row ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -664,21 +665,21 @@
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Content Required</Data></Cell>
     <Cell><Data ss:Type="String">Conformance</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">A Conformance profile must have at least one of rest, messaging, or document</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:rest) or exists(f:messaging) or exists(f:document)</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">One Profile Type</Data></Cell>
     <Cell><Data ss:Type="String">Conformance</Data></Cell>
     <Cell><Data ss:Type="String">Must have one and only one of software, implementation or proposal</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">count(f:software | f:implementation | f:proposal) = 1</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">End points for Implementations</Data></Cell>
     <Cell><Data ss:Type="String">Conformance.messaging</Data></Cell>
@@ -692,6 +693,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -774,14 +776,14 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="134.25"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="48.75"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="178.5"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="324"/>
-   <Row>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="134.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="48.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="178.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="324"/>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
@@ -789,35 +791,35 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
     <Cell><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulOperation</Data></Cell>
     <Cell><Data ss:Type="String">Operations supported by REST</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#restful-operation</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ConformanceEventMode</Data></Cell>
     <Cell><Data ss:Type="String">The mode of a message conformance statement</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageTransport</Data></Cell>
     <Cell><Data ss:Type="String">How messages are delivered</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#message-transport</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DocumentMode</Data></Cell>
     <Cell><Data ss:Type="String">Whether the application produces or consumes documents</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
@@ -831,6 +833,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -904,7 +907,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">vread</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Read the state of a specific versioin of the resource</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Read the state of a specific version of the resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">update</Data></Cell>
@@ -938,6 +941,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -957,6 +961,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

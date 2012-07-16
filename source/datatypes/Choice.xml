@@ -154,7 +154,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Display for the code</Data></Cell>
     <Cell><Data ss:Type="String">A set of words associated with the code to give it meaning and displayed to the user</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Sometimes the codes have associated words that give it more more meaning</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Sometimes the codes have associated words that give it more meaning</Data></Cell>
     <Cell><Data ss:Type="String">The code itself may convey sufficient meaning</Data></Cell>
     <Cell><Data ss:Type="String">CD.displayName</Data></Cell>
    </Row>
@@ -181,8 +181,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

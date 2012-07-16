@@ -52,18 +52,20 @@
           <display>Penicillin</display>
         </coding>
       </identification>      
-      <quantity>
+      <quantityRatio>
         <numerator>
           <value>125</value>
+          <units>mg</units>
           <code>mg</code>
           <system>http://unitsofmeasure.org</system>
         </numerator>
         <denominator>
           <value>5</value>
+          <units>ml</units>
           <code>ml</code>
           <system>http://unitsofmeasure.org</system>
         </denominator>
-      </quantity>
+      </quantityRatio>
     </activeIngredient>
     <inactiveIngredient>
       <identification>
@@ -73,13 +75,7 @@
           <display>Water</display>
         </coding>  
       </identification>
-      <quantity>
-        <numerator>
-          <value>5</value>
-          <code>ml</code>
-          <system>http://unitsofmeasure.org</system>
-        </numerator>
-      </quantity>
+      <quantityCode>sufficient</quantityCode>
     </inactiveIngredient>
   </medicine>
 
@@ -89,11 +85,13 @@
     <totalPeriodicDosis>
       <numerator>
         <value>750</value>
+        <units>mg</units>
         <code>mg</code>
         <system>http://unitsofmeasure.org</system>
       </numerator>
       <denominator>
         <value>1</value>
+        <units>day</units>
         <code>d</code>
         <system>http://unitsofmeasure.org</system>
       </denominator>
@@ -101,6 +99,7 @@
     
     <duration>
       <value>10</value>
+      <units>days</units>
       <code>d</code>
       <system>http://unitsofmeasure.org</system>
     </duration>
@@ -115,6 +114,7 @@
       </route>
       <doseQuantity>
         <value>250</value>
+        <units>mg</units>
         <code>mg</code>
         <system>http://unitsofmeasure.org</system>
       </doseQuantity>

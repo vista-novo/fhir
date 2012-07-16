@@ -20,7 +20,6 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -171,7 +170,7 @@
     <Cell><Data ss:Type="String">Duration</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Repeating or event-related duration</Data></Cell>
     <Cell><Data ss:Type="String">How long each repetition should last</Data></Cell>
-    <Cell><Data ss:Type="String">Some activities are not instantanious and need to be maintained for a period of time</Data></Cell>
+    <Cell><Data ss:Type="String">Some activities are not instantaneous and need to be maintained for a period of time</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Schedule.repeat.count</Data></Cell>
@@ -205,6 +204,14 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>9</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -377,7 +384,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

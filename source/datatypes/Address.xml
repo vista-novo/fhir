@@ -20,7 +20,7 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -264,7 +264,7 @@
     <Cell ss:StyleID="s63"><Data ss:Type="String">Address</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Either text or at least one part is required unless a dataAbsentReason flag is provided on the address element</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">dataAbsentReason.isOclDefined or (text.size() &gt; 0 or part.count &gt; 0)</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
+    <Cell ss:StyleID="s63"><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:part[normalize-space(f:value)!='']) or exists (f:text[normalize-space(.)!=''])</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -280,6 +280,14 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>5</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -428,7 +436,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

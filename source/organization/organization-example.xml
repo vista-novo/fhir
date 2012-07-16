@@ -8,7 +8,7 @@
       <system>http://www.acme.org.au/units</system>
       <id>Gastro</id>
     </identifier>
-    <assigner>
+    <assigner dataAbsentReason="asText">
       <text>Acme Healthcare</text>
     </assigner>
   </identifier>

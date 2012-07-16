@@ -108,7 +108,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Time range defined by start and end time</Data></Cell>
-    <Cell><Data ss:Type="String">A time period defined by a start and and end time.</Data></Cell>
+    <Cell><Data ss:Type="String">A time period defined by a start and end time.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Not a duration - that's a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If a duration might be required, specify the type as Interval|Duration</Data></Cell>
     <Cell><Data ss:Type="String">IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]</Data></Cell>
    </Row>
@@ -148,7 +148,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

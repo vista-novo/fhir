@@ -117,7 +117,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A reference to a code defined by a terminology system </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Refering to codes is a ubiquitous task in healthcare models</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Referring to codes is a ubiquitous task in healthcare models</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Codes may defined very casually in enumerations or code lists, up to very formal definitions such as SNOMED-CT - see the v3 core principles for more information</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -202,8 +202,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <RangeSelection>R5</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -65,19 +65,19 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s69">
    <Alignment ss:Vertical="Top"/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s70">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s72" ss:Parent="s62">
+  <Style ss:ID="s73" ss:Parent="s62">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -101,7 +101,7 @@
     ss:Span="1"/>
    <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="100.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="113.25"/>
-   <Row ss:Height="60" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="60" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
@@ -117,7 +117,7 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">MessageHeader</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -129,7 +129,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">Message</Data></Cell>
     <Cell><Data ss:Type="String">MSH</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">MessageHeader.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -142,7 +142,7 @@
     <Cell><Data ss:Type="String">unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">MSH.10</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.instant</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -154,7 +154,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">./creationTime[isNormalDatatype()]</Data></Cell>
     <Cell><Data ss:Type="String">MSH.7</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.event</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -168,17 +168,17 @@
     <Cell><Data ss:Type="String">MSH.9.2</Data></Cell>
     <Cell><Data ss:Type="String">Consider changing to Coding to support profile-defined events</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">MessageHeader.response</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">If this is a reply to prior message</Data></Cell>
-    <Cell><Data ss:Type="String">Information about the the message that this message is a response to.  Only present if this message is a response.</Data></Cell>
+    <Cell><Data ss:Type="String">Information about the message that this message is a response to.  Only present if this message is a response.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">./conveyedAcknowledgement</Data></Cell>
     <Cell><Data ss:Type="String">MSA</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.response.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -187,11 +187,10 @@
     <Cell ss:Index="7"><Data ss:Type="String">Id of original message</Data></Cell>
     <Cell><Data ss:Type="String">The id of the message that this a response to</Data></Cell>
     <Cell><Data ss:Type="String">Allows receiver to know what message is being responded to</Data></Cell>
-    <Cell><Data ss:Type="String">This message must have the same threadId as the original message (including missing if the original message threadId was missing)</Data></Cell>
-    <Cell><Data ss:Type="String">./acknowledges.id[isNormalDatatype()]</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">./acknowledges.id[isNormalDatatype()]</Data></Cell>
     <Cell><Data ss:Type="String">MSA.2</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.response.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -205,7 +204,7 @@
     <Cell><Data ss:Type="String">./typeCode[isNormalDatatype()]</Data></Cell>
     <Cell><Data ss:Type="String">MSA.1 | </Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MessageHeader.source</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -216,7 +215,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./communicationFunction[typeCode=&quot;SND&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">NA</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.source.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -227,7 +226,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./entity[determinerCode=&quot;INST&quot; and classCode=&quot;DEV&quot;]/name[type='ST' and isNormalDatatype()])</Data></Cell>
     <Cell><Data ss:Type="String">(Not supported)</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.source.software</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -238,7 +237,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./entity[determinerCode=&quot;INST&quot; and classCode=&quot;DEV&quot;]/softwareName[isNormalDatatype()])</Data></Cell>
     <Cell><Data ss:Type="String">SFT.3</Data></Cell>
    </Row>
-   <Row ss:Height="45">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">MessageHeader.source.version</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
@@ -249,7 +248,7 @@
     <Cell><Data ss:Type="String">SFT.4</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Version is not captured as a distinct property in v3</Data></Cell>
    </Row>
-   <Row ss:Height="120">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">MessageHeader.source.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Contact</Data></Cell>
@@ -260,7 +259,7 @@
     <Cell><Data ss:Type="String">(Not supported)</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Should actually have a code for the role in the v3 mapping to indicate that the contact is for &quot;problems&quot;</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.source.endpoint</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -272,7 +271,7 @@
     <Cell><Data ss:Type="String">./telecom[isNormalDatatype()]</Data></Cell>
     <Cell><Data ss:Type="String">(Not supported)</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.destination</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -283,7 +282,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">./communicationFunction[typeCode=&quot;RCV&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">NA</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.destination.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -294,7 +293,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./entity[determinerCode=&quot;INST&quot; and (classCode=(&quot;DEV&quot;, &quot;PSN&quot;, &quot;ORG&quot;]/name[type='ST' and isNormalDatatype()])</Data></Cell>
     <Cell><Data ss:Type="String">(Not supported)</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.destination.target</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Device)</Data></Cell>
@@ -304,7 +303,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./entity[determinerCode=&quot;INST&quot; and (classCode=(&quot;DEV&quot;, &quot;PSN&quot;, &quot;ORG&quot;]</Data></Cell>
     <Cell><Data ss:Type="String">varies</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.destination.endpoint</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -316,7 +315,7 @@
     <Cell><Data ss:Type="String">./telecom</Data></Cell>
     <Cell><Data ss:Type="String">(Not supported)</Data></Cell>
    </Row>
-   <Row ss:Height="195">
+   <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">MessageHeader.enterer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent)</Data></Cell>
@@ -327,7 +326,7 @@
     <Cell><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[typeCode=&quot;ENT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">ROL where ROL.3 is EP or ORC.10</Data></Cell>
    </Row>
-   <Row ss:Height="210">
+   <Row ss:AutoFitHeight="0" ss:Height="210">
     <Cell><Data ss:Type="String">MessageHeader.author</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent)</Data></Cell>
@@ -338,7 +337,7 @@
     <Cell><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;AUT&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and determinerCode=&quot;INST&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">ROL where ROL.3 is IP or ORC.12</Data></Cell>
    </Row>
-   <Row ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.receiver</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Person | Organization)</Data></Cell>
@@ -347,18 +346,18 @@
     <Cell><Data ss:Type="String">Allows routing beyond just to the application level</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Is this in the 80%?</Data></Cell>
    </Row>
-   <Row ss:Height="405">
+   <Row ss:AutoFitHeight="0" ss:Height="405">
     <Cell><Data ss:Type="String">MessageHeader.responsible</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Resource(Agent|Organization)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Final responsibility for event</Data></Cell>
-    <Cell><Data ss:Type="String">The person or organization that accepts overall responsbility for the contents of the MessageHeader. The implication is that the message event happened under the policies of the responsible party</Data></Cell>
+    <Cell><Data ss:Type="String">The person or organization that accepts overall responsibility for the contents of the MessageHeader. The implication is that the message event happened under the policies of the responsible party</Data></Cell>
     <Cell><Data ss:Type="String">Need to know for audit/traceback requirements and possibly for authorization.</Data></Cell>
     <Cell><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
     <Cell><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/player[isNormalEntity() and classCode=&quot;PSN&quot; and determinerCode=&quot;INST&quot;] or ./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[isHighest(priorityCode) and typeCode=&quot;RESP&quot; and isNormalParticipation]/role[classCode=&quot;ASSIGNED&quot; and isNormalRole()]/scoper[isNormalEntity() and classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">ROL where ROL.3 is RO or ORC.11</Data></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">MessageHeader.effective</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
@@ -368,9 +367,9 @@
     <Cell><Data ss:Type="String">Usually only for the request, but can be used in a response</Data></Cell>
     <Cell><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/effectiveTime[isNormalDatatype() and type=&quot;IVL_TS&quot;])</Data></Cell>
     <Cell><Data ss:Type="String">EVN.3 or EVN.6 or ORC.15</Data></Cell>
-    <Cell><Data ss:Type="String">Grahame thinks this is not 80/20. Also, that it reall should be domain modeled, not tucked away here</Data></Cell>
+    <Cell><Data ss:Type="String">Grahame thinks this is not 80/20. Also, that it really should be domain modeled, not tucked away here</Data></Cell>
    </Row>
-   <Row ss:Height="75">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">MessageHeader.reason</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
@@ -381,7 +380,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/reasonCode[isNormalDatatype()])</Data></Cell>
     <Cell><Data ss:Type="String">EVN.4 or ORC.16</Data></Cell>
    </Row>
-   <Row ss:Height="240">
+   <Row ss:AutoFitHeight="0" ss:Height="240">
     <Cell><Data ss:Type="String">MessageHeader.data</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -394,7 +393,7 @@
     <Cell><Data ss:Type="String">unique(./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/participation[typeCode=&quot;SUBJ&quot; and isNormalParticipation]/role or ./controlAct[classCode=&quot;CACT&quot; and classCode=&quot;EVN&quot; and isNormalAct()]/outboundRelationship[typeCode=&quot;SBJ&quot; and isNormalActRelatoinship]/target)</Data></Cell>
     <Cell><Data ss:Type="String">varies</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageHeader.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -403,7 +402,7 @@
     <Cell ss:Index="11"><Data ss:Type="String">varies</Data></Cell>
     <Cell><Data ss:Type="String">varies</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">MessageHeader.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
@@ -420,13 +419,14 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
+   <Unsynced/>
    <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>21</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>11</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -434,12 +434,16 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>23</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -448,7 +452,7 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -477,13 +481,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="189.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="63"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="83.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="151.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="198"/>
+   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="189.75"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="63"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="83.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="151.5"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="198"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -493,23 +497,23 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">EventReason</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The reason for an event occurring</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">EventReason</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The reason for an event occurring</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">MessageEvent</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">special</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#MessageEvent</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">MessageEvent</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">One of the message types defined in FHIR messaging</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">special</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#MessageEvent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s69"><Data ss:Type="String">ResponseCode</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">The kind of response to a message</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">#response-code</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">ResponseCode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">The kind of response to a message</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">#response-code</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -532,32 +536,32 @@
  </Worksheet>
  <Worksheet ss:Name="response-code">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s70" ss:Width="71.25"/>
-   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="719.25"/>
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s71" ss:Width="71.25"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="719.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">ok</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The message was accepted and processed without error</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">ok</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The message was accepted and processed without error</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">error</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">error</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">rejection</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">rejection</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">rules</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">rules</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s72"><Data ss:Type="String">undeliverable</Data></Cell>
-    <Cell ss:StyleID="s72"><Data ss:Type="String">A middleware agent was unable to deliver the message to its intended destination</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">undeliverable</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">A middleware agent was unable to deliver the message to its intended destination</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -567,10 +571,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <LeftColumnVisible>1</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>

@@ -126,7 +126,7 @@
     <Cell><Data ss:Type="String">Structure</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">An identifier that humans use</Data></Cell>
     <Cell><Data ss:Type="String">An identifier that humans use. This is different from a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that a human identifier may be a system identifier on some master system but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license numbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. </Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Need to be able to work with the many vagaries of human identifiers - that is, identifiers that humans use for things, with the attendent uncertainty and correction features</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">Need to be able to work with the many vagaries of human identifiers - that is, identifiers that humans use for things, with the attendant uncertainty and correction features</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">HumanId.type</Data></Cell>
@@ -161,7 +161,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">HumanId.assigner</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource(Organization)</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Organisation that issued id</Data></Cell>
     <Cell><Data ss:Type="String">Organisation that issued/manages the identifier</Data></Cell>
@@ -185,8 +185,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

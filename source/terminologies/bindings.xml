@@ -32,6 +32,9 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+  </Style>
   <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -42,19 +45,16 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s65">
-   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-  </Style>
  </Styles>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s65" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="96"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="219"/>
-   <Column ss:StyleID="s65" ss:AutoFitWidth="0" ss:Width="245.25"/>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="96"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="219"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s63">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -91,6 +91,13 @@
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#ResourceType</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">QuantityExceptions</Data></Cell>
+    <Cell><Data ss:Type="String">Codes used for concepts that can't be expressed as quantities</Data></Cell>
+    <Cell><Data ss:Type="String">code list</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">#quantity-exceptions</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -103,8 +110,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <RangeSelection>R5</RangeSelection>
+     <ActiveRow>6</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

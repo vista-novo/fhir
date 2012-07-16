@@ -134,7 +134,7 @@
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">High limit </Data></Cell>
     <Cell><Data ss:Type="String">The high limit. The boundary is inclusive. </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">If the high elements is missing, the meaning is that the high boundary is not known. </Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">If the high element is missing, the meaning is that the high boundary is not known. </Data></Cell>
     <Cell><Data ss:Type="String">./high</Data></Cell>
    </Row>
   </Table>
@@ -149,8 +149,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
