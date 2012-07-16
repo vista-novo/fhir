@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-07-15T19:32:36Z</LastSaved>
+  <LastSaved>2012-07-16T04:05:33Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>945</WindowTopY>
-  <ActiveSheet>7</ActiveSheet>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -87,12 +87,15 @@
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s73">
-   <Alignment ss:Vertical="Top"/>
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
   </Style>
   <Style ss:ID="s74">
+   <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s75">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s76" ss:Parent="s62">
+  <Style ss:ID="s77" ss:Parent="s62">
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
    <Interior/>
@@ -165,8 +168,8 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Version number for external references</Data></Cell>
-    <Cell><Data ss:Type="String">The offiical version of this profile - for external version specific references</Data></Cell>
-    <Cell><Data ss:Type="String">When communicating about the profile, a more semanticly pleasing label may be needed.</Data></Cell>
+    <Cell><Data ss:Type="String">The official version of this profile - for external version specific references</Data></Cell>
+    <Cell><Data ss:Type="String">When communicating about the profile, a more semantically pleasing label may be needed.</Data></Cell>
     <Cell><Data ss:Type="String">Note that if this is missing, the default version identifier for the profile is the version identifier for the resource that represents the profile itself</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -194,7 +197,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Web reference to the author</Data></Cell>
     <Cell><Data ss:Type="String">Reference to the author to assist a user in finding and communicating with the author</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">may be a web site, an email address, a telephone number (tel:), etc</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">may be a web site, an email address, a telephone number (tel:), etc.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Profile.description</Data></Cell>
@@ -203,7 +206,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Natural language description of the profile</Data></Cell>
     <Cell><Data ss:Type="String">A free text natural language description of the profile and its use</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">This field can be used for things such as why the profile was written, comments about mis-use, instructions for clinical use and interpretation, literature references, examples from the paper world, etc</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">This field can be used for things such as why the profile was written, comments about mis-use, instructions for clinical use and interpretation, literature references, examples from the paper world, etc.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Profile.code</Data></Cell>
@@ -487,7 +490,7 @@
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Other names</Data></Cell>
     <Cell><Data ss:Type="String">Identifies additional names by which this element might also be known</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Allows for better easier recognition of the element by multiple communities, including international communitites.</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Allows for better easier recognition of the element by multiple communities, including international communities.</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -740,7 +743,7 @@
     <Cell><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">If the element must be understood</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevent to their particular system.</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevant to their particular system.</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Allows elements to be introduced into a specification that can't safely be ignored by applications that don't recognize them</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">MustUnderstand elements can be ignored by applications that recognize the element and know that the element is not relevant in the context of their system.</Data></Cell>
    </Row>
@@ -814,7 +817,7 @@
     <Cell><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">If list, whether derived profiles can slice more</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Indicates whether the set of slices defined is &quot;exhaustive&quot;.  I.e. Have all the possible variants for the repeting element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Indicates whether the set of slices defined is &quot;exhaustive&quot;.  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
@@ -862,7 +865,7 @@
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Where the extension can be used in instances</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Identifies the types of resourse or data type elements to which the extension can be applied.</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">Identifies the types of resource or data type elements to which the extension can be applied.</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
    </Row>
@@ -1013,7 +1016,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>54</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1026,9 +1029,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>61</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1089,7 +1095,7 @@
     <Cell><Data ss:Type="Number">7</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">Binding can only be present for coded elements</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:binding)) or f:type=('code','Coding','CodeableConcept')</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:binding)) or f:type/f:code=('code','Coding','CodeableConcept')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">8</Data></Cell>
@@ -1107,7 +1113,7 @@
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition</Data></Cell>
     <Cell><Data ss:Type="String">Value may only be specified if the type consists of a single repetition that has a type corresponding to one of the primitive data types.</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=1 and f:type/f:code[substring(.,1,1)=lower-case(substring(.,1,1))]</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:*[starts-with(local-name(.), 'value')])) or (count(f:type)=1 and f:type/f:code[substring(.,1,1)=lower-case(substring(.,1,1))])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">11</Data></Cell>
@@ -1123,11 +1129,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <LeftColumnVisible>4</LeftColumnVisible>
+   <Selected/>
+   <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
+     <ActiveRow>8</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
@@ -1137,10 +1144,10 @@
  </Worksheet>
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="12" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="70.5"/>
+   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -1150,9 +1157,9 @@
     <Cell><Data ss:Type="String">a portion of the name of the resource</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">word</Data></Cell>
-    <Cell><Data ss:Type="String">a word somewhere in the definition of the resource or the elements in the resource. (Common words  - 'and' etc - are often not supported)</Data></Cell>
+    <Cell><Data ss:Type="String">a word somewhere in the definition of the resource or the elements in the resource. (Common words  - 'and', etc. - are often not supported)</Data></Cell>
     <Cell><Data ss:Type="String">text</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1211,7 +1218,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>41</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -1221,13 +1228,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s73" ss:Width="104.25"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="282.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="63.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="60"/>
-   <Column ss:StyleID="s73" ss:Width="123.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="92.25"/>
+   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s74" ss:Width="104.25"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="282.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="63.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:StyleID="s74" ss:Width="123.75"/>
+   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="92.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -1239,15 +1246,15 @@
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s63"><Data ss:Type="String">BindingType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">How this binding is mapped to a set of codes</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">#binding-type</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">#binding-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">BindingConformance</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this binding?</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#binding-conformance</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -1260,16 +1267,16 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ConstraintSeverity</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this constraint?</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#constraint-severity</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s74"><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">#resource-profile-status</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">The lifecycle status of a Resource Profile</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">#resource-profile-status</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1312,7 +1319,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="463.5"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s73">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s74">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -1357,9 +1364,9 @@
  </Worksheet>
  <Worksheet ss:Name="binding-conformance">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -1415,9 +1422,9 @@
  </Worksheet>
  <Worksheet ss:Name="constraint-severity">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="54"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="54"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -1469,8 +1476,8 @@
    <Column ss:Width="60"/>
    <Column ss:Width="424.5"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s76"><Data ss:Type="String">Code</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s77"><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">draft</Data></Cell>
@@ -1509,12 +1516,11 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1523,9 +1529,9 @@
  </Worksheet>
  <Worksheet ss:Name="extension-context">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s74" ss:Width="90.75"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="474.75"/>
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s75" ss:Width="90.75"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="474.75"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -1570,12 +1576,12 @@
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s74" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="75.75"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="218.25"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="201"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="55.5"/>
-   <Column ss:StyleID="s74" ss:AutoFitWidth="0" ss:Width="65.25"/>
+   x:FullRows="1" ss:StyleID="s75" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="75.75"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="218.25"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="201"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="55.5"/>
+   <Column ss:StyleID="s75" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>

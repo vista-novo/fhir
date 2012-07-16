@@ -143,7 +143,7 @@
     <Cell><Data ss:Type="String">HumanId.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Actual identifier</Data></Cell>
@@ -161,7 +161,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">HumanId.assigner</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource(Organization)</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Organisation that issued id</Data></Cell>
     <Cell><Data ss:Type="String">Organisation that issued/manages the identifier</Data></Cell>
@@ -185,7 +185,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>

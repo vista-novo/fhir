@@ -408,7 +408,6 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
-        <binding>*unbound*</binding>
       </definition>
       <closed>false</closed>
     </element>
@@ -556,7 +555,6 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
-        <binding>*unbound*</binding>
       </definition>
       <closed>false</closed>
     </element>
@@ -687,7 +685,6 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
-        <binding>*unbound*</binding>
       </definition>
       <closed>false</closed>
     </element>
@@ -818,7 +815,6 @@
         <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
-        <binding>*unbound*</binding>
       </definition>
       <closed>false</closed>
     </element>

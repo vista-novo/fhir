@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1005</WindowTopY>
-  <ActiveSheet>6</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -169,7 +168,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Human language description of the value set</Data></Cell>
-    <Cell><Data ss:Type="String">A free text natural language description of the value set - contents, reason for definition, conditions of use etc</Data></Cell>
+    <Cell><Data ss:Type="String">A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.</Data></Cell>
     <Cell><Data ss:Type="String">Human understandibility</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -262,7 +261,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Specific version of the code system referred to</Data></Cell>
     <Cell><Data ss:Type="String">The version of the code system that the codes are selected from</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">This is used when selecting the descedents of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">This is used when selecting the descendents of a concept - they may change between versions. If no version is specified, then the exact contents of the value set may not be known until a context of use binds it to a particular version</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
@@ -326,7 +325,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Code from the system, or regex criteria</Data></Cell>
     <Cell ss:StyleID="s66"><Data ss:Type="String">The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value</Data></Cell>
-    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Use regex matching with care - full regex matching on every snomed term is prohibitive, for example</Data></Cell>
+    <Cell ss:Index="11" ss:StyleID="s66"><Data ss:Type="String">Use regex matching with care - full regex matching on every SNOMED-CT term is prohibitive, for example</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -337,7 +336,7 @@
     <Cell ss:Index="6"><Data ss:Type="String" x:Ticked="1">@ValueSet.include</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Explicitly exclude codes</Data></Cell>
     <Cell><Data ss:Type="String">Exclude one or more codes from the value set</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">usually this is used to selectively exlude codes that were included by subsumption in the inclusions</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">usually this is used to selectively exclude codes that were included by subsumption in the inclusions</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -370,12 +369,13 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>19</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>10</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -383,14 +383,15 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>24</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -713,7 +714,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
