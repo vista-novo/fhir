@@ -15,9 +15,11 @@
     <period>
       <start>2010-05-31</start>
     </period>
+<!-- todo: this is currently broken, and needs to be fixed.
     <assigner dataAbsentReason="asText">
       <text>Maroondah City Council</text>
     </assigner>
+    -->
   </identifier>
 
   <!-- Dog's name: Kenzi -->

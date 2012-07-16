@@ -964,9 +964,9 @@ public class Publisher {
     tmpTransform.deleteOnExit();
     File tmpOutput = File.createTempFile("tmp", ".xml");
     tmpOutput.deleteOnExit();
-    page.log("schematron validate "+n+".xml -> (1) generate "+tmpTransform.getAbsolutePath());
+//    page.log("schematron validate "+n+".xml -> (1) generate "+tmpTransform.getAbsolutePath());
     Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir+doc.getDocumentElement().getNodeName().toLowerCase()+".sch", page.getFolders().rootDir+"tools\\schematron\\iso_svrl_for_xslt1.xsl", tmpTransform.getAbsolutePath());
-    page.log("schematron validate "+n+".xml -> (2) generate "+tmpOutput.getAbsolutePath());
+//    page.log("schematron validate "+n+".xml -> (2) generate "+tmpOutput.getAbsolutePath());
     Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir + n + ".xml", tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
 
     doc = builder.parse(new FileInputStream(tmpOutput));

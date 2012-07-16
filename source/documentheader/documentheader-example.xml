@@ -39,10 +39,11 @@
         <system>http://loinc.org</system>
       </coding>
     </type>
-<!--    <content dataAbsentReason="error">
-       <type>ClinicalNote</type> 
+    <content>
+      <!-- we really need a different resource here, but it's not yet defined -->
+      <type>Prescription</type> 
       <id>34124</id>
-    </content>-->
+    </content>
   </section>
   <text>
     <status>generated</status>
