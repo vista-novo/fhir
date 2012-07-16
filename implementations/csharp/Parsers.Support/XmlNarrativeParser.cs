@@ -33,6 +33,9 @@ using System.Xml.Linq;
 
 */
 
+//
+// Generated on Fri, Jul 13, 2012 22:37+0200 for FHIR v0.04
+//
 
 using HL7.Fhir.Instance.Model;
 using System.Xml;
@@ -47,9 +50,18 @@ namespace HL7.Fhir.Instance.Parsers
         public static Narrative ParseNarrative(XmlReader reader, ErrorList errors)
         {
             Narrative result = new Narrative();
-            string elementName = reader.LocalName;
+            string en = reader.LocalName;
+            string ns = reader.NamespaceURI;
             
-            // Read starttag
+            // Read id/dar from element's attributes
+            ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);
+            if (attrs.Id != null) result.ReferralId = attrs.Id;
+            if (attrs.Dar.HasValue) result.Dar = attrs.Dar;
+
+            // If this is an empty node, return immediately
+            if (reader.IsEmptyElement) return result;
+
+            // Read starttag and start parsing
             reader.Read();
             
             // Parse element Narrative.status
@@ -78,10 +90,11 @@ namespace HL7.Fhir.Instance.Parsers
                     result.Map.Add(XmlNarrativeParser.ParseNarrativeMapComponent(reader, errors));
             }
             
-            if (reader.NodeType != XmlNodeType.EndElement)
+            if( !XmlUtils.IsEndElement(reader,en,ns) )
             {
-                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, elementName), (IXmlLineInfo)reader);
-                while (reader.NodeType != XmlNodeType.EndElement) reader.Skip();
+                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, en), (IXmlLineInfo)reader);
+                while (!XmlUtils.IsEndElement(reader, en, ns) || reader.EOF)
+                	reader.Skip();
                 result = null;
             }
             
@@ -94,7 +107,13 @@ namespace HL7.Fhir.Instance.Parsers
         public static Narrative.NarrativeMapComponent ParseNarrativeMapComponent(XmlReader reader, ErrorList errors)
         {
             Narrative.NarrativeMapComponent result = new Narrative.NarrativeMapComponent();
-            string elementName = reader.LocalName;
+            string en = reader.LocalName;
+            string ns = reader.NamespaceURI;
+            
+            // Read id/dar from element's attributes
+            ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);
+            if (attrs.Id != null) result.ReferralId = attrs.Id;
+            if (attrs.Dar.HasValue) result.Dar = attrs.Dar;
             
             // Read starttag
             reader.Read();
@@ -111,10 +130,11 @@ namespace HL7.Fhir.Instance.Parsers
             if( reader.NodeType == XmlNodeType.Element && reader.NamespaceURI == Util.FHIRNS && reader.LocalName == "source" )
                 result.Source = XmlPrimitiveParser.ParseCode<Narrative.NarrativeMapSource>(reader, errors);
             
-            if (reader.NodeType != XmlNodeType.EndElement)
+            if( !XmlUtils.IsEndElement(reader,en,ns) )
             {
-                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, elementName), (IXmlLineInfo)reader);
-                while (reader.NodeType != XmlNodeType.EndElement) reader.Skip();
+                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, en), (IXmlLineInfo)reader);
+                while (!XmlUtils.IsEndElement(reader, en, ns) || reader.EOF)
+                	reader.Skip();
                 result = null;
             }
             
@@ -127,7 +147,13 @@ namespace HL7.Fhir.Instance.Parsers
         public static Narrative.NarrativeImageComponent ParseNarrativeImageComponent(XmlReader reader, ErrorList errors)
         {
             Narrative.NarrativeImageComponent result = new Narrative.NarrativeImageComponent();
-            string elementName = reader.LocalName;
+            string en = reader.LocalName;
+            string ns = reader.NamespaceURI;
+            
+            // Read id/dar from element's attributes
+            ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);
+            if (attrs.Id != null) result.ReferralId = attrs.Id;
+            if (attrs.Dar.HasValue) result.Dar = attrs.Dar;
             
             // Read starttag
             reader.Read();
@@ -140,10 +166,11 @@ namespace HL7.Fhir.Instance.Parsers
             if( reader.NodeType == XmlNodeType.Element && reader.NamespaceURI == Util.FHIRNS && reader.LocalName == "content" )
                 result.Content = XmlPrimitiveParser.ParseBase64Binary(reader, errors);
             
-            if (reader.NodeType != XmlNodeType.EndElement)
+            if( !XmlUtils.IsEndElement(reader,en,ns) )
             {
-                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, elementName), (IXmlLineInfo)reader);
-                while (reader.NodeType != XmlNodeType.EndElement) reader.Skip();
+                errors.Add(String.Format("Encountered unrecognized element '{0}' while parsing '{1}'",	reader.LocalName, en), (IXmlLineInfo)reader);
+                while (!XmlUtils.IsEndElement(reader, en, ns) || reader.EOF)
+                	reader.Skip();
                 result = null;
             }
             

@@ -35,30 +35,30 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class Base64Binary
+    // A stream of bytes
+    public partial class Base64Binary : Primitive<byte[]>
     {
-        // Explicit default: null
-        public Base64Binary() : base(null)
-        {
-
-        }
+        public Base64Binary() : base(null) { }
 
         public static bool TryParse( string value, out Base64Binary result)
         {
-            byte[] b64Value = null;
-         
             try
             {
-                b64Value = Convert.FromBase64String(value);
+                byte[] b64Value = null;
+
+                if (value == null)
+                    b64Value = null;
+                else
+                    b64Value = Convert.FromBase64String(value);
+
+                result = new Base64Binary(b64Value);
+                return true;
             }
             catch
             {
                 result = null;
                 return false;
             }
-
-            result = new Base64Binary(b64Value);
-            return true;
         }
 
         public static Base64Binary Parse(string value)
@@ -74,6 +74,14 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             return null;    // cannot contain illegal values and may be empty
+        }
+
+        public override string ToString()
+        {
+            if (Contents == null)
+                return null;
+            else
+                return Convert.ToBase64String(Contents);
         }
     }
   

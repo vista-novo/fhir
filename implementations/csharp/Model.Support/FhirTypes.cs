@@ -57,7 +57,7 @@ namespace HL7.Fhir.Instance.Model
 
     // Resource is not a subclass of Composite, since it
     // cannot be used in places where you can use composites.
-    public abstract class Resource : Data
+    public abstract class Resource
     {
         /**
 	     * Master resource Id, in all resources
@@ -84,25 +84,25 @@ namespace HL7.Fhir.Instance.Model
     {
         public Primitive(T value)
         {
-            this.Value = value;
+            this.Contents = value;
         }
 
-        public T Value { get; set; }
+        public T Contents { get; set; }
 
         public override bool Equals(object other)
         {
             if (other == null) return false;
-            return Value.Equals(other);
+            return Contents.Equals(other);
         }
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return Contents.GetHashCode();
         }
 
         public override string ToString()
         {
-            return Value.ToString();
+            return Contents.ToString();
         }
 
         //public static implicit operator Primitive<T>(T value)

@@ -193,7 +193,11 @@ public class CSharpResourceParserGenerator extends GenBlock
 	            ln("if (attrs.Dar.HasValue) result.Dar = attrs.Dar;");
 				ln();
 			}
-			ln("// Read starttag");
+  
+			ln("// If this is an empty node, return immediately");
+            ln("if (reader.IsEmptyElement) return result;");
+			ln();
+			ln("// Read starttag and start parsing");
 			ln("reader.Read();");
 			ln();
 			

@@ -39,14 +39,13 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Id
     {
-        // Must conform to the pattern "[a-z0-9\-\.]{1,36}"
-        private const string PATTERN = @"[a-z0-9\-\.]{1,36}";
+        public Id() : base(null) { }
 
         public static bool TryParse(string value, out Id result)
         {       
             Regex idRegEx = new Regex(PATTERN);
 
-            if (idRegEx.IsMatch(value))
+            if (value == null || idRegEx.IsMatch(value))
             {
                 result = new Id(value);
                 return true;
@@ -70,15 +69,20 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value == null)
+            if (Contents == null)
                 return "Id values cannot be empty";
 
             Id dummy;
 
-            if (!TryParse( this.Value, out dummy ))
+            if (!TryParse( this.Contents, out dummy ))
                 return "Not an correctly formatted id value";
             
             return null; 
+        }
+
+        public override string ToString()
+        {
+            return Contents;
         }
     }
 }

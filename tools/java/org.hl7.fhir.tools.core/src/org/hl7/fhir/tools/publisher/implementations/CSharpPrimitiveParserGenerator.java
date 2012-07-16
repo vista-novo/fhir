@@ -54,10 +54,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 	    		for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
 				{
 	    			// Xhtml and Date/times require a hand-crafted parser.
-	    			if( !primitive.getName().equals("xhtml") &&
-	    				!primitive.getName().equals("date") && 
-	    				!primitive.getName().equals("dateTime") &&
-	    				!primitive.getName().equals("instant")) 
+	    			if( !primitive.getName().equals("xhtml") ) 
 	    			{
 	    				primitiveTypeParser(primitive);
 	    				ln();

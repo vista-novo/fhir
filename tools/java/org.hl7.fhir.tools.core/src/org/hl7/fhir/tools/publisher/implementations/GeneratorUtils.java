@@ -286,15 +286,15 @@ public class GeneratorUtils {
 	public static String mapPrimitiveToCSharpType(String name) throws Exception
 	{
 		if (name.equals("boolean"))
-			return "bool";
+			return "bool?";
 		else if (name.equals("integer"))
-			return "int";
+			return "int?";
 		else if (name.equals("decimal"))
-			return "decimal";
+			return "decimal?";
 		else if (name.equals("base64Binary"))
 			return "byte[]";
-//		else if (name.equals("instant"))
-//			return "Instant";
+		else if (name.equals("instant"))
+			return "DateTimeOffset?";
 		else if (name.equals("string"))
 			return "string";
 		else if (name.equals("uri"))
@@ -311,10 +311,10 @@ public class GeneratorUtils {
 			return "string";
 		else if (name.equals("xhtml"))
 			return "XElement";
-//		else if (name.equals("date"))
-//			return "XsdDateTime";
-//		else if (name.equals("dateTime"))
-//			return "XsdDateTime";
+		else if (name.equals("date"))
+			return "string";
+		else if (name.equals("dateTime"))
+			return "string";
 		else if (name.equals("idref"))
 			return "string";
 		else
@@ -332,7 +332,7 @@ public class GeneratorUtils {
 		else if (name.equals("base64Binary"))
 			return "Base64Binary";
 		else if (name.equals("instant"))
-			return "FhirDateTime";
+			return "Instant";
 		else if (name.equals("string"))
 			return "FhirString";
 		else if (name.equals("uri"))
@@ -350,7 +350,7 @@ public class GeneratorUtils {
 		else if (name.equals("xhtml"))
 			return "XHtml";
 		else if (name.equals("date"))
-			return "FhirDateTime";
+			return "Date";
 		else if (name.equals("dateTime"))
 			return "FhirDateTime";
 		else if (name.equals("idref"))

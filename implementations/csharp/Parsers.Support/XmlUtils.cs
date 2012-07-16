@@ -28,8 +28,8 @@ namespace HL7.Fhir.Instance.Parsers
                     if (reader.LocalName == Util.IDATTR)
                         result.Id = reader.Value;
                     else if (reader.LocalName == Util.DARATTR)
-                        result.Dar = Code<DataAbsentReason>.Parse(reader.Value);
-                    else if (reader.LocalName == "xmlns")
+                        result.Dar = (DataAbsentReason)Code<DataAbsentReason>.Parse(reader.Value);
+                    else if (reader.NamespaceURI == Util.XMLNS)
                         #pragma warning disable 642
                         ;
                         #pragma warning restore 642

@@ -16,7 +16,7 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>6348</WindowHeight>
-  <WindowWidth>17496</WindowWidth>
+  <WindowWidth>15576</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6072</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
@@ -69,7 +69,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="19" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="21" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.60000000000002"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="2"/>
@@ -90,7 +90,7 @@
     <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
+    <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -117,6 +117,21 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Master Id, first in all resources</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Ewout.emptyBoolean</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Empty primitive because of DAR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Ewout.emptyCode</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">ResourceProfileStatus</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Empty codelist primitive because of DAR</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Ewout.stringErr</Data></Cell>
@@ -239,10 +254,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <LeftColumnVisible>3</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>17</ActiveRow>
+     <ActiveRow>5</ActiveRow>
      <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>

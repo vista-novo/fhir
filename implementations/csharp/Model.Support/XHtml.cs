@@ -39,28 +39,28 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class XHtml
     {
-        // Explicit default: null
-        public XHtml() : base(null)
-        {
-
-        }
+        public XHtml() : base(null) { }
 
         public static bool TryParse( string value, out XHtml result)
         {
-            XElement xmlValue = null;
-
             try
             {
+                XElement xmlValue = null;
+
+                if (value == null)
+                    xmlValue = null;
+                else
+                    xmlValue = XElement.Parse(value);
+
                 xmlValue = XElement.Parse(value);
+                result = new XHtml(xmlValue);
+                return true;
             }
             catch
             {
                 result = null;
                 return false;
             }
-
-            result = new XHtml(xmlValue);
-            return true;
         }
 
         public static XHtml Parse(string value)
@@ -75,15 +75,23 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value != null)
+            if (Contents != null)
             {
-                if (Value.Name != Util.DIVELEM)
+                if (Contents.Name != Util.DIVELEM)
                     return "The xml must have <div> as its root element";
 
                 // TODO: Check whether only "simple" elements are used.
             }
             
             return null;   
+        }
+
+        public override string ToString()
+        {
+            if (Contents == null)
+                return null;
+            else
+                return Contents.ToString();
         }
     }
   

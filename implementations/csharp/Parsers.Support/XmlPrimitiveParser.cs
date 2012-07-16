@@ -50,28 +50,6 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public static FhirDateTime ParseFhirDateTime(XmlReader reader, ErrorList errors)
-        {
-            ElementContent content = parsePrimitiveElement(reader, errors);
-
-            try
-            {
-                var result = FhirDateTime.Parse(content.Value);
-
-                if (content.Id != null) result.ReferralId = content.Id;
-                if (content.Dar.HasValue) result.Dar = content.Dar;
-
-                return result;
-            }
-            catch (FhirValueFormatException ex)
-            {
-                errors.Add(ex.Message, (IXmlLineInfo)reader);
-            }
-
-            return null;
-        }
-
-
         private static ElementContent parsePrimitiveElement(XmlReader reader, ErrorList errors)
         {
             ElementContent result = XmlUtils.ParseElementContent(reader, errors);
@@ -79,7 +57,11 @@ namespace HL7.Fhir.Instance.Parsers
 
             try
             {
-                result.Value = reader.ReadElementContentAsString();
+                if (!reader.IsEmptyElement)
+                    result.Value = reader.ReadElementContentAsString();
+
+                if (result.Value == String.Empty)
+                    result.Value = null;
             }
             catch (XmlException xe)
             {

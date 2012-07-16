@@ -35,29 +35,33 @@ using System.Text;
 
 namespace HL7.Fhir.Instance.Model
 {
-    public partial class FhirBoolean
+    // value can be true or false
+    public partial class FhirBoolean : Primitive<bool?>
     {
-        // Explicit default: false
-        public FhirBoolean() : base(false)
-        {
-        }
+        public FhirBoolean() : base(false) { }
 
         public static bool TryParse( string value, out FhirBoolean result)
         {
-            if (value == "1" || value == "true")
+            if(value == "1" || value == "true")
             {
                 result = new FhirBoolean(true);
                 return true;
             }
-
-            if (value == "0" || value == "false")
+            else if(value == "0" || value == "false")
             {
                 result = new FhirBoolean(false);
                 return true;
             }
-
-            result = null;
-            return false; 
+            else if (value == null)
+            {
+                result = new FhirBoolean(null);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
         }
 
         public static FhirBoolean Parse(string value)
@@ -68,6 +72,14 @@ namespace HL7.Fhir.Instance.Model
                 return result;
             else
                 throw new FhirValueFormatException("Booleans can be either 0, 1, true of false");
+        }
+
+        public override string ToString()
+        {
+            if (Contents.HasValue)
+                return Contents.Value ? "true" : "false";
+            else
+                return String.Empty;
         }
 
         public override string ValidateData()

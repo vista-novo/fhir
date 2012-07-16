@@ -46,9 +46,14 @@ namespace HL7.Fhir.Instance.Model
 
         public static bool TryParse( string value, out FhirDecimal result)
         {
-            decimal decimalValue;  
+            decimal decimalValue;
 
-            if (Decimal.TryParse(value, out decimalValue))
+            if (value == null)
+            {
+                result = new FhirDecimal(null);
+                return true;
+            }
+            else if (Decimal.TryParse(value, out decimalValue))
             {
                 result = new FhirDecimal(decimalValue);
                 return true;
@@ -73,6 +78,14 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             return null;    // cannot contain illegal values
+        }
+
+        public override string ToString()
+        {
+            if (Contents.HasValue)
+                return Contents.HasValue.ToString();
+            else
+                return null;
         }
     }
   

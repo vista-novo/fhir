@@ -48,6 +48,11 @@ namespace HL7.Fhir.Instance.Model
         {
             return null;    // cannot contain illegal values
         }
+
+        public override string ToString()
+        {
+            return Contents;
+        }
     }
   
 }

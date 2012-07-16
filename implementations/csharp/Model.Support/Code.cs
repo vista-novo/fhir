@@ -39,14 +39,13 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Code
     {
-        // Must conform to the pattern [^\s]+([\s]+[^\s]+)*
-        private const string PATTERN = @"[^\s]+([\s]+[^\s]+)*";
+        public Code() : base(null) { }
 
         public static bool TryParse(string value, out Code result)
         {       
             Regex codeRegEx = new Regex(PATTERN);
 
-            if (codeRegEx.IsMatch(value))
+            if (value == null || codeRegEx.IsMatch(value))
             {
                 result = new Code(value);
                 return true;
@@ -70,41 +69,65 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value == null)
+            if (Contents == null)
                 return "Code values cannot be empty";
 
             Code dummy;
 
-            if (!TryParse( this.Value, out dummy ))
+            if (!TryParse( this.Contents, out dummy ))
                 return "Not an correctly formatted code value";
             
             return null; 
         }
+
+        public override string ToString()
+        {
+            return Contents;
+        }
     }
 
-    public class Code<T> : Primitive<T>  where T : struct, IConvertible
+
+
+    public class Code<T> : Primitive<T?>  where T : struct, IConvertible
     {
-        public Code(T value)
-            : base(value)
+        public Code() : base(null)
+        {
+        }
+
+        public Code(T? value) : base(value)
         {
             if (!typeof(T).IsEnum) throw new ArgumentException("T must be an enumerated type");
         }
 
-        public static implicit operator Code<T>(T value)
+        public static implicit operator Code<T>(T? value)
         {
             return new Code<T>(value);
         }
 
-        public static implicit operator T(Code<T> value)
+        public static explicit operator T(Code<T> source)
         {
-            return value.Value;
+            if (source.Contents.HasValue)
+                return source.Contents.Value;
+            else
+                throw new InvalidCastException();
         }
+
+        public static explicit operator T?(Code<T> source)
+        {
+            return source.Contents;
+        }
+
 
         public static bool TryParse(string value, out Code<T> result)
         {
             object enumValue;
 
-            if (EnumHelper.TryParseEnum(value, typeof(T), out enumValue))
+            if (value == null)
+            {
+                result = new Code<T>(null);
+                return true;
+            }
+            else if (EnumHelper.TryParseEnum(value, typeof(T), out enumValue))
             {
                 result = new Code<T>((T)enumValue);
                 return true;
@@ -130,6 +153,14 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             return null;        // cannot be empty and cannot be set to illegal values
+        }
+
+        public override string ToString()
+        {
+            if (this.Contents.HasValue)
+                return EnumHelper.EnumToString(this.Contents, typeof(T));
+            else
+                return null;
         }
     }
 }

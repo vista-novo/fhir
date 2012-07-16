@@ -44,10 +44,14 @@ namespace HL7.Fhir.Instance.Model
 
         public static bool TryParse( string value, out Integer result)
         {
-            Int32 intValue;  
-            bool succ = Int32.TryParse(value, out intValue);
+            Int32 intValue;
 
-            if (succ)
+            if (value == null)
+            {
+                result = new Integer(null);
+                return true;
+            }
+            else if(Int32.TryParse(value, out intValue))
             {
                 result = new Integer(intValue);
                 return true;
@@ -58,6 +62,7 @@ namespace HL7.Fhir.Instance.Model
                 return false;
             }
         }
+
 
         public static Integer Parse(string value)
         {
@@ -73,6 +78,14 @@ namespace HL7.Fhir.Instance.Model
         public override string ValidateData()
         {
             return null;    // cannot contain illegal values
+        }
+
+        public override string ToString()
+        {
+            if (Contents.HasValue)
+                return Contents.ToString();
+            else
+                return null;
         }
     }
   

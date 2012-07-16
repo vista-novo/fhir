@@ -42,8 +42,10 @@ namespace HL7.Fhir.Instance.Support
         public const string FHIRNS = "http://hl7.org/fhir";
         public const string IDATTR = "id";
         public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
+        public const string XMLNS = "http://www.w3.org/2000/xmlns/";
         public const string DIVELEM = "div";
         public static string IDREFATTR = "idref";
         public static string DARATTR = "dataAbsentReason";
+
     }
 }

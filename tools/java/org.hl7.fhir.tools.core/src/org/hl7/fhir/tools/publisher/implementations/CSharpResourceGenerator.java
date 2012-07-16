@@ -198,13 +198,6 @@ public class CSharpResourceGenerator extends GenBlock
 		ln();
 	}
 	
-	
-	private boolean mapsToNullableFhirPrimitive( String name )
-	{
-		return !(name.equals("boolean") ||
-			name.equals("integer") ||
-			name.equals("decimal")); 
-	}
 
 	private void nestedLocalTypes( List<CompositeTypeDefn> nestedTypes) throws Exception
 	{
@@ -254,7 +247,7 @@ public class CSharpResourceGenerator extends GenBlock
 				generateEnum(binding);
 				ln();
 				
-				generateEnumParser(binding);
+				generateEnumHandling(binding);
 				ln();
 			}
 		}
@@ -263,11 +256,12 @@ public class CSharpResourceGenerator extends GenBlock
 	}
 
 
-	public GenBlock generateEnumParser(BindingDefn binding) {
+	public GenBlock generateEnumHandling(BindingDefn binding) 
+	{
 		begin();
 		
 		ln("/*");
-		ln("* Parse string into " + binding.getName());
+		ln("* Conversion of " + binding.getName() + "from and into string");
 		ln("*/");
 		ln("public static class " + binding.getName() + "Handling");
 		bs("{"); 
@@ -277,18 +271,23 @@ public class CSharpResourceGenerator extends GenBlock
 			bs("{");
 				ln( "result = default(" + binding.getName() + ");");
 				ln();					
-				enumValueCases(binding);
+				enumValueParseCases(binding);
 				ln();
 				ln("return true;");					
 			es("}");
+			ln();
+			ln("public static string ToString");
+				nl("(" + binding.getName() + " value)");
+			bs("{");
+				enumValueToStringCases(binding);
+			es("}");
 		es("}");
-		ln();
 		
 		return end();
 	}
 
-
-	private void enumValueCases(BindingDefn binding) 
+	
+	private void enumValueParseCases(BindingDefn binding) 
 	{
 		boolean isFirstClause = true;
 			
@@ -301,7 +300,7 @@ public class CSharpResourceGenerator extends GenBlock
 					
 			isFirstClause = false;
 			
-			nl("if( value ==");
+			nl("if( value==");
 				nl("\"" + code.getCode() + "\")");
 			bs();
 				ln("result = " + binding.getName());
@@ -313,6 +312,36 @@ public class CSharpResourceGenerator extends GenBlock
 		bs();
 			ln("return false;");
 		es();
+	}
+
+	private void enumValueToStringCases(BindingDefn binding) 
+	{
+		boolean isFirstClause = true;
+			
+		for( DefinedCode code : binding.getCodes() ) 
+		{					
+			if( !isFirstClause )
+				ln("else ");
+			else
+				ln();
+					
+			isFirstClause = false;
+			
+			nl("if( value==");
+				nl(binding.getName());
+				nl("." + GeneratorUtils.generateCSharpMemberName(null,code.getCode()));
+				nl(" )");
+			bs();
+				ln("return ");
+					nl("\"" + code.getCode() + "\";");
+			es();						
+		}
+	    ln("else");
+	    bs();
+	    	ln("throw new ArgumentException(\"Unrecognized ");
+	    		nl(binding.getName());
+	    		nl(" value: \" + value.ToString());");
+	    es();
 	}
 
 

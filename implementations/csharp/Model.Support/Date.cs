@@ -28,57 +28,63 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using System.Text.RegularExpressions;
 
 namespace HL7.Fhir.Instance.Model
 {
-    // A date, or partial date (e.g. just year or year + month). There is no timezone. 
-    // The format is a union of the schema types gYear, gYearMonth, and date.  
-    // Dates must be valid dates.
-    public class Date : FhirDateTime
+    public partial class Date
     {
-        // No empty constructor - no explicit default value
+        public Date() : base(null) { }
 
-        //public static bool TryParse( string value, out Date result)
-        //{
-  
-        //    bool succ = TryParse(value, out result);
+        public static Date Today()
+        {
+            return new Date(DateTime.Now.ToString("yyyy-MM-dd"));
+        }
 
-        //    if (succ &&
-        //        (result.Kind == FhirDateTime.FhirDateTimeKind.Year ||
-        //          result.Kind == FhirDateTime.FhirDateTimeKind.YearMonth ||
-        //          result.Kind == FhirDateTime.FhirDateTimeKind.Date))
-        //        return true;
-        //    else
-        //    {
-        //        result = null;
-        //        return false;
-        //    }
-        //}
+        public static bool TryParse(string value, out Date result)
+        {       
+            Regex sidRegEx = new Regex(PATTERN);
 
-        //public static Date Parse(string value)
-        //{
-        //    Date result = null;
+            if (value==null || sidRegEx.IsMatch(value))
+            {
+                result = new Date(value);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
 
-        //    if (TryParse(value, out result))
-        //        return result;
-        //    else 
-        //        throw new FhirValueFormatException("Date must be a date/time value with year and/or month and/or day");
-        //}
-       
+        public static Date Parse(string value)
+        {
+            Date result = null;
 
+            if (TryParse(value, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Not an correctly formatted date value");
+        }
 
         public override string ValidateData()
         {
-            if (this.Kind != FhirDateTimeKind.DateTime)
-                return "Date must be a date/time value with year and/or month and/or day";
+            Date dummy;
 
-            return null;
+            if (!TryParse( this.Contents, out dummy ))
+                return "Not an correctly formatted date value";
+            
+            return null; 
+        }
+
+        public override string ToString()
+        {
+            return Contents;
         }
     }
-  
 }

@@ -12,32 +12,9 @@ using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Tests
 {
-
     [TestClass]
     public class TestResourceParser
     {
-        [TestMethod]
-        public void TestEnumParsing()
-        {
-            Code<LabReport.LabReportStatus> c =
-                Code<LabReport.LabReportStatus>.Parse("final");
-
-            Assert.AreEqual(LabReport.LabReportStatus.Final, c.Value);
-
-            Code<LabReport.LabResultFlag> f =
-                Code<LabReport.LabResultFlag>.Parse("++");
-
-            Assert.AreEqual(LabReport.LabResultFlag.PlusPlus, f.Value);
-        }
-
-        [TestMethod]
-        public void TestInstantParsing()
-        {
-            FhirDateTime dt= FhirDateTime.Parse("2011-03-04T11:45:33+11:00");
-            Assert.AreEqual("2011-03-04 00:45:33Z", dt.AsUtcDateTime().ToString("u"));
-        }
-
-
         [TestMethod]
         public void TestParsePrimitive()
         {
@@ -46,9 +23,47 @@ namespace HL7.Fhir.Instance.Tests
             XmlReader r = fromString(xmlString); r.Read();
             ErrorList errors = new ErrorList();
             FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, errors);
-            Assert.AreEqual(true,result.Value);
+            Assert.AreEqual(true, result.Contents);
         }
 
+        [TestMethod]
+        public void TestParseEmptyPrimitive()
+        {
+            string xmlString = "<someElem dataAbsentReason='asked' />";
+
+            XmlReader r = fromString(xmlString); r.Read();
+            ErrorList errors = new ErrorList();
+            FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, errors);
+            Assert.IsTrue(errors.Count() == 0, errors.ToString());
+            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.Contents);
+
+            //TODO: Is this a '' value, or an empty/null value?
+            string xmlString2 = "<someElem dataAbsentReason='asked'></someElem>";
+            r = fromString(xmlString2); r.Read();
+            errors.Clear();
+            result = XmlPrimitiveParser.ParseFhirBoolean(r, errors);
+            Assert.IsTrue(errors.Count() == 0, errors.ToString());
+            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.Contents);
+        }
+
+
+        [TestMethod]
+        public void TestParseEmptyComposite()
+        {
+            string xmlString = @"<x dataAbsentReason='asked' xmlns='http://hl7.org/fhir' />";
+
+            XmlReader r = fromString(xmlString); r.Read();
+
+            ErrorList errors = new ErrorList();
+            Coding result = XmlCodingParser.ParseCoding(r, errors);
+            Assert.IsTrue(errors.Count() == 0, errors.ToString());
+            Assert.IsNotNull(result);
+            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+        }
 
         private XmlReader fromString(string s)
         {
@@ -65,14 +80,14 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestAttributesParsing()
         {
-            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " + 
+            string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " +
                                     "dataAbsentReason='asked'>1234</someElem>";
 
             XmlReader r = fromString(xmlString); r.Read();
 
             ErrorList errors = new ErrorList();
             IdRef result = XmlPrimitiveParser.ParseIdRef(r, errors);
-            Assert.AreEqual("1234", result.Value);
+            Assert.AreEqual("1234", result.Contents);
             Assert.AreEqual("12", result.ReferralId);
             Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
         }
@@ -91,8 +106,8 @@ namespace HL7.Fhir.Instance.Tests
             ErrorList errors = new ErrorList();
             Narrative result = XmlNarrativeParser.ParseNarrative(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Value);
-            Assert.IsTrue(result.Div != null && result.Div.Value != null);
+            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
+            Assert.IsTrue(result.Div != null && result.Div.Contents != null);
 
             string xmlString2 = @"<text xmlns='http://hl7.org/fhir'>
                                     <status>generated</status>
@@ -102,8 +117,8 @@ namespace HL7.Fhir.Instance.Tests
             r = fromString(xmlString2); r.Read();
             result = XmlNarrativeParser.ParseNarrative(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Value);
-            Assert.IsTrue(result.Div != null && result.Div.Value != null);
+            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
+            Assert.IsTrue(result.Div != null && result.Div.Contents != null);
 
             string xmlString3 = @"<text xmlns='http://hl7.org/fhir' xmlns:xhtml='http://www.w3.org/1999/xhtml'>
                                     <status>generated</status>
@@ -113,8 +128,8 @@ namespace HL7.Fhir.Instance.Tests
             r = fromString(xmlString3); r.Read();
             result = XmlNarrativeParser.ParseNarrative(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Value);
-            Assert.IsTrue(result.Div != null && result.Div.Value != null);
+            Assert.AreEqual(Narrative.NarrativeStatus.Generated, result.Status.Contents);
+            Assert.IsTrue(result.Div != null && result.Div.Contents != null);
         }
 
         [TestMethod]
@@ -131,8 +146,8 @@ namespace HL7.Fhir.Instance.Tests
             Coding result = XmlCodingParser.ParseCoding(r, errors);
             Assert.AreEqual("x4", result.ReferralId);
             Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
-            Assert.AreEqual("G44.1", result.Code.Value);
-            Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Value.ToString());
+            Assert.AreEqual("G44.1", result.Code.Contents);
+            Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
         }
 
@@ -161,10 +176,10 @@ namespace HL7.Fhir.Instance.Tests
 
             errors.Clear();
             result = XmlCodingParser.ParseCoding(r, errors);
-            Assert.IsTrue(errors.Count == 0, errors.ToString()); 
-            Assert.AreEqual("G44.2", result.Code.Value);
+            Assert.IsTrue(errors.Count == 0, errors.ToString());
+            Assert.AreEqual("G44.2", result.Code.Contents);
         }
-    
+
         [TestMethod]
         public void TestParseLargeComposite()
         {
@@ -173,8 +188,8 @@ namespace HL7.Fhir.Instance.Tests
             settings.IgnoreProcessingInstructions = true;
             settings.IgnoreWhitespace = true;
 
-            XmlReader r = XmlReader.Create(new StreamReader(@"C:\Users\Ewout\Documents\tst.xml"), settings);
- 
+            XmlReader r = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"), settings);
+
             ErrorList errors = new ErrorList();
             LabReport rep = (LabReport)XmlResourceParser.ParseResource(r, errors);
 
@@ -221,7 +236,7 @@ namespace HL7.Fhir.Instance.Tests
 
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(p);
-            Assert.AreEqual(1,p.Extension.Count());
+            Assert.AreEqual(1, p.Extension.Count());
         }
     }
 }

@@ -42,7 +42,7 @@
   <ItemGroup>
 		@@@MODELFILES@@@
   </ItemGroup>
-  <ItemGroup>
+   <ItemGroup>
     <Compile Include="Model.Support\FhirDateTime.cs" />
     <Compile Include="Model.Support\Id.cs" />
     <Compile Include="Model.Support\IdRef.cs" />
@@ -53,13 +53,15 @@
     <Compile Include="Model.Support\FhirString.cs" />
     <Compile Include="Model.Support\Absentable.cs" />
     <Compile Include="Model.Support\Code.cs" />
+    <Compile Include="Model.Support\Date.cs" />
     <Compile Include="Model.Support\FhirTypes.cs" />
     <Compile Include="Model.Support\Base64Binary.cs" />
     <Compile Include="Model.Support\FhirBoolean.cs" />
     <Compile Include="Model.Support\FhirDecimal.cs" />
     <Compile Include="Model.Support\Integer.cs" />
     <Compile Include="Model.Support\XHtml.cs" />
-	<Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
+	<Compile Include="Model.Support\Instant.cs" />
+    <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
     <Compile Include="Parsers.Support\XmlNarrativeParser.cs" />
     <Compile Include="Parsers.Support\XmlUtils.cs" />
     <Compile Include="Support\ElementContent.cs" />

@@ -39,14 +39,13 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Sid
     {
-        // Must conform to the pattern "[A-Za-z]+:[^s]*"
-        private const string PATTERN = @"[A-Za-z]+:[^s]*";
+        public Sid() : base(null) { }
 
         public static bool TryParse(string value, out Sid result)
         {       
             Regex sidRegEx = new Regex(PATTERN);
 
-            if (sidRegEx.IsMatch(value))
+            if (value==null || sidRegEx.IsMatch(value))
             {
                 result = new Sid(value);
                 return true;
@@ -70,15 +69,20 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value == null)
+            if (Contents == null)
                 return "Sid values cannot be empty";
 
             Sid dummy;
 
-            if (!TryParse( this.Value, out dummy ))
+            if (!TryParse( this.Contents, out dummy ))
                 return "Not an correctly formatted sid value";
             
             return null; 
+        }
+
+        public override string ToString()
+        {
+            return Contents;
         }
     }
 }

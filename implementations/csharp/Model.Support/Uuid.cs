@@ -39,14 +39,13 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Uuid
     {
-        // Must conform to the pattern "[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}"
-        private const string PATTERN = @"[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}";
+        public Uuid() : base(null) { }
 
         public static bool TryParse(string value, out Uuid result)
         {       
             Regex uuidRegEx = new Regex(PATTERN);
 
-            if (uuidRegEx.IsMatch(value))
+            if(value==null ||uuidRegEx.IsMatch(value))
             {
                 result = new Uuid(value);
                 return true;
@@ -70,15 +69,20 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value == null)
+            if (Contents == null)
                 return "Uuid values cannot be empty";
 
             Uuid dummy;
 
-            if (!TryParse( this.Value, out dummy ))
+            if (!TryParse( this.Contents, out dummy ))
                 return "Not an correctly formatted uuid value";
             
             return null; 
+        }
+
+        public override string ToString()
+        {
+            return Contents;
         }
     }
 }

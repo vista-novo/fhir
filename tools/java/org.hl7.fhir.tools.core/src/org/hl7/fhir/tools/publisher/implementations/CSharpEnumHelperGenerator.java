@@ -53,6 +53,11 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 				bs("{");
 					enumParseCases(enums);
 				es("}");
+				ln();
+			    ln("public static string EnumToString(object value, Type enumType)");
+			    bs("{");
+			    	enumToStringCases(enums);
+			    es("}");
 			es("}");
 		es("}");
 		
@@ -97,4 +102,42 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 			ln("return success;");
 		es("}");
 	}
+	
+	private void enumToStringCases(List<BindingDefn> enums) throws Exception {
+		boolean first = true;
+
+		for( BindingDefn enu : enums)
+		{
+			if( enu.getBinding() == BindingType.CODE_LIST)
+			{
+				enumToStringCase(enu,first);
+				first = false;
+			}
+		}
+		ln("else");
+       	bs();
+       		ln("throw new ArgumentException(\"Unrecognized enumeration \"");
+				nl(" + enumType.Name);");
+       	es(); 
+       
+		ln();
+	}
+
+
+	private void enumToStringCase(BindingDefn enu, boolean first) throws Exception
+	{
+		String name = GeneratorUtils.buildFullyScopedEnumName(enu);
+		
+		if(first)
+			ln("if");
+		else
+			ln("else if");
+		
+		nl("(enumType == typeof(" + name + "))");
+		bs();
+			ln("return ");
+				nl(name+"Handling.ToString(");
+				nl("(" + name + ")value);");
+		es();
+	}	
 }

@@ -74,6 +74,14 @@ namespace HL7.Fhir.Instance.Model
         {
             return null;    // cannot contain illegal values and may be empty.
         }
+
+        public override string ToString()
+        {
+            if (Contents != null)
+                return Contents.ToString();
+            else
+                return null;
+        }
     }
   
 }

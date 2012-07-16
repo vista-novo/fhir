@@ -39,14 +39,13 @@ namespace HL7.Fhir.Instance.Model
 {
     public partial class Oid
     {
-        // Must conform to the pattern "([1-9][0-9]*)(\.[1-9][0-9]*)*"
-        private const string PATTERN = @"([1-9][0-9]*)(\.[1-9][0-9]*)*";
+        public Oid() : base(null) { }
 
         public static bool TryParse(string value, out Oid result)
         {       
             Regex oidRegEx = new Regex(PATTERN);
 
-            if (oidRegEx.IsMatch(value))
+            if (value==null || oidRegEx.IsMatch(value))
             {
                 result = new Oid(value);
                 return true;
@@ -70,15 +69,20 @@ namespace HL7.Fhir.Instance.Model
 
         public override string ValidateData()
         {
-            if (Value == null)
+            if (Contents == null)
                 return "Oid values cannot be empty";
 
             Oid dummy;
 
-            if (!TryParse( this.Value, out dummy ))
+            if (!TryParse( this.Contents, out dummy ))
                 return "Not an correctly formatted oid value";
             
             return null; 
+        }
+
+        public override string ToString()
+        {
+            return Contents;
         }
     }
 }

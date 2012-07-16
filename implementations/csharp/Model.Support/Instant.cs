@@ -32,53 +32,78 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HL7.Fhir.Instance.Support;
+using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Model
 {
-    // An instant in time - known at least to the second
-    public class Instant : FhirDateTime
+    public partial class Instant
     {
-        // No empty constructor - no explicit default value
+        public Instant() : base(null) { }
 
-        //public static bool TryParse( string value, out Instant result)
-        //{
-        //    FhirDateTime parsed = null;
-
-        //    bool succ = FhirDateTime.TryParse(value, out parsed);
-
-        //    if (succ && result.Kind == FhirDateTime.FhirDateTimeKind.DateTime)
-        //    {
-        //        result = new Instant();
-
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        result = null;
-        //        return false;
-        //    }
-        //}
-
-        //new public static Instant Parse(string value)
-        //{
-        //    Instant result = null;
-
-        //    if (TryParse(value, out result))
-        //        return result;
-        //    else 
-        //        throw new FhirValueFormatException("Instant must be a date/time value with full precision and timezone");
-        //}
-       
-
-
-        public override string ValidateData()
+        public static Instant FromLocalDateTime(int year, int month, int day,
+                            int hour, int min, int sec)
         {
-            if (this.Kind != FhirDateTimeKind.DateTime)
-                return "Instant must be a date/time value with full precision and timezone";
+            return new Instant( new DateTimeOffset(year, month, day, hour, min, sec,
+                            DateTimeOffset.Now.Offset) );
+        }
 
-            return null;
+
+        public static Instant FromDateTimeUtc(int year, int month, int day,
+                                            int hour, int min, int sec)
+        {
+            return new Instant(new DateTimeOffset(year, month, day, hour, min, sec,
+                                   TimeSpan.Zero));
+        }
+
+
+        public static Instant Now()
+        {
+            return new Instant(DateTimeOffset.Now);
+        }
+
+        public const string PATTERN = @"yyyy-MM-dd'T'HH:mm:ssK";
+
+        public static bool TryParse(string value, out Instant result)
+        {
+            DateTimeOffset dt;
+
+            if (value == null)
+            {
+                result = new Instant(null);
+                return true;
+            }
+            else if( DateTimeOffset.TryParseExact(value, PATTERN,
+                null, System.Globalization.DateTimeStyles.AssumeUniversal, out dt) )
+            {
+                result = new Instant(dt);
+                return true;
+            }
+            else
+            {
+                result = null;
+                return false;
+            }
+        }
+
+
+        public static Instant Parse(string value)
+        {
+            Instant result = null;
+
+            if (TryParse(value, out result))
+                return result;
+            else
+                throw new FhirValueFormatException("Instant is not in expected format");
+        }
+
+        public override string ToString()
+        {
+            if (Contents.HasValue)
+            {
+                return Contents.Value.ToUniversalTime().ToString(PATTERN);
+            }
+            else
+                return null;
         }
     }
-  
 }

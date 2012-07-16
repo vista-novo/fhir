@@ -48,15 +48,8 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		bs("{");
 			for( PrimitiveTypeDefn primitive : definitions.getPrimitives())
 			{
-				// All time types reuse FhirDateTime and
-				// don't need their own primitive classes
-				if( !primitive.getName().equals("date") && 
-					 !primitive.getName().equals("dateTime") &&
-					 !primitive.getName().equals("instant"))
-				{
-					primitiveType(primitive);
-					ln();
-				}
+				primitiveType(primitive);
+				ln();
 			}
 		es("}");
 		
@@ -71,6 +64,7 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 		String className = GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName());
 		
 		String csharpPrimitive = GeneratorUtils.mapPrimitiveToCSharpType(primitive.getName()); 
+		boolean isNullablePrimitive = csharpPrimitive.endsWith("?");
 		
 		ln( "// " + primitive.getAnnotations().getDefinition() );
 		ln("public partial class "); 
@@ -80,6 +74,15 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 				nl( csharpPrimitive );
 			nl(">");
 	    bs("{");
+	    	if( primitive.getPattern() != null )
+	    	{
+	    		ln("// Must conform to the pattern ");
+	    			nl( "\"" + primitive.getPattern() + "\"" );
+        		ln("public const string PATTERN = @");
+        			nl("\"" + primitive.getPattern() + "\";");
+        		ln();
+        	}
+        
 	    	// Generate constructor, taking one parameter - the primitive value
 	        ln("public " + className);
 	        	nl("(" + csharpPrimitive + " value)");
@@ -97,14 +100,33 @@ public class CSharpPrimitiveGenerator extends GenBlock {
 	        ln();
 	        
 	        // Generate the cast from the Fhir primitive to the C# primitive
-	        ln("public static implicit operator ");
+	        // This is an explicit cast because you'll lose information about
+	        // dataAbsentReasons, refid, extensions
+	        ln("public static explicit operator ");
 	        	nl(csharpPrimitive);
 	        	nl("(" + className + " value)");
 	        bs("{");
-	            ln("return value.Value;");
+	            ln("return value.Contents;");
 	        es("}");
 	        ln();
 	        
+	        // If the FhirPrimitive represents data using a C# nullable
+	        // primitive, generate another cast from the FhirPrimitive to the
+	        // non-nullable C# primitive.
+	        if( isNullablePrimitive )
+	        {
+	        	String nonNullablePrimitive = csharpPrimitive.substring(0, csharpPrimitive.length()-1);
+	        	
+	        	ln("public static explicit operator ");
+	        		nl(nonNullablePrimitive);
+	        		nl("(" + className + " source)");
+	        	bs("{");
+		            ln("if (source.Contents.HasValue)");
+		            ln("	return source.Contents.Value;");
+		            ln("else");
+		            ln("	throw new InvalidCastException();");
+		        es("}");
+	        }
 	    es("}");
 		
 	    return end();
