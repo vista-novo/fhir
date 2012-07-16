@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 06:00+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -175,6 +175,11 @@ public class Document extends Resource {
         private ResourceReference content;
 
         /**
+         * Human Readable Text Summary of the section
+         */
+        private Narrative text;
+
+        /**
          * Identifies a subtopic within the section as part of the document's table of contents
          */
         private List<Section> section = new ArrayList<Section>();
@@ -233,6 +238,14 @@ public class Document extends Resource {
 
         public void setContent(ResourceReference value) { 
           this.content = value;
+        }
+
+        public Narrative getText() { 
+          return this.text;
+        }
+
+        public void setText(Narrative value) { 
+          this.text = value;
         }
 
         public List<Section> getSection() { 

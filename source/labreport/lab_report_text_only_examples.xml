@@ -224,9 +224,9 @@ Comment: *PLEASE NOTE AMENDED REPORT*
 	  <id>12Z561369-16258707</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -787,9 +787,9 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
 	  <id>12Z968922-16258699</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Infected Tendon Sheath</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -860,9 +860,9 @@ C-React Prot      152     mg/L   ( &lt;5       )
 	  <id>12Z968922-16258698</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Infected Tendon Sheath</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -955,9 +955,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968991-16258697</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Tx</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -1026,9 +1026,9 @@ Urea             10.0     mmol/L ( 2.5-8.3  )
 	  <id>12Z986991-16258696</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Tx</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -1417,9 +1417,9 @@ Baso         0.1      0.0      0.1      0.1      0.1   x10^9/L   0.0-0.1
 	  <id>12Z516269-16258691</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -1694,9 +1694,9 @@ Baso                  0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
 	  <id>12Z986951-16258688</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -1767,9 +1767,9 @@ Troponin I       &lt;0.02    ug/L   (See Below )
 	  <id>12Z968951-16258687</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -1862,9 +1862,9 @@ Baso         0.1                                       x10^9/L   0.0-0.1
 	  <id>12Z968961-16258686</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleed Hep C +ve</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -1945,9 +1945,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968961-16258685</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleed Hep C +ve</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -2032,9 +2032,9 @@ Troponin I        0.03    ug/L   (See Below )
 	  <id>12Z986961-16258685</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleed Hep C +ve</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -2119,9 +2119,9 @@ Troponin I        0.03    ug/L   (See Below )
 	  <id>12Z968961-16258684</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleed Hep C +ve</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -2252,9 +2252,9 @@ Comment: Please note moderate thrombocytopenia persists. Please
 	  <id>12Z968971-16258683</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Vomiting Diarrhoea</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -2337,9 +2337,9 @@ Protein Total      65     g/L    ( 65-85    )
 	  <id>12Z986971-16258682</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Vomiting Diarrhoea</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -2478,9 +2478,9 @@ Conclusion: Suggestive of infection.
 	  <id>12Z968981-16258681</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Intoxicated Agitated ? Penetrating Head Injury</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Therapeutic Drugs</text>
@@ -2555,9 +2555,9 @@ Hrs Since Dose No Info  No Info                            HH:MM
 	  <id>12Z986981-16258680</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Intoxicated Agitated ? Penetrating Head Injury</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -2642,9 +2642,9 @@ Lipase             87     IU/L   ( &lt;60      )
 	  <id>12Z968981-16258679</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Intoxicated Agitated ? Penetrating Head Injury</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -2901,9 +2901,9 @@ Albumin            26     g/L    ( 35-50    )
 	  <id>12Z516169-16258676</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -3004,9 +3004,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986921-16258675</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Fall From Standing Height Headstrike LOC</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -3071,9 +3071,9 @@ INR               3.0H                                           0.8-1.3
 	  <id>12Z986921-16258674</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Fall From Standing Height Headstrike LOC</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -3142,9 +3142,9 @@ Urea              8.0     mmol/L ( 2.5-8.3  )
 	  <id>12Z968921-16258673</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Fall From Standing Height Headstrike LOC</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -3237,9 +3237,9 @@ Baso         0.1                                       x10^9/L   0.0-0.1
 	  <id>12Z561069-16258672</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -3356,9 +3356,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986901-16258671</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>TIA Slurred Speech Facial Droop Cardiac Hx</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -3433,9 +3433,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986901-16258670</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>TIA Slurred Speech Facial Droop Cardiac Hx</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -3520,9 +3520,9 @@ Protein Total      77     g/L    ( 65-85    )
 	  <id>12Z968901-16258669</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>TIA Slurred Speech Facial Droop Cardiac Hx</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -3615,9 +3615,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968911-16258668</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Collapse</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Therapeutic Drugs</text>
@@ -3706,9 +3706,9 @@ Salicylate       &lt;0.30             &lt;0.30                   mmol/L &lt;2.9
 	  <id>12Z968911-16258667</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Collapse</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -3797,9 +3797,9 @@ Protein Total      70     g/L    ( 65-85    )
 	  <id>12Z986911-16258666</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Collapse</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -3922,9 +3922,9 @@ Comment: Mild neutropenia.
 	  <id>12Z561968-16258665</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4041,9 +4041,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z516868-16258664</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4160,9 +4160,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561768-16258663</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4279,9 +4279,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561668-16258662</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4398,9 +4398,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z516568-16258661</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4501,9 +4501,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z516468-16258660</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4612,9 +4612,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561368-16258659</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4731,9 +4731,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z516268-16258658</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -4856,9 +4856,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968990-16258657</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Needlestick Recipient</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Internal Serology</text>
@@ -4911,9 +4911,9 @@ Specimen Type:  Serum
 	  <id>12Z968990-16258656</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Needlestick Recipient</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Needlestick Serology</text>
@@ -4990,9 +4990,9 @@ HBsAB Titre                                            :      44 IU/L
 	  <id>12Z516168-16258655</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -5109,9 +5109,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968898-16258654</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -5176,9 +5176,9 @@ TSH                       0.08    L  mIU/L   ( 0.1-4.0  )
 	  <id>12Z516068-16258653</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -5367,9 +5367,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968980-16258651</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile >38</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -5434,9 +5434,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z561967-16258650</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -5553,9 +5553,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986960-16258649</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Appendiceal Abscess</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -5700,9 +5700,9 @@ perinatal or neonatal infection.
 	  <id>12Z516867-16258648</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -6169,9 +6169,9 @@ Conclusion: No clinical information provided.
 	  <id>12Z561767-16258642</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -6284,9 +6284,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986930-16258641</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Fall</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -6355,9 +6355,9 @@ Urea             12.2     mmol/L ( 2.5-8.3  )
 	  <id>12Z968930-16258640</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Fall</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -6468,9 +6468,9 @@ Conclusion: Common causes of macrocytosis include liver disease,
 	  <id>12Z986940-16258639</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Appendiceal Abscess</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -6545,9 +6545,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986940-16258638</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Appendiceal Abscess</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -6632,9 +6632,9 @@ C-React Prot        4     mg/L   ( &lt;5       )
 	  <id>12Z968940-16258637</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Appendiceal Abscess</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -6727,9 +6727,9 @@ Baso         0.1      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
 	  <id>12Z516667-16258636</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -7128,9 +7128,9 @@ Comment: Note neutrophilia.
 	  <id>12Z968910-16258632</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain FI</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -7185,9 +7185,9 @@ Troponin I        0.02    ug/L   (See Below )
 	  <id>12Z986900-16258631</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Serial Troponins</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -7242,9 +7242,9 @@ Troponin I       &lt;0.02    ug/L   (See Below )
 	  <id>12Z968899-16258630</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>R/Central Chest Pain Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -7299,9 +7299,9 @@ NTRC
 	  <id>12Z968899-16258629</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>R/Central Chest Pain Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -7370,9 +7370,9 @@ Urea              5.3     mmol/L ( 2.5-8.3  )
 	  <id>12Z986899-16258628</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>R/Central Chest Pain Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -7621,9 +7621,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z986879-16258625</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Collapsed Low BP</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Wounds/Tips/Ent/Eye</text>
@@ -7758,9 +7758,9 @@ culture.
 	  <id>12Z516567-16258624</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -7943,9 +7943,9 @@ Protein/Creat Ratio              30   mg/mmol Creat   ( 15-35    )
 	  <id>12Z986895-16258622</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Surveillance</text>
@@ -8304,9 +8304,9 @@ Conclusion: Known beta thalassaemia minor. Suggest repeat FBE for an
 	  <id>12Z986869-16258618</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Heparin Infusion</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -8381,9 +8381,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z561467-16258617</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -8668,9 +8668,9 @@ No Growth -Detection limit 10^7 CFU/L
 	  <id>12Z968839-16258614</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleeding</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -8753,9 +8753,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968839-16258613</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleeding</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -8824,9 +8824,9 @@ Urea              7.5     mmol/L ( 2.5-8.3  )
 	  <id>12Z968839-16258612</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>PR Bleeding</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -9355,9 +9355,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z561367-16258606</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -9474,9 +9474,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z516267-16258605</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -9577,9 +9577,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986898-16258604</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -9666,9 +9666,9 @@ C-React Prot        5     mg/L   ( &lt;5       )
 	  <id>12Z968898-16258603</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -9761,9 +9761,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968888-16258602</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trial See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -9822,9 +9822,9 @@ LIPIDS
 	  <id>12Z968878-16258601</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Faeces</text>
@@ -10169,9 +10169,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z968858-16258597</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>S\H/A Anneurism</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -10234,9 +10234,9 @@ Comment: The requested tests were not completed as no
 	  <id>12Z986858-16258596</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>S\H/A Anneurism</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Csf &amp; Fluid Chemistr</text>
@@ -10335,9 +10335,9 @@ Xanthochromia Comment:   Oxyhaemoglobin present but no significant
 	  <id>12Z968858-16258595</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>S\H/A Anneurism</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>CSF M/C/S</text>
@@ -10434,9 +10434,9 @@ culture or special media are required.
 	  <id>12Z968838-16258594</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -10517,9 +10517,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968838-16258593</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -10590,9 +10590,9 @@ Troponin I        0.02    ug/L   (See Below )
 	  <id>12Z986838-16258592</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -10691,9 +10691,9 @@ Comment: * Please note: no specimen received.
 	  <id>12Z968848-16258591</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain Worse On Exercise</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Micro Sendout</text>
@@ -10774,9 +10774,9 @@ COMMENT: This serum sample has been stored for 3 months.  If clinically
 	  <id>12Z561167-16258590</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -10893,9 +10893,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561067-16258589</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -11600,9 +11600,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986828-16258582</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain Worse On Exercise</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Internal Serology</text>
@@ -11845,9 +11845,9 @@ yeasts                                    Occasional
 	  <id>12Z561866-16258578</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -11964,9 +11964,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968704-16258577</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain Fi</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -12133,9 +12133,9 @@ No Growth -Detection limit 10^7 CFU/L
 	  <id>12Z968877-16258575</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Collapsed Low BP</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -12634,9 +12634,9 @@ Conclusion: Increase in leucocyte count since the last examination.
 	  <id>12Z968837-16258570</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile FI</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -12941,9 +12941,9 @@ Urine Osmolality                618   mmol/L          ( 50-1200  )
 	  <id>12Z561766-16258566</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -13194,9 +13194,9 @@ Osmolality        295     mosm/kg( 280-300  )
 	  <id>12Z968896-16258563</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Gastro</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -13279,9 +13279,9 @@ Protein Total      73     g/L    ( 65-85    )
 	  <id>12Z986896-16258562</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Gastro</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -13550,9 +13550,9 @@ Baso         0.1                                       x10^9/L   0.0-0.1
 	  <id>12Z516666-16258559</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -13669,9 +13669,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561566-16258558</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -13878,9 +13878,9 @@ call 1-800-555-2123 to contact the State Department of Health.
 	  <id>12Z968832-16258556</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -13945,9 +13945,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z561466-16258555</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -14048,9 +14048,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968876-16258554</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -14105,9 +14105,9 @@ Troponin I        0.02    ug/L   (See Below )
 	  <id>12Z546943-16258547</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -14162,9 +14162,9 @@ C-React Prot      149     mg/L   ( &lt;5       )
 	  <id>12Z564943-16258546</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -14229,9 +14229,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z968856-16258539</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -14290,9 +14290,9 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
 	  <id>12Z968856-16258538</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Haem Iron/B12 &amp; Fol</text>
@@ -14385,9 +14385,9 @@ Old Ref Ranges prior to 27th April 2004
 	  <id>12Z968856-16258537</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -14484,9 +14484,9 @@ LIPIDS
 	  <id>12Z986856-16258536</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -14579,9 +14579,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z986846-16258529</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -14650,9 +14650,9 @@ Urea              4.4     mmol/L ( 2.5-8.3  )
 	  <id>12Z968846-16258528</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -14763,9 +14763,9 @@ Comment: Instrument differential and parameters reported.
 	  <id>12Z968846-16258527</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -14830,9 +14830,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z968836-16258526</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile >38</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -15055,9 +15055,9 @@ Standard culture:   +++  Mixed upper respiratory tract flora
 	  <id>12Z561366-16258521</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -15174,9 +15174,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986816-16258520</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Nausea And Vomiting FI</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -15535,9 +15535,9 @@ Film Comment : Red cells show some microcytes, elongated cells and mildly
 	  <id>12Z968779-16258516</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Drain Fluid. Prev Vre And Kleb Pneumo Rx Teicoplan/Tazo</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Sterile Sites M/C/S</text>
@@ -15636,9 +15636,9 @@ CULTURE
 	  <id>12Z561266-16258515</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -15755,9 +15755,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968875-16258514</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>On Admission</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Surveillance</text>
@@ -15826,9 +15826,9 @@ RECTAL SWAB                   VRE not detected
 	  <id>12Z968865-16258513</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -16027,9 +16027,9 @@ Comment: The specimen received was mislabelled. The ward has  been
 	  <id>12Z968835-16258507</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Acute Alcohol Withdrawal</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Haem Iron/B12 &amp; Fol</text>
@@ -16122,9 +16122,9 @@ Old Ref Ranges prior to 27th April 2004
 	  <id>12Z968835-16258506</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Acute Alcohol Withdrawal</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -16199,9 +16199,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986835-16258505</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Acute Alcohol Withdrawal</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -16260,9 +16260,9 @@ Vitamin 25 D                 TF      nmol/L( SEE-BELOW
 	  <id>12Z968835-16258504</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Acute Alcohol Withdrawal</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -16355,9 +16355,9 @@ Baso         0.0      0.0      0.0      0.0      0.0   x10^9/L   0.0-0.1
 	  <id>12Z968835-16258503</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Acute Alcohol Withdrawal</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -16442,9 +16442,9 @@ C-React Prot       12     mg/L   ( &lt;5       )
 	  <id>12Z968825-16258502</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>T+ 38.7C</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -16799,9 +16799,9 @@ Conclusion: Please note fall in haemoglobin since the previous
 	  <id>12Z516166-16258497</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -16918,9 +16918,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z561066-16258496</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -17037,9 +17037,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968805-16258495</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Palpitation</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -17100,9 +17100,9 @@ TSH                       1.55       mIU/L   ( 0.1-4.0  )
 	  <id>12Z968805-16258494</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Palpitation</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -17195,9 +17195,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968805-16258493</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Palpitation</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -17384,9 +17384,9 @@ streptococci and diphtheroid bacilli.
 	  <id>12Z516965-16258491</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -17503,9 +17503,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968884-16258490</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Molecular Haem</text>
@@ -17644,9 +17644,9 @@ MicroAlb/Creat Ratio           5.66 H mg/mmol creat   ( &lt;2.5     )
 	  <id>12Z561865-16258488</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -17933,9 +17933,9 @@ Baso         0.0      0.1      0.0      0.0      0.0   x10^9/L   0.0-0.1
 	  <id>12Z516765-16258484</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -18052,9 +18052,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968844-16258483</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Angio + Stent</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -18137,9 +18137,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968844-16258482</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Angio + Stent</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -18228,9 +18228,9 @@ Protein Total      65     g/L    ( 65-85    )
 	  <id>12Z968844-16258481</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Angio + Stent</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -18651,9 +18651,9 @@ Comment: FBE with BMAT. Report to follow.
 	  <id>12Z968814-16258476</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Urinary Symptoms 2/52 With Loin Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Tumour Markers</text>
@@ -18716,9 +18716,9 @@ Comment: The requested tests were not completed as no sample was
 	  <id>12Z968814-16258475</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Urinary Symptoms 2/52 With Loin Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -18787,9 +18787,9 @@ Urea              6.5     mmol/L ( 2.5-8.3  )
 	  <id>12Z986814-16258474</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Urinary Symptoms 2/52 With Loin Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -18882,9 +18882,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z986893-16258473</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Sah</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -18939,9 +18939,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968893-16258472</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Sah</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -19014,9 +19014,9 @@ Comment: The requested tests were not completed as no
 	  <id>12Z968893-16258471</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Sah</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -19091,9 +19091,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968804-16258470</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Increasing Sob On Exerion Post Surgery 3/52 Ago ? Pe</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -19184,9 +19184,9 @@ Comment: Haemolysed. Some tests (*) unavailable.
 	  <id>12Z968804-16258469</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Increasing Sob On Exerion Post Surgery 3/52 Ago ? Pe</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -19293,9 +19293,9 @@ Comment: * Specimen clotted. ED informed.
 	  <id>12Z561665-16258468</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -19412,9 +19412,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968843-16258467</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Known Endocarditis, Vasculitic Rash Past, ?septic Embol</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Sterile Sites M/C/S</text>
@@ -19505,9 +19505,9 @@ No Growth After 2 Days.
 	  <id>12Z968883-16258465</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -19582,9 +19582,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968883-16258464</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -19653,9 +19653,9 @@ Urea              4.3     mmol/L ( 2.5-8.3  )
 	  <id>12Z986883-1625846422</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -19932,9 +19932,9 @@ Pathologist: To Follow
 	  <id>12Z986883-1625846433</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>89/M Collapsed, Low Bp</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -20009,9 +20009,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968863-16258459</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>89/M Collapsed, Low Bp</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -20096,9 +20096,9 @@ C-React Prot      109     mg/L   ( &lt;5       )
 	  <id>12Z986863-16258458</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>89/M Collapsed, Low Bp</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -20211,9 +20211,9 @@ Comment: Please note mild neutrophilia and mild monocytosis
 	  <id>12Z968873-16258457</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Pre Organ </text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine Chemistry</text>
@@ -20282,9 +20282,9 @@ Protein/Creat Ratio             190 H mg/mmol Creat   ( 15-35    )
 	  <id>12Z986843-16258456</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Known Endocarditis, Vasculitic Rash Past, ?septic Embol</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>New Histology Rep</text>
@@ -20377,9 +20377,9 @@ Pathologist: To Follow
 	  <id>12Z867193-16258455</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Ivig-Intragram 39G</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Bbank Other Products</text>
@@ -20476,9 +20476,9 @@ the Blood Bank.
 	  <id>12Z561565-16258454</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -20637,9 +20637,9 @@ Albumin            22     g/L    ( 35-50    )
 	  <id>12Z986813-16258452</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Recurrent Falls</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -20838,9 +20838,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z876183-16258450</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Kovig Ivig- 30G</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Bbank Other Products</text>
@@ -20937,9 +20937,9 @@ the Blood Bank.
 	  <id>12Z561465-16258449</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -21040,9 +21040,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986892-16258448</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Cags X3 24/24 Post</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -21133,9 +21133,9 @@ Comment: The CKMB was not measured on this sample. It has
 	  <id>12Z968892-16258447</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Cags X3 24/24 Post</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -21236,9 +21236,9 @@ Comment: Please note fall in haemoglobin and platelet count since
 	  <id>5003-3385</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Molecular Haem</text>
@@ -21329,9 +21329,9 @@ Comment
 	  <id>12Z561365-16258445</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -21448,9 +21448,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z986872-16258444</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain Worse On Exercise</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -21515,9 +21515,9 @@ INR               1.1      1.1      1.1      1.1      2.6H       0.8-1.3
 	  <id>12Z968872-16258443</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain Worse On Exercise</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -21582,9 +21582,9 @@ Comment: A troponin has been measured for this patient in
 	  <id>12Z986862-16258442</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>2Hrs Post Dose</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Therapeutic Drugs</text>
@@ -21683,9 +21683,9 @@ Hrs Since Dose          No Info    02:00                   HH:MM
 	  <id>12Z968852-16258441</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Op MVR</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -21760,9 +21760,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986852-16258440</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Op MVR</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -21851,9 +21851,9 @@ Protein Total      47     g/L    ( 65-85    )
 	  <id>12Z968852-16258439</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Op MVR</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -21954,9 +21954,9 @@ Comment: Please note fall in haemoglobin and platelet count since
 	  <id>12Z986842-16258438</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Recurrent Falls</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -22011,9 +22011,9 @@ NTRC
 	  <id>12Z968842-16258437</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Recurrent Falls</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -22090,9 +22090,9 @@ Albumin            34     g/L    ( 35-50    )
 	  <id>12Z968842-16258436</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Recurrent Falls</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -22185,9 +22185,9 @@ Baso         0.0      0.0                              x10^9/L   0.0-0.1
 	  <id>12Z968832-16258435</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -22252,9 +22252,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z968812-16258434</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Drug Screen (Toxic)</text>
@@ -22429,9 +22429,9 @@ Standard culture:   +++  Mixed upper respiratory tract flora
 	  <id>12Z968802-16258432</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Platelet Increment</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -22630,9 +22630,9 @@ Lipase            741     IU/L   ( &lt;60      )
 	  <id>12Z968861-16258427</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Angiogram Anaemia</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -22709,9 +22709,9 @@ Albumin            27     g/L    ( 35-50    )
 	  <id>12Z986861-16258426</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Post Angiogram Anaemia</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -22926,9 +22926,9 @@ Conclusion: ? Post-op.
 	  <id>12Z516265-16258424</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -23045,9 +23045,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968841-16258423</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -23102,9 +23102,9 @@ NTRS
 	  <id>12Z986841-16258422</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Therapeutic Drugs</text>
@@ -23183,9 +23183,9 @@ Post Dose (Peak) level : Not recommended
 	  <id>12Z986841-16258421</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -23270,9 +23270,9 @@ C-React Prot       19     mg/L   ( &lt;5       )
 	  <id>12Z968841-16258420</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -23373,9 +23373,9 @@ Comment: Note: mild neutrophilia. Instrument differential and
 	  <id>12Z968831-16258419</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Urinary Symptoms 2/52 With Loin Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Urine M/C/S</text>
@@ -24164,9 +24164,9 @@ Baso         0.1                                       x10^9/L   0.0-0.1
 	  <id>12Z568456-16258409</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chronic Idiopathic Urticaria</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -24221,9 +24221,9 @@ NTRESR
 	  <id>12Z966082-16258408</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>On Clozapine</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Central Reception</text>
@@ -24506,9 +24506,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968801-16258404</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile FI</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Cultures</text>
@@ -24965,9 +24965,9 @@ Conclusion: Please note fall in haemoglobin since the previous
 	  <id>12Z968880-16258398</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Atheroma With Complete Occlusions R/L Legs</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -25036,9 +25036,9 @@ Urea             11.7     mmol/L ( 2.5-8.3  )
 	  <id>12Z968880-16258397</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Atheroma With Complete Occlusions R/L Legs</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -25155,9 +25155,9 @@ Film Comment : Neutrophils show mild toxic changes. Manual differential.
 	  <id>12Z968870-16258396</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -25242,9 +25242,9 @@ Troponin I       &lt;0.02    ug/L   (See Below )
 	  <id>12Z986870-16258395</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -25583,9 +25583,9 @@ Conclusion: ? Cause of persistent mild thrombocytopenia.
 	  <id>12Z564923-16258390</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>See Slip</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -25650,9 +25650,9 @@ INR               4.3H     4.0H     6.2H     6.6H     6.9H       0.8-1.3
 	  <id>12Z968840-16258389</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Headache</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -25735,9 +25735,9 @@ Protein Total      80     g/L    ( 65-85    )
 	  <id>12Z968840-16258388</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Headache</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -25830,9 +25830,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z968840-16258388</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Headache</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -26055,9 +26055,9 @@ Anaerobic bottle             4   days                 Negative
 	  <id>12Z986860-16258384</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma MVA</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -26122,9 +26122,9 @@ INR               1.0                                            0.8-1.3
 	  <id>12Z986860-16258383</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma MVA</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -26185,9 +26185,9 @@ Quant Pregnancy (hCG) &lt;2           IU/L    ( &lt;5       )
 	  <id>12Z968860-16258382</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma MVA</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -26286,9 +26286,9 @@ Comment: Please note mild neutrophilia
 	  <id>12Z986860-16258381</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Trauma MVA</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -26371,9 +26371,9 @@ Protein Total      67     g/L    ( 65-85    )
 	  <id>12Z968709-16258380</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Duplicate Requests</text>
@@ -26446,9 +26446,9 @@ Comments / Steps Taken
 	  <id>12Z561065-16258379</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -26661,9 +26661,9 @@ Conclusion: * Film shows fibrin strands suggestive of a partially
 	  <id>12Z968800-16258377</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Pleuritic Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -26732,9 +26732,9 @@ Urea              4.2     mmol/L ( 2.5-8.3  )
 	  <id>12Z968800-16258376</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Pleuritic Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -26833,9 +26833,9 @@ Comment: Please note mild monocytosis
 	  <id>12Z986800-16258375</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Pleuritic Chest Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -27288,9 +27288,9 @@ Amylase            51     IU/L   ( 22-100   )
 	  <id>12Z986789-16258370</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Febrile . Neutripaenic</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Respiratory M/C/S</text>
@@ -27393,9 +27393,9 @@ Standard culture:   +  Mixed upper respiratory tract flora
 	  <id>12Z516964-16258369</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -27512,9 +27512,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968779-16258368</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Drain Fluid. Prev Vre And Kleb Pneumo Rx Teicoplan/Tazo</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Csf &amp; Fluid Chemistr</text>
@@ -27681,9 +27681,9 @@ streptococci, diphtheroid bacilli \T\ gram negative bacilli.
 	  <id>12Z986759-16258365</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>ga Streps</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Wounds/Tips/Ent/Eye</text>
@@ -27760,9 +27760,9 @@ No Beta haemolytic streptococci isolated.
 	  <id>12Z986759-16258364</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>ga Streps</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Internal Serology</text>
@@ -28169,9 +28169,9 @@ Conclusion: Suggest repeat FBE to confirm platelet count.
 	  <id>12Z968739-16258359</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Sob On Exertion</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -28242,9 +28242,9 @@ Troponin I       &lt;0.02    ug/L   (See Below )
 	  <id>12Z986739-16258358</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Sob On Exertion</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -28337,9 +28337,9 @@ Baso         0.0                                       x10^9/L   0.0-0.1
 	  <id>12Z516864-16258356</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Automatic Request Registration</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Blood Gas</text>
@@ -28456,9 +28456,9 @@ Note: Reference Ranges shown are for arterial blood only.
 	  <id>12Z968709-16258355</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Molecular Haem</text>
@@ -28525,9 +28525,9 @@ G1691A Substitution Result:
 	  <id>12Z986709-16258354</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -28598,9 +28598,9 @@ Lactate           1.2     mmol/L ( 0.2-1.8  )
 	  <id>12Z968709-16258353</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -28685,9 +28685,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z986709-16258352</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -28798,9 +28798,9 @@ Conclusion: Common causes of macrocytosis include liver disease,
 	  <id>12Z968709-16258351</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Immunology Auto-Abs</text>
@@ -28883,9 +28883,9 @@ Please contact the immunopathology registrar for further advice on 9342 8023.
 	  <id>12Z968709-16258350</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Thrombophilic Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Special Coagulation</text>
@@ -29094,9 +29094,9 @@ Albumin            23     g/L    ( 35-50    )
 	  <id>12Z968788-16258347</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Anaemia</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -29209,9 +29209,9 @@ Conclusion: Suggestive of iron deficiency anaemia. Suggest correlation
 	  <id>12Z986719-16258345</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Mba 80Km With Headstrike, Loc And R Neck Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>FBE &amp; Routine Haem</text>
@@ -29304,9 +29304,9 @@ Baso         0.0      0.0      0.0                     x10^9/L   0.0-0.1
 	  <id>12Z968719-16258344</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Mba 80Km With Headstrike, Loc And R Neck Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Routine Coagulation</text>
@@ -29381,9 +29381,9 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 	  <id>12Z968719-16258343</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Mba 80Km With Headstrike, Loc And R Neck Pain</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>
@@ -29474,9 +29474,9 @@ EtOH              0.02    gm%
 	  <id>|RE||</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Delerium Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Haem Iron/B12 &amp; Fol</text>
@@ -29569,9 +29569,9 @@ Old Ref Ranges prior to 27th April 2004
 	  <id>12Z968797-16258336</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Delerium Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>Endo / Nutrition</text>
@@ -29632,9 +29632,9 @@ TSH                       1.09       mIU/L   ( 0.1-4.0  )
 	  <id>12Z986797-16258335</id>
 	</reportId>
         <requestDetail>
-          <clinicalInfo>
+          <!--<clinicalInfo>
             <text>Delerium Screen</text>
-          </clinicalInfo>
+          </clinicalInfo>-->
         </requestDetail>
 	<reportName>
            <text>General Biochemistry</text>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -44,7 +44,7 @@ public class Profile extends Resource {
         review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn
-        superceded; // This profile was superceded by a more recent version
+        superseded; // This profile was superseded by a more recent version
         public static ResourceProfileStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -58,8 +58,8 @@ public class Profile extends Resource {
           return production;
         if ("withdrawn".equals(codeString))
           return withdrawn;
-        if ("superceded".equals(codeString))
-          return superceded;
+        if ("superseded".equals(codeString))
+          return superseded;
         throw new Exception("Unknown ResourceProfileStatus code '"+codeString+"'");
         }
         public String toCode() {
@@ -69,7 +69,7 @@ public class Profile extends Resource {
             case review: return "review";
             case production: return "production";
             case withdrawn: return "withdrawn";
-            case superceded: return "superceded";
+            case superseded: return "superseded";
             default: return "?";
           }
         }
@@ -340,7 +340,7 @@ public class Profile extends Resource {
         private java.lang.Boolean bundled;
 
         /**
-         * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeting element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.
+         * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.
          */
         private java.lang.Boolean closed;
 
@@ -463,7 +463,7 @@ public class Profile extends Resource {
         private java.lang.Boolean mustSupport;
 
         /**
-         * If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevent to their particular system.
+         * If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevant to their particular system.
          */
         private java.lang.Boolean mustUnderstand;
 
@@ -749,14 +749,14 @@ public class Profile extends Resource {
         private String code;
 
         /**
-         * Identifies the types of resourse or data type elements to which the extension can be applied.
-         */
-        private List<String> context = new ArrayList<String>();
-
-        /**
          * Identifies the type of context to which the extension applies
          */
         private ExtensionContext contextType;
+
+        /**
+         * Identifies the types of resource or data type elements to which the extension can be applied.
+         */
+        private List<String> context = new ArrayList<String>();
 
         /**
          * Definition of the extension and its content
@@ -771,16 +771,16 @@ public class Profile extends Resource {
           this.code = value;
         }
 
-        public List<String> getContext() { 
-          return this.context;
-        }
-
         public ExtensionContext getContextType() { 
           return this.contextType;
         }
 
         public void setContextType(ExtensionContext value) { 
           this.contextType = value;
+        }
+
+        public List<String> getContext() { 
+          return this.context;
         }
 
         public Definition getDefinition() { 
@@ -944,7 +944,7 @@ public class Profile extends Resource {
     private String name;
 
     /**
-     * The offiical version of this profile - for external version specific references
+     * The official version of this profile - for external version specific references
      */
     private String version;
 

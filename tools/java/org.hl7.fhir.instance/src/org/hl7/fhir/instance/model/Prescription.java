@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -39,7 +39,7 @@ import java.util.*;
 public class Prescription extends Resource {
 
     public enum PrescriptionStatus {
-        active, // Patient is using the prescribed medicin
+        active, // Patient is using the prescribed medicine
         completed; // Prescription is no longer current
         public static PrescriptionStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -144,7 +144,7 @@ public class Prescription extends Resource {
         /**
          * Quantity of active ingredient expressed in relation to the whole of the prepared medicine
          */
-        private Ratio quantity;
+        private Type quantity;
 
         public CodeableConcept getIdentification() { 
           return this.identification;
@@ -154,11 +154,11 @@ public class Prescription extends Resource {
           this.identification = value;
         }
 
-        public Ratio getQuantity() { 
+        public Type getQuantity() { 
           return this.quantity;
         }
 
-        public void setQuantity(Ratio value) { 
+        public void setQuantity(Type value) { 
           this.quantity = value;
         }
 
@@ -173,7 +173,7 @@ public class Prescription extends Resource {
         /**
          * Quantity of inactive ingredient expressed in relation to the whole of the prepared medicine
          */
-        private Ratio quantity;
+        private Type quantity;
 
         public CodeableConcept getIdentification() { 
           return this.identification;
@@ -183,11 +183,11 @@ public class Prescription extends Resource {
           this.identification = value;
         }
 
-        public Ratio getQuantity() { 
+        public Type getQuantity() { 
           return this.quantity;
         }
 
-        public void setQuantity(Ratio value) { 
+        public void setQuantity(Type value) { 
           this.quantity = value;
         }
 

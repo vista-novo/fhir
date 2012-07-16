@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -61,7 +61,7 @@ public class Conformance extends Resource {
 
     public enum RestfulOperation {
         read, // Read the current state of the resource
-        vread, // Read the state of a specific versioin of the resource
+        vread, // Read the state of a specific version of the resource
         update, // Update an existing resource by its id (or create it if it is new)
         delete, // Delete a resource
         history, // Retrieve the update history for the resource
@@ -278,7 +278,7 @@ public class Conformance extends Resource {
         private RestfulConformanceMode mode;
 
         /**
-         * Provides documentation about the system's restful capabilites that apply across all applications, such as security
+         * Provides documentation about the system's restful capabilities that apply across all applications, such as security
          */
         private String documentation;
 

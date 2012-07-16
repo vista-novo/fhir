@@ -163,7 +163,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     	
     } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
       if (cd.getName().equals("MessageEvent"))
-        write("<li>"+path+" of the <a href=\"message.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
+        write("<li>"+path+" of the <a href=\"messageheader.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
       else if (cd.getName().equals("ResourceType"))
         write("  <li>"+path+" of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
       else 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 /**
  * A reference from one resource to another
@@ -42,12 +42,12 @@ public class ResourceReference extends Type {
     private String type;
 
     /**
-     * A literal URL that resolves to the location of the resource. The URL may be relative or absolule. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource
+     * A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource
      */
     private java.net.URI id;
 
     /**
-     * A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolule. Relative Ids contain the logical version id of the resource. 
+     * A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolute. Relative Ids contain the logical version id of the resource. 
      */
     private java.net.URI version;
 

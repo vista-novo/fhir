@@ -964,11 +964,16 @@ public class Publisher {
     tmpTransform.deleteOnExit();
     File tmpOutput = File.createTempFile("tmp", ".xml");
     tmpOutput.deleteOnExit();
-//    page.log("schematron validate "+n+".xml -> (1) generate "+tmpTransform.getAbsolutePath());
-    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir+doc.getDocumentElement().getNodeName().toLowerCase()+".sch", page.getFolders().rootDir+"tools\\schematron\\iso_svrl_for_xslt1.xsl", tmpTransform.getAbsolutePath());
-//    page.log("schematron validate "+n+".xml -> (2) generate "+tmpOutput.getAbsolutePath());
+    String sch = doc.getDocumentElement().getNodeName().toLowerCase();
+    if (sch.equals("feed"))
+      sch = "fhir-atom";
+    
+    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir+sch+".sch", page.getFolders().rootDir+"tools\\schematron\\iso_svrl_for_xslt1.xsl", tmpTransform.getAbsolutePath());
     Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir + n + ".xml", tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
 
+    factory = DocumentBuilderFactory.newInstance();
+    factory.setNamespaceAware(true);
+    builder = factory.newDocumentBuilder();
     doc = builder.parse(new FileInputStream(tmpOutput));
     NodeList nl = doc.getDocumentElement().getElementsByTagNameNS("http://purl.oclc.org/dsdl/svrl", "failed-assert");
     if (nl.getLength() > 0) {

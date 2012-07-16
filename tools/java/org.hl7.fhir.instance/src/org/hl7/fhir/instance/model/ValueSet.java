@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 import java.util.*;
 
@@ -43,7 +43,7 @@ public class ValueSet extends Resource {
         testing, // This valueset was authored for testing purposes (or education/evaluation/evangelisation)
         production, // This valueset is ready for use in production systems
         withdrawn, // This valueset should no longer be used
-        superceded; // This valueset has been replaced and a different valueset should be used in its place
+        superseded; // This valueset has been replaced and a different valueset should be used in its place
         public static ValuesetStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -55,8 +55,8 @@ public class ValueSet extends Resource {
           return production;
         if ("withdrawn".equals(codeString))
           return withdrawn;
-        if ("superceded".equals(codeString))
-          return superceded;
+        if ("superseded".equals(codeString))
+          return superseded;
         throw new Exception("Unknown ValuesetStatus code '"+codeString+"'");
         }
         public String toCode() {
@@ -65,7 +65,7 @@ public class ValueSet extends Resource {
             case testing: return "testing";
             case production: return "production";
             case withdrawn: return "withdrawn";
-            case superceded: return "superceded";
+            case superseded: return "superseded";
             default: return "?";
           }
         }
@@ -271,7 +271,7 @@ public class ValueSet extends Resource {
     private Author author;
 
     /**
-     * A free text natural language description of the value set - contents, reason for definition, conditions of use etc
+     * A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.
      */
     private String description;
 

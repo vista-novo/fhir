@@ -29,10 +29,10 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Jul 15, 2012 22:42+1000 for FHIR v0.04
+// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
 
 /**
- * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitary units and floating currencies
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
  */
 public class Quantity extends Type {
 
@@ -71,7 +71,7 @@ public class Quantity extends Type {
     private java.math.BigDecimal value;
 
     /**
-     * How the value should be understood and represented - whether the actual value is greater or less than the mesaure due to measurement issues
+     * How the value should be understood and represented - whether the actual value is greater or less than the measure due to measurement issues
      */
     private QuantityRange range;
 
@@ -81,7 +81,7 @@ public class Quantity extends Type {
     private String units;
 
     /**
-     * A computer processible form of the units in some unit representation system
+     * A computer processable form of the units in some unit representation system
      */
     private String code;
 

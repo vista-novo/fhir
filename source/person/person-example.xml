@@ -15,9 +15,11 @@
     <period>
       <start>2001-05-06</start>
     </period>
+    <!-- commented pending decision on dataAbsentReason on assigner
     <assigner>
       <text>Acme Healthcare</text>
     </assigner>
+    -->
   </identifier>
 
   <!-- Peter James Chalmers, but called "Jim" -->

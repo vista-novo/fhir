@@ -117,17 +117,20 @@
         </coding>
       </name>
       <valueQuantity>
-        <value>0.55</value>
+        <value>55</value>
+	<units>%</units>
       </valueQuantity>
       <flag>+</flag>
       <status>final</status>
       <referenceRange>
         <rangeRange>
           <low>
-            <value>0.38</value>
+            <value>38</value>
+   	    <units>%</units>
           </low>
           <high>
-            <value>0.52</value>
+            <value>52</value>
+            <units>%</units>
           </high>
         </rangeRange>
       </referenceRange>

@@ -60,9 +60,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -88,9 +90,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -116,9 +120,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -144,9 +150,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -172,9 +180,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -200,9 +210,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -228,9 +240,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -256,9 +270,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -278,16 +294,18 @@
             <valueQuantity>
               <value>0.39</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -313,9 +331,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -341,9 +361,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -369,9 +391,11 @@
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -397,9 +421,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -419,16 +445,18 @@
             <valueQuantity>
               <value>54</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -454,9 +482,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -482,9 +512,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -510,9 +542,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -538,9 +572,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -566,9 +602,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -594,9 +632,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -622,9 +662,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -650,9 +692,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -672,16 +716,18 @@
             <valueQuantity>
               <value>5</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>--</flag>
+            </valueQuantity>            
+	    <flag>--</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -708,9 +754,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -736,9 +784,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -764,9 +814,11 @@
               <rangeRange>
                 <low>
                   <value>1.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -901,9 +953,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -929,9 +983,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -957,9 +1013,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -985,9 +1043,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1013,9 +1073,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1041,9 +1103,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1063,16 +1127,18 @@
             <valueQuantity>
               <value>8.2</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1098,9 +1164,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1120,16 +1188,18 @@
             <valueQuantity>
               <value>0.42</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1155,9 +1225,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1183,9 +1255,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1205,16 +1279,18 @@
             <valueQuantity>
               <value>369</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1234,16 +1310,18 @@
             <valueQuantity>
               <value>438</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1263,16 +1341,18 @@
             <valueQuantity>
               <value>263</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1291,17 +1371,19 @@
             </name>
             <valueQuantity>
               <value>87</value>
-              <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+              <units>U/L</units>            
+	    </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>            
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>            
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1327,9 +1409,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1355,9 +1439,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1383,9 +1469,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1411,9 +1499,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1439,9 +1529,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1467,9 +1559,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1495,9 +1589,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1516,17 +1612,19 @@
             </name>
             <valueQuantity>
               <value>8</value>
-              <units>umol/L</units>
-            </valueQuantity>
-            <flag>-</flag>
+              <units>umol/L</units>            
+	    </valueQuantity>            
+	    <flag>-</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>            
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>            
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1553,9 +1651,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1581,9 +1681,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1661,9 +1763,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1689,9 +1793,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1717,9 +1823,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1745,9 +1853,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1773,9 +1883,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1801,9 +1913,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1829,9 +1943,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1857,9 +1973,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1878,17 +1996,19 @@
             </name>
             <valueQuantity>
               <value>0.46</value>
-              <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+              <units>mmol/L</units>            
+	    </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>            
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>            
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1914,9 +2034,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1942,9 +2064,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1963,17 +2087,19 @@
             </name>
             <valueQuantity>
               <value>204</value>
-              <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+              <units>U/L</units>            
+	    </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>            
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>            
                 </high>
               </rangeRange>
             </referenceRange>
@@ -1993,16 +2119,18 @@
             <valueQuantity>
               <value>192</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2022,16 +2150,18 @@
             <valueQuantity>
               <value>70</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2057,9 +2187,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2085,9 +2217,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2113,9 +2247,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2141,9 +2277,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2169,9 +2307,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2197,9 +2337,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2225,9 +2367,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2253,9 +2397,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2275,16 +2421,18 @@
             <valueQuantity>
               <value>5</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>--</flag>
+            </valueQuantity>            
+	    <flag>--</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2311,9 +2459,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2339,9 +2489,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2420,9 +2572,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2448,9 +2602,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2476,9 +2632,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2504,9 +2662,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2532,9 +2692,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2560,9 +2722,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2588,9 +2752,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2616,9 +2782,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2638,16 +2806,18 @@
             <valueQuantity>
               <value>0.40</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2673,9 +2843,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2701,9 +2873,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2723,16 +2897,18 @@
             <valueQuantity>
               <value>144</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2752,16 +2928,18 @@
             <valueQuantity>
               <value>106</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2787,9 +2965,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2815,9 +2995,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2843,9 +3025,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2871,9 +3055,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2899,9 +3085,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2927,9 +3115,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2955,9 +3145,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -2983,9 +3175,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3011,9 +3205,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3033,16 +3229,18 @@
             <valueQuantity>
               <value>3</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>---</flag>
+            </valueQuantity>            
+	    <flag>---</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3069,9 +3267,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3097,9 +3297,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3178,9 +3380,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3206,9 +3410,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3234,9 +3440,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3262,9 +3470,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3290,9 +3500,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3318,9 +3530,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3346,9 +3560,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3374,9 +3590,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3402,9 +3620,11 @@
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3424,16 +3644,18 @@
             <valueQuantity>
               <value>43</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3453,16 +3675,18 @@
             <valueQuantity>
               <value>708</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3482,16 +3706,18 @@
             <valueQuantity>
               <value>1131</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3511,16 +3737,18 @@
             <valueQuantity>
               <value>475</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3540,16 +3768,18 @@
             <valueQuantity>
               <value>176</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3569,16 +3799,18 @@
             <valueQuantity>
               <value>324</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3604,9 +3836,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3632,9 +3866,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3660,9 +3896,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3688,9 +3926,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3716,9 +3956,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3744,9 +3986,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3772,9 +4016,11 @@
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3794,17 +4040,19 @@
             <valueQuantity>
               <value>7.0</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3830,9 +4078,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3910,9 +4160,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3938,9 +4190,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3966,9 +4220,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -3994,9 +4250,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4022,9 +4280,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4050,9 +4310,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4078,9 +4340,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4106,9 +4370,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4128,16 +4394,18 @@
             <valueQuantity>
               <value>0.37</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4157,16 +4425,18 @@
             <valueQuantity>
               <value>50</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4186,16 +4456,18 @@
             <valueQuantity>
               <value>684</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4215,16 +4487,18 @@
             <valueQuantity>
               <value>1105</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4244,16 +4518,18 @@
             <valueQuantity>
               <value>466</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4273,16 +4549,18 @@
             <valueQuantity>
               <value>198</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4302,16 +4580,18 @@
             <valueQuantity>
               <value>323</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4337,9 +4617,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4365,9 +4647,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4393,9 +4677,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4421,9 +4707,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4449,9 +4737,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4477,9 +4767,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4505,9 +4797,11 @@
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4527,17 +4821,19 @@
             <valueQuantity>
               <value>6.9</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4563,9 +4859,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4643,9 +4941,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4671,9 +4971,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4699,9 +5001,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4727,9 +5031,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4755,9 +5061,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4783,9 +5091,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4811,9 +5121,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4839,9 +5151,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4861,16 +5175,18 @@
             <valueQuantity>
               <value>0.41</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4890,16 +5206,18 @@
             <valueQuantity>
               <value>27</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4919,16 +5237,18 @@
             <valueQuantity>
               <value>631</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4948,16 +5268,18 @@
             <valueQuantity>
               <value>956</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -4977,16 +5299,18 @@
             <valueQuantity>
               <value>398</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5006,16 +5330,18 @@
             <valueQuantity>
               <value>120</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5041,9 +5367,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5069,9 +5397,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5097,9 +5427,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5125,9 +5457,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5153,9 +5487,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5181,9 +5517,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5209,9 +5547,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5231,16 +5571,18 @@
             <valueQuantity>
               <value>39</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5260,17 +5602,19 @@
             <valueQuantity>
               <value>6.8</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5296,9 +5640,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5376,9 +5722,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5404,9 +5752,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5432,9 +5782,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5460,9 +5812,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5488,9 +5842,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5516,9 +5872,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5544,9 +5902,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5572,9 +5932,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5594,16 +5956,18 @@
             <valueQuantity>
               <value>0.39</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5629,9 +5993,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5657,9 +6023,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5685,9 +6053,11 @@
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5713,9 +6083,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5735,16 +6107,18 @@
             <valueQuantity>
               <value>54</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5770,9 +6144,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5798,9 +6174,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5826,9 +6204,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5854,9 +6234,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5882,9 +6264,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5910,9 +6294,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5938,9 +6324,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5966,9 +6354,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -5988,16 +6378,18 @@
             <valueQuantity>
               <value>5</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>--</flag>
+            </valueQuantity>            
+	    <flag>--</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6024,9 +6416,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6052,9 +6446,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6132,9 +6528,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6160,9 +6558,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6188,9 +6588,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6216,9 +6618,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6244,9 +6648,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6272,9 +6678,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6294,16 +6702,18 @@
             <valueQuantity>
               <value>8.2</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6329,9 +6739,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6351,16 +6763,18 @@
             <valueQuantity>
               <value>0.42</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6386,9 +6800,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6414,9 +6830,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6436,16 +6854,18 @@
             <valueQuantity>
               <value>369</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6465,16 +6885,18 @@
             <valueQuantity>
               <value>438</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6494,16 +6916,18 @@
             <valueQuantity>
               <value>263</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6523,16 +6947,18 @@
             <valueQuantity>
               <value>87</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6558,9 +6984,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6586,9 +7014,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6614,9 +7044,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6642,9 +7074,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6670,9 +7104,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6698,9 +7134,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6726,9 +7164,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6748,16 +7188,18 @@
             <valueQuantity>
               <value>8</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>-</flag>
+            </valueQuantity>            
+	    <flag>-</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6784,9 +7226,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6812,9 +7256,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6892,9 +7338,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6920,9 +7368,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6948,9 +7398,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -6976,9 +7428,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7004,9 +7458,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7032,9 +7488,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7060,9 +7518,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7088,9 +7548,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7110,16 +7572,18 @@
             <valueQuantity>
               <value>0.46</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7145,9 +7609,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7173,9 +7639,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7195,16 +7663,18 @@
             <valueQuantity>
               <value>204</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7224,16 +7694,18 @@
             <valueQuantity>
               <value>192</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7253,16 +7725,18 @@
             <valueQuantity>
               <value>70</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7288,9 +7762,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7316,9 +7792,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7344,9 +7822,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7372,9 +7852,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7400,9 +7882,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7428,9 +7912,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7456,9 +7942,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7484,9 +7972,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7506,16 +7996,18 @@
             <valueQuantity>
               <value>5</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>--</flag>
+            </valueQuantity>            
+	    <flag>--</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7542,9 +8034,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7570,9 +8064,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7651,9 +8147,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7679,9 +8177,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7707,9 +8207,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7735,9 +8237,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7763,9 +8267,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7791,9 +8297,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7819,9 +8327,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7847,9 +8357,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7869,16 +8381,18 @@
             <valueQuantity>
               <value>0.40</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7904,9 +8418,11 @@
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7932,9 +8448,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>8</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7954,16 +8472,18 @@
             <valueQuantity>
               <value>144</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -7983,16 +8503,18 @@
             <valueQuantity>
               <value>106</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8018,9 +8540,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8046,9 +8570,11 @@
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8074,9 +8600,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8102,9 +8630,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8130,9 +8660,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8158,9 +8690,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8186,9 +8720,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8214,9 +8750,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8242,9 +8780,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8264,16 +8804,18 @@
             <valueQuantity>
               <value>3</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>---</flag>
+            </valueQuantity>            
+	    <flag>---</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8300,9 +8842,11 @@
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8328,9 +8872,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8409,9 +8955,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8437,9 +8985,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8465,9 +9015,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8493,9 +9045,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8521,9 +9075,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8549,9 +9105,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8577,9 +9135,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8605,9 +9165,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8633,9 +9195,11 @@
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8655,16 +9219,18 @@
             <valueQuantity>
               <value>43</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8684,16 +9250,18 @@
             <valueQuantity>
               <value>708</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8713,16 +9281,18 @@
             <valueQuantity>
               <value>1131</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8742,16 +9312,18 @@
             <valueQuantity>
               <value>475</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8771,16 +9343,18 @@
             <valueQuantity>
               <value>176</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8800,16 +9374,18 @@
             <valueQuantity>
               <value>324</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8835,9 +9411,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8863,9 +9441,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8891,9 +9471,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8919,9 +9501,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8947,9 +9531,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -8975,9 +9561,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9003,9 +9591,11 @@
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9025,17 +9615,19 @@
             <valueQuantity>
               <value>7.0</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	          <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9061,9 +9653,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9141,9 +9735,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9169,9 +9765,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9197,9 +9795,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9225,9 +9825,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9253,9 +9855,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9281,9 +9885,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9309,9 +9915,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9337,9 +9945,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9359,16 +9969,18 @@
             <valueQuantity>
               <value>0.37</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9388,16 +10000,18 @@
             <valueQuantity>
               <value>50</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9417,16 +10031,18 @@
             <valueQuantity>
               <value>684</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9446,16 +10062,18 @@
             <valueQuantity>
               <value>1105</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9475,16 +10093,18 @@
             <valueQuantity>
               <value>466</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9504,16 +10124,18 @@
             <valueQuantity>
               <value>198</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9533,16 +10155,18 @@
             <valueQuantity>
               <value>323</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9568,9 +10192,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9596,9 +10222,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9624,9 +10252,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9652,9 +10282,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9680,9 +10312,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9708,9 +10342,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9736,9 +10372,11 @@
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9758,17 +10396,19 @@
             <valueQuantity>
               <value>6.9</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+      	    <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9794,9 +10434,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9874,9 +10516,11 @@
               <rangeRange>
                 <low>
                   <value>137</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>147</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9902,9 +10546,11 @@
               <rangeRange>
                 <low>
                   <value>3.5</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>5.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9930,9 +10576,11 @@
               <rangeRange>
                 <low>
                   <value>96</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>109</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9958,9 +10606,11 @@
               <rangeRange>
                 <low>
                   <value>25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -9986,9 +10636,11 @@
               <rangeRange>
                 <low>
                   <value>4</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>17</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10014,9 +10666,11 @@
               <rangeRange>
                 <low>
                   <value>3.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10042,9 +10696,11 @@
               <rangeRange>
                 <low>
                   <value>2.0</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>7.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10070,9 +10726,11 @@
               <rangeRange>
                 <low>
                   <value>0.04</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.11</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10092,16 +10750,18 @@
             <valueQuantity>
               <value>0.41</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0.14</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>0.35</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10121,16 +10781,18 @@
             <valueQuantity>
               <value>27</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>2</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>20</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10150,16 +10812,18 @@
             <valueQuantity>
               <value>631</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>30</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>115</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10179,16 +10843,18 @@
             <valueQuantity>
               <value>956</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10208,16 +10874,18 @@
             <valueQuantity>
               <value>398</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>+++</flag>
+            </valueQuantity>            
+	    <flag>+++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>45</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10237,16 +10905,18 @@
             <valueQuantity>
               <value>120</value>
               <units>U/L</units>
-            </valueQuantity>
-            <flag>++</flag>
+            </valueQuantity>            
+	    <flag>++</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>0</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>41</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10272,9 +10942,11 @@
               <rangeRange>
                 <low>
                   <value>80</value>
+                  <units>U/L</units>
                 </low>
                 <high>
                   <value>250</value>
+                  <units>U/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10300,9 +10972,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10328,9 +11002,11 @@
               <rangeRange>
                 <low>
                   <value>2.25</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>2.65</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10356,9 +11032,11 @@
               <rangeRange>
                 <low>
                   <value>0.8</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>1.5</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10384,9 +11062,11 @@
               <rangeRange>
                 <low>
                   <value>60</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>82</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10412,9 +11092,11 @@
               <rangeRange>
                 <low>
                   <value>35</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>50</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10440,9 +11122,11 @@
               <rangeRange>
                 <low>
                   <value>20</value>
+                  <units>g/L</units>
                 </low>
                 <high>
                   <value>40</value>
+                  <units>g/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10462,16 +11146,18 @@
             <valueQuantity>
               <value>39</value>
               <units>umol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+	    <flag>+</flag>
             <status>final</status>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>10</value>
+                  <units>umol/L</units>
                 </low>
                 <high>
                   <value>33</value>
+                  <units>umol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10491,17 +11177,19 @@
             <valueQuantity>
               <value>6.8</value>
               <units>mmol/L</units>
-            </valueQuantity>
-            <flag>+</flag>
+            </valueQuantity>            
+      	    <flag>+</flag>
             <status>final</status>
             <comments>Revised NHF cholesterol guidelines (Nov.,2001): Target below 4.0 mmol/L if high risk patient. Consider lipid lowering treatment if cholesterol above 6.0 mmol/L, and no other risk factor of CHD.</comments>
             <referenceRange>
               <rangeRange>
                 <low>
                   <value>3.6</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>6.7</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10527,9 +11215,11 @@
               <rangeRange>
                 <low>
                   <value>0.3</value>
+                  <units>mmol/L</units>
                 </low>
                 <high>
                   <value>4.0</value>
+                  <units>mmol/L</units>
                 </high>
               </rangeRange>
             </referenceRange>
@@ -10590,7 +11280,7 @@
               <display>Microbial susceptibility tests</display>
             </coding>
           </name>
-          <specimen>
+          <specimen dataAbsentReason="astext">
             <text>URINE, CLEAN CATCH/MIDSTREAM</text>
           </specimen>
           <result>
@@ -10630,8 +11320,9 @@
             </name>
             <valueQuantity>
               <value>4</value>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	          <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10644,8 +11335,9 @@
             </name>
             <valueQuantity>
               <value>16</value>
-            </valueQuantity>
-            <flag>R</flag>
+              <units>U</units>
+            </valueQuantity>            
+	          <flag>R</flag>
             <status>final</status>
           </result>
           <result>
@@ -10659,8 +11351,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	          <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10674,8 +11367,9 @@
             <valueQuantity>
               <value>4</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	          <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10689,8 +11383,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10704,8 +11399,9 @@
             <valueQuantity>
               <value>4</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10719,8 +11415,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10734,8 +11431,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10749,8 +11447,9 @@
             <valueQuantity>
               <value>0.25</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10764,8 +11463,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10779,8 +11479,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10794,8 +11495,9 @@
             <valueQuantity>
               <value>0.25</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10808,8 +11510,9 @@
             </name>
             <valueQuantity>
               <value>32</value>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10823,8 +11526,9 @@
             <valueQuantity>
               <value>4</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10838,8 +11542,9 @@
             <valueQuantity>
               <value>20</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>SS</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>SS</flag>
             <status>final</status>
           </result>
           <result>
@@ -10853,8 +11558,9 @@
             <valueQuantity>
               <value>1</value>
               <range>&lt;=</range>
-            </valueQuantity>
-            <flag>S</flag>
+              <units>U</units>
+            </valueQuantity>            
+	    <flag>S</flag>
             <status>final</status>
           </result>
         </resultGroup>
@@ -10998,9 +11704,11 @@
               <rangeRange>
                 <low>
                   <value>1.0</value>
+                  <units>mg/L</units>
                 </low>
                 <high>
                   <value>3.0</value>
+                  <units>mg/L</units>
                 </high>
               </rangeRange>
             </referenceRange>

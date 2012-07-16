@@ -22,7 +22,12 @@ Post freeze:
  4. Ensure the tabs that list codes for bindings include columns for system and display
  5. Update the spreadsheets to reflect all the various changes we've made to Profile.
  6. Add a tab that provides a mapping between the labels on the various tabs and the Profile element names those cells correspond to
- 
+* remove profile bindings from bindings summar (i.e. EntityNamePartQualifier)
+* improve path display for schematrons
+* change terminologies from csv to Excel XML
+* support for bindings when >1 type exists
+* resource references in data types allow dar?
+
 Rejected:
 * Spit out a warning if you encounter an unrecognized column name rather than just deprecated names - no, don't want to
 

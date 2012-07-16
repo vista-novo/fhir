@@ -6,7 +6,6 @@
   <response>
     <id>5015fe84-8e76-4526-89d8-44b322e8d4fb</id>
     <code>ok</code>
-    <duplicate>false</duplicate>
   </response>
   <source>
     <name>Acme Central Patient Registry</name>
@@ -16,6 +15,7 @@
       <system>phone</system>
       <value>+1 (555) 123 4567</value>
     </contact>
+    <endpoint>llp:10.11.12.13:5432</endpoint>
   </source>
   <destination>
     <name>Acme Message Gateway</name>
@@ -31,6 +31,7 @@
       <type>Person</type>
       <id>34</id>
     </target>
+    <endpoint>llp:10.11.12.14:5432</endpoint>
   </destination>
   <author>
     <type>Person</type>

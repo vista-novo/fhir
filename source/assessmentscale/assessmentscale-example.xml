@@ -42,7 +42,7 @@ For simplicitly, this example uses BMI as the assessment scale
     </code>
     <valueQuantity>
       <value>18</value>
-      <!-- Nominally a BMI has units kg/m2, but we're going to pretend this is a real index... -->
+      <units>kg/m2</units>
     </valueQuantity>
     <!-- todo - fill out measures -->
   </score>

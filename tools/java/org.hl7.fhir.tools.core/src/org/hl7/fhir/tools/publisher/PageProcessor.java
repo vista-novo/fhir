@@ -519,7 +519,7 @@ public class PageProcessor implements Logger  {
           s.append("See <a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a>");
         } else if (cd.getBinding() == Binding.Special) {
           if (cd.getName().equals("MessageEvent"))
-            s.append("See the <a href=\"message.htm#Events\"> Event List </a>in the messaging framework");
+            s.append("See the <a href=\"messageheader.htm#Events\"> Event List </a>in the messaging framework");
           else if (cd.getName().equals("ResourceType"))
             s.append("See the <a href=\"terminologies.htm#ResourceType\"> list of defined Resource Types</a>");
           else 
