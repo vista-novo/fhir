@@ -103,6 +103,7 @@ import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.w3c.dom.ls.LSInput;
 import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
@@ -968,14 +969,15 @@ public class Publisher {
     page.log("schematron validate "+n+".xml -> (2) generate "+tmpOutput.getAbsolutePath());
     Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir + n + ".xml", tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
 
-    List<String> command = new ArrayList<String>();
-    command.add("notepad.exe \""+tmpOutput.getAbsolutePath()+"\"");
-
-    ProcessBuilder pbuilder = new ProcessBuilder(command);
-    pbuilder.directory(new File(page.getFolders().rootDir));
-    final Process process = pbuilder.start();
-    process.waitFor();
-    
+    doc = builder.parse(new FileInputStream(tmpOutput));
+    NodeList nl = doc.getDocumentElement().getElementsByTagNameNS("http://purl.oclc.org/dsdl/svrl", "failed-assert");
+    if (nl.getLength() > 0) {
+      page.log("Schematron Validation Failed for "+n+".xml:");
+      for (int i = 0; i < nl.getLength(); i++) {
+        Element e = (Element) nl.item(i);
+        page.log("  @"+e.getAttribute("location")+": "+e.getTextContent());        
+      }
+    }
 	}
 
 	private void validateRoundTrip(Schema schema, String n) throws Exception {
