@@ -61,7 +61,7 @@
   <Style ss:ID="s66">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -115,7 +115,7 @@
     <Cell><Data ss:Type="String">Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations, and the relationship between elements and pre- and post-coordination</Data></Cell>
     <Cell><Data ss:Type="String">CD</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">CodeableConcept.coding</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
@@ -141,7 +141,7 @@
     <Cell><Data ss:Type="String">Very often the text is the same as a displayName of one of the codings</Data></Cell>
     <Cell><Data ss:Type="String">./originalText[mediaType/code=&quot;text/plain&quot;]/data</Data></Cell>
    </Row>
-   <Row ss:Height="90">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">CodeableConcept.primary</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
@@ -183,11 +183,11 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have Data</Data></Cell>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:StyleID="s69"><ss:Data ss:Type="String"
+    <Cell ss:StyleID="s67"><ss:Data ss:Type="String"
       xmlns="http://www.w3.org/TR/REC-html40"><Font html:Color="#000000">Unless the CodeableConcept has a dataAbsentReason flag, it must contain a </Font><I><Font
         html:Color="#000000">coding</Font></I><Font html:Color="#000000"> with a code or a text</Font></ss:Data></Cell>
     <Cell><Data ss:Type="String">dataAbsentReason.oclIsDefined or (coding.size &gt; 0 and coding-&gt;collect(code.size() &gt; 0).size &gt; 0) or text.size &gt; 0</Data></Cell>
-    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:coding\f:code) or exists(f:text)</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:coding/f:code) or exists(f:text)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">2</Data></Cell>
@@ -210,7 +210,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

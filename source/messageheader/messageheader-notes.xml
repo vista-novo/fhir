@@ -17,7 +17,7 @@ Notes:
 [%events%]
 
 <a name="mailbox"></a>
-<h2>MailBox</h2>
+<h2>Mailbox</h2>
 <p>
 The mailbox is the standard name for a service hosted on a RESTful server that accepts messages and processes 
 them as transactions, and returns a message response appropriate for the message received. The server is under
@@ -30,7 +30,7 @@ fatal problem with the message or a problem with the receiving application.
 </p>
 <p>
 The mail box can also be used to accept documents. In this case, the document is "accepted" (the server 
-takes responsibility for custody of the recieved document), and an HTTP status of 204 No Content is returned, 
+takes responsibility for custody of the received document), and an HTTP status of 204 No Content is returned, 
 or an HTTP error is returned. The server is under no obligation to do anything with the document except as 
 specific trading partner agreements dictate.
 </p>
