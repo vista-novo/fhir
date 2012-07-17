@@ -13,7 +13,7 @@ using HL7.Fhir.Instance.Support;
 namespace HL7.Fhir.Instance.Tests
 {
     [TestClass]
-    public class TestResourceParser
+    public class XmlParserTests
     {
         [TestMethod]
         public void TestParsePrimitive()
@@ -216,7 +216,7 @@ namespace HL7.Fhir.Instance.Tests
     </name>
     <extension>
       <code>name-qualifier</code>
-      <definition>http://hl7.org/fhir/profile/@iso-20190</definition>
+      <profile>http://hl7.org/fhir/profile/@iso-20190</profile>
       <ref>n1</ref>
       <valueCoding>
         <code>AC</code>

@@ -44,7 +44,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
-public class CSharpResourceGenerator extends GenBlock
+public class CSharpModelResourceGenerator extends GenBlock
 {
 	public GenBlock generateComposite( CompositeTypeDefn composite, Definitions definitions ) throws Exception
 	{

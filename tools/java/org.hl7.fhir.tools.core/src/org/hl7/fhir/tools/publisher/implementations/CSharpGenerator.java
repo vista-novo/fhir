@@ -81,21 +81,21 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			String enumsFilename = modelDir + "Bindings.cs";
 		
-			new CSharpResourceGenerator()
+			new CSharpModelResourceGenerator()
 				.generateGlobalEnums(definitions.getBindings(),definitions).toFile(implDir+enumsFilename);						 
 			generatedFilenames.add(enumsFilename);
 		}
 
 		{
 			String primFilename = modelDir + "Primitives.cs";
-			 new CSharpPrimitiveGenerator()
+			 new CSharpModelPrimitiveGenerator()
 			 	.generatePrimitives(definitions.getPrimitives(),definitions).toFile(implDir+primFilename);						 
 			generatedFilenames.add(primFilename);
 		}
 
 		{
 			String primFilename = parsersDir + "XmlPrimitiveParser.cs";
-			 new CSharpPrimitiveParserGenerator()
+			 new CSharpXmlPrimitiveParserGenerator()
 			 	.generatePrimitiveParser(definitions.getPrimitives(),definitions).toFile(implDir+primFilename);						 
 			generatedFilenames.add(primFilename);
 		}
@@ -107,7 +107,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
 			String compositeFilename = modelDir + composite.getName() + ".cs";			
-			new CSharpResourceGenerator()
+			new CSharpModelResourceGenerator()
 				.generateComposite(composite, definitions).toFile(implDir+compositeFilename);			
 			generatedFilenames.add(compositeFilename);
 		}
@@ -119,7 +119,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			if( !composite.getName().equals("Narrative") )
 			{
 				String compositeFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
-				new CSharpResourceParserGenerator()
+				new CSharpXmlResourceParserGenerator()
 					.generateCompositeParser(composite, definitions).toFile(implDir+compositeFilename);			
 				generatedFilenames.add(compositeFilename);
 			}
@@ -128,7 +128,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
 		{
 			String constrainedFilename = modelDir + constrained.getName() + ".cs";
-			new CSharpResourceGenerator()
+			new CSharpModelResourceGenerator()
 				.generateConstrained(constrained, definitions).toFile(implDir+constrainedFilename);						 
 			generatedFilenames.add(constrainedFilename);
 		}
@@ -152,7 +152,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			String filename = parsersDir + "XmlResourceParser.cs";
 			
-			new CSharpResourceParserGenerator()
+			new CSharpXmlResourceParserGenerator()
 				.generateResourceParser(definitions).toFile(implDir+filename);						 
 			generatedFilenames.add(filename);			
 		}

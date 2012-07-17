@@ -444,48 +444,106 @@ object models".
 
 <a name="json"></a>
 <h2>JSON Format</h2>
-<p><i>Informative Section: Due to a series of issues around the formalization of the JSON representation, the JSON representation is only informative.</i></p>
 <p>
-Though the formal representation of the resources is in XML, many systems wish to use JSON to exchange the resources and it is useful to standardise a single JSON format for this use. 
-The JSON format for the resources follows the standard XML format closely:
-</p>
-<pre class="spec">
- &lt;<b>name</b> xmlns="http://hl7.org/fhir"&gt; 
-   &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
-   &lt;<b title="Formal Definition">nameB</b> <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="deeppink" title="Condition">0..1</font> <font color="darkgreen">type</font> <font color="Navy">description</font> <font color="Gray"> --&gt;</font>&lt;/nameB&gt;
-   &lt;<b>nameC</b>&gt; <font color="Brown"><font color="Gray">&lt;!-- </font> <b>1..*</b> --&gt;</font>
-     &lt;<b>nameD</b>  <font color="red">d?</font>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="darkgreen">type</font>&gt;<font color="navy">Relevant records</font> <font color="Gray"> --&gt;</font>&lt;/nameD&gt;
-   &lt;/nameC&gt;
- &lt;name&gt;
-</pre>
-<p>
-is represented in JSON as 
-</p>
-<pre class="json">
-{"name":
-  "nameA" : {...},
-  "nameB" : 
-    [
-      {...},
-      {...}
-    ],
-  "nameC" :  
-    [
-      { "nameD" : {...} }
-    }
-}
-</pre>
-<p>Notes:</p>
+Though the formal representation of the resources is in XML, many systems wish to use 
+JSON to exchange the resources and it is useful to standardise a single JSON format for 
+this use. The JSON format for the resources follows the standard XML format closely so
+XPath queries can easily be mapped to query the JSON structures:</p>
 <ul>
- <li>There are no namespaces in the JSON representation</li>
- <li>The names are the same, including for elements that may repeat. This means that queries written against the XML form could also be executed against the JSON form (though there seems to be no general XPath for JSON implementation)</li>
- <li>The xml attributes <i>id</i>, <i>idref</i> and <i>dataAbsentReason</i> become JSON object attributes with the same names; they come in that order before other defined elements</li>
- <li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a> such as string, decimal, etc. are identical between the XML and the JSON form (including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
- <li>JSON property attributes never have empty values; omit a value if it is empty (same as for the xml)</li>
- <li>Items that may repeat are represented as arrays even if they do not repeat in the actual instance</li>
- <li>The XHTML &lt;div&gt; element is represented as a single escaped string of XHTML</li>
- <li>The last two items means that generic XML -> JSON converters will not be able to perform a correct conversion. The reference platforms provide XML &lt;--&gt; JSON conversion functionalty</li>
+<li>The names for the JSON object members are the same as the names of the elements
+and attributes in XML, including for elements that may repeat.</li>
+<li>In the data types, the value representations for <a href="datatypes.htm#primitive">primitive types</a>
+such as string, decimal, etc. are identical between the XML and the JSON form 
+(including instant, which is represented as plain text, not in one of the proposed JSON custom date formats)</li>
+<li>Just as in XML, JSON property attributes never have empty values; omit a value if it is empty.</li>
 </ul>
+<p>There are differences too:</p>
+<ul>
+<li>There are no namespaces in the JSON representation.</li>
+<li>JSON does not have a notion of attributes versus elements, so FHIR's only attributes (dataAbsentReason and id)
+are treated as JSON object members (see below for more details). However, attributes are represented using object 
+members prefixed with a "@", while text nodes are called "text()" to align them for use in XPath queries.</li>
+<li>JSON has a notation for arrays, which are used to represent repeating elements. Note that this is
+the case, even if they do not repeat in the actual instance.</li>
+<li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
+</ul>
+<p>These differences are sufficiently substantial that generic XML --&gt; JSON converters will
+not be able to perform a correct conversion. The reference platforms will therefore provide XML 
+&lt;--&gt; JSON conversion functionality.</p>
+
+<h3>JSON representation of primitive types</h3>
+<p>
+FHIR elements with primitive values are represented as JSON object members of the same name, with their value encoded
+as a string. Native JSON types other than "string" are never used to guarantee equivalence of the serialized representation
+between XML and JSON.</p>
+<pre class="xml">
+ &lt;<b>dob</b>&gt;1972-11-30&lt;/<b>dob</b>&gt;
+</pre>
+<p>is represented in JSON as</p>
+<pre class="json">
+"dob": "1972-11-30"
+</pre>
+<p>
+If the primitive element as an 'id' or 'dataAbsentReason' attribute, the JSON representation uses a JSON object instead
+of a value with, the attributes as special members '@id' and '@dataAbsentReason' and the actual value as a member 'text()'. 
+Note that in most cases, the primitive will not have a value when there is a dataAbsentReason present, in which case the 
+special 'value' member may not be present. So,</p>
+<pre class="xml">
+ &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
+</pre>
+<p>is represented in JSON as:</p>
+<pre class="json">
+"dob": { "@id": "314159", "text()": "1972-11-30" }
+</pre>
+<p>while this example would look like this in the case of a dataAbsentReason:</p>
+<pre class="json">
+"dob": { "@id": "314159", "@dataAbsentReason": "Unknown" }
+</pre>
+<p>
+Repeating primitive elements put the members or objects as described above in an array with the name of the element.
+A repeating "dob" element would then look like:</p>
+<pre class="json">
+"dob": [
+	{ "2011-11-30" },
+	{ "@id": "314159", "text()": "1972-11-30" }
+  ]
+</pre>
+<p>to represent the for FHIR XML with its repeating elements:</p>
+<pre class="xml">
+ &lt;<b>dob</b>&gt;2011-11-30&lt;/<b>dob</b>&gt;
+ &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
+</pre>
+
+ <h3>JSON representation of composite datatypes</h3>
+<p>Composite datatypes are represented using a JSON object, containing a member for each element in the datatype. 
+ Composites can also have id's and dataAbsentReasons, therefore these attributes get their own JSON members just
+ like in primitives. These members will be placed before all other members. For example:</p>
+ <pre class="xml">
+&lt;name&gt;
+  &lt;use&gt;official&lt;/use&gt;  
+  &lt;part&gt;
+    &lt;type&gt;given&lt;/type&gt;
+    &lt;value&gt;Karen&lt;/value&gt;
+  &lt;/part&gt;
+  &lt;part id=&quot;n1&quot;&gt;
+    &lt;type&gt;family&lt;/type&gt;
+    &lt;value&gt;Van&lt;/value&gt;
+  &lt;/part&gt;
+&lt;/name&gt;
+</pre>
+<p>is represented in JSON as:
+
+TODO</p>
+<p>The Narrative type, with its "div" element from the xhtml namespace, deserves special attention. Xhtml is
+represented as an escaped string in JSON, and the xhtml's root element needs to be a &lt;div&gt;.
+A resource's 'text' element, which is of type Narrative, would look like this in JSON:</p>
+<pre class="json">
+ "text" : {
+            "status" : "generated",
+            "div" : "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n
+			     &lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;...&lt;/div&gt;">
+ }
+</pre>
 
 <%footer%>
 

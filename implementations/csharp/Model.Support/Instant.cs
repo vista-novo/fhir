@@ -100,7 +100,7 @@ namespace HL7.Fhir.Instance.Model
         {
             if (Contents.HasValue)
             {
-                return Contents.Value.ToUniversalTime().ToString(PATTERN);
+                return Contents.Value.ToString(PATTERN);
             }
             else
                 return null;

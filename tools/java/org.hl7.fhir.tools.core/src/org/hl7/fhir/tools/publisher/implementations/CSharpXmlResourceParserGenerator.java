@@ -45,9 +45,9 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
-public class CSharpResourceParserGenerator extends GenBlock
+public class CSharpXmlResourceParserGenerator extends GenBlock
 {
-	private CSharpResourceGenerator rgen = new CSharpResourceGenerator();
+	private CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
 
 	public GenBlock generateResourceParser( Definitions definitions ) throws Exception
 	{
@@ -138,7 +138,9 @@ public class CSharpResourceParserGenerator extends GenBlock
 		
 		ln("else");
 		bs();
-			ln("return null;");
+			ln("errors.Add(String.Format(");
+				nl("\"Encountered unrecognized resource '{0}'\",");
+		        nl("	reader.LocalName), (IXmlLineInfo)reader);");
 		es();
 	}
 

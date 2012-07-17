@@ -77,6 +77,10 @@ namespace HL7.Fhir.Instance.Model
 
     public abstract class Primitive : Data
     {
+        public override string ToString()
+        {
+            throw new NotImplementedException("Primitives must override ToString()");
+        }
     }
 
 
@@ -99,21 +103,6 @@ namespace HL7.Fhir.Instance.Model
         {
             return Contents.GetHashCode();
         }
-
-        public override string ToString()
-        {
-            return Contents.ToString();
-        }
-
-        //public static implicit operator Primitive<T>(T value)
-        //{
-        //    return new Primitive<T>(value);
-        //}
-
-        //public static implicit operator T(Primitive<T> value)
-        //{
-        //    return value.Value;
-        //}
     }
 
     public interface IReferrable

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,7 +46,7 @@
   <ItemGroup>
 		@@@MODELFILES@@@
   </ItemGroup>
-   <ItemGroup>
+  <ItemGroup>
     <Compile Include="Model.Support\FhirDateTime.cs" />
     <Compile Include="Model.Support\Id.cs" />
     <Compile Include="Model.Support\IdRef.cs" />
@@ -60,10 +64,11 @@
     <Compile Include="Model.Support\FhirDecimal.cs" />
     <Compile Include="Model.Support\Integer.cs" />
     <Compile Include="Model.Support\XHtml.cs" />
-	<Compile Include="Model.Support\Instant.cs" />
+    <Compile Include="Model.Support\Instant.cs" />
     <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
     <Compile Include="Parsers.Support\XmlNarrativeParser.cs" />
     <Compile Include="Parsers.Support\XmlUtils.cs" />
+    <Compile Include="Serializers.Support\JSonPrimitiveSerializer.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
     <Compile Include="Support\Util.cs" />

@@ -28,64 +28,42 @@
 
 */
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
+using HL7.Fhir.Instance.Model;
 
-namespace HL7.Fhir.Instance.Model
+namespace HL7.Fhir.Instance.Serializers
 {
-    // value can be true or false
-    public partial class FhirBoolean : Primitive<bool?>
+    public class JSonPrimitiveSerializer
     {
-        public FhirBoolean() : base(false) { }
-
-        public static bool TryParse( string value, out FhirBoolean result)
+        public static void Serialize(JsonWriter writer, Primitive prim)
         {
-            if(value == "1" || value == "true")
+            if (prim.Dar.HasValue || prim.ReferralId != null)
             {
-                result = new FhirBoolean(true);
-                return true;
-            }
-            else if(value == "0" || value == "false")
-            {
-                result = new FhirBoolean(false);
-                return true;
-            }
-            else if (value == null)
-            {
-                result = new FhirBoolean(null);
-                return true;
+                writer.WriteStartObject();
+
+                JsonUtil.SerializeAttributes(writer, prim);
+
+                if (prim.ToString() != null)
+                {
+                    writer.WritePropertyName("text()");
+                    writer.WriteValue(prim.ToString());
+                }
+
+                writer.WriteEndObject();
             }
             else
             {
-                result = null;
-                return false;
+                if (prim.ToString() != null)
+                    writer.WriteValue(prim.ToString());
             }
         }
 
-        public static FhirBoolean Parse(string value)
-        {
-            FhirBoolean result = null;
 
-            if (TryParse(value, out result))
-                return result;
-            else
-                throw new FhirValueFormatException("Booleans can be either 0, 1, true of false");
-        }
 
-        public override string ToString()
-        {
-            if (Contents.HasValue)
-                return Contents.Value ? "true" : "false";
-            else
-                return null;
-        }
-
-        public override string ValidateData()
-        {
-            return null;    // cannot contain illegal values
-        }
     }
-  
 }

@@ -33,9 +33,9 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
-public class CSharpPrimitiveGenerator extends GenBlock {
+public class CSharpModelPrimitiveGenerator extends GenBlock {
 
-	CSharpResourceGenerator rgen = new CSharpResourceGenerator();
+	CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
 	
 	public GenBlock generatePrimitives( List<PrimitiveTypeDefn> primitives,
 						Definitions definitions) throws Exception
