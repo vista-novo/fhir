@@ -33,7 +33,6 @@ import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
 
-import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -42,7 +41,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.AtomComposer;
-import org.hl7.fhir.instance.formats.JsonComposer;
+//import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
@@ -205,9 +204,9 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     else
       new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
     
-    if (rf.getFeed() != null)
-      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getFeed());
-    else
-      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getResource());
+//    if (rf.getFeed() != null)
+//      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getFeed());
+//    else
+//      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getResource());
   }
 }

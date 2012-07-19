@@ -614,7 +614,7 @@ public class GeneratorUtils {
 	}
 	
 	
-	private static Map<String,TypeRef> makeTypeRefsWithElementNamePrefix( String elementName, List types )
+	private static Map<String,TypeRef> makeTypeRefsWithElementNamePrefix( String elementName, List<?> types )
 	{
 		Map<String,TypeRef> result = new HashMap<String,TypeRef>();
 		

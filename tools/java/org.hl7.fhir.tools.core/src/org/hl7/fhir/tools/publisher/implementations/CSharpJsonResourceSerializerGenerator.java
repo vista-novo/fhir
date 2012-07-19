@@ -29,17 +29,14 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 */
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -66,46 +63,104 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			ln("*/");
 			ln("public static partial class JsonResourceSerializer");
 			bs("{");
-				ln("public static void SerializeResource(JsonWriter writer)");
-				bs("{");
-					generateResourceCases(definitions.getLocalResources());
-				es("}");
+				resourceSerializer(definitions);
 				ln();
+				ln();
+				compositeSerializer(definitions);
+        		ln();
+        		ln();
+				dataSerializer(definitions);
 			es("}");
 		es("}");
 	
 		return end();
 	}
+
+	private void dataSerializer(Definitions definitions) throws Exception {
+		ln("public static void SerializeData(JsonWriter writer, Data type, bool asJsonObject=false)");
+		bs("{");
+			ln("if( typeof(Composite).IsAssignableFrom(type.GetType()) )");
+			bs("{");
+				ln("((Composite)type).ToJson(writer);");
+				ln("return;");
+			es("}");
+			ln();
+			generateSerializationCases(definitions.getPrimitives());
+		es("}");
+		ln();
+		ln("public static void ToJson(this Data data, JsonWriter writer, bool asJsonObject=false )");
+		bs("{");
+			ln("SerializeData(writer, data, asJsonObject);");
+		es("}");
+	}
+
+	private void compositeSerializer(Definitions definitions) throws Exception {
+		ln("public static void SerializeComposite(JsonWriter writer, Composite type)");
+		bs("{");
+			List composites = new ArrayList();
+			composites.addAll(definitions.getLocalCompositeTypes());
+			composites.addAll(definitions.getLocalConstrainedTypes());
+			generateSerializationCases(composites);
+		es("}");
+		ln("public static void ToJson(this Composite composite, JsonWriter writer)");
+		bs("{");
+			ln("SerializeComposite(writer, composite);");
+		es("}");
+	}
+
+	private void resourceSerializer(Definitions definitions) throws Exception {
+		ln("public static void SerializeResource(JsonWriter writer, Resource type)");
+		bs("{");
+			generateSerializationCases(definitions.getLocalResources());
+		es("}");
+		ln();
+		ln("public static void ToJson(this Resource resource, JsonWriter writer)");
+		bs("{");
+			ln("SerializeResource(writer, resource);");
+		es("}");
+	}
 	
-	
-	private void generateResourceCases(List<ResourceDefn> localResources)
+	private void generateSerializationCases(List<?> types) throws Exception
 	{
 		boolean firstTime = true;
 		
-		for( ResourceDefn resource : localResources)
+		for( Object t : types)
 		{
+			TypeDefn type = (TypeDefn)t;
+			
 			if( firstTime )
 				ln("if");
 			else
 				ln("else if");
 			
 			firstTime = false;
+			String typeName = GeneratorUtils.buildFullyScopedTypeName(type);
 			
-			nl("(r.GetType() == typeof(");
-				nl( resource.getName() + "))");
+			nl("(type.GetType() == typeof(");
+				nl( typeName + "))");
 			bs();
-				ln("Json" + resource.getName() + "Serializer");
-					nl(".Parse" + resource.getName());
-					nl("(writer);");
+				ln("((" + typeName + ")type)");
+				if( type.isPrimitive() )
+					nl(".ToJson(writer,asJsonObject);");
+				else
+					nl(".ToJson(writer);");
+
+//				ln("Json" + type.getName() + "Serializer");
+//					nl(".Serialize" + t.getName());
+//					nl("(writer, ");
+//					nl("(" + typeName + ")");
+//					nl("resource);");
 			es();				
 		}
 		
 		ln("else");
 		bs();
-			ln("throw new Exception(\"Encountered unknown resource type \" + ");
-				nl("r.GetType().Name");
+			ln("throw new Exception(\"Encountered unknown type \" + ");
+				nl("type.GetType().Name);");
 		es();
 	}
+	
+	
 
 
 	public GenBlock generateCompositeSerializer( CompositeTypeDefn composite, Definitions definitions ) throws Exception
@@ -138,7 +193,15 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		begin();
 				
 		String valueType = GeneratorUtils.buildFullyScopedTypeName(composite);
-				
+		
+		ln("public static void ToJson(this ");
+			nl(valueType);
+			nl(" value, JsonWriter writer)");
+        bs("{");
+            ln("Serialize" + composite.getName());
+            	nl( "(writer, value);");
+        es("}");
+		
 		ln("public static void ");
 			nl("Serialize" + composite.getName());
 			nl("(JsonWriter writer, ");
@@ -146,6 +209,18 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			nl(" value)");
 		bs("{");
 			ln("writer.WriteStartObject();");
+		
+			if( composite.isResource() )
+			{
+				// Resources, being top-level objects, have their
+				// resource name as a single root member
+				ln("writer.WritePropertyName(\"");
+					nl(composite.getName());
+					nl("\");");
+				ln("writer.WriteStartObject();");
+			}
+		
+			ln();
 			
 			if( !composite.isResource() )
 			{
@@ -162,6 +237,9 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			}
 			
 			ln("writer.WriteEndObject();");
+			
+			if( composite.isResource() )
+				ln("writer.WriteEndObject();");
 		es("}");
 		ln();
 	
@@ -181,9 +259,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		begin();
 				
 		for( ElementDefn member : elements )
-		{			
-			if( member.getTypes().size() > 1 ) continue;
-			
+		{								
 			ln("// Serialize element " + member.getElementPath());	
 			generateMemberSerializer(member);
 		}
@@ -192,31 +268,41 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	}
 
 
+
+	private boolean isResourceElement(ElementDefn element)
+	{	
+		CompositeTypeDefn parent = element.getParentType();
+		
+		// Elements that make up the contents of a resource are either 
+		// direct children of a resource, or of a composite type nested
+		// in a resource (=nested element groups, named or not)		
+		if( parent.isResource() ) return true;
+		
+		if( !parent.isGloballyDefined() )
+			return ((CompositeTypeDefn)parent.getContainingScope()).isResource();
+			
+		return false; 
+	}
+
 	private void generateMemberSerializer(ElementDefn member) throws Exception 
 	{
-		// First determine the possible names of the properties in the
-		// instance, which might be multiple because of polymorph elements 
-		Map<String,TypeRef> possibleElementNames = 
-			GeneratorUtils.determinePossibleElementNames(member.getParentType(),
-				member.getName(), member.getTypes());
-
 		String propertyName = "value." + 
 			GeneratorUtils.generateCSharpMemberName(member.getParentType(), member.getName());		
-			
+					
 		if( member.isRepeating() )
 		{
 			ln("if(" + propertyName + " != null ");
 				nl("&& " + propertyName + ".Count > 0)");
-			bs();
+			bs("{");
 				serializeRepeatingElement(member, propertyName);
-			es();
+			es("}");
 		}
 		else
 		{		
 			ln("if(" + propertyName + " != null)");
-			bs();
+			bs("{");
 				serializeSingleElement(member, propertyName);
-			es();
+			es("}");
 		}			
 					
 		ln();
@@ -225,96 +311,117 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	
 	private void serializeRepeatingElement( ElementDefn member, String propertyName  ) throws Exception
 	{	
+		ln("writer.WritePropertyName(");
+			nl("\"" + member.getName() + "\"");
+			nl(");");
+
+		ln("writer.WriteStartArray();");
+		
+		ln("foreach(var item in " + propertyName + ")");
+		bs();
+			buildSerializeStatement("item", member);
+		es(); 
+		
+		ln("writer.WriteEndArray();");
 	}
 	
 	private void serializeSingleElement( ElementDefn member, String propertyName ) throws Exception
-	{
-		TypeRef ref = member.getTypes().get(0);
-		CompositeTypeDefn composite = member.getParentType();
-				
-		TypeDefn typeToParse = composite.resolveType(ref.getName());
-					
-		if( typeToParse.isPrimitive() )
-		{
-			ln("JsonUtil.SerializePrimitiveElement(writer, ");
-				nl(propertyName + ", ");			
-				nl("\"" + member.getName() + "\"" );
-				nl(");");			
-		}
-		else 
-		{
-			String parserName;
-				
-			if( composite.isGloballyDefined() )
-				// A type defined on the global level, child of Definitions
-				parserName = "Json" + composite.getName() + "Serializer";	
-			else
-				// 	A type defined inside a globally defined composite 
-				parserName = "Json" + ((CompositeTypeDefn)composite.getScope()).getName() + "Serializer";
-		
-			ln(parserName);
-				nl(".Serialize");
-				nl(composite.getName());
-				nl("(writer, ");
-				nl(propertyName + ")");
-		}
+	{	
+		ln("writer.WritePropertyName(");
+			nl("\"" + member.getName() + "\"");
+			nl(");");
+												
+		buildSerializeStatement(propertyName, member);		
 	}
-	
-	
-	private String buildConstrainedParserCall(ConstrainedTypeDefn constrained) throws Exception
+
+
+	private void buildSerializeStatement(String propertyName,
+			ElementDefn member) throws Exception
 	{
-		CompositeTypeDefn baseType = 
-			((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
+		TypeRef ref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
 		
-		// Generate upcast to constrained type 
-		String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")"
-				+ buildCompositeParserCall( baseType );
-				
-		return result;
-	}
-	
-	
-	private String buildCompositeParserCall(CompositeTypeDefn composite) throws Exception
-	{		
-		StringBuilder result = new StringBuilder();
+		boolean isPrimitive = false;
 		
-		if( composite.isGloballyDefined() )
-		{
-			// A type defined on the global level, child of Definitions
-			result.append("Xml" + composite.getName() + "Parser" );	
-		}
+		if( ref.getName() == TypeRef.PRIMITIVE_PSEUDOTYPE_NAME )
+			isPrimitive = true;
+		else if ( ref.getName() == TypeRef.DATA_PSEUDOTYPE_NAME )
+			isPrimitive = true;
+		else if( ref.getName() == TypeRef.COMPOSITE_PSEUDOTYPE_NAME )
+			isPrimitive = false;
 		else
 		{
-			// A type defined inside a globally defined composite 
-			result.append("Xml" + ((CompositeTypeDefn)composite.getScope()).getName() + "Parser");
+			TypeDefn defn = member.getParentType().resolveType(ref.getName());
+			isPrimitive = defn.isPrimitive();
 		}
-
-		result.append(".Parse" + composite.getName() );
-		result.append("(reader, errors)");
+	
+		ln(propertyName);
 		
-		return result.toString(); 
+		if( isPrimitive && isResourceElement(member) )
+			nl(".ToJson(writer,true);");
+		else
+		{
+			nl(".ToJson(writer);");
+		}
+		
+		// Exception: primitives inside datatypes cannot have id and/or 
+		// dataAbsentReason so serialize as a simple value, no special 
+		// serializer call needed.
+		
+		
+//		if( typeToSerialize.isPrimitive() && !isResourceElement(member) )
+//		{
+//			ln("writer.WriteValue(");
+//				nl(propertyName);
+//				nl(".ToString());");
+//		}
+//		else
+//		{
+//			if( typeToSerialize.isPrimitive() )
+//			{
+//				// Primitives inside resources can have id and/or dataAbsentReason
+//				// so, serialize this primitive as a JSON object
+//				ln("JsonPrimitiveSerializer.Serialize(writer, ");
+//					nl(propertyName);			
+//					nl(");");			
+//			}
+//	
+//			else if( typeToSerialize.isConstrained() )
+//				constraintSerializerCall(propertyName, member.getParentType(), typeToSerialize);
+//			else if (typeToSerialize.isComposite() ) 
+//				compositeSerializerCall(propertyName, typeToSerialize);
+//			else
+//				throw new Exception( "Cannot handle category of type " + typeToSerialize.getName() + " to generate serializer call." );
+//		}
 	}
 	
-
-	private String buildEnumeratedCodeParserCall(NameScope scope, TypeRef ref) throws Exception
-	{
-		StringBuffer result = new StringBuffer();
-		
-		result.append("XmlPrimitiveParser.Parse");
-		
-		BindingDefn binding = scope.resolveBinding(ref.getBindingRef());
-		String enumType = GeneratorUtils.buildFullyScopedEnumName(binding);
-								
-		result.append("Code<" + enumType + ">");
-		result.append("(reader, errors)");
-		
-		return result.toString();
-	}
-
-	private String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
-	{
-		return "XmlPrimitiveParser.Parse" +
-				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
-				"(reader, errors)";
-	}
+	
+//	private void constraintSerializerCall(String propertyName, NameScope scope, TypeDefn typeToSerialize)
+//	{
+//		ConstrainedTypeDefn constrained = (ConstrainedTypeDefn)typeToSerialize;
+//		CompositeTypeDefn baseType = 
+//				((CompositeTypeDefn)scope.resolveType(constrained.getBaseType().getName()));
+//		
+//		compositeSerializerCall(propertyName, typeToSerialize);
+//		// Generate upcast to constrained type 
+//		//String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")" + 
+//	}
+//	
+	
+//	private void compositeSerializerCall(String propertyName, TypeDefn typeToSerialize) {
+//		String serializerName;
+//			
+//		if( typeToSerialize.isGloballyDefined() )
+//			// A type defined on the global level, child of Definitions
+//			serializerName = "Json" + typeToSerialize.getName() + "Serializer";	
+//		else
+//			// 	A type defined inside a globally defined composite 
+//			serializerName = "Json" + ((CompositeTypeDefn)typeToSerialize.getScope()).getName() + "Serializer";
+//
+//		ln(serializerName);
+//			nl(".Serialize");
+//			nl(typeToSerialize.getName());
+//			nl("(writer, ");
+//			nl(propertyName + ");");
+//	}
+	
 }

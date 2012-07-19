@@ -55,7 +55,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private List<ElementDefn> enums = new ArrayList<ElementDefn>();
   private List<String> enumNames = new ArrayList<String>();
   private List<ElementDefn> strucs  = new ArrayList<ElementDefn>();
-  private List<String> lists = new ArrayList<String>();
+//  private List<String> lists = new ArrayList<String>();
 
   private String context;
 

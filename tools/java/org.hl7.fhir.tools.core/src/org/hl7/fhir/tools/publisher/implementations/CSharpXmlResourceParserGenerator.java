@@ -79,8 +79,6 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 						ln("return null;");
 					es("}");
 				es("}");
-				ln();
-				generateInformationProperties(definitions);
 			es("}");
 		es("}");
 	
@@ -88,31 +86,6 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 	
 	
-	private void generateInformationProperties(Definitions definitions) 
-	{
-		ln("public static List<string> SupportedResources");
-        bs("{");
-        	ln("get");
-        	bs("{");
-        		ln("List<string> result = new List<string>();");
-				ln();
-				
-				for( ResourceDefn resource : definitions.getLocalResources() )
-                	ln("result.Add(\"" + resource.getName() + "\");");
-				ln();
-				
-                ln("return result;");
-            es("}");
-        es("}");
-		ln();
-		
-		ln("public static string Version");
-        bs("{");
-        	ln("get { return \"" + definitions.getVersion() + "\"; }");
-        es("}");
-	}
-
-
 	private void generateResourceCases(List<ResourceDefn> localResources)
 	{
 		boolean firstTime = true;
@@ -137,11 +110,12 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		}
 		
 		ln("else");
-		bs();
+		bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized resource '{0}'\",");
 		        nl("	reader.LocalName), (IXmlLineInfo)reader);");
-		es();
+		    ln("return null;");
+		es("}");
 	}
 
 

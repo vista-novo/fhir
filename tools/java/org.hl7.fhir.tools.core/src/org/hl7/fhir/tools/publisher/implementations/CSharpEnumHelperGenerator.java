@@ -5,7 +5,6 @@ import java.util.List;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 
 /*
 Copyright (c) 2011-2012, HL7, Inc

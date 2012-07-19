@@ -46,7 +46,7 @@
   <ItemGroup>
 		@@@MODELFILES@@@
   </ItemGroup>
-  <ItemGroup>
+ <ItemGroup>
     <Compile Include="Model.Support\FhirDateTime.cs" />
     <Compile Include="Model.Support\Id.cs" />
     <Compile Include="Model.Support\IdRef.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Parsers.Support\XmlNarrativeParser.cs" />
     <Compile Include="Parsers.Support\XmlUtils.cs" />
     <Compile Include="Serializers.Support\JSonPrimitiveSerializer.cs" />
+	<Compile Include="Serializers.Support\JSonUtil.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
     <Compile Include="Support\Util.cs" />

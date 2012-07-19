@@ -76,6 +76,10 @@
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/isRepeating"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_RhU8UcplEeGxmLKjAwnBEQ"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_EK950dGlEeGzB_yQBW_HPw" type="2002">
+        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//ElementDefn/isPolymorph"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EK950tGlEeGzB_yQBW_HPw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CLrtqa_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CLrtqq_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CLrtq6_CEeGrAaDwyEdjfA"/>

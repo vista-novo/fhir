@@ -308,6 +308,14 @@ public interface ElementDefn extends EObject {
 	boolean isRepeating();
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	boolean isPolymorph();
+
+	/**
 	 * Returns the value of the '<em><b>Must Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>

@@ -38,32 +38,37 @@ using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public class JSonPrimitiveSerializer
+    public static class JsonPrimitiveSerializer
     {
-        public static void Serialize(JsonWriter writer, Primitive prim)
+        public static void ToJson(this Primitive prim, JsonWriter writer, bool asJsonObject = false)
         {
-            if (prim.Dar.HasValue || prim.ReferralId != null)
+            if (asJsonObject)
             {
-                writer.WriteStartObject();
-
-                JsonUtil.SerializeAttributes(writer, prim);
-
-                if (prim.ToString() != null)
-                {
-                    writer.WritePropertyName("text()");
-                    writer.WriteValue(prim.ToString());
-                }
-
-                writer.WriteEndObject();
+                Serialize(writer, prim);
             }
             else
             {
-                if (prim.ToString() != null)
-                    writer.WriteValue(prim.ToString());
+                // Primitives inside datatypes cannot have id and/or 
+                // dataAbsentReason so these can be serialized
+                // as a simple value Json value, no special
+                // attribute handling needed.
+                writer.WriteValue(prim.ToString());
             }
         }
 
+        public static void Serialize(JsonWriter writer, Primitive prim)
+        {
+            writer.WriteStartObject();
 
+            JsonUtil.SerializeAttributes(writer, prim);
 
+            if (prim.ToString() != null)
+            {
+                 writer.WritePropertyName("value");
+                 writer.WriteValue(prim.ToString());
+            }
+
+            writer.WriteEndObject();
+        }
     }
 }

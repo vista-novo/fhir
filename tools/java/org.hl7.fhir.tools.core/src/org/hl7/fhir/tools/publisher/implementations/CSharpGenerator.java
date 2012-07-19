@@ -72,12 +72,14 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		char sl = File.separatorChar;
 		String modelDir = "Model" + sl;
 		String parsersDir = "Parsers" + sl;
-
+		String serializersDir = "Serializers" + sl;
 		
 		File f = new File(implDir + modelDir);	if( !f.exists() ) f.mkdir();
 		File p = new File(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
+		File s = new File(implDir + serializersDir);	if( !s.exists() ) s.mkdir();
 		
 		List<String> generatedFilenames = new ArrayList<String>();
+
 		{
 			String enumsFilename = modelDir + "Bindings.cs";
 		
@@ -93,6 +95,13 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(primFilename);
 		}
 
+		{
+			String filename = modelDir + "ModelInfo.cs";
+			 new CSharpModelInformationGenerator()
+			 	.generateInformation(definitions).toFile(implDir+filename);						 
+			generatedFilenames.add(filename);
+		}
+		
 		{
 			String primFilename = parsersDir + "XmlPrimitiveParser.cs";
 			 new CSharpXmlPrimitiveParserGenerator()
@@ -118,11 +127,18 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			// handcrafted because of the @%#$%@$%@@$ div element
 			if( !composite.getName().equals("Narrative") )
 			{
-				String compositeFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
+				String xmlParserFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
 				new CSharpXmlResourceParserGenerator()
-					.generateCompositeParser(composite, definitions).toFile(implDir+compositeFilename);			
-				generatedFilenames.add(compositeFilename);
+					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
+				generatedFilenames.add(xmlParserFilename);
+				
 			}
+			
+			String jsonSerializerFilename = serializersDir + "Json" + composite.getName() + "Serializer.cs";			
+			new CSharpJsonResourceSerializerGenerator()
+				.generateCompositeSerializer(composite, definitions).toFile(implDir+jsonSerializerFilename);			
+			generatedFilenames.add(jsonSerializerFilename);
+
 		}
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
@@ -157,6 +173,14 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(filename);			
 		}
 		
+		// Generate resource serializer entrypoint
+		{
+			String filename = serializersDir + "JsonResourceSerializer.cs";
+			
+			new CSharpJsonResourceSerializerGenerator()
+				.generateResourceSerializer(definitions).toFile(implDir+filename);						 
+			generatedFilenames.add(filename);			
+		}
 		
 	    // Generate C# project file
 	    CSharpProjectGenerator projGen = new CSharpProjectGenerator();
@@ -164,12 +188,15 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 	    
 		String modelSupportDir = "Model.Support" + sl;
 		String parsersSupportDir = "Parsers.Support" + sl;
+		String serializersSupportDir = "Serializers.Support" + sl;
 		
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");
 		zip.addFiles(implDir+modelDir, modelDir, ".cs");
 		zip.addFiles(implDir+parsersDir, parsersDir, ".cs");
+		zip.addFiles(implDir+serializersDir, serializersDir, ".cs");
 		zip.addFiles(implDir+modelSupportDir, modelSupportDir, ".cs");
 		zip.addFiles(implDir+parsersSupportDir, parsersSupportDir, ".cs");
+		zip.addFiles(implDir+serializersSupportDir, serializersSupportDir, ".cs");
 		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
 		zip.addFiles(implDir + sl, "", ".csproj");
 		zip.addFiles(implDir + sl, "", ".sln");

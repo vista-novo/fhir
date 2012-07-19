@@ -9,29 +9,24 @@ namespace HL7.Fhir.Instance.Serializers
 {
     public class JsonUtil
     {
-        public static void SerializeElementArray<T>(JsonWriter writer, List<T> elements,
-                    Action<JsonWriter,T> serializer)
+        public static string BuildPolymorphicName(string elementName, Type elementType)
         {
-            writer.WriteStartArray();
-            foreach(T element in elements)
-            {
-                serializer(writer,element);
-            }
-            writer.WriteEndArray();
+            return null;
         }
 
         public static void SerializeAttributes(JsonWriter writer, Data elem)
         {
             if (elem.ReferralId != null)
             {
-                writer.WritePropertyName("@id");
+                writer.WritePropertyName("_id");
                 writer.WriteValue(elem.ReferralId);
             }
 
             if (elem.Dar.HasValue)
             {
-                writer.WritePropertyName("@dataAbsentReason");
-                writer.WriteValue(elem.Dar.Value.ToString());
+                writer.WritePropertyName("dataAbsentReason");
+                writer.WriteValue(EnumHelper.EnumToString(elem.Dar.Value,
+                    typeof(DataAbsentReason)));
             }
         }
     }
