@@ -142,8 +142,6 @@ public class BookMaker {
   private void addContent(XhtmlNode body) throws Exception {
     List<String> list = new ArrayList<String>();
     loadResources(list, page.getDefinitions().getResources().keySet());
-//    list.addAll(page.getDefinitions().getResources().keySet());
-//    Collections.sort(list);
 
     XhtmlNode e = body.getElement("contents");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
@@ -212,21 +210,23 @@ public class BookMaker {
   }
 
   private void loadResources(List<String> list, Set<String> keySet) throws Exception {
-    list.add("Profile");
-    list.add("MessageHeader");
-    list.add("DocumentHeader");
-    list.add("ValueSet");
-    list.add("Conformance");
-    list.add("Agent");
-    list.add("Animal");
-    list.add("AssessmentScale");
-    list.add("LabReport"); 
-    list.add("Organization");
-    list.add("Patient");
-    list.add("Person");
-    list.add("Prescription");
-    if (list.size() != keySet.size())
-      throw new Exception("Please consult Grahame");    
+    list.addAll(page.getDefinitions().getResources().keySet());
+    Collections.sort(list);
+    //    list.add("Profile");
+    //    list.add("MessageHeader");
+    //    list.add("DocumentHeader");
+    //    list.add("ValueSet");
+    //    list.add("Conformance");
+    //    list.add("Agent");
+    //    list.add("Animal");
+    //    list.add("AssessmentScale");
+    //    list.add("LabReport"); 
+    //    list.add("Organization");
+    //    list.add("Patient");
+    //    list.add("Person");
+    //    list.add("Prescription");
+    //    if (list.size() != keySet.size())
+    //      throw new Exception("Please consult Grahame");    
   }
 
   private void addPageContent(LevelCounter lvl, XhtmlNode divS, String link, String name) throws Exception, Error {
@@ -350,8 +350,6 @@ public class BookMaker {
   private void addTOC(XhtmlNode body) throws Exception {
     List<String> list = new ArrayList<String>();
     loadResources(list, page.getDefinitions().getResources().keySet());
-//    list.addAll(page.getDefinitions().getResources().keySet());
-//    Collections.sort(list);
 
     List<String> links = new ArrayList<String>();
     XhtmlNode e = body.getElement("index");
