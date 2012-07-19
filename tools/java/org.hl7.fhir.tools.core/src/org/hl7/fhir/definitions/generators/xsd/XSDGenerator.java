@@ -273,15 +273,18 @@ public class XSDGenerator extends OutputStreamWriter {
 			  for (TypeRef t : e.getTypes()) {
 			    String tn = encodeType(e, t, true);
 			    String n = e.getName().replace("[x]", tn.toUpperCase().substring(0, 1) + tn.substring(1));
-			    write("        <xs:element name=\""+n+"\" >\r\n");
-			    write("          <xs:complexType>\r\n");
-			    write("            <xs:complexContent>\r\n");
-			    write("              <xs:extension base=\""+encodeType(e, t, true)+"\">\r\n");
-			    write("                <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-			    write("              </xs:extension>\r\n");
-			    write("            </xs:complexContent>\r\n");
-			    write("          </xs:complexType>\r\n");
-			    write("        </xs:element>\r\n");
+			    if (e.isAllowDAR()) {
+			      write("        <xs:element name=\""+n+"\">\r\n");
+			      write("          <xs:complexType>\r\n");
+			      write("            <xs:complexContent>\r\n");
+			      write("              <xs:extension base=\""+encodeType(e, t, true)+"\">\r\n");
+			      write("                <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
+			      write("              </xs:extension>\r\n");
+			      write("            </xs:complexContent>\r\n");
+			      write("          </xs:complexType>\r\n");
+			      write("        </xs:element>\r\n");
+			    } else 
+            write("        <xs:element name=\""+n+"\" type=\""+encodeType(e, t, true)+"\"/>\r\n");
 			  }
 			write("      </xs:choice>\r\n");
 		} else {
@@ -318,6 +321,8 @@ public class XSDGenerator extends OutputStreamWriter {
       else
         write(" maxOccurs=\"1\"");
 
+      if (tn != null && !e.isAllowDAR() && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) 
+       write(" type=\""+tn+"\"");
       
       write(">\r\n");
 			if (e.hasDefinition()) {
@@ -325,7 +330,7 @@ public class XSDGenerator extends OutputStreamWriter {
 				write("          <xs:documentation>"+Utilities.escapeXml(e.getDefinition())+"</xs:documentation>\r\n");
 				write("        </xs:annotation>\r\n");
 			}
-			if (tn != null && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) {
+			if (tn != null && e.isAllowDAR() && !(tn.equals("Narrative") && e.getName().equals("text") && root.getElements().contains(e))) {
 			  write("         <xs:complexType>\r\n");
 			  write("           <xs:complexContent>\r\n");
 			  write("             <xs:extension base=\""+tn+"\">\r\n");

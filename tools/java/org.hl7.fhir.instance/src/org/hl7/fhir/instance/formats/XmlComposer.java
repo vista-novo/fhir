@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Mon, Jul 16, 2012 14:43+1000 for FHIR v0.04
+// Generated on Wed, Jul 18, 2012 21:38+1000 for FHIR v0.05
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -47,12 +47,8 @@ public class XmlComposer extends XmlComposerBase {
       composeString("ref", element.getRef());
       composeBool("mustUnderstand", element.getMustUnderstand());
       composeType("value", element.getValue());
-      if (element.getExtension().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtension()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtension()) 
+        composeExtension("extension", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -394,12 +390,8 @@ public class XmlComposer extends XmlComposerBase {
         composeConformanceMessaging("messaging", e);
       for (Conformance.Document e : element.getDocument()) 
         composeConformanceDocument("document", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -571,12 +563,8 @@ public class XmlComposer extends XmlComposerBase {
       composeAttachment("representation", element.getRepresentation());
       for (DocumentHeader.Section e : element.getSection()) 
         composeDocumentHeaderSection("section", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -627,12 +615,8 @@ public class XmlComposer extends XmlComposerBase {
       composeCodeableConcept("gender", element.getGender());
       for (Animal.RelatedEntity e : element.getRelatedEntity()) 
         composeAnimalRelatedEntity("relatedEntity", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -669,12 +653,8 @@ public class XmlComposer extends XmlComposerBase {
         composeAddress("address", e);
       for (Contact e : element.getContact()) 
         composeContact("contact", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -699,12 +679,8 @@ public class XmlComposer extends XmlComposerBase {
         composeOrganizationAccreditation("accreditation", e);
       for (Organization.RelatedOrganization e : element.getRelatedOrganization()) 
         composeOrganizationRelatedOrganization("relatedOrganization", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -764,12 +740,8 @@ public class XmlComposer extends XmlComposerBase {
       composePrescriptionMedicine("medicine", element.getMedicine());
       composePrescriptionAdministrationRequest("administrationRequest", element.getAdministrationRequest());
       composeCodeableConcept("reason", element.getReason());
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -874,12 +846,8 @@ public class XmlComposer extends XmlComposerBase {
         composeProfileExtensionDefn("extensionDefn", e);
       for (Profile.Binding e : element.getBinding()) 
         composeProfileBinding("binding", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1075,12 +1043,8 @@ public class XmlComposer extends XmlComposerBase {
         composeValueSetInclude("include", e);
       for (ValueSet.Include e : element.getExclude()) 
         composeValueSetInclude("exclude", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1142,12 +1106,8 @@ public class XmlComposer extends XmlComposerBase {
       composeCodeableConcept("reason", element.getReason());
       for (ResourceReference e : element.getData()) 
         composeResourceReference("data", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1203,12 +1163,8 @@ public class XmlComposer extends XmlComposerBase {
       composeCodeableConcept("diet", element.getDiet());
       composeCodeableConcept("confidentiality", element.getConfidentiality());
       composeCodeableConcept("recordLocation", element.getRecordLocation());
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1227,12 +1183,8 @@ public class XmlComposer extends XmlComposerBase {
         composeCodeableConcept("interpretation", e);
       composeAssessmentScaleScore("score", element.getScore());
       composeString_("reason", element.getReason());
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1288,12 +1240,8 @@ public class XmlComposer extends XmlComposerBase {
         composePersonLanguage("language", e);
       for (Person.RelatedPerson e : element.getRelatedPerson()) 
         composePersonRelatedPerson("relatedPerson", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
@@ -1361,12 +1309,8 @@ public class XmlComposer extends XmlComposerBase {
         composeCodeableConcept("codedDiagnosis", e);
       for (Attachment e : element.getRepresentation()) 
         composeAttachment("representation", e);
-      if (element.getExtensions().size() > 0) {
-        xml.open(FHIR_NS, "extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension("extension", e);
-        xml.close(FHIR_NS, "extension");
-      }
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
       composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }

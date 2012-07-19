@@ -9,7 +9,7 @@
       <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
     </type>
     <identifier>
-      <system>http://http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
+      <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
       <id>1234123123312332</id>	    
     </identifier>
     <period>

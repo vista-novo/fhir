@@ -445,6 +445,9 @@ object models".
 
 <a name="json"></a>
 <h2>JSON Format</h2>
+<p><i>Informative Section: Due to a series of issues around the formal standardization of 
+the JSON representation, the standard JSON representation for resources is only informative.</i></p>
+
 <p>
 Though the formal representation of the resources is in XML, many systems wish to use 
 JSON to exchange the resources and it is useful to standardise a single JSON format for 
@@ -467,9 +470,8 @@ are treated as JSON object members (see below for more details).</li>
 the case, even if they do not repeat in the actual instance.</li>
 <li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
 </ul>
-<p>These differences are sufficiently substantial that generic XML --&gt; JSON converters will
-not be able to perform a correct conversion. The reference platforms will therefore provide XML 
-&lt;--&gt; JSON conversion functionality.</p>
+<p>These differences - particularly the repeating element one, which cannot be avoided - ensure that generic XML --&gt; JSON converters are not 
+able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality.</p>
 
 <h3>JSON representation of primitive types</h3>
 <p>
@@ -487,7 +489,7 @@ they are rendered in JSON as a property and value:
 <pre class="json">
 "date": "1972-11-30"
 </pre>
-<p>Primitive elements inside resources <i>can</i> have 'id' or 'dataAbsentReason' attributes, 
+<p>Primitive elements inside resources <i>can</i> have 'id' or (if allowed) 'dataAbsentReason' attributes, 
 so their JSON representation uses a JSON object with members '_id', 'dataAbsentReason' and 'value', which
 contains the actual primitive value as string. Note that in most cases, the primitive will not have a value
 when there is a dataAbsentReason present, in which case the special 'value' member must not be present. So,</p>
@@ -519,9 +521,9 @@ when there is a dataAbsentReason present, in which case the special 'value' memb
 </pre>
 
 <h3>JSON representation of composite datatypes</h3>
-<p>Resources and other composite datatypes are represented using a JSON object, containing a member for each 
-element in the datatype. Composites can have id's and dataAbsentReasons, therefore these attributes get
-converted to JSON members values, in the same manner as described for primitives. These members will be 
+<p>Resources and other composite datatypes (types that contain named elements of other types) are represented using 
+a JSON object, containing a member for each element in the datatype. Composites can have id's and dataAbsentReasons, 
+therefore these attributes get converted to JSON members values, in the same manner as described for primitives. These members will be 
 placed before all other members. For example:</p>
  <pre class="xml">
 &lt;Person&gt;
@@ -579,13 +581,13 @@ placed before all other members. For example:</p>
 </pre>
 <p>Things to note here are:</p>
 <ul>
-<li>The 'id' is a primitive element within a resource, therefore is serialized as a JSON object.</li>
+<li>Because the primitive element 'id' is in a resource, it is serialized as a JSON object.</li>
 <li>In the family part of 'name', the '_id' is added as the first member.</li>
 <li>The 'code' within member 'language' is a part of the resource definition and therefore serialized
 as a JSON object, whereas the member 'use' within 'name' is a primitive inside a datatype and therefore
 serialized as a JSON string value.</li>
-<li>The 'div' within the Narrative element 'text'. Here, the xhtml is represented 
-as an escaped string in JSON. The xhtml's root element needs to be a &lt;div&gt; from the xhtml namespace.</li>
+<li>The XHTML content in the 'div' element which in the Narrative element 'text' is represented 
+as an escaped string in JSON. The xhtml's root element needs to be a &lt;div&gt; in the xhtml namespace.</li>
 </ul>
 
 <%footer%>

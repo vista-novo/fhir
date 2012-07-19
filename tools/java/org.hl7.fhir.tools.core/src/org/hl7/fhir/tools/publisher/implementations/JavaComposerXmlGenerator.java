@@ -277,24 +277,11 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
       
       if (name.equals("extension")) {
         String s = contentsHaveDataAbsentReason ? "Extensions" : "Extension"; 
-        write("      if (element.get"+s+"().size() > 0) {\r\n");
-        write("        xml.open(FHIR_NS, \"extension\");\r\n");
-        write("        for (Extension e : element.get"+s+"()) \r\n");
-        write("          composeExtension(\"extension\", e);\r\n");
-        write("        xml.close(FHIR_NS, \"extension\");\r\n");
-        write("      }\r\n");
+        write("      for (Extension e : element.get"+s+"()) \r\n");
+        write("        composeExtension(\"extension\", e);\r\n");
       } else if (e.unbounded()) {
-        if (listsAreWrapped && !Config.SUPPRESS_WRAPPER_ELEMENTS) {          
-          write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
-          write("        xml.open(FHIR_NS, \""+Utilities.pluralizeMe(name)+"\");\r\n");
-          write("        for ("+tn+" e : element.get"+upFirst(name)+"()) \r\n");
-          write("          "+comp+"(\""+name+"\", e);\r\n");
-          write("        xml.close(FHIR_NS, \""+Utilities.pluralizeMe(name)+"\");\r\n");
-          write("      }\r\n");
-        } else {
-          write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(name)+"()) \r\n");
-          write("        "+comp+"(\""+name+"\", e);\r\n");
-        }
+        write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(name)+"()) \r\n");
+        write("        "+comp+"(\""+name+"\", e);\r\n");
       } else if (en != null) {
         write("      if (element.get"+upFirst(name)+"() != null)\r\n");
         write("        composeString(\""+name+"\", element.get"+upFirst(name)+"().toCode());\r\n");        

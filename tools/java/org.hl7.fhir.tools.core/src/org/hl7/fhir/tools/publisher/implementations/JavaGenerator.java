@@ -42,6 +42,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.AtomComposer;
+import org.hl7.fhir.instance.formats.JsonComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
@@ -128,6 +129,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     jParserGen.generate(definitions, version, genDate);    
     JavaComposerXmlGenerator jComposerGen = new JavaComposerXmlGenerator(new FileOutputStream(javaParserDir+"XmlComposer.java"));
     jComposerGen.generate(definitions, version, genDate);    
+    JavaComposerJsonGenerator jjComposerGen = new JavaComposerJsonGenerator(new FileOutputStream(javaParserDir+"JsonComposer.java"));
+    jjComposerGen.generate(definitions, version, genDate);    
     jFactoryGen.generate(version, genDate);
     ZipGenerator zip = new ZipGenerator(destDir+"java.zip");
     zip.addFiles(implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl, ".java");
@@ -165,7 +168,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
   
   public boolean compile(List<String> errors) throws Exception {
-   
     boolean ok = true;
     for (String n : definitions.getResources().keySet()) 
       ok = ok && c(javaDir+definitions.getResourceByName(n).getName()+".java");
@@ -202,6 +204,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       new AtomComposer().compose(new FileOutputStream(destFile), rf.getFeed(), true);
     else
       new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
-    }
-
+    
+    if (rf.getFeed() != null)
+      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getFeed());
+    else
+      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getResource());
+  }
 }
