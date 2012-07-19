@@ -120,9 +120,10 @@ to specify why the normally expected content of the data element is missing.
 Notes: 
 </p>
 <ul>
-<li>Using "masked" may be abreach of security or confidentiality.  However, there are times when it's use
+<li>Using "masked" may be a breach of security or confidentiality. However, there are times when it's use
    is required to support alternate workflows for gaining access to denied information.</li>
-<li>If the <i>dataMissingReason</i> attribute is present, the element may still have additional content from its normally defined content. Usually this is where the contained elements define what data is missing 
+<li>If the <i>dataAbsentReason</i> attribute is present, the element may still have additional content from its normally
+  defined content. Usually this is where the contained elements define what data is missing 
   (for instance, that a <a href="datatypes.htm#Contact">home phone number</a> is unknown).</li>
 <li>Systems are not required to process any provided data when a <i>dataAbsentReason</i> is present, but may choose to do so.</li>   
 <li>The <i>dataAbsentReason</i> attribute is never used inside the data types, nor can it be used in the <i>text</i> portion 
@@ -461,8 +462,7 @@ such as string, decimal, etc. are identical between the XML and the JSON form
 <ul>
 <li>There are no namespaces in the JSON representation.</li>
 <li>JSON does not have a notion of attributes versus elements, so FHIR's only attributes (dataAbsentReason and id)
-are treated as JSON object members (see below for more details). However, attributes are represented using object 
-members prefixed with a "@", while text nodes are called "text()" to align them for use in XPath queries.</li>
+are treated as JSON object members (see below for more details).</li>
 <li>JSON has a notation for arrays, which are used to represent repeating elements. Note that this is
 the case, even if they do not repeat in the actual instance.</li>
 <li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
@@ -476,77 +476,119 @@ not be able to perform a correct conversion. The reference platforms will theref
 FHIR elements with primitive values are represented as JSON object members of the same name, with their value encoded
 as a string. Native JSON types other than "string" are never used to guarantee equivalence of the serialized representation
 between XML and JSON.</p>
+<p>
+Primitive elements used inside the FHIR datatypes cannot have an 'id' or 'dataAbsentReason' attribute, so 
+they are rendered in JSON as a property and value:
+</p>
 <pre class="xml">
- &lt;<b>dob</b>&gt;1972-11-30&lt;/<b>dob</b>&gt;
+ &lt;<b>date</b>&gt;1972-11-30&lt;/<b>date</b>&gt;
 </pre>
 <p>is represented in JSON as</p>
 <pre class="json">
-"dob": "1972-11-30"
+"date": "1972-11-30"
 </pre>
-<p>
-If the primitive element as an 'id' or 'dataAbsentReason' attribute, the JSON representation uses a JSON object instead
-of a value with, the attributes as special members '@id' and '@dataAbsentReason' and the actual value as a member 'text()'. 
-Note that in most cases, the primitive will not have a value when there is a dataAbsentReason present, in which case the 
-special 'value' member may not be present. So,</p>
+<p>Primitive elements inside resources <i>can</i> have 'id' or 'dataAbsentReason' attributes, 
+so their JSON representation uses a JSON object with members '_id', 'dataAbsentReason' and 'value', which
+contains the actual primitive value as string. Note that in most cases, the primitive will not have a value
+when there is a dataAbsentReason present, in which case the special 'value' member must not be present. So,</p>
 <pre class="xml">
  &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
 </pre>
 <p>is represented in JSON as:</p>
 <pre class="json">
-"dob": { "@id": "314159", "text()": "1972-11-30" }
+"dob": { "_id": "314159", "value": "1972-11-30" }
 </pre>
 <p>while this example would look like this in the case of a dataAbsentReason:</p>
 <pre class="json">
-"dob": { "@id": "314159", "@dataAbsentReason": "Unknown" }
+"dob": { "_id": "314159", "dataAbsentReason": "Unknown" }
 </pre>
-<p>
-Repeating primitive elements put the members or objects as described above in an array with the name of the element.
-A repeating "dob" element would then look like:</p>
-<pre class="json">
-"dob": [
-	{ "2011-11-30" },
-	{ "@id": "314159", "text()": "1972-11-30" }
-  ]
-</pre>
-<p>to represent the for FHIR XML with its repeating elements:</p>
+
+<h3>Repeating elements</h3>
+<p>Repeating elements are rendered withing a JSON array with the name of the element, so a repeating
+&lt;dob&gt; element in</p>
 <pre class="xml">
  &lt;<b>dob</b>&gt;2011-11-30&lt;/<b>dob</b>&gt;
  &lt;<b>dob</b> id='314159'&gt;1972-11-30&lt;/<b>dob</b>&gt;
 </pre>
-
- <h3>JSON representation of composite datatypes</h3>
-<p>Composite datatypes are represented using a JSON object, containing a member for each element in the datatype. 
- Composites can also have id's and dataAbsentReasons, therefore these attributes get their own JSON members just
- like in primitives. These members will be placed before all other members. For example:</p>
- <pre class="xml">
-&lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
-  &lt;part&gt;
-    &lt;type&gt;given&lt;/type&gt;
-    &lt;value&gt;Karen&lt;/value&gt;
-  &lt;/part&gt;
-  &lt;part id=&quot;n1&quot;&gt;
-    &lt;type&gt;family&lt;/type&gt;
-    &lt;value&gt;Van&lt;/value&gt;
-  &lt;/part&gt;
-&lt;/name&gt;
-</pre>
-<p>is represented in JSON as:
-
-TODO</p>
-<p>The Narrative type, with its "div" element from the xhtml namespace, deserves special attention. Xhtml is
-represented as an escaped string in JSON, and the xhtml's root element needs to be a &lt;div&gt;.
-A resource's 'text' element, which is of type Narrative, would look like this in JSON:</p>
+<p>is represented in JSON like so:</p>
 <pre class="json">
- "text" : {
-            "status" : "generated",
-            "div" : "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;\r\n
-			     &lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;...&lt;/div&gt;">
- }
+"dob": [
+	{ "value": "2011-11-30" },
+	{ "_id": "314159", "value": "1972-11-30" }
+  ]
 </pre>
+
+<h3>JSON representation of composite datatypes</h3>
+<p>Resources and other composite datatypes are represented using a JSON object, containing a member for each 
+element in the datatype. Composites can have id's and dataAbsentReasons, therefore these attributes get
+converted to JSON members values, in the same manner as described for primitives. These members will be 
+placed before all other members. For example:</p>
+ <pre class="xml">
+&lt;Person&gt;
+  &lt;id&gt;34234&lt;/&gt;
+  &lt;name&gt;
+    &lt;use&gt;official&lt;/use&gt;  
+    &lt;part&gt;
+      &lt;type&gt;given&lt;/type&gt;
+      &lt;value&gt;Karen&lt;/value&gt;
+    &lt;/part&gt;
+    &lt;part id=&quot;n1&quot;&gt;
+      &lt;type&gt;family&lt;/type&gt;
+      &lt;value&gt;Van&lt;/value&gt;
+    &lt;/part&gt;
+  &lt;/name&gt;
+  &lt;text&gt;
+    &lt;status&gt;generated&lt;/status&gt;
+    &lt;div xmlns="http://www.w3.org/1999/xhtml"&gt;...&lt;/div&gt;
+  &lt;/text&gt;
+&lt;/Person&gt;
+</pre>
+<p>is represented in JSON as:</p>
+<pre class="json">
+{
+  "Person" : {
+    "id" : { "value" : "34234" },
+    "name" : [{
+      "use" : "official",
+      "part" : [
+        {
+          "type" : "given",
+          "value" : "Karen" 
+        },
+        {
+           "_id" : "n1",
+           "type" : "family",
+           "value" : "van"
+        }]
+     }],
+    "dob" : { "dataAbsentReason" : "Notasked" },
+    "language" : [
+      {
+        "code" : { "_id" : "lang-1", "value" : "dut" },
+        "use" : { "value" : "fluent" }
+      },
+      {
+        "code" : { "value" : "cmn" },
+        "use" : { "value" : "useable" }
+      }],
+    "text" : {
+      "status" : "generated",
+      "div" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;"
+    }
+}
+</pre>
+<p>Things to note here are:</p>
+<ul>
+<li>The 'id' is a primitive element within a resource, therefore is serialized as a JSON object.</li>
+<li>In the family part of 'name', the '_id' is added as the first member.</li>
+<li>The 'code' within member 'language' is a part of the resource definition and therefore serialized
+as a JSON object, whereas the member 'use' within 'name' is a primitive inside a datatype and therefore
+serialized as a JSON string value.</li>
+<li>The 'div' within the Narrative element 'text'. Here, the xhtml is represented 
+as an escaped string in JSON. The xhtml's root element needs to be a &lt;div&gt; from the xhtml namespace.</li>
+</ul>
 
 <%footer%>
-
 <%/maindiv%>    
 </body>
 </html>
