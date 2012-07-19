@@ -10,14 +10,6 @@
       <link>xml</link>
       <name>Resource Format</name>
       <entry>
-        <link>xml-examples</link>
-        <name>Examples</name>
-      </entry>
-      <entry>
-        <link>xml-definitions</link>
-        <name>Definitions</name>
-      </entry>
-      <entry>
         <link>mixins</link>
         <name>Mixins</name>
       </entry>
@@ -25,34 +17,14 @@
     <entry>
       <link>datatypes</link>
       <name>Data Types</name>
-      <entry>
-        <link>datatypes-examples</link>
-        <name>Additional Examples</name>
-      </entry>
-      <entry>
-        <link>datatypes-definitions</link>
-        <name>Formal Definitions</name>
-      </entry>
     </entry>
     <entry>
       <link>terminologies</link>
       <name>Using Codes</name>
-      <entry>
-        <link>terminologies-bindings</link>
-        <name>Terminology Bindings</name>
-      </entry>
     </entry>
     <entry>
       <link>extensibility</link>
       <name>Extensibility</name>
-      <entry>
-        <link>extensibility-examples</link>
-        <name>Additional Examples</name>
-      </entry>
-      <entry>
-        <link>extensibility-definitions</link>
-        <name>Formal Definitions</name>
-      </entry>
     </entry>
     <entry>
       <link>profile</link>
@@ -94,5 +66,43 @@
   <category>
     <name>Resources</name>
     <link>resources</link>
+  </category>
+  <category>
+    <name>Examples</name>
+    <mode>nosidebar</mode>
+    <link>page</link>
+      <entry>
+        <link>xml-examples</link>
+        <name>Resource Format</name>
+      </entry>
+    <entry>
+      <link>datatypes-examples</link>
+      <name>Data types</name>
+    </entry>
+      <entry>
+        <link>extensibility-examples</link>
+        <name>Extensibility</name>
+      </entry>
+  </category>
+  <category>
+    <name>Formal Definitions</name>
+    <mode>nosidebar</mode>
+    <link>page</link>
+      <entry>
+        <link>terminologies-bindings</link>
+        <name>Terminology Bindings</name>
+      </entry>
+      <entry>
+        <link>xml-definitions</link>
+        <name>XML</name>
+      </entry> 
+      <entry>
+        <link>datatypes-definitions</link>
+        <name>Data Types</name>
+      </entry>
+      <entry>
+        <link>extensibility-definitions</link>
+        <name>Extensibility</name>
+      </entry>
   </category>
 </Navigation>

@@ -109,7 +109,7 @@ them (and only where that attribute is allowed).
    <td>see <a href='http://en.wikipedia.org/wiki/Base64'>Wikipedia</a></td><td>cGxlYXN1cmUu</td><td>null / empty</td></tr>
  <tr><td>instant</td><td>xs:dateTime</td><td>An instant in time - known at least to the second and always includes a timezone. 
    Note: This type is for system times, not human times (see below).</td>
-   <td>'-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ('Z' | (('+' | '-') hh ':' ss))</td>
+   <td>yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ('Z' | (('+' | '-') hh ':' ss))</td>
    <td>2002-10-10T17:00:00Z</td><td>N/A - systems must track missing/null</td></tr>
  <tr>
    <td>string</td><td>xs:string</td><td>A sequence of Unicode characters. Note that FHIR strings may not 

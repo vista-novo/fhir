@@ -35,6 +35,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.TextFile;
@@ -139,6 +140,11 @@ public class BookMaker {
     int l4;
   }
   private void addContent(XhtmlNode body) throws Exception {
+    List<String> list = new ArrayList<String>();
+    loadResources(list, page.getDefinitions().getResources().keySet());
+//    list.addAll(page.getDefinitions().getResources().keySet());
+//    Collections.sort(list);
+
     XhtmlNode e = body.getElement("contents");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
     body.getChildNodes().remove(e);
@@ -173,21 +179,54 @@ public class BookMaker {
           }
         }
       }
-      if (s.getEntries().size() ==0 && s.getLink().equals("resources")) {
-        lvl.l2++;
-        lvl.l3 = 0;
-        List<String> list = new ArrayList<String>();
-        list.addAll(page.getDefinitions().getResources().keySet());
-        Collections.sort(list);
-        
+      if (s.getEntries().size() == 0 && s.getLink().equals("resources")) {
+       
         for (String rn : list) {
           if (!links.contains(rn.toLowerCase())) {
+            lvl.l2++;
+            lvl.l3 = 0;
             ResourceDefn r = page.getDefinitions().getResourceByName(rn);
             addPageContent(lvl, divS, rn.toLowerCase(), r.getName());
           }
         }
       }
+      if (s.getLink().equals("page") && s.getName().equals("Examples")) {
+       
+        for (String rn : list) {
+          lvl.l2++;
+          lvl.l3 = 0;
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            addPageContent(lvl, divS, rn.toLowerCase()+"Ex", r.getName());
+        }
+      }
+      if (s.getLink().equals("page") && s.getName().equals("Formal Definitions")) {
+       
+        for (String rn : list) {
+          lvl.l2++;
+          lvl.l3 = 0;
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            addPageContent(lvl, divS, rn.toLowerCase()+"Defn", r.getName());
+        }
+      }
     }
+  }
+
+  private void loadResources(List<String> list, Set<String> keySet) throws Exception {
+    list.add("Profile");
+    list.add("MessageHeader");
+    list.add("DocumentHeader");
+    list.add("ValueSet");
+    list.add("Conformance");
+    list.add("Agent");
+    list.add("Animal");
+    list.add("AssessmentScale");
+    list.add("LabReport"); 
+    list.add("Organization");
+    list.add("Patient");
+    list.add("Person");
+    list.add("Prescription");
+    if (list.size() != keySet.size())
+      throw new Exception("Please consult Grahame");    
   }
 
   private void addPageContent(LevelCounter lvl, XhtmlNode divS, String link, String name) throws Exception, Error {
@@ -309,6 +348,11 @@ public class BookMaker {
   }
 
   private void addTOC(XhtmlNode body) throws Exception {
+    List<String> list = new ArrayList<String>();
+    loadResources(list, page.getDefinitions().getResources().keySet());
+//    list.addAll(page.getDefinitions().getResources().keySet());
+//    Collections.sort(list);
+
     List<String> links = new ArrayList<String>();
     XhtmlNode e = body.getElement("index");
     XhtmlNode div = body.addTag(body.getChildNodes().indexOf(e), "div");
@@ -341,13 +385,10 @@ public class BookMaker {
         }
       }
       if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {
-        i2++;
-        List<String> list = new ArrayList<String>();
-        list.addAll(page.getDefinitions().getResources().keySet());
-        Collections.sort(list);
         
         for (String rn : list) {
           if (!links.contains(rn.toLowerCase())) {
+            i2++;
             ResourceDefn r = page.getDefinitions().getResourceByName(rn);
             p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
             a = p.addTag("a");
@@ -356,6 +397,32 @@ public class BookMaker {
             p.addTag("br");
             p.addText("\r\n     ");
           }
+        }
+      }
+      if (c.getLink().equals("page") && c.getName().equals("Examples")) {
+        
+        for (String rn : list) {
+            i2++;
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+            a = p.addTag("a");
+            a.attribute("href", "#"+rn.toLowerCase()+"Ex");
+            a.addText(r.getName());
+            p.addTag("br");
+            p.addText("\r\n     ");
+        }
+      }
+      if (c.getLink().equals("page") && c.getName().equals("Formal Definitions")) {
+        
+        for (String rn : list) {
+          i2++;
+            ResourceDefn r = page.getDefinitions().getResourceByName(rn);
+            p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+            a = p.addTag("a");
+            a.attribute("href", "#"+rn.toLowerCase()+"Defn");
+            a.addText(r.getName());
+            p.addTag("br");
+            p.addText("\r\n     ");
         }
       }
       

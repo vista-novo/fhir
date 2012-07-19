@@ -499,6 +499,12 @@ public class Publisher {
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-book-ex.htm").replace("<body>", "<body style=\"margin: 10px\">");
+    src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+    cachePage(n + "Ex.htm", src);
+    src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
+    src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+    cachePage(n + "Defn.htm", src);
 
 		// xml to json
 		// todo - fix this up
