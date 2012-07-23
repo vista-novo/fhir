@@ -131,10 +131,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder create = new StringBuilder();
     StringBuilder destroy = new StringBuilder();
     StringBuilder assign = new StringBuilder();
+    StringBuilder getkids = new StringBuilder();
+      
 
     
     for (ElementDefn e : root.getElements()) {
-      generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, tn, pt, true, false);
+      generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, tn, pt, true, false);
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
@@ -147,6 +149,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  private\r\n");
     def.append(defPriv1.toString());
     def.append(defPriv2.toString());
+    def.append("  protected\r\n");
+    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
     def.append("  public\r\n");
     def.append("    constructor Create; Override;\r\n");
     def.append("    destructor Destroy; override;\r\n");
@@ -178,6 +182,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("begin\r\n");
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
+    impl2.append("end;\r\n\r\n");
+    
+    impl2.append("procedure "+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append(getkids.toString());
     impl2.append("end;\r\n\r\n");
     
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
@@ -214,12 +224,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder create = new StringBuilder();
     StringBuilder destroy = new StringBuilder();
     StringBuilder assign = new StringBuilder();
+    StringBuilder getkids = new StringBuilder();
     impl.append("{ "+tn+" }\r\n\r\n");
 
     
     for (ElementDefn e : root.getElements()) {
       if (!superClass.equals("TFHIRResource") || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
-        generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, tn, "", !superClass.equals("TFHIRResource"), listsAreWrapped);
+        generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, tn, "", !superClass.equals("TFHIRResource"), listsAreWrapped);
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
@@ -232,10 +243,11 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  private\r\n");
     def.append(defPriv1.toString());
     def.append(defPriv2.toString());
+    def.append("  protected\r\n");
     if (superClass.equals("TFHIRResource")) {
-      def.append("  protected\r\n");
       def.append("    function GetResourceType : TFHIRResourceType; override;\r\n");      
     }
+    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
     def.append("  public\r\n");
     def.append("    constructor Create; Override;\r\n");
     def.append("    destructor Destroy; override;\r\n");
@@ -270,6 +282,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
     impl2.append("end;\r\n\r\n");
+    impl2.append("procedure "+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append(getkids.toString());
+    impl2.append("end;\r\n\r\n");
+    
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := "+tn+"(inherited Link);\r\n");
@@ -304,12 +322,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder create = new StringBuilder();
     StringBuilder destroy = new StringBuilder();
     StringBuilder assign = new StringBuilder();
+    StringBuilder getkids = new StringBuilder();
     impl.append("{ "+tn+" }\r\n\r\n");
 
     
     for (ElementDefn e : root.getRoot().getElements()) {
       if (!superClass.equals("TFHIRResource") || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
-        generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, tn, "", !superClass.equals("TFHIRResource"), listsAreWrapped);
+        generateField(e, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, tn, "", !superClass.equals("TFHIRResource"), listsAreWrapped);
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
@@ -322,8 +341,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  private\r\n");
     def.append(defPriv1.toString());
     def.append(defPriv2.toString());
+    def.append("  protected\r\n");
+    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
     if (superClass.equals("TFHIRResource")) {
-      def.append("  protected\r\n");
       def.append("    function GetResourceType : TFHIRResourceType; override;\r\n");      
     }
     def.append("  public\r\n");
@@ -360,6 +380,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
     impl2.append("end;\r\n\r\n");
+    impl2.append("procedure "+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append(getkids.toString());
+    impl2.append("end;\r\n\r\n");
+    
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
     impl2.append("begin\r\n");
     impl2.append("  result := "+tn+"(inherited Link);\r\n");
@@ -490,6 +516,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder create = new StringBuilder();
     StringBuilder destroy = new StringBuilder();
     StringBuilder assign = new StringBuilder();
+    StringBuilder getkids = new StringBuilder();
     
     def.append("  {@Class "+tn+" : TFHIRElement\r\n");
     def.append("    "+e.getDefinition()+"\r\n");
@@ -513,12 +540,14 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 //      
 //    }
     for (ElementDefn c : e.getElements()) {
-      generateField(c, defPriv1, defPriv2, defPub, impl, create, destroy, assign, tn, "", false, listsAreWrapped);
+      generateField(c, defPriv1, defPriv2, defPub, impl, create, destroy, assign, getkids, tn, "", false, listsAreWrapped);
     }
 
     def.append("  private\r\n");
     def.append(defPriv1.toString());
     def.append(defPriv2.toString());
+    def.append("  protected\r\n");
+    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
     def.append("  public\r\n");
     def.append("    constructor Create; Override;\r\n");
     def.append("    destructor Destroy; override;\r\n");
@@ -550,6 +579,12 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append(assign.toString());
     impl2.append("end;\r\n\r\n");
+    impl2.append("procedure "+tn+".GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append(getkids.toString());
+    impl2.append("end;\r\n\r\n");
+    
     
     impl2.append("function "+tn+".Link : "+tn+";\r\n");
     impl2.append("begin\r\n");
@@ -780,7 +815,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     return null;
   }
 
-  private void generateField(ElementDefn e, StringBuilder defPriv1, StringBuilder defPriv2, StringBuilder defPub, StringBuilder impl, StringBuilder create, StringBuilder destroy, StringBuilder assign, String cn, String pt, Boolean isType, boolean listsAreWrapped) throws Exception {
+  private void generateField(ElementDefn e, StringBuilder defPriv1, StringBuilder defPriv2, StringBuilder defPub, StringBuilder impl, StringBuilder create, StringBuilder destroy, StringBuilder assign, StringBuilder getkids, String cn, String pt, Boolean isType, boolean listsAreWrapped) throws Exception {
     String tn;
     if (e.getTypes().size() > 0 && e.getTypes().get(0).isUnboundGenericParam())
       tn = pt;
@@ -795,12 +830,18 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     
 
     String parse = null;
+    String ttb = "";
+    String tta = "";
     if (typeIsSimple(tn)) {
-      if (enumNames.contains(tn))
+      if (enumNames.contains(tn)) {        
         parse = tn+"(ParseEnum(CODES_"+tn+", child))";
-      else if (tn.equals("Integer"))
+        ttb = "CODES_"+tn+"[";
+        tta = "]";
+      } else if (tn.equals("Integer")) {
         parse = "StringToInteger32(child.text)";
-      else if (tn.equals("Boolean"))
+        ttb = "inttostr(";
+        tta = ")";
+      } else if (tn.equals("Boolean"))
         parse = "StringToBoolean(child.text)";
       else if (tn.equals("TDateTime"))
         parse = "XMLDateTimeStringToDateTime(child.text)";
@@ -861,6 +902,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       create.append("  F"+getTitle(s)+" := "+tnl+".Create;\r\n");
       destroy.append("  F"+getTitle(s)+".Free;\r\n");
       assign.append("  F"+getTitle(s)+".Assign("+cn+"(oSource).F"+getTitle(s)+");\r\n");
+      getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.addAll(F"+getTitle(s)+");\r\n");
       
       defineList(tn, tnl);
       if (!typeIsSimple(tn)) {
@@ -930,6 +972,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       if (typeIsSimple(tn) && !tn.equals("TFhirXHtmlNode")) {
         impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : "+tn+");\r\nbegin\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
         assign.append("  F"+getTitle(s)+" := "+cn+"(oSource).F"+getTitle(s)+";\r\n");
+        getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.add(TFHIRObjectText.create("+ttb+getTitle(s)+tta+"));\r\n");
         workingParserX.append("      else if (child.nodeName = '"+e.getName()+"') then\r\n        result."+s+" := "+parse+"\r\n");
         workingParserJ.append("      else if (json.ItemName = '"+e.getName()+"') then\r\n        result."+s+" := "+parseJ+"\r\n");
 //        if (tn.equals("TXmlIdReference")) {
@@ -946,6 +989,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         impl.append("Procedure "+cn+".Set"+getTitle(s)+"(value : "+tn+");\r\nbegin\r\n  F"+getTitle(s)+".free;\r\n  F"+getTitle(s)+" := value;\r\nend;\r\n\r\n");
         destroy.append("  F"+getTitle(s)+".free;\r\n");
         assign.append("  "+s+" := "+cn+"(oSource)."+s+".Clone;\r\n");
+        getkids.append("  if (child_name = '"+getElementName(e.getName())+"') Then\r\n     list.add("+getTitle(s)+".Link);\r\n");
         if (e.getName().contains("[x]") && e.getTypes().size() > 1) {
           String pfx = e.getName().replace("[x]", "");
           int t = e.getTypes().size();
@@ -1059,7 +1103,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "    A list of "+tt+"\r\n"+
         "  }\r\n"+
         "  {!.Net HL7Connect.Fhir."+tn.substring(1)+"List}\r\n"+
-        "  "+tn+"List = class (THL7FHIRObjectList)\r\n"+
+        "  "+tn+"List = class (TFHIRObjectList)\r\n"+
         "  private\r\n"+
         "    function GetItemN(index : Integer) : "+tn+";\r\n"+
         "    procedure SetItemN(index : Integer; value : "+tn+");\r\n"+
@@ -1316,6 +1360,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     defCode.precomments.add("!Wrapper uses FHIRBase_Wrapper");
     defCode.uses.add("FHIRBase");
     defCode.uses.add("AdvBuffers");
+    defCode.uses.add("SysUtils");
     defCode.uses.add("DecimalSupport");
     defCode.uses.add("Classes");
 
@@ -1358,7 +1403,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
 //      generate(e, definitions.getConceptDomains());
 //    }
     defCode.enumConsts.add("  FHIR_GENERATED_VERSION = '"+version+"';\r\n");
-    defCode.enumConsts.add("  FHIR_GENERATED_DATE = '"+new SimpleDateFormat("yyyyMMddhhmmss").format(genDate)+"';\r\n");
+    defCode.enumConsts.add("  FHIR_GENERATED_DATE = '"+new SimpleDateFormat("yyyyMMddHHmmss").format(genDate)+"';\r\n");
     defCode.classDefs.add(" TFHIRResourceFactory = class (TFHIRBaseFactory)\r\n  public\r\n"+factoryIntf.toString()+"  end;\r\n");
     defCode.classImpls.add(factoryImpl.toString());
     defCode.finish();
@@ -1452,10 +1497,13 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("    FId : String;\r\n");
     def.append("    FText : TNarrative;\r\n");
     def.append("    FFormat : TFHIRFormat;\r\n");
+    def.append("    FExtensionList : TExtensionList;\r\n");
     def.append("    procedure SetResourceId(value : string);\r\n");
     def.append("    procedure SetText(value : TNarrative);\r\n");
     def.append("  protected\r\n");
     def.append("    function GetResourceType : TFHIRResourceType; virtual; abstract;\r\n");
+    def.append("  protected\r\n");
+    def.append("    Procedure GetChildrenByName(child_name : string; list : TFHIRObjectList); override;\r\n");
     def.append("  public\r\n");
     def.append("    constructor Create; override;\r\n");
     def.append("    destructor Destroy; override;\r\n");
@@ -1470,6 +1518,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("      The code that identifies the meaning of the extension by reference to the definitions\r\n");
     def.append("    }\r\n");
     def.append("    property id : String read FId write SetResourceId;\r\n\r\n");
+    def.append("    {@member extensionList\r\n");
+    def.append("      Resource Extensions\r\n");
+    def.append("    }\r\n");
+    def.append("    property extensionList : TExtensionList read FExtensionList;\r\n");
     def.append("    {@member text\r\n");
     def.append("      Text summary of resource, for human interpretation\r\n");
     def.append("    }\r\n");
@@ -1497,11 +1549,20 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  inherited;\r\n");
     impl2.append("end;\r\n\r\n");
     
+    impl2.append("procedure TFHIRResource.GetChildrenByName(child_name : string; list : TFHIRObjectList);\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append("  if (child_name = 'id') then\r\n    list.add(TFHIRObjectText.Create(FId));\r\n");
+    impl2.append("  if (child_name = 'extension') then\r\n    list.addAll(FExtensionList);\r\n");
+    impl2.append("  if (child_name = 'text') then\r\n    list.add(text.Link);\r\n");
+    impl2.append("end;\r\n\r\n");
+    
     impl2.append("procedure TFHIRResource.Assign(oSource : TAdvObject);\r\n");
     impl2.append("begin\r\n");
     impl2.append("  inherited;\r\n");
     impl2.append("  FId := TFHIRResource(oSource).FId;\r\n");
     impl2.append("  FFormat := TFHIRResource(oSource).FFormat;\r\n");
+    impl2.append("  extensionList.assign(TFHIRResource(oSource).extensionList);\r\n");
     impl2.append("  text := TFHIRResource(oSource).text.Clone;\r\n");
     impl2.append("end;\r\n\r\n");
     

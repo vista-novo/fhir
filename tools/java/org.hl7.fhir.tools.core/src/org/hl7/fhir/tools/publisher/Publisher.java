@@ -33,9 +33,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -90,6 +88,7 @@ import org.hl7.fhir.tools.publisher.implementations.JavaGenerator;
 import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.ZipGenerator;
@@ -219,32 +218,22 @@ public class Publisher {
 				Utilities.checkFolder(page.getFolders().implDir(gen.getName()),
 						errors);
 			Utilities.checkFolder(page.getFolders().umlDir, errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"fhir-all.xsd", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"header.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"footer.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"template.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"template-book.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"template-print.htm", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "fhir-all.xsd", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "header.htm", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
+			Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
 			Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 			for (String n : page.getIni().getPropertyNames("support"))
-				Utilities.checkFile("support", page.getFolders().srcDir, n,
-						errors);
+				Utilities.checkFile("support", page.getFolders().srcDir, n, errors);
 			for (String n : page.getIni().getPropertyNames("images"))
-				Utilities.checkFile("image", page.getFolders().imgDir, n,
-						errors);
+				Utilities.checkFile("image", page.getFolders().imgDir, n, errors);
 			for (String n : page.getIni().getPropertyNames("schema"))
-				Utilities.checkFile("schema", page.getFolders().srcDir, n,
-						errors);
+				Utilities.checkFile("schema", page.getFolders().srcDir, n, errors);
 			for (String n : page.getIni().getPropertyNames("pages"))
-				Utilities
-						.checkFile("page", page.getFolders().srcDir, n, errors);
+				Utilities.checkFile("page", page.getFolders().srcDir, n, errors);
 
 		}
 		if (errors.size() > 0)
@@ -281,16 +270,13 @@ public class Publisher {
 
 	private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
-		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml",
-				isInternalRun);
-		chm = new ChmMaker(page.getNavigation(), page.getFolders(),
-				page.getDefinitions(), page);
+		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml",	isInternalRun);
+		chm = new ChmMaker(page.getNavigation(), page.getFolders(),	page.getDefinitions(), page);
 		book = new BookMaker(page, chm);
 
 		XMIResource resource = new XMIResourceImpl();
 		resource.load( new FileInputStream(eCorePath), null );
-		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = 
-				(org.hl7.fhir.definitions.ecore.fhir.Definitions)resource.getContents().get(0);	
+		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions)resource.getContents().get(0);	
 		
 		for (PlatformGenerator gen : page.getReferenceImplementations()) 
 		{
@@ -300,8 +286,7 @@ public class Publisher {
 			String implDir = page.getFolders().implDir(gen.getName());
 			
 			if( !gen.isECoreGenerator() )
-				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(),
-						page.getGenDate().getTime(), page);
+				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(), page.getGenDate().getTime(), page);
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
@@ -315,11 +300,8 @@ public class Publisher {
     }
     
 		log("Produce Schemas");
-		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(),
-				page.getFolders().tmpResDir, page.getFolders().xsdDir,
-				page.getFolders().dstDir, page.getFolders().srcDir,
-				page.getVersion(),
-				Config.DATE_FORMAT().format(page.getGenDate().getTime()));
+		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, 
+		    page.getFolders().dstDir, page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()));
     for (ResourceDefn r : page.getDefinitions().getResources().values()) {
       String n = r.getName().toLowerCase();
       SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
@@ -441,13 +423,12 @@ public class Publisher {
 		File f = new File(page.getFolders().dstDir + "fhir-all-xsd.zip");
 		if (f.exists())
 			f.delete();
-		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir
-				+ "fhir-all-xsd.zip");
+		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir	+ "fhir-all-xsd.zip");
     zip.addFiles(page.getFolders().dstDir, "", ".xsd");
     zip.addFiles(page.getFolders().dstDir, "", ".sch");
+    zip.addFiles(page.getFolders().rootDir+"tools\\schematron\\", "", ".xsl");
 		zip.close();
-		Utilities.copyFile(new File(page.getFolders().tmpResDir
-				+ "fhir-all-xsd.zip"), f);
+		Utilities.copyFile(new File(page.getFolders().tmpResDir	+ "fhir-all-xsd.zip"), f);
 	}
 
 	private void produceResource(ResourceDefn resource) throws Exception {
@@ -806,94 +787,6 @@ public class Publisher {
 
 	}
 
-	public class MyLSInput implements LSInput {
-
-		private FileInputStream stream;
-
-		public MyLSInput(FileInputStream fileInputStream) {
-			this.stream = fileInputStream;
-		}
-
-		public String getBaseURI() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public InputStream getByteStream() {
-			return stream;
-		}
-
-		public boolean getCertifiedText() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		public Reader getCharacterStream() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getEncoding() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getPublicId() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getStringData() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public String getSystemId() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-		public void setBaseURI(String baseURI) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setByteStream(InputStream byteStream) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setCertifiedText(boolean certifiedText) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setCharacterStream(Reader characterStream) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setEncoding(String encoding) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setPublicId(String publicId) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setStringData(String stringData) {
-			// TODO Auto-generated method stub
-
-		}
-
-		public void setSystemId(String systemId) {
-			// TODO Auto-generated method stub
-
-		}
-	}
-
 	public class MyResourceResolver implements LSResourceResolver {
 
 		private String dir;
@@ -910,7 +803,7 @@ public class Publisher {
 					.equals("http://www.w3.org/1999/xhtml")))
 				return null;
 			try {
-				return new MyLSInput(new FileInputStream(new File(dir
+				return new SchemaInputSource(new FileInputStream(new File(dir
 						+ systemId)));
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block

@@ -28,6 +28,8 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 package org.hl7.fhir.utilities;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +39,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -215,6 +218,28 @@ public class Utilities {
   }
 
 
+  public static byte[] transform(Map<String, byte[]> files, byte[] source, byte[] xslt) throws Exception {
+    TransformerFactory f = net.sf.saxon.TransformerFactoryImpl.newInstance();
+    StreamSource xsrc = new StreamSource(new ByteArrayInputStream(xslt));
+    f.setURIResolver(new ZipURIResolver(files));
+    Transformer t = f.newTransformer(xsrc);
+
+    t.setURIResolver(new ZipURIResolver(files));
+    StreamSource src = new StreamSource(new ByteArrayInputStream(source));
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    StreamResult res = new StreamResult(out);
+    t.transform(src, res);
+    return out.toByteArray();    
+  }
+  
+  public static void bytesToFile(byte[] content, String filename) throws Exception {
+    FileOutputStream out = new FileOutputStream(filename);
+    out.write(content);
+    out.close();
+    
+  }
+
+
   public static void transform(String xsltDir, String source, String xslt, String dest) throws Exception {
     /* default java approach, but this doesn't support xslt2
     TransformerFactory f = TransformerFactory.newInstance();
@@ -237,6 +262,11 @@ public class Utilities {
     StreamResult res = new StreamResult(new FileOutputStream(dest));
     t.transform(src, res);
     
+  }
+
+
+  public static String appendSlash(String definitions) {
+    return definitions.endsWith(File.separator) ? definitions : definitions+File.separator;
   }
   
 	
