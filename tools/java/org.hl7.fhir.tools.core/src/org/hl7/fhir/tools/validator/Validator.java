@@ -122,9 +122,10 @@ public class Validator {
     }
 
     public LSInput resolveResource(final String type, final String namespaceURI, final String publicId, String systemId, final String baseURI) {
-      if (!(namespaceURI.equals("http://hl7.org/fhir") || namespaceURI.equals("http://www.w3.org/1999/xhtml")))
+//      if (!(namespaceURI.equals("http://hl7.org/fhir"))) //|| namespaceURI.equals("http://www.w3.org/1999/xhtml")))
+      if (!files.containsKey(systemId))
         return null;
-      return new SchemaInputSource(new ByteArrayInputStream(files.get(systemId)));
+      return new SchemaInputSource(new ByteArrayInputStream(files.get(systemId)), publicId, systemId, namespaceURI);
     }
   }
 
@@ -188,19 +189,23 @@ public class Validator {
   }
 
   private Schema readSchema() throws SAXException {
-    int t = 0;
-    for (String n : files.keySet())
-      if (n.endsWith(".xsd") && !n.equals("xml.xsd"))
-        t++;
+//    int t = 0;
+//    for (String n : files.keySet())
+//      if (n.endsWith(".xsd") && !n.equals("xml.xsd"))
+//        t++;
+//
+//    StreamSource[] sources = new StreamSource[t];
+//    int i = 0;
+//    for (String n : files.keySet()) {
+//      if (n.endsWith(".xsd") && !n.equals("xml.xsd")) {
+//        sources[i] = new StreamSource(new ByteArrayInputStream(files.get(n)));
+//        i++;
+//      }
+//    }
+    StreamSource[] sources = new StreamSource[2];
+    sources[0] = new StreamSource(new ByteArrayInputStream(files.get("fhir-all.xsd")));
+    sources[1] = new StreamSource(new ByteArrayInputStream(files.get("fhir-atom.xsd")));
 
-    StreamSource[] sources = new StreamSource[t];
-    int i = 0;
-    for (String n : files.keySet()) {
-      if (n.endsWith(".xsd") && !n.equals("xml.xsd")) {
-        sources[i] = new StreamSource(new ByteArrayInputStream(files.get(n)));
-        i++;
-      }
-    }
     SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
     schemaFactory.setErrorHandler(new ValidationErrorHandler(outputs));
     schemaFactory.setResourceResolver(new ValidatorResourceResolver(files));

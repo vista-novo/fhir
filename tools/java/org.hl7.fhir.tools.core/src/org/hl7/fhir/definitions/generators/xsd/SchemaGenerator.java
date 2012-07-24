@@ -124,7 +124,7 @@ public class SchemaGenerator {
       else if (com[0].equals("resources")) {
         StringBuilder includes = new StringBuilder();
         for (String n : definitions.getResources().keySet()) // was ini.names of resources 
-          includes.append("  <xs:include schemaLocation=\""+n+".xsd\"/>\r\n");
+          includes.append("  <xs:include schemaLocation=\""+n.toLowerCase()+".xsd\"/>\r\n");
         src = s1+includes.toString()+s3;
       }
       else if (com[0].equals("atom.imports")) {

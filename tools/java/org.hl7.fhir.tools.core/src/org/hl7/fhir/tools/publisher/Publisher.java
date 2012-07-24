@@ -803,8 +803,7 @@ public class Publisher {
 					.equals("http://www.w3.org/1999/xhtml")))
 				return null;
 			try {
-				return new SchemaInputSource(new FileInputStream(new File(dir
-						+ systemId)));
+				return new SchemaInputSource(new FileInputStream(new File(dir	+ systemId)), publicId, systemId, namespaceURI);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

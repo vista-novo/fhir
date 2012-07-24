@@ -8,14 +8,19 @@ import org.w3c.dom.ls.LSInput;
 public class SchemaInputSource implements LSInput {
 
 	private InputStream stream;
+  private String publicId;
+  private String systemId;
+  private String namespaceURI;
 
-	public SchemaInputSource(InputStream inputStream) {
+	public SchemaInputSource(InputStream inputStream, String publicId, String systemId, String namespaceURI) {
 		this.stream = inputStream;
+		this.publicId = publicId;
+		this.systemId = systemId;
+		this.namespaceURI = namespaceURI;
 	}
 
 	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
+	  return namespaceURI;
 	}
 
 	public InputStream getByteStream() {
@@ -23,72 +28,58 @@ public class SchemaInputSource implements LSInput {
 	}
 
 	public boolean getCertifiedText() {
-		// TODO Auto-generated method stub
-		return false;
+    throw new Error("Not implemented yet");
 	}
 
 	public Reader getCharacterStream() {
-		// TODO Auto-generated method stub
-		return null;
+    return null;
 	}
 
 	public String getEncoding() {
-		// TODO Auto-generated method stub
-		return null;
+    return "UTF-8";
 	}
 
 	public String getPublicId() {
-		// TODO Auto-generated method stub
-		return null;
+    return publicId;
 	}
 
 	public String getStringData() {
-		// TODO Auto-generated method stub
-		return null;
+    return null;
 	}
 
 	public String getSystemId() {
-		// TODO Auto-generated method stub
-		return null;
+    return systemId;
 	}
 
 	public void setBaseURI(String baseURI) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setByteStream(InputStream byteStream) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setCertifiedText(boolean certifiedText) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setCharacterStream(Reader characterStream) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setEncoding(String encoding) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setPublicId(String publicId) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setStringData(String stringData) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 
 	public void setSystemId(String systemId) {
-		// TODO Auto-generated method stub
-
+    throw new Error("Not implemented yet");
 	}
 }
