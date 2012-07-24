@@ -29,5 +29,14 @@ namespace HL7.Fhir.Instance.Serializers
                     typeof(DataAbsentReason)));
             }
         }
+
+        public static void SerializeAttributes(IFhirWriter writer, Data elem)
+        {
+            if (elem.ReferralId != null)
+                writer.WriteRefId(elem.ReferralId);
+
+            if (elem.Dar.HasValue)
+                writer.WriteDar(EnumHelper.EnumToString(elem.Dar.Value,typeof(DataAbsentReason)));
+        }
     }
 }
