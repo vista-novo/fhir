@@ -20,31 +20,44 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void SerializePrimitive()
         {
-            string result = writeStuff(writer =>
+            Action<IFhirWriter> action = writer =>
                  {
                      FhirBoolean bl = new FhirBoolean(true);
                      bl.ToJson(writer);
-                 });
+                 };
 
-            Assert.AreEqual("{\"x\":\"true\"}",result);
+            string j = writeStuffJ(action);
+            string x = writeStuffX(action);
 
-            result = writeStuff(writer =>
-            {
-                FhirBoolean bl = new FhirBoolean(null);
-                bl.Dar = DataAbsentReason.Notasked;
-                bl.ToJson(writer,true);
-            });
+            Assert.AreEqual("{\"x\":\"true\"}",j);
+            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\">true</x>", x);
 
-            Assert.AreEqual("{\"x\":{\"dataAbsentReason\":\"notasked\"}}", result);
+            Action<IFhirWriter> action2 = writer =>
+                {
+                    FhirBoolean bl = new FhirBoolean(null);
+                    bl.Dar = DataAbsentReason.Notasked;
+                    bl.ToJson(writer,true);
+                };
 
-            result = writeStuff(writer =>
-            {
-                FhirBoolean bl = new FhirBoolean(false);
-                bl.ReferralId = "3141";
-                JsonPrimitiveSerializer.Serialize(writer, bl);
-            });
+            j = writeStuffJ(action2);
+            x = writeStuffX(action2);
 
-            Assert.AreEqual("{\"x\":{\"_id\":\"3141\",\"value\":\"false\"}}", result);
+            Assert.AreEqual("{\"x\":{\"dataAbsentReason\":\"notasked\"}}", j);
+            Assert.AreEqual("<x dataAbsentReason=\"notasked\" xmlns=\"http://hl7.org/fhir\" />", x);
+
+
+            Action<IFhirWriter> action3 = writer =>
+                {
+                    FhirBoolean bl = new FhirBoolean(false);
+                    bl.ReferralId = "3141";
+                    JsonPrimitiveSerializer.Serialize(writer, bl);
+                };
+
+            j = writeStuffJ(action3);
+            x = writeStuffX(action3);
+
+            Assert.AreEqual("{\"x\":{\"_id\":\"3141\",\"value\":\"false\"}}", j);
+            Assert.AreEqual("<x id=\"3141\" xmlns=\"http://hl7.org/fhir\">false</x>", x);
         }
 
 
@@ -52,7 +65,8 @@ namespace HL7.Fhir.Instance.Tests
         public void TestResourceSerialization()
         {
             var sw = new StringWriter();
-            JsonWriter writer = new JsonTextWriter(sw);
+            JsonWriter w = new JsonTextWriter(sw);
+            IFhirWriter writer = new JsonFhirWriter(w);
 
             Code nl = new Code("dut");
             nl.ReferralId = "lang-1";
@@ -93,13 +107,11 @@ namespace HL7.Fhir.Instance.Tests
                  Text = new Narrative()
                  {
                      Status = Narrative.NarrativeStatus.Generated,
-                     Div = XElement.Parse("<div>stuff</div>")            
+                     Div = XElement.Parse("<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>")            
                  }
             };
 
             p.ToJson(writer);
-
-            //JsonPersonSerializer.SerializePerson(writer, p);
 
             Assert.AreEqual("{\"Person\":{\"id\":{\"value\":\"34234\"},\"name\":" +
                 "[{\"use\":\"official\",\"part\":[{\"type\":\"given\",\"value\":\"Karen\"}"+
@@ -107,7 +119,15 @@ namespace HL7.Fhir.Instance.Tests
                 "{\"dataAbsentReason\":\"notasked\"},\"language\":[{\"code\":"+
                 "{\"_id\":\"lang-1\",\"value\":\"dut\"},\"use\":{\"value\":\"fluent\"}},"+
                 "{\"code\":{\"value\":\"cmn\"},\"use\":{\"value\":\"useable\"}}],\"text\":"+
-                "{\"status\":\"generated\",\"div\":\"<div>stuff</div>\"}}}", sw.ToString());
+                "{\"status\":\"generated\",\"div\":\"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">stuff</div>\"}}}", sw.ToString());
+
+            sw = new StringWriter();
+            XmlWriter wx = new XmlTextWriter(sw);
+            writer = new XmlFhirWriter(wx);
+
+            p.ToJson(writer);
+
+            Assert.AreEqual("", sw.ToString());
         }
 
 
@@ -128,25 +148,44 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
 
             var sw = new StringWriter();
-            JsonWriter writer = new JsonTextWriter(sw);
-
+            JsonWriter w = new JsonTextWriter(sw);
+            IFhirWriter writer = new JsonFhirWriter(w);
             rep.ToJson(writer);
 
             string result = sw.ToString();
         }
         
-
-        private string writeStuff(Action<JsonWriter> action)
+        private string writeStuffJ(Action<IFhirWriter> action)
         {
             var sw = new StringWriter();
-            JsonWriter writer = new JsonTextWriter(sw);
+            JsonWriter w = new JsonTextWriter(sw);
+            IFhirWriter writer = new JsonFhirWriter(w);
 
-            writer.WriteStartObject();
-            writer.WritePropertyName("x");
+            writer.WriteStartComplexContent();
+            writer.WriteStartElement("x");
 
             action(writer);
 
-            writer.WriteEndObject();
+            writer.WriteEndElement();
+            writer.WriteEndComplexContent();
+
+            return sw.ToString();
+        }
+
+
+        private string writeStuffX(Action<IFhirWriter> action)
+        {
+            var sw = new StringWriter();
+            XmlWriter w = new XmlTextWriter(sw);
+            IFhirWriter writer = new XmlFhirWriter(w);
+
+            writer.WriteStartComplexContent();
+            writer.WriteStartElement("x");
+
+            action(writer);
+
+            writer.WriteEndElement();
+            writer.WriteEndComplexContent();
 
             return sw.ToString();
         }

@@ -40,10 +40,11 @@ namespace HL7.Fhir.Instance.Tests
                         {
                             Console.WriteLine("Writing json");
                             string jsonFile = Path.ChangeExtension(file, "json");
-                            using (JsonTextWriter wr = new JsonTextWriter(new System.IO.StreamWriter(jsonFile)))
+                            using (JsonTextWriter w = new JsonTextWriter(new System.IO.StreamWriter(jsonFile)))
                             {
+                                IFhirWriter wr = new JsonFhirWriter(w);
                                 resource.ToJson(wr);
-                                wr.Close();
+                                w.Close();
                             }
                         }
                         errors.Clear();

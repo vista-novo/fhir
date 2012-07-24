@@ -198,6 +198,36 @@ namespace HL7.Fhir.Instance.Tests
         }
 
         [TestMethod]
+        public void TestParsePerformance()
+        {
+            var settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.IgnoreProcessingInstructions = true;
+            settings.IgnoreWhitespace = true;
+
+            string text = File.ReadAllText(@"..\..\..\..\..\publish\labreport-example.xml");
+            int repeats = 25;
+
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            
+            sw.Start();
+            
+            for (int i = 0; i < repeats; i++)
+            {            
+                XmlReader r = XmlReader.Create(new StringReader(text), settings);
+                ErrorList errors = new ErrorList();
+                LabReport rep = (LabReport)XmlResourceParser.ParseResource(r, errors);
+            }
+            
+            sw.Stop();
+
+            long bytesPerMs = text.Length*repeats / sw.ElapsedMilliseconds;
+            
+            File.WriteAllText(@"c:\temp\speedtest.txt", bytesPerMs.ToString() + " bytes per ms");
+            Assert.IsTrue(bytesPerMs > 1024);       // Speed is of course very dependent on debug/release and machine
+        }
+
+        [TestMethod]
         public void TestParseNameWithExtensions()
         {
             string xmlString =

@@ -55,6 +55,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		ln("using HL7.Fhir.Instance.Model;");
 		ln("using System.Xml;");
 		ln("using Newtonsoft.Json;");
+		ln("using HL7.Fhir.Instance.Serializers;");
 		ln();
 		ln("namespace HL7.Fhir.Instance.Serializers");
 		bs("{");		
@@ -77,7 +78,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	}
 
 	private void dataSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeData(JsonWriter writer, Data type, bool asJsonObject=false)");
+		ln("public static void SerializeData(IFhirWriter writer, Data type, bool asJsonObject=false)");
 		bs("{");
 			ln("if( typeof(Composite).IsAssignableFrom(type.GetType()) )");
 			bs("{");
@@ -88,33 +89,33 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			generateSerializationCases(definitions.getPrimitives());
 		es("}");
 		ln();
-		ln("public static void ToJson(this Data data, JsonWriter writer, bool asJsonObject=false )");
+		ln("public static void ToJson(this Data data, IFhirWriter writer, bool asJsonObject=false )");
 		bs("{");
 			ln("SerializeData(writer, data, asJsonObject);");
 		es("}");
 	}
 
 	private void compositeSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeComposite(JsonWriter writer, Composite type)");
+		ln("public static void SerializeComposite(IFhirWriter writer, Composite type)");
 		bs("{");
 			List composites = new ArrayList();
 			composites.addAll(definitions.getLocalCompositeTypes());
 			composites.addAll(definitions.getLocalConstrainedTypes());
 			generateSerializationCases(composites);
 		es("}");
-		ln("public static void ToJson(this Composite composite, JsonWriter writer)");
+		ln("public static void ToJson(this Composite composite, IFhirWriter writer)");
 		bs("{");
 			ln("SerializeComposite(writer, composite);");
 		es("}");
 	}
 
 	private void resourceSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeResource(JsonWriter writer, Resource type)");
+		ln("public static void SerializeResource(IFhirWriter writer, Resource type)");
 		bs("{");
 			generateSerializationCases(definitions.getLocalResources());
 		es("}");
 		ln();
-		ln("public static void ToJson(this Resource resource, JsonWriter writer)");
+		ln("public static void ToJson(this Resource resource, IFhirWriter writer)");
 		bs("{");
 			ln("SerializeResource(writer, resource);");
 		es("}");
@@ -144,12 +145,6 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 					nl(".ToJson(writer,asJsonObject);");
 				else
 					nl(".ToJson(writer);");
-
-//				ln("Json" + type.getName() + "Serializer");
-//					nl(".Serialize" + t.getName());
-//					nl("(writer, ");
-//					nl("(" + typeName + ")");
-//					nl("resource);");
 			es();				
 		}
 		
@@ -172,6 +167,8 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		ln("using HL7.Fhir.Instance.Model;");
 		ln("using System.Xml;");
 		ln("using Newtonsoft.Json;");
+		ln("using HL7.Fhir.Instance.Serializers;");
+		
 		ln();
 		ln("namespace HL7.Fhir.Instance.Serializers");
 		bs("{");
@@ -196,7 +193,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		
 		ln("public static void ToJson(this ");
 			nl(valueType);
-			nl(" value, JsonWriter writer)");
+			nl(" value, IFhirWriter writer)");
         bs("{");
             ln("Serialize" + composite.getName());
             	nl( "(writer, value);");
@@ -204,22 +201,19 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		ln();
 		ln("public static void ");
 			nl("Serialize" + composite.getName());
-			nl("(JsonWriter writer, ");
+			nl("(IFhirWriter writer, ");
 			nl(valueType);
 			nl(" value)");
 		bs("{");
-			ln("writer.WriteStartObject();");
-		
 			if( composite.isResource() )
 			{
 				// Resources, being top-level objects, have their
 				// resource name as a single root member
-				ln("writer.WritePropertyName(\"");
+				ln("writer.WriteStartRootObject(\"");
 					nl(composite.getName());
 					nl("\");");
-				ln("writer.WriteStartObject();");
 			}
-		
+			ln("writer.WriteStartComplexContent();");	
 			ln();
 			
 			if( !composite.isResource() )
@@ -236,10 +230,10 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 				ln();
 			}
 			
-			ln("writer.WriteEndObject();");
+			ln("writer.WriteEndComplexContent();");
 			
 			if( composite.isResource() )
-				ln("writer.WriteEndObject();");
+				ln("writer.WriteEndRootObject();");
 		es("}");
 		ln();
 	
@@ -311,27 +305,33 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	
 	private void serializeRepeatingElement( ElementDefn member, String propertyName  ) throws Exception
 	{	
-		ln("writer.WritePropertyName(");
+		ln("writer.WriteStartArrayElement(");
 			nl("\"" + member.getName() + "\"");
 			nl(");");
 
-		ln("writer.WriteStartArray();");
-		
 		ln("foreach(var item in " + propertyName + ")");
-		bs();
+		bs("{");
+			ln("writer.WriteStartArrayMember(");
+				nl("\"" + member.getName() + "\"");
+				nl(");");
+	
 			buildSerializeStatement("item", member);
-		es(); 
+			
+			ln("writer.WriteEndArrayMember();");
+		es("}"); 
 		
-		ln("writer.WriteEndArray();");
+		ln("writer.WriteEndArrayElement();");
 	}
 	
 	private void serializeSingleElement( ElementDefn member, String propertyName ) throws Exception
 	{	
-		ln("writer.WritePropertyName(");
+		ln("writer.WriteStartElement(");
 			nl("\"" + member.getName() + "\"");
 			nl(");");
 												
-		buildSerializeStatement(propertyName, member);		
+		buildSerializeStatement(propertyName, member);
+		
+		ln("writer.WriteEndElement();");
 	}
 
 
@@ -356,72 +356,14 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	
 		ln(propertyName);
 		
+		//Primitives inside datatypes cannot have id and/or 
+		// dataAbsentReason so should be serialized as a simple value.
 		if( isPrimitive && isResourceElement(member) )
 			nl(".ToJson(writer,true);");
 		else
 		{
 			nl(".ToJson(writer);");
 		}
-		
-		// Exception: primitives inside datatypes cannot have id and/or 
-		// dataAbsentReason so serialize as a simple value, no special 
-		// serializer call needed.
-		
-		
-//		if( typeToSerialize.isPrimitive() && !isResourceElement(member) )
-//		{
-//			ln("writer.WriteValue(");
-//				nl(propertyName);
-//				nl(".ToString());");
-//		}
-//		else
-//		{
-//			if( typeToSerialize.isPrimitive() )
-//			{
-//				// Primitives inside resources can have id and/or dataAbsentReason
-//				// so, serialize this primitive as a JSON object
-//				ln("JsonPrimitiveSerializer.Serialize(writer, ");
-//					nl(propertyName);			
-//					nl(");");			
-//			}
-//	
-//			else if( typeToSerialize.isConstrained() )
-//				constraintSerializerCall(propertyName, member.getParentType(), typeToSerialize);
-//			else if (typeToSerialize.isComposite() ) 
-//				compositeSerializerCall(propertyName, typeToSerialize);
-//			else
-//				throw new Exception( "Cannot handle category of type " + typeToSerialize.getName() + " to generate serializer call." );
-//		}
-	}
-	
-	
-//	private void constraintSerializerCall(String propertyName, NameScope scope, TypeDefn typeToSerialize)
-//	{
-//		ConstrainedTypeDefn constrained = (ConstrainedTypeDefn)typeToSerialize;
-//		CompositeTypeDefn baseType = 
-//				((CompositeTypeDefn)scope.resolveType(constrained.getBaseType().getName()));
-//		
-//		compositeSerializerCall(propertyName, typeToSerialize);
-//		// Generate upcast to constrained type 
-//		//String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")" + 
-//	}
-//	
-	
-//	private void compositeSerializerCall(String propertyName, TypeDefn typeToSerialize) {
-//		String serializerName;
-//			
-//		if( typeToSerialize.isGloballyDefined() )
-//			// A type defined on the global level, child of Definitions
-//			serializerName = "Json" + typeToSerialize.getName() + "Serializer";	
-//		else
-//			// 	A type defined inside a globally defined composite 
-//			serializerName = "Json" + ((CompositeTypeDefn)typeToSerialize.getScope()).getName() + "Serializer";
-//
-//		ln(serializerName);
-//			nl(".Serialize");
-//			nl(typeToSerialize.getName());
-//			nl("(writer, ");
-//			nl(propertyName + ");");
-//	}
-	
+				
+	}	
 }

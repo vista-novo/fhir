@@ -56,6 +56,24 @@ namespace HL7.Fhir.Instance.Serializers
             }
         }
 
+
+        public static void ToJson(this Primitive prim, IFhirWriter writer, bool asJsonObject = false)
+        {
+            if (asJsonObject)
+            {
+                Serialize(writer, prim);
+            }
+            else
+            {
+                // Primitives inside datatypes cannot have id and/or 
+                // dataAbsentReason so these can be serialized
+                // as a simple value Json value, no special
+                // attribute handling needed.
+                writer.WriteValue(prim.ToString());
+            }
+        }
+
+
         public static void Serialize(JsonWriter writer, Primitive prim)
         {
             writer.WriteStartObject();
@@ -69,6 +87,19 @@ namespace HL7.Fhir.Instance.Serializers
             }
 
             writer.WriteEndObject();
+        }
+
+      
+        public static void Serialize(IFhirWriter writer, Primitive prim)
+        {
+            writer.WriteStartComplexContent();
+
+            JsonUtil.SerializeAttributes(writer, prim);
+
+            if (prim.ToString() != null)
+                writer.WriteSimpleContent(prim.ToString());
+
+            writer.WriteEndComplexContent();
         }
     }
 }

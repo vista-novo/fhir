@@ -14,19 +14,20 @@ namespace HL7.Fhir.Instance.Serializers
         void WriteStartElement(string name);
         void WriteEndElement();
 
-        void WriteBeginComplexContent(string name);
+        void WriteStartComplexContent();
         void WriteEndComplexContent();
 
-        void WriteBeginSimpleContent(string name);
         void WriteSimpleContent(string value);
-        void WriteEndSimpleContent();
+        void WriteValue(string value);
 
-        void WriteBeginXhtmlContent(string name);
+        void WriteStartXhtmlContent(string name);
         void WriteXhtmlContent(string xhtml);
         void WriteEndXhtmlContent();
 
-        void WriteStartArray(string name);
-        void WriteEndArray();
+        void WriteStartArrayElement(string name);
+        void WriteStartArrayMember(string name);
+        void WriteEndArrayMember();
+        void WriteEndArrayElement();
 
         void WriteRefId(string id);
         void WriteDar(string reason);
