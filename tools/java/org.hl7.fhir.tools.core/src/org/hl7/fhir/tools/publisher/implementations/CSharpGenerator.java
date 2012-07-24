@@ -143,10 +143,17 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 		for( ConstrainedTypeDefn constrained : definitions.getLocalConstrainedTypes() )
 		{
+			// Build C# class for constrained type
 			String constrainedFilename = modelDir + constrained.getName() + ".cs";
 			new CSharpModelResourceGenerator()
 				.generateConstrained(constrained, definitions).toFile(implDir+constrainedFilename);						 
 			generatedFilenames.add(constrainedFilename);
+			
+			// Build Xml parser for constrained type
+			String parserFilename = parsersDir + "Xml" + constrained.getName() + "Parser.cs";
+			new CSharpXmlResourceParserGenerator()
+				.generateConstrainedParser(constrained, definitions).toFile(implDir+parserFilename);						 
+			generatedFilenames.add(parserFilename);
 		}
 
 		// Collect all bindings to generate the EnumHelper class

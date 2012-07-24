@@ -201,7 +201,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
             ln("Serialize" + composite.getName());
             	nl( "(writer, value);");
         es("}");
-		
+		ln();
 		ln("public static void ");
 			nl("Serialize" + composite.getName());
 			nl("(JsonWriter writer, ");

@@ -142,6 +142,51 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		return end();
 	}
 
+
+	public GenBlock generateConstrainedParser( ConstrainedTypeDefn constrained, Definitions definitions ) throws Exception
+	{
+		CompositeTypeDefn baseType = 
+				((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
+
+		begin();
+		
+		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
+		ln();
+		ln("using HL7.Fhir.Instance.Model;");
+		ln("using System.Xml;");
+		ln();
+		ln("namespace HL7.Fhir.Instance.Parsers");
+		bs("{");
+			ln("/*");
+			ln("* Parser for constrained " + constrained.getName() + " instances");
+			ln("*/");
+			ln("public static partial class Xml" + constrained.getName() + "Parser");
+			bs("{");	
+				String returnType = GeneratorUtils.buildFullyScopedTypeName(constrained);
+					
+			ln("public static ");
+				nl( returnType );
+				nl(" ");
+				nl("Parse" + constrained.getName());
+				nl("(XmlReader reader, ErrorList errors, ");
+				nl(returnType + " existingInstance = null )");
+			bs("{");	
+				ln( returnType );
+					nl(" result = existingInstance != null ? existingInstance : ");
+					nl("new " + returnType + "();");
+					
+					ln(buildCompositeParserCall(baseType, "result"));
+						nl(";");
+				
+				ln("return result;");
+			es("}");
+			ln();		
+			es("}");
+		es("}");
+	
+		return end();
+	}
+	
 	
 	public GenBlock compositeParserFunction( CompositeTypeDefn composite ) throws Exception
 	{
@@ -153,39 +198,15 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			nl( returnType );
 			nl(" ");
 			nl("Parse" + composite.getName());
-			nl("(XmlReader reader, ErrorList errors)");
+			nl("(XmlReader reader, ErrorList errors, ");
+			nl(returnType + " existingInstance = null )");
 		bs("{");	
 			ln( returnType );
-				nl(" result = ");
+				nl(" result = existingInstance != null ? existingInstance : ");
 				nl("new " + returnType + "();");
-			ln("string en = reader.LocalName;");
-	        ln("string ns = reader.NamespaceURI;");
-			ln();
-			if( !composite.isResource() )
-			{
-				ln("// Read id/dar from element's attributes");
-	            ln("ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);");
-	            ln("if (attrs.Id != null) result.ReferralId = attrs.Id;");
-	            ln("if (attrs.Dar.HasValue) result.Dar = attrs.Dar;");
-				ln();
-			}
-  
-			ln("// If this is an empty node, return immediately");
-            ln("if (reader.IsEmptyElement) return result;");
-			ln();
-			ln("// Read starttag and start parsing");
-			ln("reader.Read();");
-			ln();
+				
+			buildCompositeElementParser(composite);
 			
-			// Generate this classes properties
-			if( composite.getElements().size() > 0)
-			{
-				generateMemberParsers( composite.getElements() );
-				ln();
-			}
-			ln("// Read endtag");
-			ln("reader.Read();");
-			ln();
 			ln("return result;");
 		es("}");
 		ln();
@@ -198,6 +219,39 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		}
 		
 		return end();
+	}
+
+
+	private void buildCompositeElementParser(CompositeTypeDefn composite)
+			throws Exception {
+		ln("string en = reader.LocalName;");
+		ln("string ns = reader.NamespaceURI;");
+		ln();
+		if( !composite.isResource() )
+		{
+			ln("// Read id/dar from element's attributes");
+		    ln("ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);");
+		    ln("if (attrs.Id != null) result.ReferralId = attrs.Id;");
+		    ln("if (attrs.Dar.HasValue) result.Dar = attrs.Dar;");
+			ln();
+		}
+  
+		ln("// If this is an empty node, return immediately");
+		ln("if (reader.IsEmptyElement) return result;");
+		ln();
+		ln("// Read starttag and start parsing");
+		ln("reader.Read();");
+		ln();
+		
+		// Generate this classes properties
+		if( composite.getElements().size() > 0)
+		{
+			generateMemberParsers( composite.getElements() );
+			ln();
+		}
+		ln("// Read endtag");
+		ln("reader.Read();");
+		ln();
 	}
 
 	
@@ -361,30 +415,34 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			return buildEnumeratedCodeParserCall(resolver,ref);	
 		else if( typeToParse.isPrimitive() )
 			return buildPrimitiveParserCall((PrimitiveTypeDefn)typeToParse);
-		else if( typeToParse.isConstrained() )
-			return buildConstrainedParserCall((ConstrainedTypeDefn)typeToParse);
-		else if( typeToParse.isComposite() )
-			return buildCompositeParserCall((CompositeTypeDefn)typeToParse); 
+//		else if( typeToParse.isConstrained() )
+//			return buildConstrainedParserCall((ConstrainedTypeDefn)typeToParse);
+		else if( typeToParse.isComposite() || typeToParse.isConstrained() )
+			return buildCompositeParserCall(typeToParse); 
 		else
 			throw new Exception( "Cannot handle category of type " + typeToParse.getName() + " to generate parser call." );
 			
 	}
 	
 	
-	private String buildConstrainedParserCall(ConstrainedTypeDefn constrained) throws Exception
+//	private String buildConstrainedParserCall(ConstrainedTypeDefn constrained) throws Exception
+//	{
+//		CompositeTypeDefn baseType = 
+//			((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
+//		
+//		// Generate upcast to constrained type 
+//		String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")"
+//				+ buildCompositeParserCall( baseType );
+//				
+//		return result;
+//	}
+	
+	private String buildCompositeParserCall(TypeDefn composite) throws Exception
 	{
-		CompositeTypeDefn baseType = 
-			((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
-		
-		// Generate upcast to constrained type 
-		String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")"
-				+ buildCompositeParserCall( baseType );
-				
-		return result;
+		return buildCompositeParserCall(composite, null);
 	}
 	
-	
-	private String buildCompositeParserCall(CompositeTypeDefn composite) throws Exception
+	private String buildCompositeParserCall(TypeDefn composite, String existingInstanceName) throws Exception
 	{		
 		StringBuilder result = new StringBuilder();
 		
@@ -400,7 +458,15 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		}
 
 		result.append(".Parse" + composite.getName() );
-		result.append("(reader, errors)");
+		
+		if( existingInstanceName == null )
+			result.append("(reader, errors)");
+		else
+		{
+			result.append("(reader, errors, ");
+			result.append(existingInstanceName);
+			result.append(")");
+		}
 		
 		return result.toString(); 
 	}
