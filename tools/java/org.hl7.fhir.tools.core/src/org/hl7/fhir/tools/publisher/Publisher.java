@@ -799,8 +799,7 @@ public class Publisher {
 				final String namespaceURI, final String publicId,
 				String systemId, final String baseURI) {
 			// System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
-			if (!(namespaceURI.equals("http://hl7.org/fhir") || namespaceURI
-					.equals("http://www.w3.org/1999/xhtml")))
+			if (!new File(dir  + systemId).exists())
 				return null;
 			try {
 				return new SchemaInputSource(new FileInputStream(new File(dir	+ systemId)), publicId, systemId, namespaceURI);
