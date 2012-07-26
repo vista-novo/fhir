@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
@@ -13,6 +14,7 @@ import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 /*
@@ -48,7 +50,7 @@ public class CompositeTypeConverter
 {			
 	public static List<CompositeTypeDefn> buildCompositeTypesFromFhirModel( 
 			Collection<org.hl7.fhir.definitions.model.ElementDefn> types, 
-			NameScope scope ) throws Exception
+			CompositeTypeDefn scope ) throws Exception
 	{
 		List<CompositeTypeDefn> result = new ArrayList<CompositeTypeDefn>();
 		
@@ -83,6 +85,7 @@ public class CompositeTypeConverter
 	    	// Build a shallow, empty ResourceDefn
     		ResourceDefn resultResource = FhirFactory.eINSTANCE.createResourceDefn();
     		resultResource.setName( resource.getName() );
+    		resultResource.setFullName( resource.getName() );
     		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();		
     		resultResource.setAnnotations( ann );
     		resultResource.setFuture(true);
@@ -103,20 +106,25 @@ public class CompositeTypeConverter
 	
 	
 	public static CompositeTypeDefn buildCompositeTypeFromFhirModel( 
-			org.hl7.fhir.definitions.model.ElementDefn type, boolean isResource, NameScope scope ) throws Exception
+			org.hl7.fhir.definitions.model.ElementDefn type, boolean isResource, CompositeTypeDefn scope ) throws Exception
 	{
 
 		CompositeTypeDefn result = isResource ? FhirFactory.eINSTANCE.createResourceDefn() : 
 			FhirFactory.eINSTANCE.createCompositeTypeDefn();
-			
+
+		result.setName( type.getName() );
+
 		if( scope == null )
 		{
 			// If there's no containing scope, we deduce that we are building the
 			// "root" type, so we are the scope.
 			scope = result;
+			result.setFullName( type.getName() );
 		}
-		
-		result.setName( type.getName() );
+		else
+		{
+			result.setFullName( scope.getName() + "." + type.getName() );
+		}
 		
 		Annotations ann = buildAnnotationsFromFhirElement(type);		
 		result.setAnnotations( ann );
@@ -124,7 +132,7 @@ public class CompositeTypeConverter
 		// Add bindings defined in this type to the nearest NameScope,
 		// which is a resource and could even be us.
 		scope.getBindings().addAll( 
-				BindingConverter.buildBindingsFromFhirModel( type.getNestedBindings().values() ));
+				BindingConverter.buildBindingsFromFhirModel( type.getNestedBindings().values(), scope ));
 
 		// Invariants are local to the type, so add them here.
 		result.getInvariants().addAll( 
@@ -224,11 +232,12 @@ public class CompositeTypeConverter
 
 		// Make sure we will only process the nested elements
 		// if this was not a nested type definition.
-		if( element.getDeclaredTypeName() == null )
-		{
-			if( !element.getElements().isEmpty() )
-				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements(), isResource));
-		}
+// EK: Commented this out since we do not have anonymous nested element groups anymore
+//		if( element.getDeclaredTypeName() == null )
+//		{
+//			if( !element.getElements().isEmpty() )
+//				result.getElements().addAll( buildElementDefnsFromFhirModel(element.getElements(), isResource));
+//		}
 		
 		if( element.getBindingName() != null && 
 				!element.getBindingName().equals("") &&
@@ -276,5 +285,18 @@ public class CompositeTypeConverter
 		result.setXpath( Utilities.cleanupTextString(invariant.getXpath()) );
 
 		return result;
+	}
+
+
+	public static void FixTypeRefs(CompositeTypeDefn composite) 
+	{
+		for( ElementDefn elemt : composite.getElements() )
+		{
+			for( TypeRef ref : elemt.getTypes() )
+				TypeRefConverter.Fix(ref, composite);
+		}
+		
+		for( CompositeTypeDefn comp : composite.getLocalCompositeTypes() )
+			CompositeTypeConverter.FixTypeRefs(comp); 	
 	}
 }

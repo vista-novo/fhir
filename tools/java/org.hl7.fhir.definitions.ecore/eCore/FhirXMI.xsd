@@ -37,6 +37,7 @@
         </xsd:choice>
         <xsd:attribute name="date" type="xsd:string" use="required"/>
         <xsd:attribute name="version" type="xsd:string" use="required"/>
+        <xsd:attribute name="internal" type="xsd:boolean"/>
       </xsd:extension>
     </xsd:complexContent>
   </xsd:complexType>
@@ -45,7 +46,6 @@
     <xsd:choice maxOccurs="unbounded" minOccurs="0">
       <xsd:element name="types" type="fhir:TypeRef"/>
       <xsd:element name="mappings" type="fhir:Mapping"/>
-      <xsd:element name="elements" type="fhir:ElementDefn"/>
       <xsd:element name="content" type="fhir:ElementDefn"/>
       <xsd:element name="annotation" type="fhir:Annotations"/>
       <xsd:element name="invariant" type="fhir:InvariantRef"/>
@@ -88,7 +88,9 @@
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string"/>
+    <xsd:attribute name="fullName" type="xsd:string"/>
     <xsd:attribute name="bindingRef" type="xsd:string"/>
+    <xsd:attribute name="fullBindingRef" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="TypeRef" type="fhir:TypeRef"/>
   <xsd:complexType name="BindingDefn">
@@ -102,6 +104,7 @@
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="id" type="xsd:int" use="required"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="fullName" type="xsd:string"/>
     <xsd:attribute name="binding" type="fhir:BindingType" use="required"/>
     <xsd:attribute name="strength" type="fhir:BindingStrength" use="required"/>
     <xsd:attribute name="artifactName" type="xsd:string" use="required"/>
@@ -243,6 +246,7 @@
     <xsd:attribute ref="xmi:id"/>
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="name" type="xsd:string" use="required"/>
+    <xsd:attribute name="fullName" type="xsd:string"/>
     <xsd:attribute name="infrastructure" type="xsd:boolean"/>
     <xsd:attribute name="scope" type="xsd:string"/>
   </xsd:complexType>

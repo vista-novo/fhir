@@ -282,13 +282,22 @@ public interface FhirPackage extends EPackage {
 	int DEFINITIONS__EVENTS = NAME_SCOPE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITIONS__INTERNAL = NAME_SCOPE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Definitions</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITIONS_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 4;
+	int DEFINITIONS_FEATURE_COUNT = NAME_SCOPE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -372,22 +381,13 @@ public interface FhirPackage extends EPackage {
 	int ELEMENT_DEFN__EXAMPLE_VALUE = 8;
 
 	/**
-	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_DEFN__ELEMENTS = 9;
-
-	/**
 	 * The feature id for the '<em><b>Content</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__CONTENT = 10;
+	int ELEMENT_DEFN__CONTENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Annotation</b></em>' containment reference.
@@ -396,7 +396,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__ANNOTATION = 11;
+	int ELEMENT_DEFN__ANNOTATION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Invariant</b></em>' containment reference.
@@ -405,7 +405,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__INVARIANT = 12;
+	int ELEMENT_DEFN__INVARIANT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Parent Type</b></em>' container reference.
@@ -414,16 +414,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__PARENT_TYPE = 13;
+	int ELEMENT_DEFN__PARENT_TYPE = 12;
 
 	/**
-	 * The feature id for the '<em><b>Parent Element</b></em>' container reference.
+	 * The feature id for the '<em><b>Parent Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN__PARENT_ELEMENT = 14;
+	int ELEMENT_DEFN__PARENT_ELEMENT = 13;
 
 	/**
 	 * The number of structural features of the '<em>Element Defn</em>' class.
@@ -432,7 +432,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_DEFN_FEATURE_COUNT = 15;
+	int ELEMENT_DEFN_FEATURE_COUNT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -498,13 +498,22 @@ public interface FhirPackage extends EPackage {
 	int TYPE_REF__NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REF__FULL_NAME = 1;
+
+	/**
 	 * The feature id for the '<em><b>Resource Params</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__RESOURCE_PARAMS = 1;
+	int TYPE_REF__RESOURCE_PARAMS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Binding Ref</b></em>' attribute.
@@ -513,7 +522,16 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF__BINDING_REF = 2;
+	int TYPE_REF__BINDING_REF = 3;
+
+	/**
+	 * The feature id for the '<em><b>Full Binding Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REF__FULL_BINDING_REF = 4;
 
 	/**
 	 * The number of structural features of the '<em>Type Ref</em>' class.
@@ -522,7 +540,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_REF_FEATURE_COUNT = 3;
+	int TYPE_REF_FEATURE_COUNT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -543,13 +561,22 @@ public interface FhirPackage extends EPackage {
 	int BINDING_DEFN__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINDING_DEFN__FULL_NAME = 2;
+
+	/**
 	 * The feature id for the '<em><b>Binding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__BINDING = 2;
+	int BINDING_DEFN__BINDING = 3;
 
 	/**
 	 * The feature id for the '<em><b>Strength</b></em>' attribute.
@@ -558,7 +585,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__STRENGTH = 3;
+	int BINDING_DEFN__STRENGTH = 4;
 
 	/**
 	 * The feature id for the '<em><b>Artifact Name</b></em>' attribute.
@@ -567,7 +594,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__ARTIFACT_NAME = 4;
+	int BINDING_DEFN__ARTIFACT_NAME = 5;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
@@ -576,7 +603,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__SOURCE = 5;
+	int BINDING_DEFN__SOURCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Codes</b></em>' containment reference list.
@@ -585,7 +612,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__CODES = 6;
+	int BINDING_DEFN__CODES = 7;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference.
@@ -594,7 +621,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__ANNOTATIONS = 7;
+	int BINDING_DEFN__ANNOTATIONS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Parent</b></em>' container reference.
@@ -603,7 +630,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN__PARENT = 8;
+	int BINDING_DEFN__PARENT = 9;
 
 	/**
 	 * The number of structural features of the '<em>Binding Defn</em>' class.
@@ -612,7 +639,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BINDING_DEFN_FEATURE_COUNT = 9;
+	int BINDING_DEFN_FEATURE_COUNT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' attribute.
@@ -669,13 +696,22 @@ public interface FhirPackage extends EPackage {
 	int TYPE_DEFN__SCOPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEFN__FULL_NAME = 3;
+
+	/**
 	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN__INFRASTRUCTURE = 3;
+	int TYPE_DEFN__INFRASTRUCTURE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Type Defn</em>' class.
@@ -684,7 +720,7 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_DEFN_FEATURE_COUNT = 4;
+	int TYPE_DEFN_FEATURE_COUNT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -712,6 +748,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPOSITE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_TYPE_DEFN__FULL_NAME = TYPE_DEFN__FULL_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
@@ -802,6 +847,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESOURCE_DEFN__SCOPE = COMPOSITE_TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_DEFN__FULL_NAME = COMPOSITE_TYPE_DEFN__FULL_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
@@ -1002,6 +1056,15 @@ public interface FhirPackage extends EPackage {
 	int PRIMITIVE_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
 
 	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIMITIVE_TYPE_DEFN__FULL_NAME = TYPE_DEFN__FULL_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1063,6 +1126,15 @@ public interface FhirPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRAINED_TYPE_DEFN__SCOPE = TYPE_DEFN__SCOPE;
+
+	/**
+	 * The feature id for the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINED_TYPE_DEFN__FULL_NAME = TYPE_DEFN__FULL_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Infrastructure</b></em>' attribute.
@@ -1522,15 +1594,6 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__EXAMPLE_VALUE = ELEMENT_DEFN__EXAMPLE_VALUE;
 
 	/**
-	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROFILED_ELEMENT_DEFN__ELEMENTS = ELEMENT_DEFN__ELEMENTS;
-
-	/**
 	 * The feature id for the '<em><b>Content</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1567,7 +1630,7 @@ public interface FhirPackage extends EPackage {
 	int PROFILED_ELEMENT_DEFN__PARENT_TYPE = ELEMENT_DEFN__PARENT_TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Parent Element</b></em>' container reference.
+	 * The feature id for the '<em><b>Parent Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1732,6 +1795,17 @@ public interface FhirPackage extends EPackage {
 	EReference getDefinitions_Events();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#isInternal <em>Internal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Internal</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Definitions#isInternal()
+	 * @see #getDefinitions()
+	 * @generated
+	 */
+	EAttribute getDefinitions_Internal();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1819,10 +1893,10 @@ public interface FhirPackage extends EPackage {
 	EReference getElementDefn_ParentType();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}'.
+	 * Returns the meta object for the reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement <em>Parent Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Parent Element</em>'.
+	 * @return the meta object for the reference '<em>Parent Element</em>'.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentElement()
 	 * @see #getElementDefn()
 	 * @generated
@@ -1894,17 +1968,6 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getElementDefn_ExampleValue();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements <em>Elements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Elements</em>'.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getElements()
-	 * @see #getElementDefn()
-	 * @generated
-	 */
-	EReference getElementDefn_Elements();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getContent <em>Content</em>}'.
@@ -2004,6 +2067,17 @@ public interface FhirPackage extends EPackage {
 	EAttribute getTypeRef_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullName <em>Full Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Full Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullName()
+	 * @see #getTypeRef()
+	 * @generated
+	 */
+	EAttribute getTypeRef_FullName();
+
+	/**
 	 * Returns the meta object for the attribute list '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParams <em>Resource Params</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2024,6 +2098,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTypeRef_BindingRef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullBindingRef <em>Full Binding Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Full Binding Ref</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullBindingRef()
+	 * @see #getTypeRef()
+	 * @generated
+	 */
+	EAttribute getTypeRef_FullBindingRef();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn <em>Binding Defn</em>}'.
@@ -2056,6 +2141,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getBindingDefn_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getFullName <em>Full Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Full Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getFullName()
+	 * @see #getBindingDefn()
+	 * @generated
+	 */
+	EAttribute getBindingDefn_FullName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getBinding <em>Binding</em>}'.
@@ -2412,6 +2508,17 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTypeDefn_Scope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getFullName <em>Full Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Full Name</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getFullName()
+	 * @see #getTypeDefn()
+	 * @generated
+	 */
+	EAttribute getTypeDefn_FullName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#isInfrastructure <em>Infrastructure</em>}'.
@@ -2996,6 +3103,14 @@ public interface FhirPackage extends EPackage {
 		EReference DEFINITIONS__EVENTS = eINSTANCE.getDefinitions_Events();
 
 		/**
+		 * The meta object literal for the '<em><b>Internal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DEFINITIONS__INTERNAL = eINSTANCE.getDefinitions_Internal();
+
+		/**
 		 * The meta object literal for the '<em><b>Profiles</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3062,7 +3177,7 @@ public interface FhirPackage extends EPackage {
 		EReference ELEMENT_DEFN__PARENT_TYPE = eINSTANCE.getElementDefn_ParentType();
 
 		/**
-		 * The meta object literal for the '<em><b>Parent Element</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Parent Element</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -3116,14 +3231,6 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ELEMENT_DEFN__EXAMPLE_VALUE = eINSTANCE.getElementDefn_ExampleValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ELEMENT_DEFN__ELEMENTS = eINSTANCE.getElementDefn_Elements();
 
 		/**
 		 * The meta object literal for the '<em><b>Content</b></em>' reference feature.
@@ -3202,6 +3309,14 @@ public interface FhirPackage extends EPackage {
 		EAttribute TYPE_REF__NAME = eINSTANCE.getTypeRef_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Full Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REF__FULL_NAME = eINSTANCE.getTypeRef_FullName();
+
+		/**
 		 * The meta object literal for the '<em><b>Resource Params</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3216,6 +3331,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TYPE_REF__BINDING_REF = eINSTANCE.getTypeRef_BindingRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Full Binding Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_REF__FULL_BINDING_REF = eINSTANCE.getTypeRef_FullBindingRef();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl <em>Binding Defn</em>}' class.
@@ -3242,6 +3365,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute BINDING_DEFN__NAME = eINSTANCE.getBindingDefn_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Full Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BINDING_DEFN__FULL_NAME = eINSTANCE.getBindingDefn_FullName();
 
 		/**
 		 * The meta object literal for the '<em><b>Binding</b></em>' attribute feature.
@@ -3520,6 +3651,14 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPE_DEFN__SCOPE = eINSTANCE.getTypeDefn_Scope();
+
+		/**
+		 * The meta object literal for the '<em><b>Full Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TYPE_DEFN__FULL_NAME = eINSTANCE.getTypeDefn_FullName();
 
 		/**
 		 * The meta object literal for the '<em><b>Infrastructure</b></em>' attribute feature.

@@ -52,6 +52,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getProfiles <em>Profiles</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#getEvents <em>Events</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl#isInternal <em>Internal</em>}</li>
  * </ul>
  * </p>
  *
@@ -137,6 +138,26 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * @ordered
 	 */
 	protected EList<EventDefn> events;
+
+	/**
+	 * The default value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInternal()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean INTERNAL_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isInternal()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean internal = INTERNAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -238,6 +259,27 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isInternal() {
+		return internal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInternal(boolean newInternal) {
+		boolean oldInternal = internal;
+		internal = newInternal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__INTERNAL, oldInternal, internal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public EList<PrimitiveTypeDefn> getPrimitives() {
@@ -250,6 +292,28 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 		}
 		
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourceDefn findType(String fullName) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BindingDefn findBinding(String fullName) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -376,6 +440,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return getProfiles();
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return getEvents();
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				return isInternal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -411,6 +477,9 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				getEvents().clear();
 				getEvents().addAll((Collection<? extends EventDefn>)newValue);
 				return;
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				setInternal((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -441,6 +510,9 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 			case FhirPackage.DEFINITIONS__EVENTS:
 				getEvents().clear();
 				return;
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				setInternal(INTERNAL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -465,6 +537,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 				return profiles != null && !profiles.isEmpty();
 			case FhirPackage.DEFINITIONS__EVENTS:
 				return events != null && !events.isEmpty();
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				return internal != INTERNAL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -483,6 +557,8 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 		result.append(date);
 		result.append(", version: ");
 		result.append(version);
+		result.append(", internal: ");
+		result.append(internal);
 		result.append(')');
 		return result.toString();
 	}

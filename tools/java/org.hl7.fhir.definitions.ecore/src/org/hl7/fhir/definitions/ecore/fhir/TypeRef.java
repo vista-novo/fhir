@@ -19,8 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullName <em>Full Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getResourceParams <em>Resource Params</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getBindingRef <em>Binding Ref</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullBindingRef <em>Full Binding Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,6 +65,32 @@ public interface TypeRef extends EObject {
 	void setName(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Full Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Full Name</em>' attribute.
+	 * @see #setFullName(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_FullName()
+	 * @model
+	 * @generated
+	 */
+	String getFullName();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullName <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Full Name</em>' attribute.
+	 * @see #getFullName()
+	 * @generated
+	 */
+	void setFullName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Resource Params</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
@@ -103,5 +131,31 @@ public interface TypeRef extends EObject {
 	 * @generated
 	 */
 	void setBindingRef(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Full Binding Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Full Binding Ref</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Full Binding Ref</em>' attribute.
+	 * @see #setFullBindingRef(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getTypeRef_FullBindingRef()
+	 * @model
+	 * @generated
+	 */
+	String getFullBindingRef();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.TypeRef#getFullBindingRef <em>Full Binding Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Full Binding Ref</em>' attribute.
+	 * @see #getFullBindingRef()
+	 * @generated
+	 */
+	void setFullBindingRef(String value);
 
 } // TypeRef

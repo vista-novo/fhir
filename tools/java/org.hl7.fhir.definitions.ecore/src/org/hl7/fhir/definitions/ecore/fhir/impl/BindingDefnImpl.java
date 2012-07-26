@@ -40,6 +40,7 @@ import org.hl7.fhir.definitions.ecore.fhir.NameScope;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getFullName <em>Full Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getStrength <em>Strength</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.BindingDefnImpl#getArtifactName <em>Artifact Name</em>}</li>
@@ -92,6 +93,26 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFullName() <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFullName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FULL_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFullName() <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFullName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fullName = FULL_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getBinding() <em>Binding</em>}' attribute.
@@ -252,6 +273,27 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFullName() {
+		return fullName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFullName(String newFullName) {
+		String oldFullName = fullName;
+		fullName = newFullName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.BINDING_DEFN__FULL_NAME, oldFullName, fullName));
 	}
 
 	/**
@@ -503,6 +545,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return getId();
 			case FhirPackage.BINDING_DEFN__NAME:
 				return getName();
+			case FhirPackage.BINDING_DEFN__FULL_NAME:
+				return getFullName();
 			case FhirPackage.BINDING_DEFN__BINDING:
 				return getBinding();
 			case FhirPackage.BINDING_DEFN__STRENGTH:
@@ -535,6 +579,9 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return;
 			case FhirPackage.BINDING_DEFN__NAME:
 				setName((String)newValue);
+				return;
+			case FhirPackage.BINDING_DEFN__FULL_NAME:
+				setFullName((String)newValue);
 				return;
 			case FhirPackage.BINDING_DEFN__BINDING:
 				setBinding((BindingType)newValue);
@@ -576,6 +623,9 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 			case FhirPackage.BINDING_DEFN__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case FhirPackage.BINDING_DEFN__FULL_NAME:
+				setFullName(FULL_NAME_EDEFAULT);
+				return;
 			case FhirPackage.BINDING_DEFN__BINDING:
 				setBinding(BINDING_EDEFAULT);
 				return;
@@ -613,6 +663,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 				return id != ID_EDEFAULT;
 			case FhirPackage.BINDING_DEFN__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case FhirPackage.BINDING_DEFN__FULL_NAME:
+				return FULL_NAME_EDEFAULT == null ? fullName != null : !FULL_NAME_EDEFAULT.equals(fullName);
 			case FhirPackage.BINDING_DEFN__BINDING:
 				return binding != BINDING_EDEFAULT;
 			case FhirPackage.BINDING_DEFN__STRENGTH:
@@ -645,6 +697,8 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 		result.append(id);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", fullName: ");
+		result.append(fullName);
 		result.append(", binding: ");
 		result.append(binding);
 		result.append(", strength: ");

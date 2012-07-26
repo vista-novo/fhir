@@ -33,6 +33,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getScope <em>Scope</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#getFullName <em>Full Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.TypeDefnImpl#isInfrastructure <em>Infrastructure</em>}</li>
  * </ul>
  * </p>
@@ -69,6 +70,26 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * @ordered
 	 */
 	protected Annotations annotations;
+
+	/**
+	 * The default value of the '{@link #getFullName() <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFullName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FULL_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFullName() <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFullName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String fullName = FULL_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isInfrastructure() <em>Infrastructure</em>}' attribute.
@@ -219,6 +240,27 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFullName() {
+		return fullName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFullName(String newFullName) {
+		String oldFullName = fullName;
+		fullName = newFullName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.TYPE_DEFN__FULL_NAME, oldFullName, fullName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isInfrastructure() {
 		return infrastructure;
 	}
@@ -352,6 +394,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return getAnnotations();
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				return getScope();
+			case FhirPackage.TYPE_DEFN__FULL_NAME:
+				return getFullName();
 			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
 				return isInfrastructure();
 		}
@@ -374,6 +418,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return;
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				setScope((NameScope)newValue);
+				return;
+			case FhirPackage.TYPE_DEFN__FULL_NAME:
+				setFullName((String)newValue);
 				return;
 			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
 				setInfrastructure((Boolean)newValue);
@@ -399,6 +446,9 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				setScope((NameScope)null);
 				return;
+			case FhirPackage.TYPE_DEFN__FULL_NAME:
+				setFullName(FULL_NAME_EDEFAULT);
+				return;
 			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
 				setInfrastructure(INFRASTRUCTURE_EDEFAULT);
 				return;
@@ -420,6 +470,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 				return annotations != null;
 			case FhirPackage.TYPE_DEFN__SCOPE:
 				return getScope() != null;
+			case FhirPackage.TYPE_DEFN__FULL_NAME:
+				return FULL_NAME_EDEFAULT == null ? fullName != null : !FULL_NAME_EDEFAULT.equals(fullName);
 			case FhirPackage.TYPE_DEFN__INFRASTRUCTURE:
 				return infrastructure != INFRASTRUCTURE_EDEFAULT;
 		}
@@ -438,6 +490,8 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", fullName: ");
+		result.append(fullName);
 		result.append(", infrastructure: ");
 		result.append(infrastructure);
 		result.append(')');

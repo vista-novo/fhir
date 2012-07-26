@@ -36,6 +36,7 @@ import java.util.List;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
+import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.utilities.Utilities;
@@ -43,7 +44,8 @@ import org.hl7.fhir.utilities.Utilities;
 
 public class BindingConverter 
 {
-	public static List<BindingDefn> buildBindingsFromFhirModel( Collection<org.hl7.fhir.definitions.model.BindingSpecification> bindings )
+	public static List<BindingDefn> buildBindingsFromFhirModel( 
+			Collection<org.hl7.fhir.definitions.model.BindingSpecification> bindings, CompositeTypeDefn parent )
 	{
 		List<BindingDefn> result = new ArrayList<BindingDefn>();
 		
@@ -51,19 +53,25 @@ public class BindingConverter
 	    {
 	    	if( !binding.getName().equals("*unbound*") )
 	    	{
-	    		result.add(buildBindingFromFhirModel(binding));
+	    		result.add(buildBindingFromFhirModel(binding, parent));
 	    	}
 	    }
 	    
 	    return result;
 	}
 	
-	public static BindingDefn buildBindingFromFhirModel( org.hl7.fhir.definitions.model.BindingSpecification spec )
+	public static BindingDefn buildBindingFromFhirModel( org.hl7.fhir.definitions.model.BindingSpecification spec,
+				CompositeTypeDefn parent)
 	{
 		BindingDefn result = FhirFactory.eINSTANCE.createBindingDefn();
 		
 		result.setId( Integer.parseInt( spec.getId() ) );
 		result.setName( spec.getName() );
+		
+		if( parent == null )
+			result.setFullName( spec.getName() );		// this is a global bindings
+		else
+			result.setFullName( parent.getName() + "." + spec.getName() );
 
 		result.setAnnotations( FhirFactory.eINSTANCE.createAnnotations() );		
 		result.getAnnotations().setShortDefinition( Utilities.cleanupTextString(spec.getDescription()));

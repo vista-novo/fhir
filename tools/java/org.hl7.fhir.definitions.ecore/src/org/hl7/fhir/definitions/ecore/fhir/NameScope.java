@@ -47,22 +47,6 @@ public interface NameScope extends EObject {
 	EList<BindingDefn> getBindings();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	TypeDefn resolveType(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	BindingDefn resolveBinding(String name);
-
-	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn}.
 	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.TypeDefn#getScope <em>Scope</em>}'.
@@ -104,6 +88,22 @@ public interface NameScope extends EObject {
 	 * @generated
 	 */
 	NameScope getContainingScope();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TypeDefn resolveType(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	BindingDefn resolveBinding(String name);
 
 	/**
 	 * <!-- begin-user-doc -->

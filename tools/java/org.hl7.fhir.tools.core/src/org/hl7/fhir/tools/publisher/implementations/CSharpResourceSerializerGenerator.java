@@ -283,7 +283,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 		if( parent.isResource() ) return true;
 		
 		if( !parent.isGloballyDefined() )
-			return ((CompositeTypeDefn)parent.getContainingScope()).isResource();
+			return ((CompositeTypeDefn)parent.getScope()).isResource();
 			
 		return false; 
 	}

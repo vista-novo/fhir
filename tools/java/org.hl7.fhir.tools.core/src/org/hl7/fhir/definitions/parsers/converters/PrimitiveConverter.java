@@ -63,6 +63,7 @@ public class PrimitiveConverter
 		PrimitiveTypeDefn result = FhirFactory.eINSTANCE.createPrimitiveTypeDefn();
 		
 		result.setName( primitive.getCode() );
+		result.setFullName( primitive.getCode() );		// primitives are always global
 		
 		result.setAnnotations(FhirFactory.eINSTANCE.createAnnotations());
 		result.getAnnotations().setDefinition( Utilities.cleanupTextString(primitive.getDefinition()) );
@@ -88,6 +89,7 @@ public class PrimitiveConverter
 	{
 		PrimitiveTypeDefn xhtml = FhirFactory.eINSTANCE.createPrimitiveTypeDefn();
 		xhtml.setName("xhtml");
+		xhtml.setFullName("xhtml");
 		xhtml.setXsdtype("string");
 		
 		xhtml.setAnnotations(FhirFactory.eINSTANCE.createAnnotations());
@@ -101,6 +103,7 @@ public class PrimitiveConverter
 	{
 		PrimitiveTypeDefn idref = FhirFactory.eINSTANCE.createPrimitiveTypeDefn();
 		idref.setName("idref");
+		idref.setFullName("idref");
 		idref.setXsdtype("string");
 		
 		idref.setAnnotations(FhirFactory.eINSTANCE.createAnnotations());

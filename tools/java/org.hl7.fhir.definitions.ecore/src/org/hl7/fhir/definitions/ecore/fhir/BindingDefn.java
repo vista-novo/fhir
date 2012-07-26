@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getId <em>Id</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getName <em>Name</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getFullName <em>Full Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getBinding <em>Binding</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getStrength <em>Strength</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getArtifactName <em>Artifact Name</em>}</li>
@@ -86,6 +87,32 @@ public interface BindingDefn extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Full Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Full Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Full Name</em>' attribute.
+	 * @see #setFullName(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingDefn_FullName()
+	 * @model
+	 * @generated
+	 */
+	String getFullName();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingDefn#getFullName <em>Full Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Full Name</em>' attribute.
+	 * @see #getFullName()
+	 * @generated
+	 */
+	void setFullName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Binding</b></em>' attribute.

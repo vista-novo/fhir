@@ -34,14 +34,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
-import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.BindingSpecification;
@@ -147,11 +145,12 @@ public class SourceParser {
 		logger.log("Loading");
 
 		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
+		eCoreParseResults.setInternal(isInternalRun);
 
 		loadGlobalConceptDomains();
 		eCoreParseResults.getBindings().addAll(
 				sortBindings(BindingConverter.buildBindingsFromFhirModel(definitions
-						.getBindings().values())));
+						.getBindings().values(), null)));
 
 		loadPrimitives();
 		eCoreParseResults.getTypes().addAll(
@@ -216,6 +215,9 @@ public class SourceParser {
 
 		eCoreParseResults.getEvents().addAll(
 				EventConverter.buildEventsFromFhirModel(definitions.getEvents().values()));
+	
+		// As a second pass, resolve typerefs to the types
+		fixTypeRefs( eCoreParseResults );
 		
 		for (String n : ini.getPropertyNames("special-resources"))
 			definitions.getAggregationEndpoints().add(n);
@@ -232,6 +234,20 @@ public class SourceParser {
 		}
 	}
 
+	
+	private void fixTypeRefs( org.hl7.fhir.definitions.ecore.fhir.Definitions defs )
+	{
+		for( CompositeTypeDefn composite : defs.getLocalCompositeTypes() )
+			CompositeTypeConverter.FixTypeRefs(composite);
+		
+		for( ConstrainedTypeDefn constrained : defs.getLocalConstrainedTypes() )
+			ConstrainedTypeConverter.FixTypeRefs(constrained);
+		
+		for( org.hl7.fhir.definitions.ecore.fhir.ResourceDefn resource : defs.getLocalResources() )
+			CompositeTypeConverter.FixTypeRefs(resource);
+	}
+	
+	
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
 			throws Exception {
 		File spreadsheet = new File(rootDir

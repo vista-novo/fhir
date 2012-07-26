@@ -31,7 +31,11 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
+import org.hl7.fhir.definitions.ecore.fhir.NameScope;
+import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
@@ -181,4 +185,59 @@ public class TypeRefConverter
 		
 		return buildTypeRefsFromFhirModel(oldRef);
 	}
+
+
+	public static void Fix(TypeRef ref, NameScope scope) 
+	{
+		TypeDefn referredType = findTypeDefn(ref.getName(), scope);
+		
+		if( referredType != null )
+			ref.setFullName(referredType.getFullName());
+			
+		if( ref.getBindingRef() != null )
+		{
+			BindingDefn referredBinding = findBindingDefn(ref.getBindingRef(), scope);
+			if( referredBinding != null )
+				ref.setFullBindingRef(referredBinding.getFullName());	
+		}
+	}
+	
+	private static TypeDefn findTypeDefn(String localName, NameScope scope)
+	{
+		NameScope current = scope;
+		
+		do
+		{
+			for( TypeDefn type : current.getTypes() )
+			{
+				if( type.getName().equals(localName) )
+					return type;
+			}
+
+			current = current.getContainingScope();		
+		}
+		while( current != null );
+		
+		return null;
+	}
+	
+	
+	private static BindingDefn findBindingDefn(String localName, NameScope scope)
+	{
+		NameScope current = scope;
+		
+		do
+		{
+			for( BindingDefn binding : current.getBindings() )
+			{
+				if( binding.getName().equals(localName) )
+					return binding;
+			}
+
+			current = current.getContainingScope();		
+		}
+		while( current != null );
+		
+		return null;
+	}	
 }

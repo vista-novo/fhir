@@ -77,6 +77,7 @@ public class ConstrainedTypeConverter
 		
 		result.setBaseType( baseType );
 		result.setName( constrainedType.getCode() );
+		result.setFullName( constrainedType.getCode() );		// for now, constraints can only be global
 		
 		Annotations ann = FhirFactory.eINSTANCE.createAnnotations();
 		ann.setDefinition("A constrained type based on " + baseType.getName());
@@ -87,5 +88,10 @@ public class ConstrainedTypeConverter
 				CompositeTypeConverter.buildInvariantFromFhirModel(invariant) );
 		
 		return result;
+	}
+
+	public static void FixTypeRefs(ConstrainedTypeDefn constrained) 
+	{
+		TypeRefConverter.Fix(constrained.getBaseType(), constrained.getScope());
 	}
 }

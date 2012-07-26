@@ -52,7 +52,6 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getMappings <em>Mappings</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getExampleValue <em>Example Value</em>}</li>
- *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getElements <em>Elements</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getContent <em>Content</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ElementDefnImpl#getInvariant <em>Invariant</em>}</li>
@@ -243,16 +242,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	protected String exampleValue = EXAMPLE_VALUE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElements()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<ElementDefn> elements;
-
-	/**
 	 * The cached value of the '{@link #getContent() <em>Content</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -281,6 +270,16 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @ordered
 	 */
 	protected InvariantRef invariant;
+
+	/**
+	 * The cached value of the '{@link #getParentElement() <em>Parent Element</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParentElement()
+	 * @generated
+	 * @ordered
+	 */
+	protected ElementDefn parentElement;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -536,8 +535,15 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 */
 	public ElementDefn getParentElement() {
-		if (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT) return null;
-		return (ElementDefn)eContainer();
+		if (parentElement != null && parentElement.eIsProxy()) {
+			InternalEObject oldParentElement = (InternalEObject)parentElement;
+			parentElement = (ElementDefn)eResolveProxy(oldParentElement);
+			if (parentElement != oldParentElement) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, oldParentElement, parentElement));
+			}
+		}
+		return parentElement;
 	}
 
 	/**
@@ -545,9 +551,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParentElement(ElementDefn newParentElement, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newParentElement, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, msgs);
-		return msgs;
+	public ElementDefn basicGetParentElement() {
+		return parentElement;
 	}
 
 	/**
@@ -556,19 +561,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * @generated
 	 */
 	public void setParentElement(ElementDefn newParentElement) {
-		if (newParentElement != eInternalContainer() || (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT && newParentElement != null)) {
-			if (EcoreUtil.isAncestor(this, newParentElement))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newParentElement != null)
-				msgs = ((InternalEObject)newParentElement).eInverseAdd(this, FhirPackage.ELEMENT_DEFN__ELEMENTS, ElementDefn.class, msgs);
-			msgs = basicSetParentElement(newParentElement, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, newParentElement, newParentElement));
+		ElementDefn oldParentElement = parentElement;
+		parentElement = newParentElement;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT, oldParentElement, parentElement));
 	}
 
 	/**
@@ -576,9 +572,9 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public boolean hasNestedElements() {
-		return getElements() != null && getElements().size() > 0;
-	}
+//	public boolean hasNestedElements() {
+//		return getElements() != null && getElements().size() > 0;
+//	}
 
 
 //	/**
@@ -636,16 +632,10 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getElements()).basicAdd(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetParentType((CompositeTypeDefn)otherEnd, msgs);
-			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetParentElement((ElementDefn)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -785,18 +775,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ElementDefn> getElements() {
-		if (elements == null) {
-			elements = new EObjectContainmentWithInverseEList<ElementDefn>(ElementDefn.class, this, FhirPackage.ELEMENT_DEFN__ELEMENTS, FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT);
-		}
-		return elements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public ElementDefn getContent() {
 		if (content != null && content.eIsProxy()) {
 			InternalEObject oldContent = (InternalEObject)content;
@@ -842,16 +820,12 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__MAPPINGS:
 				return ((InternalEList<?>)getMappings()).basicRemove(otherEnd, msgs);
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
 				return basicSetAnnotation(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__INVARIANT:
 				return basicSetInvariant(null, msgs);
 			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
 				return basicSetParentType(null, msgs);
-			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
-				return basicSetParentElement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -866,8 +840,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		switch (eContainerFeatureID()) {
 			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
 				return eInternalContainer().eInverseRemove(this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS, CompositeTypeDefn.class, msgs);
-			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
-				return eInternalContainer().eInverseRemove(this, FhirPackage.ELEMENT_DEFN__ELEMENTS, ElementDefn.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -898,8 +870,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return getMappings();
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				return getExampleValue();
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				return getElements();
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				if (resolve) return getContent();
 				return basicGetContent();
@@ -910,7 +880,8 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
 				return getParentType();
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
-				return getParentElement();
+				if (resolve) return getParentElement();
+				return basicGetParentElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -952,10 +923,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return;
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				setExampleValue((String)newValue);
-				return;
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends ElementDefn>)newValue);
 				return;
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				setContent((ElementDefn)newValue);
@@ -1011,9 +978,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				setExampleValue(EXAMPLE_VALUE_EDEFAULT);
 				return;
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				getElements().clear();
-				return;
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				setContent((ElementDefn)null);
 				return;
@@ -1059,8 +1023,6 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 				return mappings != null && !mappings.isEmpty();
 			case FhirPackage.ELEMENT_DEFN__EXAMPLE_VALUE:
 				return EXAMPLE_VALUE_EDEFAULT == null ? exampleValue != null : !EXAMPLE_VALUE_EDEFAULT.equals(exampleValue);
-			case FhirPackage.ELEMENT_DEFN__ELEMENTS:
-				return elements != null && !elements.isEmpty();
 			case FhirPackage.ELEMENT_DEFN__CONTENT:
 				return content != null;
 			case FhirPackage.ELEMENT_DEFN__ANNOTATION:
@@ -1070,7 +1032,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 			case FhirPackage.ELEMENT_DEFN__PARENT_TYPE:
 				return getParentType() != null;
 			case FhirPackage.ELEMENT_DEFN__PARENT_ELEMENT:
-				return getParentElement() != null;
+				return parentElement != null;
 		}
 		return super.eIsSet(featureID);
 	}

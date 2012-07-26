@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getVersion <em>Version</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getProfiles <em>Profiles</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#getEvents <em>Events</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#isInternal <em>Internal</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,12 +103,54 @@ public interface Definitions extends NameScope {
 	EList<EventDefn> getEvents();
 
 	/**
+	 * Returns the value of the '<em><b>Internal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Internal</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Internal</em>' attribute.
+	 * @see #setInternal(boolean)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getDefinitions_Internal()
+	 * @model
+	 * @generated
+	 */
+	boolean isInternal();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Definitions#isInternal <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Internal</em>' attribute.
+	 * @see #isInternal()
+	 * @generated
+	 */
+	void setInternal(boolean value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
 	 */
 	EList<PrimitiveTypeDefn> getPrimitives();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	ResourceDefn findType(String fullName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	BindingDefn findBinding(String fullName);
 
 	/**
 	 * Returns the value of the '<em><b>Profiles</b></em>' containment reference list.
