@@ -33,16 +33,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 
-public class CSharpJsonResourceSerializerGenerator extends GenBlock
+public class CSharpResourceSerializerGenerator extends GenBlock
 {
 	private CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
 
@@ -60,9 +57,9 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		ln("namespace HL7.Fhir.Instance.Serializers");
 		bs("{");		
 			ln("/*");
-			ln("* Starting point for serializing resources to JSON");
+			ln("* Starting point for serializing resources");
 			ln("*/");
-			ln("public static partial class JsonResourceSerializer");
+			ln("public static partial class ResourceSerializer");
 			bs("{");
 				resourceSerializer(definitions);
 				ln();
@@ -77,48 +74,69 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		return end();
 	}
 
+	private GenBlock buildSaveExtensions(String csTypeName) throws Exception
+	{
+		begin();
+		
+        ln("public static void Save(this ");
+        	nl(csTypeName);
+        	nl(" value, XmlWriter writer)");
+        bs("{");
+            ln("Save( value, new XmlFhirWriter(writer) );");
+        es("}");
+        ln();
+        ln("public static void Save(this ");
+    	nl(csTypeName);
+    	nl(" value, JsonWriter writer)");
+    	bs("{");
+    		ln("Save( value, new JsonFhirWriter(writer) );");
+        es("}");
+        
+        return end();
+	}
+	
+	
+	private GenBlock buildSaveExtensions(TypeDefn type) throws Exception
+	{
+		String csTypeName = GeneratorUtils.buildFullyScopedTypeName(type);
+		
+		return buildSaveExtensions(csTypeName);
+	}
+	
 	private void dataSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeData(IFhirWriter writer, Data type, bool asJsonObject=false)");
+		ln("public static void Save(this Data value, IFhirWriter writer, bool isPrimitiveResourceElement=false)");
 		bs("{");
-			ln("if( typeof(Composite).IsAssignableFrom(type.GetType()) )");
+			ln("if( value is Composite )");
 			bs("{");
-				ln("((Composite)type).ToJson(writer);");
+				ln("((Composite)value).Save(writer);");
 				ln("return;");
 			es("}");
 			ln();
 			generateSerializationCases(definitions.getPrimitives());
 		es("}");
 		ln();
-		ln("public static void ToJson(this Data data, IFhirWriter writer, bool asJsonObject=false )");
-		bs("{");
-			ln("SerializeData(writer, data, asJsonObject);");
-		es("}");
+		buildSaveExtensions("Data");
 	}
 
 	private void compositeSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeComposite(IFhirWriter writer, Composite type)");
+		ln("public static void Save(this Composite value, IFhirWriter writer)");
 		bs("{");
 			List composites = new ArrayList();
 			composites.addAll(definitions.getLocalCompositeTypes());
 			composites.addAll(definitions.getLocalConstrainedTypes());
 			generateSerializationCases(composites);
 		es("}");
-		ln("public static void ToJson(this Composite composite, IFhirWriter writer)");
-		bs("{");
-			ln("SerializeComposite(writer, composite);");
-		es("}");
+		ln();
+		buildSaveExtensions("Composite");
 	}
 
 	private void resourceSerializer(Definitions definitions) throws Exception {
-		ln("public static void SerializeResource(IFhirWriter writer, Resource type)");
+		ln("public static void Save(this Resource value, IFhirWriter writer)");
 		bs("{");
 			generateSerializationCases(definitions.getLocalResources());
 		es("}");
 		ln();
-		ln("public static void ToJson(this Resource resource, IFhirWriter writer)");
-		bs("{");
-			ln("SerializeResource(writer, resource);");
-		es("}");
+		buildSaveExtensions("Resource");
 	}
 	
 	private void generateSerializationCases(List<?> types) throws Exception
@@ -137,27 +155,25 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			firstTime = false;
 			String typeName = GeneratorUtils.buildFullyScopedTypeName(type);
 			
-			nl("(type.GetType() == typeof(");
+			nl("(value.GetType() == typeof(");
 				nl( typeName + "))");
 			bs();
-				ln("((" + typeName + ")type)");
+				ln("((" + typeName + ")value)");
 				if( type.isPrimitive() )
-					nl(".ToJson(writer,asJsonObject);");
+					nl(".Save(writer,isPrimitiveResourceElement);");
 				else
-					nl(".ToJson(writer);");
+					nl(".Save(writer);");
 			es();				
 		}
 		
 		ln("else");
 		bs();
 			ln("throw new Exception(\"Encountered unknown type \" + ");
-				nl("type.GetType().Name);");
+				nl("value.GetType().Name);");
 		es();
 	}
 	
 	
-
-
 	public GenBlock generateCompositeSerializer( CompositeTypeDefn composite, Definitions definitions ) throws Exception
 	{
 		begin();
@@ -173,9 +189,9 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		ln("namespace HL7.Fhir.Instance.Serializers");
 		bs("{");
 			ln("/*");
-			ln("* JSon serializer for " + composite.getName() + " instances");
+			ln("* Serializer for " + composite.getName() + " instances");
 			ln("*/");
-			ln("public static partial class Json" + composite.getName() + "Serializer");
+			ln("public static partial class " + composite.getName() + "Serializer");
 			bs("{");
 				compositeSerializerFunction(composite);
 			es("}");
@@ -191,19 +207,11 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 				
 		String valueType = GeneratorUtils.buildFullyScopedTypeName(composite);
 		
-		ln("public static void ToJson(this ");
-			nl(valueType);
-			nl(" value, IFhirWriter writer)");
-        bs("{");
-            ln("Serialize" + composite.getName());
-            	nl( "(writer, value);");
-        es("}");
-		ln();
 		ln("public static void ");
-			nl("Serialize" + composite.getName());
-			nl("(IFhirWriter writer, ");
-			nl(valueType);
-			nl(" value)");
+			nl("Save(");
+			nl("this " + valueType + " value, ");
+			nl("IFhirWriter writer)");			
+
 		bs("{");
 			if( composite.isResource() )
 			{
@@ -219,7 +227,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 			if( !composite.isResource() )
 			{
 				ln("// Serialize element's id/dar attributes");
-				ln("JsonUtil.SerializeAttributes(writer, value);");
+				ln("SerializationUtil.SerializeAttributes(writer, value);");
 				ln();
 			}
   		
@@ -237,6 +245,8 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		es("}");
 		ln();
 	
+		buildSaveExtensions(composite);
+		
 		// Generate the nested local types in this scope
 		if( composite.getLocalCompositeTypes().size() > 0)
 		{
@@ -254,7 +264,7 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 				
 		for( ElementDefn member : elements )
 		{								
-			ln("// Serialize element " + member.getElementPath());	
+			ln("// Serialize element " + member.getElementPath());
 			generateMemberSerializer(member);
 		}
 		         
@@ -278,11 +288,12 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		return false; 
 	}
 
+		
 	private void generateMemberSerializer(ElementDefn member) throws Exception 
 	{
 		String propertyName = "value." + 
 			GeneratorUtils.generateCSharpMemberName(member.getParentType(), member.getName());		
-					
+
 		if( member.isRepeating() )
 		{
 			ln("if(" + propertyName + " != null ");
@@ -325,13 +336,40 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 	
 	private void serializeSingleElement( ElementDefn member, String propertyName ) throws Exception
 	{	
-		ln("writer.WriteStartElement(");
+		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals("xhtml") )
+		{
+			// Ugly hack to do special handling for Xhtml members.
+			ln("writer.WriteStartXhtmlElement(");
 			nl("\"" + member.getName() + "\"");
 			nl(");");
-												
-		buildSerializeStatement(propertyName, member);
-		
-		ln("writer.WriteEndElement();");
+			ln("writer.WriteXhtmlContent(");
+				nl(propertyName);
+				nl(".ToString());");
+			ln("writer.WriteEndXhtmlElement();");
+		}
+		else 
+		{
+					
+			
+			if( member.isPolymorph() )
+			{
+				ln("writer.WriteStartElement( ");
+					nl("SerializationUtil.BuildPolymorphicName(");
+					nl("\"" + member.getName() + "\", "); 
+					nl(propertyName);
+					nl(".GetType()) );");
+			}
+			else
+			{
+				ln("writer.WriteStartElement(");
+				nl("\"" + member.getName() + "\"");	
+				nl(");");
+			}										
+
+			buildSerializeStatement(propertyName, member);
+			
+			ln("writer.WriteEndElement();");
+		}
 	}
 
 
@@ -359,10 +397,10 @@ public class CSharpJsonResourceSerializerGenerator extends GenBlock
 		//Primitives inside datatypes cannot have id and/or 
 		// dataAbsentReason so should be serialized as a simple value.
 		if( isPrimitive && isResourceElement(member) )
-			nl(".ToJson(writer,true);");
+			nl(".Save(writer,true);");
 		else
 		{
-			nl(".ToJson(writer);");
+			nl(".Save(writer);");
 		}
 				
 	}	

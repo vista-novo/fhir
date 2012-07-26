@@ -35,16 +35,34 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using HL7.Fhir.Instance.Model;
+using System.Xml;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public static class JsonPrimitiveSerializer
+    public static class PrimitiveSerializer
     {
-        public static void ToJson(this Primitive prim, JsonWriter writer, bool asJsonObject = false)
+        public static void Save(this Primitive value, XmlWriter writer, bool isPrimitiveResourceElement = false)
         {
-            if (asJsonObject)
+            Save(value, new XmlFhirWriter(writer), isPrimitiveResourceElement);
+        }
+
+        public static void Save(this Primitive value, JsonWriter writer, bool isPrimitiveResourceElement = false)
+        {
+            Save(value, new JsonFhirWriter(writer), isPrimitiveResourceElement);
+        }
+
+        public static void Save(this Primitive value, IFhirWriter writer, bool isPrimitiveResourceElement=false)
+        {
+            if (isPrimitiveResourceElement)
             {
-                Serialize(writer, prim);
+                writer.WriteStartComplexContent();
+
+                SerializationUtil.SerializeAttributes(writer, value);
+
+                if (value.ToString() != null)
+                    writer.WriteSimpleContent(value.ToString());
+
+                writer.WriteEndComplexContent();
             }
             else
             {
@@ -52,54 +70,8 @@ namespace HL7.Fhir.Instance.Serializers
                 // dataAbsentReason so these can be serialized
                 // as a simple value Json value, no special
                 // attribute handling needed.
-                writer.WriteValue(prim.ToString());
+                writer.WriteValue(value.ToString());
             }
-        }
-
-
-        public static void ToJson(this Primitive prim, IFhirWriter writer, bool asJsonObject = false)
-        {
-            if (asJsonObject)
-            {
-                Serialize(writer, prim);
-            }
-            else
-            {
-                // Primitives inside datatypes cannot have id and/or 
-                // dataAbsentReason so these can be serialized
-                // as a simple value Json value, no special
-                // attribute handling needed.
-                writer.WriteValue(prim.ToString());
-            }
-        }
-
-
-        public static void Serialize(JsonWriter writer, Primitive prim)
-        {
-            writer.WriteStartObject();
-
-            JsonUtil.SerializeAttributes(writer, prim);
-
-            if (prim.ToString() != null)
-            {
-                 writer.WritePropertyName("value");
-                 writer.WriteValue(prim.ToString());
-            }
-
-            writer.WriteEndObject();
-        }
-
-      
-        public static void Serialize(IFhirWriter writer, Primitive prim)
-        {
-            writer.WriteStartComplexContent();
-
-            JsonUtil.SerializeAttributes(writer, prim);
-
-            if (prim.ToString() != null)
-                writer.WriteSimpleContent(prim.ToString());
-
-            writer.WriteEndComplexContent();
         }
     }
 }

@@ -20,9 +20,9 @@ namespace HL7.Fhir.Instance.Serializers
         void WriteSimpleContent(string value);
         void WriteValue(string value);
 
-        void WriteStartXhtmlContent(string name);
+        void WriteStartXhtmlElement(string name);
         void WriteXhtmlContent(string xhtml);
-        void WriteEndXhtmlContent();
+        void WriteEndXhtmlElement();
 
         void WriteStartArrayElement(string name);
         void WriteStartArrayMember(string name);

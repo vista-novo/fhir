@@ -57,19 +57,20 @@ namespace HL7.Fhir.Instance.Serializers
             jw.WriteValue(value);
         }
 
-        public void WriteStartXhtmlContent(string name)
+        public void WriteStartXhtmlElement(string name)
         {
-            throw new NotImplementedException();
+            // In Json, the serialization of Xhtml is the same as other elements
+            WriteStartElement(name);
         }
 
         public void WriteXhtmlContent(string xhtml)
         {
-            throw new NotImplementedException();
+            WriteValue(xhtml);
         }
 
-        public void WriteEndXhtmlContent()
+        public void WriteEndXhtmlElement()
         {
-            throw new NotImplementedException();
+            WriteEndElement();
         }
 
         public void WriteStartArrayElement(string name)

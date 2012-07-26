@@ -19,7 +19,6 @@ namespace HL7.Fhir.Instance.Tests
         public void TestParsePrimitive()
         {
             string xmlString = "<someElem>true</someElem>";
-
             XmlReader r = fromString(xmlString); r.Read();
             ErrorList errors = new ErrorList();
             FhirBoolean result = XmlPrimitiveParser.ParseFhirBoolean(r, errors);

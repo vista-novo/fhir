@@ -15,7 +15,7 @@ using HL7.Fhir.Instance.Parsers;
 namespace HL7.Fhir.Instance.Tests
 {
     [TestClass]
-    public class JsonSerializerTests
+    public class SerializerTests
     {
         [TestMethod]
         public void SerializePrimitive()
@@ -23,7 +23,7 @@ namespace HL7.Fhir.Instance.Tests
             Action<IFhirWriter> action = writer =>
                  {
                      FhirBoolean bl = new FhirBoolean(true);
-                     bl.ToJson(writer);
+                     bl.Save(writer);
                  };
 
             string j = writeStuffJ(action);
@@ -36,7 +36,7 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     FhirBoolean bl = new FhirBoolean(null);
                     bl.Dar = DataAbsentReason.Notasked;
-                    bl.ToJson(writer,true);
+                    bl.Save(writer,true);
                 };
 
             j = writeStuffJ(action2);
@@ -50,7 +50,7 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     FhirBoolean bl = new FhirBoolean(false);
                     bl.ReferralId = "3141";
-                    JsonPrimitiveSerializer.Serialize(writer, bl);
+                    bl.Save(writer,true);
                 };
 
             j = writeStuffJ(action3);
@@ -60,6 +60,33 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual("<x id=\"3141\" xmlns=\"http://hl7.org/fhir\">false</x>", x);
         }
 
+        [TestMethod]
+        public void TestPolymorphSerialization()
+        {
+            Extension ext = new Extension()
+                {
+                    Ref = "3141",
+                    Value = new FhirBoolean(true),
+                    Extension_ = new List<Extension>()
+                        {
+                            new Extension()
+                            {
+                                Value = new Coding() { Code = "R51", System = new Uri("http://hl7.org/fhir/sid/icd-10") } 
+                            }
+                        }
+                };
+
+            Action<IFhirWriter> action = writer => ext.Save(writer);
+
+            string j = writeStuffJ(action);
+            string x = writeStuffX(action);
+
+            Assert.AreEqual("{\"x\":{\"ref\":\"3141\",\"valueBoolean\":\"true\",\"extension\":" +
+                "[{\"valueCoding\":{\"code\":\"R51\",\"system\":\"http://hl7.org/fhir/sid/icd-10\"}}]}}", j);
+            Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\"><ref>3141</ref><valueBoolean>true</valueBoolean>" +
+                            "<extension><valueCoding><code>R51</code><system>http://hl7.org/fhir/sid/icd-10</system>" +
+                            "</valueCoding></extension></x>", x);
+        }
 
         [TestMethod]
         public void TestResourceSerialization()
@@ -111,7 +138,7 @@ namespace HL7.Fhir.Instance.Tests
                  }
             };
 
-            p.ToJson(writer);
+            p.Save(writer);
 
             Assert.AreEqual("{\"Person\":{\"id\":{\"value\":\"34234\"},\"name\":" +
                 "[{\"use\":\"official\",\"part\":[{\"type\":\"given\",\"value\":\"Karen\"}"+
@@ -125,9 +152,14 @@ namespace HL7.Fhir.Instance.Tests
             XmlWriter wx = new XmlTextWriter(sw);
             writer = new XmlFhirWriter(wx);
 
-            p.ToJson(writer);
+            p.Save(writer);
 
-            Assert.AreEqual("", sw.ToString());
+            Assert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-16\"?><Person xmlns=\"http://hl7.org/fhir\">" +
+                "<id>34234</id><name><use>official</use><part><type>given</type><value>Karen</value></part>" +
+                "<part id=\"n1\"><type>family</type><value>van</value></part></name><dob dataAbsentReason=\"notasked\" />" +
+                "<language><code id=\"lang-1\">dut</code><use>fluent</use></language><language><code>cmn</code>" +
+                "<use>useable</use></language><text><status>generated</status>" +
+                "<div xmlns=\"http://www.w3.org/1999/xhtml\">stuff</div></text></Person>", sw.ToString());
         }
 
 
@@ -150,7 +182,7 @@ namespace HL7.Fhir.Instance.Tests
             var sw = new StringWriter();
             JsonWriter w = new JsonTextWriter(sw);
             IFhirWriter writer = new JsonFhirWriter(w);
-            rep.ToJson(writer);
+            rep.Save(writer);
 
             string result = sw.ToString();
         }

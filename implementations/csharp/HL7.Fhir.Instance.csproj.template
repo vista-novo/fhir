@@ -68,14 +68,14 @@
     <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
     <Compile Include="Parsers.Support\XmlNarrativeParser.cs" />
     <Compile Include="Parsers.Support\XmlUtils.cs" />
-    <Compile Include="Serializers.Support\JSonPrimitiveSerializer.cs" />
-	<Compile Include="Serializers.Support\JSonUtil.cs" />
     <Compile Include="Support\ElementContent.cs" />
     <Compile Include="Support\ErrorList.cs" />
     <Compile Include="Support\Util.cs" />
     <Compile Include="Serializers.Support\IFhirWriter.cs" />
     <Compile Include="Serializers.Support\JsonFhirWriter.cs" />
     <Compile Include="Serializers.Support\XmlFhirWriter.cs" />
+	<Compile Include="Serializers.Support\PrimitiveSerializer.cs" />
+	<Compile Include="Serializers.Support\SerializationUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

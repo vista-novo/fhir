@@ -58,19 +58,21 @@ namespace HL7.Fhir.Instance.Serializers
             xw.WriteValue(value);
         }
 
-        public void WriteStartXhtmlContent(string name)
+        public void WriteStartXhtmlElement(string name)
         {
-            throw new NotImplementedException();
+//            xw.WriteStartElement(name, Util.XHTMLNS);
         }
 
         public void WriteXhtmlContent(string xhtml)
         {
-            throw new NotImplementedException();
+            // Write xhtml directly into the output stream,
+            // the xhtml <div> becomes part of the elements
+            // of the type, just like the other FHIR elements
+            xw.WriteRaw(xhtml);
         }
 
-        public void WriteEndXhtmlContent()
+        public void WriteEndXhtmlElement()
         {
-            throw new NotImplementedException();
         }
 
         public void WriteStartArrayElement(string name)

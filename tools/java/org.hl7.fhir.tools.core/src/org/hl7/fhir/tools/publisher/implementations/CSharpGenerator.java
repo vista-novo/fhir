@@ -134,10 +134,10 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 				
 			}
 			
-			String jsonSerializerFilename = serializersDir + "Json" + composite.getName() + "Serializer.cs";			
-			new CSharpJsonResourceSerializerGenerator()
-				.generateCompositeSerializer(composite, definitions).toFile(implDir+jsonSerializerFilename);			
-			generatedFilenames.add(jsonSerializerFilename);
+			String serializerFilename = serializersDir + composite.getName() + "Serializer.cs";			
+			new CSharpResourceSerializerGenerator()
+				.generateCompositeSerializer(composite, definitions).toFile(implDir+serializerFilename);			
+			generatedFilenames.add(serializerFilename);
 
 		}
 		
@@ -184,7 +184,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		{
 			String filename = serializersDir + "JsonResourceSerializer.cs";
 			
-			new CSharpJsonResourceSerializerGenerator()
+			new CSharpResourceSerializerGenerator()
 				.generateResourceSerializer(definitions).toFile(implDir+filename);						 
 			generatedFilenames.add(filename);			
 		}

@@ -42,8 +42,7 @@ namespace HL7.Fhir.Instance.Tests
                             string jsonFile = Path.ChangeExtension(file, "json");
                             using (JsonTextWriter w = new JsonTextWriter(new System.IO.StreamWriter(jsonFile)))
                             {
-                                IFhirWriter wr = new JsonFhirWriter(w);
-                                resource.ToJson(wr);
+                                resource.Save(w);
                                 w.Close();
                             }
                         }
