@@ -9,68 +9,33 @@ using HL7.Fhir.Instance.Support;
 
 namespace HL7.Fhir.Instance.Parsers
 {
-    public static partial class XmlPrimitiveParser
+    public static partial class PrimitiveParser
     {
-        public static XHtml ParseXHtml(XmlReader reader, ErrorList errors)
-        {       
-            try
-            {
-                var result = XHtml.Parse(reader.ReadOuterXml());
-                return result;
-            }
-            catch (FhirValueFormatException ex)
-            {
-                errors.Add(ex.Message, (IXmlLineInfo)reader);
-            }
-
-            return null;
-        }
-
-
-        public static Code<T> ParseCode<T>(XmlReader reader, ErrorList errors)
+        public static Code<T> ParseCode<T>(IFhirReader reader, ErrorList errors)
             where T : struct, IConvertible
         {
-            ElementContent content = parsePrimitiveElement(reader, errors);
+            reader.EnterElement();
+            var contents = reader.ReadContents();
 
-            try
+            if (contents != null)
             {
-                var result = Code<T>.Parse(content.Value);
+                try
+                {
+                    var result = Code<T>.Parse(contents);
+                    
+                    // Read id/dar from element's attributes
+                    result.ReferralId = reader.ReadRefId();
+                    result.Dar = (DataAbsentReason)Code<DataAbsentReason>.Parse(reader.ReadDar());
 
-                if (content.Id != null) result.ReferralId = content.Id;
-                if (content.Dar.HasValue) result.Dar = content.Dar;
-
-                return result;
-            }
-            catch (FhirValueFormatException ex)
-            {
-                errors.Add(ex.Message, (IXmlLineInfo)reader);
+                    return result;
+                }
+                catch (FhirValueFormatException ex)
+                {
+                    errors.Add(ex.Message, reader);
+                }
             }
 
             return null;
-        }
-
-
-        private static ElementContent parsePrimitiveElement(XmlReader reader, ErrorList errors)
-        {
-            ElementContent result = XmlUtils.ParseElementContent(reader, errors);
-            string elementName = reader.LocalName;
-
-            try
-            {
-                if (!reader.IsEmptyElement)
-                    result.Value = reader.ReadElementContentAsString();
-
-                if (result.Value == String.Empty)
-                    result.Value = null;
-            }
-            catch (XmlException xe)
-            {
-                errors.Add( 
-                    String.Format("Primitive content cannot be read from element {0}: {1}", elementName,
-                        xe.Message), (IXmlLineInfo)reader );
-            }
-
-            return result;
         }
     }
 }

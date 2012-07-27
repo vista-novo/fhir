@@ -79,9 +79,9 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			ln("/*");
 			ln("* Starting point for parsing resources");
 			ln("*/");
-			ln("public static partial class XmlResourceParser");
+			ln("public static partial class ResourceParser");
 			bs("{");
-				ln("public static Resource ParseResource(XmlReader reader, ErrorList errors)");
+				ln("public static Resource ParseResource(IFhirReader reader, ErrorList errors)");
 				bs("{");
 					ln("try");
 					bs("{");
@@ -89,9 +89,9 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 						ln();
 						generateResourceCases(definitions.getLocalResources());
 					es("}");
-					ln("catch( XmlException xe )");
+					ln("catch( Exception xe )");
 					bs("{");
-						ln("errors.Add( xe.Message, (IXmlLineInfo)reader);");
+						ln("errors.Add( xe.Message, reader);");
 						ln("return null;");
 					es("}");
 				es("}");
@@ -110,17 +110,15 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 	
 	
-	private GenBlock generateDataParser() throws Exception
-	{
+	private GenBlock buildPolymorphParser(String polymorphTypeName, List composites) throws Exception {
 		begin();
 		
-		ln("public static Data ParseData(XmlReader reader, ErrorList errors)");
-		bs("{");			
-			List composites = new ArrayList();
-			composites.addAll(getDefinitions().getLocalCompositeTypes());
-			composites.addAll(getDefinitions().getLocalConstrainedTypes());
-			composites.addAll(getDefinitions().getPrimitives());
-					
+		ln("public static ");
+			nl(polymorphTypeName);
+			nl(" Parse");
+			nl(polymorphTypeName);
+			nl("(IFhirReader reader, ErrorList errors)");
+		bs("{");							
 			generatePolymorphCases(composites);
 		es("}");
 				
@@ -128,33 +126,31 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 	
 
+	private GenBlock generateDataParser() throws Exception
+	{
+		List composites = new ArrayList();
+		composites.addAll(getDefinitions().getLocalCompositeTypes());
+		composites.addAll(getDefinitions().getLocalConstrainedTypes());
+		composites.addAll(getDefinitions().getPrimitives());
+
+		return buildPolymorphParser("Data", composites);
+	}
+
+
 	private GenBlock generateCompositeParser() throws Exception
 	{
-		begin();
-		
-		ln("public static Composite ParseComposite(XmlReader reader, ErrorList errors)");
-		bs("{");			
-			List composites = new ArrayList();
-			composites.addAll(getDefinitions().getLocalCompositeTypes());
-			composites.addAll(getDefinitions().getLocalConstrainedTypes());
-					
-			generatePolymorphCases(composites);
-		es("}");
-				
-		return end();
+		List composites = new ArrayList();
+		composites.addAll(getDefinitions().getLocalCompositeTypes());
+		composites.addAll(getDefinitions().getLocalConstrainedTypes());
+	
+		return buildPolymorphParser("Composite", composites);
 	}
 
 	private GenBlock generatePrimitiveParser() throws Exception
-	{
-		begin();
-		
-		ln("public static Primitive ParsePrimitive(XmlReader reader, ErrorList errors)");
-		bs("{");			
-			generatePolymorphCases(getDefinitions().getPrimitives());
-		es("}");
-				
-		return end();
+	{				
+		return buildPolymorphParser("Primitive", getDefinitions().getPrimitives());
 	}
+	
 	
 	private void generatePolymorphCases(List<?> types) throws Exception
 	{
@@ -171,9 +167,9 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( reader.NodeType == XmlNodeType.Element && reader.LocalName.EndsWith(\"");
+			nl("( reader.IsAtElementEndingWith(\"");
 				nl( Utilities.capitalize(type.getName()) );
-				nl("\") && reader.NamespaceURI == Util.FHIRNS )");
+				nl("\" ))");
 			bs();
 				ln("return ");
 					nl( buildParserCall(type) );
@@ -185,7 +181,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized datatype '{0}'\",");
-		        nl("	reader.LocalName), (IXmlLineInfo)reader);");
+		        nl("	reader.CurrentElementName), reader);");
 		    ln("return null;");
 		es("}");
 	}
@@ -204,11 +200,11 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( reader.NodeType == XmlNodeType.Element && reader.LocalName == \"");
+			nl("( reader.IsAtElement(\"");
 				nl( resource.getName() );
-				nl("\" && reader.NamespaceURI == Util.FHIRNS )");
+				nl("\" ) )");
 			bs();
-				ln("return Xml" + resource.getName() + "Parser");
+				ln("return " + resource.getName() + "Parser");
 					nl(".Parse" + resource.getName());
 					nl("(reader, errors);");
 			es();				
@@ -218,7 +214,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized resource '{0}'\",");
-		        nl("	reader.LocalName), (IXmlLineInfo)reader);");
+		        nl("	reader.CurrentElementName), reader);");
 		    ln("return null;");
 		es("}");
 	}
@@ -241,7 +237,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			ln("/*");
 			ln("* Parser for constrained " + constrained.getName() + " instances");
 			ln("*/");
-			ln("public static partial class Xml" + constrained.getName() + "Parser");
+			ln("public static partial class " + constrained.getName() + "Parser");
 			bs("{");	
 				String returnType = GeneratorUtils.buildFullyScopedTypeName(constrained);
 					
@@ -249,7 +245,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 				nl( returnType );
 				nl(" ");
 				nl("Parse" + constrained.getName());
-				nl("(XmlReader reader, ErrorList errors, ");
+				nl("(IFhirReader reader, ErrorList errors, ");
 				nl(returnType + " existingInstance = null )");
 			bs("{");	
 				ln( returnType );
@@ -283,7 +279,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			ln("/*");
 			ln("* Parser for " + composite.getName() + " instances");
 			ln("*/");
-			ln("public static partial class Xml" + composite.getName() + "Parser");
+			ln("public static partial class " + composite.getName() + "Parser");
 			bs("{");
 				compositeParserFunction(composite);
 			es("}");
@@ -303,7 +299,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			nl( returnType );
 			nl(" ");
 			nl("Parse" + composite.getName());
-			nl("(XmlReader reader, ErrorList errors, ");
+			nl("(IFhirReader reader, ErrorList errors, ");
 			nl(returnType + " existingInstance = null )");
 		bs("{");	
 			ln( returnType );
@@ -329,25 +325,23 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 
 	private void buildCompositeElementParser(CompositeTypeDefn composite)
 			throws Exception {
-		ln("string en = reader.LocalName;");
-		ln("string ns = reader.NamespaceURI;");
+		ln("string en = reader.CurrentElementName;");
+		ln();
+		ln("// Read starttag and start parsing");
+		ln("reader.EnterElement();");
 		ln();
 		if( !composite.isResource() )
 		{
 			ln("// Read id/dar from element's attributes");
-		    ln("ElementContent attrs = XmlUtils.ParseElementContent(reader, errors);");
-		    ln("if (attrs.Id != null) result.ReferralId = attrs.Id;");
-		    ln("if (attrs.Dar.HasValue) result.Dar = attrs.Dar;");
+		    ln("result.ReferralId = reader.ReadRefId();");
+		  	ln("result.Dar = (DataAbsentReason)Code<DataAbsentReason>.Parse(reader.ReadDar());");
 			ln();
 		}
   
 		ln("// If this is an empty node, return immediately");
-		ln("if (reader.IsEmptyElement) return result;");
+		ln("if (!reader.HasMoreElements) return result;");
 		ln();
-		ln("// Read starttag and start parsing");
-		ln("reader.Read();");
-		ln();
-		
+				
 		// Generate this classes properties
 		if( composite.getElements().size() > 0)
 		{
@@ -355,7 +349,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			ln();
 		}
 		ln("// Read endtag");
-		ln("reader.Read();");
+		ln("reader.ExitElement();");
 		ln();
 	}
 
@@ -371,13 +365,12 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			generateMemberParser(member);
 		}
 		
-		ln("if( !XmlUtils.IsEndElement(reader,en,ns) )" );
+		ln("if( reader.HasMoreElements )" );
         bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
-                nl("	reader.LocalName, en), (IXmlLineInfo)reader);");
-            ln("while (!XmlUtils.IsEndElement(reader, en, ns) || reader.EOF)");
-            ln("	reader.Skip();");
+                nl("	reader.CurrentElementName, en), reader);");
+            ln("reader.SkipContents(en);");
             ln("result = null;");
 		es("}");
 	         
@@ -430,10 +423,12 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	
 	private void parseSingleElement( ElementDefn member ) throws Exception
 	{
+		bs();
 		ln("result." + GeneratorUtils.generateCSharpMemberName(member) );
 			nl(" = ");
 			nl( buildParserCall(member) );
 			nl(";");
+		es();
 	}
 	
 	
@@ -468,13 +463,13 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	
 	private String buildCheckForElementClause( ElementDefn member )
 	{
-		String clause = "reader.NodeType == XmlNodeType.Element && " +
-							"reader.NamespaceURI == Util.FHIRNS && ";
-		
+		String clause = "reader.IsAtElement(";
+		clause += "\"" + member.getName() + "\"";
+					
 		if( !member.isPolymorph() ) 
-			clause += "reader.LocalName == \"" + member.getName() + "\"";
+			clause += ")";
 		else
-			clause += "reader.LocalName.StartsWith(\"" + member.getName() + "\")"; 
+			clause += ", true)";
 		
 		return clause;
 	}
@@ -492,12 +487,12 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		if( type.isGloballyDefined() )
 		{
 			// A type defined on the global level, child of Definitions
-			result.append("Xml" + type.getName() + "Parser" );	
+			result.append(type.getName() + "Parser" );	
 		}
 		else
 		{
 			// A type defined inside a globally defined composite 
-			result.append("Xml" + ((CompositeTypeDefn)type.getScope()).getName() + "Parser");
+			result.append(((CompositeTypeDefn)type.getScope()).getName() + "Parser");
 		}
 
 		result.append(".Parse" + type.getName() );
@@ -519,7 +514,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	{
 		StringBuffer result = new StringBuffer();
 		
-		result.append("XmlPrimitiveParser.Parse");
+		result.append("PrimitiveParser.Parse");
 		
 		BindingDefn binding = getDefinitions().findBinding(ref.getFullBindingRef());
 		
@@ -533,13 +528,13 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 
 	private String buildPrimitiveParserCall(PrimitiveTypeDefn primitive) throws Exception 
 	{
-		return "XmlPrimitiveParser.Parse" +
+		return "PrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
 				"(reader, errors)";
 	}
 	
 	private String buildPolymorphParserCall(TypeRef type) throws Exception 
 	{
-		return "XmlResourceParser.Parse" +	type.getName() + "(reader, errors)";
+		return "ResourceParser.Parse" +	type.getName() + "(reader, errors)";
 	}
 }

@@ -31,9 +31,10 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     Console.WriteLine("Reading from xml file " + file);
 
-                    using (XmlReader r = createReader(file))
+                    using (XmlReader xr = createReader(file))
                     {
-                        Model.Resource resource = XmlResourceParser.ParseResource(r, errors);
+                        IFhirReader r = new XmlFhirReader(xr);
+                        Model.Resource resource = ResourceParser.ParseResource(r, errors);
                         if (errors.Count > 0)
                             Console.WriteLine("Parse errors:" + errors.ToString());
                         else

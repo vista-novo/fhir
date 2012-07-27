@@ -171,10 +171,11 @@ namespace HL7.Fhir.Instance.Tests
             settings.IgnoreProcessingInstructions = true;
             settings.IgnoreWhitespace = true;
 
-            XmlReader r = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"), settings);
+            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"), settings);
+            IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
-            LabReport rep = (LabReport)XmlResourceParser.ParseResource(r, errors);
+            LabReport rep = (LabReport)ResourceParser.ParseResource(r, errors);
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());

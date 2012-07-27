@@ -59,7 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelTests.cs" />
     <Compile Include="TestRunnner.cs" />
-    <Compile Include="XmlParserTests.cs" />
+    <Compile Include="XmlParserTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HL7.Fhir.Instance.csproj">

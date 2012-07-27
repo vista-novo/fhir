@@ -34,6 +34,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using HL7.Fhir.Instance.Model;
+using HL7.Fhir.Instance.Parsers;
 
 namespace HL7.Fhir.Instance.Support
 {
@@ -74,9 +75,9 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
-        public void Add(string message, string context, IXmlLineInfo pos)
+        public void Add(string message, string context, IFhirReader reader)
         {         
-            this.Add(message, context, pos.LineNumber, pos.LinePosition);
+            this.Add(message, context, reader.LineNumber, reader.LinePosition);
         }
 
         public void Add(string message, string context, int? line, int? pos)
@@ -95,9 +96,9 @@ namespace HL7.Fhir.Instance.Support
             this.Add(message, null, null, null);
         }
 
-        public void Add(string message, IXmlLineInfo pos)
+        public void Add(string message, IFhirReader reader)
         {
-            this.Add(message, null, pos);
+            this.Add(message, null, reader);
         }
 
         public void Add(string message)
