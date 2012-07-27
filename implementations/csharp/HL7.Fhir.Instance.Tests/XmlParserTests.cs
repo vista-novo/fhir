@@ -194,6 +194,10 @@ namespace HL7.Fhir.Instance.Tests
 
             Assert.IsNotNull(rep);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
+
+            Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
+            Assert.AreEqual(17, rep.ResultGroup[0].Result.Count);
+            Assert.AreEqual("Neutrophils", rep.ResultGroup[0].Result[8].Name.Coding[0].Display.Contents);
         }
 
         [TestMethod]

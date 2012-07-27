@@ -5,7 +5,7 @@
     nsURI="http://hl7.org/fhir/definitions" nsPrefix="fhir">
   <eClassifiers xsi:type="ecore:EClass" name="Definitions" eSuperTypes="#//NameScope">
     <eOperations name="getPrimitives" upperBound="-1" eType="#//PrimitiveTypeDefn"/>
-    <eOperations name="findType" eType="#//ResourceDefn">
+    <eOperations name="findType" eType="#//TypeDefn">
       <eParameters name="fullName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="findBinding" eType="#//BindingDefn">
@@ -336,12 +336,6 @@
     <eOperations name="getLocalCompositeTypes" upperBound="-1" eType="#//CompositeTypeDefn"/>
     <eOperations name="getLocalConstrainedTypes" upperBound="-1" eType="#//ConstrainedTypeDefn"/>
     <eOperations name="getContainingScope" eType="#//NameScope"/>
-    <eOperations name="resolveType" eType="#//TypeDefn">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="resolveBinding" eType="#//BindingDefn">
-      <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//TypeDefn" containment="true" eOpposite="#//TypeDefn/scope">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">

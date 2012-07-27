@@ -372,47 +372,30 @@ public class GeneratorUtils {
 		return result;
 	}
 		
-	public static String buildFullyScopedTypeName( NameScope resolver, TypeRef type ) throws Exception
+	public static String buildFullyScopedTypeName( TypeDefn type ) throws Exception
 	{
-		if( type.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
-				type.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
-				type.getName().equals(TypeRef.DATA_PSEUDOTYPE_NAME) )
-			return type.getName();
-		else
-			return buildFullyScopedTypeName(resolver.resolveType(type.getName())); 
+		return buildFullyScopedTypeName(type.getFullName());
 	}
 	
+	public static String buildFullyScopedTypeName( TypeRef type ) throws Exception
+	{
+		return buildFullyScopedTypeName(type.getFullName());
+	}
 	
-	public static String buildFullyScopedTypeName( TypeDefn type )
-			throws Exception
+	public static String buildFullyScopedTypeName( String fullName ) throws Exception
 	{		
-		NameScope scope = type.getScope();
+		String[] nameParts = fullName.split("\\.");
 		
-		if( type.isGloballyDefined() )
-			return GeneratorUtils.generateCSharpTypeName(type.getName());
+		if( nameParts.length == 1 )
+			// Globally defined name
+			return GeneratorUtils.generateCSharpTypeName(nameParts[0]);
 		else
-			return GeneratorUtils.generateCSharpTypeName(
-				((CompositeTypeDefn)scope).getName()) + "." + 
-				GeneratorUtils.generateCSharpTypeName(type.getName());
+			return GeneratorUtils.generateCSharpTypeName(nameParts[0]) +
+				 "." + GeneratorUtils.generateCSharpTypeName(nameParts[1]);
 	}
 
-
-	public static String buildFullyScopedEnumName( BindingDefn binding )
-			throws Exception
-	{
-		String name = binding.getName();
-		
-		if( binding.isGloballyDefined() )
-			return GeneratorUtils.generateCSharpTypeName(name);
-		else
-			return GeneratorUtils.generateCSharpTypeName(
-				((CompositeTypeDefn)binding.getParent()).getName()) + "." + 
-				GeneratorUtils.generateCSharpTypeName(name);
-	}
 	
-	
-	
-	public static String generateCSharpMemberName(CompositeTypeDefn context, String name) {
+	public static String generateCSharpEnumMemberName(String name) {
 		String result;
 		
 		if (name.equals("<"))
@@ -430,24 +413,28 @@ public class GeneratorUtils {
 		else
 			result = Utilities.capitalize(name);
 
-		result = result.replace("-", "_").replace("+", "Plus");
-
-		if( context != null )
+		return result.replace("-", "_").replace("+", "Plus");
+	}
+	
+	
+	
+	public static String generateCSharpMemberName(ElementDefn member) 
+	{
+		String result = Utilities.capitalize(member.getName());
+		
+		// An attribute cannot have the same name as a nested type
+		for( CompositeTypeDefn composite : member.getParentType().getLocalCompositeTypes() )
 		{
-			// An attribute cannot have the same name as a nested type
-			for( CompositeTypeDefn composite : context.getLocalCompositeTypes() )
+			if( composite.getName().equals(result) )
 			{
-				if( composite.getName().equals(result) )
-				{
-					result += "_";
-					break;
-				}
-			}
-			
-			// An attribute cannot have the same name as its enclosing type
-			if( result.equals( context.getName() ) )
 				result += "_";
+				break;
+			}
 		}
+		
+		// An attribute cannot have the same name as its enclosing type
+		if( result.equals( member.getParentType().getName() ) )
+				result += "_";
 		
 		return result;
 	}
@@ -460,7 +447,7 @@ public class GeneratorUtils {
 	 * If categories of types are mixed (primitives/composites), the function
 	 * will return the appropriate supertype.
 	 */
-	public static TypeRef getMostSpecializedCommonBaseForElement( ElementDefn elem )
+	public static TypeRef getMostSpecializedCommonBaseForElement( Definitions defs, ElementDefn elem )
 			throws Exception
 	{
 		if( elem.getTypes().size() == 1 )
@@ -483,11 +470,11 @@ public class GeneratorUtils {
 				hasPrimitives = true;
 			else if( ref.getName().equals(TypeRef.IDREF_PSEUDOTYPE_NAME) )
 				throw new Exception("There is not common basetype if element also has idref as type");
-			else if( isCodeWithCodeList(parent, ref) )
+			else if( isCodeWithCodeList(defs, ref) )
 				hasCodeWithCodeList = true;
 			else
 			{
-				TypeDefn def = parent.resolveType(ref.getName());
+				TypeDefn def = defs.findType(ref.getName());
 			
 				if( def == null )
 					throw new Exception( "Unknown element type found looking for common basetype: " + ref.getName() +
@@ -519,11 +506,13 @@ public class GeneratorUtils {
 	}
 		
 		
-	public static boolean isCodeWithCodeList( NameScope resolver, TypeRef ref )
+	public static boolean isCodeWithCodeList( Definitions defs, TypeRef ref )
 	{
+		if( ref.getFullBindingRef() == null ) return false;
+		
 		if( ref.getName().equals("code") )
 		{
-			BindingDefn bindingDef = resolver.resolveBinding(ref.getBindingRef());
+			BindingDefn bindingDef = defs.findBinding(ref.getFullBindingRef());
 			
 			if( bindingDef != null )
 				return bindingDef.getBinding() == BindingType.CODE_LIST;
@@ -537,6 +526,7 @@ public class GeneratorUtils {
 	{
 		TypeRef result = FhirFactory.eINSTANCE.createTypeRef();
 		result.setName(name);
+		result.setFullName(name);
 		
 		return result;
 	}
@@ -625,6 +615,7 @@ public class GeneratorUtils {
 			{
 				TypeRef newRef = newTypeRef(def.getName());
 				newRef.setName(def.getName());
+				newRef.setFullName(def.getName());
 				result.put( elementName + Utilities.capitalize(def.getName()), newRef );
 			}
 		}
@@ -638,4 +629,6 @@ public class GeneratorUtils {
 				(element.getName().equals("id") || element.getName().equals("extension")
 						|| element.getName().equals("text") );
 	}
+
+
 }

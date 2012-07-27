@@ -29,6 +29,7 @@ package org.hl7.fhir.tools.publisher.implementations;
 
 */
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -43,14 +44,29 @@ import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
+import org.hl7.fhir.utilities.Utilities;
 
 
 public class CSharpXmlResourceParserGenerator extends GenBlock
 {
-	private CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	private CSharpModelResourceGenerator rgen;
+
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
+
+
+	public CSharpXmlResourceParserGenerator(Definitions defs)
+	{
+		definitions = defs;
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
 
 	public GenBlock generateResourceParser( Definitions definitions ) throws Exception
-	{
+	{		
 		begin();
 		
 		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
@@ -79,6 +95,14 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 						ln("return null;");
 					es("}");
 				es("}");
+				
+			ln();
+			ln();
+			generateDataParser();
+			ln();
+			generateCompositeParser();
+			ln();
+			generatePrimitiveParser();					
 			es("}");
 		es("}");
 	
@@ -86,6 +110,87 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 	
 	
+	private GenBlock generateDataParser() throws Exception
+	{
+		begin();
+		
+		ln("public static Data ParseData(XmlReader reader, ErrorList errors)");
+		bs("{");			
+			List composites = new ArrayList();
+			composites.addAll(getDefinitions().getLocalCompositeTypes());
+			composites.addAll(getDefinitions().getLocalConstrainedTypes());
+			composites.addAll(getDefinitions().getPrimitives());
+					
+			generatePolymorphCases(composites);
+		es("}");
+				
+		return end();
+	}
+	
+
+	private GenBlock generateCompositeParser() throws Exception
+	{
+		begin();
+		
+		ln("public static Composite ParseComposite(XmlReader reader, ErrorList errors)");
+		bs("{");			
+			List composites = new ArrayList();
+			composites.addAll(getDefinitions().getLocalCompositeTypes());
+			composites.addAll(getDefinitions().getLocalConstrainedTypes());
+					
+			generatePolymorphCases(composites);
+		es("}");
+				
+		return end();
+	}
+
+	private GenBlock generatePrimitiveParser() throws Exception
+	{
+		begin();
+		
+		ln("public static Primitive ParsePrimitive(XmlReader reader, ErrorList errors)");
+		bs("{");			
+			generatePolymorphCases(getDefinitions().getPrimitives());
+		es("}");
+				
+		return end();
+	}
+	
+	private void generatePolymorphCases(List<?> types) throws Exception
+	{
+		boolean firstTime = true;
+		
+		for( Object t : types )
+		{
+			TypeDefn type = (TypeDefn)t;
+			
+			if( firstTime )
+				ln("if");
+			else
+				ln("else if");
+			
+			firstTime = false;
+			
+			nl("( reader.NodeType == XmlNodeType.Element && reader.LocalName.EndsWith(\"");
+				nl( Utilities.capitalize(type.getName()) );
+				nl("\") && reader.NamespaceURI == Util.FHIRNS )");
+			bs();
+				ln("return ");
+					nl( buildParserCall(type) );
+					nl(";");
+			es();				
+		}
+		
+		ln("else");
+		bs("{");
+			ln("errors.Add(String.Format(");
+				nl("\"Encountered unrecognized datatype '{0}'\",");
+		        nl("	reader.LocalName), (IXmlLineInfo)reader);");
+		    ln("return null;");
+		es("}");
+	}
+
+
 	private void generateResourceCases(List<ResourceDefn> localResources)
 	{
 		boolean firstTime = true;
@@ -119,34 +224,10 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 
 
-	public GenBlock generateCompositeParser( CompositeTypeDefn composite, Definitions definitions ) throws Exception
+	public GenBlock generateConstrainedParser( ConstrainedTypeDefn constrained ) throws Exception
 	{
-		begin();
-		
-		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
-		ln();
-		ln("using HL7.Fhir.Instance.Model;");
-		ln("using System.Xml;");
-		ln();
-		ln("namespace HL7.Fhir.Instance.Parsers");
-		bs("{");
-			ln("/*");
-			ln("* Parser for " + composite.getName() + " instances");
-			ln("*/");
-			ln("public static partial class Xml" + composite.getName() + "Parser");
-			bs("{");
-				compositeParserFunction(composite);
-			es("}");
-		es("}");
-	
-		return end();
-	}
-
-
-	public GenBlock generateConstrainedParser( ConstrainedTypeDefn constrained, Definitions definitions ) throws Exception
-	{
-		CompositeTypeDefn baseType = 
-				((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
+		CompositeTypeDefn baseType = (CompositeTypeDefn)
+				getDefinitions().findType(constrained.getBaseType().getFullName());
 
 		begin();
 		
@@ -175,7 +256,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 					nl(" result = existingInstance != null ? existingInstance : ");
 					nl("new " + returnType + "();");
 					
-					ln(buildCompositeParserCall(baseType, "result"));
+					ln(buildCompositeOrConstrainedParserCall(baseType, "result"));
 						nl(";");
 				
 				ln("return result;");
@@ -187,8 +268,32 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		return end();
 	}
 	
+
+	public GenBlock generateCompositeParser( CompositeTypeDefn composite, Definitions definitions ) throws Exception
+	{
+		begin();
+		
+		inc( rgen.header(definitions.getDate(), definitions.getVersion() ) );
+		ln();
+		ln("using HL7.Fhir.Instance.Model;");
+		ln("using System.Xml;");
+		ln();
+		ln("namespace HL7.Fhir.Instance.Parsers");
+		bs("{");
+			ln("/*");
+			ln("* Parser for " + composite.getName() + " instances");
+			ln("*/");
+			ln("public static partial class Xml" + composite.getName() + "Parser");
+			bs("{");
+				compositeParserFunction(composite);
+			es("}");
+		es("}");
 	
-	public GenBlock compositeParserFunction( CompositeTypeDefn composite ) throws Exception
+		return end();
+	}
+	
+	
+	private GenBlock compositeParserFunction( CompositeTypeDefn composite ) throws Exception
 	{
 		begin();
 		
@@ -284,180 +389,118 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	{
 		// First determine the possible names of the properties in the
 		// instance, which might be multiple because of polymorph elements 
-		Map<String,TypeRef> possibleElementNames = 
-			GeneratorUtils.determinePossibleElementNames(member.getParentType(),
-				member.getName(), member.getTypes());
-
 		ln("if( " );		
-		nl( buildCheckForElementClause(possibleElementNames.keySet()) );
+		nl( buildCheckForElementClause(member) );
 		nl(" )");
 		
 		if( member.isRepeating() )
-		{
-			TypeRef resultType = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
-			parseRepeatingElement(member.getParentType(), possibleElementNames,
-					member.getName(), resultType );
-		}
+			parseRepeatingElement(member);
 		else
-			parseSingleElement(member.getParentType(), possibleElementNames, member.getName());			
+			parseSingleElement(member);			
 					
 		ln();
 	}
 	
 	
-	private String buildCheckForElementClause( Collection<String> possibleElementNames )
+
+	private void parseRepeatingElement(ElementDefn member) throws Exception
 	{
-		String clause = "reader.NodeType == XmlNodeType.Element && " +
-							"reader.NamespaceURI == Util.FHIRNS && ";
-		
-		if( possibleElementNames.size() > 1 ) clause += "(";
-		boolean firstClause = true;
-		
-		for( String name : possibleElementNames )
-		{
-			if( !firstClause ) clause += " || ";
-			firstClause = false;
-			
-			clause += "reader.LocalName == \"" + name + "\"";
-		}
-
-		if( possibleElementNames.size() > 1 ) clause += ")";
-		
-		return clause;
-	}
-
-	private void parseRepeatingElement( CompositeTypeDefn scope, 
-					Map<String,TypeRef> possibleElementNames,  
-					String memberName, TypeRef resultType  ) throws Exception
-	{
-
-		String resultMember = "result." + 
-				GeneratorUtils.generateCSharpMemberName(scope, memberName);
+		String resultMember = "result." + GeneratorUtils.generateCSharpMemberName(member);
+		TypeRef resultType = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
 		
 		bs("{");
 			// Allocate an List in the property we are going to fill. 
 			ln(resultMember);
-				nl(" = ");
-				nl("new List<");
-//				if( allowDar ) nl("Absentable<");
-					nl(GeneratorUtils.buildFullyScopedTypeName(scope,resultType));
-//				if( allowDar ) nl(">");
-					nl(">();");
+				nl(" = new List<");
+				nl(GeneratorUtils.buildFullyScopedTypeName(resultType));
+				nl(">();");
 			ln();
 			ln("while( ");
-				nl( buildCheckForElementClause(possibleElementNames.keySet()) );
+				nl( buildCheckForElementClause(member) );
 				nl(" )");
 			
-			if( possibleElementNames.size() > 1 ) 
-				bs("{");
-			else
-				bs();
-	
-			// Add the found element to the list.
-			// Check for all posibilities in a polymorphic type,
-			// or just grab the value when its not polymorphic.
-			for( String name : possibleElementNames.keySet() )
-			{
-				if( possibleElementNames.size() > 1 )
-				{
-					ln("if( reader.LocalName == \"" + name + "\")" );
-					bs();
-				}
+			bs();
 				ln(resultMember + ".Add(");
-				nl( buildParserCall(scope, possibleElementNames.get(name)) );
-				nl(");");
-				if( possibleElementNames.size() > 1 )
-				{
-					es();
-				}
-			}
-				
-			if( possibleElementNames.size() > 1 ) 
-				es("}");
-			else
-				es();
+					nl( buildParserCall(member) );
+					nl(");");
+			es();			
 		es("}");
 	}
 	
-	private void parseSingleElement( CompositeTypeDefn scope, Map<String,TypeRef> possibleElementNames,
-					String memberName ) throws Exception
+	
+	private void parseSingleElement( ElementDefn member ) throws Exception
 	{
-		if( possibleElementNames.size() > 1 )
-			bs("{");
-			
-		// Check for all posibilities in a polymorphic type,
-		// or just grab the value when its not polymorphic.
-		for( String name : possibleElementNames.keySet() )
-		{
-			if( possibleElementNames.size() > 1 )
-			{
-				ln("if( reader.LocalName == \"" + name + "\")" );
-			}
-			bs();
-				ln("result." + 
-					GeneratorUtils.generateCSharpMemberName(scope, memberName) );
-				nl(" = ");
-				nl( buildParserCall(scope, possibleElementNames.get(name)) );
-				nl(";");
-			es();
-		}
-		
-		if( possibleElementNames.size() > 1 )
-			es("}");
+		ln("result." + GeneratorUtils.generateCSharpMemberName(member) );
+			nl(" = ");
+			nl( buildParserCall(member) );
+			nl(";");
 	}
 	
 	
-	private String buildParserCall(NameScope resolver, TypeRef ref) throws Exception
+	private String buildParserCall(TypeDefn def) throws Exception
 	{
-		TypeDefn typeToParse = resolver.resolveType(ref.getName());
-				
-		if( GeneratorUtils.isCodeWithCodeList(resolver, ref) )
-			return buildEnumeratedCodeParserCall(resolver,ref);	
-		else if( typeToParse.isPrimitive() )
-			return buildPrimitiveParserCall((PrimitiveTypeDefn)typeToParse);
-//		else if( typeToParse.isConstrained() )
-//			return buildConstrainedParserCall((ConstrainedTypeDefn)typeToParse);
-		else if( typeToParse.isComposite() || typeToParse.isConstrained() )
-			return buildCompositeParserCall(typeToParse); 
+		if( def.isComposite() || def.isConstrained() )
+			return buildCompositeOrConstrainedParserCall(def); 
+		else if( def.isPrimitive() )
+			return buildPrimitiveParserCall((PrimitiveTypeDefn)def);
 		else
-			throw new Exception( "Cannot handle category of type " + typeToParse.getName() + " to generate parser call." );
-			
+			throw new Exception( "Cannot handle category of type " + def.getName() + " to generate parser call." );
 	}
 	
 	
-//	private String buildConstrainedParserCall(ConstrainedTypeDefn constrained) throws Exception
-//	{
-//		CompositeTypeDefn baseType = 
-//			((CompositeTypeDefn)constrained.getScope().resolveType(constrained.getBaseType().getName()));
-//		
-//		// Generate upcast to constrained type 
-//		String result = "(" + GeneratorUtils.buildFullyScopedTypeName(constrained) + ")"
-//				+ buildCompositeParserCall( baseType );
-//				
-//		return result;
-//	}
-	
-	private String buildCompositeParserCall(TypeDefn composite) throws Exception
+	private String buildParserCall(ElementDefn member) throws Exception
 	{
-		return buildCompositeParserCall(composite, null);
+		TypeRef resultTypeRef = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
+				
+		// Check specials cases: parsing of enumerated codes and
+		// polymorph properties of type Data, Composite or Primitive
+		if( !member.isPolymorph() && GeneratorUtils.isCodeWithCodeList(getDefinitions(), member.getTypes().get(0)) )
+			return buildEnumeratedCodeParserCall(member.getTypes().get(0));
+		else if( resultTypeRef.getName().equals(TypeRef.PRIMITIVE_PSEUDOTYPE_NAME) ||
+				resultTypeRef.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) ||
+				resultTypeRef.getName().equals(TypeRef.DATA_PSEUDOTYPE_NAME) )
+			return buildPolymorphParserCall(resultTypeRef);
+
+		TypeDefn resultType = getDefinitions().findType(resultTypeRef.getFullName());
+		
+		return buildParserCall(resultType);
 	}
 	
-	private String buildCompositeParserCall(TypeDefn composite, String existingInstanceName) throws Exception
+	private String buildCheckForElementClause( ElementDefn member )
+	{
+		String clause = "reader.NodeType == XmlNodeType.Element && " +
+							"reader.NamespaceURI == Util.FHIRNS && ";
+		
+		if( !member.isPolymorph() ) 
+			clause += "reader.LocalName == \"" + member.getName() + "\"";
+		else
+			clause += "reader.LocalName.StartsWith(\"" + member.getName() + "\")"; 
+		
+		return clause;
+	}
+	
+	
+	private String buildCompositeOrConstrainedParserCall(TypeDefn type) throws Exception
+	{
+		return buildCompositeOrConstrainedParserCall(type, null);
+	}
+	
+	private String buildCompositeOrConstrainedParserCall(TypeDefn type, String existingInstanceName) throws Exception
 	{		
 		StringBuilder result = new StringBuilder();
 		
-		if( composite.isGloballyDefined() )
+		if( type.isGloballyDefined() )
 		{
 			// A type defined on the global level, child of Definitions
-			result.append("Xml" + composite.getName() + "Parser" );	
+			result.append("Xml" + type.getName() + "Parser" );	
 		}
 		else
 		{
 			// A type defined inside a globally defined composite 
-			result.append("Xml" + ((CompositeTypeDefn)composite.getScope()).getName() + "Parser");
+			result.append("Xml" + ((CompositeTypeDefn)type.getScope()).getName() + "Parser");
 		}
 
-		result.append(".Parse" + composite.getName() );
+		result.append(".Parse" + type.getName() );
 		
 		if( existingInstanceName == null )
 			result.append("(reader, errors)");
@@ -472,14 +515,15 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 	
 
-	private String buildEnumeratedCodeParserCall(NameScope scope, TypeRef ref) throws Exception
+	private String buildEnumeratedCodeParserCall(TypeRef ref) throws Exception
 	{
 		StringBuffer result = new StringBuffer();
 		
 		result.append("XmlPrimitiveParser.Parse");
 		
-		BindingDefn binding = scope.resolveBinding(ref.getBindingRef());
-		String enumType = GeneratorUtils.buildFullyScopedEnumName(binding);
+		BindingDefn binding = getDefinitions().findBinding(ref.getFullBindingRef());
+		
+		String enumType = GeneratorUtils.buildFullyScopedTypeName(binding.getFullName());
 								
 		result.append("Code<" + enumType + ">");
 		result.append("(reader, errors)");
@@ -492,5 +536,10 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		return "XmlPrimitiveParser.Parse" +
 				GeneratorUtils.mapPrimitiveToFhirCSharpType(primitive.getName()) +
 				"(reader, errors)";
+	}
+	
+	private String buildPolymorphParserCall(TypeRef type) throws Exception 
+	{
+		return "XmlResourceParser.Parse" +	type.getName() + "(reader, errors)";
 	}
 }

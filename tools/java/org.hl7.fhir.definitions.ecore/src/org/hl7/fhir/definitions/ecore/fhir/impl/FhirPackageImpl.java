@@ -1589,7 +1589,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 
 		addEOperation(definitionsEClass, this.getPrimitiveTypeDefn(), "getPrimitives", 0, -1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(definitionsEClass, this.getResourceDefn(), "findType", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(definitionsEClass, this.getTypeDefn(), "findType", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "fullName", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(definitionsEClass, this.getBindingDefn(), "findBinding", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1732,12 +1732,6 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		addEOperation(nameScopeEClass, this.getConstrainedTypeDefn(), "getLocalConstrainedTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(nameScopeEClass, this.getNameScope(), "getContainingScope", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(nameScopeEClass, this.getTypeDefn(), "resolveType", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(nameScopeEClass, this.getBindingDefn(), "resolveBinding", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(annotationsEClass, Annotations.class, "Annotations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotations_ShortDefinition(), ecorePackage.getEString(), "shortDefinition", null, 0, 1, Annotations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

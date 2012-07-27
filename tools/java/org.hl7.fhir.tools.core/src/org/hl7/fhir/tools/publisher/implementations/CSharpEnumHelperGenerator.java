@@ -36,7 +36,22 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 public class CSharpEnumHelperGenerator extends GenBlock {
 
-	CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	CSharpModelResourceGenerator rgen;
+	
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
+
+	
+	public CSharpEnumHelperGenerator(Definitions defs)
+	{
+		definitions = defs;
+		
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
 	
 	public GenBlock generateEnumHelper( Definitions definitions, List<BindingDefn> enums ) throws Exception
 	{
@@ -85,7 +100,7 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 	
 	private void enumParseCase(BindingDefn enu, boolean first) throws Exception
 	{
-		String name = GeneratorUtils.buildFullyScopedEnumName(enu);
+		String name = GeneratorUtils.buildFullyScopedTypeName(enu.getFullName());
 		
 		if(first)
 			ln("if");
@@ -125,7 +140,7 @@ public class CSharpEnumHelperGenerator extends GenBlock {
 
 	private void enumToStringCase(BindingDefn enu, boolean first) throws Exception
 	{
-		String name = GeneratorUtils.buildFullyScopedEnumName(enu);
+		String name = GeneratorUtils.buildFullyScopedTypeName(enu.getFullName());
 		
 		if(first)
 			ln("if");

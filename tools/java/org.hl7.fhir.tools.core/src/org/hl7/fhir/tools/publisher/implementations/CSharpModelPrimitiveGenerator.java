@@ -35,10 +35,25 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 public class CSharpModelPrimitiveGenerator extends GenBlock {
 
-	CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	CSharpModelResourceGenerator rgen;
 	
-	public GenBlock generatePrimitives( List<PrimitiveTypeDefn> primitives,
-						Definitions definitions) throws Exception
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
+
+	
+	public CSharpModelPrimitiveGenerator(Definitions defs)
+	{
+		definitions = defs;
+		
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
+
+	
+	public GenBlock generatePrimitives( List<PrimitiveTypeDefn> primitives ) throws Exception
 	{
 		begin();
 		

@@ -70,37 +70,4 @@ public class NameScopeImpl {
 		
 		return result;
 	}
-
-	
-	public TypeDefn resolveType( String name ) {
-		for( TypeDefn type : scope.getTypes() )
-		{
-			if( type.getName().equals(name) )
-				return type;
-		}
-		
-		if( scope.getContainingScope() != null )
-			return scope.getContainingScope().resolveType(name);
-		else
-			return null;
-	}
-
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 */
-	public BindingDefn resolveBinding( String name ) {
-		for( BindingDefn binding : scope.getBindings() )
-		{
-			if( binding.getName().equals(name) )
-				return binding;
-		}
-		
-		if( scope.getContainingScope() != null )
-			return scope.getContainingScope().resolveBinding(name);
-		else
-			return null;
-	}
-
 }

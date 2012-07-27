@@ -197,35 +197,6 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.COMPOSITE_TYPE_DEFN__UNNAMED_ELEMENT_GROUP, oldUnnamedElementGroup, unnamedElementGroup));
 	}
 
-//	/**
-//	 * <!-- begin-user-doc -->
-//	 * <!-- end-user-doc -->
-//	 * @generated NOT
-//	 */
-//	public boolean isGenericType() {
-//		return getAllowedGenericTypes().size() > 0 &&
-//					!getName().equals(TypeRef.RESOURCEREF_TYPE_NAME);
-//	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public TypeDefn resolveType(String name) {
-		return ns().resolveType(name);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public BindingDefn resolveBinding(String name) {
-		return ns().resolveBinding(name);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -613,14 +613,6 @@
         <element xmi:type="ecore:EOperation" href="FHIR.ecore#//NameScope/getContainingScope"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_uGVc4cTeEeGDRc9RIYhKIw"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_ODrTMLU8EeG_SPBX5vk3wA" type="2002">
-        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//NameScope/resolveType"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODrTMbU8EeG_SPBX5vk3wA"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_ZY_ZMMTgEeGDRc9RIYhKIw" type="2002">
-        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//NameScope/resolveBinding"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_ZY_ZMcTgEeGDRc9RIYhKIw"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_G7DDpbU8EeG_SPBX5vk3wA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_G7DDprU8EeG_SPBX5vk3wA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_G7DDp7U8EeG_SPBX5vk3wA"/>

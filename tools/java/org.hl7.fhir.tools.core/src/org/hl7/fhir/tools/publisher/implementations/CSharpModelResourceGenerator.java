@@ -46,11 +46,22 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 public class CSharpModelResourceGenerator extends GenBlock
 {
-	public GenBlock generateComposite( CompositeTypeDefn composite, Definitions definitions ) throws Exception
+	private Definitions definitions;
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
+
+
+	public CSharpModelResourceGenerator(Definitions defs) {
+		definitions = defs;
+	}
+
+	public GenBlock generateComposite( CompositeTypeDefn composite ) throws Exception
 	{
 		begin();
 		
-		header(definitions.getDate(), definitions.getVersion());
+		header(getDefinitions().getDate(), getDefinitions().getVersion());
 		
 		ln("namespace HL7.Fhir.Instance.Model");
 		bs("{");
@@ -61,8 +72,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 	}
 
 	
-	public GenBlock generateGlobalEnums( List<BindingDefn> globalEnums, 
-			Definitions definitions ) throws Exception
+	public GenBlock generateGlobalEnums( List<BindingDefn> globalEnums ) throws Exception
 	{
 		begin();
 		
@@ -78,8 +88,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 
 	
 
-	public GenBlock generateConstrained( ConstrainedTypeDefn constrained, 
-			Definitions definitions) throws Exception
+	public GenBlock generateConstrained( ConstrainedTypeDefn constrained ) throws Exception
 	{
 		begin();
 		
@@ -171,11 +180,11 @@ public class CSharpModelResourceGenerator extends GenBlock
 
 		// Determine the most appropriate FHIR type to use for this
 		// (possibly polymorphic) element.
-		TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
+		TypeRef tref = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
 		
-		if( GeneratorUtils.isCodeWithCodeList( member.getParentType(), tref ) )
+		if( GeneratorUtils.isCodeWithCodeList( getDefinitions(), tref ) )
 		{
-			nl("Code<" + GeneratorUtils.generateCSharpTypeName(tref.getBindingRef()) + ">");
+			nl("Code<" + GeneratorUtils.buildFullyScopedTypeName(tref.getFullBindingRef()) + ">");
 			//isNullable = false;
 		}
 		else 
@@ -193,7 +202,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 		// a structural aspect here.
 		//if( !isNullable ) nl("?");
 		
-		nl( " " + GeneratorUtils.generateCSharpMemberName(context, member.getName()) );
+		nl( " " + GeneratorUtils.generateCSharpMemberName(member) );
 		nl(" { get; set; }");
 		ln();
 	}
@@ -304,7 +313,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 				nl("\"" + code.getCode() + "\")");
 			bs();
 				ln("result = " + binding.getName());
-					nl("." + GeneratorUtils.generateCSharpMemberName(null,code.getCode()));
+					nl("." + GeneratorUtils.generateCSharpEnumMemberName(code.getCode()));
 					nl(";");
 			es();						
 		}
@@ -329,7 +338,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 			
 			nl("if( value==");
 				nl(binding.getName());
-				nl("." + GeneratorUtils.generateCSharpMemberName(null,code.getCode()));
+				nl("." + GeneratorUtils.generateCSharpEnumMemberName(code.getCode()));
 				nl(" )");
 			bs();
 				ln("return ");
@@ -358,7 +367,7 @@ public class CSharpModelResourceGenerator extends GenBlock
 			{
 				String definition = code.getDefinition();
 				
-				ln(GeneratorUtils.generateCSharpMemberName(null,code.getCode()) + ",");
+				ln(GeneratorUtils.generateCSharpEnumMemberName(code.getCode()) + ",");
 				
 				if( definition != null )
 					nl(" // " + code.getDefinition());		

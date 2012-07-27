@@ -36,9 +36,24 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 public class CSharpModelInformationGenerator extends GenBlock
 {
-	private CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	CSharpModelResourceGenerator rgen;
+	
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
 
-	public GenBlock generateInformation( Definitions definitions ) throws Exception
+	
+	public CSharpModelInformationGenerator(Definitions defs)
+	{
+		definitions = defs;
+		
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
+
+	public GenBlock generateInformation() throws Exception
 	{
 		begin();
 		

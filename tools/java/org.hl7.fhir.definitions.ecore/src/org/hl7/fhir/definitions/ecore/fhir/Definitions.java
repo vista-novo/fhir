@@ -142,7 +142,7 @@ public interface Definitions extends NameScope {
 	 * @model
 	 * @generated
 	 */
-	ResourceDefn findType(String fullName);
+	TypeDefn findType(String fullName);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -41,9 +41,25 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 public class CSharpResourceSerializerGenerator extends GenBlock
 {
-	private CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	CSharpModelResourceGenerator rgen;
+	
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
 
-	public GenBlock generateResourceSerializer( Definitions definitions ) throws Exception
+	
+	public CSharpResourceSerializerGenerator(Definitions defs)
+	{
+		definitions = defs;
+		
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
+
+
+	public GenBlock generateResourceSerializer() throws Exception
 	{
 		begin();
 		
@@ -174,7 +190,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	}
 	
 	
-	public GenBlock generateCompositeSerializer( CompositeTypeDefn composite, Definitions definitions ) throws Exception
+	public GenBlock generateCompositeSerializer( CompositeTypeDefn composite ) throws Exception
 	{
 		begin();
 		
@@ -292,7 +308,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	private void generateMemberSerializer(ElementDefn member) throws Exception 
 	{
 		String propertyName = "value." + 
-			GeneratorUtils.generateCSharpMemberName(member.getParentType(), member.getName());		
+			GeneratorUtils.generateCSharpMemberName(member);		
 
 		if( member.isRepeating() )
 		{
@@ -376,7 +392,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 	private void buildSerializeStatement(String propertyName,
 			ElementDefn member) throws Exception
 	{
-		TypeRef ref = GeneratorUtils.getMostSpecializedCommonBaseForElement(member);
+		TypeRef ref = GeneratorUtils.getMostSpecializedCommonBaseForElement(getDefinitions(),member);
 		
 		boolean isPrimitive = false;
 		
@@ -388,7 +404,7 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 			isPrimitive = false;
 		else
 		{
-			TypeDefn defn = member.getParentType().resolveType(ref.getName());
+			TypeDefn defn = getDefinitions().findType(ref.getFullName());
 			isPrimitive = defn.isPrimitive();
 		}
 	

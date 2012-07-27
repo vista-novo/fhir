@@ -297,42 +297,55 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
-	public ResourceDefn findType(String fullName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public TypeDefn findType(String fullName) {
+		String[] nameParts = fullName.split("\\.");
+		
+		NameScope current = this;
+		String name = nameParts[0];
+		
+		if( nameParts.length == 2)
+		{
+			for( TypeDefn type : current.getTypes() )
+				if(type.getName().equals(nameParts[0]))
+					current = (CompositeTypeDefn)type;
+			name = nameParts[1];
+		}
+		
+		for( TypeDefn defn : current.getTypes() )
+			if( defn.getName().equals(name) )
+				return defn;
+		
+		return null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public BindingDefn findBinding(String fullName) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		String[] nameParts = fullName.split("\\.");
+	
+		NameScope current = this;
+		String name = nameParts[0];
+		
+		if( nameParts.length == 2)
+		{
+			for( TypeDefn type : current.getTypes() )
+				if(type.getName().equals(nameParts[0]))
+					current = (CompositeTypeDefn)type;
+			name = nameParts[1];
+		}
+		
+		for( BindingDefn defn : current.getBindings() )
+			if( defn.getName().equals(name) )
+				return defn;
+		
+		return null;
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public TypeDefn resolveType(String name) {
-		return ns().resolveType(name);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public BindingDefn resolveBinding(String name) {
-		return ns().resolveBinding(name);
-	}
 
 	/**
 	 * <!-- begin-user-doc -->

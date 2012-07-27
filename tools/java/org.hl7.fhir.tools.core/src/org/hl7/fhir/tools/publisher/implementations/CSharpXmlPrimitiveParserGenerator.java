@@ -35,10 +35,25 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 public class CSharpXmlPrimitiveParserGenerator extends GenBlock {
 
-	CSharpModelResourceGenerator rgen = new CSharpModelResourceGenerator();
+	CSharpModelResourceGenerator rgen;
 	
-	public GenBlock generatePrimitiveParser( List<PrimitiveTypeDefn> primitives,
-						Definitions definitions) throws Exception
+	private Definitions definitions;
+	
+	
+	public Definitions getDefinitions() {
+		return definitions;
+	}
+
+	
+	public CSharpXmlPrimitiveParserGenerator(Definitions defs)
+	{
+		definitions = defs;
+		
+		rgen = new CSharpModelResourceGenerator(defs);
+	}
+
+	
+	public GenBlock generatePrimitiveParser( List<PrimitiveTypeDefn> primitives ) throws Exception
 	{
 		begin();
 		
