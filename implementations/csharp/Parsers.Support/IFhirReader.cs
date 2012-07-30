@@ -9,24 +9,26 @@ namespace HL7.Fhir.Instance.Parsers
     {
         void MoveToContent();
 
-        bool IsAtElement(string name, bool isPolymorph=false);
-        bool IsAtElementEndingWith(string suffix);
-        void EnterElement();
-        string ReadContents();
-        void SkipContents(string name);
-        bool HasMoreElements { get; }
-        void ExitElement();
-
         string CurrentElementName { get; }
+
+        bool IsAtStartElement();
+        bool IsAtEndElement();
+
+        bool ReadStartComplexContent(out string refid, out string dar);
+        void ReadEndComplexContent();
+
+        void SkipContents(string name);
+
+        bool IsAtXhtmlElement();
+        string ReadXhtmlContents();
+
         int LineNumber { get; }
         int LinePosition { get; }
 
-        bool IsAtArray(string name);
-        void EnterArray();
-        bool MoveToNextArrayElement(string name);
-        void ExitArray();
+        void ReadStartArray();
+        bool IsAtArrayElement();
+        void ReadEndArray();
 
-        string ReadRefId();
-        string ReadDar();
+        string ReadPrimitiveElementContents(out string refid, out string dar);
     }
 }

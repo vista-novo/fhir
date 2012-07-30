@@ -26,79 +26,50 @@ namespace HL7.Fhir.Instance.Parsers
             xr.MoveToContent();
         }
 
-        public bool IsAtElement(string name, bool isPolymorph = false)
-        {
-            if (xr.NodeType != XmlNodeType.Element)
-                return false;
-
-            if( xr.NamespaceURI != Util.FHIRNS )
-                return false;
-
-            if( !isPolymorph )
-                return xr.LocalName == name;
-            else
-                return xr.LocalName.StartsWith(name);
-        }
-
-        public bool IsAtElementEndingWith(string suffix)
-        {
-            if (xr.NodeType != XmlNodeType.Element)
-                return false;
-
-            if (xr.NamespaceURI != Util.FHIRNS)
-                return false;
-
-            return xr.LocalName.EndsWith(suffix);
-        }
-
-
-        public void EnterElement()
-        {
-            xr.ReadStartElement();
-        }
-
-        public string ReadContents()
-        {
-            string result = null;
-
-            if (!xr.IsEmptyElement)
-               result = xr.ReadElementContentAsString();
-
-            if (result == String.Empty)
-                  result = null;
-
-            return result;
-        }
-
-        public void SkipContents(string name)
-        {
-            while (!isEndElement(xr, name, Util.XHTMLNS) || xr.EOF)
-                xr.Skip();
-        }
-
-        private static bool isEndElement(XmlReader reader, string en, string ns)
-        {
-            return reader.NodeType == XmlNodeType.EndElement &&
-                    reader.LocalName == en && reader.NamespaceURI == ns;
-        }
-
-        public bool HasMoreElements
-        {
-            get
-            {
-                return xr.NodeType != XmlNodeType.EndElement;
-            }
-        }
-
-        public void ExitElement()
-        {
-            xr.ReadEndElement();
-        }
-
         public string CurrentElementName
         {
             get { return xr.LocalName; }
         }
+
+        public bool IsAtStartElement()
+        {
+            return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.FHIRNS;
+        }
+
+        public bool IsAtEndElement()
+        {
+            return xr.NodeType == XmlNodeType.EndElement && xr.NamespaceURI == Support.Util.FHIRNS;
+        }
+
+        public bool IsAtXhtmlElement()
+        {
+            return xr.NodeType == XmlNodeType.Element && xr.NamespaceURI == Support.Util.XHTMLNS;
+        }
+
+        public void ReadEndComplexContent()
+        {
+            xr.ReadEndElement();
+        }
+
+        public string ReadXhtmlContents()
+        {
+            return xr.ReadOuterXml();
+        }
+
+        public void SkipContents(string name)
+        {
+            while (!isEndElement(xr, name) || xr.EOF)
+                xr.Skip();
+        }
+
+        private static bool isEndElement(XmlReader reader, string en)
+        {
+            //Note: this will even find a closing element if it is the same name but
+            //another namespace. Too bad. Cannot assume it is FHIRNS, since it might
+            //be xhtml (Narrative.div) element too.
+            return reader.NodeType == XmlNodeType.EndElement && reader.LocalName == en;
+        }
+
 
         public int LineNumber
         {
@@ -110,40 +81,54 @@ namespace HL7.Fhir.Instance.Parsers
             get { return ((IXmlLineInfo)xr).LinePosition; }
         }
 
-        public bool IsAtArray(string name)
+
+        public void ReadStartArray()
         {
-            throw new NotImplementedException();
+            // Nothing
         }
 
-        public void EnterArray()
+        public bool IsAtArrayElement()
         {
-            throw new NotImplementedException();
+            return IsAtStartElement();
         }
 
-        public bool MoveToNextArrayElement(string name)
+        public void ReadEndArray()
         {
-            throw new NotImplementedException();
+            // Nothing
         }
 
-        public void ExitArray()
+        public string ReadPrimitiveElementContents(out string refid, out string dar)
         {
-            throw new NotImplementedException();
+            readAttributes(out refid, out dar);
+
+            return readContents();
         }
 
-        public string ReadRefId()
+        public bool ReadStartComplexContent(out string refid, out string dar)
         {
-            string id, dar;
+            readAttributes(out refid, out dar);
 
-            readAttributes(out id, out dar);
-            return id;
+            if (!xr.IsEmptyElement)
+            {
+                xr.ReadStartElement();
+                return true;
+            }
+            else
+                return false;
         }
 
-        public string ReadDar()
-        {
-            string id, dar;
 
-            readAttributes(out id, out dar);
-            return dar;
+        private string readContents()
+        {
+            string result = null;
+
+            if (!xr.IsEmptyElement)
+                result = xr.ReadElementContentAsString();
+
+            if (result == String.Empty)
+                result = null;
+
+            return result;
         }
 
 
@@ -151,6 +136,8 @@ namespace HL7.Fhir.Instance.Parsers
         {
             id = null;
             dar = null;
+
+            string elementName = xr.LocalName;
 
             if (xr.HasAttributes)
             {
@@ -160,16 +147,16 @@ namespace HL7.Fhir.Instance.Parsers
                         id = xr.Value;
                     else if (xr.LocalName == Util.DARATTR)
                         dar = xr.Value;
-                    //else
-                    //{
-                    //    if (reader.NamespaceURI == Util.XMLNS)
-                    //        #pragma warning disable 642
-                    //        ;
-                    //        #pragma warning restore 642
-                    //    else
-                    //        errors.Add( String.Format("Unsupported attribute '{0}' on element {1}",
-                    //               reader.LocalName, elementName), reader);      
-                    //}
+                    else
+                    {
+                        if (xr.NamespaceURI == Util.XMLNS)
+#pragma warning disable 642
+                            ;
+#pragma warning restore 642
+                        else
+                           throw new FormatException(String.Format("Unsupported attribute '{0}' on element {1}",
+                                   xr.LocalName, elementName));
+                    }
                 }
 
                 xr.MoveToElement();

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
+import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /*
  Copyright (c) 2011-2012, HL7, Inc
@@ -63,7 +64,11 @@ public class CSharpXmlPrimitiveParserGenerator extends GenBlock {
 			ln("public static partial class PrimitiveParser");
 			bs("{");
 				for (PrimitiveTypeDefn primitive : definitions.getPrimitives())
-					primitiveTypeParser(primitive);
+				{
+					// Xhtml parser is hand-built, generate the rest
+					if( !primitive.getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
+						primitiveTypeParser(primitive);
+				}
 			es("}");
 		es("}");
 
@@ -82,9 +87,9 @@ public class CSharpXmlPrimitiveParserGenerator extends GenBlock {
 		nl(" Parse" + csharpPrimitive);
 		nl("(IFhirReader reader, ErrorList errors)");
 		bs("{");
-			ln("string refId = reader.ReadRefId();");
-            ln("string dar = reader.ReadDar();");            
-			ln("var contents = reader.ReadContents();");
+			ln("string refId;");
+			ln("string dar;");
+        	ln("string contents = reader.ReadPrimitiveElementContents(out refId, out dar);");
 			
 			ln();
 			ln("try");

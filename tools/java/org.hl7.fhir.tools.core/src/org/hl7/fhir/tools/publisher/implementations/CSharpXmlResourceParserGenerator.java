@@ -167,7 +167,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( reader.IsAtElementEndingWith(\"");
+			nl("( XmlUtils.IsAtElementEndingWith(reader, \"");
 				nl( Utilities.capitalize(type.getName()) );
 				nl("\" ))");
 			bs();
@@ -200,7 +200,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( reader.IsAtElement(\"");
+			nl("( XmlUtils.IsAtElement(reader, \"");
 				nl( resource.getName() );
 				nl("\" ) )");
 			bs();
@@ -327,21 +327,20 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			throws Exception {
 		ln("string en = reader.CurrentElementName;");
 		ln();
-		ln("// Read starttag and start parsing");
-		ln("reader.EnterElement();");
+
+        ln("// Read id/dar from element's attributes and read starttag");
+        ln("string refId; string dar;");
+        ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
+        if( !composite.isResource() )
+        {
+	        ln("result.ReferralId = refId;");
+	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
+	    }
+		ln();            
+		ln("// If this is an empty (xml) node, return immediately");
+        ln("if (!hasContent) return result;");
 		ln();
-		if( !composite.isResource() )
-		{
-			ln("// Read id/dar from element's attributes");
-		    ln("result.ReferralId = reader.ReadRefId();");
-		  	ln("result.Dar = (DataAbsentReason)Code<DataAbsentReason>.Parse(reader.ReadDar());");
-			ln();
-		}
-  
-		ln("// If this is an empty node, return immediately");
-		ln("if (!reader.HasMoreElements) return result;");
-		ln();
-				
+  				
 		// Generate this classes properties
 		if( composite.getElements().size() > 0)
 		{
@@ -349,7 +348,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			ln();
 		}
 		ln("// Read endtag");
-		ln("reader.ExitElement();");
+		ln("reader.ReadEndComplexContent();");
 		ln();
 	}
 
@@ -365,7 +364,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			generateMemberParser(member);
 		}
 		
-		ln("if( reader.HasMoreElements )" );
+		ln("if( !XmlUtils.IsAtEndElement(reader, en) )" );
         bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
@@ -383,7 +382,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		// First determine the possible names of the properties in the
 		// instance, which might be multiple because of polymorph elements 
 		ln("if( " );		
-		nl( buildCheckForElementClause(member) );
+		nl( buildCheckForElementClause(member,false) );
 		nl(" )");
 		
 		if( member.isRepeating() )
@@ -407,16 +406,19 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 				nl(" = new List<");
 				nl(GeneratorUtils.buildFullyScopedTypeName(resultType));
 				nl(">();");
+			ln("reader.ReadStartArray();");
 			ln();
 			ln("while( ");
-				nl( buildCheckForElementClause(member) );
+				nl( buildCheckForElementClause(member,true) );
 				nl(" )");
 			
 			bs();
 				ln(resultMember + ".Add(");
 					nl( buildParserCall(member) );
 					nl(");");
-			es();			
+			es();
+			ln();
+			ln("reader.ReadEndArray();");
 		es("}");
 	}
 	
@@ -461,10 +463,21 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		return buildParserCall(resultType);
 	}
 	
-	private String buildCheckForElementClause( ElementDefn member )
+	private String buildCheckForElementClause( ElementDefn member, Boolean inArray )
 	{
-		String clause = "reader.IsAtElement(";
-		clause += "\"" + member.getName() + "\"";
+		String clause = null;
+		
+		// Check for exception: XHTML elements are in XHTML namespace
+		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
+			clause = "XmlUtils.IsAtXhtmlElement";
+		else
+		{
+			if( !inArray  )
+				clause = "XmlUtils.IsAtElement";
+			else
+				clause = "XmlUtils.IsAtArrayElement";
+		}
+		clause += "(reader, \"" + member.getName() + "\"";
 					
 		if( !member.isPolymorph() ) 
 			clause += ")";

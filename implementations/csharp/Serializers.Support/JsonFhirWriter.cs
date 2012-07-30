@@ -48,8 +48,8 @@ namespace HL7.Fhir.Instance.Serializers
 
         public void WriteSimpleContent(string value)
         {
-            jw.WritePropertyName("value");
-            jw.WriteValue(value);
+            WriteStartElement("value");
+            WriteValue(value);
         }
 
         public void WriteValue(string value)
