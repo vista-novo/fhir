@@ -6,7 +6,7 @@ using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Serializers
 {
-    public interface IFhirWriter
+    public interface IFhirWriter : IDisposable
     {
         void WriteStartRootObject(string name);
         void WriteEndRootObject();

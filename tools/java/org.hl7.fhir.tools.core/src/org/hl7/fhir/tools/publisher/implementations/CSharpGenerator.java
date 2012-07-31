@@ -102,8 +102,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		}
 		
 		{
-			String primFilename = parsersDir + "XmlPrimitiveParser.cs";
-			 new CSharpXmlPrimitiveParserGenerator(definitions)
+			String primFilename = parsersDir + "PrimitiveParser.cs";
+			 new CSharpPrimitiveParserGenerator(definitions)
 			 	.generatePrimitiveParser(definitions.getPrimitives()).toFile(implDir+primFilename);						 
 			generatedFilenames.add(primFilename);
 		}
@@ -122,8 +122,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 
 		for( CompositeTypeDefn composite : allComplexTypes )
 		{		
-			String xmlParserFilename = parsersDir + "Xml" + composite.getName() + "Parser.cs";			
-				new CSharpXmlResourceParserGenerator(definitions)
+			String xmlParserFilename = parsersDir + composite.getName() + "Parser.cs";			
+				new CSharpResourceParserGenerator(definitions)
 					.generateCompositeParser(composite, definitions).toFile(implDir+xmlParserFilename);			
 				generatedFilenames.add(xmlParserFilename);
 	
@@ -143,8 +143,8 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 			generatedFilenames.add(constrainedFilename);
 			
 			// Build Xml parser for constrained type
-			String parserFilename = parsersDir + "Xml" + constrained.getName() + "Parser.cs";
-			new CSharpXmlResourceParserGenerator(definitions)
+			String parserFilename = parsersDir + constrained.getName() + "Parser.cs";
+			new CSharpResourceParserGenerator(definitions)
 				.generateConstrainedParser(constrained).toFile(implDir+parserFilename);						 
 			generatedFilenames.add(parserFilename);
 		}
@@ -166,9 +166,9 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		
 		// Generate resource parser entrypoint
 		{
-			String filename = parsersDir + "XmlResourceParser.cs";
+			String filename = parsersDir + "ResourceParser.cs";
 			
-			new CSharpXmlResourceParserGenerator(definitions)
+			new CSharpResourceParserGenerator(definitions)
 				.generateResourceParser(definitions).toFile(implDir+filename);						 
 			generatedFilenames.add(filename);			
 		}

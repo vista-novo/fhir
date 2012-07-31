@@ -105,5 +105,11 @@ namespace HL7.Fhir.Instance.Serializers
             jw.WritePropertyName("dataAbsentReason");
             jw.WriteValue(reason);
         }
+
+        void IDisposable.Dispose()
+        {
+            ((IDisposable)jw).Dispose();
+        }
+
     }
 }

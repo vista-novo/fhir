@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 namespace HL7.Fhir.Instance.Tests
 {
     [TestClass]
-    public class XmlParserTests
+    public class ParserTests
     {
         [TestMethod]
         public void TestParsePrimitive()
@@ -404,6 +404,8 @@ namespace HL7.Fhir.Instance.Tests
 
             Assert.AreEqual("2011-03-04T08:30:00+11:00", rep.DiagnosticTime.ToString());
             Assert.AreEqual(17, rep.ResultGroup[0].Result.Count);
+            Assert.AreEqual(typeof(Quantity), rep.ResultGroup[0].Result[1].Value.GetType());
+            Assert.AreEqual((decimal)5.9, (rep.ResultGroup[0].Result[1].Value as Quantity).Value.Contents);
             Assert.AreEqual("Neutrophils", rep.ResultGroup[0].Result[8].Name.Coding[0].Display.Contents);
         }
 

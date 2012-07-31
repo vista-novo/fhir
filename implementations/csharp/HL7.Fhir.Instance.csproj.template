@@ -65,8 +65,8 @@
     <Compile Include="Model.Support\Integer.cs" />
     <Compile Include="Model.Support\XHtml.cs" />
     <Compile Include="Model.Support\Instant.cs" />
-    <Compile Include="Parsers.Support\XmlPrimitiveParser.cs" />
-    <Compile Include="Parsers.Support\XmlUtils.cs" />
+    <Compile Include="Parsers.Support\PrimitiveParser.cs" />
+    <Compile Include="Parsers.Support\ParserUtils.cs" />
     <Compile Include="Parsers.Support\IFhirReader.cs" />
     <Compile Include="Parsers.Support\XmlFhirReader.cs" />
     <Compile Include="Parsers.Support\JsonFhirReader.cs" />

@@ -14,12 +14,21 @@ namespace HL7.Fhir.Instance.Parsers
 
         public JsonFhirReader(JsonTextReader jr)
         {
+            jr.DateParseHandling = DateParseHandling.None;
             this.jr = jr;
         }
 
         public void MoveToContent()
         {
-            throw new NotImplementedException();
+            if (jr.TokenType == JsonToken.None)
+                jr.Read();
+
+            if (jr.TokenType == JsonToken.StartObject)
+            {
+                jr.Read();
+            }
+            else
+                throw new FormatException("Resources should have a Json object as root");
         }
 
         public string CurrentElementName
@@ -132,18 +141,26 @@ namespace HL7.Fhir.Instance.Parsers
 
             if (jr.TokenType == JsonToken.StartObject)
             {
-                // complex primitive
+                // read StartObject
                 jr.Read();
 
                 readAttributes(out refid, out dar);
 
+                string value = null;
+
                 if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "value")
                 {
                     jr.Read();
-                    return readPrimitiveValue();
+                    value = readPrimitiveValue();
                 }
 
-                return null;
+                if (jr.TokenType != JsonToken.EndObject)
+                    throw new FormatException("Complex primitive contains unexpected contents");
+
+                // read EndObject
+                jr.Read();
+
+                return value;
             }
             else if (jr.TokenType == JsonToken.String)
             {

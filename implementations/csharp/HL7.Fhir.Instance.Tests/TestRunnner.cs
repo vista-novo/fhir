@@ -8,6 +8,7 @@ using HL7.Fhir.Instance.Serializers;
 using System.Xml;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 
 namespace HL7.Fhir.Instance.Tests
 {
@@ -19,7 +20,7 @@ namespace HL7.Fhir.Instance.Tests
         {
             string path = @"..\..\..\..\..\publish\examples";
 
-            Console.WriteLine("Looking for *.xml files in " + path);
+            Debug.WriteLine("Looking for *.xml files in " + path);
 
             var files = Directory.EnumerateFiles(path, "*.xml");
 
@@ -29,22 +30,50 @@ namespace HL7.Fhir.Instance.Tests
 
                 try
                 {
-                    Console.WriteLine("Reading from xml file " + file);
+                    string filename = Path.GetFileNameWithoutExtension(file);
+                    string baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
+
+                    Debug.WriteLine("Roundtripping " + filename);
 
                     using (XmlReader xr = createReader(file))
                     {
-                        IFhirReader r = new XmlFhirReader(xr);
-                        Model.Resource resource = ResourceParser.ParseResource(r, errors);
+                        Debug.WriteLine("  Reading from xml...");
+                        Model.Resource resource = ResourceParser.ParseResource(new XmlFhirReader(xr), errors);
+                        xr.Close();
+
                         if (errors.Count > 0)
-                            Console.WriteLine("Parse errors:" + errors.ToString());
+                            Debug.WriteLine("=== Xml Parse errors ===" + Environment.NewLine + errors.ToString());
                         else
                         {
-                            Console.WriteLine("Writing json");
-                            string jsonFile = Path.ChangeExtension(file, "json");
+                            string jsonFile = baseFilename + "-roundtrip.json";
                             using (JsonTextWriter w = new JsonTextWriter(new System.IO.StreamWriter(jsonFile)))
                             {
+                                Debug.WriteLine("  Writing json...");
                                 resource.Save(w);
                                 w.Close();
+                            }
+
+                            using(JsonTextReader jr = new JsonTextReader(new System.IO.StreamReader(jsonFile)))
+                            {
+                                Debug.WriteLine("  Reading from json...");
+                                Model.Resource r2 = ResourceParser.ParseResource(new JsonFhirReader(jr), errors);
+                                jr.Close();
+
+                                if (errors.Count > 0)
+                                    Debug.WriteLine("=== Json Parse errors ===" + Environment.NewLine + errors.ToString());
+                                else
+                                {
+                                    string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
+                                    using (XmlWriter xw = new XmlTextWriter(new System.IO.StreamWriter(xmlFile)))
+                                    {
+                                        Debug.WriteLine("  Writing xml...");
+                                        r2.Save(xw);
+                                        xw.Close();
+                                    }
+
+                                    Debug.WriteLine("  Done!");
+                                }
+
                             }
                         }
                         errors.Clear();
@@ -52,14 +81,10 @@ namespace HL7.Fhir.Instance.Tests
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Unexpected exception: ");
-                    Console.WriteLine(e.Message);
+                    Debug.WriteLine("Unexpected exception: ");
+                    Debug.WriteLine(e.Message);
                 }
             }
-
-            Console.WriteLine("Ready....press enter to quit");
-
-            Console.ReadLine();
         }
 
         private static XmlReader createReader(string filename)

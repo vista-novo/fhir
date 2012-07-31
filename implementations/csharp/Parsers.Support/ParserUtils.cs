@@ -8,7 +8,7 @@ using HL7.Fhir.Instance.Model;
 
 namespace HL7.Fhir.Instance.Parsers
 {
-    public static class XmlUtils
+    public static class ParserUtils
     {
         public static bool IsAtElement(IFhirReader reader, string name, bool isPolymorph = false)
         {

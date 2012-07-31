@@ -34,7 +34,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  POSSIBILITY OF SUCH DAMAGE.
 
  */
-public class CSharpXmlPrimitiveParserGenerator extends GenBlock {
+public class CSharpPrimitiveParserGenerator extends GenBlock {
 
 	CSharpModelResourceGenerator rgen;
 
@@ -44,7 +44,7 @@ public class CSharpXmlPrimitiveParserGenerator extends GenBlock {
 		return definitions;
 	}
 
-	public CSharpXmlPrimitiveParserGenerator(Definitions defs) {
+	public CSharpPrimitiveParserGenerator(Definitions defs) {
 		definitions = defs;
 
 		rgen = new CSharpModelResourceGenerator(defs);

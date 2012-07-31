@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HL7.Fhir.Instance.Support;
+using System.Globalization;
 
 namespace HL7.Fhir.Instance.Model
 {
@@ -48,12 +49,15 @@ namespace HL7.Fhir.Instance.Model
         {
             decimal decimalValue;
 
+            NumberStyles style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign |
+                                NumberStyles.AllowTrailingWhite | NumberStyles.AllowLeadingWhite;
+
             if (value == null)
             {
                 result = new FhirDecimal(null);
                 return true;
             }
-            else if (Decimal.TryParse(value, out decimalValue))
+            else if (Decimal.TryParse(value, style, NumberFormatInfo.InvariantInfo, out decimalValue))
             {
                 result = new FhirDecimal(decimalValue);
                 return true;
@@ -83,7 +87,7 @@ namespace HL7.Fhir.Instance.Model
         public override string ToString()
         {
             if (Contents.HasValue)
-                return Contents.HasValue.ToString();
+                return Contents.Value.ToString(CultureInfo.InvariantCulture);
             else
                 return null;
         }

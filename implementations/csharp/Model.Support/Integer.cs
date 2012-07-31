@@ -32,6 +32,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
 namespace HL7.Fhir.Instance.Model
 {
@@ -51,7 +52,7 @@ namespace HL7.Fhir.Instance.Model
                 result = new Integer(null);
                 return true;
             }
-            else if(Int32.TryParse(value, out intValue))
+            else if(Int32.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out intValue))
             {
                 result = new Integer(intValue);
                 return true;
@@ -83,7 +84,7 @@ namespace HL7.Fhir.Instance.Model
         public override string ToString()
         {
             if (Contents.HasValue)
-                return Contents.ToString();
+                return Contents.Value.ToString(CultureInfo.InvariantCulture);
             else
                 return null;
         }

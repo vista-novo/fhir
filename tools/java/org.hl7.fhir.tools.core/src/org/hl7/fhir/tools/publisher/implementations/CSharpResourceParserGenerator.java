@@ -47,7 +47,7 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
 
-public class CSharpXmlResourceParserGenerator extends GenBlock
+public class CSharpResourceParserGenerator extends GenBlock
 {
 	private CSharpModelResourceGenerator rgen;
 
@@ -59,7 +59,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 	}
 
 
-	public CSharpXmlResourceParserGenerator(Definitions defs)
+	public CSharpResourceParserGenerator(Definitions defs)
 	{
 		definitions = defs;
 		rgen = new CSharpModelResourceGenerator(defs);
@@ -167,7 +167,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( XmlUtils.IsAtElementEndingWith(reader, \"");
+			nl("( ParserUtils.IsAtElementEndingWith(reader, \"");
 				nl( Utilities.capitalize(type.getName()) );
 				nl("\" ))");
 			bs();
@@ -200,7 +200,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			
 			firstTime = false;
 			
-			nl("( XmlUtils.IsAtElement(reader, \"");
+			nl("( ParserUtils.IsAtElement(reader, \"");
 				nl( resource.getName() );
 				nl("\" ) )");
 			bs();
@@ -364,7 +364,7 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 			generateMemberParser(member);
 		}
 		
-		ln("if( !XmlUtils.IsAtEndElement(reader, en) )" );
+		ln("if( !ParserUtils.IsAtEndElement(reader, en) )" );
         bs("{");
 			ln("errors.Add(String.Format(");
 				nl("\"Encountered unrecognized element '{0}' while parsing '{1}'\",");
@@ -469,13 +469,13 @@ public class CSharpXmlResourceParserGenerator extends GenBlock
 		
 		// Check for exception: XHTML elements are in XHTML namespace
 		if( !member.isPolymorph() && member.getTypes().get(0).getName().equals(TypeRef.XHTML_PSEUDOTYPE_NAME) )
-			clause = "XmlUtils.IsAtXhtmlElement";
+			clause = "ParserUtils.IsAtXhtmlElement";
 		else
 		{
 			if( !inArray  )
-				clause = "XmlUtils.IsAtElement";
+				clause = "ParserUtils.IsAtElement";
 			else
-				clause = "XmlUtils.IsAtArrayElement";
+				clause = "ParserUtils.IsAtArrayElement";
 		}
 		clause += "(reader, \"" + member.getName() + "\"";
 					
