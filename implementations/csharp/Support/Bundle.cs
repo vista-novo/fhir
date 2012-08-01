@@ -20,17 +20,13 @@ namespace HL7.Fhir.Instance.Support
         public Uri SelfLink { get; set; }
 
         public List<BundleEntry> Entries { get; private set; }
-
-        public ErrorList Errors { get; private set; }
        
-
         public Bundle()
         {
-            Errors = new ErrorList();
             Entries = new List<BundleEntry>();
         }
 
-        public static Bundle Load(XmlReader reader)
+        public static Bundle Load(XmlReader reader, ErrorList errors)
         {
             SyndicationFeed feed = SyndicationFeed.Load(reader);
 
@@ -42,22 +38,46 @@ namespace HL7.Fhir.Instance.Support
                     SelfLink = getSelfLink(feed.Links),
                 };
 
-            result.loadItems(feed.Items);
+            result.loadItems(feed.Items, errors);
+
+            errors.AddRange(result.Validate());
 
             return result;
         }
 
 
-        private void loadItems( IEnumerable<SyndicationItem> items )
+        public ErrorList Validate()
+        {
+            ErrorList errors = new ErrorList();
+            string context = String.Format("Feed '{0}'", Id);
+
+            if( String.IsNullOrWhiteSpace(Title) )
+                errors.Add("Feed must contain a title", context);
+
+            if (String.IsNullOrWhiteSpace(Id))
+                errors.Add("Feed must have an id", context);
+
+            if (SelfLink == null || String.IsNullOrWhiteSpace(SelfLink.ToString()))
+                errors.Add("Feed must have a link of type 'self'", context);
+
+            Entries.ForEach(entry => errors.AddRange(entry.Validate()));
+
+            return errors;
+        }
+
+
+        private void loadItems( IEnumerable<SyndicationItem> items, ErrorList errors )
         {
             Entries.Clear();
 
             foreach (SyndicationItem item in items)
             {
-                Errors.DefaultContext = String.Format("Entry '{0}'", item.Id);
+                errors.DefaultContext = String.Format("Entry '{0}'", item.Id);
 
                 BundleEntry result = new BundleEntry()
                 {
+                    VersionId = item.AttributeExtensions.ContainsKey(ETAG) ?
+                            item.AttributeExtensions[ETAG] : null,
                     Title = item.Title.Text,
                     SelfLink = getSelfLink(item.Links),
                     Id = item.Id,
@@ -70,12 +90,12 @@ namespace HL7.Fhir.Instance.Support
                     ResourceType = item.Categories != null ? item.Categories
                            .Where(cat => cat.Scheme == Support.Util.ATOM_CATEGORY_NAMESPACE)
                            .Select(scat => scat.Name).FirstOrDefault() : null,
-                    Content = getContents(item.Content, Errors),
+                    Content = getContents(item.Content, errors),
                     Summary = item.Summary.Text
                 };
 
 
-                Errors.DefaultContext = null;
+                errors.DefaultContext = null;
 
                 Entries.Add(result);
             }
@@ -97,6 +117,9 @@ namespace HL7.Fhir.Instance.Support
         }
 
 
+        private const string GDATA_NAMESPACE = "http://schemas.google.com/g/2005";
+        private const string ETAG_LABEL = "etag";
+        private readonly XmlQualifiedName ETAG = new XmlQualifiedName(ETAG_LABEL, GDATA_NAMESPACE);
 
         private IEnumerable<SyndicationItem> saveItems()
         {
@@ -113,8 +136,11 @@ namespace HL7.Fhir.Instance.Support
                 newItem.PublishDate = entry.Published;
                 newItem.Authors.Add(new SyndicationPerson(null, entry.AuthorName, entry.AuthorUri));
                 newItem.Categories.Add(new SyndicationCategory(entry.ResourceType, Util.ATOM_CATEGORY_NAMESPACE, null));
-                newItem.Content = SyndicationContent.CreateXmlContent(getContents(entry.Content));
+                newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
                 newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
+
+                if( entry.VersionId != null)
+                    newItem.AttributeExtensions.Add(ETAG, entry.VersionId);
 
                 result.Add(newItem);
             }
@@ -134,17 +160,14 @@ namespace HL7.Fhir.Instance.Support
 
         private static Resource getContents(SyndicationContent content, ErrorList errors)
         {
-            if (content.Type != "text/xml") return null;
+            if (content.Type != "text/xml")
+            {
+                errors.Add("Entry should have contents of type 'text/xml'");
+                return null;
+            }
 
-            //System.ServiceModel.Syndication.XmlSyndicationContent xmlcontent =
-            //        (XmlSyndicationContent)content;
-
-            //// WARNING! In .NET 4.5, the XmlReader returned by GetReaderAtContent()
-            //// reads the initial element twice if you wrap it in another XmlReader.
-            //// Hence, I do a clean ex- and import of the xml. This is time and
-            //// memory consuming, but is a necessary work-around as far as I can see.
-            //string contentAsString = xmlcontent.GetReaderAtContent().ReadInnerXml();
-
+            // Sigh....why does this have to be hard? I don't WANT an extra
+            // root element around the contents...
             StringWriter buffer = new StringWriter();
             content.WriteTo(new XmlTextWriter(buffer),"x", null);
             buffer.GetStringBuilder().Replace("<x type=\"text/xml\">", "");
@@ -152,7 +175,7 @@ namespace HL7.Fhir.Instance.Support
             return ResourceParser.ParseResourceFromXml(buffer.ToString(), errors);
         }
 
-        private XmlReader getContents(Resource r)
+        private XmlReader getContentsReader(Resource r)
         {
             StringWriter buffer = new System.IO.StringWriter();
             XmlTextWriter writer = new XmlTextWriter(buffer);
@@ -169,6 +192,7 @@ namespace HL7.Fhir.Instance.Support
 
     public class BundleEntry
     {
+        public string VersionId { get; set; }
         public string Title { get; set; }
         public Uri SelfLink { get; set; }
         public string Id { get; set; }
@@ -180,6 +204,26 @@ namespace HL7.Fhir.Instance.Support
 
         public Resource Content { get; set; }
 
-        public string Summary { get; set; } 
+        public string Summary { get; set; }
+
+        public ErrorList Validate()
+        {
+            ErrorList errors = new ErrorList();
+            string context = String.Format("Entry '{0}'", Id);
+
+            if (String.IsNullOrWhiteSpace(Title))
+                errors.Add("Entry must contain a title", context);
+
+            if (SelfLink == null || SelfLink.ToString() == String.Empty)
+                errors.Add("Entry must have a link of type 'self'", context);
+
+            if (String.IsNullOrWhiteSpace(Id))
+                errors.Add("Entry must have an id", context);
+
+            if (String.IsNullOrWhiteSpace(AuthorName))
+                errors.Add("Entry must have at least one author with a name", context);
+
+            return errors;
+        }
     }
 }

@@ -26,32 +26,24 @@ namespace HL7.Fhir.Instance.Tests
 
             foreach (string file in files.Where(p=>!p.Contains("-roundtrip")))
             {
-                try
+                string filename = Path.GetFileNameWithoutExtension(file);                    
+                baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
+
+                Debug.WriteLine("Roundtripping " + filename);
+                bool isFeed = filename.Contains("examples");
+
+                if( !isFeed )
                 {
-                    string filename = Path.GetFileNameWithoutExtension(file);                    
-                    baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
-
-                    Debug.WriteLine("Roundtripping " + filename);
-                    bool isFeed = filename.Contains("examples");
-
-                    if( !isFeed )
-                    {
-                        Debug.WriteLine("  Reading from xml...");
-                        testSingleResource(file);
-                    }
-                    else
-                    {
-                        Debug.WriteLine("  Reading from xml feed...");
-                        testFeed(file);
-                    }
-
-                    Debug.WriteLine("  Done!");
+                    Debug.WriteLine("  Reading from xml...");
+                    testSingleResource(file);
                 }
-                catch (Exception e)
+                else
                 {
-                    Debug.WriteLine("Unexpected exception: ");
-                    Debug.WriteLine(e.Message);
+                    Debug.WriteLine("  Reading from xml feed...");
+                    testFeed(file);
                 }
+
+                Debug.WriteLine("  Done!");
             }
         }
 
@@ -60,12 +52,11 @@ namespace HL7.Fhir.Instance.Tests
         private void testFeed(string file)
         {
             Support.Bundle bundleResult;
-            Support.ErrorList errors;
+            Support.ErrorList errors = new Support.ErrorList();
 
             using (XmlReader xr = createReader(file))
             {
-                bundleResult = Support.Bundle.Load(xr);
-                errors = bundleResult.Errors;
+                bundleResult = Support.Bundle.Load(xr, errors);
 
                 xr.Close();
             }
