@@ -35,8 +35,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+	<Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +47,7 @@
   <ItemGroup>
 		@@@MODELFILES@@@
   </ItemGroup>
- <ItemGroup>
+  <ItemGroup>
     <Compile Include="Model.Support\FhirDateTime.cs" />
     <Compile Include="Model.Support\Id.cs" />
     <Compile Include="Model.Support\IdRef.cs" />
@@ -76,8 +77,10 @@
     <Compile Include="Serializers.Support\IFhirWriter.cs" />
     <Compile Include="Serializers.Support\JsonFhirWriter.cs" />
     <Compile Include="Serializers.Support\XmlFhirWriter.cs" />
-	<Compile Include="Serializers.Support\PrimitiveSerializer.cs" />
-	<Compile Include="Serializers.Support\SerializationUtil.cs" />
+    <Compile Include="Serializers.Support\PrimitiveSerializer.cs" />
+    <Compile Include="Serializers.Support\SerializationUtil.cs" />
+    <Compile Include="Support\Bundle.cs" />
+	<Compile Include="Parsers.Support\ResourceParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

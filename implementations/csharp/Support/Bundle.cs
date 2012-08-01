@@ -136,15 +136,20 @@ namespace HL7.Fhir.Instance.Support
         {
             if (content.Type != "text/xml") return null;
 
-            System.ServiceModel.Syndication.XmlSyndicationContent xmlcontent =
-                    (XmlSyndicationContent)content;
+            //System.ServiceModel.Syndication.XmlSyndicationContent xmlcontent =
+            //        (XmlSyndicationContent)content;
 
-            // WARNING! In .NET 4.5, the XmlReader returned by GetReaderAtContent()
-            // reads the initial element twice if you wrap it in another XmlReader.
-            // Hence, I do a clean ex- and import of the xml. This is time and
-            // memory consuming, but is a necessary work-around as far as I can see.
-            string contentAsString = xmlcontent.GetReaderAtContent().ReadInnerXml();
-            return ResourceParser.ParseResourceFromXml(contentAsString, errors);
+            //// WARNING! In .NET 4.5, the XmlReader returned by GetReaderAtContent()
+            //// reads the initial element twice if you wrap it in another XmlReader.
+            //// Hence, I do a clean ex- and import of the xml. This is time and
+            //// memory consuming, but is a necessary work-around as far as I can see.
+            //string contentAsString = xmlcontent.GetReaderAtContent().ReadInnerXml();
+
+            StringWriter buffer = new StringWriter();
+            content.WriteTo(new XmlTextWriter(buffer),"x", null);
+            buffer.GetStringBuilder().Replace("<x type=\"text/xml\">", "");
+            buffer.GetStringBuilder().Replace("</x>","");
+            return ResourceParser.ParseResourceFromXml(buffer.ToString(), errors);
         }
 
         private XmlReader getContents(Resource r)
