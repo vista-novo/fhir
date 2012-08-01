@@ -18,14 +18,12 @@ namespace HL7.Fhir.Instance.Serializers
 
         public void WriteStartRootObject(string name)
         {
-            xw.WriteStartDocument();
             WriteStartElement(name);
         }
 
         public void WriteEndRootObject()
         {
             WriteEndElement();
-            xw.WriteEndDocument();
         }
 
         public void WriteStartElement(string name)

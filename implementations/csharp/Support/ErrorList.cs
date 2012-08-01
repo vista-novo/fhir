@@ -74,6 +74,7 @@ namespace HL7.Fhir.Instance.Support
             }
         }
 
+        public string DefaultContext { get; set; }
 
         public void Add(string message, string context, IFhirReader reader)
         {         
@@ -93,16 +94,17 @@ namespace HL7.Fhir.Instance.Support
 
         public void Add(string message, int line, int pos)
         {
-            this.Add(message, null, null, null);
+            this.Add(message, DefaultContext, null, null);
         }
 
         public void Add(string message, IFhirReader reader)
         {
-            this.Add(message, null, reader);
+            this.Add(message, DefaultContext, reader);
         }
 
         public void Add(string message)
         {
+            this.Add(message, DefaultContext);
         }
 
         public override string ToString()

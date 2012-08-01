@@ -58,7 +58,7 @@
     <Compile Include="SerializerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ModelTests.cs" />
-    <Compile Include="TestRunnner.cs" />
+    <Compile Include="RoundtripTest.cs" />
     <Compile Include="ParserTests.cs">
       <SubType>Code</SubType>
     </Compile>

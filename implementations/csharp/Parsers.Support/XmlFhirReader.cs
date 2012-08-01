@@ -13,12 +13,12 @@ namespace HL7.Fhir.Instance.Parsers
 
         public XmlFhirReader(XmlReader xr)
         {
-            if (xr.Settings.IgnoreWhitespace != true ||
-                xr.Settings.IgnoreProcessingInstructions != true ||
-                xr.Settings.IgnoreComments != true)
-                throw new ArgumentException("XmlReader should have its settings set to ignore comments, pi's and whitespace");
+            var settings = new XmlReaderSettings();
+            settings.IgnoreComments = true;
+            settings.IgnoreProcessingInstructions = true;
+            settings.IgnoreWhitespace = true;
 
-            this.xr = xr;
+            this.xr = XmlReader.Create(xr, settings);
         }
 
         public void MoveToContent()
@@ -58,7 +58,7 @@ namespace HL7.Fhir.Instance.Parsers
 
         public void SkipContents(string name)
         {
-            while (!isEndElement(xr, name) || xr.EOF)
+            while (!isEndElement(xr, name) && !xr.EOF)
                 xr.Skip();
         }
 
