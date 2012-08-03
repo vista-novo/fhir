@@ -30,16 +30,15 @@ package org.hl7.fhir.tools.publisher.implementations;
 */
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+
+import javax.rmi.CORBA.Util;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
@@ -110,7 +109,7 @@ public class CSharpResourceParserGenerator extends GenBlock
 	}
 	
 	
-	private GenBlock buildPolymorphParser(String polymorphTypeName, List composites) throws Exception {
+	private GenBlock buildPolymorphParser(String polymorphTypeName, List<?> composites) throws Exception {
 		begin();
 		
 		ln("public static ");

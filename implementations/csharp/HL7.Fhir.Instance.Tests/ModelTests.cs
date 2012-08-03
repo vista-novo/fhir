@@ -90,6 +90,9 @@ namespace HL7.Fhir.Instance.Tests
             Instant ins2 = Instant.Parse("2011-03-04T14:45:33+02:00");
             Assert.AreEqual("2011-03-04T14:45:33+02:00", ins2.ToString());
 
+            Instant ins4 = Instant.Parse("2012-04-14T10:35:23+00:00");
+            Assert.AreEqual("2012-04-14T10:35:23+00:00", ins4.ToString());
+            
             try
             {
                 Instant dummy = Instant.Parse("2011-03-04T11:45:33");
@@ -101,8 +104,8 @@ namespace HL7.Fhir.Instance.Tests
             Instant ins3 = Instant.FromLocalDateTime(2011, 3, 4, 2, 45, 33);
             Assert.AreEqual("2011-03-04T02:45:33+02:00", ins3.ToString());
 
-            Instant ins4 = Instant.FromDateTimeUtc(2011,3,4,16,45,33);
-            Assert.AreEqual("2011-03-04T16:45:33+00:00", ins4.ToString());      
+            Instant ins5 = Instant.FromDateTimeUtc(2011,3,4,16,45,33);
+            Assert.AreEqual("2011-03-04T16:45:33+00:00", ins5.ToString());      
         }
 
         [TestMethod]

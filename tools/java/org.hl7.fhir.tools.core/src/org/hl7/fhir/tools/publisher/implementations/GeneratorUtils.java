@@ -310,7 +310,7 @@ public class GeneratorUtils {
 		else if (name.equals("id"))
 			return "string";
 		else if (name.equals("xhtml"))
-			return "XElement";
+			return "string";
 		else if (name.equals("date"))
 			return "string";
 		else if (name.equals("dateTime"))
@@ -458,8 +458,6 @@ public class GeneratorUtils {
 		boolean hasResourceRef = false;
 		boolean hasCodeWithCodeList = false;  // becomes special Code<T> type. is also a primitive
 								
-		CompositeTypeDefn parent = elem.getParentType();
-		
 		for( TypeRef ref : elem.getTypes() )
 		{			
 			if( ref.getName().equals(TypeRef.COMPOSITE_PSEUDOTYPE_NAME) )

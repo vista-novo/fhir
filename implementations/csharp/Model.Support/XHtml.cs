@@ -45,15 +45,16 @@ namespace HL7.Fhir.Instance.Model
         {
             try
             {
-                XElement xmlValue = null;
+                //string xmlValue = null;
 
-                if (value == null)
-                    xmlValue = null;
-                else
-                    xmlValue = XElement.Parse(value);
+                //if (value == null)
+                //    xmlValue = null;
+                //else
+                //    xmlValue = XElement.Parse(value);
 
-                xmlValue = XElement.Parse(value);
-                result = new XHtml(xmlValue);
+                //xmlValue = XElement.Parse(value);
+                //result = new XHtml(xmlValue);
+                result = new XHtml(value);
                 return true;
             }
             catch
@@ -74,15 +75,7 @@ namespace HL7.Fhir.Instance.Model
         }
 
         public override string ValidateData()
-        {
-            if (Contents != null)
-            {
-                if (Contents.Name != Util.DIVELEM)
-                    return "The xml must have <div> as its root element";
-
-                // TODO: Check whether only "simple" elements are used.
-            }
-            
+        {           
             return null;   
         }
 

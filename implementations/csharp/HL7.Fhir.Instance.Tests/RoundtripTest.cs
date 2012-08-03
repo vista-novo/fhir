@@ -30,20 +30,28 @@ namespace HL7.Fhir.Instance.Tests
                 baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
 
                 Debug.WriteLine("Roundtripping " + filename);
-                bool isFeed = filename.Contains("examples");
 
-                if( !isFeed )
-                {
-                    Debug.WriteLine("  Reading from xml...");
+                if( !isFeed(file) )
                     testSingleResource(file);
-                }
                 else
-                {
-                    Debug.WriteLine("  Reading from xml feed...");
                     testFeed(file);
-                }
 
                 Debug.WriteLine("  Done!");
+            }
+        }
+
+        private bool isFeed(string filename)
+        {
+            XmlReader r = XmlReader.Create(filename);
+
+            try
+            {
+                r.MoveToContent();
+                return r.LocalName == "feed";
+            }
+            finally
+            {
+                r.Close();
             }
         }
 
@@ -56,6 +64,7 @@ namespace HL7.Fhir.Instance.Tests
 
             using (XmlReader xr = createReader(file))
             {
+                Debug.WriteLine("  Reading Xml feed...");
                 bundleResult = Support.Bundle.Load(xr, errors);
 
                 xr.Close();
@@ -66,17 +75,49 @@ namespace HL7.Fhir.Instance.Tests
             else
             {
                 string jsonFile = baseFilename + "-roundtrip.json";
-                string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
+                //string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
 
-                Debug.WriteLine("  Writing Xml feed...");
-
-                using (XmlWriter xw = XmlWriter.Create(xmlFile))
+                using (JsonTextWriter jw = new JsonTextWriter(new StreamWriter(jsonFile)) )
                 {
-                    bundleResult.Save(xw);
+                    Debug.WriteLine("  Writing Xml feed...");
+                    bundleResult.Save(jw);
+                    jw.Flush();
+                    jw.Close();
                 }
+
+                testJsonFeed(jsonFile);
             }
         }
 
+
+        private void testJsonFeed(string jsonFile)
+        {
+            Support.Bundle bundleResult;
+            Support.ErrorList errors = new Support.ErrorList();
+
+            using (JsonReader jr = new JsonTextReader(new StreamReader(jsonFile)))
+            {
+                Debug.WriteLine("  Reading Json feed...");
+                bundleResult = Support.Bundle.Load(jr, errors);
+
+                jr.Close();
+            }
+
+            if (errors.Count > 0)
+                Debug.WriteLine("=== Json Feed Parse errors ===" + Environment.NewLine + errors.ToString());
+            else
+            {
+                string xmlFile = Path.ChangeExtension(jsonFile, ".xml");
+
+                using (XmlWriter xw = new XmlTextWriter(new System.IO.StreamWriter(xmlFile)))
+                {
+                    Debug.WriteLine("  Writing Xml feed...");
+                    bundleResult.Save(xw);
+                    xw.Flush();
+                    xw.Close();
+                }
+            }
+        }
 
         private void testSingleResource(string file)
         {
@@ -85,6 +126,7 @@ namespace HL7.Fhir.Instance.Tests
 
             using (XmlReader xr = createReader(file))
             {
+                Debug.WriteLine("  Reading Xml...");
                 singleResult = ResourceParser.ParseResource(new XmlFhirReader(xr), errors);
                 xr.Close();
             }
@@ -99,6 +141,7 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     Debug.WriteLine("  Writing json...");
                     singleResult.Save(w);
+                    w.Flush();
                     w.Close();
                 }
 
@@ -129,6 +172,7 @@ namespace HL7.Fhir.Instance.Tests
                 {
                     Debug.WriteLine("  Writing xml...");
                     singleResult.Save(xw);
+                    xw.Flush();
                     xw.Close();
                 }
             }

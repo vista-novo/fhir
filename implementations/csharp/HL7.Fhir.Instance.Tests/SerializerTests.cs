@@ -134,7 +134,7 @@ namespace HL7.Fhir.Instance.Tests
                  Text = new Narrative()
                  {
                      Status = Narrative.NarrativeStatus.Generated,
-                     Div = XElement.Parse("<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>")            
+                     Div = "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>"            
                  }
             };
 
@@ -146,7 +146,7 @@ namespace HL7.Fhir.Instance.Tests
                 "{\"dataAbsentReason\":\"notasked\"},\"language\":[{\"code\":"+
                 "{\"_id\":\"lang-1\",\"value\":\"dut\"},\"use\":{\"value\":\"fluent\"}},"+
                 "{\"code\":{\"value\":\"cmn\"},\"use\":{\"value\":\"useable\"}}],\"text\":"+
-                "{\"status\":\"generated\",\"div\":\"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">stuff</div>\"}}}", sw.ToString());
+                "{\"status\":\"generated\",\"div\":\"<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div>\"}}}", sw.ToString());
 
             sw = new StringWriter();
             XmlWriter wx = new XmlTextWriter(sw);
@@ -154,12 +154,12 @@ namespace HL7.Fhir.Instance.Tests
 
             p.Save(writer);
 
-            Assert.AreEqual("<?xml version=\"1.0\" encoding=\"utf-16\"?><Person xmlns=\"http://hl7.org/fhir\">" +
+            Assert.AreEqual("<Person xmlns=\"http://hl7.org/fhir\">" +
                 "<id>34234</id><name><use>official</use><part><type>given</type><value>Karen</value></part>" +
                 "<part id=\"n1\"><type>family</type><value>van</value></part></name><dob dataAbsentReason=\"notasked\" />" +
                 "<language><code id=\"lang-1\">dut</code><use>fluent</use></language><language><code>cmn</code>" +
                 "<use>useable</use></language><text><status>generated</status>" +
-                "<div xmlns=\"http://www.w3.org/1999/xhtml\">stuff</div></text></Person>", sw.ToString());
+                "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div></text></Person>", sw.ToString());
         }
 
 

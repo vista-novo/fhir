@@ -379,6 +379,8 @@ public class Publisher {
 
 		profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
+		profileFeed.setTitle("Resources as Profiles");
+		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);

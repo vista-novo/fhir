@@ -80,6 +80,8 @@
     <Compile Include="Serializers.Support\PrimitiveSerializer.cs" />
     <Compile Include="Serializers.Support\SerializationUtil.cs" />
     <Compile Include="Support\Bundle.cs" />
+	<Compile Include="Support\BundleXml.cs" />
+    <Compile Include="Support\BundleJson.cs" />
 	<Compile Include="Parsers.Support\ResourceParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
