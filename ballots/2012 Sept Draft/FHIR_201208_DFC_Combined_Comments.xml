@@ -7,7 +7,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Created>2006-09-16T00:00:00Z</Created>
-  <LastSaved>2012-09-08T11:17:51Z</LastSaved>
+  <LastSaved>2012-09-08T15:02:05Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -15,10 +15,10 @@
   <RemovePersonalInformation/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7950</WindowHeight>
+  <WindowHeight>7890</WindowHeight>
   <WindowWidth>14805</WindowWidth>
   <WindowTopX>240</WindowTopX>
-  <WindowTopY>165</WindowTopY>
+  <WindowTopY>225</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -73,10 +73,10 @@
  </Styles>
  <Worksheet ss:Name="Sheet1">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Sheet1!R1C1:R65C10"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="=Sheet1!R1C1:R68C10"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="65" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="10" ss:ExpandedRowCount="74" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="63"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="67.5"/>
@@ -1091,6 +1091,65 @@
     <Cell><Data ss:Type="String">governance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">66</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">We may need to define the update behavior of the metadata</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">67</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">How to represent deletions of resources in feed</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">68</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Need to describe obligations and error codes around create and update operations</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">69</Data></Cell>
+    <Cell><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Need to add back to the conformance resource about how creates and ids work for a system</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell><Data ss:Type="Number">70</Data></Cell>
+    <Cell><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Add a section discussing ids, distributed systems, re-allocations and how this relates to obligations on described operations (and how this relates to other identifiers)</Data></Cell>
+   </Row>
+   <Row ss:Height="30">
+    <Cell ss:Index="2"><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Need to avoid imposing requirement to keep version history while still supporting versioning as much as possible</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Make Atom link version specific reference</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Add note about error handling only specified when HTTP spec is ambiguous in mapping to FHIR</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:Index="2"><Data ss:Type="String">Connectathon</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Issue</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Version Specific updates - can't implement the way this is described because location is not a request header.</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1105,9 +1164,10 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
+   <Zoom>110</Zoom>
    <Selected/>
-   <SplitHorizontal>630</SplitHorizontal>
-   <TopRowBottomPane>23</TopRowBottomPane>
+   <SplitHorizontal>690</SplitHorizontal>
+   <TopRowBottomPane>64</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -1117,14 +1177,13 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>27</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
-  <AutoFilter x:Range="R1C1:R65C10"
+  <AutoFilter x:Range="R1C1:R68C10"
    xmlns="urn:schemas-microsoft-com:office:excel">
   </AutoFilter>
  </Worksheet>
