@@ -1,0 +1,101 @@
+
+Importing Model from XMI
+Root Package: Infrastructure
+Unknown Version Control configuration: org.hl7.fhir
+Add Classifier: date
+Add Classifier: Narrative
+Add Classifier: Repeat
+Add Classifier: Attachment
+Add Classifier: integer
+Add Classifier: Part
+Add Classifier: sid
+Add Classifier: uuid
+Add Classifier: HumanDate
+Add Classifier: Type
+Add Classifier: uri
+Add Classifier: Ordered
+Add Classifier: Identifier
+Add Classifier: Base
+Add Classifier: HumanId
+Add Classifier: Address
+Add Classifier: string
+Add Classifier: Coding
+Add Classifier: Schedule
+Add Classifier: HumanName
+Add Classifier: NamePart
+Add Classifier: Ratio
+Add Classifier: ImageContent
+Add Classifier: Interval
+Add Classifier: Resource
+Add Classifier: base64Binary
+Add Classifier: instant
+Add Classifier: CodeableConcept
+Add Classifier: ChoiceValue
+Add Classifier: Contact
+Add Classifier: Structure
+Add Classifier: id
+Add Classifier: oid
+Add Classifier: decimal
+Add Classifier: ResourceReference
+Add Classifier: Extension
+Add Classifier: code
+Add Classifier: Mapping
+Add Classifier: Money
+Add Classifier: dateTime
+Add Classifier: Quantity
+Add Classifier: Choice
+Add Classifier: uid
+Add Classifier: boolean
+Add Classifier Role: Primitives
+Add Classifier Role: Infrastructure
+Add Classifier Role: Types
+Add Classifier Role: Structures
+Append Package: Infrastructure
+Append Package: Primitives
+Append Package: Structures
+Append Package: Types
+Resolving Classifiers
+Resolving Owners
+Resolve Package Links
+Add Extensions
+Add Diagrams
+Adding Diagram : All
+Adding Diagram : Primitives
+Adding Diagram : Types
+Adding Diagram : Structures
+Adding Diagram : Infrastructure
+Adding Elements to Diagram : All
+Adding Elements to Diagram : Primitives
+Adding Elements to Diagram : Types
+Adding Elements to Diagram : Structures
+Adding Elements to Diagram : Infrastructure
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Error: Unknown Transition Source or Target
+Resolving DiagramIDs
+Adding Links to Diagram : All
+Adding Links to Diagram : Primitives
+Adding Links to Diagram : Types
+Adding Links to Diagram : Structures
+Adding Links to Diagram : Infrastructure
+Resolving Association Classes
+Resolving Parameter Types
+Resolving Attribute Types
+Resolving Note links
+Fixup external references
+Import Complete!

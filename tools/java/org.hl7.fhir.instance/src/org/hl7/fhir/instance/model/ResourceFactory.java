@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Jul 18, 2012 21:38+1000 for FHIR v0.05
+// Generated on Mon, Sep 10, 2012 01:20+1000 for FHIR v0.05
 
 public class ResourceFactory {
 
@@ -60,6 +60,8 @@ public class ResourceFactory {
             return new InterestOfCare();
         if ("ValueSet".equals(name))
             return new ValueSet();
+        if ("Test".equals(name))
+            return new Test();
         if ("MessageHeader".equals(name))
             return new MessageHeader();
         if ("Specimen".equals(name))
@@ -68,10 +70,10 @@ public class ResourceFactory {
             return new Patient();
         if ("AssessmentScale".equals(name))
             return new AssessmentScale();
-        if ("Person".equals(name))
-            return new Person();
         if ("LabReport".equals(name))
             return new LabReport();
+        if ("Person".equals(name))
+            return new Person();
         else
             throw new Exception("Unknown Resource Name '"+name+"'");
     }

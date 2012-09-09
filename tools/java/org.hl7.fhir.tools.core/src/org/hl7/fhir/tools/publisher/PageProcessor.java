@@ -794,8 +794,9 @@ public class PageProcessor implements Logger  {
       b.append("<table class=\"list\">\r\n");
       for (SearchParameter p : resource.getSearchParams()) {
         if (p.getType() == SearchType.date) {
-          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
-          b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");          
+          b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>date equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after or equal to "+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");          
         } else
           b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td></tr>\r\n");
       }

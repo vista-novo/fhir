@@ -1,0 +1,73 @@
+Exporting package to 'C:\workspace\projects\org.hl7.fhir\uml\Resources\Infrastructure.xml'
+Retrieving data for export: diagram elements
+Retrieving data for export: links
+Retrieving data for export: constraints
+Retrieving data for export: attribute tagged values
+Retrieving data for export: operation tagged values
+Retrieving data for export: operation parameter tagged values
+Retrieving data for export: connector tagged values
+Completed data retrieval
+Pre-processing export tree...
+Completed pre-processing
+Processing package: Infrastructure
+Element:0: date
+Element:1: Narrative
+Element:2: Repeat
+Element:3: Attachment
+Element:4: integer
+Element:5: Primitives
+Element:6: Part
+Element:7: sid
+Element:8: uuid
+Element:9: HumanDate
+Element:10: Type
+Element:11: uri
+Element:12: Ordered
+Element:13: Identifier
+Element:14: Base
+Element:15: HumanId
+Element:16: Period
+Element:17: Address
+Element:18: string
+Element:19: Coding
+Element:20: Schedule
+Element:21: HumanName
+Element:22: NamePart
+Element:23: Ratio
+Element:24: ImageContent
+Element:25: Range
+Element:26: Resource
+Element:27: base64Binary
+Element:28: instant
+Element:29: CodeableConcept
+Element:30: Infrastructure
+Element:31: ChoiceValue
+Element:32: Contact
+Element:33: Structure
+Element:34: id
+Element:35: oid
+Element:36: decimal
+Element:37: ResourceReference
+Element:38: Extension
+Element:39: code
+Element:40: Mapping
+Element:41: Money
+Element:42: dateTime
+Element:43: Types
+Element:44: Structures
+Element:45: Quantity
+Element:46: Choice
+Element:47: uid
+Element:48: boolean
+Diagram: All
+Diagram: Primitives
+Diagram: Types
+Diagram: Structures
+Diagram: Infrastructure
+Processing package: Infrastructure
+Processing package: Primitives
+Processing package: Structures
+Processing package: Types
+Adding State-Tables
+Formatting output XML...please wait
+XMI Document Export Complete!

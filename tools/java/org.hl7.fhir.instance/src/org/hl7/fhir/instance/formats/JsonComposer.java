@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Wed, Jul 18, 2012 21:38+1000 for FHIR v0.05
+// Generated on Mon, Sep 10, 2012 01:20+1000 for FHIR v0.05
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1384,6 +1384,106 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
+  private void composeTest(String name, Test element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("id", element.getId());
+      if (element.getStringErr().size() > 0) {
+        openArray("stringErr");
+        for (String e : element.getStringErr()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getStringCorr().size() > 0) {
+        openArray("stringCorr");
+        for (String e : element.getStringCorr()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getBooleanErr().size() > 0) {
+        openArray("booleanErr");
+        for (java.lang.Boolean e : element.getBooleanErr()) 
+          composeBool(null, e);
+        closeArray();
+      };
+      if (element.getBooleanCorr().size() > 0) {
+        openArray("booleanCorr");
+        for (java.lang.Boolean e : element.getBooleanCorr()) 
+          composeBool(null, e);
+        closeArray();
+      };
+      if (element.getIntegerErr().size() > 0) {
+        openArray("integerErr");
+        for (int e : element.getIntegerErr()) 
+          composeInt(null, e);
+        closeArray();
+      };
+      if (element.getIntegerCorr().size() > 0) {
+        openArray("integerCorr");
+        for (int e : element.getIntegerCorr()) 
+          composeInt(null, e);
+        closeArray();
+      };
+      if (element.getDecimalErr().size() > 0) {
+        openArray("decimalErr");
+        for (java.math.BigDecimal e : element.getDecimalErr()) 
+          composeBigDecimal(null, e);
+        closeArray();
+      };
+      if (element.getDecimalCorr().size() > 0) {
+        openArray("decimalCorr");
+        for (java.math.BigDecimal e : element.getDecimalCorr()) 
+          composeBigDecimal(null, e);
+        closeArray();
+      };
+      if (element.getB64Err().size() > 0) {
+        openArray("b64Err");
+        for (byte[] e : element.getB64Err()) 
+          composeBytes(null, e);
+        closeArray();
+      };
+      if (element.getB64Corr().size() > 0) {
+        openArray("b64Corr");
+        for (byte[] e : element.getB64Corr()) 
+          composeBytes(null, e);
+        closeArray();
+      };
+      if (element.getInstantErr().size() > 0) {
+        openArray("instantErr");
+        for (java.util.Calendar e : element.getInstantErr()) 
+          composeDate(null, e);
+        closeArray();
+      };
+      if (element.getInstantCorr().size() > 0) {
+        openArray("instantCorr");
+        for (java.util.Calendar e : element.getInstantCorr()) 
+          composeDate(null, e);
+        closeArray();
+      };
+      if (element.getUriErr().size() > 0) {
+        openArray("uriErr");
+        for (URI e : element.getUriErr()) 
+          composeURI(null, e);
+        closeArray();
+      };
+      if (element.getUriCorr().size() > 0) {
+        openArray("uriCorr");
+        for (URI e : element.getUriCorr()) 
+          composeURI(null, e);
+        closeArray();
+      };
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
   private void composeMessageHeader(String name, MessageHeader element) throws Exception {
     if (element != null) {
       open(name);
@@ -1795,6 +1895,8 @@ public class JsonComposer extends JsonComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
+    else if (resource instanceof Test)
+      composeTest("Test", (Test)resource);
     else if (resource instanceof MessageHeader)
       composeMessageHeader("MessageHeader", (MessageHeader)resource);
     else if (resource instanceof Patient)

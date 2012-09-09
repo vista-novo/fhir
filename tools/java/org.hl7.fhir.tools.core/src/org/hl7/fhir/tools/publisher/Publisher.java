@@ -125,15 +125,15 @@ public class Publisher {
 	private PageProcessor page = new PageProcessor();
 	private BookMaker book;
 
-	private boolean isInternalRun;
 	private boolean isGenerate;
+	private boolean nobook;
 	private AtomFeed profileFeed;
 
 	public static void main(String[] args) throws Exception {
 		//
 		Publisher pub = new Publisher();
-		pub.isInternalRun = !(args.length > 1 && hasParam(args, "-web"));
     pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
+    pub.nobook = !(args.length > 1 && hasParam(args, "-nobook"));
 		pub.execute(args[0]);
 	}
 
@@ -146,10 +146,7 @@ public class Publisher {
 
   public void execute(String folder) throws Exception {
 
-		log("Publish FHIR in folder "
-				+ folder
-				+ (isInternalRun ? " [internal development mode - including the sandbox]"
-						: ""));
+		log("Publish FHIR in folder " + folder);
 
 		registerReferencePlatforms();
 
@@ -159,7 +156,7 @@ public class Publisher {
         Utilities.createDirectory(page.getFolders().dstDir + "html");
         Utilities.createDirectory(page.getFolders().dstDir + "examples");
       }
-      prsr.parse(isInternalRun, page.getGenDate(), page.getVersion());
+      prsr.parse(page.getGenDate(), page.getVersion());
       
 			if (validate()) 
 			{
@@ -270,7 +267,7 @@ public class Publisher {
 
 	private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
-		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml",	isInternalRun);
+		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
 		chm = new ChmMaker(page.getNavigation(), page.getFolders(),	page.getDefinitions(), page);
 		book = new BookMaker(page, chm);
 
@@ -312,14 +309,14 @@ public class Publisher {
 		log("Produce Specification");
 		produceSpec();
 
-		log("Produce fhir.chm");
-		chm.produce();
-		if (!isInternalRun) {
-			log("Produce HL7 copy");
-			new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
-			log("Produce Archive copy");
-			produceArchive();
-		}
+		if (!nobook) {
+		  log("Produce fhir.chm");
+		  chm.produce();
+		  log("Produce HL7 copy");
+		  new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
+		  log("Produce Archive copy");
+		  produceArchive();
+		} 
 	}
 
 	private void produceArchive() throws Exception {
@@ -842,6 +839,7 @@ public class Publisher {
     for (ResourceDefn r : page.getDefinitions().getResources().values()) {
       for (Example e : r.getExamples()) {
         String n = e.getFileTitle();
+        log(" ...validate "+n);
         validateRoundTrip(schema, n);
       }
     }

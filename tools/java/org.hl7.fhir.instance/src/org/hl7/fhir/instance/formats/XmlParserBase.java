@@ -203,7 +203,10 @@ public abstract class XmlParserBase extends XmlBase {
   }
  
   protected java.lang.Integer parseInt(XmlPullParser xpp) throws Exception {
-    return new java.lang.Integer(parseString(xpp));
+    String v = parseString(xpp);
+    if (v.startsWith("+"))
+      v = v.substring(1);
+    return new java.lang.Integer(v);
   }
    
   protected java.lang.Boolean parseBool(XmlPullParser xpp) throws Exception {

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  © HL7 (http://hl7.org)
+  Generated on Mon, Sep 10, 2012 01:28+1000 for FHIR v0.05 
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified">
+  <xs:include schemaLocation="fhir-base.xsd"/>
+  <xs:element name="Test" type="Test">
+    <xs:annotation>
+      <xs:documentation>todo</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="Test">
+    <xs:sequence>
+      <xs:element name="id" minOccurs="1" maxOccurs="1" type="id">
+        <xs:annotation>
+          <xs:documentation>Master Id, first in all resources</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stringErr" minOccurs="0" maxOccurs="unbounded" type="string">
+        <xs:annotation>
+          <xs:documentation>Strings with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="stringCorr" minOccurs="0" maxOccurs="unbounded" type="string">
+        <xs:annotation>
+          <xs:documentation>Strings with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="booleanErr" minOccurs="0" maxOccurs="unbounded" type="boolean">
+        <xs:annotation>
+          <xs:documentation>Booleans with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="booleanCorr" minOccurs="0" maxOccurs="unbounded" type="boolean">
+        <xs:annotation>
+          <xs:documentation>Booleans with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="integerErr" minOccurs="0" maxOccurs="unbounded" type="integer">
+        <xs:annotation>
+          <xs:documentation>Integers with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="integerCorr" minOccurs="0" maxOccurs="unbounded" type="integer">
+        <xs:annotation>
+          <xs:documentation>Integers with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="decimalErr" minOccurs="0" maxOccurs="unbounded" type="decimal">
+        <xs:annotation>
+          <xs:documentation>Decimals with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="decimalCorr" minOccurs="0" maxOccurs="unbounded" type="decimal">
+        <xs:annotation>
+          <xs:documentation>Decimals with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="b64Err" minOccurs="0" maxOccurs="unbounded" type="base64Binary">
+        <xs:annotation>
+          <xs:documentation>Binaries with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="b64Corr" minOccurs="0" maxOccurs="unbounded" type="base64Binary">
+        <xs:annotation>
+          <xs:documentation>Binaries with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instantErr" minOccurs="0" maxOccurs="unbounded" type="instant">
+        <xs:annotation>
+          <xs:documentation>Instants with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="instantCorr" minOccurs="0" maxOccurs="unbounded" type="instant">
+        <xs:annotation>
+          <xs:documentation>Instants with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uriErr" minOccurs="0" maxOccurs="unbounded" type="uri">
+        <xs:annotation>
+          <xs:documentation>Uri's with invalid content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="uriCorr" minOccurs="0" maxOccurs="unbounded" type="uri">
+        <xs:annotation>
+          <xs:documentation>Uri's with correct content</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="extension" type="Extension" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>See Extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="text" type="Narrative" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Text summary of [template] for human interpretation</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

@@ -20,7 +20,7 @@ todo:
 <h1>RESTful HTTP Details</h1>
 
 <p>
-In addition to the set of base resources, FHIR also provides a RESTful implementation using <a href="http://w3.org">HTTP</a> - 
+In addition to the set of base resources, FHIR also provides a RESTful implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a> - 
 an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a>. 
 Each resource type has the same set of interactions defined that can be used to manage the resources 
 in a highly granular fashion. Applications claiming conformance to this framework
@@ -338,13 +338,15 @@ The create interaction creates a new resource. The interaction is performed by a
 </pre>
 <p>
 The server returns a copy of the newly created resource (which might not be the same as that submitted) 
-with the acknowledgement, along with a Location: header which also contains the new location and id of the created resource:
+with the acknowledgement, along with a Location: header which also contains the new location and id of 
+the created resource:
 </p>
 <pre>
- Content-Location: [service-url]/[resourcetype]/{new-id} version aware.... (?format=mimeType)
+ Location: [service-url]/[resourcetype]/{new-id} version aware.... 
 </pre>
 <p>
-  If the client wishes to specify the id of the submitted resource, then it should use the update operation instead.
+  The resource id element SHALL not be present. If the client wishes to specify the id of the submitted 
+  resource, then it should use the update operation instead.
 </p>
 
 

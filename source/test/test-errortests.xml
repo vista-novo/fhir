@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- remove this note!
+  Actual exchanged FHIR resources aren't allowed to have a xsi namespace, nor the schema location. but putting it here makes
+  editing the resource much easier, and it will get stripped out during the build process
+-->
+<Test xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\test.xsd">
+  <id>3141</id>
+  <emptyBoolean dataAbsentReason='asked' />
+  <emptyCode dataAbsentReason='asked' />
+  <stringErr>
+    <nested/>
+  </stringErr>
+  <stringErr><mixed/>mixed</stringErr>
+  <stringErr unknown="attr">hi</stringErr>
+  <stringCorr>nice</stringCorr>
+  <stringCorr id="09az">nice</stringCorr>
+  <booleanErr>FALSE</booleanErr>
+  <booleanErr>TRUE</booleanErr>
+  <booleanErr>yes</booleanErr>
+  <booleanErr>no</booleanErr>
+  <booleanCorr>false</booleanCorr>
+  <booleanCorr>true</booleanCorr>
+  <booleanCorr>0</booleanCorr>
+  <booleanCorr>1</booleanCorr>
+  <integerErr>21474836470</integerErr>
+  <integerErr>2aha3</integerErr>
+  <integerCorr>2147483647</integerCorr>
+  <integerCorr>+1</integerCorr>
+  <integerCorr>-0</integerCorr>
+  <decimalErr>3.141592653.5</decimalErr>
+  <decimalErr>3.aha.5</decimalErr>
+  <decimalErr>3.14E+2</decimalErr>
+  <decimalErr>3.14+2</decimalErr>
+  <decimalCorr>1234567890123456.1234567890123456</decimalCorr>
+  <decimalCorr>1234</decimalCorr>
+  <decimalCorr>0.5</decimalCorr>
+  <decimalCorr>.314</decimalCorr>
+  <b64Err>ThisIsNotB64Encoded!</b64Err>
+  <b64Err>c3VyZS4===</b64Err>
+  <b64Corr>cGxlYXN1cmUu</b64Corr>
+  <b64Corr>YW55IGNhcm5hbCBwbGVhc3VyZQ==</b64Corr>
+  <instantErr>2012</instantErr>
+  <instantErr>20121231</instantErr>
+  <instantErr>20121231120124</instantErr>
+  <instantErr>20121231120124+1</instantErr>
+  <instantErr>2012-12-31T12:01:24</instantErr>
+  <instantErr>2012-12-31T12:01:24+05</instantErr>
+  <instantErr>2012-12-31T12:01:24+5</instantErr>
+  <instantCorr>2012-12-31T12:01:24+05:00</instantCorr>
+  <instantCorr>2012-12-31T12:01:24Z</instantCorr>
+  <instantCorr>2012-12-31T12:01:24-01:30</instantCorr>
+  <uriErr>.org.nl</uriErr>
+  <uriErr>/what\is/this?</uriErr>
+  <uriCorr>www.hl7.org/fhir</uriCorr>
+  <uriCorr>http://www.hl7.org/fhir#somewhere</uriCorr>
+  <uriCorr>https://www.hl7.org/fhir:81</uriCorr>
+  <uriCorr>https://www.hl7.org/fhir:81?param=25</uriCorr>
+  <uriCorr>http://myUrl/%2E%2E/%2E%2E</uriCorr>
+  <uriCorr>ftp://ftp.student.vu.nl</uriCorr>
+  <uriCorr>/new/index.htm</uriCorr>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">This contains correct corner-cases</div>
+  </text>
+</Test>

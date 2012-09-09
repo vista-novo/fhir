@@ -140,12 +140,11 @@ public class SourceParser {
 		return sorted;
 	}
 	
-	public void parse(boolean isInternalRun, Calendar genDate, String version)
+	public void parse(Calendar genDate, String version)
 			throws Exception {
 		logger.log("Loading");
 
 		eCoreParseResults = DefinitionsImpl.build(genDate.getTime(), version);
-		eCoreParseResults.setInternal(isInternalRun);
 
 		loadGlobalConceptDomains();
 		eCoreParseResults.getBindings().addAll(
@@ -185,11 +184,6 @@ public class SourceParser {
 		
 		for (String n : ini.getPropertyNames("resources"))
 			loadResource(n, definitions.getResources(), false);
-
-		if (isInternalRun) {
-			for (String n : ini.getPropertyNames("sandbox"))
-				loadResource(n, definitions.getResources(), true);			
-		}
 		
 		eCoreParseResults.getTypes().addAll(
 				sortTypes(CompositeTypeConverter.buildResourcesFromFhirModel(definitions

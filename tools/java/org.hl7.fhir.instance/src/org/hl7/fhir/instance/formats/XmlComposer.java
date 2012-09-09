@@ -29,12 +29,13 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Wed, Jul 18, 2012 21:38+1000 for FHIR v0.05
+// Generated on Mon, Sep 10, 2012 01:20+1000 for FHIR v0.05
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.instance.model.Boolean;
 import java.net.*;
+import java.util.List;
 
 public class XmlComposer extends XmlComposerBase {
 
@@ -1088,6 +1089,46 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composeTest(String name, Test element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString("id", element.getId());
+      for (String e : element.getStringErr()) 
+        composeString("stringErr", e);
+      for (String e : element.getStringCorr()) 
+        composeString("stringCorr", e);
+      for (java.lang.Boolean e : element.getBooleanErr()) 
+        composeBool("booleanErr", e);
+      for (java.lang.Boolean e : element.getBooleanCorr()) 
+        composeBool("booleanCorr", e);
+      for (int e : element.getIntegerErr()) 
+        composeInt("integerErr", e);
+      for (int e : element.getIntegerCorr()) 
+        composeInt("integerCorr", e);
+      for (java.math.BigDecimal e : element.getDecimalErr()) 
+        composeBigDecimal("decimalErr", e);
+      for (java.math.BigDecimal e : element.getDecimalCorr()) 
+        composeBigDecimal("decimalCorr", e);
+      for (byte[] e : element.getB64Err()) 
+        composeBytes("b64Err", e);
+      for (byte[] e : element.getB64Corr()) 
+        composeBytes("b64Corr", e);
+      for (java.util.Calendar e : element.getInstantErr()) 
+        composeDate("instantErr", e);
+      for (java.util.Calendar e : element.getInstantCorr()) 
+        composeDate("instantCorr", e);
+      for (URI e : element.getUriErr()) 
+        composeURI("uriErr", e);
+      for (URI e : element.getUriCorr()) 
+        composeURI("uriCorr", e);
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composeMessageHeader(String name, MessageHeader element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
@@ -1387,6 +1428,8 @@ public class XmlComposer extends XmlComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
+    else if (resource instanceof Test)
+      composeTest("Test", (Test)resource);
     else if (resource instanceof MessageHeader)
       composeMessageHeader("MessageHeader", (MessageHeader)resource);
     else if (resource instanceof Patient)
