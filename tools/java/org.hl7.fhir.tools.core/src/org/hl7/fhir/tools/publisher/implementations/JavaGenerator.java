@@ -52,6 +52,7 @@ import org.hl7.fhir.utilities.ZipGenerator;
 
 public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
+  private String rootDir;
   private String javaDir;
   private String javaParserDir;
   private Definitions definitions;
@@ -162,11 +163,12 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
 
   public boolean c(String name) {
-    int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src\\org\\hl7\\fhir\\instance\\model\\Type.java");
+    int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, rootDir+"implementations\\java\\org.hl7.fhir.instance\\src\\org\\hl7\\fhir\\instance\\model\\Type.java");
     return r == 0;
   }
   
-  public boolean compile(List<String> errors) throws Exception {
+  public boolean compile(String rootDir, List<String> errors) throws Exception {
+    this.rootDir = rootDir;
     boolean ok = true;
     for (String n : definitions.getResources().keySet()) 
       ok = ok && c(javaDir+definitions.getResourceByName(n).getName()+".java");

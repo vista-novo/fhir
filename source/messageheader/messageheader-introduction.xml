@@ -40,7 +40,7 @@ specific addresses is outside the scope of this specification.
 </p>
 <p>
 In principle, source applications are not required to wait for a response to a transaction before 
-issuing a new transaction. However in many case, the messages in a given stream are dependent
+issuing a new transaction. However in many cases, the messages in a given stream are dependent
 on each other, and must be sent and processed in order. In addition, some transfer methods 
 may require sequential delivery of messages.
 </p>
@@ -67,7 +67,7 @@ a reasonable period in time). If it receives a duplicate message id that
 it has already responded to, it should assume that the original response 
 was lost (failed to return to the request issuer), and resend the original 
 response in a new bundle. If the source application gets no response to its request from 
-the destination application, the source application should resend the 
+the destination application within a configurable timeout period, the source application should resend the 
 same bundle with the same atom feed.id. 
 </p>
 

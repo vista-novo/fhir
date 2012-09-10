@@ -36,6 +36,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.text.html.HTML;
+
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
@@ -870,8 +872,10 @@ public class PageProcessor implements Logger  {
     String cnt = TextFile.fileToString(filename);
     cnt = processPageIncludes(filename, cnt);
     if (cnt.startsWith("<div")) {
-      if (!cnt.startsWith(HTML_PREFIX) || !cnt.endsWith(HTML_SUFFIX))
-        throw new Exception("unable to process xhtml content "+name);
+      if (!cnt.startsWith(HTML_PREFIX))
+        throw new Exception("unable to process start xhtml content "+name+" : "+cnt.substring(0, HTML_PREFIX.length()));
+      else if (!cnt.endsWith(HTML_SUFFIX))
+        throw new Exception("unable to process end xhtml content "+name+" : "+cnt.substring(cnt.length()-HTML_SUFFIX.length()));
       else {
         String res = cnt.substring(HTML_PREFIX.length(), cnt.length()-(HTML_SUFFIX.length()));
         return res;

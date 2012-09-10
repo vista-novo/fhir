@@ -291,7 +291,7 @@ public class Publisher {
     {
       if (gen.doesCompile()) {
         log("Compile " + gen.getName() + " Reference Implementation");
-        if (!gen.compile(new ArrayList<String>())) 
+        if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>())) 
           log("Compile " + gen.getName() + " failed");
       }
     }

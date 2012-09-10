@@ -29,7 +29,7 @@ be resubmitted (and doing so should not result in a duplicate message response).
 fatal problem with the message or a problem with the receiving application.
 </p>
 <p>
-The mail box can also be used to accept documents. In this case, the document is "accepted" (the server 
+The mailbox can also be used to accept documents. In this case, the document is "accepted" (the server 
 takes responsibility for custody of the received document), and an HTTP status of 204 No Content is returned, 
 or an HTTP error is returned. The server is under no obligation to do anything with the document except as 
 specific trading partner agreements dictate.
@@ -45,7 +45,7 @@ The following rules apply to the mailbox:
  <li>The mailbox may be authenticated using standard HTTP authentication methods, including OAuth</li>
 </ul>
 <p>
-This simple mailbox profile can be used by any http end point that accepts FHIR messages or documents, not just 
+This simple mailbox profile can be used by any HTTP end point that accepts FHIR messages or documents, not just 
 FHIR RESTful servers.
 </p>
 

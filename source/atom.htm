@@ -126,27 +126,27 @@ element contains a reference to the location of the resource:
 <pre class="xml">
   &lt;institution&gt;
     &lt;type&gt;Organization&lt;/type&gt;
-    &lt;id&gt;http://acme.com/fhir/patient/@23&lt;/id&gt;
+    &lt;id&gt;http://acme.com/fhir/organization/@23&lt;/id&gt;
   &lt;/institution&gt;
 </pre>
 </div>
 <p>
 A reader trying to find this institution should always look through the entries in 
 the atom feed prior to looking anywhere else for the institution. If that 
-patient is in the feed, it would look like this:
+organization is in the feed, it would look like this:
 </p>
 <div class="example">
 <pre class="xml">
    .. feed ..
   &lt;entry>
     .. 
-    &lt;link rel="self" href="http://acme.com/fhir/patient/@23"/&gt;
+    &lt;link rel="self" href="http://acme.com/fhir/organization/@23"/&gt;
     &lt;id>23&lt;id>
     .. 
-    &lt;category term="Patient" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    &lt;category term="Organization" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
 
     &lt;content type="text/xml">
-      &lt;Patient xmlns="http://hl7.org/fhir">
+      &lt;Organization xmlns="http://hl7.org/fhir">
          &lt;id&gt;23&lt;/id&gt;
          &lt;!-- other Content for the resource --&gt;
       &lt;/Patient>

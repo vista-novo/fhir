@@ -120,7 +120,7 @@ to specify why the normally expected content of the data element is missing.
 Notes: 
 </p>
 <ul>
-<li>Using "masked" may be a breach of security or confidentiality. However, there are times when it's use
+<li>Using "masked" may be a breach of security or confidentiality. However, there are times when its use
    is required to support alternate workflows for gaining access to denied information.</li>
 <li>If the <i>dataAbsentReason</i> attribute is present, the element may still have additional content from its normally
   defined content. Usually this is where the contained elements define what data is missing 
@@ -151,6 +151,7 @@ populate the narrative with text equivalent to "No human readable text provided 
 Implementers should note that small, closed traing partner environments are very likely 
 to open up during the lifetime of the resources they define.
 </p>
+<!-- todo
 <p>
 Each narrative has a flag that specifies the relationship between the narrative and the 
 structured data.  This flag may have one of the following codes:
@@ -160,6 +161,7 @@ structured data.  This flag may have one of the following codes:
  <tr><td><font>extensions</font></td><td>The contents of the narrative are entirely generated from the structured data in the resource and some of the narrative is generated from extensions</td></tr>
  <tr><td><font>additional</font></td><td>The contents of the narrative contain additional information not found in the structured data</td></tr>
 </table> 
+-->
 <p>
 In addition to this general flag that specifies the status of the narrative, there is an optional mapping between the 
 narrative and the structured data. Each mapping has narrative id and structured data id which <a href="#idref">provide internal references</a> 
@@ -476,14 +478,14 @@ able to perform correctly. The reference platforms will provide XML &lt;--&gt; J
 <h3>JSON representation of primitive types</h3>
 <p>
 FHIR elements with primitive values are represented as JSON object members of the same name, with their value encoded
-as a string. Native JSON types other than "string" are never used to guarantee equivalence of the serialized representation
+as a string. Native JSON types other than "string" are never used, to guarantee equivalence of the serialized representation
 between XML and JSON.</p>
 <p>
 Primitive elements used inside the FHIR datatypes cannot have an 'id' or 'dataAbsentReason' attribute, so 
 they are rendered in JSON as a property and value:
 </p>
 <pre class="xml">
- &lt;<b>date</b>&gt;1972-11-30&lt;/<b>date</b>&gt;
+ &lt;<b>date</b>"1972-11-30"/<b>date</b>&gt;
 </pre>
 <p>is represented in JSON as</p>
 <pre class="json">

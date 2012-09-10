@@ -72,7 +72,7 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
     return false;
   }
 
-  public boolean compile(List<String> errors) {
+  public boolean compile(String rootDir, List<String> errors) {
     return false;
   }
 
