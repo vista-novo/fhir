@@ -124,6 +124,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNotes() {
 		return notes;
 	}
@@ -133,6 +134,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNotes(String newNotes) {
 		String oldNotes = notes;
 		notes = newNotes;
@@ -145,6 +147,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getRequestResources() {
 		if (requestResources == null) {
 			requestResources = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.EVENT_USAGE__REQUEST_RESOURCES);
@@ -157,6 +160,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getRequestAggregations() {
 		if (requestAggregations == null) {
 			requestAggregations = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.EVENT_USAGE__REQUEST_AGGREGATIONS);
@@ -169,6 +173,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getResponseResources() {
 		if (responseResources == null) {
 			responseResources = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.EVENT_USAGE__RESPONSE_RESOURCES);
@@ -181,6 +186,7 @@ public class EventUsageImpl extends EObjectImpl implements EventUsage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getResponseAggregations() {
 		if (responseAggregations == null) {
 			responseAggregations = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.EVENT_USAGE__RESPONSE_AGGREGATIONS);

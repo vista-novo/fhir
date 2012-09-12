@@ -91,6 +91,7 @@ public class MetaDataItemImpl extends EObjectImpl implements MetaDataItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -100,6 +101,7 @@ public class MetaDataItemImpl extends EObjectImpl implements MetaDataItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -112,6 +114,7 @@ public class MetaDataItemImpl extends EObjectImpl implements MetaDataItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getValue() {
 		if (value == null) {
 			value = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.META_DATA_ITEM__VALUE);

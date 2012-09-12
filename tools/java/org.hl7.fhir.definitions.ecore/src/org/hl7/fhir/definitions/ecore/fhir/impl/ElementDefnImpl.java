@@ -20,19 +20,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
-import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.Binding;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
-import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.Mapping;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
@@ -305,6 +300,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMaxCardinality() {
 		return maxCardinality;
 	}
@@ -314,6 +310,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxCardinality(int newMaxCardinality) {
 		int oldMaxCardinality = maxCardinality;
 		maxCardinality = newMaxCardinality;
@@ -328,6 +325,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMaxCardinality() {
 		int oldMaxCardinality = maxCardinality;
 		boolean oldMaxCardinalityESet = maxCardinalityESet;
@@ -342,6 +340,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMaxCardinality() {
 		return maxCardinalityESet;
 	}
@@ -351,6 +350,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getMinCardinality() {
 		return minCardinality;
 	}
@@ -360,6 +360,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinCardinality(int newMinCardinality) {
 		int oldMinCardinality = minCardinality;
 		minCardinality = newMinCardinality;
@@ -374,6 +375,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetMinCardinality() {
 		int oldMinCardinality = minCardinality;
 		boolean oldMinCardinalityESet = minCardinalityESet;
@@ -388,6 +390,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetMinCardinality() {
 		return minCardinalityESet;
 	}
@@ -397,6 +400,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isAllowDAR() {
 		return allowDAR;
 	}
@@ -406,6 +410,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAllowDAR(boolean newAllowDAR) {
 		boolean oldAllowDAR = allowDAR;
 		allowDAR = newAllowDAR;
@@ -418,6 +423,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isMustUnderstand() {
 		return mustUnderstand;
 	}
@@ -427,6 +433,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMustUnderstand(boolean newMustUnderstand) {
 		boolean oldMustUnderstand = mustUnderstand;
 		mustUnderstand = newMustUnderstand;
@@ -439,6 +446,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InvariantRef getInvariant() {
 		return invariant;
 	}
@@ -463,6 +471,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInvariant(InvariantRef newInvariant) {
 		if (newInvariant != invariant) {
 			NotificationChain msgs = null;
@@ -487,6 +496,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 		return (CompositeTypeDefn)eContainer();
 	}
 	
+	@Override
 	public CompositeTypeDefn getParentType() {
 		CompositeTypeDefn parent = getParentTypeGen();
 		
@@ -513,6 +523,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentType(CompositeTypeDefn newParentType) {
 		if (newParentType != eInternalContainer() || (eContainerFeatureID() != FhirPackage.ELEMENT_DEFN__PARENT_TYPE && newParentType != null)) {
 			if (EcoreUtil.isAncestor(this, newParentType))
@@ -534,6 +545,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ElementDefn getParentElement() {
 		if (parentElement != null && parentElement.eIsProxy()) {
 			InternalEObject oldParentElement = (InternalEObject)parentElement;
@@ -560,6 +572,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentElement(ElementDefn newParentElement) {
 		ElementDefn oldParentElement = parentElement;
 		parentElement = newParentElement;
@@ -593,6 +606,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String getElementPath() {
 		if( getParentElement() != null )
 			return getParentElement().getElementPath() + "." + this.getName();
@@ -610,6 +624,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isRepeating() {
 		return getMaxCardinality() == -1 || getMaxCardinality() > 1;
 	}
@@ -619,6 +634,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isPolymorph() {
 		return getTypes() != null && getTypes().size() > 1;
 	}
@@ -645,6 +661,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isMustSupport() {
 		return mustSupport;
 	}
@@ -654,6 +671,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMustSupport(boolean newMustSupport) {
 		boolean oldMustSupport = mustSupport;
 		mustSupport = newMustSupport;
@@ -666,6 +684,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TypeRef> getTypes() {
 		if (types == null) {
 			types = new EObjectContainmentEList<TypeRef>(TypeRef.class, this, FhirPackage.ELEMENT_DEFN__TYPES);
@@ -678,6 +697,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Annotations getAnnotation() {
 		return annotation;
 	}
@@ -702,6 +722,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAnnotation(Annotations newAnnotation) {
 		if (newAnnotation != annotation) {
 			NotificationChain msgs = null;
@@ -721,6 +742,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -730,6 +752,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -742,6 +765,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Mapping> getMappings() {
 		if (mappings == null) {
 			mappings = new EObjectContainmentEList<Mapping>(Mapping.class, this, FhirPackage.ELEMENT_DEFN__MAPPINGS);
@@ -754,6 +778,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getExampleValue() {
 		return exampleValue;
 	}
@@ -763,6 +788,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExampleValue(String newExampleValue) {
 		String oldExampleValue = exampleValue;
 		exampleValue = newExampleValue;
@@ -775,6 +801,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ElementDefn getContent() {
 		if (content != null && content.eIsProxy()) {
 			InternalEObject oldContent = (InternalEObject)content;
@@ -801,6 +828,7 @@ public class ElementDefnImpl extends EObjectImpl implements ElementDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContent(ElementDefn newContent) {
 		ElementDefn oldContent = content;
 		content = newContent;

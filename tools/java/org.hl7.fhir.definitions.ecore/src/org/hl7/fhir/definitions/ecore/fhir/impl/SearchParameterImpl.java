@@ -126,6 +126,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -135,6 +136,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -147,6 +149,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -156,6 +159,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -168,6 +172,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SearchType getType() {
 		return type;
 	}
@@ -177,6 +182,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(SearchType newType) {
 		SearchType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
@@ -191,6 +197,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetType() {
 		SearchType oldType = type;
 		boolean oldTypeESet = typeESet;
@@ -205,6 +212,7 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetType() {
 		return typeESet;
 	}

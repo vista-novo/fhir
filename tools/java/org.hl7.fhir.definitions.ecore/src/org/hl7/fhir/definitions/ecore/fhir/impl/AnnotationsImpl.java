@@ -221,6 +221,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getShortDefinition() {
 		return shortDefinition;
 	}
@@ -230,6 +231,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setShortDefinition(String newShortDefinition) {
 		String oldShortDefinition = shortDefinition;
 		shortDefinition = newShortDefinition;
@@ -242,6 +244,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDefinition() {
 		return definition;
 	}
@@ -251,6 +254,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(String newDefinition) {
 		String oldDefinition = definition;
 		definition = newDefinition;
@@ -263,6 +267,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComment() {
 		return comment;
 	}
@@ -272,6 +277,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComment(String newComment) {
 		String oldComment = comment;
 		comment = newComment;
@@ -284,6 +290,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRequirements() {
 		return requirements;
 	}
@@ -293,6 +300,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRequirements(String newRequirements) {
 		String oldRequirements = requirements;
 		requirements = newRequirements;
@@ -305,6 +313,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRimMapping() {
 		return rimMapping;
 	}
@@ -314,6 +323,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRimMapping(String newRimMapping) {
 		String oldRimMapping = rimMapping;
 		rimMapping = newRimMapping;
@@ -326,6 +336,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getV2Mapping() {
 		return v2Mapping;
 	}
@@ -335,6 +346,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setV2Mapping(String newV2Mapping) {
 		String oldV2Mapping = v2Mapping;
 		v2Mapping = newV2Mapping;
@@ -347,6 +359,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTodo() {
 		return todo;
 	}
@@ -356,6 +369,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTodo(String newTodo) {
 		String oldTodo = todo;
 		todo = newTodo;
@@ -368,6 +382,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCommitteeNotes() {
 		return committeeNotes;
 	}
@@ -377,6 +392,7 @@ public class AnnotationsImpl extends EObjectImpl implements Annotations {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCommitteeNotes(String newCommitteeNotes) {
 		String oldCommitteeNotes = committeeNotes;
 		committeeNotes = newCommitteeNotes;

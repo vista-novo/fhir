@@ -128,6 +128,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCode() {
 		return code;
 	}
@@ -137,6 +138,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCode(String newCode) {
 		String oldCode = code;
 		code = newCode;
@@ -149,6 +151,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDefinition() {
 		return definition;
 	}
@@ -158,6 +161,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(String newDefinition) {
 		String oldDefinition = definition;
 		definition = newDefinition;
@@ -170,6 +174,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getFollowUps() {
 		if (followUps == null) {
 			followUps = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.EVENT_DEFN__FOLLOW_UPS);
@@ -182,6 +187,7 @@ public class EventDefnImpl extends EObjectImpl implements EventDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventUsage> getUsages() {
 		if (usages == null) {
 			usages = new EObjectContainmentEList<EventUsage>(EventUsage.class, this, FhirPackage.EVENT_DEFN__USAGES);

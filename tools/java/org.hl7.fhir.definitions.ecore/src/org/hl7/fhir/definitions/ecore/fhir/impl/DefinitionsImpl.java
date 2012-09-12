@@ -28,7 +28,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.Binding;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
@@ -183,6 +182,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BindingDefn> getBindings() {
 		if (bindings == null) {
 			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.DEFINITIONS__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
@@ -195,6 +195,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getDate() {
 		return date;
 	}
@@ -204,6 +205,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDate(Date newDate) {
 		Date oldDate = date;
 		date = newDate;
@@ -216,6 +218,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -225,6 +228,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;
@@ -237,6 +241,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TypeDefn> getTypes() {
 		if (types == null) {
 			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
@@ -249,6 +254,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventDefn> getEvents() {
 		if (events == null) {
 			events = new EObjectContainmentEList<EventDefn>(EventDefn.class, this, FhirPackage.DEFINITIONS__EVENTS);
@@ -261,6 +267,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInternal() {
 		return internal;
 	}
@@ -270,6 +277,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInternal(boolean newInternal) {
 		boolean oldInternal = internal;
 		internal = newInternal;
@@ -282,6 +290,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<PrimitiveTypeDefn> getPrimitives() {
 		EList<PrimitiveTypeDefn> result = new BasicEList<PrimitiveTypeDefn>();
 		
@@ -299,6 +308,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public TypeDefn findType(String fullName) {
 		String[] nameParts = fullName.split("\\.");
 		
@@ -325,6 +335,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public BindingDefn findBinding(String fullName) {
 		String[] nameParts = fullName.split("\\.");
 	
@@ -352,6 +363,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ProfileDefn> getProfiles() {
 		if (profiles == null) {
 			profiles = new EObjectContainmentEList<ProfileDefn>(ProfileDefn.class, this, FhirPackage.DEFINITIONS__PROFILES);
@@ -365,6 +377,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * inherited from parent scopes.
 	 * <!-- end-user-doc -->
 	 */
+	@Override
 	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
 		return ns().getLocalCompositeTypes();
 	}
@@ -374,6 +387,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<ConstrainedTypeDefn> getLocalConstrainedTypes() {
 		return ns().getLocalConstrainedTypes();
 	}
@@ -383,6 +397,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public NameScope getContainingScope() {
 		return null;
 	}
@@ -392,6 +407,7 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<ResourceDefn> getLocalResources() {
 		return ns().getLocalResources();
 	}

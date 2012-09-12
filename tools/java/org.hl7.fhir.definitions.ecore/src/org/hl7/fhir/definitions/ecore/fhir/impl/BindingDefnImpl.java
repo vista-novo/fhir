@@ -238,6 +238,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -247,6 +248,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(int newId) {
 		int oldId = id;
 		id = newId;
@@ -259,6 +261,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -268,6 +271,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -280,6 +284,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFullName() {
 		return fullName;
 	}
@@ -289,6 +294,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFullName(String newFullName) {
 		String oldFullName = fullName;
 		fullName = newFullName;
@@ -301,6 +307,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BindingType getBinding() {
 		return binding;
 	}
@@ -310,6 +317,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBinding(BindingType newBinding) {
 		BindingType oldBinding = binding;
 		binding = newBinding == null ? BINDING_EDEFAULT : newBinding;
@@ -322,6 +330,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BindingStrength getStrength() {
 		return strength;
 	}
@@ -331,6 +340,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStrength(BindingStrength newStrength) {
 		BindingStrength oldStrength = strength;
 		strength = newStrength == null ? STRENGTH_EDEFAULT : newStrength;
@@ -343,6 +353,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getArtifactName() {
 		return artifactName;
 	}
@@ -352,6 +363,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setArtifactName(String newArtifactName) {
 		String oldArtifactName = artifactName;
 		artifactName = newArtifactName;
@@ -364,6 +376,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSource() {
 		return source;
 	}
@@ -373,6 +386,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSource(String newSource) {
 		String oldSource = source;
 		source = newSource;
@@ -385,6 +399,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DefinedCode> getCodes() {
 		if (codes == null) {
 			codes = new EObjectContainmentEList<DefinedCode>(DefinedCode.class, this, FhirPackage.BINDING_DEFN__CODES);
@@ -397,6 +412,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Annotations getAnnotations() {
 		return annotations;
 	}
@@ -421,6 +437,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAnnotations(Annotations newAnnotations) {
 		if (newAnnotations != annotations) {
 			NotificationChain msgs = null;
@@ -440,6 +457,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NameScope getParent() {
 		if (eContainerFeatureID() != FhirPackage.BINDING_DEFN__PARENT) return null;
 		return (NameScope)eContainer();
@@ -460,6 +478,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParent(NameScope newParent) {
 		if (newParent != eInternalContainer() || (eContainerFeatureID() != FhirPackage.BINDING_DEFN__PARENT && newParent != null)) {
 			if (EcoreUtil.isAncestor(this, newParent))
@@ -481,6 +500,7 @@ public class BindingDefnImpl extends EObjectImpl implements BindingDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isGloballyDefined() {
 		return getParent().getContainingScope() == null;
 	}

@@ -8,8 +8,6 @@ package org.hl7.fhir.definitions.ecore.fhir;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Resource Defn</b></em>'.

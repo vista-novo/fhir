@@ -17,27 +17,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.hl7.fhir.definitions.ecore.fhir.Annotations;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
-import org.hl7.fhir.definitions.ecore.fhir.Invariant;
-import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
-import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -140,6 +126,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Example> getExample() {
 		if (example == null) {
 			example = new EObjectContainmentEList<Example>(Example.class, this, FhirPackage.RESOURCE_DEFN__EXAMPLE);
@@ -152,6 +139,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSandbox() {
 		return sandbox;
 	}
@@ -161,6 +149,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSandbox(boolean newSandbox) {
 		boolean oldSandbox = sandbox;
 		sandbox = newSandbox;
@@ -173,6 +162,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SearchParameter> getSearches() {
 		if (searches == null) {
 			searches = new EObjectContainmentEList<SearchParameter>(SearchParameter.class, this, FhirPackage.RESOURCE_DEFN__SEARCHES);
@@ -185,6 +175,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFuture() {
 		return future;
 	}
@@ -194,6 +185,7 @@ public class ResourceDefnImpl extends CompositeTypeDefnImpl implements ResourceD
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFuture(boolean newFuture) {
 		boolean oldFuture = future;
 		future = newFuture;

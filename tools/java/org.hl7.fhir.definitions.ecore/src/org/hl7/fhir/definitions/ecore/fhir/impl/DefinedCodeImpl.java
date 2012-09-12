@@ -8,14 +8,11 @@ package org.hl7.fhir.definitions.ecore.fhir.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 
@@ -98,6 +95,7 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCode() {
 		return code;
 	}
@@ -107,6 +105,7 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCode(String newCode) {
 		String oldCode = code;
 		code = newCode;
@@ -119,6 +118,7 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDefinition() {
 		return definition;
 	}
@@ -128,6 +128,7 @@ public class DefinedCodeImpl extends EObjectImpl implements DefinedCode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefinition(String newDefinition) {
 		String oldDefinition = definition;
 		definition = newDefinition;

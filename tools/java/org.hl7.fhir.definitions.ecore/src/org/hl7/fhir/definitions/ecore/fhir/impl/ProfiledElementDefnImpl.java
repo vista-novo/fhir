@@ -157,6 +157,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInherited() {
 		return inherited;
 	}
@@ -166,6 +167,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInherited(boolean newInherited) {
 		boolean oldInherited = inherited;
 		inherited = newInherited;
@@ -178,6 +180,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAggregation() {
 		return aggregation;
 	}
@@ -187,6 +190,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAggregation(String newAggregation) {
 		String oldAggregation = aggregation;
 		aggregation = newAggregation;
@@ -199,6 +203,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFixedValue() {
 		return fixedValue;
 	}
@@ -208,6 +213,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFixedValue(String newFixedValue) {
 		String oldFixedValue = fixedValue;
 		fixedValue = newFixedValue;
@@ -220,6 +226,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTargetUri() {
 		return targetUri;
 	}
@@ -229,6 +236,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTargetUri(String newTargetUri) {
 		String oldTargetUri = targetUri;
 		targetUri = newTargetUri;
@@ -241,6 +249,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getProfileName() {
 		return profileName;
 	}
@@ -250,6 +259,7 @@ public class ProfiledElementDefnImpl extends ElementDefnImpl implements Profiled
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProfileName(String newProfileName) {
 		String oldProfileName = profileName;
 		profileName = newProfileName;

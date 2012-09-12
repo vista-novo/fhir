@@ -129,6 +129,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Definitions createDefinitions() {
 		DefinitionsImpl definitions = new DefinitionsImpl();
 		return definitions;
@@ -139,6 +140,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ElementDefn createElementDefn() {
 		ElementDefnImpl elementDefn = new ElementDefnImpl();
 		return elementDefn;
@@ -149,6 +151,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Invariant createInvariant() {
 		InvariantImpl invariant = new InvariantImpl();
 		return invariant;
@@ -159,6 +162,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeRef createTypeRef() {
 		TypeRefImpl typeRef = new TypeRefImpl();
 		return typeRef;
@@ -169,6 +173,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BindingDefn createBindingDefn() {
 		BindingDefnImpl bindingDefn = new BindingDefnImpl();
 		return bindingDefn;
@@ -179,6 +184,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mapping createMapping() {
 		MappingImpl mapping = new MappingImpl();
 		return mapping;
@@ -189,6 +195,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceDefn createResourceDefn() {
 		ResourceDefnImpl resourceDefn = new ResourceDefnImpl();
 		return resourceDefn;
@@ -199,6 +206,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Example createExample() {
 		ExampleImpl example = new ExampleImpl();
 		return example;
@@ -209,6 +217,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DefinedCode createDefinedCode() {
 		DefinedCodeImpl definedCode = new DefinedCodeImpl();
 		return definedCode;
@@ -219,6 +228,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PrimitiveTypeDefn createPrimitiveTypeDefn() {
 		PrimitiveTypeDefnImpl primitiveTypeDefn = new PrimitiveTypeDefnImpl();
 		return primitiveTypeDefn;
@@ -229,6 +239,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConstrainedTypeDefn createConstrainedTypeDefn() {
 		ConstrainedTypeDefnImpl constrainedTypeDefn = new ConstrainedTypeDefnImpl();
 		return constrainedTypeDefn;
@@ -239,6 +250,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventDefn createEventDefn() {
 		EventDefnImpl eventDefn = new EventDefnImpl();
 		return eventDefn;
@@ -249,6 +261,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventUsage createEventUsage() {
 		EventUsageImpl eventUsage = new EventUsageImpl();
 		return eventUsage;
@@ -259,6 +272,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProfileDefn createProfileDefn() {
 		ProfileDefnImpl profileDefn = new ProfileDefnImpl();
 		return profileDefn;
@@ -269,6 +283,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MetaDataItem createMetaDataItem() {
 		MetaDataItemImpl metaDataItem = new MetaDataItemImpl();
 		return metaDataItem;
@@ -279,6 +294,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SearchParameter createSearchParameter() {
 		SearchParameterImpl searchParameter = new SearchParameterImpl();
 		return searchParameter;
@@ -289,6 +305,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CompositeTypeDefn createCompositeTypeDefn() {
 		CompositeTypeDefnImpl compositeTypeDefn = new CompositeTypeDefnImpl();
 		return compositeTypeDefn;
@@ -299,6 +316,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Annotations createAnnotations() {
 		AnnotationsImpl annotations = new AnnotationsImpl();
 		return annotations;
@@ -309,6 +327,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProfiledElementDefn createProfiledElementDefn() {
 		ProfiledElementDefnImpl profiledElementDefn = new ProfiledElementDefnImpl();
 		return profiledElementDefn;
@@ -319,6 +338,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InvariantRef createInvariantRef() {
 		InvariantRefImpl invariantRef = new InvariantRefImpl();
 		return invariantRef;
@@ -389,6 +409,7 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FhirPackage getFhirPackage() {
 		return (FhirPackage)getEPackage();
 	}

@@ -94,6 +94,7 @@ public class PrimitiveTypeDefnImpl extends TypeDefnImpl implements PrimitiveType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPattern() {
 		return pattern;
 	}
@@ -103,6 +104,7 @@ public class PrimitiveTypeDefnImpl extends TypeDefnImpl implements PrimitiveType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPattern(String newPattern) {
 		String oldPattern = pattern;
 		pattern = newPattern;
@@ -115,6 +117,7 @@ public class PrimitiveTypeDefnImpl extends TypeDefnImpl implements PrimitiveType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getXsdtype() {
 		return xsdtype;
 	}
@@ -124,6 +127,7 @@ public class PrimitiveTypeDefnImpl extends TypeDefnImpl implements PrimitiveType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setXsdtype(String newXsdtype) {
 		String oldXsdtype = xsdtype;
 		xsdtype = newXsdtype;

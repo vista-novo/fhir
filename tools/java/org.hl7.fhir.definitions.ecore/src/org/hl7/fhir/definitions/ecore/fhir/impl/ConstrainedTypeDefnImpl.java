@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
@@ -86,6 +85,7 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeRef getBaseType() {
 		return baseType;
 	}
@@ -110,6 +110,7 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBaseType(TypeRef newBaseType) {
 		if (newBaseType != baseType) {
 			NotificationChain msgs = null;
@@ -129,6 +130,7 @@ public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements Constrained
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Invariant> getDetails() {
 		if (details == null) {
 			details = new EObjectContainmentEList<Invariant>(Invariant.class, this, FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS);

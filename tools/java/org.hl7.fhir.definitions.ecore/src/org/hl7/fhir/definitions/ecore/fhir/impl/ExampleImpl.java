@@ -137,6 +137,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -146,6 +147,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -158,6 +160,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -167,6 +170,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -179,6 +183,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPath() {
 		return path;
 	}
@@ -188,6 +193,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPath(String newPath) {
 		String oldPath = path;
 		path = newPath;
@@ -200,6 +206,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInBook() {
 		return inBook;
 	}
@@ -209,6 +216,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInBook(boolean newInBook) {
 		boolean oldInBook = inBook;
 		inBook = newInBook;
@@ -327,6 +335,7 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	}
 
 	
+	@Override
 	public String getFileTitle() 
 	{
 		    String s = this.getName();

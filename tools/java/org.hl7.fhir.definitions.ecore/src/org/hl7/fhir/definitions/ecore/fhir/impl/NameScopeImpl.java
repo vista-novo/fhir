@@ -2,7 +2,6 @@ package org.hl7.fhir.definitions.ecore.fhir.impl;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;

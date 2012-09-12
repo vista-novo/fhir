@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
-import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
@@ -155,6 +154,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -164,6 +164,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -176,6 +177,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFullName() {
 		return fullName;
 	}
@@ -185,6 +187,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFullName(String newFullName) {
 		String oldFullName = fullName;
 		fullName = newFullName;
@@ -197,6 +200,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getResourceParams() {
 		if (resourceParams == null) {
 			resourceParams = new EDataTypeUniqueEList<String>(String.class, this, FhirPackage.TYPE_REF__RESOURCE_PARAMS);
@@ -209,6 +213,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBindingRef() {
 		return bindingRef;
 	}
@@ -218,6 +223,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBindingRef(String newBindingRef) {
 		String oldBindingRef = bindingRef;
 		bindingRef = newBindingRef;
@@ -230,6 +236,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFullBindingRef() {
 		return fullBindingRef;
 	}
@@ -239,6 +246,7 @@ public class TypeRefImpl extends EObjectImpl implements TypeRef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFullBindingRef(String newFullBindingRef) {
 		String oldFullBindingRef = fullBindingRef;
 		fullBindingRef = newFullBindingRef;

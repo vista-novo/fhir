@@ -11,31 +11,25 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
-import org.hl7.fhir.definitions.ecore.fhir.Example;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
-import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 
 /**
  * <!-- begin-user-doc -->
@@ -133,6 +127,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TypeDefn> getTypes() {
 		if (types == null) {
 			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
@@ -145,6 +140,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BindingDefn> getBindings() {
 		if (bindings == null) {
 			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
@@ -157,6 +153,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ElementDefn> getElements() {
 		if (elements == null) {
 			elements = new EObjectContainmentWithInverseEList<ElementDefn>(ElementDefn.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__ELEMENTS, FhirPackage.ELEMENT_DEFN__PARENT_TYPE);
@@ -169,6 +166,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Invariant> getInvariants() {
 		if (invariants == null) {
 			invariants = new EObjectContainmentEList<Invariant>(Invariant.class, this, FhirPackage.COMPOSITE_TYPE_DEFN__INVARIANTS);
@@ -181,6 +179,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isUnnamedElementGroup() {
 		return unnamedElementGroup;
 	}
@@ -190,6 +189,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnnamedElementGroup(boolean newUnnamedElementGroup) {
 		boolean oldUnnamedElementGroup = unnamedElementGroup;
 		unnamedElementGroup = newUnnamedElementGroup;
@@ -203,6 +203,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<CompositeTypeDefn> getLocalCompositeTypes() {
 		return ns().getLocalCompositeTypes();
 	}
@@ -212,6 +213,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<ConstrainedTypeDefn> getLocalConstrainedTypes() {
 		return ns().getLocalConstrainedTypes();
 	}
@@ -221,6 +223,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public NameScope getContainingScope() {
 		return this.getScope();
 	}
@@ -230,6 +233,7 @@ public class CompositeTypeDefnImpl extends TypeDefnImpl implements CompositeType
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<ResourceDefn> getLocalResources() {
 		return ns().getLocalResources();
 	}

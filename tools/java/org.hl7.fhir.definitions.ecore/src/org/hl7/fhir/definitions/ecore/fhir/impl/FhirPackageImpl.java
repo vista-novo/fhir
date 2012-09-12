@@ -17,13 +17,10 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
-import org.hl7.fhir.definitions.ecore.fhir.Binding;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
-import org.hl7.fhir.definitions.ecore.fhir.Constraint;
 import org.hl7.fhir.definitions.ecore.fhir.DefinedCode;
 import org.hl7.fhir.definitions.ecore.fhir.Definitions;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
@@ -295,6 +292,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDefinitions() {
 		return definitionsEClass;
 	}
@@ -304,6 +302,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDefinitions_Date() {
 		return (EAttribute)definitionsEClass.getEStructuralFeatures().get(0);
 	}
@@ -313,6 +312,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDefinitions_Version() {
 		return (EAttribute)definitionsEClass.getEStructuralFeatures().get(1);
 	}
@@ -322,6 +322,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDefinitions_Events() {
 		return (EReference)definitionsEClass.getEStructuralFeatures().get(3);
 	}
@@ -331,6 +332,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDefinitions_Internal() {
 		return (EAttribute)definitionsEClass.getEStructuralFeatures().get(4);
 	}
@@ -340,6 +342,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDefinitions_Profiles() {
 		return (EReference)definitionsEClass.getEStructuralFeatures().get(2);
 	}
@@ -349,6 +352,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getElementDefn() {
 		return elementDefnEClass;
 	}
@@ -358,6 +362,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_MaxCardinality() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -367,6 +372,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_MinCardinality() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -376,6 +382,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_AllowDAR() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -385,6 +392,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_MustUnderstand() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(4);
 	}
@@ -394,6 +402,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_Invariant() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(11);
 	}
@@ -403,6 +412,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_ParentType() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(12);
 	}
@@ -412,6 +422,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_ParentElement() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(13);
 	}
@@ -421,6 +432,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_MustSupport() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(5);
 	}
@@ -430,6 +442,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_Types() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(6);
 	}
@@ -439,6 +452,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_Annotation() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(10);
 	}
@@ -448,6 +462,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_Name() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -457,6 +472,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_Mappings() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(7);
 	}
@@ -466,6 +482,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getElementDefn_ExampleValue() {
 		return (EAttribute)elementDefnEClass.getEStructuralFeatures().get(8);
 	}
@@ -475,6 +492,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getElementDefn_Content() {
 		return (EReference)elementDefnEClass.getEStructuralFeatures().get(9);
 	}
@@ -484,6 +502,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInvariant() {
 		return invariantEClass;
 	}
@@ -493,6 +512,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariant_Name() {
 		return (EAttribute)invariantEClass.getEStructuralFeatures().get(0);
 	}
@@ -502,6 +522,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariant_Description() {
 		return (EAttribute)invariantEClass.getEStructuralFeatures().get(1);
 	}
@@ -511,6 +532,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariant_Human() {
 		return (EAttribute)invariantEClass.getEStructuralFeatures().get(2);
 	}
@@ -520,6 +542,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariant_Ocl() {
 		return (EAttribute)invariantEClass.getEStructuralFeatures().get(3);
 	}
@@ -529,6 +552,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariant_Xpath() {
 		return (EAttribute)invariantEClass.getEStructuralFeatures().get(4);
 	}
@@ -538,6 +562,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTypeRef() {
 		return typeRefEClass;
 	}
@@ -547,6 +572,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeRef_Name() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(0);
 	}
@@ -556,6 +582,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeRef_FullName() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(1);
 	}
@@ -565,6 +592,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeRef_ResourceParams() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(2);
 	}
@@ -574,6 +602,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeRef_BindingRef() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(3);
 	}
@@ -583,6 +612,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeRef_FullBindingRef() {
 		return (EAttribute)typeRefEClass.getEStructuralFeatures().get(4);
 	}
@@ -592,6 +622,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBindingDefn() {
 		return bindingDefnEClass;
 	}
@@ -601,6 +632,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_Id() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -610,6 +642,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_Name() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -619,6 +652,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_FullName() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -628,6 +662,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_Binding() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -637,6 +672,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_Strength() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(4);
 	}
@@ -646,6 +682,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_ArtifactName() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(5);
 	}
@@ -655,6 +692,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBindingDefn_Source() {
 		return (EAttribute)bindingDefnEClass.getEStructuralFeatures().get(6);
 	}
@@ -664,6 +702,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBindingDefn_Codes() {
 		return (EReference)bindingDefnEClass.getEStructuralFeatures().get(7);
 	}
@@ -673,6 +712,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBindingDefn_Annotations() {
 		return (EReference)bindingDefnEClass.getEStructuralFeatures().get(8);
 	}
@@ -682,6 +722,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBindingDefn_Parent() {
 		return (EReference)bindingDefnEClass.getEStructuralFeatures().get(9);
 	}
@@ -691,6 +732,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMapping() {
 		return mappingEClass;
 	}
@@ -700,6 +742,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMapping_Source() {
 		return (EAttribute)mappingEClass.getEStructuralFeatures().get(0);
 	}
@@ -709,6 +752,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMapping_Details() {
 		return (EAttribute)mappingEClass.getEStructuralFeatures().get(1);
 	}
@@ -718,6 +762,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getResourceDefn() {
 		return resourceDefnEClass;
 	}
@@ -727,6 +772,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResourceDefn_Example() {
 		return (EReference)resourceDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -736,6 +782,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceDefn_Sandbox() {
 		return (EAttribute)resourceDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -745,6 +792,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getResourceDefn_Searches() {
 		return (EReference)resourceDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -754,6 +802,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getResourceDefn_Future() {
 		return (EAttribute)resourceDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -763,6 +812,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getExample() {
 		return exampleEClass;
 	}
@@ -772,6 +822,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExample_Name() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(0);
 	}
@@ -781,6 +832,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExample_Description() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(1);
 	}
@@ -790,6 +842,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExample_Path() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(2);
 	}
@@ -799,6 +852,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getExample_InBook() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(3);
 	}
@@ -808,6 +862,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDefinedCode() {
 		return definedCodeEClass;
 	}
@@ -817,6 +872,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDefinedCode_Code() {
 		return (EAttribute)definedCodeEClass.getEStructuralFeatures().get(0);
 	}
@@ -826,6 +882,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDefinedCode_Definition() {
 		return (EAttribute)definedCodeEClass.getEStructuralFeatures().get(1);
 	}
@@ -835,6 +892,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPrimitiveTypeDefn() {
 		return primitiveTypeDefnEClass;
 	}
@@ -844,6 +902,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPrimitiveTypeDefn_Pattern() {
 		return (EAttribute)primitiveTypeDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -853,6 +912,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getPrimitiveTypeDefn_Xsdtype() {
 		return (EAttribute)primitiveTypeDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -862,6 +922,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getConstrainedTypeDefn() {
 		return constrainedTypeDefnEClass;
 	}
@@ -871,6 +932,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstrainedTypeDefn_BaseType() {
 		return (EReference)constrainedTypeDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -880,6 +942,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getConstrainedTypeDefn_Details() {
 		return (EReference)constrainedTypeDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -889,6 +952,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTypeDefn() {
 		return typeDefnEClass;
 	}
@@ -898,6 +962,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeDefn_Name() {
 		return (EAttribute)typeDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -907,6 +972,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTypeDefn_Annotations() {
 		return (EReference)typeDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -916,6 +982,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTypeDefn_Scope() {
 		return (EReference)typeDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -925,6 +992,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeDefn_FullName() {
 		return (EAttribute)typeDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -934,6 +1002,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getTypeDefn_Infrastructure() {
 		return (EAttribute)typeDefnEClass.getEStructuralFeatures().get(4);
 	}
@@ -943,6 +1012,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCompositeTypeDefn() {
 		return compositeTypeDefnEClass;
 	}
@@ -952,6 +1022,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCompositeTypeDefn_Elements() {
 		return (EReference)compositeTypeDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -961,6 +1032,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCompositeTypeDefn_Invariants() {
 		return (EReference)compositeTypeDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -970,6 +1042,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCompositeTypeDefn_UnnamedElementGroup() {
 		return (EAttribute)compositeTypeDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -979,6 +1052,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNameScope() {
 		return nameScopeEClass;
 	}
@@ -988,6 +1062,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNameScope_Bindings() {
 		return (EReference)nameScopeEClass.getEStructuralFeatures().get(1);
 	}
@@ -997,6 +1072,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getNameScope_Types() {
 		return (EReference)nameScopeEClass.getEStructuralFeatures().get(0);
 	}
@@ -1006,6 +1082,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAnnotations() {
 		return annotationsEClass;
 	}
@@ -1015,6 +1092,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_ShortDefinition() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(0);
 	}
@@ -1024,6 +1102,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_Definition() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(1);
 	}
@@ -1033,6 +1112,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_Comment() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(2);
 	}
@@ -1042,6 +1122,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_Requirements() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(3);
 	}
@@ -1051,6 +1132,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_RimMapping() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(4);
 	}
@@ -1060,6 +1142,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_V2Mapping() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(5);
 	}
@@ -1069,6 +1152,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_Todo() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(6);
 	}
@@ -1078,6 +1162,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAnnotations_CommitteeNotes() {
 		return (EAttribute)annotationsEClass.getEStructuralFeatures().get(7);
 	}
@@ -1087,6 +1172,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProfiledElementDefn() {
 		return profiledElementDefnEClass;
 	}
@@ -1096,6 +1182,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProfiledElementDefn_Inherited() {
 		return (EAttribute)profiledElementDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -1105,6 +1192,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProfiledElementDefn_Aggregation() {
 		return (EAttribute)profiledElementDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -1114,6 +1202,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProfiledElementDefn_FixedValue() {
 		return (EAttribute)profiledElementDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -1123,6 +1212,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProfiledElementDefn_TargetUri() {
 		return (EAttribute)profiledElementDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -1132,6 +1222,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getProfiledElementDefn_ProfileName() {
 		return (EAttribute)profiledElementDefnEClass.getEStructuralFeatures().get(4);
 	}
@@ -1141,6 +1232,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInvariantRef() {
 		return invariantRefEClass;
 	}
@@ -1150,6 +1242,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getInvariantRef_Name() {
 		return (EAttribute)invariantRefEClass.getEStructuralFeatures().get(0);
 	}
@@ -1159,6 +1252,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventDefn() {
 		return eventDefnEClass;
 	}
@@ -1168,6 +1262,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventDefn_Code() {
 		return (EAttribute)eventDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -1177,6 +1272,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventDefn_Definition() {
 		return (EAttribute)eventDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -1186,6 +1282,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventDefn_FollowUps() {
 		return (EAttribute)eventDefnEClass.getEStructuralFeatures().get(2);
 	}
@@ -1195,6 +1292,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEventDefn_Usages() {
 		return (EReference)eventDefnEClass.getEStructuralFeatures().get(3);
 	}
@@ -1204,6 +1302,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEventUsage() {
 		return eventUsageEClass;
 	}
@@ -1213,6 +1312,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventUsage_Notes() {
 		return (EAttribute)eventUsageEClass.getEStructuralFeatures().get(0);
 	}
@@ -1222,6 +1322,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventUsage_RequestResources() {
 		return (EAttribute)eventUsageEClass.getEStructuralFeatures().get(1);
 	}
@@ -1231,6 +1332,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventUsage_RequestAggregations() {
 		return (EAttribute)eventUsageEClass.getEStructuralFeatures().get(2);
 	}
@@ -1240,6 +1342,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventUsage_ResponseResources() {
 		return (EAttribute)eventUsageEClass.getEStructuralFeatures().get(3);
 	}
@@ -1249,6 +1352,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEventUsage_ResponseAggregations() {
 		return (EAttribute)eventUsageEClass.getEStructuralFeatures().get(4);
 	}
@@ -1258,6 +1362,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getProfileDefn() {
 		return profileDefnEClass;
 	}
@@ -1267,6 +1372,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProfileDefn_Resources() {
 		return (EReference)profileDefnEClass.getEStructuralFeatures().get(0);
 	}
@@ -1276,6 +1382,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getProfileDefn_Metadata() {
 		return (EReference)profileDefnEClass.getEStructuralFeatures().get(1);
 	}
@@ -1285,6 +1392,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getMetaDataItem() {
 		return metaDataItemEClass;
 	}
@@ -1294,6 +1402,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMetaDataItem_Name() {
 		return (EAttribute)metaDataItemEClass.getEStructuralFeatures().get(0);
 	}
@@ -1303,6 +1412,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getMetaDataItem_Value() {
 		return (EAttribute)metaDataItemEClass.getEStructuralFeatures().get(1);
 	}
@@ -1312,6 +1422,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSearchParameter() {
 		return searchParameterEClass;
 	}
@@ -1321,6 +1432,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSearchParameter_Name() {
 		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(0);
 	}
@@ -1330,6 +1442,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSearchParameter_Description() {
 		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(1);
 	}
@@ -1339,6 +1452,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getSearchParameter_Type() {
 		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(2);
 	}
@@ -1348,6 +1462,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getBindingType() {
 		return bindingTypeEEnum;
 	}
@@ -1357,6 +1472,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getBindingStrength() {
 		return bindingStrengthEEnum;
 	}
@@ -1366,6 +1482,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getSearchType() {
 		return searchTypeEEnum;
 	}
@@ -1375,6 +1492,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FhirFactory getFhirFactory() {
 		return (FhirFactory)getEFactoryInstance();
 	}

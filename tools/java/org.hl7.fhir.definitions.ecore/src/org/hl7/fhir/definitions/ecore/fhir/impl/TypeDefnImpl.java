@@ -17,10 +17,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
-import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
-import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 
 /**
@@ -135,6 +133,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -144,6 +143,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -156,6 +156,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Annotations getAnnotations() {
 		return annotations;
 	}
@@ -180,6 +181,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAnnotations(Annotations newAnnotations) {
 		if (newAnnotations != annotations) {
 			NotificationChain msgs = null;
@@ -199,6 +201,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NameScope getScope() {
 		if (eContainerFeatureID() != FhirPackage.TYPE_DEFN__SCOPE) return null;
 		return (NameScope)eContainer();
@@ -219,6 +222,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setScope(NameScope newScope) {
 		if (newScope != eInternalContainer() || (eContainerFeatureID() != FhirPackage.TYPE_DEFN__SCOPE && newScope != null)) {
 			if (EcoreUtil.isAncestor(this, newScope))
@@ -240,6 +244,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFullName() {
 		return fullName;
 	}
@@ -249,6 +254,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFullName(String newFullName) {
 		String oldFullName = fullName;
 		fullName = newFullName;
@@ -261,6 +267,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInfrastructure() {
 		return infrastructure;
 	}
@@ -270,6 +277,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInfrastructure(boolean newInfrastructure) {
 		boolean oldInfrastructure = infrastructure;
 		infrastructure = newInfrastructure;
@@ -282,6 +290,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isResource() {
 		return this.getClass().equals(ResourceDefnImpl.class);
 	}
@@ -291,6 +300,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isGloballyDefined() {
 		return getScope().getContainingScope() == null;
 	}
@@ -312,6 +322,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isComposite() {	
 		return this.getClass().equals(CompositeTypeDefnImpl.class);
 	}
@@ -321,6 +332,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isPrimitive() {
 		return this.getClass().equals(PrimitiveTypeDefnImpl.class);
 	}
@@ -330,6 +342,7 @@ public abstract class TypeDefnImpl extends EObjectImpl implements TypeDefn {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public boolean isConstrained() {
 		return this.getClass().equals(ConstrainedTypeDefnImpl.class);
 	}

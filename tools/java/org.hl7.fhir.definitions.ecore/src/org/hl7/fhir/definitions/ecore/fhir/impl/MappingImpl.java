@@ -95,6 +95,7 @@ public class MappingImpl extends EObjectImpl implements Mapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSource() {
 		return source;
 	}
@@ -104,6 +105,7 @@ public class MappingImpl extends EObjectImpl implements Mapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSource(String newSource) {
 		String oldSource = source;
 		source = newSource;
@@ -116,6 +118,7 @@ public class MappingImpl extends EObjectImpl implements Mapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDetails() {
 		return details;
 	}
@@ -125,6 +128,7 @@ public class MappingImpl extends EObjectImpl implements Mapping {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDetails(String newDetails) {
 		String oldDetails = details;
 		details = newDetails;

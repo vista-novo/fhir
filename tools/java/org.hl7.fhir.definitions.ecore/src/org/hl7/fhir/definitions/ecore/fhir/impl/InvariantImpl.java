@@ -158,6 +158,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -167,6 +168,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -179,6 +181,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -188,6 +191,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
 		String oldDescription = description;
 		description = newDescription;
@@ -200,6 +204,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getHuman() {
 		return human;
 	}
@@ -209,6 +214,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHuman(String newHuman) {
 		String oldHuman = human;
 		human = newHuman;
@@ -221,6 +227,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOcl() {
 		return ocl;
 	}
@@ -230,6 +237,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOcl(String newOcl) {
 		String oldOcl = ocl;
 		ocl = newOcl;
@@ -242,6 +250,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getXpath() {
 		return xpath;
 	}
@@ -251,6 +260,7 @@ public class InvariantImpl extends EObjectImpl implements Invariant {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setXpath(String newXpath) {
 		String oldXpath = xpath;
 		xpath = newXpath;

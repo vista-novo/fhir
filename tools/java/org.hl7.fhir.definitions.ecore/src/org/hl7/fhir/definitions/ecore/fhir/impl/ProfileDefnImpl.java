@@ -84,6 +84,7 @@ public class ProfileDefnImpl extends EObjectImpl implements ProfileDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ResourceDefn> getResources() {
 		if (resources == null) {
 			resources = new EObjectContainmentEList<ResourceDefn>(ResourceDefn.class, this, FhirPackage.PROFILE_DEFN__RESOURCES);
@@ -96,6 +97,7 @@ public class ProfileDefnImpl extends EObjectImpl implements ProfileDefn {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MetaDataItem> getMetadata() {
 		if (metadata == null) {
 			metadata = new EObjectContainmentEList<MetaDataItem>(MetaDataItem.class, this, FhirPackage.PROFILE_DEFN__METADATA);
