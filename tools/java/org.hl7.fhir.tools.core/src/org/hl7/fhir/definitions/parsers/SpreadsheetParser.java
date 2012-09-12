@@ -729,7 +729,7 @@ public class SpreadsheetParser {
 
 	 private ElementDefn findContext(ElementDefn root, String pathname, String source) throws Exception {
 	    String[] path = pathname.split("\\.");
-	    boolean n = false;
+	    
 	    if (!path[0].equals(root.getName()))
 	      throw new Exception("Element Path '" + pathname + "' is not legal found at " + source);
 	    ElementDefn res = root;

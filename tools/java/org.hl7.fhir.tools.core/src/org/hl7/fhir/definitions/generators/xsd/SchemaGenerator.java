@@ -33,7 +33,6 @@ import java.util.Collection;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
@@ -45,41 +44,40 @@ public class SchemaGenerator {
   private String version;
 
   public void generate(Definitions definitions, IniFile ini, String tmpResDir, String xsdDir, String dstDir, String srcDir, String version, String genDate) throws Exception {
-    this.genDate = genDate;
-    this.version = version;
-    
-    File dir = new File(xsdDir);
-    for (File f : dir.listFiles()) {
-      if (!f.isDirectory())
-        f.delete();
-    }
-    
-    XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new File(xsdDir+"fhir-base.xsd")));
-    xsdb.setDefinitions(definitions);
-    xsdb.generate(version, genDate);
-    
-    for (ResourceDefn root : definitions.getResources().values()) {
-      XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
-      sgen.setDataTypes(definitions.getKnownTypes());
-      sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate);
+	  this.genDate = genDate;
+	  this.version = version;
 
-    }
+	  File dir = new File(xsdDir);
+	  for (File f : dir.listFiles()) {
+		  if (!f.isDirectory())
+			  f.delete();
+	  }
 
-    for (String n : ini.getPropertyNames("schema")) {
-        String xsd = TextFile.fileToString(srcDir + n);
-        xsd = processSchemaIncludes(definitions, n, xsd);
-        TextFile.stringToFile(xsd, xsdDir + n);
-    }
-    produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
-    produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
+	  XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new File(xsdDir+"fhir-base.xsd")));
+	  xsdb.setDefinitions(definitions);
+	  xsdb.generate(version, genDate);
+	  xsdb.close();
 
-    dir = new File(xsdDir);
-    for (File f : dir.listFiles()) {
-      if (!f.isDirectory())
-        Utilities.copyFile(f, new File(dstDir+f.getName()));
-    }
-    
-    
+	  for (ResourceDefn root : definitions.getResources().values()) {
+		  XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
+		  sgen.setDataTypes(definitions.getKnownTypes());
+		  sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate);
+		  sgen.close();
+	  }
+
+	  for (String n : ini.getPropertyNames("schema")) {
+		  String xsd = TextFile.fileToString(srcDir + n);
+		  xsd = processSchemaIncludes(definitions, n, xsd);
+		  TextFile.stringToFile(xsd, xsdDir + n);
+	  }
+	  produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
+	  produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
+
+	  dir = new File(xsdDir);
+	  for (File f : dir.listFiles()) {
+		  if (!f.isDirectory())
+			  Utilities.copyFile(f, new File(dstDir+f.getName()));
+	  }
   }
 
   private void produceAtomSchema(Definitions definitions, String xsdDir, String dstDir, String srcDir) throws Exception {

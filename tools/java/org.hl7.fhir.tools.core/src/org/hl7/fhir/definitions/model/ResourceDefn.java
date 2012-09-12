@@ -28,11 +28,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 
 public class ResourceDefn  {
    private List<Example> examples = new ArrayList<Example>();

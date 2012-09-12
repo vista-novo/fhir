@@ -32,17 +32,12 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;
 import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.utilities.xhtml.*;
-import org.hl7.fhir.utilities.xml.*;
 import org.json.JSONWriter;
 
 public abstract class JsonComposerBase extends XmlBase {

@@ -314,7 +314,7 @@ public class BookMaker {
         if (s.startsWith("#")) {
           s = "#"+name+"."+s.substring(1);
         } else if (s.startsWith("http:") || s.startsWith("https:")) {
-          s = s;
+          //s = s;
         } else {
           int i = s.indexOf('.');
           if (i == -1)
@@ -328,7 +328,7 @@ public class BookMaker {
           } else {
             if (!s.endsWith(".zip") && !s.endsWith(".xsd") && !s.endsWith(".png") && !s.endsWith(".xml") && !s.endsWith(".eap") && !s.endsWith(".xmi")) {
               System.out.println("odd ref: "+s+" in "+node.allText());
-              s = s;
+              //s = s;
             } else {
               // actually, what we want to do is do what?
 //              System.out.println("ref to remove: "+s+" in "+node.allText());

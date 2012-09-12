@@ -273,6 +273,7 @@ public class SourceParser {
 				CodeListParser cparser = new CodeListParser(
 						new FileInputStream(file));
 				cparser.parse(cd.getCodes());
+				cparser.close();
 			}
 		}
 	}

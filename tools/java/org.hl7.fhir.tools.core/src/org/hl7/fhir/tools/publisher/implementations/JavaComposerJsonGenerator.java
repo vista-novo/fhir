@@ -44,7 +44,6 @@ import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
-import org.hl7.fhir.utilities.Utilities;
 
 public class JavaComposerJsonGenerator extends OutputStreamWriter {
   public enum JavaGenClass { Structure, Type, Resource, Constraint }

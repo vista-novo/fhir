@@ -33,7 +33,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -46,7 +45,6 @@ import java.util.Map;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -74,10 +72,7 @@ import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
 import org.hl7.fhir.definitions.validation.UMLValidator;
 import org.hl7.fhir.instance.formats.AtomComposer;
-import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
-import org.hl7.fhir.instance.formats.XmlParserBase;
-import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.model.AtomEntry;
 import org.hl7.fhir.instance.model.AtomFeed;
 import org.hl7.fhir.instance.model.Profile;
@@ -132,55 +127,57 @@ public class Publisher {
 	public static void main(String[] args) throws Exception {
 		//
 		Publisher pub = new Publisher();
-    pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
-    pub.nobook = !(args.length > 1 && hasParam(args, "-nobook"));
+		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
+		pub.nobook = !(args.length > 1 && hasParam(args, "-nobook"));
 		pub.execute(args[0]);
 	}
 
 	private static boolean hasParam(String[] args, String param) {
-    for (String a : args) 
-      if (a.equals(param))
-        return true;
-    return false;
-  }
+		for (String a : args)
+			if (a.equals(param))
+				return true;
+		return false;
+	}
 
-  public void execute(String folder) throws Exception {
+	public void execute(String folder) throws Exception {
 
 		log("Publish FHIR in folder " + folder);
 
 		registerReferencePlatforms();
 
 		if (initialize(folder)) {
-      if (isGenerate) {
-        Utilities.clearDirectory(page.getFolders().dstDir);
-        Utilities.createDirectory(page.getFolders().dstDir + "html");
-        Utilities.createDirectory(page.getFolders().dstDir + "examples");
-      }
-      prsr.parse(page.getGenDate(), page.getVersion());
-      
-			if (validate()) 
-			{
-			  if (isGenerate) {
-			    String eCorePath =  page.getFolders().dstDir + "ECoreDefinitions.xml";
-			    generateECore(prsr.getECoreParseResults(), eCorePath);
-			    produceSpecification(eCorePath);
-			  }
+			Utilities.createDirectory(page.getFolders().dstDir);
+			
+			if (isGenerate) {
+				Utilities.clearDirectory(page.getFolders().dstDir);
+				Utilities.createDirectory(page.getFolders().dstDir + "html");
+				Utilities.createDirectory(page.getFolders().dstDir + "examples");
+			}
+			prsr.parse(page.getGenDate(), page.getVersion());
+
+			if (validate()) {
+				if (isGenerate) {
+					String eCorePath = page.getFolders().dstDir + "ECoreDefinitions.xml";
+					generateECore(prsr.getECoreParseResults(), eCorePath);
+					produceSpecification(eCorePath);
+				}
 				validateXml();
-				System.out.println("Finished publishing FHIR");
+				log("Finished publishing FHIR");
 			} else
-				System.out.println("Didn't publish FHIR due to errors");
+				log("Didn't publish FHIR due to errors");
 		}
 	}
 
+	private void generateECore(
+			org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions,
+			String filename) throws IOException {
+		Resource resource = new XMLResourceImpl();
+		Map<String, String> options = new HashMap<String, String>();
+		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
+		options.put(XMLResource.OPTION_XML_VERSION, "1.0");
 
-  private void generateECore(org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefinitions, String filename) throws IOException {
-		 Resource resource = new XMLResourceImpl();
-		 Map<String, String> options = new HashMap<String, String>();
-		 options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-		 options.put(XMLResource.OPTION_XML_VERSION, "1.0");
-		
-		 resource.getContents().add(eCoreDefinitions);
-		 resource.save(new FileOutputStream(filename), options);
+		resource.getContents().add(eCoreDefinitions);
+		resource.save(new FileOutputStream(filename), options);
 	}
 
 	private void registerReferencePlatforms() {
@@ -194,26 +191,22 @@ public class Publisher {
 		page.setDefinitions(new Definitions());
 		page.setFolders(new FolderManager(folder));
 
-		System.out.println("Checking Source");
+		log("Checking Source for " + folder);
 
 		List<String> errors = new ArrayList<String>();
 
 		Utilities.checkFolder(page.getFolders().rootDir, errors);
-		if (Utilities.checkFile("required", page.getFolders().rootDir,
-				"publish.ini", errors)) {
-			Utilities.checkFile("required", page.getFolders().srcDir,
-					"navigation.xml", errors);
+		if (Utilities.checkFile("required", page.getFolders().rootDir,"publish.ini", errors)) {
+			Utilities.checkFile("required", page.getFolders().srcDir,"navigation.xml", errors);
 			page.setIni(new IniFile(page.getFolders().rootDir + "publish.ini"));
 			page.setVersion(page.getIni().getStringProperty("FHIR", "version"));
 
-			prsr = new SourceParser((Logger) page, folder,
-					page.getDefinitions());
+			prsr = new SourceParser(page, folder,page.getDefinitions());
 			prsr.checkConditions(errors);
 
 			Utilities.checkFolder(page.getFolders().xsdDir, errors);
 			for (PlatformGenerator gen : page.getReferenceImplementations())
-				Utilities.checkFolder(page.getFolders().implDir(gen.getName()),
-						errors);
+				Utilities.checkFolder(page.getFolders().implDir(gen.getName()),errors);
 			Utilities.checkFolder(page.getFolders().umlDir, errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "fhir-all.xsd", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "header.htm", errors);
@@ -221,7 +214,7 @@ public class Publisher {
 			Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
-			Utilities.checkFolder(page.getFolders().dstDir, errors);
+			//Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 			for (String n : page.getIni().getPropertyNames("support"))
 				Utilities.checkFile("support", page.getFolders().srcDir, n, errors);
@@ -234,9 +227,9 @@ public class Publisher {
 
 		}
 		if (errors.size() > 0)
-			System.out.println("Unable to publish FHIR specification:");
+			log("Unable to publish FHIR specification:");
 		for (String e : errors) {
-			System.out.println(e);
+			log(e);
 		}
 		return errors.size() == 0;
 	}
@@ -247,17 +240,14 @@ public class Publisher {
 
 		List<String> errors = new ArrayList<String>();
 		for (String n : page.getDefinitions().getResources().keySet())
-			errors.addAll(val.check(n, page.getDefinitions().getResources()
-					.get(n)));
+			errors.addAll(val.check(n, page.getDefinitions().getResources().get(n)));
 
 		for (String n : page.getDefinitions().getResources().keySet()) {
-			String filename = page.getFolders().srcDir + n + File.separatorChar
-					+ n + "-uml.xml";
+			String filename = page.getFolders().srcDir + n + File.separatorChar + n + "-uml.xml";
 			if (new File(filename).exists()
 					|| !page.getDefinitions().getResources().get(n).isSandbox()) {
-				 List<String> dummyErrors = new ArrayList<String>();
-				new UMLValidator(page.getDefinitions().getResources().get(n)
-						.getRoot(), filename, dummyErrors).validate();
+				List<String> dummyErrors = new ArrayList<String>();
+				new UMLValidator(page.getDefinitions().getResources().get(n).getRoot(), filename, dummyErrors).validate();
 			}
 		}
 		for (String e : errors)
@@ -268,55 +258,66 @@ public class Publisher {
 	private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
 		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
-		chm = new ChmMaker(page.getNavigation(), page.getFolders(),	page.getDefinitions(), page);
+		chm = new ChmMaker(page.getNavigation(), page.getFolders(), page.getDefinitions(), page);
 		book = new BookMaker(page, chm);
 
 		XMIResource resource = new XMIResourceImpl();
-		resource.load( new FileInputStream(eCorePath), null );
-		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions)resource.getContents().get(0);	
-		
-		for (PlatformGenerator gen : page.getReferenceImplementations()) 
-		{
+		resource.load(new FileInputStream(eCorePath), null);
+		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions) resource
+				.getContents().get(0);
+
+		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			log("Produce " + gen.getName() + " Reference Implementation");
-		
+
 			String destDir = page.getFolders().dstDir;
 			String implDir = page.getFolders().implDir(gen.getName());
-			
-			if( !gen.isECoreGenerator() )
-				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(), page.getGenDate().getTime(), page);
+
+			if (!gen.isECoreGenerator())
+				gen.generate(page.getDefinitions(), destDir, implDir,
+						page.getVersion(), page.getGenDate().getTime(), page);
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
-    for (PlatformGenerator gen : page.getReferenceImplementations()) 
-    {
-      if (gen.doesCompile()) {
-        log("Compile " + gen.getName() + " Reference Implementation");
-        if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>())) 
-          log("Compile " + gen.getName() + " failed");
-      }
-    }
-    
+		for (PlatformGenerator gen : page.getReferenceImplementations()) {
+			if (gen.doesCompile()) {
+				log("Compile " + gen.getName() + " Reference Implementation");
+				if (!gen.compile(page.getFolders().rootDir,
+						new ArrayList<String>()))
+					log("Compile " + gen.getName() + " failed");
+			}
+		}
+
 		log("Produce Schemas");
-		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, 
-		    page.getFolders().dstDir, page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()));
-    for (ResourceDefn r : page.getDefinitions().getResources().values()) {
-      String n = r.getName().toLowerCase();
-      SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
-      sch.generate(r.getRoot(), page.getDefinitions());
-    }
-		new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir+"fhir-atom.sch"), page).generate(page.getDefinitions());
+		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(),
+				page.getFolders().tmpResDir, page.getFolders().xsdDir,
+				page.getFolders().dstDir, page.getFolders().srcDir,
+				page.getVersion(),
+				Config.DATE_FORMAT().format(page.getGenDate().getTime()));
+		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+			String n = r.getName().toLowerCase();
+			SchematronGenerator sch = new SchematronGenerator(
+					new FileOutputStream(page.getFolders().dstDir + n + ".sch"),
+					page);
+			sch.generate(r.getRoot(), page.getDefinitions());
+			sch.close();
+		}
+
+		SchematronGenerator sg = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + "fhir-atom.sch"), page);
+		sg.generate(page.getDefinitions());
+		sg.close();
+		
 		produceSchemaZip();
 		log("Produce Specification");
 		produceSpec();
 
 		if (!nobook) {
-		  log("Produce fhir.chm");
-		  chm.produce();
-		  log("Produce HL7 copy");
-		  new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
-		  log("Produce Archive copy");
-		  produceArchive();
-		} 
+			log("Produce fhir.chm");
+			chm.produce();
+			log("Produce HL7 copy");
+			new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
+			log("Produce Archive copy");
+			produceArchive();
+		}
 	}
 
 	private void produceArchive() throws Exception {
@@ -377,12 +378,19 @@ public class Publisher {
 		profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
-		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
+		profileFeed
+				.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
-		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
-		Utilities.copyFile(new File(page.getFolders().dstDir + "profiles-resources.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ "profiles-resources.xml"));
-		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");		
+		new AtomComposer().compose(new FileOutputStream(
+				page.getFolders().dstDir + "profiles-resources.xml"),
+				profileFeed, true, false);
+		Utilities.copyFile(new File(page.getFolders().dstDir
+				+ "profiles-resources.xml"), new File(page.getFolders().dstDir
+				+ "examples" + File.separator + "profiles-resources.xml"));
+		cloneToXhtml(
+				"profiles-resources",
+				"Base Resources defined as profiles (implementation assistance, for derivation and product development)");
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
 
@@ -396,11 +404,12 @@ public class Publisher {
 		// Utilities.copyFile(new File(page.getFolders().umlDir + "fhir.xmi"),
 		// new File(page.getFolders().dstDir + "fhir.xmi"));
 
-		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
-    zip.addFiles(page.getFolders().dstDir+"examples"+File.separator, "", null);
-    zip.close();
+		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir
+				+ "examples.zip");
+		zip.addFiles(page.getFolders().dstDir + "examples" + File.separator,
+				"", null);
+		zip.close();
 
-		
 		produceZip();
 		book.produce();
 
@@ -419,15 +428,17 @@ public class Publisher {
 	}
 
 	private void produceSchemaZip() throws Exception {
+		char sc = File.separatorChar;
 		File f = new File(page.getFolders().dstDir + "fhir-all-xsd.zip");
 		if (f.exists())
 			f.delete();
-		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir	+ "fhir-all-xsd.zip");
-    zip.addFiles(page.getFolders().dstDir, "", ".xsd");
-    zip.addFiles(page.getFolders().dstDir, "", ".sch");
-    zip.addFiles(page.getFolders().rootDir+"tools\\schematron\\", "", ".xsl");
+		ZipGenerator zip = new ZipGenerator(page.getFolders().tmpResDir
+				+ "fhir-all-xsd.zip");
+		zip.addFiles(page.getFolders().dstDir, "", ".xsd");
+		zip.addFiles(page.getFolders().dstDir, "", ".sch");
+		zip.addFiles(page.getFolders().rootDir + "tools" + sc + "schematron" + sc, "", ".xsl");
 		zip.close();
-		Utilities.copyFile(new File(page.getFolders().tmpResDir	+ "fhir-all-xsd.zip"), f);
+		Utilities.copyFile(new File(page.getFolders().tmpResDir + "fhir-all-xsd.zip"), f);
 	}
 
 	private void produceResource(ResourceDefn resource) throws Exception {
@@ -435,56 +446,86 @@ public class Publisher {
 		tmp.deleteOnExit();
 		String n = resource.getName().toLowerCase();
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n+"-definitions.htm", null);
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm", null);
 		gen.generate(resource.getRoot());
+		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
-		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(
-				new FileOutputStream(tmp));
+		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 		tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
+		tgen.close();
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());
 
-		DictHTMLGenerator dgen = new DictHTMLGenerator(
-				new FileOutputStream(tmp));
+		DictHTMLGenerator dgen = new DictHTMLGenerator(new FileOutputStream(tmp));
 		dgen.generate(resource.getRoot());
+		dgen.close();
+		
 		String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
-		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".dict.xml"));
+		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(
+				page.getFolders().dstDir + n + ".dict.xml"));
 		dxgen.generate(resource.getRoot(), "HL7");
+		dxgen.close();
 
-    generateProfile(resource, n, xml);
-		for (RegisteredProfile p : resource.getProfiles()) 
-		  produceProfile(p.getFilename(), p.getProfile());
-		
+		generateProfile(resource, n, xml);
+		for (RegisteredProfile p : resource.getProfiles())
+			produceProfile(p.getFilename(), p.getProfile());
+
 		for (Example e : resource.getExamples()) {
 			processExample(e);
 		}
 
-		String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + ".htm");
-		src = TextFile.fileToString(page.getFolders().srcDir + "template-examples.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-examples.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir+ "template-definitions.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-definitions.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir+ "template-explanations.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),  page.getFolders().dstDir + n + "-explanations.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir+ "template-profiles.htm"); 
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src),	page.getFolders().dstDir + n + "-profiles.htm");
+		String src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template.htm");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + n + ".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template-examples.htm");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + n + "-examples.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template-definitions.htm");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + n + "-definitions.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template-explanations.htm");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + n + "-explanations.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template-profiles.htm");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + n + "-profiles.htm");
 
-		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
+		src = TextFile.fileToString(
+				page.getFolders().srcDir + "template-print.htm").replace(
+				"<body>", "<body class=\"book\">");
+		TextFile.stringToFile(
+				page.processResourceIncludes(n, resource, xml, tx, dict, src),
+				page.getFolders().dstDir + "print-" + n + ".htm");
 
 		File umlf = new File(page.getFolders().imgDir + n + ".png");
-		Utilities.copyFile(umlf, new File(page.getFolders().dstDir + n + ".png"));
-		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
+		Utilities.copyFile(umlf,
+				new File(page.getFolders().dstDir + n + ".png"));
+		src = TextFile.fileToString(
+				page.getFolders().srcDir + "template-book.htm").replace(
+				"<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
-    src = TextFile.fileToString(page.getFolders().srcDir + "template-book-ex.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
-    cachePage(n + "Ex.htm", src);
-    src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
-    src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
-    cachePage(n + "Defn.htm", src);
+		src = TextFile.fileToString(
+				page.getFolders().srcDir + "template-book-ex.htm").replace(
+				"<body>", "<body style=\"margin: 10px\">");
+		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+		cachePage(n + "Ex.htm", src);
+		src = TextFile.fileToString(
+				page.getFolders().srcDir + "template-book-defn.htm").replace(
+				"<body>", "<body style=\"margin: 10px\">");
+		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
+		cachePage(n + "Defn.htm", src);
 
 		// xml to json
 		// todo - fix this up
@@ -497,71 +538,71 @@ public class Publisher {
 	}
 
 	private void cloneToXhtml(String n, String description) throws Exception {
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    DocumentBuilder builder = factory.newDocumentBuilder();
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		DocumentBuilder builder = factory.newDocumentBuilder();
 
-    Document xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
-    XhtmlGenerator xhtml = new XhtmlGenerator();
-    xhtml.generate(xdoc,
-        new File(page.getFolders().dstDir + n + ".xml.htm"), n
-            .toUpperCase().substring(0, 1) + n.substring(1),
-        description);
+		Document xdoc = builder.parse(new FileInputStream(new File(page
+				.getFolders().dstDir + n + ".xml")));
+		XhtmlGenerator xhtml = new XhtmlGenerator();
+		xhtml.generate(xdoc,
+				new File(page.getFolders().dstDir + n + ".xml.htm"), n
+						.toUpperCase().substring(0, 1) + n.substring(1),
+				description);
 	}
-	
+
 	private void processExample(Example e) throws Exception {
-    if ("tool".equals(e.getType())) 
-      return;
-    
-    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    DocumentBuilder builder = factory.newDocumentBuilder();
-    String n = e.getFileTitle();
+		if ("tool".equals(e.getType()))
+			return;
 
-    if (!e.getPath().exists())
-      throw new Exception("unable to find example file");
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		String n = e.getFileTitle();
 
-    if ("csv".equals(e.getType())) {
-      CSVProcessor csv = new CSVProcessor();
-      csv.setSource(new FileInputStream(e.getPath()));
-      csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath()
-          .getAbsolutePath(), ".csv")));
-      csv.setOutput(new FileOutputStream(page.getFolders().dstDir + n
-          + ".xml"));
-      csv.process();
-    } else {
-      // strip the xsi: stuff. seems to need double processing in order to
-      // delete namespace crap
-      Document xdoc = builder.parse(new FileInputStream(e.getPath()));
-      XmlGenerator xmlgen = new XmlGenerator();
-      if (xdoc.getDocumentElement().getLocalName().equals("feed"))
-        xmlgen.generate(xdoc.getDocumentElement(),
-            new File(page.getFolders().dstDir + n + ".xml"),
-            "http://www.w3.org/2005/Atom", xdoc
-            .getDocumentElement().getLocalName());
-      else
-        xmlgen.generate(xdoc.getDocumentElement(),
-            new File(page.getFolders().dstDir + n + ".xml"),
-            "http://hl7.org/fhir", xdoc.getDocumentElement()
-            .getLocalName());
-    }
+		if (!e.getPath().exists())
+			throw new Exception("unable to find example file");
+
+		if ("csv".equals(e.getType())) {
+			CSVProcessor csv = new CSVProcessor();
+			csv.setSource(new FileInputStream(e.getPath()));
+			csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath().getAbsolutePath(), ".csv")));
+			csv.setOutput(new FileOutputStream(page.getFolders().dstDir + n + ".xml"));
+			csv.process();
+		} else {
+			// strip the xsi: stuff. seems to need double processing in order to
+			// delete namespace crap
+			Document xdoc = builder.parse(new FileInputStream(e.getPath()));
+			XmlGenerator xmlgen = new XmlGenerator();
+			if (xdoc.getDocumentElement().getLocalName().equals("feed"))
+				xmlgen.generate(xdoc.getDocumentElement(),
+						new File(page.getFolders().dstDir + n + ".xml"),
+						"http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
+			else
+				xmlgen.generate(xdoc.getDocumentElement(),
+						new File(page.getFolders().dstDir + n + ".xml"),
+						"http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+		}
 
 		// reload it now, xml to xhtml of xml
 		builder = factory.newDocumentBuilder();
-		Document xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
+		Document xdoc = builder.parse(new FileInputStream(new File(page
+				.getFolders().dstDir + n + ".xml")));
 		XhtmlGenerator xhtml = new XhtmlGenerator();
 		xhtml.generate(xdoc,
 				new File(page.getFolders().dstDir + n + ".xml.htm"), n
 						.toUpperCase().substring(0, 1) + n.substring(1),
 				e.getDescription());
 		if (e.isInBook()) {
-		  XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page
-		      .getFolders().dstDir + n + ".xml.htm"));
-		  XhtmlNode pre = d.getElement("html").getElement("body")
-		      .getElement("div");
-		  e.setXhtm(new XhtmlComposer().compose(pre));
+			XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page
+					.getFolders().dstDir + n + ".xml.htm"));
+			XhtmlNode pre = d.getElement("html").getElement("body")
+					.getElement("div");
+			e.setXhtm(new XhtmlComposer().compose(pre));
 		}
-		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
+		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"),
+				new File(page.getFolders().dstDir + "examples" + File.separator
+						+ n + ".xml"));
 	}
 
 	private void generateProfile(ResourceDefn root, String n, String xmlSpec)
@@ -571,14 +612,18 @@ public class Publisher {
 		p.putMetadata("name", n);
 		p.putMetadata("author.name", "todo (committee)");
 		p.putMetadata("author.ref", "todo");
-		p.putMetadata("description", "Basic Profile. "+root.getRoot().getDefinition());
+		p.putMetadata("description", "Basic Profile. "
+				+ root.getRoot().getDefinition());
 		p.putMetadata("status", "testing");
 		p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale(
 				"en", "US")).format(new Date()));
 		p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
-		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
-    Utilities.copyFile(new File(page.getFolders().dstDir + n + ".profile.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ n + ".profile.xml"));
+		Profile rp = pgen.generate(p, new FileOutputStream(
+				page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
+		Utilities.copyFile(new File(page.getFolders().dstDir + n
+				+ ".profile.xml"), new File(page.getFolders().dstDir
+				+ "examples" + File.separator + n + ".profile.xml"));
 		addToResourceFeed(rp);
 		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir
 				+ "html" + File.separator + n + ".htm"));
@@ -613,8 +658,9 @@ public class Publisher {
 
 	private void addToResourceFeed(Profile profile) {
 		AtomEntry e = new AtomEntry();
-		e.setId("http://hl7.org/fhir/profile/"+profile.getId());
-		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId() + ".profile.xml");
+		e.setId("http://hl7.org/fhir/profile/" + profile.getId());
+		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId()
+				+ ".profile.xml");
 		e.setTitle("Resource \"" + profile.getId()
 				+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());
@@ -627,7 +673,8 @@ public class Publisher {
 		profileFeed.getEntryList().add(e);
 	}
 
-	private void produceProfile(String filename, ProfileDefn profile) throws Exception {
+	private void produceProfile(String filename, ProfileDefn profile)
+			throws Exception {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		tmp.deleteOnExit();
 
@@ -637,14 +684,19 @@ public class Publisher {
 
 		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), null, "http://hl7.org/fhir/");
 		gen.generate(profile, page.getDefinitions());
+		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
 		ProfileGenerator pgen = new ProfileGenerator();
-		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir+ filename + ".profile.xml"), xml);
-    Utilities.copyFile(new File(page.getFolders().dstDir + filename + ".profile.xml"), new File(page.getFolders().dstDir +"examples"+File.separator+ filename + ".profile.xml"));
-		
+		pgen.generate(profile, new FileOutputStream(page.getFolders().dstDir
+				+ filename + ".profile.xml"), xml);
+		Utilities.copyFile(new File(page.getFolders().dstDir + filename
+				+ ".profile.xml"), new File(page.getFolders().dstDir
+				+ "examples" + File.separator + filename + ".profile.xml"));
+
 		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
 		tgen.generate(profile);
+		tgen.close();
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());
 		//
 		// DictHTMLGenerator dgen = new DictHTMLGenerator(new
@@ -660,7 +712,8 @@ public class Publisher {
 		// File(page.getFolders().srcDir+n+File.separatorChar+"example.xml");
 		// File umlf = new File(page.getFolders().imgDir+n+".png");
 		//
-		String src = TextFile.fileToString(page.getFolders().srcDir	+ "template-profile.htm");
+		String src = TextFile.fileToString(page.getFolders().srcDir
+				+ "template-profile.htm");
 		src = page.processProfileIncludes(filename, profile, xml, tx, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + filename + ".htm");
 		//
@@ -678,21 +731,24 @@ public class Publisher {
 		// src = processResourceIncludes(n, root, xml, tx, dict, src);
 		// cachePage(n+".htm", src);
 		//
-		 // xml to xhtml of xml
-		 // first pass is to strip the xsi: stuff. seems to need double
-		 // processing in order to delete namespace crap
-		 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		 factory.setNamespaceAware(true);
-		 DocumentBuilder builder = factory.newDocumentBuilder();
-		 Document xdoc = builder.parse(new FileInputStream(page.getFolders().dstDir+ filename + ".profile.xml"));
-		 XmlGenerator xmlgen = new XmlGenerator();
-		 xmlgen.generate(xdoc.getDocumentElement(), tmp, "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
-		
-		 // reload it now
-		 builder = factory.newDocumentBuilder();
-		 xdoc = builder.parse(new FileInputStream(tmp));
-		 XhtmlGenerator xhtml = new XhtmlGenerator();
-		 xhtml.generate(xdoc, new File(page.getFolders().dstDir+ filename + ".profile.xml.htm"), "Profile", profile.metadata("name"));
+		// xml to xhtml of xml
+		// first pass is to strip the xsi: stuff. seems to need double
+		// processing in order to delete namespace crap
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document xdoc = builder.parse(new FileInputStream(
+				page.getFolders().dstDir + filename + ".profile.xml"));
+		XmlGenerator xmlgen = new XmlGenerator();
+		xmlgen.generate(xdoc.getDocumentElement(), tmp, "http://hl7.org/fhir",
+				xdoc.getDocumentElement().getLocalName());
+
+		// reload it now
+		builder = factory.newDocumentBuilder();
+		xdoc = builder.parse(new FileInputStream(tmp));
+		XhtmlGenerator xhtml = new XhtmlGenerator();
+		xhtml.generate(xdoc, new File(page.getFolders().dstDir + filename
+				+ ".profile.xml.htm"), "Profile", profile.metadata("name"));
 		// // xml to json
 		// JsonGenerator jsongen = new JsonGenerator();
 		// jsongen.generate(new File(page.getFolders().dstDir+n+".xml"), new
@@ -749,7 +805,7 @@ public class Publisher {
 			book.getPages().put(filename, new XhtmlParser().parse(source));
 		} catch (Exception e) {
 			throw new Exception("error parsing page " + filename + ": "
-					+ e.getMessage()+"in source\r\n"+source);
+					+ e.getMessage() + "in source\r\n" + source);
 		}
 	}
 
@@ -798,10 +854,11 @@ public class Publisher {
 				final String namespaceURI, final String publicId,
 				String systemId, final String baseURI) {
 			// System.out.println(type+", "+namespaceURI+", "+publicId+", "+systemId+", "+baseURI);
-			if (!new File(dir  + systemId).exists())
+			if (!new File(dir + systemId).exists())
 				return null;
 			try {
-				return new SchemaInputSource(new FileInputStream(new File(dir	+ systemId)), publicId, systemId, namespaceURI);
+				return new SchemaInputSource(new FileInputStream(new File(dir
+						+ systemId)), publicId, systemId, namespaceURI);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -818,11 +875,15 @@ public class Publisher {
 		log("Validating XML");
 		log(".. Loading schemas");
 		StreamSource[] sources = new StreamSource[2];
-		sources[0] = new StreamSource(new FileInputStream(page.getFolders().dstDir + "fhir-all.xsd"));
-		sources[1] = new StreamSource(new FileInputStream(page.getFolders().dstDir + "fhir-atom.xsd"));
-		SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+		sources[0] = new StreamSource(new FileInputStream(
+				page.getFolders().dstDir + "fhir-all.xsd"));
+		sources[1] = new StreamSource(new FileInputStream(
+				page.getFolders().dstDir + "fhir-atom.xsd"));
+		SchemaFactory schemaFactory = SchemaFactory
+				.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		schemaFactory.setErrorHandler(new MyErrorHandler(false));
-		schemaFactory.setResourceResolver(new MyResourceResolver(page.getFolders().dstDir));
+		schemaFactory.setResourceResolver(new MyResourceResolver(page
+				.getFolders().dstDir));
 		Schema schema = schemaFactory.newSchema(sources);
 		log(".... done");
 
@@ -834,19 +895,20 @@ public class Publisher {
 		}
 		validateXmlFile(schema, "profiles-resources");
 
-    log("Reference Platform Validation.");
-		
-    for (ResourceDefn r : page.getDefinitions().getResources().values()) {
-      for (Example e : r.getExamples()) {
-        String n = e.getFileTitle();
-        log(" ...validate "+n);
-        validateRoundTrip(schema, n);
-      }
-    }
-    validateRoundTrip(schema, "profiles-resources");
+		log("Reference Platform Validation.");
+
+		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+			for (Example e : r.getExamples()) {
+				String n = e.getFileTitle();
+				log(" ...validate " + n);
+				validateRoundTrip(schema, n);
+			}
+		}
+		validateRoundTrip(schema, "profiles-resources");
 	}
 
 	private void validateXmlFile(Schema schema, String n) throws Exception {
+		char sc = File.separatorChar;
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		factory.setValidating(false);
@@ -854,121 +916,146 @@ public class Publisher {
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		MyErrorHandler err = new MyErrorHandler(true);
 		builder.setErrorHandler(err);
-		Document doc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
+		Document doc = builder.parse(new FileInputStream(new File(page
+				.getFolders().dstDir + n + ".xml")));
 		if (err.getErrors().size() > 0)
-			throw new Exception("Resource Example " + n	+ " failed schema validation");
-    File tmpTransform = File.createTempFile("tmp", ".xslt");
-    tmpTransform.deleteOnExit();
-    File tmpOutput = File.createTempFile("tmp", ".xml");
-    tmpOutput.deleteOnExit();
-    String sch = doc.getDocumentElement().getNodeName().toLowerCase();
-    if (sch.equals("feed"))
-      sch = "fhir-atom";
-    
-    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir+sch+".sch", page.getFolders().rootDir+"tools\\schematron\\iso_svrl_for_xslt1.xsl", tmpTransform.getAbsolutePath());
-    Utilities.transform(page.getFolders().rootDir+"tools\\schematron\\", page.getFolders().dstDir + n + ".xml", tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
+			throw new Exception("Resource Example " + n
+					+ " failed schema validation");
+		File tmpTransform = File.createTempFile("tmp", ".xslt");
+		tmpTransform.deleteOnExit();
+		File tmpOutput = File.createTempFile("tmp", ".xml");
+		tmpOutput.deleteOnExit();
+		String sch = doc.getDocumentElement().getNodeName().toLowerCase();
+		if (sch.equals("feed"))
+			sch = "fhir-atom";
 
-    factory = DocumentBuilderFactory.newInstance();
-    factory.setNamespaceAware(true);
-    builder = factory.newDocumentBuilder();
-    doc = builder.parse(new FileInputStream(tmpOutput));
-    NodeList nl = doc.getDocumentElement().getElementsByTagNameNS("http://purl.oclc.org/dsdl/svrl", "failed-assert");
-    if (nl.getLength() > 0) {
-      page.log("Schematron Validation Failed for "+n+".xml:");
-      for (int i = 0; i < nl.getLength(); i++) {
-        Element e = (Element) nl.item(i);
-        page.log("  @"+e.getAttribute("location")+": "+e.getTextContent());        
-      }
-    }
+		Utilities.transform(page.getFolders().rootDir + "tools"+sc+"schematron"+sc,
+				page.getFolders().dstDir + sch + ".sch",
+				page.getFolders().rootDir
+						+ "tools"+sc+"schematron"+sc+"iso_svrl_for_xslt1.xsl",
+				tmpTransform.getAbsolutePath());
+		Utilities.transform(page.getFolders().rootDir + "tools"+sc+"schematron"+sc,
+				page.getFolders().dstDir + n + ".xml",
+				tmpTransform.getAbsolutePath(), tmpOutput.getAbsolutePath());
+
+		factory = DocumentBuilderFactory.newInstance();
+		factory.setNamespaceAware(true);
+		builder = factory.newDocumentBuilder();
+		doc = builder.parse(new FileInputStream(tmpOutput));
+		NodeList nl = doc.getDocumentElement().getElementsByTagNameNS(
+				"http://purl.oclc.org/dsdl/svrl", "failed-assert");
+		if (nl.getLength() > 0) {
+			page.log("Schematron Validation Failed for " + n + ".xml:");
+			for (int i = 0; i < nl.getLength(); i++) {
+				Element e = (Element) nl.item(i);
+				page.log("  @" + e.getAttribute("location") + ": "
+						+ e.getTextContent());
+			}
+		}
 	}
 
 	private void validateRoundTrip(Schema schema, String n) throws Exception {
-    for (PlatformGenerator gen : page.getReferenceImplementations()) 
-    {
-      if (gen.doesTest()) {
-        gen.loadAndSave(page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
-        compareXml(n, gen.getName(), page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir+"tmp.xml");
-      }
-    }
+		for (PlatformGenerator gen : page.getReferenceImplementations()) {
+			if (gen.doesTest()) {
+				gen.loadAndSave(page.getFolders().dstDir + n + ".xml",
+						page.getFolders().tmpResDir + "tmp.xml");
+				compareXml(n, gen.getName(), page.getFolders().dstDir + n
+						+ ".xml", page.getFolders().tmpResDir + "tmp.xml");
+			}
+		}
 	}
 
-	 private void compareXml(String t, String n, String fn1, String fn2) throws Exception {
-	   DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-	   dbf.setNamespaceAware(true);
-	   dbf.setCoalescing(true);
-	   dbf.setIgnoringElementContentWhitespace(true);
-	   dbf.setIgnoringComments(true);
-	   DocumentBuilder db = dbf.newDocumentBuilder();
+	private void compareXml(String t, String n, String fn1, String fn2)
+			throws Exception {
+		char sc = File.separatorChar;
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		dbf.setNamespaceAware(true);
+		dbf.setCoalescing(true);
+		dbf.setIgnoringElementContentWhitespace(true);
+		dbf.setIgnoringComments(true);
+		DocumentBuilder db = dbf.newDocumentBuilder();
 
-	   Document doc1 = db.parse(new File(fn1));
-	   doc1.normalizeDocument();
-	   stripWhitespaceAndComments(doc1);
+		Document doc1 = db.parse(new File(fn1));
+		doc1.normalizeDocument();
+		stripWhitespaceAndComments(doc1);
 
-	   Document doc2 = db.parse(new File(fn2));
-	   doc2.normalizeDocument();
-	   stripWhitespaceAndComments(doc2);
+		Document doc2 = db.parse(new File(fn2));
+		doc2.normalizeDocument();
+		stripWhitespaceAndComments(doc2);
 
-     XmlGenerator xmlgen = new XmlGenerator();
-     File tmp1 = File.createTempFile("xml", ".xml");
-     tmp1.deleteOnExit();
-     xmlgen.generate(doc1.getDocumentElement(), tmp1, doc1.getDocumentElement().getNamespaceURI(), doc1.getDocumentElement().getLocalName());
-     File tmp2 = File.createTempFile("xml", ".xml");
-     tmp2.deleteOnExit();
-     xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2.getDocumentElement().getNamespaceURI(), doc2.getDocumentElement().getLocalName());
-	   
-	   if (!TextFile.fileToString(tmp1.getAbsolutePath()).equals(TextFile.fileToString(tmp2.getAbsolutePath()))) {
-	     page.log("file "+t+" did not round trip perfectly in XML in platform "+n);
-	     if (new File("c:\\program files (x86)\\WinMerge\\WinMergeU.exe").exists()) {
+		XmlGenerator xmlgen = new XmlGenerator();
+		File tmp1 = File.createTempFile("xml", ".xml");
+		tmp1.deleteOnExit();
+		xmlgen.generate(doc1.getDocumentElement(), tmp1, doc1
+				.getDocumentElement().getNamespaceURI(), doc1
+				.getDocumentElement().getLocalName());
+		File tmp2 = File.createTempFile("xml", ".xml");
+		tmp2.deleteOnExit();
+		xmlgen.generate(doc2.getDocumentElement(), tmp2, doc2
+				.getDocumentElement().getNamespaceURI(), doc2
+				.getDocumentElement().getLocalName());
 
-	       List<String> command = new ArrayList<String>();
-	       command.add("\"c:\\program files (x86)\\WinMerge\\WinMergeU.exe\" \""+tmp1.getAbsolutePath()+"\" \""+tmp2.getAbsolutePath()+"\"");
+		if (!TextFile.fileToString(tmp1.getAbsolutePath()).equals(
+				TextFile.fileToString(tmp2.getAbsolutePath()))) {
+			page.log("file " + t
+					+ " did not round trip perfectly in XML in platform " + n);
+			if (new File(System.getenv("ProgramFiles")+sc+"WinMerge"+sc+"WinMergeU.exe")
+					.exists()) {
 
-	       ProcessBuilder builder = new ProcessBuilder(command);
-	       builder.directory(new File(page.getFolders().rootDir));
-	       final Process process = builder.start();
-	       process.waitFor();
-	     }
+				List<String> command = new ArrayList<String>();
+				command.add("\""+System.getenv("ProgramFiles")+sc+"WinMerge"+sc+"WinMergeU.exe"+"\" \""
+						+ tmp1.getAbsolutePath()
+						+ "\" \""
+						+ tmp2.getAbsolutePath() + "\"");
 
-	   }
-  }
+				ProcessBuilder builder = new ProcessBuilder(command);
+				builder.directory(new File(page.getFolders().rootDir));
+				final Process process = builder.start();
+				process.waitFor();
+			}
 
+		}
+	}
 
 	private void stripWhitespaceAndComments(Node node) {
-	  if (node.getNodeType() == Node.ELEMENT_NODE) {
-	    Element e = (Element) node;
-	    Map<String, String> attrs = new HashMap<String, String>();
-	    for (int i = e.getAttributes().getLength() - 1; i >= 0; i--) { 
-	      attrs.put(e.getAttributes().item(i).getNodeName(), e.getAttributes().item(i).getNodeValue());
-  	    e.removeAttribute(e.getAttributes().item(i).getNodeName());
-	    }
-	    for (String n : attrs.keySet()) {
-	      e.setAttribute(n, attrs.get(n));
-	    }
-	  }
-    for (int i = node.getChildNodes().getLength()-1; i >= 0; i--) {
-      Node c = node.getChildNodes().item(i);
-      if (c.getNodeType() == Node.TEXT_NODE && c.getTextContent().trim().length() == 0)
-        node.removeChild(c);
-      else if (c.getNodeType() == Node.TEXT_NODE)
-        c.setTextContent(c.getTextContent().trim());
-      else if (c.getNodeType() == Node.COMMENT_NODE)
-        node.removeChild(c);
-      else if (c.getNodeType() == Node.ELEMENT_NODE)
-        stripWhitespaceAndComments(c);
-    }
-    if (node.getNodeType() == Node.ELEMENT_NODE) {
-      node.appendChild(node.getOwnerDocument().createTextNode("\r\n"));
-    }
-    
-  }
+		if (node.getNodeType() == Node.ELEMENT_NODE) {
+			Element e = (Element) node;
+			Map<String, String> attrs = new HashMap<String, String>();
+			for (int i = e.getAttributes().getLength() - 1; i >= 0; i--) {
+				attrs.put(e.getAttributes().item(i).getNodeName(), e
+						.getAttributes().item(i).getNodeValue());
+				e.removeAttribute(e.getAttributes().item(i).getNodeName());
+			}
+			for (String n : attrs.keySet()) {
+				e.setAttribute(n, attrs.get(n));
+			}
+		}
+		for (int i = node.getChildNodes().getLength() - 1; i >= 0; i--) {
+			Node c = node.getChildNodes().item(i);
+			if (c.getNodeType() == Node.TEXT_NODE
+					&& c.getTextContent().trim().length() == 0)
+				node.removeChild(c);
+			else if (c.getNodeType() == Node.TEXT_NODE)
+				c.setTextContent(c.getTextContent().trim());
+			else if (c.getNodeType() == Node.COMMENT_NODE)
+				node.removeChild(c);
+			else if (c.getNodeType() == Node.ELEMENT_NODE)
+				stripWhitespaceAndComments(c);
+		}
+		if (node.getNodeType() == Node.ELEMENT_NODE) {
+			node.appendChild(node.getOwnerDocument().createTextNode("\r\n"));
+		}
 
-  private void produceCombinedDictionary() throws FileNotFoundException,
+	}
+
+	private void produceCombinedDictionary() throws FileNotFoundException,
 			UnsupportedEncodingException, Exception, IOException {
 		FileOutputStream fos = new FileOutputStream(page.getFolders().dstDir
 				+ "fhir.dict.xml");
 		DictXMLGenerator dxgen = new DictXMLGenerator(fos);
 		dxgen.setConceptDomains(page.getDefinitions().getBindings());
 		dxgen.generate(page.getDefinitions().getResources().values(), "HL7");
+		dxgen.close();
 		fos.close();
 	}
 

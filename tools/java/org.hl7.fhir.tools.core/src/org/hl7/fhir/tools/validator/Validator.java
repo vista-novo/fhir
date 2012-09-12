@@ -37,8 +37,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -57,8 +55,6 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
-import org.hl7.fhir.tools.publisher.Publisher.MyErrorHandler;
-import org.hl7.fhir.tools.publisher.Publisher.MyResourceResolver;
 import org.hl7.fhir.utilities.SchemaInputSource;
 import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Document;
@@ -309,6 +305,7 @@ public class Validator {
     FileInputStream in = new FileInputStream(src);
     byte[] b = new byte[in.available()];
     in.read(b);
+    in.close();
     return b;
   }
 

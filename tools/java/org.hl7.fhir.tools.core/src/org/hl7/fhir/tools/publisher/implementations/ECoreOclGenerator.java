@@ -51,7 +51,9 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
   }
 
   public void generate(Definitions definitions, String destDir, String implDir, String version, Date genDate, Logger logger) throws Exception {
-    new ECoreOclFormatGenerator(new FileOutputStream(implDir+"eCore.txt")).generate(definitions, version, genDate);
+	  ECoreOclFormatGenerator eofg = new ECoreOclFormatGenerator(new FileOutputStream(implDir+"eCore.txt"));
+	  eofg.generate(definitions, version, genDate);
+	  eofg.close();
 
     ZipGenerator zip = new ZipGenerator(destDir+"ecore.zip");
     zip.addFiles(implDir, "", ".txt");

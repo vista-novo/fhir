@@ -5,14 +5,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Annotations;
-import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
-import org.hl7.fhir.definitions.ecore.fhir.BindingRef;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
 import org.hl7.fhir.definitions.ecore.fhir.InvariantRef;
-import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
 import org.hl7.fhir.utilities.Utilities;

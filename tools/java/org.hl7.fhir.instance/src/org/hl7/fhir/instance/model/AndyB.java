@@ -31,7 +31,7 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Mon, Sep 10, 2012 00:30+1000 for FHIR v0.05
 
-import java.util.*;
+
 
 /**
  * [Template] Master Definition

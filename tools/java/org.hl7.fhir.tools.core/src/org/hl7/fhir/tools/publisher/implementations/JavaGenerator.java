@@ -75,16 +75,18 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     
     for (String n : definitions.getResources().keySet()) {
       ResourceDefn root = definitions.getResourceByName(n); 
-      new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"))
-      	.generate(root.getRoot(), definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      JavaResourceGenerator jrg = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
+      jrg.generate(root.getRoot(), definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      jrg.close();
       jFactoryGen.registerResource(n,  root.getName());
     }
 
     for (ResourceDefn resource : definitions.getFutureResources().values()) {
       ElementDefn e = new ElementDefn();
       e.setName(resource.getName());
-      new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java"))
-      	.generate(e, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      JavaResourceGenerator jrg = new JavaResourceGenerator(new FileOutputStream(javaDir+e.getName()+".java"));
+      	jrg.generate(e, definitions.getBindings(), JavaGenClass.Resource, null, genDate, version);
+      	jrg.close();
       jFactoryGen.registerResource(resource.getName(),  e.getName());
     }
 
@@ -92,12 +94,14 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       ElementDefn root = definitions.getInfrastructure().get(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Structure, null, genDate, version);
+      jgen.close();
       jFactoryGen.registerType(n,  root.getName());
     }
     for (String n : definitions.getTypes().keySet()) {
       ElementDefn root = definitions.getTypes().get(n); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Type, null, genDate, version);
+      jgen.close();
       if (root.typeCode().equals("GenericType")) {
         for (TypeRef td : definitions.getKnownTypes()) {
           if (td.getName().equals(root.getName()) && td.hasParams()) {
@@ -113,7 +117,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       ElementDefn root = definitions.getTypes().get(cd.getComment()); 
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+cd.getCode()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Constraint, cd, genDate, version);
-      jFactoryGen.registerType(cd.getCode(), cd.getCode());      
+      jFactoryGen.registerType(cd.getCode(), cd.getCode()); 
+      jgen.close();
     }
     
     for (String n : definitions.getStructures().keySet()) {
@@ -121,6 +126,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       JavaResourceGenerator jgen = new JavaResourceGenerator(new FileOutputStream(javaDir+root.getName()+".java"));
       jgen.generate(root, definitions.getBindings(), JavaGenClass.Type, null, genDate, version);
       jFactoryGen.registerType(n,  root.getName());
+      jgen.close();
     }
 
 
@@ -139,6 +145,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xhtml"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xhtml"+sl, ".java");
     zip.addFiles(implDir+"org.hl7.fhir.utilities"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xml"+sl, "org"+sl+"hl7"+sl+"fhir"+sl+"utilities"+sl+"xml"+sl, ".java");
     zip.close();
+    jjComposerGen.close();
+    jComposerGen.close();
+    jParserGen.close();
+    jFactoryGen.close();
   }
 
   private String getTitle(String n) {
@@ -163,7 +173,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
 
   public boolean c(String name) {
-    int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, rootDir+"implementations\\java\\org.hl7.fhir.instance\\src\\org\\hl7\\fhir\\instance\\model\\Type.java");
+	  char sc = File.separatorChar;
+    int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"+sc+"org"+sc+"hl7"+sc+"fhir"+sc+"instance"+sc+"model"+sc+"Type.java");
     return r == 0;
   }
   

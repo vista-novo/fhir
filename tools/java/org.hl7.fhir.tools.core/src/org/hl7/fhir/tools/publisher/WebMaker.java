@@ -142,26 +142,29 @@ public class WebMaker {
   static final int BUFFER = 2048;
 
   private void extractZip(String src, String dest) throws Exception {
-    Utilities.createDirectory(dest);
-    ZipFile zf = new ZipFile(src);
-    try {
-      for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements();) {
-        ZipEntry ze = e.nextElement();
-        String name = ze.getName();
-        if (name.endsWith(".htm") || name.endsWith(".png") || name.endsWith(".css")) {
-          InputStream in = zf.getInputStream(ze);
-          OutputStream out = new FileOutputStream(dest+name);
+	  Utilities.createDirectory(dest);
+	  ZipFile zf = new ZipFile(src);
+	  try {
+		  for (Enumeration<? extends ZipEntry> e = zf.entries(); e.hasMoreElements();) {
+			  ZipEntry ze = e.nextElement();
+			  String name = ze.getName();
+			  if (name.endsWith(".htm") || name.endsWith(".png") || name.endsWith(".css")) {
+				  InputStream in = zf.getInputStream(ze);
+				  OutputStream out = new FileOutputStream(dest+name);
 
-          byte data[] = new byte[BUFFER];
-          int count;
-          while((count = in.read(data, 0, BUFFER)) != -1) {
-            out.write(data, 0, count);
-          }
-        }
-      }
-    } finally {
-      zf.close();
-    }  
+				  byte data[] = new byte[BUFFER];
+				  int count;
+				  while((count = in.read(data, 0, BUFFER)) != -1) {
+					  out.write(data, 0, count);
+				  }
+
+				  out.close();
+				  in.close();
+			  }
+		  }
+	  } finally {
+		  zf.close();
+	  }  
   } 
     
 

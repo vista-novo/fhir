@@ -29,8 +29,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.io.File;
-
 /**
  * a profile registered against a resource as part of FHIR itself
  *   

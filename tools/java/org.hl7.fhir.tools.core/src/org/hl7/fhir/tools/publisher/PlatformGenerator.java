@@ -30,9 +30,7 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.util.Date;
 import java.util.List;
 
-import org.hl7.fhir.definitions.ecore.fhir.impl.DefinitionsImpl;
 import org.hl7.fhir.definitions.model.Definitions;
-import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.utilities.Logger;
 
 public interface PlatformGenerator {

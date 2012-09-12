@@ -36,8 +36,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.text.html.HTML;
-
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
@@ -77,56 +75,63 @@ public class PageProcessor implements Logger  {
   
   
   private String dictForDt(String dt) throws Exception {
-    
-    File tmp = File.createTempFile("tmp", ".tmp");
-    FileOutputStream fos = new FileOutputStream(tmp);
-    DictHTMLGenerator gen = new DictHTMLGenerator(fos);
-    TypeParser tp = new TypeParser();
-    TypeRef t = tp.parse(dt).get(0);
-    ElementDefn e = definitions.getElementDefn(t.getName());
-    if (e == null)
-      throw new Exception("unable to find definition for "+dt);
-    gen.generate(e);
-    fos.close();
-    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
-    tmp.delete();
-    return val; 
-    
+	  File tmp = File.createTempFile("tmp", ".tmp");
+	  DictHTMLGenerator gen = new DictHTMLGenerator(new FileOutputStream(tmp));
+	  TypeParser tp = new TypeParser();
+	  TypeRef t = tp.parse(dt).get(0);
+	  ElementDefn e = definitions.getElementDefn(t.getName());
+	  if (e == null) {
+		  gen.close();
+		  throw new Exception("unable to find definition for "+ dt);
+	  } 
+	  else {
+		  gen.generate(e);
+		  gen.close();
+	  }
+	  String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
+	  tmp.delete();
+	  return val; 
+
   }
 
   private String tsForDt(String dt) throws Exception {
-    File tmp = File.createTempFile("tmp", ".tmp");
-    tmp.deleteOnExit();
-    FileOutputStream fos = new FileOutputStream(tmp);
-    TerminologyNotesGenerator gen = new TerminologyNotesGenerator(fos);
-    TypeParser tp = new TypeParser();
-    TypeRef t = tp.parse(dt).get(0);
-    ElementDefn e = definitions.getElementDefn(t.getName());
-    if (e == null)
-      throw new Exception("unable to find definition for "+dt);
-    gen.generate(e, definitions.getBindings());
-    fos.close();
-    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
-    tmp.delete();
-    return val;
+	  File tmp = File.createTempFile("tmp", ".tmp");
+	  tmp.deleteOnExit();
+	  TerminologyNotesGenerator gen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
+	  TypeParser tp = new TypeParser();
+	  TypeRef t = tp.parse(dt).get(0);
+	  ElementDefn e = definitions.getElementDefn(t.getName());
+	  if (e == null) {
+		  gen.close();
+		  throw new Exception("unable to find definition for "+ dt);
+	  } 
+	  else {
+		  gen.generate(e, definitions.getBindings());
+		  gen.close();
+	  }
+	  String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
+	  tmp.delete();
+	  return val;
   }
-
   
   private String xmlForDt(String dt, String pn) throws Exception {
-    File tmp = File.createTempFile("tmp", ".tmp");
-    tmp.deleteOnExit();
-    FileOutputStream fos = new FileOutputStream(tmp);
-    XmlSpecGenerator gen = new XmlSpecGenerator(fos, pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null);
-    TypeParser tp = new TypeParser();
-    TypeRef t = tp.parse(dt).get(0);
-    ElementDefn e = definitions.getElementDefn(t.getName());
-    if (e == null)
-      throw new Exception("unable to find definition for "+dt);
-    gen.generate(e);
-    fos.close();
-    String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
-    tmp.delete();
-    return val; 
+	  File tmp = File.createTempFile("tmp", ".tmp");
+	  tmp.deleteOnExit();
+	  XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null);
+	  TypeParser tp = new TypeParser();
+	  TypeRef t = tp.parse(dt).get(0);
+	  ElementDefn e = definitions.getElementDefn(t.getName());
+	  if (e == null) {
+		  gen.close();
+		  throw new Exception("unable to find definition for "+ dt);
+	  } 
+	  else {
+		  gen.generate(e);
+		  gen.close();
+	  }
+	  String val = TextFile.fileToString(tmp.getAbsolutePath())+"\r\n";
+	  tmp.delete();
+	  return val; 
   }
 
   private String generateSideBar() throws Exception {

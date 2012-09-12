@@ -32,8 +32,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.io.OutputStream;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-
 import org.apache.commons.codec.binary.Base64;
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Boolean;

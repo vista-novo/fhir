@@ -312,7 +312,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     workingParserJ = new StringBuilder();
     workingComposerJ = new StringBuilder();
 
-    generateSearchEnums((ResourceDefn) root);
+    generateSearchEnums(root);
     
     StringBuilder def = new StringBuilder();
     StringBuilder defPriv1 = new StringBuilder();
