@@ -31,9 +31,6 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Map;
 
 import javax.xml.transform.Source;

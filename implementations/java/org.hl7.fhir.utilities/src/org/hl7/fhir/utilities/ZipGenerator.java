@@ -67,6 +67,7 @@ public class ZipGenerator {
         while((count = origin.read(data, 0, BUFFER)) != -1) {
           out.write(data, 0, count);
         }
+        origin.close();
       }
     }
   }
@@ -89,6 +90,7 @@ public class ZipGenerator {
     while((count = origin.read(data, 0, BUFFER)) != -1) {
       out.write(data, 0, count);
     }
+    origin.close();
   }
   
 }

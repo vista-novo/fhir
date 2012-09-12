@@ -47,66 +47,82 @@ public class SchemaInputSource implements LSInput {
 		this.namespaceURI = namespaceURI;
 	}
 
+	@Override
 	public String getBaseURI() {
 	  return namespaceURI;
 	}
 
+	@Override
 	public InputStream getByteStream() {
 		return stream;
 	}
 
+	@Override
 	public boolean getCertifiedText() {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public Reader getCharacterStream() {
     return null;
 	}
 
+	@Override
 	public String getEncoding() {
     return "UTF-8";
 	}
 
+	@Override
 	public String getPublicId() {
     return publicId;
 	}
 
+	@Override
 	public String getStringData() {
     return null;
 	}
 
+	@Override
 	public String getSystemId() {
     return systemId;
 	}
 
+	@Override
 	public void setBaseURI(String baseURI) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setByteStream(InputStream byteStream) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setCertifiedText(boolean certifiedText) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setCharacterStream(Reader characterStream) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setEncoding(String encoding) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setPublicId(String publicId) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setStringData(String stringData) {
     throw new Error("Not implemented yet");
 	}
 
+	@Override
 	public void setSystemId(String systemId) {
     throw new Error("Not implemented yet");
 	}

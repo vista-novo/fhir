@@ -54,7 +54,7 @@ public final class IniFile
     /** Variable to represent the timestamp format */
     private String mstrTimeStampFmt = "yyyy-MM-dd HH:mm:ss";
 
-    /** Variable to denote the successfull load operation. */
+    /** Variable to denote the successful load operation. */
     private boolean mblnLoaded = false;
 
     /** Variable to hold the ini file name and full path */
@@ -1256,7 +1256,8 @@ public final class IniFile
         /* (non-Javadoc)
          * @see java.lang.Object#toString()
          */
-        public String toString()
+        @Override
+		public String toString()
         {
             Set          colKeys = null;
             String       strRet  = "";
@@ -1411,7 +1412,8 @@ public final class IniFile
         /* (non-Javadoc)
          * @see java.lang.Object#toString()
          */
-        public String toString()
+        @Override
+		public String toString()
         {
             String strRet = "";
 

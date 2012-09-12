@@ -29,10 +29,8 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.utilities;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,14 +45,12 @@ public class TextFile {
 		List<String> result = new ArrayList<String>();
 		
 		File file = new File(path);
-		FileInputStream s = new FileInputStream(file);
-		BufferedReader reader = new BufferedReader(new InputStreamReader(s,"UTF-8"));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
 		
 		while( reader.ready() )
 			result.add(reader.readLine());
 		
-		s.close();
-		
+		reader.close();
 		return result;
 	}
 	
@@ -74,22 +70,21 @@ public class TextFile {
 	
     public static void stringToFile(String content, String path) throws Exception {
 		File file = new File(path);
-		FileOutputStream s = new FileOutputStream(file);
-		OutputStreamWriter sw = new OutputStreamWriter(s, "UTF-8");
+		OutputStreamWriter sw = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 		sw.write(content);
 		sw.flush();
-		s.close();
+		sw.close();
 	}
 
     public static String fileToString(String src) throws Exception {
 		File file = new File(src);
-		FileInputStream s = new FileInputStream(file);
-		InputStreamReader sr = new InputStreamReader(s, "UTF-8");
+		InputStreamReader sr = new InputStreamReader(new FileInputStream(file), "UTF-8");
 		StringBuilder b = new StringBuilder();
 		while (sr.ready()) {
 			char c = (char) sr.read();
 			b.append(c);
 		}
+		sr.close();
 		return b.toString();
 	}
 }

@@ -47,7 +47,7 @@ public class XMLWriterStateStack {
 	public XMLWriterState current() throws IOException {
 		if (empty())
 			throw new IOException("stack is empty trying to get current");
-		return (XMLWriterState)items.get(items.size() - 1);
+		return items.get(items.size() - 1);
 	}
 	
 	
@@ -70,12 +70,12 @@ public class XMLWriterStateStack {
 	}
 
 	public XMLWriterState item(int index) {
-		return (XMLWriterState)items.get(index);
+		return items.get(index);
 	}
 
 	public boolean inComment() {
 		for (int i = 0; i < items.size(); i++) {
-			if (((XMLWriterState)items.get(i)).isInComment())
+			if (items.get(i).isInComment())
 				return true;					
 		}
 		return false;

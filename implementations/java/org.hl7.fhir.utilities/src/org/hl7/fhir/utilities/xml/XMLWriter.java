@@ -97,6 +97,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#start()
 	 */
+	@Override
 	public void start() throws IOException {
 		condition(!started, "attempt to start after starting");
 		levels.clear();
@@ -244,6 +245,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#attribute(java.lang.String, java.lang.String, java.lang.String, boolean)
 	 */
+	@Override
 	public void attribute(String namespace, String name, String value, boolean onlyIfNotEmpty) throws IOException {
 		if (!onlyIfNotEmpty || value != null && !value.equals(""))
 			attribute(namespace, name, value);
@@ -252,6 +254,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#attribute(java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void attribute(String namespace, String name, String value) throws IOException {
 
 		checkStarted();
@@ -264,6 +267,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#attribute(java.lang.String, java.lang.String, boolean)
 	 */
+	@Override
 	public void attribute(String name, String value, boolean onlyIfNotEmpty) throws IOException {
 		if (!onlyIfNotEmpty || value != null && !value.equals(""))
 			attribute(name, value);
@@ -272,6 +276,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#attribute(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void attribute(String name, String value) throws IOException {
 		checkStarted();
 		addAttribute(name, value);
@@ -280,6 +285,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#attributeNoLines(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void attributeNoLines(String name, String value) throws IOException {
 		checkStarted();
 		addAttribute(name, value, true);
@@ -334,6 +340,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#namespaceDefined(java.lang.String)
 	 */
+	@Override
 	public boolean namespaceDefined(String namespace) {
 		return namespace == null || namespace.equals("") || findByNamespace(namespace) != null;
 	}
@@ -353,6 +360,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#abbreviationDefined(java.lang.String)
 	 */
+	@Override
 	public boolean abbreviationDefined(String abbreviation) {
 		return findByAbbreviation(abbreviation) != null;
 	}
@@ -369,6 +377,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#getDefaultNamespace()
 	 */
+	@Override
 	public String getDefaultNamespace() {
 		XMLNamespace ns = findDefaultNamespace();
 		if (ns == null)
@@ -380,6 +389,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#namespace(java.lang.String)
 	 */
+	@Override
 	public void namespace(String namespace) throws IOException {
 		if (!namespaceDefined(namespace)) {
 			int index = 0;
@@ -394,6 +404,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	 * 
 	 * Replace defaultNamespace()
 	 */
+	@Override
 	public void setDefaultNamespace(String namespace) throws IOException {
 		if ((namespace == null && getDefaultNamespace() != null) ||
 				(namespace != null && !namespace.equals(getDefaultNamespace())))
@@ -403,6 +414,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#namespace(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void namespace(String namespace, String abbreviation) throws IOException {
 		XMLNamespace ns = findByAbbreviation(abbreviation);
 		if (ns == null || !ns.getNamespace().equals(namespace))
@@ -431,6 +443,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#comment(java.lang.String, boolean)
 	 */
+	@Override
 	public void comment(String comment, boolean doPretty) throws IOException {
 		checkStarted();
 		if (pendingClose) { 
@@ -468,6 +481,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#open(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void open(String namespace, String name) throws IOException {
 		open(namespace, name, null);
 	}
@@ -476,6 +490,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#open(java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void open(String namespace, String name, String comment) throws IOException {
 		if (!XMLUtil.isNMToken(name))
 			throw new IOException("XML name "+name+" is not valid");
@@ -512,6 +527,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#close(java.lang.String)
 	 */
+	@Override
 	public void close(String name) throws IOException {
 		checkStarted();
 		if (levels.empty())
@@ -524,6 +540,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#close(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void close(String namespace, String name) throws IOException {
 		checkStarted();
 		if (levels.empty())
@@ -536,6 +553,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#closeToLevel(int)
 	 */
+	@Override
 	public void closeToLevel(int count) throws IOException {
 		while (levels.size() > count)
 			close();		
@@ -545,6 +563,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#close()
 	 */
+	@Override
 	public void close() throws IOException {
 		checkStarted();
 		if (levels.empty()) {
@@ -571,6 +590,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#open(java.lang.String)
 	 */
+	@Override
 	public void open(String name) throws IOException {
 		open(null, name);
 	}
@@ -579,6 +599,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#element(java.lang.String, java.lang.String, java.lang.String, boolean)
 	 */
+	@Override
 	public void element(String namespace, String name, String content, boolean onlyIfNotEmpty) throws IOException {
 		if (!onlyIfNotEmpty || content != null && !content.equals(""))
 			element(namespace, name, content);
@@ -587,6 +608,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#element(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void element(String namespace, String name, String content, String comment) throws IOException {
 		if (!XMLUtil.isNMToken(name))
 			throw new IOException("XML name "+name+" is not valid");
@@ -598,6 +620,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#element(java.lang.String, java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void element(String namespace, String name, String content) throws IOException {
 		if (!XMLUtil.isNMToken(name))
 			throw new IOException("XML name "+name+" is not valid");
@@ -609,6 +632,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#element(java.lang.String, java.lang.String, boolean)
 	 */
+	@Override
 	public void element(String name, String content, boolean onlyIfNotEmpty) throws IOException {
 		if (!onlyIfNotEmpty || content != null && !content.equals(""))
 			element(null, name, content);
@@ -617,6 +641,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#element(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void element(String name, String content) throws IOException {
 		element(null, name, content);
 	}
@@ -624,6 +649,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#text(java.lang.String)
 	 */
+	@Override
 	public void text(String content) throws IOException {
 		text(content, false);
 	}
@@ -633,6 +659,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	 * 
 	 * Replace escapeText()
 	 */
+	@Override
 	public void text(String content, boolean dontEscape) throws IOException {
 		checkInElement();
 		if (content != null) {
@@ -651,6 +678,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#cData(java.lang.String)
 	 */
+	@Override
 	public void cData(String text) throws IOException {
 		text("<![CDATA["+text+"]]>");		
 	}
@@ -658,6 +686,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#writeBytes(byte[])
 	 */
+	@Override
 	public void writeBytes(byte[] bytes) throws IOException {
 		checkInElement();
 		if (pendingClose) { 
@@ -673,6 +702,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#isPretty()
 	 */
+	@Override
 	public boolean isPretty() throws IOException {
 		return (levels == null || levels.empty()) ? prettyBase : levels.current().isPretty();
 	}
@@ -680,6 +710,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#setPretty(boolean)
 	 */
+	@Override
 	public void setPretty(boolean pretty) throws IOException {
 		if (levels == null || levels.empty())
 			this.prettyBase = pretty;
@@ -690,6 +721,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#startCommentBlock()
 	 */
+	@Override
 	public void startCommentBlock() throws IOException {
 		if (levels.inComment())
 			throw new IOException("cannot nest comments");
@@ -704,6 +736,7 @@ public class XMLWriter extends OutputStreamWriter implements IXMLWriter {
 	/* (non-Javadoc)
 	 * @see org.eclipse.ohf.utilities.xml.IXMLWriter#endCommentBlock()
 	 */
+	@Override
 	public void endCommentBlock() throws IOException {
 		if (!levels.inComment())
 			throw new IOException("cannot close a comment block when it is open");

@@ -32,11 +32,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 import java.util.List;
 import java.util.Map;
@@ -219,7 +216,7 @@ public class Utilities {
 
 
   public static byte[] transform(Map<String, byte[]> files, byte[] source, byte[] xslt) throws Exception {
-    TransformerFactory f = net.sf.saxon.TransformerFactoryImpl.newInstance();
+    TransformerFactory f = TransformerFactory.newInstance();
     StreamSource xsrc = new StreamSource(new ByteArrayInputStream(xslt));
     f.setURIResolver(new ZipURIResolver(files));
     Transformer t = f.newTransformer(xsrc);
@@ -252,7 +249,7 @@ public class Utilities {
     StreamResult res = new StreamResult(new FileOutputStream(dest));
     t.transform(src, res);
     */
-    TransformerFactory f = net.sf.saxon.TransformerFactoryImpl.newInstance();
+    TransformerFactory f = TransformerFactory.newInstance();
     StreamSource xsrc = new StreamSource(new FileInputStream(xslt));
     f.setURIResolver(new MyURIResolver(xsltDir));
     Transformer t = f.newTransformer(xsrc);

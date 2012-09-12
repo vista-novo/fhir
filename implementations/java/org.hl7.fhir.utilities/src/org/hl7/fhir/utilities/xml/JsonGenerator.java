@@ -33,7 +33,6 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 
 import org.hl7.fhir.utilities.TextFile;
-import org.hl7.fhir.utilities.Utilities;
 import org.json.JSONObject;
 import org.json.XML;
 
