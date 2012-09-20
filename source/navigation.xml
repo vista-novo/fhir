@@ -55,6 +55,10 @@
       <name>Atom Feeds</name>
     </entry>
     <entry>
+      <link>json</link>
+      <name>JSON format</name>
+    </entry>
+    <entry>
       <link>valueset</link>
       <name>Value Set</name>
     </entry>
