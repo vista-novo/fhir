@@ -143,10 +143,13 @@ namespace HL7.Fhir.Instance.Support
                                                     Support.Util.ATOM_CATEGORY_NAMESPACE)
                                     .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
                                     .FirstOrDefault() : null,
-
-                            Content = getContents(item[JATOM_CONTENT], errors),
+                            IsDeletion = isDeletion(item[JATOM_CONTENT]),
                             Summary = item.Value<string>(JATOM_SUMMARY)
                         };
+
+                        if (!result.IsDeletion)
+                            result.Content = getContents(item[JATOM_CONTENT], errors);
+
                     }
                     catch (Exception exc)
                     {
@@ -163,7 +166,15 @@ namespace HL7.Fhir.Instance.Support
             }
         }
 
+        private bool isDeletion(JToken jToken)
+        {
+            if( jToken.Type == JTokenType.Object )
+            {
+                return jToken.Value<object>("Deleted") != null;
+            }
 
+            return false;
+        }
 
         private static Resource getContents(JToken token, ErrorList errors)
         {
@@ -186,10 +197,10 @@ namespace HL7.Fhir.Instance.Support
 
             if( LastUpdated != null ) result.Add( new JProperty(JATOM_UPDATED, LastUpdated) );
             if( !String.IsNullOrWhiteSpace(Id) ) result.Add(new JProperty(JATOM_ID, Id));
-            if (SelfLink != null && !String.IsNullOrWhiteSpace(SelfLink.ToString()))
+            if(SelfLink != null && !String.IsNullOrWhiteSpace(SelfLink.ToString()))
                 result.Add(new JProperty(JATOM_LINKS, new JArray(createSelfLink(SelfLink))));
 
-            result.Add( new JProperty(JATOM_ENTRIES, new JArray(saveEntries())) );
+            result.Add(new JProperty(JATOM_ENTRIES, new JArray(saveEntries())));
 
             result.WriteTo(writer);
         }
@@ -230,11 +241,19 @@ namespace HL7.Fhir.Instance.Support
                         new JProperty(JATOM_CAT_TERM, entry.ResourceType),
                         new JProperty(JATOM_CAT_SCHEME, Util.ATOM_CATEGORY_NAMESPACE)))));
 
-                if (entry.Content != null)
-                    newItem.Add(new JProperty(JATOM_CONTENT, getContentsAsJObject(entry.Content)));
+                if (entry.IsDeletion)
+                {
+                    newItem.Add(new JProperty(JATOM_CONTENT, getDeletedContentsJObject()));
+                    newItem.Add(new JProperty(JATOM_SUMMARY, "This resource has been deleted"));         
+                }
+                else
+                {
+                    if (entry.Content != null)
+                        newItem.Add(new JProperty(JATOM_CONTENT, getContentsAsJObject(entry.Content)));
 
-                if (entry.Summary != null)
-                    newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
+                    if (entry.Summary != null)
+                        newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
+                }
 
                 if( entry.VersionId != null)
                     newItem.Add( new JProperty(JATOM_VERSION, entry.VersionId) );
@@ -245,6 +264,17 @@ namespace HL7.Fhir.Instance.Support
             return result;
         }
 
+
+        private static JObject getDeletedContentsJObject()
+        {
+            return JObject.Parse(GetDeletedContentsAsJson());
+            //return new JObject(new JProperty("Deleted", new JObject()));
+        }
+
+        public static string GetDeletedContentsAsJson()
+        {
+            return "{ Deleted : {} }";
+        }
 
         private JObject getContentsAsJObject(Resource resource)
         {

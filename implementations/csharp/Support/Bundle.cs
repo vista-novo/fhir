@@ -95,6 +95,7 @@ namespace HL7.Fhir.Instance.Support
         public string ResourceType { get; set; }
 
         public Resource Content { get; set; }
+        public bool IsDeletion { get; set; }
 
         public string Summary { get; set; }
 

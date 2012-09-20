@@ -115,9 +115,13 @@ namespace HL7.Fhir.Instance.Support
                         ResourceType = item.Categories != null ? item.Categories
                                .Where(cat => cat.Scheme == Support.Util.ATOM_CATEGORY_NAMESPACE)
                                .Select(scat => scat.Name).FirstOrDefault() : null,
-                        Content = getContents(item.Content, errors),
+                        IsDeletion = isDeletion(item.Content,errors),
                         Summary = item.Summary.Text
                     };
+
+                    if (!result.IsDeletion)
+                        result.Content = getContents(item.Content, errors);
+
                 }
                 catch (Exception exc)
                 {
@@ -131,6 +135,19 @@ namespace HL7.Fhir.Instance.Support
 
                 Entries.Add(result);
             }
+        }
+
+        private bool isDeletion(SyndicationContent content, ErrorList errors)
+        {
+            string contents = getContentsFromSyndication(content,errors);
+
+            var contentsXml = XElement.Parse(contents);
+
+            if (contentsXml.Name.LocalName == "Deleted" &&
+                contentsXml.Name.NamespaceName == Util.FHIRNS)
+                return true;
+            else
+                return false;
         }
 
 
@@ -170,9 +187,17 @@ namespace HL7.Fhir.Instance.Support
                 
                 if( !String.IsNullOrWhiteSpace(entry.ResourceType) )
                     newItem.Categories.Add(new SyndicationCategory(entry.ResourceType, Util.ATOM_CATEGORY_NAMESPACE, null));
-                
-                newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
-                newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
+
+                if (entry.IsDeletion)
+                {
+                    newItem.Content = getDeletedSyndicationContent();
+                    newItem.Summary = SyndicationContent.CreateXhtmlContent("This resource has been deleted");
+                }
+                else
+                {
+                    newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
+                    newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
+                }
 
                 if( entry.VersionId != null)
                     newItem.AttributeExtensions.Add(ETAG, entry.VersionId);
@@ -182,6 +207,9 @@ namespace HL7.Fhir.Instance.Support
 
             return result;
         }
+
+
+
 
 
 
@@ -200,7 +228,27 @@ namespace HL7.Fhir.Instance.Support
                  select link.Uri).FirstOrDefault();
         }
 
+
+        private static SyndicationContent getDeletedSyndicationContent()
+        {
+            string deleted = "<x>" + GetDeletedContentsAsXml() + "</x>";
+            XmlReader r = XmlReader.Create(new StringReader(deleted));
+            return SyndicationContent.CreateXmlContent(r);
+        }
+
+        public static string GetDeletedContentsAsXml()
+        {
+            return String.Format("<Deleted xmlns='{0}' />", Util.FHIRNS);
+        }
+
         private static Resource getContents(SyndicationContent content, ErrorList errors)
+        {
+            string contents = getContentsFromSyndication(content, errors);
+            return ResourceParser.ParseResourceFromXml(contents, errors);
+        }
+
+
+        private static string getContentsFromSyndication(SyndicationContent content, ErrorList errors)
         {
             if (content.Type != "text/xml")
             {
@@ -211,10 +259,11 @@ namespace HL7.Fhir.Instance.Support
             // Sigh....why does this have to be hard? I don't WANT an extra
             // root element around the contents...
             StringWriter buffer = new StringWriter();
-            content.WriteTo(new XmlTextWriter(buffer),"x", null);
+            content.WriteTo(new XmlTextWriter(buffer), "x", null);
             buffer.GetStringBuilder().Replace("<x type=\"text/xml\">", "");
-            buffer.GetStringBuilder().Replace("</x>","");
-            return ResourceParser.ParseResourceFromXml(buffer.ToString(), errors);
+            buffer.GetStringBuilder().Replace("</x>", "");
+
+            return buffer.ToString();
         }
 
         private XmlReader getContentsReader(Resource r)
