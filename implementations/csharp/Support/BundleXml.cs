@@ -116,7 +116,6 @@ namespace HL7.Fhir.Instance.Support
                                .Where(cat => cat.Scheme == Support.Util.ATOM_CATEGORY_NAMESPACE)
                                .Select(scat => scat.Name).FirstOrDefault() : null,
                         IsDeletion = isDeletion(item.Content,errors),
-                        Summary = item.Summary.Text
                     };
 
                     if (!result.IsDeletion)
@@ -189,15 +188,15 @@ namespace HL7.Fhir.Instance.Support
                     newItem.Categories.Add(new SyndicationCategory(entry.ResourceType, Util.ATOM_CATEGORY_NAMESPACE, null));
 
                 if (entry.IsDeletion)
-                {
                     newItem.Content = getDeletedSyndicationContent();
-                    newItem.Summary = SyndicationContent.CreateXhtmlContent("This resource has been deleted");
-                }
                 else
                 {
-                    newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
-                    newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
+                    if(entry.Content != null )
+                        newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
                 }
+
+                if( entry.Summary != null )
+                    newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
 
                 if( entry.VersionId != null)
                     newItem.AttributeExtensions.Add(ETAG, entry.VersionId);

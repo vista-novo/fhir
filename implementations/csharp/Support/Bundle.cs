@@ -97,8 +97,6 @@ namespace HL7.Fhir.Instance.Support
         public Resource Content { get; set; }
         public bool IsDeletion { get; set; }
 
-        public string Summary { get; set; }
-
         public ErrorList Validate()
         {
             ErrorList errors = new ErrorList();
@@ -117,6 +115,19 @@ namespace HL7.Fhir.Instance.Support
                 errors.Add("Entry must have at least one author with a name", context);
 
             return errors;
+        }
+
+        public string Summary
+        {
+            get
+            {
+                if (IsDeletion)
+                    return "<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>";
+                else if (Content != null && Content.Text != null && Content.Text.Div != null)
+                    return (string)Content.Text.Div;
+                else
+                    return null;
+            }
         }
     }
 }

@@ -81,6 +81,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(2, test.Entries.Count);
 
             Assert.AreEqual(true, test.Entries[1].IsDeletion);
+            Assert.AreEqual("<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>", test.Entries[1].Summary);
 
             StringWriter sw = new StringWriter();
             test.Save(new JsonTextWriter(sw));

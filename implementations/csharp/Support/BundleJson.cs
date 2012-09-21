@@ -144,7 +144,6 @@ namespace HL7.Fhir.Instance.Support
                                     .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
                                     .FirstOrDefault() : null,
                             IsDeletion = isDeletion(item[JATOM_CONTENT]),
-                            Summary = item.Value<string>(JATOM_SUMMARY)
                         };
 
                         if (!result.IsDeletion)
@@ -242,18 +241,15 @@ namespace HL7.Fhir.Instance.Support
                         new JProperty(JATOM_CAT_SCHEME, Util.ATOM_CATEGORY_NAMESPACE)))));
 
                 if (entry.IsDeletion)
-                {
                     newItem.Add(new JProperty(JATOM_CONTENT, getDeletedContentsJObject()));
-                    newItem.Add(new JProperty(JATOM_SUMMARY, "This resource has been deleted"));         
-                }
                 else
                 {
                     if (entry.Content != null)
                         newItem.Add(new JProperty(JATOM_CONTENT, getContentsAsJObject(entry.Content)));
-
-                    if (entry.Summary != null)
-                        newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
                 }
+
+                if( entry.Summary != null )
+                    newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
 
                 if( entry.VersionId != null)
                     newItem.Add( new JProperty(JATOM_VERSION, entry.VersionId) );
