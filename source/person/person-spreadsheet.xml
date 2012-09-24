@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<?mso-application progid="Excel.Sheet"?>
 <Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
  xmlns:o="urn:schemas-microsoft-com:office:office"
  xmlns:x="urn:schemas-microsoft-com:office:excel"
@@ -7,20 +6,19 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Alexander Henket</LastAuthor>
   <Created>2012-03-19T09:39:52Z</Created>
-  <LastSaved>2012-05-28T06:03:25Z</LastSaved>
-  <Version>14.00</Version>
+  <LastSaved>2012-09-24T21:22:46Z</LastSaved>
+  <Version>14.0</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>7455</WindowHeight>
-  <WindowWidth>14880</WindowWidth>
-  <WindowTopX>480</WindowTopX>
-  <WindowTopY>90</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <WindowHeight>15960</WindowHeight>
+  <WindowWidth>28620</WindowWidth>
+  <WindowTopX>9780</WindowTopX>
+  <WindowTopY>0</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -41,6 +39,21 @@
    <NumberFormat/>
    <Protection/>
   </Style>
+  <Style ss:ID="s30" ss:Name="Uitvoer">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#333333"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#333333"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#333333"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"
+     ss:Color="#333333"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#333333"
+    ss:Bold="1"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
+  </Style>
   <Style ss:ID="s63">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
@@ -59,39 +72,62 @@
    </Borders>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
-   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+   <Interior ss:Color="#FFFFFF" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s66">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
-   <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
+   <Interior ss:Color="#C0C0C0" ss:Pattern="Solid"/>
   </Style>
   <Style ss:ID="s67">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+  </Style>
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s71">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s72">
    <Alignment ss:Vertical="Top"/>
+  </Style>
+  <Style ss:ID="s75">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s76">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+  </Style>
+  <Style ss:ID="s77" ss:Parent="s30">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="26" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="150.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="34.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30.75"/>
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="22" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:Width="239"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="35"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="31"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="73.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="74"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="83"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="214" ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="225.75"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="226"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
+   <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150"/>
+   <Row ss:AutoFitHeight="0" ss:Height="43" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -151,6 +187,57 @@
     <Cell><Data ss:Type="String">./name</Data></Cell>
     <Cell><Data ss:Type="String">PID-5, PID-9</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="98">
+    <Cell><Data ss:Type="String">Person.telecom</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A contact detail for the person</Data></Cell>
+    <Cell><Data ss:Type="String">A contact detail for the person</Data></Cell>
+    <Cell><Data ss:Type="String">May need to have options for contacting the person urgently, and also to help with identification</Data></Cell>
+    <Cell><Data ss:Type="String">Person may have multiple ways to be contacted with different uses or applicable periods</Data></Cell>
+    <Cell><Data ss:Type="String">./telecom</Data></Cell>
+    <Cell><Data ss:Type="String">PID-13, PID-14</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">renamed from contact, because that suggested &quot;contact party&quot; at first sight. &quot;telecom&quot; is a well-worn path, so without a really good working alternative we want to stick to it</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Person.gender</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">AdministrativeGender</Data></Cell>
+    <Cell><Data ss:Type="String">Administrative Gender</Data></Cell>
+    <Cell><Data ss:Type="String">Administrative Gender</Data></Cell>
+    <Cell><Data ss:Type="String">Patient Identification, and also for managing the patient</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./administrativeGender</Data></Cell>
+    <Cell><Data ss:Type="String">PID-8</Data></Cell>
+    <Cell ss:Index="15" ss:StyleID="s67"><Data ss:Type="String">'gender' is still the administrative gender, but this is reflected in its description rather than its name.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Person.birthDate</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">dateTime</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The birth date for the person</Data></Cell>
+    <Cell><Data ss:Type="String">The birth date for the person</Data></Cell>
+    <Cell><Data ss:Type="String">Age of person drives many clinical processes.</Data></Cell>
+    <Cell><Data ss:Type="String">At least a estimated year should be provided as a guess if the real dob is unknown</Data></Cell>
+    <Cell><Data ss:Type="String">./birthTime</Data></Cell>
+    <Cell><Data ss:Type="String">PID-7</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">renamed from dob, because the abbreviation is not obvious to non-English speakers</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="154">
+    <Cell><Data ss:Type="String">Person.deceased</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">boolean</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Indicates if the Person deceased or not</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates if the Person deceased or not</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">If there's no value in the instance it means there is no statement on whether or not the person deceased. Most systems will interpret the absence of a value as a sign of the person being alive.</Data></Cell>
+    <Cell><Data ss:Type="String">./deceasedInd</Data></Cell>
+    <Cell><Data ss:Type="String">PID-30</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">there are two choices (a) deceased and date are two separate notions, one who could go in core and one who does not, and not all usecases need both, (b) its one piece of information, and to avoid inconsistencies its better to have one field with a nullflavor saying that there is a date, but it is not available/known.</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Person.address</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
@@ -162,107 +249,66 @@
     <Cell><Data ss:Type="String">./addr</Data></Cell>
     <Cell><Data ss:Type="String">PID-11</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Person.contact</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A contact detail for the person</Data></Cell>
-    <Cell><Data ss:Type="String">A contact detail for the person</Data></Cell>
-    <Cell><Data ss:Type="String">May need to have options for contacting the person urgently, and also to help with identification</Data></Cell>
-    <Cell><Data ss:Type="String">Person may have multiple contacts with different uses or applicable periods</Data></Cell>
-    <Cell><Data ss:Type="String">./telecom</Data></Cell>
-    <Cell><Data ss:Type="String">PID-13, PID-14</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.dob</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="113" ss:StyleID="s76">
+    <Cell ss:StyleID="s75"><Data ss:Type="String">Person.maritalStatus</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">dateTime</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The birth date for the person</Data></Cell>
-    <Cell><Data ss:Type="String">The birth date for the person</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">This field contains the patient's marital (civil) status.</Data></Cell>
+    <Cell><Data ss:Type="String">This field contains the patient's marital (civil) status.</Data></Cell>
     <Cell><Data ss:Type="String">Age of person drives many clinical processes.</Data></Cell>
     <Cell><Data ss:Type="String">At least a estimated year should be provided as a guess if the real dob is unknown</Data></Cell>
-    <Cell><Data ss:Type="String">./birthTime</Data></Cell>
+    <Cell><Data ss:Type="String">./maritalStatus</Data></Cell>
+    <Cell><Data ss:Type="String">PID-16</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">We discussed moving this onto the SubjectOfCare role, since its most relevant there, but most attendees felt it was so much a characteristic of a person, that it should remain in Person and is just not strictly patient-only </Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Person.gender</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell><Data ss:Type="String">Administrative Gender</Data></Cell>
-    <Cell><Data ss:Type="String">Administrative Gender</Data></Cell>
-    <Cell><Data ss:Type="String">Patient Identification, and also for managing the patient</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.administrativeGender</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Person.religion</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">Religion</Data></Cell>
-    <Cell><Data ss:Type="String">Religion of the person</Data></Cell>
-    <Cell><Data ss:Type="String">The religious denomination to which a person professes affiliation</Data></Cell>
-    <Cell><Data ss:Type="String">The religion of a person may influence ancilliary processes around the provision of healthcare, and may provide general advice with regard to diet, etc</Data></Cell>
-    <Cell><Data ss:Type="String">Not all people have a formal religious affiliation</Data></Cell>
-    <Cell><Data ss:Type="String">.religiousAffiliationCode</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Person.race</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">Race</Data></Cell>
-    <Cell><Data ss:Type="String">The race of a person</Data></Cell>
-    <Cell><Data ss:Type="String">blah balh</Data></Cell>
-    <Cell><Data ss:Type="String">This is added because many jurisdictions insisted on it</Data></Cell>
-    <Cell><Data ss:Type="String">Some places do not use this!</Data></Cell>
-    <Cell><Data ss:Type="String">.raceCode</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Person.qualification</Data></Cell>
+   <Row ss:AutoFitHeight="0" ss:Height="113" ss:StyleID="s77">
+    <Cell><Data ss:Type="String">Person.contactParty</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Qualifications, Accreditations, Certifications</Data></Cell>
-    <Cell><Data ss:Type="String">The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment</Data></Cell>
-    <Cell><Data ss:Type="String">For many persons in healthcare, it is necessary to track the qualifications a person has - formal.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.plays:Role(classCode='QUAL')</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.qualification.identifier</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Identifier for the qualification</Data></Cell>
-    <Cell><Data ss:Type="String">The identifier of a qualification</Data></Cell>
-    <Cell><Data ss:Type="String">Allows a link back to a qualification registry, if one exists</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.identifier</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact party details</Data></Cell>
+    <Cell><Data ss:Type="String">A generic contact party for the person. </Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">http://wiki.hl7.org/index.php?title=FHIR_Person#Person.ContactParty</Data></Cell>
+    <Cell><Data ss:Type="String">.scopedBy:Role(classCode='CON')</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Person.qualification.code</Data></Cell>
+    <Cell><Data ss:Type="String">Person.contactParty.role</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">Qualifications</Data></Cell>
-    <Cell><Data ss:Type="String">A code for the qualification</Data></Cell>
-    <Cell><Data ss:Type="String">The type of the qualification</Data></Cell>
-    <Cell><Data ss:Type="String">commonly used to determine the roles a person may play</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact party role</Data></Cell>
+    <Cell><Data ss:Type="String">The type of the contact party</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">NK1-3, NK1-7</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Person.qualification.institution</Data></Cell>
+   <Row ss:Height="42">
+    <Cell><Data ss:Type="String">Person.contactParty.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Who conferred it</Data></Cell>
-    <Cell><Data ss:Type="String">The organisation that confered/confers the qualification</Data></Cell>
-    <Cell><Data ss:Type="String">May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopedBy:Organization</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact party name</Data></Cell>
+    <Cell><Data ss:Type="String">The name of the contact party</Data></Cell>
+    <Cell><Data ss:Type="String">It's important to know who to address when he is the contact party</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">NK1-2, NK1-13</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Person.qualification.period</Data></Cell>
+   <Row ss:Height="14">
+    <Cell><Data ss:Type="String">Person.contactParty.address</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact party address</Data></Cell>
+    <Cell><Data ss:Type="String">The address of the contact party</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">NK1-4</Data></Cell>
+   </Row>
+   <Row ss:Height="28">
+    <Cell><Data ss:Type="String">Person.contactParty.telecom</Data></Cell>
+    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact party telecommunication</Data></Cell>
+    <Cell><Data ss:Type="String">The telecommunication addresses of the contact party, e.g. phone, fax, email etcetera</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">NK1-5, NK1-6</Data></Cell>
+   </Row>
+   <Row ss:Height="42">
+    <Cell><Data ss:Type="String">Person.contactParty.party</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the qualification is valid (date only)</Data></Cell>
-    <Cell><Data ss:Type="String">The period for which a qualification is held</Data></Cell>
-    <Cell><Data ss:Type="String">Some qualifications are only conferred for a limited time period and must be re-acquired or forfeited</Data></Cell>
-    <Cell><Data ss:Type="String">Formal degrees may have a known start date, but no end date</Data></Cell>
-    <Cell><Data ss:Type="String">.effectiveTime:IVL_TS</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Person|Organization|Agent)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Reference to the Person|Organization|Agent resource that is the contact party</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Person.language</Data></Cell>
@@ -284,61 +330,17 @@
     <Cell><Data ss:Type="String">A code that identifies the language</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">So just ISO 639-3?  Not allowing ENG-CA or something?</Data></Cell>
     <Cell><Data ss:Type="String">.languageCode</Data></Cell>
+    <Cell><Data ss:Type="String">PID-15, NK1-20</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.language.use</Data></Cell>
+    <Cell><Data ss:Type="String">Person.language.level</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">LanguageUse</Data></Cell>
-    <Cell><Data ss:Type="String">How well the language is used</Data></Cell>
-    <Cell><Data ss:Type="String">A code the describes how well the language is spoken</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the proficiency level of the language for the Person</Data></Cell>
+    <Cell><Data ss:Type="String">A code that describes how well the language is spoken</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">No differentiation is made between spoken and written functionality here</Data></Cell>
     <Cell><Data ss:Type="String">.proficiencyLanguageCode</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">Person.relatedPerson</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Kin, Guardians, Agents, Caregivers</Data></Cell>
-    <Cell><Data ss:Type="String">Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track next of kin, or other people who may need to contacted/consulting regarding the patient's healthcare status or who might otherwise influence their treatment</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.plays:Role(classCode='REL')</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Person.relatedPerson.identifier</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Identifier for the person</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier the related person - may be a full link to a Person resource, or some other kind of identifier</Data></Cell>
-    <Cell><Data ss:Type="String">may have an identifier for the person that can be used to source contact details</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopedBy:Person.identifier</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Person.relatedPerson.role</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">PersonRelationship</Data></Cell>
-    <Cell><Data ss:Type="String">Type of relationship</Data></Cell>
-    <Cell><Data ss:Type="String">Code that specifies how this person is related to the subject. A code is required.</Data></Cell>
-    <Cell><Data ss:Type="String">Need to know how the person is related</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Person.relatedPerson.name</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Name of the person</Data></Cell>
-    <Cell><Data ss:Type="String">A name should be specified for the related person</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopedBy:Person.name</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Person.relatedPerson.contact</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contact details for the person</Data></Cell>
-    <Cell><Data ss:Type="String">Contact details (phone, email etc) should be provided for the person</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopedBy:Person.telecom</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Person.extension</Data></Cell>
@@ -362,12 +364,20 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>9</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>7</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -375,12 +385,16 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveRow>13</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -389,8 +403,9 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -406,6 +421,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -418,13 +440,14 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="99.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="171"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="96.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="107.25"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="69.75"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   x:FullRows="1" ss:StyleID="s71" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="100"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="171"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="97"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="107"/>
+   <Column ss:StyleID="s71" ss:AutoFitWidth="0" ss:Width="70"/>
+   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Event Code</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Request Resources</Data></Cell>
@@ -450,6 +473,7 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -462,15 +486,15 @@
  </Worksheet>
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="10" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="71"/>
+   <Column ss:AutoFitWidth="0" ss:Width="383"/>
+   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5">
+   <Row ss:AutoFitHeight="0" ss:Height="16">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
     <Cell><Data ss:Type="String">A patient Identifier</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
@@ -523,7 +547,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>600</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -537,11 +567,11 @@
  </Worksheet>
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="116.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="251.25"/>
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="116"/>
+   <Column ss:AutoFitWidth="0" ss:Width="251"/>
    <Column ss:AutoFitWidth="0" ss:Width="102"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="16" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Filename</Data></Cell>
@@ -575,6 +605,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -588,13 +619,13 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="114"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="174.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="64.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="126"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="260.25"/>
+   x:FullRows="1" ss:StyleID="s72" ss:DefaultColumnWidth="65"
+   ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="175"/>
+   <Column ss:Index="4" ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="84"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="126"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="260"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
@@ -604,38 +635,38 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">AdministrativeGender</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The gender of a person used for administrative purposes  </Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">AdministrativeGender</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The gender of a person used for administrative purposes  </Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Race</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The race of the person</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">HL7 v2 table 0200</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Race</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The race of the person</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">preferred</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s71"><Data ss:Type="String">HL7 v2 table 0200</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Religion</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The denomination to which a person professes affiliation  </Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Religion</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The denomination to which a person professes affiliation  </Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Qualifications</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Formal qualifications, accreditations, and Certifications acquired by a person  </Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Qualifications</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Formal qualifications, accreditations, and Certifications acquired by a person  </Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">LanguageUse</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">How well a person speaks a language</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">code list</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">required</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">#language-use</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">LanguageUse</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">How well a person speaks a language</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">code list</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">#language-use</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">PersonRelationship</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The relationship a person has to the subject, including familial, marital, financial, legal, and casual relationships  </Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">PersonRelationship</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">The relationship a person has to the subject, including familial, marital, financial, legal, and casual relationships  </Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -645,6 +676,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -657,9 +689,9 @@
  </Worksheet>
  <Worksheet ss:Name="language-use">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="15">
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="288"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s69">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s72">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"/>
@@ -691,6 +723,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <PageLayoutZoom>0</PageLayoutZoom>
    <Panes>
     <Pane>
      <Number>3</Number>
