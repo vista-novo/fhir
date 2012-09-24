@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Person.xsd">
+<Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Person.xsd">
   <id>34234</id>
 	
   <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
@@ -45,7 +46,27 @@
       <value>Jim</value>
     </part>
   </name>
+
+  <telecom dataAbsentReason="unknown" >
+    <use>home</use>
+  </telecom>
+  <telecom>
+    <system>phone</system>
+    <value>(03) 5555 6473</value>
+    <use>work</use>
+  </telecom>
   
+  <gender>
+    <coding>
+      <code>M</code>
+      <system>http://hl7.org/fhir/sid/v2-0001</system>
+      <display>Male</display>
+    </coding>
+  </gender>
+
+  <birthDate>1974-12-25</birthDate> 
+
+  <deceased>false</deceased>
   
   <address>
     <use>home</use>
@@ -66,26 +87,7 @@
       <value>3999</value>
     </part>
   </address>
-
-  <contact dataAbsentReason="unknown" >
-    <use>home</use>
-  </contact>
-  <contact>
-    <system>phone</system>
-    <value>(03) 5555 6473</value>
-    <use>work</use>
-  </contact>
-
-  <dob>1974-12-25</dob> 
-	
-	<race>
-	  <coding id="a25">
-	    <code>EUR</code>
-      <system>urn:hl7.org::v2/0200</system>
-      <display>European</display>
-    </coding>
-    <primary>a25</primary>
-	</race>
+  	
 	<text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
