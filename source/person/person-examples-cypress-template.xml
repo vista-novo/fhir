@@ -38,18 +38,15 @@
             <value>[%first name%]</value>
           </part>
         </name>
-        <dob>[%birthdate%]</dob> 
-  	
         <gender>
           <coding>
-	    <code>[%gender%]</code>
-	    <system>http://hl7.org/fhir/sid/v2-0001</system>
-	    <display>[%gender display%]</display>
-	  </coding>
+			<code>[%gender%]</code>
+			<system>http://hl7.org/fhir/sid/v2-0001</system>
+			<display>[%gender display%]</display>
+			</coding>
         </gender>
-	<race>
-	  <text>[%race%]</text>
-        </race>	
+        <birthDate>[%birthdate%]</birthDate> 
+  	
         <text>
           <status>generated</status>
           <div xmlns="http://www.w3.org/1999/xhtml">[%last name%], [%first name%]. MRN: [%patient_id%]</div>
