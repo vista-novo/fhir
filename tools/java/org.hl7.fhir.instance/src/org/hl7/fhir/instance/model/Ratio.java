@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Sep 10, 2012 01:20+1000 for FHIR v0.05
+// Generated on Sun, Sep 16, 2012 06:55+1000 for FHIR v0.06
 
 /**
  * A ratio of two Quantity values - a numerator and a denominator. 

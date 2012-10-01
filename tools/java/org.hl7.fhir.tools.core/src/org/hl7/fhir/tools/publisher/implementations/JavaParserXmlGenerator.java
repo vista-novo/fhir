@@ -46,7 +46,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
-public class JavaParserXmlGenerator extends OutputStreamWriter {
+public class JavaParserXmlGenerator extends JavaBaseGenerator {
   public enum JavaGenClass { Structure, Type, Resource, Constraint }
 
   private Definitions definitions;
@@ -65,7 +65,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
   private String genparam;
   
   public JavaParserXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
-    super(out, "UTF-8");
+    super(out);
   }
 
   public void generate(Definitions definitions, String version, Date genDate) throws Exception {
@@ -257,7 +257,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
       String en = name.endsWith("[x]") ? name.replace("[x]", "") : "value";
       String pfx = name.endsWith("[x]") ? name.replace("[x]", "") : "";
       write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && nameIsTypeName(xpp, \""+pfx+"\")) {\r\n");
-      write("        res.set"+upFirst(en)+"(parseType(\""+en+"\", xpp));\r\n");
+      write("        res.set"+upFirst(getElementName(en, false))+"(parseType(\""+en+"\", xpp));\r\n");
     } else {
       String prsr = null;
       BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
@@ -320,7 +320,7 @@ public class JavaParserXmlGenerator extends OutputStreamWriter {
         }
       } else {
         write("      "+(!first ? "} else " : "")+"if (eventType == XmlPullParser.START_TAG && xpp.getName().equals(\""+name+"\")) {\r\n");
-        write("        res.set"+upFirst(name)+"("+prsr+");\r\n");
+        write("        res.set"+upFirst(getElementName(name, false))+"("+prsr+");\r\n");
       }
     }
   }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Problem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\problem.xsd">
+  <id>sasd</id>
+  <code> 
+    <coding>
+      <code>39065001</code>
+      <system>http://snomed.info</system>
+      <display>Burn of ear</display>
+    </coding>
+    <text>Burnt Ear</text>
+  </code>
+ <category>
+   <coding>
+    <code>439401001</code> 
+    <system>http://snomed.info</system>
+    <display>Diagnosis</display>
+   </coding>
+ </category>
+ <status>confirmed</status>
+ <severity>
+   <coding>
+    <code>24484000</code>
+    <system>http://snomed.info</system>
+    <display>Severe</display>
+   </coding>
+ </severity>
+ <onsetDate>2009-05-24</onsetDate>
+ <location>
+  <code>
+    <coding>
+      <code>49521004</code>
+      <system>http://snomed.info</system>
+      <display>Left external ear structure</display>
+    </coding>
+    <text>Left Ear</text>
+  </code>
+ </location>
+ <text>
+   <status>generated</status>
+   <div xmlns="http://www.w3.org/1999/xhtml">Severe burn of left ear (Date: 24-May 2012)</div>   
+ </text>
+</Problem>
+
+
+

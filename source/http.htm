@@ -87,8 +87,8 @@ For instance, the resource manager for the type
 http://server/path/patient
 </pre>
 <p>
-All the logical operations are defined relative to the service root
-URL below. Note that this means that given the address of any one FHIR
+All the logical operations are defined relative to this service root
+URL. Note that this means that given the address of any one FHIR
 resource on a system, the correct address for all the other resources 
 may be determined. However since application URLs may change and because in some uses of FHIR within internal eco-systems,
 local configuration may dictate that the provider of a resource is different
@@ -110,7 +110,7 @@ Each resource has an associated set of <a href="xml.htm#metadata">resource metad
   <tr><td>Last Modified Date</td><td>HTTP Last-Modified header</td></tr>
   <tr><td>Master Location</td><td>HTTP Content-Location header</td></tr>
 </table>
-
+<p></p>
 
 <h2>Security</h2>
 <p>
@@ -124,24 +124,18 @@ account of the individual user or whether some other arrangement is required.
 <a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
 that do not require URL parameters, but these may be used if necessary.
 </p>
-<h2>Content Types and encodings</h2>
 <p>
-The formal MIME-type for FHIR resources is text/xml+fhir (still to be registered) and SHOULD be use 
-by clients and servers. Servers are required to support the XML format of the resources defined in this
-specification, but may support other alternatives, including the informative 
-<a href="json.htm">JSON</a> representation. Servers must support server-driven content negotiation
-as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html#sec12">section 12</a> 
-of the HTTP specification, but in order to support various implementation limitations, may choose to 
-support the (?format=) parameter to specify alternative response formats by their MIME-types.
-For the format parameter, the mime types "xml", "text/xml" and "text/xml+fhir" must be interpreted to mean
-the normative XML format defined by FHIR and "json" and "application/json" must be interpreted to mean the
-informative JSON format.
+Notes about http status responses... security layer may issue redirects
 </p>
+<h2>Content Types and File Extensions</h2>
 <p>
-FHIR uses UTF-8 for all request and response bodies. Since the HTTP specification (section 3.7.1)
-defines a default character encoding of ISO-8859-1, requests and responses MUST explicitly set
-the character encoding to UTF-8 using the 'charset' parameter of the MIME-type in the Content-Type header. 
-Requests MAY also specify this charset parameter in the Accept header and/or use the Accept-Charset header.
+The formal mime type for FHIR resources is text/xml+fhir (still to be registered) and SHOULD be use by clients and servers.
+Servers are required to support the XML format of the resources defined in this specification, but may support other
+alternatives, including the informative <a href="xml.htm#json">JSON</a> representation. Servers must support the 
+content-type negotiation support described by the HTTP specification, but in order to support various implementation
+limitations, may choose to support the (?format=) parameter to specify alternative return formats by their mime types.
+For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
+defined by FHIR and application/json must be interpreted to mean the informative JSON format.
 </p>
 
 <a name="read"> </a>
@@ -237,7 +231,7 @@ The history interaction retrieves the history of the resource. The interaction i
 </pre>
 <p>
 The return content is an <a href="atom.htm">Atom feed</a> containing the version history for that 
-resource, sorted with oldest versions first.
+resource, sorted with oldest versions first. ToDo: how deletions are represented.
 </p>
 
 
@@ -324,7 +318,7 @@ in a defined order. This specification does not assign any particular meaning to
 </p>
 <p>
 If more sophisticated searching is required, a FHIR-based service interface can be defined to enable the workflow and
-functionality desired.  At this time, support for messaging-based queries is not expected to be needed in FHIR.
+functionality desired.  
 </p>
 
 <h3>Search Parameter Types</h3>
@@ -400,7 +394,7 @@ headers like this:
   response-modified-[identity]: [purpose]
 </pre>
 <p>
-The identity must a single token defined by the administrator of the agent
+The identity must be a single token defined by the administrator of the agent
 that will sufficiently identify the agent in the context of use. The header
 must specify the agent's purpose in modifying the content. End point systems must
 not use this header for any purpose. Its aim is to assist with 

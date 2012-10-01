@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Mon, Sep 10, 2012 01:20+1000 for FHIR v0.05
+// Generated on Sun, Sep 16, 2012 06:55+1000 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -404,6 +404,117 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
+  private void composeXdsEntry(String name, XdsEntry element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("id", element.getId());
+      composeURI("repositoryId", element.getRepositoryId());
+      composeString("mimeType", element.getMimeType());
+      composeCoding("format", element.getFormat());
+      composeCoding("class", element.getClass_());
+      composeCoding("type", element.getType());
+      composeString("title", element.getTitle());
+      composeURI("documentId", element.getDocumentId());
+      if (element.getAvailability() != null)
+        composeString("availability", element.getAvailability().toCode());
+      if (element.getConfidentiality().size() > 0) {
+        openArray("confidentiality");
+        for (Coding e : element.getConfidentiality()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      composeDate("creation", element.getCreation());
+      if (element.getEvent().size() > 0) {
+        openArray("event");
+        for (Coding e : element.getEvent()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      composeString("hash", element.getHash());
+      composeString("size", element.getSize());
+      composeString("language", element.getLanguage());
+      composeIdentifier("patientId", element.getPatientId());
+      composeIdentifier("sourcePatientId", element.getSourcePatientId());
+      composeString("patientInfo", element.getPatientInfo());
+      composeXdsEntryAuthor("author", element.getAuthor());
+      composeIdentifier("authenticator", element.getAuthenticator());
+      composeCoding("facilityType", element.getFacilityType());
+      composeCoding("practiceSetting", element.getPracticeSetting());
+      composeString("homeCommunity", element.getHomeCommunity());
+      composeXdsEntryService("service", element.getService());
+      composeString("comments", element.getComments());
+      if (element.getFolder().size() > 0) {
+        openArray("folder");
+        for (String e : element.getFolder()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeXdsEntryAuthor(String name, XdsEntry.Author element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeHumanName("name", element.getName());
+      composeIdentifier("id", element.getId());
+      if (element.getRole().size() > 0) {
+        openArray("role");
+        for (String e : element.getRole()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getSpecialty().size() > 0) {
+        openArray("specialty");
+        for (String e : element.getSpecialty()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getInstitution().size() > 0) {
+        openArray("institution");
+        for (XdsEntry.Institution e : element.getInstitution()) 
+          composeXdsEntryInstitution(null, e);
+        closeArray();
+      };
+      if (element.getContact().size() > 0) {
+        openArray("contact");
+        for (Contact e : element.getContact()) 
+          composeContact(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeXdsEntryInstitution(String name, XdsEntry.Institution element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeIdentifier("id", element.getId());
+      composeString("name", element.getName());
+      close();
+    }
+  }
+
+  private void composeXdsEntryService(String name, XdsEntry.Service element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("start", element.getStart());
+      composeString("stop", element.getStop());
+      close();
+    }
+  }
+
   private void composeConformance(String name, Conformance element) throws Exception {
     if (element != null) {
       open(name);
@@ -692,6 +803,42 @@ public class JsonComposer extends JsonComposerBase {
           composeDocumentHeaderSection(null, e);
         closeArray();
       };
+      close();
+    }
+  }
+
+  private void composeDevice(String name, Device element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("id", element.getId());
+      composeCodeableConcept("type", element.getType());
+      composeString_("manufacturer", element.getManufacturer());
+      composeString_("model", element.getModel());
+      composeString_("version", element.getVersion());
+      composeString_("serialNumber", element.getSerialNumber());
+      composeResourceReference("owner", element.getOwner());
+      if (element.getAssignedId().size() > 0) {
+        openArray("assignedId");
+        for (Identifier e : element.getAssignedId()) 
+          composeIdentifier(null, e);
+        closeArray();
+      };
+      composeResourceReference("location", element.getLocation());
+      if (element.getContact().size() > 0) {
+        openArray("contact");
+        for (Contact e : element.getContact()) 
+          composeContact(null, e);
+        closeArray();
+      };
+      composeContact("address", element.getAddress());
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
       close();
     }
   }
@@ -1879,10 +2026,14 @@ public class JsonComposer extends JsonComposerBase {
 
   @Override
   protected void composeResource(Resource resource) throws Exception {
-    if (resource instanceof Conformance)
+    if (resource instanceof XdsEntry)
+      composeXdsEntry("XdsEntry", (XdsEntry)resource);
+    else if (resource instanceof Conformance)
       composeConformance("Conformance", (Conformance)resource);
     else if (resource instanceof DocumentHeader)
       composeDocumentHeader("DocumentHeader", (DocumentHeader)resource);
+    else if (resource instanceof Device)
+      composeDevice("Device", (Device)resource);
     else if (resource instanceof Animal)
       composeAnimal("Animal", (Animal)resource);
     else if (resource instanceof Agent)

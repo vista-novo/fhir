@@ -1289,7 +1289,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       else if (type.getName().equals("Interval"))
         return "TInterval_"+type.getParams().get(0);
       else
-        throw new Exception("not supported");
+        throw new Exception("not supported: "+type.summary());
     } else if (type.getParams().size() > 1) {
       if (type.isResourceReference())
         return "TResourceReference{Resource}";

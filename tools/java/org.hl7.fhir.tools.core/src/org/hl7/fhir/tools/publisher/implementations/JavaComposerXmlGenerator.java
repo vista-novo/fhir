@@ -45,7 +45,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 
-public class JavaComposerXmlGenerator extends OutputStreamWriter {
+public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   public enum JavaGenClass { Structure, Type, Resource, Constraint }
 
   private Definitions definitions;
@@ -64,7 +64,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
   private String genparam;
   
   public JavaComposerXmlGenerator(OutputStream out) throws UnsupportedEncodingException {
-    super(out, "UTF-8");
+    super(out);
   }
 
   public void generate(Definitions definitions, String version, Date genDate) throws Exception {
@@ -240,7 +240,7 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
     if (name.endsWith("[x]") || name.equals("[type]")) {
       String en = name.endsWith("[x]") ? name.replace("[x]", "") : "value";
       String pfx = name.endsWith("[x]") ? name.replace("[x]", "") : "";
-      write("      composeType(\""+pfx+"\", element.get"+upFirst(en)+"());\r\n");
+      write("      composeType(\""+pfx+"\", element.get"+upFirst(getElementName(en, false))+"());\r\n");
     } else {
       String comp = null;
       String en = null;
@@ -279,13 +279,13 @@ public class JavaComposerXmlGenerator extends OutputStreamWriter {
         write("      for (Extension e : element.get"+s+"()) \r\n");
         write("        composeExtension(\"extension\", e);\r\n");
       } else if (e.unbounded()) {
-        write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(name)+"()) \r\n");
+        write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
         write("        "+comp+"(\""+name+"\", e);\r\n");
       } else if (en != null) {
-        write("      if (element.get"+upFirst(name)+"() != null)\r\n");
-        write("        composeString(\""+name+"\", element.get"+upFirst(name)+"().toCode());\r\n");        
+        write("      if (element.get"+upFirst(getElementName(name, false))+"() != null)\r\n");
+        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
       } else {
-        write("      "+comp+"(\""+name+"\", element.get"+upFirst(name)+"());\r\n");
+        write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
     }
   }

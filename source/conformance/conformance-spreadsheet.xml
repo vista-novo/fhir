@@ -7,19 +7,19 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-07-15T07:52:40Z</LastSaved>
+  <LastSaved>2012-09-16T18:21:45Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>11415</WindowHeight>
+  <WindowHeight>11355</WindowHeight>
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>1200</WindowTopX>
-  <WindowTopY>1005</WindowTopY>
+  <WindowTopY>1065</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -32,7 +32,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s62" ss:Name="Normal 2">
+  <Style ss:ID="s57" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -40,17 +40,17 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s63">
+  <Style ss:ID="s58">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s64">
+  <Style ss:ID="s59">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
     ss:Bold="1"/>
   </Style>
-  <Style ss:ID="s65">
+  <Style ss:ID="s60">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders>
@@ -60,7 +60,7 @@
     ss:Bold="1"/>
    <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s61">
    <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -68,7 +68,7 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s62">
    <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
     ss:WrapText="1"/>
    <Borders/>
@@ -77,29 +77,29 @@
    <NumberFormat/>
    <Protection/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s63">
    <Alignment ss:Vertical="Top" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s69">
+  <Style ss:ID="s64">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="50" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="210.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="25.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30.75"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   x:FullRows="1" ss:StyleID="s58" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s59" ss:AutoFitWidth="0" ss:Width="210.75"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="36.75"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="25.5"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="30.75"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="82.5"/>
+   <Column ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
+   <Column ss:Index="9" ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="11" ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="146.25"/>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
+   <Column ss:Index="13" ss:StyleID="s58" ss:AutoFitWidth="0" ss:Width="146.25"/>
+   <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
@@ -415,16 +415,16 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">If messaging is supported</Data></Cell>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">If messaging is supported</Data></Cell>
     <Cell><Data ss:Type="String">Describes the messaging capabilities of the solution</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Multiple repetitions allow the documentation of multiple endpoints per solution</Data></Cell>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">Multiple repetitions allow the documentation of multiple endpoints per solution</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.endpoint</Data></Cell>
@@ -432,29 +432,29 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Actual endpoint being described</Data></Cell>
     <Cell><Data ss:Type="String">The address to which messages and/or replies are to be sent.</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Can be just an identifier for solutions that do not use network addresses for routing.</Data></Cell>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">Can be just an identifier for solutions that do not use network addresses for routing.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Conformance.messaging.documentation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Messaging interface behavior details</Data></Cell>
     <Cell><Data ss:Type="String">Provides documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:Index="12" ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:Index="12" ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event</Data></Cell>
@@ -462,12 +462,12 @@
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Declare support for this event</Data></Cell>
     <Cell><Data ss:Type="String">Describes the solution's support for an event at this end point.</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">The same event may be listed up to two times - once as sender and once as receiver.</Data></Cell>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">The same event may be listed up to two times - once as sender and once as receiver.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">Need to add follow-ups and need to do more to flesh out messaging dynamic model</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">Need to add follow-ups and need to do more to flesh out messaging dynamic model</Data></Cell>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Conformance.messaging.event.code</Data></Cell>
@@ -477,12 +477,12 @@
     <Cell><Data ss:Type="String">MessageEvent</Data></Cell>
     <Cell><Data ss:Type="String">Event type</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the supported messaging event</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"><Data ss:Type="String">May need profile id as well if profiles can define message events</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"><Data ss:Type="String">May need profile id as well if profiles can define message events</Data></Cell>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.messaging.event.mode</Data></Cell>
@@ -520,7 +520,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Profile that describes the request</Data></Cell>
     <Cell><Data ss:Type="String">Information about the request for this event</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
@@ -530,7 +530,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Profile that describes the response</Data></Cell>
     <Cell><Data ss:Type="String">Information about the response for this event</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
@@ -540,7 +540,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Endpoint-specific event documentation</Data></Cell>
     <Cell><Data ss:Type="String">Guidance on how this event is handled, such as internal system trigger points, business rules, etc.</Data></Cell>
    </Row>
@@ -549,16 +549,16 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">document definition</Data></Cell>
     <Cell><Data ss:Type="String">A document definition</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.document.mode</Data></Cell>
@@ -575,25 +575,25 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Description of document support</Data></Cell>
     <Cell><Data ss:Type="String">Describes how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
+    <Cell ss:StyleID="s61"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Conformance.document.profile</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">Constraint on a resource used in the document</Data></Cell>
     <Cell><Data ss:Type="String">Constraint on a resource used in the document</Data></Cell>
-    <Cell ss:StyleID="s66"/>
+    <Cell ss:StyleID="s61"/>
     <Cell><Data ss:Type="String">The first resource is the document resource</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
@@ -625,7 +625,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>20</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -638,12 +638,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>25</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -652,12 +651,12 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="95.25"/>
-   <Column ss:StyleID="s68" ss:Width="67.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="144"/>
-   <Column ss:Index="6" ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="147"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
+   <Column ss:Index="2" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="95.25"/>
+   <Column ss:StyleID="s63" ss:Width="67.5"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="144"/>
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="147"/>
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Context</Data></Cell>
@@ -669,7 +668,7 @@
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">Content Required</Data></Cell>
     <Cell><Data ss:Type="String">Conformance</Data></Cell>
-    <Cell ss:StyleID="s63"><Data ss:Type="String">A Conformance profile must have at least one of rest, messaging, or document</Data></Cell>
+    <Cell ss:StyleID="s58"><Data ss:Type="String">A Conformance profile must have at least one of rest, messaging, or document</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:rest) or exists(f:messaging) or exists(f:document)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -710,7 +709,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
-   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
@@ -776,20 +775,20 @@
  </Worksheet>
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="134.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="48.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="178.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="324"/>
+   x:FullRows="1" ss:StyleID="s64" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="134.25"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="229.5"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="48.75"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="86.25"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="178.5"/>
+   <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="324"/>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Strength</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Binding Name</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Binding Strength</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Reference</Data></Cell>
+    <Cell ss:StyleID="s60"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
@@ -848,17 +847,17 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="435.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">client</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application acts as a server for this resource</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">client</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application acts as a server for this resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">server</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application acts as a client for this resource</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">server</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application acts as a client for this resource</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -897,17 +896,17 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="435.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">read</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Read the current state of the resource</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">read</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">Read the current state of the resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">vread</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">Read the state of a specific version of the resource</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">vread</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">Read the state of a specific version of the resource</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">update</Data></Cell>
@@ -971,17 +970,17 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="438.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">sender</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends requests and receives responses</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">sender</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application sends requests and receives responses</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">receiver</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application receives requests and sends responses</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">receiver</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application receives requests and sends responses</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1005,17 +1004,17 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="438.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">http</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends or receives messages using HTTP POST (may be over http or https)</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">http</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application sends or receives messages using HTTP POST (may be over http or https)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">ftp</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application sends or receives messages using File Transfer Protocol</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">ftp</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application sends or receives messages using File Transfer Protocol</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">mllp</Data></Cell>
@@ -1044,17 +1043,17 @@
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="438.75"/>
-   <Row ss:AutoFitHeight="0" ss:StyleID="s65">
+   <Row ss:AutoFitHeight="0" ss:StyleID="s60">
     <Cell><Data ss:Type="String">Code</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">producer</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application produces documents of the specified type</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">producer</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application produces documents of the specified type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">consumer</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">The application consumes documents of the specified type</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">consumer</Data></Cell>
+    <Cell ss:StyleID="s57"><Data ss:Type="String">The application consumes documents of the specified type</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

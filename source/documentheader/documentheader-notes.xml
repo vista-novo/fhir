@@ -49,7 +49,7 @@ new content resources and/or assemble already existing content resources while d
 has the following responsibilities:
 </p>
 <ul>
- <li>Build a valid document header that that conforms to the Document rules explained here and that only links to other valid resources</li>
+ <li>Build a valid document header that conforms to the Document rules explained here and that only links to other valid resources</li>
  <li>Ensure that the content of the document and other resources conforms to any declared <a href="profile.htm">Profiles</a>.</li>
  <li>Ensure that the presentation of the document is properly attested according to the information supplied in the <i>attesters</i>.</li>
 </ul>

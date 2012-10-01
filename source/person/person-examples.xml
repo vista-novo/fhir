@@ -37,6 +37,15 @@
 						<value>Eve</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2003</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
+				<birthDate>1973-05-31</birthDate>
 				<address>
 					<use>home</use>
 					<part>
@@ -44,15 +53,6 @@
 						<value>2222 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2003</value>
-					<use>work</use>
-				</contact>
-				<dob>1973-05-31</dob>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everywoman, Eve. SSN: 444222222</xhtml:div>
@@ -96,6 +96,14 @@
 						<value>Adam</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2004</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -103,14 +111,6 @@
 						<value>2222 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2004</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Everyman, Adam. SSN: 444333333</xhtml:div>
@@ -154,6 +154,14 @@
 						<value>Kari</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2005</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -161,14 +169,6 @@
 						<value>2222 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2005</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidd, Kari. SSN: 444555555</xhtml:div>
@@ -212,6 +212,14 @@
 						<value>Nancy</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -219,14 +227,6 @@
 						<value>6666 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-5001</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nancy. SSN: 444114567</xhtml:div>
@@ -270,6 +270,14 @@
 						<value>Neville</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -277,14 +285,6 @@
 						<value>6666 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-5001</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Neville. SSN: 444111234</xhtml:div>
@@ -328,6 +328,14 @@
 						<value>Ned</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -335,14 +343,6 @@
 						<value>6666 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-5001</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Ned. SSN: 444113456</xhtml:div>
@@ -386,6 +386,14 @@
 						<value>Nelda</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-5001</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -393,14 +401,6 @@
 						<value>6666 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-5001</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nuclear, Nelda. SSN: 444112345</xhtml:div>
@@ -444,6 +444,14 @@
 						<value>Martha</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2006</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -451,14 +459,6 @@
 						<value>4444 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2006</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Mum, Martha. SSN: 444666666</xhtml:div>
@@ -502,6 +502,14 @@
 						<value>Stuart</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2007</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -509,14 +517,6 @@
 						<value>4444 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2007</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sons, Stuart. SSN: 444777777</xhtml:div>
@@ -560,6 +560,14 @@
 						<value>Boris</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2008</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -567,14 +575,6 @@
 						<value>2222 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2008</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Betterhalf, Boris. SSN: 444888888</xhtml:div>
@@ -618,6 +618,14 @@
 						<value>Ralph</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2009</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -625,14 +633,6 @@
 						<value>4444 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2009</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Relative, Ralph. SSN: 444999999</xhtml:div>
@@ -676,6 +676,14 @@
 						<value>Carrie</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2010</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -683,14 +691,6 @@
 						<value>5555 Home Street</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2010</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Contact, Carrie. SSN: 555222222</xhtml:div>
@@ -734,6 +734,14 @@
 						<value>Henry</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1002</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -741,14 +749,6 @@
 						<value>1002 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1002</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Seven, Henry. SSN: 333333333</xhtml:div>
@@ -792,6 +792,14 @@
 						<value>Amanda</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1021</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -799,14 +807,6 @@
 						<value>1020 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1021</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Assigned, Amanda. SSN: 33344444</xhtml:div>
@@ -850,6 +850,14 @@
 						<value>Harold</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1003</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -857,14 +865,6 @@
 						<value>1003 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1003</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hippocrates, Harold. SSN: 444444444</xhtml:div>
@@ -908,6 +908,14 @@
 						<value>Patricia</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1004</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -915,14 +923,6 @@
 						<value>1004 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1004</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Primary, Patricia. SSN: 555555555</xhtml:div>
@@ -966,6 +966,14 @@
 						<value>Alan</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1005</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -973,14 +981,6 @@
 						<value>1005 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1005</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Admit, Alan. SSN: 666666666</xhtml:div>
@@ -1024,6 +1024,14 @@
 						<value>Aaron</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1006</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1031,14 +1039,6 @@
 						<value>1006 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1006</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Attend, Aaron. SSN: 777777777</xhtml:div>
@@ -1082,6 +1082,14 @@
 						<value>Sam</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1007</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1089,14 +1097,6 @@
 						<value>1007 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1007</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sender, Sam. SSN: 888888888</xhtml:div>
@@ -1140,6 +1140,14 @@
 						<value>Irving</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1022</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1147,14 +1155,6 @@
 						<value>1021 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1022</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Intern, Irving. SSN: 888222222</xhtml:div>
@@ -1198,6 +1198,14 @@
 						<value>Rachel</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1023</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1205,14 +1213,6 @@
 						<value>1022 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1023</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Resident, Rachel. SSN: 888333333</xhtml:div>
@@ -1256,6 +1256,14 @@
 						<value>Linda</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1024</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1263,14 +1271,6 @@
 						<value>1023 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1024</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Leader, Linda. SSN: 888444444</xhtml:div>
@@ -1314,6 +1314,14 @@
 						<value>Virgil</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1008</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1321,14 +1329,6 @@
 						<value>1008 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1008</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Verify, Virgil. SSN: 999999999</xhtml:div>
@@ -1372,6 +1372,14 @@
 						<value>Sara</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1009</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1379,14 +1387,6 @@
 						<value>1009 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1009</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specialize, Sara. SSN: 222333333</xhtml:div>
@@ -1430,6 +1430,14 @@
 						<value>Ramsey</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1025</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1437,14 +1445,6 @@
 						<value>1024 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1025</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Reaction, Ramsey. SSN: 222223333</xhtml:div>
@@ -1488,6 +1488,14 @@
 						<value>Sally</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1012</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1495,14 +1503,6 @@
 						<value>1012 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1012</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sleeper, Sally. SSN: 222666666</xhtml:div>
@@ -1546,6 +1546,14 @@
 						<value>Patrick</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1027</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1553,14 +1561,6 @@
 						<value>1025 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1027</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pump, Patrick. SSN: 222334444</xhtml:div>
@@ -1604,6 +1604,14 @@
 						<value>Vera</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1028</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1611,14 +1619,6 @@
 						<value>1026 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1028</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Valve, Vera. SSN: 222335555</xhtml:div>
@@ -1662,6 +1662,14 @@
 						<value>Sophie</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1029</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1669,14 +1677,6 @@
 						<value>1027 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1029</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Scratch, Sophie. SSN: 222336666</xhtml:div>
@@ -1720,6 +1720,14 @@
 						<value>Eric</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1030</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1727,14 +1735,6 @@
 						<value>1028 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1030</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Emergency, Eric. SSN: 222337777</xhtml:div>
@@ -1778,6 +1778,14 @@
 						<value>Horace</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1031</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1785,14 +1793,6 @@
 						<value>1029 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1031</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hormone, Horace. SSN: 222338888</xhtml:div>
@@ -1836,6 +1836,14 @@
 						<value>Fay</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1032</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1843,14 +1851,6 @@
 						<value>1030 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1032</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Family, Fay. SSN: 222339999</xhtml:div>
@@ -1894,6 +1894,14 @@
 						<value>Tony</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1033</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1901,14 +1909,6 @@
 						<value>1031 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1033</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tum, Tony. SSN: 222442222</xhtml:div>
@@ -1952,6 +1952,14 @@
 						<value>Stanley</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1034</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -1959,14 +1967,6 @@
 						<value>1032 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1034</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Sage, Stanley. SSN: 222443333</xhtml:div>
@@ -2010,6 +2010,14 @@
 						<value>Boris</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1035</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2017,14 +2025,6 @@
 						<value>1033 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1035</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bleeder, Boris. SSN: 222443344</xhtml:div>
@@ -2068,6 +2068,14 @@
 						<value>Paula</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1036</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2075,14 +2083,6 @@
 						<value>1034 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1036</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Pasteur, Paula. SSN: 222445555</xhtml:div>
@@ -2126,6 +2126,14 @@
 						<value>Otto</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1037</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2133,14 +2141,6 @@
 						<value>1035 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1037</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Osler, Otto. SSN: 222446666</xhtml:div>
@@ -2184,6 +2184,14 @@
 						<value>Rory</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1038</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2191,14 +2199,6 @@
 						<value>1036 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1038</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Renal, Rory. SSN: 222447777</xhtml:div>
@@ -2242,6 +2242,14 @@
 						<value>Barry</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1039</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2249,14 +2257,6 @@
 						<value>1037 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1039</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brain, Barry. SSN: 222448888</xhtml:div>
@@ -2300,6 +2300,14 @@
 						<value>Carol</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1040</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2307,14 +2315,6 @@
 						<value>1038 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1040</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cranium, Carol. SSN: 222449999</xhtml:div>
@@ -2358,6 +2358,14 @@
 						<value>Flora</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1041</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2365,14 +2373,6 @@
 						<value>1039 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1041</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Fem, Flora. SSN: 222552222</xhtml:div>
@@ -2416,6 +2416,14 @@
 						<value>Trudy</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-2003</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2423,14 +2431,6 @@
 						<value>1040 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-2003</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Tumor, Trudy. SSN: 222553333</xhtml:div>
@@ -2474,6 +2474,14 @@
 						<value>Victor</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1043</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2481,14 +2489,6 @@
 						<value>1041 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1043</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Vision, Victor. SSN: 222554444</xhtml:div>
@@ -2532,6 +2532,14 @@
 						<value>Calvin</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1044</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2539,14 +2547,6 @@
 						<value>1042 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1044</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Carpenter, Calvin. SSN: 222555545</xhtml:div>
@@ -2590,6 +2590,14 @@
 						<value>Rick</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1045</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2597,14 +2605,6 @@
 						<value>1043 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1045</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Rhino, Rick. SSN: 222556666</xhtml:div>
@@ -2648,6 +2648,14 @@
 						<value>Stan</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1010</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2655,14 +2663,6 @@
 						<value>1010 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1010</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Slide, Stan. SSN: 222444444</xhtml:div>
@@ -2706,6 +2706,14 @@
 						<value>Karen</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1046</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2713,14 +2721,6 @@
 						<value>1044 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1046</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Kidder, Karen. SSN: 222557777</xhtml:div>
@@ -2764,6 +2764,14 @@
 						<value>Heddie</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1047</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2771,14 +2779,6 @@
 						<value>1045 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1047</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Hollywood, Heddie. SSN: 222558888</xhtml:div>
@@ -2822,6 +2822,14 @@
 						<value>Serena</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1048</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2829,14 +2837,6 @@
 						<value>1046 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1048</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Shrink, Serena. SSN: 222559999</xhtml:div>
@@ -2880,6 +2880,14 @@
 						<value>Penny</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1049</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2887,14 +2895,6 @@
 						<value>1047 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1049</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Puffer, Penny. SSN: 222662222</xhtml:div>
@@ -2938,6 +2938,14 @@
 						<value>Christine</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1011</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -2945,14 +2953,6 @@
 						<value>1011 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1011</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Curie, Christine. SSN: 222555555</xhtml:div>
@@ -2996,6 +2996,14 @@
 						<value>Jeffrey</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1050</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3003,14 +3011,6 @@
 						<value>1048 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1050</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Joint, Jeffrey. SSN: 222663333</xhtml:div>
@@ -3054,6 +3054,14 @@
 						<value>Carl</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1013</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3061,14 +3069,6 @@
 						<value>1013 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1013</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Cutter, Carl. SSN: 222777777</xhtml:div>
@@ -3112,6 +3112,14 @@
 						<value>Peter</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1051</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3119,14 +3127,6 @@
 						<value>1049 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1051</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Plumber, Peter. SSN: 222664444</xhtml:div>
@@ -3170,6 +3170,14 @@
 						<value>Horace</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1052</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3177,14 +3185,6 @@
 						<value>1050 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1052</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Helper, Horace. SSN: 222665555</xhtml:div>
@@ -3228,6 +3228,14 @@
 						<value>Nancy</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1014</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3235,14 +3243,6 @@
 						<value>1014 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1014</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Nightingale, Nancy. SSN: 222888888</xhtml:div>
@@ -3286,6 +3286,14 @@
 						<value>Clarence</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1015</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3293,14 +3301,6 @@
 						<value>1015 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1015</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Barton, Clarence. SSN: 222999999</xhtml:div>
@@ -3344,6 +3344,14 @@
 						<value>Bob</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1053</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3351,14 +3359,6 @@
 						<value>1051 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1053</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bender, Bob. SSN: 222666666</xhtml:div>
@@ -3402,6 +3402,14 @@
 						<value>Charlie</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1054</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3409,14 +3417,6 @@
 						<value>1052 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1054</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chopper, Charlie. SSN: 222667777</xhtml:div>
@@ -3460,6 +3460,14 @@
 						<value>Ben</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1055</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3467,14 +3475,6 @@
 						<value>1053 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1055</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Brace, Ben. SSN: 222668888</xhtml:div>
@@ -3518,6 +3518,14 @@
 						<value>Sylvia</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1056</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3525,14 +3533,6 @@
 						<value>1054 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1056</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Specs, Sylvia. SSN: 222669999</xhtml:div>
@@ -3576,6 +3576,14 @@
 						<value>Susan</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1016</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3583,14 +3591,6 @@
 						<value>1016 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1016</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Script, Susan. SSN: 333222222</xhtml:div>
@@ -3634,6 +3634,14 @@
 						<value>Paul</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1057</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3641,14 +3649,6 @@
 						<value>1055 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1057</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Bunion, Paul. SSN: 222772222</xhtml:div>
@@ -3692,6 +3692,14 @@
 						<value>Larry</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1058</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3699,14 +3707,6 @@
 						<value>1056 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1058</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Listener, Larry. SSN: 222773333</xhtml:div>
@@ -3750,6 +3750,14 @@
 						<value>Bill</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1017</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3757,14 +3765,6 @@
 						<value>1017 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1017</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Beaker, Bill. SSN: 333444444</xhtml:div>
@@ -3808,6 +3808,14 @@
 						<value>Connie</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1018</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3815,14 +3823,6 @@
 						<value>1018 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1018</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Chow, Connie. SSN: 333555555</xhtml:div>
@@ -3866,6 +3866,14 @@
 						<value>Helen</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1019</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3873,14 +3881,6 @@
 						<value>1019 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1019</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">teHelper. SSN: 000111111</xhtml:div>
@@ -3924,6 +3924,14 @@
 						<value>Pamela</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1059</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3931,14 +3939,6 @@
 						<value>1057 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1059</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Player, Pamela. SSN: 222776666</xhtml:div>
@@ -3982,6 +3982,14 @@
 						<value>Seth</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1060</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>M</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -3989,14 +3997,6 @@
 						<value>1058 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1060</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>M</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Stretcher, Seth. SSN: 222778888</xhtml:div>
@@ -4040,6 +4040,14 @@
 						<value>Ellen</value>
 					</part>
 				</name>
+				<telecom>
+					<system>phone</system>
+					<value>555-555-1020</value>
+					<use>work</use>
+				</telecom>
+				<gender>
+					<text>F</text>
+				</gender>
 				<address>
 					<use>home</use>
 					<part>
@@ -4047,14 +4055,6 @@
 						<value>1058 Healthcare Drive</value>
 					</part>
 				</address>
-				<contact>
-					<system>phone</system>
-					<value>555-555-1020</value>
-					<use>work</use>
-				</contact>
-				<gender>
-					<text>F</text>
-				</gender>
 				<text>
 					<status>generated</status>
 					<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Enter Ellen, ElleSSN: 333777777</xhtml:div>

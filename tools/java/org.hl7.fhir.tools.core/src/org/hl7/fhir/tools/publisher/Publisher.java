@@ -41,6 +41,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Queue;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -55,6 +56,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.DictXMLGenerator;
 import org.hl7.fhir.definitions.generators.specification.ProfileGenerator;
@@ -92,6 +94,7 @@ import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
 import org.w3c.dom.Document;
@@ -468,11 +471,17 @@ public class Publisher {
 		dxgen.close();
 
 		generateProfile(resource, n, xml);
+		generateDiagramSource(resource);
+		
 		for (RegisteredProfile p : resource.getProfiles())
 			produceProfile(p.getFilename(), p.getProfile());
 
 		for (Example e : resource.getExamples()) {
-			processExample(e);
+		  try {
+			  processExample(e);
+		  } catch (Exception ex) {
+		    throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
+		  }
 		}
 
 		String src = TextFile.fileToString(page.getFolders().srcDir
@@ -537,7 +546,62 @@ public class Publisher {
 
 	}
 
-	private void cloneToXhtml(String n, String description) throws Exception {
+	private void generateDiagramSource(ResourceDefn resource) throws Exception {
+    XMLWriter w = new XMLWriter(new FileOutputStream(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".diagram-source"), "UTF-8");
+    w.setPretty(true);
+    w.start();
+    w.attribute("name", resource.getName());
+    w.open("diagram");
+    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
+    queue.add(resource.getRoot());
+    names.put(resource.getRoot(), resource.getName());
+    while (queue.size() > 0) {
+      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
+      queue.remove(0);
+      generateDiagramClass(r, queue, names, w, r == resource.getRoot());
+    }
+    w.close("diagram");
+    w.close();
+  }
+
+  private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, XMLWriter w, boolean entry) throws Exception {
+    w.attribute("name", names.get(r));
+    if (entry) 
+      w.attribute("entry", "yes");
+    w.open("class");
+    for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
+      if (e.getTypes().size() > 0) {
+        w.attribute("name", e.getName());
+        w.attribute("type", e.typeCode());
+        w.attribute("cardinality", e.describeCardinality());
+        w.open("attribute");
+        w.close("attribute");        
+      }
+    }
+    for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
+      if (e.getTypes().size() == 0) {
+        w.attribute("name", e.getName());
+        w.attribute("cardinality", e.describeCardinality());
+        String n;
+        if (names.keySet().contains(e))
+          n = names.get(e);
+        else {
+          n = Utilities.capitalize(e.getName());
+          names.put(e, n);
+          queue.add(e);
+        }
+        w.attribute("target", n);
+        w.open("association");
+        w.close("association");
+        //queue.add(e);
+      }
+    }
+    w.close("class");
+    
+  }
+
+  private void cloneToXhtml(String n, String description) throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder = factory.newDocumentBuilder();

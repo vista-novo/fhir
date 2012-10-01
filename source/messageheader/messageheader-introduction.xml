@@ -73,14 +73,15 @@ same bundle with the same atom feed.id.
 
 <h2>Conformance Statement</h2>
 <p>
-Applications claiming to be conformant to "FHIR messaging" may choose 
-to publish a conformance statement that lists all the message events 
+Applications may only claim to be conformant to "FHIR messaging" if they
+publish a conformance statement so the claim may be verified. A conformance
+statemnt lists all the message events 
 they support, either as sender or listener, and for each event, a 
 profile that states which resources are bundled (sender), or 
 are required to be bundled (listener), and any rules about the 
 information content of the individual resources. The conformance 
 statement is a <a href="conformance.htm">resource with the name 
-"Conformance"</a>.
+"Conformance"</a>. TODO: make request and response profile mandatory.
 </p>
 
 <a name="endpoints"></a>

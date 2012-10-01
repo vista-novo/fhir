@@ -163,7 +163,7 @@ public class GeneratorUtils {
 		if (word.equals("case")) return true;
 		if (word.equals("catch")) return true; 	
 		if (word.equals("char")) return true; 	
-		if (word.equals("class")) return true; 	
+    if (word.equals("class")) return true;  
 		if (word.equals("const")) return true; 	
 		if (word.equals("continue")) return true; 	
 		if (word.equals("default")) return true;
