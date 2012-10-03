@@ -131,7 +131,7 @@ public class Publisher {
 		//
 		Publisher pub = new Publisher();
 		pub.isGenerate = !(args.length > 1 && hasParam(args, "-nogen"));
-		pub.nobook = !(args.length > 1 && hasParam(args, "-nobook"));
+		pub.nobook = (args.length > 1 && hasParam(args, "-nobook"));
 		pub.execute(args[0]);
 	}
 

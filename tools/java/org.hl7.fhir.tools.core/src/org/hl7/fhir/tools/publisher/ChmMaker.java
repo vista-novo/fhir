@@ -75,7 +75,8 @@ public class ChmMaker {
 	  char sc = File.separatorChar;
 	  
     String hhc = System.getenv("ProgramFiles")+sc+"HTML Help Workshop"+sc+"hhc.exe";
-    if (!(new File(hhc).exists())) {
+    String hhc32 = System.getenv("ProgramFiles(x86)")+sc+"HTML Help Workshop"+sc+"hhc.exe";
+    if (!(new File(hhc).exists()) && !(new File(hhc32).exists())) {
         page.log("Not producing CHM - Help Compiler not found here: " + hhc);
         return;
     }
@@ -105,7 +106,10 @@ public class ChmMaker {
     TextFile.stringToFile(s.toString(), folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhk");
 
     List<String> command = new ArrayList<String>();
-    command.add(hhc);
+    if ((new File(hhc).exists()))
+      command.add(hhc);
+    else
+      command.add(hhc32);
     command.add(folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhp");
  
     ProcessBuilder builder = new ProcessBuilder(command);
