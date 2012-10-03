@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Sep 16, 2012 06:55+1000 for FHIR v0.06
+// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.

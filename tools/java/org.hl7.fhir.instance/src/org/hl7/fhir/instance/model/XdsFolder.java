@@ -31,10 +31,73 @@ package org.hl7.fhir.instance.model;
 
 // Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
 
+import java.util.*;
+
 /**
- * null
+ * An organised collection of documents that belong to a patient. The documents are collected by their clinical function
  */
-public class Group extends Resource {
+public class XdsFolder extends Resource {
+
+    /**
+     * contain the set of codes specifying the type of clinical activity that resulted in placing XDS Documents in this XDSFolder
+     */
+    private List<Coding> code = new ArrayList<Coding>();
+
+    /**
+     * Represents the title of the Folder
+     */
+    private String title;
+
+    /**
+     * the subject of care medical record Identifier as defined by the Document Source.
+     */
+    private Identifier patientId;
+
+    /**
+     * A globally unique identifier for a community
+     */
+    private String homeCommunity;
+
+    /**
+     * Comments associated with the Folder
+     */
+    private String comments;
+
+    public List<Coding> getCode() { 
+      return this.code;
+    }
+
+    public String getTitle() { 
+      return this.title;
+    }
+
+    public void setTitle(String value) { 
+      this.title = value;
+    }
+
+    public Identifier getPatientId() { 
+      return this.patientId;
+    }
+
+    public void setPatientId(Identifier value) { 
+      this.patientId = value;
+    }
+
+    public String getHomeCommunity() { 
+      return this.homeCommunity;
+    }
+
+    public void setHomeCommunity(String value) { 
+      this.homeCommunity = value;
+    }
+
+    public String getComments() { 
+      return this.comments;
+    }
+
+    public void setComments(String value) { 
+      this.comments = value;
+    }
 
 
 }

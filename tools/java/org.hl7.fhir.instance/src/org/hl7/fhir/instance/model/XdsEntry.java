@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Sep 16, 2012 06:55+1000 for FHIR v0.06
+// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
 
 import java.util.*;
 
@@ -153,6 +153,35 @@ public class XdsEntry extends Resource {
 
     }
 
+    public class Authenticator extends Element {
+        /**
+         * id of authenticator
+         */
+        private Identifier id;
+
+        /**
+         * name of authenticator
+         */
+        private HumanName name;
+
+        public Identifier getId() { 
+          return this.id;
+        }
+
+        public void setId(Identifier value) { 
+          this.id = value;
+        }
+
+        public HumanName getName() { 
+          return this.name;
+        }
+
+        public void setName(HumanName value) { 
+          this.name = value;
+        }
+
+    }
+
     public class Service extends Element {
         /**
          * Start time
@@ -230,7 +259,7 @@ public class XdsEntry extends Resource {
     /**
      * Represents the time the author created the document in the Document Source
      */
-    private java.util.Calendar creation;
+    private java.util.Calendar created;
 
     /**
      * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
@@ -253,6 +282,11 @@ public class XdsEntry extends Resource {
     private String language;
 
     /**
+     * Folders that this document is registered in
+     */
+    private List<ResourceReference> folder = new ArrayList<ResourceReference>();
+
+    /**
      * The patientId represents the subject of care of the document. This identifier shall be from the Assigning Authority Domain supporting the XDS Affinity Domain in which the Document Registry operates.
      */
     private Identifier patientId;
@@ -263,10 +297,10 @@ public class XdsEntry extends Resource {
     private Identifier sourcePatientId;
 
     /**
-     * This attribute should contain demographics information of the patient to whose medical record this document belongs, as the Document Source knew it at the time of Submission. This information typically includes: the patient first and last name, sex, 
+     * This is a reference to the demographics information of the person to whose medical record this document belongs, as the Document Source knew it at the time of Submission. This information typically includes: the patient first and last name, sex, 
 and birth date
      */
-    private String patientInfo;
+    private ResourceReference patientInfo;
 
     /**
      * Represents the humans and/or machines that authored the document
@@ -276,7 +310,7 @@ and birth date
     /**
      * Represents a participant who has legally authenticated or attested the document within the authorInstitution. Legal authentication implies that a document has been signed manually or electronically by the legalAuthenticator.
      */
-    private Identifier authenticator;
+    private Authenticator authenticator;
 
     /**
      * This code represents the type of organizational setting of the clinical encounter during which the documented act occurred
@@ -299,14 +333,9 @@ and birth date
     private Service service;
 
     /**
-     * Comments associated with the Document. Free form text with an XDS  Affinity Domain specified usage.  
+     * Comments associated with the Document.
      */
     private String comments;
-
-    /**
-     * Folders that this document is registered in
-     */
-    private List<String> folder = new ArrayList<String>();
 
     public java.net.URI getRepositoryId() { 
       return this.repositoryId;
@@ -376,12 +405,12 @@ and birth date
       return this.confidentiality;
     }
 
-    public java.util.Calendar getCreation() { 
-      return this.creation;
+    public java.util.Calendar getCreated() { 
+      return this.created;
     }
 
-    public void setCreation(java.util.Calendar value) { 
-      this.creation = value;
+    public void setCreated(java.util.Calendar value) { 
+      this.created = value;
     }
 
     public List<Coding> getEvent() { 
@@ -412,6 +441,10 @@ and birth date
       this.language = value;
     }
 
+    public List<ResourceReference> getFolder() { 
+      return this.folder;
+    }
+
     public Identifier getPatientId() { 
       return this.patientId;
     }
@@ -428,11 +461,11 @@ and birth date
       this.sourcePatientId = value;
     }
 
-    public String getPatientInfo() { 
+    public ResourceReference getPatientInfo() { 
       return this.patientInfo;
     }
 
-    public void setPatientInfo(String value) { 
+    public void setPatientInfo(ResourceReference value) { 
       this.patientInfo = value;
     }
 
@@ -444,11 +477,11 @@ and birth date
       this.author = value;
     }
 
-    public Identifier getAuthenticator() { 
+    public Authenticator getAuthenticator() { 
       return this.authenticator;
     }
 
-    public void setAuthenticator(Identifier value) { 
+    public void setAuthenticator(Authenticator value) { 
       this.authenticator = value;
     }
 
@@ -490,10 +523,6 @@ and birth date
 
     public void setComments(String value) { 
       this.comments = value;
-    }
-
-    public List<String> getFolder() { 
-      return this.folder;
     }
 
 

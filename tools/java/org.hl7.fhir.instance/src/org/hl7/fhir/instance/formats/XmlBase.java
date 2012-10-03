@@ -32,6 +32,9 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 

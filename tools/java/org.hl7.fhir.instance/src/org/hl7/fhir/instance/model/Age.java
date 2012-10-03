@@ -32,9 +32,9 @@ package org.hl7.fhir.instance.model;
 // Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
 
 /**
- * null
+ * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
  */
-public class Group extends Resource {
+public class Age extends Quantity {
 
 
 }

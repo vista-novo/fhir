@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Sep 16, 2012 06:55+1000 for FHIR v0.06
+// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
 
 import java.util.*;
 
@@ -67,118 +67,31 @@ public class Person extends Resource {
         }
     }
 
-    public class Qualification extends Element {
+    public class ContactParty extends Element {
         /**
-         * The identifier of a qualification
-         */
-        private Identifier identifier;
-
-        /**
-         * The type of the qualification
-         */
-        private CodeableConcept code;
-
-        /**
-         * The organisation that confered/confers the qualification
-         */
-        private ResourceReference institution;
-
-        /**
-         * The period for which a qualification is held
-         */
-        private Period period;
-
-        public Identifier getIdentifier() { 
-          return this.identifier;
-        }
-
-        public void setIdentifier(Identifier value) { 
-          this.identifier = value;
-        }
-
-        public CodeableConcept getCode() { 
-          return this.code;
-        }
-
-        public void setCode(CodeableConcept value) { 
-          this.code = value;
-        }
-
-        public ResourceReference getInstitution() { 
-          return this.institution;
-        }
-
-        public void setInstitution(ResourceReference value) { 
-          this.institution = value;
-        }
-
-        public Period getPeriod() { 
-          return this.period;
-        }
-
-        public void setPeriod(Period value) { 
-          this.period = value;
-        }
-
-    }
-
-    public class Language extends Element {
-        /**
-         * A code that identifies the language
-         */
-        private String code;
-
-        /**
-         * A code the describes how well the language is spoken
-         */
-        private LanguageUse use;
-
-        public String getCode() { 
-          return this.code;
-        }
-
-        public void setCode(String value) { 
-          this.code = value;
-        }
-
-        public LanguageUse getUse() { 
-          return this.use;
-        }
-
-        public void setUse(LanguageUse value) { 
-          this.use = value;
-        }
-
-    }
-
-    public class RelatedPerson extends Element {
-        /**
-         * Identifier the related person - may be a full link to a Person resource, or some other kind of identifier
-         */
-        private HumanId identifier;
-
-        /**
-         * Code that specifies how this person is related to the subject. A code is required.
+         * The type of the contact party
          */
         private CodeableConcept role;
 
         /**
-         * A name should be specified for the related person
+         * The name of the contact party
          */
         private HumanName name;
 
         /**
-         * Contact details (phone, email etc) should be provided for the person
+         * The address of the contact party
          */
-        private List<Contact> contact = new ArrayList<Contact>();
+        private List<Address> address = new ArrayList<Address>();
 
-        public HumanId getIdentifier() { 
-          return this.identifier;
-        }
+        /**
+         * The telecommunication addresses of the contact party, e.g. phone, fax, email etcetera
+         */
+        private List<Contact> telecom = new ArrayList<Contact>();
 
-        public void setIdentifier(HumanId value) { 
-          this.identifier = value;
-        }
+        /**
+         * Reference to the Person|Organization|Agent resource that is the contact party
+         */
+        private ResourceReference party;
 
         public CodeableConcept getRole() { 
           return this.role;
@@ -196,8 +109,49 @@ public class Person extends Resource {
           this.name = value;
         }
 
-        public List<Contact> getContact() { 
-          return this.contact;
+        public List<Address> getAddress() { 
+          return this.address;
+        }
+
+        public List<Contact> getTelecom() { 
+          return this.telecom;
+        }
+
+        public ResourceReference getParty() { 
+          return this.party;
+        }
+
+        public void setParty(ResourceReference value) { 
+          this.party = value;
+        }
+
+    }
+
+    public class Language extends Element {
+        /**
+         * A code that identifies the language
+         */
+        private String code;
+
+        /**
+         * A code that describes how well the language is spoken
+         */
+        private LanguageUse level;
+
+        public String getCode() { 
+          return this.code;
+        }
+
+        public void setCode(String value) { 
+          this.code = value;
+        }
+
+        public LanguageUse getLevel() { 
+          return this.level;
+        }
+
+        public void setLevel(LanguageUse value) { 
+          this.level = value;
         }
 
     }
@@ -213,19 +167,9 @@ public class Person extends Resource {
     private List<HumanName> name = new ArrayList<HumanName>();
 
     /**
-     * An address for the person
-     */
-    private List<Address> address = new ArrayList<Address>();
-
-    /**
      * A contact detail for the person
      */
-    private List<Contact> contact = new ArrayList<Contact>();
-
-    /**
-     * The birth date for the person
-     */
-    private DateTime dob;
+    private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
      * Administrative Gender
@@ -233,29 +177,34 @@ public class Person extends Resource {
     private CodeableConcept gender;
 
     /**
-     * The religious denomination to which a person professes affiliation
+     * The birth date for the person
      */
-    private CodeableConcept religion;
+    private DateTime birthDate;
 
     /**
-     * blah balh
+     * Indicates if the Person deceased or not
      */
-    private List<CodeableConcept> race = new ArrayList<CodeableConcept>();
+    private Boolean deceased;
 
     /**
-     * The qualifications a person has, including formal educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles a person may play in a healthcare environment
+     * An address for the person
      */
-    private List<Qualification> qualification = new ArrayList<Qualification>();
+    private List<Address> address = new ArrayList<Address>();
+
+    /**
+     * This field contains the patient's marital (civil) status.
+     */
+    private DateTime maritalStatus;
+
+    /**
+     * A generic contact party for the person. 
+     */
+    private List<ContactParty> contactParty = new ArrayList<ContactParty>();
 
     /**
      * A language spoken by the person, with proficiency
      */
     private List<Language> language = new ArrayList<Language>();
-
-    /**
-     * Other persons who are related to this person. The relationship might be one of several types: kin (familial or marital), financial or legal (such as guardian), biological (e.g. donor, donation-recipient) or casual (i.e. friend).
-     */
-    private List<RelatedPerson> relatedPerson = new ArrayList<RelatedPerson>();
 
     public List<HumanId> getIdentifier() { 
       return this.identifier;
@@ -265,20 +214,8 @@ public class Person extends Resource {
       return this.name;
     }
 
-    public List<Address> getAddress() { 
-      return this.address;
-    }
-
-    public List<Contact> getContact() { 
-      return this.contact;
-    }
-
-    public DateTime getDob() { 
-      return this.dob;
-    }
-
-    public void setDob(DateTime value) { 
-      this.dob = value;
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
     public CodeableConcept getGender() { 
@@ -289,28 +226,40 @@ public class Person extends Resource {
       this.gender = value;
     }
 
-    public CodeableConcept getReligion() { 
-      return this.religion;
+    public DateTime getBirthDate() { 
+      return this.birthDate;
     }
 
-    public void setReligion(CodeableConcept value) { 
-      this.religion = value;
+    public void setBirthDate(DateTime value) { 
+      this.birthDate = value;
     }
 
-    public List<CodeableConcept> getRace() { 
-      return this.race;
+    public Boolean getDeceased() { 
+      return this.deceased;
     }
 
-    public List<Qualification> getQualification() { 
-      return this.qualification;
+    public void setDeceased(Boolean value) { 
+      this.deceased = value;
+    }
+
+    public List<Address> getAddress() { 
+      return this.address;
+    }
+
+    public DateTime getMaritalStatus() { 
+      return this.maritalStatus;
+    }
+
+    public void setMaritalStatus(DateTime value) { 
+      this.maritalStatus = value;
+    }
+
+    public List<ContactParty> getContactParty() { 
+      return this.contactParty;
     }
 
     public List<Language> getLanguage() { 
       return this.language;
-    }
-
-    public List<RelatedPerson> getRelatedPerson() { 
-      return this.relatedPerson;
     }
 
 

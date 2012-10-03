@@ -20,6 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6195</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -309,7 +310,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
@@ -327,6 +327,7 @@
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
    <Column ss:Index="3" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="96.75"/>
    <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="220.5"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="365.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -340,21 +341,21 @@
     <Cell><Data ss:Type="String">Stage rule</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Problem.stage</Data></Cell>
     <Cell><Data ss:Type="String">Stage must have summary or assessment</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">todo</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:summary) or exists(f:assessment)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">2</Data></Cell>
     <Cell><Data ss:Type="String">Evidence</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Problem.evidence</Data></Cell>
     <Cell><Data ss:Type="String">evidence must have code or details</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">todo</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:code) or exists(f:details)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Location</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Problem.location</Data></Cell>
     <Cell><Data ss:Type="String">location must have code or details</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">todo</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">exists(f:code) or exists(f:details)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:Index="3" ss:StyleID="s63"/>
@@ -367,10 +368,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>4</ActiveRow>
      <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
