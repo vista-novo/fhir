@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-07-14T07:20:45Z</LastSaved>
+  <LastSaved>2012-10-04T22:07:26Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -71,7 +71,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="26" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="25" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="267.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="32.25"/>
@@ -112,22 +112,12 @@
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">ValueSet.id</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Yes</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Fixed identifier for this value set resource</Data></Cell>
-    <Cell><Data ss:Type="String">Identifier for this resource that represents the value set</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">ValueSet.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Informal name for this value set</Data></Cell>
-    <Cell><Data ss:Type="String">A free text natural language name identifying the value set</Data></Cell>
+    <Cell><Data ss:Type="String">A free text natural language name describing the value set</Data></Cell>
     <Cell><Data ss:Type="String">Support human navigation</Data></Cell>
     <Cell><Data ss:Type="String">Not expected to be unique</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
@@ -202,7 +192,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">id</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Logical id to reference this value set</Data></Cell>
     <Cell><Data ss:Type="String">The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">This is not the same as the resource id because the resource may not be the definitive representation of the value set. If the resource is the definitive representation, this may have the same value as the .id. There may be multiple versions of the value set that have this same identifier</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">There may be multiple versions of the value set that have this same identifier</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -373,9 +363,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>19</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>10</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -383,15 +373,14 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>24</ActiveRow>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>0</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

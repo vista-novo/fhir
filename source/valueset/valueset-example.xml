@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Valueset.xsd">
 <!-- set of loinc codes for cholesterol for LONC 2.36 -->  
-  <id>5830aab7-b0c4-461f-9521-344000d51191</id>
   <name>Loinc Codes for Cholesterol</name>
   <author>
     <name>FHIR project team (example)</name>

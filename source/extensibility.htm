@@ -73,7 +73,7 @@ the data of a resource must check for extensions labeled "mustUnderstand".</b> I
 "mustUnderstand", and where the extension either has no internal reference, or the reference is data processed by the application, the application SHALL either refuse to process the data, 
 or carry a warning concerning the data along with any action or output that results from processing the data. 
 Note that it must always be safe to show the narrative to humans; any extension that is labelled as "mustUnderstand" must be represented in the narrative.
-Applications are encouraged to ignore (todo! - what the hell is this) un-required extensions that they do not recognise if "mustUnderstand" is not set to true.
+Applications are encouraged to ignore extensions that they do not recognise if their "mustUnderstand" elemetn is missing or set to false.
 "mustUnderstand" extensions SHALL be attached to reference points within an instance such that
 all data elements whose meaning may be impacted by the extension are part of the element to which the extension is attached.
 </p>

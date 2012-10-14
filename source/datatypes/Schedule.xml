@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:19:41Z</Created>
-  <LastSaved>2012-03-21T12:36:11Z</LastSaved>
+  <LastSaved>2012-10-07T09:34:16Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>23475</WindowWidth>
   <WindowTopX>4800</WindowTopX>
   <WindowTopY>5220</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -275,7 +275,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -340,43 +339,43 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">HS</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before the hour of sleep (or trying to)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before the hour of sleep (or trying to)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">WAKE</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after waking</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after waking</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">AC</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before a meal (from the Latin ante cibus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before a meal (from the Latin ante cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACM</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before breakfast (from the Latin ante cibus matutinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before breakfast (from the Latin ante cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACD</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before lunch (from the Latin ante cibus diurnus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before lunch (from the Latin ante cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">ACV</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration before dinner (from the Latin ante cibus vespertinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] before dinner (from the Latin ante cibus vespertinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PC</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after a meal (from the Latin post cibus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after a meal (from the Latin post cibus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCM</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after breakfast (from the Latin post cibus matutinus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after breakfast (from the Latin post cibus matutinus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCD</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after lunch (from the Latin post cibus diurnus)</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after lunch (from the Latin post cibus diurnus)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s62"><Data ss:Type="String">PCV</Data></Cell>
-    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs duration after dinner (from the Latin post cibus vespertinus) </Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">event occurs [duration] after dinner (from the Latin post cibus vespertinus) </Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -386,11 +385,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
+     <ActiveRow>8</ActiveRow>
      <ActiveCol>1</ActiveCol>
-     <RangeSelection>C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

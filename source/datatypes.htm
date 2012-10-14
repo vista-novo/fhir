@@ -820,12 +820,16 @@ Another possible source for the type of an identifier is HL7 v2 table 0203.
 </p>  
 <p>
 The resource elements often use HumanId for an identifier that may be an external human mediated reference, that may also 
-come from a direct unambiguous reference to a resource or may be from a separate workflow, possibly human mediated. When 
+come from a direct unambiguous reference to a resource or may be from a separate workflow, possibly human mediated.
+<!-- 
+GG: There's no use for this at the moment - when appropriate resource types are defined....
+
+When 
 the identifier is actually a direct resource reference, the <i>type</i> should be a 
 <a href="terminologies.htm#resourcetypes">resource type</a>, the <i>identifier</i>.<i>system</i> should be the URL
 of the source system or, if a particular end point is 
 not known, then "http://hl7.org/fhir/sid/fhir/[X]" where "[X]" is the resource name , 
-and the <i>identifier</i>.<i>id</i> should be the resource id.
+and the <i>identifier</i>.<i>id</i> should be the resource id. -->
 </p>
 <div class="use">
 <p><b>Use</b></p>
@@ -1059,8 +1063,7 @@ Note: a possible enhancement to this is to have the repeat content repeat with e
 <%dt Schedule%>
 <p>
 If events are specified, at least a low must be specified for each event. If no high is 
-specified, the event is assumed to last a limited but
-unknown time as clinically relevant.
+specified, the event is assumed to last a limited but unknown time as clinically relevant.
 </p>
 <p>
 If the schedule has repeating criteria, the repeat can occur a given number of times per 
@@ -1070,11 +1073,12 @@ it can occur or a date at which to end the schedule. If no end condition is spec
 the Schedule will terminate on some criteria that are expressed elsewhere. 
 </p>
 <p>
-There are 3 rules concerning the contents of a <i>Schedule</i>:
+There are 4 rules concerning the contents of a <i>Schedule</i>:
 </p>
 <ol>
  <li>There can only be a repeat element if there is none or one event</li>
  <li>Only one of <i>frequency</i> and <i>when</i> can be present</li>
+ <li>If provided, duration must be a positive value</li>
  <li>Only one of <i>count</i> and <i>end</i> can be present</li>
 </ol>
 

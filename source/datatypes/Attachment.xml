@@ -82,7 +82,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="117.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33" ss:Span="2"/>
@@ -127,17 +127,17 @@
     <Cell ss:Index="13"><Data ss:Type="String">ED</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Attachment.mimeType</Data></Cell>
+    <Cell><Data ss:Type="String">Attachment.contentType</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell><Data ss:Type="String">MediaType</Data></Cell>
-    <Cell><Data ss:Type="String">Mime type of the content</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data</Data></Cell>
-    <Cell><Data ss:Type="String">text/plain, image/png</Data></Cell>
+    <Cell><Data ss:Type="String">MimeType</Data></Cell>
+    <Cell><Data ss:Type="String">Mime type of the content, with charset etc</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate</Data></Cell>
+    <Cell><Data ss:Type="String">text/plain; charset=UTF-8, image/png</Data></Cell>
     <Cell><Data ss:Type="String">Processors of the data need to be able to tell what the data is</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">./mediaType</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">./mediaType, ./charset</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="44.25">
     <Cell><Data ss:Type="String">Attachment.data</Data></Cell>
@@ -167,6 +167,19 @@
     <Cell><Data ss:Type="String">If both data and url are provided, the url must point to the same content as the data contains. Urls may be relative references or may be made to transient locations such as a wrapping envelope using cid: though this has ramifications for using signatures. If a URL is provided, it must resolve to actual data. </Data></Cell>
     <Cell><Data ss:Type="String">./reference/literal</Data></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">Sort out relative URL references</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="150">
+    <Cell><Data ss:Type="String">Attachment.size</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">number of bytes of content (if url provided)</Data></Cell>
+    <Cell><Data ss:Type="String">The number of bytes of data that make up this attachment.</Data></Cell>
+    <Cell ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">Representing the size allows applications to determine whether they should fetch the content automatically in advance, or refuse to fetch it at all</Data></Cell>
+    <Cell><Data ss:Type="String">The number of bytes is redundant if the data is provided as a base64binary, but is useful if the data is provided as a url reference</Data></Cell>
+    <Cell><Data ss:Type="String">(needs data type R3 proposal)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="109.5">
     <Cell><Data ss:Type="String">Attachment.hash</Data></Cell>
@@ -220,8 +233,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>11</ActiveCol>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -290,7 +302,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s71"><Data ss:Type="String">MediaType</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">MimeType</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">The mime type of an attachment</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">reference</Data></Cell>
     <Cell ss:StyleID="s71"><Data ss:Type="String">required</Data></Cell>
@@ -316,7 +328,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>39</ActiveRow>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

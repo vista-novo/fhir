@@ -14,7 +14,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>3</id>
         <status>final</status>
         <issued>2005-01-27T06:40:01Z</issued>
         <patient>
@@ -904,7 +903,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>4</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -1714,7 +1712,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>5</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -2523,7 +2520,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>6</id>
         <status>final</status>
         <issued>2004-12-21T00:00:01Z</issued>
         <patient>
@@ -3331,7 +3327,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>7</id>
         <status>final</status>
         <issued>2004-12-03T00:00:01Z</issued>
         <patient>
@@ -4111,7 +4106,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>8</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -4892,7 +4886,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>9</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -5673,7 +5666,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>15</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -6479,7 +6471,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>16</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -7289,7 +7280,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>17</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -8098,7 +8088,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>18</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -8906,7 +8895,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>19</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -9686,7 +9674,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>20</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -10467,7 +10454,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>21</id>
         <status>final</status>
         <issued>2005-02-23T10:04:01Z</issued>
         <patient>
@@ -11248,7 +11234,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>25</id>
         <status>final</status>
         <issued>2005-11-07T23:38:01Z</issued>
         <patient>
@@ -11587,7 +11572,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>26</id>
         <status>final</status>
         <issued>2005-03-07T14:02:01Z</issued>
         <patient>
@@ -11657,7 +11641,6 @@
     <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
-        <id>27</id>
         <status>final</status>
         <issued>2012-05-23T14:27:01Z</issued>
         <patient>

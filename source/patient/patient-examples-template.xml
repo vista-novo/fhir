@@ -19,7 +19,6 @@
     <content type="text/xml">
     
 	<Patient xmlns="http://hl7.org/fhir">
-	  <id>[%patient%]</id>
 	  <active>true</active>
 	  <subject>
 	    <type>Person</type>

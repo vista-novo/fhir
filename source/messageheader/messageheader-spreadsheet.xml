@@ -129,18 +129,15 @@
     <Cell ss:Index="11"><Data ss:Type="String">Message</Data></Cell>
     <Cell><Data ss:Type="String">MSH</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">MessageHeader.id</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Master Resource Id = Message Id</Data></Cell>
-    <Cell><Data ss:Type="String">Unique identifier for this message instance</Data></Cell>
-    <Cell><Data ss:Type="String">Each message needs a unique identifier so other messages and underlying infrastructure can reference it.  Also allows safe detection of duplicates.</Data></Cell>
-    <Cell><Data ss:Type="String">must be unique within a channel, but should be globally unique. UUIDs are recommended.  Only repeated if retransmitting an identical instance (when suspecting the first transmission was lost).</Data></Cell>
-    <Cell><Data ss:Type="String">unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
-    <Cell><Data ss:Type="String">MSH.10</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">id of this message</Data></Cell>
+    <Cell><Data ss:Type="String">The identifier of this message</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Message.id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">MessageHeader.instant</Data></Cell>
@@ -424,9 +421,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>21</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>11</LeftColumnRightPane>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -434,16 +431,14 @@
     </Pane>
     <Pane>
      <Number>1</Number>
-     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>23</ActiveRow>
-     <ActiveCol>12</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Prescription xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Prescription.xsd">
-  <id>1.2.36.146595217.4.19.1.3141</id>
 
   <identifier>
     <type>

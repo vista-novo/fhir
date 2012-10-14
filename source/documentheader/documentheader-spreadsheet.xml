@@ -76,7 +76,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="33" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="32" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:Width="189"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -121,18 +121,6 @@
     <Cell><Data ss:Type="String">While the focus of this specification is on patient-specific clinical documents, this resource can also apply to other healthcare-related documents such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical</Data></Cell>
     <Cell><Data ss:Type="String">Document[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct()]</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Confidentiality? Language? Consent? Signatures</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">DocumentHeader.id</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Master Resource Id = document Id</Data></Cell>
-    <Cell><Data ss:Type="String">The unique system identifier of the document</Data></Cell>
-    <Cell><Data ss:Type="String">Each document needs a unique identifier so that other documents and underlying infrastructure can reference it</Data></Cell>
-    <Cell><Data ss:Type="String">Must be globally unique. UUIDs are recommended</Data></Cell>
-    <Cell><Data ss:Type="String">unique(./id[isNormalDatatype() and displayable=&quot;false&quot; and scope=&quot;OBJ&quot; and reliability=&quot;ISS&quot;])</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">DocumentHeader.instant</Data></Cell>
@@ -453,7 +441,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>14</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>8</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -467,11 +455,10 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>16</ActiveRow>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

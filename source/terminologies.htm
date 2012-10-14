@@ -82,7 +82,7 @@ Value set and code list bindings also have two properties that govern their use 
   </li>
 </ul>
 <p>
-See the second tab of this page for a full list of the binding names defined for all FHIR resources.
+See the <a href="terminologies-bindings.htm">Bindings List</a> for a full list of the binding names defined for all FHIR resources.
 </p>
 <a name="codesystems"></a>
 <h2>Named Systems List</h2>
@@ -138,12 +138,6 @@ HL7 OID registry.
    <td>[X] is the 4 digit identifier for a table. e.g. http://hl7.org/fhir/sid/v2-0203<br/>OID=2.16.840.1.113883.12.[X] </td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/iso-[X]</td>
-   <td>Codes as defined in the ISO standard with the given number.<br/> Two important ISO standards are the 2-3 
-     letter language codes (<a href="http://en.wikipedia.org/wiki/ISO_639">ISO 639</a>-3)<br/> and the currency codes (<a href="http://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>)</td>
-   <td>OID=1.0.[X](.tail as specified) <br/> (1.0.639.3 for 3 letter language codes </td>
- </tr>
- <tr>
    <td>http://hl7.org/fhir/sid/atc</td>
    <td>Anatomical Therapeutic Chemical Classification System (<a href="http://www.whocc.no/atc/structure_and_principles/">WHO</a>)</td>
    <td><br/>OID=2.16.840.1.113883.6.73</td>
@@ -154,19 +148,19 @@ HL7 OID registry.
  </tr>
 
  <tr>
-   <td>http://hl7.org/fhir/sid/uri</td>
+   <td>urn:ietf:rfc:3986</td>
    <td>URIs (<a href="http://www.w3.org">W3C</a>)</td>
-   <td>As defined by various applicable RFCs including X<br/>No OID</td>
+   <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs)<br/>No OID</td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/oid</td>
+   <td>urn:iso:std:iso-iec:9834:-1</td>
    <td>OIDs</td>
-   <td>The identifier is an OID itself</td>
+   <td>The identifier is an OID itself (ISO 9834-1 defines OIDs)</td>
  </tr>
  <tr>
-   <td>http://hl7.org/fhir/sid/uuid</td>
+   <td>urn:iso:std:iso-iec:9834:-8</td>
    <td>UUIDs</td>
-   <td>Also called GUIDs<br/>No OID</td>
+   <td>ISO 9834-8 defines OIDs. Also called GUIDs<br/>No OID</td>
  </tr>
  <tr>
    <td>http://hl7.org/fhir/sid/us-ssn</td>
@@ -233,7 +227,7 @@ These are defined by the code system "http://hl7.org/fhir/sid/special-values" wh
   <tr><td>false</td><td>Boolean false</td></tr>
   <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified (used in formulations)</td></tr>
   <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )</td></tr>
-  <tr><td>withdrawn</td><td>The correct value is no longer available</td></tr>
+  <tr><td>withdrawn</td><td>The value is no longer available</td></tr>
 </table>
 
 <a name="resourcetypes"/>

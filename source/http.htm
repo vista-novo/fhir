@@ -20,7 +20,7 @@ todo:
 <h1>RESTful HTTP Details</h1>
 
 <p>
-In addition to the set of base resources, FHIR also provides a RESTful implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a> - 
+In addition to the set of base resources, FHIR also provides a simple RESTful implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a> - 
 an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a>. 
 Each resource type has the same set of interactions defined that can be used to manage the resources 
 in a highly granular fashion. Applications claiming conformance to this framework
@@ -31,13 +31,14 @@ Note that in this RESTful framework, transactions are performed directly on the 
 HTTP request/response. These HTTP calls may be authenticated against a single user account (including 
 using <a href="http://www.oauth.org">OAuth</a>), but this arrangement doesn't cater for common transaction metadata such as multiple users, 
 responsible party, reasons, consents, etc. that are commonly encountered in healthcare. Instead, 
-use of this protocol assumes that appropriate security and logs are managed by the client (perhaps 
-through using ATNA), and that the server trusts the client to maintain these. One implication is 
-that this RESTful framework is only suitable for use where such trust relationships exist (e.g. in 
-a single institution) and is not suitable where such trust does not exist (e.g. state &amp; national 
-EHR systems and health record systems that support disparate systems). Similarly, this simple 
-RESTful interface has no support for explicit archiving and similar functions. These types of more sophisticated usages
-should consider a <a href="messageheader.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a> or 
+use of this RESTful implementation assumes that appropriate security and logs are managed by the client (perhaps 
+through using <a href="http://wiki.ihe.net/index.php?title=Audit_Trail_and_Node_Authentication">ATNA</a>), and 
+that the server trusts the client to maintain these. One implication is that this RESTful framework is 
+only suitable for use where such trust relationships exist (e.g. in a single institution) and is not 
+suitable where such trust does not exist (e.g. state &amp; national EHR systems and health record 
+systems that support disparate systems). Similarly, this simple RESTful interface has no support for 
+explicit archiving and similar functions. Use-cases where these kind of features are required should 
+consider a <a href="messageheader.htm">messaging</a> or <a href="implementation.htm#SOA">SOA-based approach</a> or 
 some kind of profiled REST interface, such as <a href="hdata.htm">hData</a>.
 </p>
 <p>
@@ -62,8 +63,9 @@ The following logical interactions are supported:
 
 <p>
 Note that while these same logical interactions are defined on all resources, applications are 
-not required to implement all of them. Applications must provide a <a href="conformance.htm">conformance 
-statement</a> that says what interactions are supported.
+not required to implement all of them, except for the conformance statement: applications must 
+provide a <a href="conformance.htm">conformance statement</a> that says what interactions are 
+supported for any resource types that they support.
 </p>
 
 <h2>Service Root URL</h2>
@@ -73,10 +75,10 @@ resources defined by this interface are found. The Service
 Root URL takes the form of 
 </p>
 <pre>
-http(s)://server/path
+http(s)://server[/path]
 </pre>
 <p>
-The path may end with a trailing slash or not. Each 
+The optional path may end with a trailing slash or not. Each 
 resource type defined in this specification has a manager (or "entity set")
 that lives at the address "/[name]" where the
 name is the name of the resource type in lower case. 
@@ -96,8 +98,7 @@ to that claimed by any particular provider or consumer,
 applications may need to replace Service Root URLs.
 </p>
 <p>
-Note: except for the Service Root Portion of the URL, all the URLs (and ids that form part of the URL) defined by 
-this specification are case sensitive and are required to be in lowercase. 
+Note: All URLs (and ids that form part of the URL) defined by this specification are case sensitive. 
 </p>
 <h2>Resource Metadata and Versioning</h2>
 <p>
@@ -105,10 +106,10 @@ Each resource has an associated set of <a href="xml.htm#metadata">resource metad
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>HTTP Response Header</th></tr>
-  <tr><td>Version Id</td><td>The Version Id is represented by the full canonical URL in the master location (see <a href="#vread">vread</a> below). 
+  <tr><td>Id</td><td>The Id is represented explicitly in the URL</td></tr>
+  <tr><td>Version Id</td><td>The Version Id is represented by the full canonical URL in the content-location header (see <a href="#vread">vread</a> below). 
      The Version Id may also be represented in the http ETag, but the use of ETag is not needed by this specification</td></tr>
   <tr><td>Last Modified Date</td><td>HTTP Last-Modified header</td></tr>
-  <tr><td>Master Location</td><td>HTTP Content-Location header</td></tr>
 </table>
 <p></p>
 
@@ -124,8 +125,13 @@ account of the individual user or whether some other arrangement is required.
 <a href="http://oauth.net/">OAuth</a> may be used to provide security. Applications are recommended to use the variants of the OAuth protocol 
 that do not require URL parameters, but these may be used if necessary.
 </p>
+<h2>HTTP Status Codes</h2>
 <p>
-Notes about http status responses... security layer may issue redirects
+This specification makes some rules about the use of specific HTTP status codes 
+in some particular circumstances where the status codes must map to particular 
+states correctly. Other HTTP status codes may be used for other states as appropriate.
+Note that some security layers may issue redirects which should not be interpreted
+to change the location of the resource itself (a common web programming error). 
 </p>
 <h2>Content Types and File Extensions</h2>
 <p>
@@ -134,6 +140,7 @@ Servers are required to support the XML format of the resources defined in this 
 alternatives, including the informative <a href="xml.htm#json">JSON</a> representation. Servers must support the 
 content-type negotiation support described by the HTTP specification, but in order to support various implementation
 limitations, may choose to support the (?format=) parameter to specify alternative return formats by their mime types.
+The format parameter may have the value "xml", "html" or "json", or a mime type (including text/xml and application/json). 
 For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
 defined by FHIR and application/json must be interpreted to mean the informative JSON format.
 </p>
@@ -296,40 +303,93 @@ This interaction searches a resource type based on some filter criteria. The int
 <p>
 Because of the way that some user agents treat POST requests, POST submissions are also allowed, though the semantics are exactly the 
 same as a GET operation. Search operations take a series of parameters that are encoded in the URL or as an x-multi-part-form submission
-for a POST. Each FHIR resource type defines a set of applicable search parameters with their meanings and servers may declare additional 
-parameters in their conformance statements. In addition, the following common search parameters apply to all resource types:
-</p>
-<table class="list">
-  <tr><td>n : <a href="datatypes.htm#integer">integer</a></td><td>Starting offset of the first record to return in the search set</td></tr>
-  <tr><td>count : <a href="datatypes.htm#integer">integer</a></td><td>Number of return records requested. The server is not bound to conform</td></tr>
-  <tr><td>id : <a href="datatypes.htm#id">id</a></td><td>An identifier associated with the resource</td></tr>
-</table>
-<p>
-It is at the discretion of the server how many results to return, though
-the client may request a particular number with the <i>count</i> parameter. If
-the client wishes for more results, it should use the <i>n</i> parameter.
-More generally, the client uses parameters to narrow the search and 
-increase its usefulness. Note that which parameters to support is at the 
-discretion of the server. 
-</p>
-<p>
-The return content is an <a href="atom.htm">Atom feed </a> containing the results of the search as a list of resources
+for a POST. The return content is an <a href="atom.htm">Atom feed </a> containing the results of the search as a list of resources
 in a defined order. This specification does not assign any particular meaning to the order of the resources.
 </p>
+<h3>Search Parameters</h3>
 <p>
-If more sophisticated searching is required, a FHIR-based service interface can be defined to enable the workflow and
-functionality desired.  
+Each FHIR resource type defines a set of applicable search parameters with their names, types, repeat behaviour, and meanings. 
+In addition, the following common search parameters apply to all resource types:
 </p>
+<table class="list">
+  <tr><td>$page : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Starting offset of the first record to return in the search set</td></tr>
+  <tr><td>$count : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Number of return records requested. The server is not bound to conform</td></tr>
+  <tr><td>$id : <a href="datatypes.htm#id">token</a></td><td><i>single</i></td><td>The <a href="xml.htm#metadata">logical resource id</a> associated with the resource (must be supported by all servers)</td></tr>
+  <tr><td>$include : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below</td></tr>
+</table>
 
+<%codelist SearchParamType%>
 <h3>Search Parameter Types</h3>
 <table class="codes">
  <tr><td>integer</td><td>search parameter must be a simple whole number</td></tr>
  <tr><td>string</td><td>search parameter is a simple string, like a name part (search usually functions on partial matches)</td></tr>
  <tr><td>text</td><td>search parameter is into a long string (i.e. a text filter type search)</td></tr>
- <tr><td>date</td><td>search parameter is onto a date (and should support -before and -after variants)</td></tr>
+ <tr><td>date</td><td>search parameter is onto a date (and should support -before and -after variants). </td></tr>
  <tr><td>token</td><td>search parameter is on a fixed value string (i.e. search has an exact match)</td></tr>
- <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, namespace and value, separated by a ":". The namespace is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a> and is optional when searching</td></tr>
+ <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a> and is optional when searching</td></tr>
 </table>
+
+<%codelist SearchRepeatBehavior%>
+<h3>Search Parameter Repeat Behaviour</h3>
+<table class="codes">
+ <tr><td>single</td><td>the search parameter may only be used once</td></tr>
+ <tr><td>union</td><td>when the search parameter is used more than once, match resources with any of the values</td></tr>
+ <tr><td>intersection</td><td>when the search parameter is used more than once, match resources with all of the values</td></tr>
+</table>
+
+<h4>Parameter Chaining</h4>
+<p>
+Parameters may be "chained" by appending them together separated by "." following a logical path through a graph of related resources.
+For instance, given that the resource "LabReport" has a search parameter named <i>patient</i>, which is a reference to a "Patient" resource,
+and the Patient resource includes a parameter <i>person</i>, which is a reference to the "Person" resource, and the person resource has a search 
+parameter <i>name</i> which searches on patient name, then the search
+</p>
+<pre>
+ LabReports/search?patient.person.name=peter
+</pre>
+<p>
+is a request to return all the lab reports that have a subject whose name includes "peter". 
+</p>
+<h4>Including other parameters ($include)</h4>
+<p>
+Clients may request that the server return additional resources related to the search results, in order to reduce the overall network
+query time. A typical case where this is useful is where the client is querying on the patient resource, but for every patient resource
+returned, the client will also need the person resource that the patient refers to. The client requests this by providing one or more
+$include parameters.
+</p>
+<p>  
+Each $include parameter specifies a path in a URL (as an XPath value):
+</p>
+<pre>
+ LabReports/search?$include=LabReport/patient&amp;$include=Patient/subject
+</pre>
+<p> 
+For each returned resource, the server executes the XPath statement, 
+and, if it matches one or more resource references, and it is able to locate the targets, appends the target resource to the return result.
+Note that $include parameters may be recursive. For instance, a client may request to return all the patients associated with a search on 
+lab reports, and then to include all the person resources for the patients returned, as shown above.
+</p>
+<p>
+If the $include path matches an general url rather than a resource reference, the server may elect to include the target of the url reference
+in the returned result.
+</p>
+<h4>Server Conformance</h4>
+<p>
+Servers have considerable discretion with regards to supporting to search:
+</p>
+<ul>
+ <li>Servers can choose which parameters to support (other than $id below)</li>
+ <li>Servers can choose when and where to implement parameter chaining, and when and where they support the $include parameter</li>
+ <li>Servers are able to declare additional parameters in their conformance statements</li>
+ <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
+ <li>whether the contents of the parameter values are case sensitive is at the discretion of the server</li>
+ <li>Servers may choose how many results to return, though the client can use $count as above</li>
+</ul>
+
+<p>
+If more sophisticated searching is required, a FHIR-based service interface can be defined to enable the workflow and
+functionality desired.  
+</p>
 
 <a name="create"> </a>
 <h2>create</h2>

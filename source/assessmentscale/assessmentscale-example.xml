@@ -3,7 +3,6 @@
 For simplicitly, this example uses BMI as the assessment scale
 -->
 <AssessmentScale xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\assessmentscale.xsd">
-  <id>2342342134134</id>
   <subject>
     <type>Patient</type>
     <id>25bd34</id>

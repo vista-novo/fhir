@@ -112,7 +112,7 @@ The <a href="documentheader.htm">Document</a> framework defines an additional en
 </table>
 <p>
 Note that the history, updates and search methods all return atom feeds that contain bundles - that is, atom feeds that contain entries where
-the content type is another atom feed. Atom feeds are only ever nested two levels deep (i.e. one atom feed containing a series of atom feeds
+the content type is another atom feed. <a href="atom.htm">Atom feeds</a> are only ever nested two levels deep (i.e. one atom feed containing a series of atom feeds
 that are bundles that contain resources).
 </p>
 

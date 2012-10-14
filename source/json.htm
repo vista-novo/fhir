@@ -147,7 +147,7 @@ placed before all other members. For example:</p>
       }],
     "text" : {
       "status" : "generated",
-      "div" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;"
+      "value" : "&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;...&lt;/div&gt;"
     }
 }
 </pre>
@@ -158,40 +158,38 @@ placed before all other members. For example:</p>
 <li>The 'code' within member 'language' is a part of the resource definition and therefore serialized
 as a JSON object, whereas the member 'use' within 'name' is a primitive inside a datatype and therefore
 serialized as a JSON string value.</li>
-<li>The XHTML content in the 'div' element which in the Narrative element 'text' is represented 
-as an escaped string in JSON. The xhtml's root element needs to be a &lt;div&gt; in the xhtml namespace.</li>
+<li>The XHTML content in the 'div' element which is in the Narrative element 'text' is represented 
+as an escaped string in the value property in JSON. The xhtml's root element needs to be a &lt;div&gt; in the xhtml namespace.</li>
 </ul>
 
 <a name="json-bundles"></a>
 <h2>JSON Bundles (Atom feeds)</h2>
-<p>There are several initiatives to define a JSON format for Atom, all of which are are suffering from having to simulate properties, 
+<p>There are several initiatives to define a JSON format for <a href="atom.htm">Atom</a>, all of which are are suffering from having to simulate properties, 
 namespaces and other xml-specific features. Instead, FHIR defines a JSON format that is tailored to the specific needs for bundles.
-Each element in the Xml feed definition has a JSON corresponding JSON object member with the same name, the only notable difference 
-being the rendering of Xml repeating elements into a JSON array with a pluralized name (e.g. the author Xml element becomes a
-JSON array named authors). Here is an example feed returning search results for a person query:</p>
+Each element in the Xml feed definition has a JSON corresponding JSON object member with the same name. Here is an example feed returning search results for a person query:</p>
 
 <pre class="json">
 {
   &quot;title&quot; : &quot;Search result&quot;,
   &quot;updated&quot; : &quot;2012-09-20T12:04:45.6787909+00:00&quot;,
   &quot;id&quot; : &quot;50ea3e5e-b6a7-4f55-956c-caef491bbc08&quot;,
-  &quot;links&quot; : [{
+  &quot;link&quot; : [{
       &quot;rel&quot; : &quot;self&quot;,
       &quot;href&quot; : &quot;http://ip-0a7a5abe:16287/fhir/person?format=json&quot;
     }],
-  &quot;entries&quot; : [{
+  &quot;entry&quot; : [{
       &quot;title&quot; : &quot;Resource of type Person, with id = 1 and version = 1&quot;,
-      &quot;links&quot; : [{
+      &quot;link&quot; : [{
           &quot;rel&quot; : &quot;self&quot;,
           &quot;href&quot; : &quot;http://fhir.furore.com/fhir/person/@1/history/@1&quot;
         }],
       &quot;id&quot; : &quot;http://fhir.furore.com/fhir/person/@1&quot;,
       &quot;updated&quot; : &quot;2012-05-29T23:45:32+00:00&quot;,
       &quot;published&quot; : &quot;2012-09-20T12:04:47.3012429+00:00&quot;,
-      &quot;authors&quot; : [{
+      &quot;author&quot; : [{
           &quot;name&quot; : &quot;Grahame Grieve / HL7 publishing committee&quot;
         }],
-      &quot;categories&quot; : [{
+      &quot;category&quot; : [{
           &quot;term&quot; : &quot;Person&quot;,
           &quot;scheme&quot; : &quot;http://hl7.org/fhir/sid/fhir/resource-types&quot;
         }],
@@ -204,6 +202,10 @@ JSON array named authors). Here is an example feed returning search results for 
   ]
 }
 </pre>
+
+<p>
+Note that property names for elements that can repeat are not pluralised for consistency of overall approach.
+</p>
 
 <h2>Bundling versions - deletion</h2>
 <p>

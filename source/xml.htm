@@ -48,7 +48,7 @@ that uses the following notation:
 Notes:
 </p>
 <ul>
- <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed.</li>.
+ <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed.</li>
  <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. The only other namespaces that occur in FHIR resources are where some external content model is introduced into the resource content model. XHTML is found in every resource - see below.</li>
  <li>To build a valid resource, simply replace the contents of the elements with valid content as described by the cardinality, type rules and content description found in the comment in each element.</li>
  <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. If the cardinality is shown in 
@@ -58,37 +58,53 @@ Notes:
  <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
    If the element name is underlined, then applications are required to support and/or understand it.</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown.</li>
- <li>The root element of a resource may have an xml:lang the specifies the primary language of the resource.</li>
- <li>In addition to this description, other definitional forms are available, including W3C schema, Schematron, (Todo: Relax NG schema, RDF and eCore).</li>
+ <li>The root element of a resource may have an xml:lang that specifies the primary language of the resource.</li>
+ <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema, Schematron. The formats Relax NG schema, RDF and eCore are planned.</li>
 </ul>
 <a name="metadata"></a>
 <h2>Resource Data and Metadata items</h2>
 <p>
-Every resource contains the following common elements:
+All resources contain with extensions and then a narrative section at the end:
 </p>
 <pre class="spec">
 &lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
- &lt;<a href="#Resource" title="Master Resource Id, always first in all resources" class="dict"><b>id</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>0..1</b></font> <font color="darkgreen"><a href="datatypes.htm#id">id</a></font> <font color="navy">Master Resource Id, always first in all resources</font><font color="Gray"> --&gt;</font>&lt;/id&gt;
+ <font color="Gray">&lt;!-- Defined Content for Resource --&gt;</font>
  &lt;<a href="extensibility.htm" title="See Extensions" class="dict"><b>extension</b></a>&gt;<font color="Gray">&lt;!-- <font color="brown"><b>0..*</b></font> </font> <font color="darkgreen"><a href="extensibility.htm">Extension</a></font>   <a href="extensibility.htm"><font color="navy">See Extensions</font></a> <font color="Gray"> --&gt;</font>&lt;/extension&gt;
  &lt;<a href="#Narrative" title="Text summary of resource, for human interpretation" class="dict"><b>text</b></a>&gt;<font color="Gray">&lt;!--</font> <font color="brown"><b>1..1</b></font> <font color="darkgreen"><a href="Narrative.htm#Narrative">Narrative</a></font> <font color="navy">Text summary of [x], for human interpretation</font><font color="Gray"> --&gt;</font>&lt;/text&gt;
 &lt;/[Name]&gt;
 </pre>
 <p>
-The <i>id</i> element is always mandatory except in the case that a resource is posted to a server to create it, 
-and the id of the resource is not yet known. In this case, the id element is absent. The use of the id 
-element is <a href="#Resource">discussed further below</a>. The use of the <i>extensions</i> element is 
-<a href="extensibility.htm">discussed under "Extensibility"</a>. The text ("Narrative") is <a href="#Narrative">discussed below</a>. 
+The use of the <i>extensions</i> element is <a href="extensibility.htm">discussed under "Extensibility"</a>. 
+The text ("Narrative") is <a href="#Narrative">discussed below</a>. 
+</p>
+<p>
 In addition to these data elements, there are several pieces of metadata about a resource that are not part of the resource
 content, but are delegated to the infrastructure:
 </p>
 <table class="grid">
   <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
+  <tr><td>Logical Id</td> <td><a href="datatypes.htm#id">id</a></td> <td>The identity of the resource. 
+    Resources always have a known identity except in the case where a new resource is being submitted to a server to assign a resource to it. The use of the id element is <a href="#Resource">discussed further below</a></td></tr>
   <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (see below). Can be used to ensure that updates are based on the latest version of the resource.</td></tr>
   <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Changed each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
-  <tr><td>Master Location</td><td><a href="datatypes.htm#uri">uri</a></td><td>Reports the location of the master for the resource. Useful when a resource is re-used by another system - it can report the location of the master should any system need to know this.</td></tr>
 </table>
 <p>
-In any environment where the resources are used, the technical details of how these metadata elements are represents will need to be resolved. For further details, see <a href="implementation.htm">Implementation Details</a>.
+In any environment where the resources are used, the technical details of how these metadata elements are represents will need to be resolved. For further details, 
+see <a href="implementation.htm">Implementation Details</a>, which also contains a discussion of how resource identity is maintained.
+</p>
+<p>
+The logical id and version id of a Resource are of type <a href="datatypes.htm#id">id</a> which is up to 36 characters long and contains:
+</p>
+<table class="list">
+  <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex</td></tr>
+  <tr><td>A uuid (guid) (in lowercase, without wrapping with the characters "{}[]" which sometimes occur)</td></tr>
+  <tr><td>An <a href="http://en.wikipedia.org/wiki/Object_identifier">ISO OID</a></td></tr>
+  <tr><td>Any other combination of letters, numerals, "-" and "."</td></tr>
+  <tr><td></td><td></td></tr>
+</table>
+<p>
+Resource ids are case sensitive. Ids are always opaque, and systems need not and should not attempt to determine 
+their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
 </p>
 
 
@@ -101,7 +117,7 @@ to specify why the normally expected content of the data element is missing.
 </p>
 <p>
 <pre class="xml">
- &lt;<b>x</b> dataAbsentReason=""/&gt;
+ &lt;<b>[name]</b> dataAbsentReason=""/&gt;
 </pre> 
 </p>
 <p>
@@ -151,26 +167,6 @@ there may be no need for a narrative text. In such cases, implementations are al
 populate the narrative with text equivalent to "No human readable text provided for this resource" (other languages are allowed). 
 Implementers should note that small, closed traing partner environments are very likely 
 to open up during the lifetime of the resources they define.
-</p>
-<!-- todo
-<p>
-Each narrative has a flag that specifies the relationship between the narrative and the 
-structured data.  This flag may have one of the following codes:
-</p>
-<table class="codes">
- <tr><td><font>generated</font></td><td>The contents of the narrative are entirely generated from the structured data in the resource.</td></tr>
- <tr><td><font>extensions</font></td><td>The contents of the narrative are entirely generated from the structured data in the resource and some of the narrative is generated from extensions</td></tr>
- <tr><td><font>additional</font></td><td>The contents of the narrative contain additional information not found in the structured data</td></tr>
-</table> 
--->
-<p>
-In addition to this general flag that specifies the status of the narrative, there is an optional mapping between the 
-narrative and the structured data. Each mapping has narrative id and structured data id which <a href="#idref">provide internal references</a> 
-to the narrative and the structured data respectively, and a flag for whether the text was generated from the 
-data, or the data was generated from the text (by some form of retrospective processing, whether human or computer), 
-or whether both come from an external source. The structured data target may be an empty element with a dataAbsentReason
-of "astext"; this means that the value of the text could not be properly represented in the data type. Any element defined as part of the resource content,
-or any repeating element inside a data type may carry an id attribute to serve as the target of a narrative mapping. 
 </p>
 <p>
 The narrative is an xhtml fragment that also includes images if appropriate:
@@ -277,10 +273,10 @@ the additional rules around styling that apply in the context of <a href="docume
 There are 4 cases where elements inside a resource reference each other:
 </p>
 <ul>
- <li>In the XHTML/data mapping above</li>
  <li>From <a href="extensibility.htm#Extension">an extension element</a> to its target element</li>
  <li>Inside a <a href="datatypes.htm#CodeableConcept">CodeableConcept data type to identify the primary encoding</a></li>
- <li>On an img src reference in the narrative</li>
+ <li>An &lt;img src=""/&gt; reference in the narrative, referring to an image found in the resource</li>
+ <li>Between elements in the narrative and structured data elements</li>
 </ul>
 <p>
 These references are done using an id/idref based approach, where a source element indicates that it 
@@ -301,12 +297,16 @@ same datatype).
   &lt;/example&gt;
 </pre>
 </div>
-
 <p>
 In a single resource, this works exactly like xml:id/idref, but there is an important difference: the 
 uniqueness and resolution scope of these id references is within the resource that contains them. If multiple
-resources are combined into a single piece of XML, such as an atom feed, duplicate values may occur between resources. This must be 
-managed by applications reading the resources.
+resources are combined into a single piece of XML, such as an <a href="atom.htm">atom feed</a>, duplicate 
+values may occur between resources. This must be managed by applications reading the resources.
+</p>
+<p>
+Note that all references between the xhtml elements and the data elements must be understood to 
+establish a "derived from" relationship, where the derived content (whether text or data) refers 
+to the source content.
 </p>
 
 <a name="Resource"></a>
@@ -316,20 +316,19 @@ The "Resource" type indicates a reference from one resource to another.
 </p>
 <%dt ResourceReference%>
 <p>
-Whether or not the type of the resource reference is fixed for a particular element, the reference includes the resource type.
-</p>
-<p>
-Both the id and the version are URL based references - they must be literal URLs that resolve to the location of the resource.
-Both URLs may be relative URLS, in which case they are interpreted to contain the logical id and versionId respectively of the resource in question,
-and the resolution of the logical reference is a matter of implementation logic. Using absolute URLs provides a stable scalable
-approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
-when trading between separated eco-systems. Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
-server</a>, though this is the preferred approach.
-</p>
-<p>
+The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition.
 A resource reference may contain either a version independent reference (<i>"id"</i>) or a version dependent reference (<i>"version"</i>)
-or both. If both are provided, it is at the descretion of the processor of the data which to use in a particular context. 
+or both. If both are provided, it is at the descretion of the processor of the data whether to access the version specific of version independent reference. 
+</p>
+<p>
+Both the id and the version are URL references - they must be literal URLs that resolve to the location of the resource.
+Both URLs may either be absolute URLs, or relative URLS. If they are relative URLs, they are interpreted to contain the <a href="#metadata">id and versionId</a> 
+respectively of the resource in question, and the resolution of the local references is a matter of implementation logic. 
 If relative references are used, a <i>version</i> cannot be provided without an <i>id</i>, since the <i>version</i> may be scoped by the <i>id</i>.
+Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
+when trading between separated eco-systems. Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
+server</a>, though this is the preferred approach. Irrespective of whether the URL points to a FHIR RESTful server or includes the logical id in the URL, 
+URLs are always considered to be case-sensitive and lowercase is preferred.
 </p>
 
 <div class="example">
@@ -349,23 +348,6 @@ If relative references are used, a <i>version</i> cannot be provided without an 
 </pre>
 <p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
 </div>
-<p>
-The logical <a href="datatypes.htm#id">id</a> and version id of a Resource can take one of the following forms:
-</p>
-<table class="list">
-  <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex</td></tr>
-  <tr><td>A uuid (guid) (in lowercase, without wrapping with the characters "{}[]" which sometimes occur)</td></tr>
-  <tr><td>An <a href="http://en.wikipedia.org/wiki/Object_identifier">ISO OID</a></td></tr>
-  <tr><td>Any other combination of letters, numerals, "-" and "."</td></tr>
-  <tr><td></td><td></td></tr>
-</table>
-<p>
-Resource ids must be represented in lowercase. Ids are always opaque, and systems should not and need not attempt to determine 
-their internal structure. However the id is represented, it must always be represented in the same way in resource references and URLs.
-Note that absolute URLs that do not point to FHIR RESTful servers do not need to include the id in the URL, though this is good practice. 
-If the id is in the URL, it must be present in lower case. Irrespective of whether the URL points to a FHIR RESTful server or includes
-the logical id in the URL, URLs are always considered to be case-sensitive and lowercase is preferred.
-</p>
 <p>
 Plain text narrative may be provided that describes the resource in addition to the resource reference (or in place of, if a 
 dataAbsentReason is allowed).

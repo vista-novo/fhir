@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Person.xsd">
-  <id>34234</id>
 	
   <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
   <identifier>
@@ -47,7 +46,7 @@
     </part>
   </name>
 
-  <telecom dataAbsentReason="unknown" >
+  <telecom>
     <use>home</use>
   </telecom>
   <telecom>

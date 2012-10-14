@@ -5,7 +5,7 @@ Notes:
 </p>
 <ul>
 <li>There are various types of people of interest - patients, employees, etc. Different types of people might come from different service end points.</li>
-<li>The administrative gender of the patient is that one that matters for the record. This may match the gendor of birth or the current socially-reported gender.</li>
+<li>The administrative gender of the patient is that one that matters for the record. This may match the gender of birth or the current socially-reported gender.</li>
 <li>Qualifications covers both formal education gained in the past, and ongoing certification and accreditation often associated with healthcare providers.</li>
 <li>Various jurisdictions define their own qualification and/or codes, and some care about this more than others.</li>
 <li>The organization references are all optional, so can be replaced by simple text rather than a full resource reference</li>

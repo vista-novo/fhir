@@ -20,7 +20,6 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -147,7 +146,7 @@
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">QuantityRange</Data></Cell>
-    <Cell><Data ss:Type="String">Proximity of measured value to actual</Data></Cell>
+    <Cell><Data ss:Type="String">Relationship of given value to actual value</Data></Cell>
     <Cell><Data ss:Type="String">How the value should be understood and represented - whether the actual value is greater or less than the measure due to measurement issues</Data></Cell>
     <Cell><Data ss:Type="String">Need a framework for handling measures where the value is &lt;5ug/L or &gt;400mg/L due to the limitations of measuring methodology. </Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">IVL properties</Data></Cell>
@@ -196,11 +195,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -319,7 +319,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
