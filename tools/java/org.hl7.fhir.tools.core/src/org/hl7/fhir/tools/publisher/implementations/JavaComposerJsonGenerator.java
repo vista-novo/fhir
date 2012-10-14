@@ -142,6 +142,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     write("import org.hl7.fhir.instance.model.Integer;\r\n");
     write("import org.hl7.fhir.instance.model.Boolean;\r\n");
     write("import java.net.*;\r\n");
+    write("import java.math.*;\r\n");
     write("\r\n");
     write("public class JsonComposer extends JsonComposerBase {\r\n");
     write("\r\n");
@@ -269,9 +270,9 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         } else if (tn.contains("("))
           comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
-          comp = "compose"+upFirst(tn).replace(".", "");
+          comp = "compose"+upFirst(leaf(tn)).replace(".", "");
         } else
-          comp = "compose"+upFirst(tn).replace(".", "");
+          comp = "compose"+upFirst(leaf(tn)).replace(".", "");
       }
       
       if (name.equals("extension")) {
@@ -283,21 +284,30 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         write("        closeArray();\r\n");
         write("      };\r\n");
       } else if (e.unbounded()) {
+        tn = typeName(root, e, !contentsHaveDataAbsentReason, true);
+        if (tn.contains("Resource(")) {
+          comp = "composeResourceReference";
+          tn = "ResourceReference";
+        };
         write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
         write("        openArray(\""+name+"\");\r\n");
-        write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(name)+"()) \r\n");
+        write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
         write("          "+comp+"(null, e);\r\n");
         write("        closeArray();\r\n");
         write("      };\r\n");
       } else if (en != null) {
         write("      if (element.get"+upFirst(name)+"() != null)\r\n");
-        write("        composeString(\""+name+"\", element.get"+upFirst(name)+"().toCode());\r\n");        
+        write("        composeString(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"().toCode());\r\n");        
       } else {
-        write("      "+comp+"(\""+name+"\", element.get"+upFirst(name)+"());\r\n");
+        write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
     }
   }
 
+  private String leaf(String tn) {
+    return tn.startsWith("java.lang.") ? tn.substring(10) : tn;
+  }
+  
   private String PrepGenericTypeName(String tn) {
     int i = tn.indexOf('(');
     return tn.substring(0, i)+"<"+upFirst(tn.substring(i+1).replace(")", ">"));
@@ -312,7 +322,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     String t = elem.typeCode();
     if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
-        return formal ? "boolean" : "Bool";
+        return formal ? "boolean" : "java.lang.Boolean";
       else if (t.equals("integer"))
         return "int";
       else if (t.equals("decimal"))
@@ -460,6 +470,15 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     }
     return res;
 
+  }
+
+  protected String getElementName(String name, boolean alone) {
+    if (name.equals("[type]"))
+      return "value";
+    else if ((alone && GeneratorUtils.isJavaReservedWord(name)) || (!alone && name.equals("class")))
+      return name+"_";
+    else
+      return name.replace("[x]", "");
   }
 
   

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -99,6 +99,68 @@ public class Conformance extends Resource {
             case validate: return "validate";
             case updates: return "updates";
             case create: return "create";
+            default: return "?";
+          }
+        }
+    }
+
+    public enum SearchParamType {
+        integer, // search parameter must be a simple whole number
+        string, // search parameter is a simple string, like a name part (search usually functions on partial matches)
+        text, // search parameter is into a long string (i.e. a text filter type search)
+        date, // search parameter is onto a date (and should support -before and -after variants). The date format is the standard XML format, thoughother formats may be supported
+        token, // search parameter is on a fixed value string (i.e. search has an exact match)
+        qtoken; // search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as one of the defined code systems and is optional when searching
+        public static SearchParamType fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("integer".equals(codeString))
+          return integer;
+        if ("string".equals(codeString))
+          return string;
+        if ("text".equals(codeString))
+          return text;
+        if ("date".equals(codeString))
+          return date;
+        if ("token".equals(codeString))
+          return token;
+        if ("qtoken".equals(codeString))
+          return qtoken;
+        throw new Exception("Unknown SearchParamType code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case integer: return "integer";
+            case string: return "string";
+            case text: return "text";
+            case date: return "date";
+            case token: return "token";
+            case qtoken: return "qtoken";
+            default: return "?";
+          }
+        }
+    }
+
+    public enum SearchRepeatBehavior {
+        single, // the search parameter may only be used once
+        union, // when the search parameter is used more than once, match resources with any of the values
+        intersection; // when the search parameter is used more than once, match resources with all of the values
+        public static SearchRepeatBehavior fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("single".equals(codeString))
+          return single;
+        if ("union".equals(codeString))
+          return union;
+        if ("intersection".equals(codeString))
+          return intersection;
+        throw new Exception("Unknown SearchRepeatBehavior code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case single: return "single";
+            case union: return "union";
+            case intersection: return "intersection";
             default: return "?";
           }
         }
@@ -421,6 +483,16 @@ public class Conformance extends Resource {
         private String name;
 
         /**
+         * The type of value a search parameter refers to, and how the content is interpreted
+         */
+        private SearchParamType type;
+
+        /**
+         * Whether multiple uses of the parameter are allowed in searches, and if they are, how the multiple values are understood.
+         */
+        private SearchRepeatBehavior repeats;
+
+        /**
          * For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does
          */
         private String documentation;
@@ -431,6 +503,22 @@ public class Conformance extends Resource {
 
         public void setName(String value) { 
           this.name = value;
+        }
+
+        public SearchParamType getType() { 
+          return this.type;
+        }
+
+        public void setType(SearchParamType value) { 
+          this.type = value;
+        }
+
+        public SearchRepeatBehavior getRepeats() { 
+          return this.repeats;
+        }
+
+        public void setRepeats(SearchRepeatBehavior value) { 
+          this.repeats = value;
         }
 
         public String getDocumentation() { 

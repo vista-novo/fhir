@@ -29,12 +29,13 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.instance.model.Boolean;
 import java.net.*;
+import java.math.*;
 
 public class JsonComposer extends JsonComposerBase {
 
@@ -45,7 +46,7 @@ public class JsonComposer extends JsonComposerBase {
       composeString("code", element.getCode());
       composeURI("profile", element.getProfile());
       composeString("ref", element.getRef());
-      composeBool("mustUnderstand", element.getMustUnderstand());
+      composeBoolean("mustUnderstand", element.getMustUnderstand());
       composeType("value", element.getValue());
       if (element.getExtension().size() > 0) {
         openArray("extension");
@@ -70,12 +71,6 @@ public class JsonComposer extends JsonComposerBase {
           composeNarrativeImage(null, e);
         closeArray();
       };
-      if (element.getMap().size() > 0) {
-        openArray("map");
-        for (Narrative.Map e : element.getMap()) 
-          composeNarrativeMap(null, e);
-        closeArray();
-      };
       close();
     }
   }
@@ -86,18 +81,6 @@ public class JsonComposer extends JsonComposerBase {
       composeElementAttributes(element);
       composeString("mimeType", element.getMimeType());
       composeBytes("content", element.getContent());
-      close();
-    }
-  }
-
-  private void composeNarrativeMap(String name, Narrative.Map element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeString("text", element.getText());
-      composeString("data", element.getData());
-      if (element.getSource() != null)
-        composeString("source", element.getSource().toCode());
       close();
     }
   }
@@ -158,7 +141,7 @@ public class JsonComposer extends JsonComposerBase {
           composeChoiceValue(null, e);
         closeArray();
       };
-      composeBool("isOrdered", element.getIsOrdered());
+      composeBoolean("isOrdered", element.getIsOrdered());
       close();
     }
   }
@@ -177,9 +160,10 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeTypeAttributes(element);
-      composeString("mimeType", element.getMimeType());
+      composeString("contentType", element.getContentType());
       composeBytes("data", element.getData());
       composeURI("url", element.getUrl());
+      composeInt("size", element.getSize());
       composeBytes("hash", element.getHash());
       composeString("lang", element.getLang());
       composeString("title", element.getTitle());
@@ -422,7 +406,7 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
+      composeURI("url", element.getUrl());
       composeURI("repositoryId", element.getRepositoryId());
       composeString("mimeType", element.getMimeType());
       composeCoding("format", element.getFormat());
@@ -432,12 +416,7 @@ public class JsonComposer extends JsonComposerBase {
       composeURI("documentId", element.getDocumentId());
       if (element.getAvailability() != null)
         composeString("availability", element.getAvailability().toCode());
-      if (element.getConfidentiality().size() > 0) {
-        openArray("confidentiality");
-        for (Coding e : element.getConfidentiality()) 
-          composeCoding(null, e);
-        closeArray();
-      };
+      composeCoding("confidentialityCode", element.getConfidentialityCode());
       composeDate("created", element.getCreated());
       if (element.getEvent().size() > 0) {
         openArray("event");
@@ -457,7 +436,12 @@ public class JsonComposer extends JsonComposerBase {
       composeIdentifier("patientId", element.getPatientId());
       composeIdentifier("sourcePatientId", element.getSourcePatientId());
       composeResourceReference("patientInfo", element.getPatientInfo());
-      composeXdsEntryAuthor("author", element.getAuthor());
+      if (element.getAuthor().size() > 0) {
+        openArray("author");
+        for (XdsEntry.Author e : element.getAuthor()) 
+          composeXdsEntryAuthor(null, e);
+        closeArray();
+      };
       composeXdsEntryAuthenticator("authenticator", element.getAuthenticator());
       composeCoding("facilityType", element.getFacilityType());
       composeCoding("practiceSetting", element.getPracticeSetting());
@@ -543,14 +527,13 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeString("date", element.getDate());
       composeConformancePublisher("publisher", element.getPublisher());
       composeConformanceImplementation("implementation", element.getImplementation());
       composeConformanceSoftware("software", element.getSoftware());
       composeConformanceProposal("proposal", element.getProposal());
       composeString("version", element.getVersion());
-      composeBool("acceptUnknown", element.getAcceptUnknown());
+      composeBoolean("acceptUnknown", element.getAcceptUnknown());
       if (element.getRest().size() > 0) {
         openArray("rest");
         for (Conformance.Rest e : element.getRest()) 
@@ -691,6 +674,10 @@ public class JsonComposer extends JsonComposerBase {
       open(name);
       composeElementAttributes(element);
       composeString("name", element.getName());
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRepeats() != null)
+        composeString("repeats", element.getRepeats().toCode());
       composeString("documentation", element.getDocumentation());
       close();
     }
@@ -749,7 +736,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeDate("instant", element.getInstant());
       composeCodeableConcept("type", element.getType());
       composeString_("title", element.getTitle());
@@ -835,7 +821,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeCodeableConcept("type", element.getType());
       composeString_("manufacturer", element.getManufacturer());
       composeString_("model", element.getModel());
@@ -871,7 +856,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getIdentifier().size() > 0) {
         openArray("identifier");
         for (HumanId e : element.getIdentifier()) 
@@ -932,7 +916,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeResourceReference("person", element.getPerson());
       composeResourceReference("organization", element.getOrganization());
       if (element.getRole().size() > 0) {
@@ -975,7 +958,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getIdentifier().size() > 0) {
         openArray("identifier");
         for (HumanId e : element.getIdentifier()) 
@@ -1075,7 +1057,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getIdentifier().size() > 0) {
         openArray("identifier");
         for (HumanId e : element.getIdentifier()) 
@@ -1184,7 +1165,7 @@ public class JsonComposer extends JsonComposerBase {
           composeCodeableConcept(null, e);
         closeArray();
       };
-      composeBool("prn", element.getPrn());
+      composeBoolean("prn", element.getPrn());
       if (element.getAdditionalInstruction().size() > 0) {
         openArray("additionalInstruction");
         for (CodeableConcept e : element.getAdditionalInstruction()) 
@@ -1208,7 +1189,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeString("name", element.getName());
       composeString("version", element.getVersion());
       composeProfileAuthor("author", element.getAuthor());
@@ -1263,7 +1243,7 @@ public class JsonComposer extends JsonComposerBase {
       composeString("name", element.getName());
       if (element.getReference().size() > 0) {
         openArray("reference");
-        for (URI e : element.getReference()) 
+        for (java.net.URI e : element.getReference()) 
           composeURI(null, e);
         closeArray();
       };
@@ -1318,8 +1298,8 @@ public class JsonComposer extends JsonComposerBase {
       composeString("path", element.getPath());
       composeString("name", element.getName());
       composeProfileDefinition("definition", element.getDefinition());
-      composeBool("bundled", element.getBundled());
-      composeBool("closed", element.getClosed());
+      composeBoolean("bundled", element.getBundled());
+      composeBoolean("closed", element.getClosed());
       close();
     }
   }
@@ -1349,7 +1329,7 @@ public class JsonComposer extends JsonComposerBase {
       composeString("nameReference", element.getNameReference());
       composeType("value", element.getValue());
       composeInt("maxLength", element.getMaxLength());
-      composeBool("dataAbsentReason", element.getDataAbsentReason());
+      composeBoolean("dataAbsentReason", element.getDataAbsentReason());
       if (element.getCondition().size() > 0) {
         openArray("condition");
         for (String e : element.getCondition()) 
@@ -1362,8 +1342,8 @@ public class JsonComposer extends JsonComposerBase {
           composeProfileConstraint(null, e);
         closeArray();
       };
-      composeBool("mustSupport", element.getMustSupport());
-      composeBool("mustUnderstand", element.getMustUnderstand());
+      composeBoolean("mustSupport", element.getMustSupport());
+      composeBoolean("mustUnderstand", element.getMustUnderstand());
       composeString("binding", element.getBinding());
       if (element.getMapping().size() > 0) {
         openArray("mapping");
@@ -1435,7 +1415,7 @@ public class JsonComposer extends JsonComposerBase {
       composeString("definition", element.getDefinition());
       if (element.getType() != null)
         composeString("type", element.getType().toCode());
-      composeBool("isExtensible", element.getIsExtensible());
+      composeBoolean("isExtensible", element.getIsExtensible());
       if (element.getConformance() != null)
         composeString("conformance", element.getConformance().toCode());
       composeURI("reference", element.getReference());
@@ -1465,7 +1445,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeString("name", element.getName());
       composeValueSetAuthor("author", element.getAuthor());
       composeString("description", element.getDescription());
@@ -1476,13 +1455,13 @@ public class JsonComposer extends JsonComposerBase {
       composeString("version", element.getVersion());
       if (element.getRestricts().size() > 0) {
         openArray("restricts");
-        for (URI e : element.getRestricts()) 
+        for (java.net.URI e : element.getRestricts()) 
           composeURI(null, e);
         closeArray();
       };
       if (element.getImport().size() > 0) {
         openArray("import");
-        for (URI e : element.getImport()) 
+        for (java.net.URI e : element.getImport()) 
           composeURI(null, e);
         closeArray();
       };
@@ -1559,7 +1538,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeCodeableConcept("code", element.getCode());
       composeCodeableConcept("category", element.getCategory());
       composeCode("status", element.getStatus());
@@ -1643,7 +1621,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getStringErr().size() > 0) {
         openArray("stringErr");
         for (String e : element.getStringErr()) 
@@ -1658,14 +1635,14 @@ public class JsonComposer extends JsonComposerBase {
       };
       if (element.getBooleanErr().size() > 0) {
         openArray("booleanErr");
-        for (java.lang.Boolean e : element.getBooleanErr()) 
-          composeBool(null, e);
+        for (boolean e : element.getBooleanErr()) 
+          composeBoolean(null, e);
         closeArray();
       };
       if (element.getBooleanCorr().size() > 0) {
         openArray("booleanCorr");
-        for (java.lang.Boolean e : element.getBooleanCorr()) 
-          composeBool(null, e);
+        for (boolean e : element.getBooleanCorr()) 
+          composeBoolean(null, e);
         closeArray();
       };
       if (element.getIntegerErr().size() > 0) {
@@ -1682,13 +1659,13 @@ public class JsonComposer extends JsonComposerBase {
       };
       if (element.getDecimalErr().size() > 0) {
         openArray("decimalErr");
-        for (java.math.BigDecimal e : element.getDecimalErr()) 
+        for (BigDecimal e : element.getDecimalErr()) 
           composeBigDecimal(null, e);
         closeArray();
       };
       if (element.getDecimalCorr().size() > 0) {
         openArray("decimalCorr");
-        for (java.math.BigDecimal e : element.getDecimalCorr()) 
+        for (BigDecimal e : element.getDecimalCorr()) 
           composeBigDecimal(null, e);
         closeArray();
       };
@@ -1718,13 +1695,13 @@ public class JsonComposer extends JsonComposerBase {
       };
       if (element.getUriErr().size() > 0) {
         openArray("uriErr");
-        for (URI e : element.getUriErr()) 
+        for (java.net.URI e : element.getUriErr()) 
           composeURI(null, e);
         closeArray();
       };
       if (element.getUriCorr().size() > 0) {
         openArray("uriCorr");
-        for (URI e : element.getUriCorr()) 
+        for (java.net.URI e : element.getUriCorr()) 
           composeURI(null, e);
         closeArray();
       };
@@ -1811,14 +1788,13 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getLink().size() > 0) {
         openArray("link");
         for (ResourceReference e : element.getLink()) 
           composeResourceReference(null, e);
         closeArray();
       };
-      composeBool("active", element.getActive());
+      composeBoolean("active", element.getActive());
       composeResourceReference("subject", element.getSubject());
       composeResourceReference("provider", element.getProvider());
       if (element.getIdentifier().size() > 0) {
@@ -1845,7 +1821,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       composeResourceReference("subject", element.getSubject());
       composeResourceReference("performer", element.getPerformer());
       composeString("time", element.getTime());
@@ -1907,7 +1882,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getIdentifier().size() > 0) {
         openArray("identifier");
         for (HumanId e : element.getIdentifier()) 
@@ -1997,7 +1971,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getStatus() != null)
         composeString("status", element.getStatus().toCode());
       composeDate("issued", element.getIssued());
@@ -2119,7 +2092,6 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("id", element.getId());
       if (element.getCode().size() > 0) {
         openArray("code");
         for (Coding e : element.getCode()) 

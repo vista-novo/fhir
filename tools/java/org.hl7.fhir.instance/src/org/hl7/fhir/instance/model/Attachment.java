@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 /**
  * For referring to data content defined in other formats.
@@ -37,9 +37,9 @@ package org.hl7.fhir.instance.model;
 public class Attachment extends Type {
 
     /**
-     * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data
+     * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate
      */
-    private String mimeType;
+    private String contentType;
 
     /**
      * The actual data of the attachment - a sequence of bytes. In XML, represented using base64
@@ -50,6 +50,11 @@ public class Attachment extends Type {
      * An alternative location where the data can be accessed
      */
     private java.net.URI url;
+
+    /**
+     * The number of bytes of data that make up this attachment.
+     */
+    private java.lang.Integer size;
 
     /**
      * The calculated hash of the data using SHA-256. In XML, represented using base64
@@ -66,12 +71,12 @@ public class Attachment extends Type {
      */
     private String title;
 
-    public String getMimeType() { 
-      return this.mimeType;
+    public String getContentType() { 
+      return this.contentType;
     }
 
-    public void setMimeType(String value) { 
-      this.mimeType = value;
+    public void setContentType(String value) { 
+      this.contentType = value;
     }
 
     public byte[] getData() { 
@@ -88,6 +93,14 @@ public class Attachment extends Type {
 
     public void setUrl(java.net.URI value) { 
       this.url = value;
+    }
+
+    public java.lang.Integer getSize() { 
+      return this.size;
+    }
+
+    public void setSize(java.lang.Integer value) { 
+      this.size = value;
     }
 
     public byte[] getHash() { 

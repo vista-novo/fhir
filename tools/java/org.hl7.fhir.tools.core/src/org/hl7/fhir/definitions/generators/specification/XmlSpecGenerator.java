@@ -66,7 +66,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
     String rn;
 		if (root.getTypes().get(0).getName().equals("Type")
 				|| (root.getTypes().get(0).getName().equals("Structure")))
-			rn = "x";
+			rn = "[name]";
 		else
 			rn = root.getName();
 

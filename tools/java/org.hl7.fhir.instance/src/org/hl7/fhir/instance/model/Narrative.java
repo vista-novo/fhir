@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -64,27 +64,6 @@ public class Narrative extends Element {
         }
     }
 
-    public enum NarrativeMapSource {
-        text, // The text is the original data
-        data; // The data is the original data
-        public static NarrativeMapSource fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("text".equals(codeString))
-          return text;
-        if ("data".equals(codeString))
-          return data;
-        throw new Exception("Unknown NarrativeMapSource code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case text: return "text";
-            case data: return "data";
-            default: return "?";
-          }
-        }
-    }
-
     public class Image extends Element {
         /**
          * Mime type of image
@@ -114,48 +93,6 @@ public class Narrative extends Element {
 
     }
 
-    public class Map extends Element {
-        /**
-         * The narrative end of the mapping
-         */
-        private String text;
-
-        /**
-         * The resource element end of the mapping
-         */
-        private String data;
-
-        /**
-         * Which end of the mapping is the source
-         */
-        private NarrativeMapSource source;
-
-        public String getText() { 
-          return this.text;
-        }
-
-        public void setText(String value) { 
-          this.text = value;
-        }
-
-        public String getData() { 
-          return this.data;
-        }
-
-        public void setData(String value) { 
-          this.data = value;
-        }
-
-        public NarrativeMapSource getSource() { 
-          return this.source;
-        }
-
-        public void setSource(NarrativeMapSource value) { 
-          this.source = value;
-        }
-
-    }
-
     /**
      * The status of the narrative - whether it's entirely generated (from just the defined data or the extensions too), or whether a human authored it and it may contain additional data
      */
@@ -170,11 +107,6 @@ public class Narrative extends Element {
      * An image referred to directly in the xhtml
      */
     private List<Image> image = new ArrayList<Image>();
-
-    /**
-     * A map from the narrative contents to the resource elements - an assertion that the text describes the some content as the data item describes
-     */
-    private List<Map> map = new ArrayList<Map>();
 
     public NarrativeStatus getStatus() { 
       return this.status;
@@ -194,10 +126,6 @@ public class Narrative extends Element {
 
     public List<Image> getImage() { 
       return this.image;
-    }
-
-    public List<Map> getMap() { 
-      return this.map;
     }
 
 

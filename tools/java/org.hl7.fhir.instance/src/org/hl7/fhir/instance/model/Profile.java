@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -40,7 +40,7 @@ public class Profile extends Resource {
 
     public enum ResourceProfileStatus {
         draft, // This profile is still under development
-        testing, // this profile was authored for testing purposes (or education/evaluation/evangelisation)
+        testing, // this profile was authored for testing purposes (or education/evaluation/marketing)
         review, // This profile is undergoing review to check that it is ready for production use
         production, // This profile is ready for use in production systems
         withdrawn, // This profile has been withdrawn

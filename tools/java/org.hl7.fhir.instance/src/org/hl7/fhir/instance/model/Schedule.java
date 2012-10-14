@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -39,16 +39,16 @@ import java.util.*;
 public class Schedule extends Type {
 
     public enum EventTiming {
-        HS, // event occurs duration before the hour of sleep (or trying to)
-        WAKE, // event occurs duration after waking
-        AC, // event occurs duration before a meal (from the Latin ante cibus)
-        ACM, // event occurs duration before breakfast (from the Latin ante cibus matutinus)
-        ACD, // event occurs duration before lunch (from the Latin ante cibus diurnus)
-        ACV, // event occurs duration before dinner (from the Latin ante cibus vespertinus)
-        PC, // event occurs duration after a meal (from the Latin post cibus)
-        PCM, // event occurs duration after breakfast (from the Latin post cibus matutinus)
-        PCD, // event occurs duration after lunch (from the Latin post cibus diurnus)
-        PCV; // event occurs duration after dinner (from the Latin post cibus vespertinus) 
+        HS, // event occurs [duration] before the hour of sleep (or trying to)
+        WAKE, // event occurs [duration] after waking
+        AC, // event occurs [duration] before a meal (from the Latin ante cibus)
+        ACM, // event occurs [duration] before breakfast (from the Latin ante cibus matutinus)
+        ACD, // event occurs [duration] before lunch (from the Latin ante cibus diurnus)
+        ACV, // event occurs [duration] before dinner (from the Latin ante cibus vespertinus)
+        PC, // event occurs [duration] after a meal (from the Latin post cibus)
+        PCM, // event occurs [duration] after breakfast (from the Latin post cibus matutinus)
+        PCD, // event occurs [duration] after lunch (from the Latin post cibus diurnus)
+        PCV; // event occurs [duration] after dinner (from the Latin post cibus vespertinus) 
         public static EventTiming fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;

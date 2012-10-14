@@ -142,6 +142,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     write("import org.hl7.fhir.instance.model.Integer;\r\n");
     write("import org.hl7.fhir.instance.model.Boolean;\r\n");
     write("import java.net.*;\r\n");
+    write("import java.math.*;\r\n");
     write("\r\n");
     write("public class XmlComposer extends XmlComposerBase {\r\n");
     write("\r\n");
@@ -269,9 +270,9 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
         } else if (tn.contains("("))
           comp = "compose"+PrepGenericName(tn);
         else if (tn.startsWith(context) && !tn.equals(context)) {
-          comp = "compose"+upFirst(tn).replace(".", "");
+          comp = "compose"+upFirst(leaf(tn)).replace(".", "");
         } else
-          comp = "compose"+upFirst(tn).replace(".", "");
+          comp = "compose"+upFirst(leaf(tn)).replace(".", "");
       }
       
       if (name.equals("extension")) {
@@ -279,6 +280,11 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
         write("      for (Extension e : element.get"+s+"()) \r\n");
         write("        composeExtension(\"extension\", e);\r\n");
       } else if (e.unbounded()) {
+        tn = typeName(root, e, !contentsHaveDataAbsentReason, true);
+        if (tn.contains("Resource(")) {
+          comp = "composeResourceReference";
+          tn = "ResourceReference";
+        };
         write("      for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
         write("        "+comp+"(\""+name+"\", e);\r\n");
       } else if (en != null) {
@@ -288,6 +294,10 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
         write("      "+comp+"(\""+name+"\", element.get"+upFirst(getElementName(name, false))+"());\r\n");
       }
     }
+  }
+
+  private String leaf(String tn) {
+    return tn.startsWith("java.lang.") ? tn.substring(10) : tn;
   }
 
   private String PrepGenericTypeName(String tn) {
@@ -304,7 +314,7 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
     String t = elem.typeCode();
     if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
-        return formal ? "boolean" : "Bool";
+        return formal ? "boolean" : "java.lang.Boolean";
       else if (t.equals("integer"))
         return "int";
       else if (t.equals("decimal"))

@@ -67,7 +67,12 @@ public class CompositeTypeConverter
 		
 	    for (org.hl7.fhir.definitions.model.ResourceDefn resource : resources) 
 	    {
-	    	result.add( buildResourceFromFhirModel(resource) );
+	      try {
+	    	  result.add( buildResourceFromFhirModel(resource) );
+	      } catch (Exception e) {
+	        throw new Exception(e.getMessage()+" on resource "+resource.getName());
+	      }
+	      
 	    }
 	    
 	    return result;

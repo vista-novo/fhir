@@ -191,10 +191,16 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeBoolean(String name, Boolean value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.toString());
+      xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
     }
   }
   
+  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value.toString());
+    }
+  }
+    
   protected void composeInstant(String name, Instant value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);

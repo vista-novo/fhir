@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Oct 3, 2012 17:55+1000 for FHIR v0.06
+// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -212,6 +212,11 @@ public class XdsEntry extends Resource {
     }
 
     /**
+     * A URL that is used to access the document content directly. If this is not provided, the document may be found be searching the repositoryId for the documentId
+     */
+    private java.net.URI url;
+
+    /**
      * The globally unique identifier of the repository where the document is stored, assigned by the Document Repository. This unique identifier for the Document Repository may be used to identify and connect to the specific Document Repository where the document is stored once its metadata has been retrieved from a Document Registry
      */
     private java.net.URI repositoryId;
@@ -254,7 +259,7 @@ public class XdsEntry extends Resource {
     /**
      * The code specifying the level of confidentiality of the XDS Document. These codes are specific to an XDS Affinity Domain.
      */
-    private List<Coding> confidentiality = new ArrayList<Coding>();
+    private Coding confidentialityCode;
 
     /**
      * Represents the time the author created the document in the Document Source
@@ -305,7 +310,7 @@ and birth date
     /**
      * Represents the humans and/or machines that authored the document
      */
-    private Author author;
+    private List<Author> author = new ArrayList<Author>();
 
     /**
      * Represents a participant who has legally authenticated or attested the document within the authorInstitution. Legal authentication implies that a document has been signed manually or electronically by the legalAuthenticator.
@@ -336,6 +341,14 @@ and birth date
      * Comments associated with the Document.
      */
     private String comments;
+
+    public java.net.URI getUrl() { 
+      return this.url;
+    }
+
+    public void setUrl(java.net.URI value) { 
+      this.url = value;
+    }
 
     public java.net.URI getRepositoryId() { 
       return this.repositoryId;
@@ -401,8 +414,12 @@ and birth date
       this.availability = value;
     }
 
-    public List<Coding> getConfidentiality() { 
-      return this.confidentiality;
+    public Coding getConfidentialityCode() { 
+      return this.confidentialityCode;
+    }
+
+    public void setConfidentialityCode(Coding value) { 
+      this.confidentialityCode = value;
     }
 
     public java.util.Calendar getCreated() { 
@@ -469,12 +486,8 @@ and birth date
       this.patientInfo = value;
     }
 
-    public Author getAuthor() { 
+    public List<Author> getAuthor() { 
       return this.author;
-    }
-
-    public void setAuthor(Author value) { 
-      this.author = value;
     }
 
     public Authenticator getAuthenticator() { 

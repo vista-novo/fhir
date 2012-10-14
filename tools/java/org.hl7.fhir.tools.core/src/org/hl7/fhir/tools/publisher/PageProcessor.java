@@ -238,6 +238,8 @@ public class PageProcessor implements Logger  {
         src = s1+extHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("atomheader"))
         src = s1+atomHeader(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("codelist"))
+        src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
@@ -436,6 +438,21 @@ public class PageProcessor implements Logger  {
     return b.toString();
   }
 
+  private String codelist(String n, String mode) throws Exception {
+    BindingSpecification bs = definitions.getBindingByName(mode);
+    if (bs == null)
+      throw new Exception("Unable to find code list '"+mode+"'");
+    if (bs.getCodes().size() == 0)
+      throw new Exception("Code list '"+mode+"' is empty/not defined");
+    StringBuilder b = new StringBuilder();
+    b.append("<h3>"+bs.getDescription()+"</h3>\r\n");
+    b.append("<table class=\"codes\">\r\n");
+    for (DefinedCode c : bs.getCodes())
+        b.append(" <tr><td>"+c.getCode()+"</td><td>"+c.getDefinition()+"</td></tr>\r\n");
+    b.append("</table>\r\n");
+    return b.toString();
+  }
+
   private String resHeader(String n, String title, String mode) {
     if (n.contains("-"))
       n = n.substring(0, n.indexOf('-'));
@@ -628,6 +645,8 @@ public class PageProcessor implements Logger  {
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
+      else if (com[0].equals("codelist"))
+        src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))
@@ -683,6 +702,8 @@ public class PageProcessor implements Logger  {
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
+      else if (com[0].equals("codelist"))
+        src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("footer"))

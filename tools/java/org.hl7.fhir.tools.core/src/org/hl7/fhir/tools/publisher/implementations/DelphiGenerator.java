@@ -1263,7 +1263,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   }
 
   private String getTitle(String name) {
-    return name.substring(0, 1).toUpperCase()+ name.substring(1);
+    if (name.length() < 2)
+      return name.toUpperCase();
+    else
+      return name.substring(0, 1).toUpperCase()+ name.substring(1);
   }
 
   private String getElementName(String name) {

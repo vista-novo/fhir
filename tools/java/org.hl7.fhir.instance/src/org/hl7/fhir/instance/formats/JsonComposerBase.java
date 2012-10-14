@@ -292,6 +292,14 @@ public abstract class JsonComposerBase extends XmlBase {
     }
   }
   
+  protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
+    if (value != null) {
+      open(name);
+      prop(name, value.toString());
+      close();
+    }
+  }
+  
   protected void composeInstant(String name, Instant value) throws Exception {
     if (value != null) {
       open(name);
