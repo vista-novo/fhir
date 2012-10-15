@@ -47,6 +47,10 @@
       <name>Documents</name>
     </entry>
     <entry>
+      <link>issue</link>
+      <name>Errors &amp; Warnings</name>
+    </entry>
+    <entry>
       <link>hdata</link>
       <name>hData Integration</name>
     </entry>

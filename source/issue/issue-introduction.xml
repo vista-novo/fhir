@@ -1,0 +1,8 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+Issues are error, warning and information messages that describe that provide detailed information about the outcome of some attempted system activity.  
+Most often they are provided as direct system responses, though they can also be used in other situations (see Notes).
+</p>
+
+</div>

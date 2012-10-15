@@ -1,0 +1,41 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+Notes:
+</p>
+<ul>
+<li>When returned in response to a RESTful action, the issue might or might not not be persisted and accessible by its own REST call.
+I.e. Issues can be created on the fly and returned without being otherwise accessible.</li> 
+</ul>
+
+<h2>Open Issues</h2>
+<ul>
+<li>It's not clear what, if any, search criteria are needed or appropriate.</li>
+<li>Is there a benefit to declaring a base set of detailed issue codes that apply across all types of requests that provide greater detail than HTTP response codes, or 
+should the definition of error codes be left to profiles.  (An intermediate step might be to define a code system with a starter set of recommended codes that could be drawn on by profiles.</li>
+</ul>
+
+<h2>Relationship with HTTP response codes</h2>
+<p>
+Issue resources are only relevant when a level of computable detail is required that is more granular than that provided by the HTTP response codes.
+This granularity could include:
+</p>
+<ul>
+<li>more detail about the location of an issue</li>
+<li>the ability to identify multiple distinct issues</li>
+<li>the need to drive automated behavior at a more detailed level than supported by HTTP codes and/or</li>
+<li>the need to return information with severities other than "failure"</li>
+</ul>
+Issues returned SHOULD be in alignment with the HTTP response code.  For example, if the HTTP code indicates a failure, at least
+one of the issues should have a severity of "error", indicating the reason for the failure.
+
+<h2>Use outside of responses</h2>
+<p>
+This resource may sometimes be used for purposes other than conveying the results of an attempted action.  Examples include:
+</p>
+<ul>
+<li>Indicating acknowledged issues associated with another resource (e.g. a known drug-drug interaction associated with a prescription)</li>
+<li>Identifying possible issues associated with a resource (e.g. as part of a drug formulary)</li>
+<li>Pro-actively acknowledging known issues as part of a request so as to allow a desired action to proceed despite the existence of the problem (i.e. as an override)</li>
+</ul>
+</div>

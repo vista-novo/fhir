@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Issue xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Issue.xsd">
+  <severity>error</severity>
+  <type>
+    <coding>
+      <code>V15</code>
+      <system>http://test.org/issueCodeSystem</system>
+      <display>InvalidCode</display>
+    </coding>
+  </type>
+  <location>/Person[1]/gender[1]</location>
+  <text>
+    <status>additional</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>"W" is not a recognized code for Gender.</p>
+    </div>
+    </text>
+</Issue>
