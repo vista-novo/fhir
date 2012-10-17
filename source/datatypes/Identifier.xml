@@ -116,7 +116,7 @@
     <Cell><Data ss:Type="String">uri</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The namespace for the identifier</Data></Cell>
     <Cell><Data ss:Type="String">Establishes the namespace in which set of possible id values is unique.</Data></Cell>
-    <Cell><Data ss:Type="String">http://www.acme.com/identifiers/patient</Data></Cell>
+    <Cell ss:StyleID="Default"><Data ss:Type="String">http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the id itself is a full uri</Data></Cell>
     <Cell><Data ss:Type="String">There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with.</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">II.root</Data></Cell>
    </Row>
@@ -130,7 +130,8 @@
     <Cell ss:Index="8"><Data ss:Type="String">The actual identifier</Data></Cell>
     <Cell><Data ss:Type="String">The portion of the identifier typically displayed to the user and which is unique within the context of the system.</Data></Cell>
     <Cell><Data ss:Type="Number">123456</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">II.extension or II.root if system indicates OID or GUID</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">if the id is actually a full uri, then the system is urn:ietf:rfc:3986</Data></Cell>
+    <Cell><Data ss:Type="String">II.extension or II.root if system indicates OID or GUID</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -145,7 +146,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -21,7 +21,7 @@ todo:
 
 <p>
 In addition to the set of base resources, FHIR also provides a simple RESTful implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a> - 
-an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a>. 
+an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
 Each resource type has the same set of interactions defined that can be used to manage the resources 
 in a highly granular fashion. Applications claiming conformance to this framework
 claim to be conformant to "RESTful FHIR".
@@ -59,6 +59,7 @@ The following logical interactions are supported:
   <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
   <tr><td colspan="2"><b>System</b></td></tr>
   <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for support of this resource type</td></tr>
+  <tr><td><a href="#batch">batch</a></td><td>Update or create a set of resources</td></tr>
 </table>
 
 <p>
@@ -142,7 +143,7 @@ content-type negotiation support described by the HTTP specification, but in ord
 limitations, may choose to support the (?format=) parameter to specify alternative return formats by their mime types.
 The format parameter may have the value "xml", "html" or "json", or a mime type (including text/xml and application/json). 
 For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
-defined by FHIR and application/json must be interpreted to mean the informative JSON format.
+defined by FHIR and application/json must be interpreted to mean the informative <a href="json.htm">JSON format</a>.
 </p>
 
 <a name="read"> </a>
@@ -182,7 +183,10 @@ version id from a content location returned from a read or from a version specif
 content model. The vread interaction should succeed even after a resource is deleted as long as a 
 correct version identifier is provided. 
 </p>
-
+<p>
+Servers SHOULD support a version specific retrieval of the current version of the 
+resource even if they are unable to support access to previous versions. 
+</p>
 <a name="update"> </a>
 <h2>update</h2>
 <p>
@@ -193,16 +197,21 @@ The update interaction is performed by an HTTP PUT operation as shown:
   PUT [service-url]/[resourcetype]/{@id} (?format=mimeType)
 </pre>
 <p>
-The server must return a copy of the newly updated resource (which might not be the same as that submitted) 
-with the response, along with a Last-Modified header, and a Content-Location header that refers to the version created by the 
+If the operation is successful, the server must return 200 OK, along with a copy of the 
+newly updated resource (which might not be the same as that submitted) with the response, along 
+with a Last-Modified header, and a Content-Location header that refers to the version created by the 
 updated operation.
 </p>
 <p>
-Servers may choose to implement version-aware updates, where the only updates that are accepted quote the 
-current version of the resource. In this case, the client must submit the currently correct version specific
-URL in the Content-Location in the PUT request. If the value is incorrect, the server SHALL return  
-a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location header and SHALL 
-correctly understand a 412 response as an update conflict. 
+Servers are permitted to reject update operations because of integrity concerns or business 
+rules implemented on the server, and return HTTP status codes accordingly. 
+</p>
+<p>
+In particular, servers may choose to implement version-aware updates, where the only updates that are 
+accepted quote the current version of the resource. In this case, the client must submit the currently 
+correct version specific URL in the Content-Location in the PUT request. If the value is incorrect, 
+the server SHALL return a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location 
+header and SHALL correctly understand a 412 response as an update conflict. 
 </p>
 
 <a name="delete"> </a>
@@ -286,7 +295,7 @@ The updates interaction retrieves a list of the resources of a particular type, 
   GET [service-url]/[resourcetype] (?format=mimeType)
 </pre>
 <p>
-The return content is an <a href="atom.htm">Atom feed </a> containing list of resources, sorted with oldest updates first. 
+The return content is an <a href="atom.htm">Atom feed </a> containing a list of resources, sorted with oldest updates first.  Each resource only appears once, with the most recent version in the list.
 </p>
 <p>
 The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
@@ -309,7 +318,7 @@ in a defined order. This specification does not assign any particular meaning to
 <h3>Search Parameters</h3>
 <p>
 Each FHIR resource type defines a set of applicable search parameters with their names, types, repeat behaviour, and meanings. 
-In addition, the following common search parameters apply to all resource types:
+Parameter values are not case-sensitive. In addition, the following common search parameters apply to all resource types:
 </p>
 <table class="list">
   <tr><td>$page : <a href="datatypes.htm#integer">integer</a></td><td><i>single</i></td><td>Starting offset of the first record to return in the search set</td></tr>
@@ -382,7 +391,6 @@ Servers have considerable discretion with regards to supporting to search:
  <li>Servers can choose when and where to implement parameter chaining, and when and where they support the $include parameter</li>
  <li>Servers are able to declare additional parameters in their conformance statements</li>
  <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
- <li>whether the contents of the parameter values are case sensitive is at the discretion of the server</li>
  <li>Servers may choose how many results to return, though the client can use $count as above</li>
 </ul>
 
@@ -400,34 +408,56 @@ The create interaction creates a new resource. The interaction is performed by a
   POST [service-url]/[resourcetype] (?format=mimeType)
 </pre>
 <p>
-The server returns a copy of the newly created resource (which might not be the same as that submitted) 
-with the acknowledgement, along with a Location: header which also contains the new location and id of 
-the created resource:
+The server returns a 201 Created, along with a copy of the newly created resource 
+(which might not be the same as that submitted) with the acknowledgement, along with 
+a Location: header which also contains the new location and id of the created resource:
 </p>
 <pre>
  Location: [service-url]/[resourcetype]/{new-id} version aware.... 
 </pre>
 <p>
-  The resource id element SHALL not be present. If the client wishes to specify the id of the submitted 
-  resource, then it should use the update operation instead.
+If the client wishes to specify the id of the submitted resource, then it should use 
+the update operation instead. 
 </p>
 
 
 <a name="conformance"> </a>
 <h2>conformance</h2>
 <p>
-The conformance interaction retrieves the application's conformance statement for the resource. The interaction is performed by an HTTP OPTIONS operation as shown:
+The conformance interaction retrieves the application's conformance statement for the resource. The interaction is performed by an HTTP OPTIONS or a GET operation as shown:
 </p>
 <pre>
   OPTIONS [service-url] (?format=mimeType)
+  GET [service-url]/metadata (?format=mimeType)
 </pre>
 <p>
 Applications SHALL return a <a href="conformance.htm">Conformance Resource</a> that specifies which resource types and operations are supported. 
-If a 404 Unknown is returned, FHIR is not supported on the nominated service url. 
+If a 404 Unknown is returned, FHIR is not supported on the nominated service url. The GET operation is defined because not all client libraries 
+are able to perform an OPTIONS operation.
 </p>
 <p>
 Servers may choose what content to return when they receive a GET operation on the Service Root URL. Generally some page that guides 
 human manual interaction with the server would be appropriate.
+</p>
+
+<a name="batch"> </a>
+<h2>batch</h2>
+<p>
+The batch interaction submits a set of resources to be updated or created on the server. 
+This interaction has two principle uses: to support push-based pub/sub, and to allow 
+multiple resources to be updated in a single transaction. The interaction is performed 
+by an HTTP POST operation as shown:
+</p>
+<pre>
+  POST [service-url] (?format=mimeType)
+</pre>
+<p>
+The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or <a href="json.htm#json-bundles">JSON</a>. 
+Servers SHALL accept all resources and return a 204 No Content, or reject all resources and return an HTTP 400 or 500 type response. 
+</p>
+<p>
+If the resources are not identified as resource belonging to the server to which the bundle is submitted, the server can choose how to <a href="implementation.htm#identity">handle 
+the identification of the resources</a>, though it is required to maintain internal resource references in the submitted contents. 
 </p>
 
 

@@ -35,6 +35,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sourceforge.plantuml.StringUtils;
+
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -48,6 +50,7 @@ import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Logger;
@@ -268,41 +271,27 @@ public class SpreadsheetParser {
 
 	private void readSearchParams(ResourceDefn root2, Sheet sheet)
 			throws Exception {
-		root2.getSearchParams()
-				.add(new SearchParameter(
-						"n",
-						"Starting offset of the first record to return in the search set",
-						SearchType.integer));
-		root2.getSearchParams()
-				.add(new SearchParameter(
-						"count",
-						"Number of return records requested. The server is not bound to conform",
-						SearchType.integer));
-		root2.getSearchParams().add(
-				new SearchParameter("id",
-						"The id of the resource",
-						SearchType.token));
+		root2.getSearchParams().add(new SearchParameter("$page","Starting offset of the first record to return in the search set",SearchType.integer, RepeatMode.single));
+		root2.getSearchParams().add(new SearchParameter("$count","Number of return records requested. The server is not bound to conform",SearchType.integer, RepeatMode.single));
+		root2.getSearchParams().add(new SearchParameter("$id","The logical resource id associated with the resource (must be supported by all servers)",SearchType.token, RepeatMode.single));
 
 		if (sheet != null)
 			for (int row = 0; row < sheet.rows.size(); row++) {
 
 				if (!sheet.hasColumn(row, "Name"))
-					throw new Exception("Search Param has no name "
-							+ getLocation(row));
+					throw new Exception("Search Param has no name "+ getLocation(row));
 				if (!sheet.hasColumn(row, "Description"))
-					throw new Exception("Search Param has no dascription "
-							+ getLocation(row));
+					throw new Exception("Search Param has no dascription "+ getLocation(row));
 				if (!sheet.hasColumn(row, "Type"))
-					throw new Exception("Search Param has no type "
-							+ getLocation(row));
+					throw new Exception("Search Param has no type "+ getLocation(row));
 				String n = sheet.getColumn(row, "Name");
 				if (n.endsWith("-before") || n.endsWith("-before"))
-					throw new Exception("Search Param includes relative time "
-							+ getLocation(row));
+					throw new Exception("Search Param includes relative time "+ getLocation(row));
 				String d = sheet.getColumn(row, "Description");
 				SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
+				RepeatMode m = readRepeatMode(sheet.getColumn(row, "Repeats"), row);
 
-				root2.getSearchParams().add(new SearchParameter(n, d, t));
+				root2.getSearchParams().add(new SearchParameter(n, d, t, m));
 			}
 	}
 
@@ -319,9 +308,18 @@ public class SpreadsheetParser {
 			return SearchType.token;
 		if ("qtoken".equals(s))
 			return SearchType.qtoken;
-		throw new Exception("Unknown Search Type '" + s + "': "
-				+ getLocation(row));
+		throw new Exception("Unknown Search Type '" + s + "': " + getLocation(row));
 	}
+
+  private RepeatMode readRepeatMode(String s, int row) throws Exception {
+    if ("single".equals(s))
+      return RepeatMode.single;
+    if ("union".equals(s))
+      return RepeatMode.union;
+    if ("intersection".equals(s))
+      return RepeatMode.intersection;
+    throw new Exception("Unknown Repeat Mode '" + s + "': " + getLocation(row));
+  }
 
 	// Adds bindings to global definition.bindings. Returns list of
 	// newly found bindings in the sheet.
@@ -572,10 +570,10 @@ public class SpreadsheetParser {
 				sheet.getColumn(row, "Must Understand"), row, false));
 		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"),
 				row, false));
+		e.setDir(sheet.getColumn(row, "UML"));
 		String s = sheet.getColumn(row, "Condition");
 		if (s != null && !s.equals(""))
-			throw new Exception("Found Condition in spreadsheet "
-					+ getLocation(row));
+			throw new Exception("Found Condition in spreadsheet "+ getLocation(row));
 		s = sheet.getColumn(row, "Inv.");
 		if (s != null && !s.equals("")) {
 			Invariant inv = invariants.get(s);

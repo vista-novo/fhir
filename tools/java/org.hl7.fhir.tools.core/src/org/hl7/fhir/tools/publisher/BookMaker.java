@@ -310,7 +310,7 @@ public class BookMaker {
       } else { 
         String s = node.getAttributes().get("href");
         if (s == null || s.length() == 0)
-          throw new Error("empty \"a\" tag");
+          throw new Error("empty \"href\" element in \"a\" tag around "+parent.allText());
         if (s.startsWith("#")) {
           s = "#"+name+"."+s.substring(1);
         } else if (s.startsWith("http:") || s.startsWith("https:")) {

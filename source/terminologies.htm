@@ -150,8 +150,11 @@ HL7 OID registry.
  <tr>
    <td>urn:ietf:rfc:3986</td>
    <td>URIs (<a href="http://www.w3.org">W3C</a>)</td>
-   <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs)<br/>No OID</td>
+   <td>As defined by <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a> (with many schemes defined in many RFCs). 
+   OIDs and UUIDs are represented in their URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a> 
+   - plain <a href="http://tools.ietf.org/id/draft-larmouth-oid-iri-04.txt">oid:</a> and uuid: are not used)<br/>No OID</td>
  </tr>
+<!--
  <tr>
    <td>urn:iso:std:iso-iec:9834:-1</td>
    <td>OIDs</td>
@@ -162,6 +165,7 @@ HL7 OID registry.
    <td>UUIDs</td>
    <td>ISO 9834-8 defines OIDs. Also called GUIDs<br/>No OID</td>
  </tr>
+ -->
  <tr>
    <td>http://hl7.org/fhir/sid/us-ssn</td>
    <td>SSN (<a href="http://www.w3.org">W3C</a>)</td>
@@ -170,7 +174,9 @@ HL7 OID registry.
  
  
 </table>
-
+<p>
+ todo: add http://tools.ietf.org/html/rfc5141
+ </p>
 <p>
 <b>Important Note:</b> The set of sids listed above is incomplete and subject to change.
 Some values may be dropped and others will likely be added in the coming months as HL7

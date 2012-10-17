@@ -250,20 +250,22 @@ An identifier defined by some external system.
 The <i>system</i> may be either a specific application or a recognised
 concept for which the specific application may be implicit. 
 The system is a URI that 
-may be an OID (oid:) or a UUID (uuid:), a sid (a specially defined URI from <a href="terminologies.htm#codesystems"> the named systems list</a>)
-or a URL that references a definition of the identifier. 
+may be an OID (urn:oid:) or a UUID (urn:uuid:), a sid (a specially defined URI from <a href="terminologies.htm#codesystems"> the named systems list</a>)
+or a URI that references a definition of the identifier, directly or indirectly. 
 OIDs and UUIDs may be registered in the <a href="http://hl7.org/oid">HL7 OID registry</a> and should be if the content is shared or exchanged across institutional boundaries.
 </p>
 <p>
-In some cases, the system may not be known - only the id is known (e.g. a simple device that scans a barcode). 
+In some cases, the system may not be known - only the id is known (e.g. a simple device that scans a barcode), or the system is known implicitly (simple exchange in a limited context). 
 In this case, no useful matching may be performed using the id unless the system can be safely inferred by the context. 
+This practice should be avoided where possible in order to future-proof implementations, as information sharing in a wider context is very likely to arise eventually.
 </p>
 <p>
 Note that the <i>system</i> defines the scheme that controls uniqueness of the <i>id</i>. 
-The <i>id</i> must be unique within the defined <i>system</i>. If the <i>id</i> itself 
-is actually an OID, a UUID, or a URI, then the <i>system</i> will be either "http://hl7.org/fhir/sid/oid", 
-"http://hl7.org/fhir/sid/uuid" or "http://hl7.org/fhir/sid/uri" respectively and the OID, UUID or URI would be in the <i>id</i> 
-element. Ids are always case sensitive. UUIDs must be represented in lower case.
+The <i>id</i> must be unique within the defined <i>system</i>. If the identifier itself 
+is naturally globally unique (i.e. an OID, a UUID, or a URI with no trailing local part), 
+then the <i>system</i> must be "urn:ietf:rfc:3986", and the OID, UUID or URI would be in the <i>id</i> 
+element, with OIDs and UUIDs represented in their URN form (<a href="http://www.ietf.org/rfc/rfc3001.txt">urn:oid:</a> and <a href="http://www.ietf.org/rfc/rfc4122.txt">urn:uuid:</a>). 
+Ids are always case sensitive. UUIDs must be represented in lower case per <a href="http://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
 </p>
 <div class="use">
 <p><b>Use</b></p>

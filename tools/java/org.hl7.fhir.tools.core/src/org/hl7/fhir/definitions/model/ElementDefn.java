@@ -49,6 +49,7 @@ public class ElementDefn {
 
 	// private String id;
 	private String bindingName;
+	private String dir;
 	private String name;
 	private String shortDefn;
 	private String definition;
@@ -576,5 +577,14 @@ public class ElementDefn {
     public boolean hasRimMapping() {
       return rimMapping != null && !"".equals(rimMapping);
     }
+
+    public String getDir() {
+      return dir;
+    }
+
+    public void setDir(String dir) {
+      this.dir = dir;
+    }
+    
 }
 

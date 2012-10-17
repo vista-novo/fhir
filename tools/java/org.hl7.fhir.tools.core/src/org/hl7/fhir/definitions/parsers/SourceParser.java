@@ -434,7 +434,6 @@ public class SourceParser {
 						+ File.separatorChar, n + "-def.xml", errors);
 			Utilities.checkFile("example xml", srcDir + n + File.separatorChar,
 					n + "-example.xml", errors);
-			Utilities.checkFile("resource uml", imgDir, n + ".png", errors);
 		}
 		for (String n : ini.getPropertyNames("special-resources")) {
 			if (new File(srcDir + n + File.separatorChar, n
@@ -444,7 +443,6 @@ public class SourceParser {
 			else
 				Utilities.checkFile("definition", srcDir + n
 						+ File.separatorChar, n + "-def.xml", errors);
-			Utilities.checkFile("resource uml", imgDir, n + ".png", errors);
 		}
 
 	}

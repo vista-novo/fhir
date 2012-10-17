@@ -14,5 +14,6 @@
 	<classpathentry kind="src" path="/org.hl7.fhir.utilities"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.definitions.ecore"/>
 	<classpathentry kind="lib" path="../imports/saxon9.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/org.sourceforge.plantuml"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

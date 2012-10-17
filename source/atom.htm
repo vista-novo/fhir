@@ -75,9 +75,9 @@ Whenever resources are gethered into a list, this is done using the Atom format 
  <li>Every bundle must have a unique id and that id must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
  <li>The link elements are mandatory in the atom feed format. The feed.link element is assigned no meaning the the FHIR specification</li>
  <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
- <li>The entry id must be a url, the tail element of which is the logical id of the resource</li>
+ <li>The entry.id must be a url, the tail element of which is the logical id of the resource</li>
  <li>The entry.link must be a version specific reference to the resource</li>
- <li>When used in a RESTful implementation, the entry.link and entry.id are the URLs of the resource on the system. In other contexts, the values should be literal references to a server if one is available</li>
+ <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system. In other contexts, the values should be literal references to a server if one is available</li>
  <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom attribute, not a FHIR type)</li>
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author</li>
  <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
@@ -86,7 +86,7 @@ Whenever resources are gethered into a list, this is done using the Atom format 
 
 <h2>Bundling versions - deletion</h2>
 <p>
-When returning a set of versions for a resource, a version might indicate a <i>deletion</i>. In this case, the &lt;content> part of the Atom entry 
+When returning a set of resources or versions of a resource, an entry might indicate that the entry has been <i>deleted</i>. In this case, the &lt;content> part of the Atom entry 
 does not contain an instance of a Resource, but must instead contain a special "deleted content" markup:</p>
 <pre class="xml">
    .. feed ..
@@ -106,7 +106,8 @@ does not contain an instance of a Resource, but must instead contain a special "
   ... feed ...
 </pre>
 <p>
-As shown in this example, it is suggested that the entry carries a summary to indicate the deletion to the human reader.
+As shown in this example, it is suggested that the entry carries a summary to indicate the deletion to the human reader. 
+A deleted resource is one that if would return a 410 error if it was accessed through the RESTful interface.
 </p>
 <h2>Resolving references to Resources</h2>
 <p>

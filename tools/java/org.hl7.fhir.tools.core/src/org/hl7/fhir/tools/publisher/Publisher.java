@@ -50,6 +50,10 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import net.sourceforge.plantuml.FileFormat;
+import net.sourceforge.plantuml.FileFormatOption;
+import net.sourceforge.plantuml.SourceStringReader;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -381,19 +385,12 @@ public class Publisher {
 		profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
-		profileFeed
-				.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
+		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		for (ResourceDefn n : page.getDefinitions().getResources().values())
 			produceResource(n);
-		new AtomComposer().compose(new FileOutputStream(
-				page.getFolders().dstDir + "profiles-resources.xml"),
-				profileFeed, true, false);
-		Utilities.copyFile(new File(page.getFolders().dstDir
-				+ "profiles-resources.xml"), new File(page.getFolders().dstDir
-				+ "examples" + File.separator + "profiles-resources.xml"));
-		cloneToXhtml(
-				"profiles-resources",
-				"Base Resources defined as profiles (implementation assistance, for derivation and product development)");
+		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
+		Utilities.copyFile(new File(page.getFolders().dstDir + "profiles-resources.xml"), new File(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
+		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
 		for (String n : page.getIni().getPropertyNames("pages"))
 			producePage(n);
 
@@ -407,10 +404,8 @@ public class Publisher {
 		// Utilities.copyFile(new File(page.getFolders().umlDir + "fhir.xmi"),
 		// new File(page.getFolders().dstDir + "fhir.xmi"));
 
-		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir
-				+ "examples.zip");
-		zip.addFiles(page.getFolders().dstDir + "examples" + File.separator,
-				"", null);
+		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
+		zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
 		zip.close();
 
 		produceZip();
@@ -471,7 +466,7 @@ public class Publisher {
 		dxgen.close();
 
 		generateProfile(resource, n, xml);
-		generateDiagramSource(resource);
+		generateDiagram(resource, n);
 		
 		for (RegisteredProfile p : resource.getProfiles())
 			produceProfile(p.getFilename(), p.getProfile());
@@ -484,55 +479,27 @@ public class Publisher {
 		  }
 		}
 
-		String src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + ".htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-examples.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-examples.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-definitions.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-definitions.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-explanations.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-explanations.htm");
-		src = TextFile.fileToString(page.getFolders().srcDir
-				+ "template-profiles.htm");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + n + "-profiles.htm");
+		String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + ".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir+ "template-examples.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-examples.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-definitions.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-definitions.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-explanations.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-explanations.htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-profiles.htm");
 
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-print.htm").replace(
-				"<body>", "<body class=\"book\">");
-		TextFile.stringToFile(
-				page.processResourceIncludes(n, resource, xml, tx, dict, src),
-				page.getFolders().dstDir + "print-" + n + ".htm");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
+		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
 
-		File umlf = new File(page.getFolders().imgDir + n + ".png");
-		Utilities.copyFile(umlf,
-				new File(page.getFolders().dstDir + n + ".png"));
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-book.htm").replace(
-				"<body>", "<body style=\"margin: 10px\">");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-book-ex.htm").replace(
-				"<body>", "<body style=\"margin: 10px\">");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-ex.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + "Ex.htm", src);
-		src = TextFile.fileToString(
-				page.getFolders().srcDir + "template-book-defn.htm").replace(
-				"<body>", "<body style=\"margin: 10px\">");
+		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + "Defn.htm", src);
 
@@ -546,7 +513,78 @@ public class Publisher {
 
 	}
 
-	private void generateDiagramSource(ResourceDefn resource) throws Exception {
+	private void generateDiagram(ResourceDefn resource, String n) throws Exception {
+    StringBuilder s = new StringBuilder();
+    StringBuilder s2 = new StringBuilder();
+    s.append("@startuml\r\n");
+    s.append("title "+resource.getName()+"\r\n");
+    s.append("skinparam nodesep 10\r\n");
+    s.append("skinparam ranksep 10\r\n");
+    s.append("skinparam classBackgroundColor Aliceblue\r\n\r\n");
+    s.append("skinparam classBorderColor Gray\r\n\r\n");
+    s.append("skinparam classArrowColor Navy\r\n\r\n");
+
+    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
+    queue.add(resource.getRoot());
+    names.put(resource.getRoot(), resource.getName());
+    while (queue.size() > 0) {
+      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
+      queue.remove(0);
+      generateDiagramClass(r, queue, names, s, s2, r == resource.getRoot());
+    }  
+    s.append("\r\n"+s2);
+    s.append("hide methods\r\n");
+    s.append("@enduml\r\n");
+    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".plantuml-source");
+    SourceStringReader rdr = new SourceStringReader(s.toString());
+    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + n + ".png");
+    rdr.generateImage(png);
+    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
+    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
+    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
+    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
+	}
+	
+	
+	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, boolean entry) throws Exception {
+	  String rn; 
+    if (names.keySet().contains(r))
+      rn = names.get(r);
+    else 
+      rn = Utilities.capitalize(r.getName());
+
+	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
+	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@")) {
+	      String n;
+	      if (names.keySet().contains(e))
+	        n = names.get(e);
+	      else {
+	        n = Utilities.capitalize(e.getName());
+	        names.put(e, n);
+	        queue.add(e);
+	      }
+	      if (entry)
+          s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+	      else
+	        s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+	    }
+	  }
+	  if (entry)
+	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
+	  else
+	    s2.append("class "+rn+" << (E, Lemonchiffon) >> {\r\n");
+	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
+	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
+	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");
+	    }
+	  }
+	  s2.append("  --\r\n}\r\n\r\n");
+	}
+
+/*
+ * Candidate diagram source for Alex Henket. Retired for now
+  private void generateDiagramSource(ResourceDefn resource) throws Exception {
     XMLWriter w = new XMLWriter(new FileOutputStream(page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+resource.getName().toLowerCase()+".diagram-source"), "UTF-8");
     w.setPretty(true);
     w.start();
@@ -600,7 +638,8 @@ public class Publisher {
     w.close("class");
     
   }
-
+*/
+	
   private void cloneToXhtml(String n, String description) throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
@@ -669,32 +708,24 @@ public class Publisher {
 						+ n + ".xml"));
 	}
 
-	private void generateProfile(ResourceDefn root, String n, String xmlSpec)
-			throws Exception, FileNotFoundException {
+	private void generateProfile(ResourceDefn root, String n, String xmlSpec)	throws Exception, FileNotFoundException {
 		ProfileDefn p = new ProfileDefn();
 		p.putMetadata("id", root.getName().toLowerCase());
 		p.putMetadata("name", n);
 		p.putMetadata("author.name", "todo (committee)");
 		p.putMetadata("author.ref", "todo");
-		p.putMetadata("description", "Basic Profile. "
-				+ root.getRoot().getDefinition());
+		p.putMetadata("description", "Basic Profile. "+ root.getRoot().getDefinition());
 		p.putMetadata("status", "testing");
-		p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale(
-				"en", "US")).format(new Date()));
+		p.putMetadata("date", new SimpleDateFormat("yyyy-MM-dd", new Locale("en", "US")).format(new Date()));
 		p.getResources().add(root);
 		ProfileGenerator pgen = new ProfileGenerator();
-		Profile rp = pgen.generate(p, new FileOutputStream(
-				page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
-		Utilities.copyFile(new File(page.getFolders().dstDir + n
-				+ ".profile.xml"), new File(page.getFolders().dstDir
-				+ "examples" + File.separator + n + ".profile.xml"));
+		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
+		Utilities.copyFile(new File(page.getFolders().dstDir + n+ ".profile.xml"), new File(page.getFolders().dstDir+ "examples" + File.separator + n + ".profile.xml"));
 		addToResourceFeed(rp);
-		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir
-				+ "html" + File.separator + n + ".htm"));
+		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html" + File.separator + n + ".htm"));
 	}
 
-	private void saveAsPureHtml(Profile resource, FileOutputStream stream)
-			throws Exception {
+	private void saveAsPureHtml(Profile resource, FileOutputStream stream) throws Exception {
 		XhtmlDocument html = new XhtmlDocument();
 		html.setNodeType(NodeType.Document);
 		html.addComment("Generated by automatically by FHIR Tooling");
@@ -708,12 +739,9 @@ public class Publisher {
 		work.setAttribute("type", "text/css");
 		work.setAttribute("media", "screen");
 		work = doc.addTag("body");
-		if ((resource.getText() != null)
-				&& (resource.getText().getDiv() != null)) {
-			work.getAttributes().putAll(
-					resource.getText().getDiv().getAttributes());
-			work.getChildNodes().addAll(
-					resource.getText().getDiv().getChildNodes());
+		if ((resource.getText() != null) && (resource.getText().getDiv() != null)) {
+			work.getAttributes().putAll(resource.getText().getDiv().getAttributes());
+			work.getChildNodes().addAll(resource.getText().getDiv().getChildNodes());
 		}
 		XhtmlComposer xml = new XhtmlComposer();
 		xml.setPretty(false);
@@ -723,10 +751,8 @@ public class Publisher {
 	private void addToResourceFeed(Profile profile) {
 		AtomEntry e = new AtomEntry();
 		e.setId("http://hl7.org/fhir/profile/" + profile.getId());
-		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId()
-				+ ".profile.xml");
-		e.setTitle("Resource \"" + profile.getId()
-				+ "\" as a profile (to help derivation)");
+		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId()+ ".profile.xml");
+		e.setTitle("Resource \"" + profile.getId()+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());
 		e.setPublished(page.getGenDate());
 		e.setAuthorName("HL7, Inc");
