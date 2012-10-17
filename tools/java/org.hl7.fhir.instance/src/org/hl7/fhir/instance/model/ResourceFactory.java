@@ -29,55 +29,57 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
+// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
-        if ("XdsEntry".equals(name))
-            return new XdsEntry();
-        if ("Conformance".equals(name))
-            return new Conformance();
         if ("DocumentHeader".equals(name))
             return new DocumentHeader();
-        if ("AssessmentDefinition".equals(name))
-            return new AssessmentDefinition();
         if ("Device".equals(name))
             return new Device();
         if ("Animal".equals(name))
             return new Animal();
-        if ("Agent".equals(name))
-            return new Agent();
-        if ("Location".equals(name))
-            return new Location();
-        if ("Organization".equals(name))
-            return new Organization();
         if ("Prescription".equals(name))
             return new Prescription();
-        if ("Profile".equals(name))
-            return new Profile();
-        if ("Admission".equals(name))
-            return new Admission();
+        if ("Organization".equals(name))
+            return new Organization();
         if ("Group".equals(name))
             return new Group();
-        if ("InterestOfCare".equals(name))
-            return new InterestOfCare();
         if ("ValueSet".equals(name))
             return new ValueSet();
-        if ("Problem".equals(name))
-            return new Problem();
-        if ("Test".equals(name))
-            return new Test();
         if ("MessageHeader".equals(name))
             return new MessageHeader();
-        if ("Specimen".equals(name))
-            return new Specimen();
+        if ("Test".equals(name))
+            return new Test();
+        if ("Issue".equals(name))
+            return new Issue();
         if ("AssessmentScale".equals(name))
             return new AssessmentScale();
-        if ("Patient".equals(name))
-            return new Patient();
         if ("LabReport".equals(name))
             return new LabReport();
+        if ("Conformance".equals(name))
+            return new Conformance();
+        if ("XdsEntry".equals(name))
+            return new XdsEntry();
+        if ("AssessmentDefinition".equals(name))
+            return new AssessmentDefinition();
+        if ("Agent".equals(name))
+            return new Agent();
+        if ("Profile".equals(name))
+            return new Profile();
+        if ("Location".equals(name))
+            return new Location();
+        if ("Admission".equals(name))
+            return new Admission();
+        if ("InterestOfCare".equals(name))
+            return new InterestOfCare();
+        if ("Problem".equals(name))
+            return new Problem();
+        if ("Specimen".equals(name))
+            return new Specimen();
+        if ("Patient".equals(name))
+            return new Patient();
         if ("Person".equals(name))
             return new Person();
         if ("XdsFolder".equals(name))

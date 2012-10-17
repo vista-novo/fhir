@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
+// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -38,126 +38,63 @@ import java.util.*;
  */
 public class Person extends Resource {
 
-    public enum LanguageUse {
-        none, // The person does not speak the language at all
-        poor, // The person has minimal functional capability in the language
-        useable, // The person can use the language, but may not be full conversant, particularly with regards to health concepts
-        fluent; // The person is fully capable of using the language
-        public static LanguageUse fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("none".equals(codeString))
-          return none;
-        if ("poor".equals(codeString))
-          return poor;
-        if ("useable".equals(codeString))
-          return useable;
-        if ("fluent".equals(codeString))
-          return fluent;
-        throw new Exception("Unknown LanguageUse code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case none: return "none";
-            case poor: return "poor";
-            case useable: return "useable";
-            case fluent: return "fluent";
-            default: return "?";
-          }
-        }
-    }
-
-    public class ContactParty extends Element {
-        /**
-         * The type of the contact party
-         */
-        private CodeableConcept role;
-
-        /**
-         * The name of the contact party
-         */
-        private HumanName name;
-
-        /**
-         * The address of the contact party
-         */
-        private List<Address> address = new ArrayList<Address>();
-
-        /**
-         * The telecommunication addresses of the contact party, e.g. phone, fax, email etcetera
-         */
-        private List<Contact> telecom = new ArrayList<Contact>();
-
-        /**
-         * Reference to the Person|Organization|Agent resource that is the contact party
-         */
-        private ResourceReference party;
-
-        public CodeableConcept getRole() { 
-          return this.role;
-        }
-
-        public void setRole(CodeableConcept value) { 
-          this.role = value;
-        }
-
-        public HumanName getName() { 
-          return this.name;
-        }
-
-        public void setName(HumanName value) { 
-          this.name = value;
-        }
-
-        public List<Address> getAddress() { 
-          return this.address;
-        }
-
-        public List<Contact> getTelecom() { 
-          return this.telecom;
-        }
-
-        public ResourceReference getParty() { 
-          return this.party;
-        }
-
-        public void setParty(ResourceReference value) { 
-          this.party = value;
-        }
-
-    }
-
     public class Language extends Element {
         /**
-         * A code that identifies the language
+         * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. "en" for English, or "en-US" for American English versus "en-EN" for England English
          */
-        private String code;
+        private CodeableConcept languageCode;
+
+        /**
+         * A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed
+         */
+        private CodeableConcept modeCode;
 
         /**
          * A code that describes how well the language is spoken
          */
-        private LanguageUse level;
+        private CodeableConcept proficiencyLevelCode;
 
-        public String getCode() { 
-          return this.code;
+        /**
+         * Indicates whether or not the Person prefers this language (over other languages he masters up a certain level)
+         */
+        private Boolean preferenceInd;
+
+        public CodeableConcept getLanguageCode() { 
+          return this.languageCode;
         }
 
-        public void setCode(String value) { 
-          this.code = value;
+        public void setLanguageCode(CodeableConcept value) { 
+          this.languageCode = value;
         }
 
-        public LanguageUse getLevel() { 
-          return this.level;
+        public CodeableConcept getModeCode() { 
+          return this.modeCode;
         }
 
-        public void setLevel(LanguageUse value) { 
-          this.level = value;
+        public void setModeCode(CodeableConcept value) { 
+          this.modeCode = value;
+        }
+
+        public CodeableConcept getProficiencyLevelCode() { 
+          return this.proficiencyLevelCode;
+        }
+
+        public void setProficiencyLevelCode(CodeableConcept value) { 
+          this.proficiencyLevelCode = value;
+        }
+
+        public Boolean getPreferenceInd() { 
+          return this.preferenceInd;
+        }
+
+        public void setPreferenceInd(Boolean value) { 
+          this.preferenceInd = value;
         }
 
     }
 
     /**
-     * Identifier for the person that is used to identify the person across multiple disparate systems and also for face to face identification of the person
+     * Identifier for a person within a particular scope.
      */
     private List<HumanId> identifier = new ArrayList<HumanId>();
 
@@ -167,7 +104,7 @@ public class Person extends Resource {
     private List<HumanName> name = new ArrayList<HumanName>();
 
     /**
-     * A contact detail for the person
+     * A contact detail for the person, e.g. a telephone number or an email address.
      */
     private List<Contact> telecom = new ArrayList<Contact>();
 
@@ -177,7 +114,7 @@ public class Person extends Resource {
     private CodeableConcept gender;
 
     /**
-     * The birth date for the person
+     * The birth date for the person.
      */
     private DateTime birthDate;
 
@@ -194,12 +131,7 @@ public class Person extends Resource {
     /**
      * This field contains the patient's marital (civil) status.
      */
-    private DateTime maritalStatus;
-
-    /**
-     * A generic contact party for the person. 
-     */
-    private List<ContactParty> contactParty = new ArrayList<ContactParty>();
+    private CodeableConcept maritalStatus;
 
     /**
      * A language spoken by the person, with proficiency
@@ -246,16 +178,12 @@ public class Person extends Resource {
       return this.address;
     }
 
-    public DateTime getMaritalStatus() { 
+    public CodeableConcept getMaritalStatus() { 
       return this.maritalStatus;
     }
 
-    public void setMaritalStatus(DateTime value) { 
+    public void setMaritalStatus(CodeableConcept value) { 
       this.maritalStatus = value;
-    }
-
-    public List<ContactParty> getContactParty() { 
-      return this.contactParty;
     }
 
     public List<Language> getLanguage() { 

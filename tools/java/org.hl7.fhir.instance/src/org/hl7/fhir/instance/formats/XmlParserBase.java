@@ -47,6 +47,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 public abstract class XmlParserBase extends XmlBase {
 
+
+ 
+
   public class ResourceOrFeed {
     private Resource resource;
     private AtomFeed feed;

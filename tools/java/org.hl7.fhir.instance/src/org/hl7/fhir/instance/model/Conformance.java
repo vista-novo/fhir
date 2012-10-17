@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sun, Oct 14, 2012 22:30+1100 for FHIR v0.06
+// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -388,6 +388,11 @@ public class Conformance extends Resource {
         private List<Operation> operation = new ArrayList<Operation>();
 
         /**
+         * A flag for whether the server is able to return past versions as part of the vRead operation
+         */
+        private java.lang.Boolean history;
+
+        /**
          * If present, indicates that search operations are supported on the resource and describes the search capabilities.
          */
         private Search search;
@@ -410,6 +415,14 @@ public class Conformance extends Resource {
 
         public List<Operation> getOperation() { 
           return this.operation;
+        }
+
+        public java.lang.Boolean getHistory() { 
+          return this.history;
+        }
+
+        public void setHistory(java.lang.Boolean value) { 
+          this.history = value;
         }
 
         public Search getSearch() { 
