@@ -189,6 +189,7 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		String modelSupportDir = "Model.Support" + sl;
 		String parsersSupportDir = "Parsers.Support" + sl;
 		String serializersSupportDir = "Serializers.Support" + sl;
+		String supportDir = "Support" + sl;
 		
 		ZipGenerator zip = new ZipGenerator(destDir + "CSharp.zip");
 		zip.addFiles(implDir+modelDir, modelDir, ".cs");
@@ -197,9 +198,21 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		zip.addFiles(implDir+modelSupportDir, modelSupportDir, ".cs");
 		zip.addFiles(implDir+parsersSupportDir, parsersSupportDir, ".cs");
 		zip.addFiles(implDir+serializersSupportDir, serializersSupportDir, ".cs");
-		zip.addFiles(implDir + sl + "Properties" + sl, "Properties"+sl, ".cs");
-		zip.addFiles(implDir + sl, "", ".csproj");
-		zip.addFiles(implDir + sl, "", ".sln");
+		zip.addFiles(implDir+supportDir, supportDir, ".cs");
+		zip.addFiles(implDir+"Properties" + sl, "Properties"+sl, ".cs");
+		zip.addFiles(implDir, "", ".csproj");
+		zip.addFiles(implDir, "", ".sln");
+		
+		// Include Newtonsoft Json support library
+		String librariesDir = "Libraries" + sl;
+		zip.addFiles(implDir+librariesDir, librariesDir, "Newtonsoft.Json.dll");
+		
+		// Include test project
+		String testProjectDir = "HL7.Fhir.Instance.Tests" + sl;
+		zip.addFiles(implDir+testProjectDir, testProjectDir, ".cs");
+		zip.addFiles(implDir+testProjectDir + "Properties" + sl, testProjectDir+"Properties"+sl, ".cs");
+		zip.addFiles(implDir+testProjectDir, testProjectDir, ".csproj");
+		
 		zip.close();		
 	}
 

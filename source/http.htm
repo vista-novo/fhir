@@ -134,16 +134,24 @@ states correctly. Other HTTP status codes may be used for other states as approp
 Note that some security layers may issue redirects which should not be interpreted
 to change the location of the resource itself (a common web programming error). 
 </p>
-<h2>Content Types and File Extensions</h2>
+<h2>Content Types and encodings</h2>
 <p>
-The formal mime type for FHIR resources is text/xml+fhir (still to be registered) and SHOULD be use by clients and servers.
-Servers are required to support the XML format of the resources defined in this specification, but may support other
-alternatives, including the informative <a href="xml.htm#json">JSON</a> representation. Servers must support the 
-content-type negotiation support described by the HTTP specification, but in order to support various implementation
-limitations, may choose to support the (?format=) parameter to specify alternative return formats by their mime types.
-The format parameter may have the value "xml", "html" or "json", or a mime type (including text/xml and application/json). 
-For the format parameter, the mime types text/xml &amp; text/xml+fhir must be interpreted to mean the normative XML format
-defined by FHIR and application/json must be interpreted to mean the informative <a href="json.htm">JSON format</a>.
+The formal MIME-type for FHIR resources is text/xml+fhir (still to be registered) and SHOULD be use 
+by clients and servers. Servers are required to support the XML format of the resources defined in this
+specification, but may support other alternatives, including the informative 
+<a href="json.htm">JSON</a> representation. Servers must support server-driven content negotiation
+as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html#sec12">section 12</a> 
+of the HTTP specification, but in order to support various implementation limitations, may choose to 
+support the (?format=) parameter to specify alternative response formats by their MIME-types.
+For the format parameter, the mime types "xml", "text/xml" and "text/xml+fhir" must be interpreted to mean
+the normative XML format defined by FHIR and "json" and "application/json" must be interpreted to mean the
+informative JSON format.
+</p>
+<p>
+FHIR uses UTF-8 for all request and response bodies. Since the HTTP specification (section 3.7.1)
+defines a default character encoding of ISO-8859-1, requests and responses MUST explicitly set
+the character encoding to UTF-8 using the 'charset' parameter of the MIME-type in the Content-Type header. 
+Requests MAY also specify this charset parameter in the Accept header and/or use the Accept-Charset header.
 </p>
 
 <a name="read"> </a>
@@ -247,9 +255,8 @@ The history interaction retrieves the history of the resource. The interaction i
 </pre>
 <p>
 The return content is an <a href="atom.htm">Atom feed</a> containing the version history for that 
-resource, sorted with oldest versions first. ToDo: how deletions are represented.
+resource, sorted with oldest versions first.
 </p>
-
 
 <a name="validate"> </a>
 <h2>validate</h2>

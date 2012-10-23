@@ -95,18 +95,20 @@ namespace HL7.Fhir.Instance.Tests
             JsonWriter w = new JsonTextWriter(sw);
             IFhirWriter writer = new JsonFhirWriter(w);
 
-            Code nl = new Code("dut");
+            /** TODO: Fix this when Person definition is stable 
+            CodeableConcept nl = new CodeableConcept();
+            nl.Coding
             nl.ReferralId = "lang-1";
 
             Person p = new Person()
-            {
+            {           
                 Id = new Id("34234"),
-                Dob = new FhirDateTime(null) { Dar = DataAbsentReason.Notasked },
-
+                BirthDate = new FhirDateTime(null) { Dar = DataAbsentReason.Notasked },
+                
                 Language = new List<Person.PersonLanguageComponent>()
                 {
-                    new Person.PersonLanguageComponent() { Code = nl, Use = Person.LanguageUse.Fluent },
-                    new Person.PersonLanguageComponent() { Code = "cmn", Use = Person.LanguageUse.Useable }
+                    new Person.PersonLanguageComponent() { LanguageCode = nl, ProficiencyLevelCode = Person.LanguageAbilityProficiency.F },
+                    new Person.PersonLanguageComponent() { LanguageCode = "cmn", ProficiencyLevelCode = PersonLanguageUse.Useable }
                 },
 
                 Name = new List<HumanName>()
@@ -159,7 +161,7 @@ namespace HL7.Fhir.Instance.Tests
                 "<part id=\"n1\"><type>family</type><value>van</value></part></name><dob dataAbsentReason=\"notasked\" />" +
                 "<language><code id=\"lang-1\">dut</code><use>fluent</use></language><language><code>cmn</code>" +
                 "<use>useable</use></language><text><status>generated</status>" +
-                "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div></text></Person>", sw.ToString());
+                "<div xmlns='http://www.w3.org/1999/xhtml'>stuff</div></text></Person>", sw.ToString()); */
         }
 
 

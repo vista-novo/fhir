@@ -10,10 +10,11 @@
 	<classpathentry kind="lib" path="../imports/org.eclipse.emf.ecore_2.7.0.v20120127-1122.jar"/>
 	<classpathentry kind="lib" path="../imports/org.eclipse.emf.common_2.7.0.v20120127-1122.jar"/>
 	<classpathentry kind="lib" path="../imports/org.eclipse.emf.ecore.xmi_2.7.0.v20120127-1122.jar"/>
+	<classpathentry kind="lib" path="../imports/plantuml.jar"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.implementation"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.utilities"/>
 	<classpathentry kind="src" path="/org.hl7.fhir.definitions.ecore"/>
 	<classpathentry kind="lib" path="../imports/saxon9.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/org.sourceforge.plantuml"/>
+	<classpathentry kind="lib" path="../imports/saxon9-dom.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
