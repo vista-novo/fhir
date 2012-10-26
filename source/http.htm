@@ -52,12 +52,12 @@ The following logical interactions are supported:
   <tr><td><a href="#update">update</a></td><td>Update an existing resource by its id (or create it if it is new)</td></tr>
   <tr><td><a href="#delete">delete</a></td><td>Delete a resource</td></tr>
   <tr><td><a href="#history">history</a></td><td>Retrieve the update history for the resource</td></tr>
-  <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td colspan="2"><b>Manager</b></td></tr>
-  <tr><td><a href="#updates">updates</a></td><td>Get a list of prior updates to resources of this type, optionally with some filter criteria</td></tr>
-  <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
   <tr><td><a href="#create">create</a></td><td>Create a new resource with a server assigned id</td></tr>
+  <tr><td><a href="#search">search</a></td><td>Search the resource type based on some filter criteria</td></tr>
+  <tr><td><a href="#updates">updates</a></td><td>Get a list of prior updates to resources of this type, optionally with some filter criteria</td></tr>
   <tr><td colspan="2"><b>System</b></td></tr>
+  <tr><td><a href="#validate">validate</a></td><td>Check that the content would be acceptable as an update</td></tr>
   <tr><td><a href="#conformance">conformance</a></td><td>Get a conformance statement for support of this resource type</td></tr>
   <tr><td><a href="#batch">batch</a></td><td>Update or create a set of resources</td></tr>
 </table>
@@ -142,8 +142,8 @@ specification, but may support other alternatives, including the informative
 <a href="json.htm">JSON</a> representation. Servers must support server-driven content negotiation
 as described in <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html#sec12">section 12</a> 
 of the HTTP specification, but in order to support various implementation limitations, may choose to 
-support the (?format=) parameter to specify alternative response formats by their MIME-types.
-For the format parameter, the mime types "xml", "text/xml" and "text/xml+fhir" must be interpreted to mean
+support the (?$format=) parameter to specify alternative response formats by their MIME-types.
+For the $format parameter, the values "xml", "text/xml" and "text/xml+fhir" must be interpreted to mean
 the normative XML format defined by FHIR and "json" and "application/json" must be interpreted to mean the
 informative JSON format.
 </p>
@@ -161,7 +161,7 @@ The read interaction accesses the current contents of a resource. The interactio
 is performed by an HTTP GET operation as shown:
 </p>
 <pre>
-  GET [service-url]/[resourcetype]/{@id} (?format=mimeType) 
+  GET [service-url]/[resourcetype]/{@id} (?$format=mimeType) 
 </pre>
 <p>
 This returns a single instance with the content specified for the resource type.
@@ -177,7 +177,7 @@ The vread interaction preforms a version specific read of the resource. The inte
 is performed by an HTTP GET operation as shown:
 </p>
 <pre>
-  GET [service-url]/[resourcetype]/{@id}/history/{@vid} (?format=mimeType)
+  GET [service-url]/[resourcetype]/{@id}/history/{@vid} (?$format=mimeType)
 </pre>
 <p>
 This returns a single instance with the content specified for the resource type.
@@ -202,7 +202,7 @@ The update interaction changes an existing resource or creates a new resource if
 The update interaction is performed by an HTTP PUT operation as shown:
 </p>
 <pre>
-  PUT [service-url]/[resourcetype]/{@id} (?format=mimeType)
+  PUT [service-url]/[resourcetype]/{@id} (?$format=mimeType)
 </pre>
 <p>
 If the operation is successful, the server must return 200 OK, along with a copy of the 
@@ -251,62 +251,34 @@ about the state of the real-world corresponding resource implied.
 The history interaction retrieves the history of the resource. The interaction is performed by an HTTP Get operation as shown:
 </p>
 <pre>
-  GET [service-url]/[resourcetype]/{@id}/history (?format=mimeType)
+  GET [service-url]/[resourcetype]/{@id}/history (?$format=mimeType)
 </pre>
 <p>
 The return content is an <a href="atom.htm">Atom feed</a> containing the version history for that 
 resource, sorted with oldest versions first.
 </p>
 
-<a name="validate"> </a>
-<h2>validate</h2>
+<a name="create"> </a>
+<h2>create</h2>
 <p>
-The validate interaction checks whether the attached content would be acceptable as an 
-update to an existing resource. The validation operation may be the first part of a light two-
-phase commit process. The interaction is performed by an HTTP POST operation as shown:
+The create interaction creates a new resource. The interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
-  todo: harmonise these with the RLUS REST specification
-  POST [service-url]/[resourcetype]/validate/{@id}
+  POST [service-url]/[resourcetype] (?$format=mimeType)
 </pre>
 <p>
-The content is first checked against the general specification and against the conformance 
-profile that applies to the application. How much checking is performed is at the discretion 
-of the server. Then the resource is considered as a proposed update and additional instance 
-specific rules such as referential integrity and update logic are applied as well.
-The return content has status 200 OK if the content validates ok or 409 Conflict,
-with the following content:
+The server returns a 201 Created, along with a copy of the newly created resource 
+(which might not be the same as that submitted) with the acknowledgement, along with 
+a Location: header which also contains the new location and id of the created resource:
 </p>
 <pre>
- &lt;<b>validation</b> xmlns="http://hl7.org/fhir">
-   &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">General error message</font>&lt;/error&gt;  
-   &lt;<b>messages</b> <font color="darkgreen">type="list"</font>>   <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-     &lt;<b>message</b>&gt;
-       &lt;<b>path</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font><font color="navy">xpath to the issue</font>&lt;/path&gt;
-       &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Description of the problem</font>&lt;/error&gt;
-     &lt;/message&gt;
-   &lt;messages&gt;
- &lt;/validation&gt;
+ Location: [service-url]/[resourcetype]/{new-id} version aware.... 
 </pre>
 <p>
-The validation operation has complex semantics and rules. Implementers wishing to use this operation
-should consult the full discussion of the operation in the OMG REST specification. 
+If the client wishes to specify the id of the submitted resource, then it should use 
+the update operation instead. 
 </p>
 
-<a name="updates"> </a>
-<h2>updates</h2>
-<p>
-The updates interaction retrieves a list of the resources of a particular type, ordered by the date of last update in reverse (most recently changed first). The interaction is performed by an HTTP Get operation as shown:
-</p>
-<pre>
-  GET [service-url]/[resourcetype] (?format=mimeType)
-</pre>
-<p>
-The return content is an <a href="atom.htm">Atom feed </a> containing a list of resources, sorted with oldest updates first.  Each resource only appears once, with the most recent version in the list.
-</p>
-<p>
-The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
-</p>
 
 <a name="search"> </a>
 <h2>search</h2>
@@ -406,25 +378,54 @@ If more sophisticated searching is required, a FHIR-based service interface can 
 functionality desired.  
 </p>
 
-<a name="create"> </a>
-<h2>create</h2>
+<a name="updates"> </a>
+<h2>updates</h2>
 <p>
-The create interaction creates a new resource. The interaction is performed by an HTTP POST operation as shown:
+The updates interaction retrieves a list of the resources of a particular type, ordered by the date of last update in reverse (most recently changed first). The interaction is performed by an HTTP Get operation as shown:
 </p>
 <pre>
-  POST [service-url]/[resourcetype] (?format=mimeType)
+  GET [service-url]/[resourcetype] (?$format=mimeType)
 </pre>
 <p>
-The server returns a 201 Created, along with a copy of the newly created resource 
-(which might not be the same as that submitted) with the acknowledgement, along with 
-a Location: header which also contains the new location and id of the created resource:
+The return content is an <a href="atom.htm">Atom feed </a> containing a list of resources, sorted with oldest updates first.  Each resource only appears once, with the most recent version in the list.
+</p>
+<p>
+The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
+</p>
+
+<a name="validate"> </a>
+<h2>validate</h2>
+<p>
+The validate interaction checks whether the attached content would be acceptable as an 
+update to an existing resource. The validation operation may be the first part of a light two-
+phase commit process. The interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
- Location: [service-url]/[resourcetype]/{new-id} version aware.... 
+  todo: harmonise these with the RLUS REST specification
+  POST [service-url]/[resourcetype]/validate/{@id}
 </pre>
 <p>
-If the client wishes to specify the id of the submitted resource, then it should use 
-the update operation instead. 
+The content is first checked against the general specification and against the conformance 
+profile that applies to the application. How much checking is performed is at the discretion 
+of the server. Then the resource is considered as a proposed update and additional instance 
+specific rules such as referential integrity and update logic are applied as well.
+The return content has status 200 OK if the content validates ok or 409 Conflict,
+with the following content:
+</p>
+<pre>
+ &lt;<b>validation</b> xmlns="http://hl7.org/fhir">
+   &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">General error message</font>&lt;/error&gt;  
+   &lt;<b>messages</b> <font color="darkgreen">type="list"</font>>   <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+     &lt;<b>message</b>&gt;
+       &lt;<b>path</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font><font color="navy">xpath to the issue</font>&lt;/path&gt;
+       &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Description of the problem</font>&lt;/error&gt;
+     &lt;/message&gt;
+   &lt;messages&gt;
+ &lt;/validation&gt;
+</pre>
+<p>
+The validation operation has complex semantics and rules. Implementers wishing to use this operation
+should consult the full discussion of the operation in the OMG REST specification. 
 </p>
 
 
@@ -434,8 +435,8 @@ the update operation instead.
 The conformance interaction retrieves the application's conformance statement for the resource. The interaction is performed by an HTTP OPTIONS or a GET operation as shown:
 </p>
 <pre>
-  OPTIONS [service-url] (?format=mimeType)
-  GET [service-url]/metadata (?format=mimeType)
+  OPTIONS [service-url] (?$format=mimeType)
+  GET [service-url]/metadata (?$format=mimeType)
 </pre>
 <p>
 Applications SHALL return a <a href="conformance.htm">Conformance Resource</a> that specifies which resource types and operations are supported. 
@@ -452,21 +453,31 @@ human manual interaction with the server would be appropriate.
 <p>
 The batch interaction submits a set of resources to be updated or created on the server. 
 This interaction has two principle uses: to support push-based pub/sub, and to allow 
-multiple resources to be updated in a single transaction. The interaction is performed 
+multiple resources to be updated/created in a single transaction. The interaction is performed 
 by an HTTP POST operation as shown:
 </p>
 <pre>
-  POST [service-url] (?format=mimeType)
+  POST [service-url] (?$format=mimeType)
 </pre>
 <p>
 The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or <a href="json.htm#json-bundles">JSON</a>. 
-Servers SHALL accept all resources and return a 204 No Content, or reject all resources and return an HTTP 400 or 500 type response. 
+Servers SHALL accept all resources and return a 200 OK, along with a response bundle, or reject all resources and return an HTTP 400 or 500 type response. 
 </p>
 <p>
-If the resources are not identified as resource belonging to the server to which the bundle is submitted, the server can choose how to <a href="implementation.htm#identity">handle 
-the identification of the resources</a>, though it is required to maintain internal resource references in the submitted contents. 
+When a bundle is submitted in a batch operation, all the resources must be identified. If the 
+identity of the resource matches an existing or possible resource location on the server, 
+the server should treat this entry as an <a href="#update">update operation</a> (i.e. PUT to the given resource). 
+If the identity is not one that the server recognises, the server should treat the operation
+as a <a href="#create">create operation</a> (i.e. POST to the given resource manager), and 
+create a new identity for the submitted resource. Servers must update any references to 
+a re-identified resource from other resources in the same batch as part of the process 
+of submitting the batch.
 </p>
-
+<p>
+In order to allow the client to know how newly created resources are now identified, the 
+server must return a bundle containing the same resources in the order that they were submitted.
+This allows the client to determine the new identities correctly. 
+</p>
 
 <h2>Intermediaries</h2>
 <p>

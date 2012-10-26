@@ -209,28 +209,26 @@ Note that property names for elements that can repeat are not pluralised for con
 
 <h2>Bundling versions - deletion</h2>
 <p>
-When returning a set of versions for a resource, a version might indicate a <i>deletion</i>. In this case, the content member of the Atom entry 
-does not contain an instance of a Resource, but must instead contain a special "deleted content" object:</p>
+When returning a set of versions for a resource, a version might indicate a <i>deletion</i>. 
+While the XML format follows <a href="http://www.rfc-editor.org/rfc/rfc6721.txt">RFC 6721</a>,
+the JSON format needs to use an entry item to retain the logical order of entries:</p>
 <pre class="json">
    .. feed ..
-   &quot;entries&quot; : [{
-      ...
-      &quot;categories&quot; : [{
-          &quot;term&quot; : &quot;Person&quot;,
-          &quot;scheme&quot; : &quot;http://hl7.org/fhir/sid/fhir/resource-types&quot;
+   &quot;entry&quot; : [
+    ... other entries ....,    
+	{
+      &quot;deleted&quot; : &quot;2012-05-29T23:45:32+00:00&quot;,
+      &quot;link&quot; : [{
+          &quot;rel&quot; : &quot;self&quot;,
+          &quot;href&quot; : &quot;http://fhir.furore.com/fhir/person/@1/history/@1&quot;
         }],
-      &quot;content&quot; : {
-        &quot;Deleted&quot; : {}
-      },
-      &quot;summary&quot; : 
-        &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;This resource has been deleted&lt;/div&gt;&quot;,
-      ...
+      &quot;id&quot; : &quot;http://fhir.furore.com/fhir/person/@1&quot;,
     }, ... other entries ....
   ]
   ... feed ...
 </pre>
 <p>
-As shown in this example, it is suggested that the entry carries a summary to indicate the deletion to the human reader.
+The entry is known to be deleted because a date of deletion is given. An id must be provided, and a link may be provided.
 </p>
 
 <%footer%>

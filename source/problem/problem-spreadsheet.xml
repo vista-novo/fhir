@@ -20,7 +20,6 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6195</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -191,7 +190,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Problem.stage</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">up</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">stage/grade, usually assessed formally</Data></Cell>
     <Cell><Data ss:Type="String">Clinical stage or grade of a problem/diagnosis. May include formal severity assessments</Data></Cell>
@@ -200,6 +199,7 @@
     <Cell><Data ss:Type="String">Problem.stage.summary</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">simple summary (disease specific)</Data></Cell>
     <Cell><Data ss:Type="String">A simple summary of the stage such as &quot;Stage 3&quot;. The determination of the stage is disease-specific</Data></Cell>
@@ -208,6 +208,7 @@
     <Cell><Data ss:Type="String">Problem.stage.assessment</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">formal record of assessment</Data></Cell>
     <Cell><Data ss:Type="String">Reference to a formal record of the evidence on which the staging assessment is based</Data></Cell>
@@ -215,7 +216,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Problem.evidence</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">supporting evidence</Data></Cell>
     <Cell><Data ss:Type="String">supporting Evidence / manfiestions that are the basis on which this problem/diagnosis is suspected or confirmed</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">The evidence may be a simple lost of coded symptoms/manifestations, or references to observations or formal assessments, or both</Data></Cell>
@@ -224,6 +225,7 @@
     <Cell><Data ss:Type="String">Problem.evidence.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">manifestation/symptom</Data></Cell>
     <Cell><Data ss:Type="String">A manifestion or symptom that led to the recording of this problem/diagnosis</Data></Cell>
@@ -232,6 +234,7 @@
     <Cell><Data ss:Type="String">Problem.evidence.details</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource(Any)</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">supporting information found elsewhere</Data></Cell>
     <Cell><Data ss:Type="String">Links to other relevant information, including pathology reports</Data></Cell>
@@ -239,7 +242,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Problem.location</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">up</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">anatomical location, if relevant</Data></Cell>
     <Cell><Data ss:Type="String">The anatomical location where this problem/diagnosis manifests itself</Data></Cell>
@@ -249,6 +252,7 @@
     <Cell><Data ss:Type="String">Problem.location.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">location - may include laterality</Data></Cell>
     <Cell><Data ss:Type="String">code that identifies the structural location</Data></Cell>
@@ -258,6 +262,7 @@
     <Cell><Data ss:Type="String">Problem.location.details</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
+    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Resource(AnatomicalLocation)</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">precise location details</Data></Cell>
     <Cell><Data ss:Type="String">detailed and structured anatomical location information</Data></Cell>
@@ -265,6 +270,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Problem.relatedItem</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">causes or precedents for this problem</Data></Cell>
     <Cell><Data ss:Type="String">Further problems, diagnoses, procedures or events that are related in some way to this problem/diagnosis, or the substance that caused/triggered this problem</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">Although a problem may be caused by a substance, this is not intended to be used to record allergies/adverse reactions to substances</Data></Cell>
@@ -272,6 +278,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Problem.relatedItem.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">ProblemRelationshipType</Data></Cell>
     <Cell><Data ss:Type="String">due-to | follows</Data></Cell>
@@ -308,12 +315,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>6</TopRowVisible>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -485,7 +492,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

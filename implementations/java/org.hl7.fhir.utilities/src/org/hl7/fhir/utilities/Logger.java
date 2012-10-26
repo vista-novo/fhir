@@ -29,5 +29,6 @@ POSSIBILITY OF SUCH DAMAGE.
 package org.hl7.fhir.utilities;
 
 public interface Logger {
-    public void log(String content);
+  public void log(String content);
+  public void logNoEoln(String content);
 }

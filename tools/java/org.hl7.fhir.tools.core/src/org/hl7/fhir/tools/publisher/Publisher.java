@@ -314,8 +314,9 @@ public class Publisher {
 		sg.close();
 		
 		produceSchemaZip();
-		log("Produce Specification");
+		logNoEoln("Produce Specification");
 		produceSpec();
+    log("Produce Specification");
 
 		if (!nobook) {
 			log("Produce fhir.chm");
@@ -381,21 +382,28 @@ public class Publisher {
 		for (String n : page.getIni().getPropertyNames("images"))
 			Utilities.copyFile(new File(page.getFolders().imgDir + n),
 					new File(page.getFolders().dstDir + n));
+    logNoEoln(" ");
 
 		profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
 		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
-		for (ResourceDefn n : page.getDefinitions().getResources().values())
+		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
+      logNoEoln("#");
 			produceResource(n);
+		}
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
 		Utilities.copyFile(new File(page.getFolders().dstDir + "profiles-resources.xml"), new File(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
 		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
-		for (String n : page.getIni().getPropertyNames("pages"))
+		for (String n : page.getIni().getPropertyNames("pages")) {
+		  logNoEoln("+");
 			producePage(n);
+		}
 
-		for (String n : page.getDefinitions().getProfiles().keySet())
+		for (String n : page.getDefinitions().getProfiles().keySet()) {
+      logNoEoln("-");
 			produceProfile(n, page.getDefinitions().getProfiles().get(n));
+		}
 
 		produceCombinedDictionary();
 		Utilities.copyFile(new File(page.getFolders().umlDir + "fhir.eap"),
@@ -1149,8 +1157,12 @@ public class Publisher {
 		fos.close();
 	}
 
-	public void log(String content) {
-		page.log(content);
-	}
+  public void log(String content) {
+    page.log(content);
+  }
+
+  public void logNoEoln(String content) {
+    page.logNoEoln(content);
+  }
 
 }

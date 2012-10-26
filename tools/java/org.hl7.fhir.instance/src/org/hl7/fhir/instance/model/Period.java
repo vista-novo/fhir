@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
+// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
 
 /**
  * A time period defined by a start and end time.

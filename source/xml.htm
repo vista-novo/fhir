@@ -84,8 +84,8 @@ content, but are delegated to the infrastructure:
 <table class="grid">
   <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
   <tr><td>Logical Id</td> <td><a href="datatypes.htm#id">id</a></td> <td>The identity of the resource. 
-    Resources always have a known identity except in the case where a new resource is being submitted to a server to assign a resource to it. The use of the id element is <a href="#Resource">discussed further below</a></td></tr>
-  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (see below). Can be used to ensure that updates are based on the latest version of the resource.</td></tr>
+    Resources always have a known identity except in the case where a new resource is being submitted to a server to assign a resource to it. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
+  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource.</td></tr>
   <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Changed each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
 </table>
 <p>
@@ -326,7 +326,7 @@ Both URLs may either be absolute URLs, or relative URLS. If they are relative UR
 respectively of the resource in question, and the resolution of the local references is a matter of implementation logic. 
 If relative references are used, a <i>version</i> cannot be provided without an <i>id</i>, since the <i>version</i> may be scoped by the <i>id</i>.
 Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
-when trading between separated eco-systems. Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
+when trading between separated eco-systems (see <a href="implementation.htm#identity">implementation issues for further discussion</a>). Absolute URLs do not need to point to a <a href="http.htm">FHIR RESTful 
 server</a>, though this is the preferred approach. Irrespective of whether the URL points to a FHIR RESTful server or includes the logical id in the URL, 
 URLs are always considered to be case-sensitive and lowercase is preferred.
 </p>

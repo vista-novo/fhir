@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
+// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -445,7 +445,7 @@ public class JsonComposer extends JsonComposerBase {
       composeXdsEntryAuthenticator("authenticator", element.getAuthenticator());
       composeCoding("facilityType", element.getFacilityType());
       composeCoding("practiceSetting", element.getPracticeSetting());
-      composeString("homeCommunity", element.getHomeCommunity());
+      composeURI("homeCommunity", element.getHomeCommunity());
       composeXdsEntryService("service", element.getService());
       composeString("comments", element.getComments());
       if (element.getExtensions().size() > 0) {
@@ -1535,6 +1535,125 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
+  private void composeAudit(String name, Audit element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeAuditEvent("event", element.getEvent());
+      if (element.getParticipant().size() > 0) {
+        openArray("participant");
+        for (Audit.Participant e : element.getParticipant()) 
+          composeAuditParticipant(null, e);
+        closeArray();
+      };
+      if (element.getSource().size() > 0) {
+        openArray("source");
+        for (Audit.Source e : element.getSource()) 
+          composeAuditSource(null, e);
+        closeArray();
+      };
+      if (element.getObject().size() > 0) {
+        openArray("object");
+        for (Audit.Object e : element.getObject()) 
+          composeAuditObject(null, e);
+        closeArray();
+      };
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeAuditEvent(String name, Audit.Event element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeCoding("id", element.getId());
+      if (element.getAction() != null)
+        composeString("action", element.getAction().toCode());
+      composeDate("dateTime", element.getDateTime());
+      if (element.getOutcome() != null)
+        composeString("outcome", element.getOutcome().toCode());
+      if (element.getCode().size() > 0) {
+        openArray("code");
+        for (Coding e : element.getCode()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeAuditParticipant(String name, Audit.Participant element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("userId", element.getUserId());
+      composeString("otherUserId", element.getOtherUserId());
+      composeString("name", element.getName());
+      composeBoolean("requestor", element.getRequestor());
+      if (element.getRole().size() > 0) {
+        openArray("role");
+        for (Coding e : element.getRole()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      composeAuditNetwork("network", element.getNetwork());
+      close();
+    }
+  }
+
+  private void composeAuditNetwork(String name, Audit.Network element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      composeString("id", element.getId());
+      close();
+    }
+  }
+
+  private void composeAuditSource(String name, Audit.Source element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("site", element.getSite());
+      composeString("id", element.getId());
+      if (element.getType().size() > 0) {
+        openArray("type");
+        for (Coding e : element.getType()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeAuditObject(String name, Audit.Object element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRole() != null)
+        composeString("role", element.getRole().toCode());
+      if (element.getLifecycle() != null)
+        composeString("lifecycle", element.getLifecycle().toCode());
+      composeCoding("idType", element.getIdType());
+      composeString("id", element.getId());
+      composeString("sensitivity", element.getSensitivity());
+      composeString("name", element.getName());
+      composeBytes("query", element.getQuery());
+      close();
+    }
+  }
+
   private void composeProblem(String name, Problem element) throws Exception {
     if (element != null) {
       open(name);
@@ -2132,6 +2251,8 @@ public class JsonComposer extends JsonComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
+    else if (resource instanceof Audit)
+      composeAudit("Audit", (Audit)resource);
     else if (resource instanceof Problem)
       composeProblem("Problem", (Problem)resource);
     else if (resource instanceof Test)

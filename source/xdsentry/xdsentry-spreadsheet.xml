@@ -588,7 +588,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">oid</Data><NamedCell
+    <Cell ss:Index="7"><Data ss:Type="String">uri</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">globally unique community id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -685,11 +685,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <TopRowVisible>33</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>40</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>34</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -896,13 +897,13 @@
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">author.name</Data></Cell>
+    <Cell><Data ss:Type="String">authorName</Data></Cell>
     <Cell><Data ss:Type="String">name of human/machine</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">author.id</Data></Cell>
+    <Cell><Data ss:Type="String">authorId</Data></Cell>
     <Cell><Data ss:Type="String">id of human/machine</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
@@ -926,13 +927,13 @@
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">service.start</Data></Cell>
+    <Cell><Data ss:Type="String">serviceStart</Data></Cell>
     <Cell><Data ss:Type="String">Start time</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">service.stop</Data></Cell>
+    <Cell><Data ss:Type="String">serviceStop</Data></Cell>
     <Cell><Data ss:Type="String">Stop time</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
@@ -955,8 +956,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>19</ActiveRow>
-     <RangeSelection>R20</RangeSelection>
+     <ActiveRow>13</ActiveRow>
+     <RangeSelection>R14</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

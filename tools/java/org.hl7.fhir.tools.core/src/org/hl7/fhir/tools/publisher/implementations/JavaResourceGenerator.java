@@ -39,6 +39,7 @@ import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.utilities.Utilities;
 
 public class JavaResourceGenerator extends JavaBaseGenerator {
 
@@ -224,6 +225,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			String cc = c.getCode();
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
+			if (Utilities.IsInteger(cc))
+			  cc = "_"+cc;
 			if (cc.equals("<"))
 				cc = "lessThan";
 			else if (cc.equals("<="))
@@ -250,6 +253,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			String cc = c.getCode();
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
+      if (Utilities.IsInteger(cc))
+        cc = "_"+cc;
 			if (cc.equals("<"))
 				cc = "lessThan";
 			else if (cc.equals("<="))
@@ -274,6 +279,8 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			String cc = c.getCode();
 			if (GeneratorUtils.isJavaReservedWord(cc))
 				cc = cc + "_";
+      if (Utilities.IsInteger(cc))
+        cc = "_"+cc;
 			if (cc.equals("<"))
 				cc = "lessThan";
 			else if (cc.equals("<="))

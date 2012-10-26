@@ -1,0 +1,17 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>
+This is a draft for what an ATNA Audit Record might look like if provided as a set of FHIR resources. 
+This is work in progress performed collaboratively between HL7 and IHE for the MHD/mHealth initiatives. 
+Neither HL7 nor IHE is committed to pursuing this path - it is simply being evaluated as a possibility.
+</p>
+<p>
+Things to note about the current design:
+</p>
+<ul>
+  <li>in FHIR, Participant Object Detail is handled as extensions</li>
+</ul>
+
+
+<a name="resource"></a>
+</div>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Thu, Oct 18, 2012 07:30+1100 for FHIR v0.06
+// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -405,7 +405,7 @@ public class XmlComposer extends XmlComposerBase {
       composeXdsEntryAuthenticator("authenticator", element.getAuthenticator());
       composeCoding("facilityType", element.getFacilityType());
       composeCoding("practiceSetting", element.getPracticeSetting());
-      composeString("homeCommunity", element.getHomeCommunity());
+      composeURI("homeCommunity", element.getHomeCommunity());
       composeXdsEntryService("service", element.getService());
       composeString("comments", element.getComments());
       for (Extension e : element.getExtensions()) 
@@ -1199,6 +1199,97 @@ public class XmlComposer extends XmlComposerBase {
     }
   }
 
+  private void composeAudit(String name, Audit element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeAuditEvent("event", element.getEvent());
+      for (Audit.Participant e : element.getParticipant()) 
+        composeAuditParticipant("participant", e);
+      for (Audit.Source e : element.getSource()) 
+        composeAuditSource("source", e);
+      for (Audit.Object e : element.getObject()) 
+        composeAuditObject("object", e);
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAuditEvent(String name, Audit.Event element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeCoding("id", element.getId());
+      if (element.getAction() != null)
+        composeString("action", element.getAction().toCode());
+      composeDate("dateTime", element.getDateTime());
+      if (element.getOutcome() != null)
+        composeString("outcome", element.getOutcome().toCode());
+      for (Coding e : element.getCode()) 
+        composeCoding("code", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAuditParticipant(String name, Audit.Participant element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString("userId", element.getUserId());
+      composeString("otherUserId", element.getOtherUserId());
+      composeString("name", element.getName());
+      composeBoolean("requestor", element.getRequestor());
+      for (Coding e : element.getRole()) 
+        composeCoding("role", e);
+      composeAuditNetwork("network", element.getNetwork());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAuditNetwork(String name, Audit.Network element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      composeString("id", element.getId());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAuditSource(String name, Audit.Source element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString("site", element.getSite());
+      composeString("id", element.getId());
+      for (Coding e : element.getType()) 
+        composeCoding("type", e);
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeAuditObject(String name, Audit.Object element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRole() != null)
+        composeString("role", element.getRole().toCode());
+      if (element.getLifecycle() != null)
+        composeString("lifecycle", element.getLifecycle().toCode());
+      composeCoding("idType", element.getIdType());
+      composeString("id", element.getId());
+      composeString("sensitivity", element.getSensitivity());
+      composeString("name", element.getName());
+      composeBytes("query", element.getQuery());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
   private void composeProblem(String name, Problem element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
@@ -1608,6 +1699,8 @@ public class XmlComposer extends XmlComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
+    else if (resource instanceof Audit)
+      composeAudit("Audit", (Audit)resource);
     else if (resource instanceof Problem)
       composeProblem("Problem", (Problem)resource);
     else if (resource instanceof Test)

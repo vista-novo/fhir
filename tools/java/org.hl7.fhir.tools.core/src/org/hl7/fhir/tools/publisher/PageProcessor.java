@@ -1037,7 +1037,12 @@ public class PageProcessor implements Logger  {
   public void log(String content) {
     System.out.println(content);        
   }
+  
+  public void logNoEoln(String content) {
+    System.out.print(content);        
+  }
 
+  
   public void setNavigation(Navigation navigation) {
     this.navigation = navigation;
   }

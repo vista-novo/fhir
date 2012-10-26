@@ -524,6 +524,9 @@ public class SpreadsheetParser {
 			boolean allowDAR, Map<String, Invariant> invariants) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
+		if (path.startsWith("!"))
+		  return;
+		
 		if (path.contains("#"))
 			throw new Exception("Old path style @ " + getLocation(row));
 

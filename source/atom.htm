@@ -44,7 +44,7 @@ Whenever resources are gethered into a list, this is done using the Atom format 
   &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
     &lt;<b>title</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
     &lt;<b>link</b> <span style="color: brown;"><b>1..1</b></span> rel="self" href="<font color="navy">Version Specific reference to Resource</font>"/&gt;
-    &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Master Id (uri) for this resource</font>&lt;/id&gt;
+    &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Logical Id (uri) for this resource</font>&lt;/id&gt;
     &lt;<b>updated</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Last Updated for resource</font>&lt;/updated&gt;
     &lt;<b>published</b> <span style="color: brown;"><b>0..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">Time resource copied into the feed</font>&lt;/updated&gt;
     &lt;<b>author</b>&gt;
@@ -86,28 +86,20 @@ Whenever resources are gethered into a list, this is done using the Atom format 
 
 <h2>Bundling versions - deletion</h2>
 <p>
-When returning a set of resources or versions of a resource, an entry might indicate that the entry has been <i>deleted</i>. In this case, the &lt;content> part of the Atom entry 
-does not contain an instance of a Resource, but must instead contain a special "deleted content" markup:</p>
-<pre class="xml">
-   .. feed ..
-  &lt;entry>
-    .. 
-    &lt;id>1145c09c-73d0-4297-9835-620e4afa9deb&lt;id>
-    .. 
-    &lt;category term="Organization" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
-
-    &lt;content type="text/xml">
-      &lt;Deleted xmlns="http://hl7.org/fhir" />
-    &lt;/content>
-    &lt;summary type="xhtml">
-      &lt;div xmlns="http://www.w3.org/1999/xhtml">This resource has been deleted.&lt;/div>
-    &lt;/summary>
-  &lt;/entry>
-  ... feed ...
+When returning a set of resources or versions of a resource, an entry might indicate that the entry has been <i>deleted</i>. Deleted resources are represented
+in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt">rfc6721.txt</a>: 
+</p>
+<pre class="spec">
+&lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
+   .. feed elements and other entries ..
+  &lt;at:deleted-entry xmlns:at="http://purl.org/atompub/tombstones/1.0"
+      ref="<font color="navy">Logical Id for deleted resource</font>" when="<font color="navy">when deleted</font>"&lt;
+    &lt;<b>link</b> <span style="color: brown;"><b>0..1</b></span> rel="self" href="<font color="navy">Version Specific reference to Resource</font>"/&gt;
+  &lt;/at:deleted-entry>
+  ... other entries ...
 </pre>
 <p>
-As shown in this example, it is suggested that the entry carries a summary to indicate the deletion to the human reader. 
-A deleted resource is one that if would return a 410 error if it was accessed through the RESTful interface.
+A deleted resource returns a 410 error if it was accessed through the RESTful interface. 
 </p>
 <h2>Resolving references to Resources</h2>
 <p>
