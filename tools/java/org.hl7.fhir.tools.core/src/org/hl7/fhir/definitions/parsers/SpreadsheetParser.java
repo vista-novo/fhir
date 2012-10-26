@@ -251,19 +251,21 @@ public class SpreadsheetParser {
 			Invariant inv = new Invariant();
 
 			String s = sheet.getColumn(row, "Id");
-			inv.setId(s);
-			inv.setName(sheet.getColumn(row, "Name"));
-			inv.setContext(sheet.getColumn(row, "Context"));
-			inv.setEnglish(sheet.getColumn(row, "English"));
-			inv.setXpath(sheet.getColumn(row, "XPath"));
-			if (!Utilities.noString(sheet.getColumn(row,  "Schematron")))
-			  log.log("Value found for schematron "+getLocation(row));  
-			inv.setOcl(sheet.getColumn(row, "OCL"));
-			if (s == null || s.equals("")
-					|| result.containsKey(s))
-				throw new Exception("duplicate or missing invariant id "
-						+ getLocation(row));
-			result.put(s, inv);
+			if (!s.startsWith("!")) {
+			  inv.setId(s);
+			  inv.setName(sheet.getColumn(row, "Name"));
+			  inv.setContext(sheet.getColumn(row, "Context"));
+			  inv.setEnglish(sheet.getColumn(row, "English"));
+			  inv.setXpath(sheet.getColumn(row, "XPath"));
+			  if (!Utilities.noString(sheet.getColumn(row,  "Schematron")))
+			    log.log("Value found for schematron "+getLocation(row));  
+			  inv.setOcl(sheet.getColumn(row, "OCL"));
+			  if (s == null || s.equals("")
+			      || result.containsKey(s))
+			    throw new Exception("duplicate or missing invariant id "
+			        + getLocation(row));
+			  result.put(s, inv);
+			}
 		}
 		
 		return result;

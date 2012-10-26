@@ -12,7 +12,7 @@
 	<laboratory>
 	  <type>Organization</type>
 	  <id>1832473e-2fe0-452d-abe9-3cdb9879522f</id>
-	  <text>Acme Laboratory, Inc</text>
+	  <display>Acme Laboratory, Inc</display>
 	</laboratory>
 	<reportId>
 	  <system>http://acme.com/lab/reports</system>
@@ -20,20 +20,19 @@
 	</reportId>
 	<reportName>
 	  <coding>
-	    <code>15430-2</code>
-      <system>http://loinc.org</system>
+	  <system>http://loinc.org</system>
+        <code>15430-2</code>
       <display>FULL BLOOD EXAMINATION</display>
     </coding>
 	  <coding>
 	    <code>CBC</code>
-      <system>http://www.nata.asn.au/accreditation</system>
       <display>MASTER FULL BLOOD COUNT</display>
     </coding>
 	</reportName>
 	<service>
 	  <coding>
-	    <code>HM</code>
-      <system>http://hl7.org/fhir/sid/v2-0074</system>
+  	  <system>http://hl7.org/fhir/sid/v2-0074</system>
+      <code>HM</code>
     </coding>
 	</service>
 	<diagnosticTime>2011-03-04T08:30:00+11:00</diagnosticTime>
@@ -44,16 +43,16 @@
     <result>
       <name>
         <coding>
-          <code>718-7</code>
           <system>http://loinc.org</system>
+          <code>718-7</code>
           <display>Haemoglobin</display>
         </coding>
       </name>
       <valueQuantity>
         <value>176</value>
         <units>g/L</units>
-        <code>g/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>g/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -61,14 +60,14 @@
           <low>
             <value>135</value>
             <units>g/L</units>
-            <code>g/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>g/L</code>
           </low>
           <high>
             <value>180</value>
             <units>g/L</units>
-            <code>g/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>g/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -77,16 +76,16 @@
     <result>
       <name>
         <coding>
-          <code>789-8</code>
           <system>http://loinc.org</system>
+          <code>789-8</code>
           <display>Red Cell Count</display>
         </coding>
       </name>
       <valueQuantity>
         <value>5.9</value>
         <units>x10*12/L</units>
-        <code>10*12/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*12/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -94,14 +93,14 @@
           <low>
             <value>4.2</value>
             <units>x10*12/L</units>
-            <code>10*12/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*12/L</code>
           </low>
           <high>
             <value>6.0</value>
             <units>x10*12/L</units>
-            <code>10*12/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*12/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -110,8 +109,8 @@
     <result>
       <name>
         <coding>
-          <code>4544-3</code>
           <system>http://loinc.org</system>
+          <code>4544-3</code>
           <display>Haematocrit</display>
         </coding>
       </name>
@@ -138,16 +137,16 @@
     <result>
       <name>
         <coding>
-          <code>787-2</code>
           <system>http://loinc.org</system>
+          <code>787-2</code>
           <display>Mean Cell Volume</display>
         </coding>
       </name>
       <valueQuantity>
         <value>99</value>
         <units>fL</units>
-        <code>fL</code>
         <system>http://unitsofmeasure.org</system>
+        <code>fL</code>
       </valueQuantity>
       <flag>+</flag>
       <status>final</status>
@@ -156,14 +155,14 @@
           <low>
             <value>80</value>
             <units>fL</units>
-            <code>fL</code>
             <system>http://unitsofmeasure.org</system>
+            <code>fL</code>
           </low>
           <high>
             <value>98</value>
             <units>fL</units>
-            <code>fL</code>
             <system>http://unitsofmeasure.org</system>
+            <code>fL</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -172,16 +171,16 @@
     <result>
       <name>
         <coding>
-          <code>785-6</code>
           <system>http://loinc.org</system>
+          <code>785-6</code>
           <display>Mean Cell Haemoglobin</display>
         </coding>
       </name>
       <valueQuantity>
         <value>36</value>
         <units>pg</units>
-        <code>pg</code>
         <system>http://unitsofmeasure.org</system>
+        <code>pg</code>
       </valueQuantity>
       <flag>+</flag>
       <status>final</status>
@@ -190,14 +189,14 @@
           <low>
             <value>27</value>
             <units>pg</units>
-            <code>pg</code>
             <system>http://unitsofmeasure.org</system>
+            <code>pg</code>
           </low>
           <high>
             <value>35</value>
             <units>pg</units>
-            <code>pg</code>
             <system>http://unitsofmeasure.org</system>
+            <code>pg</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -206,16 +205,16 @@
     <result>
       <name>
         <coding>
-          <code>777-3</code>
           <system>http://loinc.org</system>
+          <code>777-3</code>
           <display>Platelet Count</display>
         </coding>
       </name>
       <valueQuantity>
         <value>444</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -223,14 +222,14 @@
           <low>
             <value>150</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>450</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -239,16 +238,16 @@
     <result>
       <name>
         <coding>
-          <code>6690-2</code>
           <system>http://loinc.org</system>
+          <code>6690-2</code>
           <display>White Cell Count</display>
         </coding>
       </name>
       <valueQuantity>
         <value>4.6</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -256,14 +255,14 @@
           <low>
             <value>4.0</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>11.0</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -272,16 +271,16 @@
     <result>
       <name>
         <coding>
-          <code>770-8</code>
           <system>http://loinc.org</system>
+          <code>770-8</code>
           <display>Neutrophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>20</value>
         <units>%</units>
-        <code>%</code>
         <system>http://unitsofmeasure.org</system>
+        <code>%</code>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -289,16 +288,16 @@
     <result>
       <name>
         <coding>
-          <code>751-8</code>
           <system>http://loinc.org</system>
+          <code>751-8</code>
           <display>Neutrophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>0.9</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <flag>---</flag>
       <status>final</status>
@@ -307,14 +306,14 @@
           <low>
             <value>2.0</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>7.5</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -323,16 +322,16 @@
     <result>
       <name>
         <coding>
-          <code>736-9</code>
           <system>http://loinc.org</system>
+          <code>736-9</code>
           <display>Lymphocytes</display>
         </coding>
       </name>
       <valueQuantity>
         <value>20</value>
         <units>%</units>
-        <code>%</code>
         <system>http://unitsofmeasure.org</system>
+        <code>%</code>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -340,16 +339,16 @@
     <result>
       <name>
         <coding>
-          <code>731-0</code>
           <system>http://loinc.org</system>
+          <code>731-0</code>
           <display>Lymphocytes</display>
         </coding>
       </name>
       <valueQuantity>
         <value>0.9</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <flag>-</flag>
       <status>final</status>
@@ -358,14 +357,14 @@
           <low>
             <value>1.1</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>4.0</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -374,16 +373,16 @@
     <result>
       <name>
         <coding>
-          <code>5905-5</code>
           <system>http://loinc.org</system>
+          <code>5905-5</code>
           <display>Monocytes</display>
         </coding>
       </name>
       <valueQuantity>
         <value>20</value>
         <units>%</units>
-        <code>%</code>
         <system>http://unitsofmeasure.org</system>
+        <code>%</code>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -391,16 +390,16 @@
     <result>
       <name>
         <coding>
-          <code>742-7</code>
           <system>http://loinc.org</system>
+          <code>742-7</code>
           <display>Monocytes</display>
         </coding>
       </name>
       <valueQuantity>
         <value>0.9</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -408,14 +407,14 @@
           <low>
             <value>0.2</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>1.0</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -424,16 +423,16 @@
     <result>
       <name>
         <coding>
-          <code>713-8</code>
           <system>http://loinc.org</system>
+          <code>713-8</code>
           <display>Eosinophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>20</value>
         <units>%</units>
-        <code>%</code>
         <system>http://unitsofmeasure.org</system>
+        <code>%</code>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -441,16 +440,16 @@
     <result>
       <name>
         <coding>
-          <code>711-2</code>
           <system>http://loinc.org</system>
+          <code>711-2</code>
           <display>Eosinophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>0.92</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <flag>++</flag>
       <status>final</status>
@@ -459,14 +458,14 @@
           <low>
             <value>0.04</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </low>
           <high>
             <value>0.40</value>
             <units>x10*9/L</units>
-            <code>10*9/L</code>
             <system>http://unitsofmeasure.org</system>
+            <code>10*9/L</code>
           </high>
         </rangeRange>
       </referenceRange>
@@ -475,16 +474,16 @@
     <result>
       <name>
         <coding>
-          <code>706-2</code>
           <system>http://loinc.org</system>
+          <code>706-2</code>
           <display>Basophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>20</value>
         <units>%</units>
-        <code>%</code>
         <system>http://unitsofmeasure.org</system>
+        <code>%</code>
       </valueQuantity>
       <status>final</status>
     </result>
@@ -492,16 +491,16 @@
     <result>
       <name>
         <coding>
-          <code>704-7</code>
           <system>http://loinc.org</system>
+          <code>704-7</code>
           <display>Basophils</display>
         </coding>
       </name>
       <valueQuantity>
         <value>0.92</value>
         <units>x10*9/L</units>
-        <code>10*9/L</code>
         <system>http://unitsofmeasure.org</system>
+        <code>10*9/L</code>
       </valueQuantity>
       <status>final</status>
       <referenceRange>
@@ -509,8 +508,8 @@
           <value>0.21</value>
           <range>&lt;</range>
           <units>x10*9/L</units>
-          <code>10*9/L</code>
           <system>http://unitsofmeasure.org</system>
+          <code>10*9/L</code>
         </rangeQuantity>
       </referenceRange>
     </result>      

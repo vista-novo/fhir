@@ -3,8 +3,8 @@
   <severity>error</severity>
   <type>
     <coding>
-      <code>V15</code>
       <system>http://test.org/issueCodeSystem</system>
+      <code>V15</code>
       <display>InvalidCode</display>
     </coding>
   </type>

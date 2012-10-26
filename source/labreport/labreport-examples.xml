@@ -23,7 +23,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -31,8 +31,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -41,13 +41,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -71,13 +71,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -101,13 +101,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -131,13 +131,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -161,13 +161,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -191,13 +191,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -221,13 +221,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -251,13 +251,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -281,13 +281,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -312,13 +312,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -342,13 +342,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -372,13 +372,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -402,13 +402,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -432,13 +432,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -463,13 +463,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -493,13 +493,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -523,13 +523,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -553,13 +553,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -583,13 +583,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -613,13 +613,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -643,13 +643,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -673,13 +673,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -703,13 +703,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -734,13 +734,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -765,13 +765,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -795,13 +795,13 @@
           <result>
             <name>
               <coding>
-                <code>2085-9</code>
                 <system>http://loinc.org</system>
+                <code>2085-9</code>
                 <display>HDL Cholesterol</display>
               </coding>
               <coding>
-                <code>17888004</code>
                 <system>http://snomed.info</system>
+                <code>17888004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -912,7 +912,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -920,8 +920,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -933,13 +933,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -963,13 +963,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -993,13 +993,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1023,13 +1023,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1053,13 +1053,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1083,13 +1083,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1113,13 +1113,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1144,13 +1144,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1174,13 +1174,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1205,13 +1205,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1235,13 +1235,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1265,13 +1265,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1296,13 +1296,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1327,13 +1327,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1358,13 +1358,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1389,13 +1389,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1419,13 +1419,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1449,13 +1449,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1479,13 +1479,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1509,13 +1509,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1539,13 +1539,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1569,13 +1569,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1599,13 +1599,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1630,13 +1630,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1661,13 +1661,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1721,7 +1721,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -1729,8 +1729,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -1742,13 +1742,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1772,13 +1772,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1802,13 +1802,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1832,13 +1832,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1862,13 +1862,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1892,13 +1892,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1922,13 +1922,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1952,13 +1952,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -1982,13 +1982,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2013,13 +2013,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2043,13 +2043,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2073,13 +2073,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2104,13 +2104,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2135,13 +2135,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2166,13 +2166,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2196,13 +2196,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2226,13 +2226,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2256,13 +2256,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2286,13 +2286,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2316,13 +2316,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2346,13 +2346,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2376,13 +2376,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2406,13 +2406,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2437,13 +2437,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2468,13 +2468,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2529,7 +2529,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -2537,8 +2537,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -2550,13 +2550,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2580,13 +2580,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2610,13 +2610,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2640,13 +2640,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2670,13 +2670,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2700,13 +2700,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2730,13 +2730,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2760,13 +2760,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2790,13 +2790,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2821,13 +2821,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2851,13 +2851,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2881,13 +2881,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2912,13 +2912,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2943,13 +2943,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -2973,13 +2973,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3003,13 +3003,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3033,13 +3033,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3063,13 +3063,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3093,13 +3093,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3123,13 +3123,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3153,13 +3153,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3183,13 +3183,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3213,13 +3213,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3244,13 +3244,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3275,13 +3275,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3336,7 +3336,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -3344,8 +3344,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -3357,13 +3357,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3387,13 +3387,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3417,13 +3417,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3447,13 +3447,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3477,13 +3477,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3507,13 +3507,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3537,13 +3537,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3567,13 +3567,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3597,13 +3597,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3627,13 +3627,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3658,13 +3658,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3689,13 +3689,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3720,13 +3720,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3751,13 +3751,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3782,13 +3782,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3813,13 +3813,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3843,13 +3843,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3873,13 +3873,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3903,13 +3903,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3933,13 +3933,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3963,13 +3963,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -3993,13 +3993,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4023,13 +4023,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4055,13 +4055,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4115,7 +4115,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -4123,8 +4123,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -4136,13 +4136,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4166,13 +4166,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4196,13 +4196,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4226,13 +4226,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4256,13 +4256,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4286,13 +4286,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4316,13 +4316,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4346,13 +4346,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4376,13 +4376,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4407,13 +4407,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4438,13 +4438,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4469,13 +4469,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4500,13 +4500,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4531,13 +4531,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4562,13 +4562,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4593,13 +4593,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4623,13 +4623,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4653,13 +4653,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4683,13 +4683,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4713,13 +4713,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4743,13 +4743,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4773,13 +4773,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4803,13 +4803,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4835,13 +4835,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4895,7 +4895,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -4903,8 +4903,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -4916,13 +4916,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4946,13 +4946,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -4976,13 +4976,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5006,13 +5006,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5036,13 +5036,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5066,13 +5066,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5096,13 +5096,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5126,13 +5126,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5156,13 +5156,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5187,13 +5187,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5218,13 +5218,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5249,13 +5249,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5280,13 +5280,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5311,13 +5311,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5342,13 +5342,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5372,13 +5372,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5402,13 +5402,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5432,13 +5432,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5462,13 +5462,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5492,13 +5492,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5522,13 +5522,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5552,13 +5552,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5583,13 +5583,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5615,13 +5615,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5675,7 +5675,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -5683,8 +5683,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -5696,13 +5696,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5726,13 +5726,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5756,13 +5756,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5786,13 +5786,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5816,13 +5816,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5846,13 +5846,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5876,13 +5876,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5906,13 +5906,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5936,13 +5936,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5967,13 +5967,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -5997,13 +5997,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6027,13 +6027,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6057,13 +6057,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6087,13 +6087,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6118,13 +6118,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6148,13 +6148,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6178,13 +6178,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6208,13 +6208,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6238,13 +6238,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6268,13 +6268,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6298,13 +6298,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6328,13 +6328,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6358,13 +6358,12 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
                 <code>42950004</code>
-                <system>http://snomed.info</system>
               </coding>
             </name>
             <valueQuantity>
@@ -6389,13 +6388,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6420,13 +6419,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6480,7 +6479,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -6488,8 +6487,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -6501,13 +6500,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6531,13 +6530,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6561,13 +6560,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6591,13 +6590,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6621,13 +6620,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6651,13 +6650,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6681,13 +6680,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6712,13 +6711,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6742,13 +6741,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6773,13 +6772,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6803,13 +6802,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6833,13 +6832,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6864,13 +6863,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6895,13 +6894,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6926,13 +6925,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6957,13 +6956,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -6987,13 +6986,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7017,13 +7016,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7047,13 +7046,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7077,13 +7076,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7107,13 +7106,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7137,13 +7136,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7167,13 +7166,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7198,13 +7197,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7229,13 +7228,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7289,7 +7288,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -7297,8 +7296,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -7310,13 +7309,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7340,13 +7339,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7370,13 +7369,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7400,13 +7399,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7430,13 +7429,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7460,13 +7459,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7490,13 +7489,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7520,13 +7519,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7550,13 +7549,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7581,13 +7580,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7611,13 +7610,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7641,13 +7640,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7672,13 +7671,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7703,13 +7702,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7734,13 +7733,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7764,13 +7763,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7794,13 +7793,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7824,13 +7823,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7854,13 +7853,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7884,13 +7883,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7914,13 +7913,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7944,13 +7943,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -7974,13 +7973,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8005,13 +8004,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8036,13 +8035,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8097,7 +8096,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -8105,8 +8104,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -8118,13 +8117,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8148,13 +8147,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8178,13 +8177,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8208,13 +8207,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8238,13 +8237,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8268,13 +8267,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8298,13 +8297,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8328,13 +8327,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8358,13 +8357,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8389,13 +8388,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8419,13 +8418,13 @@
           <result>
             <name>
               <coding>
-                <code>14629-0</code>
                 <system>http://loinc.org</system>
+                <code>14629-0</code>
                 <display>Direct Bilirubin</display>
               </coding>
               <coding>
-                <code>39748002</code>
                 <system>http://snomed.info</system>
+                <code>39748002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8449,13 +8448,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8480,13 +8479,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8511,13 +8510,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8541,13 +8540,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8571,13 +8570,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8601,13 +8600,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8631,13 +8630,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8661,13 +8660,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8691,13 +8690,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8721,13 +8720,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8751,13 +8750,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8781,13 +8780,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8812,13 +8811,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8843,13 +8842,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8904,7 +8903,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -8912,8 +8911,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -8925,13 +8924,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8955,13 +8954,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -8985,13 +8984,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9015,13 +9014,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9045,13 +9044,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9075,13 +9074,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9105,13 +9104,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9135,13 +9134,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9165,13 +9164,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9195,13 +9194,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9226,13 +9225,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9257,13 +9256,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9288,13 +9287,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9319,13 +9318,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9350,13 +9349,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9381,13 +9380,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9411,13 +9410,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9441,13 +9440,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9471,13 +9470,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9501,13 +9500,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9531,13 +9530,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9561,13 +9560,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9591,13 +9590,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9623,13 +9622,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9683,7 +9682,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -9691,8 +9690,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -9704,13 +9703,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9734,13 +9733,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9764,13 +9763,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9794,13 +9793,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9824,13 +9823,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9854,13 +9853,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9884,13 +9883,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9914,13 +9913,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9944,13 +9943,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -9975,13 +9974,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10006,13 +10005,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10037,13 +10036,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10068,13 +10067,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10099,13 +10098,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10130,13 +10129,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10161,13 +10160,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10191,13 +10190,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10221,13 +10220,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10251,13 +10250,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10281,13 +10280,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10311,13 +10310,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10341,13 +10340,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10371,13 +10370,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10403,13 +10402,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10463,7 +10462,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -10471,8 +10470,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>25T</code>
             <system>http://acme.com/labs/reports</system>
+            <code>25T</code>
             <display>E/LFT (MASTER)</display>
           </coding>
         </reportName>
@@ -10484,13 +10483,13 @@
           <result>
             <name>
               <coding>
-                <code>2951-2</code>
                 <system>http://loinc.org</system>
+                <code>2951-2</code>
                 <display>Sodium</display>
               </coding>
               <coding>
-                <code>104934005</code>
                 <system>http://snomed.info</system>
+                <code>104934005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10514,13 +10513,13 @@
           <result>
             <name>
               <coding>
-                <code>2823-3</code>
                 <system>http://loinc.org</system>
+                <code>2823-3</code>
                 <display>Serum Potassium</display>
               </coding>
               <coding>
-                <code>59573005</code>
                 <system>http://snomed.info</system>
+                <code>59573005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10544,13 +10543,13 @@
           <result>
             <name>
               <coding>
-                <code>2075-0</code>
                 <system>http://loinc.org</system>
+                <code>2075-0</code>
                 <display>Chloride</display>
               </coding>
               <coding>
-                <code>46511006</code>
                 <system>http://snomed.info</system>
+                <code>46511006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10574,13 +10573,13 @@
           <result>
             <name>
               <coding>
-                <code>1963-8</code>
                 <system>http://loinc.org</system>
+                <code>1963-8</code>
                 <display>Bicarbonate</display>
               </coding>
               <coding>
-                <code>88645003</code>
                 <system>http://snomed.info</system>
+                <code>88645003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10604,13 +10603,13 @@
           <result>
             <name>
               <coding>
-                <code>1863-0</code>
                 <system>http://loinc.org</system>
+                <code>1863-0</code>
                 <display>Other Anions</display>
               </coding>
               <coding>
-                <code>271057005</code>
                 <system>http://snomed.info</system>
+                <code>271057005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10634,13 +10633,13 @@
           <result>
             <name>
               <coding>
-                <code>14749-6</code>
                 <system>http://loinc.org</system>
+                <code>14749-6</code>
                 <display>Glucose</display>
               </coding>
               <coding>
-                <code>36048009</code>
                 <system>http://snomed.info</system>
+                <code>36048009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10664,13 +10663,13 @@
           <result>
             <name>
               <coding>
-                <code>14937-7</code>
                 <system>http://loinc.org</system>
+                <code>14937-7</code>
                 <display>Urea</display>
               </coding>
               <coding>
-                <code>273967009</code>
                 <system>http://snomed.info</system>
+                <code>273967009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10694,13 +10693,13 @@
           <result>
             <name>
               <coding>
-                <code>14682-9</code>
                 <system>http://loinc.org</system>
+                <code>14682-9</code>
                 <display>Serum Creatinine</display>
               </coding>
               <coding>
-                <code>70901006</code>
                 <system>http://snomed.info</system>
+                <code>70901006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10724,13 +10723,13 @@
           <result>
             <name>
               <coding>
-                <code>14933-6</code>
                 <system>http://loinc.org</system>
+                <code>14933-6</code>
                 <display>Serum Uric Acid</display>
               </coding>
               <coding>
-                <code>86228006</code>
                 <system>http://snomed.info</system>
+                <code>86228006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10755,13 +10754,13 @@
           <result>
             <name>
               <coding>
-                <code>14631-6</code>
                 <system>http://loinc.org</system>
+                <code>14631-6</code>
                 <display>Total Bilirubin</display>
               </coding>
               <coding>
-                <code>27171005</code>
                 <system>http://snomed.info</system>
+                <code>27171005</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10786,13 +10785,13 @@
           <result>
             <name>
               <coding>
-                <code>6768-6</code>
                 <system>http://loinc.org</system>
+                <code>6768-6</code>
                 <display>Total Alk. Phosphatase</display>
               </coding>
               <coding>
-                <code>88810008</code>
                 <system>http://snomed.info</system>
+                <code>88810008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10817,13 +10816,13 @@
           <result>
             <name>
               <coding>
-                <code>2324-2</code>
                 <system>http://loinc.org</system>
+                <code>2324-2</code>
                 <display>Gamma G.T.</display>
               </coding>
               <coding>
-                <code>69480007</code>
                 <system>http://snomed.info</system>
+                <code>69480007</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10848,13 +10847,13 @@
           <result>
             <name>
               <coding>
-                <code>1742-6</code>
                 <system>http://loinc.org</system>
+                <code>1742-6</code>
                 <display>ALT</display>
               </coding>
               <coding>
-                <code>34608000</code>
                 <system>http://snomed.info</system>
+                <code>34608000</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10879,13 +10878,13 @@
           <result>
             <name>
               <coding>
-                <code>1920-8</code>
                 <system>http://loinc.org</system>
+                <code>1920-8</code>
                 <display>AST</display>
               </coding>
               <coding>
-                <code>45896001</code>
                 <system>http://snomed.info</system>
+                <code>45896001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10910,13 +10909,13 @@
           <result>
             <name>
               <coding>
-                <code>2532-0</code>
                 <system>http://loinc.org</system>
+                <code>2532-0</code>
                 <display>LD</display>
               </coding>
               <coding>
-                <code>11274001</code>
                 <system>http://snomed.info</system>
+                <code>11274001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10940,13 +10939,13 @@
           <result>
             <name>
               <coding>
-                <code>2000-8</code>
                 <system>http://loinc.org</system>
+                <code>2000-8</code>
                 <display>Serum Calcium</display>
               </coding>
               <coding>
-                <code>71878006</code>
                 <system>http://snomed.info</system>
+                <code>71878006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -10970,13 +10969,13 @@
           <result>
             <name>
               <coding>
-                <code>13959-2</code>
                 <system>http://loinc.org</system>
+                <code>13959-2</code>
                 <display>Corrected Calcium</display>
               </coding>
               <coding>
-                <code>166708003</code>
                 <system>http://snomed.info</system>
+                <code>166708003</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11000,13 +10999,13 @@
           <result>
             <name>
               <coding>
-                <code>14879-1</code>
                 <system>http://loinc.org</system>
+                <code>14879-1</code>
                 <display>Serum Phosphate</display>
               </coding>
               <coding>
-                <code>104866001</code>
                 <system>http://snomed.info</system>
+                <code>104866001</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11030,13 +11029,13 @@
           <result>
             <name>
               <coding>
-                <code>2885-2</code>
                 <system>http://loinc.org</system>
+                <code>2885-2</code>
                 <display>Total Protein</display>
               </coding>
               <coding>
-                <code>74040009</code>
                 <system>http://snomed.info</system>
+                <code>74040009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11060,13 +11059,13 @@
           <result>
             <name>
               <coding>
-                <code>1751-7</code>
                 <system>http://loinc.org</system>
+                <code>1751-7</code>
                 <display>Serum Albumin</display>
               </coding>
               <coding>
-                <code>104485008</code>
                 <system>http://snomed.info</system>
+                <code>104485008</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11090,13 +11089,13 @@
           <result>
             <name>
               <coding>
-                <code>10834-0</code>
                 <system>http://loinc.org</system>
+                <code>10834-0</code>
                 <display>Globulins</display>
               </coding>
               <coding>
-                <code>104979009</code>
                 <system>http://snomed.info</system>
+                <code>104979009</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11120,13 +11119,13 @@
           <result>
             <name>
               <coding>
-                <code>14798-3</code>
                 <system>http://loinc.org</system>
+                <code>14798-3</code>
                 <display>Iron</display>
               </coding>
               <coding>
-                <code>42950004</code>
                 <system>http://snomed.info</system>
+                <code>42950004</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11151,13 +11150,13 @@
           <result>
             <name>
               <coding>
-                <code>14647-2</code>
                 <system>http://loinc.org</system>
+                <code>14647-2</code>
                 <display>Cholesterol</display>
               </coding>
               <coding>
-                <code>77068002</code>
                 <system>http://snomed.info</system>
+                <code>77068002</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11183,13 +11182,13 @@
           <result>
             <name>
               <coding>
-                <code>14927-8</code>
                 <system>http://loinc.org</system>
+                <code>14927-8</code>
                 <display>Triglycerides</display>
               </coding>
               <coding>
-                <code>104784006</code>
                 <system>http://snomed.info</system>
+                <code>104784006</code>
               </coding>
             </name>
             <valueQuantity>
@@ -11243,7 +11242,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -11251,8 +11250,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>URC</code>
             <system>http://acme.com/labs/reports</system>
+            <code>URC</code>
             <display>URINE CULTURE</display>
           </coding>
         </reportName>
@@ -11260,19 +11259,19 @@
         <resultGroup>
           <name>
             <coding>
-              <code>18769-0</code>
               <system>http://loinc.org</system>
+              <code>18769-0</code>
               <display>Microbial susceptibility tests</display>
             </coding>
           </name>
           <specimen dataAbsentReason="astext">
-            <text>URINE, CLEAN CATCH/MIDSTREAM</text>
+            <display>URINE, CLEAN CATCH/MIDSTREAM</display>
           </specimen>
           <result>
             <name>
               <coding>
-                <code>11475-1</code>
                 <system>http://loinc.org</system>
+                <code>11475-1</code>
                 <display>Microorganism identified</display>
               </coding>
             </name>
@@ -11284,8 +11283,8 @@
           <result>
             <name>
               <coding>
-                <code>43161-9</code>
                 <system>http://loinc.org</system>
+                <code>43161-9</code>
                 <display>Microorganism</display>
               </coding>
             </name>
@@ -11298,8 +11297,8 @@
           <result>
             <name>
               <coding>
-                <code>AMS</code>
                 <system>local</system>
+                <code>AMS</code>
                 <display>AMPICILLIN/SULBACTAM</display>
               </coding>
             </name>
@@ -11313,8 +11312,8 @@
           <result>
             <name>
               <coding>
-                <code>AM</code>
                 <system>local</system>
+                <code>AM</code>
                 <display>AMPICILLIN</display>
               </coding>
             </name>
@@ -11328,8 +11327,8 @@
           <result>
             <name>
               <coding>
-                <code>ATM</code>
                 <system>local</system>
+                <code>ATM</code>
                 <display>AZTREONAM</display>
               </coding>
             </name>
@@ -11344,8 +11343,8 @@
           <result>
             <name>
               <coding>
-                <code>CFZ</code>
                 <system>local</system>
+                <code>CFZ</code>
                 <display>CEFAZOLIN</display>
               </coding>
             </name>
@@ -11360,8 +11359,8 @@
           <result>
             <name>
               <coding>
-                <code>FEP</code>
                 <system>local</system>
+                <code>FEP</code>
                 <display>CEFEPIME</display>
               </coding>
             </name>
@@ -11376,8 +11375,8 @@
           <result>
             <name>
               <coding>
-                <code>CTN</code>
                 <system>local</system>
+                <code>CTN</code>
                 <display>CEFOTETAN</display>
               </coding>
             </name>
@@ -11392,8 +11391,8 @@
           <result>
             <name>
               <coding>
-                <code>TAZ</code>
                 <system>local</system>
+                <code>TAZ</code>
                 <display>CEFTAZIDIME</display>
               </coding>
             </name>
@@ -11408,8 +11407,8 @@
           <result>
             <name>
               <coding>
-                <code>CRO</code>
                 <system>local</system>
+                <code>CRO</code>
                 <display>CEFTRIAXONE</display>
               </coding>
             </name>
@@ -11424,8 +11423,8 @@
           <result>
             <name>
               <coding>
-                <code>CIPRO</code>
                 <system>local</system>
+                <code>CIPRO</code>
                 <display>CIPROFLOXACIN</display>
               </coding>
             </name>
@@ -11440,8 +11439,8 @@
           <result>
             <name>
               <coding>
-                <code>GM</code>
                 <system>local</system>
+                <code>GM</code>
                 <display>GENTAMICIN</display>
               </coding>
             </name>
@@ -11456,8 +11455,8 @@
           <result>
             <name>
               <coding>
-                <code>IPM</code>
                 <system>local</system>
+                <code>IPM</code>
                 <display>IMIPENEM</display>
               </coding>
             </name>
@@ -11472,8 +11471,8 @@
           <result>
             <name>
               <coding>
-                <code>LVX</code>
                 <system>local</system>
+                <code>LVX</code>
                 <display>LEVOFLOXACIN</display>
               </coding>
             </name>
@@ -11488,8 +11487,8 @@
           <result>
             <name>
               <coding>
-                <code>NIT</code>
                 <system>local</system>
+                <code>NIT</code>
                 <display>NITROFURANTOIN</display>
               </coding>
             </name>
@@ -11503,8 +11502,8 @@
           <result>
             <name>
               <coding>
-                <code>PTZ</code>
                 <system>local</system>
+                <code>PTZ</code>
                 <display>PIPERACILLIN/TAZOBAC</display>
               </coding>
             </name>
@@ -11519,8 +11518,8 @@
           <result>
             <name>
               <coding>
-                <code>TRSUV</code>
                 <system>local</system>
+                <code>TRSUV</code>
                 <display>TRIMETH/SULFA</display>
               </coding>
             </name>
@@ -11535,8 +11534,8 @@
           <result>
             <name>
               <coding>
-                <code>TOB</code>
                 <system>local</system>
+                <code>TOB</code>
                 <display>TOBRAMYCIN</display>
               </coding>
             </name>
@@ -11581,7 +11580,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -11589,8 +11588,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>142080</code>
             <system>http://acme.com/labs/reports</system>
+            <code>142080</code>
             <display>Rapid Plasma Reagin</display>
           </coding>
           <text>RPR</text>
@@ -11600,19 +11599,19 @@
           <result>
             <name>
               <coding>
-                <code>20507-0</code>
                 <system>http://loinc.org</system>
+                <code>20507-0</code>
                 <display>Reagin Ab [Presence] in Serum by RPR</display>
               </coding>
             </name>
             <valueChoice>
               <code>Non-reactive</code>
-              <value>
+              <option>
                 <code>Non-reactive</code>
-              </value>
-              <value>
+              </option>
+              <option>
                 <code>Reactive</code>
-              </value>
+              </option>
             </valueChoice>
             <status>final</status>
           </result>
@@ -11650,7 +11649,7 @@
         <laboratory>
           <type>Organization</type>
           <id>1.2.36.90146595217.4.1.1</id>
-          <text>Acme Laboratory, Inc</text>
+          <display>Acme Laboratory, Inc</display>
         </laboratory>
         <reportId>
           <system>http://acme.com/lab/reports</system>
@@ -11658,8 +11657,8 @@
         </reportId>
         <reportName>
           <coding>
-            <code>bchem2</code>
             <system>http://acme.com/labs/reports</system>
+            <code>bchem2</code>
             <display>Specialist Biochemistry</display>
           </coding>
         </reportName>
@@ -11668,13 +11667,13 @@
           <result>
             <name>
               <coding>
-                <code>30522-7</code>
                 <system>http://loinc.org</system>
+                <code>30522-7</code>
                 <display>C reactive protein [Mass/volume] in Serum or Plasma by High sensitivity method</display>
               </coding>
               <coding>
-                <code>55235003</code>
                 <system>http://snomed.info</system>
+                <code>55235003</code>
               </coding>
 	      <text>hsCRP</text>
             </name>

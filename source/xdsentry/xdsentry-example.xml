@@ -7,33 +7,33 @@ SourceId: 1.3.6.1.4.1.21367.2009.1.2.1
   <repositoryId>oid:1.3.6.1.4...</repositoryId>
   <mimeType>text/plain</mimeType>
   <format>
-    <code>CDAR2/IHE 1.0</code>
     <system>http://ihe.net/xds/connectathon/formatCodes</system>
+    <code>CDAR2/IHE 1.0</code>
     <display>CDAR2/IHE 1.0</display>
   </format>
   <class>
-    <code>History and Physical</code>
     <system>http://ihe.net/xds/connectathon/classCodes</system>
+    <code>History and Physical</code>
     <display>History and Physical</display>
   </class>
   <type>
-    <code>34108-1</code>
     <system>http://loinc.org</system>
+    <code>34108-1</code>
     <display>Outpatient Evaluation And Management</display>
   </type>
   <title>Physical</title>
   <documentId>oid:1.3.6.1.4.1.21367.2005.3.7</documentId>
   <availability>Approved</availability>
   <confidentialityCode>
-    <code>1.3.6.1.4.1.21367.2006.7.101</code>
     <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
+    <code>1.3.6.1.4.1.21367.2006.7.101</code>
     <display>Clinical-Staff</display>
   </confidentialityCode>
   <created>2005-12-24T09:35:00</created>
   <event>
-    <code>classCode</code>
-    <system>codingScheme</system>
-    <display>classCodeDisplayName</display>
+    <system>http://ihe.net/xds/connectathon/eventCodes</system>
+    <code>todo</code>
+    <display>to do</display>
   </event>
   <hash>da39a3ee5e6b4b0d3255bfef95601890afd80709</hash>
   <size>3654</size>
@@ -123,13 +123,13 @@ SourceId: 1.3.6.1.4.1.21367.2009.1.2.1
     </name>
   </authenticator>
   <facilityType>
-    <code>Outpatient</code>
     <system>http://www.ihe.net/xds/connetathon/healthcareFacilityTypeCodes</system>
+    <code>Outpatient</code>
     <display>Outpatient</display>
   </facilityType>
   <practiceSetting>
-    <code>General Medicine</code>
     <system>http://www.ihe.net/xds/connetathon/practiceSettingCodes</system>
+    <code>General Medicine</code>
     <display>General Medicine</display>
   </practiceSetting>
   <homeCommunity>1.2.36.1.1001.1.1.1.1</homeCommunity>

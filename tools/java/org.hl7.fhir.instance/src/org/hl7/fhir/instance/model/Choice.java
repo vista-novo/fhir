@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -38,7 +38,7 @@ import java.util.*;
  */
 public class Choice extends Type {
 
-    public class Value extends Element {
+    public class Option extends Element {
         /**
          * A possible code or value that the user could have chosen
          */
@@ -75,7 +75,7 @@ public class Choice extends Type {
     /**
      * A list of possible values for the code
      */
-    private List<Value> value = new ArrayList<Value>();
+    private List<Option> option = new ArrayList<Option>();
 
     /**
      * Whether the order of the values has an assigned meaning
@@ -90,8 +90,8 @@ public class Choice extends Type {
       this.code = value;
     }
 
-    public List<Value> getValue() { 
-      return this.value;
+    public List<Option> getOption() { 
+      return this.option;
     }
 
     public java.lang.Boolean getIsOrdered() { 

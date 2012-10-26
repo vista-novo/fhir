@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -91,8 +91,8 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       composeString("display", element.getDisplay());
       xml.close(FHIR_NS, name);
     }
@@ -116,8 +116,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -127,14 +127,14 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeString("code", element.getCode());
-      for (Choice.Value e : element.getValue()) 
-        composeChoiceValue("value", e);
+      for (Choice.Option e : element.getOption()) 
+        composeChoiceOption("option", e);
       composeBoolean("isOrdered", element.getIsOrdered());
       xml.close(FHIR_NS, name);
     }
   }
 
-  private void composeChoiceValue(String name, Choice.Value element) throws Exception {
+  private void composeChoiceOption(String name, Choice.Option element) throws Exception {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
@@ -153,7 +153,6 @@ public class XmlComposer extends XmlComposerBase {
       composeURI("url", element.getUrl());
       composeInt("size", element.getSize());
       composeBytes("hash", element.getHash());
-      composeString("lang", element.getLang());
       composeString("title", element.getTitle());
       xml.close(FHIR_NS, name);
     }
@@ -176,7 +175,7 @@ public class XmlComposer extends XmlComposerBase {
       composeString("type", element.getType());
       composeURI("id", element.getId());
       composeURI("version", element.getVersion());
-      composeString("text", element.getText());
+      composeString("display", element.getDisplay());
       xml.close(FHIR_NS, name);
     }
   }
@@ -211,8 +210,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -225,8 +224,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -239,8 +238,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -253,8 +252,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -267,8 +266,8 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
       composeString("units", element.getUnits());
-      composeString("code", element.getCode());
       composeURI("system", element.getSystem());
+      composeString("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -291,7 +290,9 @@ public class XmlComposer extends XmlComposerBase {
       composeInt("frequency", element.getFrequency());
       if (element.getWhen() != null)
         composeString("when", element.getWhen().toCode());
-      composeDuration("duration", element.getDuration());
+      composeBigDecimal("duration", element.getDuration());
+      if (element.getUnits() != null)
+        composeString("units", element.getUnits().toCode());
       composeInt("count", element.getCount());
       composeString("end", element.getEnd());
       xml.close(FHIR_NS, name);

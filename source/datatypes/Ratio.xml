@@ -115,8 +115,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Ratio.numerator</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The numerator</Data></Cell>
@@ -126,8 +125,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Ratio.denominator</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The denominator</Data></Cell>
@@ -146,8 +144,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -172,7 +170,7 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">!1</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - numerator</Data></Cell>
     <Cell><Data ss:Type="String">Ratio</Data></Cell>
     <Cell ss:StyleID="s67"><ss:Data ss:Type="String"
@@ -183,7 +181,7 @@
     <Cell><Data ss:Type="String">exists(@dataAbsentReason) or exists(f:numerator)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">!2</Data></Cell>
     <Cell><Data ss:Type="String">Required Elements - denominator</Data></Cell>
     <Cell><Data ss:Type="String">Ratio</Data></Cell>
     <Cell ss:StyleID="s67"><ss:Data ss:Type="String"
@@ -205,7 +203,6 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>3</ActiveRow>
-     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

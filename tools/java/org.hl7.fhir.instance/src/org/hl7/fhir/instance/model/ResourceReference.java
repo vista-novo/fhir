@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 /**
  * A reference from one resource to another
@@ -52,9 +52,9 @@ public class ResourceReference extends Type {
     private java.net.URI version;
 
     /**
-     * Plain text narrative that describes the resource in addition to the resource reference 
+     * Plain text narrative that identifies the resource in addition to the resource reference 
      */
-    private String text;
+    private String display;
 
     public String getType() { 
       return this.type;
@@ -80,12 +80,12 @@ public class ResourceReference extends Type {
       this.version = value;
     }
 
-    public String getText() { 
-      return this.text;
+    public String getDisplay() { 
+      return this.display;
     }
 
-    public void setText(String value) { 
-      this.text = value;
+    public void setDisplay(String value) { 
+      this.display = value;
     }
 
 

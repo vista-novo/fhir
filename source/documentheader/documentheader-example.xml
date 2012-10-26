@@ -3,39 +3,39 @@
   <instant>2012-01-04T09:10:14Z</instant>
   <type>
     <coding>
-      <code>11488-4</code>
       <system>http://loinc.org</system>
+      <code>11488-4</code>
       <display>Consultation note</display>
     </coding>
   </type>
   <subject>
     <type>Patient</type>
     <id>12.123.451.23.1.23</id>
-    <text>Henry Levin the 7th</text>
+    <display>Henry Levin the 7th</display>
   </subject>
   <author>
     <type>Person</type>
     <id>233123</id>
-    <text>Robert Dolin MD</text>
+    <display>Robert Dolin MD</display>
   </author>
   <attester>
     <mode>legal</mode>
     <party>
       <type>Person</type>
       <id>233123</id>
-      <text>Robert Dolin MD</text>
+      <display>Robert Dolin MD</display>
     </party>
   </attester>
   <custodian>
     <type>Organization</type>
     <id>2.16.840.1.113883.19.5</id>
-    <text>Good Health Clinic</text>
+    <display>Good Health Clinic</display>
   </custodian>
   <section>
     <type>
       <coding>
-        <code>10164-2</code>
         <system>http://loinc.org</system>
+        <code>10164-2</code>
       </coding>
     </type>
     <content>

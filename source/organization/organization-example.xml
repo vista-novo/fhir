@@ -32,8 +32,8 @@
   <relatedOrganization>
     <code>  
       <coding>
-        <code>TERR</code>
         <system>oid:2.16.840.1.113883.5.110</system>
+        <code>TERR</code>
       </coding>
     </code>
     <name>Acme Hospital</name>

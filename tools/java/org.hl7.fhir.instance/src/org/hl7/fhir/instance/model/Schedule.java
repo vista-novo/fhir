@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -91,6 +91,47 @@ public class Schedule extends Type {
         }
     }
 
+    public enum UnitsOfTime {
+        s, // second
+        min, // minute
+        h, // hour
+        d, // day
+        wk, // week
+        mo, // month
+        a; // year
+        public static UnitsOfTime fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("s".equals(codeString))
+          return s;
+        if ("min".equals(codeString))
+          return min;
+        if ("h".equals(codeString))
+          return h;
+        if ("d".equals(codeString))
+          return d;
+        if ("wk".equals(codeString))
+          return wk;
+        if ("mo".equals(codeString))
+          return mo;
+        if ("a".equals(codeString))
+          return a;
+        throw new Exception("Unknown UnitsOfTime code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case s: return "s";
+            case min: return "min";
+            case h: return "h";
+            case d: return "d";
+            case wk: return "wk";
+            case mo: return "mo";
+            case a: return "a";
+            default: return "?";
+          }
+        }
+    }
+
     public class Repeat extends Element {
         /**
          * Indicates how often the event should occur.
@@ -105,7 +146,12 @@ public class Schedule extends Type {
         /**
          * How long each repetition should last
          */
-        private Duration duration;
+        private java.math.BigDecimal duration;
+
+        /**
+         * the units of time for the duration
+         */
+        private UnitsOfTime units;
 
         /**
          * A total count of the desired number of repetitions
@@ -133,12 +179,20 @@ public class Schedule extends Type {
           this.when = value;
         }
 
-        public Duration getDuration() { 
+        public java.math.BigDecimal getDuration() { 
           return this.duration;
         }
 
-        public void setDuration(Duration value) { 
+        public void setDuration(java.math.BigDecimal value) { 
           this.duration = value;
+        }
+
+        public UnitsOfTime getUnits() { 
+          return this.units;
+        }
+
+        public void setUnits(UnitsOfTime value) { 
+          this.units = value;
         }
 
         public java.lang.Integer getCount() { 

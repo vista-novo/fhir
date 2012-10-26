@@ -11,17 +11,17 @@
   <subject>
     <type>Person</type>
     <id>35623</id>
-    <text>Donald DUCK, Male, 3-April 1951</text>
+    <display>Donald DUCK, Male, 3-April 1951</display>
   </subject> 
   <provider>
     <type>Organization</type>
     <id>3</id>  
-    <text>ACME Healthcare, Inc</text>
+    <display>ACME Healthcare, Inc</display>
   </provider> 
   <identifier>
     <type>
-      <code>MR</code>
       <system>http://hl7.org/fhir/sid/v2-0203</system>
+      <code>MR</code>
     </type>
     <identifier>
       <system>oid:0.1.2.3.4.5.6.7</system>

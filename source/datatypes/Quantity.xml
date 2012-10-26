@@ -20,6 +20,7 @@
   <WindowWidth>23955</WindowWidth>
   <WindowTopX>4320</WindowTopX>
   <WindowTopY>4650</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -129,8 +130,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="81">
     <Cell><Data ss:Type="String">Quantity.value</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">decimal</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Numerical value (with implicit precision)</Data></Cell>
@@ -154,26 +154,13 @@
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Quantity.units</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">2</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Unit representation</Data></Cell>
     <Cell><Data ss:Type="String">A human readable form of the units</Data></Cell>
     <Cell><Data ss:Type="String">There are lots of representations for the units and in many contexts, particular representations are fixed and required. i.e. mcg for micrograms, and not ug</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">Quantity.code</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Coded form of the unit</Data></Cell>
-    <Cell><Data ss:Type="String">A computer processable form of the units in some unit representation system</Data></Cell>
-    <Cell><Data ss:Type="String">Need a computable form of the units that is fixed across all forms. UCUM provides this for quantities, but SNOMED-CT provides many arbitrary units of interest</Data></Cell>
-    <Cell><Data ss:Type="String">The preferred system is UCUM, but SNOMED-CT can also be used (for customary units), or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system (Unless the Quantity element has a dataAbsentReason flag)</Data></Cell>
-    <Cell><Data ss:Type="String">PQ.code, MO.currency, PQ.translation.code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Quantity.system</Data></Cell>
@@ -187,6 +174,18 @@
     <Cell><Data ss:Type="String">Need to know the system that defines the coded form of the unit</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">CO.codeSystem, PQ.translation.codeSystem</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="90">
+    <Cell><Data ss:Type="String">Quantity.code</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">code</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Coded form of the unit</Data></Cell>
+    <Cell><Data ss:Type="String">A computer processable form of the units in some unit representation system</Data></Cell>
+    <Cell><Data ss:Type="String">Need a computable form of the units that is fixed across all forms. UCUM provides this for quantities, but SNOMED-CT provides many arbitrary units of interest</Data></Cell>
+    <Cell><Data ss:Type="String">The preferred system is UCUM, but SNOMED-CT can also be used (for customary units), or ISO 4217 for currency.&#10;&#10;The context of use may additionally require a code from a particular system (Unless the Quantity element has a dataAbsentReason flag)</Data></Cell>
+    <Cell><Data ss:Type="String">PQ.code, MO.currency, PQ.translation.code</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -195,12 +194,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>4</ActiveRow>
-     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -225,7 +222,7 @@
     <Cell><Data ss:Type="String">XPath</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">!1</Data></Cell>
     <Cell><Data ss:Type="String">Must Have a value</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
@@ -235,7 +232,7 @@
     <Cell><Data ss:Type="String" x:Ticked="1">exists(@dataAbsentReason) or exists(f:value)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="Number">2</Data></Cell>
+    <Cell><Data ss:Type="String">!2</Data></Cell>
     <Cell><Data ss:Type="String">Must Have units</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="s68"><ss:Data ss:Type="String"
@@ -263,7 +260,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
@@ -300,16 +297,18 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Money</Data></Cell>
-    <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;http://hl7.org/fhir/sid/iso-4217&quot;)</Data></Cell>
-    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://hl7.org/fhir/sid/iso-4217'</Data></Cell>
+    <Cell><Data ss:Type="String">The unit must be a currency, and the code must from ISO 4217 (system = &quot;urn:std:iso:4217&quot;)</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:code) and f:system='urn:std:iso:4217'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">QuantityCoded</Data></Cell>
+    <Cell><Data ss:Type="String">CodedQuantity</Data></Cell>
     <Cell><Data ss:Type="String">The unit must coded with UCUM</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Age</Data></Cell>
     <Cell><Data ss:Type="String">The unit must be an amount of time, and a UCUM unit must be provided, and the value must be positive</Data></Cell>
+    <Cell><Data ss:Type="String">exists(f:code) and f:system='http://unitsofmeasure.org'</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -319,11 +318,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

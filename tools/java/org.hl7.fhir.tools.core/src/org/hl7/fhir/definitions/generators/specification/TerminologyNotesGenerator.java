@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
@@ -130,13 +131,18 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     } else if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
     	String sid = "";
     	if (!isCode) {
-    		sid = "urn:hl7-org:sid/fhir/"+cd.getBinding();
+    		sid = "urn:hl7-org:sid/fhir/"+cd.getReference().substring(1);
 //					if (!sids.contains(sid))
 //						sids.put(sid, new DefinedCode())
-    		sid = " (sid = "+sid+")";
+    		sid = " (system = "+sid+")";
     	}
     		
-    	write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
+    	if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
+    	  write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Example values:\r\n");
+    	else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
+        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Defined values (extend this with other codes):\r\n");
+      else // if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Required))
+        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
     	write("    <table class=\"codes\">\r\n");
     	boolean hasComment = false;
     	boolean hasDefinition = false;

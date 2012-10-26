@@ -2,24 +2,24 @@
 <Problem xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\problem.xsd">
   <code> 
     <coding>
-      <code>39065001</code>
       <system>http://snomed.info</system>
+      <code>39065001</code>
       <display>Burn of ear</display>
     </coding>
     <text>Burnt Ear</text>
   </code>
  <category>
    <coding>
-    <code>439401001</code> 
     <system>http://snomed.info</system>
+    <code>439401001</code> 
     <display>Diagnosis</display>
    </coding>
  </category>
  <status>confirmed</status>
  <severity>
    <coding>
-    <code>24484000</code>
     <system>http://snomed.info</system>
+    <code>24484000</code>
     <display>Severe</display>
    </coding>
  </severity>
@@ -27,8 +27,8 @@
  <location>
   <code>
     <coding>
-      <code>49521004</code>
       <system>http://snomed.info</system>
+      <code>49521004</code>
       <display>Left external ear structure</display>
     </coding>
     <text>Left Ear</text>

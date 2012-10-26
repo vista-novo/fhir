@@ -2,8 +2,8 @@
 <Device xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Device.xsd">
   <type>
     <coding>
-      <code>86184003</code>
       <system>http://snomed.info</system>
+      <code>86184003</code>
       <display>Electrocardiographic monitor and recorder</display>
     </coding>
     <text>ECG</text>

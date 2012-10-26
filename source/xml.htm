@@ -322,7 +322,7 @@ or both. If both are provided, it is at the descretion of the processor of the d
 </p>
 <p>
 Both the id and the version are URL references - they must be literal URLs that resolve to the location of the resource.
-Both URLs may either be absolute URLs, or relative URLS. If they are relative URLs, they are interpreted to contain the <a href="#metadata">id and versionId</a> 
+Both URLs may either be absolute URLs, or relative URLS. If they are relative URLs, they are interpreted to contain the <a href="#metadata">logical id and versionId</a> 
 respectively of the resource in question, and the resolution of the local references is a matter of implementation logic. 
 If relative references are used, a <i>version</i> cannot be provided without an <i>id</i>, since the <i>version</i> may be scoped by the <i>id</i>.
 Using absolute URLs provides a stable scalable approach suitable for a cloud/web context, while using relative/logical references provides a flexible approach suitable for use
@@ -349,23 +349,24 @@ URLs are always considered to be case-sensitive and lowercase is preferred.
 <p><i>Note that HL7 has not yet actually created a profile registry, nor decided on a URL for it</i>.</p>
 </div>
 <p>
-Plain text narrative may be provided that describes the resource in addition to the resource reference (or in place of, if a 
-dataAbsentReason is allowed).
+A short display text that provides a human readable identification of the resource may be provided:
 </p>
 <div class="example">
 <pre class="xml">
   &lt;id&gt;
     &lt;type&gt;Organisation&lt;/type&gt;
     &lt;id&gt;1234&lt;/id&gt;
-    &lt;text&gt;HL7, Inc&lt;/text&gt;
+    &lt;display&gt;HL7, Inc&lt;/display&gt;
   &lt;id&gt;
 </pre>
+<p>
+This text can be used by a system that is unable to resolve the reference to an actual resource.
+</p>
 </div>
 <div class="use">
 <p><b>Use</b></p>
 <p>
-Unless the resource reference element has a dataAbsentReason flag, it must contain 
-a valid <i>type</i> and (<i>id</i> or <i>version</i>). 
+[%dt.constraints ResourceReference%]
 </p>
 </div>
 

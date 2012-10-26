@@ -4,8 +4,8 @@
 
   <identifier>
     <type>
-      <code>MR</code>
       <system>http://hl7.org/fhir/sid/v2-0203</system>
+      <code>MR</code>
     </type>
     <identifier>
       <system>oid:0.1.2.3.4.5.6.7</system>
@@ -46,8 +46,8 @@
     <activeIngredient>
       <identification>
         <coding>
-          <code>XXXXX</code>
           <system>urn:hl7.org:sid/atc</system>
+          <code>XXXXX</code>
           <display>Penicillin</display>
         </coding>
       </identification>      
@@ -55,22 +55,22 @@
         <numerator>
           <value>125</value>
           <units>mg</units>
-          <code>mg</code>
           <system>http://unitsofmeasure.org</system>
+          <code>mg</code>
         </numerator>
         <denominator>
           <value>5</value>
           <units>ml</units>
-          <code>ml</code>
           <system>http://unitsofmeasure.org</system>
+          <code>ml</code>
         </denominator>
       </quantityRatio>
     </activeIngredient>
     <inactiveIngredient>
       <identification>
         <coding>
-          <code>YYYYY</code>
           <system>urn:hl7.org:sid/atc</system>
+          <code>YYYYY</code>
           <display>Water</display>
         </coding>  
       </identification>
@@ -85,47 +85,43 @@
       <numerator>
         <value>750</value>
         <units>mg</units>
-        <code>mg</code>
         <system>http://unitsofmeasure.org</system>
+        <code>mg</code>
       </numerator>
       <denominator>
         <value>1</value>
         <units>day</units>
-        <code>d</code>
         <system>http://unitsofmeasure.org</system>
+        <code>d</code>
       </denominator>
     </totalPeriodicDosis>
     
     <duration>
       <value>10</value>
       <units>days</units>
-      <code>d</code>
       <system>http://unitsofmeasure.org</system>
+      <code>d</code>
     </duration>
     
     <dosageInstruction>
       <route>
         <coding>
-          <code>363743006</code>
           <system>http://snomed.info</system>
+          <code>363743006</code>
           <display>oral administration of treatment</display>
         </coding>          
       </route>
       <doseQuantity>
         <value>250</value>
         <units>mg</units>
-        <code>mg</code>
         <system>http://unitsofmeasure.org</system>
+        <code>mg</code>
       </doseQuantity>
       <schedule>
         <repeat>
           <frequency>3</frequency>
-          <duration>
-            <value>1</value>
-            <units>day</units>
-            <code>d</code>
-            <system>http://unitsofmeasure.org</system>
-          </duration>
+          <duration>1</duration>
+          <units>d</units>
         </repeat>
       </schedule>
     </dosageInstruction>
@@ -133,8 +129,8 @@
 
   <reason>
     <coding>
-      <code>G44.1</code>
       <system>http://hl7.org/fhir/sid/icd-10</system>
+      <code>G44.1</code>
     </coding>
     <text>general headache</text>
   </reason>

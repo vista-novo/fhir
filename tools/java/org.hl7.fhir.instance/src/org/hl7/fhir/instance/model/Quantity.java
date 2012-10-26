@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
@@ -81,14 +81,14 @@ public class Quantity extends Type {
     private String units;
 
     /**
-     * A computer processable form of the units in some unit representation system
-     */
-    private String code;
-
-    /**
      * The identification of the system that provides the coded form of the unit
      */
     private java.net.URI system;
+
+    /**
+     * A computer processable form of the units in some unit representation system
+     */
+    private String code;
 
     public java.math.BigDecimal getValue() { 
       return this.value;
@@ -114,20 +114,20 @@ public class Quantity extends Type {
       this.units = value;
     }
 
-    public String getCode() { 
-      return this.code;
-    }
-
-    public void setCode(String value) { 
-      this.code = value;
-    }
-
     public java.net.URI getSystem() { 
       return this.system;
     }
 
     public void setSystem(java.net.URI value) { 
       this.system = value;
+    }
+
+    public String getCode() { 
+      return this.code;
+    }
+
+    public void setCode(String value) { 
+      this.code = value;
     }
 
 

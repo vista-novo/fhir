@@ -14,28 +14,28 @@ For simplicitly, this example uses BMI as the assessment scale
   <time>2012-05-23T07:43:00</time>
   <interpretation>
     <coding>
-      <code>263654008</code>
       <system>http://snomed.info</system>
+      <code>263654008</code>
       <display>Abnormal</display>
     </coding>
   </interpretation>
   <interpretation>
     <coding>
-      <code>248342006</code>
       <system>http://snomed.info</system>
+      <code>248342006</code>
       <display>Underweight</display>
     </coding>
   </interpretation>
   <score>
     <code>  
       <coding>
-        <code>39156-5</code>
         <system>http://loinc.org</system>
+        <code>39156-5</code>
         <display>Body mass index</display>
       </coding>
       <coding>
-        <code>60621009</code>
         <system>http://snomed.info</system>
+        <code>60621009</code>
         <display>Body mass index</display>
       </coding>
     </code>

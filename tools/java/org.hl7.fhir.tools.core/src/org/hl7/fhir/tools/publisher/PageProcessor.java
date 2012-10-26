@@ -226,6 +226,8 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1], file)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dt.constraints")) 
         src = s1+genConstraints(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.restrictions")) 
+        src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("dtheader"))
@@ -299,6 +301,21 @@ public class PageProcessor implements Logger  {
       return "";
   }
   
+  private String genRestrictions(String name) throws Exception {
+    StringBuilder b = new StringBuilder();
+    StringBuilder b2 = new StringBuilder();
+    for (DefinedCode c : definitions.getConstraints().values()) {
+      if (c.getComment().equals(name)) {
+        b.append("<a name=\""+c.getCode()+"\"></a>\r\n");
+        b2.append(" <tr><td>"+c.getCode()+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>\r\n");
+      }
+    }
+    if (b.length() > 0) 
+      return b.toString()+"<table class=\"list\">\r\n"+b2.toString()+"</table>\r\n";
+    else
+      return "";
+  }
+
   private String genConstraints(String name) throws Exception {
     ElementDefn e = definitions.getElementDefn(name);
     StringBuilder b = new StringBuilder();
@@ -641,6 +658,8 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dt.constraints")) 
         src = s1+genConstraints(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.restrictions")) 
+        src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
@@ -698,6 +717,8 @@ public class PageProcessor implements Logger  {
         src = s1+xmlForDt(com[1], null)+tsForDt(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dt.constraints")) 
         src = s1+genConstraints(com[1])+s3;
+      else if (com.length == 2 && com[0].equals("dt.restrictions")) 
+        src = s1+genRestrictions(com[1])+s3;
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))

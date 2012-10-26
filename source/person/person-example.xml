@@ -5,8 +5,8 @@
   <!-- MRN assigned by ACME healthcare on 6-May 2001 -->
   <identifier>
     <type>
-      <code>MR</code>
       <system>http://hl7.org/fhir/sid/v2-0203</system>
+      <code>MR</code>
     </type>
     <identifier>
       <system>oid:1.2.36.146.595.217.0.1</system>
@@ -57,8 +57,8 @@
   
   <gender>
     <coding>
-      <code>M</code>
       <system>http://hl7.org/fhir/sid/v2-0001</system>
+      <code>M</code>
       <display>Male</display>
     </coding>
   </gender>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Fri, Oct 26, 2012 20:23+1100 for FHIR v0.06
+// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
 
 /**
  * For referring to data content defined in other formats.
@@ -60,11 +60,6 @@ public class Attachment extends Type {
      * The calculated hash of the data using SHA-256. In XML, represented using base64
      */
     private byte[] hash;
-
-    /**
-     * The language that the attachment is in
-     */
-    private String lang;
 
     /**
      * A label or set of text to display in place of the data
@@ -109,14 +104,6 @@ public class Attachment extends Type {
 
     public void setHash(byte[] value) { 
       this.hash = value;
-    }
-
-    public String getLang() { 
-      return this.lang;
-    }
-
-    public void setLang(String value) { 
-      this.lang = value;
     }
 
     public String getTitle() { 

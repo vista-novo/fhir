@@ -4,8 +4,8 @@
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
     <type>
-      <code>microchip</code>
       <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
+      <code>microchip</code>
     </type>
     <identifier>
       <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
@@ -34,21 +34,20 @@
   <!-- todo: how do you code a species? -->
   <species>
     <coding>
-      <code>Canis lupus familiaris</code>
       <system>http://en.wikipedia.org/wiki/Biological_classification</system>
+      <code>Canis lupus familiaris</code>
     </coding>
   </species>
   <strain>
     <coding>
-      <code>58108001</code>              
       <system>http://snomed.info</system>
+      <code>58108001</code>              
       <display>Golden retriever</display>  
     </coding>      
   </strain>
   <gender>
     <coding>
       <code>F</code>
-      <system>http://hl7.org/fhir/sid/v2-0001</system>
     </coding>
   </gender>
 	
@@ -56,8 +55,8 @@
   <relatedEntity>
     <role>
       <coding>
-        <code>OWN</code>
         <system>http://hl7.org/fhir/sid/v2-0063</system>
+        <code>OWN</code>
         <display>Owner</display>
       </coding>
     </role>

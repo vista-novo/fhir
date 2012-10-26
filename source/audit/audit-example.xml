@@ -2,16 +2,16 @@
 <Audit xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\audit.xsd">
   <event>
     <id>
-      <code>110100</code>
       <system>urn:oid:1.2.840.10008.6.1.903</system>
+      <code>110100</code>
       <display>Application Activity</display>
     </id>
     <action>E</action>
     <dateTime>2012-10-25T22:04:27+11:00</dateTime>
     <outcome>0</outcome>
     <code>
-      <code>110120</code>
       <system>urn:oid:1.2.840.10008.6.1.904</system>
+      <code>110120</code>
       <display>Application Start</display>
     </code>
   </event>
@@ -30,8 +30,8 @@
     <site>Development</site>
     <id>Grahame's Laptop</id>
     <type>
-      <code>4</code>
       <system>urn:ietf:rfc:3881</system>
+      <code>4</code>
     </type>
   </source>
   <object>
@@ -39,8 +39,8 @@
     <role>4</role>
     <lifecycle>6</lifecycle>
     <idType>
-      <code>12</code>
       <system>urn:ietf:rfc:3881</system>
+      <code>12</code>
       <display>URI</display>
     </idType>
     <id>urn:uuid:{798CF803-C39C-4C7E-A4A5-CEC87EC24162}</id>
