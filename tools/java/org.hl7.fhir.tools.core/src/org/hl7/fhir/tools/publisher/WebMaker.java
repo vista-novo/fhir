@@ -87,6 +87,7 @@ public class WebMaker {
         try {
           XhtmlDocument doc = new XhtmlParser().parse(src);
           replaceDownloadUrls(doc);
+          insertTargetImages(doc, null, f);
           new XhtmlComposer().compose(new FileOutputStream(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f), doc);
         } catch (Exception e) {
           throw new Exception("exception processing: "+src+": "+e.getMessage());
@@ -105,6 +106,26 @@ public class WebMaker {
     zip = new ZipGenerator(fd.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);
     zip.close();    
+  }
+
+  private void insertTargetImages(XhtmlNode node, XhtmlNode parent, String pagename) {
+    if (node.getName() != null && (node.getName().equals("h1") || node.getName().equals("h2") || node.getName().equals("h3") || node.getName().equals("h4") || node.getName().equals("h5"))) {
+      int i = parent.getChildNodes().indexOf(node)-1;
+      while (i > 0 && parent.getChildNodes().get(i).getNodeType() != NodeType.Element)
+        i--;
+      if (i > 0 && parent.getChildNodes().get(i).getName().equals("a")) {
+        String link = parent.getChildNodes().get(i).getAttribute("name");
+        parent.getChildNodes().get(i).addText(" ");
+        node.addText(" ");
+        XhtmlNode a = node.addTag("a");
+        a.setAttribute("href", pagename+"#"+link);
+        a.setAttribute("title", "link to here");
+        XhtmlNode img = a.addTag("img");
+        img.attribute("src", "target.png");
+      }
+    }
+    for (XhtmlNode child : node.getChildNodes()) 
+      insertTargetImages(child, node, pagename);    
   }
 
   private String googleSearch() {

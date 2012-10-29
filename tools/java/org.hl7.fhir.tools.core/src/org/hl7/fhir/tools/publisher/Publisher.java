@@ -184,9 +184,11 @@ public class Publisher {
 			Utilities.createDirectory(page.getFolders().dstDir);
 			
 			if (isGenerate) {
-				Utilities.clearDirectory(page.getFolders().dstDir);
+        Utilities.clearDirectory(page.getFolders().dstDir);
 				Utilities.createDirectory(page.getFolders().dstDir + "html");
 				Utilities.createDirectory(page.getFolders().dstDir + "examples");
+        Utilities.clearDirectory(page.getFolders().rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
+        Utilities.clearDirectory(page.getFolders().rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
 			}
 			prsr.parse(page.getGenDate(), page.getVersion());
 
@@ -834,7 +836,10 @@ public class Publisher {
 			XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
 			e.setXhtm(new XhtmlComposer().compose(pre));
 		}
-		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
+		if (!Utilities.noString(e.getId()))
+      Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + "("+e.getId()+").xml"));
+		else
+		  Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
 	}
 
 	private void generateProfile(ResourceDefn root, String n, String xmlSpec)	throws Exception, FileNotFoundException {

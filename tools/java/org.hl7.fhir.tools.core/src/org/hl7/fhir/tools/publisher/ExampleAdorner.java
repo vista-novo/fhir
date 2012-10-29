@@ -66,6 +66,8 @@ public class ExampleAdorner implements XhtmlGeneratorAdorner {
       if (s.getState() == State.Feed) {
         if (definitions.hasResource(node.getLocalName()))
           return new ExampleAdornerState(State.Element, definitions.getResourceByName(node.getLocalName()).getRoot(), "", "");
+        else if (node.getLocalName().equals("id") && !node.getTextContent().startsWith("http://"))
+          return new ExampleAdornerState(State.Feed, null, "<a name=\""+node.getTextContent()+"\"></a>", "");
         else
           return new ExampleAdornerState(State.Feed, null, "", "");
       } else if (s.getState() == State.Element) {
