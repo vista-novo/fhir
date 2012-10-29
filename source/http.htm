@@ -338,7 +338,7 @@ parameter <i>name</i> which searches on patient name, then the search
 <p>
 is a request to return all the lab reports that have a subject whose name includes "peter". 
 </p>
-<h4>Including other parameters ($include)</h4>
+<h4>Including other resources in result ($include)</h4>
 <p>
 Clients may request that the server return additional resources related to the search results, in order to reduce the overall network
 query time. A typical case where this is useful is where the client is querying on the patient resource, but for every patient resource
@@ -353,13 +353,15 @@ Each $include parameter specifies a path in a URL (as an XPath value):
 </pre>
 <p> 
 For each returned resource, the server executes the XPath statement, 
-and, if it matches one or more resource references, and it is able to locate the targets, appends the target resource to the return result.
-Note that $include parameters may be recursive. For instance, a client may request to return all the patients associated with a search on 
+and, if it matches one or more resource references, and it is able to locate the targets, 
+appends the target resource to the return result.
+Note that $include parameters may be recursive. For instance, a client may request to return all the 
+patients associated with a search on 
 lab reports, and then to include all the person resources for the patients returned, as shown above.
 </p>
 <p>
-If the $include path matches an general url rather than a resource reference, the server may elect to include the target of the url reference
-in the returned result.
+If the $include path matches a general url rather than a resource reference, 
+the server may elect to include the target of the url reference in the returned result.
 </p>
 <h4>Server Conformance</h4>
 <p>
