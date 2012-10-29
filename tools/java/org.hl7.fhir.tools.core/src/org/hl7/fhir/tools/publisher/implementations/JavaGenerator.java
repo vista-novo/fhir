@@ -208,7 +208,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   public void loadAndSave(String sourceFile, String destFile) throws Exception {
     // todo: what does it mean to load classes that have the same name as classes already in the build path?
     // for now, we use what's bound in, even though it runs a cycle behind
-
     FileInputStream in = new FileInputStream(sourceFile);
     XmlParser p = new XmlParser();
     ResourceOrFeed rf =  p.parseGeneral(in);

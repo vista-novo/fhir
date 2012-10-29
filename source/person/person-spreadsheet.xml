@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Alexander Henket</LastAuthor>
+  <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T09:39:52Z</Created>
-  <LastSaved>2012-10-08T21:29:31Z</LastSaved>
+  <LastSaved>2012-10-28T22:05:52Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,7 @@
   <WindowWidth>1980</WindowWidth>
   <WindowTopX>-15</WindowTopX>
   <WindowTopY>0</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
+  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -542,7 +542,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -556,14 +555,16 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultColumnWidth="65.25" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="116.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="251.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="46.5"/>
    <Column ss:AutoFitWidth="0" ss:Width="102"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.9375" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
+    <Cell><Data ss:Type="String">Identity</Data></Cell>
     <Cell><Data ss:Type="String">Filename</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">In Book</Data></Cell>
@@ -571,21 +572,57 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
+    <Cell><Data ss:Type="Number">101</Data></Cell>
     <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Patient1</Data></Cell>
+    <Cell><Data ss:Type="String">Persion 1 for patient linking</Data></Cell>
+    <Cell><Data ss:Type="String">pat1</Data></Cell>
+    <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">Patient2</Data></Cell>
+    <Cell><Data ss:Type="String">Persion 2 for patient linking</Data></Cell>
+    <Cell><Data ss:Type="String">pat2</Data></Cell>
+    <Cell><Data ss:Type="String">person-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Publishing</Data></Cell>
     <Cell><Data ss:Type="String">Stock people (defined by HL7 publishing)</Data></Cell>
-    <Cell><Data ss:Type="String">person-examples.xml</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">person-examples.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Cypress</Data></Cell>
     <Cell><Data ss:Type="String">Example People from cypress project</Data></Cell>
-    <Cell><Data ss:Type="String">person-examples-cypress-template.xml</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">person-examples-cypress-template.xml</Data></Cell>
     <Cell><Data ss:Type="String">csv</Data></Cell>
     <Cell><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">cda</Data></Cell>
+    <Cell><Data ss:Type="String">CDA Example Person</Data></Cell>
+    <Cell><Data ss:Type="String">xcda</Data></Cell>
+    <Cell><Data ss:Type="String">person-xcda.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">xds</Data></Cell>
+    <Cell><Data ss:Type="String">XDS Example Person</Data></Cell>
+    <Cell><Data ss:Type="String">xds</Data></Cell>
+    <Cell><Data ss:Type="String">person-xds.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">cda author</Data></Cell>
+    <Cell><Data ss:Type="String">CDA Example Author</Data></Cell>
+    <Cell><Data ss:Type="String">xcda-author</Data></Cell>
+    <Cell><Data ss:Type="String">person-xcda-author.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">n</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -595,11 +632,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>2</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -10,19 +10,19 @@
   </type>
   <subject>
     <type>Patient</type>
-    <id>12.123.451.23.1.23</id>
+    <id>xcda</id>
     <display>Henry Levin the 7th</display>
   </subject>
   <author>
     <type>Person</type>
-    <id>233123</id>
+    <id>xcda</id>
     <display>Robert Dolin MD</display>
   </author>
   <attester>
     <mode>legal</mode>
     <party>
       <type>Person</type>
-      <id>233123</id>
+      <id>xcda</id>
       <display>Robert Dolin MD</display>
     </party>
   </attester>
@@ -41,7 +41,7 @@
     <content>
       <!-- we really need a different resource here, but it's not yet defined -->
       <type>Prescription</type> 
-      <id>34124</id>
+      <id>example</id>
     </content>
   </section>
   <text>

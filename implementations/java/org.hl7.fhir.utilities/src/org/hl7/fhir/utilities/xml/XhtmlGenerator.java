@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 import org.hl7.fhir.utilities.Utilities;
+import org.hl7.fhir.utilities.xml.XhtmlGeneratorAdorner.XhtmlGeneratorAdornerState;
 import org.w3c.dom.Comment;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -44,7 +45,14 @@ import org.w3c.dom.Text;
 
 public class XhtmlGenerator {
 
-	public void generate(Document doc, File xhtml, String name, String desc) throws Exception {
+	private XhtmlGeneratorAdorner adorner;
+	
+  public XhtmlGenerator(XhtmlGeneratorAdorner adorner) {
+    super();
+    this.adorner = adorner;
+  }
+
+  public void generate(Document doc, File xhtml, String name, String desc) throws Exception {
 		FileOutputStream outs = new FileOutputStream(xhtml);
 		OutputStreamWriter out = new OutputStreamWriter(outs);
 		
@@ -59,8 +67,9 @@ public class XhtmlGenerator {
     out.write("<p>"+Utilities.escapeXml(desc)+"</p>\r\n"); 
     out.write("<pre class=\"xml\">\r\n");
 
+    XhtmlGeneratorAdornerState state = null; // adorner == null ? new XhtmlGeneratorAdornerState("", "") : adorner.getState(this, null, null);
 		for (int i = 0; i < doc.getChildNodes().getLength(); i++)
-			writeNode(out, doc.getChildNodes().item(i));
+			writeNode(out, doc.getChildNodes().item(i), state);
 		
     out.write("</pre>\r\n");
     out.write("</div>\r\n");
@@ -70,9 +79,9 @@ public class XhtmlGenerator {
 		outs.close();
 	}
 
-	private void writeNode(OutputStreamWriter out, Node node) throws Exception {
+	private void writeNode(OutputStreamWriter out, Node node, XhtmlGeneratorAdornerState state) throws Exception {
 		if (node.getNodeType() == Node.ELEMENT_NODE)
-			writeElement(out, (Element) node);
+			writeElement(out, (Element) node, state);
 		else if (node.getNodeType() == Node.TEXT_NODE)
 			writeText(out, (Text) node);
 		else if (node.getNodeType() == Node.COMMENT_NODE)
@@ -96,7 +105,7 @@ public class XhtmlGenerator {
 		out.write("<b>"+escapeHtml(Utilities.escapeXml(node.getTextContent()))+"</b>");
 	}
 
-	private void writeElement(OutputStreamWriter out, Element node) throws Exception {
+	private void writeElement(OutputStreamWriter out, Element node, XhtmlGeneratorAdornerState state) throws Exception {
 		out.write("<span class=\"xmltag\">&lt;"+node.getNodeName()+"</span>");
 		if (node.hasAttributes()) {
 			out.write("<span class=\"xmlattr\">");
@@ -108,9 +117,12 @@ public class XhtmlGenerator {
 		}
 		if (node.hasChildNodes()) {
 			out.write("<span class=\"xmltag\">&gt;</span>");
+			XhtmlGeneratorAdornerState newstate = adorner == null ? new XhtmlGeneratorAdornerState("", "") : adorner.getState(this, state, node);
+			out.write(newstate.getPrefix());
 			for (int i = 0; i < node.getChildNodes().getLength(); i++)
-				writeNode(out, node.getChildNodes().item(i));
+				writeNode(out, node.getChildNodes().item(i), newstate);
 			
+      out.write(newstate.getSuffix());
 			out.write("<span class=\"xmltag\">&lt;/"+node.getNodeName()+"&gt;</span>");
 		}
 		else 

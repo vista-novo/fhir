@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Patient.xsd">
+  <active>true</active>
+  <subject>
+    <type>Person</type>
+    <id>xcda</id>
+    <display>Henry Levin the 7th</display>
+  </subject> 
+  <provider>
+    <type>Organization</type>
+    <id>2.16.840.1.113883.19.5</id>  
+    <display>Good Health Clinic</display>
+  </provider> 
+  <identifier>
+    <type>
+      <system>http://hl7.org/fhir/sid/v2-0203</system>
+      <code>MR</code>
+    </type>
+    <identifier>
+      <system>urn:oid:2.16.840.1.113883.19.5</system>
+      <id>12345</id>
+    </identifier>
+  </identifier>
+
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Henry Levin the 7th</p>
+    </div>
+  </text>
+</Patient>
+
+

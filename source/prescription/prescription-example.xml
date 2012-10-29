@@ -17,12 +17,12 @@
 
   <patient>
     <type>Patient</type>
-    <id>23453</id>
+    <id>25bd34</id>
   </patient>
 
   <prescriber>
     <type>Agent</type>
-    <id>567</id>
+    <id>example</id>
   </prescriber>
 
   <prescribed>2011-03-04T11:45:33+01:00</prescribed>
@@ -35,7 +35,7 @@
     </quantity>
     <dispenser>
       <type>Organization</type>
-      <id>567111</id>
+      <id>1</id>
     </dispenser>
   </dispense>
 

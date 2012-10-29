@@ -390,7 +390,11 @@ The updates interaction retrieves a list of the resources of a particular type, 
 The return content is an <a href="atom.htm">Atom feed </a> containing a list of resources, sorted with oldest updates first.  Each resource only appears once, with the most recent version in the list.
 </p>
 <p>
-The updates list can be restricted to a limited period by the Last-Modified header. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
+The updates list can be restricted to a limited period by specifying a $last parameter which contains a full date time with timezone. 
+This only includes resources that have changed at or after the given date. Servers must ensure that if a client uses the feed.updated 
+date from the last response as the value of the $last parameter, it will not miss any updates. Clients should be aware that 
+due to timing imprecision, they may receive notifications of a resource update on the boundary instant more than once. Servers are 
+not required to support a a precision finer than by second. Additional parameters can be used to filter the updates list using the search parameters defined by the resource type.
 </p>
 
 <a name="validate"> </a>

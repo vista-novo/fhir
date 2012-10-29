@@ -10,12 +10,12 @@
 	
   <subject>
     <type>Person</type>
-    <id>35623</id>
+    <id>pat1</id>
     <display>Donald DUCK, Male, 3-April 1951</display>
   </subject> 
   <provider>
     <type>Organization</type>
-    <id>3</id>  
+    <id>1</id>  
     <display>ACME Healthcare, Inc</display>
   </provider> 
   <identifier>
@@ -25,14 +25,14 @@
     </type>
     <identifier>
       <system>oid:0.1.2.3.4.5.6.7</system>
-      <id>123456</id>
+      <id>654321</id>
     </identifier>
   </identifier>
 
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 123456</p>
+      <p>Patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321</p>
     </div>
   </text>
 </Patient>

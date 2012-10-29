@@ -28,22 +28,58 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.hl7.fhir.utilities.CSVProcessor;
+import org.hl7.fhir.utilities.Utilities;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class Example {
   private String name;
+  private String id;
   private String description;
   private File path;
   private String xhtm;
   private String type;
   private boolean inBook;
+  private Document xml;
   
-  public Example(String name, String description, File path, String type, boolean inBook) {
+  public Example(String name, String id, String description, File path, String type, boolean inBook) throws Exception {
     super();
     this.name = name;
+    this.id = id;
     this.description = description;
     this.path = path;
     this.type = type;
     this.inBook = inBook;
+    
+    if ("csv".equals(type)) {
+      CSVProcessor csv = new CSVProcessor();
+      csv.setSource(new FileInputStream(path));
+      csv.setData(new FileInputStream(Utilities.changeFileExt(path.getAbsolutePath(), ".csv")));
+      File tmp = File.createTempFile("fhir", "xml");
+      tmp.deleteOnExit();
+      csv.setOutput(new FileOutputStream(tmp));
+      csv.process();
+      path = tmp;
+    }
+    
+    if (!path.getName().equals("profiles-resources.xml")) {//profiles-resources is going to produced later and is a feed
+      DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+      factory.setNamespaceAware(true);
+      DocumentBuilder builder = factory.newDocumentBuilder();
+      xml = builder.parse(new FileInputStream(path));
+    }
+    if (Utilities.noString(id) && xml != null) { 
+      if (!xml.getDocumentElement().getLocalName().equals("feed"))
+        throw new Exception("unidentified resource "+path);
+    }
   }
   public String getName() {
     return name;
@@ -85,6 +121,12 @@ public class Example {
   }
   public void setInBook(boolean inBook) {
     this.inBook = inBook;
+  }
+  public String getId() {
+    return id;
+  }
+  public Document getXml() {
+    return xml;
   }
   
   

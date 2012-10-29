@@ -31,6 +31,10 @@ package org.hl7.fhir.utilities.xml;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
+
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 public class XMLUtil {
 
@@ -266,5 +270,35 @@ public class XMLUtil {
 			return sb.toString();
 		}
 	}
+
+  public static Element getFirstChild(Element e) {
+    Node n = e.getFirstChild();
+    while (n != null && n.getNodeType() != Node.ELEMENT_NODE)
+      n = n.getNextSibling();
+    return (Element) n;
+  }
+
+  public static Element getNamedChild(Element e, String name) {
+    Element c = getFirstChild(e);
+    while (c != null && !c.getLocalName().equals(name))
+      c = getNextSibling(c);
+    return c;
+  }
+
+  public static Element getNextSibling(Element e) {
+    Node n = e.getNextSibling();
+    while (n != null && n.getNodeType() != Node.ELEMENT_NODE)
+      n = n.getNextSibling();
+    return (Element) n;
+  }
+
+  public static void getNamedChildren(Element e, String name, List<Element> set) {
+    Element c = getFirstChild(e);
+    while (c != null) {
+      if (c.getLocalName().equals(name))
+        set.add(c);
+      c = getNextSibling(c);
+    }
+  }
 	
 }

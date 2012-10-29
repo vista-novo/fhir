@@ -29,19 +29,19 @@
        person, but it might very well make sense to do this with targetted clinical content -->
     <target>
       <type>Person</type>
-      <id>34</id>
+      <id>101</id>
     </target>
     <endpoint>llp:10.11.12.14:5432</endpoint>
   </destination>
   <author>
     <type>Person</type>
-    <id>3455bc23</id>
+    <id>xcda-author</id>
   </author>
   
   <!-- Here's the payload, the resource that this admin-update concerns -->
   <data>
     <type>Person</type>
-    <id>342356</id>
+    <id>101</id>
   </data>
   
   <text>

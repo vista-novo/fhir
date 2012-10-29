@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Patient.xsd">
+  <active>true</active>
+  <subject>
+    <type>Person</type>
+    <id>xcds</id>
+    <display>John Doe, M, 27-May 1956</display>
+  </subject> 
+  <provider>
+    <type>Organization</type>
+    <id>2</id>  
+  </provider> 
+  <identifier>
+    <type>
+      <system>http://hl7.org/fhir/sid/v2-0203</system>
+      <code>MR</code>
+    </type>
+	<identifier>
+	  <system>oid:3.4.5</system>
+	  <id>89765a87b</id>
+	</identifier>
+  </identifier>  
+
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Patient John Doe, M, 27-May 1956. ID: 89765a87b</p>
+    </div>
+  </text>
+</Patient>
+
+

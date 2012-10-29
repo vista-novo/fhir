@@ -44,11 +44,17 @@ import java.util.Map;
 import java.util.Queue;
 
 import javax.xml.XMLConstants;
+import javax.xml.namespace.NamespaceContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
 
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
@@ -98,6 +104,8 @@ import org.hl7.fhir.utilities.xhtml.XhtmlComposer;
 import org.hl7.fhir.utilities.xhtml.XhtmlDocument;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
+import org.hl7.fhir.utilities.xml.NamespaceContextMap;
+import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
@@ -122,7 +130,27 @@ import org.xml.sax.SAXParseException;
  */
 public class Publisher {
 
-	private SourceParser prsr;
+	public class ExampleReference {
+	  private String type;
+	  private String id;
+    public ExampleReference(String type, String id) {
+      super();
+      this.type = type;
+      this.id = id;
+    }
+    public String describe() {
+      return type+"|"+id;
+    }
+    public String getType() {
+      return type;
+    }
+    public String getId() {
+      return id;
+    }
+    
+  }
+
+  private SourceParser prsr;
 	private ChmMaker chm;
 	private PageProcessor page = new PageProcessor();
 	private BookMaker book;
@@ -231,8 +259,8 @@ public class Publisher {
 				Utilities.checkFile("schema", page.getFolders().srcDir, n, errors);
 			for (String n : page.getIni().getPropertyNames("pages"))
 				Utilities.checkFile("page", page.getFolders().srcDir, n, errors);
-
 		}
+		
 		if (errors.size() > 0)
 			log("Unable to publish FHIR specification:");
 		for (String e : errors) {
@@ -257,12 +285,124 @@ public class Publisher {
 				new UMLValidator(page.getDefinitions().getResources().get(n).getRoot(), filename, dummyErrors).validate();
 			}
 		}
+   for (ResourceDefn r : page.getDefinitions().getResources().values()) {
+     checkExampleLinks(errors, r);
+   }
+		
 		for (String e : errors)
 			System.out.println(e);
 		return errors.size() == 0;
 	}
 
-	private void produceSpecification(String eCorePath) throws Exception {
+	
+	
+	private void checkExampleLinks(List<String> errors, ResourceDefn r) throws Exception {
+    for (Example e : r.getExamples()) {
+      if (e.getXml() != null) {
+        List<ExampleReference> refs = new ArrayList<ExampleReference>(); 
+        listLinks(e.getXml().getDocumentElement(), refs);
+        for (ExampleReference ref : refs) {
+          if (!resolveLink(ref)) { 
+            errors.add("Unable to resolve example reference to "+ref.describe()+" in "+e.getPath());
+            errors.add("  Possible Ids: "+listTargetIds(ref.getType()));
+          }
+        }
+      }
+    } 
+  }
+
+  private String listTargetIds(String type) throws Exception {
+    StringBuilder b = new StringBuilder();
+    ResourceDefn r = page.getDefinitions().getResourceByName(type);
+    if (r != null) {
+      for (Example e : r.getExamples()) {
+        if (!Utilities.noString(e.getId()))
+          b.append(e.getId()+", ");
+        if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
+          List<Element> entries = new ArrayList<Element>();
+          XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
+          for (Element c : entries) {
+            b.append(XMLUtil.getNamedChild(c, "id").getTextContent()+", ");
+          }
+        }
+      }
+    } else
+      b.append("(unknown resource type)");    
+    return b.toString();
+  }
+
+  private boolean resolveLink(ExampleReference ref) throws Exception {
+    ResourceDefn r = page.getDefinitions().getResourceByName(ref.getType());
+    if (r != null) {
+      for (Example e : r.getExamples()) {
+        if (ref.getId().equals(e.getId()))
+          return true;
+        if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
+          List<Element> entries = new ArrayList<Element>();
+          XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
+          for (Element c : entries) {
+            if (ref.getId().equals(XMLUtil.getNamedChild(c, "id").getTextContent()))
+              return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  private void listLinks(Element xml, List<ExampleReference> refs) throws Exception {
+    if (xml.getLocalName().equals("feed")) {
+      Element n = XMLUtil.getFirstChild(xml);
+      while (n != null) {
+        if (n.getLocalName().equals("entry")) {
+          Element c = XMLUtil.getNamedChild(n, "content");
+          listLinks(XMLUtil.getFirstChild(c), refs);          
+        }
+        n = XMLUtil.getNextSibling(n);
+      }
+    } else {
+      String n = xml.getLocalName();
+      ResourceDefn r = page.getDefinitions().getResourceByName(n);
+      if (r == null) 
+        throw new Exception("Unable to find resource definition for "+n);
+      List<Element> nodes = new ArrayList<Element>();
+      nodes.add(xml);
+      listLinks("/f:"+n, r.getRoot(), nodes, refs);
+    }
+  }
+
+  private void listLinks(String path, org.hl7.fhir.definitions.model.ElementDefn d, List<Element> set, List<ExampleReference> refs) throws Exception {
+    if (d.typeCode().contains("Resource") && !d.typeCode().equals("Resource")) {
+      for (Element m : set) {
+        if (XMLUtil.getNamedChild(m, "type") != null && XMLUtil.getNamedChild(m, "id") != null) {
+          refs.add(new ExampleReference(XMLUtil.getNamedChild(m, "type").getTextContent(), XMLUtil.getNamedChild(m, "id").getTextContent()));
+        }
+      }
+    }    
+    for (org.hl7.fhir.definitions.model.ElementDefn c : d.getElements()) {
+      List<Element> cset = new ArrayList<Element>();
+      for (Element p : set) 
+        XMLUtil.getNamedChildren(p, c.getName(), cset);
+      listLinks(path+"/f:"+c.getName(), c, cset, refs);
+    }
+  }
+
+//  private List<Element> xPathQuery(String path, Element e) throws Exception {
+//    NamespaceContext context = new NamespaceContextMap("f", "http://hl7.org/fhir", "h", "http://www.w3.org/1999/xhtml");
+//
+//    XPathFactory factory = XPathFactory.newInstance();
+//    XPath xpath = factory.newXPath();
+//    xpath.setNamespaceContext(context);
+//    XPathExpression expression= xpath.compile(path);
+//    NodeList resultNodes = (NodeList)expression.evaluate(e, XPathConstants.NODESET);
+//    List<Element> result = new ArrayList<Element>();
+//    for (int i = 0; i < resultNodes.getLength(); i++) {
+//      result.add((Element) resultNodes.item(i));
+//    }
+//    return result;
+//  }
+
+  private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
 		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
 		chm = new ChmMaker(page.getNavigation(), page.getFolders(), page.getDefinitions(), page);
@@ -655,7 +795,7 @@ public class Publisher {
 
 		Document xdoc = builder.parse(new FileInputStream(new File(page
 				.getFolders().dstDir + n + ".xml")));
-		XhtmlGenerator xhtml = new XhtmlGenerator();
+		XhtmlGenerator xhtml = new XhtmlGenerator(null);
 		xhtml.generate(xdoc,
 				new File(page.getFolders().dstDir + n + ".xml.htm"), n
 						.toUpperCase().substring(0, 1) + n.substring(1),
@@ -672,48 +812,29 @@ public class Publisher {
 		String n = e.getFileTitle();
 
 		if (!e.getPath().exists())
-			throw new Exception("unable to find example file");
+		  throw new Exception("unable to find example file");
 
-		if ("csv".equals(e.getType())) {
-			CSVProcessor csv = new CSVProcessor();
-			csv.setSource(new FileInputStream(e.getPath()));
-			csv.setData(new FileInputStream(Utilities.changeFileExt(e.getPath().getAbsolutePath(), ".csv")));
-			csv.setOutput(new FileOutputStream(page.getFolders().dstDir + n + ".xml"));
-			csv.process();
-		} else {
-			// strip the xsi: stuff. seems to need double processing in order to
-			// delete namespace crap
-			Document xdoc = builder.parse(new FileInputStream(e.getPath()));
-			XmlGenerator xmlgen = new XmlGenerator();
-			if (xdoc.getDocumentElement().getLocalName().equals("feed"))
-				xmlgen.generate(xdoc.getDocumentElement(),
-						new File(page.getFolders().dstDir + n + ".xml"),
-						"http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
-			else
-				xmlgen.generate(xdoc.getDocumentElement(),
-						new File(page.getFolders().dstDir + n + ".xml"),
-						"http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
-		}
+		// strip the xsi: stuff. seems to need double processing in order to
+		// delete namespace crap
+		Document xdoc = e.getXml() == null ? builder.parse(new FileInputStream(e.getPath())) : e.getXml();
+		XmlGenerator xmlgen = new XmlGenerator();
+		if (xdoc.getDocumentElement().getLocalName().equals("feed"))
+		  xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir + n + ".xml"), "http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
+		else
+		  xmlgen.generate(xdoc.getDocumentElement(), new File(page.getFolders().dstDir + n + ".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+
 
 		// reload it now, xml to xhtml of xml
 		builder = factory.newDocumentBuilder();
-		Document xdoc = builder.parse(new FileInputStream(new File(page
-				.getFolders().dstDir + n + ".xml")));
-		XhtmlGenerator xhtml = new XhtmlGenerator();
-		xhtml.generate(xdoc,
-				new File(page.getFolders().dstDir + n + ".xml.htm"), n
-						.toUpperCase().substring(0, 1) + n.substring(1),
-				e.getDescription());
+		xdoc = builder.parse(new FileInputStream(new File(page.getFolders().dstDir + n + ".xml")));
+		XhtmlGenerator xhtml = new XhtmlGenerator(new ExampleAdorner(page.getDefinitions()));
+		xhtml.generate(xdoc, new File(page.getFolders().dstDir + n + ".xml.htm"), n.toUpperCase().substring(0, 1) + n.substring(1), Utilities.noString(e.getId()) ? e.getDescription() : e.getDescription()+" (id = \""+e.getId()+"\")");
 		if (e.isInBook()) {
-			XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page
-					.getFolders().dstDir + n + ".xml.htm"));
-			XhtmlNode pre = d.getElement("html").getElement("body")
-					.getElement("div");
+			XhtmlDocument d = new XhtmlParser().parse(new FileInputStream(page.getFolders().dstDir + n + ".xml.htm"));
+			XhtmlNode pre = d.getElement("html").getElement("body").getElement("div");
 			e.setXhtm(new XhtmlComposer().compose(pre));
 		}
-		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"),
-				new File(page.getFolders().dstDir + "examples" + File.separator
-						+ n + ".xml"));
+		Utilities.copyFile(new File(page.getFolders().dstDir + n + ".xml"), new File(page.getFolders().dstDir + "examples" + File.separator + n + ".xml"));
 	}
 
 	private void generateProfile(ResourceDefn root, String n, String xmlSpec)	throws Exception, FileNotFoundException {
@@ -844,7 +965,7 @@ public class Publisher {
 		// reload it now
 		builder = factory.newDocumentBuilder();
 		xdoc = builder.parse(new FileInputStream(tmp));
-		XhtmlGenerator xhtml = new XhtmlGenerator();
+		XhtmlGenerator xhtml = new XhtmlGenerator(null);
 		xhtml.generate(xdoc, new File(page.getFolders().dstDir + filename
 				+ ".profile.xml.htm"), "Profile", profile.metadata("name"));
 		// // xml to json

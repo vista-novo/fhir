@@ -444,6 +444,7 @@ public class SpreadsheetParser {
 			for (int row = 0; row < sheet.rows.size(); row++) {
 				String name = sheet.getColumn(row, "Name");
 				if (name != null && !name.equals("")) {
+				  String id  = sheet.getColumn(row, "Identity");
 					String desc = sheet.getColumn(row, "Description");
 					if (desc == null || desc.equals(""))
 						throw new Exception("Example " + name
@@ -456,7 +457,7 @@ public class SpreadsheetParser {
 								+ file.getAbsolutePath()
 								+ "' not found parsing " + this.name);
 					defn.getExamples().add(
-							new Example(name, desc, file, type, parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
+							new Example(name, id, desc, file, type, parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
 				}
 			}
 		}
@@ -466,7 +467,7 @@ public class SpreadsheetParser {
 				throw new Exception("Example (file '" + file.getAbsolutePath()
 						+ "') not found parsing " + this.name);
 			defn.getExamples().add(
-					new Example("General", "Example of " + title, file, null,
+					new Example("General", "example", "Example of " + title, file, null,
 							true));
 		}		
 	}

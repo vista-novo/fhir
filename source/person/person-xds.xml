@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/workspace/projects/org.hl7.fhir/schema/person.xsd">
+  <name>
+    <part>
+      <type>family</type>
+      <value>Doe</value>
+    </part>
+    <part>
+      <type>given</type>
+      <value>John</value>
+    </part>
+  </name>
+  <gender>
+    <coding>
+      <system>http://hl7.org/fhir/sid/v2-0001</system>
+      <code>M</code>
+    </coding>
+  </gender>
+	<birthDate>1956-05-27</birthDate>
+  <address>
+    <part>
+      <type>line</type>
+      <value>100 Main St</value>
+    </part>
+    <part>
+      <type>city</type>
+      <value>Metropolis</value>
+    </part>
+    <part>
+      <type>state</type>
+      <value>Il</value>
+    </part>
+    <part>
+      <type>zip</type>
+      <value>44130</value>
+    </part>
+    <part>
+      <type>country</type>
+      <value>USA</value>
+    </part>
+  </address>  
+	<text>
+		<status>generated</status>
+		<xhtml:div>
+		  <xhtml:p>John Doe, M, 27-May 1956. ID: 89765a87b</xhtml:p>
+		</xhtml:div>
+	</text>
+</Person>
