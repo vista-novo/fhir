@@ -231,6 +231,30 @@ the JSON format needs to use an entry item to retain the logical order of entrie
 The entry is known to be deleted because a date of deletion is given. An id must be provided, and a link may be provided.
 </p>
 
+<a name="Binary"> </a>
+<h2>Binary Resources</h2>
+<p>
+There are situations where it is useful or required to represent binary resources in the bundle. These are resources that are referred to from FHIR Resources (usually via a URI),
+and where it is convenient to include these in the feed directly rather than leaving them by reference.
+</p>
+<p>
+When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a content-type, which is the mime-type as it would be specified in HTTP:
+</p>
+<pre class="json">
+  ...
+      &quot;content&quot; : {
+        &quot;Binary&quot; : {
+          &quot;contentType&quot; : &quot;[mime type]&quot;,
+          &quot;content&quot; : &quot;[base64 of data]&quot;
+        }
+      },
+      &quot;summary&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Binary Resource&lt;/div&gt;&quot;
+  ...
+</pre>
+<p>
+The summary should be some equivalent to "Binary Resource" in an appropriate language.
+</p>
+
 <%footer%>
 <%/maindiv%>    
 </body>

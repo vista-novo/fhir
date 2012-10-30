@@ -1438,50 +1438,34 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       String s2 = prefix + getTitle(s);
       if (GeneratorUtils.isDelphiReservedWord(s2))
         s2 = s2 + "_";
-      if (i == l) {
-        def.append("    "+s2+"); {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
-        con.append("'"+s+"');");
-      }
-      else {
-        def.append("    "+s2+", {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
-        con.append("'"+s+"', ");
-      }
+      def.append("    "+s2+", {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
+      con.append("'"+s+"', ");
     }
+    def.append("    "+prefix+"Binary); {@enum.value Binary Resource }\r\n");
+    con.append("'Binary');");
 
     con.append("\r\n  PLURAL_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     i = 0;
     for (String s : definitions.getResources().keySet()) {
       i++;
-      if (i == l) {
-        con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"');");
-      }
-      else {
-        con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"', ");
-      }
+      con.append("'"+Utilities.pluralizeMe(s.toLowerCase())+"', ");
     }
+    con.append("'binaries');");
     con.append("\r\n  LOWERCASE_CODES_TFHIRResourceType : Array[TFHIRResourceType] of String = (");
     i = 0;
     for (String s : definitions.getResources().keySet()) {
       i++;
-      if (i == l) {
-        con.append("'"+s.toLowerCase()+"');");
-      }
-      else {
         con.append("'"+s.toLowerCase()+"', ");
-      }
     }
+  con.append("'binary');");
 
     con.append("\r\n  CLASSES_TFHIRResourceType : Array[TFHIRResourceType] of TFHIRResourceClass = (");
     i = 0;
     for (String s : definitions.getResources().keySet()) {
       i++;
-      if (i == l) {
-        con.append("T"+getTitle(s)+");");
-      }
-      else {
-        con.append("T"+getTitle(s)+", ");
-      }
+      con.append("T"+getTitle(s)+", ");
     }
+    con.append("TBinary);");
 
 
     defCode.enumDefs.add(def.toString());
@@ -1531,7 +1515,21 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  end;\r\n");
     def.append("  \r\n");
     def.append("  TFHIRResourceClass = class of TFHIRResource;\r\n");
-  
+    def.append("  \r\n");
+    def.append("  \r\n");
+    def.append("  TBinary = class (TFHIRResource)\r\n");
+    def.append("  private\r\n");
+    def.append("    FContent : TAdvBuffer;\r\n");
+    def.append("    FContentType : string;\r\n");
+    def.append("  protected\r\n");
+    def.append("    function GetResourceType : TFHIRResourceType; override;\r\n");
+    def.append("  public\r\n");
+    def.append("    Constructor create; Overload; Override;\r\n");
+    def.append("    Destructor Destroy; Override;\r\n");
+    def.append("    Property Content : TAdvBuffer read FContent;\r\n");
+    def.append("    Property ContentType : string read FContentType write FContentType;\r\n");
+    def.append("  end;\r\n");
+    def.append("  \r\n");
     
     def.append("\r\n");
     StringBuilder impl2 = new StringBuilder();
@@ -1577,6 +1575,24 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     impl2.append("  FText.Free;\r\n");
     impl2.append("  FText := value;\r\n");
     impl2.append("end;\r\n\r\n");
+
+    impl2.append("constructor TBinary.create;\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append("  FContent := TAdvBuffer.create;\r\n");
+    impl2.append("end;\r\n");
+    impl2.append("\r\n");
+    impl2.append("destructor TBinary.Destroy;\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  FContent.free;\r\n");
+    impl2.append("  inherited;\r\n");
+    impl2.append("end;\r\n");
+    impl2.append("\r\n");    
+    impl2.append("function TBinary.GetResourceType : TFHIRResourceType;\r\n");
+    impl2.append("begin\r\n");
+    impl2.append("  result := frtBinary;\r\n");
+    impl2.append("end;\r\n");
+    impl2.append("\r\n");    
     defCode.classDefs.add(def.toString());
     defCode.classImpls.add(impl2.toString());
     defCode.classFwds.add("  TFHIRResource = class;\r\n");

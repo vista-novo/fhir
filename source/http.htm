@@ -488,6 +488,19 @@ server must return a bundle containing the same resources in the order that they
 This allows the client to determine the new identities correctly. 
 </p>
 
+<h2>Binary Support</h2>
+<p>
+FHIR servers can choose to offer support for purely binary resources
+at the end point [service-url]/binary. The binary end-point accepts
+any kind of resources, and stores them as is, along with the content
+type provided by the HTTP headers. 
+</p>
+<p>
+The binary resource functions with the same operations as described
+above, except that there is no support for the search operation, nor
+can filtering parameters be used on the updates function.
+</p>
+
 <h2>Intermediaries</h2>
 <p>
 The HTTP protocol may be routed through an HTTP proxy such as 
