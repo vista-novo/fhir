@@ -459,15 +459,18 @@ human manual interaction with the server would be appropriate.
 <p>
 The batch interaction submits a set of resources to be updated or created on the server. 
 This interaction has two principle uses: to support push-based pub/sub, and to allow 
-multiple resources to be updated/created in a single transaction. The interaction is performed 
-by an HTTP POST operation as shown:
+multiple resources to be updated/created in a single transaction. Multiple different
+types of resources may be submitted, including a mix of new and existing resources. 
+The interaction is performed by an HTTP POST operation as shown:
 </p>
 <pre>
   POST [service-url] (?$format=mimeType)
 </pre>
 <p>
-The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or <a href="json.htm#json-bundles">JSON</a>. 
-Servers SHALL accept all resources and return a 200 OK, along with a response bundle, or reject all resources and return an HTTP 400 or 500 type response. 
+The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or 
+<a href="json.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately. 
+Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, or 
+reject all resources and return an HTTP 400 or 500 type response. 
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources must be identified. If the 
@@ -475,9 +478,9 @@ identity of the resource matches an existing or possible resource location on th
 the server should treat this entry as an <a href="#update">update operation</a> (i.e. PUT to the given resource). 
 If the identity is not one that the server recognises, the server should treat the operation
 as a <a href="#create">create operation</a> (i.e. POST to the given resource manager), and 
-create a new identity for the submitted resource. Servers must update any references to 
-a re-identified resource from other resources in the same batch as part of the process 
-of submitting the batch.
+create a new identity for the submitted resource. If the server must assign a new identity 
+when it accepts the resource, the it must also update any references to that resource in
+the same batch as they are processed.
 </p>
 <p>
 In order to allow the client to know how newly created resources are now identified, the 
