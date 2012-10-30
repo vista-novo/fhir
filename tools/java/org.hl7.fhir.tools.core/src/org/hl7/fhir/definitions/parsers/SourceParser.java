@@ -414,35 +414,25 @@ public class SourceParser {
 		for (String n : ini.getPropertyNames("types"))
 			if (ini.getStringProperty("types", n).equals("")) {
 				TypeRef t = new TypeParser().parse(n).get(0);
-				Utilities.checkFile("type definition", dtDir, t.getName()
-						+ ".xml", errors);
+				Utilities.checkFile("type definition", dtDir, t.getName().toLowerCase() + ".xml", errors);
 			}
 		for (String n : ini.getPropertyNames("structures"))
-			Utilities.checkFile("structure definition", dtDir, n + ".xml",
-					errors);
+			Utilities.checkFile("structure definition", dtDir, n.toLowerCase() + ".xml",errors);
 		for (String n : ini.getPropertyNames("infrastructure"))
-			Utilities.checkFile("infrastructure definition", dtDir, n + ".xml",
-					errors);
+			Utilities.checkFile("infrastructure definition", dtDir, n.toLowerCase() + ".xml",	errors);
 
 		for (String n : ini.getPropertyNames("resources")) {
-			if (new File(srcDir + n + File.separatorChar, n
-					+ "-spreadsheet.xml").exists())
-				Utilities.checkFile("definition", srcDir + n
-						+ File.separatorChar, n + "-spreadsheet.xml", errors);
+			if (new File(srcDir + n + File.separatorChar, n	+ "-spreadsheet.xml").exists())
+				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
 			else
-				Utilities.checkFile("definition", srcDir + n
-						+ File.separatorChar, n + "-def.xml", errors);
-			Utilities.checkFile("example xml", srcDir + n + File.separatorChar,
-					n + "-example.xml", errors);
+				Utilities.checkFile("definition", srcDir + n + File.separatorChar, n + "-def.xml", errors);
+			Utilities.checkFile("example xml", srcDir + n + File.separatorChar,	n + "-example.xml", errors);
 		}
 		for (String n : ini.getPropertyNames("special-resources")) {
-			if (new File(srcDir + n + File.separatorChar, n
-					+ "-spreadsheet.xml").exists())
-				Utilities.checkFile("definition", srcDir + n
-						+ File.separatorChar, n + "-spreadsheet.xml", errors);
+			if (new File(srcDir + n + File.separatorChar, n+ "-spreadsheet.xml").exists())
+				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
 			else
-				Utilities.checkFile("definition", srcDir + n
-						+ File.separatorChar, n + "-def.xml", errors);
+				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-def.xml", errors);
 		}
 
 	}
