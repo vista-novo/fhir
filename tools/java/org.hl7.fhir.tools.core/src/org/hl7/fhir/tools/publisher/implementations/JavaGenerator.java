@@ -47,6 +47,7 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
+import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.ZipGenerator;
 
@@ -208,7 +209,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   public void loadAndSave(String sourceFile, String destFile) throws Exception {
     // todo: what does it mean to load classes that have the same name as classes already in the build path?
     // for now, we use what's bound in, even though it runs a cycle behind
-    FileInputStream in = new FileInputStream(sourceFile);
+    FileInputStream in = new CSFileInputStream(sourceFile);
     XmlParser p = new XmlParser();
     ResourceOrFeed rf =  p.parseGeneral(in);
     if (rf.getFeed() != null)

@@ -38,6 +38,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import org.hl7.fhir.definitions.Config;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -65,14 +66,14 @@ public class WebMaker {
   public void produceHL7Copy() throws Exception {
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload");
     Utilities.clearDirectory(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web");
-    File fw = new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-web-"+version+".zip");
+    File fw = new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-web-"+version+".zip");
     if (fw.exists())
       fw.delete();
-    File fd = new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-dload-"+version+".zip");
+    File fd = new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"fhir-dload-"+version+".zip");
     if (fd.exists())
       fd.delete();
 
-    String[] files = new File(folders.dstDir).list();
+    String[] files = new CSFile(folders.dstDir).list();
     for (String f : files) {
       if (f.endsWith(".htm")) {
         String src = TextFile.fileToString(folders.dstDir+f);
@@ -93,9 +94,9 @@ public class WebMaker {
           throw new Exception("exception processing: "+src+": "+e.getMessage());
         }
       } else if (f.endsWith(".chm") || f.endsWith(".eap") || f.endsWith(".zip")) 
-        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
+        Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator+f));
       else if (!f.matches(Config.VERSION_REGEX) && !f.equals("html") && !f.equals("examples") )
-        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
+        Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
     }
 
     ZipGenerator zip = new ZipGenerator(fw.getAbsolutePath());

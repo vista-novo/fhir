@@ -59,6 +59,8 @@ import org.hl7.fhir.definitions.parsers.converters.CompositeTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.ConstrainedTypeConverter;
 import org.hl7.fhir.definitions.parsers.converters.EventConverter;
 import org.hl7.fhir.definitions.parsers.converters.PrimitiveConverter;
+import org.hl7.fhir.utilities.CSFile;
+import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
@@ -222,7 +224,7 @@ public class SourceParser {
 		
 		for (ResourceDefn r : definitions.getResources().values()) {
 		  for (RegisteredProfile p : r.getProfiles()) {
-		    SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger);
+		    SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(p.getFilepath()), p.getName(), definitions, srcDir, logger);
 		    p.setProfile(sparser.parseProfile(definitions));
 		  }
 		}
@@ -244,9 +246,8 @@ public class SourceParser {
 	
 	private void loadProfile(String n, Map<String, ProfileDefn> profiles)
 			throws Exception {
-		File spreadsheet = new File(rootDir
-				+ ini.getStringProperty("profiles", n));
-		SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(
+		File spreadsheet = new CSFile(rootDir+ ini.getStringProperty("profiles", n));
+		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
 				spreadsheet), spreadsheet.getName(), definitions, srcDir, logger);
 		ProfileDefn profile = sparser.parseProfile(definitions);
 		definitions.getProfiles().put(n, profile);
@@ -255,9 +256,7 @@ public class SourceParser {
 	private void loadGlobalConceptDomains() throws Exception {
 		logger.log("Load Concept Domains");
 
-		BindingsParser parser = new BindingsParser(new FileInputStream(
-				new File(termDir + "bindings.xml")), termDir + "bindings.xml",
-				srcDir);
+		BindingsParser parser = new BindingsParser(new CSFileInputStream(new CSFile(termDir + "bindings.xml")), termDir + "bindings.xml", srcDir);
 		List<BindingSpecification> cds = parser.parse();
 
 		for (BindingSpecification cd : cds)
@@ -265,13 +264,12 @@ public class SourceParser {
 
 		for (BindingSpecification cd : definitions.getBindings().values()) {
 			if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
-				File file = new File(termDir + cd.getReference().substring(1)
-						+ ".csv");
+				File file = new CSFile(termDir + cd.getReference().substring(1)	+ ".csv");
 				if (!file.exists())
 					throw new Exception("code source file not found for "
 							+ cd.getName() + ": " + file.getAbsolutePath());
 				CodeListParser cparser = new CodeListParser(
-						new FileInputStream(file));
+						new CSFileInputStream(file));
 				cparser.parse(cd.getCodes());
 				cparser.close();
 			}
@@ -279,7 +277,7 @@ public class SourceParser {
 	}
 
 	private void loadPrimitives() throws Exception {
-		XLSXmlParser xls = new XLSXmlParser(new FileInputStream(dtDir
+		XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(dtDir
 				+ "primitives.xml"), "primitives");
 		Sheet sheet = xls.getSheets().get("Imports");
 		for (int row = 0; row < sheet.rows.size(); row++) {
@@ -322,21 +320,20 @@ public class SourceParser {
 		definitions.getKnownTypes().addAll(ts);
 
 		TypeRef t = ts.get(0);
-		File csv = new File(dtDir + t.getName() + ".xml");
+		File csv = new CSFile(dtDir + t.getName().toLowerCase() + ".xml");
 		if (csv.exists()) {
 			SpreadsheetParser p = new SpreadsheetParser(
-					new FileInputStream(csv), csv.getName(), definitions,
+					new CSFileInputStream(csv), csv.getName(), definitions,
 					srcDir, logger);
 			ElementDefn el = p.parseCompositeType(true);
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
 		} else {
 			String p = ini.getStringProperty("types", n);
-			csv = new File(dtDir + p + ".xml");
+			csv = new CSFile(dtDir + p.toLowerCase() + ".xml");
 			if (!csv.exists())
-				throw new Exception("unable to find a definition for " + n
-						+ " in " + p);
-			XLSXmlParser xls = new XLSXmlParser(new FileInputStream(csv),
+				throw new Exception("unable to find a definition for " + n + " in " + p);
+			XLSXmlParser xls = new XLSXmlParser(new CSFileInputStream(csv),
 					csv.getAbsolutePath());
 			Sheet sheet = xls.getSheets().get("Restrictions");
 			boolean found = false;
@@ -361,13 +358,11 @@ public class SourceParser {
 	private void loadResource(String n, Map<String, ResourceDefn> map,
 			boolean sandbox) throws Exception {
 		String src = sandbox ? sndBoxDir : srcDir;
-		File spreadsheet = new File((sandbox ? sndBoxDir : srcDir) + n
-				+ File.separatorChar + n + "-spreadsheet.xml");
+		File spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-spreadsheet.xml");
 		if (!spreadsheet.exists())
-			spreadsheet = new File((sandbox ? sndBoxDir : srcDir) + n
-					+ File.separatorChar + n + "-def.xml");
+			spreadsheet = new CSFile((sandbox ? sndBoxDir : srcDir) + n + File.separatorChar + n + "-def.xml");
 
-		SpreadsheetParser sparser = new SpreadsheetParser(new FileInputStream(
+		SpreadsheetParser sparser = new SpreadsheetParser(new CSFileInputStream(
 				spreadsheet), spreadsheet.getName(), definitions, src, logger);
 		ResourceDefn root = sparser.parseResource();
 		root.setSandbox(sandbox);
@@ -422,14 +417,14 @@ public class SourceParser {
 			Utilities.checkFile("infrastructure definition", dtDir, n.toLowerCase() + ".xml",	errors);
 
 		for (String n : ini.getPropertyNames("resources")) {
-			if (new File(srcDir + n + File.separatorChar, n	+ "-spreadsheet.xml").exists())
+			if (new CSFile(srcDir + n + File.separatorChar + n	+ "-spreadsheet.xml").exists()) {
 				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
-			else
+			} else
 				Utilities.checkFile("definition", srcDir + n + File.separatorChar, n + "-def.xml", errors);
 			Utilities.checkFile("example xml", srcDir + n + File.separatorChar,	n + "-example.xml", errors);
 		}
 		for (String n : ini.getPropertyNames("special-resources")) {
-			if (new File(srcDir + n + File.separatorChar, n+ "-spreadsheet.xml").exists())
+			if (new CSFile(srcDir + n + File.separatorChar + n+ "-spreadsheet.xml").exists())
 				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-spreadsheet.xml", errors);
 			else
 				Utilities.checkFile("definition", srcDir + n+ File.separatorChar, n + "-def.xml", errors);

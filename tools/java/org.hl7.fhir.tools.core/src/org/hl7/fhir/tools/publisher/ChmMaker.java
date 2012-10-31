@@ -40,6 +40,7 @@ import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.tools.publisher.Navigation.Category;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -76,28 +77,28 @@ public class ChmMaker {
 	  
     String hhc = System.getenv("ProgramFiles")+sc+"HTML Help Workshop"+sc+"hhc.exe";
     String hhc32 = System.getenv("ProgramFiles(x86)")+sc+"HTML Help Workshop"+sc+"hhc.exe";
-    if (!(new File(hhc).exists()) && !(new File(hhc32).exists())) {
+    if (!(new CSFile(hhc).exists()) && !(new CSFile(hhc32).exists())) {
         page.log("Not producing CHM - Help Compiler not found here: " + hhc);
         return;
     }
 
     // if not windows then....?
     Utilities.clearDirectory(folders.rootDir+"temp"+sc+"chm");
-    File chm = new File(folders.dstDir+"fhir.chm");
+    File chm = new CSFile(folders.dstDir+"fhir.chm");
     chm.delete();
     if (chm.exists()) {
       throw new Exception("Deleting CHM file failed");
     }
 
-    String[] files = new File(folders.dstDir).list();
+    String[] files = new CSFile(folders.dstDir).list();
     for (String f : files) {
       if ((!f.endsWith("htm") || f.endsWith("xml.htm")) && !f.matches(Config.VERSION_REGEX) && !f.equals("html")  && !f.equals("examples"))
-        Utilities.copyFile(new File(folders.dstDir+f), new File(folders.rootDir+"temp"+sc+"chm"+File.separatorChar+f));
+        Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+sc+"chm"+File.separatorChar+f));
     }
     
     String src = TextFile.fileToString(folders.rootDir+sc+"tools"+sc+"chm"+sc+"fhir.hhp");
     TextFile.stringToFile(src.replace("%fhir%", folders.dstDir), folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhp");
-    Utilities.copyFile(new File(folders.rootDir+sc+"tools"+sc+"chm"+sc+"words.stp"), new File(folders.rootDir+sc+"temp"+sc+"chm"+sc+"words.stp"));
+    Utilities.copyFile(new CSFile(folders.rootDir+sc+"tools"+sc+"chm"+sc+"words.stp"), new CSFile(folders.rootDir+sc+"temp"+sc+"chm"+sc+"words.stp"));
     StringBuilder s = new StringBuilder();
     buildHHC(s);
     TextFile.stringToFile(s.toString(), folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhc");
@@ -106,14 +107,14 @@ public class ChmMaker {
     TextFile.stringToFile(s.toString(), folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhk");
 
     List<String> command = new ArrayList<String>();
-    if ((new File(hhc).exists()))
+    if ((new CSFile(hhc).exists()))
       command.add(hhc);
     else
       command.add(hhc32);
     command.add(folders.rootDir+sc+"temp"+sc+"chm"+sc+"fhir.hhp");
  
     ProcessBuilder builder = new ProcessBuilder(command);
-    builder.directory(new File(folders.rootDir+sc+"temp"+sc+"chm"));
+    builder.directory(new CSFile(folders.rootDir+sc+"temp"+sc+"chm"));
     
     final Process process = builder.start();
     page.log("wait: "+Integer.toString(process.waitFor()));
@@ -165,7 +166,7 @@ public class ChmMaker {
       s.append("  <LI> <OBJECT type=\"text/sitemap\">\r\n");
       s.append("      <param name=\"Name\" value=\""+c.getName()+"\">\r\n");
       if (c.getLink() != null) {
-        Utilities.copyFile(new File(folders.dstDir+"print-"+c.getLink()+".htm"), new File(folders.rootDir+sc+"temp"+sc+"chm"+sc+c.getLink()+".htm"));
+        Utilities.copyFile(new CSFile(folders.dstDir+"print-"+c.getLink()+".htm"), new CSFile(folders.rootDir+sc+"temp"+sc+"chm"+sc+c.getLink()+".htm"));
         links.add(c.getLink());
         s.append("       <param name=\"Local\" value=\""+c.getLink()+".htm\">\r\n");
       }
@@ -176,7 +177,7 @@ public class ChmMaker {
         s.append("    <LI> <OBJECT type=\"text/sitemap\">\r\n");
         s.append("       <param name=\"Name\" value=\""+e.getName()+"\">\r\n");
         if (e.getLink() != null) {
-          Utilities.copyFile(new File(folders.dstDir+"print-"+e.getLink()+".htm"), new File(folders.rootDir+sc+"temp"+sc+"chm"+sc+e.getLink()+".htm"));
+          Utilities.copyFile(new CSFile(folders.dstDir+"print-"+e.getLink()+".htm"), new CSFile(folders.rootDir+sc+"temp"+sc+"chm"+sc+e.getLink()+".htm"));
           s.append("       <param name=\"Local\" value=\""+e.getLink()+".htm\">\r\n");
           links.add(e.getLink());
         }
@@ -186,7 +187,7 @@ public class ChmMaker {
           s.append("       <param name=\"Name\" value=\""+ce.getName()+"\">\r\n");
           s.append("       <param name=\"Local\" value=\""+ce.getLink()+".htm\">\r\n");
           s.append("      </OBJECT>\r\n");
-          Utilities.copyFile(new File(folders.dstDir+"print-"+ce.getLink()+".htm"), new File(folders.rootDir+sc+"temp"+sc+"chm"+sc+ce.getLink()+".htm"));
+          Utilities.copyFile(new CSFile(folders.dstDir+"print-"+ce.getLink()+".htm"), new CSFile(folders.rootDir+sc+"temp"+sc+"chm"+sc+ce.getLink()+".htm"));
           links.add(ce.getLink());
         }
       }
@@ -202,7 +203,7 @@ public class ChmMaker {
             s.append("       <param name=\"Name\" value=\""+r.getName()+"\">\r\n");
             s.append("       <param name=\"Local\" value=\""+rn.toLowerCase()+".htm\">\r\n");
             s.append("      </OBJECT>\r\n");
-            Utilities.copyFile(new File(folders.dstDir+"print-"+rn.toLowerCase()+".htm"), new File(folders.rootDir+sc+"temp"+sc+"chm"+sc+rn.toLowerCase()+".htm"));
+            Utilities.copyFile(new CSFile(folders.dstDir+"print-"+rn.toLowerCase()+".htm"), new CSFile(folders.rootDir+sc+"temp"+sc+"chm"+sc+rn.toLowerCase()+".htm"));
           }
         }
       }

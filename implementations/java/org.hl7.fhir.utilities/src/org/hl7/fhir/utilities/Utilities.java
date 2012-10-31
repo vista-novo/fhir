@@ -138,7 +138,7 @@ public class Utilities {
 	}
 
   public static boolean checkFolder(String dir, List<String> errors) {
-    if (!new File(dir).exists()) {
+    if (!new CSFile(dir).exists()) {
       errors.add("Unable to find directory "+dir);
       return false;
     } else {
@@ -147,7 +147,7 @@ public class Utilities {
   }
 
   public static boolean checkFile(String purpose, String dir, String file, List<String> errors) {
-    if (!new File(dir+file).exists()) {
+    if (!new CSFile(dir+file).exists()) {
       errors.add("Unable to find "+purpose+" file "+file+" in "+dir);
       return false;
     } else {
@@ -181,9 +181,9 @@ public class Utilities {
   }
 
   public static void clearDirectory(String folder) {
-    String[] files = new File(folder).list();
+    String[] files = new CSFile(folder).list();
     for (String f : files) {
-      File fh = new File(folder+File.separatorChar+f);
+      File fh = new CSFile(folder+File.separatorChar+f);
       if (fh.isDirectory()) 
         clearDirectory(fh.getAbsolutePath());
       fh.delete();
@@ -191,7 +191,7 @@ public class Utilities {
   }
 
   public static void createDirectory(String path) {
-    new File(path).mkdirs();    
+    new CSFile(path).mkdirs();    
   }
 
   public static String changeFileExt(String name, String ext) {
@@ -265,6 +265,14 @@ public class Utilities {
   public static String appendSlash(String definitions) {
     return definitions.endsWith(File.separator) ? definitions : definitions+File.separator;
   }
+
+
+//  public static void checkCase(String filename) {
+//    File f = new CSFile(filename);
+//    if (!f.getName().equals(filename))
+//      throw new Exception("Filename  ")
+//    
+//  }
   
 	
 }

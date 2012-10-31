@@ -35,6 +35,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Document;
@@ -61,8 +62,8 @@ public class Example {
     
     if ("csv".equals(type)) {
       CSVProcessor csv = new CSVProcessor();
-      csv.setSource(new FileInputStream(path));
-      csv.setData(new FileInputStream(Utilities.changeFileExt(path.getAbsolutePath(), ".csv")));
+      csv.setSource(new CSFileInputStream(path));
+      csv.setData(new CSFileInputStream(Utilities.changeFileExt(path.getAbsolutePath(), ".csv")));
       File tmp = File.createTempFile("fhir", "xml");
       tmp.deleteOnExit();
       csv.setOutput(new FileOutputStream(tmp));
@@ -74,7 +75,7 @@ public class Example {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       factory.setNamespaceAware(true);
       DocumentBuilder builder = factory.newDocumentBuilder();
-      xml = builder.parse(new FileInputStream(path));
+      xml = builder.parse(new CSFileInputStream(path.getAbsolutePath()));
     }
     if (Utilities.noString(id) && xml != null) { 
       if (!xml.getDocumentElement().getLocalName().equals("feed"))

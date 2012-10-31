@@ -53,6 +53,7 @@ import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.Utilities;
 import org.hl7.fhir.utilities.XLSXmlParser;
@@ -228,8 +229,7 @@ public class SpreadsheetParser {
             throw new Exception("Example " + name
                 + " has no description parsing " + this.name);
           String title = sheet.getColumn(row, "Filename");
-          File file = new File(folder
-              + title+".xml");
+          File file = new CSFile(folder + title+".xml");
           if (!file.exists())
             throw new Exception("Profile " + name + " file '"
                 + file.getAbsolutePath()
@@ -447,22 +447,17 @@ public class SpreadsheetParser {
 				  String id  = sheet.getColumn(row, "Identity");
 					String desc = sheet.getColumn(row, "Description");
 					if (desc == null || desc.equals(""))
-						throw new Exception("Example " + name
-								+ " has no description parsing " + this.name);
-					File file = new File(folder
-							+ sheet.getColumn(row, "Filename"));
+						throw new Exception("Example " + name + " has no description parsing " + this.name);
+					File file = new CSFile(folder + sheet.getColumn(row, "Filename"));
 					String type = sheet.getColumn(row, "Type");
 					if (!file.exists() && !"tool".equals(type))
-						throw new Exception("Example " + name + " file '"
-								+ file.getAbsolutePath()
-								+ "' not found parsing " + this.name);
-					defn.getExamples().add(
-							new Example(name, id, desc, file, type, parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
+						throw new Exception("Example " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
+					defn.getExamples().add(new Example(name, id, desc, file, type, parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
 				}
 			}
 		}
 		if (defn.getExamples().size() == 0) {
-			File file = new File(folder + title + "-example.xml");
+			File file = new CSFile(folder + title + "-example.xml");
 			if (!file.exists())
 				throw new Exception("Example (file '" + file.getAbsolutePath()
 						+ "') not found parsing " + this.name);

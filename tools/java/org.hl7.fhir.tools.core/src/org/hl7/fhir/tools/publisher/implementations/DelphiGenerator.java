@@ -1649,7 +1649,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         );
 
     prsrImpl.append(
-        "procedure TFHIRXmlComposer.ComposeResource(xml : TMsXmlBuilder; resource: TFHIRResource);\r\n"+
+        "procedure TFHIRXmlComposer.ComposeResource(xml : TMsXmlBuilder; id : String; resource: TFHIRResource);\r\n"+
         "begin\r\n"+
         "  if (resource = nil) Then\r\n"+
         "    Raise Exception.Create('error - resource is nil');\r\n"+
@@ -1671,7 +1671,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         );
 
     prsrImpl.append(
-        "procedure TFHIRJsonComposer.ComposeResource(json : TJSONWriter; resource: TFHIRResource);\r\n"+
+        "procedure TFHIRJsonComposer.ComposeResource(json : TJSONWriter; id : String; resource: TFHIRResource);\r\n"+
         "begin\r\n"+
         "  if (resource = nil) Then\r\n"+
         "    Raise Exception.Create('error - resource is nil');\r\n"+
@@ -1692,7 +1692,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "  TFHIRXmlComposer = class (TFHIRXmlComposerBase)\r\n"+
         "  protected\r\n"+
         srlsdefX.toString()+
-        "    procedure ComposeResource(xml : TMsXmlBuilder; resource : TFHIRResource); override;\r\n"+
+        "    procedure ComposeResource(xml : TMsXmlBuilder; id : String; resource : TFHIRResource); override;\r\n"+
         "  end;\r\n\r\n"+
         "  TFHIRJsonParser = class (TFHIRJsonParserBase)\r\n"+
         "  protected\r\n"+
@@ -1702,7 +1702,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         "  TFHIRJsonComposer = class (TFHIRJsonComposerBase)\r\n"+
         "  protected\r\n"+
         srlsdefJ.toString()+
-        "    procedure ComposeResource(json : TJSONWriter; resource : TFHIRResource); override;\r\n"+
+        "    procedure ComposeResource(json : TJSONWriter; id : String; resource : TFHIRResource); override;\r\n"+
         "  end;\r\n\r\n";
   }
 

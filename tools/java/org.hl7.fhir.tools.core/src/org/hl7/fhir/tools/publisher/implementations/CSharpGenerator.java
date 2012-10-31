@@ -38,6 +38,7 @@ import org.hl7.fhir.definitions.ecore.fhir.ConstrainedTypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.NameScope;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.ZipGenerator;
 
@@ -74,9 +75,9 @@ public class CSharpGenerator extends BaseGenerator implements PlatformGenerator 
 		String parsersDir = "Parsers" + sl;
 		String serializersDir = "Serializers" + sl;
 		
-		File f = new File(implDir + modelDir);	if( !f.exists() ) f.mkdir();
-		File p = new File(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
-		File s = new File(implDir + serializersDir);	if( !s.exists() ) s.mkdir();
+		File f = new CSFile(implDir + modelDir);	if( !f.exists() ) f.mkdir();
+		File p = new CSFile(implDir + parsersDir);	if( !p.exists() ) p.mkdir();
+		File s = new CSFile(implDir + serializersDir);	if( !s.exists() ) s.mkdir();
 		
 		List<String> generatedFilenames = new ArrayList<String>();
 

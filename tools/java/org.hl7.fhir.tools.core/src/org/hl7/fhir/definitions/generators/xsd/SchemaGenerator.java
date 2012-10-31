@@ -34,6 +34,7 @@ import java.util.Collection;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
@@ -47,19 +48,19 @@ public class SchemaGenerator {
 	  this.genDate = genDate;
 	  this.version = version;
 
-	  File dir = new File(xsdDir);
+	  File dir = new CSFile(xsdDir);
 	  for (File f : dir.listFiles()) {
 		  if (!f.isDirectory())
 			  f.delete();
 	  }
 
-	  XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new File(xsdDir+"fhir-base.xsd")));
+	  XSDBaseGenerator xsdb = new XSDBaseGenerator(new FileOutputStream(new CSFile(xsdDir+"fhir-base.xsd")));
 	  xsdb.setDefinitions(definitions);
 	  xsdb.generate(version, genDate);
 	  xsdb.close();
 
 	  for (ResourceDefn root : definitions.getResources().values()) {
-		  XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new File(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
+		  XSDGenerator sgen = new XSDGenerator(new FileOutputStream(new CSFile(xsdDir+root.getName().toLowerCase()+".xsd")), definitions);
 		  sgen.setDataTypes(definitions.getKnownTypes());
 		  sgen.generate(root.getRoot(), definitions.getBindings(), version, genDate);
 		  sgen.close();
@@ -73,10 +74,10 @@ public class SchemaGenerator {
 	  produceAtomSchema(definitions, xsdDir, dstDir, srcDir);
 	  produceCombinedSchema(definitions, xsdDir, dstDir, srcDir);
 
-	  dir = new File(xsdDir);
+	  dir = new CSFile(xsdDir);
 	  for (File f : dir.listFiles()) {
 		  if (!f.isDirectory())
-			  Utilities.copyFile(f, new File(dstDir+f.getName()));
+			  Utilities.copyFile(f, new CSFile(dstDir+f.getName()));
 	  }
   }
 

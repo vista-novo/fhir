@@ -44,6 +44,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
+import org.hl7.fhir.utilities.CSFileInputStream;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -82,7 +83,7 @@ public class UMLValidator {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       factory.setNamespaceAware(true); 
       DocumentBuilder builder = factory.newDocumentBuilder();
-      xdoc = builder.parse(new FileInputStream(filename));
+      xdoc = builder.parse(new CSFileInputStream(filename));
       XPathFactory xpfactory = XPathFactory.newInstance();
       xpath = xpfactory.newXPath();
       xpath = xpfactory.newXPath();

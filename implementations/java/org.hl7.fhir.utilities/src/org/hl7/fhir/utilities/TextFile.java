@@ -44,7 +44,7 @@ public class TextFile {
 	{
 		List<String> result = new ArrayList<String>();
 		
-		File file = new File(path);
+		File file = new CSFile(path);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
 		
 		while( reader.ready() )
@@ -56,7 +56,7 @@ public class TextFile {
 	
 	public static void writeAllLines(String path, List<String> lines) throws IOException
 	{
-		File file = new File(path);
+		File file = new CSFile(path);
 		FileOutputStream s = new FileOutputStream(file);
 		OutputStreamWriter sw = new OutputStreamWriter(s, "UTF-8");
 		
@@ -69,7 +69,7 @@ public class TextFile {
 	
 	
     public static void stringToFile(String content, String path) throws Exception {
-		File file = new File(path);
+		File file = new CSFile(path);
 		OutputStreamWriter sw = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
 		sw.write(content);
 		sw.flush();
@@ -77,7 +77,7 @@ public class TextFile {
 	}
 
     public static String fileToString(String src) throws Exception {
-		File file = new File(src);
+		File file = new CSFile(src);
 		InputStreamReader sr = new InputStreamReader(new FileInputStream(file), "UTF-8");
 		StringBuilder b = new StringBuilder();
 		while (sr.ready()) {

@@ -655,8 +655,9 @@ public final class IniFile
     /**
      * Flush changes back to the disk file. If the disk file does not exists then
      * creates the new one. 
+     * @throws Exception 
      */
-    public boolean save()
+    public boolean save() 
     {
         boolean    blnRet    = false;
         File       objFile   = null;
@@ -669,7 +670,7 @@ public final class IniFile
         try
         {
             if (this.mhmapSections.size() == 0) return false;
-            objFile = new File(this.mstrFile);
+            objFile = new CSFile(this.mstrFile);
             if (objFile.exists()) objFile.delete();
             objWriter = new FileWriter(objFile);
             itrSec = this.mhmapSections.keySet().iterator();
@@ -921,7 +922,7 @@ public final class IniFile
 
         try
         {
-            objFile = new File(pstrFile);
+            objFile = new CSFile(pstrFile);
             blnRet = (objFile.exists() && objFile.isFile());
         }
         catch (Exception e)
@@ -1070,8 +1071,9 @@ public final class IniFile
     /**
      * The main entry point for testing.
      * @param pstrArgs the command line arguments array if any.
+     * @throws Exception 
      */
-    public static void main(String[] pstrArgs)
+    public static void main(String[] pstrArgs) throws Exception
     {
         IniFile objINI = null;
         String  strFile = null;

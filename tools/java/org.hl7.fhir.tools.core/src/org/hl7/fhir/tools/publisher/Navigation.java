@@ -34,6 +34,7 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.hl7.fhir.utilities.CSFileInputStream;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -100,7 +101,7 @@ public class Navigation {
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     factory.setNamespaceAware(true); 
     DocumentBuilder builder = factory.newDocumentBuilder();
-    Document xdoc = builder.parse(new FileInputStream(file));
+    Document xdoc = builder.parse(new CSFileInputStream(file));
     Element root = xdoc.getDocumentElement();
     if (root.getNodeName().equals("Navigation"))
       parseNavigation(root);

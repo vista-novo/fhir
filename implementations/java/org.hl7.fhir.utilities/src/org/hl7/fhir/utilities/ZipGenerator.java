@@ -55,10 +55,10 @@ public class ZipGenerator {
 
   public void addFiles(String actualDir, String statedDir, String ext) throws Exception {
     byte data[] = new byte[BUFFER];
-    File f = new File(actualDir);
+    File f = new CSFile(actualDir);
     String files[] = f.list();
     for (int i=0; i < files.length; i++) {
-      if ((ext == null && new File(actualDir+files[i]).isFile()) || (ext != null && files[i].endsWith(ext))) {
+      if ((ext == null && new CSFile(actualDir+files[i]).isFile()) || (ext != null && files[i].endsWith(ext))) {
         FileInputStream fi = new FileInputStream(actualDir+files[i]);
         BufferedInputStream origin = new BufferedInputStream(fi, BUFFER);
         ZipEntry entry = new ZipEntry(statedDir+files[i]);

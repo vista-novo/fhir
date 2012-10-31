@@ -57,6 +57,7 @@ import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.definitions.parsers.TypeParser;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.IniFile;
 import org.hl7.fhir.utilities.Logger;
 import org.hl7.fhir.utilities.TextFile;
@@ -906,12 +907,12 @@ public class PageProcessor implements Logger  {
   
   private String loadXmlNotes(String name, String suffix) throws Exception {
     String filename;
-    if (new File(folders.sndBoxDir + name).exists())
+    if (new CSFile(folders.sndBoxDir + name).exists())
       filename = folders.sndBoxDir + name+File.separatorChar+name+"-"+suffix+".xml";
     else
       filename = folders.srcDir + name+File.separatorChar+name+"-"+suffix+".xml";
     
-    if (!new File(filename).exists()) {
+    if (!new CSFile(filename).exists()) {
       TextFile.stringToFile(HTML_PREFIX+"\r\n<!-- content goes here -->\r\n\r\n"+HTML_SUFFIX, filename);
       return "";
     }
