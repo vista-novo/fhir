@@ -1517,6 +1517,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  TFHIRResourceClass = class of TFHIRResource;\r\n");
     def.append("  \r\n");
     def.append("  \r\n");
+    def.append("  {@Class TBinary : TFHIRResource\r\n");
+    def.append("    Special Binary Resource\r\n");
+    def.append("  }\r\n");
+    def.append("  {!.Net HL7Connect.Fhir.Binary}\r\n");
     def.append("  TBinary = class (TFHIRResource)\r\n");
     def.append("  private\r\n");
     def.append("    FContent : TAdvBuffer;\r\n");

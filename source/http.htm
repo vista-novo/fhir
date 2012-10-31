@@ -498,7 +498,9 @@ type provided by the HTTP headers.
 <p>
 The binary resource functions with the same operations as described
 above, except that there is no support for the search operation, nor
-can filtering parameters be used on the updates function.
+can filtering parameters be used on the updates function. The $format 
+parameter has no meaning when used with binary resources- they are 
+always represented using their original content type.
 </p>
 
 <h2>Intermediaries</h2>
