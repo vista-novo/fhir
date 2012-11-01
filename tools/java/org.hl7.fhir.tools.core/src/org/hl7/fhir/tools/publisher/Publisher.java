@@ -684,10 +684,10 @@ public class Publisher {
     SourceStringReader rdr = new SourceStringReader(s.toString());
     FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + n + ".png");
     rdr.generateImage(png);
-    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
-    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
-    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
-    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
+//    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
+//    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
+//    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
+//    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
 	}
 	
 	
