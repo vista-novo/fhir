@@ -55,7 +55,7 @@ Primitive elements used inside the FHIR datatypes cannot have an 'id' or 'dataAb
 they are rendered in JSON as a property and value:
 </p>
 <pre class="xml">
- &lt;<b>date</b>&gt;"1972-11-30"&lt;/<b>date</b>&gt;
+ &lt;<b>date</b>&gt;1972-11-30&lt;/<b>date</b>&gt;
 </pre>
 <p>is represented in JSON as</p>
 <pre class="json">
@@ -216,7 +216,7 @@ the JSON format needs to use an entry item to retain the logical order of entrie
    .. feed ..
    &quot;entry&quot; : [
     ... other entries ....,    
-	{
+    {
       &quot;deleted&quot; : &quot;2012-05-29T23:45:32+00:00&quot;,
       &quot;link&quot; : [{
           &quot;rel&quot; : &quot;self&quot;,

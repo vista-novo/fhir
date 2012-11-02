@@ -409,7 +409,9 @@ public class GeneratorUtils {
 		else if (name.equals("="))
 			result = "Equal";
 		else if (name.startsWith("-"))
-			result = name.replace("-", "Minus");	
+			result = name.replace("-", "Minus");
+		else if (Utilities.IsInteger(name))
+			result = "N" + name;
 		else
 			result = Utilities.capitalize(name);
 
@@ -624,7 +626,8 @@ public class GeneratorUtils {
 	public static boolean isBaseResourceMember( ElementDefn element )
 	{
 		return  element.getParentType().isResource() &&
-				(element.getName().equals("id") || element.getName().equals("extension")
+			//	(element.getName().equals("id") || 
+					(	element.getName().equals("extension")
 						|| element.getName().equals("text") );
 	}
 

@@ -214,8 +214,8 @@ namespace HL7.Fhir.Instance.Tests
         public void TestParseSimpleComposite()
         {
             string xmlString = @"<x id='x4' dataAbsentReason='asked' xmlns='http://hl7.org/fhir'>
-                                    <code>G44.1</code>
                                     <system>http://hl7.org/fhir/sid/icd-10</system>
+                                    <code>G44.1</code>
                                  </x>";
 
             XmlReader xr = fromString(xmlString); xr.Read();
@@ -231,7 +231,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsNull(result.Display);
 
             string jsonString = "{ \"someElem\" : { \"_id\" : \"x4\", \"dataAbsentReason\" : \"asked\", " +
-                    "\"code\": \"G44.1\", \"system\": \"http://hl7.org/fhir/sid/icd-10\" } }";
+                    "\"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\": \"G44.1\" } }";
 
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
@@ -248,8 +248,8 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestCompositeWithRepeatingElement()
         {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><code>R51</code><system>http://hl7.org/fhir/sid/icd-10</system></coding>" +
-                "<coding id='1'><code>25064002</code><system>http://snomed.info</system></coding></x>";
+            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><system>http://hl7.org/fhir/sid/icd-10</system><code>R51</code></coding>" +
+                "<coding id='1'><system>http://snomed.info</system><code>25064002</code></coding></x>";
 
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
@@ -265,8 +265,8 @@ namespace HL7.Fhir.Instance.Tests
 
 
             string jsonString = "{ \"someElem\" : { \"coding\" : [ " +
-                "{ \"code\" : \"R51\", \"system\": \"http://hl7.org/fhir/sid/icd-10\" }," +
-                "{ \"_id\":\"1\", \"code\" : \"25064002\", \"system\": \"http://snomed.info\" }" +
+                "{ \"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\" : \"R51\"  }," +
+                "{ \"_id\":\"1\", \"system\": \"http://snomed.info\", \"code\" : \"25064002\" }" +
                 "] } }";
 
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
@@ -313,9 +313,9 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseUnknownMembersAndRecover()
         {
-            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><code>R51</code><ewout>bla</ewout>" +
-                "<system>http://hl7.org/fhir/sid/icd-10</system></coding>" +
-                "<coding id='1'><code>25064002</code><system>http://snomed.info</system></coding><grahame></grahame></x>";
+            string xmlString = @"<x xmlns='http://hl7.org/fhir'><coding><system>http://hl7.org/fhir/sid/icd-10</system><ewout>bla</ewout>" +
+                "<code>R51</code></coding>" +
+                "<coding id='1'><system>http://snomed.info</system><code>25064002</code></coding><grahame></grahame></x>";
 
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
@@ -327,8 +327,8 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors[1].ToString().Contains("grahame"));
 
             string jsonString = "{ \"someElem\" : { \"coding\" : [ " +
-                "{ \"code\" : \"R51\", \"ewout\" : \"bla\", \"system\": \"http://hl7.org/fhir/sid/icd-10\" }," +
-                "{ \"_id\":\"1\", \"code\" : \"25064002\", \"system\": \"http://snomed.info\" }" +
+                "{ \"system\": \"http://hl7.org/fhir/sid/icd-10\", \"ewout\" : \"bla\", \"code\" : \"R51\" }," +
+                "{ \"_id\":\"1\", \"system\": \"http://snomed.info\", \"code\" : \"25064002\"  }" +
                 "], \"grahame\" : \"stuff\" } }";
 
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
@@ -346,7 +346,6 @@ namespace HL7.Fhir.Instance.Tests
         {
             string xmlString =
 @"<Person xmlns='http://hl7.org/fhir'>
-    <id>34234</id>
     <name>
       <use>official</use>  
       <part id='n1'>
@@ -363,8 +362,8 @@ namespace HL7.Fhir.Instance.Tests
       <profile>http://hl7.org/fhir/profile/@iso-20190</profile>
       <ref>n1</ref>
       <valueCoding>
+        <system>oid:2.16.840.1.113883.5.1122</system>       
         <code>AC</code>
-        <system>oid:2.16.840.1.113883.5.1122</system>
       </valueCoding>
     </extension>
     <text>

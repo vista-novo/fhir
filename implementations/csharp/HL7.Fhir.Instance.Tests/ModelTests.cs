@@ -100,10 +100,6 @@ namespace HL7.Fhir.Instance.Tests
             }
             catch(Exception) {}
 
-
-            Instant ins3 = Instant.FromLocalDateTime(2011, 3, 4, 2, 45, 33);
-            Assert.AreEqual("2011-03-04T02:45:33+02:00", ins3.ToString());
-
             Instant ins5 = Instant.FromDateTimeUtc(2011,3,4,16,45,33);
             Assert.AreEqual("2011-03-04T16:45:33+00:00", ins5.ToString());      
         }

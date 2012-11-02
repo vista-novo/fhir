@@ -63,106 +63,108 @@ namespace HL7.Fhir.Instance.Support
         public const string JATOM_VERSION = "versionId";
 
         public static Bundle Load(JsonReader reader, ErrorList errors)
-        {     
-            JObject feed;
-            reader.DateParseHandling = DateParseHandling.DateTimeOffset;
+        {
+            return null;
 
-            try
-            {
-                feed = JObject.Load(reader);
-            }
-            catch (Exception exc)
-            {
-                errors.Add("Exception while loading feed: " + exc.Message);
-                return null;
-            }
+            //JObject feed;
+            //reader.DateParseHandling = DateParseHandling.DateTimeOffset;
 
-            Bundle result;
+            //try
+            //{
+            //    feed = JObject.Load(reader);
+            //}
+            //catch (Exception exc)
+            //{
+            //    errors.Add("Exception while loading feed: " + exc.Message);
+            //    return null;
+            //}
 
-            try
-            {
-                result = new Bundle()
-                {
-                    Title = feed.Value<string>(JATOM_TITLE),
-                    LastUpdated = feed.Value<DateTimeOffset>(JATOM_UPDATED),
-                    Id = feed.Value<string>(JATOM_ID),
-                    SelfLink = getSelfLink(feed[JATOM_LINKS])
-                };
-            }
-            catch (Exception exc)
-            {
-                errors.Add("Exception while parsing feed items: " + exc.Message,
-                    String.Format("Feed '{0}'", feed.Value<string>(JATOM_ID)));
-                return null;
-            }
+            //Bundle result;
 
-            result.loadItems(feed[JATOM_ENTRIES], errors);
+            //try
+            //{
+            //    result = new Bundle()
+            //    {
+            //        Title = feed.Value<string>(JATOM_TITLE),
+            //        LastUpdated = feed.Value<DateTimeOffset>(JATOM_UPDATED),
+            //        Id = feed.Value<string>(JATOM_ID),
+            //        SelfLink = getSelfLink(feed[JATOM_LINKS])
+            //    };
+            //}
+            //catch (Exception exc)
+            //{
+            //    errors.Add("Exception while parsing feed items: " + exc.Message,
+            //        String.Format("Feed '{0}'", feed.Value<string>(JATOM_ID)));
+            //    return null;
+            //}
 
-            errors.AddRange(result.Validate());
+            //result.loadItems(feed[JATOM_ENTRIES], errors);
 
-            return result;
+            //errors.AddRange(result.Validate());
+
+            //return result;
         }
 
 
         private void loadItems( JToken token, ErrorList errors )
         {
-            Entries.Clear();
+            //Entries.Clear();
 
-            if( token as JArray != null )
-            {
-                JArray items = (JArray)token;
+            //if( token as JArray != null )
+            //{
+            //    JArray items = (JArray)token;
 
-                foreach(var item in items)
-                {
-                    BundleEntry result;
+            //    foreach(var item in items)
+            //    {
+            //        BundleEntry result;
 
-                    string id = item.Value<string>(JATOM_ID);
-                    errors.DefaultContext = String.Format("Entry '{0}'", id);
+            //        string id = item.Value<string>(JATOM_ID);
+            //        errors.DefaultContext = String.Format("Entry '{0}'", id);
 
-                    try
-                    {
-                        result = new BundleEntry()
-                        {
-                            VersionId = item.Value<string>(JATOM_VERSION) != null ?
-                                             item.Value<string>(JATOM_VERSION) : null,
-                            Title = item.Value<string>(JATOM_TITLE),
-                            SelfLink = getSelfLink(item[JATOM_LINKS]),
-                            Id = id,
-                            LastUpdated = item.Value<DateTimeOffset>(JATOM_UPDATED),
-                            Published = item.Value<DateTimeOffset>(JATOM_PUBLISHED),
+            //        try
+            //        {
+            //            result = new BundleEntry()
+            //            {
+            //                VersionId = item.Value<string>(JATOM_VERSION) != null ?
+            //                                 item.Value<string>(JATOM_VERSION) : null,
+            //                Title = item.Value<string>(JATOM_TITLE),
+            //                SelfLink = getSelfLink(item[JATOM_LINKS]),
+            //                Id = id,
+            //                LastUpdated = item.Value<DateTimeOffset>(JATOM_UPDATED),
+            //                Published = item.Value<DateTimeOffset>(JATOM_PUBLISHED),
 
-                            AuthorName = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
-                                    .Select(auth => auth.Value<string>(JATOM_AUTH_NAME))
-                                    .FirstOrDefault() : null,
-                            AuthorUri = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
-                                    .Select(auth => auth.Value<string>(JATOM_AUTH_URI))
-                                    .FirstOrDefault() : null,
+            //                AuthorName = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
+            //                        .Select(auth => auth.Value<string>(JATOM_AUTH_NAME))
+            //                        .FirstOrDefault() : null,
+            //                AuthorUri = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
+            //                        .Select(auth => auth.Value<string>(JATOM_AUTH_URI))
+            //                        .FirstOrDefault() : null,
 
-                            ResourceType = item[JATOM_CATEGORIES] as JArray != null ? item[JATOM_CATEGORIES]
-                                    .Where(cat => cat.Value<string>(JATOM_CAT_SCHEME) ==
-                                                    Support.Util.ATOM_CATEGORY_NAMESPACE)
-                                    .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
-                                    .FirstOrDefault() : null,
-                            IsDeletion = isDeletion(item[JATOM_CONTENT]),
-                        };
+            //                ResourceType = item[JATOM_CATEGORIES] as JArray != null ? item[JATOM_CATEGORIES]
+            //                        .Where(cat => cat.Value<string>(JATOM_CAT_SCHEME) ==
+            //                                        Support.Util.ATOM_CATEGORY_NAMESPACE)
+            //                        .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
+            //                        .FirstOrDefault() : null,
+            //                IsDeletion = isDeletion(item[JATOM_CONTENT]),
+            //            };
 
-                        if (!result.IsDeletion)
-                            result.Content = getContents(item[JATOM_CONTENT], errors);
+            //            if (!result.IsDeletion)
+            //                result.Content = getContents(item[JATOM_CONTENT], errors);
 
-                    }
-                    catch (Exception exc)
-                    {
-                        errors.Add("Exception while reading entry: " + exc.Message);
-                        return;
-                    }
-                    finally
-                    {
-                        errors.DefaultContext = null;
-                    }
+            //        }
+            //        catch (Exception exc)
+            //        {
+            //            errors.Add("Exception while reading entry: " + exc.Message);
+            //            return;
+            //        }
+            //        finally
+            //        {
+            //            errors.DefaultContext = null;
+            //        }
 
-                    Entries.Add(result);
-                }
-            }
+            //        Entries.Add(result);
+            //    }
+            //}
         }
 
         private bool isDeletion(JToken jToken)
@@ -189,19 +191,19 @@ namespace HL7.Fhir.Instance.Support
 
         public void Save(JsonWriter writer)
         {
-            JObject result = new JObject();
+            //JObject result = new JObject();
 
-            if( !String.IsNullOrWhiteSpace(Title) )
-                result.Add( new JProperty(JATOM_TITLE, Title) );
+            //if( !String.IsNullOrWhiteSpace(Title) )
+            //    result.Add( new JProperty(JATOM_TITLE, Title) );
 
-            if( LastUpdated != null ) result.Add( new JProperty(JATOM_UPDATED, LastUpdated) );
-            if( !String.IsNullOrWhiteSpace(Id) ) result.Add(new JProperty(JATOM_ID, Id));
-            if(SelfLink != null && !String.IsNullOrWhiteSpace(SelfLink.ToString()))
-                result.Add(new JProperty(JATOM_LINKS, new JArray(createSelfLink(SelfLink))));
+            //if( LastUpdated != null ) result.Add( new JProperty(JATOM_UPDATED, LastUpdated) );
+            //if( !String.IsNullOrWhiteSpace(Id) ) result.Add(new JProperty(JATOM_ID, Id));
+            //if(SelfLink != null && !String.IsNullOrWhiteSpace(SelfLink.ToString()))
+            //    result.Add(new JProperty(JATOM_LINKS, new JArray(createSelfLink(SelfLink))));
 
-            result.Add(new JProperty(JATOM_ENTRIES, new JArray(saveEntries())));
+            //result.Add(new JProperty(JATOM_ENTRIES, new JArray(saveEntries())));
 
-            result.WriteTo(writer);
+            //result.WriteTo(writer);
         }
 
         private JObject createSelfLink(Uri selfLink)
@@ -214,50 +216,52 @@ namespace HL7.Fhir.Instance.Support
 
         private IEnumerable<JObject> saveEntries()
         {
-            List<JObject> result = new List<JObject>();
+            return null;
 
-            foreach (BundleEntry entry in Entries)
-            {
-                JObject newItem = new JObject();
+            //List<JObject> result = new List<JObject>();
 
-                if( !String.IsNullOrWhiteSpace(entry.Title) ) 
-                    newItem.Add(new JProperty(JATOM_TITLE, entry.Title));
-                if( entry.SelfLink != null && !String.IsNullOrWhiteSpace(entry.SelfLink.ToString()) ) 
-                    newItem.Add(new JProperty(JATOM_LINKS, new JArray(createSelfLink(entry.SelfLink))));
-                if( !String.IsNullOrWhiteSpace(entry.Id) ) newItem.Add( new JProperty(JATOM_ID, entry.Id) );
-                if( entry.LastUpdated != null ) newItem.Add( new JProperty(JATOM_UPDATED, entry.LastUpdated) );
-                if( entry.Published != null) newItem.Add(new JProperty(JATOM_PUBLISHED, entry.Published));
-                if( !String.IsNullOrWhiteSpace(entry.AuthorName) )
-                {
-                    JObject author = new JObject(new JProperty(JATOM_AUTH_NAME, entry.AuthorName));
-                    if( !String.IsNullOrWhiteSpace(entry.AuthorUri) )
-                        author.Add(new JProperty(JATOM_AUTH_URI, entry.AuthorUri));
+            //foreach (BundleEntry entry in Entries)
+            //{
+            //    JObject newItem = new JObject();
 
-                    newItem.Add(new JProperty(JATOM_AUTHORS, new JArray(author)));
-                }
-                if ( !String.IsNullOrWhiteSpace(entry.ResourceType))
-                    newItem.Add(new JProperty(JATOM_CATEGORIES, new JArray(new JObject(
-                        new JProperty(JATOM_CAT_TERM, entry.ResourceType),
-                        new JProperty(JATOM_CAT_SCHEME, Util.ATOM_CATEGORY_NAMESPACE)))));
+            //    if( !String.IsNullOrWhiteSpace(entry.Title) ) 
+            //        newItem.Add(new JProperty(JATOM_TITLE, entry.Title));
+            //    if( entry.SelfLink != null && !String.IsNullOrWhiteSpace(entry.SelfLink.ToString()) ) 
+            //        newItem.Add(new JProperty(JATOM_LINKS, new JArray(createSelfLink(entry.SelfLink))));
+            //    if( !String.IsNullOrWhiteSpace(entry.Id) ) newItem.Add( new JProperty(JATOM_ID, entry.Id) );
+            //    if( entry.LastUpdated != null ) newItem.Add( new JProperty(JATOM_UPDATED, entry.LastUpdated) );
+            //    if( entry.Published != null) newItem.Add(new JProperty(JATOM_PUBLISHED, entry.Published));
+            //    if( !String.IsNullOrWhiteSpace(entry.AuthorName) )
+            //    {
+            //        JObject author = new JObject(new JProperty(JATOM_AUTH_NAME, entry.AuthorName));
+            //        if( !String.IsNullOrWhiteSpace(entry.AuthorUri) )
+            //            author.Add(new JProperty(JATOM_AUTH_URI, entry.AuthorUri));
 
-                if (entry.IsDeletion)
-                    newItem.Add(new JProperty(JATOM_CONTENT, getDeletedContentsJObject()));
-                else
-                {
-                    if (entry.Content != null)
-                        newItem.Add(new JProperty(JATOM_CONTENT, getContentsAsJObject(entry.Content)));
-                }
+            //        newItem.Add(new JProperty(JATOM_AUTHORS, new JArray(author)));
+            //    }
+            //    if ( !String.IsNullOrWhiteSpace(entry.ResourceType))
+            //        newItem.Add(new JProperty(JATOM_CATEGORIES, new JArray(new JObject(
+            //            new JProperty(JATOM_CAT_TERM, entry.ResourceType),
+            //            new JProperty(JATOM_CAT_SCHEME, Util.ATOM_CATEGORY_NAMESPACE)))));
 
-                if( entry.Summary != null )
-                    newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
+            //    if (entry.IsDeletion)
+            //        newItem.Add(new JProperty(JATOM_CONTENT, getDeletedContentsJObject()));
+            //    else
+            //    {
+            //        if (entry.Content != null)
+            //            newItem.Add(new JProperty(JATOM_CONTENT, getContentsAsJObject(entry.Content)));
+            //    }
 
-                if( entry.VersionId != null)
-                    newItem.Add( new JProperty(JATOM_VERSION, entry.VersionId) );
+            //    if( entry.Summary != null )
+            //        newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
 
-                result.Add(newItem);
-            }
+            //    if( entry.VersionId != null)
+            //        newItem.Add( new JProperty(JATOM_VERSION, entry.VersionId) );
 
-            return result;
+            //    result.Add(newItem);
+            //}
+
+            //return result;
         }
 
 

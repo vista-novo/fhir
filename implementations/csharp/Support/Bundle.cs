@@ -46,7 +46,7 @@ namespace HL7.Fhir.Instance.Support
     {
         public string Title { get; set; }
         public DateTimeOffset? LastUpdated { get; set; }
-        public string Id { get; set; }
+        public Uri Id { get; set; }
         public Uri SelfLink { get; set; }
 
         public List<BundleEntry> Entries { get; private set; }
@@ -65,65 +65,156 @@ namespace HL7.Fhir.Instance.Support
             if (String.IsNullOrWhiteSpace(Title))
                 errors.Add("Feed must contain a title", context);
 
-            if (String.IsNullOrWhiteSpace(Id))
+            if (!Util.UriHasValue(Id))
                 errors.Add("Feed must have an id", context);
 
-            if (SelfLink == null || String.IsNullOrWhiteSpace(SelfLink.ToString()))
-                errors.Add("Feed must have a link of type 'self'", context);
+            if (!Util.UriHasValue(SelfLink))
+                errors.Add("Feed must have a self-link", context);
 
             Entries.ForEach(entry => errors.AddRange(entry.Validate()));
 
             return errors;
         }
 
-
         private const string GDATA_NAMESPACE = "http://schemas.google.com/g/2005";
+        public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/sid/fhir/resource-types";
+        public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
+        public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
         private const string ETAG_LABEL = "etag";
         private readonly XmlQualifiedName ETAG = new XmlQualifiedName(ETAG_LABEL, GDATA_NAMESPACE);
     }
-      
-    public class BundleEntry
+
+
+    public abstract class BundleEntry
     {
-        public string VersionId { get; set; }
-        public string Title { get; set; }
         public Uri SelfLink { get; set; }
-        public string Id { get; set; }
-        public DateTimeOffset? LastUpdated { get; set; }
-        public DateTimeOffset? Published { get; set; }
-        public string AuthorName { get; set; }
-        public string AuthorUri { get; set; }
-        public string ResourceType { get; set; }
+        public string VersionId { get; set; }
+        public Uri Id { get; set; }
 
-        public Resource Content { get; set; }
-        public bool IsDeletion { get; set; }
-
-        public ErrorList Validate()
+        public virtual ErrorList Validate()
         {
             ErrorList errors = new ErrorList();
-            string context = String.Format("Entry '{0}'", Id);
+            errors.DefaultContext = String.Format("Entry '{0}'", Id);
 
-            if (String.IsNullOrWhiteSpace(Title))
-                errors.Add("Entry must contain a title", context);
+            // SelfLink is no longer mandatory since a resource may not yet
+            // have an established resource URL when using Atom to post batches
+            // of new resources.
+            //if (SelfLink == null || SelfLink.ToString() == String.Empty)
+            //    errors.Add("Entry must have a link of type 'self'", context);
 
-            if (SelfLink == null || SelfLink.ToString() == String.Empty)
-                errors.Add("Entry must have a link of type 'self'", context);
-
-            if (String.IsNullOrWhiteSpace(Id))
-                errors.Add("Entry must have an id", context);
-
-            if (String.IsNullOrWhiteSpace(AuthorName))
-                errors.Add("Entry must have at least one author with a name", context);
+            if (Id == null || String.IsNullOrWhiteSpace(Id.ToString()))
+                errors.Add("Entry must have an id");
 
             return errors;
         }
 
-        public string Summary
+        public abstract string Summary { get; }
+    }
+
+
+    public class DeletedEntry : BundleEntry
+    {
+        public DateTimeOffset When { get; set; }
+
+        public override string Summary
         {
             get
             {
-                if (IsDeletion)
-                    return "<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>";
-                else if (Content != null && Content.Text != null && Content.Text.Div != null)
+                return "<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted " +
+                    "on " + When.ToString() + "</div>";
+            }
+        }
+    }
+
+    public abstract class ContentEntry : BundleEntry
+    {
+        public string Title { get; set; }
+
+        public DateTimeOffset? LastUpdated { get; set; }
+        public DateTimeOffset? Published { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorUri { get; set; }
+
+        public override ErrorList Validate()
+        {
+            ErrorList errors = base.Validate();
+
+            if (String.IsNullOrWhiteSpace(Title))
+                errors.Add("Entry must contain a title");
+
+            if (String.IsNullOrWhiteSpace(AuthorName))
+                errors.Add("Entry must have at least one author with a name");
+
+            return errors;
+        } 
+    }
+
+    public class BinaryEntry : ContentEntry
+    {
+        public string MimeType;
+        public byte[] Content { get; set; }
+
+        public override ErrorList Validate()
+        {
+            ErrorList errors = base.Validate();
+
+            if (Content == null)
+                errors.Add("Entry must contain (possibly 0-length) data");
+
+            return errors;
+        }
+
+        public override string Summary
+        {
+            get
+            {
+                return "<div xmlns='http://www.w3.org/1999/xhtml'>Binary content</div>";
+            }
+        }  
+    }
+
+    public class ResourceEntry : ContentEntry
+    {
+        public string ResourceType { get; private set; }
+
+        // Provide the content by either giving a Resource (for FHIR resources)
+        // or supplying binary data to represent a blob in the feed.
+        private Resource _content;
+        public Resource Content 
+        { 
+            get
+            {
+                return _content;
+
+            }
+
+            set
+            {
+                _content = value;
+
+                ResourceType = ModelInfo.FhirCsTypeToString[_content.GetType()];
+            }
+ 
+        }
+
+        public override ErrorList Validate()
+        {
+            ErrorList errors = base.Validate();
+
+            if (Content == null)
+                errors.Add("Entry must contain Resource data, Content may not be null");
+
+            if( ResourceType == null )
+                errors.Add("Entry specify the resource's type in ResourceType");
+
+            return errors;
+        }
+
+        public override string Summary
+        {
+            get
+            {
+                if(Content != null && Content.Text != null && Content.Text.Div != null)
                     return (string)Content.Text.Div;
                 else
                     return null;

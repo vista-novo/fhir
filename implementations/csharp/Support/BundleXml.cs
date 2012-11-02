@@ -67,7 +67,7 @@ namespace HL7.Fhir.Instance.Support
                     Title = feed.Title != null && !String.IsNullOrWhiteSpace(feed.Title.Text) ?
                                 feed.Title.Text : null,
                     LastUpdated = feed.LastUpdatedTime,
-                    Id = feed.Id,
+                    Id = new Uri(feed.Id, UriKind.Absolute),
                     SelfLink = getSelfLink(feed.Links),
                 };
             }
@@ -78,53 +78,97 @@ namespace HL7.Fhir.Instance.Support
                 return null;
             }
 
-            result.loadItems(feed.Items, errors);
+            result.Entries.Clear();
+            result.loadContentItems(feed.Items, errors);
+            result.loadDeletedItems(feed.ElementExtensions, errors);
 
             errors.AddRange(result.Validate());
 
             return result;
         }
 
-
-        private void loadItems( IEnumerable<SyndicationItem> items, ErrorList errors )
+        private void loadDeletedItems(SyndicationElementExtensionCollection extensions, ErrorList errors)
         {
-            Entries.Clear();
+            foreach (SyndicationElementExtension extension in extensions.Where(
+                        ext => ext.OuterName == "deleted-entry" && ext.OuterNamespace == ATOMPUB_TOMBSTONES_NS))
+            {
+                DeletedEntry de = new DeletedEntry();
 
+                try
+                {
+                    errors.DefaultContext = "A deleted entry";
+
+                   
+                    XmlReader extensionReader = extension.GetReader();
+                    XElement deletedExtension = (XElement)(XElement.ReadFrom(extensionReader));
+
+                    XAttribute eTag = deletedExtension.Attribute(XName.Get(ETAG_LABEL, GDATA_NAMESPACE));
+                    XAttribute when = deletedExtension.Attribute("when");
+                    XAttribute id = deletedExtension.Attribute("ref");
+
+                    XElement self = deletedExtension.Elements(XName.Get("link",ATOMPUBNS)).Where(el => el.Attribute("rel") != null &&
+                                    el.Attribute("rel").Value == "self").FirstOrDefault();
+   
+                    if (eTag != null) de.VersionId = eTag.Value;
+                    if (when != null) de.When = Instant.Parse(when.Value).Contents.Value;
+                    if (id != null) de.Id = new Uri(id.Value, UriKind.RelativeOrAbsolute);
+                    if (self != null && self.Attribute("href") != null ) 
+                                de.SelfLink = new Uri(self.Attribute("href").Value, UriKind.Absolute);
+                }
+                catch (Exception exc)
+                {
+                    errors.Add("Exception while reading deleted-entry: " + exc.Message);
+                    return;
+                }
+                finally
+                {
+                    errors.DefaultContext = null;
+                }
+
+                Entries.Add(de);
+            }
+        }
+
+        private void loadContentItems( IEnumerable<SyndicationItem> items, ErrorList errors )
+        {
             foreach (SyndicationItem item in items)
-            {       
-                BundleEntry result;
+            {
+                ContentEntry result;
 
                 try
                 {
                     errors.DefaultContext = String.Format("Entry '{0}'", item.Id);
 
-                    result = new BundleEntry()
+                    if( getCategoryFromEntry(item) == "Binary" )
+                        result = new BinaryEntry();
+                    else
+                        result = new ResourceEntry();
+
+                    result.VersionId = item.AttributeExtensions.ContainsKey(ETAG) ?
+                                item.AttributeExtensions[ETAG] : null;
+                    result.Title = item.Title != null && !String.IsNullOrWhiteSpace(item.Title.Text) ?
+                                    item.Title.Text : null;
+                    result.SelfLink = getSelfLink(item.Links);
+                    result.Id = new Uri(item.Id,UriKind.RelativeOrAbsolute);
+                    result.LastUpdated = item.LastUpdatedTime;
+                    result.Published = item.PublishDate;
+                    result.AuthorName = item.Authors != null ?
+                                 item.Authors.Select(auth => auth.Name).FirstOrDefault() : null;
+                    result.AuthorUri = item.Authors != null ?
+                                 item.Authors.Select(auth => auth.Uri).FirstOrDefault() : null;
+
+                    if (result is ResourceEntry)
                     {
-                        VersionId = item.AttributeExtensions.ContainsKey(ETAG) ?
-                                item.AttributeExtensions[ETAG] : null,
-                        Title = item.Title != null && !String.IsNullOrWhiteSpace(item.Title.Text) ?
-                                    item.Title.Text : null,
-                        SelfLink = getSelfLink(item.Links),
-                        Id = item.Id,
-                        LastUpdated = item.LastUpdatedTime,
-                        Published = item.PublishDate,
-                        AuthorName = item.Authors != null ?
-                                 item.Authors.Select(auth => auth.Name).FirstOrDefault() : null,
-                        AuthorUri = item.Authors != null ?
-                                 item.Authors.Select(auth => auth.Uri).FirstOrDefault() : null,
-                        ResourceType = item.Categories != null ? item.Categories
-                               .Where(cat => cat.Scheme == Support.Util.ATOM_CATEGORY_NAMESPACE)
-                               .Select(scat => scat.Name).FirstOrDefault() : null,
-                        IsDeletion = isDeletion(item.Content,errors),
-                    };
-
-                    if (!result.IsDeletion)
-                        result.Content = getContents(item.Content, errors);
-
+                        ((ResourceEntry)result).Content = getContents(item.Content, errors);
+                    }
+                    else
+                    {
+                        getBinaryContentsFromSyndication(item.Content, result, errors);
+                    }
                 }
                 catch (Exception exc)
                 {
-                    errors.Add( "Exception while reading entry: " + exc.Message );
+                    errors.Add("Exception while reading entry: " + exc.Message);
                     return;
                 }
                 finally
@@ -136,17 +180,42 @@ namespace HL7.Fhir.Instance.Support
             }
         }
 
-        private bool isDeletion(SyndicationContent content, ErrorList errors)
+        private static void getBinaryContentsFromSyndication(SyndicationContent content, ContentEntry result, ErrorList errors)
         {
-            string contents = getContentsFromSyndication(content,errors);
+            string contents = getContentsFromSyndication(content, errors);
+            XElement binary = null;
 
-            var contentsXml = XElement.Parse(contents);
+            try
+            {
+                binary = XElement.Parse(contents);
+            }
+            catch (XmlException e)
+            {
+                errors.Add("Cannot parse Binary: " + e.Message);
+                return;
+            }
 
-            if (contentsXml.Name.LocalName == "Deleted" &&
-                contentsXml.Name.NamespaceName == Util.FHIRNS)
-                return true;
-            else
-                return false;
+            XAttribute contentType = binary.Attribute(XName.Get("contentType"));
+
+            if (contentType != null)
+                ((BinaryEntry)result).MimeType = contentType.Value;
+
+            try
+            {
+                ((BinaryEntry)result).Content = Convert.FromBase64String(binary.FirstNode.ToString());
+            }
+            catch (Exception e)
+            {
+                errors.Add("Cannot parse content of Binary: " + e.Message);
+            }
+        }
+
+
+        private string getCategoryFromEntry(SyndicationItem item)
+        {
+            return item.Categories != null ? item.Categories
+                               .Where(cat => cat.Scheme == ATOM_CATEGORY_NAMESPACE)
+                               .Select(scat => scat.Name).FirstOrDefault() : null;
         }
 
 
@@ -156,60 +225,97 @@ namespace HL7.Fhir.Instance.Support
 
             if( !String.IsNullOrWhiteSpace(Title) ) result.Title = new TextSyndicationContent(Title);
             if (LastUpdated != null) result.LastUpdatedTime = LastUpdated.Value;
-            if( !String.IsNullOrWhiteSpace(Id) ) result.Id = Id;
-            if( SelfLink != null && !String.IsNullOrWhiteSpace(SelfLink.ToString()) )
+            if (Util.UriHasValue(Id)) result.Id = Id.ToString();
+            if (Util.UriHasValue(SelfLink))
                 result.Links.Add(SyndicationLink.CreateSelfLink(SelfLink));
 
-            result.Items = saveItems();
-
+            result.Items = createContentItems();
+            addDeletedItemsAsExtensions(result.ElementExtensions);
+            
             result.SaveAsAtom10(writer);
         }
 
 
-        private IEnumerable<SyndicationItem> saveItems()
+        private void addDeletedItemsAsExtensions(SyndicationElementExtensionCollection extensions)
         {
-            List<SyndicationItem> result = new List<SyndicationItem>();
-
-            foreach (BundleEntry entry in Entries)
+            foreach (BundleEntry entry in Entries.Where(be=>be is DeletedEntry))
             {
-                SyndicationItem newItem = new SyndicationItem();
+                DeletedEntry de = (DeletedEntry)entry;
 
-                newItem.Title = new TextSyndicationContent(entry.Title);
-                if( entry.SelfLink!= null && !String.IsNullOrWhiteSpace(entry.SelfLink.ToString()))
-                    newItem.Links.Add(SyndicationLink.CreateSelfLink(entry.SelfLink));
-                newItem.Id = entry.Id;
-                if (entry.LastUpdated != null) newItem.LastUpdatedTime = entry.LastUpdated.Value;
-                if (entry.Published != null) newItem.PublishDate = entry.Published.Value;
+                XElement extension = new XElement(XName.Get("deleted-entry", ATOMPUB_TOMBSTONES_NS),
+                        new XAttribute("ref", de.Id.ToString()),
+                        new XAttribute("when", de.When));
 
-                if( !String.IsNullOrWhiteSpace(entry.AuthorName) )
-                    newItem.Authors.Add(new SyndicationPerson(null, entry.AuthorName, entry.AuthorUri));
-                
-                if( !String.IsNullOrWhiteSpace(entry.ResourceType) )
-                    newItem.Categories.Add(new SyndicationCategory(entry.ResourceType, Util.ATOM_CATEGORY_NAMESPACE, null));
+                if( Util.UriHasValue(de.SelfLink) )
+                    extension.Add(new XElement(XName.Get("link", ATOMPUBNS),
+                            new XAttribute("rel", "self"),
+                            new XAttribute("href", de.SelfLink.ToString())));
 
-                if (entry.IsDeletion)
-                    newItem.Content = getDeletedSyndicationContent();
-                else
-                {
-                    if(entry.Content != null )
-                        newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(entry.Content));
-                }
-
-                if( entry.Summary != null )
-                    newItem.Summary = SyndicationContent.CreateXhtmlContent(entry.Summary);
-
-                if( entry.VersionId != null)
-                    newItem.AttributeExtensions.Add(ETAG, entry.VersionId);
-
-                result.Add(newItem);
+                extensions.Add(extension);
             }
-
-            return result;
         }
 
 
+        private IEnumerable<SyndicationItem> createContentItems()
+        {
+            List<SyndicationItem> result = new List<SyndicationItem>();
 
+            foreach (BundleEntry entry in Entries.Where(be=>be is ContentEntry))
+            {
+                //Note: this handles both BinaryEntry and ResourceEntry
 
+                SyndicationItem newItem = new SyndicationItem();
+                ContentEntry ce = (ContentEntry)entry;
+
+                newItem.Title = new TextSyndicationContent(ce.Title);
+                if (Util.UriHasValue(SelfLink))
+                    newItem.Links.Add(SyndicationLink.CreateSelfLink(entry.SelfLink));
+                newItem.Id = entry.Id.ToString();
+
+                if (ce.LastUpdated != null) newItem.LastUpdatedTime = ce.LastUpdated.Value;
+                if (ce.Published != null) newItem.PublishDate = ce.Published.Value;
+
+                if (!String.IsNullOrWhiteSpace(ce.AuthorName))
+                    newItem.Authors.Add(new SyndicationPerson(null, ce.AuthorName, ce.AuthorUri));
+
+                if (ce.Summary != null)
+                    newItem.Summary = SyndicationContent.CreateXhtmlContent(ce.Summary);
+
+                if (entry.VersionId != null)
+                    newItem.AttributeExtensions.Add(ETAG, entry.VersionId);
+
+                if (entry is ResourceEntry)
+                {
+                    ResourceEntry re = (ResourceEntry)entry;
+
+                    if (!String.IsNullOrWhiteSpace(re.ResourceType))
+                        newItem.Categories.Add(new SyndicationCategory(re.ResourceType, ATOM_CATEGORY_NAMESPACE, null));
+
+                    if (re.Content != null)
+                        newItem.Content = SyndicationContent.CreateXmlContent(getContentsReader(re.Content));
+                }
+                else if (entry is BinaryEntry)
+                {
+                    BinaryEntry be = (BinaryEntry)entry;
+
+                    newItem.Categories.Add(new SyndicationCategory("Binary", ATOM_CATEGORY_NAMESPACE, null));
+
+                    if (be.Content != null)
+                    {
+                        var xmlContent = XmlSyndicationContent.CreateXmlContent(
+                            new XElement(XName.Get("Binary", Util.FHIRNS),
+                                new XAttribute("contentType", be.MimeType),
+                                new XText(Convert.ToBase64String(be.Content))));
+
+                        newItem.Content = xmlContent;
+                    }
+                }
+
+                result.Add(newItem);
+            }
+            
+            return result;
+        }
 
 
         private static Uri getSelfLink( IEnumerable<SyndicationLink> links )
@@ -227,18 +333,6 @@ namespace HL7.Fhir.Instance.Support
                  select link.Uri).FirstOrDefault();
         }
 
-
-        private static SyndicationContent getDeletedSyndicationContent()
-        {
-            string deleted = "<x>" + GetDeletedContentsAsXml() + "</x>";
-            XmlReader r = XmlReader.Create(new StringReader(deleted));
-            return SyndicationContent.CreateXmlContent(r);
-        }
-
-        public static string GetDeletedContentsAsXml()
-        {
-            return String.Format("<Deleted xmlns='{0}' />", Util.FHIRNS);
-        }
 
         private static Resource getContents(SyndicationContent content, ErrorList errors)
         {

@@ -82,9 +82,9 @@ namespace HL7.Fhir.Instance.Tests
             string x = writeStuffX(action);
 
             Assert.AreEqual("{\"x\":{\"ref\":\"3141\",\"valueBoolean\":\"true\",\"extension\":" +
-                "[{\"valueCoding\":{\"code\":\"R51\",\"system\":\"http://hl7.org/fhir/sid/icd-10\"}}]}}", j);
+                "[{\"valueCoding\":{\"system\":\"http://hl7.org/fhir/sid/icd-10\",\"code\":\"R51\"}}]}}", j);
             Assert.AreEqual("<x xmlns=\"http://hl7.org/fhir\"><ref>3141</ref><valueBoolean>true</valueBoolean>" +
-                            "<extension><valueCoding><code>R51</code><system>http://hl7.org/fhir/sid/icd-10</system>" +
+                            "<extension><valueCoding><system>http://hl7.org/fhir/sid/icd-10</system><code>R51</code>" +
                             "</valueCoding></extension></x>", x);
         }
 

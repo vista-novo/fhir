@@ -9,6 +9,7 @@ using System.IO;
 using HL7.Fhir.Instance.Support;
 using HL7.Fhir.Instance.Serializers;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace HL7.Fhir.Instance.Tests
 {
@@ -16,85 +17,188 @@ namespace HL7.Fhir.Instance.Tests
     public class BundleTests
     {
         [TestMethod]
-        public void TestDeletionGenerators()
+        public void TestSerializeBundleXml()
         {
-            Assert.AreEqual("{ Deleted : {} }", Bundle.GetDeletedContentsAsJson());
-            Assert.AreEqual("<Deleted xmlns='http://hl7.org/fhir' />", Bundle.GetDeletedContentsAsXml());
+            Bundle b = createTestBundle();
+
+            StringWriter w = new StringWriter();
+            XmlWriter xw = XmlWriter.Create(w);
+            b.Save(xw);
+            xw.Flush();
+            xw.Close();
+
+            Assert.AreEqual(testBundleAsXml, w.ToString());
+        }
+
+
+        [TestMethod]
+        public void TestParseBundleXml()
+        {
+            ErrorList errors = new ErrorList();
+
+            Bundle result = Bundle.Load(XmlReader.Create(new StringReader(testBundleAsXml)), errors);
+
+            Assert.AreEqual(0, errors.Count);
+
+            // And serialize again, to see the roundtrip.
+            StringWriter w = new StringWriter();
+            XmlWriter xw = XmlWriter.Create(w);
+            result.Save(xw);
+            xw.Flush();
+            xw.Close();
+
+            Assert.AreEqual(testBundleAsXml, w.ToString());
+        }
+
+        private string testBundleAsXml =
+            "<?xml version=\"1.0\" encoding=\"utf-16\"?><feed xmlns=\"http://www.w3.org/2005/Atom\">" +
+            "<title type=\"text\">Updates to resource 233</title><id>uuid:0d0dcca9-23b9-4149-8619-65002224c3</id><updated>2012-11-02T14:17:21Z</updated>" +
+            "<link rel=\"self\" href=\"http://test.com/fhir/person/@233/history$format=json\" />" +
+            "<deleted-entry ref=\"http://test.com/fhir/person/@233\" when=\"2012-11-01T13:15:30Z\" " +
+            "xmlns=\"http://purl.org/atompub/tombstones/1.0\"><link rel=\"self\" " +
+            "href=\"http://test.com/fhir/person/@233/history/@2\" xmlns=\"http://www.w3.org/2005/Atom\" />" +
+            "</deleted-entry>" +
+            "<entry p2:etag=\"1\" xmlns:p2=\"http://schemas.google.com/g/2005\"><id>http://test.com/fhir/person/@233</id>" +
+            "<title type=\"text\">Resource 233 Version 1</title><summary type=\"xhtml\">" +
+            "<div xmlns=\"http://www.w3.org/1999/xhtml\">summary here</div></summary><published>2012-11-02T14:17:21Z</published>" +
+            "<updated>2012-11-01T13:04:14Z</updated><author><name>110.143.187.242</name></author>" +
+            "<link rel=\"self\" href=\"http://test.com/fhir/person/@233/history/@1\" />" +
+            "<category term=\"Person\" scheme=\"http://hl7.org/fhir/sid/fhir/resource-types\" />" +
+            "<content type=\"text/xml\"><Person xmlns=\"http://hl7.org/fhir\"><text><status>generated</status>" +
+            "<div xmlns=\"http://www.w3.org/1999/xhtml\">summary here</div></text></Person></content></entry>" +
+            "<entry p2:etag=\"1\" xmlns:p2=\"http://schemas.google.com/g/2005\"><id>http://test.com/fhir/binary/@99</id>" +
+            "<title type=\"text\">Resource 99 Version 1</title><summary type=\"xhtml\"><div xmlns=\'http://www.w3.org/1999/xhtml\'>Binary content</div>" +
+            "</summary><published>2012-11-02T14:17:21Z</published><updated>2012-10-31T13:04:14Z</updated><author><name>110.143.187.242</name></author>" +
+            "<link rel=\"self\" href=\"http://test.com/fhir/binary/@99/history/@1\" />" +
+            "<category term=\"Binary\" scheme=\"http://hl7.org/fhir/sid/fhir/resource-types\" />" +
+            "<content type=\"text/xml\"><Binary contentType=\"application/x-test\" xmlns=\"http://hl7.org/fhir\">" +
+            "AAECAw==</Binary></content></entry></feed>";
+
+
+        private static Bundle createTestBundle()
+        {
+            Bundle b = new Bundle();
+
+            b.Title = "Updates to resource 233";
+            b.Id = new Uri("uuid:0d0dcca9-23b9-4149-8619-65002224c3");
+            b.LastUpdated = new DateTimeOffset(2012, 11, 2, 14, 17, 21, TimeSpan.Zero);
+            b.SelfLink = new Uri("http://test.com/fhir/person/@233/history$format=json");
+
+            ResourceEntry e1 = new ResourceEntry();
+            e1.Id = new Uri("http://test.com/fhir/person/@233");
+            e1.Title = "Resource 233 Version 1";
+            e1.SelfLink = new Uri("http://test.com/fhir/person/@233/history/@1");
+            e1.LastUpdated = new DateTimeOffset(2012, 11, 01, 13, 04, 14, TimeSpan.Zero);
+            e1.Published = new DateTimeOffset(2012, 11, 2, 14, 17, 21, TimeSpan.Zero);
+            e1.AuthorName = "110.143.187.242";
+            e1.VersionId = "1";
+            e1.Content = new Model.Person()
+            {
+                Text =
+                  new Model.Narrative()
+                  {
+                      Status = Model.Narrative.NarrativeStatus.Generated,
+                      Div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">summary here</div>"
+                  }
+            };
+
+            DeletedEntry e2 = new DeletedEntry();
+            e2.Id = new Uri("http://test.com/fhir/person/@233");
+            e2.SelfLink = new Uri("http://test.com/fhir/person/@233/history/@2");
+            e2.VersionId = "2";
+            e2.When = new DateTimeOffset(2012, 11, 01, 13, 15, 30, TimeSpan.Zero);
+
+            BinaryEntry e3 = new BinaryEntry();
+            e3.Id = new Uri("http://test.com/fhir/binary/@99");
+            e3.Title = "Resource 99 Version 1";
+            e3.SelfLink = new Uri("http://test.com/fhir/binary/@99/history/@1");
+            e3.LastUpdated = new DateTimeOffset(2012, 10, 31, 13, 04, 14, TimeSpan.Zero);
+            e3.Published = new DateTimeOffset(2012, 11, 2, 14, 17, 21, TimeSpan.Zero);
+            e3.AuthorName = "110.143.187.242";
+            e3.VersionId = "1";
+            e3.MimeType = "application/x-test";
+            e3.Content = new byte[] { 0x00, 0x01, 0x02, 0x03 };
+
+            b.Entries.Add(e1);
+            b.Entries.Add(e2);
+            b.Entries.Add(e3);
+
+            return b;
         }
 
         [TestMethod]
         public void TestParseBundle()
         {
-            string json = "{ " +
-                 "\"title\" : \"LabReport ordered by last update\"," +
-                 "\"updated\" : \"2012-08-01T16:21:41+00:00\"," +
-                 "\"id\" : \"uuid:649d48c8-86f9-4c86-9408-a69ab86ccf\"," +
-                 "\"links\" : [{" +
-                     "\"rel\" : \"self\"," +
-                     "\"href\" : \"http://somewhere.com\" }]," +
-                 "\"entries\" : [{" +
-                    "\"title\" : \"Resource  1, version 1\"," +
-                    "\"id\" : \"@223344\"," +
-                    "\"links\" : [{" +
-                    "\"rel\" : \"self\"," +
-                    "\"href\" : \"http://somewhere.com/@223344/history/@1\"}]," +
-                    "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
-                    "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
-                    "\"authors\" : [{" +
-                    "\"name\" : \"192.149.74.10\"}]," +
-                    "\"categories\" : [{" +
-                        "\"term\" : \"LabReport\"," +
-                        "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
-                    "\"content\" : {" +
-                    "\"LabReport\" : {} }," +
-                    "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>SBT typing</div>\"" +
-                    "},{" +
-                    "\"title\" : \"Resource  1, version 2\"," +
-                    "\"id\" : \"@223344\"," +
-                    "\"links\" : [{" +
-                    "\"rel\" : \"self\"," +
-                    "\"href\" : \"http://somewhere.com/@223344/history/@2\"}]," +
-                    "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
-                    "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
-                    "\"authors\" : [{" +
-                    "\"name\" : \"192.149.74.10\"}]," +
-                    "\"categories\" : [{" +
-                        "\"term\" : \"LabReport\"," +
-                        "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
-                    "\"content\" : {\"Deleted\" : {} }," +
-                    "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>\"" +
-                    "}]}";
+            //string json = "{ " +
+            //     "\"title\" : \"LabReport ordered by last update\"," +
+            //     "\"updated\" : \"2012-08-01T16:21:41+00:00\"," +
+            //     "\"id\" : \"uuid:649d48c8-86f9-4c86-9408-a69ab86ccf\"," +
+            //     "\"links\" : [{" +
+            //         "\"rel\" : \"self\"," +
+            //         "\"href\" : \"http://somewhere.com\" }]," +
+            //     "\"entries\" : [{" +
+            //        "\"title\" : \"Resource  1, version 1\"," +
+            //        "\"id\" : \"@223344\"," +
+            //        "\"links\" : [{" +
+            //        "\"rel\" : \"self\"," +
+            //        "\"href\" : \"http://somewhere.com/@223344/history/@1\"}]," +
+            //        "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
+            //        "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
+            //        "\"authors\" : [{" +
+            //        "\"name\" : \"192.149.74.10\"}]," +
+            //        "\"categories\" : [{" +
+            //            "\"term\" : \"LabReport\"," +
+            //            "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
+            //        "\"content\" : {" +
+            //        "\"LabReport\" : {} }," +
+            //        "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>SBT typing</div>\"" +
+            //        "},{" +
+            //        "\"title\" : \"Resource  1, version 2\"," +
+            //        "\"id\" : \"@223344\"," +
+            //        "\"links\" : [{" +
+            //        "\"rel\" : \"self\"," +
+            //        "\"href\" : \"http://somewhere.com/@223344/history/@2\"}]," +
+            //        "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
+            //        "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
+            //        "\"authors\" : [{" +
+            //        "\"name\" : \"192.149.74.10\"}]," +
+            //        "\"categories\" : [{" +
+            //            "\"term\" : \"LabReport\"," +
+            //            "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
+            //        "\"content\" : {\"Deleted\" : {} }," +
+            //        "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>\"" +
+            //        "}]}";
 
 
-            JsonTextReader r = new JsonTextReader(new StringReader(json));
-            r.DateParseHandling = DateParseHandling.DateTimeOffset;
+            //JsonTextReader r = new JsonTextReader(new StringReader(json));
+            //r.DateParseHandling = DateParseHandling.DateTimeOffset;
 
-            ErrorList errors = new ErrorList();
-            Bundle test = Bundle.Load(r,errors);
+            //ErrorList errors = new ErrorList();
+            //Bundle test = Bundle.Load(r,errors);
 
-            Assert.AreEqual(0, errors.Count, errors.ToString());
+            //Assert.AreEqual(0, errors.Count, errors.ToString());
 
-            Assert.AreEqual("LabReport ordered by last update", test.Title);
-            Assert.AreEqual(2012, test.LastUpdated.Value.Year);
-            Assert.IsNotNull(test.SelfLink);
+            //Assert.AreEqual("LabReport ordered by last update", test.Title);
+            //Assert.AreEqual(2012, test.LastUpdated.Value.Year);
+            //Assert.IsNotNull(test.SelfLink);
 
-            Assert.AreEqual(2, test.Entries.Count);
+            //Assert.AreEqual(2, test.Entries.Count);
 
-            Assert.AreEqual(true, test.Entries[1].IsDeletion);
-            Assert.AreEqual("<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>", test.Entries[1].Summary);
+            //Assert.AreEqual(true, test.Entries[1].IsDeletion);
+            //Assert.AreEqual("<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>", test.Entries[1].Summary);
 
-            StringWriter sw = new StringWriter();
-            test.Save(new JsonTextWriter(sw));
-            Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"""content""\s*:\s*{\s*""Deleted""\s*:\s*{\s*}\s*}"));
+            //StringWriter sw = new StringWriter();
+            //test.Save(new JsonTextWriter(sw));
+            //Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"""content""\s*:\s*{\s*""Deleted""\s*:\s*{\s*}\s*}"));
 
-            sw = new StringWriter();
-            test.Save(new System.Xml.XmlTextWriter(sw));
-            Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"<content.*>\s*<Deleted\s*xmlns=.http://hl7\.org/fhir.\s*>\s*</Deleted>\s*</content>"));
+            //sw = new StringWriter();
+            //test.Save(new System.Xml.XmlTextWriter(sw));
+            //Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"<content.*>\s*<Deleted\s*xmlns=.http://hl7\.org/fhir.\s*>\s*</Deleted>\s*</content>"));
 
-            errors.Clear();
-            test = Bundle.Load(System.Xml.XmlReader.Create(new StringReader(sw.ToString())), errors);
-            Assert.AreEqual(0, errors.Count);
-            Assert.IsTrue(test.Entries[1].IsDeletion);
+            //errors.Clear();
+            //test = Bundle.Load(System.Xml.XmlReader.Create(new StringReader(sw.ToString())), errors);
+            //Assert.AreEqual(0, errors.Count);
+            //Assert.IsTrue(test.Entries[1].IsDeletion);
         }
 
     }

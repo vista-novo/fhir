@@ -169,6 +169,11 @@ This url may be accessed by a browser. The logical id is preceded by a "@" to ma
 The possible values for the id itself are described in the <a href="datatypes.htm#id">id type</a>.
 Servers are required to return a content-location header with the response which is the full version 
 specific url (see vread below) and a Last-Modified header.
+<p>
+Note: Unknown resources and deleted resources are treated differently on a read: A GET for a deleted 
+resource returns a 410 status code, whereas a GET for an unknown resource returns 404.
+</p>
+
 </p>
 <a name="vread"> </a>
 <h2>vread</h2>
@@ -180,16 +185,16 @@ is performed by an HTTP GET operation as shown:
   GET [service-url]/[resourcetype]/{@id}/history/{@vid} (?$format=mimeType)
 </pre>
 <p>
-This returns a single instance with the content specified for the resource type.
-Servers may return a content-location header with the response which is the url 
-requested and a Last-Modified header.
+This returns a single instance with the content specified for the resource type for that
+version of the resource. Servers may return a content-location header with the response which is the url 
+requested and a Last-Modified header. 
 </p>
 <p>
 The version id is an opaque identifier that conforms to the same format requirements as 
 a resource id. The id may have been found by performing a history operation (see below), by recording the 
 version id from a content location returned from a read or from a version specific reference in a 
-content model. The vread interaction should succeed even after a resource is deleted as long as a 
-correct version identifier is provided. 
+content model. The vread interaction for a version that marks the deletion of the resource should succeed 
+as long as a correct version identifier is provided, in which case a 410 status code is returned.
 </p>
 <p>
 Servers SHOULD support a version specific retrieval of the current version of the 

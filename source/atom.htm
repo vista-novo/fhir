@@ -92,15 +92,11 @@ in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt
 &lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
    .. feed elements and other entries ..
   &lt;at:deleted-entry xmlns:at="http://purl.org/atompub/tombstones/1.0"
-      ref="<font color="navy">Logical Id for deleted resource</font>" when="<font color="navy">when deleted</font>"&lt;
+      ref="<font color="navy">Logical Id for deleted resource</font>" when="<font color="navy">when deleted (instant)</font>"&gt;
     &lt;<b>link</b> <span style="color: brown;"><b>0..1</b></span> rel="self" href="<font color="navy">Version Specific reference to Resource</font>"/&gt;
   &lt;/at:deleted-entry>
   ... other entries ...
 </pre>
-<p>
-A deleted resource returns a 410 error if it was accessed through the RESTful interface. 
-</p>
-
 <a name="Binary"> </a>
 <h2>Binary Resources</h2>
 <p>

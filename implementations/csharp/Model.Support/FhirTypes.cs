@@ -62,7 +62,7 @@ namespace HL7.Fhir.Instance.Model
         /**
 	     * Master resource Id, in all resources
 	     */
-        public Id Id { get; set; }
+       // public Id Id { get; set; }
 
         /**
          * Text summary of resource, for human interpretation

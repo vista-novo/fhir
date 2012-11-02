@@ -45,10 +45,6 @@ namespace HL7.Fhir.Instance.Support
         public const string XMLNS = "http://www.w3.org/2000/xmlns/";
         public const string DIVELEM = "div";
         public static string DARATTR = "dataAbsentReason";
-        public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/sid/fhir/resource-types";
-
-
-
 
         public static string Capitalize(string s)
         {
@@ -57,6 +53,11 @@ namespace HL7.Fhir.Instance.Support
             char[] a = s.ToCharArray();
             a[0] = char.ToUpper(a[0]);
             return new string(a);
+        }
+
+        public static bool UriHasValue(Uri u)
+        {
+            return u != null && !String.IsNullOrEmpty(u.ToString());
         }
     }
 }
