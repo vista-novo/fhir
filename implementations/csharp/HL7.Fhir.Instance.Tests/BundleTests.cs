@@ -30,6 +30,20 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(testBundleAsXml, w.ToString());
         }
 
+        [TestMethod]
+        public void TestSerializeBundleJson()
+        {
+            Bundle b = createTestBundle();
+
+            StringWriter w = new StringWriter();
+            JsonWriter jw = new JsonTextWriter(w);
+            b.Save(jw);
+            jw.Flush();
+            jw.Close();
+
+            Assert.AreEqual(testBundleAsJson, w.ToString());
+        }
+
 
         [TestMethod]
         public void TestParseBundleXml()
@@ -73,6 +87,21 @@ namespace HL7.Fhir.Instance.Tests
             "<category term=\"Binary\" scheme=\"http://hl7.org/fhir/sid/fhir/resource-types\" />" +
             "<content type=\"text/xml\"><Binary contentType=\"application/x-test\" xmlns=\"http://hl7.org/fhir\">" +
             "AAECAw==</Binary></content></entry></feed>";
+
+        private string testBundleAsJson = "{\"title\":\"Updates to resource 233\",\"updated\":\"2012-11-02T14:17:21+00:00\","+
+            "\"id\":\"uuid:0d0dcca9-23b9-4149-8619-65002224c3\",\"link\":[{\"rel\":\"self\",\"href\":\"http://test.com/fhir/person/@233/history$format=json\"}],"+
+            "\"entry\":[{\"title\":\"Resource 233 Version 1\",\"link\":[{\"rel\":\"self\",\"href\":\"http://test.com/fhir/person/@233/history/@1\"}],"+
+            "\"id\":\"http://test.com/fhir/person/@233\",\"updated\":\"2012-11-01T13:04:14+00:00\",\"published\":\"2012-11-02T14:17:21+00:00\","+
+            "\"author\":[{\"name\":\"110.143.187.242\"}],\"summary\":\"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">summary here</div>\","+
+            "\"version\":\"1\",\"category\":[{\"term\":\"Person\",\"scheme\":\"http://hl7.org/fhir/sid/fhir/resource-types\"}],\"content\":"+
+            "{\"Person\":{\"text\":{\"status\":\"generated\",\"div\":\"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">summary here</div>\"}}}},"+
+            "{\"title\":\"Resource 99 Version 1\",\"link\":[{\"rel\":\"self\",\"href\":\"http://test.com/fhir/binary/@99/history/@1\"}],"+
+            "\"id\":\"http://test.com/fhir/binary/@99\",\"updated\":\"2012-10-31T13:04:14+00:00\",\"published\":\"2012-11-02T14:17:21+00:00\","+
+            "\"author\":[{\"name\":\"110.143.187.242\"}],\"summary\":\"<div xmlns='http://www.w3.org/1999/xhtml'>Binary content</div>\","+
+            "\"version\":\"1\",\"category\":[{\"term\":\"Binary\",\"scheme\":\"http://hl7.org/fhir/sid/fhir/resource-types\"}],"+
+            "\"content\":{\"Binary\":{\"contentType\":\"application/x-test\",\"content\":\"AAECAw==\"}}},"+
+            "{\"deleted\":\"2012-11-01T13:15:30+00:00\",\"id\":\"http://test.com/fhir/person/@233\",\"link\":[{\"rel\":\"self\","+
+            "\"href\":\"http://test.com/fhir/person/@233/history/@2\"}]}]}";
 
 
         private static Bundle createTestBundle()
@@ -125,81 +154,5 @@ namespace HL7.Fhir.Instance.Tests
 
             return b;
         }
-
-        [TestMethod]
-        public void TestParseBundle()
-        {
-            //string json = "{ " +
-            //     "\"title\" : \"LabReport ordered by last update\"," +
-            //     "\"updated\" : \"2012-08-01T16:21:41+00:00\"," +
-            //     "\"id\" : \"uuid:649d48c8-86f9-4c86-9408-a69ab86ccf\"," +
-            //     "\"links\" : [{" +
-            //         "\"rel\" : \"self\"," +
-            //         "\"href\" : \"http://somewhere.com\" }]," +
-            //     "\"entries\" : [{" +
-            //        "\"title\" : \"Resource  1, version 1\"," +
-            //        "\"id\" : \"@223344\"," +
-            //        "\"links\" : [{" +
-            //        "\"rel\" : \"self\"," +
-            //        "\"href\" : \"http://somewhere.com/@223344/history/@1\"}]," +
-            //        "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
-            //        "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
-            //        "\"authors\" : [{" +
-            //        "\"name\" : \"192.149.74.10\"}]," +
-            //        "\"categories\" : [{" +
-            //            "\"term\" : \"LabReport\"," +
-            //            "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
-            //        "\"content\" : {" +
-            //        "\"LabReport\" : {} }," +
-            //        "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>SBT typing</div>\"" +
-            //        "},{" +
-            //        "\"title\" : \"Resource  1, version 2\"," +
-            //        "\"id\" : \"@223344\"," +
-            //        "\"links\" : [{" +
-            //        "\"rel\" : \"self\"," +
-            //        "\"href\" : \"http://somewhere.com/@223344/history/@2\"}]," +
-            //        "\"updated\" : \"2012-07-25T18:25:24+00:00\"," +
-            //        "\"published\" : \"2012-08-01T16:21:41+00:00\"," +
-            //        "\"authors\" : [{" +
-            //        "\"name\" : \"192.149.74.10\"}]," +
-            //        "\"categories\" : [{" +
-            //            "\"term\" : \"LabReport\"," +
-            //            "\"scheme\" : \"http://hl7.org/fhir/sid/fhir/resource-types\"}]," +
-            //        "\"content\" : {\"Deleted\" : {} }," +
-            //        "\"summary\" : \"<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>\"" +
-            //        "}]}";
-
-
-            //JsonTextReader r = new JsonTextReader(new StringReader(json));
-            //r.DateParseHandling = DateParseHandling.DateTimeOffset;
-
-            //ErrorList errors = new ErrorList();
-            //Bundle test = Bundle.Load(r,errors);
-
-            //Assert.AreEqual(0, errors.Count, errors.ToString());
-
-            //Assert.AreEqual("LabReport ordered by last update", test.Title);
-            //Assert.AreEqual(2012, test.LastUpdated.Value.Year);
-            //Assert.IsNotNull(test.SelfLink);
-
-            //Assert.AreEqual(2, test.Entries.Count);
-
-            //Assert.AreEqual(true, test.Entries[1].IsDeletion);
-            //Assert.AreEqual("<div xmlns='http://www.w3.org/1999/xhtml'>This resource has been deleted</div>", test.Entries[1].Summary);
-
-            //StringWriter sw = new StringWriter();
-            //test.Save(new JsonTextWriter(sw));
-            //Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"""content""\s*:\s*{\s*""Deleted""\s*:\s*{\s*}\s*}"));
-
-            //sw = new StringWriter();
-            //test.Save(new System.Xml.XmlTextWriter(sw));
-            //Assert.IsTrue(Regex.IsMatch(sw.ToString(), @"<content.*>\s*<Deleted\s*xmlns=.http://hl7\.org/fhir.\s*>\s*</Deleted>\s*</content>"));
-
-            //errors.Clear();
-            //test = Bundle.Load(System.Xml.XmlReader.Create(new StringReader(sw.ToString())), errors);
-            //Assert.AreEqual(0, errors.Count);
-            //Assert.IsTrue(test.Entries[1].IsDeletion);
-        }
-
     }
 }

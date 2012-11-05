@@ -44,6 +44,16 @@ namespace HL7.Fhir.Instance.Support
 {
     public partial class Bundle
     {
+        public const string XATOM_DELETED_ENTRY = "deleted-entry";
+        public const string XATOM_DELETED_WHEN = "when";
+        public const string XATOM_DELETED_REF = "ref";
+        public const string XATOM_LINK = "link";
+        public const string XATOM_LINK_SELF = "self";
+        public const string XATOM_LINK_REL = "rel";
+        public const string XATOM_LINK_HREF = "href";
+        public const string XATOM_CONTENT_BINARY = "Binary";
+        public const string XATOM_CONTENT_TYPE = "contentType";
+
         public static Bundle Load(XmlReader reader, ErrorList errors)
         {
             SyndicationFeed feed;
@@ -90,7 +100,7 @@ namespace HL7.Fhir.Instance.Support
         private void loadDeletedItems(SyndicationElementExtensionCollection extensions, ErrorList errors)
         {
             foreach (SyndicationElementExtension extension in extensions.Where(
-                        ext => ext.OuterName == "deleted-entry" && ext.OuterNamespace == ATOMPUB_TOMBSTONES_NS))
+                        ext => ext.OuterName == XATOM_DELETED_ENTRY && ext.OuterNamespace == ATOMPUB_TOMBSTONES_NS))
             {
                 DeletedEntry de = new DeletedEntry();
 
@@ -103,17 +113,18 @@ namespace HL7.Fhir.Instance.Support
                     XElement deletedExtension = (XElement)(XElement.ReadFrom(extensionReader));
 
                     XAttribute eTag = deletedExtension.Attribute(XName.Get(ETAG_LABEL, GDATA_NAMESPACE));
-                    XAttribute when = deletedExtension.Attribute("when");
-                    XAttribute id = deletedExtension.Attribute("ref");
+                    XAttribute when = deletedExtension.Attribute(XATOM_DELETED_WHEN);
+                    XAttribute id = deletedExtension.Attribute(XATOM_DELETED_REF);
 
-                    XElement self = deletedExtension.Elements(XName.Get("link",ATOMPUBNS)).Where(el => el.Attribute("rel") != null &&
-                                    el.Attribute("rel").Value == "self").FirstOrDefault();
+                    XElement self = deletedExtension.Elements(XName.Get(XATOM_LINK,ATOMPUBNS))
+                        .Where(el => el.Attribute(XATOM_LINK_REL) != null &&
+                                    el.Attribute(XATOM_LINK_REL).Value == XATOM_LINK_SELF).FirstOrDefault();
    
                     if (eTag != null) de.VersionId = eTag.Value;
                     if (when != null) de.When = Instant.Parse(when.Value).Contents.Value;
                     if (id != null) de.Id = new Uri(id.Value, UriKind.RelativeOrAbsolute);
-                    if (self != null && self.Attribute("href") != null ) 
-                                de.SelfLink = new Uri(self.Attribute("href").Value, UriKind.Absolute);
+                    if (self != null && self.Attribute(XATOM_LINK_HREF) != null ) 
+                                de.SelfLink = new Uri(self.Attribute(XATOM_LINK_HREF).Value, UriKind.Absolute);
                 }
                 catch (Exception exc)
                 {
@@ -139,7 +150,7 @@ namespace HL7.Fhir.Instance.Support
                 {
                     errors.DefaultContext = String.Format("Entry '{0}'", item.Id);
 
-                    if( getCategoryFromEntry(item) == "Binary" )
+                    if( getCategoryFromEntry(item) == XATOM_CONTENT_BINARY )
                         result = new BinaryEntry();
                     else
                         result = new ResourceEntry();
@@ -195,7 +206,7 @@ namespace HL7.Fhir.Instance.Support
                 return;
             }
 
-            XAttribute contentType = binary.Attribute(XName.Get("contentType"));
+            XAttribute contentType = binary.Attribute(XName.Get(XATOM_CONTENT_TYPE));
 
             if (contentType != null)
                 ((BinaryEntry)result).MimeType = contentType.Value;
@@ -242,14 +253,14 @@ namespace HL7.Fhir.Instance.Support
             {
                 DeletedEntry de = (DeletedEntry)entry;
 
-                XElement extension = new XElement(XName.Get("deleted-entry", ATOMPUB_TOMBSTONES_NS),
-                        new XAttribute("ref", de.Id.ToString()),
-                        new XAttribute("when", de.When));
+                XElement extension = new XElement(XName.Get(XATOM_DELETED_ENTRY, ATOMPUB_TOMBSTONES_NS),
+                        new XAttribute(XATOM_DELETED_REF, de.Id.ToString()),
+                        new XAttribute(XATOM_DELETED_WHEN, de.When));
 
                 if( Util.UriHasValue(de.SelfLink) )
-                    extension.Add(new XElement(XName.Get("link", ATOMPUBNS),
-                            new XAttribute("rel", "self"),
-                            new XAttribute("href", de.SelfLink.ToString())));
+                    extension.Add(new XElement(XName.Get(XATOM_LINK, ATOMPUBNS),
+                            new XAttribute(XATOM_LINK_REL, XATOM_LINK_SELF),
+                            new XAttribute(XATOM_LINK_HREF, de.SelfLink.ToString())));
 
                 extensions.Add(extension);
             }
@@ -298,18 +309,20 @@ namespace HL7.Fhir.Instance.Support
                 {
                     BinaryEntry be = (BinaryEntry)entry;
 
-                    newItem.Categories.Add(new SyndicationCategory("Binary", ATOM_CATEGORY_NAMESPACE, null));
+                    newItem.Categories.Add(new SyndicationCategory(XATOM_CONTENT_BINARY, ATOM_CATEGORY_NAMESPACE, null));
 
                     if (be.Content != null)
                     {
                         var xmlContent = XmlSyndicationContent.CreateXmlContent(
-                            new XElement(XName.Get("Binary", Util.FHIRNS),
-                                new XAttribute("contentType", be.MimeType),
+                            new XElement(XName.Get(XATOM_CONTENT_BINARY, Util.FHIRNS),
+                                new XAttribute(XATOM_CONTENT_TYPE, be.MimeType),
                                 new XText(Convert.ToBase64String(be.Content))));
 
                         newItem.Content = xmlContent;
                     }
                 }
+                else
+                    throw new NotSupportedException("Cannot serialize unknown entry type " + entry.GetType().Name);
 
                 result.Add(newItem);
             }
@@ -320,15 +333,10 @@ namespace HL7.Fhir.Instance.Support
 
         private static Uri getSelfLink( IEnumerable<SyndicationLink> links )
         {
-             //return links.
-             //   Where(l => l.RelationshipType != null &&
-             //       l.RelationshipType.ToLower() == "self" && l.Uri != null)
-             //                     .Select(sl => sl.Uri).FirstOrDefault();
-
              return
                  (from link in links
                  where link.RelationshipType != null &&
-                         link.RelationshipType.ToLower() == "self" &&
+                         link.RelationshipType.ToLower() == XATOM_LINK_SELF &&
                          link.Uri != null
                  select link.Uri).FirstOrDefault();
         }
