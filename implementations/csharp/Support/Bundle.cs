@@ -151,7 +151,7 @@ namespace HL7.Fhir.Instance.Support
 
     public class BinaryEntry : ContentEntry
     {
-        public string MimeType;
+        public string MediaType;
         public byte[] Content { get; set; }
 
         public override ErrorList Validate()
@@ -160,6 +160,9 @@ namespace HL7.Fhir.Instance.Support
 
             if (Content == null)
                 errors.Add("Entry must contain (possibly 0-length) data");
+
+            if (MediaType == null)
+                errors.Add("Entry must contain a contentType");
 
             return errors;
         }

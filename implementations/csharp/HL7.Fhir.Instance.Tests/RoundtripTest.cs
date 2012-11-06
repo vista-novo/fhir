@@ -9,6 +9,7 @@ using System.Xml;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
+using Ionic.Zip;
 
 namespace HL7.Fhir.Instance.Tests
 {
@@ -18,7 +19,15 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void FullRoundtripOfAllExamples()
         {
-            string path = @"..\..\..\..\..\publish\examples";
+            string examples = @"..\..\..\..\..\publish\examples.zip";
+            string path = Path.Combine(Path.GetTempPath(), "FHIRRountTripTest");
+            if (Directory.Exists(path)) Directory.Delete(path, true);
+            Directory.CreateDirectory(path);
+
+            using (var zipfile = ZipFile.Read(examples))
+            {
+                zipfile.ExtractAll(path, ExtractExistingFileAction.OverwriteSilently);
+            }
 
             Debug.WriteLine("Looking for *.xml files in " + path);
 

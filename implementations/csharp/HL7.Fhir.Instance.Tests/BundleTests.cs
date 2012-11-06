@@ -64,6 +64,27 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(testBundleAsXml, w.ToString());
         }
 
+
+        [TestMethod]
+        public void TestParseBundleJson()
+        {
+            ErrorList errors = new ErrorList();
+
+            Bundle result = Bundle.Load(new JsonTextReader(new StringReader(testBundleAsJson)), errors);
+
+            Assert.AreEqual(0, errors.Count, errors.Count > 0 ? errors.ToString() : null);
+
+            // And serialize again, to see the roundtrip.
+            StringWriter w = new StringWriter();
+            JsonWriter jw = new JsonTextWriter(w);
+            result.Save(jw);
+            jw.Flush();
+            jw.Close();
+
+            Assert.AreEqual(testBundleAsJson, w.ToString());
+        }
+
+        
         private string testBundleAsXml =
             "<?xml version=\"1.0\" encoding=\"utf-16\"?><feed xmlns=\"http://www.w3.org/2005/Atom\">" +
             "<title type=\"text\">Updates to resource 233</title><id>uuid:0d0dcca9-23b9-4149-8619-65002224c3</id><updated>2012-11-02T14:17:21Z</updated>" +
@@ -145,7 +166,7 @@ namespace HL7.Fhir.Instance.Tests
             e3.Published = new DateTimeOffset(2012, 11, 2, 14, 17, 21, TimeSpan.Zero);
             e3.AuthorName = "110.143.187.242";
             e3.VersionId = "1";
-            e3.MimeType = "application/x-test";
+            e3.MediaType = "application/x-test";
             e3.Content = new byte[] { 0x00, 0x01, 0x02, 0x03 };
 
             b.Entries.Add(e1);

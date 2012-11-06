@@ -65,107 +65,121 @@ namespace HL7.Fhir.Instance.Support
 
         public static Bundle Load(JsonReader reader, ErrorList errors)
         {
-            return null;
+            JObject feed;
+            reader.DateParseHandling = DateParseHandling.DateTimeOffset;
 
-            //JObject feed;
-            //reader.DateParseHandling = DateParseHandling.DateTimeOffset;
+            try
+            {
+                feed = JObject.Load(reader);
+            }
+            catch (Exception exc)
+            {
+                errors.Add("Exception while loading feed: " + exc.Message);
+                return null;
+            }
 
-            //try
-            //{
-            //    feed = JObject.Load(reader);
-            //}
-            //catch (Exception exc)
-            //{
-            //    errors.Add("Exception while loading feed: " + exc.Message);
-            //    return null;
-            //}
+            Bundle result;
 
-            //Bundle result;
+            try
+            {
+                result = new Bundle()
+                {
+                    Title = feed.Value<string>(JATOM_TITLE),
+                    LastUpdated = feed.Value<DateTimeOffset?>(JATOM_UPDATED),
+                    Id = new Uri(feed.Value<string>(JATOM_ID), UriKind.RelativeOrAbsolute),
+                    SelfLink = getSelfLink(feed[JATOM_LINK])
+                };
+            }
+            catch (Exception exc)
+            {
+                errors.Add("Exception while parsing feed items: " + exc.Message,
+                    String.Format("Feed '{0}'", feed.Value<string>(JATOM_ID)));
+                return null;
+            }
 
-            //try
-            //{
-            //    result = new Bundle()
-            //    {
-            //        Title = feed.Value<string>(JATOM_TITLE),
-            //        LastUpdated = feed.Value<DateTimeOffset>(JATOM_UPDATED),
-            //        Id = feed.Value<string>(JATOM_ID),
-            //        SelfLink = getSelfLink(feed[JATOM_LINKS])
-            //    };
-            //}
-            //catch (Exception exc)
-            //{
-            //    errors.Add("Exception while parsing feed items: " + exc.Message,
-            //        String.Format("Feed '{0}'", feed.Value<string>(JATOM_ID)));
-            //    return null;
-            //}
+            result.Entries.Clear();
 
-            //result.loadItems(feed[JATOM_ENTRIES], errors);
+            if( feed[JATOM_ENTRY] != null )
+                result.loadItems(feed[JATOM_ENTRY], errors);
 
-            //errors.AddRange(result.Validate());
+            errors.AddRange(result.Validate());
 
-            //return result;
+            return result;
         }
 
 
         private void loadItems( JToken token, ErrorList errors )
         {
-            //Entries.Clear();
+            JArray items = (JArray)token;
 
-            //if( token as JArray != null )
-            //{
-            //    JArray items = (JArray)token;
+            foreach (var item in items)
+            {
+                BundleEntry result;
 
-            //    foreach(var item in items)
-            //    {
-            //        BundleEntry result;
+                errors.DefaultContext = "An atom entry";
 
-            //        string id = item.Value<string>(JATOM_ID);
-            //        errors.DefaultContext = String.Format("Entry '{0}'", id);
+                string id = item.Value<string>(JATOM_ID);
+                if( id != null )
+                    errors.DefaultContext = String.Format("Entry '{0}'", id);
 
-            //        try
-            //        {
-            //            result = new BundleEntry()
-            //            {
-            //                VersionId = item.Value<string>(JATOM_VERSION) != null ?
-            //                                 item.Value<string>(JATOM_VERSION) : null,
-            //                Title = item.Value<string>(JATOM_TITLE),
-            //                SelfLink = getSelfLink(item[JATOM_LINKS]),
-            //                Id = id,
-            //                LastUpdated = item.Value<DateTimeOffset>(JATOM_UPDATED),
-            //                Published = item.Value<DateTimeOffset>(JATOM_PUBLISHED),
+                try
+                {
+                    string category = getCategoryFromEntry(item);
 
-            //                AuthorName = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
-            //                        .Select(auth => auth.Value<string>(JATOM_AUTH_NAME))
-            //                        .FirstOrDefault() : null,
-            //                AuthorUri = item[JATOM_AUTHORS] as JArray != null ? item[JATOM_AUTHORS]
-            //                        .Select(auth => auth.Value<string>(JATOM_AUTH_URI))
-            //                        .FirstOrDefault() : null,
+                    if (item.Value<DateTimeOffset?>(JATOM_DELETED) != null)
+                        result = new DeletedEntry();
+                    else if (category == XATOM_CONTENT_BINARY)
+                        result = new BinaryEntry();
+                    else
+                        result = new ResourceEntry();
+                   
+                    result.VersionId = item.Value<string>(JATOM_VERSION) != null ?
+                                         item.Value<string>(JATOM_VERSION) : null;
+                    result.SelfLink = getSelfLink(item[JATOM_LINK]);
+                    result.Id = new Uri(id, UriKind.RelativeOrAbsolute);
+                    
+                    if( result is DeletedEntry )
+                        ((DeletedEntry)result).When = item.Value<DateTimeOffset>(JATOM_DELETED);
+                    else
+                    {
+                        ContentEntry ce = (ContentEntry)result;
+ 
+                        ce.Title = item.Value<string>(JATOM_TITLE);
+                        ce.LastUpdated = item.Value<DateTimeOffset?>(JATOM_UPDATED);
+                        ce.Published = item.Value<DateTimeOffset?>(JATOM_PUBLISHED);
+                        ce.AuthorName = item[JATOM_AUTHOR] as JArray != null ? item[JATOM_AUTHOR]
+                                .Select(auth => auth.Value<string>(JATOM_AUTH_NAME))
+                                .FirstOrDefault() : null;
+                        ce.AuthorUri = item[JATOM_AUTHOR] as JArray != null ? item[JATOM_AUTHOR]
+                                .Select(auth => auth.Value<string>(JATOM_AUTH_URI))
+                                .FirstOrDefault() : null;
 
-            //                ResourceType = item[JATOM_CATEGORIES] as JArray != null ? item[JATOM_CATEGORIES]
-            //                        .Where(cat => cat.Value<string>(JATOM_CAT_SCHEME) ==
-            //                                        Support.Util.ATOM_CATEGORY_NAMESPACE)
-            //                        .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
-            //                        .FirstOrDefault() : null,
-            //                IsDeletion = isDeletion(item[JATOM_CONTENT]),
-            //            };
+                        if (result is ResourceEntry)
+                            ((ResourceEntry)ce).Content = getContents(item[JATOM_CONTENT], errors);
+                        else
+                            getBinaryContentsFromEntry(item[JATOM_CONTENT], (BinaryEntry)ce, errors);
+                    };
+                }
+                catch (Exception exc)
+                {
+                    errors.Add("Exception while reading entry: " + exc.Message);
+                    return;
+                }
+                finally
+                {
+                    errors.DefaultContext = null;
+                }
 
-            //            if (!result.IsDeletion)
-            //                result.Content = getContents(item[JATOM_CONTENT], errors);
+                Entries.Add(result);
+            }
+        }
 
-            //        }
-            //        catch (Exception exc)
-            //        {
-            //            errors.Add("Exception while reading entry: " + exc.Message);
-            //            return;
-            //        }
-            //        finally
-            //        {
-            //            errors.DefaultContext = null;
-            //        }
-
-            //        Entries.Add(result);
-            //    }
-            //}
+        private static string getCategoryFromEntry(JToken item)
+        {
+            return item[JATOM_CATEGORY] as JArray != null ? item[JATOM_CATEGORY]
+                .Where(cat => cat.Value<string>(JATOM_CAT_SCHEME) == ATOM_CATEGORY_NAMESPACE)
+                .Select(scat => scat.Value<string>(JATOM_CAT_TERM))
+                .FirstOrDefault() : null;
         }
 
 
@@ -180,6 +194,20 @@ namespace HL7.Fhir.Instance.Support
             return ResourceParser.ParseResource( new JsonFhirReader(r), errors);
         }
 
+        private static void getBinaryContentsFromEntry(JToken entryContent, BinaryEntry result, ErrorList errors)
+        {
+            JToken binaryObject = entryContent[XATOM_CONTENT_BINARY];
+
+            if (binaryObject != null)
+            {
+                result.MediaType = binaryObject.Value<string>(XATOM_CONTENT_TYPE);
+
+                JToken binaryContent = binaryObject[JATOM_CONTENT];
+
+                if (binaryContent != null)
+                    result.Content = Convert.FromBase64String(binaryContent.ToString());
+            }
+        }
 
         public void Save(JsonWriter writer)
         {
@@ -284,7 +312,7 @@ namespace HL7.Fhir.Instance.Support
                     {
                         newItem.Add(new JProperty(JATOM_CONTENT, new JObject(
                                 new JProperty( XATOM_CONTENT_BINARY, new JObject(
-                                    new JProperty( XATOM_CONTENT_TYPE, be.MimeType ),
+                                    new JProperty( XATOM_CONTENT_TYPE, be.MediaType ),
                                     new JProperty( JATOM_CONTENT, Convert.ToBase64String(be.Content)) ) ) ) ));
                     }
                 }

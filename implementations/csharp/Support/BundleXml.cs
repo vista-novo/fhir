@@ -108,13 +108,14 @@ namespace HL7.Fhir.Instance.Support
                 {
                     errors.DefaultContext = "A deleted entry";
 
-                   
                     XmlReader extensionReader = extension.GetReader();
                     XElement deletedExtension = (XElement)(XElement.ReadFrom(extensionReader));
+                    XAttribute id = deletedExtension.Attribute(XATOM_DELETED_REF);
+
+                    if (id != null) errors.DefaultContext = String.Format("Entry '{0}'", id);
 
                     XAttribute eTag = deletedExtension.Attribute(XName.Get(ETAG_LABEL, GDATA_NAMESPACE));
                     XAttribute when = deletedExtension.Attribute(XATOM_DELETED_WHEN);
-                    XAttribute id = deletedExtension.Attribute(XATOM_DELETED_REF);
 
                     XElement self = deletedExtension.Elements(XName.Get(XATOM_LINK,ATOMPUBNS))
                         .Where(el => el.Attribute(XATOM_LINK_REL) != null &&
@@ -169,13 +170,9 @@ namespace HL7.Fhir.Instance.Support
                                  item.Authors.Select(auth => auth.Uri).FirstOrDefault() : null;
 
                     if (result is ResourceEntry)
-                    {
                         ((ResourceEntry)result).Content = getContents(item.Content, errors);
-                    }
                     else
-                    {
-                        getBinaryContentsFromSyndication(item.Content, result, errors);
-                    }
+                        getBinaryContentsFromSyndication(item.Content, (BinaryEntry)result, errors);
                 }
                 catch (Exception exc)
                 {
@@ -191,7 +188,7 @@ namespace HL7.Fhir.Instance.Support
             }
         }
 
-        private static void getBinaryContentsFromSyndication(SyndicationContent content, ContentEntry result, ErrorList errors)
+        private static void getBinaryContentsFromSyndication(SyndicationContent content, BinaryEntry result, ErrorList errors)
         {
             string contents = getContentsFromSyndication(content, errors);
             XElement binary = null;
@@ -209,11 +206,11 @@ namespace HL7.Fhir.Instance.Support
             XAttribute contentType = binary.Attribute(XName.Get(XATOM_CONTENT_TYPE));
 
             if (contentType != null)
-                ((BinaryEntry)result).MimeType = contentType.Value;
+                result.MediaType = contentType.Value;
 
             try
             {
-                ((BinaryEntry)result).Content = Convert.FromBase64String(binary.FirstNode.ToString());
+                result.Content = Convert.FromBase64String(binary.FirstNode.ToString());
             }
             catch (Exception e)
             {
@@ -315,7 +312,7 @@ namespace HL7.Fhir.Instance.Support
                     {
                         var xmlContent = XmlSyndicationContent.CreateXmlContent(
                             new XElement(XName.Get(XATOM_CONTENT_BINARY, Util.FHIRNS),
-                                new XAttribute(XATOM_CONTENT_TYPE, be.MimeType),
+                                new XAttribute(XATOM_CONTENT_TYPE, be.MediaType),
                                 new XText(Convert.ToBase64String(be.Content))));
 
                         newItem.Content = xmlContent;

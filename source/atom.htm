@@ -130,7 +130,8 @@ There are situations where it is useful or required to represent binary resource
 and where it is convenient to include these in the feed directly rather than leaving them by reference.
 </p>
 <p>
-When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a content-type, which is the mime-type as it would be specified in HTTP:
+When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a 
+content-type, which is the mime-type as it would be specified in HTTP. The contentType attribute MUST be present.
 </p>
 <pre class="spec">
   ...
@@ -138,7 +139,8 @@ When binary resources are represented in the feed, they are enclosed as base64 e
     ...
     &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">Binary</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
     &lt;<b>content</b> <span style="color: brown;"><b>1..1</b></span> type="text/xml">
-      &lt;<b>Binary</b> xmlns="http://hl7.org/fhir" contentType="<font color="navy">mime type</font>"&gt;<font color="navy">Base64 Content</font>&lt;/Binary&gt;
+      &lt;<b>Binary</b> xmlns="http://hl7.org/fhir" contentType="<font color="navy">mime type</font>"&gt;
+	  <font color="navy">Base64 Content</font>&lt;/Binary&gt;
     &lt;/content>
     &lt;<b>summary</b> <span style="color: brown;"><b>0..1</b></span> type="xhtml">
         &lt;div xmlns="http://www.w3.org/1999/xhtml"> Binary resource&lt;/div>
