@@ -66,6 +66,7 @@
     <Compile Include="ParserTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="XmlAssert.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HL7.Fhir.Instance.csproj">

@@ -92,7 +92,7 @@ namespace HL7.Fhir.Instance.Support
             }
             catch (Exception exc)
             {
-                errors.Add("Exception while parsing feed items: " + exc.Message,
+                errors.Add("Exception while parsing feed attributes: " + exc.Message,
                     String.Format("Feed '{0}'", feed.Value<string>(JATOM_ID)));
                 return null;
             }

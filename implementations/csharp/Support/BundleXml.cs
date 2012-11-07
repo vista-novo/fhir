@@ -76,14 +76,14 @@ namespace HL7.Fhir.Instance.Support
                 {
                     Title = feed.Title != null && !String.IsNullOrWhiteSpace(feed.Title.Text) ?
                                 feed.Title.Text : null,
-                    LastUpdated = feed.LastUpdatedTime,
-                    Id = new Uri(feed.Id, UriKind.Absolute),
+                    LastUpdated = (feed.LastUpdatedTime == DateTimeOffset.MinValue) ? (DateTimeOffset?)null : feed.LastUpdatedTime,
+                    Id = new Uri(feed.Id, UriKind.RelativeOrAbsolute),
                     SelfLink = getSelfLink(feed.Links),
                 };
             }
             catch (Exception exc)
             {
-                errors.Add("Exception while parsing feed items: " + exc.Message,
+                errors.Add("Exception while parsing feed attributes: " + exc.Message,
                     String.Format("Feed '{0}'", feed.Id) );
                 return null;
             }
@@ -162,8 +162,10 @@ namespace HL7.Fhir.Instance.Support
                                     item.Title.Text : null;
                     result.SelfLink = getSelfLink(item.Links);
                     result.Id = new Uri(item.Id,UriKind.RelativeOrAbsolute);
-                    result.LastUpdated = item.LastUpdatedTime;
-                    result.Published = item.PublishDate;
+                    result.LastUpdated = (item.LastUpdatedTime == DateTimeOffset.MinValue) ?
+                                    (DateTimeOffset?)null : item.LastUpdatedTime;
+                    result.Published = (item.PublishDate == DateTimeOffset.MinValue) ?
+                                    (DateTimeOffset?)null : item.PublishDate;
                     result.AuthorName = item.Authors != null ?
                                  item.Authors.Select(auth => auth.Name).FirstOrDefault() : null;
                     result.AuthorUri = item.Authors != null ?

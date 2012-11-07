@@ -6,6 +6,7 @@ using System.IO;
 using HL7.Fhir.Instance.Parsers;
 using HL7.Fhir.Instance.Serializers;
 using System.Xml;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
@@ -45,6 +46,23 @@ namespace HL7.Fhir.Instance.Tests
                 else
                     testFeed(file);
 
+                string actualFile = baseFilename + "-roundtrip.xml";
+
+                if (File.Exists(actualFile))
+                {
+                    try
+                    {
+                        Debug.WriteLine("Comparing roundtripped files for equality");
+                        XDocument expected = XDocument.Load(file);
+                        XDocument actual = XDocument.Load(actualFile);
+                        XmlAssert.AreSame(expected, actual);
+                    }
+                    catch (AssertFailedException af)
+                    {
+                        Debug.WriteLine("  ***** Comparison failed: " + af.Message);
+                    }
+                }
+                
                 Debug.WriteLine("  Done!");
             }
         }

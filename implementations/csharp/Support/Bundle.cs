@@ -71,6 +71,9 @@ namespace HL7.Fhir.Instance.Support
             if (!Util.UriHasValue(SelfLink))
                 errors.Add("Feed must have a self-link", context);
 
+            if (LastUpdated == null)
+                errors.Add("Feed must have a updated date", context);
+
             Entries.ForEach(entry => errors.AddRange(entry.Validate()));
 
             return errors;
@@ -144,6 +147,9 @@ namespace HL7.Fhir.Instance.Support
 
             if (String.IsNullOrWhiteSpace(AuthorName))
                 errors.Add("Entry must have at least one author with a name");
+
+            if (LastUpdated == null)
+                errors.Add("Entry must have an updated date");
 
             return errors;
         } 
