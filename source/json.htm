@@ -191,7 +191,7 @@ Each element in the Xml feed definition has a JSON corresponding JSON object mem
         }],
       &quot;category&quot; : [{
           &quot;term&quot; : &quot;Person&quot;,
-          &quot;scheme&quot; : &quot;http://hl7.org/fhir/sid/fhir/resource-types&quot;
+          &quot;scheme&quot; : &quot;http://hl7.org/fhir/resource-types&quot;
         }],
       &quot;content&quot; : {
         &quot;Person&quot; : { ...person content in JSON... }
@@ -218,11 +218,11 @@ the JSON format needs to use an entry item to retain the logical order of entrie
     ... other entries ....,    
     {
       &quot;deleted&quot; : &quot;2012-05-29T23:45:32+00:00&quot;,
+      &quot;id&quot; : &quot;http://fhir.furore.com/fhir/person/@1&quot;,
       &quot;link&quot; : [{
           &quot;rel&quot; : &quot;self&quot;,
           &quot;href&quot; : &quot;http://fhir.furore.com/fhir/person/@1/history/@1&quot;
         }],
-      &quot;id&quot; : &quot;http://fhir.furore.com/fhir/person/@1&quot;,
     }, ... other entries ....
   ]
   ... feed ...

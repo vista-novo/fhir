@@ -51,7 +51,7 @@ Whenever resources are gethered into a list, this is done using the Atom format 
       &lt;<b>name</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">Name of Human or Device that authored the resource</font>&lt;/name&gt;
       &lt;<b>uri</b> <span style="color: brown;"><b>0..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Link to the resource for the author</font>&lt;/uri&gt;
     &lt;/author>
-    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">[Resource Type]</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
+    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">[Resource Type]</font>" scheme="http://hl7.org/fhir/resource-types"/&gt;  
     &lt;<b>content</b> <span style="color: brown;"><b>1..1</b></span> type="text/xml">
       &lt;<b>[ResourceName]</b> xmlns="http://hl7.org/fhir">
          &lt;!-- Content for the resource --&gt;
@@ -97,6 +97,9 @@ in an atom feed as defined by <a href="http://www.rfc-editor.org/rfc/rfc6721.txt
   &lt;/at:deleted-entry>
   ... other entries ...
 </pre>
+<p>
+A deleted resource returns a 410 error if it was accessed through the RESTful interface. 
+</p>
 <a name="Binary"> </a>
 <h2>Binary Resources</h2>
 <p>
@@ -110,7 +113,7 @@ When binary resources are represented in the feed, they are enclosed as base64 e
   ...
   &lt;<b>entry</b>&gt;
     ...
-    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">Binary</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
+    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">Binary</font>" scheme="http://hl7.org/fhir/resource-types"/&gt;  
     &lt;<b>content</b> <span style="color: brown;"><b>1..1</b></span> type="text/xml">
       &lt;<b>Binary</b> xmlns="http://hl7.org/fhir" contentType="<font color="navy">mime type</font>"&gt;<font color="navy">Base64 Content</font>&lt;/Binary&gt;
     &lt;/content>
@@ -124,33 +127,6 @@ When binary resources are represented in the feed, they are enclosed as base64 e
 The summary should be some equivalent to "Binary Resource" in an appropriate language.
 </p>
 
-<h2>Binary Resources</h2>
-<p>
-There are situations where it is useful or required to represent binary resources in the bundle. These are resources that are referred to from FHIR Resources (usually via a URI),
-and where it is convenient to include these in the feed directly rather than leaving them by reference.
-</p>
-<p>
-When binary resources are represented in the feed, they are enclosed as base64 encoded content along with a 
-content-type, which is the mime-type as it would be specified in HTTP. The contentType attribute MUST be present.
-</p>
-<pre class="spec">
-  ...
-  &lt;<b>entry</b>&gt;
-    ...
-    &lt;<b>category</b> <span style="color: brown;"><b>1..1</b></span> term="<font color="navy">Binary</font>" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/&gt;  
-    &lt;<b>content</b> <span style="color: brown;"><b>1..1</b></span> type="text/xml">
-      &lt;<b>Binary</b> xmlns="http://hl7.org/fhir" contentType="<font color="navy">mime type</font>"&gt;
-	  <font color="navy">Base64 Content</font>&lt;/Binary&gt;
-    &lt;/content>
-    &lt;<b>summary</b> <span style="color: brown;"><b>0..1</b></span> type="xhtml">
-        &lt;div xmlns="http://www.w3.org/1999/xhtml"> Binary resource&lt;/div>
-    &lt;/summary>
-  &lt;/entry&gt;
-  ...
-</pre>
-<p>
-The summary should be some equivalent to "Binary Resource" in an appropriate language.
-</p>
 
 <h2>Resolving references to Resources</h2>
 <p>
@@ -179,7 +155,7 @@ it would look like this:
     .. 
     &lt;id>1145c09c-73d0-4297-9835-620e4afa9deb&lt;id>
     .. 
-    &lt;category term="Organization" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    &lt;category term="Organization" scheme="http://hl7.org/fhir/resource-types"/>
 
     &lt;content type="text/xml">
       &lt;Organization xmlns="http://hl7.org/fhir">
@@ -215,7 +191,7 @@ organization is in the feed, it would look like this:
     &lt;link rel="self" href="http://acme.com/fhir/organization/@23"/&gt;
     &lt;id>23&lt;id>
     .. 
-    &lt;category term="Organization" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    &lt;category term="Organization" scheme="http://hl7.org/fhir/resource-types"/>
 
     &lt;content type="text/xml">
       &lt;Organization xmlns="http://hl7.org/fhir">

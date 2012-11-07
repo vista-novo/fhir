@@ -115,7 +115,7 @@ public class AtomComposer extends XmlBase {
     xml.close(ATOM_NS, "author");
     if (e.getCategory() != null) {      
       xml.attribute("term", e.getCategory());
-      xml.attribute("scheme", "http://hl7.org/fhir/sid/fhir/resource-types");
+      xml.attribute("scheme", "http://hl7.org/fhir/resource-types");
       xml.element(ATOM_NS, "category", null);
     }
 

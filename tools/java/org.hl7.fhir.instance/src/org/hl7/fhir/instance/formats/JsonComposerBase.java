@@ -132,7 +132,7 @@ public abstract class JsonComposerBase extends XmlBase {
       openArray("categories");
       json.object();
       prop("term", e.getCategory());
-      prop("scheme", "http://hl7.org/fhir/sid/fhir/resource-types");
+      prop("scheme", "http://hl7.org/fhir/resource-types");
       json.endObject();
       closeArray();
     }

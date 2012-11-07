@@ -11,7 +11,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -900,7 +900,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -1709,7 +1709,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -2517,7 +2517,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -3324,7 +3324,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -4103,7 +4103,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -4883,7 +4883,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -5663,7 +5663,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -6467,7 +6467,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -7276,7 +7276,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -8084,7 +8084,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -8891,7 +8891,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -9670,7 +9670,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -10450,7 +10450,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -11230,7 +11230,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -11568,7 +11568,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>
@@ -11637,7 +11637,7 @@
     <author>
       <name>FHIR Project Team</name>
     </author>
-    <category term="LabReport" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <category term="LabReport" scheme="http://hl7.org/fhir/resource-types"/>
     <content type="text/xml">
       <LabReport xmlns="http://hl7.org/fhir">
         <status>final</status>

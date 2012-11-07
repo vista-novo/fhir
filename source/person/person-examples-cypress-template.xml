@@ -13,7 +13,7 @@
       <name>Cypress Project</name>
       <uri>https://github.com/projectcypress/cypress/downloads</uri>
     </author>
-    <category scheme="http://hl7.org/fhir/sid/fhir/resource-types" term="Person"/>
+    <category scheme="http://hl7.org/fhir/resource-types" term="Person"/>
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir">
         <identifier>

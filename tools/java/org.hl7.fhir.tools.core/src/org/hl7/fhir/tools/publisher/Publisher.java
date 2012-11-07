@@ -406,8 +406,7 @@ public class Publisher {
 
 		XMIResource resource = new XMIResourceImpl();
 		resource.load(new CSFileInputStream(eCorePath), null);
-		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions) resource
-				.getContents().get(0);
+		org.hl7.fhir.definitions.ecore.fhir.Definitions eCoreDefs = (org.hl7.fhir.definitions.ecore.fhir.Definitions) resource.getContents().get(0);
 
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			log("Produce " + gen.getName() + " Reference Implementation");
@@ -416,31 +415,24 @@ public class Publisher {
 			String implDir = page.getFolders().implDir(gen.getName());
 
 			if (!gen.isECoreGenerator())
-				gen.generate(page.getDefinitions(), destDir, implDir,
-						page.getVersion(), page.getGenDate().getTime(), page);
+				gen.generate(page.getDefinitions(), destDir, implDir, page.getVersion(), page.getGenDate().getTime(), page);
 			else
 				gen.generate(eCoreDefs, destDir, implDir, page);
 		}
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			if (gen.doesCompile()) {
 				log("Compile " + gen.getName() + " Reference Implementation");
-				if (!gen.compile(page.getFolders().rootDir,
-						new ArrayList<String>()))
+				if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>()))
 					log("Compile " + gen.getName() + " failed");
 			}
 		}
 
 		log("Produce Schemas");
-		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(),
-				page.getFolders().tmpResDir, page.getFolders().xsdDir,
-				page.getFolders().dstDir, page.getFolders().srcDir,
-				page.getVersion(),
-				Config.DATE_FORMAT().format(page.getGenDate().getTime()));
+		new SchemaGenerator().generate(page.getDefinitions(), page.getIni(), page.getFolders().tmpResDir, page.getFolders().xsdDir, page.getFolders().dstDir, 
+		      page.getFolders().srcDir, page.getVersion(), Config.DATE_FORMAT().format(page.getGenDate().getTime()));
 		for (ResourceDefn r : page.getDefinitions().getResources().values()) {
 			String n = r.getName().toLowerCase();
-			SchematronGenerator sch = new SchematronGenerator(
-					new FileOutputStream(page.getFolders().dstDir + n + ".sch"),
-					page);
+			SchematronGenerator sch = new SchematronGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".sch"), page);
 			sch.generate(r.getRoot(), page.getDefinitions());
 			sch.close();
 		}
@@ -458,7 +450,7 @@ public class Publisher {
 			log("Produce fhir.chm");
 			chm.produce();
 			log("Produce HL7 copy");
-			new WebMaker(page.getFolders(), page.getVersion()).produceHL7Copy();
+			new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
 			log("Produce Archive copy");
 			produceArchive();
 		}

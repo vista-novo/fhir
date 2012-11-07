@@ -20,8 +20,8 @@ todo:
 <h1>RESTful HTTP Details</h1>
 
 <p>
-In addition to the set of base resources, FHIR also provides a simple RESTful implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a> - 
-an implementation of the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
+In addition to the set of base resources, FHIR also provides a simple RESTful 
+implementation using <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">HTTP</a>.
 Each resource type has the same set of interactions defined that can be used to manage the resources 
 in a highly granular fashion. Applications claiming conformance to this framework
 claim to be conformant to "RESTful FHIR".
@@ -452,7 +452,8 @@ The conformance interaction retrieves the application's conformance statement fo
 <p>
 Applications SHALL return a <a href="conformance.htm">Conformance Resource</a> that specifies which resource types and operations are supported. 
 If a 404 Unknown is returned, FHIR is not supported on the nominated service url. The GET operation is defined because not all client libraries 
-are able to perform an OPTIONS operation.
+are able to perform an OPTIONS operation. Additional parameters that are required to be returned with the OPTIONS command are defined in the 
+<a href="#hdata">OMG hData RESTful Transport</a> specification.
 </p>
 <p>
 Servers may choose what content to return when they receive a GET operation on the Service Root URL. Generally some page that guides 
@@ -475,7 +476,8 @@ The interaction is performed by an HTTP POST operation as shown:
 The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or 
 <a href="json.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately. 
 Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, or 
-reject all resources and return an HTTP 400 or 500 type response. 
+reject all resources and return an HTTP 400 or 500 type response. It is not an error if the 
+submitted bundle has no resources in it.
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources must be identified. If the 
@@ -538,6 +540,20 @@ not use this header for any purpose. Its aim is to assist with
 system troubleshooting.
 </p>
 
+<a name="hdata"> </a>
+<h2>OMG hData RESTful Transport</h2>
+
+<p>
+This RESTful specification described here is based on the <a href="http://www.omg.org">OMG Health RESTful specification</a> (specific reference to be provided when this is published). 
+In this regard, FHIR functions as a Record Format Profile as described in that specification. Note the following significant factors to be aware of:
+</p>
+<ul>
+ <li>FHIR maps the hData sections to resource types, and hData documents to resource instances. There are no subsections, and client systems are not able to create new sections</li>
+ <li>The FHIR resource id maps to the hData document name by prepending "@"</li>
+ <li>Because clients cannot submit new sections (POST to service URL), POST to the service URL has been re-used for <a href="#batch">the batch operation</a> (difference under review)</li>
+ <li>FHIR does not (yet) define a root document. When defined, it will contain information about what the FHIR server has done (as opposed to a conformance statement, which describes what it is capable of doing)</li>
+ <li>Note that this specification does not repeat the rules in the hData RESTful Transport concerning the OPTIONS command on the service URL, but these rules (extra headers etc) still apply</li>
+</ul>
 
 <%footer%>
 

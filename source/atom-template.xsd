@@ -65,7 +65,7 @@
   </xs:complexType>
   <xs:complexType name="CategoryType">
     <xs:attribute name="term" type="fhir:ResourceType" use="required"/>
-    <xs:attribute name="scheme" type="xs:anyURI" use="required" fixed="http://hl7.org/fhir/sid/fhir/resource-types"/>
+    <xs:attribute name="scheme" type="xs:anyURI" use="required" fixed="http://hl7.org/fhir/resource-types"/>
     <xs:attributeGroup ref="atom:CommonAttributes"/>
   </xs:complexType>
   <xs:complexType name="ContentType" mixed="true">

@@ -54,11 +54,13 @@ public class WebMaker {
   private FolderManager folders;
   private String version;
   private List<String> past = new ArrayList<String>();
+  private IniFile ini;
   
-  public WebMaker(FolderManager folders, String version) {
+  public WebMaker(FolderManager folders, String version, IniFile iniFile) {
     super();
     this.folders = folders;
     this.version = version;
+    this.ini = iniFile;
   }
 
   private static final String SEARCH_FORM_HOLDER = "<p id=\"srch\">&nbsp;</p>";
@@ -99,10 +101,22 @@ public class WebMaker {
         Utilities.copyFile(new CSFile(folders.dstDir+f), new CSFile(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+f));
     }
 
+    for (String n : ini.getPropertyNames("redirects")) {
+      String dn = folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+n;
+      Utilities.createDirectory(dn);
+      String p = "<html>\r\n<head>\r\n<title>Redirect Page</title>\r\n<meta http-equiv=\"REFRESH\" content=\"0;url=http://hl7.org/implement/standards/fhir/"+
+         ini.getStringProperty("redirects", n)+
+         "\"></HEAD>\r\n</head>\r\n<body>\r\nThis page is a redirect to http://hl7.org/implement/standards/fhir/"+
+         ini.getStringProperty("redirects", n)+
+         "\r\n</body>\r\n</html>\r\n";
+      TextFile.stringToFile(p, dn+File.separator+"index.htm");
+    }
     ZipGenerator zip = new ZipGenerator(fw.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator, "", null);
     for (String v : past)
       zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+"v"+v+File.separator, "v"+v+File.separator, null);
+    for (String n : ini.getPropertyNames("redirects")) 
+      zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"web"+File.separator+n+File.separator, n+File.separator, null);
     zip.close();  
     zip = new ZipGenerator(fd.getAbsolutePath());
     zip.addFiles(folders.rootDir+"temp"+File.separator+"hl7"+File.separator+"dload"+File.separator, "", null);

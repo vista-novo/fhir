@@ -12,7 +12,7 @@
 		<author>
 			<name>Grahame Grieve / HL7 publishing committee</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -70,7 +70,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -127,7 +127,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -184,7 +184,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -241,7 +241,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -298,7 +298,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -355,7 +355,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -412,7 +412,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -469,7 +469,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -526,7 +526,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -583,7 +583,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -640,7 +640,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -696,7 +696,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -753,7 +753,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -810,7 +810,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -867,7 +867,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -924,7 +924,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -981,7 +981,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1038,7 +1038,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1095,7 +1095,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1152,7 +1152,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1209,7 +1209,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1266,7 +1266,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1323,7 +1323,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1380,7 +1380,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1437,7 +1437,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1494,7 +1494,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1551,7 +1551,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1608,7 +1608,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1665,7 +1665,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1722,7 +1722,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1779,7 +1779,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1836,7 +1836,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1893,7 +1893,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -1950,7 +1950,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2007,7 +2007,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2064,7 +2064,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2121,7 +2121,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2178,7 +2178,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2235,7 +2235,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2292,7 +2292,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2349,7 +2349,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2406,7 +2406,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2463,7 +2463,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2520,7 +2520,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2577,7 +2577,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2634,7 +2634,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2691,7 +2691,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2748,7 +2748,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2805,7 +2805,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2862,7 +2862,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2919,7 +2919,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -2976,7 +2976,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3033,7 +3033,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3090,7 +3090,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3147,7 +3147,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3204,7 +3204,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3261,7 +3261,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3318,7 +3318,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3375,7 +3375,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3432,7 +3432,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3489,7 +3489,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3546,7 +3546,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3603,7 +3603,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3660,7 +3660,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3717,7 +3717,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3774,7 +3774,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3831,7 +3831,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3888,7 +3888,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
@@ -3945,7 +3945,7 @@
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
-		<category term="Person" scheme="http://hl7.org/fhir/sid/fhir/resource-types"/>
+		<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>

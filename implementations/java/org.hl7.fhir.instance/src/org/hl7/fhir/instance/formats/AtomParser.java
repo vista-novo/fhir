@@ -114,7 +114,7 @@ public class AtomParser extends XmlBase {
       else if(eventType == XmlPullParser.START_TAG && xpp.getName().equals("published"))
         res.setPublished(parseDate(xpp));
       else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("category")) {
-        if ("http://hl7.org/fhir/sid/fhir/resource-types".equals(xpp.getAttributeValue(null, "scheme"))) 
+        if ("http://hl7.org/fhir/resource-types".equals(xpp.getAttributeValue(null, "scheme"))) 
          res.setCategory(xpp.getAttributeValue(null, "term"));
          skipEmptyElement(xpp);
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("author")) {
