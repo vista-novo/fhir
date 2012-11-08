@@ -213,4 +213,12 @@ public class Definitions {
 	public Map<String, ProfileDefn> getProfiles() {
 		return profiles;
 	}
+
+  public BindingSpecification getBindingByReference(String ref) {
+    for (BindingSpecification b : bindings.values()) {
+      if (ref.equals(b.getReference()))
+        return b;
+    }
+    return null;
+  }
 }

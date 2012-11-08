@@ -267,6 +267,12 @@ public class Utilities {
   }
 
 
+  public static String fileTitle(String file) {
+    String s = new File(file).getName();
+    return s.substring(0, s.indexOf("."));
+  }
+
+
 //  public static void checkCase(String filename) {
 //    File f = new CSFile(filename);
 //    if (!f.getName().equals(filename))

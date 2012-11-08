@@ -71,10 +71,10 @@ Whenever resources are gethered into a list, this is done using the Atom format 
  <li>Logically, a bundle is a set of resources that are prepared to send somewhere for consumption - a "feed". There is no implication that the feed is a standing arrangement (though this is not precluded)</li>
  <li>The order of elements does not matter in an atom feed. The order of elements in the atom namespace as documented here does not need to be followed</li>
  <li>The title for the feed and the entry are arbitary human readable content and not to be used for any automated processing. Applications may populate these in any useful way</li> 
- <li>Every bundle must have a unique id and that id must be a valid <a href="datatypes.htm#id">id</a>. UUIDs are recommended</li>
+ <li>Every bundle must have a unique id and that id must be a valid absolute <a href="datatypes.htm#uri">uri</a>. UUIDs are recommended (urn:uuid:...)</li>
  <li>The feed.link element is assigned no particular meaning the the FHIR specification, but may be used to provide a reference to the source of the feed</li>
  <li>The entry element carries the <a href="xml.htm#metadata">three pieces of resource metadata</a>: Id (.id), Version Id (.link), Last Updated (.updated)</li>
- <li>The entry.id must be a url, the tail element of which is the logical id of the resource</li>
+ <li>The entry.id must be an absolute url, the tail element of which is the logical id of the resource</li>
  <li>The entry.link is a version specific reference to the resource. It must be present unless the resource has no established identity (see comments under <a href="http.htm#batch">RESTful batch Operation</a>).</li>
  <li>When used in a <a href="http.htm">RESTful implementation</a>, the entry.link and entry.id are the URLs of the resource on the system; the version specific link can be used as the basis synchronising pub/sub systems using the atom bundle with the <a href="http.htm#updates">updates operation</a>. In other contexts, the values should be literal references to a server if one is available</li>
  <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom attribute, not a FHIR type)</li>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Oct 27, 2012 08:45+1100 for FHIR v0.06
+// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -399,6 +399,67 @@ public class JsonComposer extends JsonComposerBase {
       composeIdentifier("identifier", element.getIdentifier());
       composePeriod("period", element.getPeriod());
       composeResourceReference("assigner", element.getAssigner());
+      close();
+    }
+  }
+
+  private void composeProvenance(String name, Provenance element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeResourceReference("target", element.getTarget());
+      composeProvenanceActivity("activity", element.getActivity());
+      if (element.getParty().size() > 0) {
+        openArray("party");
+        for (Provenance.Party e : element.getParty()) 
+          composeProvenanceParty(null, e);
+        closeArray();
+      };
+      composeString("signature", element.getSignature());
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeProvenanceActivity(String name, Provenance.Activity element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composePeriod("period", element.getPeriod());
+      composeDate("recorded", element.getRecorded());
+      composeCodeableConcept("reason", element.getReason());
+      composeProvenanceLocation("location", element.getLocation());
+      composeURI("policy", element.getPolicy());
+      close();
+    }
+  }
+
+  private void composeProvenanceLocation(String name, Provenance.Location element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeCodeableConcept("type", element.getType());
+      composeIdentifier("id", element.getId());
+      composeString("description", element.getDescription());
+      composeString("coords", element.getCoords());
+      close();
+    }
+  }
+
+  private void composeProvenanceParty(String name, Provenance.Party element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeCoding("type", element.getType());
+      composeURI("id", element.getId());
+      composeString("description", element.getDescription());
+      composeCoding("role", element.getRole());
       close();
     }
   }
@@ -1536,125 +1597,6 @@ public class JsonComposer extends JsonComposerBase {
     }
   }
 
-  private void composeAudit(String name, Audit element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeAuditEvent("event", element.getEvent());
-      if (element.getParticipant().size() > 0) {
-        openArray("participant");
-        for (Audit.Participant e : element.getParticipant()) 
-          composeAuditParticipant(null, e);
-        closeArray();
-      };
-      if (element.getSource().size() > 0) {
-        openArray("source");
-        for (Audit.Source e : element.getSource()) 
-          composeAuditSource(null, e);
-        closeArray();
-      };
-      if (element.getObject().size() > 0) {
-        openArray("object");
-        for (Audit.Object e : element.getObject()) 
-          composeAuditObject(null, e);
-        closeArray();
-      };
-      if (element.getExtensions().size() > 0) {
-        openArray("extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension(null, e);
-        closeArray();
-      };
-      composeNarrative("text", element.getText());
-      close();
-    }
-  }
-
-  private void composeAuditEvent(String name, Audit.Event element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeCoding("id", element.getId());
-      if (element.getAction() != null)
-        composeString("action", element.getAction().toCode());
-      composeDate("dateTime", element.getDateTime());
-      if (element.getOutcome() != null)
-        composeString("outcome", element.getOutcome().toCode());
-      if (element.getCode().size() > 0) {
-        openArray("code");
-        for (Coding e : element.getCode()) 
-          composeCoding(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeAuditParticipant(String name, Audit.Participant element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeString("userId", element.getUserId());
-      composeString("otherUserId", element.getOtherUserId());
-      composeString("name", element.getName());
-      composeBoolean("requestor", element.getRequestor());
-      if (element.getRole().size() > 0) {
-        openArray("role");
-        for (Coding e : element.getRole()) 
-          composeCoding(null, e);
-        closeArray();
-      };
-      composeAuditNetwork("network", element.getNetwork());
-      close();
-    }
-  }
-
-  private void composeAuditNetwork(String name, Audit.Network element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      composeString("id", element.getId());
-      close();
-    }
-  }
-
-  private void composeAuditSource(String name, Audit.Source element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeString("site", element.getSite());
-      composeString("id", element.getId());
-      if (element.getType().size() > 0) {
-        openArray("type");
-        for (Coding e : element.getType()) 
-          composeCoding(null, e);
-        closeArray();
-      };
-      close();
-    }
-  }
-
-  private void composeAuditObject(String name, Audit.Object element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      if (element.getRole() != null)
-        composeString("role", element.getRole().toCode());
-      if (element.getLifecycle() != null)
-        composeString("lifecycle", element.getLifecycle().toCode());
-      composeCoding("idType", element.getIdType());
-      composeString("id", element.getId());
-      composeString("sensitivity", element.getSensitivity());
-      composeString("name", element.getName());
-      composeBytes("query", element.getQuery());
-      close();
-    }
-  }
-
   private void composeProblem(String name, Problem element) throws Exception {
     if (element != null) {
       open(name);
@@ -1925,6 +1867,125 @@ public class JsonComposer extends JsonComposerBase {
         closeArray();
       };
       composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeSecurityEvent(String name, SecurityEvent element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeSecurityEventEvent("event", element.getEvent());
+      if (element.getParticipant().size() > 0) {
+        openArray("participant");
+        for (SecurityEvent.Participant e : element.getParticipant()) 
+          composeSecurityEventParticipant(null, e);
+        closeArray();
+      };
+      if (element.getSource().size() > 0) {
+        openArray("source");
+        for (SecurityEvent.Source e : element.getSource()) 
+          composeSecurityEventSource(null, e);
+        closeArray();
+      };
+      if (element.getObject().size() > 0) {
+        openArray("object");
+        for (SecurityEvent.Object e : element.getObject()) 
+          composeSecurityEventObject(null, e);
+        closeArray();
+      };
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeSecurityEventEvent(String name, SecurityEvent.Event element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeCoding("id", element.getId());
+      if (element.getAction() != null)
+        composeString("action", element.getAction().toCode());
+      composeDate("dateTime", element.getDateTime());
+      if (element.getOutcome() != null)
+        composeString("outcome", element.getOutcome().toCode());
+      if (element.getCode().size() > 0) {
+        openArray("code");
+        for (Coding e : element.getCode()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeSecurityEventParticipant(String name, SecurityEvent.Participant element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("userId", element.getUserId());
+      composeString("otherUserId", element.getOtherUserId());
+      composeString("name", element.getName());
+      composeBoolean("requestor", element.getRequestor());
+      if (element.getRole().size() > 0) {
+        openArray("role");
+        for (Coding e : element.getRole()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      composeSecurityEventNetwork("network", element.getNetwork());
+      close();
+    }
+  }
+
+  private void composeSecurityEventNetwork(String name, SecurityEvent.Network element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      composeString("id", element.getId());
+      close();
+    }
+  }
+
+  private void composeSecurityEventSource(String name, SecurityEvent.Source element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString("site", element.getSite());
+      composeString("id", element.getId());
+      if (element.getType().size() > 0) {
+        openArray("type");
+        for (Coding e : element.getType()) 
+          composeCoding(null, e);
+        closeArray();
+      };
+      close();
+    }
+  }
+
+  private void composeSecurityEventObject(String name, SecurityEvent.Object element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRole() != null)
+        composeString("role", element.getRole().toCode());
+      if (element.getLifecycle() != null)
+        composeString("lifecycle", element.getLifecycle().toCode());
+      composeCoding("idType", element.getIdType());
+      composeString("id", element.getId());
+      composeString("sensitivity", element.getSensitivity());
+      composeString("name", element.getName());
+      composeBytes("query", element.getQuery());
       close();
     }
   }
@@ -2232,7 +2293,9 @@ public class JsonComposer extends JsonComposerBase {
 
   @Override
   protected void composeResource(Resource resource) throws Exception {
-    if (resource instanceof XdsEntry)
+    if (resource instanceof Provenance)
+      composeProvenance("Provenance", (Provenance)resource);
+    else if (resource instanceof XdsEntry)
       composeXdsEntry("XdsEntry", (XdsEntry)resource);
     else if (resource instanceof Conformance)
       composeConformance("Conformance", (Conformance)resource);
@@ -2252,8 +2315,6 @@ public class JsonComposer extends JsonComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
-    else if (resource instanceof Audit)
-      composeAudit("Audit", (Audit)resource);
     else if (resource instanceof Problem)
       composeProblem("Problem", (Problem)resource);
     else if (resource instanceof Test)
@@ -2262,6 +2323,8 @@ public class JsonComposer extends JsonComposerBase {
       composeMessageHeader("MessageHeader", (MessageHeader)resource);
     else if (resource instanceof Issue)
       composeIssue("Issue", (Issue)resource);
+    else if (resource instanceof SecurityEvent)
+      composeSecurityEvent("SecurityEvent", (SecurityEvent)resource);
     else if (resource instanceof AssessmentScale)
       composeAssessmentScale("AssessmentScale", (AssessmentScale)resource);
     else if (resource instanceof Patient)

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Provenance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\provenance.xsd">
+  <target>
+    <type>Person</type>
+    <id>101</id>
+    <!-- we assume that the version of that persion resource is 1 -->
+    <version>1</version>
+  </target>
+  <!-- nominal activity: editing the standard -->
+  <activity>
+    <period>
+      <start>2011-06-23</start>
+    </period>
+    <recorded>2012-11-08T23:16:03+11:00</recorded>
+    <reason>
+      <text>Editing the FHIR Specification</text>
+    </reason>
+    <location>
+      <description>Home Office</description>
+    </location>
+  </activity>
+  <!-- author -->
+  <party>
+    <type>
+      <system>http://hl7.org/fhir/provenance-participant-type</system>
+      <code>person</code>
+    </type>
+    <id>mailto:grahame@healthintersections.com.au</id>
+    <description>Grahame Grieve</description>
+    <role>
+      <system>http://hl7.org/fhir/provenance-participant-role</system>
+      <code>author</code>
+    </role>
+  </party>
+  <!-- actually, this example was extracted from ISO 21090 -->
+  <party>
+    <type>
+      <system>http://hl7.org/fhir/provenance-participant-type</system>
+      <code>document</code>
+    </type>
+    <id>urn:iso:std:21090</id>
+    <description>ISO 21090</description>
+    <role>
+      <system>http://hl7.org/fhir/provenance-participant-role</system>
+      <code>source</code>
+    </role>
+  </party>
+  
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
+  </text>
+</Provenance>

@@ -91,7 +91,7 @@ public class DictXMLGenerator  extends OutputStreamWriter {
       write("    <bindingStrength>"+cd.getBindingStrength().toString()+"</bindingStrength>\r\n");
 		if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
 			write("    <list>\r\n");
-			write("      <sid>urn:hl7-org:sid/fhir/"+cd.getBinding()+"</sid>\r\n");
+			write("      <sid>http://hl7.org/fhir/"+cd.getBinding()+"</sid>\r\n");
 			for (DefinedCode c : cd.getCodes()) {
 				write("      <item>\r\n");
 				write("        <code>"+Utilities.escapeXml(c.getCode())+"</code>\r\n");

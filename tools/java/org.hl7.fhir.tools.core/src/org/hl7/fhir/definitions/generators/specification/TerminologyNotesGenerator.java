@@ -27,6 +27,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -43,10 +44,14 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ProfileDefn;
+import org.hl7.fhir.tools.publisher.PageProcessor;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.Utilities;
 
 public class TerminologyNotesGenerator extends OutputStreamWriter {
 
+  private PageProcessor page;
+  
 	public class CDUsage {
 		public CDUsage(String path, ElementDefn element) {
 			this.path = path;
@@ -67,8 +72,9 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 	char c = 'A';
 	private Map<BindingSpecification, List<CDUsage>> txusages = new HashMap<BindingSpecification, List<CDUsage>>(); 
 	
-	public TerminologyNotesGenerator(OutputStream out) throws UnsupportedEncodingException {
+	public TerminologyNotesGenerator(OutputStream out, PageProcessor page) throws UnsupportedEncodingException {
 		super(out, "UTF-8");
+		this.page = page;
 	}
 
 	public void generate(ElementDefn root, Map<String, BindingSpecification> tx) throws Exception
@@ -123,48 +129,59 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		
 	}
 
-  private void genBinding(BindingSpecification cd, String path, boolean isCode) throws IOException {
+  private void genBinding(BindingSpecification cd, String path, boolean isCode) throws Exception {
     if (cd.getName().equals("*unbound*")) {
     	write("  <li>"+path+" (Error!!!)</li>\r\n");
     } else if (cd.getBinding() == BindingSpecification.Binding.Unbound) {
-    	write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\"</li>\r\n");
+      write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\". (not bound to any codes)</li>\r\n");
     } else if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
-    	String sid = "";
-    	if (!isCode) {
-    		sid = "urn:hl7-org:sid/fhir/"+cd.getReference().substring(1);
-//					if (!sids.contains(sid))
-//						sids.put(sid, new DefinedCode())
-    		sid = " (system = "+sid+")";
-    	}
-    		
-    	if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
-    	  write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Example values:\r\n");
-    	else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
-        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Defined values (extend this with other codes):\r\n");
-      else // if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Required))
-        write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
-    	write("    <table class=\"codes\">\r\n");
-    	boolean hasComment = false;
-    	boolean hasDefinition = false;
-    	for (DefinedCode c : cd.getCodes()) {
-    		hasComment = hasComment || c.hasComment();
-    		hasDefinition = hasDefinition || c.hasDefinition();
-    	}
-//				if (hasComment)
-//					write("    <tr><td><b>Code</b></td><td><b>Title</b></td><td><b>Comment</b></td></tr>");
-//				else if (hasDefinition)
-//					write("    <tr><td><b>Code</b></td><td colspan=\"2\"><b>Title</b></td></tr>");
-    		
+      String sid = "";
+      if (!isCode) {
+        sid = "\"<a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"\"</a>";
+        //					if (!sids.contains(sid))
+        //						sids.put(sid, new DefinedCode())
+        sid = " system "+sid+"";
+        String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
+        if (!new File(s).exists()) {
+          generateCodeSystem(s, cd);
+        }
+        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Example values are in the "+sid+".\r\n");
+        else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Defined values are in the "+sid+". Other codes can be used when those codes are no suitable\r\n");
+        else // if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Required))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Possible values are in the "+sid+".\r\n");
+      } else {
 
-    	for (DefinedCode c : cd.getCodes()) {
-    		if (hasComment)
-    			write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
-    		else if (hasDefinition)
-    			write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-    		else
-    			write("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
-    	}
-    	write("    </table>\r\n");
+        if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Example values:\r\n");
+        else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Defined values (extend this with other codes):\r\n");
+        else // if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Required))
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\""+sid+". Possible values:\r\n");
+        write("    <table class=\"codes\">\r\n");
+        boolean hasComment = false;
+        boolean hasDefinition = false;
+        for (DefinedCode c : cd.getCodes()) {
+          hasComment = hasComment || c.hasComment();
+          hasDefinition = hasDefinition || c.hasDefinition();
+        }
+        //				if (hasComment)
+        //					write("    <tr><td><b>Code</b></td><td><b>Title</b></td><td><b>Comment</b></td></tr>");
+        //				else if (hasDefinition)
+        //					write("    <tr><td><b>Code</b></td><td colspan=\"2\"><b>Title</b></td></tr>");
+
+
+        for (DefinedCode c : cd.getCodes()) {
+          if (hasComment)
+            write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+          else if (hasDefinition)
+            write("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+          else
+            write("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
+        }
+        write("    </table>\r\n");
+      }
     	write("  </li>\r\n");
     	
     } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
@@ -185,7 +202,11 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     }
   }
 
-	private String ref(BindingSpecification cd) {
+	private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
+    TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), filename);
+  }
+
+  private String ref(BindingSpecification cd) {
     if (cd.hasReference())
       return "<a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a>";
     else

@@ -585,7 +585,7 @@ public class Publisher {
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
-		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
+		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
 		tgen.generate(resource.getRoot(), page.getDefinitions().getBindings());
 		tgen.close();
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());
@@ -596,8 +596,7 @@ public class Publisher {
 		
 		String dict = TextFile.fileToString(tmp.getAbsolutePath());
 
-		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(
-				page.getFolders().dstDir + n + ".dict.xml"));
+		DictXMLGenerator dxgen = new DictXMLGenerator(new FileOutputStream(page.getFolders().dstDir + n + ".dict.xml"));
 		dxgen.generate(resource.getRoot(), "HL7");
 		dxgen.close();
 
@@ -888,7 +887,7 @@ public class Publisher {
 		File tmp = File.createTempFile("tmp", ".tmp");
 		tmp.deleteOnExit();
 
-		// you have to validate a profile, because it has to merged with it's
+		// you have to validate a profile, because it has to be merged with it's
 		// base resource to fill out all the missing bits
 		validateProfile(profile);
 
@@ -904,7 +903,7 @@ public class Publisher {
 				+ ".profile.xml"), new CSFile(page.getFolders().dstDir
 				+ "examples" + File.separator + filename + ".profile.xml"));
 
-		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
+		TerminologyNotesGenerator tgen = new TerminologyNotesGenerator(new FileOutputStream(tmp), page);
 		tgen.generate(profile);
 		tgen.close();
 		String tx = TextFile.fileToString(tmp.getAbsolutePath());

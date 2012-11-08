@@ -474,8 +474,9 @@ The interaction is performed by an HTTP POST operation as shown:
 </pre>
 <p>
 The content of the post submission is a resource bundle in either <a href="atom.xml">XML</a> or 
-<a href="json.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately. 
-Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, or 
+<a href="json.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately
+as if they were an individual <a href="#create">create</a> or <a href="#update">update</a> appropriately, along with the normal processing
+for each (such as version aware updates). Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, or 
 reject all resources and return an HTTP 400 or 500 type response. It is not an error if the 
 submitted bundle has no resources in it.
 </p>

@@ -98,7 +98,7 @@ public class PageProcessor implements Logger  {
   private String tsForDt(String dt) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
 	  tmp.deleteOnExit();
-	  TerminologyNotesGenerator gen = new TerminologyNotesGenerator(new FileOutputStream(tmp));
+	  TerminologyNotesGenerator gen = new TerminologyNotesGenerator(new FileOutputStream(tmp), this);
 	  TypeParser tp = new TypeParser();
 	  TypeRef t = tp.parse(dt).get(0);
 	  ElementDefn e = definitions.getElementDefn(t.getName());
@@ -275,11 +275,36 @@ public class PageProcessor implements Logger  {
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
-
+      else if (com[0].equals("txurl"))
+        src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txsummary"))
+        src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String generateCodeTable(String name) {
+    BindingSpecification cd = definitions.getBindingByReference("#"+name);
+    StringBuilder s = new StringBuilder();
+    s.append("    <table class=\"codes\">\r\n");
+    boolean hasComment = false;
+    boolean hasDefinition = false;
+    for (DefinedCode c : cd.getCodes()) {
+      hasComment = hasComment || c.hasComment();
+      hasDefinition = hasDefinition || c.hasDefinition();
+    }
+    for (DefinedCode c : cd.getCodes()) {
+      if (hasComment)
+        s.append("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td>"+Utilities.escapeXml(c.getDefinition())+"</td><td>"+Utilities.escapeXml(c.getComment())+"</td></tr>");
+      else if (hasDefinition)
+        s.append("    <tr><td>"+Utilities.escapeXml(c.getCode())+"</td><td colspan=\"2\">"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+      else
+        s.append("    <tr><td colspan=\"3\">"+Utilities.escapeXml(c.getCode())+"</td></tr>");
+    }
+    s.append("    </table>\r\n");
+    return s.toString();
   }
 
   private String genProfileConstraints(ResourceDefn res) throws Exception {

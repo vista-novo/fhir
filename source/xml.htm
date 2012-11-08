@@ -267,6 +267,12 @@ Authors are allowed to specify additional styles and style properties as specifi
 but these are extensions to this specification and renderers are not required to honor them. Note, however,
 the additional rules around styling that apply in the context of <a href="documentheader.htm#css">documents</a>.
 </p>
+<p>
+Note: styles in resources can make use of the styles defined in the standard FHIR stylesheet, which
+lives here: <a href="http://hl7.org/implement/standards/fhir/fhir.css">http://hl7.org/implement/standards/fhir/fhir.css</a>.
+Since this stylesheet is not referred to directly, rendering systems may take their own copy if they wish. 
+Authoring systems should not depend on these styles being defined for clinical content. 
+</p>
 <a name="idref"></a>
 <h2>Internal References</h2>
 <p>

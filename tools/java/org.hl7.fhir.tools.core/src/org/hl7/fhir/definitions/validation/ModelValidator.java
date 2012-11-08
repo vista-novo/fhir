@@ -65,6 +65,7 @@ public class ModelValidator {
 	public List<String> check(String name, ResourceDefn parent) {
 		errors.clear();
 		checkElement(parent.getName(), parent.getRoot(), parent);
+		parent.getRoot().getElementByName("text").setShortDefn("Text summary of resource (for human interpretation)");
 		rule(parent.getName(), parent.getRoot().getElementByName("extensions") == null, "No element named \"extensions\"");
 		if (rule(parent.getName(), parent.getRoot().getElementByName("extension") != null, "Element named \"extension\" required"))
 		  rule(parent.getName(), parent.getRoot().getElementByName("extension").getMaxCardinality() == null, "Element named \"extension\", max cardinality != *");
