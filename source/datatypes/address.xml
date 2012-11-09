@@ -20,7 +20,6 @@
   <WindowWidth>27795</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -104,11 +103,11 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="102"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75" ss:Span="3"/>
-   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="63.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="33.75" ss:Span="2"/>
+   <Column ss:Index="5" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="63.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="96.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="101.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="216.75"/>
@@ -123,7 +122,6 @@
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -142,36 +140,33 @@
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
-    <Cell ss:StyleID="s66"/>
     <Cell><Data ss:Type="String">Structure</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A postal address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A postal address</Data></Cell>
     <Cell><Data ss:Type="String">There is a variety of postal address formats defined around the world. This format defines a superset that is the basis for addresses all around the world </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Need to be able to record postal addresses, along with notes about their use</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Need to be able to record postal addresses, along with notes about their use</Data></Cell>
     <Cell><Data ss:Type="String">Note: address is for postal addresses, not physical locations</Data></Cell>
     <Cell><Data ss:Type="String">AD</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.use</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">AddressUse</Data></Cell>
     <Cell><Data ss:Type="String">The use of this address</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the intended purpose of this address</Data></Cell>
     <Cell><Data ss:Type="String">Home, Work</Data></Cell>
     <Cell><Data ss:Type="String">Allows an appropriate address to be chosen from a list of many</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">unique(./use)</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">unique(./use)</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">Is it outside the 80% for this to repeat?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.text</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Text representation of the address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">a full text representation of the address</Data></Cell>
     <Cell><Data ss:Type="String">137 Nowhere Street, Erewhon 9132</Data></Cell>
     <Cell><Data ss:Type="String">A renderable, unencoded form</Data></Cell>
@@ -182,46 +177,42 @@
     <Cell><Data ss:Type="String">Address.part</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">A part of an address</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Breaks an address into parts for matching, validation and analysis</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">A part of an address</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Breaks an address into parts for matching, validation and analysis</Data></Cell>
     <Cell><Data ss:Type="String">Can provide both a text representation, and parts</Data></Cell>
     <Cell><Data ss:Type="String">./item</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Address.part.type</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">AddressPartType</Data></Cell>
     <Cell><Data ss:Type="String">Type of address part (see below)</Data></Cell>
     <Cell><Data ss:Type="String">Type of address part (see below)</Data></Cell>
     <Cell><Data ss:Type="String">Erewhon</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">./partType</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./partType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Address.part.value</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The content of the address part</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">The content of the address part</Data></Cell>
     <Cell><Data ss:Type="String">The content of the address part</Data></Cell>
     <Cell><Data ss:Type="String">City</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">./data</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./data</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Address.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">Time period when address was/is in use</Data></Cell>
     <Cell><Data ss:Type="String">23-Mar 2010 -&gt; 1-Jul 2010</Data></Cell>
     <Cell><Data ss:Type="String">Allows addresses to be placed in historical context</Data></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -237,6 +228,14 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveCol>3</ActiveCol>
+     <RangeSelection>C4</RangeSelection>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -280,7 +279,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>0</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

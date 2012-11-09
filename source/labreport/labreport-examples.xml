@@ -11264,7 +11264,7 @@
               <display>Microbial susceptibility tests</display>
             </coding>
           </name>
-          <specimen dataAbsentReason="astext">
+          <specimen>
             <display>URINE, CLEAN CATCH/MIDSTREAM</display>
           </specimen>
           <result>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class XdsFolder extends Resource {
     /**
      * Represents the title of the Folder
      */
-    private String title;
+    private String_ title;
 
     /**
      * the subject of care medical record Identifier as defined by the Document Source.
@@ -56,22 +56,22 @@ public class XdsFolder extends Resource {
     /**
      * A globally unique identifier for a community
      */
-    private String homeCommunity;
+    private String_ homeCommunity;
 
     /**
      * Comments associated with the Folder
      */
-    private String comments;
+    private String_ comments;
 
     public List<Coding> getCode() { 
       return this.code;
     }
 
-    public String getTitle() { 
+    public String_ getTitle() { 
       return this.title;
     }
 
-    public void setTitle(String value) { 
+    public void setTitle(String_ value) { 
       this.title = value;
     }
 
@@ -83,19 +83,19 @@ public class XdsFolder extends Resource {
       this.patientId = value;
     }
 
-    public String getHomeCommunity() { 
+    public String_ getHomeCommunity() { 
       return this.homeCommunity;
     }
 
-    public void setHomeCommunity(String value) { 
+    public void setHomeCommunity(String_ value) { 
       this.homeCommunity = value;
     }
 
-    public String getComments() { 
+    public String_ getComments() { 
       return this.comments;
     }
 
-    public void setComments(String value) { 
+    public void setComments(String_ value) { 
       this.comments = value;
     }
 

@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -79,23 +78,22 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="24" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="24" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="2"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="93"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
@@ -113,28 +111,26 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Company/institution/government involved in healthcare</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Company/institution/government involved in healthcare</Data></Cell>
     <Cell><Data ss:Type="String">For any company/corporation/institution/government department that has relevance to the care process</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Organization(classCode=ORG, determinerCode=INST)</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">Organization(classCode=ORG, determinerCode=INST)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">HumanId</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Identifier for this organization</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier for this organization</Data></Cell>
     <Cell><Data ss:Type="String">Identifier for the organization that is used to identify the organization across multiple disparate systems</Data></Cell>
     <Cell><Data ss:Type="String">Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopes[Role](classCode=IDENT)</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.scopes[Role](classCode=IDENT)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.name</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">name used for the organisation</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">name used for the organisation</Data></Cell>
     <Cell><Data ss:Type="String">A name associated with the organization</Data></Cell>
     <Cell><Data ss:Type="String">Need to use the name as the label of the organization</Data></Cell>
     <Cell><Data ss:Type="String">Don't use HumanName since that has many non-organization things in it</Data></Cell>
@@ -143,28 +139,27 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.name.value</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A name associated with the organization</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A name associated with the organization</Data></Cell>
     <Cell><Data ss:Type="String">The actual name of the organization</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.part[1](type=NULL,qualifier=NULL).value</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.part[1](type=NULL,qualifier=NULL).value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.name.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When this name is/was in use (date only)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">When this name is/was in use (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period that this name was in use by the organization</Data></Cell>
     <Cell><Data ss:Type="String">Organizations have a habit of renaming themselves, and the current and past names are required</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.validTime</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">This is 80%??</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.validTime</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">This is 80%??</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.address</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An address for the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">An address for the organization</Data></Cell>
     <Cell><Data ss:Type="String">An address for the organization</Data></Cell>
     <Cell><Data ss:Type="String">May need to keep track of the organizations addresses for contacting, billing or reporting requirements</Data></Cell>
     <Cell><Data ss:Type="String">Organization may have multiple addresses with different uses or applicable periods. The use code home is not to be used</Data></Cell>
@@ -173,8 +168,8 @@
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Organization.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">A contact detail for the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Contact</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A contact detail for the organization</Data></Cell>
     <Cell><Data ss:Type="String">A contact detail for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Human contact for the organization</Data></Cell>
     <Cell><Data ss:Type="String">The use code home is not to be used. Note that these contacts are not the contact details of people who are employed by or represent the organization, but official contacts for the organization itself</Data></Cell>
@@ -183,97 +178,94 @@
    <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="String">Organization.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">OrganisationType</Data></Cell>
     <Cell><Data ss:Type="String">kind of organisation</Data></Cell>
     <Cell><Data ss:Type="String">The kind of organization that this is</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data></Cell>
     <Cell><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data></Cell>
     <Cell><Data ss:Type="String">.code</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Name code is too RIM-like.  Should be typeCode or type.</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Name code is too RIM-like.  Should be typeCode or type.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.industryCode</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">Industry</Data></Cell>
     <Cell><Data ss:Type="String">kind of industry</Data></Cell>
     <Cell><Data ss:Type="String">The industry that this organization is involved in</Data></Cell>
     <Cell><Data ss:Type="String">For some organization types, an industry code is required for statistical reporting requirements</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.standardIndustryClassCode</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Is this really in the 80%??</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.standardIndustryClassCode</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Is this really in the 80%??</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.accreditation</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">formal certifications that convey authority</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">formal certifications that convey authority</Data></Cell>
     <Cell><Data ss:Type="String">The qualifications/certifications an organisation has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organisation may play in a healthcare environment</Data></Cell>
     <Cell><Data ss:Type="String">For many persons in healthcare, it is necessary to track the qualifications a person has - formal.</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.plays[Role](classCode='QUAL')</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Not sure if qualified &amp; accredited are the same.  Could potentially propose a new classCode</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.plays[Role](classCode='QUAL')</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Not sure if qualified &amp; accredited are the same.  Could potentially propose a new classCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.accreditation.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Identifier for the accreditation</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier for the accreditation</Data></Cell>
     <Cell><Data ss:Type="String">The identifier of the accreditation</Data></Cell>
     <Cell><Data ss:Type="String">Allows a link back to a accreditation registry, if one exists</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.identifier</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Not a humanId?</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.identifier</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Not a humanId?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.accreditation.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">Accreditation</Data></Cell>
     <Cell><Data ss:Type="String">What kind of accreditation</Data></Cell>
     <Cell><Data ss:Type="String">The type of the accreditation</Data></Cell>
     <Cell><Data ss:Type="String">commonly used to determine the roles an  organization may perform</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.code</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.accreditation.institution</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Who conferred it</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Resource(Organization)</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Who conferred it</Data></Cell>
     <Cell><Data ss:Type="String">The organization that confered/confers the accreditation</Data></Cell>
     <Cell><Data ss:Type="String">May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.scopedBy[Organization]</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.scopedBy[Organization]</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.accreditation.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the accreditation is valid (date only)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">When the accreditation is valid (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period for which the accreditation is held</Data></Cell>
     <Cell><Data ss:Type="String">Most accreditations are only conferred for a limited time period and must be re-acquired or forfeited</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.effectiveTime[IVL&lt;TS&gt;]</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">.effectiveTime[IVL&lt;TS&gt;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.relatedOrganization</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">sub-, super-, and partner organisations</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">sub-, super-, and partner organisations</Data></Cell>
     <Cell><Data ss:Type="String">Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track many kinds of organizational relationships and use to determine roles and mediate workflows</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">There's no reason why this wouldn't point to another resource.  Will map when updated accordingly.</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">There's no reason why this wouldn't point to another resource.  Will map when updated accordingly.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Identifier for the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">HumanId</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Identifier for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier</Data></Cell>
     <Cell><Data ss:Type="String">may have an identifier for the organization that can be used to source contact details</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">OrganizationRelationship</Data></Cell>
     <Cell><Data ss:Type="String">How the organizations are related</Data></Cell>
     <Cell><Data ss:Type="String">Code that specifies how this organization is related to the subject. A code is required.</Data></Cell>
@@ -282,48 +274,46 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Name of the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Name of the organization</Data></Cell>
     <Cell><Data ss:Type="String">A name should be specified for the related organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.address</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An address for the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">An address for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Postal addresses may be provided for the related organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">General contact details for the organization</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Contact</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">General contact details for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Contact details (phone, email etc) may be provided for the related organization</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">When the organizations were related (date only)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">When the organizations were related (date only)</Data></Cell>
     <Cell><Data ss:Type="String">The period during which the organizations were related in this fashion</Data></Cell>
     <Cell><Data ss:Type="String">Organization relationships are changing all the time</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Organization.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">[varies]</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">[varies]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Organization.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Text summary of organization, fall back for human interpretation</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">.text</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Need to add this to the RIM</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Narrative</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Text summary of organization, fall back for human interpretation</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">.text</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">Need to add this to the RIM</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -333,11 +323,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveCol>3</ActiveCol>
+     <RangeSelection>C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -573,7 +564,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

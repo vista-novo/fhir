@@ -840,7 +840,7 @@ public class Publisher {
 		ProfileGenerator pgen = new ProfileGenerator();
 		Profile rp = pgen.generate(p, new FileOutputStream(page.getFolders().dstDir + n + ".profile.xml"), xmlSpec);
 		Utilities.copyFile(new CSFile(page.getFolders().dstDir + n+ ".profile.xml"), new CSFile(page.getFolders().dstDir+ "examples" + File.separator + n + ".profile.xml"));
-		addToResourceFeed(rp);
+		addToResourceFeed(rp, root.getName().toLowerCase());
 		saveAsPureHtml(rp, new FileOutputStream(page.getFolders().dstDir+ "html" + File.separator + n + ".htm"));
 	}
 
@@ -867,11 +867,11 @@ public class Publisher {
 		xml.compose(stream, html);
 	}
 
-	private void addToResourceFeed(Profile profile) {
+	private void addToResourceFeed(Profile profile, String id) {
 		AtomEntry e = new AtomEntry();
-		e.setId("http://hl7.org/fhir/profile/" + profile.getId());
-		e.setLink("http://hl7.org/implement/standards/fhir/" + profile.getId()+ ".profile.xml");
-		e.setTitle("Resource \"" + profile.getId()+ "\" as a profile (to help derivation)");
+		e.setId("http://hl7.org/fhir/profile/" + id);
+		e.setLink("http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
+		e.setTitle("Resource \"" + id+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());
 		e.setPublished(page.getGenDate());
 		e.setAuthorName("HL7, Inc");
@@ -976,8 +976,7 @@ public class Publisher {
 			v.setResource(resource);
 			List<String> errors = v.evaluate();
 			if (errors.size() > 0)
-				throw new Exception("Error validating "
-						+ profile.metadata("name") + ": " + errors.toString());
+				throw new Exception("Error validating "+ profile.metadata("name") + ": " + errors.toString());
 		}
 	}
 
@@ -989,15 +988,18 @@ public class Publisher {
 	private Profile loadResourceProfile(String name)
 			throws FileNotFoundException, Exception {
 		XmlParser xml = new XmlParser();
+		try {
 		return (Profile) xml.parse(new CSFileInputStream(page.getFolders().dstDir + name.toLowerCase() + ".profile.xml"));
+		} catch (Exception e) {
+		  throw new Exception("error parsing "+name, e);
+		}
 	}
 
 	private void producePage(String file) throws Exception {
 		String src = TextFile.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + file);
-		src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
-				"<body>", "<body class=\"book\">");
+		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
 		src = page.processPageIncludesForPrinting(file, src);
 		TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
 

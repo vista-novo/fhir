@@ -20,7 +20,6 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>2880</WindowTopX>
   <WindowTopY>3000</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -63,25 +62,24 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="28.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="33"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
-    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -98,28 +96,25 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Optional Extensions Element - found in all resources</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Optional Extensions Element - found in all resources</Data></Cell>
     <Cell><Data ss:Type="String">The ability to add extensions in a structured way is what keeps FHIR resources simple</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.code</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Code that identifies the meaning of the extension</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Code that identifies the meaning of the extension</Data></Cell>
     <Cell><Data ss:Type="String">The code that identifies the meaning of the extension by reference to the definitions</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The only codes that can be used are those defined using the approved extensibility definitions.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The only codes that can be used are those defined using the approved extensibility definitions.</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="String">Extension.profile</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Profile that defines the extension</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Profile that defines the extension</Data></Cell>
     <Cell><Data ss:Type="String">Source of the definition for the extension code - a namespace or a URL</Data></Cell>
     <Cell><Data ss:Type="String">Everyone needs to be able to define extensions, but they also must be governed properly</Data></Cell>
     <Cell><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension.</Data></Cell>
@@ -128,43 +123,39 @@
    <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="String">Extension.ref</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">idref</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Internal reference to context of the extension (xml:id)</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">idref</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Internal reference to context of the extension (xml:id)</Data></Cell>
     <Cell><Data ss:Type="String">Internal reference to context of the extension - a pointer to an xml:id in the same resource</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The order that extensions appear in is significant - where multiple extensions have the same ref id, they extend the target element in the order in which they appear in the extensions</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.mustUnderstand</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">boolean</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Must  you recognize this extension to safely read the resource?</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Must  you recognize this extension to safely read the resource?</Data></Cell>
     <Cell><Data ss:Type="String">If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">This value should be set to true if the value of the extension qualifies or negates data in other content</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Value of extension</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">*</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Value of extension</Data></Cell>
     <Cell><Data ss:Type="String">Value of extension - may be a resource or one of a constraint set of the data types (see Extensibility in the spec for list)</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Extension.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell><Data ss:Type="Number">1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">n</Data></Cell>
-    <Cell><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Nested Extensions</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Nested Extensions</Data></Cell>
     <Cell><Data ss:Type="String">Nested Extensions - further extensions that are part of the extension</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">N/A</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30"/>
   </Table>
@@ -175,11 +166,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
      <ActiveCol>4</ActiveCol>
+     <RangeSelection>C5</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -224,7 +216,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

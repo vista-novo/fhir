@@ -9,10 +9,6 @@
     <entry>
       <link>xml</link>
       <name>Resource Format</name>
-      <entry>
-        <link>mixins</link>
-        <name>Mixins</name>
-      </entry>
     </entry>
     <entry>
       <link>datatypes</link>

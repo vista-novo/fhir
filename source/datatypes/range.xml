@@ -20,7 +20,6 @@
   <WindowWidth>24435</WindowWidth>
   <WindowTopX>3840</WindowTopX>
   <WindowTopY>4080</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -71,24 +70,23 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="4" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="75.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="23.25" ss:Span="1"/>
-   <Column ss:Index="5" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="23.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="34.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="65.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
+   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"
     ss:Span="1"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
-    <Cell><Data ss:Type="String">DAR?</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Concept Domain</Data></Cell>
@@ -106,9 +104,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
-    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Type</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Set of values bounded by low and high</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Set of values bounded by low and high</Data></Cell>
     <Cell><Data ss:Type="String">A set of ordered Quantities defined by a low and high limit. </Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to specify ranges of values or time periods</Data></Cell>
     <Cell><Data ss:Type="String">The stated low and high value are assumed to have arbitrarily high precision when it comes to determining which values are in the range. i.e. 1.99 is not in the range 2 -&gt; 3</Data></Cell>
@@ -118,24 +115,22 @@
     <Cell><Data ss:Type="String">Range.low</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Low limit </Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Low limit </Data></Cell>
     <Cell><Data ss:Type="String">The low limit. The boundary is inclusive.</Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">If the low element is missing, the meaning is that the low boundary is not known.</Data></Cell>
     <Cell><Data ss:Type="String">./low</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="195">
     <Cell><Data ss:Type="String">Range.high</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell><Data ss:Type="Number">3</Data></Cell>
-    <Cell><Data ss:Type="String">n</Data></Cell>
     <Cell><Data ss:Type="String">Y</Data></Cell>
     <Cell><Data ss:Type="String">Quantity</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">High limit </Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">High limit </Data></Cell>
     <Cell><Data ss:Type="String">The high limit. The boundary is inclusive. </Data></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">If the high element is missing, the meaning is that the high boundary is not known. </Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">If the high element is missing, the meaning is that the high boundary is not known. </Data></Cell>
     <Cell><Data ss:Type="String">./high</Data></Cell>
    </Row>
   </Table>
@@ -146,11 +141,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveCol>3</ActiveCol>
+     <RangeSelection>C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -216,7 +212,6 @@
     <HorizontalResolution>600</HorizontalResolution>
     <VerticalResolution>600</VerticalResolution>
    </Print>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

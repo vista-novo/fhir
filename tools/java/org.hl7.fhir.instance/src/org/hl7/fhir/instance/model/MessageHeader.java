@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -75,18 +75,18 @@ public class MessageHeader extends Resource {
         /**
          * The id of the message that this a response to
          */
-        private String id;
+        private Id id;
 
         /**
          * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not
          */
         private ResponseCode code;
 
-        public String getId() { 
+        public Id getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(Id value) { 
           this.id = value;
         }
 
@@ -104,12 +104,12 @@ public class MessageHeader extends Resource {
         /**
          * Human readable name for the target system
          */
-        private String name;
+        private String_ name;
 
         /**
          * May include configuration or other information useful in debugging.
          */
-        private String software;
+        private String_ software;
 
         /**
          * Can convey versions of multiple systems in situations where a message passes through multiple hands.
@@ -124,21 +124,21 @@ public class MessageHeader extends Resource {
         /**
          * Identifies the routing target to send acknowledgements to.
          */
-        private java.net.URI endpoint;
+        private Uri endpoint;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getSoftware() { 
+        public String_ getSoftware() { 
           return this.software;
         }
 
-        public void setSoftware(String value) { 
+        public void setSoftware(String_ value) { 
           this.software = value;
         }
 
@@ -158,11 +158,11 @@ public class MessageHeader extends Resource {
           this.contact = value;
         }
 
-        public java.net.URI getEndpoint() { 
+        public Uri getEndpoint() { 
           return this.endpoint;
         }
 
-        public void setEndpoint(java.net.URI value) { 
+        public void setEndpoint(Uri value) { 
           this.endpoint = value;
         }
 
@@ -172,7 +172,7 @@ public class MessageHeader extends Resource {
         /**
          * Human readable name for the source system
          */
-        private String name;
+        private String_ name;
 
         /**
          * Identifies the target end system in situations where the initial message transmission is to an intermediary system.
@@ -182,13 +182,13 @@ public class MessageHeader extends Resource {
         /**
          * Indicates where the message should be routed to.
          */
-        private java.net.URI endpoint;
+        private Uri endpoint;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -200,25 +200,30 @@ public class MessageHeader extends Resource {
           this.target = value;
         }
 
-        public java.net.URI getEndpoint() { 
+        public Uri getEndpoint() { 
           return this.endpoint;
         }
 
-        public void setEndpoint(java.net.URI value) { 
+        public void setEndpoint(Uri value) { 
           this.endpoint = value;
         }
 
     }
 
     /**
+     * The identifier of this message
+     */
+    private Id id;
+
+    /**
      * Instant the message was sent
      */
-    private java.util.Calendar instant;
+    private Instant instant;
 
     /**
      * Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification
      */
-    private String event;
+    private Code event;
 
     /**
      * Information about the message that this message is a response to.  Only present if this message is a response.
@@ -270,19 +275,27 @@ public class MessageHeader extends Resource {
      */
     private List<ResourceReference> data = new ArrayList<ResourceReference>();
 
-    public java.util.Calendar getInstant() { 
+    public Id getId() { 
+      return this.id;
+    }
+
+    public void setId(Id value) { 
+      this.id = value;
+    }
+
+    public Instant getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(java.util.Calendar value) { 
+    public void setInstant(Instant value) { 
       this.instant = value;
     }
 
-    public String getEvent() { 
+    public Code getEvent() { 
       return this.event;
     }
 
-    public void setEvent(String value) { 
+    public void setEvent(Code value) { 
       this.event = value;
     }
 

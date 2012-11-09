@@ -77,7 +77,6 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
 		genXmlIdRef();
 		genPrimitives();
-		genDataAbsentReason();
 		genResourceReference();
 
 		for (ElementDefn e : definitions.getInfrastructure().values())
@@ -97,7 +96,7 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 
 private void genXmlIdRef() throws Exception {
   write("  <!-- change this to xs:IDREF and all id attributes to type xs:ID to enforce internal references by schema,\r\n");
-  write("       but note that this can't work in aggregations (see comments in Resource Format section) -->\r\n");
+  write("       but note that this can't work in bundles (see comments in Resource Format section) -->\r\n");
   write("    <xs:simpleType name=\"xmlIdRef\">\r\n");
   write("      <xs:restriction base=\"id-simple\">\r\n");
   write("        <xs:pattern value=\"[a-z0-9\\-\\.]{1,36}\"/>\r\n"); 
@@ -166,7 +165,6 @@ private void genXmlIdRef() throws Exception {
 				write("    <xs:simpleContent>\r\n");
 				write("      <xs:extension base=\"xs:" + pt.getSchemaType()
 						+ "\">\r\n");
-				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
 		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
@@ -183,25 +181,12 @@ private void genXmlIdRef() throws Exception {
 				write("    <xs:simpleContent>\r\n");
 				write("      <xs:extension base=\"" + sp.getCode()
 						+ "-simple\">\r\n");
-				// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
 		    write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 				write("      </xs:extension>\r\n");
 				write("    </xs:simpleContent>\r\n");
 				write("  </xs:complexType>\r\n");
 			}
 		}
-	}
-
-	private void genDataAbsentReason() throws IOException {
-		generateEnum("DataAbsentReason");
-		write("  <xs:attributeGroup name=\"dataAbsentReason\">\r\n");
-		write("    <xs:attribute name=\"dataAbsentReason\" type=\"DataAbsentReason\">\r\n");
-		write("      <xs:annotation>\r\n");
-		write("        <xs:documentation>Specifies why the normally expected content of the data element is missing</xs:documentation>\r\n");
-		write("     </xs:annotation>\r\n");
-		write("    </xs:attribute>\r\n");
-		write("  </xs:attributeGroup>\r\n");
-
 	}
 
 	private void genInfrastructure(ElementDefn elem) throws Exception {
@@ -254,7 +239,6 @@ private void genXmlIdRef() throws Exception {
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
 		// write("    <xs:complexContent>\r\n");
 		// write("      <xs:extension base=\"Core"+name+"\">\r\n");
-		// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
     // write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		// write("      </xs:extension>\r\n");
 		// write("    </xs:complexContent>\r\n");
@@ -288,7 +272,6 @@ private void genXmlIdRef() throws Exception {
 				generateWrapperElement(elem, e);
 		}
 		write("    </xs:sequence>\r\n");
-		//write("    <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
     write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 		write("  </xs:complexType>\r\n");
 
@@ -329,7 +312,6 @@ private void genXmlIdRef() throws Exception {
 					// write("  <xs:complexType name=\""+name+"\">\r\n");
 					// write("    <xs:complexContent>\r\n");
 					// write("      <xs:extension base=\"Core"+name+"\">\r\n");
-					// write("        <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
 			    // write("        <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
 					// write("      </xs:extension>\r\n");
 					// write("    </xs:complexContent>\r\n");
@@ -404,42 +386,34 @@ private void genXmlIdRef() throws Exception {
 				if (t.hasParams()) {
 					for (String p : t.getParams()) {
 						write("       <xs:element name=\"" + en + "_"
-								+ upFirst(p) + "\">\r\n");
-						write("         <xs:complexType>\r\n");
-						write("           <xs:complexContent>\r\n");
-						write("             <xs:extension base=\""
-								+ t.getName() + "_" + upFirst(p) + "\">\r\n");
-						write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-						write("             </xs:extension>\r\n");
-						write("           </xs:complexContent>\r\n");
-						write("         </xs:complexType>\r\n");
-						write("       </xs:element>\r\n");
+								+ upFirst(p) + "\" type=\""+ t.getName() + "_" + upFirst(p) + "\"/>\r\n");
+//						write("         <xs:complexType>\r\n");
+//						write("           <xs:complexContent>\r\n");
+//						write("             <xs:extension base=\""
+//								+ t.getName() + "_" + upFirst(p) + "\"/>\r\n");
+//						write("           </xs:complexContent>\r\n");
+//						write("         </xs:complexType>\r\n");
+//						write("       </xs:element>\r\n");
 					}
 				} else {
 					// write("       <xs:element name=\""+t.getName()+"\" type=\""+t.getName()+"\"/>\r\n");
-					write("       <xs:element name=\"" + en + "\">\r\n");
-					write("         <xs:complexType>\r\n");
-					write("           <xs:complexContent>\r\n");
-					write("             <xs:extension base=\"" + t.getName()
-							+ "\">\r\n");
-					write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-					write("             </xs:extension>\r\n");
-					write("           </xs:complexContent>\r\n");
-					write("         </xs:complexType>\r\n");
-					write("       </xs:element>\r\n");
+					write("       <xs:element name=\"" + en + "\" type=\"" + t.getName()+ "\"/>\r\n");
+//					write("         <xs:complexType>\r\n");
+//					write("           <xs:complexContent>\r\n");
+//					write("             <xs:extension base=\"" + t.getName()+ "\"/>\r\n");
+//					write("           </xs:complexContent>\r\n");
+//					write("         </xs:complexType>\r\n");
+//					write("       </xs:element>\r\n");
 				}
 			}
 		}
-		write("       <xs:element name=\"" + (prefix == null ? "" : prefix)
-				+ "Resource\">\r\n");
-		write("         <xs:complexType>\r\n");
-		write("           <xs:complexContent>\r\n");
-		write("             <xs:extension base=\"ResourceReference\">\r\n");
-		write("               <xs:attributeGroup ref=\"dataAbsentReason\"/>\r\n");
-		write("             </xs:extension>\r\n");
-		write("           </xs:complexContent>\r\n");
-		write("         </xs:complexType>\r\n");
-		write("       </xs:element>\r\n");
+		write("       <xs:element name=\"" + (prefix == null ? "" : prefix) + "Resource\" type=\"ResourceReference\"/>\r\n");
+//		write("         <xs:complexType>\r\n");
+//		write("           <xs:complexContent>\r\n");
+//		write("             <xs:extension base=\"\"/>\r\n");
+//		write("           </xs:complexContent>\r\n");
+//		write("         </xs:complexType>\r\n");
+//		write("       </xs:element>\r\n");
 		write("      </xs:choice>\r\n");
 	}
 

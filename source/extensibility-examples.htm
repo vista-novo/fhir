@@ -55,7 +55,6 @@ extension</a>:
  <tr><td>Comments</td><td>Used to indicate additional information about the name part and how it should be used</td></tr>
  <tr><td>Cardinality</td><td>0..* (this is always optional, but more than one can be used if required)</td></tr>
  <tr><td>Type</td><td>code</td></tr>
- <tr><td>dataAbsentReason?</td><td>No. (If the qualifier isn't known, don't include it)</td></tr>
  <tr><td>XPaths</td><td>N/A</td></tr>
  <tr><td>Must Understand</td><td>No (Qualifiers are not required to be understood)</td></tr>
  <tr><td>RIM Mapping</td><td>ENXP.qualifier</td></tr>
@@ -106,7 +105,6 @@ and their associated bindings. In this case, the profile looks like this:
       &lt;min>0&lt;/min>
       &lt;max>*&lt;/max>
       &lt;type>code&lt;/type>
-      &lt;dataAbsentReason>false&lt;/dataAbsentReason>
       &lt;mustSupport>false&lt;/mustSupport>
       &lt;mustUnderstand>false&lt;/mustUnderstand>
       &lt;binding>EntityNamePartQualifier&lt;/binding>

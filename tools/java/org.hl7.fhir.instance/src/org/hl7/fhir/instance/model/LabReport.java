@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -340,7 +340,7 @@ public class LabReport extends Resource {
     /**
      * The date and/or time that the result was issued from the source for the recorded ‘Test result status
      */
-    private java.util.Calendar issued;
+    private Instant issued;
 
     /**
      * The patient about who the report is about
@@ -380,7 +380,7 @@ public class LabReport extends Resource {
     /**
      * The diagnostically relevant time for this report
      */
-    private String diagnosticTime;
+    private DateTime diagnosticTime;
 
     /**
      * Details about the specimen if all individual test results are derived from the same specimen
@@ -415,11 +415,11 @@ public class LabReport extends Resource {
       this.status = value;
     }
 
-    public java.util.Calendar getIssued() { 
+    public Instant getIssued() { 
       return this.issued;
     }
 
-    public void setIssued(java.util.Calendar value) { 
+    public void setIssued(Instant value) { 
       this.issued = value;
     }
 
@@ -475,11 +475,11 @@ public class LabReport extends Resource {
       this.service = value;
     }
 
-    public String getDiagnosticTime() { 
+    public DateTime getDiagnosticTime() { 
       return this.diagnosticTime;
     }
 
-    public void setDiagnosticTime(String value) { 
+    public void setDiagnosticTime(DateTime value) { 
       this.diagnosticTime = value;
     }
 

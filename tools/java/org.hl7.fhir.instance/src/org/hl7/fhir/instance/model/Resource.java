@@ -31,11 +31,6 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.util.*;
 
 public class Resource extends Element {
-
-	/**
-	 * Master resource Id, in all resources
-	 */
-	private String id;
 	
 	/**
 	 * Extensions
@@ -46,14 +41,6 @@ public class Resource extends Element {
 	 * Text summary of resource, for human interpretation
 	 */
 	private Narrative text;
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public Narrative getText() {
 		return text;

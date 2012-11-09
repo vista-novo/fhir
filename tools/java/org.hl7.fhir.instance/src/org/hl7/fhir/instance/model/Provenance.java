@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -47,7 +47,7 @@ public class Provenance extends Resource {
         /**
          * The instant of time at which the activity was recorded
          */
-        private java.util.Calendar recorded;
+        private Instant recorded;
 
         /**
          * The reason that the activity was taking place
@@ -62,7 +62,7 @@ public class Provenance extends Resource {
         /**
          * Policy or plan the activity was defined by
          */
-        private java.net.URI policy;
+        private Uri policy;
 
         public Period getPeriod() { 
           return this.period;
@@ -72,11 +72,11 @@ public class Provenance extends Resource {
           this.period = value;
         }
 
-        public java.util.Calendar getRecorded() { 
+        public Instant getRecorded() { 
           return this.recorded;
         }
 
-        public void setRecorded(java.util.Calendar value) { 
+        public void setRecorded(Instant value) { 
           this.recorded = value;
         }
 
@@ -96,11 +96,11 @@ public class Provenance extends Resource {
           this.location = value;
         }
 
-        public java.net.URI getPolicy() { 
+        public Uri getPolicy() { 
           return this.policy;
         }
 
-        public void setPolicy(java.net.URI value) { 
+        public void setPolicy(Uri value) { 
           this.policy = value;
         }
 
@@ -120,12 +120,12 @@ public class Provenance extends Resource {
         /**
          * Human readable description of location at which the activity occurred
          */
-        private String description;
+        private String_ description;
 
         /**
          * Geospatial coordinates of the location
          */
-        private String coords;
+        private String_ coords;
 
         public CodeableConcept getType() { 
           return this.type;
@@ -143,19 +143,19 @@ public class Provenance extends Resource {
           this.id = value;
         }
 
-        public String getDescription() { 
+        public String_ getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String value) { 
+        public void setDescription(String_ value) { 
           this.description = value;
         }
 
-        public String getCoords() { 
+        public String_ getCoords() { 
           return this.coords;
         }
 
-        public void setCoords(String value) { 
+        public void setCoords(String_ value) { 
           this.coords = value;
         }
 
@@ -170,12 +170,12 @@ public class Provenance extends Resource {
         /**
          * identity of participant. May be a logical or physical uri, and maybe absolute or relative
          */
-        private java.net.URI id;
+        private Uri id;
 
         /**
          * Human readable description of the participant
          */
-        private String description;
+        private String_ description;
 
         /**
          * The role that the participant played
@@ -190,19 +190,19 @@ public class Provenance extends Resource {
           this.type = value;
         }
 
-        public java.net.URI getId() { 
+        public Uri getId() { 
           return this.id;
         }
 
-        public void setId(java.net.URI value) { 
+        public void setId(Uri value) { 
           this.id = value;
         }
 
-        public String getDescription() { 
+        public String_ getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String value) { 
+        public void setDescription(String_ value) { 
           this.description = value;
         }
 
@@ -234,7 +234,7 @@ public class Provenance extends Resource {
     /**
      * A digital signature on the target resource. The signature should reference a participant by xml:id
      */
-    private String signature;
+    private String_ signature;
 
     public ResourceReference getTarget() { 
       return this.target;
@@ -256,11 +256,11 @@ public class Provenance extends Resource {
       return this.party;
     }
 
-    public String getSignature() { 
+    public String_ getSignature() { 
       return this.signature;
     }
 
-    public void setSignature(String value) { 
+    public void setSignature(String_ value) { 
       this.signature = value;
     }
 

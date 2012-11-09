@@ -78,22 +78,32 @@ public abstract class XmlComposerBase extends XmlBase {
 
   protected void composeTypeAttributes(Type type) throws Exception {
     composeElementAttributes(type);
-    if (type.getDataAbsentReason() != null) 
-      xml.attribute("dataAbsentReason", type.getDataAbsentReason().toCode());
   }
     
   protected void composeString(String name, String value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value);
   }
+  
   protected void composeURI(String name, java.net.URI value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value.toString());
   }
   
+  protected void composeUri(String name, java.net.URI value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value.toString());
+    }
+  }  
   protected void composeBigDecimal(String name, BigDecimal value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value.toString());
+  }
+  
+  protected void composeDecimal(String name, BigDecimal value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value.toString());
+    }
   }
   
 
@@ -102,6 +112,12 @@ public abstract class XmlComposerBase extends XmlBase {
       xml.element(FHIR_NS, name, value.toString());
   }
 
+  protected void composeInteger(String name, java.lang.Integer value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, java.lang.Integer.toString(value));
+    }
+  }
+  
   protected void composeBool(String name, java.lang.Boolean value) throws Exception {
     if (value != null)
       xml.element(FHIR_NS, name, value.toString());
@@ -132,6 +148,11 @@ public abstract class XmlComposerBase extends XmlBase {
     }
   }
   
+  protected void composeBase64Binary(String name, byte[] value) throws Exception {
+    composeBytes(name, value);
+  }
+  
+  
   protected void composeId(String name, Id value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
@@ -139,12 +160,26 @@ public abstract class XmlComposerBase extends XmlBase {
     }
   }
   
+  protected void composeId(String name, String value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value);
+    }
+  }
+  
+  
   protected void composeCode(String name, Code value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
       xml.element(FHIR_NS, name, value.getValue());
     }
   }
+  
+  protected void composeCode(String name, String value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value);
+    }
+  }
+  
   
   protected void composeOid(String name, Oid value) throws Exception {
     if (value != null) {
@@ -234,4 +269,18 @@ public abstract class XmlComposerBase extends XmlBase {
       xml.element(FHIR_NS, name, value.getValue());
     }
   }
+
+    protected void composeDateTime(String name, String value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value);
+    }
+  }
+
+  protected void composeString_(String name, String value) throws Exception {
+    if (value != null) {
+      xml.element(FHIR_NS, name, value);
+    }
+  }
+  
+  
 }

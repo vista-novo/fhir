@@ -325,7 +325,7 @@ public class SourceParser {
 			SpreadsheetParser p = new SpreadsheetParser(
 					new CSFileInputStream(csv), csv.getName(), definitions,
 					srcDir, logger);
-			ElementDefn el = p.parseCompositeType(true);
+			ElementDefn el = p.parseCompositeType();
 			map.put(t.getName(), el);
 			el.getAcceptableGenericTypes().addAll(ts.get(0).getParams());
 		} else {

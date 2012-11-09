@@ -37,27 +37,71 @@ POSSIBILITY OF SUCH DAMAGE.
 public class Factory {
 
   public static Id newId(String value) {
+    if (value == null)
+      return null;
     Id res = new Id();
     res.setValue(value);
     return res;
   }
 
   public static String_ newString_(String value) {
+    if (value == null)
+      return null;
     String_ res = new String_();
     res.setValue(value);
     return res;
   }
 
   public static Uri newUri(String value) throws URISyntaxException {
+    if (value == null)
+      return null;
     Uri res = new Uri();
     res.setValue(new URI(value));
     return res;
   }
 
   public static DateTime newDateTime(String value) {
+    if (value == null)
+      return null;
     DateTime res = new DateTime();
     res.setValue(value);
     return res;
   }
 
+  public static Date newDate(String value) {
+    if (value == null)
+      return null;
+    Date res = new Date();
+    res.setValue(value);
+    return res;
+  }
+
+  public static Code newCode(String value) {
+    if (value == null)
+      return null;
+    Code res = new Code();
+    res.setValue(value);
+    return res;
+  }
+
+  public static Integer newInteger(int value) {
+    Integer res = new Integer();
+    res.setValue(value);
+    return res;
+  }
+  
+  public static Integer newInteger(java.lang.Integer value) {
+    if (value == null)
+      return null;
+    Integer res = new Integer();
+    res.setValue(value);
+    return res;
+  }
+  
+  public static Boolean newBoolean(boolean value) {
+    Boolean res = new Boolean();
+    res.setValue(value);
+    return res;
+  }
+  
 }

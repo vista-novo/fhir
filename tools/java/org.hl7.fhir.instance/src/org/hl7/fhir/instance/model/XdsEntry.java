@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -73,12 +73,12 @@ public class XdsEntry extends Resource {
         /**
          * A code that represents the role of the author with respect to the patient when the document was created.
          */
-        private List<String> role = new ArrayList<String>();
+        private List<String_> role = new ArrayList<String_>();
 
         /**
          * Represents a specific specialty within a healthcare facility under which the human and/or machines authored the document
          */
-        private List<String> specialty = new ArrayList<String>();
+        private List<String_> specialty = new ArrayList<String_>();
 
         /**
          * Represents a specific healthcare facility under which the human and/or machines authored the document.  A specific case is that of homecare. 
@@ -106,11 +106,11 @@ public class XdsEntry extends Resource {
           this.id = value;
         }
 
-        public List<String> getRole() { 
+        public List<String_> getRole() { 
           return this.role;
         }
 
-        public List<String> getSpecialty() { 
+        public List<String_> getSpecialty() { 
           return this.specialty;
         }
 
@@ -133,7 +133,7 @@ public class XdsEntry extends Resource {
         /**
          * name of facility
          */
-        private String name;
+        private String_ name;
 
         public Identifier getId() { 
           return this.id;
@@ -143,11 +143,11 @@ public class XdsEntry extends Resource {
           this.id = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -186,26 +186,26 @@ public class XdsEntry extends Resource {
         /**
          * Start time
          */
-        private String start;
+        private DateTime start;
 
         /**
          * Stop time
          */
-        private String stop;
+        private DateTime stop;
 
-        public String getStart() { 
+        public DateTime getStart() { 
           return this.start;
         }
 
-        public void setStart(String value) { 
+        public void setStart(DateTime value) { 
           this.start = value;
         }
 
-        public String getStop() { 
+        public DateTime getStop() { 
           return this.stop;
         }
 
-        public void setStop(String value) { 
+        public void setStop(DateTime value) { 
           this.stop = value;
         }
 
@@ -214,17 +214,17 @@ public class XdsEntry extends Resource {
     /**
      * A URL that is used to access the document content directly. If this is not provided, the document may be found be searching the repositoryId for the documentId
      */
-    private java.net.URI url;
+    private Uri url;
 
     /**
      * The globally unique identifier of the repository where the document is stored, assigned by the Document Repository. This unique identifier for the Document Repository may be used to identify and connect to the specific Document Repository where the document is stored once its metadata has been retrieved from a Document Registry
      */
-    private java.net.URI repositoryId;
+    private Uri repositoryId;
 
     /**
      * MIME type of the document in the Repository.
      */
-    private String mimeType;
+    private String_ mimeType;
 
     /**
      * Code globally uniquely specifying the format of the document. Along with the typeCode, it should provide sufficient information to allow any potential XDS Document Consumer to know if it will be able to process the document. The formatCode shall be sufficiently specific to ensure processing/display by identifying a document encoding, structure and template (e.g., for a CDA Document, the fact that it complies with a CDA schema, possibly a template and the choice of a content-specific style sheet).
@@ -244,12 +244,12 @@ public class XdsEntry extends Resource {
     /**
      * Represents the title of the document.
      */
-    private String title;
+    private String_ title;
 
     /**
      * The globally unique identifier assigned by the document creator to this document. This unique identifier may be used in the body of other XDS Documents to reference this document.
      */
-    private java.net.URI documentId;
+    private Uri documentId;
 
     /**
      * deprecated documents can be included in some responses
@@ -264,7 +264,7 @@ public class XdsEntry extends Resource {
     /**
      * Represents the time the author created the document in the Document Source
      */
-    private java.util.Calendar created;
+    private Instant created;
 
     /**
      * This list of codes represents the main clinical acts, such as a colonoscopy or an appendectomy, being documented. In some cases, the event is inherent in the typeCode, such as a "History and Physical Report" in which the procedure being documented is necessarily a "History and Physical" act.
@@ -274,17 +274,17 @@ public class XdsEntry extends Resource {
     /**
      * Hash key of the XDS Document itself
      */
-    private String hash;
+    private String_ hash;
 
     /**
      * Size in bytes of the byte stream that was provided in the Register and Provide Transaction and stored by the XDS Document Repository. This value is computed by the Document Repository and included in the Register Documents Set Transaction.
      */
-    private String size;
+    private String_ size;
 
     /**
      * Specifies the human language of character data in the document. The values of the attribute are language identifiers as described by the IETF (Internet Engineering Task Force) RFC 3066.
      */
-    private String language;
+    private String_ language;
 
     /**
      * Folders that this document is registered in
@@ -330,7 +330,7 @@ and birth date
     /**
      * A globally unique identifier for a community. 
      */
-    private java.net.URI homeCommunity;
+    private Uri homeCommunity;
 
     /**
      * Represents the time of the service being documented took place (clinically significant, but not necessarily when the document was produced or approved).
@@ -340,29 +340,29 @@ and birth date
     /**
      * Comments associated with the Document.
      */
-    private String comments;
+    private String_ comments;
 
-    public java.net.URI getUrl() { 
+    public Uri getUrl() { 
       return this.url;
     }
 
-    public void setUrl(java.net.URI value) { 
+    public void setUrl(Uri value) { 
       this.url = value;
     }
 
-    public java.net.URI getRepositoryId() { 
+    public Uri getRepositoryId() { 
       return this.repositoryId;
     }
 
-    public void setRepositoryId(java.net.URI value) { 
+    public void setRepositoryId(Uri value) { 
       this.repositoryId = value;
     }
 
-    public String getMimeType() { 
+    public String_ getMimeType() { 
       return this.mimeType;
     }
 
-    public void setMimeType(String value) { 
+    public void setMimeType(String_ value) { 
       this.mimeType = value;
     }
 
@@ -390,19 +390,19 @@ and birth date
       this.type = value;
     }
 
-    public String getTitle() { 
+    public String_ getTitle() { 
       return this.title;
     }
 
-    public void setTitle(String value) { 
+    public void setTitle(String_ value) { 
       this.title = value;
     }
 
-    public java.net.URI getDocumentId() { 
+    public Uri getDocumentId() { 
       return this.documentId;
     }
 
-    public void setDocumentId(java.net.URI value) { 
+    public void setDocumentId(Uri value) { 
       this.documentId = value;
     }
 
@@ -422,11 +422,11 @@ and birth date
       this.confidentialityCode = value;
     }
 
-    public java.util.Calendar getCreated() { 
+    public Instant getCreated() { 
       return this.created;
     }
 
-    public void setCreated(java.util.Calendar value) { 
+    public void setCreated(Instant value) { 
       this.created = value;
     }
 
@@ -434,27 +434,27 @@ and birth date
       return this.event;
     }
 
-    public String getHash() { 
+    public String_ getHash() { 
       return this.hash;
     }
 
-    public void setHash(String value) { 
+    public void setHash(String_ value) { 
       this.hash = value;
     }
 
-    public String getSize() { 
+    public String_ getSize() { 
       return this.size;
     }
 
-    public void setSize(String value) { 
+    public void setSize(String_ value) { 
       this.size = value;
     }
 
-    public String getLanguage() { 
+    public String_ getLanguage() { 
       return this.language;
     }
 
-    public void setLanguage(String value) { 
+    public void setLanguage(String_ value) { 
       this.language = value;
     }
 
@@ -514,11 +514,11 @@ and birth date
       this.practiceSetting = value;
     }
 
-    public java.net.URI getHomeCommunity() { 
+    public Uri getHomeCommunity() { 
       return this.homeCommunity;
     }
 
-    public void setHomeCommunity(java.net.URI value) { 
+    public void setHomeCommunity(Uri value) { 
       this.homeCommunity = value;
     }
 
@@ -530,11 +530,11 @@ and birth date
       this.service = value;
     }
 
-    public String getComments() { 
+    public String_ getComments() { 
       return this.comments;
     }
 
-    public void setComments(String value) { 
+    public void setComments(String_ value) { 
       this.comments = value;
     }
 

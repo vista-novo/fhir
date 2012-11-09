@@ -40,6 +40,7 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 //import org.hl7.fhir.instance.model.Factory;
+import org.hl7.fhir.instance.model.Factory;
 import org.hl7.fhir.instance.model.Narrative;
 import org.hl7.fhir.instance.model.Narrative.NarrativeStatus;
 import org.hl7.fhir.instance.model.Profile;
@@ -60,17 +61,16 @@ public class ProfileGenerator {
 
   public Profile generate(ProfileDefn profile, OutputStream stream, String html) throws Exception {
     Profile p = new Profile();
-    p.setId(profile.metadata("id"));
-    p.setName(profile.metadata("name"));
+    p.setName(Factory.newString_(profile.metadata("name")));
     p.setAuthor(p.new Author());
-    p.getAuthor().setName(profile.metadata("author.name"));
+    p.getAuthor().setName(Factory.newString_(profile.metadata("author.name")));
     if (profile.hasMetadata("author.reference"))
-      p.getAuthor().getReference().add(new URI(profile.metadata("author.reference")));
+      p.getAuthor().getReference().add(Factory.newUri(profile.metadata("author.reference")));
 //  <code> opt Zero+ Coding assist with indexing and finding</code>
     if (profile.hasMetadata("intention"))
       throw new Exception("profile intention is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("description"))
-      p.setDescription(profile.metadata("description"));
+      p.setDescription(Factory.newString_(profile.metadata("description")));
     if (profile.hasMetadata("evidence"))
       throw new Exception("profile evidence is not supported any more ("+p.getName()+")");
     if (profile.hasMetadata("comments"))
@@ -78,7 +78,7 @@ public class ProfileGenerator {
     Status s = p.new Status();
     p.setStatus(s);
     if (profile.hasMetadata("date"))
-      s.setDate(profile.metadata("date").substring(0, 10));
+      s.setDate(Factory.newDateTime(profile.metadata("date").substring(0, 10)));
 
     if (profile.hasMetadata("status")) 
       s.setCode(Profile.ResourceProfileStatus.fromCode(profile.metadata("status")));
@@ -86,10 +86,10 @@ public class ProfileGenerator {
     for (ResourceDefn resource : profile.getResources()) {
       Profile.Resource c = p.new Resource();
       p.getResource().add(c);
-      c.setType(resource.getRoot().typeCode());
+      c.setType(Factory.newCode(resource.getRoot().typeCode()));
       // we don't profile URI when we generate in this mode - we are generating an actual statement, not a re-reference
       if (!"".equals(resource.getRoot().getProfileName()))
-        c.setName(resource.getRoot().getProfileName());
+        c.setName(Factory.newString_(resource.getRoot().getProfileName()));
       // no purpose element here
       defineElement(p, c, resource.getRoot(), resource.getName());
     }
@@ -112,17 +112,17 @@ public class ProfileGenerator {
 
   private Binding generateBinding(BindingSpecification src, Profile p) throws Exception {
     Binding dst = p.new Binding();
-    dst.setName(src.getName());
-    dst.setDefinition(src.getDefinition());
+    dst.setName(Factory.newString_(src.getName()));
+    dst.setDefinition(Factory.newString_(src.getDefinition()));
     dst.setType(convert(src.getBinding()));
     dst.setConformance(convert(src.getBindingStrength()));
-    dst.setReference(new URI(src.getReference()));
+    dst.setReference(Factory.newUri(src.getReference()));
     for (DefinedCode dc : src.getCodes()) {
       Concept cd = p.new Concept();
-      cd.setCode(dc.getCode());
-      cd.setDisplay(dc.getDisplay());
-      cd.setDefinition(dc.getDefinition());
-      cd.setSystem(dc.hasSystem() ? new URI(dc.getSystem()) : null);
+      cd.setCode(Factory.newCode(dc.getCode()));
+      cd.setDisplay(Factory.newString_(dc.getDisplay()));
+      cd.setDefinition(Factory.newString_(dc.getDefinition()));
+      cd.setSystem(dc.hasSystem() ? Factory.newUri(dc.getSystem()) : null);
       dst.getConcept().add(cd);
    }
     
@@ -154,38 +154,37 @@ public class ProfileGenerator {
 
   private org.hl7.fhir.instance.model.Profile.ExtensionDefn generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
     org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
-    dst.setCode(src.getCode());
-    dst.getContext().add(src.getContext());
+    dst.setCode(Factory.newCode(src.getCode()));
+    dst.getContext().add(Factory.newString_(src.getContext()));
     dst.setContextType(convertContextType(src.getType()));
     
     ElementDefn dSrc = src.getDefinition();
     Definition dDst = p.new Definition();
     dst.setDefinition(dDst);
     
-    dDst.setShort(dSrc.getShortDefn());
-    dDst.setFormal(dSrc.getDefinition());
-    dDst.setComments(dSrc.getComments());
-    dDst.setDataAbsentReason(dSrc.isAllowDAR());
+    dDst.setShort(Factory.newString_(dSrc.getShortDefn()));
+    dDst.setFormal(Factory.newString_(dSrc.getDefinition()));
+    dDst.setComments(Factory.newString_(dSrc.getComments()));
     if (dSrc.getMaxCardinality() == null)
-      dDst.setMax("*");
+      dDst.setMax(Factory.newString_("*"));
     else
-      dDst.setMax(dSrc.getMaxCardinality().toString());
-    dDst.setMin(dSrc.getMinCardinality());
-    dDst.setMustSupport(dSrc.isMustSupport());
-    dDst.setMustUnderstand(dSrc.isMustUnderstand());
+      dDst.setMax(Factory.newString_(dSrc.getMaxCardinality().toString()));
+    dDst.setMin(Factory.newInteger(dSrc.getMinCardinality()));
+    dDst.setMustSupport(Factory.newBoolean(dSrc.isMustSupport()));
+    dDst.setMustUnderstand(Factory.newBoolean(dSrc.isMustUnderstand()));
     // dDst.
     for (TypeRef t : dSrc.getTypes()) {
       Type type = p.new Type();
-      type.setCode(t.summary());
+      type.setCode(Factory.newCode(t.summary()));
       dDst.getType().add(type);
     }
     if (dSrc.hasRimMapping()) {
       Mapping m = p.new Mapping();
-      m.setMap("RIM");
-      m.setTarget(dSrc.getRimMapping());
+      m.setMap(Factory.newString_("RIM"));
+      m.setTarget(Factory.newString_(dSrc.getRimMapping()));
       dDst.getMapping().add(m);
     }
-    dDst.setBinding(dSrc.getBindingName());
+    dDst.setBinding(Factory.newString_(dSrc.getBindingName()));
     return dst;
   }
 
@@ -206,43 +205,42 @@ public class ProfileGenerator {
   private void defineElement(Profile p, Profile.Resource c, ElementDefn e, String path) throws Exception {
     Profile.Element_ ce = p.new Element_();
     c.getElement().add(ce);
-    ce.setPath(path);
+    ce.setPath(Factory.newString_(path));
     if (!"".equals(e.getProfileName()))
-      ce.setName(e.getProfileName());
+      ce.setName(Factory.newString_(e.getProfileName()));
     ce.setDefinition(p.new Definition());
     if (!"".equals(e.getComments()))
-      ce.getDefinition().setComments(e.getComments());
+      ce.getDefinition().setComments(Factory.newString_(e.getComments()));
     if (!"".equals(e.getShortDefn()))
-      ce.getDefinition().setShort(e.getShortDefn());
+      ce.getDefinition().setShort(Factory.newString_(e.getShortDefn()));
     if (!"".equals(e.getDefinition()))
-      ce.getDefinition().setFormal(e.getDefinition());
+      ce.getDefinition().setFormal(Factory.newString_(e.getDefinition()));
     
     
     // no purpose here
-    ce.getDefinition().setMin(e.getMinCardinality());
-    ce.getDefinition().setMax(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString());
+    ce.getDefinition().setMin(Factory.newInteger(e.getMinCardinality()));
+    ce.getDefinition().setMax(Factory.newString_(e.getMaxCardinality() == null ? "*" : e.getMaxCardinality().toString()));
     for (TypeRef t : e.getTypes()) {
       Type type = p.new Type();
-      type.setCode(t.summaryFormal());
+      type.setCode(Factory.newCode(t.summaryFormal()));
       ce.getDefinition().getType().add(type);
     }
     // ce.setConformance(getType(e.getConformance()));
     if (!"".equals(e.getCondition()))
-      ce.getDefinition().getCondition().add(e.getCondition());
+      ce.getDefinition().getCondition().add(Factory.newId(e.getCondition()));
     // we don't know mustSupport here
-    ce.getDefinition().setMustUnderstand(e.isMustUnderstand());
+    ce.getDefinition().setMustUnderstand(Factory.newBoolean(e.isMustUnderstand()));
     // todo: mappings
     // we don't have anything to say about constraints on resources
     if (!"".equals(e.getBindingName()))
-      ce.getDefinition().setBinding(e.getBindingName());
-    ce.getDefinition().setDataAbsentReason(e.isAllowDAR());
+      ce.getDefinition().setBinding(Factory.newString_(e.getBindingName()));
     
     if( e.hasAggregation() )
     {
-      ce.setBundled(true);
+      ce.setBundled(Factory.newBoolean(true));
       Type t = p.new Type();
       ce.getDefinition().getType().add(t);
-      t.setProfile(new URI(e.getAggregation()));
+      t.setProfile(Factory.newUri(e.getAggregation()));
     }
     
     for (ElementDefn child : e.getElements()) {

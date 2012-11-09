@@ -58,7 +58,6 @@
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="minCardinality" type="xsd:int" use="required"/>
     <xsd:attribute name="maxCardinality" type="xsd:int" use="required"/>
-    <xsd:attribute name="allowDAR" type="xsd:boolean"/>
     <xsd:attribute name="mustUnderstand" type="xsd:boolean"/>
     <xsd:attribute name="mustSupport" type="xsd:boolean"/>
     <xsd:attribute name="exampleValue" type="xsd:string"/>

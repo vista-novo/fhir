@@ -108,14 +108,14 @@ public class ProfileValidator {
   }
 
   private String terminalName(Element_ e) {
-    String res = e.getPath().substring(e.getPath().lastIndexOf(".")+1);
+    String res = e.getPath().getValue().substring(e.getPath().getValue().lastIndexOf(".")+1);
     return res;
   }
 
   private List<Element_> collectChildren(String path) {
     List<Element_> results = new ArrayList<Element_>();
     for (Element_ r : resource.getResource().get(0).getElement())
-      if (r.getPath().startsWith(path+".") && !r.getPath().substring(path.length()+1).contains(".")) 
+      if (r.getPath().getValue().startsWith(path+".") && !r.getPath().getValue().substring(path.length()+1).contains(".")) 
         results.add(r);
     return results;
   }
@@ -123,17 +123,17 @@ public class ProfileValidator {
   private void filloutElementDefn(ElementDefn n, Element_ e) {
     n.setName(terminalName(e));
     n.setInherited(true);
-    n.setComments(e.getDefinition().getComments());
-    n.setBindingName(e.getDefinition().getBinding());
-    n.setShortDefn(e.getDefinition().getShort());
-    n.setDefinition(e.getDefinition().getFormal());
-    n.setMaxCardinality("*".equals(e.getDefinition().getMax()) ? null : Integer.parseInt(e.getDefinition().getMax()));
-    n.setMinCardinality(e.getDefinition().getMin());
-    n.setMustUnderstand(e.getDefinition().getMustSupport() == null ? false : e.getDefinition().getMustSupport());
+    n.setComments(e.getDefinition().getComments() == null ? null : e.getDefinition().getComments().getValue());
+    n.setBindingName(e.getDefinition().getBinding() == null ? null : e.getDefinition().getBinding().getValue());
+    n.setShortDefn(e.getDefinition().getShort().getValue());
+    n.setDefinition(e.getDefinition().getFormal().getValue());
+    n.setMaxCardinality("*".equals(e.getDefinition().getMax().getValue()) ? null : Integer.parseInt(e.getDefinition().getMax().getValue()));
+    n.setMinCardinality(e.getDefinition().getMin().getValue());
+    n.setMustUnderstand(e.getDefinition().getMustSupport() == null ? false : e.getDefinition().getMustSupport().getValue());
     for (Type t : e.getDefinition().getType()) {
       TypeParser tp = new TypeParser();
       try {
-        n.getTypes().addAll(tp.parse(t.getCode()));
+        n.getTypes().addAll(tp.parse(t.getCode().getValue()));
       } catch (Exception ex) {
         errors.add("invalid type "+t+" on "+e.getPath()+" in underlying resource definition");
       }
@@ -142,7 +142,7 @@ public class ProfileValidator {
 //  todo
 //    n.setRimMapping(e.get);
 //    n.setV2Mapping(e.get);
-    for (Element_ c : collectChildren(e.getPath())) {
+    for (Element_ c : collectChildren(e.getPath().getValue())) {
       ElementDefn nc = new ElementDefn();
       filloutElementDefn(nc, c);
       n.getElements().add(nc);
@@ -179,18 +179,18 @@ public class ProfileValidator {
 
   private void completeFromDerivation(ElementDefn target, Element_ source) {
     if (!target.hasComments())
-      target.setComments(source.getDefinition().getComments());
+      target.setComments(source.getDefinition().getComments() == null ? null : source.getDefinition().getComments().getValue());
     if (!target.hasBindingName())
-      target.setBindingName(source.getDefinition().getBinding());
+      target.setBindingName(source.getDefinition().getBinding() == null ? null : source.getDefinition().getBinding().getValue());
     if (!target.hasShortDefn())
-      target.setShortDefn(source.getDefinition().getShort());
+      target.setShortDefn(source.getDefinition().getShort().getValue());
     if (!target.hasDefinition())
-      target.setDefinition(source.getDefinition().getFormal());    
+      target.setDefinition(source.getDefinition().getFormal().getValue());    
   }
 
   private Element_ getConstraintByPath(String path) {
     for (Element_ e : resource.getResource().get(0).getElement())
-      if (e.getPath().equals(path))
+      if (e.getPath().getValue().equals(path))
         return e;
     return null;
   }

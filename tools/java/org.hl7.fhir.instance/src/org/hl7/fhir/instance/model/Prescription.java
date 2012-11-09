@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -63,7 +63,7 @@ public class Prescription extends Resource {
         /**
          * Requested number of repeats
          */
-        private java.lang.Integer repeats;
+        private Integer repeats;
 
         /**
          * Requested quantity per repeat
@@ -75,11 +75,11 @@ public class Prescription extends Resource {
          */
         private ResourceReference dispenser;
 
-        public java.lang.Integer getRepeats() { 
+        public Integer getRepeats() { 
           return this.repeats;
         }
 
-        public void setRepeats(java.lang.Integer value) { 
+        public void setRepeats(Integer value) { 
           this.repeats = value;
         }
 
@@ -292,7 +292,7 @@ public class Prescription extends Resource {
         /**
          * Pro re nate, "If necessary": Specifies whether administration depens on the state and symptoms of the patient
          */
-        private java.lang.Boolean prn;
+        private Boolean prn;
 
         /**
          * Additional details to guide administration. Especially relevant for medicine administered by patient
@@ -323,11 +323,11 @@ public class Prescription extends Resource {
           return this.precondition;
         }
 
-        public java.lang.Boolean getPrn() { 
+        public Boolean getPrn() { 
           return this.prn;
         }
 
-        public void setPrn(java.lang.Boolean value) { 
+        public void setPrn(Boolean value) { 
           this.prn = value;
         }
 
@@ -388,7 +388,7 @@ public class Prescription extends Resource {
     /**
      * Date/time on which the prescription was written
      */
-    private String prescribed;
+    private DateTime prescribed;
 
     /**
      * Details of the dispense as requested by the prescriber
@@ -438,11 +438,11 @@ public class Prescription extends Resource {
       this.prescriber = value;
     }
 
-    public String getPrescribed() { 
+    public DateTime getPrescribed() { 
       return this.prescribed;
     }
 
-    public void setPrescribed(String value) { 
+    public void setPrescribed(DateTime value) { 
       this.prescribed = value;
     }
 

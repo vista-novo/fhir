@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -41,126 +41,126 @@ public class Test extends Resource {
     /**
      * Strings with invalid content
      */
-    private List<String> stringErr = new ArrayList<String>();
+    private List<String_> stringErr = new ArrayList<String_>();
 
     /**
      * Strings with correct content
      */
-    private List<String> stringCorr = new ArrayList<String>();
+    private List<String_> stringCorr = new ArrayList<String_>();
 
     /**
      * Booleans with invalid content
      */
-    private List<java.lang.Boolean> booleanErr = new ArrayList<java.lang.Boolean>();
+    private List<Boolean> booleanErr = new ArrayList<Boolean>();
 
     /**
      * Booleans with correct content
      */
-    private List<java.lang.Boolean> booleanCorr = new ArrayList<java.lang.Boolean>();
+    private List<Boolean> booleanCorr = new ArrayList<Boolean>();
 
     /**
      * Integers with invalid content
      */
-    private List<java.lang.Integer> integerErr = new ArrayList<java.lang.Integer>();
+    private List<Integer> integerErr = new ArrayList<Integer>();
 
     /**
      * Integers with correct content
      */
-    private List<java.lang.Integer> integerCorr = new ArrayList<java.lang.Integer>();
+    private List<Integer> integerCorr = new ArrayList<Integer>();
 
     /**
      * Decimals with invalid content
      */
-    private List<java.math.BigDecimal> decimalErr = new ArrayList<java.math.BigDecimal>();
+    private List<Decimal> decimalErr = new ArrayList<Decimal>();
 
     /**
      * Decimals with correct content
      */
-    private List<java.math.BigDecimal> decimalCorr = new ArrayList<java.math.BigDecimal>();
+    private List<Decimal> decimalCorr = new ArrayList<Decimal>();
 
     /**
      * Binaries with invalid content
      */
-    private List<byte[]> b64Err = new ArrayList<byte[]>();
+    private List<Base64Binary> b64Err = new ArrayList<Base64Binary>();
 
     /**
      * Binaries with correct content
      */
-    private List<byte[]> b64Corr = new ArrayList<byte[]>();
+    private List<Base64Binary> b64Corr = new ArrayList<Base64Binary>();
 
     /**
      * Instants with invalid content
      */
-    private List<java.util.Calendar> instantErr = new ArrayList<java.util.Calendar>();
+    private List<Instant> instantErr = new ArrayList<Instant>();
 
     /**
      * Instants with correct content
      */
-    private List<java.util.Calendar> instantCorr = new ArrayList<java.util.Calendar>();
+    private List<Instant> instantCorr = new ArrayList<Instant>();
 
     /**
      * Uri's with invalid content
      */
-    private List<java.net.URI> uriErr = new ArrayList<java.net.URI>();
+    private List<Uri> uriErr = new ArrayList<Uri>();
 
     /**
      * Uri's with correct content
      */
-    private List<java.net.URI> uriCorr = new ArrayList<java.net.URI>();
+    private List<Uri> uriCorr = new ArrayList<Uri>();
 
-    public List<String> getStringErr() { 
+    public List<String_> getStringErr() { 
       return this.stringErr;
     }
 
-    public List<String> getStringCorr() { 
+    public List<String_> getStringCorr() { 
       return this.stringCorr;
     }
 
-    public List<java.lang.Boolean> getBooleanErr() { 
+    public List<Boolean> getBooleanErr() { 
       return this.booleanErr;
     }
 
-    public List<java.lang.Boolean> getBooleanCorr() { 
+    public List<Boolean> getBooleanCorr() { 
       return this.booleanCorr;
     }
 
-    public List<java.lang.Integer> getIntegerErr() { 
+    public List<Integer> getIntegerErr() { 
       return this.integerErr;
     }
 
-    public List<java.lang.Integer> getIntegerCorr() { 
+    public List<Integer> getIntegerCorr() { 
       return this.integerCorr;
     }
 
-    public List<java.math.BigDecimal> getDecimalErr() { 
+    public List<Decimal> getDecimalErr() { 
       return this.decimalErr;
     }
 
-    public List<java.math.BigDecimal> getDecimalCorr() { 
+    public List<Decimal> getDecimalCorr() { 
       return this.decimalCorr;
     }
 
-    public List<byte[]> getB64Err() { 
+    public List<Base64Binary> getB64Err() { 
       return this.b64Err;
     }
 
-    public List<byte[]> getB64Corr() { 
+    public List<Base64Binary> getB64Corr() { 
       return this.b64Corr;
     }
 
-    public List<java.util.Calendar> getInstantErr() { 
+    public List<Instant> getInstantErr() { 
       return this.instantErr;
     }
 
-    public List<java.util.Calendar> getInstantCorr() { 
+    public List<Instant> getInstantCorr() { 
       return this.instantCorr;
     }
 
-    public List<java.net.URI> getUriErr() { 
+    public List<Uri> getUriErr() { 
       return this.uriErr;
     }
 
-    public List<java.net.URI> getUriCorr() { 
+    public List<Uri> getUriCorr() { 
       return this.uriCorr;
     }
 

@@ -71,7 +71,7 @@
     <Cell><Data ss:Type="String">#boolean-yes-no</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">DataAbsentReason</Data></Cell>
+    <Cell><Data ss:Type="String">!DataAbsentReason</Data></Cell>
     <Cell><Data ss:Type="String">Used to specify why the normally expected content of the data element is missing</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
@@ -103,8 +103,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <RangeSelection>R6</RangeSelection>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

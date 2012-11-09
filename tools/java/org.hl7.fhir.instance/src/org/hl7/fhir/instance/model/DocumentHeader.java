@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -228,7 +228,7 @@ public class DocumentHeader extends Resource {
     /**
      * the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
      */
-    private java.util.Calendar instant;
+    private Instant instant;
 
     /**
      * Specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
@@ -243,7 +243,7 @@ public class DocumentHeader extends Resource {
     /**
      * Identifies the document this document supersedes, if any.
      */
-    private String replaces;
+    private Id replaces;
 
     /**
      * The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. 
@@ -305,11 +305,11 @@ public class DocumentHeader extends Resource {
      */
     private List<Section> section = new ArrayList<Section>();
 
-    public java.util.Calendar getInstant() { 
+    public Instant getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(java.util.Calendar value) { 
+    public void setInstant(Instant value) { 
       this.instant = value;
     }
 
@@ -329,11 +329,11 @@ public class DocumentHeader extends Resource {
       this.title = value;
     }
 
-    public String getReplaces() { 
+    public Id getReplaces() { 
       return this.replaces;
     }
 
-    public void setReplaces(String value) { 
+    public void setReplaces(Id value) { 
       this.replaces = value;
     }
 

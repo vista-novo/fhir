@@ -69,12 +69,7 @@ public abstract class XmlParserBase extends XmlBase {
 //  }
 
   protected void parseTypeAttributes(XmlPullParser xpp, Type t) throws Exception {
-    if (xpp.getAttributeValue(null, "dataAbsentReason") != null)
-      t.setDataAbsentReason(DataAbsentReason.fromCode(xpp.getAttributeValue(null, "dataAbsentReason")));
-    if (xpp.getAttributeValue(null, "xml:Id") != null) {
-      t.setXmlId(xpp.getAttributeValue(null, "xml:Id"));
-      idMap.put(t.getXmlId(), t);
-    }
+    parseElementAttributes(xpp, t);
   }
 
   protected void parseElementAttributes(XmlPullParser xpp, Element e) throws Exception {

@@ -282,9 +282,9 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           else
             prsr = "parse"+upFirst(tn)+"(xpp, res)";
         } else
-          if ((!contentsHaveDataAbsentReason || !e.isAllowDAR()) && "Uri".equals(tn))
+          if ("Uri".equals(tn))
             prsr = "parseURI(xpp)";
-          else if ((!contentsHaveDataAbsentReason || !e.isAllowDAR()) && "Instant".equals(tn))
+          else if ("Instant".equals(tn))
             prsr = "parseInstantSimple(xpp)";
           else
             prsr = "parse"+upFirst(tn)+"(xpp)";
@@ -332,7 +332,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
-    if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
+    if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
         return formal ? "boolean" : "Bool";
       else if (t.equals("integer"))

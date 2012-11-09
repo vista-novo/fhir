@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -212,7 +212,7 @@ public class Conformance extends Resource {
         /**
          * Name of Organization
          */
-        private String name;
+        private String_ name;
 
         /**
          * Address of Organization
@@ -224,11 +224,11 @@ public class Conformance extends Resource {
          */
         private List<Contact> contact = new ArrayList<Contact>();
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -250,26 +250,26 @@ public class Conformance extends Resource {
         /**
          * Information about the specific implementation 
          */
-        private String description;
+        private String_ description;
 
         /**
          * The base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.
          */
-        private java.net.URI url;
+        private Uri url;
 
-        public String getDescription() { 
+        public String_ getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String value) { 
+        public void setDescription(String_ value) { 
           this.description = value;
         }
 
-        public java.net.URI getUrl() { 
+        public Uri getUrl() { 
           return this.url;
         }
 
-        public void setUrl(java.net.URI value) { 
+        public void setUrl(Uri value) { 
           this.url = value;
         }
 
@@ -279,39 +279,39 @@ public class Conformance extends Resource {
         /**
          * Name software is known by
          */
-        private String name;
+        private String_ name;
 
         /**
          * Version covered by this statement
          */
-        private String version;
+        private String_ version;
 
         /**
          * Date this version of the software released
          */
-        private String releaseDate;
+        private DateTime releaseDate;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getVersion() { 
+        public String_ getVersion() { 
           return this.version;
         }
 
-        public void setVersion(String value) { 
+        public void setVersion(String_ value) { 
           this.version = value;
         }
 
-        public String getReleaseDate() { 
+        public DateTime getReleaseDate() { 
           return this.releaseDate;
         }
 
-        public void setReleaseDate(String value) { 
+        public void setReleaseDate(DateTime value) { 
           this.releaseDate = value;
         }
 
@@ -321,13 +321,13 @@ public class Conformance extends Resource {
         /**
          * Provides details about the intention and scope of the proposal
          */
-        private String description;
+        private String_ description;
 
-        public String getDescription() { 
+        public String_ getDescription() { 
           return this.description;
         }
 
-        public void setDescription(String value) { 
+        public void setDescription(String_ value) { 
           this.description = value;
         }
 
@@ -342,7 +342,7 @@ public class Conformance extends Resource {
         /**
          * Provides documentation about the system's restful capabilities that apply across all applications, such as security
          */
-        private String documentation;
+        private String_ documentation;
 
         /**
          * Identifies the restful capabilities of the solution for a specific resource type
@@ -357,11 +357,11 @@ public class Conformance extends Resource {
           this.mode = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -375,12 +375,12 @@ public class Conformance extends Resource {
         /**
          * Identifies the resource exposed via the restful interface
          */
-        private String type;
+        private Code type;
 
         /**
          * Identifies the profile that describes the solution's support for the resource, including any constraints on cardinality, bindings, lengths or other limitations
          */
-        private java.net.URI profile;
+        private Uri profile;
 
         /**
          * Identifies a restful operation supported by the solution
@@ -390,26 +390,26 @@ public class Conformance extends Resource {
         /**
          * A flag for whether the server is able to return past versions as part of the vRead operation
          */
-        private java.lang.Boolean history;
+        private Boolean history;
 
         /**
          * If present, indicates that search operations are supported on the resource and describes the search capabilities.
          */
         private Search search;
 
-        public String getType() { 
+        public Code getType() { 
           return this.type;
         }
 
-        public void setType(String value) { 
+        public void setType(Code value) { 
           this.type = value;
         }
 
-        public java.net.URI getProfile() { 
+        public Uri getProfile() { 
           return this.profile;
         }
 
-        public void setProfile(java.net.URI value) { 
+        public void setProfile(Uri value) { 
           this.profile = value;
         }
 
@@ -417,11 +417,11 @@ public class Conformance extends Resource {
           return this.operation;
         }
 
-        public java.lang.Boolean getHistory() { 
+        public Boolean getHistory() { 
           return this.history;
         }
 
-        public void setHistory(java.lang.Boolean value) { 
+        public void setHistory(Boolean value) { 
           this.history = value;
         }
 
@@ -444,7 +444,7 @@ public class Conformance extends Resource {
         /**
          * Provides guidance specific to the implementation of this operation, such as 'delete is a logical delete' or 'updates are only allowed with version id' or 'creates permitted from pre-authorized certificates only'
          */
-        private String documentation;
+        private String_ documentation;
 
         public RestfulOperation getCode() { 
           return this.code;
@@ -454,11 +454,11 @@ public class Conformance extends Resource {
           this.code = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -468,18 +468,18 @@ public class Conformance extends Resource {
         /**
          * Provides solution-specific information on searching that isn't tied to a single parameter.  For example, security requirements for executing search, allowed combinations of parameters, etc.
          */
-        private String documentation;
+        private String_ documentation;
 
         /**
          * Identifies all of the search parameters supported, including standard ones as well as those specific to this solution.
          */
         private List<Param> param = new ArrayList<Param>();
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -493,7 +493,7 @@ public class Conformance extends Resource {
         /**
          * Corresponds to the name of the standard or custom search parameter
          */
-        private String name;
+        private String_ name;
 
         /**
          * The type of value a search parameter refers to, and how the content is interpreted
@@ -508,13 +508,13 @@ public class Conformance extends Resource {
         /**
          * For standard parameters, provides additional information on how the parameter is used in this solution.  For custom parameters, provides a description of what the parameter does
          */
-        private String documentation;
+        private String_ documentation;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -534,11 +534,11 @@ public class Conformance extends Resource {
           this.repeats = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -548,31 +548,31 @@ public class Conformance extends Resource {
         /**
          * The address to which messages and/or replies are to be sent.
          */
-        private java.net.URI endpoint;
+        private Uri endpoint;
 
         /**
          * Provides documentation about the system's messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.
          */
-        private String documentation;
+        private String_ documentation;
 
         /**
          * Describes the solution's support for an event at this end point.
          */
         private List<Event> event = new ArrayList<Event>();
 
-        public java.net.URI getEndpoint() { 
+        public Uri getEndpoint() { 
           return this.endpoint;
         }
 
-        public void setEndpoint(java.net.URI value) { 
+        public void setEndpoint(Uri value) { 
           this.endpoint = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -586,7 +586,7 @@ public class Conformance extends Resource {
         /**
          * Identifies the supported messaging event
          */
-        private String code;
+        private Code code;
 
         /**
          * The mode of this event declaration - whether application is sender or receiver
@@ -601,28 +601,28 @@ public class Conformance extends Resource {
         /**
          * Identifies the resource associated with the event.  This is the resource that defines the event.
          */
-        private String focus;
+        private Code focus;
 
         /**
          * Information about the request for this event
          */
-        private java.net.URI request;
+        private Uri request;
 
         /**
          * Information about the response for this event
          */
-        private java.net.URI response;
+        private Uri response;
 
         /**
          * Guidance on how this event is handled, such as internal system trigger points, business rules, etc.
          */
-        private String documentation;
+        private String_ documentation;
 
-        public String getCode() { 
+        public Code getCode() { 
           return this.code;
         }
 
-        public void setCode(String value) { 
+        public void setCode(Code value) { 
           this.code = value;
         }
 
@@ -638,35 +638,35 @@ public class Conformance extends Resource {
           return this.protocol;
         }
 
-        public String getFocus() { 
+        public Code getFocus() { 
           return this.focus;
         }
 
-        public void setFocus(String value) { 
+        public void setFocus(Code value) { 
           this.focus = value;
         }
 
-        public java.net.URI getRequest() { 
+        public Uri getRequest() { 
           return this.request;
         }
 
-        public void setRequest(java.net.URI value) { 
+        public void setRequest(Uri value) { 
           this.request = value;
         }
 
-        public java.net.URI getResponse() { 
+        public Uri getResponse() { 
           return this.response;
         }
 
-        public void setResponse(java.net.URI value) { 
+        public void setResponse(Uri value) { 
           this.response = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
@@ -681,12 +681,12 @@ public class Conformance extends Resource {
         /**
          * Describes how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.
          */
-        private String documentation;
+        private String_ documentation;
 
         /**
          * Constraint on a resource used in the document
          */
-        private java.net.URI profile;
+        private Uri profile;
 
         public DocumentMode getMode() { 
           return this.mode;
@@ -696,19 +696,19 @@ public class Conformance extends Resource {
           this.mode = value;
         }
 
-        public String getDocumentation() { 
+        public String_ getDocumentation() { 
           return this.documentation;
         }
 
-        public void setDocumentation(String value) { 
+        public void setDocumentation(String_ value) { 
           this.documentation = value;
         }
 
-        public java.net.URI getProfile() { 
+        public Uri getProfile() { 
           return this.profile;
         }
 
-        public void setProfile(java.net.URI value) { 
+        public void setProfile(Uri value) { 
           this.profile = value;
         }
 
@@ -717,7 +717,7 @@ public class Conformance extends Resource {
     /**
      * Date that the conformance statement is published
      */
-    private String date;
+    private DateTime date;
 
     /**
      * The organization that publishes this conformance statement
@@ -742,12 +742,12 @@ public class Conformance extends Resource {
     /**
      * The version of the FHIR specification on which this conformance profile is based
      */
-    private String version;
+    private Id version;
 
     /**
      * Whether the application accepts unknown non-"must understand" elements as part of a resource. This does not include extensions, but genuine new additions to a resource
      */
-    private java.lang.Boolean acceptUnknown;
+    private Boolean acceptUnknown;
 
     /**
      * Defines the restful capabilities of the solution, if any
@@ -764,11 +764,11 @@ public class Conformance extends Resource {
      */
     private List<Document> document = new ArrayList<Document>();
 
-    public String getDate() { 
+    public DateTime getDate() { 
       return this.date;
     }
 
-    public void setDate(String value) { 
+    public void setDate(DateTime value) { 
       this.date = value;
     }
 
@@ -804,19 +804,19 @@ public class Conformance extends Resource {
       this.proposal = value;
     }
 
-    public String getVersion() { 
+    public Id getVersion() { 
       return this.version;
     }
 
-    public void setVersion(String value) { 
+    public void setVersion(Id value) { 
       this.version = value;
     }
 
-    public java.lang.Boolean getAcceptUnknown() { 
+    public Boolean getAcceptUnknown() { 
       return this.acceptUnknown;
     }
 
-    public void setAcceptUnknown(java.lang.Boolean value) { 
+    public void setAcceptUnknown(Boolean value) { 
       this.acceptUnknown = value;
     }
 

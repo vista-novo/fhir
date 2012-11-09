@@ -88,12 +88,12 @@ public class SpreadsheetParser {
 	}
 
 
-	public ElementDefn parseCompositeType(boolean allowDAR) throws Exception {
+	public ElementDefn parseCompositeType() throws Exception {
 		isProfile = false;
-		return parseCommonTypeColumns(allowDAR).getRoot();
+		return parseCommonTypeColumns().getRoot();
 	}
 
-	private ResourceDefn parseCommonTypeColumns(boolean allowDAR) throws Exception {
+	private ResourceDefn parseCommonTypeColumns() throws Exception {
 		ResourceDefn resource = new ResourceDefn();
 		
 		Sheet sheet = xls.getSheets().get("Bindings");
@@ -108,7 +108,7 @@ public class SpreadsheetParser {
 		
 		sheet = xls.getSheets().get("Data Elements");
 		for (int row = 0; row < sheet.rows.size(); row++) {
-			processLine(resource, sheet, row, allowDAR, invariants);
+			processLine(resource, sheet, row, invariants);
 		}
 		
 		for (Invariant inv : invariants.values()) {
@@ -209,7 +209,7 @@ public class SpreadsheetParser {
 	
 	public ResourceDefn parseResource() throws Exception {
 		isProfile = false;
-		ResourceDefn root = parseCommonTypeColumns(true);
+		ResourceDefn root = parseCommonTypeColumns();
 
 		readEvents(xls.getSheets().get("Events"));
 		readExamples(root, xls.getSheets().get("Examples"));
@@ -408,7 +408,7 @@ public class SpreadsheetParser {
 		    ResourceDefn resource = new ResourceDefn();
 		    sheet = xls.getSheets().get(n);
 		    for (int row = 0; row < sheet.rows.size(); row++) {
-		      processLine(resource, sheet, row, true, invariants);
+		      processLine(resource, sheet, row, invariants);
 		    }
 		    sheet = xls.getSheets().get(n + "-Extensions");
 		    if (sheet != null) {
@@ -518,8 +518,7 @@ public class SpreadsheetParser {
 		}
 	}
 
-	private void processLine(ResourceDefn root, Sheet sheet, int row,
-			boolean allowDAR, Map<String, Invariant> invariants) throws Exception {
+	private void processLine(ResourceDefn root, Sheet sheet, int row, Map<String, Invariant> invariants) throws Exception {
 		ElementDefn e;
 		String path = sheet.getColumn(row, "Element");
 		if (path.startsWith("!"))
@@ -565,8 +564,6 @@ public class SpreadsheetParser {
 		}
 		e.setProfileName(profileName);
 
-		e.setAllowDAR(allowDAR
-				&& parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
 		e.setMustUnderstand(parseBoolean(
 				sheet.getColumn(row, "Must Understand"), row, false));
 		e.setMustSupport(parseBoolean(sheet.getColumn(row, "Must Support"),
@@ -639,7 +636,6 @@ public class SpreadsheetParser {
           + sheet.getColumn(row, "Card.") + " in " + getLocation(row));
     exe.setMinCardinality(Integer.parseInt(card[0]));
     exe.setMaxCardinality("*".equals(card[1]) ? null : Integer.parseInt(card[1]));
-    exe.setAllowDAR(parseBoolean(sheet.getColumn(row, "DAR?"), row, true));
     exe.setCondition(sheet.getColumn(row, "Condition"));
     exe.setBindingName(sheet.getColumn(row, "Binding"));
     exe.setMustUnderstand(parseBoolean(sheet.getColumn(row, "Must Understand"), row, false));
@@ -672,7 +668,6 @@ public class SpreadsheetParser {
 	    e = makeExtension(extensions, path, row, definitions);
 	    e.setMinCardinality(exe.getMinCardinality());
 	    e.setMaxCardinality(exe.getMaxCardinality());
-	    e.setAllowDAR(exe.isAllowDAR());
 	    e.setCondition(exe.getCondition());
 	    e.setBindingName(sheet.getColumn(row, "Binding"));
 	    e.setMustUnderstand(exe.isMustUnderstand());

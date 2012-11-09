@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -42,18 +42,18 @@ public class Organization extends Resource {
         /**
          * The actual name of the organization
          */
-        private String value;
+        private String_ value;
 
         /**
          * The period that this name was in use by the organization
          */
         private Period period;
 
-        public String getValue() { 
+        public String_ getValue() { 
           return this.value;
         }
 
-        public void setValue(String value) { 
+        public void setValue(String_ value) { 
           this.value = value;
         }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -133,26 +133,26 @@ public class ValueSet extends Resource {
         /**
          * The name of the author
          */
-        private String name;
+        private String_ name;
 
         /**
          * Some way of reaching or finding the author.
          */
-        private java.net.URI reference;
+        private Uri reference;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public java.net.URI getReference() { 
+        public Uri getReference() { 
           return this.reference;
         }
 
-        public void setReference(java.net.URI value) { 
+        public void setReference(Uri value) { 
           this.reference = value;
         }
 
@@ -162,12 +162,12 @@ public class ValueSet extends Resource {
         /**
          * The code system from which the selected codes come from
          */
-        private java.net.URI system;
+        private Uri system;
 
         /**
          * The version of the code system that the codes are selected from
          */
-        private String version;
+        private String_ version;
 
         /**
          * The mode of selection - whether the code itself, and/or its descendants are being selected 
@@ -177,26 +177,26 @@ public class ValueSet extends Resource {
         /**
          * Specifies a code or concept to be included or excluded as specified by the mode from the value set
          */
-        private List<String> code = new ArrayList<String>();
+        private List<Code> code = new ArrayList<Code>();
 
         /**
          * Select concepts by specify a matching criteria based on the properties defined by the system. If multiple filters are specified, they must all be true
          */
         private List<Filter> filter = new ArrayList<Filter>();
 
-        public java.net.URI getSystem() { 
+        public Uri getSystem() { 
           return this.system;
         }
 
-        public void setSystem(java.net.URI value) { 
+        public void setSystem(Uri value) { 
           this.system = value;
         }
 
-        public String getVersion() { 
+        public String_ getVersion() { 
           return this.version;
         }
 
-        public void setVersion(String value) { 
+        public void setVersion(String_ value) { 
           this.version = value;
         }
 
@@ -208,7 +208,7 @@ public class ValueSet extends Resource {
           this.mode = value;
         }
 
-        public List<String> getCode() { 
+        public List<Code> getCode() { 
           return this.code;
         }
 
@@ -222,7 +222,7 @@ public class ValueSet extends Resource {
         /**
          * A code that identifies a property defined in the code system
          */
-        private String property;
+        private Code property;
 
         /**
          * The kind of operation to perform as part of the filter criteria
@@ -232,13 +232,13 @@ public class ValueSet extends Resource {
         /**
          * The match value may be either a code defined by the system, or a string value which is used a regex match on the literal string of the property value
          */
-        private String value;
+        private Code value;
 
-        public String getProperty() { 
+        public Code getProperty() { 
           return this.property;
         }
 
-        public void setProperty(String value) { 
+        public void setProperty(Code value) { 
           this.property = value;
         }
 
@@ -250,11 +250,11 @@ public class ValueSet extends Resource {
           this.op = value;
         }
 
-        public String getValue() { 
+        public Code getValue() { 
           return this.value;
         }
 
-        public void setValue(String value) { 
+        public void setValue(Code value) { 
           this.value = value;
         }
 
@@ -263,7 +263,7 @@ public class ValueSet extends Resource {
     /**
      * A free text natural language name describing the value set
      */
-    private String name;
+    private String_ name;
 
     /**
      * Details of the author who accepts responsibility for publishing the value set
@@ -273,7 +273,7 @@ public class ValueSet extends Resource {
     /**
      * A free text natural language description of the value set - contents, reason for definition, conditions of use, etc.
      */
-    private String description;
+    private String_ description;
 
     /**
      * The status of the value set
@@ -283,27 +283,27 @@ public class ValueSet extends Resource {
     /**
      * The date that the value set status was last changed
      */
-    private String date;
+    private DateTime date;
 
     /**
      * The identifier that is used to identify this value set when it is referenced in a specification, model, design or an instance 
      */
-    private String identifier;
+    private Id identifier;
 
     /**
      * The identifier that is used to identify this version of the value set when it is referenced in a specification, model, design, or instance
      */
-    private String version;
+    private Id version;
 
     /**
      * An assertion that this value set is a restriction on another value set - that it only includes codes that are part of the other value set. The value set itself must ensure that this is true - the contents of the value set are not automatically bounded by the contents of any value set identified here. This allows profile tooling to reason about the relationships between value sets without having to determine the value set contents
      */
-    private List<java.net.URI> restricts = new ArrayList<java.net.URI>();
+    private List<Uri> restricts = new ArrayList<Uri>();
 
     /**
      * Includes the contents of the referenced value set as part of the contents of this value set
      */
-    private List<java.net.URI> import_ = new ArrayList<java.net.URI>();
+    private List<Uri> import_ = new ArrayList<Uri>();
 
     /**
      * Include one or more codes from a code system
@@ -315,11 +315,11 @@ public class ValueSet extends Resource {
      */
     private List<Include> exclude = new ArrayList<Include>();
 
-    public String getName() { 
+    public String_ getName() { 
       return this.name;
     }
 
-    public void setName(String value) { 
+    public void setName(String_ value) { 
       this.name = value;
     }
 
@@ -331,11 +331,11 @@ public class ValueSet extends Resource {
       this.author = value;
     }
 
-    public String getDescription() { 
+    public String_ getDescription() { 
       return this.description;
     }
 
-    public void setDescription(String value) { 
+    public void setDescription(String_ value) { 
       this.description = value;
     }
 
@@ -347,35 +347,35 @@ public class ValueSet extends Resource {
       this.status = value;
     }
 
-    public String getDate() { 
+    public DateTime getDate() { 
       return this.date;
     }
 
-    public void setDate(String value) { 
+    public void setDate(DateTime value) { 
       this.date = value;
     }
 
-    public String getIdentifier() { 
+    public Id getIdentifier() { 
       return this.identifier;
     }
 
-    public void setIdentifier(String value) { 
+    public void setIdentifier(Id value) { 
       this.identifier = value;
     }
 
-    public String getVersion() { 
+    public Id getVersion() { 
       return this.version;
     }
 
-    public void setVersion(String value) { 
+    public void setVersion(Id value) { 
       this.version = value;
     }
 
-    public List<java.net.URI> getRestricts() { 
+    public List<Uri> getRestricts() { 
       return this.restricts;
     }
 
-    public List<java.net.URI> getImport() { 
+    public List<Uri> getImport() { 
       return this.import_;
     }
 

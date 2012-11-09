@@ -208,7 +208,6 @@ public class CompositeTypeConverter
 		Annotations ann = buildAnnotationsFromFhirElement(element);
 		
 		result.setAnnotation(ann);
-		result.setAllowDAR( element.isAllowDAR() );
 		result.setMustUnderstand( element.isMustUnderstand() );
 		result.setMustSupport( element.isMustSupport() );
 		

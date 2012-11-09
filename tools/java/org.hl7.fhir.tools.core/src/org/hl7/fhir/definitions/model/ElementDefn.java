@@ -42,7 +42,6 @@ public class ElementDefn {
 
 	private Integer minCardinality;
 	private Integer maxCardinality;
-	private boolean allowDAR;
 	private Invariant invariant; // a reference to an invariant defined on another element, but which constrains this one
 	private boolean mustUnderstand;
 	private boolean mustSupport;
@@ -81,7 +80,6 @@ public class ElementDefn {
 
 		minCardinality = pattern.minCardinality;
 		maxCardinality = pattern.maxCardinality;
-		allowDAR = pattern.allowDAR;
 		invariant = pattern.invariant;
 		mustUnderstand = pattern.mustUnderstand;
 		mustSupport = pattern.mustSupport;
@@ -456,14 +454,6 @@ public class ElementDefn {
 
 	public boolean isBoundCode() {
 		return typeCode().equals("code") && hasBinding();
-	}
-
-	public boolean isAllowDAR() {
-		return allowDAR;
-	}
-
-	public void setAllowDAR(boolean allowDAR) {
-		this.allowDAR = allowDAR;
 	}
 
 	public Invariant getInvariant() {

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class Patient extends Resource {
     /**
      * Whether the patient record is in use, or has been removed from active use
      */
-    private java.lang.Boolean active;
+    private Boolean active;
 
     /**
      * The person or animal that this patient record is about
@@ -82,11 +82,11 @@ public class Patient extends Resource {
       return this.link;
     }
 
-    public java.lang.Boolean getActive() { 
+    public Boolean getActive() { 
       return this.active;
     }
 
-    public void setActive(java.lang.Boolean value) { 
+    public void setActive(Boolean value) { 
       this.active = value;
     }
 

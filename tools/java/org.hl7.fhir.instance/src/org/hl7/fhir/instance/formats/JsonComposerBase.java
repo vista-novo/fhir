@@ -160,8 +160,6 @@ public abstract class JsonComposerBase extends XmlBase {
 
   protected void composeTypeAttributes(Type type) throws Exception {
     composeElementAttributes(type);
-    if (type.getDataAbsentReason() != null) 
-      prop("dataAbsentReason", type.getDataAbsentReason().toCode());
   }
     
   protected void composeString(String name, String value) throws Exception {
@@ -264,6 +262,11 @@ public abstract class JsonComposerBase extends XmlBase {
       close();
     }
   }
+
+  protected void composeUri(String name, java.net.URI value) throws Exception {
+    composeURI(name, value);
+  }
+
 
   protected void composeDecimal(String name, Decimal value) throws Exception {
     if (value != null) {

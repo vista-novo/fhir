@@ -77,7 +77,6 @@ public class ModelValidator {
 	private void checkElement(String path, ElementDefn e, ResourceDefn parent) {
 		rule(path, e.unbounded() || e.getMaxCardinality() == 1,	"Max Cardinality must be 1 or unbounded");
 		rule(path, e.getMinCardinality() == 0 || e.getMinCardinality() == 1, "Min Cardinality must be 0 or 1");
-		rule(path, !e.typeCode().equals("*") || e.isAllowDAR(), "Attributes of type * must allow dataAbsentReason");
 		
 		// if (e.getConformance() == ElementDefn.Conformance.Mandatory &&
 		// !e.unbounded())

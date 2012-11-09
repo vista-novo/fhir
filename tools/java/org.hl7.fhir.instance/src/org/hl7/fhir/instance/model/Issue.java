@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -76,7 +76,7 @@ public class Issue extends Resource {
     /**
      * A simple Xpath limited to element names, repetition indicators and the default child access that identifies one of the elements in the request message that caused this issue to be raised.
      */
-    private List<String> location = new ArrayList<String>();
+    private List<String_> location = new ArrayList<String_>();
 
     public IssueSeverity getSeverity() { 
       return this.severity;
@@ -94,7 +94,7 @@ public class Issue extends Resource {
       this.type = value;
     }
 
-    public List<String> getLocation() { 
+    public List<String_> getLocation() { 
       return this.location;
     }
 

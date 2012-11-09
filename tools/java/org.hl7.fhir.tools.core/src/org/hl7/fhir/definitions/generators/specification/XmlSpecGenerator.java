@@ -132,8 +132,6 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	     vn = "value"+upFirst(ex.getDefinition().typeCode());
 	   
 	   write(" &lt;<b>"+vn+"</b>");
-	   if (ex.getDefinition().isAllowDAR())
-       write(" <span style=\"color: red\" title=\"dataAbsentReason attribute is allowed\">d?</span>");
 	   write(">");
 	   if (ex.getDefinition().getTypes().size() == 1 && definitions.hasElementDefn(ex.getDefinition().typeCode())) {
 	     write(" (todo: fixed values, fix links)\r\n");
@@ -265,8 +263,6 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 				write("</b></span></a>");
 			else
 				write("</b></a>");
-			if (elem.isAllowDAR())
-				write(" <span style=\"color: red\" title=\"dataAbsentReason attribute is allowed\">d?</span>");
 //			if (elem.isXmlIDRef())
 //			  write(" idref=\"<span style=\"color: navy\" title=\""+Utilities.escapeXml(elem.getDefinition())+"\">["+elem.getShortDefn()+"]</span>\"/");
 			write("&gt;");

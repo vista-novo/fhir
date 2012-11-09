@@ -110,7 +110,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 		if (clss != JavaGenClass.Constraint) {
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("extension") && !e.getName().equals("text")))
 					scanNestedTypes(root, root.getName(), e, conceptDomains);
 			}
 			for (ElementDefn e : enums) {
@@ -121,12 +121,12 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			}
 
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("extension") && !e.getName().equals("text")))
 					generateField(root, e, "    ");
 			}
 
 			for (ElementDefn e : root.getElements()) {
-				if (clss != JavaGenClass.Resource || (!e.getName().equals("id") && !e.getName().equals("extension") && !e.getName().equals("text")))
+				if (clss != JavaGenClass.Resource || (!e.getName().equals("extension") && !e.getName().equals("text")))
 					generateAccessors(root, e, "    ");
 			}
 		}
@@ -179,7 +179,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 
 	private boolean hasList(ElementDefn root) {
 		for (ElementDefn e : root.getElements()) {
-			if (!e.getName().equals("id") && !e.getName().equals("text")) {
+			if (!e.getName().equals("text")) {
 				if (e.unbounded() || hasListInner(e))
 					return true;
 			}
@@ -335,7 +335,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		if (tn == null) {
 			if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
 				tn = e.typeCode();
-				if (clss != JavaGenClass.Resource || !e.isAllowDAR()) {
+				if (clss != JavaGenClass.Resource) {
 					if (tn.equals("boolean")) tn = "java.lang.Boolean";
 					else if (tn.equals("integer")) tn = "java.lang.Integer";
 					else if (tn.equals("decimal")) tn = "java.math.BigDecimal";

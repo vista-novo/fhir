@@ -55,10 +55,6 @@
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//ElementDefn/maxCardinality"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CLrtr6_CEeGrAaDwyEdjfA"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_CL03gK_CEeGrAaDwyEdjfA" type="2001">
-        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//ElementDefn/allowDAR"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_CL03ga_CEeGrAaDwyEdjfA"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_CL03gq_CEeGrAaDwyEdjfA" type="2001">
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//ElementDefn/mustUnderstand"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CL03g6_CEeGrAaDwyEdjfA"/>

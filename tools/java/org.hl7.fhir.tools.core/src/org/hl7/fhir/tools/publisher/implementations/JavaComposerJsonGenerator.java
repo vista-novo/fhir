@@ -261,7 +261,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
           tn = "Code";
           comp = "composeCode";
         } else if (tn.equalsIgnoreCase("uri"))
-          tn = (!contentsHaveDataAbsentReason || !e.isAllowDAR()) ? "URI" : "Uri";
+          tn = "Uri";
         else if (tn.equals("instant"))
           tn = "Instant";
         if (tn.contains("Resource(")) {
@@ -291,7 +291,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
         };
         write("      if (element.get"+upFirst(name)+"().size() > 0) {\r\n");
         write("        openArray(\""+name+"\");\r\n");
-        write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : tn)+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
+        write("        for ("+(tn.contains("(") ? PrepGenericTypeName(tn) : upFirst(tn))+" e : element.get"+upFirst(getElementName(name, false))+"()) \r\n");
         write("          "+comp+"(null, e);\r\n");
         write("        closeArray();\r\n");
         write("      };\r\n");
@@ -320,7 +320,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
 
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
-    if ((usePrimitive || !elem.isAllowDAR()) && definitions.getPrimitives().containsKey(t)) {
+    if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
       if (t.equals("boolean"))
         return formal ? "boolean" : "java.lang.Boolean";
       else if (t.equals("integer"))

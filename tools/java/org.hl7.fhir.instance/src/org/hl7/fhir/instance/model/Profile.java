@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -162,22 +162,22 @@ public class Profile extends Resource {
         /**
          * The name of the author
          */
-        private String name;
+        private String_ name;
 
         /**
          * Reference to the author to assist a user in finding and communicating with the author
          */
-        private List<java.net.URI> reference = new ArrayList<java.net.URI>();
+        private List<Uri> reference = new ArrayList<Uri>();
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public List<java.net.URI> getReference() { 
+        public List<Uri> getReference() { 
           return this.reference;
         }
 
@@ -192,12 +192,12 @@ public class Profile extends Resource {
         /**
          * The date that the current value for status was applied to the profile
          */
-        private String date;
+        private DateTime date;
 
         /**
          * Additional commentary related to the profile's status
          */
-        private String comment;
+        private String_ comment;
 
         public ResourceProfileStatus getCode() { 
           return this.code;
@@ -207,19 +207,19 @@ public class Profile extends Resource {
           this.code = value;
         }
 
-        public String getDate() { 
+        public DateTime getDate() { 
           return this.date;
         }
 
-        public void setDate(String value) { 
+        public void setDate(DateTime value) { 
           this.date = value;
         }
 
-        public String getComment() { 
+        public String_ getComment() { 
           return this.comment;
         }
 
-        public void setComment(String value) { 
+        public void setComment(String_ value) { 
           this.comment = value;
         }
 
@@ -229,26 +229,26 @@ public class Profile extends Resource {
         /**
          * The identifier for the profile, ideally the URL it can be retrieved from.
          */
-        private java.net.URI uri;
+        private Uri uri;
 
         /**
          * The short label used for display of the profile when uniquely identifying imported extensions
          */
-        private String prefix;
+        private String_ prefix;
 
-        public java.net.URI getUri() { 
+        public Uri getUri() { 
           return this.uri;
         }
 
-        public void setUri(java.net.URI value) { 
+        public void setUri(Uri value) { 
           this.uri = value;
         }
 
-        public String getPrefix() { 
+        public String_ getPrefix() { 
           return this.prefix;
         }
 
-        public void setPrefix(String value) { 
+        public void setPrefix(String_ value) { 
           this.prefix = value;
         }
 
@@ -258,57 +258,57 @@ public class Profile extends Resource {
         /**
          * The Type of the resource being described
          */
-        private String type;
+        private Code type;
 
         /**
          * Reference to a resource profile that includes the constraint statement that applies to this resource
          */
-        private java.net.URI profile;
+        private Uri profile;
 
         /**
          * The name of this resource constraint statement (to refer to it from other resource constraints)
          */
-        private String name;
+        private String_ name;
 
         /**
          * Human summary: why describe this resource?
          */
-        private String purpose;
+        private String_ purpose;
 
         /**
          * Captures constraints on each element within the resource
          */
         private List<Element_> element = new ArrayList<Element_>();
 
-        public String getType() { 
+        public Code getType() { 
           return this.type;
         }
 
-        public void setType(String value) { 
+        public void setType(Code value) { 
           this.type = value;
         }
 
-        public java.net.URI getProfile() { 
+        public Uri getProfile() { 
           return this.profile;
         }
 
-        public void setProfile(java.net.URI value) { 
+        public void setProfile(Uri value) { 
           this.profile = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getPurpose() { 
+        public String_ getPurpose() { 
           return this.purpose;
         }
 
-        public void setPurpose(String value) { 
+        public void setPurpose(String_ value) { 
           this.purpose = value;
         }
 
@@ -322,12 +322,12 @@ public class Profile extends Resource {
         /**
          * The path identifies the element
          */
-        private String path;
+        private String_ path;
 
         /**
          * A unique name referring to a specific set of constraints applied to this element.
          */
-        private String name;
+        private String_ name;
 
         /**
          * Definition of the content of the element to provide a more specific definition than that contained for the element in the base resource.
@@ -337,26 +337,26 @@ public class Profile extends Resource {
         /**
          * Whether the Resource that is the value for this element is included in the bundle, if the profile is specifying a bundle
          */
-        private java.lang.Boolean bundled;
+        private Boolean bundled;
 
         /**
          * Indicates whether the set of slices defined is "exhaustive".  I.e. Have all the possible variants for the repeating element been defined?  If true, then no new slices can be created off the base element in derived profiles - though existing slices can be further sliced if they are defined as repeating elements.
          */
-        private java.lang.Boolean closed;
+        private Boolean closed;
 
-        public String getPath() { 
+        public String_ getPath() { 
           return this.path;
         }
 
-        public void setPath(String value) { 
+        public void setPath(String_ value) { 
           this.path = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -368,19 +368,19 @@ public class Profile extends Resource {
           this.definition = value;
         }
 
-        public java.lang.Boolean getBundled() { 
+        public Boolean getBundled() { 
           return this.bundled;
         }
 
-        public void setBundled(java.lang.Boolean value) { 
+        public void setBundled(Boolean value) { 
           this.bundled = value;
         }
 
-        public java.lang.Boolean getClosed() { 
+        public Boolean getClosed() { 
           return this.closed;
         }
 
-        public void setClosed(java.lang.Boolean value) { 
+        public void setClosed(Boolean value) { 
           this.closed = value;
         }
 
@@ -390,37 +390,37 @@ public class Profile extends Resource {
         /**
          * A concise definition that  is shown in the concise XML format that summarises profiles
          */
-        private String short_;
+        private String_ short_;
 
         /**
          *  The definition must be consistent with the base definition, but convey the meaning of the element in the particular context of use of the resource
          */
-        private String formal;
+        private String_ formal;
 
         /**
          * Comments about the use of the element, including notes about how to use the data properly, exceptions to proper use, etc.
          */
-        private String comments;
+        private String_ comments;
 
         /**
          * Explains why this element is needed and why it's been constrained as it has
          */
-        private String requirements;
+        private String_ requirements;
 
         /**
          * Identifies additional names by which this element might also be known
          */
-        private List<String> synonym = new ArrayList<String>();
+        private List<String_> synonym = new ArrayList<String_>();
 
         /**
          * The minimum number of times this element must appear in the instance
          */
-        private java.lang.Integer min;
+        private Integer min;
 
         /**
          * The maximum number of times this element is permitted to appear in the instance
          */
-        private String max;
+        private String_ max;
 
         /**
          * The data type or resource that the value of this element is permitted to be
@@ -430,7 +430,7 @@ public class Profile extends Resource {
         /**
          * Identifies the name of a slice defined elsewhere in the profile whose constraints should be applied to the current element 
          */
-        private String nameReference;
+        private String_ nameReference;
 
         /**
          * Specifies a value that must hold for this element in the instance.
@@ -440,17 +440,12 @@ public class Profile extends Resource {
         /**
          * Indicates the shortest length that must be supported by conformant instances without truncation.
          */
-        private java.lang.Integer maxLength;
-
-        /**
-         * If true then the dataAbsentReason attribute is permitted, otherwise not
-         */
-        private java.lang.Boolean dataAbsentReason;
+        private Integer maxLength;
 
         /**
          * A reference to an invariant that may make additional statements about the cardinality in the instance
          */
-        private List<String> condition = new ArrayList<String>();
+        private List<Id> condition = new ArrayList<Id>();
 
         /**
          * Formal constraints such as co-occurrence and other constraints that can be computationally evaluated within the context of the instance.
@@ -460,72 +455,72 @@ public class Profile extends Resource {
         /**
          * If true, conformant resource authors must be capable of providing a value for the element and resource consumers must be capable of extracting and doing something useful with the data element.  If false, the element may be ignored and not supported.
          */
-        private java.lang.Boolean mustSupport;
+        private Boolean mustSupport;
 
         /**
          * If true, the element cannot be ignored by systems unless they recognize the element and a pre-determination has been made that it is not relevant to their particular system.
          */
-        private java.lang.Boolean mustUnderstand;
+        private Boolean mustUnderstand;
 
         /**
          * Identifies the set of codes that applies to this element if a data type supporting codes is used.
          */
-        private String binding;
+        private String_ binding;
 
         /**
          * Identifies a concept from an external specification that roughly corresponds to this element.
          */
         private List<Mapping> mapping = new ArrayList<Mapping>();
 
-        public String getShort() { 
+        public String_ getShort() { 
           return this.short_;
         }
 
-        public void setShort(String value) { 
+        public void setShort(String_ value) { 
           this.short_ = value;
         }
 
-        public String getFormal() { 
+        public String_ getFormal() { 
           return this.formal;
         }
 
-        public void setFormal(String value) { 
+        public void setFormal(String_ value) { 
           this.formal = value;
         }
 
-        public String getComments() { 
+        public String_ getComments() { 
           return this.comments;
         }
 
-        public void setComments(String value) { 
+        public void setComments(String_ value) { 
           this.comments = value;
         }
 
-        public String getRequirements() { 
+        public String_ getRequirements() { 
           return this.requirements;
         }
 
-        public void setRequirements(String value) { 
+        public void setRequirements(String_ value) { 
           this.requirements = value;
         }
 
-        public List<String> getSynonym() { 
+        public List<String_> getSynonym() { 
           return this.synonym;
         }
 
-        public java.lang.Integer getMin() { 
+        public Integer getMin() { 
           return this.min;
         }
 
-        public void setMin(java.lang.Integer value) { 
+        public void setMin(Integer value) { 
           this.min = value;
         }
 
-        public String getMax() { 
+        public String_ getMax() { 
           return this.max;
         }
 
-        public void setMax(String value) { 
+        public void setMax(String_ value) { 
           this.max = value;
         }
 
@@ -533,11 +528,11 @@ public class Profile extends Resource {
           return this.type;
         }
 
-        public String getNameReference() { 
+        public String_ getNameReference() { 
           return this.nameReference;
         }
 
-        public void setNameReference(String value) { 
+        public void setNameReference(String_ value) { 
           this.nameReference = value;
         }
 
@@ -549,23 +544,15 @@ public class Profile extends Resource {
           this.value = value;
         }
 
-        public java.lang.Integer getMaxLength() { 
+        public Integer getMaxLength() { 
           return this.maxLength;
         }
 
-        public void setMaxLength(java.lang.Integer value) { 
+        public void setMaxLength(Integer value) { 
           this.maxLength = value;
         }
 
-        public java.lang.Boolean getDataAbsentReason() { 
-          return this.dataAbsentReason;
-        }
-
-        public void setDataAbsentReason(java.lang.Boolean value) { 
-          this.dataAbsentReason = value;
-        }
-
-        public List<String> getCondition() { 
+        public List<Id> getCondition() { 
           return this.condition;
         }
 
@@ -573,27 +560,27 @@ public class Profile extends Resource {
           return this.constraint;
         }
 
-        public java.lang.Boolean getMustSupport() { 
+        public Boolean getMustSupport() { 
           return this.mustSupport;
         }
 
-        public void setMustSupport(java.lang.Boolean value) { 
+        public void setMustSupport(Boolean value) { 
           this.mustSupport = value;
         }
 
-        public java.lang.Boolean getMustUnderstand() { 
+        public Boolean getMustUnderstand() { 
           return this.mustUnderstand;
         }
 
-        public void setMustUnderstand(java.lang.Boolean value) { 
+        public void setMustUnderstand(Boolean value) { 
           this.mustUnderstand = value;
         }
 
-        public String getBinding() { 
+        public String_ getBinding() { 
           return this.binding;
         }
 
-        public void setBinding(String value) { 
+        public void setBinding(String_ value) { 
           this.binding = value;
         }
 
@@ -607,26 +594,26 @@ public class Profile extends Resource {
         /**
          * Data type or Resource
          */
-        private String code;
+        private Code code;
 
         /**
          * Identifies a profile that must hold for resources referenced as the type of this element.
          */
-        private java.net.URI profile;
+        private Uri profile;
 
-        public String getCode() { 
+        public Code getCode() { 
           return this.code;
         }
 
-        public void setCode(String value) { 
+        public void setCode(Code value) { 
           this.code = value;
         }
 
-        public java.net.URI getProfile() { 
+        public Uri getProfile() { 
           return this.profile;
         }
 
-        public void setProfile(java.net.URI value) { 
+        public void setProfile(Uri value) { 
           this.profile = value;
         }
 
@@ -636,78 +623,78 @@ public class Profile extends Resource {
         /**
          * Allows identification of which elements have their cardinalities impacted by the constraint.  Will not be referenced for constraints that do not affect cardinality.
          */
-        private String id;
+        private Id id;
 
         /**
          * Used to label the constraint in OCL or in short displays incapable of displaying the full human description
          */
-        private String name;
+        private String_ name;
 
         /**
          * Identifies the impact constraint violation has on the conformance of the instance.
          */
-        private String severity;
+        private Code severity;
 
         /**
          * This is the text that describes the constraint in messages identifying that the constraint has been violated 
          */
-        private String human;
+        private String_ human;
 
         /**
          * XPath expression of constraint
          */
-        private String xpath;
+        private String_ xpath;
 
         /**
          * OCL expression of constraint
          */
-        private String ocl;
+        private String_ ocl;
 
-        public String getId() { 
+        public Id getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(Id value) { 
           this.id = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getSeverity() { 
+        public Code getSeverity() { 
           return this.severity;
         }
 
-        public void setSeverity(String value) { 
+        public void setSeverity(Code value) { 
           this.severity = value;
         }
 
-        public String getHuman() { 
+        public String_ getHuman() { 
           return this.human;
         }
 
-        public void setHuman(String value) { 
+        public void setHuman(String_ value) { 
           this.human = value;
         }
 
-        public String getXpath() { 
+        public String_ getXpath() { 
           return this.xpath;
         }
 
-        public void setXpath(String value) { 
+        public void setXpath(String_ value) { 
           this.xpath = value;
         }
 
-        public String getOcl() { 
+        public String_ getOcl() { 
           return this.ocl;
         }
 
-        public void setOcl(String value) { 
+        public void setOcl(String_ value) { 
           this.ocl = value;
         }
 
@@ -717,26 +704,26 @@ public class Profile extends Resource {
         /**
          * The name of the specification is mapping is being expressed to.
          */
-        private String target;
+        private String_ target;
 
         /**
          * Expresses what part of the target specification corresponds to this element
          */
-        private String map;
+        private String_ map;
 
-        public String getTarget() { 
+        public String_ getTarget() { 
           return this.target;
         }
 
-        public void setTarget(String value) { 
+        public void setTarget(String_ value) { 
           this.target = value;
         }
 
-        public String getMap() { 
+        public String_ getMap() { 
           return this.map;
         }
 
-        public void setMap(String value) { 
+        public void setMap(String_ value) { 
           this.map = value;
         }
 
@@ -746,7 +733,7 @@ public class Profile extends Resource {
         /**
          * A unique code (within the profile) used to identify the extension.
          */
-        private String code;
+        private Code code;
 
         /**
          * Identifies the type of context to which the extension applies
@@ -756,18 +743,18 @@ public class Profile extends Resource {
         /**
          * Identifies the types of resource or data type elements to which the extension can be applied.
          */
-        private List<String> context = new ArrayList<String>();
+        private List<String_> context = new ArrayList<String_>();
 
         /**
          * Definition of the extension and its content
          */
         private Definition definition;
 
-        public String getCode() { 
+        public Code getCode() { 
           return this.code;
         }
 
-        public void setCode(String value) { 
+        public void setCode(Code value) { 
           this.code = value;
         }
 
@@ -779,7 +766,7 @@ public class Profile extends Resource {
           this.contextType = value;
         }
 
-        public List<String> getContext() { 
+        public List<String_> getContext() { 
           return this.context;
         }
 
@@ -797,12 +784,12 @@ public class Profile extends Resource {
         /**
          * The name to be associated with this set of codes.
          */
-        private String name;
+        private String_ name;
 
         /**
          * Describes the intended use of this particular set of codes
          */
-        private String definition;
+        private String_ definition;
 
         /**
          * Identifies how the set of codes for this binding is being defined.
@@ -812,7 +799,7 @@ public class Profile extends Resource {
         /**
          * If true, then conformant systems may use additional codes or (where the data type permits) text alone to convey concepts not covered by the set of codes identified in the binding.  If false, then conformant systems are constrained to the provided codes alone.
          */
-        private java.lang.Boolean isExtensible;
+        private Boolean isExtensible;
 
         /**
          * Indicates the degree of conformance expectations associated with this binding
@@ -822,26 +809,26 @@ public class Profile extends Resource {
         /**
          * Points to the value set or external definition that identifies the set of codes to be used.
          */
-        private java.net.URI reference;
+        private Uri reference;
 
         /**
          * Identifies the codes forming the code list for the binding
          */
         private List<Concept> concept = new ArrayList<Concept>();
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getDefinition() { 
+        public String_ getDefinition() { 
           return this.definition;
         }
 
-        public void setDefinition(String value) { 
+        public void setDefinition(String_ value) { 
           this.definition = value;
         }
 
@@ -853,11 +840,11 @@ public class Profile extends Resource {
           this.type = value;
         }
 
-        public java.lang.Boolean getIsExtensible() { 
+        public Boolean getIsExtensible() { 
           return this.isExtensible;
         }
 
-        public void setIsExtensible(java.lang.Boolean value) { 
+        public void setIsExtensible(Boolean value) { 
           this.isExtensible = value;
         }
 
@@ -869,11 +856,11 @@ public class Profile extends Resource {
           this.conformance = value;
         }
 
-        public java.net.URI getReference() { 
+        public Uri getReference() { 
           return this.reference;
         }
 
-        public void setReference(java.net.URI value) { 
+        public void setReference(Uri value) { 
           this.reference = value;
         }
 
@@ -887,52 +874,52 @@ public class Profile extends Resource {
         /**
          * Identifies the code referenced or being defined as part of the binding
          */
-        private String code;
+        private Code code;
 
         /**
          * Identifies the system in which the referenced code is defined.
          */
-        private java.net.URI system;
+        private Uri system;
 
         /**
          * Identifies the text to be displayed to the user for this code.  If none provided, then the code itself is displayed.
          */
-        private String display;
+        private String_ display;
 
         /**
          * A free-text description of the meaning of this code
          */
-        private String definition;
+        private String_ definition;
 
-        public String getCode() { 
+        public Code getCode() { 
           return this.code;
         }
 
-        public void setCode(String value) { 
+        public void setCode(Code value) { 
           this.code = value;
         }
 
-        public java.net.URI getSystem() { 
+        public Uri getSystem() { 
           return this.system;
         }
 
-        public void setSystem(java.net.URI value) { 
+        public void setSystem(Uri value) { 
           this.system = value;
         }
 
-        public String getDisplay() { 
+        public String_ getDisplay() { 
           return this.display;
         }
 
-        public void setDisplay(String value) { 
+        public void setDisplay(String_ value) { 
           this.display = value;
         }
 
-        public String getDefinition() { 
+        public String_ getDefinition() { 
           return this.definition;
         }
 
-        public void setDefinition(String value) { 
+        public void setDefinition(String_ value) { 
           this.definition = value;
         }
 
@@ -941,12 +928,12 @@ public class Profile extends Resource {
     /**
      * A free text natural language name identifying the Profile
      */
-    private String name;
+    private String_ name;
 
     /**
      * The official version of this profile - for external version specific references
      */
-    private String version;
+    private String_ version;
 
     /**
      * Details of the author who accepts responsibility for publishing the profile
@@ -956,7 +943,7 @@ public class Profile extends Resource {
     /**
      * A free text natural language description of the profile and its use
      */
-    private String description;
+    private String_ description;
 
     /**
      * A set of terms from external terminologies that may be used to assist with indexing and searching of templates.
@@ -976,7 +963,7 @@ public class Profile extends Resource {
     /**
      * If this profile describes a bundle, the first resource in the bundle (usually a MessageHeader or a DocumentHeader)
      */
-    private String bundle;
+    private Code bundle;
 
     /**
      * A constraint statement about what contents a profile may have
@@ -993,19 +980,19 @@ public class Profile extends Resource {
      */
     private List<Binding> binding = new ArrayList<Binding>();
 
-    public String getName() { 
+    public String_ getName() { 
       return this.name;
     }
 
-    public void setName(String value) { 
+    public void setName(String_ value) { 
       this.name = value;
     }
 
-    public String getVersion() { 
+    public String_ getVersion() { 
       return this.version;
     }
 
-    public void setVersion(String value) { 
+    public void setVersion(String_ value) { 
       this.version = value;
     }
 
@@ -1017,11 +1004,11 @@ public class Profile extends Resource {
       this.author = value;
     }
 
-    public String getDescription() { 
+    public String_ getDescription() { 
       return this.description;
     }
 
-    public void setDescription(String value) { 
+    public void setDescription(String_ value) { 
       this.description = value;
     }
 
@@ -1041,11 +1028,11 @@ public class Profile extends Resource {
       return this.import_;
     }
 
-    public String getBundle() { 
+    public Code getBundle() { 
       return this.bundle;
     }
 
-    public void setBundle(String value) { 
+    public void setBundle(Code value) { 
       this.bundle = value;
     }
 

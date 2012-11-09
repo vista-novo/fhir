@@ -26,7 +26,6 @@
         <type>
           <code>Resource</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -42,7 +41,6 @@
         <type>
           <code>id</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -58,7 +56,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReportStatus</binding>
@@ -76,7 +73,6 @@
         <type>
           <code>instant</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -92,7 +88,6 @@
         <type>
           <code>Resource(Patient)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -108,7 +103,6 @@
         <type>
           <code>Resource(Admission)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -125,7 +119,6 @@
         <type>
           <code>Resource(Organization)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -141,7 +134,6 @@
         <type>
           <code>Identifier</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -155,7 +147,6 @@
         <comments>Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single Pathology test result resource</comments>
         <min>0</min>
         <max>*</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -172,7 +163,6 @@
         <type>
           <code>Identifier</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -189,7 +179,6 @@
         <type>
           <code>Identifier</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -206,7 +195,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabRequests</binding>
@@ -223,7 +211,6 @@
         <type>
           <code>Resource(Agent|Organization)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -239,7 +226,6 @@
         <type>
           <code>Resource(Any)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -256,7 +242,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabReportNames</binding>
@@ -273,7 +258,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabServices</binding>
@@ -291,7 +275,6 @@
         <type>
           <code>dateTime</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -308,7 +291,6 @@
         <type>
           <code>Resource(Specimen)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -322,7 +304,6 @@
         <comments>Many (most) lab reports don&#39;t really have a meaningful group. In these cases, just create a single group with no specimen or name</comments>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -339,7 +320,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultGroupNames</binding>
@@ -356,7 +336,6 @@
         <type>
           <code>Resource(Specimen)</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -370,7 +349,6 @@
         <formal>Group of elements for Cholesterol result</formal>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -387,7 +365,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultNames</binding>
@@ -404,7 +381,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -420,7 +396,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultFlag</binding>
@@ -437,7 +412,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReportStatus</binding>
@@ -454,7 +428,6 @@
         <type>
           <code>string</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -468,7 +441,6 @@
         <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -485,7 +457,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReferenceRanges</binding>
@@ -503,7 +474,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -517,7 +487,6 @@
         <formal>Group of elements for Triglyceride result</formal>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -534,7 +503,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultNames</binding>
@@ -551,7 +519,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -567,7 +534,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultFlag</binding>
@@ -584,7 +550,6 @@
         <type>
           <code>string</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -598,7 +563,6 @@
         <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -615,7 +579,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReferenceRanges</binding>
@@ -633,7 +596,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -647,7 +609,6 @@
         <formal>Group of elements for HDL Cholesterol result</formal>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -664,7 +625,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultNames</binding>
@@ -681,7 +641,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -697,7 +656,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultFlag</binding>
@@ -714,7 +672,6 @@
         <type>
           <code>string</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -728,7 +685,6 @@
         <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -745,7 +701,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReferenceRanges</binding>
@@ -763,7 +718,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -777,7 +731,6 @@
         <formal>LDL Cholesterol result, if reported</formal>
         <min>0</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -794,7 +747,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>Loinc 35198-1 | Loinc 13457-7</binding>
@@ -811,7 +763,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -827,7 +778,6 @@
         <type>
           <code>code</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
         <binding>LabResultFlag</binding>
@@ -844,7 +794,6 @@
         <type>
           <code>string</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -858,7 +807,6 @@
         <comments>Most results only have one reference range. Some non-numerical results don&#39;t have a reference range</comments>
         <min>1</min>
         <max>1</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -875,7 +823,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabReferenceRanges</binding>
@@ -893,7 +840,6 @@
         <type>
           <code>Quantity</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -910,7 +856,6 @@
         <type>
           <code>Narrative</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
       </definition>
@@ -926,7 +871,6 @@
         <type>
           <code>CodeableConcept</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
         <binding>LabDiagnosisCodes</binding>
@@ -944,7 +888,6 @@
         <type>
           <code>Attachment</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -957,7 +900,6 @@
         <formal>See Extensions</formal>
         <min>0</min>
         <max>*</max>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -973,7 +915,6 @@
         <type>
           <code>Narrative</code>
         </type>
-        <dataAbsentReason>false</dataAbsentReason>
         <mustSupport>false</mustSupport>
         <mustUnderstand>false</mustUnderstand>
       </definition>
@@ -1166,13 +1107,11 @@
             <b>resultGroup</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- All the results in one group --&gt;</span>
   &lt;<a title="No name needed for the result group (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.name">
           <span style="text-decoration: underline">
             <b>name</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>
@@ -1196,7 +1135,6 @@
             <b>result</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
         <span style="color: blue">&quot;Cholesterol Group&quot;</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Cholesterol Result --&gt;</span>
@@ -1214,7 +1152,6 @@
             <b>valueQuantity</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1228,7 +1165,6 @@
             <b>flag</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1253,7 +1189,6 @@
             <b>comments</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1267,11 +1202,9 @@
             <b>referenceRange</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
     &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>
@@ -1294,7 +1227,6 @@
             <b>result</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
         <span style="color: blue">&quot;Triglyceride Group&quot;</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- Triglyceride Result --&gt;</span>
@@ -1312,7 +1244,6 @@
             <b>valueQuantity</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1326,7 +1257,6 @@
             <b>flag</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1340,7 +1270,6 @@
             <b>comments</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1354,11 +1283,9 @@
             <b>referenceRange</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
     &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>
@@ -1381,7 +1308,6 @@
             <b>result</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
         <span style="color: blue">&quot;HDL Cholesteral Group&quot;</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- HDL Cholesterol Result --&gt;</span>
@@ -1399,7 +1325,6 @@
             <b>valueQuantity</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1413,7 +1338,6 @@
             <b>flag</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1427,7 +1351,6 @@
             <b>comments</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1441,11 +1364,9 @@
             <b>referenceRange</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
     &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>
@@ -1468,7 +1389,6 @@
             <b>result</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt; <span style="color: Gray">&lt;!--</span>
         <span style="color: blue">&quot;LDL Cholesteral Group&quot;</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
@@ -1477,7 +1397,6 @@
             <b>name</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>1..1</b>
         </span>
@@ -1491,7 +1410,6 @@
             <b>valueQuantity</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1505,7 +1423,6 @@
             <b>flag</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1519,7 +1436,6 @@
             <b>comments</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1533,11 +1449,9 @@
             <b>referenceRange</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;  <span style="color: Gray">&lt;!-- Guide for interpretation --&gt;</span>
     &lt;<a title="Range is a recommended range" class="dict" href="#LabReport.resultGroup.result.referenceRange.meaning">
           <b>meaning</b>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>
@@ -1561,7 +1475,6 @@
             <b>conclusion</b>
           </span>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..1</b>
         </span>
@@ -1573,7 +1486,6 @@
  &lt;<a title="Codes for the conclusion" class="dict" href="#LabReport.codedDiagnosis">
           <b>codedDiagnosis</b>
         </a>
-        <span title="dataAbsentReason attribute is allowed" style="color: red">d?</span>&gt;<span style="color: Gray">&lt;!--</span>
         <span style="color: brown">
           <b>0..0</b>
         </span>

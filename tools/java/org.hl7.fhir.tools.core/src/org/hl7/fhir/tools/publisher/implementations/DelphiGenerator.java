@@ -207,7 +207,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classDefs.add(def.toString());
     getCode(category).classImpls.add(impl2.toString()+impl.toString());
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
-    generateParser(tn, false, true);
+    generateParser(tn, false);
   }
 
   private DelphiCodeGenerator getCode(ClassCategory category) {
@@ -317,7 +317,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classDefs.add(def.toString());
     getCode(category).classImpls.add(impl2.toString() + impl.toString());
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
-    generateParser(tn, isRes, !superClass.equals("TFHIRElement"));
+    generateParser(tn, isRes);
   }
 
   private void genResource(ResourceDefn root, String tn, String superClass, boolean listsAreWrapped, ClassCategory category) throws Exception {
@@ -416,7 +416,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classDefs.add(def.toString());
     getCode(category).classImpls.add(impl2.toString() + impl.toString());
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
-    generateParser(tn, isRes, false);
+    generateParser(tn, isRes);
   }
 
   private void generateSearchEnums(ResourceDefn r) throws Exception {
@@ -622,10 +622,10 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     getCode(category).classDefs.add(def.toString());
     getCode(category).classImpls.add(impl2.toString() + impl.toString());
     getCode(category).classFwds.add("  "+tn+" = class;\r\n");
-    generateParser(tn, false, e.isAllowDAR());
+    generateParser(tn, false);
   }
 
-  private void generateParser(String tn, boolean isResource, boolean hasDAR) {
+  private void generateParser(String tn, boolean isResource) {
     String s = workingParserX.toString();
     prsrImpl.append(
             "function TFHIRXmlParser.Parse"+tn.substring(1)+"(element : IXmlDomElement) : "+tn+";\r\n"+
@@ -639,9 +639,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
             "  try\r\n"+
             "    takeComments(result);\r\n"+
             "    result.xmlId := GetAttribute(element, 'id');\r\n");
-    if (hasDAR)
-      prsrImpl.append(
-          "    result.dataAbsentReason := ParseDAR(GetAttribute(element, 'dataAbsentReason'));\r\n");
     prsrImpl.append(
             "    child := FirstChild(element);\r\n"+
             "    while (child <> nil) do\r\n"+
@@ -677,8 +674,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
             "begin\r\n"+
             "  if (elem = nil) then\r\n    exit;\r\n"+
             "  comments(xml, elem);\r\n  attribute(xml, 'id', elem.xmlId);\r\n");
-    if (hasDAR) 
-      prsrImpl.append("  dar(xml, elem.dataAbsentReason);\r\n");
     prsrImpl.append(
             "  xml.open(name);\r\n\r\n");
     
@@ -706,10 +701,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
             "        result.xmlId := json.itemValue\r\n"+
             "      else if (json.ItemName = '_xml_comments') then\r\n"+
             "        parseComments(result.xml_comments)\r\n");
-    if (hasDAR)
-      prsrImpl.append(
-          "      else if (json.ItemName = '@dataAbsentReason') then\r\n"+
-            "        result.dataAbsentReason := ParseDAR(json.itemValue)\r\n");
     prsrImpl.append(s);
     if (isResource)
       prsrImpl.append(
@@ -749,8 +740,6 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
             "  json.valueObject(name);\r\n"+
             "  Comments(json, elem);\r\n"+
             "  Prop(json, '@id', elem.xmlId);\r\n");
-    if (hasDAR) 
-      prsrImpl.append("  dar(json, elem.dataAbsentReason);\r\n");
     prsrImpl.append(s);
     if (isResource)
       prsrImpl.append(
@@ -1293,7 +1282,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     } else if (e.getTypes().size() == 0) {
       throw new Exception("not supported");
     } else {
-      return getTypename(e.getTypes().get(0), hasId || e.isAllowDAR());
+      return getTypename(e.getTypes().get(0), hasId);
     }
   }
 

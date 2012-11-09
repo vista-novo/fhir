@@ -20,7 +20,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -78,29 +77,27 @@
  </Styles>
  <Worksheet ss:Name="Data Elements">
   <Names>
-   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R37C17"
+   <NamedRange ss:Name="_FilterDatabase" ss:RefersTo="='Data Elements'!R1C1:R37C16"
     ss:Hidden="1"/>
   </Names>
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="37" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="37" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="303.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="32.25"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="30"/>
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="31.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="36" ss:Span="1"/>
-   <Column ss:Index="7" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"/>
+   <Column ss:Index="6" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="13" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="12" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Column ss:Index="16" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="134.25"/>
+   <Column ss:Index="15" ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="134.25"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Element</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Card.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Inv.</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">DAR?</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">UML</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
@@ -131,44 +128,41 @@
     <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:StyleID="s66"><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Instruction to administer (and supply?) medication </Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Instruction to administer (and supply?) medication </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Directions provided by a prescribing practitioner for a specific medication to be administered (and possibly) supplied to an individual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Used to record details about the prescribed medication, administration schedule, dosage and dispensing.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">SubstanceAdministration</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">SubstanceAdministration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Prescription.identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="4"><Data ss:Type="Boolean">1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">HumanId</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Prescription identification</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Prescription identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">A identifier used in an external system and associated with this medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Prescriptions are almost always assigned specific numerical identifiers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">.id</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.status</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="4"><Data ss:Type="Boolean">1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">code</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">PrescriptionStatus</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -176,19 +170,18 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Actual status of the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">.statusCode</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">.statusCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="4"><Data ss:Type="Boolean">1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="Boolean">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Resource(Patient)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Patient)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Patient receiving medicine</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Patient receiving medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The patient the prescription is prescribing medicine for</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -197,11 +190,9 @@
     <Cell><Data ss:Type="String">Prescription.prescriber</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Resource(Agent)</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Prescribing doctor</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Prescribing doctor</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The clinician or doctor prescribing the medication</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -210,11 +201,9 @@
     <Cell><Data ss:Type="String">Prescription.prescribed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">dateTime</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Date/time prescribed</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Date/time prescribed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Date/time on which the prescription was written</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -223,11 +212,9 @@
     <Cell><Data ss:Type="String">Prescription.dispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="5"><Data ss:Type="String">left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">left</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Details of included dispense request</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Details of included dispense request</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Details of the dispense as requested by the prescriber</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -236,26 +223,22 @@
     <Cell><Data ss:Type="String">Prescription.dispense.repeats</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">integer</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Number of repeats</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Number of repeats</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Requested number of repeats</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Default is &quot;1&quot;</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;1&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.dispense.quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Quantity</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Quantity per repeat</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Quantity per repeat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Requested quantity per repeat</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -264,9 +247,9 @@
     <Cell><Data ss:Type="String">Prescription.dispense.dispenser</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Resource(Agent|Organization)</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent|Organization)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Person to fullfil the requested dispense</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Person to fullfil the requested dispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Person to fullfil the requested dispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -275,9 +258,7 @@
     <Cell><Data ss:Type="String">Prescription.medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Prescribed medicine</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Prescribed medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The one single medicatine, vaccine or therapeutic good prescribed in this prescription.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -286,9 +267,9 @@
     <Cell><Data ss:Type="String">Prescription.medicine.identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="5"><Data ss:Type="Boolean">1</Data><NamedCell
+    <Cell ss:Index="4"><Data ss:Type="Boolean">1</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationKind</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -296,18 +277,16 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Text and or Code(s) that identify the medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Conformance should be &quot;Required&quot;, not &quot;Optional&quot;</Data><NamedCell
+    <Cell ss:Index="15"><Data ss:Type="String">Conformance should be &quot;Required&quot;, not &quot;Optional&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Prescription.medicine.activeIngredient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="5"><Data ss:Type="String">down</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">down</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Active substance</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Active substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">The substance in the medication formulation that is pharmaceutically active and is responsible for the medication's therapeutic effect</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -316,7 +295,7 @@
     <Cell><Data ss:Type="String">Prescription.medicine.activeIngredient.identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationKind</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -329,24 +308,22 @@
     <Cell><Data ss:Type="String">Prescription.medicine.activeIngredient.quantity[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Ratio | code</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Ratio | code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Relative quantity of active ingredient</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Relative quantity of active ingredient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Quantity of active ingredient expressed in relation to the whole of the prepared medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Bind to QuantityExceptions when tool supports polymorphic bindings</Data><NamedCell
+    <Cell ss:Index="15"><Data ss:Type="String">Bind to QuantityExceptions when tool supports polymorphic bindings</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.medicine.inactiveIngredient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="5"><Data ss:Type="String">down</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">down</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Inactive substance</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Inactive substance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Ingredients in the medication that are not active</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -355,7 +332,7 @@
     <Cell><Data ss:Type="String">Prescription.medicine.inactiveIngredient.identification</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">MedicationKind</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -368,24 +345,22 @@
     <Cell><Data ss:Type="String">Prescription.medicine.inactiveIngredient.quantity[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Ratio | code</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Ratio | code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Relative quantity of inactive ingredient</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Relative quantity of inactive ingredient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Quantity of inactive ingredient expressed in relation to the whole of the prepared medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Bind to QuantityExceptions when tool supports polymorphic bindings</Data><NamedCell
+    <Cell ss:Index="15"><Data ss:Type="String">Bind to QuantityExceptions when tool supports polymorphic bindings</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Prescription.administrationRequest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">right</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Instructions for use</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Instructions for use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -394,22 +369,22 @@
     <Cell><Data ss:Type="String">Prescription.administrationRequest.description</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">string</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Textual instructions for use</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Textual instructions for use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Textual description of the use of the medication.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Can contain more details than the structured information under this element, but must be in accordance with it. May not contain information about the medicine itself.</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Can contain more details than the structured information under this element, but must be in accordance with it. May not contain information about the medicine itself.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Prescription.administrationRequest.totalPeriodicDosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Ratio</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Total periodic dosis</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Total periodic dosis</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -421,9 +396,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">dateTime</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Startdate for administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Startdate for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">First moment on which medication should be taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -433,9 +408,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">dateTime</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Enddate for administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Enddate for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Last moment on which medication should be taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -445,9 +420,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Quantity</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Total duration of administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Total duration of administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Total duration of administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -457,9 +432,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">integer</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Maximum number of separate administrations</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Maximum number of separate administrations</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Maximum number of separate administrations before the instruction ends.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -468,20 +443,18 @@
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Dosage instruction</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Dosage instruction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Specification of dose and schedule for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">The can be &gt;1 dosage instruction to support administration of varying doses, resulting in 1 instruction per fixed dose.</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">The can be &gt;1 dosage instruction to support administration of varying doses, resulting in 1 instruction per fixed dose.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.precondition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">AdministrationPrecondition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -494,22 +467,20 @@
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.prn</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">boolean</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">boolean</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Pro re nate: Yes|No</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Pro re nate: Yes|No</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Pro re nate, &quot;If necessary&quot;: Specifies whether administration depens on the state and symptoms of the patient</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Default is &quot;false&quot;</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;false&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.additionalInstruction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">AdministrationInstruction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -522,7 +493,7 @@
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.route</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">AdministrationRoute</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -530,31 +501,29 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Route of administration (oral, nasal, intravenous)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Since the route of administration is generally determined by the choice of medication, it is not necessary to provide a value in route</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Since the route of administration is generally determined by the choice of medication, it is not necessary to provide a value in route</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.dose[x]</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity|Range</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Quantity|Range</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Dose per administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Dose per administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Dose per administration, expressed in units of the (prepared) product</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Dose may be an interval, &quot;2-3 tablets per 4 hours&quot;</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Dose may be an interval, &quot;2-3 tablets per 4 hours&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.rate</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Quantity</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Quantity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Flow-rate for IV</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Flow-rate for IV</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Flow-rate for IV</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -563,22 +532,20 @@
     <Cell><Data ss:Type="String">Prescription.administrationRequest.dosageInstruction.schedule</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Schedule</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Schedule</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Schedule for administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Schedule for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Schedule for administration. If multiple are given, they are considered to be active in parrallel</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Will submit proposal to change Schedule type.</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Will submit proposal to change Schedule type.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.reason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">CodeableConcept</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">PrescriptionReason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -591,22 +558,18 @@
     <Cell><Data ss:Type="String">Prescription.extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Extension</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">See Extensions</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Prescription.text</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">n</Data><NamedCell
+    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Narrative</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Text summary of the prescription, for human interpretation</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Text summary of the prescription, for human interpretation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
   </Table>
@@ -617,10 +580,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>12</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -633,12 +597,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>15</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>0</ActiveRow>
+     <ActiveCol>3</ActiveCol>
+     <RangeSelection>C4</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -747,7 +711,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -350,7 +350,7 @@ public class SecurityEvent extends Resource {
         /**
          * The time when the event occurred on the source
          */
-        private java.util.Calendar dateTime;
+        private Instant dateTime;
 
         /**
          * Indicates whether the event succeeded or failed
@@ -378,11 +378,11 @@ public class SecurityEvent extends Resource {
           this.action = value;
         }
 
-        public java.util.Calendar getDateTime() { 
+        public Instant getDateTime() { 
           return this.dateTime;
         }
 
-        public void setDateTime(java.util.Calendar value) { 
+        public void setDateTime(Instant value) { 
           this.dateTime = value;
         }
 
@@ -404,22 +404,22 @@ public class SecurityEvent extends Resource {
         /**
          * Unique identifier for the user actively participating in the event
          */
-        private String userId;
+        private String_ userId;
 
         /**
          * User identifier text string from authentication system. This identifier would be one known to a common authentication system (e.g., single sign-on), if available
          */
-        private String otherUserId;
+        private String_ otherUserId;
 
         /**
          * human-meaningful name for the user
          */
-        private String name;
+        private String_ name;
 
         /**
          * Indicator that the user is or is not the requestor, or initiator, for the event being audited.
          */
-        private java.lang.Boolean requestor;
+        private Boolean requestor;
 
         /**
          * Specification of the role(s) the user plays when performing the event, as assigned in role-based access control security
@@ -431,35 +431,35 @@ public class SecurityEvent extends Resource {
          */
         private Network network;
 
-        public String getUserId() { 
+        public String_ getUserId() { 
           return this.userId;
         }
 
-        public void setUserId(String value) { 
+        public void setUserId(String_ value) { 
           this.userId = value;
         }
 
-        public String getOtherUserId() { 
+        public String_ getOtherUserId() { 
           return this.otherUserId;
         }
 
-        public void setOtherUserId(String value) { 
+        public void setOtherUserId(String_ value) { 
           this.otherUserId = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public java.lang.Boolean getRequestor() { 
+        public Boolean getRequestor() { 
           return this.requestor;
         }
 
-        public void setRequestor(java.lang.Boolean value) { 
+        public void setRequestor(Boolean value) { 
           this.requestor = value;
         }
 
@@ -486,7 +486,7 @@ public class SecurityEvent extends Resource {
         /**
          * An identifier for the network access point of the user device for the audit event
          */
-        private String id;
+        private String_ id;
 
         public NetworkType getType() { 
           return this.type;
@@ -496,11 +496,11 @@ public class SecurityEvent extends Resource {
           this.type = value;
         }
 
-        public String getId() { 
+        public String_ getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(String_ value) { 
           this.id = value;
         }
 
@@ -510,31 +510,31 @@ public class SecurityEvent extends Resource {
         /**
          * Logical source location within the healthcare enterprise network
          */
-        private String site;
+        private String_ site;
 
         /**
          * Identifier of the source where the event originated
          */
-        private String id;
+        private String_ id;
 
         /**
          * Code specifying the type of source where event originated
          */
         private List<Coding> type = new ArrayList<Coding>();
 
-        public String getSite() { 
+        public String_ getSite() { 
           return this.site;
         }
 
-        public void setSite(String value) { 
+        public void setSite(String_ value) { 
           this.site = value;
         }
 
-        public String getId() { 
+        public String_ getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(String_ value) { 
           this.id = value;
         }
 
@@ -568,22 +568,22 @@ public class SecurityEvent extends Resource {
         /**
          * Identifies a specific instance of the participant object
          */
-        private String id;
+        private String_ id;
 
         /**
          * Denotes policy-defined sensitivity for the Participant Object ID such as VIP, HIV status, mental health status, or similar topics
          */
-        private String sensitivity;
+        private String_ sensitivity;
 
         /**
          * An instance-specific descriptor of the Participant Object ID audited, such as a person's name
          */
-        private String name;
+        private String_ name;
 
         /**
          * The actual query for a query-type participant object
          */
-        private byte[] query;
+        private Base64Binary query;
 
         public ObjectType getType() { 
           return this.type;
@@ -617,35 +617,35 @@ public class SecurityEvent extends Resource {
           this.idType = value;
         }
 
-        public String getId() { 
+        public String_ getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(String_ value) { 
           this.id = value;
         }
 
-        public String getSensitivity() { 
+        public String_ getSensitivity() { 
           return this.sensitivity;
         }
 
-        public void setSensitivity(String value) { 
+        public void setSensitivity(String_ value) { 
           this.sensitivity = value;
         }
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public byte[] getQuery() { 
+        public Base64Binary getQuery() { 
           return this.query;
         }
 
-        public void setQuery(byte[] value) { 
+        public void setQuery(Base64Binary value) { 
           this.query = value;
         }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Thu, Nov 8, 2012 23:13+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -153,7 +153,7 @@ public class AssessmentScale extends Resource {
     /**
      * The time that the assessment score was finalized
      */
-    private String time;
+    private DateTime time;
 
     /**
      * Information of how the assessment was performed. 
@@ -191,11 +191,11 @@ public class AssessmentScale extends Resource {
       this.performer = value;
     }
 
-    public String getTime() { 
+    public DateTime getTime() { 
       return this.time;
     }
 
-    public void setTime(String value) { 
+    public void setTime(DateTime value) { 
       this.time = value;
     }
 
