@@ -20,6 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -123,9 +124,9 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Who, What, When for another resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Provenance information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from</Data><NamedCell
+    <Cell><Data ss:Type="String">Provenance information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit, and traceability, not clinical meaning.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">Defined with close consideration for W3C Provenance</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">Some parties may be duplicated between the target resource and it's provenance.  For instance, the prescriber is usually (but not always) the author of the prescription resource. This resource is defined with close consideration for W3C Provenance</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="15"><Data ss:Type="String">Sources of requirements: v2 EVN, Control Act, CDA, W3C provenance, ATNA</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -367,12 +368,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -494,7 +494,7 @@
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">stop</Data></Cell>
+    <Cell><Data ss:Type="String">end</Data></Cell>
     <Cell><Data ss:Type="String">[Provenance.activity.period.stop]</Data></Cell>
     <Cell><Data ss:Type="String">date</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
@@ -633,10 +633,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <RangeSelection>R1:R1048576</RangeSelection>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

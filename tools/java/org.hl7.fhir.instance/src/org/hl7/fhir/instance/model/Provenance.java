@@ -29,12 +29,12 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import java.util.*;
 
 /**
- * Provenance information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from
+ * Provenance information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from. The focus of the provenance resource is record keeping, audit, and traceability, not clinical meaning.
  */
 public class Provenance extends Resource {
 

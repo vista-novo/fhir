@@ -28,14 +28,8 @@
         </identifier>
         <name>
           <use>official</use>
-          <part>
-            <type>family</type>
-            <value>[%last name%]</value>
-          </part>
-          <part>
-            <type>given</type>
-            <value>[%first name%]</value>
-          </part>
+          <family>[%last name%]</family>
+          <given>[%first name%]</given>
         </name>
         <gender>
           <coding>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -342,22 +342,22 @@ public class JsonComposer extends JsonComposerBase {
       composeString("text", element.getText());
       if (element.getPart().size() > 0) {
         openArray("part");
-        for (Address.Part e : element.getPart()) 
-          composeAddressPart(null, e);
+        for (String e : element.getPart()) 
+          composeString(null, e);
         closeArray();
       };
+      if (element.getLine().size() > 0) {
+        openArray("line");
+        for (String e : element.getLine()) 
+          composeString(null, e);
+        closeArray();
+      };
+      composeString("city", element.getCity());
+      composeString("state", element.getState());
+      composeString("zip", element.getZip());
+      composeString("country", element.getCountry());
+      composeString("dpid", element.getDpid());
       composePeriod("period", element.getPeriod());
-      close();
-    }
-  }
-
-  private void composeAddressPart(String name, Address.Part element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      composeString("value", element.getValue());
       close();
     }
   }
@@ -369,24 +369,31 @@ public class JsonComposer extends JsonComposerBase {
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
       composeString("text", element.getText());
-      if (element.getPart().size() > 0) {
-        openArray("part");
-        for (HumanName.Part e : element.getPart()) 
-          composeHumanNamePart(null, e);
+      if (element.getFamily().size() > 0) {
+        openArray("family");
+        for (String e : element.getFamily()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getGiven().size() > 0) {
+        openArray("given");
+        for (String e : element.getGiven()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getPrefix().size() > 0) {
+        openArray("prefix");
+        for (String e : element.getPrefix()) 
+          composeString(null, e);
+        closeArray();
+      };
+      if (element.getSuffix().size() > 0) {
+        openArray("suffix");
+        for (String e : element.getSuffix()) 
+          composeString(null, e);
         closeArray();
       };
       composePeriod("period", element.getPeriod());
-      close();
-    }
-  }
-
-  private void composeHumanNamePart(String name, HumanName.Part element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      composeString("value", element.getValue());
       close();
     }
   }

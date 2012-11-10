@@ -5,18 +5,9 @@
   <!-- Peter James Chalmers, but called "Jim" -->
   <name>
     <use>official</use>
-    <part>
-      <type>given</type>
-      <value>Duck</value>
-    </part>
-    <part>
-      <type>given</type>
-      <value>D</value>
-    </part>
-    <part>
-      <type>family</type>
-      <value>Donald</value>
-    </part>
+     <family>Donald</family>
+     <given>Duck</given>
+     <given>D</given>
   </name>
   <gender>
     <coding>
@@ -35,6 +26,7 @@
             <td>Name</td>
             <td>Donald D <b>Duck</b></td>
           </tr>
+        </tbody>
       </table>
     </div>
   </text>

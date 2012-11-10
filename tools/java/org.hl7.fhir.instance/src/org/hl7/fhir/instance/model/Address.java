@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -67,76 +67,6 @@ public class Address extends Type {
         }
     }
 
-    public enum AddressPartType {
-        part, // Part of an address line (typically used with an extension that further defines the meaning of the part).
-        line, // A line of an address (typically used for street names & numbers, unit details, delivery hints, etc.) .
-        city, // The name of the city, town, village, or other community or delivery centre.
-        state, // Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).
-        country, // Country. ISO 3166 3 letter codes can be used in place of a full country name.
-        zip, // A postal code designating a region defined by the postal service.
-        dpid; // A value that uniquely identifies the postal address. (Often used in barcodes). 
-        public static AddressPartType fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("part".equals(codeString))
-          return part;
-        if ("line".equals(codeString))
-          return line;
-        if ("city".equals(codeString))
-          return city;
-        if ("state".equals(codeString))
-          return state;
-        if ("country".equals(codeString))
-          return country;
-        if ("zip".equals(codeString))
-          return zip;
-        if ("dpid".equals(codeString))
-          return dpid;
-        throw new Exception("Unknown AddressPartType code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case part: return "part";
-            case line: return "line";
-            case city: return "city";
-            case state: return "state";
-            case country: return "country";
-            case zip: return "zip";
-            case dpid: return "dpid";
-            default: return "?";
-          }
-        }
-    }
-
-    public class Part extends Element {
-        /**
-         * Type of address part (see below)
-         */
-        private AddressPartType type;
-
-        /**
-         * The content of the address part
-         */
-        private String value;
-
-        public AddressPartType getType() { 
-          return this.type;
-        }
-
-        public void setType(AddressPartType value) { 
-          this.type = value;
-        }
-
-        public String getValue() { 
-          return this.value;
-        }
-
-        public void setValue(String value) { 
-          this.value = value;
-        }
-
-    }
-
     /**
      * Identifies the intended purpose of this address
      */
@@ -148,9 +78,39 @@ public class Address extends Type {
     private String text;
 
     /**
-     * A part of an address
+     * Part of an address line
      */
-    private List<Part> part = new ArrayList<Part>();
+    private List<String> part = new ArrayList<String>();
+
+    /**
+     * A line of an address (typically used for street names & numbers, unit details, delivery hints, etc.) .
+     */
+    private List<String> line = new ArrayList<String>();
+
+    /**
+     * The name of the city, town, village, or other community or delivery centre.
+     */
+    private String city;
+
+    /**
+     * Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).
+     */
+    private String state;
+
+    /**
+     * A postal code designating a region defined by the postal service.
+     */
+    private String zip;
+
+    /**
+     * Country. ISO 3166 3 letter codes can be used in place of a full country name.
+     */
+    private String country;
+
+    /**
+     * A value that uniquely identifies the postal address. (Often used in barcodes). 
+     */
+    private String dpid;
 
     /**
      * Time period when address was/is in use
@@ -173,8 +133,52 @@ public class Address extends Type {
       this.text = value;
     }
 
-    public List<Part> getPart() { 
+    public List<String> getPart() { 
       return this.part;
+    }
+
+    public List<String> getLine() { 
+      return this.line;
+    }
+
+    public String getCity() { 
+      return this.city;
+    }
+
+    public void setCity(String value) { 
+      this.city = value;
+    }
+
+    public String getState() { 
+      return this.state;
+    }
+
+    public void setState(String value) { 
+      this.state = value;
+    }
+
+    public String getZip() { 
+      return this.zip;
+    }
+
+    public void setZip(String value) { 
+      this.zip = value;
+    }
+
+    public String getCountry() { 
+      return this.country;
+    }
+
+    public void setCountry(String value) { 
+      this.country = value;
+    }
+
+    public String getDpid() { 
+      return this.dpid;
+    }
+
+    public void setDpid(String value) { 
+      this.dpid = value;
     }
 
     public Period getPeriod() { 

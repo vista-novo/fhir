@@ -142,7 +142,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditSeverity</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventSeverity</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -216,7 +216,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditEventAction</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventEventAction</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">type of action performed during the event</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -246,7 +246,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditEventOutcome</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventEventOutcome</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">whether the event succeeded or failed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -359,7 +359,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditParticipantNetworkType</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventParticipantNetworkType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">the type of network access point</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -426,7 +426,7 @@
     <Cell><Data ss:Type="String">0..*</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditSourceType</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventSourceType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">the type of source where event originated</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -452,7 +452,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditObjectType</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventObjectType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">object type being audited</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -469,7 +469,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditObjectRole</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventObjectRole</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">functional application role of Object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -486,7 +486,7 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditObjectLifecycle</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventObjectLifecycle</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">life-cycle stage for the object</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -503,7 +503,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">AuditObjectIdType</Data><NamedCell
+    <Cell><Data ss:Type="String">SecurityEventObjectIdType</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Describes the identifier</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -596,8 +596,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>21</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -912,65 +911,65 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditSeverity</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventSeverity</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">The severity of the audit entry</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#audit-severity</Data></Cell>
+    <Cell><Data ss:Type="String">#security-event-severity</Data></Cell>
     <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditEventAction</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventEventAction</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Indicator for type of action performed during the event that generated the audit.</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#audit-event-action</Data></Cell>
+    <Cell><Data ss:Type="String">#security-event-event-action</Data></Cell>
     <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditEventOutcome</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventEventOutcome</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">Indicates whether the event succeeded or failed</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
-    <Cell><Data ss:Type="String">#audit-event-outcome</Data></Cell>
+    <Cell><Data ss:Type="String">#security-event-event-outcome</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditParticipantNetworkType</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventParticipantNetworkType</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">the type of network access point that originated the audit event</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#network-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditSourceType</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventSourceType</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Code specifying the type of source where event originated</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">preferred</Data></Cell>
     <Cell><Data ss:Type="String">#source-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditObjectType</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventObjectType</Data></Cell>
     <Cell><Data ss:Type="String">Code for the participant object type being audited</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#object-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditObjectRole</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventObjectRole</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Code representing the functional application role of Participant Object being audited</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#object-role</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditObjectLifecycle</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventObjectLifecycle</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Identifier for the data life-cycle stage for the participant object</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#object-lifecycle</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">AuditObjectIdType</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">SecurityEventObjectIdType</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">Describes the identifier that is contained in Participant Object ID</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">preferred</Data></Cell>
@@ -987,15 +986,15 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>10</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="audit-severity">
+ <Worksheet ss:Name="security-event-severity">
   <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
@@ -1051,14 +1050,15 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>41</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="audit-event-action">
+ <Worksheet ss:Name="security-event-event-action">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
@@ -1108,7 +1108,7 @@
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
  </Worksheet>
- <Worksheet ss:Name="audit-event-outcome">
+ <Worksheet ss:Name="security-event-event-outcome">
   <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Row ss:AutoFitHeight="0">
@@ -1145,7 +1145,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>37</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -24,10 +24,7 @@
   <!-- Dog's name: Kenzi -->
   <name>
     <use>usual</use>
-    <part>
-      <type>given</type>
-      <value>Kenzi</value>
-    </part>
+    <given>Kenzi</given>
   </name>
     
   <dob>2010-03-23</dob> 
@@ -62,37 +59,16 @@
     </role>
     <name>
       <use>official</use>
-      <part>
-        <type>given</type>
-        <value>Peter</value>
-      </part>
-      <part>
-        <type>given</type>
-        <value>James</value>
-      </part>
-      <part>
-        <type>family</type>
-        <value>Chalmers</value>
-      </part>
+      <family>Chalmers</family>
+      <given>Peter</given>
+      <given>James</given>
     </name>
     <address>
       <use>home</use>
-      <part>
-        <type>line</type>
-        <value>534 Erewhon St</value>
-      </part>
-      <part>
-        <type>city</type>
-        <value>PleasantVille</value>
-      </part>
-      <part>
-        <type>state</type>
-        <value>Vic</value>
-      </part>
-      <part>
-        <type>zip</type>
-        <value>3999</value>
-      </part>
+      <line>534 Erewhon St</line>
+      <city>PleasantVille</city>
+      <state>Vic</state>
+      <zip>3999</zip>
     </address>
     <contact>
       <use>home</use>

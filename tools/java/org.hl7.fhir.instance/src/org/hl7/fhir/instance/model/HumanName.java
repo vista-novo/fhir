@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -75,64 +75,6 @@ public class HumanName extends Type {
         }
     }
 
-    public enum NamePartType {
-        family, // Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
-        given, // Given name. NOTE: Not to be called "first name" since given names do not always come first.
-        suffix, // Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the end of the name
-        prefix; // Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the start of the name
-        public static NamePartType fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("family".equals(codeString))
-          return family;
-        if ("given".equals(codeString))
-          return given;
-        if ("suffix".equals(codeString))
-          return suffix;
-        if ("prefix".equals(codeString))
-          return prefix;
-        throw new Exception("Unknown NamePartType code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case family: return "family";
-            case given: return "given";
-            case suffix: return "suffix";
-            case prefix: return "prefix";
-            default: return "?";
-          }
-        }
-    }
-
-    public class Part extends Element {
-        /**
-         * Type of name part
-         */
-        private NamePartType type;
-
-        /**
-         * The content of the name part
-         */
-        private String value;
-
-        public NamePartType getType() { 
-          return this.type;
-        }
-
-        public void setType(NamePartType value) { 
-          this.type = value;
-        }
-
-        public String getValue() { 
-          return this.value;
-        }
-
-        public void setValue(String value) { 
-          this.value = value;
-        }
-
-    }
-
     /**
      * Identifies the purpose for this name
      */
@@ -144,9 +86,24 @@ public class HumanName extends Type {
     private String text;
 
     /**
-     * Subdivision of the name at a level of granularity useful for analysis, sorting, matching or other purposes.
+     * Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
      */
-    private List<Part> part = new ArrayList<Part>();
+    private List<String> family = new ArrayList<String>();
+
+    /**
+     * Given name. NOTE: Not to be called "first name" since given names do not always come first.
+     */
+    private List<String> given = new ArrayList<String>();
+
+    /**
+     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the start of the name
+     */
+    private List<String> prefix = new ArrayList<String>();
+
+    /**
+     * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the end of the name
+     */
+    private List<String> suffix = new ArrayList<String>();
 
     /**
      * Indicates the period of time when this name was valid for the named person.
@@ -169,8 +126,20 @@ public class HumanName extends Type {
       this.text = value;
     }
 
-    public List<Part> getPart() { 
-      return this.part;
+    public List<String> getFamily() { 
+      return this.family;
+    }
+
+    public List<String> getGiven() { 
+      return this.given;
+    }
+
+    public List<String> getPrefix() { 
+      return this.prefix;
+    }
+
+    public List<String> getSuffix() { 
+      return this.suffix;
     }
 
     public Period getPeriod() { 

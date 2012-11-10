@@ -152,7 +152,7 @@ these types are based on those specified in the W3C Schema specification part 2,
 <p><b>Examples</b></p>
 <p>date (e.g. Date of birth):</p>
 <pre class="xml">
-  &lt;x&gt;1951-06-04&lt;/x&gt;
+  &lt;date&gt;1951-06-04&lt;/date&gt;
 </pre>
 </div>
 
@@ -211,19 +211,19 @@ The context of use may frequently make rules about the kind of attachment
 <p><b>Examples</b></p>
 <p>A PDF document:</p>
 <pre class="xml">
-  &lt;x lang="en"&gt;
+  &lt;document lang="en"&gt;
    &lt;contentType&gt;application/pdf&lt;/contentType&gt;
    &lt;data&gt;/9j/4...KAP//Z&lt;/data&gt; &lt;!-- covers many lines --&gt;
    &lt;title&gt;Definition of Procedure&lt;/title&gt;
-  &lt;/x&gt;
+  &lt;/document&gt;
 </pre>
 <p>A reference to a DICOM image via WADO:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;image&gt;
    &lt;contentType&gt;application/dicom&lt;/contentType&gt;
    &lt;url&gt;http://10.1.2.3:1000/wado?requestType=WADO&amp;wado details...&lt;/url&gt;
    &lt;hash&gt;EQH/..AgME&lt;/hash&gt;
-  &lt;/x&gt;
+  &lt;/image&gt;
 </pre>
 </div>
 
@@ -264,31 +264,31 @@ information sharing in a wider context is very likely to arise eventually.
 <p>A primary key from an application table (an OID in the space allocated by HL7
 to some organisation to further sub-allocate):</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;id&gt;
    &lt;system&gt;oid:2.16.840.1.113883.16.4.3.2.5&lt;/system&gt;
    &lt;id&gt;123&lt;/id&gt;
-  &lt;/x&gt;
+  &lt;/id&gt;
 </pre>
 <p>A patient identifier defined by a hospital:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;identifier&gt;
    &lt;system&gt;http://www.acmehosp.com/patients&lt;/system&gt;
    &lt;id&gt;44552&lt;/id&gt;
-  &lt;/x&gt;
+  &lt;/identifier&gt;
 </pre>
 <p>An identifier that refers to a patient FHIR resource on a particular system:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;id&gt;
    &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
    &lt;id&gt;http://pas-server/xxx/patient/@443556&lt;/id&gt;
-  &lt;/x&gt;
+  &lt;/id&gt;
 </pre>
 <p>A guid:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;id&gt;
    &lt;system&gt;urn:ietf:rfc:3986&lt;/system&gt;
    &lt;id&gt;a76d9bbf-f293-4fb7-ad4c-2851cac77162&lt;/id&gt;
-  &lt;/x&gt;
+  &lt;/id&gt;
 </pre>
 </div>
 
@@ -382,17 +382,17 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <p><b>Examples</b></p>
 <p>A simple code for headache, in ICD-10:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;code&gt;
     &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
     &lt;code&gt;G44.1&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/code&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;problem&gt;
     &lt;system&gt;http://snomed.info&lt;/system&gt;
     &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/problem&gt;
 </pre>
 </div>
 
@@ -450,7 +450,7 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 <p><b>Examples</b></p>
 <p>A simple code for headache initially coded in SNOMED-CT and translated to ICD-10:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;concept&gt;
     &lt;coding&gt;
       &lt;system&gt;http://hl7.org/fhir/sid/icd-10&lt;/system&gt;
       &lt;code&gt;R51&lt;/code&gt;
@@ -461,11 +461,11 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
     &lt;/coding&gt;
     &lt;text&gt;general headache&lt;/text&gt;
     &lt;primary&gt;1&lt;/primary&gt;
-  &lt;/x&gt;
+  &lt;/concept&gt;
 </pre>
 <p>A concept represented in an institution's local coding systems for unit for which no UCUM equivalent exists:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;unit&gt;
     &lt;coding&gt;
       &lt;system&gt;oid:2.16.840.1.113883.19.5.2&lt;/system&gt;
       &lt;code&gt;tab&lt;/code&gt;
@@ -474,17 +474,17 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
     &lt;coding&gt;
       &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;/coding&gt;
-  &lt;/x&gt;
+  &lt;/unit&gt;
 </pre>
 <p>A SNOMED-CT expression:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;diagnosis&gt;
     &lt;coding&gt;
       &lt;system&gt;http://snomed.info&lt;/system&gt;
       &lt;code&gt;128045006:{363698007=56459004}&lt;/code&gt;
     &lt;/coding&gt;
     &lt;text&gt;Cellulitis of the foot&lt;/text&gt;
-  &lt;/x&gt;
+  &lt;/diagnosis&gt;
 </pre>
 <p>
 In this case, there is no display element, because no display is defined for Snomed-CT expressions.
@@ -518,7 +518,7 @@ If isOrdered is true, then the values have an inherent meaningful order and the 
 <p><b>Example</b></p>
 <p>The results on a urinalysis strip:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;value&gt;
     &lt;code&gt;+&lt;/code&gt;
     &lt;option&gt;
       &lt;code&gt;neg&lt;/code&gt;
@@ -536,7 +536,7 @@ If isOrdered is true, then the values have an inherent meaningful order and the 
       &lt;code&gt;+++&lt;/code&gt;
     &lt;/option&gt;
     &lt;isOrdered&gt;true&lt;/isOrdered&gt;
-  &lt;/x&gt;
+  &lt;/value&gt;
 </pre>
 </div>
 
@@ -586,40 +586,40 @@ These are used as types in resource content models, but they are really just a Q
 <p><b>Examples</b></p>
 <p>A duration:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;time&gt;
     &lt;value&gt;25&lt;/value&gt;
     &lt;unit&gt;sec&lt;/unit&gt;
     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;code&gt;s&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/time&gt;
 </pre>
 <p>A concentration where the value was out of range:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;result&gt;
     &lt;value&gt;40000&lt;/value&gt;
     &lt;range&gt;&amp;gt;&lt;/range&gt;
     &lt;unit&gt;mcg/L&lt;/unit&gt;
     &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
     &lt;code&gt;ug&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/result&gt;
 </pre>
 <p>An amount of prescribed medication:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;dose&gt;
     &lt;value&gt;3&lt;/value&gt;
     &lt;unit&gt;capsules&lt;/unit&gt;
     &lt;system&gt;http://snomed.info&lt;/system&gt;
     &lt;code&gt;385049006&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/dose&gt;
 </pre>
 <p>A price (coded using currency codes defined in ISO 4217):</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;cost&gt;
     &lt;value&gt;25.45&lt;/value&gt;
     &lt;unit&gt;US$&lt;/unit&gt;
     &lt;system&gt;urn:std:iso:4217&lt;/system&gt;
     &lt;code&gt;USD&lt;/code&gt;
-  &lt;/x&gt;
+  &lt;/cost&gt;
 </pre>
 </div>
 
@@ -658,7 +658,7 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
 <p><b>Examples</b></p>
 <p>Range of Quantity (distance):</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;estimate&gt;
    &lt;low&gt;
      &lt;value&gt;1.6&lt;/value&gt;
      &lt;unit&gt;m&lt;/unit&gt;
@@ -667,7 +667,7 @@ includes 1.50, and 2.50 but not 1.49 or 2.51.
      &lt;value&gt;1.9&lt;/value&gt;
      &lt;unit&gt;m&lt;/unit&gt;
    &lt;/high&gt;
-  &lt;/x&gt;
+  &lt;/estimate&gt;
 </pre>
 </div>
 
@@ -698,18 +698,18 @@ The context of use may require particular types of Quantity for the numerator or
 <p><b>Examples</b></p>
 <p>Titer (Ratio of integer:integer)</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;result&gt;
    &lt;numerator&gt;
      &lt;value&gt;1&lt;/value&gt;
    &lt;/numerator&gt;
    &lt;denominator&gt;
      &lt;value&gt;128&lt;/value&gt;
    &lt;/denominator&gt;
-  &lt;/x&gt;
+  &lt;/result&gt;
 </pre>
 <p>Unit cost (Ratio of Money:Quantity):</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;charge&gt;
    &lt;numerator&gt;
      &lt;value&gt;103.50&lt;/value&gt;
      &lt;unit&gt;US$&lt;/unit&gt;
@@ -722,7 +722,7 @@ The context of use may require particular types of Quantity for the numerator or
      &lt;code&gt;day&lt;/code&gt;
      &lt;system&gt;http://unitsofmeasure.org&lt;/system&gt;
    &lt;/denominator&gt;
-  &lt;/x&gt;
+  &lt;/charge&gt;
 </pre>
 </div>
 
@@ -758,14 +758,14 @@ the end of the 27th May.
 <p><b>Examples</b></p>
 <p>23rd May 2011 to 27th May, including 27th May:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;coverage&gt;
    &lt;low&gt;
      &lt;date&gt;2011-05-23&lt;/date&gt;
    &lt;/low&gt;
    &lt;high&gt;
      &lt;date&gt;2011-05-27&lt;/date&gt;
    &lt;/high&gt;
-  &lt;/x&gt;
+  &lt;/coverage&gt;
 </pre>
 </div>
 
@@ -825,7 +825,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 <p><b>Examples</b></p>
 <p>A US SSN:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;id&gt;
     &lt;type&gt;
       &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
       &lt;code&gt;ssn&lt;/code&gt;
@@ -834,7 +834,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
       &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
       &lt;id&gt;000111111&lt;/id&gt;
     &lt;/identifier&gt;
-  &lt;/x&gt;
+  &lt;/id&gt;
 </pre>
 <p>Notes:</p> 
 <ul>
@@ -844,7 +844,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 </ul>
 <p>A medical record number assigned on 5-July 2009:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;id&gt;
     &lt;type&gt;
       &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
       &lt;code&gt;patient&lt;/code&gt;
@@ -856,7 +856,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
    &lt;period&gt;
      &lt;low&gt;2009-06-05&lt;/low&gt;
    &lt;/period&gt;
-  &lt;/x&gt;
+  &lt;/id&gt;
 </pre>
 </div>
 
@@ -865,7 +865,7 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 HumanName
 </h2>
 <p>
-A name of a human with parts and usage information.
+A name of a human with text, parts and usage information.
 </p>
 <p>
 Names may be changed or repudiated.  People may have different names in different 
@@ -879,13 +879,9 @@ world varies widely.
 [%dt HumanName%]
 <p>
 The <i>text</i> element specifies the entire name as it should be represented. This
-may be provided instead of or as well as specific <i>part</i> elements. Every <i>part</i>
-must have a <i>value</i>.
-</p>
-<p>
-Note that the order of the parts within a given part type has significance and must be observed.
-The different part types may be re-ordered between different contexts of use and the order 
-between part types is not expected to be meaningful.
+may be provided instead of or as well as specific parts. Note that the order of the 
+parts within a given part type has significance and must be observed. The order 
+between family name and given names depends on culture and context of use. 
 </p>
 <!--<div class="use">
 <p><b>Use</b></p>
@@ -896,21 +892,12 @@ between part types is not expected to be meaningful.
 <p><b>Example</b></p>
 <p>Full name of Peter James Chalmers.</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;name&gt;
     &lt;use&gt;usual&lt;/use&gt;
-    &lt;part&gt;
-      &lt;type&gt;given&lt;/type&gt;
-      &lt;value&gt;Peter&lt;/value&gt;
-    &lt;/part&gt;
-    &lt;part&gt;
-      &lt;type&gt;given&lt;/type&gt;
-      &lt;value&gt;James&lt;/value&gt;
-    &lt;/part&gt;
-    &lt;part&gt;
-      &lt;type&gt;family&lt;/type&gt;
-      &lt;value&gt;Chalmers&lt;/value&gt;
-    &lt;/part&gt;
-  &lt;/x&gt;
+    &lt;family&gt;Chalmers&lt;/family&gt;
+    &lt;given&gt;Peter&lt;/given&gt;
+    &lt;given&gt;James&lt;/given&gt;
+  &lt;/name&gt;
 </pre>
 <p><a href="datatypes-examples.htm#HumanName">Further examples</a></p>
 </div>
@@ -920,7 +907,6 @@ Address
 </h2>
 <p>
 A postal address. There are a variety of postal address formats defined around the world. 
-This format defines a superset that is the basis for addresses all around the world.
 Postal addresses are often used to record a location that can be
 visited to find a patient or person.
 </p>
@@ -928,8 +914,7 @@ visited to find a patient or person.
 [%dt Address%]
 <p>
 The <i>text</i> element specifies the entire address as it should be represented. This
-may be provided instead of or as well as specific <i>part</i> elements. Every <i>part</i>
-must have a <i>value</i>.
+may be provided instead of or as well as the specific parts. 
 </p>
 
 
@@ -941,26 +926,17 @@ must have a <i>value</i>.
 <p><b>Example</b></p>
 <p>HL7 office's address.</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;address&gt;
    &lt;use&gt;work&lt;/use&gt;
    &lt;text&gt;
        1050 W Wishard Blvd
        RG 5th floor
        Indianapolis, IN 46240
    &lt;/text&gt;
-   &lt;part&gt; 
-     &lt;type&gt;city&lt;/type&gt;
-     &lt;value&gt;Indianapolis&lt;/value&gt;
-   &lt;/part&gt;
-   &lt;part&gt; 
-     &lt;type&gt;state&lt;/type&gt;
-     &lt;value&gt;IN&lt;/value&gt;
-   &lt;/part&gt;
-   &lt;part&gt; 
-     &lt;type&gt;zip&lt;/type&gt;
-     &lt;value&gt;46240&lt;/value&gt;
-   &lt;/part&gt;
-  &lt;/x&gt;
+   &lt;city&gt;Indianapolis&lt;/city&gt;
+   &lt;state&gt;IN&lt;/state&gt;
+   &lt;zip&gt;46240&lt;/zip&gt;
+  &lt;/address&gt;
 </pre>
 <p><a href="datatypes-examples.htm#Address">Further examples</a></p>
 </div>
@@ -985,11 +961,11 @@ However, this is frequently not possible due to legacy data and/or recording met
 <p><b>Example</b></p>
 <p>Home phone number:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;telecom&gt;
    &lt;system&gt;phone&lt;/system&gt;
    &lt;value&gt;+15556755745&lt;/value&gt;
    &lt;use&gt;home&lt;/use&gt;
-  &lt;/x&gt;
+  &lt;/telecom&gt;
 </pre>
 <p><a href="datatypes-examples.htm#Contact">Further examples</a></p>
 </div>
@@ -1028,7 +1004,7 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <p><b>Example</b></p>
 <p>A series of appointments for radiotherapy:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;schedule&gt;
     &lt;event&gt;
       &lt;low&gt;2012-01-07T09:00&lt;/low&gt;
       &lt;high&gt;2012-01-07T13:00&lt;/high&gt;
@@ -1041,21 +1017,21 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
       &lt;low&gt;2012-01-22T11:00&lt;/low&gt;
       &lt;high&gt;2012-01-22T15:00&lt;/high&gt;
     &lt;/event&gt;
-  &lt;/x&gt;
+  &lt;/schedule&gt;
 </pre>
 <p>BID (twice a day) (no start or end specified):</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;schedule&gt;
    &lt;repeat&gt;
      &lt;frequency&gt;2&lt;/frequency&gt;
      &lt;duration&gt;1&lt;/duration&gt;
      &lt;units&gt;d&lt;/units&gt;
    &lt;/repeat&gt;
-  &lt;/x&gt;
+  &lt;/schedule&gt;
 </pre>
 <p>1/2 an hour before breakfast for 10 days from 23-Dec 2011:</p>
 <pre class="xml">
-  &lt;x&gt;
+  &lt;schedule&gt;
     &lt;event&gt;
       &lt;low&gt;2011-12-23&lt;/low&gt;
     &lt;/event&gt;
@@ -1065,7 +1041,7 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
       &lt;units&gt;min&lt;/units&gt;
       &lt;end&gt;2012-01-02&lt;/end&gt;
     &lt;/repeat&gt;
-  &lt;/x&gt;
+  &lt;/schedule&gt;
 </pre>
 <p>
 Note that the end date is inclusive like the high date of a Period.

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -320,20 +320,16 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
       composeString_("text", element.getText());
-      for (Address.Part e : element.getPart()) 
-        composeAddressPart("part", e);
+      for (String e : element.getPart()) 
+        composeString_("part", e);
+      for (String e : element.getLine()) 
+        composeString_("line", e);
+      composeString_("city", element.getCity());
+      composeString_("state", element.getState());
+      composeString_("zip", element.getZip());
+      composeString_("country", element.getCountry());
+      composeString_("dpid", element.getDpid());
       composePeriod("period", element.getPeriod());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeAddressPart(String name, Address.Part element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      composeString_("value", element.getValue());
       xml.close(FHIR_NS, name);
     }
   }
@@ -345,20 +341,15 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
       composeString_("text", element.getText());
-      for (HumanName.Part e : element.getPart()) 
-        composeHumanNamePart("part", e);
+      for (String e : element.getFamily()) 
+        composeString_("family", e);
+      for (String e : element.getGiven()) 
+        composeString_("given", e);
+      for (String e : element.getPrefix()) 
+        composeString_("prefix", e);
+      for (String e : element.getSuffix()) 
+        composeString_("suffix", e);
       composePeriod("period", element.getPeriod());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeHumanNamePart(String name, HumanName.Part element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      if (element.getType() != null)
-        composeString("type", element.getType().toCode());
-      composeString_("value", element.getValue());
       xml.close(FHIR_NS, name);
     }
   }

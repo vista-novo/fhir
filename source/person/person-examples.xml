@@ -27,14 +27,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Everywoman</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Eve</value>
-					</part>
+ 				  <family>Everywoman</family>
+				  <given>Eve</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -47,10 +41,7 @@
 				<birthDate>1973-05-31</birthDate>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>2222 Home Street</value>
-					</part>
+					<line>2222 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -85,14 +76,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Everyman</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Adam</value>
-					</part>
+				  <family>Everyman</family>
+					<given>Adam</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -104,10 +89,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>2222 Home Street</value>
-					</part>
+					<line>2222 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -142,14 +124,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Kidd</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Kari</value>
-					</part>
+					<family>Kidd</family>
+					<given>Kari</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -161,10 +137,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>2222 Home Street</value>
-					</part>
+					<line>2222 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -199,14 +172,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Nuclear</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Nancy</value>
-					</part>
+					<family>Nuclear</family>
+					<given>Nancy</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -218,10 +185,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>6666 Home Street</value>
-					</part>
+					<line>6666 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -256,14 +220,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Nuclear</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Neville</value>
-					</part>
+					<family>Nuclear</family>
+					<given>Neville</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -275,10 +233,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>6666 Home Street</value>
-					</part>
+					<line>6666 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -313,14 +268,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Nuclear</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Ned</value>
-					</part>
+					<family>Nuclear</family>
+					<given>Ned</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -332,10 +281,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>6666 Home Street</value>
-					</part>
+					<line>6666 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -370,14 +316,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Nuclear</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Nelda</value>
-					</part>
+					<family>Nuclear</family>
+					<given>Nelda</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -389,10 +329,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>6666 Home Street</value>
-					</part>
+					<line>6666 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -427,14 +364,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Mum</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Martha</value>
-					</part>
+					<family>Mum</family>
+					<given>Martha</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -446,10 +377,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>4444 Home Street</value>
-					</part>
+					<line>4444 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -484,14 +412,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Sons</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Stuart</value>
-					</part>
+					<family>Sons</family>
+					<given>Stuart</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -503,10 +425,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>4444 Home Street</value>
-					</part>
+					<line>4444 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -541,14 +460,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Betterhalf</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Boris</value>
-					</part>
+					<family>Betterhalf</family>
+					<given>Boris</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -560,10 +473,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>2222 Home Street</value>
-					</part>
+					<line>2222 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -598,14 +508,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Relative</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Ralph</value>
-					</part>
+					<family>Relative</family>
+					<given>Ralph</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -617,10 +521,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>4444 Home Street</value>
-					</part>
+					<line>4444 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -654,14 +555,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Contact</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Carrie</value>
-					</part>
+					<family>Contact</family>
+					<given>Carrie</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -673,10 +568,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>5555 Home Street</value>
-					</part>
+					<line>5555 Home Street</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -711,14 +603,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Seven</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Henry</value>
-					</part>
+					<family>Seven</family>
+					<given>Henry</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -730,10 +616,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1002 Healthcare Drive</value>
-					</part>
+					<line>1002 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -768,14 +651,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Assigned</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Amanda</value>
-					</part>
+					<family>Assigned</family>
+					<given>Amanda</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -787,10 +664,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1020 Healthcare Drive</value>
-					</part>
+					<line>1020 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -825,14 +699,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Hippocrates</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Harold</value>
-					</part>
+					<family>Hippocrates</family>
+					<given>Harold</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -844,10 +712,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1003 Healthcare Drive</value>
-					</part>
+					<line>1003 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -882,14 +747,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Primary</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Patricia</value>
-					</part>
+					<family>Primary</family>
+					<given>Patricia</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -901,10 +760,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1004 Healthcare Drive</value>
-					</part>
+					<line>1004 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -939,14 +795,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Admit</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Alan</value>
-					</part>
+					<family>Admit</family>
+					<given>Alan</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -958,10 +808,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1005 Healthcare Drive</value>
-					</part>
+					<line>1005 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -996,14 +843,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Attend</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Aaron</value>
-					</part>
+					<family>Attend</family>
+					<given>Aaron</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1015,10 +856,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1006 Healthcare Drive</value>
-					</part>
+					<line>1006 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1053,14 +891,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Sender</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Sam</value>
-					</part>
+					<family>Sender</family>
+					<given>Sam</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1072,10 +904,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1007 Healthcare Drive</value>
-					</part>
+					<line>1007 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1110,14 +939,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Intern</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Irving</value>
-					</part>
+					<family>Intern</family>
+					<given>Irving</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1129,10 +952,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1021 Healthcare Drive</value>
-					</part>
+					<line>1021 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1167,14 +987,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Resident</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Rachel</value>
-					</part>
+					<family>Resident</family>
+					<given>Rachel</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1186,10 +1000,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1022 Healthcare Drive</value>
-					</part>
+					<line>1022 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1224,14 +1035,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Leader</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Linda</value>
-					</part>
+					<family>Leader</family>
+					<given>Linda</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1243,10 +1048,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1023 Healthcare Drive</value>
-					</part>
+					<line>1023 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1281,14 +1083,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Verify</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Virgil</value>
-					</part>
+					<family>Verify</family>
+					<given>Virgil</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1300,10 +1096,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1008 Healthcare Drive</value>
-					</part>
+					<line>1008 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1338,14 +1131,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Specialize</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Sara</value>
-					</part>
+					<family>Specialize</family>
+					<given>Sara</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1357,10 +1144,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1009 Healthcare Drive</value>
-					</part>
+					<line>1009 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1395,14 +1179,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Reaction</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Ramsey</value>
-					</part>
+					<family>Reaction</family>
+					<given>Ramsey</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1414,10 +1192,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1024 Healthcare Drive</value>
-					</part>
+					<line>1024 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1452,14 +1227,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Sleeper</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Sally</value>
-					</part>
+					<family>Sleeper</family>
+					<given>Sally</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1471,10 +1240,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1012 Healthcare Drive</value>
-					</part>
+					<line>1012 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1509,14 +1275,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Pump</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Patrick</value>
-					</part>
+					<family>Pump</family>
+					<given>Patrick</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1528,10 +1288,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1025 Healthcare Drive</value>
-					</part>
+					<line>1025 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1566,14 +1323,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Valve</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Vera</value>
-					</part>
+					<family>Valve</family>
+					<given>Vera</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1585,10 +1336,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1026 Healthcare Drive</value>
-					</part>
+					<line>1026 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1623,14 +1371,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Scratch</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Sophie</value>
-					</part>
+					<family>Scratch</family>
+					<given>Sophie</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1642,10 +1384,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1027 Healthcare Drive</value>
-					</part>
+					<line>1027 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1680,14 +1419,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Emergency</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Eric</value>
-					</part>
+					<family>Emergency</family>
+					<given>Eric</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1699,10 +1432,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1028 Healthcare Drive</value>
-					</part>
+					<line>1028 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1737,14 +1467,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Hormone</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Horace</value>
-					</part>
+					<family>Hormone</family>
+					<given>Horace</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1756,10 +1480,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1029 Healthcare Drive</value>
-					</part>
+					<line>1029 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1794,14 +1515,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Family</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Fay</value>
-					</part>
+					<family>Family</family>
+					<given>Fay</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1813,10 +1528,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1030 Healthcare Drive</value>
-					</part>
+					<line>1030 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1851,14 +1563,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Tum</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Tony</value>
-					</part>
+					<family>Tum</family>
+					<given>Tony</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1870,10 +1576,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1031 Healthcare Drive</value>
-					</part>
+					<line>1031 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1908,14 +1611,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Sage</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Stanley</value>
-					</part>
+					<family>Sage</family>
+					<given>Stanley</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1927,10 +1624,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1032 Healthcare Drive</value>
-					</part>
+					<line>1032 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -1965,14 +1659,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Bleeder</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Boris</value>
-					</part>
+					<family>Bleeder</family>
+					<given>Boris</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -1984,10 +1672,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1033 Healthcare Drive</value>
-					</part>
+					<line>1033 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2022,14 +1707,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Pasteur</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Paula</value>
-					</part>
+					<family>Pasteur</family>
+					<given>Paula</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2041,10 +1720,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1034 Healthcare Drive</value>
-					</part>
+					<line>1034 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2079,14 +1755,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Osler</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Otto</value>
-					</part>
+					<family>Osler</family>
+					<given>Otto</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2098,10 +1768,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1035 Healthcare Drive</value>
-					</part>
+					<line>1035 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2136,14 +1803,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Renal</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Rory</value>
-					</part>
+					<family>Renal</family>
+					<given>Rory</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2155,10 +1816,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1036 Healthcare Drive</value>
-					</part>
+					<line>1036 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2193,14 +1851,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Brain</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Barry</value>
-					</part>
+					<family>Brain</family>
+					<given>Barry</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2212,10 +1864,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1037 Healthcare Drive</value>
-					</part>
+					<line>1037 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2250,14 +1899,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Cranium</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Carol</value>
-					</part>
+					<family>Cranium</family>
+					<given>Carol</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2269,10 +1912,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1038 Healthcare Drive</value>
-					</part>
+					<line>1038 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2307,14 +1947,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Fem</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Flora</value>
-					</part>
+					<family>Fem</family>
+					<given>Flora</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2326,10 +1960,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1039 Healthcare Drive</value>
-					</part>
+					<line>1039 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2364,14 +1995,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Tumor</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Trudy</value>
-					</part>
+					<family>Tumor</family>
+					<given>Trudy</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2383,10 +2008,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1040 Healthcare Drive</value>
-					</part>
+					<line>1040 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2421,14 +2043,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Vision</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Victor</value>
-					</part>
+					<family>Vision</family>
+					<given>Victor</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2440,10 +2056,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1041 Healthcare Drive</value>
-					</part>
+					<line>1041 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2478,14 +2091,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Carpenter</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Calvin</value>
-					</part>
+					<family>Carpenter</family>
+					<given>Calvin</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2497,10 +2104,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1042 Healthcare Drive</value>
-					</part>
+					<line>1042 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2535,14 +2139,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Rhino</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Rick</value>
-					</part>
+					<family>Rhino</family>
+					<given>Rick</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2554,10 +2152,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1043 Healthcare Drive</value>
-					</part>
+					<line>1043 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2592,14 +2187,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Slide</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Stan</value>
-					</part>
+					<family>Slide</family>
+					<given>Stan</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2611,10 +2200,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1010 Healthcare Drive</value>
-					</part>
+					<line>1010 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2649,14 +2235,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Kidder</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Karen</value>
-					</part>
+					<family>Kidder</family>
+					<given>Karen</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2668,10 +2248,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1044 Healthcare Drive</value>
-					</part>
+					<line>1044 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2706,14 +2283,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Hollywood</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Heddie</value>
-					</part>
+					<family>Hollywood</family>
+					<given>Heddie</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2725,10 +2296,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1045 Healthcare Drive</value>
-					</part>
+					<line>1045 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2763,14 +2331,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Shrink</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Serena</value>
-					</part>
+					<family>Shrink</family>
+					<given>Serena</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2782,10 +2344,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1046 Healthcare Drive</value>
-					</part>
+					<line>1046 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2820,14 +2379,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Puffer</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Penny</value>
-					</part>
+					<family>Puffer</family>
+					<given>Penny</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2839,10 +2392,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1047 Healthcare Drive</value>
-					</part>
+					<line>1047 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2877,14 +2427,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Curie</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Christine</value>
-					</part>
+					<family>Curie</family>
+					<given>Christine</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2896,10 +2440,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1011 Healthcare Drive</value>
-					</part>
+					<line>1011 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2934,14 +2475,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Joint</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Jeffrey</value>
-					</part>
+					<family>Joint</family>
+					<given>Jeffrey</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -2953,10 +2488,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1048 Healthcare Drive</value>
-					</part>
+					<line>1048 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -2991,14 +2523,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Cutter</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Carl</value>
-					</part>
+					<family>Cutter</family>
+					<given>Carl</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3010,10 +2536,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1013 Healthcare Drive</value>
-					</part>
+					<line>1013 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3048,14 +2571,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Plumber</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Peter</value>
-					</part>
+					<family>Plumber</family>
+					<given>Peter</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3067,10 +2584,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1049 Healthcare Drive</value>
-					</part>
+					<line>1049 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3105,14 +2619,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Helper</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Horace</value>
-					</part>
+					<family>Helper</family>
+					<given>Horace</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3124,10 +2632,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1050 Healthcare Drive</value>
-					</part>
+					<line>1050 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3162,14 +2667,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Nightingale</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Nancy</value>
-					</part>
+					<family>Nightingale</family>
+					<given>Nancy</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3181,10 +2680,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1014 Healthcare Drive</value>
-					</part>
+					<line>1014 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3219,14 +2715,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Barton</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Clarence</value>
-					</part>
+					<family>Barton</family>
+					<given>Clarence</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3238,10 +2728,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1015 Healthcare Drive</value>
-					</part>
+					<line>1015 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3276,14 +2763,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Bender</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Bob</value>
-					</part>
+					<family>Bender</family>
+					<given>Bob</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3295,10 +2776,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1051 Healthcare Drive</value>
-					</part>
+					<line>1051 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3333,14 +2811,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Chopper</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Charlie</value>
-					</part>
+					<family>Chopper</family>
+					<given>Charlie</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3352,10 +2824,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1052 Healthcare Drive</value>
-					</part>
+					<line>1052 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3390,14 +2859,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Brace</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Ben</value>
-					</part>
+					<family>Brace</family>
+					<given>Ben</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3409,10 +2872,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1053 Healthcare Drive</value>
-					</part>
+					<line>1053 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3447,14 +2907,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Specs</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Sylvia</value>
-					</part>
+					<family>Specs</family>
+					<given>Sylvia</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3466,10 +2920,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1054 Healthcare Drive</value>
-					</part>
+					<line>1054 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3504,14 +2955,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Script</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Susan</value>
-					</part>
+					<family>Script</family>
+					<given>Susan</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3523,10 +2968,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1016 Healthcare Drive</value>
-					</part>
+					<line>1016 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3561,14 +3003,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Bunion</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Paul</value>
-					</part>
+					<family>Bunion</family>
+					<given>Paul</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3580,10 +3016,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1055 Healthcare Drive</value>
-					</part>
+					<line>1055 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3618,14 +3051,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Listener</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Larry</value>
-					</part>
+					<family>Listener</family>
+					<given>Larry</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3637,10 +3064,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1056 Healthcare Drive</value>
-					</part>
+					<line>1056 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3675,14 +3099,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Beaker</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Bill</value>
-					</part>
+					<family>Beaker</family>
+					<given>Bill</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3694,10 +3112,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1017 Healthcare Drive</value>
-					</part>
+					<line>1017 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3732,14 +3147,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Chow</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Connie</value>
-					</part>
+					<family>Chow</family>
+					<given>Connie</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3751,10 +3160,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1018 Healthcare Drive</value>
-					</part>
+					<line>1018 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3789,14 +3195,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Helper</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Helen</value>
-					</part>
+					<family>Helper</family>
+					<given>Helen</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3808,10 +3208,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1019 Healthcare Drive</value>
-					</part>
+					<line>1019 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3846,14 +3243,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Player</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Pamela</value>
-					</part>
+					<family>Player</family>
+					<given>Pamela</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3865,10 +3256,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1057 Healthcare Drive</value>
-					</part>
+					<line>1057 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3903,14 +3291,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Stretcher</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Seth</value>
-					</part>
+					<family>Stretcher</family>
+					<given>Seth</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3922,10 +3304,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1058 Healthcare Drive</value>
-					</part>
+					<line>1058 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>
@@ -3960,14 +3339,8 @@
 				</identifier>
 				<name>
 					<use>official</use>
-					<part>
-						<type>family</type>
-						<value>Enter</value>
-					</part>
-					<part>
-						<type>given</type>
-						<value>Ellen</value>
-					</part>
+					<family>Enter</family>
+					<given>Ellen</given>
 				</name>
 				<telecom>
 					<system>phone</system>
@@ -3979,10 +3352,7 @@
 				</gender>
 				<address>
 					<use>home</use>
-					<part>
-						<type>line</type>
-						<value>1058 Healthcare Drive</value>
-					</part>
+					<line>1058 Healthcare Drive</line>
 				</address>
 				<text>
 					<status>generated</status>

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 08:14+1100 for FHIR v0.06
+// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -38,13 +38,13 @@ import java.util.*;
  */
 public class SecurityEvent extends Resource {
 
-    public enum AuditEventAction {
+    public enum SecurityEventEventAction {
         C, // Create
         R, // Read/View/Print/Query
         U, // Update
         D, // Delete
         E; // Execute
-        public static AuditEventAction fromCode(String codeString) throws Exception {
+        public static SecurityEventEventAction fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("C".equals(codeString))
@@ -57,7 +57,7 @@ public class SecurityEvent extends Resource {
           return D;
         if ("E".equals(codeString))
           return E;
-        throw new Exception("Unknown AuditEventAction code '"+codeString+"'");
+        throw new Exception("Unknown SecurityEventEventAction code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -71,12 +71,12 @@ public class SecurityEvent extends Resource {
         }
     }
 
-    public enum AuditEventOutcome {
+    public enum SecurityEventEventOutcome {
         _0, // Success
         _4, // Minor failure
         _8, // Serious failure
         _12; // Major failure
-        public static AuditEventOutcome fromCode(String codeString) throws Exception {
+        public static SecurityEventEventOutcome fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("0".equals(codeString))
@@ -87,7 +87,7 @@ public class SecurityEvent extends Resource {
           return _8;
         if ("12".equals(codeString))
           return _12;
-        throw new Exception("Unknown AuditEventOutcome code '"+codeString+"'");
+        throw new Exception("Unknown SecurityEventEventOutcome code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -345,7 +345,7 @@ public class SecurityEvent extends Resource {
         /**
          * Indicator for type of action performed during the event that generated the audit
          */
-        private AuditEventAction action;
+        private SecurityEventEventAction action;
 
         /**
          * The time when the event occurred on the source
@@ -355,7 +355,7 @@ public class SecurityEvent extends Resource {
         /**
          * Indicates whether the event succeeded or failed
          */
-        private AuditEventOutcome outcome;
+        private SecurityEventEventOutcome outcome;
 
         /**
          * Identifier for the category of event
@@ -370,11 +370,11 @@ public class SecurityEvent extends Resource {
           this.id = value;
         }
 
-        public AuditEventAction getAction() { 
+        public SecurityEventEventAction getAction() { 
           return this.action;
         }
 
-        public void setAction(AuditEventAction value) { 
+        public void setAction(SecurityEventEventAction value) { 
           this.action = value;
         }
 
@@ -386,11 +386,11 @@ public class SecurityEvent extends Resource {
           this.dateTime = value;
         }
 
-        public AuditEventOutcome getOutcome() { 
+        public SecurityEventEventOutcome getOutcome() { 
           return this.outcome;
         }
 
-        public void setOutcome(AuditEventOutcome value) { 
+        public void setOutcome(SecurityEventEventOutcome value) { 
           this.outcome = value;
         }
 
