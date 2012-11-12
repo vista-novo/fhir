@@ -62,7 +62,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="130.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39.75"/>
@@ -102,22 +102,12 @@
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Extension.code</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Code that identifies the meaning of the extension</Data></Cell>
-    <Cell><Data ss:Type="String">The code that identifies the meaning of the extension by reference to the definitions</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">The only codes that can be used are those defined using the approved extensibility definitions.</Data></Cell>
-    <Cell><Data ss:Type="String">N/A</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell><Data ss:Type="String">Extension.profile</Data></Cell>
+    <Cell><Data ss:Type="String">Extension.url</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Profile that defines the extension</Data></Cell>
-    <Cell><Data ss:Type="String">Source of the definition for the extension code - a namespace or a URL</Data></Cell>
-    <Cell><Data ss:Type="String">Everyone needs to be able to define extensions, but they also must be governed properly</Data></Cell>
-    <Cell><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension.</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">identifies the meaning of the extension</Data></Cell>
+    <Cell><Data ss:Type="String">Source of the definition for the extension code - a logical name or a URL</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">The definition may point directly to a computable or human readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #</Data></Cell>
     <Cell><Data ss:Type="String">N/A</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
@@ -170,8 +160,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>4</ActiveCol>
-     <RangeSelection>C5</RangeSelection>
+     <ActiveRow>2</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -55,7 +55,7 @@ for servers to handle as part of a batch post
 		<title>test person provenance</title>
 		<link rel="self" href="http://www.hl7.org/fhir/test-cases.xml#2"/>
 		<id>http://www.healthintersections.com.au/fhir/trash/provenance/@1</id>
-		<updated>2012-11-12T18:120:00Z</updated>
+		<updated>2012-11-12T18:12:00Z</updated>
 		<author>
 			<name>Grahame Grieve</name>
 		</author>
@@ -92,5 +92,97 @@ for servers to handle as part of a batch post
 			<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml">Enter Ellen, ElleSSN: 333777777</xhtml:div>
 		</summary>
 	</entry>
+    <!--
+    For reference, here is an acceptable response from the server. actual dates, times, urls and ids will vary accordingly
 	
+		<feed xmlns="http://www.w3.org/2005/Atom">
+		  <title>batch results</title>
+		  <updated>2012-11-12T10:29:55+11:00</updated>
+		  <id>urn:uuid:857b40e4-90cf-4425-9899-b0091aa60e</id>
+		  <link rel="self" href=""/>
+		  <entry>
+			<title>Resource "1"</title>
+			<link rel="self" href="http://localhost:9556/svc/fhir/@1/history/@1"/>
+			<source>
+			  <id>http://www.healthintersections.com.au/fhir/trash/person/@1</id>
+			</source>
+			<id>http://localhost:9556/svc/fhir/@1</id>
+			<updated>2012-11-12T10:29:55+11:00</updated>
+			<published>2012-11-12T10:29:55+11:00</published>
+			<author>
+			  <name>Grahame Grieve</name>
+			</author>
+			<category term="Person" scheme="http://hl7.org/fhir/resource-types"/>
+			<content type="text/xml; charset=UTF-8">
+			  <Person xmlns="http://hl7.org/fhir">
+				<name>
+				  <family>Levin</family>
+				  <given>Henry</given>
+				</name>
+				<gender>
+				  <coding>
+					<system>urn:oid:2.16.840.1.113883.5.1</system>
+					<code>M</code>
+				  </coding>
+				</gender>
+				<birthDate>1932-09-24</birthDate>
+				<text>
+				  <status>generated</status>
+				  <div xmlns="http://www.w3.org/1999/xhtml">
+					<p>Henry Levin</p>
+				  </div>
+				</text>
+			  </Person>
+			</content>
+			<summary type="xhtml">
+			  <div xmlns="http://www.w3.org/1999/xhtml">
+				<p>Henry Levin</p>
+			  </div>
+			</summary>
+		  </entry>
+		  <entry>
+			<title>Resource "1"</title>
+			<link rel="self" href="http://localhost:9556/svc/fhir/@1/history/@1"/>
+			<source>
+			  <id>http://www.healthintersections.com.au/fhir/trash/provenance/@1</id>
+			</source>
+			<id>http://localhost:9556/svc/fhir/@1</id>
+			<updated>2012-11-12T10:29:55+11:00</updated>
+			<published>2012-11-12T10:29:55+11:00</published>
+			<author>
+			  <name>Grahame Grieve</name>
+			</author>
+			<category term="Provenance" scheme="http://hl7.org/fhir/resource-types"/>
+			<content type="text/xml; charset=UTF-8">
+			  <Provenance xmlns="http://hl7.org/fhir">
+				<target>
+				  <type>Person</type>
+				  <id>1</id>
+				</target>
+				<activity>
+				  <recorded>2012-11-12T18:16:00+11:00</recorded>
+				</activity>
+				<party>
+				  <type>
+					<system>http://hl7.org/fhir/provenance-participant-type</system>
+					<code>person</code>
+				  </type>
+				  <id>mailto:grahame@healthintersections.com.au</id>
+				  <role>
+					<system>http://hl7.org/fhir/provenance-participant-role</system>
+					<code>author</code>
+				  </role>
+				</party>
+				<text>
+				  <status>generated</status>
+				  <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
+				</text>
+			  </Provenance>
+			</content>
+			<summary type="xhtml">
+			  <div xmlns="http://www.w3.org/1999/xhtml">Authored on 12-Nov 2011 by Grahame Grieve</div>
+			</summary>
+		  </entry>
+		</feed>	
+    -->	
 </feed>

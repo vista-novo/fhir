@@ -207,6 +207,16 @@ div.use {
 	padding: 5px;
 }
 
+div.mapping {
+	border: 1px solid #dcdcdc;
+        background: #AB88F7 ; 
+	padding: 5px;
+	margin-bottom: 10px;
+	font-size: 0.75em;
+	width: 670px;
+}
+
+
 div.example {
 	border: 1px solid #dcdcdc;
         background: #FFECDD ; 

@@ -901,6 +901,15 @@ between family name and given names depends on culture and context of use.
 </pre>
 <p><a href="datatypes-examples.htm#HumanName">Further examples</a></p>
 </div>
+<div class="mapping">
+<p><b><a href="http://tools.ietf.org/html/rfc6350">vCard</a> Mappings</b></p>
+<ul>
+ <li>HumanName.text = vCard "FN" field</li>
+ <li>HumanName.use = use of the vCard "TYPE" parameter</li>
+ <li>HumanName.family, .given, .prefix, .suffix = parts of vCard "N" field. Note that there is no FHIR equivalent for the poorly defined "additional" name field. In FHIR, given names in "middle" names.</li>
+ <li>The vCard nickname corresponds to a name with the use "nickname"</li>
+</ul>
+</div>
 <a name="Address"></a>
 <h2>
 Address
@@ -940,6 +949,19 @@ may be provided instead of or as well as the specific parts.
 </pre>
 <p><a href="datatypes-examples.htm#Address">Further examples</a></p>
 </div>
+<div class="mapping">
+<p><b><a href="http://tools.ietf.org/html/rfc6350">vCard</a> Mappings</b></p>
+<ul>
+ <li>Address.text = vCard "ADDRESS" "LABEL" parameter</li>
+ <li>Address.use = vCard "TYPE" parameter</li>
+ <li>Address.line = vCard "street" list component</li>
+ <li>Address.city = vCard "locality" list component</li>
+ <li>Address.state = vCard "region" list component</li>
+ <li>Address.zip = vCard "code" list component</li>
+ <li>Address.country = vCard "country" list component</li>
+</ul>
+</div>
+
 <a name="Contact"></a>
 <h2>
 Contact

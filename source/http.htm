@@ -226,7 +226,14 @@ correct version specific URL in the Content-Location in the PUT request. If the 
 the server SHALL return a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location 
 header and SHALL correctly understand a 412 response as an update conflict. 
 </p>
-
+<p>
+The following resources may require special handling on the server when updated (whether directly or as part of a batch):
+</p>
+<ul>
+ <li><a href="provenance.htm">Provenance</a></li>
+ <li><a href="patient.htm">Patient</a></li>
+ <li><a href="securityevent.htm">SecurityEvent</a> (generally, updates are inappropriate)</li>
+</ul>
 <a name="delete"> </a>
 <h2>delete</h2>
 <p>
@@ -250,6 +257,13 @@ defines what the semantics of the deletion operations are. If no documentation i
 deletion operation should be understood as deleting the record of the resource, with nothing
 about the state of the real-world corresponding resource implied.
 </p>
+<p>
+The following resources may require special handling on the server when deleted (whether directly or as part of a batch):
+</p>
+<ul>
+ <li><a href="patient.htm">Patient</a></li>
+ <li><a href="securityevent.htm">SecurityEvent</a> (generally, deletes are inappropriate)</li>
+</ul>
 <a name="history"> </a>
 <h2>history</h2>
 <p>
@@ -283,6 +297,13 @@ a Location: header which also contains the new location and id of the created re
 If the client wishes to specify the id of the submitted resource, then it should use 
 the update operation instead. 
 </p>
+<p>
+The following resources may require special handling on the server when created (whether directly or as part of a batch):
+</p>
+<ul>
+ <li><a href="provenance.htm">Provenance</a></li>
+ <li><a href="patient.htm">Patient</a></li>
+</ul>
 
 
 <a name="search"> </a>

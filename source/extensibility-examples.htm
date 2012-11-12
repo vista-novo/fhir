@@ -121,7 +121,7 @@ and their associated bindings. In this case, the profile looks like this:
         of the name part in addition to the main name part type&lt;/definition>
     &lt;type>codelist&lt;/type>
     &lt;strength>required&lt;/strength>
-    &lt;reference>#name-part-qualifier&lt;/reference>
+    &lt;reference>http://www.hl7.org/fhir/repository/valueset/@name-part-qualifier&lt;/reference>
     &lt;concept>
       &lt;code>LS&lt;/code>
       &lt;system>oid:2.16.840.1.113883.5.1122&lt;/system>
@@ -161,8 +161,7 @@ Then, in the extensions section of the resource, you add an extension. The code 
 </p>
 <pre class="xml">
 &lt;extension>
-  &lt;code>name-qualifier&lt;/code>
-  &lt;profile>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090&lt;/profile>
+  &lt;url>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier&lt;/url>
   &lt;ref>n1&lt;/ref>
   &lt;valueCode>MID&lt;/valueCode>
 &lt;extension>

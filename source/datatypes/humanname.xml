@@ -19,7 +19,7 @@
   <WindowWidth>24915</WindowWidth>
   <WindowTopX>3360</WindowTopX>
   <WindowTopY>3510</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -269,7 +269,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -325,7 +324,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="name-use">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="8" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s70" ss:DefaultColumnWidth="72.75"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s71" ss:AutoFitWidth="0"/>
@@ -350,6 +349,10 @@
     <Cell ss:StyleID="s73"><Data ss:Type="String">temp</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">A temporary name. A name valid time can provide more detailed information. This may also be used for temporary names assigned at birth or in emergency situations.</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell ss:StyleID="s73"><Data ss:Type="String">nickname</Data></Cell>
+    <Cell ss:StyleID="s73"><Data ss:Type="String">A name that is used to address the person in an informal manner, but is not part of their formal or usual name</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s73"><Data ss:Type="String">anonymous</Data></Cell>
     <Cell ss:StyleID="s74"><Data ss:Type="String">Anonymous assigned name, alias, or pseudonym (used to protect a person's identity for privacy reasons)</Data></Cell>
@@ -370,11 +373,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
      <ActiveRow>6</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
