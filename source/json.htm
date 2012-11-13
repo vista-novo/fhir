@@ -21,7 +21,7 @@
 the JSON representation, the standard JSON representation for resources is only informative.</i></p>
 
 <p>
-Though the formal representation of the resources is in XML, many systems wish to use 
+Though the formal representation of FHIR resources is in XML, many systems wish to use 
 JSON to exchange the resources and it is useful to standardise a single JSON format for 
 this use. The JSON format for the resources follows the standard XML format closely so
 XPath queries can easily be mapped to query the JSON structures:</p>
@@ -41,12 +41,12 @@ such as string, decimal, etc. are identical between the XML and the JSON form
 the case, even if they do not repeat in the actual instance.</li>
 <li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
 </ul>
-<p>These differences - particularly the repeating element one, which cannot be avoided - ensure that generic XML --&gt; JSON converters are not 
-able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality.</p>
+<p>These differences - particularly the repeating element one, which cannot be avoided - mean that generic XML --&gt; JSON converters are not 
+able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality that accomodates these FHIR-specific characteristics.</p>
 
 <h2>JSON representation of primitive types</h2>
 <p>
-FHIR elements with primitive values are represented as JSON object members of the same name, with their value encoded
+FHIR elements with primitive values are represented as JSON object members of the same name with their value encoded
 as a string. Native JSON types other than "string" are never used, to guarantee equivalence of the serialized representation
 between XML and JSON.</p>
 <p>
@@ -94,14 +94,8 @@ converted to JSON members values, in the same manner as described for primitives
 &lt;Person&gt;
   &lt;name&gt;
     &lt;use&gt;official&lt;/use&gt;  
-    &lt;part&gt;
-      &lt;type&gt;given&lt;/type&gt;
-      &lt;value&gt;Karen&lt;/value&gt;
-    &lt;/part&gt;
-    &lt;part id=&quot;n1&quot;&gt;
-      &lt;type&gt;family&lt;/type&gt;
-      &lt;value&gt;Van&lt;/value&gt;
-    &lt;/part&gt;
+    &lt;given&gt;Karen&lt;/given&gt;
+    &lt;family id=&quot;n1&quot;&gt;Van&lt;/family&gt;
   &lt;/name&gt;
   &lt;text&gt;
     &lt;status&gt;generated&lt;/status&gt;
@@ -115,15 +109,12 @@ converted to JSON members values, in the same manner as described for primitives
   "Person" : {
     "name" : [{
       "use" : "official",
-      "part" : [
-        {
-          "type" : "given",
-          "value" : "Karen" 
-        },
-        {
-           "_id" : "n1",
-           "type" : "family",
-           "value" : "van"
+      "given" : [{
+         "value" : "Karen" 
+        }],
+      "family" : [{
+         "_id" : "n1",
+         "value" : "van"
         }]
      }],
     "language" : [
