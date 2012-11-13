@@ -35,13 +35,13 @@ different reasons, including:
 Whenever resources are gethered into a list, this is done using the Atom format (<a href="http://tools.ietf.org/html/rfc4287" target="_blank">http://tools.ietf.org/html/rfc4287</a>), following this template:
 </p>
 <pre class="spec">
-&lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom" xmlns:gd="http://schemas.google.com/g/2005">
+&lt;<b>feed</b> xmlns="http://www.w3.org/2005/Atom">
   &lt;<b>title</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text statement of purpose</font>&lt;/title&gt;
   &lt;<b>updated</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#instant">instant</a>"</font>&gt;<font color="navy">when the bundle was built</font>&lt;/updated&gt;
   &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">unique uri for this bundle</font>&lt;/id&gt;
   &lt;<b>link</b> <span style="color: brown;"><b>0..1</b></span> rel="self" href="<font color="navy">[building application url]</font>"/&gt;
 
-  &lt;<b>entry</b> gd:etag="<font color="navy">version id</font>"&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
+  &lt;<b>entry</b>&gt;    <font color="Gray">&lt;!-- Zero+ --&gt;</font>
     &lt;<b>title</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">text summary of resource</font>&lt;/title&gt;
     &lt;<b>link</b> <span style="color: brown;"><b>0..1</b></span> rel="self" href="<font color="navy">Version Specific reference to Resource</font>"/&gt;
     &lt;<b>id</b> <span style="color: brown;"><b>1..1</b></span> <font color="darkgreen">type="<a href="datatypes.htm#uri">uri</a>"</font>&gt;<font color="navy">Logical Id (uri) for this resource</font>&lt;/id&gt;
@@ -80,7 +80,7 @@ Whenever resources are gethered into a list, this is done using the Atom format 
  <li>The type attribute on the <i>content</i> element does appear in the xml instance (it's an atom attribute, not a FHIR type)</li>
  <li>Author is a required element by the atom element. The author of a resource is not explicit in the FHIR resource model; instead it is delegated to the infrastructure. The name is the name of a human author or a device. The uri is a link to the resource for the author</li>
  <li>An xml:base element may be specified on the content element, though one is not needed for FHIR resources.</li>
- <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification. See below for further comment</li>
+ <li>The entire bundle can be signed with a single Enveloped Digital Signature as described in the Atom specification (section 5.1). See below for further comment</li>
 </ul>
 
 <h2>Bundling versions - deletion</h2>
@@ -214,15 +214,15 @@ is not required.
 <a name="digsig"></a>
 <li>Atom Feeds may be signed following the rules described in the Atom specification. One consequence of 
 signing the document is that URLs, Identifiers, and internal references are frozen and cannot be changed.
-This might be a good feature, but it may also cripple interoperability between closed eco-systems where
-re-identification frequently occurs. For this reason, it is recommended that only Document Bundles
+This might be a desired feature, but it may also cripple interoperability between closed eco-systems where
+<a href="implementation.htm#identity">re-identification</a> frequently occurs. For this reason, it is recommended that only Document Bundles
 are signed, and then only when all the related resources are found in the bundle.</li>
 <a name="Ids"></a>
 <li>
 FHIR resources make use of id attributes as targets for <a href="xml.htm#idref">internal references with resources</a>. 
 These id attributes are unique and resolved within the context of a single resource. When resources are 
 combined into a bundle, different resources may contain duplicate id attributes. Thus it is important to limit
-the scope of resolution to the resource in which the <i>id</i> attribute is declared.
+the scope of resolution of an id attribute to the resource in which the <i>id</i> attribute is declared.
 </li>
 <a name="json"></a>
 <li>When representing the atom feed as JSON, use the method described <a href="json.htm">here</a>.</li>

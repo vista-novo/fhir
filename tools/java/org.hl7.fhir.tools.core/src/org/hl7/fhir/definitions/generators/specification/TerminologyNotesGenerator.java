@@ -189,6 +189,8 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         write("<li>"+path+" of the <a href=\"messageheader.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
       else if (cd.getName().equals("ResourceType"))
         write("  <li>"+path+" of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
+      else if (cd.getName().equals("FHIRContentType"))
+        write("  <li>"+path+" of <a href=\"terminologies.htm#fhircontenttypes\"> any defined Resource or Data Type name</a></li>\r\n");
       else 
         write("  <li>"+path+" of <a href=\"datatypes.htm\"> any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)</li>\r\n");
       

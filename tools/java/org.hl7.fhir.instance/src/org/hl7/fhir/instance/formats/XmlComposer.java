@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 22:22+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1052,6 +1052,8 @@ public class XmlComposer extends XmlComposerBase {
       composeString_("purpose", element.getPurpose());
       for (Profile.Element_ e : element.getElement()) 
         composeProfileElement_("element", e);
+      for (Profile.SearchParam e : element.getSearchParam()) 
+        composeProfileSearchParam("searchParam", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -1129,6 +1131,20 @@ public class XmlComposer extends XmlComposerBase {
       xml.open(FHIR_NS, name);
       composeString_("target", element.getTarget());
       composeString_("map", element.getMap());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeProfileSearchParam(String name, Profile.SearchParam element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      composeString_("name", element.getName());
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRepeats() != null)
+        composeString("repeats", element.getRepeats().toCode());
+      composeString_("documentation", element.getDocumentation());
       xml.close(FHIR_NS, name);
     }
   }

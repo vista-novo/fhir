@@ -242,10 +242,21 @@ These are defined by the code system "http://hl7.org/fhir/sid/special-values" wh
 <a name="ResourceType"/>
 <h2>Resource Types</h2>
 <p>
-In several places, the resource types themselves are used as either codes or identifiers.  These should be referenced with the sid "http://hl7.org/fhir/resource-types". This is a formal list of the resource type codes: 
+In several places, the resource types themselves are used as either codes or identifiers.  Where necessary, these are identified by the uri "http://hl7.org/fhir/resource-types". This is a formal list of the resource type codes: 
 </p>
 <table class="codes">
 <%resourcecodes%>
+</table>
+
+
+<a name="fhircontenttypes"/>
+<a name="FHIRContentType"/>
+<h2>FHIR Content Types</h2>
+<p>
+A <a href="#resourcetypes">resource type</a> or a data type.  Where necessary, these are identified by the uri "http://hl7.org/fhir/resource-types" and "http://hl7.org/fhir/data-types". This is a formal list of the data type codes:
+</p>
+<table class="codes">
+<%datatypecodes%>
 </table>
 
 

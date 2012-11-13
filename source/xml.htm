@@ -17,24 +17,31 @@
 <%xmlheader%>
 
 <h1>Resource Format</h1>
-
 <p>
-In this specification, resources are described in a simple
-XML format. This page documents how the content of the resources is described
-and controlled. When represented as XML, resources may be validated by schema and schemas are provided, but 
-operational systems are not required to do so (though the XML must always be 
-valid against this specification). In addition to the simple XML description, W3C 
-Schema, UML models, and other definitional models are provided that may be a 
-useful aid for system implementation. Resources may also be represented using
-<a href="json.htm">JSON</a>.
+A resource is an entity that:
+</p>
+<ul>
+ <li>Has a known identity by which it can be addressed</li>
+ <li>identifies itself as one of the resource types defined in this specification</li>
+ <li>contains a set of structured data items as described by the resource definition</li>
+ <li>contains an human readable XHTML representation of the content of the resource</li>
+ <li>may change over time</li>
+</ul>
+<p>
+Resources have multiple representations. A resource is valid if it meets that above rules, and is represented in 
+either XML or JSON according to the rules defined in this specification. Other representations are allowed, but 
+are not described by this specification.
+</p>
+<p>
+This page documents how the content of the resources is described and controlled. 
 </p>
 
 <h2>XML Content Models</h2>
 <p>
 To provide a visual sense of what the end resource instances will look like, all
-resources include documentation of their allowed content in a pseudo-XML syntax
-that uses the following notation:
+resources are described using a pseudo-XML syntax. The syntax uses the following notation:
 </p>
+
 <pre class="spec">
  &lt;<b>name</b> xmlns="http://hl7.org/fhir" [xml:lang]&gt; 
    &lt;<u><b title="Formal Definition (must tbe supported or understood)">nameA</b></u>&gt;<font color="Gray">&lt;!-- </font><font color="brown">1..1</font> <font color="Darkgreen">type</font> <font color="Navy">description of content</font> <font color="Gray"> --&gt;</font>&lt;nameA&gt;
@@ -62,6 +69,14 @@ Notes:
  <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
  <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema, Schematron. The formats Relax NG schema, RDF and eCore are planned.</li>
 </ul>
+<p>
+When represented as XML, resources may be validated by schema and schemas are provided, but 
+operational systems are not required to do so (though the XML must always be 
+valid against this specification and the schema and schematron). In addition to 
+the simple XML description, W3C Schema, UML models, and other definitional models 
+are provided that may be a useful aid for system implementation. Resources may 
+also be represented using <a href="json.htm">JSON</a>.
+</p>
 
 <a name="metadata"></a>
 <h2>Resource Data and Metadata items</h2>
@@ -272,6 +287,7 @@ establish a "derived from" relationship, where the derived content (whether text
 to the source content.
 </p>
 
+<a name="ResourceReference"></a>
 <a name="Resource"></a>
 <h2>Resource References</h2>
 <p>
@@ -337,6 +353,7 @@ This text can be used by a system that is unable to resolve the reference to an 
 </p>
 </div>
 
+<a name="version"> </a>
 <h2>Inter-version Compatibility</h2>
 <p>
 There is no explicit version marker in the XML. Subsequent versions

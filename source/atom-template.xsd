@@ -12,7 +12,7 @@
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" /> <!-- schemaLocation="http://www.w3.org/2001/03/xml.xsd" -->
   <xs:import namespace="http://hl7.org/fhir" schemaLocation="fhir-all.xsd"/>
   <xs:element name="feed" type="atom:FeedType"/>
-  <xs:complexType name="TestType" mixed="true">
+  <xs:complexType name="TextType" mixed="true">
     <xs:annotation>
       <xs:documentation>
 				The Atom text construct is defined in section 3.1 of the format spec.
@@ -41,17 +41,18 @@
   </xs:complexType>
   <xs:complexType name="FeedType">
     <xs:choice minOccurs="3" maxOccurs="unbounded">
-      <xs:element name="title" type="atom:TestType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="title" type="atom:TextType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="updated" type="atom:DateTimeType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="id" type="atom:IdType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="link" type="atom:LinkType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="entry" type="atom:EntryType" minOccurs="0" maxOccurs="unbounded"/>
+	  <!-- todo: add digital signature -->
     </xs:choice>
     <xs:attributeGroup ref="atom:CommonAttributes"/>
   </xs:complexType>
   <xs:complexType name="EntryType">
     <xs:choice maxOccurs="unbounded">
-      <xs:element name="title" type="atom:TestType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="title" type="atom:TextType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="link" type="atom:LinkType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="id" type="atom:IdType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="updated" type="atom:DateTimeType" minOccurs="1" maxOccurs="1"/>
@@ -59,7 +60,7 @@
       <xs:element name="author" type="atom:PersonType" minOccurs="1" maxOccurs="unbounded"/>
       <xs:element name="category" type="atom:CategoryType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="content" type="atom:ContentType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="summary" type="atom:TestType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="summary" type="atom:TextType" minOccurs="1" maxOccurs="1"/>
     </xs:choice>
     <xs:attributeGroup ref="atom:CommonAttributes"/>
   </xs:complexType>

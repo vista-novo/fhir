@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 22:22+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1356,6 +1356,12 @@ public class JsonComposer extends JsonComposerBase {
           composeProfileElement_(null, e);
         closeArray();
       };
+      if (element.getSearchParam().size() > 0) {
+        openArray("searchParam");
+        for (Profile.SearchParam e : element.getSearchParam()) 
+          composeProfileSearchParam(null, e);
+        closeArray();
+      };
       close();
     }
   }
@@ -1453,6 +1459,20 @@ public class JsonComposer extends JsonComposerBase {
       composeElementAttributes(element);
       composeString_("target", element.getTarget());
       composeString_("map", element.getMap());
+      close();
+    }
+  }
+
+  private void composeProfileSearchParam(String name, Profile.SearchParam element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeString_("name", element.getName());
+      if (element.getType() != null)
+        composeString("type", element.getType().toCode());
+      if (element.getRepeats() != null)
+        composeString("repeats", element.getRepeats().toCode());
+      composeString_("documentation", element.getDocumentation());
       close();
     }
   }

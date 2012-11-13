@@ -267,6 +267,8 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
+      else if (com[0].equals("datatypecodes"))
+        src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
       else if (com[0].equals("bindingtable-others"))
@@ -591,6 +593,8 @@ public class PageProcessor implements Logger  {
             s.append("See the <a href=\"messageheader.htm#Events\"> Event List </a>in the messaging framework");
           else if (cd.getName().equals("ResourceType"))
             s.append("See the <a href=\"terminologies.htm#ResourceType\"> list of defined Resource Types</a>");
+          else if (cd.getName().equals("FHIRContentType"))
+            s.append("See the <a href=\"terminologies.htm#fhircontenttypes\"> list of defined Resource and Data Types</a>");
           else 
             s.append("<a href=\"datatypes.htm\">Any defined data Type name</a> (including <a href=\"xml.htm#Resource\">Resource</a>)");
         }        
@@ -643,6 +647,29 @@ public class PageProcessor implements Logger  {
     for (String n : names) {
       DefinedCode c = definitions.getKnownResources().get(n);
       html.append("  <tr><td><a href=\""+c.getComment()+".htm\">"+c.getCode()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+    }       
+    return html.toString();
+  }
+
+  private String genDTCodes() {
+    StringBuilder html = new StringBuilder();
+    List<String> names = new ArrayList<String>();
+    names.addAll(definitions.getTypes().keySet());
+    names.addAll(definitions.getStructures().keySet());
+    names.addAll(definitions.getInfrastructure().keySet());
+    Collections.sort(names);
+    for (String n : names) {
+      ElementDefn c = definitions.getTypes().get(n);
+      if (c == null)
+        c = definitions.getStructures().get(n);
+      if (c == null)
+        c = definitions.getInfrastructure().get(n);
+      if (c.getName().equals("Extension"))
+        html.append("  <tr><td><a href=\"extensibility.htm\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+      else if (c.getName().equals("Narrative") || c.getName().equals("ResourceReference") )
+        html.append("  <tr><td><a href=\"xml.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+      else
+        html.append("  <tr><td><a href=\"datatypes.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
     }       
     return html.toString();
   }
@@ -714,6 +741,8 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
+      else if (com[0].equals("datatypecodes"))
+        src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
       else if (com[0].equals("bindingtable-others"))
@@ -773,6 +802,8 @@ public class PageProcessor implements Logger  {
         src = s1 + getEventsTable()+ s3;
       else if (com[0].equals("resourcecodes"))
         src = s1 + genResCodes() + s3;
+      else if (com[0].equals("datatypecodes"))
+        src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
       else if (com[0].equals("bindingtable-others"))

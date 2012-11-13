@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 22:22+1100 for FHIR v0.06
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
