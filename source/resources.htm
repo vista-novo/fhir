@@ -27,23 +27,50 @@ The FHIR specification presently defines the following resources:
 </p>
 
 <p>
-Of these, only the <i>Infrastructure</i> resources have undergone any degree of vetting.  The remaining administrative and clinical resources
-exist to provide a sense of what such resources will look like eventually.  Over the coming months, the number of resources and the number of
+The list of resources is growing as FHIR is developed. Over the coming months, the number of resources and the number of
 those that have been vetted by HL7 committees will grow.  A list of hypothesized list of resources can be found on the 
 <a href="http://wiki.hl7.org/index.php?title=FHIR_Resource_Types">HL7 wiki</a>.  Feel free to add any you feel are missing or engage with one 
 of the <a href="http://www.hl7.org/Special/committees/index.cfm">HL7 Work Groups</a> to submit a 
 <a href="http://wiki.hl7.org/index.php?title=Category:FHIR_Resource_Proposal">proposal</a> to define a resource of particular interest.
 </p>
 
-<table class="list">
-<tr><td>Person</td><td>Identifies a person, the languages and qualifications, and other people who are related to them by birth, social or employment context</td></tr>
-<tr><td>Animal</td><td>Identifies an animal and characteristics such as species as well as other animals or people that are related to it by birth or ownership arrangements</td></tr>
-<tr><td>Organization</td><td>Identifies an organization, its formal accreditations and sub, super and partner organizations</td></tr>
-<tr><td>Patient</td><td>Subject A (person/animal) is under the care of Organization B</td></tr>
-<tr><td>Agent</td><td>Person A fills role R for Organization B</td></tr>
-<tr><td>LabReport</td><td>Lab A provides a report (text and/or structured data with analysis and specimen details) concerning Patient B as requested by Agent C for reason D</td></tr>
-<tr><td>AssessmentScale</td><td>Agent A reports a score (outcome, method reference, and supporting data) for Patient B at a specific time</td></tr>
-<tr><td>Prescription</td><td>Agent A prescribes a medication (code and/or ingredients) to patient B with administration instructions and optionally dispensing instructions for Agent of Organization C</td></tr>
+<table class="bare">
+<tr><th colspan="2">Foundation</th></tr>
+<tr><td colspan="2">Basic resources that provide definitional and functional support for using resources</td></tr>
+<tr><td><a href="profile.htm"></a>Profile</td><td>A statement of use of FHIR. May include constraints on Resources, Terminology Binding Statements and Extension Definitions</td></tr>
+<tr><td><a href="conformance.htm">Conformance</a></td><td>A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation</td></tr>
+<tr><td><a href="valueset.htm">ValueSet</a></td><td>A set of defined codes from one or more code systems that may be bound to a context.</td></tr>
+<tr><td><a href="provenance.htm">Provenance</a></td><td>Information associated with another resource that can be used to help determine it's reliability or trace where the information in it came from</td></tr>
+<tr><td colspan="2"><hr/></td></tr>
+<tr><th colspan="2">Technical</th></tr>
+<tr><td colspan="2">Resources defined to support particular implementation contexts. These are generally not made available directly through a RESTful service</td></tr>
+<tr><td><a href="messageheader.htm">MessageHeader</a></td><td>Describes a transmission requesting action on a bundle of one or more resources or a response to such a request.</td></tr>
+<tr><td><a href="documentheader.htm">DocumentHeader</a></td><td>A documentation of healthcare-related information that is assembled together into a single statement of meaning that establishes its own context.</td></tr>
+<tr><td><a href="issuereport.htm">IssueReport</a></td><td>A set of error, warning or information messages that result from a system action.</td></tr>
+<tr><td colspan="2"><hr/></td></tr>
+<tr><th colspan="2">Administration</th></tr>
+<tr><td colspan="2"> </td></tr>
+<tr><td><a href="person.htm">Person </a></td><td>Identifies a person, the languages and qualifications, and other people who are related to them by birth, social or employment context</td></tr>
+<tr><td><a href="animal.htm">Animal</a></td><td>Identifies an animal and characteristics such as species as well as other animals or people that are related to it by birth or ownership arrangements</td></tr>
+<tr><td><a href="organization.htm">Organization</a></td><td>Identifies an organization, its formal accreditations and sub, super and partner organizations</td></tr>
+<tr><td><a href="patient.htm">Patient</a></td><td>Subject A (person/animal) is under the care of Organization B</td></tr>
+<tr><td><a href="agent.htm">Agent</a></td><td>Person A fills role R for Organization B</td></tr>
+<tr><td><a href="device.htm">Device</a></td><td>a manufactured entity that is used in the provision of healthcare. The device may be a machine, an insert, a computer, an application, etc. </td></tr>
+<tr><td colspan="2"><hr/></td></tr>
+<tr><th colspan="2">IHE</th></tr>
+<tr><td colspan="2">Resources defined to support MHD (mobile support for XDS). These resources are experimental and shared with IHE</td></tr>
+<tr><td><a href="xdsentry.htm">XdsEntry</a></td><td>An entry in an XDS registry. </td></tr>
+<tr><td><a href="xdsfolder.htm">XdsFolder</a></td><td>An organised collection of documents that belong to a patient.</td></tr>
+<tr><td><a href="securityevent.htm">SecurityEvent</a></td><td>A record of an event suitable for tracking in a security log</td></tr>
+<tr><td colspan="2"><hr/></td></tr>
+<tr><th colspan="2">Medications</th></tr>
+<tr><td colspan="2">Resources defined to support the medication process</td></tr>
+<tr><td><a href="prescription.htm">Prescription</a></td><td>Agent A prescribes a medication (code and/or ingredients) to patient B with administration instructions and optionally dispensing instructions for Agent of Organization C</td></tr>
+<tr><th colspan="2">Clinical</th></tr>
+<tr><td colspan="2">General Clinical resources</td></tr>
+<tr><td><a href="problem.htm">Problem</a></td><td>Used to record detailed information about problems or diagnoses recognised by a clinician</td></tr>
+<tr><td><a href="labreport.htm">LabReport</a></td><td>Lab A provides a report (text and/or structured data with analysis and specimen details) concerning Patient B as requested by Agent C for reason D </td></tr>
+<tr><td><a href="assessmentscale.htm">AssessmentScale</a></td><td>Agent A reports a score (outcome, method reference, and supporting data) for Patient B at a specific time</td></tr>
 </table>
 
 

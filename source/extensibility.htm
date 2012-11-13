@@ -67,18 +67,6 @@ Notes:
  <li>An extension may have a value, or nested extensions, but not both. The actual name of the value element has the type added to it in place of the [x], such as valueQuantity</li>
 </ul>
 <p>
-As well as providing additional information, extensions may be used to qualify the meaning of other elements or even to negate the meanings of other elements. 
-This behavior makes these kinds extensions unsafe to ignore.  Such extensions must have an attribute <i>mustUnderstand</i> = true. <b>Any application processing 
-the data of a resource must check for extensions labeled "mustUnderstand".</b> If the application does not recognise the code on an extension that is labeled
-"mustUnderstand", and where the extension either has no internal reference, or the reference is data processed by the application, the application SHALL either refuse to process the data, 
-or carry a warning concerning the data along with any action or output that results from processing the data. 
-Note that it must always be safe to show the narrative to humans; any extension that is labelled as "mustUnderstand" must be represented in the narrative.
-Applications are encouraged to ignore extensions that they do not recognise if their "mustUnderstand" elemetn is missing or set to false.
-"mustUnderstand" extensions SHALL be attached to reference points within an instance such that
-all data elements whose meaning may be impacted by the extension are part of the element to which the extension is attached.
-</p>
-
-<p>
 The <i>value[x]</i> element has the [x] replaced with the name of one of the defined types, and the contents as defined for that type, or another extension. The value type may be one of the following:
 </p>
 <ul class="dense">
@@ -110,6 +98,45 @@ wish to use one of the ommitted primitives are expected to use one of the more c
 </p>
 <p>
 Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is optional unless the definitions of the extension codes make rules about it. Extensions can never have a default value.
+</p>
+<h2>MustUnderstand</h2>
+
+<p>
+As well as providing additional information, extensions may be used to qualify the meaning of 
+other existing elements or even to negate their meanings. This behavior makes these particular 
+extensions unsafe to ignore. Such extensions must have an attribute <i>mustUnderstand</i> = true. 
+</p>
+
+<p>
+<b>Any application processing the data of a resource must check for extensions labeled "mustUnderstand".</b> 
+</p>
+
+<p>
+If the application does not recognise the code on an extension that is labeled "mustUnderstand", and 
+where the extension either has no internal reference, or it references data processed by the application, 
+the application SHALL either refuse to process the data,  or carry a warning concerning the data 
+along with any action or output that results from processing the data. 
+</p>
+
+<p>
+Note that it must always be safe to show the narrative to humans; any extension that is 
+labelled as "mustUnderstand" must be represented in the narrative. Applications are required 
+to ignore extensions that they do not recognise if their "mustUnderstand" element is 
+missing or set to false.
+</p>
+
+<p>
+Extensions labelled "mustUnderstand" SHALL be attached to reference points within an instance such that
+all data elements whose meaning may be impacted by the extension are contained within the element to 
+which the extension is attached.
+</p>
+
+<p>
+Note that servers and background process that move resources around are not "processing the data
+of the resource", and these applications are not required to check for unknown extensions. Any
+process that copies data out of a resource for use in another context (display to a human, 
+decision support, exchange in another format that doesn't support extensions) is processing
+the data.
 </p>
 
 <a name="define"></a>

@@ -783,9 +783,9 @@ the end of the 27th May.
 <p>An identifier used by humans. Such identifiers are different from system
 identifiers because they are regularly changed or 
 retired due to human intervention and error. Note that a 
-human identifier may be a system identifier on some master 
-system, but becomes a human identifier elsewhere due to how it is 
-exchanged between humans (driver's license numbers are a 
+human identifier may actually be a system identifier on some master 
+system, but becomes a human identifier elsewhere (i.e. in secondary use) 
+due to how it is exchanged between humans (driver's license numbers are a 
 good example of this). Human identifiers often have some type 
 associated with them that is important to allow the identifier 
 to be picked as a basis for exchange elsewhere, either in other 
@@ -1069,6 +1069,18 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 Note that the end date is inclusive like the high date of a Period.
 </p>
 
+<a name="other"> </a>
+<h2>Other Types</h2>
+<p>
+The following types are defined as part of the data types, but are documented elsewhere in the specification:
+<img src="base.png"/>
+</p>
+<ul>
+ <li><b><a href="xml.htm#metadata">Resource</a></b> - The conceptual base class for all resources</li>
+ <li><b><a href="xml.thm#Resource">ResourceReference</a></b> - for references from one resource to another</li>
+ <li><b><a href="extensibility.htm">Extension</a></b> - used to convey additional data in a resource</li>
+ <li><b><a href="xml.htm#Narrative"></a></b> - Conveys a human readable representation of the content of a resource</li>
+</ul>
 </div>
 
 [%footer%]

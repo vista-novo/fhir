@@ -1,5 +1,17 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
+<!-- 
+todo
+* add flag for accept unknown content
+* Need to add back to the conformance resource about how creates and ids work for a system
+* Need to avoid imposing requirement to keep version history while still supporting versioning as much as possible
+
+
+
+
+
+
+ -->
 <p>
 Conformance statements are used in one of three ways:
 </p>

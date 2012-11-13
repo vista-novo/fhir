@@ -148,7 +148,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Example values are in the "+sid+".\r\n");
         else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
-          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Defined values are in the "+sid+". Other codes can be used when those codes are no suitable\r\n");
+          write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Defined values are in the "+sid+". Other codes can be used when those codes are not suitable\r\n");
         else // if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Required))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Possible values are in the "+sid+".\r\n");
       } else {

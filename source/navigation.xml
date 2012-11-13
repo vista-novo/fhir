@@ -43,7 +43,7 @@
       <name>Documents</name>
     </entry>
     <entry>
-      <link>issue</link>
+      <link>issuereport</link>
       <name>Errors &amp; Warnings</name>
     </entry>
     <entry>
@@ -65,6 +65,10 @@
     <entry>
       <link>conformance</link>
       <name>Conformance</name>
+    </entry>
+    <entry>
+      <link>security</link>
+      <name>Security</name>
     </entry>
   </category>
   <category>

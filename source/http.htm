@@ -130,7 +130,8 @@ that do not require URL parameters, but these may be used if necessary.
 <p>
 This specification makes some rules about the use of specific HTTP status codes 
 in some particular circumstances where the status codes must map to particular 
-states correctly. Other HTTP status codes may be used for other states as appropriate.
+states correctly, and only where the correct status code is not obvious. 
+Other HTTP status codes may be used for other states as appropriate.
 Note that some security layers may issue redirects which should not be interpreted
 to change the location of the resource itself (a common web programming error). 
 </p>
@@ -222,9 +223,9 @@ rules implemented on the server, and return HTTP status codes accordingly.
 <p>
 In particular, servers may choose to implement version-aware updates, where the only updates that are 
 accepted quote the current version of the resource. In this case, the client must submit the currently 
-correct version specific URL in the Content-Location in the PUT request. If the value is incorrect, 
+correct version specific URL in the Content-Location in the PUT request. If the value is missing, 
 the server SHALL return a 412 Preconditions failed response. Clients SHOULD submit a proper Content-Location 
-header and SHALL correctly understand a 412 response as an update conflict. 
+header and SHALL correctly understand a 409 response as an update conflict.
 </p>
 <p>
 The following resources may require special handling on the server when updated (whether directly or as part of a batch):
@@ -233,6 +234,16 @@ The following resources may require special handling on the server when updated 
  <li><a href="provenance.htm">Provenance</a></li>
  <li><a href="patient.htm">Patient</a></li>
  <li><a href="securityevent.htm">SecurityEvent</a> (generally, updates are inappropriate)</li>
+</ul>
+<p>
+Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
+</p>
+<ul>
+ <li><b>400 Bad Request</b> - resource could not be parsed</li>
+ <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
+ <li><b>405 Method Not allowed</b> - the resource did not exist prior to the update, and the serer does not allow client defined ids</li>
+ <li><b>409/412</b> - version conflict management - see above</li> 
+ <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the proposed resource violated server business rules. This should be accompanied by an <a href="issue.htm">Issue</a> resource providing additional detail</li>
 </ul>
 <a name="delete"> </a>
 <h2>delete</h2>
@@ -304,7 +315,14 @@ The following resources may require special handling on the server when created 
  <li><a href="provenance.htm">Provenance</a></li>
  <li><a href="patient.htm">Patient</a></li>
 </ul>
-
+<p>
+Common HTTP Status codes returned on FHIR-related errors (in addition to normal HTTP errors related to security, header and content type negotiation issues):
+</p>
+<ul>
+ <li><b>400 Bad Request</b> - resource could not be parsed</li>
+ <li><b>404 Not Found</b> - resource type not supported, or not a FHIR end point</li>
+ <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the proposed resource violated server business rules. This should be accompanied by an <a href="issue.htm">Issue</a> resource providing additional detail</li>
+</ul>
 
 <a name="search"> </a>
 <h2>search</h2>
@@ -440,26 +458,20 @@ phase commit process. The interaction is performed by an HTTP POST operation as 
 The content is first checked against the general specification and against the conformance 
 profile that applies to the application. How much checking is performed is at the discretion 
 of the server. Then the resource is considered as a proposed update and additional instance 
-specific rules such as referential integrity and update logic are applied as well.
-The return content has status 200 OK if the content validates ok or 409 Conflict,
-with the following content:
+specific rules such as referential integrity and update logic (including version control) 
+are applied as well. The return content has one of the following values:
 </p>
-<pre>
- &lt;<b>validation</b> xmlns="http://hl7.org/fhir">
-   &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="<a href="datatypes.htm#string">string</a>"</font>&gt;<font color="navy">General error message</font>&lt;/error&gt;  
-   &lt;<b>messages</b> <font color="darkgreen">type="list"</font>>   <font color="Gray">&lt;!-- Zero+ --&gt;</font>
-     &lt;<b>message</b>&gt;
-       &lt;<b>path</b> <a href="xml.htm#Control" class="cf">opt</a> <font color="darkgreen">type="string"</font><font color="navy">xpath to the issue</font>&lt;/path&gt;
-       &lt;<b>error</b> <a href="xml.htm#Control" class="cf">mand</a> <font color="darkgreen">type="string"</font>&gt;<font color="navy">Description of the problem</font>&lt;/error&gt;
-     &lt;/message&gt;
-   &lt;messages&gt;
- &lt;/validation&gt;
-</pre>
+<ul>
+ <li><b>200 OK</b> - resource passed all validation rules</li>
+ <li><b>400 Bad Request</b> - resource could not be parsed or had some validation error itself</li>
+ <li><b>490 <a href="http://en.wikipedia.org/wiki/Talk_to_the_hand">Talk to the Hand</a></b> - the resource was valid, but it violates server business rules</li>
+</ul>
 <p>
-The validation operation has complex semantics and rules. Implementers wishing to use this operation
-should consult the full discussion of the operation in the OMG REST specification. 
+Unless the result is 200 OK, the response must include an <a href="issuereport.htm">Issue Report</a> that lists the issues found on validation.
 </p>
-
+<p>
+The validation operation has complex semantics and rules; see the full discussion of the operation in the OMG REST specification for further details. 
+</p>
 
 <a name="conformance"> </a>
 <h2>conformance</h2>

@@ -48,23 +48,21 @@ that uses the following notation:
 Notes:
 </p>
 <ul>
- <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended. Any encoding that is round trip compatible with unicode is allowed.</li>
- <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
-   The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. XHTML is found in every resource - see below.</li>
- <li>To build a valid resource, simply replace the contents of the elements with valid content as described by the cardinality, type rules and content description found in the comment in each element.</li>
+ <li>To build a valid instance of a resource, simply replace the contents of the elements with valid content as described by the cardinality, type rules and content description found in the comment in each element.</li>
  <li>Elements are assigned a cardinality that specifies how many times the element may or must appear. If the cardinality is shown in 
     <font color="deeppink">Pink</font> then there is an additional condition that impacts on the allowed cardinality. This is available as a mouse-over text, or in the formal definitions.</li>
  <li>The elements are assigned one or more types. All of the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
- <li>In the Resource definitions, each element name is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
+ <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
    If the element name is underlined, then applications are required to support and/or understand it.</li>
+ <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended (default value is UTF-8, as for XML). Any encoding that is round trip compatible with unicode is allowed.</li>
+ <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
+   The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, XHTML is found in every resource - see below.</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown in this format.</li>
- <li>The root element of a resource may have an xml:lang that specifies the primary language of the resource.</li>
+ <li>FHIR elements are never empty. If an element is present in the resource, it must have either text or child elements as defined for it's type, or an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a> or <a href="extensiblity.htm">extensions</a></li>
+ <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
  <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema, Schematron. The formats Relax NG schema, RDF and eCore are planned.</li>
 </ul>
-<p>
-FHIR elements are never empty. If an element is present in the resource, it must have either text or child elements, or an 
-id attribute that is the link target of <a href="#narrative">narrative</a> or <a href="extensiblity.htm">extensions</a>.
-</p>
+
 <a name="metadata"></a>
 <h2>Resource Data and Metadata items</h2>
 <p>
@@ -113,7 +111,6 @@ their internal structure. However the id is represented, it must always be repre
 
 <hr/>
 
-<img src="base.png"/>
 <a name="Narrative"></a>
 <h2>Narrative</h2>
 <p>
@@ -305,6 +302,10 @@ URLs are always considered to be case-sensitive and lowercase is preferred.
     &lt;id&gt;034AB16&lt;/id&gt;
   &lt;context&gt;
 </pre>
+<p>
+This is a relative reference in the sense that the patient resource "034AB16" is available from the same location as the resource that contains the reference. 
+So, for instance, if the resource that contains this reference is at http://www.acme.com/fhir/labreport/@1234567, then this patient resource will be at http://www.acme.com/fhir/patient/@034AB16
+</p>
 <p>An absolute reference to a <a href="profile.htm">resource profile</a> in an element named "profile":</p>
 <pre class="xml">
   &lt;profile&gt;
@@ -345,10 +346,15 @@ changed. Given that, in a typical scenario, mixed versions may need to exist,
 applications SHOULD ignore elements that they do not recognize unless those
 elements are marked with a "must understand" attribute. However, in 
 a healthcare context, many application vendors are unwilling to 
-consider this approach because of concerns about clinical risk. 
+consider this approach because of concerns about clinical risk or 
+technical limitations in their software (i.e. schema based processing). 
 Applications are not required to ignore unknown elements, but must
 declare whether they will do so in their conformance statements using the
 <i>acceptUnknown</i> element.
+</p>
+<p>
+Note that the version of FHIR supported is a mandatory element in the
+applications conformance profile.
 </p>
 
 <h2>XML Schema and Schematron</h2>

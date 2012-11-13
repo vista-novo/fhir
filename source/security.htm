@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>FHIR Security - FHIR v<%version%></title>
+    <link rel="Stylesheet" href="fhir.css" type="text/css"/>
+    <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
+</head>
+<body>
+<%sidebar%>
+
+
+<%maindiv%>
+<%pageheader%>
+<h1>FHIR Security</h1>
+
+<p>
+Fast Healthcare Interoperability Resources (FHIR) is not a security profile, nor does it define any security
+related functionality. However FHIR does define exchange protocols and content models that need to be used
+with various security protocols defined elsewhere. This section gathers all information about security
+in one section. A summary:
+</p>
+<ul class="dense">
+ <li>SSL - all exchange of production data should be secured using SSL (i.e. https)</li>
+ <li>Authentication - OAuth is recommended. However authentication is done, there needs to be mapping between security protocol identification and device, person and organisation resources. This is discussed below</li>
+ <li>Access Control - FHIR does not (presently) address any aspect of access control</li>
+ <li>Audit - FHIR defines a provenance resource and a security Event resource suitable for tracking the history and status of resources</li>
+ <li>Digital Signatures - FHIR includes several specifically reserved locations for digital signatures. See below for further information</li>
+ <li>Attachments - FHIR allows for attachments. These have their own concerns. See below for discussion</li>
+</ul>
+<p>
+Time critical concerns regarding security flaws in the FHIR specification should be addressed to 
+the <a href="http://wiki.hl7.org/index.php?title=FHIR_email_list_subscription_instructions">FHIR email 
+list</a> for prompt consideration. Alternatively, issues can be raised through the 
+<a href="http://wiki.hl7.org/index.php?title=FHIR_Security_Page">community input</a> mechanism.
+</p>
+
+<h2>
+Mapping between resources and security systems
+</h2>
+<p>
+Correctly identifying people, devices, locations and organisations is one of the foundations that any security system is built on. 
+Most uses of security protocols, whether authentication, access control, digital signatures etc rely on the correct mapping between
+the relevant resources and the underlying systems. Note that this isn't necessary: there is nothing in FHIR that requires or relies 
+on any security being in place, or any particular implementation. But real world usage will generally require this. 
+</p>
+<p>
+Todo.. outline general considerations
+</p>
+
+<h2>
+Digital Signatures
+</h2>
+
+
+<%footer%>
+<%/maindiv%> 
+    
+    
+</body>
+</html>

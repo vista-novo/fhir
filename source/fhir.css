@@ -69,6 +69,9 @@ table.list td {
         border-top: 1px silver solid;
 	border-spacing: 0;
 }
+table.bare td {
+	border-spacing: 0;
+}
 
 table.dict td {
         padding:3px 7px 2px 7px;
@@ -209,7 +212,7 @@ div.use {
 
 div.mapping {
 	border: 1px solid #dcdcdc;
-        background: #AB88F7 ; 
+        background: #e4dbf9 ; 
 	padding: 5px;
 	margin-bottom: 10px;
 	font-size: 0.75em;
