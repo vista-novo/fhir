@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -43,8 +43,7 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
-      composeId("code", element.getCode());
-      composeUri("profile", element.getProfile());
+      composeUri("url", element.getUrl());
       composeString("ref", element.getRef());
       composeBoolean("mustUnderstand", element.getMustUnderstand());
       composeType("value", element.getValue());
@@ -1381,6 +1380,7 @@ public class XmlComposer extends XmlComposerBase {
       composeId("id", element.getId());
       if (element.getCode() != null)
         composeString("code", element.getCode().toCode());
+      composeResourceReference("details", element.getDetails());
       xml.close(FHIR_NS, name);
     }
   }
@@ -1405,22 +1405,6 @@ public class XmlComposer extends XmlComposerBase {
       composeString_("name", element.getName());
       composeResourceReference("target", element.getTarget());
       composeUri("endpoint", element.getEndpoint());
-      xml.close(FHIR_NS, name);
-    }
-  }
-
-  private void composeIssue(String name, Issue element) throws Exception {
-    if (element != null) {
-      composeElementAttributes(element);
-      xml.open(FHIR_NS, name);
-      if (element.getSeverity() != null)
-        composeString("severity", element.getSeverity().toCode());
-      composeCodeableConcept("type", element.getType());
-      for (String_ e : element.getLocation()) 
-        composeString_("location", e);
-      for (Extension e : element.getExtensions()) 
-        composeExtension("extension", e);
-      composeNarrative("text", element.getText());
       xml.close(FHIR_NS, name);
     }
   }
@@ -1578,6 +1562,32 @@ public class XmlComposer extends XmlComposerBase {
       for (Extension e : element.getExtensions()) 
         composeExtension("extension", e);
       composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeIssueReport(String name, IssueReport element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      for (IssueReport.Issue e : element.getIssue()) 
+        composeIssueReportIssue("issue", e);
+      for (Extension e : element.getExtensions()) 
+        composeExtension("extension", e);
+      composeNarrative("text", element.getText());
+      xml.close(FHIR_NS, name);
+    }
+  }
+
+  private void composeIssueReportIssue(String name, IssueReport.Issue element) throws Exception {
+    if (element != null) {
+      composeElementAttributes(element);
+      xml.open(FHIR_NS, name);
+      if (element.getSeverity() != null)
+        composeString("severity", element.getSeverity().toCode());
+      composeCodeableConcept("type", element.getType());
+      for (String_ e : element.getLocation()) 
+        composeString_("location", e);
       xml.close(FHIR_NS, name);
     }
   }
@@ -1751,14 +1761,14 @@ public class XmlComposer extends XmlComposerBase {
       composeTest("Test", (Test)resource);
     else if (resource instanceof MessageHeader)
       composeMessageHeader("MessageHeader", (MessageHeader)resource);
-    else if (resource instanceof Issue)
-      composeIssue("Issue", (Issue)resource);
     else if (resource instanceof SecurityEvent)
       composeSecurityEvent("SecurityEvent", (SecurityEvent)resource);
     else if (resource instanceof AssessmentScale)
       composeAssessmentScale("AssessmentScale", (AssessmentScale)resource);
     else if (resource instanceof Patient)
       composePatient("Patient", (Patient)resource);
+    else if (resource instanceof IssueReport)
+      composeIssueReport("IssueReport", (IssueReport)resource);
     else if (resource instanceof Person)
       composePerson("Person", (Person)resource);
     else if (resource instanceof LabReport)

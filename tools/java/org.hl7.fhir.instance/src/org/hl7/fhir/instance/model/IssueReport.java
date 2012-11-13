@@ -29,14 +29,14 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import java.util.*;
 
 /**
- * An error, warning or information message that results from a system action
+ * Error, warning or information messages that result from a system action
  */
-public class Issue extends Resource {
+public class IssueReport extends Resource {
 
     public enum IssueSeverity {
         error, // The issue is sufficiently important to cause the action to fail
@@ -63,39 +63,51 @@ public class Issue extends Resource {
         }
     }
 
+    public class Issue extends Element {
+        /**
+         * Indicates whether the issue indicates a variation from successful processing
+         */
+        private IssueSeverity severity;
+
+        /**
+         * A code indicating the type of error, warning or information message.
+         */
+        private CodeableConcept type;
+
+        /**
+         * A simple XPath limited to element names, repetition indicators and the default child access that identifies one of the elements in the request message that caused this issue to be raised.
+         */
+        private List<String_> location = new ArrayList<String_>();
+
+        public IssueSeverity getSeverity() { 
+          return this.severity;
+        }
+
+        public void setSeverity(IssueSeverity value) { 
+          this.severity = value;
+        }
+
+        public CodeableConcept getType() { 
+          return this.type;
+        }
+
+        public void setType(CodeableConcept value) { 
+          this.type = value;
+        }
+
+        public List<String_> getLocation() { 
+          return this.location;
+        }
+
+    }
+
     /**
-     * Indicates whether the issue indicates a variation from successful processing
+     * An error, warning or information message that results from a system action
      */
-    private IssueSeverity severity;
+    private List<Issue> issue = new ArrayList<Issue>();
 
-    /**
-     * A code indicating the type of error, warning or information message.
-     */
-    private CodeableConcept type;
-
-    /**
-     * A simple Xpath limited to element names, repetition indicators and the default child access that identifies one of the elements in the request message that caused this issue to be raised.
-     */
-    private List<String_> location = new ArrayList<String_>();
-
-    public IssueSeverity getSeverity() { 
-      return this.severity;
-    }
-
-    public void setSeverity(IssueSeverity value) { 
-      this.severity = value;
-    }
-
-    public CodeableConcept getType() { 
-      return this.type;
-    }
-
-    public void setType(CodeableConcept value) { 
-      this.type = value;
-    }
-
-    public List<String_> getLocation() { 
-      return this.location;
+    public List<Issue> getIssue() { 
+      return this.issue;
     }
 
 

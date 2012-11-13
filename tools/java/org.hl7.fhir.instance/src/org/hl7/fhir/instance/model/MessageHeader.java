@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -41,8 +41,8 @@ public class MessageHeader extends Resource {
     public enum ResponseCode {
         ok, // The message was accepted and processed without error
         error, // Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
-        rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is
-        rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition
+        rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is.
+        rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response must include an Issue report that describes what problem is
         undeliverable; // A middleware agent was unable to deliver the message to its intended destination
         public static ResponseCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -82,6 +82,11 @@ public class MessageHeader extends Resource {
          */
         private ResponseCode code;
 
+        /**
+         * Full details of any issues found in the message
+         */
+        private ResourceReference details;
+
         public Id getId() { 
           return this.id;
         }
@@ -96,6 +101,14 @@ public class MessageHeader extends Resource {
 
         public void setCode(ResponseCode value) { 
           this.code = value;
+        }
+
+        public ResourceReference getDetails() { 
+          return this.details;
+        }
+
+        public void setDetails(ResourceReference value) { 
+          this.details = value;
         }
 
     }

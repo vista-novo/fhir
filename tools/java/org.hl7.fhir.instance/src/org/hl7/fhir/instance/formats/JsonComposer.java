@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -43,8 +43,7 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeString("code", element.getCode());
-      composeUri("profile", element.getProfile());
+      composeUri("url", element.getUrl());
       composeString("ref", element.getRef());
       composeBoolean("mustUnderstand", element.getMustUnderstand());
       composeType("value", element.getValue());
@@ -1825,6 +1824,7 @@ public class JsonComposer extends JsonComposerBase {
       composeId("id", element.getId());
       if (element.getCode() != null)
         composeString("code", element.getCode().toCode());
+      composeResourceReference("details", element.getDetails());
       close();
     }
   }
@@ -1849,30 +1849,6 @@ public class JsonComposer extends JsonComposerBase {
       composeString_("name", element.getName());
       composeResourceReference("target", element.getTarget());
       composeUri("endpoint", element.getEndpoint());
-      close();
-    }
-  }
-
-  private void composeIssue(String name, Issue element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      if (element.getSeverity() != null)
-        composeString("severity", element.getSeverity().toCode());
-      composeCodeableConcept("type", element.getType());
-      if (element.getLocation().size() > 0) {
-        openArray("location");
-        for (String_ e : element.getLocation()) 
-          composeString_(null, e);
-        closeArray();
-      };
-      if (element.getExtensions().size() > 0) {
-        openArray("extension");
-        for (Extension e : element.getExtensions()) 
-          composeExtension(null, e);
-        closeArray();
-      };
-      composeNarrative("text", element.getText());
       close();
     }
   }
@@ -2086,6 +2062,44 @@ public class JsonComposer extends JsonComposerBase {
         closeArray();
       };
       composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeIssueReport(String name, IssueReport element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getIssue().size() > 0) {
+        openArray("issue");
+        for (IssueReport.Issue e : element.getIssue()) 
+          composeIssueReportIssue(null, e);
+        closeArray();
+      };
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeIssueReportIssue(String name, IssueReport.Issue element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      if (element.getSeverity() != null)
+        composeString("severity", element.getSeverity().toCode());
+      composeCodeableConcept("type", element.getType());
+      if (element.getLocation().size() > 0) {
+        openArray("location");
+        for (String_ e : element.getLocation()) 
+          composeString_(null, e);
+        closeArray();
+      };
       close();
     }
   }
@@ -2327,14 +2341,14 @@ public class JsonComposer extends JsonComposerBase {
       composeTest("Test", (Test)resource);
     else if (resource instanceof MessageHeader)
       composeMessageHeader("MessageHeader", (MessageHeader)resource);
-    else if (resource instanceof Issue)
-      composeIssue("Issue", (Issue)resource);
     else if (resource instanceof SecurityEvent)
       composeSecurityEvent("SecurityEvent", (SecurityEvent)resource);
     else if (resource instanceof AssessmentScale)
       composeAssessmentScale("AssessmentScale", (AssessmentScale)resource);
     else if (resource instanceof Patient)
       composePatient("Patient", (Patient)resource);
+    else if (resource instanceof IssueReport)
+      composeIssueReport("IssueReport", (IssueReport)resource);
     else if (resource instanceof Person)
       composePerson("Person", (Person)resource);
     else if (resource instanceof LabReport)

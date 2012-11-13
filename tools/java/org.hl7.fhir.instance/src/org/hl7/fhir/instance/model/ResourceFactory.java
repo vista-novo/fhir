@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 public class ResourceFactory {
 
@@ -54,12 +54,12 @@ public class ResourceFactory {
             return new Test();
         if ("MessageHeader".equals(name))
             return new MessageHeader();
-        if ("Issue".equals(name))
-            return new Issue();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
         if ("AssessmentScale".equals(name))
             return new AssessmentScale();
+        if ("IssueReport".equals(name))
+            return new IssueReport();
         if ("LabReport".equals(name))
             return new LabReport();
         if ("Conformance".equals(name))

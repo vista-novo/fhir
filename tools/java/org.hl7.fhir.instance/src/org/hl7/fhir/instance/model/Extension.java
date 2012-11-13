@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -39,14 +39,9 @@ import java.util.*;
 public class Extension extends Element {
 
     /**
-     * The code that identifies the meaning of the extension by reference to the definitions
+     * Source of the definition for the extension code - a logical name or a URL
      */
-    private String code;
-
-    /**
-     * Source of the definition for the extension code - a namespace or a URL
-     */
-    private java.net.URI profile;
+    private java.net.URI url;
 
     /**
      * Internal reference to context of the extension - a pointer to an xml:id in the same resource
@@ -68,20 +63,12 @@ public class Extension extends Element {
      */
     private List<Extension> extension = new ArrayList<Extension>();
 
-    public String getCode() { 
-      return this.code;
+    public java.net.URI getUrl() { 
+      return this.url;
     }
 
-    public void setCode(String value) { 
-      this.code = value;
-    }
-
-    public java.net.URI getProfile() { 
-      return this.profile;
-    }
-
-    public void setProfile(java.net.URI value) { 
-      this.profile = value;
+    public void setUrl(java.net.URI value) { 
+      this.url = value;
     }
 
     public String getRef() { 

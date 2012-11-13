@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 10, 2012 22:50+1100 for FHIR v0.06
+// Generated on Tue, Nov 13, 2012 15:23+1100 for FHIR v0.06
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -42,7 +42,8 @@ public class Narrative extends Element {
     public enum NarrativeStatus {
         generated, // The contents of the narrative are entirely generated from the structured data in the resource.
         extensions, // The contents of the narrative are entirely generated from the structured data in the resource and some of the content is generated from extensions
-        additional; // The contents of the narrative contain additional information not found in the structured data
+        additional, // The contents of the narrative contain additional information not found in the structured data
+        empty; // the contents of the narrative are some equivalent of "No human readable text provided for this resource"
         public static NarrativeStatus fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
                 return null;
@@ -52,6 +53,8 @@ public class Narrative extends Element {
           return extensions;
         if ("additional".equals(codeString))
           return additional;
+        if ("empty".equals(codeString))
+          return empty;
         throw new Exception("Unknown NarrativeStatus code '"+codeString+"'");
         }
         public String toCode() {
@@ -59,6 +62,7 @@ public class Narrative extends Element {
             case generated: return "generated";
             case extensions: return "extensions";
             case additional: return "additional";
+            case empty: return "empty";
             default: return "?";
           }
         }
