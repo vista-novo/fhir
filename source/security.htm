@@ -22,10 +22,10 @@ with various security protocols defined elsewhere. This section gathers all info
 in one section. A summary:
 </p>
 <ul class="dense">
- <li>SSL - all exchange of production data should be secured using SSL (i.e. https)</li>
+ <li>TLS - all exchange of production data should be secured using TLS/SSL (i.e. https)</li>
  <li>Authentication - OAuth is recommended. However authentication is done, there needs to be mapping between security protocol identification and device, person and organisation resources. This is discussed below</li>
  <li>Access Control - FHIR does not (presently) address any aspect of access control</li>
- <li>Audit - FHIR defines a provenance resource and a security Event resource suitable for tracking the history and status of resources</li>
+ <li>Audit - FHIR defines a <a href="provenance.htm">provenance</a> resource and a <a href="securityevent.htm">security event</a> resource suitable for tracking the history and status of resources</li>
  <li>Digital Signatures - FHIR includes several specifically reserved locations for digital signatures. See below for further information</li>
  <li>Attachments - FHIR allows for attachments. These have their own concerns. See below for discussion</li>
 </ul>
