@@ -299,14 +299,16 @@ The create interaction creates a new resource. The interaction is performed by a
 <p>
 The server returns a 201 Created, along with a copy of the newly created resource 
 (which might not be the same as that submitted) with the acknowledgement, along with 
-a Location: header which also contains the new location and id of the created resource:
+a version-aware Location header which contains the new location and id of the created resource:
 </p>
 <pre>
- Location: [service-url]/[resourcetype]/{new-id} version aware.... 
+  Location: [service-url]/[resourcetype]/{@new-id}/history/{@new-vid}
 </pre>
 <p>
-If the client wishes to specify the id of the submitted resource, then it should use 
-the update operation instead. 
+When the payload data is incorrect and cannot be used to create a new resource, the server returns a 400 Bad Request.
+
+Note: If the client wishes to have control over the id of a newly submitted resource, it should use 
+the update operation instead.
 </p>
 <p>
 The following resources may require special handling on the server when created (whether directly or as part of a batch):
