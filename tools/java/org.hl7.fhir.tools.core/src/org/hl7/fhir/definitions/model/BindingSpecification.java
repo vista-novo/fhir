@@ -66,6 +66,7 @@ public class BindingSpecification {
 	private String reference;
 	private String description;
 	private String source; // for useful error messages during build
+	private List<String> useContexts = new ArrayList<String>();
 	
   private List<DefinedCode> codes = new ArrayList<DefinedCode>();
 
@@ -152,4 +153,16 @@ public class BindingSpecification {
 	
 	  return null;
   }
+
+  public List<String> getUseContexts() {
+    return useContexts;
+  }
+
+  public void setUseContexts(List<String> useContexts) {
+    this.useContexts = useContexts;
+  }
+
+  
+  
+  
 }

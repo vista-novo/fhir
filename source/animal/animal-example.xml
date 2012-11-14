@@ -3,10 +3,13 @@
 	
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
+<!--
     <type>
       <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
       <code>microchip</code>
     </type>
+-->
+    <label>Dog Tag</label>
     <identifier>
       <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
       <id>1234123123312332</id>	    

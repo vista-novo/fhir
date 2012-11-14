@@ -786,19 +786,14 @@ retired due to human intervention and error. Note that a
 human identifier may actually be a system identifier on some master 
 system, but becomes a human identifier elsewhere (i.e. in secondary use) 
 due to how it is exchanged between humans (driver's license numbers are a 
-good example of this). Human identifiers often have some type 
+good example of this). <!-- Human identifiers often have some type 
 associated with them that is important to allow the identifier 
 to be picked as a basis for exchange elsewhere, either in other 
-electronic interchanges or paper forms.
+electronic interchanges or paper forms. -->
 </p>
 [%dt HumanId%]
 <p>
-These type codes should be used when they are appropriate for the type of 
-identifier represented. If they are not appropriate, other codes may be used.
-Another possible source for the type of an identifier is HL7 v2 table 0203. 
-</p>
-<p>
-Note that in many cases, the <i>assigner</i> is used to indicate what registry/state/facility/etc assigned the identifier. 
+The <i>assigner</i> is used to indicate what registry/state/facility/etc assigned the identifier. 
 </p>  
 <!-- 
 <p>
@@ -826,10 +821,13 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 <p>A US SSN:</p>
 <pre class="xml">
   &lt;id&gt;
+<!--
     &lt;type&gt;
       &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
       &lt;code&gt;ssn&lt;/code&gt;
     &lt;/type&gt;
+-->
+    &lt;label&gt;SSN&lt;/label&gt;
     &lt;identifier&gt;
       &lt;system&gt;http://hl7.org/fhir/sid/us-ssn&lt;/system&gt;
       &lt;id&gt;000111111&lt;/id&gt;
@@ -839,16 +837,20 @@ and the <i>identifier</i>.<i>id</i> should be the resource id.
 <p>Notes:</p> 
 <ul>
 <li>US SSNs are often presented like this: 000-11-1111, the dashes are for presentation and should be removed, as specified in the <a href="terminologies.htm">definition of ssn-us</a></li>
-<li>There is apparent duplication between type and system; the type says that this is a national social security identifier from some country, while the system specifically identifies the 
-  US SSN. Not all countries will have a registered system id like USA does; it might be useful to also reference the country in the assigning authority</li>
+<!--<li>There is apparent duplication between type and system; the type says that this is a national social security identifier from some country, while the system specifically identifies the 
+  US SSN. Not all countries will have a registered system id like USA does; it might be useful to also reference the country in the assigning authority</li>-->
 </ul>
 <p>A medical record number assigned on 5-July 2009:</p>
 <pre class="xml">
   &lt;id&gt;
+<!--  
     &lt;type&gt;
       &lt;system&gt;http://hl7.org/fhir/identifier-type&lt;/system&gt;
       &lt;code&gt;patient&lt;/code&gt;
     &lt;/type&gt;
+	-->
+    &lt;use&gt;usual&lt;/use&gt;
+    &lt;label&gt;MRN&lt;/label&gt;
     &lt;identifier&gt;
       &lt;system&gt;oid:0.1.2.3.4.5.6.7&lt;/system&gt;
       &lt;id&gt;2356&lt;/id&gt;

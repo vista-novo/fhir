@@ -71,11 +71,9 @@ public class SpreadsheetParser {
 	private String folder;
 	private Logger log;
 
-	public SpreadsheetParser(InputStream in, String name,
-			Definitions definitions, String root, Logger log) throws Exception {
+	public SpreadsheetParser(InputStream in, String name,	Definitions definitions, String root, Logger log) throws Exception {
 		this.name = name;
 		xls = new XLSXmlParser(in, name);
-		this.root = root;
 		this.definitions = definitions;
 		if (name.indexOf('-') > 0)
 			title = name.substring(0, name.indexOf('-'));
@@ -84,6 +82,7 @@ public class SpreadsheetParser {
 		else
 		  title = name;
 		this.folder = root + title + File.separator;
+		this.root = root;
 		this.log = log;
 	}
 
@@ -534,9 +533,7 @@ public class SpreadsheetParser {
 		
 		if (isRoot) {
 			if (root.getRoot() != null)
-				throw new Exception("Definitions in " + getLocation(row)
-						+ " contain two roots: " + path + " in "
-						+ root.getName());
+				throw new Exception("Definitions in " + getLocation(row)+ " contain two roots: " + path + " in "+ root.getName());
 
 			root.setName(path);
 			e = new ElementDefn();
@@ -590,11 +587,11 @@ public class SpreadsheetParser {
 					+ path);
 
 		e.setBindingName(sheet.getColumn(row, "Binding"));
-		if (!"".equals(sheet.getColumn(row, "Binding Strength")))
-			throw new Exception(
-					"Element definition binding strength is not supported in "
-							+ path);
-
+		if (e.hasBindingName()) { 
+		  BindingSpecification binding = definitions.getBindingByName(e.getBindingName());
+      if (binding != null && !binding.getUseContexts().contains(name))
+        binding.getUseContexts().add(name);
+	    }
 		e.setShortDefn(sheet.getColumn(row, "Short Name"));
 		e.setDefinition(sheet.getColumn(row, "Definition"));
 		

@@ -16,10 +16,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444222222</id>
@@ -65,10 +66,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444333333</id>
@@ -113,10 +115,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444555555</id>
@@ -161,10 +164,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444114567</id>
@@ -209,10 +213,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444111234</id>
@@ -257,10 +262,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444113456</id>
@@ -305,10 +311,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444112345</id>
@@ -353,10 +360,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444666666</id>
@@ -401,10 +409,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444777777</id>
@@ -449,10 +458,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444888888</id>
@@ -497,10 +507,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444999999</id>
@@ -545,9 +556,12 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
+<!--
 					<type>
 						<code>ssn</code>
 					</type>
+					-->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>555222222</id>
@@ -592,10 +606,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>333333333</id>
@@ -640,10 +655,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>33344444</id>
@@ -688,10 +704,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>444444444</id>
@@ -736,10 +753,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>555555555</id>
@@ -784,10 +802,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>666666666</id>
@@ -832,10 +851,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>777777777</id>
@@ -880,10 +900,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>888888888</id>
@@ -928,10 +949,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>888222222</id>
@@ -976,10 +998,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>888333333</id>
@@ -1024,10 +1047,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>888444444</id>
@@ -1072,10 +1096,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>999999999</id>
@@ -1120,10 +1145,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222333333</id>
@@ -1168,10 +1194,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222223333</id>
@@ -1216,10 +1243,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222666666</id>
@@ -1264,10 +1292,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222334444</id>
@@ -1312,10 +1341,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222335555</id>
@@ -1360,10 +1390,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222336666</id>
@@ -1408,10 +1439,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222337777</id>
@@ -1456,10 +1488,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222338888</id>
@@ -1504,10 +1537,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222339999</id>
@@ -1552,10 +1586,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222442222</id>
@@ -1600,10 +1635,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222443333</id>
@@ -1648,10 +1684,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222443344</id>
@@ -1696,10 +1733,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222445555</id>
@@ -1744,10 +1782,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222446666</id>
@@ -1792,10 +1831,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222447777</id>
@@ -1840,10 +1880,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222448888</id>
@@ -1888,10 +1929,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222449999</id>
@@ -1936,10 +1978,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222552222</id>
@@ -1984,10 +2027,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222553333</id>
@@ -2032,10 +2076,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222554444</id>
@@ -2080,10 +2125,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222555545</id>
@@ -2128,10 +2174,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222556666</id>
@@ -2176,10 +2223,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222444444</id>
@@ -2224,10 +2272,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222557777</id>
@@ -2272,10 +2321,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222558888</id>
@@ -2320,10 +2370,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222559999</id>
@@ -2368,10 +2419,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222662222</id>
@@ -2416,10 +2468,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222555555</id>
@@ -2464,10 +2517,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222663333</id>
@@ -2512,10 +2566,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222777777</id>
@@ -2560,10 +2615,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222664444</id>
@@ -2608,10 +2664,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222665555</id>
@@ -2656,10 +2713,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222888888</id>
@@ -2704,10 +2762,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222999999</id>
@@ -2752,10 +2811,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222666666</id>
@@ -2800,10 +2860,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222667777</id>
@@ -2848,10 +2909,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222668888</id>
@@ -2896,10 +2958,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222669999</id>
@@ -2944,10 +3007,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>333222222</id>
@@ -2992,10 +3056,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222772222</id>
@@ -3040,10 +3105,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222773333</id>
@@ -3088,10 +3154,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>333444444</id>
@@ -3136,10 +3203,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>333555555</id>
@@ -3184,10 +3252,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>000111111</id>
@@ -3232,10 +3301,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222776666</id>
@@ -3280,10 +3350,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>222778888</id>
@@ -3328,10 +3399,11 @@
 		<content type="text/xml">
 			<Person xmlns="http://hl7.org/fhir">
 				<identifier>
-					<type>
+					<!-- <type>
 						<system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
 						<code>ssn</code>
-					</type>
+					</type> -->
+					<label>SSN</label>
 					<identifier>
 						<system>http://hl7.org/fhir/sid/us-ssn</system>
 						<id>333777777</id>

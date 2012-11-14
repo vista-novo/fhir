@@ -11,10 +11,14 @@
     <id>2</id>  
   </provider> 
   <identifier>
+   <!--
     <type>
       <system>http://hl7.org/fhir/sid/v2-0203</system>
       <code>MR</code>
     </type>
+-->
+    <use>usual</use>
+    <label>MRN</label>
 	<identifier>
 	  <system>oid:3.4.5</system>
 	  <id>89765a87b</id>

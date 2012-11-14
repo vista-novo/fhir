@@ -29,17 +29,48 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 13, 2012 22:22+1100 for FHIR v0.06
+// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
 
 /**
  * An identifier that humans use. This is different from a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that a human identifier may be a system identifier on some master system but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license numbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
  */
 public class HumanId extends Type {
 
+    public enum IdentifierUse {
+        usual, // the identifier recommended for display and use in real-world interactions
+        official, // the identifier considered to be most trusted for the identification of this item
+        temp; // A temporary identifier
+        public static IdentifierUse fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("usual".equals(codeString))
+          return usual;
+        if ("official".equals(codeString))
+          return official;
+        if ("temp".equals(codeString))
+          return temp;
+        throw new Exception("Unknown IdentifierUse code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case usual: return "usual";
+            case official: return "official";
+            case temp: return "temp";
+            default: return "?";
+          }
+        }
+    }
+
     /**
-     * The type of the identifier - to allow a particular identifier to be selected elsewhere
+     * Identifies the use for this identifier, if known
+
      */
-    private Coding type;
+    private IdentifierUse use;
+
+    /**
+     * A label for the identifier that can be displayed to a human so they can recognise the identifier
+     */
+    private String label;
 
     /**
      * The identifier itself
@@ -56,12 +87,20 @@ public class HumanId extends Type {
      */
     private ResourceReference assigner;
 
-    public Coding getType() { 
-      return this.type;
+    public IdentifierUse getUse() { 
+      return this.use;
     }
 
-    public void setType(Coding value) { 
-      this.type = value;
+    public void setUse(IdentifierUse value) { 
+      this.use = value;
+    }
+
+    public String getLabel() { 
+      return this.label;
+    }
+
+    public void setLabel(String value) { 
+      this.label = value;
     }
 
     public Identifier getIdentifier() { 

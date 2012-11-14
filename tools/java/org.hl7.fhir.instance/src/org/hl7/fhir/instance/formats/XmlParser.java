@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Tue, Nov 13, 2012 22:22+1100 for FHIR v0.06
+// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
@@ -581,8 +581,10 @@ public class XmlParser extends XmlParserBase {
     xpp.next();
     int eventType = nextNoWhitespace(xpp);
     while (eventType != XmlPullParser.END_TAG) {
-      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("type")) {
-        res.setType(parseCoding(xpp));
+      if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("use")) {
+        res.setUse(HumanId.IdentifierUse.fromCode(parseString(xpp)));
+      } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("label")) {
+        res.setLabel(parseString(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("identifier")) {
         res.setIdentifier(parseIdentifier(xpp));
       } else if (eventType == XmlPullParser.START_TAG && xpp.getName().equals("period")) {

@@ -19,10 +19,14 @@
     <display>ACME Healthcare, Inc</display>
   </provider> 
   <identifier>
+  <!--
     <type>
       <system>http://hl7.org/fhir/sid/v2-0203</system>
       <code>MR</code>
     </type>
+-->
+    <use>usual</use>
+    <label>MRN</label>
     <identifier>
       <system>oid:0.1.2.3.4.5.6.7</system>
       <id>654321</id>

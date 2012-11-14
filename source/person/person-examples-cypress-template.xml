@@ -17,10 +17,11 @@
     <content type="text/xml">
       <Person xmlns="http://hl7.org/fhir">
         <identifier>
-          <type>
+          <!-- <type>
             <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
             <code>patient</code>
-          </type>
+          </type> -->
+		  <label>SSN</label>
           <identifier>
             <system>https://github.com/projectcypress/cypress/patient</system>
             <id>[%patient_id%]</id>

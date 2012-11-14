@@ -39,6 +39,7 @@ import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.DefinedStringPattern;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -56,6 +57,8 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 	// private List<TypeDefn> datatypes = new ArrayList<TypeDefn>();
 	// private Map<String, ConceptDomain> tx;
 	private List<String> enums = new ArrayList<String>();
+
+  private List<String> genEnums = new ArrayList<String>();
 
 	// private Map<String, PrimitiveType> primitives;
 
@@ -90,6 +93,9 @@ public class XSDBaseGenerator extends OutputStreamWriter {
 			genConstraint(cd);
 		for (ElementDefn e : definitions.getStructures().values())
 			genStructure(e);
+		for (BindingSpecification b : definitions.getBindings().values())
+		  if (b.getUseContexts().size() > 1 && b.getBinding() == Binding.CodeList)
+		    generateEnum(b.getName());
 		write("</xs:schema>\r\n");
 		flush();
 	}
@@ -332,6 +338,9 @@ private void genXmlIdRef() throws Exception {
 	}
 
 	private void generateEnum(String en) throws IOException {
+	  if (genEnums.contains(en))
+	    return;
+	  
 		write("  <xs:simpleType name=\"" + en + "\">\r\n");
 		write("    <xs:restriction base=\"xs:string\">\r\n");
 		for (DefinedCode c : definitions.getBindingByName(en).getCodes()) {
@@ -346,6 +355,7 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:restriction>\r\n");
 		write("  </xs:simpleType>\r\n");
+		genEnums.add(en);
 	}
 
 	private void generateType(ElementDefn root, String name, ElementDefn struc)
