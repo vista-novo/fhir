@@ -57,6 +57,7 @@ public class ElementDefn {
 	private String comments;
 	private String v2Mapping;
 	private String todo;
+	private List<String> aliases = new ArrayList<String>();
 	private String committeeNotes;
 	private String condition;
 	private String example;
@@ -574,6 +575,10 @@ public class ElementDefn {
 
     public void setDir(String dir) {
       this.dir = dir;
+    }
+
+    public List<String> getAliases() {
+      return aliases;
     }
     
 }

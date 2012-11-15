@@ -560,6 +560,10 @@ public class SpreadsheetParser {
 					.parseInt(card[1]));
 		}
 		e.setProfileName(profileName);
+		String aliases = sheet.getColumn(row, "Aliases");
+		if (!Utilities.noString(aliases))
+		  for (String a : aliases.split(";"))
+		    e.getAliases().add(a);
 
 		e.setMustUnderstand(parseBoolean(
 				sheet.getColumn(row, "Must Understand"), row, false));

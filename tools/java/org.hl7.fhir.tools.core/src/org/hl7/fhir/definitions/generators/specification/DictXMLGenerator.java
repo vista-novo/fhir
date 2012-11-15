@@ -181,6 +181,8 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		write("        <mustUnderstand>"+Boolean.toString(e.isMustUnderstand())+"</mustUnderstand>\r\n");
 		write("        <definition>"+Utilities.escapeXml(e.getDefinition())+"</definition>\r\n");
 		write("        <requirements>"+Utilities.escapeXml(e.getRequirements())+"</requirements>\r\n");
+		for (String a : e.getAliases())
+	    write("        <alias>"+Utilities.escapeXml(a)+"</alias>\r\n");
 		if (hasValue(e.getComments()))
 			write("        <comments>"+Utilities.escapeXml(e.getComments())+"</comments>\r\n");
 		write("        <rim>"+Utilities.escapeXml(e.getRimMapping())+"</rim>\r\n");

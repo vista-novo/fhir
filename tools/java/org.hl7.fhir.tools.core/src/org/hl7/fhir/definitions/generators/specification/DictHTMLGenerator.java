@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -70,14 +71,32 @@ public class DictHTMLGenerator  extends OutputStreamWriter {
 		tableRow("Type", type + (conceptDomain != "" ? " from "+conceptDomain : ""));
 		tableRow("Must Understand", displayBoolean(e.isMustUnderstand()));
 		tableRow("Requirements", e.getRequirements());
+    tableRow("Aliases", toSeperatedString(e.getAliases()));
 		tableRow("Comments", e.getComments());
 		tableRow("RIM Mapping", e.getRimMapping());
-		tableRow("v2 Mapping", e.getV2Mapping());
+    tableRow("v2 Mapping", e.getV2Mapping());
 		tableRow("To Do", e.getTodo());
 		
 	}
 	
-	private String displayBoolean(boolean mustUnderstand) {
+	private String toSeperatedString(List<String> list) {
+	  if (list.size() == 0)
+	    return "";
+	  else {
+	    StringBuilder s = new StringBuilder();
+	    boolean first = true;
+	    for (String v : list) {
+	      if (!first)
+	        s.append("; ");
+	      first = false;
+	      s.append(v);
+	    }
+	    return s.toString();
+	  }
+	  
+  }
+
+  private String displayBoolean(boolean mustUnderstand) {
 		if (mustUnderstand)
 			return "true";
 		else
