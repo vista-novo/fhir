@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<[Name] xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\[name].xsd">
+<Coverage xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\coverage.xsd">
 
-  <!-- insert contents here -->
+ <issuer>
+     <coding>
+      <system>urn:oid:2.16.840.1.113883.3.19.2.3</system>
+      <code>666666</code>
+    </coding>
+	<text>XYZ Insurance</text>
+ </issuer>
+ 
+ <type>
+     <coding>
+      <system>http://hl7.org/vocab/v3/ActCoverageTypeCode</system>
+      <code>EHCPOL</code>
+      <display>Extended Health Policy</display>
+    </coding>
+ </type>
+ 
+ <identifier>12345</identifier>
+ <plan>CBI35</plan>
+ <subplan>123</subplan>
+ <instance>1</instance>
+ <dependant>0</dependant>
+ 
+  <name>
+    <use>official</use>
+     <family>Seebetter</family>
+     <given>Wanda</given>
+     <given>L</given>
+  </name>
+  
+  <birthDate>1955-01-01</birthDate>
+  
+  <relationship>
+      <coding>
+       <system>http://hl7.org/vocab/v3/CoverageRoleType</system>
+       <code>SELF</code>
+    </coding>
+  </relationship>
+  
+  <authorization>RC74387546</authorization>
   
   <text>
     <status>generated</status>
-    <div xmlns="http://www.w3.org/1999/xhtml">Authored on 8-Nov 2011 by Grahame Grieve. Content extracted from ISO-21090</div>
+    <div xmlns="http://www.w3.org/1999/xhtml">A human readable rendering of the coverage</div>
   </text>
-</[Name]>
+</Coverage>
