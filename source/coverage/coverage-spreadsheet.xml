@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Paul Knapp</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-15T21:35:58Z</LastSaved>
+  <LastSaved>2012-11-15T23:12:44Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -72,7 +72,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="16" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="18" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -187,6 +187,14 @@
     <Cell><Data ss:Type="String">Used to validate coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Coverage.address</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">PolicyHolder address</Data></Cell>
+    <Cell><Data ss:Type="String">The mailing address, typically home, of the PolicyHolder</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.birthdate</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
@@ -201,8 +209,17 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">Coding</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
+    <Cell><Data ss:Type="String">Patient relationship to the PolicyHolder, for example: Self, spousal or equivalent, dependent, none.</Data></Cell>
+    <Cell><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
     <Cell ss:Index="17"><Data ss:Type="String">CoverageRoleType</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Coverage.language</Data></Cell>
+    <Cell><Data ss:Type="Number">1.1000000000000001</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Written langauge for communications</Data></Cell>
+    <Cell><Data ss:Type="String">The language to be used for written comminucations.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.exception</Data></Cell>
@@ -245,11 +262,13 @@
     <ValidPrinterInfo/>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <TopRowVisible>12</TopRowVisible>
+   <LeftColumnVisible>7</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -463,7 +482,7 @@
     <Cell><Data ss:Type="String">General</Data></Cell>
     <Cell><Data ss:Type="String">General Person Example</Data></Cell>
     <Cell><Data ss:Type="String">9876B1</Data></Cell>
-    <Cell><Data ss:Type="String">coverage-simple-private-example.xml</Data></Cell>
+    <Cell><Data ss:Type="String">coverage-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
   </Table>
@@ -478,8 +497,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
