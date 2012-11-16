@@ -52,10 +52,7 @@
 	   <system>http://hl7.org/vocab/v3/CoverageRoleType</system>
 	   <code>SELF</code>
 	</relationship>
-
   </planHolder>
-  
-  <authorization>RC74387546</authorization>
   
   <text>
     <status>generated</status>
