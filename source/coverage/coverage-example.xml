@@ -10,18 +10,15 @@
  </issuer>
  
  <type>
-     <coding>
       <system>http://hl7.org/vocab/v3/ActCoverageTypeCode</system>
       <code>EHCPOL</code>
       <display>Extended Health Policy</display>
-    </coding>
  </type>
  
  <identifier>12345</identifier>
  <plan>CBI35</plan>
  <subplan>123</subplan>
  <instance>1</instance>
- <dependant>0</dependant>
  
   <name>
     <use>official</use>
@@ -39,20 +36,16 @@
 	 <country>CANADA</country>
   </address>
   
-  <birthDate>1955-01-01</birthDate>
+  <birthdate>1955-01-01</birthdate>
   
   <relationship>
-      <coding>
        <system>http://hl7.org/vocab/v3/CoverageRoleType</system>
        <code>SELF</code>
-    </coding>
   </relationship>
  
   <language>
-      <coding>
        <system>http://hl7.org/vocab/v3/Language</system>
        <code>EN</code>
-    </coding>
   </language>
  
   <authorization>RC74387546</authorization>
