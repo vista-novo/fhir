@@ -19,6 +19,7 @@
  <plan>CBI35</plan>
  <subplan>123</subplan>
  <instance>1</instance>
+ <dependant>0</dependant>
  
   <name>
     <use>official</use>
