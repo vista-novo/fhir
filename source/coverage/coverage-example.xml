@@ -2,12 +2,11 @@
 <Coverage xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\coverage.xsd">
 
  <issuer>
-     <coding>
-      <system>urn:oid:2.16.840.1.113883.3.19.2.3</system>
-      <code>666666</code>
-    </coding>
-	<text>XYZ Insurance</text>
+    <system>oid:2.16.840.1.113883.3.19.2.3</system>
+    <id>666666</id>
  </issuer>
+ 
+ <issuerName>XYZ Insurance</issuerName>
  
  <type>
       <system>http://hl7.org/vocab/v3/ActCoverageTypeCode</system>
@@ -15,9 +14,18 @@
       <display>Extended Health Policy</display>
  </type>
  
- <identifier>12345</identifier>
- <plan>CBI35</plan>
- <subplan>123</subplan>
+ <identifier>
+    <system>http://xyz.com/codes/identifier</system>
+    <id>12345</id>
+ </identifier>
+ <plan>
+    <system>http://xyz.com/codes/plan</system>
+    <id>CBI35</id>
+ </plan>
+ <subplan>
+    <system>http://xyz.com/codes/subplan</system>
+    <id>123</id>
+ </subplan>
  <instance>1</instance>
  <dependant>0</dependant>
  
@@ -45,10 +53,6 @@
 	   <code>SELF</code>
 	</relationship>
 
-	<language>
-	   <system>http://hl7.org/vocab/v3/Language</system>
-	   <code>EN</code>
-	</language>
   </planHolder>
   
   <authorization>RC74387546</authorization>

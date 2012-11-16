@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Paul Knapp</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-16T02:49:44Z</LastSaved>
+  <LastSaved>2012-11-16T04:00:11Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -69,9 +69,17 @@
   <Style ss:ID="s68">
    <Alignment ss:Vertical="Top"/>
   </Style>
+  <Style ss:ID="s69">
+   <Alignment ss:Horizontal="Left" ss:Vertical="Top" ss:ShrinkToFit="1"
+    ss:WrapText="1"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+   <Interior ss:Color="#EEECE1" ss:Pattern="Solid"/>
+  </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="19" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="18" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="163.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -120,10 +128,17 @@
     <Cell><Data ss:Type="String">Coverage.issuer</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan issuer</Data></Cell>
     <Cell><Data ss:Type="String">The program or plan underwriter or payor.</Data></Cell>
     <Cell><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Coverage.issuerName</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The name of the issuer.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.type</Data></Cell>
@@ -176,7 +191,7 @@
     <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The instance counter</Data></Cell>
     <Cell><Data ss:Type="String">An optional counter for a particilar instance of the identified coverage which increments upon each renewal.</Data></Cell>
-    <Cell><Data ss:Type="String">Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the details remain constant the instance is incremented with each renewal.</Data></Cell>
+    <Cell><Data ss:Type="String">Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the plan details and identifiers may remain constant over time, the instance is incremented with each renewal and provided to the covered party on their 'card'.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.planHolder</Data></Cell>
@@ -220,22 +235,6 @@
     <Cell><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
     <Cell ss:Index="18"><Data ss:Type="String">CoverageRoleType</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.planHolder.language</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Written language for communications</Data></Cell>
-    <Cell><Data ss:Type="String">The language to be used for written comminucations.</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.exception</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">List of policy exception codes</Data></Cell>
-    <Cell ss:Index="10"><Data ss:Type="String">Special policy coverage may be extended to: students, and persons with special needs. (May be coded using only the field above)</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Coverage.authorization</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
@@ -270,11 +269,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
+   <TopRowVisible>12</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>7</ActiveCol>
+     <ActiveRow>21</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -504,6 +504,91 @@
      <Number>3</Number>
      <ActiveRow>5</ActiveRow>
      <ActiveCol>3</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Removed Elements">
+  <Table ss:ExpandedColumnCount="21" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:AutoFitWidth="0" ss:Width="168.75"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="63.75"/>
+   <Row ss:Height="30">
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Element</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Card.</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Inv.</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">UML</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Type</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Binding</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Short Name</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Requirements</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Comments</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Condition</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">RIM Mapping</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">v2 Mapping</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">To Do</Data></Cell>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Committee Notes</Data></Cell>
+    <Cell ss:StyleID="s64"/>
+    <Cell ss:StyleID="s64"><Data ss:Type="String">Vocab</Data></Cell>
+    <Cell ss:Index="20" ss:StyleID="s69"><Data ss:Type="String">Example</Data></Cell>
+   </Row>
+   <Row ss:Height="105">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.planHolder.language</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Written language for communications</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">The language to be used for written comminucations.</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:Index="19"><Data ss:Type="String">Was inside the planHolder </Data></Cell>
+    <Cell ss:Index="21"><Data ss:Type="String">&lt;language&gt;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:Index="21"><Data ss:Type="String">   &lt;system&gt;http://hl7.org/vocab/v3/Language&lt;/system&gt;</Data></Cell>
+   </Row>
+   <Row ss:Height="270">
+    <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.exception</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">0..*</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">List of policy exception codes</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">Special policy coverage may be extended to: students, and persons with special needs. (May be coded using only the field above)</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:Index="21"><Data ss:Type="String">   &lt;code&gt;EN&lt;/code&gt;</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:Index="21"><Data ss:Type="String">&lt;/language&gt;</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <RangeSelection>R4C1:R4C18</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
