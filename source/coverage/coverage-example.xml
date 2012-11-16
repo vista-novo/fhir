@@ -21,34 +21,36 @@
  <instance>1</instance>
  <dependant>0</dependant>
  
-  <name>
-    <use>official</use>
-     <family>Seebetter</family>
-     <given>Wanda</given>
-     <given>L</given>
-  </name>
-  
-  <address>
-    <use>home</use>
-     <line>123 Any St</line>
-     <city>Anytown</city>
-     <state>BC</state>
-     <zip>V3R4R5</zip>
+ <planHolder>
+	<name>
+	<use>official</use>
+	 <family>Seebetter</family>
+	 <given>Wanda</given>
+	 <given>L</given>
+	</name>
+
+	<address>
+	<use>home</use>
+	 <line>123 Any St</line>
+	 <city>Anytown</city>
+	 <state>BC</state>
+	 <zip>V3R4R5</zip>
 	 <country>CANADA</country>
-  </address>
+	</address>
+
+	<birthdate>1955-01-01</birthdate>
+
+	<relationship>
+	   <system>http://hl7.org/vocab/v3/CoverageRoleType</system>
+	   <code>SELF</code>
+	</relationship>
+
+	<language>
+	   <system>http://hl7.org/vocab/v3/Language</system>
+	   <code>EN</code>
+	</language>
+  </planHolder>
   
-  <birthdate>1955-01-01</birthdate>
-  
-  <relationship>
-       <system>http://hl7.org/vocab/v3/CoverageRoleType</system>
-       <code>SELF</code>
-  </relationship>
- 
-  <language>
-       <system>http://hl7.org/vocab/v3/Language</system>
-       <code>EN</code>
-  </language>
- 
   <authorization>RC74387546</authorization>
   
   <text>

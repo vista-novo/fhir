@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Paul Knapp</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-15T23:12:44Z</LastSaved>
+  <LastSaved>2012-11-16T02:49:44Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -26,7 +26,6 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -72,25 +71,26 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="18" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="19" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="163.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="25.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="90.75"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75" ss:Span="1"/>
+   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="90.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="9" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
     ss:Span="1"/>
-   <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
+   <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Column ss:Index="17" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="124.5"/>
+   <Column ss:Index="18" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="124.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="29.25" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
     <Cell><Data ss:Type="String">Inv.</Data></Cell>
     <Cell><Data ss:Type="String">Must Understand</Data></Cell>
+    <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Type</Data></Cell>
     <Cell><Data ss:Type="String">Binding</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
@@ -102,25 +102,26 @@
     <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
-    <Cell ss:Index="17"><Data ss:Type="String">Vocab</Data></Cell>
+    <Cell ss:Index="18"><Data ss:Type="String">Vocab</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
+    <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Insurance or medical plan</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Insurance or medical plan</Data></Cell>
     <Cell><Data ss:Type="String">Financial instrument which pays for health care</Data></Cell>
     <Cell><Data ss:Type="String">Health care programs and insurers are significant payors of health service costs</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">Coverage</Data></Cell>
+    <Cell ss:Index="13"><Data ss:Type="String">Coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.issuer</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">An identifier for the plan issuer</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan issuer</Data></Cell>
     <Cell><Data ss:Type="String">The program or plan underwriter or payor.</Data></Cell>
     <Cell><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
    </Row>
@@ -128,18 +129,18 @@
     <Cell><Data ss:Type="String">Coverage.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Type of coverage</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Type of coverage</Data></Cell>
     <Cell><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data></Cell>
     <Cell><Data ss:Type="String">The order of application of coverages is dependant on the types of coverage.</Data></Cell>
-    <Cell ss:Index="17"><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
+    <Cell ss:Index="18"><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.identifier</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The primary coverage ID</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The primary coverage ID</Data></Cell>
     <Cell><Data ss:Type="String">The main, may be the only, identifier for the coverage - often referred to as a Subscriber Id, Certificate number or Personal Health Number or Case ID.</Data></Cell>
     <Cell><Data ss:Type="String">This value may uniquely identify the coverage or it may be used in conjunction with the additional identifiers below.</Data></Cell>
    </Row>
@@ -147,24 +148,24 @@
     <Cell><Data ss:Type="String">Coverage.plan</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">An identifier for the plan</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan</Data></Cell>
     <Cell><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example my be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.subplan</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">An identifier for the subsection of the plan</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">An identifier for the subsection of the plan</Data></Cell>
     <Cell><Data ss:Type="String">Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example my be used to identify a specific employer group within a class of employers. May be refered to as a Section or Divsiion ID.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.dependant</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The dependant number</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The dependant number</Data></Cell>
     <Cell><Data ss:Type="String">A unique identifier for a dependant under the coverage.</Data></Cell>
     <Cell><Data ss:Type="String">For some coverage a single identifier is issued to the PolicyHolder and dependant number issues to each to each of their dependants to track and manage the plan.</Data></Cell>
    </Row>
@@ -172,83 +173,89 @@
     <Cell><Data ss:Type="String">Coverage.instance</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">The instance counter</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The instance counter</Data></Cell>
     <Cell><Data ss:Type="String">An optional counter for a particilar instance of the identified coverage which increments upon each renewal.</Data></Cell>
     <Cell><Data ss:Type="String">Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the details remain constant the instance is incremented with each renewal.</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="49.5">
+    <Cell><Data ss:Type="String">Coverage.planHolder</Data></Cell>
+    <Cell><Data ss:Type="String">1..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Planholder information</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.name</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.planHolder.name</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">HumanName</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">PolicyHolder name</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">PolicyHolder name</Data></Cell>
     <Cell><Data ss:Type="String">The name of the PolicyHolder</Data></Cell>
     <Cell><Data ss:Type="String">Used to validate coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.address</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.planHolder.address</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">PolicyHolder address</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">PolicyHolder address</Data></Cell>
     <Cell><Data ss:Type="String">The mailing address, typically home, of the PolicyHolder</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.birthdate</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.planHolder.birthdate</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">date</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">PolicyHolder date of birth</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">date</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">PolicyHolder date of birth</Data></Cell>
     <Cell><Data ss:Type="String">The date of birth of the PolicyHolder</Data></Cell>
     <Cell><Data ss:Type="String">Used to validate coverage</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.relationship</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.planHolder.relationship</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
     <Cell><Data ss:Type="String">Patient relationship to the PolicyHolder, for example: Self, spousal or equivalent, dependent, none.</Data></Cell>
     <Cell><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
-    <Cell ss:Index="17"><Data ss:Type="String">CoverageRoleType</Data></Cell>
+    <Cell ss:Index="18"><Data ss:Type="String">CoverageRoleType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.language</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.planHolder.language</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Written langauge for communications</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Written language for communications</Data></Cell>
     <Cell><Data ss:Type="String">The language to be used for written comminucations.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.exception</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">List of policy exception codes</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Special policy coverage may be extended to: students, and persons with special needs. (May be coded using only the field above)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">List of policy exception codes</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">Special policy coverage may be extended to: students, and persons with special needs. (May be coded using only the field above)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Coverage.authorization</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">List of authorization codes </Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">List of authorization codes </Data></Cell>
     <Cell><Data ss:Type="String">List of special authorization codes which may apply to the services being reported.</Data></Cell>
     <Cell><Data ss:Type="String">When authorizations or predeterminations have been received for services then the references should be supplied when reporting on or claiming for those services.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Coverage.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Extension</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">See Extensions</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Extension</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">Narrative</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">Text summary of coverage, for human interpretation</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Text summary of coverage, for human interpretation</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -262,11 +269,12 @@
     <ValidPrinterInfo/>
     <VerticalResolution>0</VerticalResolution>
    </Print>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>13</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -491,7 +499,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
