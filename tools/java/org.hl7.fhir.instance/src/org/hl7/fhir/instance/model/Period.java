@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * A time period defined by a start and end time.
@@ -39,26 +39,26 @@ public class Period extends Type {
     /**
      * The start of the period. The boundary is inclusive.
      */
-    private String start;
+    private DateTime start;
 
     /**
      * The end of the period. If the high is missing, it means that the period is ongoing
      */
-    private String end;
+    private DateTime end;
 
-    public String getStart() { 
+    public DateTime getStart() { 
       return this.start;
     }
 
-    public void setStart(String value) { 
+    public void setStart(DateTime value) { 
       this.start = value;
     }
 
-    public String getEnd() { 
+    public DateTime getEnd() { 
       return this.end;
     }
 
-    public void setEnd(String value) { 
+    public void setEnd(DateTime value) { 
       this.end = value;
     }
 

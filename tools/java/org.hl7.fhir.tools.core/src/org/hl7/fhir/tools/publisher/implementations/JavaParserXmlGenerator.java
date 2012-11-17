@@ -333,20 +333,26 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
   private String typeName(ElementDefn root, ElementDefn elem, boolean usePrimitive, boolean formal) throws Exception {
     String t = elem.typeCode();
     if (usePrimitive && definitions.getPrimitives().containsKey(t)) {
-      if (t.equals("boolean"))
-        return formal ? "boolean" : "Bool";
-      else if (t.equals("integer"))
-        return "int";
-      else if (t.equals("decimal"))
-        return formal ? "BigDecimal" : "BigDecimal";
-      else if (t.equals("base64Binary"))
-        return formal ? "byte[]" : "bytes";
-      else if (t.equals("instant"))
-        return formal ? "java.util.Calendar" : "Instant";
-      else if (t.equals("uri"))
-        return formal ? "java.net.URI" : "Uri";
-      else 
+//      if (t.equals("boolean"))
+//        return formal ? "boolean" : "Bool";
+//      else if (t.equals("integer"))
+//        return "int";
+//      else if (t.equals("decimal"))
+//        return formal ? "BigDecimal" : "BigDecimal";
+//      else if (t.equals("base64Binary"))
+//        return formal ? "byte[]" : "bytes";
+//      else if (t.equals("instant"))
+//        return formal ? "java.util.Calendar" : "Instant";
+//      else if (t.equals("uri"))
+//        return formal ? "java.net.URI" : "Uri";
+//      else 
+//        return "String";
+      if (t.equals("idref"))
         return "String";
+      else if (t.equals("string"))
+        return "String_";
+      else 
+        return upFirst(t);
     } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);

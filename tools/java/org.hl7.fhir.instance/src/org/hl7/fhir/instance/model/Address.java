@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -75,42 +75,42 @@ public class Address extends Type {
     /**
      * a full text representation of the address
      */
-    private String text;
+    private String_ text;
 
     /**
      * Part of an address line
      */
-    private List<String> part = new ArrayList<String>();
+    private List<String_> part = new ArrayList<String_>();
 
     /**
      * A line of an address (typically used for street names & numbers, unit details, delivery hints, etc.) .
      */
-    private List<String> line = new ArrayList<String>();
+    private List<String_> line = new ArrayList<String_>();
 
     /**
      * The name of the city, town, village, or other community or delivery centre.
      */
-    private String city;
+    private String_ city;
 
     /**
      * Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes).
      */
-    private String state;
+    private String_ state;
 
     /**
      * A postal code designating a region defined by the postal service.
      */
-    private String zip;
+    private String_ zip;
 
     /**
      * Country. ISO 3166 3 letter codes can be used in place of a full country name.
      */
-    private String country;
+    private String_ country;
 
     /**
      * A value that uniquely identifies the postal address. (Often used in barcodes). 
      */
-    private String dpid;
+    private String_ dpid;
 
     /**
      * Time period when address was/is in use
@@ -125,59 +125,59 @@ public class Address extends Type {
       this.use = value;
     }
 
-    public String getText() { 
+    public String_ getText() { 
       return this.text;
     }
 
-    public void setText(String value) { 
+    public void setText(String_ value) { 
       this.text = value;
     }
 
-    public List<String> getPart() { 
+    public List<String_> getPart() { 
       return this.part;
     }
 
-    public List<String> getLine() { 
+    public List<String_> getLine() { 
       return this.line;
     }
 
-    public String getCity() { 
+    public String_ getCity() { 
       return this.city;
     }
 
-    public void setCity(String value) { 
+    public void setCity(String_ value) { 
       this.city = value;
     }
 
-    public String getState() { 
+    public String_ getState() { 
       return this.state;
     }
 
-    public void setState(String value) { 
+    public void setState(String_ value) { 
       this.state = value;
     }
 
-    public String getZip() { 
+    public String_ getZip() { 
       return this.zip;
     }
 
-    public void setZip(String value) { 
+    public void setZip(String_ value) { 
       this.zip = value;
     }
 
-    public String getCountry() { 
+    public String_ getCountry() { 
       return this.country;
     }
 
-    public void setCountry(String value) { 
+    public void setCountry(String_ value) { 
       this.country = value;
     }
 
-    public String getDpid() { 
+    public String_ getDpid() { 
       return this.dpid;
     }
 
-    public void setDpid(String value) { 
+    public void setDpid(String_ value) { 
       this.dpid = value;
     }
 

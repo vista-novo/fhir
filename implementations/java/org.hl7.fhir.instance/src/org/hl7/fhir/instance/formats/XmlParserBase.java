@@ -28,11 +28,9 @@ POSSIBILITY OF SUCH DAMAGE.
 
 */
 
-import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.URI;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +41,6 @@ import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 public abstract class XmlParserBase extends XmlBase {
 
@@ -150,6 +147,7 @@ public abstract class XmlParserBase extends XmlBase {
     return result;    
   }
   
+  
   protected Code parseCode(XmlPullParser xpp) throws Exception {
     Code result = new Code();
     parseTypeAttributes(xpp, result);
@@ -168,11 +166,7 @@ public abstract class XmlParserBase extends XmlBase {
 	  return xmlToDate(parseString(xpp));    
   }
 	  
-  
-  protected URI parseURI(XmlPullParser xpp) throws Exception {
-    return new URI(parseString(xpp));
-  }
-  
+   
   protected XhtmlNode parseXhtml(XmlPullParser xpp) throws Exception {
     XhtmlParser prsr = new XhtmlParser();
     return prsr.parseHtmlNode(xpp);
@@ -202,14 +196,14 @@ public abstract class XmlParserBase extends XmlBase {
     return new java.lang.Integer(s.startsWith("+") ? s.substring(1) : s);
   }
    
-  protected java.lang.Boolean parseBool(XmlPullParser xpp) throws Exception {
-    return java.lang.Boolean.valueOf(parseString(xpp));
+  protected Boolean parseBool(XmlPullParser xpp) throws Exception {
+    return parseBoolean(xpp);
   }
 
   protected Boolean parseBoolean(XmlPullParser xpp) throws Exception {
     Boolean result = new Boolean();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseBool(xpp));
+    result.setValue(java.lang.Boolean.valueOf(parseString(xpp)));
     return result;    
   }
 
@@ -231,7 +225,7 @@ public abstract class XmlParserBase extends XmlBase {
   protected Sid parseSid(XmlPullParser xpp) throws Exception {
     Sid result = new Sid();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseURI(xpp));
+    result.setValue(new URI(parseString(xpp)));
     return result;
   }
   protected Decimal parseDecimal(XmlPullParser xpp) throws Exception {
@@ -243,7 +237,13 @@ public abstract class XmlParserBase extends XmlBase {
   protected Uri parseUri(XmlPullParser xpp) throws Exception {
     Uri result = new Uri();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseURI(xpp));
+    result.setValue(new URI(parseString(xpp)));
+    return result;
+  }
+  protected Uri parseURI(XmlPullParser xpp) throws Exception {
+    Uri result = new Uri();
+    parseTypeAttributes(xpp, result);
+    result.setValue(new URI(parseString(xpp)));
     return result;
   }
   protected Base64Binary parseBase64Binary(XmlPullParser xpp) throws Exception {

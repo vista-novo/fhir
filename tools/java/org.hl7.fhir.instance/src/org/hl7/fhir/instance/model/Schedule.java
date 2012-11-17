@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -136,7 +136,7 @@ public class Schedule extends Type {
         /**
          * Indicates how often the event should occur.
          */
-        private java.lang.Integer frequency;
+        private Integer frequency;
 
         /**
          * Identifies the occurrence of daily life that determine timing
@@ -146,7 +146,7 @@ public class Schedule extends Type {
         /**
          * How long each repetition should last
          */
-        private java.math.BigDecimal duration;
+        private Decimal duration;
 
         /**
          * the units of time for the duration
@@ -156,18 +156,18 @@ public class Schedule extends Type {
         /**
          * A total count of the desired number of repetitions
          */
-        private java.lang.Integer count;
+        private Integer count;
 
         /**
          * When to stop repeats
          */
-        private String end;
+        private DateTime end;
 
-        public java.lang.Integer getFrequency() { 
+        public Integer getFrequency() { 
           return this.frequency;
         }
 
-        public void setFrequency(java.lang.Integer value) { 
+        public void setFrequency(Integer value) { 
           this.frequency = value;
         }
 
@@ -179,11 +179,11 @@ public class Schedule extends Type {
           this.when = value;
         }
 
-        public java.math.BigDecimal getDuration() { 
+        public Decimal getDuration() { 
           return this.duration;
         }
 
-        public void setDuration(java.math.BigDecimal value) { 
+        public void setDuration(Decimal value) { 
           this.duration = value;
         }
 
@@ -195,19 +195,19 @@ public class Schedule extends Type {
           this.units = value;
         }
 
-        public java.lang.Integer getCount() { 
+        public Integer getCount() { 
           return this.count;
         }
 
-        public void setCount(java.lang.Integer value) { 
+        public void setCount(Integer value) { 
           this.count = value;
         }
 
-        public String getEnd() { 
+        public DateTime getEnd() { 
           return this.end;
         }
 
-        public void setEnd(String value) { 
+        public void setEnd(DateTime value) { 
           this.end = value;
         }
 

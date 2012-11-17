@@ -1,20 +1,12 @@
-Pre freeze:
-
 * Fix problem with schematron paths capturing resources and datatypes used in extensions (by looking for valuexxx)?
-
-Post freeze:
-
 * Assessment Scale
 * todo list for tooling
 * non-techie summary - pager
 * techie summary - 1 pager
-* extensions plurality & naming
-* remove id from resources
-* add profile to resource?
+* add profile to resource? / profileId in resource & the meaning of a profile
 * FHIR Product Line Scope and Principles
 * sort out the hdata page
 * Decide what our policy is on including formatting in Excel columns (e.g. italics in formal constraints).
-* Investigate whether we can reliably use timestamps to determine whether the exported graphics images are up-to-date with the XMI source.  If not, maybe add a prompt in the official (non-sandbox) build process to check the images.
 * Profile related changes in tooling:
  1. For profiles, add an additional tab listing resources.  For each resource, include the information from Profile.resource including Profile.resource.closed
  2. Map Intro to Profile.description and Notes to Resource.description.  Both should always refer to file locations to allow content to be HTML.  Determine if this can be determined by naming convention or if we need to reference the filenames in the spreadsheet
@@ -24,36 +16,8 @@ Post freeze:
  6. Add a tab that provides a mapping between the labels on the various tabs and the Profile element names those cells correspond to
 * remove profile bindings from bindings summar (i.e. EntityNamePartQualifier)
 * improve path display for schematrons
-* change terminologies from csv to Excel XML
-* support for bindings when >1 type exists
-* resource references in data types allow dar?
-
-Rejected:
-* Spit out a warning if you encounter an unrecognized column name rather than just deprecated names - no, don't want to
-
-
-
-I have just worked through the list of outstanding issues with Ewout,
-doing some prioritization.  The issues are variously represented in
-wiki pages, the ballot comments, and gForge tasks.
-This list below is not comprehensive - it's just the actual decisions
-I think we need to make. We'll be surveying this list during Q2 today,
-and making plans for how to work through them:
-
-* confirm the informal decision to remove id from resource
-* decide about data type constraints and dataAbsentReason
-* dataAbsentReason / schema issues
-* HumanId.type issues
-* extensions - remove code, and use URL alone
 * order pattern & resource life cycle state & transactions
-* removing default values
-* MoodCode related aspects in resources
-* vCard mappings?
-* profileId in resource & the meaning of a profile
-* can you profile data types?
 * de-anonymise div element?
 * issue with json lists and datatype choices
-* extensions - how to maintain them (what change is allowed?)
-* provenance and persistence related issues
 * Document.Section narrative / list issue
 * the Zed resource (or the resource with no name)

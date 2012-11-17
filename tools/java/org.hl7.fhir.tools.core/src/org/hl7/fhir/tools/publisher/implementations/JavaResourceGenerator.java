@@ -336,21 +336,21 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			if (e.getTypes().size() > 0 && !e.usesCompositeType()) {
 				tn = e.typeCode();
 				if (clss != JavaGenClass.Resource) {
-					if (tn.equals("boolean")) tn = "java.lang.Boolean";
-					else if (tn.equals("integer")) tn = "java.lang.Integer";
-					else if (tn.equals("decimal")) tn = "java.math.BigDecimal";
-					else if (tn.equals("base64Binary")) tn = "byte[]";
-					else if (tn.equals("instant")) tn = "java.util.Calendar";
-					else if (tn.equals("string")) tn = "String";
-					else if (tn.equals("uri")) tn = "java.net.URI";
-					else if (tn.equals("code")) tn = "String";
-					else if (tn.equals("oid")) tn = "String";
-          else if (tn.equals("uuid")) tn = "String";
+					if (tn.equals("boolean")) tn = "Boolean";
+					else if (tn.equals("integer")) tn = "Integer";
+					else if (tn.equals("decimal")) tn = "Decimal";
+					else if (tn.equals("base64Binary")) tn = "Base64Binary";
+					else if (tn.equals("instant")) tn = "Instant";
+					else if (tn.equals("string")) tn = "String_";
+					else if (tn.equals("uri")) tn = "Uri";
+					else if (tn.equals("code")) tn = "Code";
+					else if (tn.equals("oid")) tn = "Oid";
+          else if (tn.equals("uuid")) tn = "Uuid";
           else if (tn.equals("idref")) tn = "String";
-					else if (tn.equals("sid")) tn = "String";
-					else if (tn.equals("id")) tn = "String";
-					else if (tn.equals("date")) tn = "String";
-					else if (tn.equals("dateTime")) tn = "String";
+					else if (tn.equals("sid")) tn = "Sid";
+					else if (tn.equals("id")) tn = "Id";
+					else if (tn.equals("date")) tn = "Date";
+					else if (tn.equals("dateTime")) tn = "DateTime";
 					else 
 						tn = getTypeName(e);
 				} else 

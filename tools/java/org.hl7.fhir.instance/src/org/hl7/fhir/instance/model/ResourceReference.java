@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * A reference from one resource to another
@@ -39,52 +39,52 @@ public class ResourceReference extends Type {
     /**
      * The name of one of the resource types defined in this specification to identify the type of the resource being referenced
      */
-    private String type;
+    private Code type;
 
     /**
      * A literal URL that resolves to the location of the resource. The URL may be relative or absolute. Relative Ids contain the logical id of the resource. This reference is version independent - it points to the latest version of this resource
      */
-    private java.net.URI id;
+    private Uri id;
 
     /**
      * A literal URL that resolves to the location of a particular version of the resource. The URL may be relative or absolute. Relative Ids contain the logical version id of the resource. 
      */
-    private java.net.URI version;
+    private Uri version;
 
     /**
      * Plain text narrative that identifies the resource in addition to the resource reference 
      */
-    private String display;
+    private String_ display;
 
-    public String getType() { 
+    public Code getType() { 
       return this.type;
     }
 
-    public void setType(String value) { 
+    public void setType(Code value) { 
       this.type = value;
     }
 
-    public java.net.URI getId() { 
+    public Uri getId() { 
       return this.id;
     }
 
-    public void setId(java.net.URI value) { 
+    public void setId(Uri value) { 
       this.id = value;
     }
 
-    public java.net.URI getVersion() { 
+    public Uri getVersion() { 
       return this.version;
     }
 
-    public void setVersion(java.net.URI value) { 
+    public void setVersion(Uri value) { 
       this.version = value;
     }
 
-    public String getDisplay() { 
+    public String_ getDisplay() { 
       return this.display;
     }
 
-    public void setDisplay(String value) { 
+    public void setDisplay(String_ value) { 
       this.display = value;
     }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -87,27 +87,27 @@ public class HumanName extends Type {
     /**
      * a full text representation of the name
      */
-    private String text;
+    private String_ text;
 
     /**
      * Family name, this is the name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.
      */
-    private List<String> family = new ArrayList<String>();
+    private List<String_> family = new ArrayList<String_>();
 
     /**
      * Given name. NOTE: Not to be called "first name" since given names do not always come first.
      */
-    private List<String> given = new ArrayList<String>();
+    private List<String_> given = new ArrayList<String_>();
 
     /**
      * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the start of the name
      */
-    private List<String> prefix = new ArrayList<String>();
+    private List<String_> prefix = new ArrayList<String_>();
 
     /**
      * Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that comes at the end of the name
      */
-    private List<String> suffix = new ArrayList<String>();
+    private List<String_> suffix = new ArrayList<String_>();
 
     /**
      * Indicates the period of time when this name was valid for the named person.
@@ -122,27 +122,27 @@ public class HumanName extends Type {
       this.use = value;
     }
 
-    public String getText() { 
+    public String_ getText() { 
       return this.text;
     }
 
-    public void setText(String value) { 
+    public void setText(String_ value) { 
       this.text = value;
     }
 
-    public List<String> getFamily() { 
+    public List<String_> getFamily() { 
       return this.family;
     }
 
-    public List<String> getGiven() { 
+    public List<String_> getGiven() { 
       return this.given;
     }
 
-    public List<String> getPrefix() { 
+    public List<String_> getPrefix() { 
       return this.prefix;
     }
 
-    public List<String> getSuffix() { 
+    public List<String_> getSuffix() { 
       return this.suffix;
     }
 

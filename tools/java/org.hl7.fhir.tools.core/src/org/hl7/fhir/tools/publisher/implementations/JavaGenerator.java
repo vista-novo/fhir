@@ -30,9 +30,21 @@ POSSIBILITY OF SUCH DAMAGE.
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.jar.Attributes;
+import java.util.jar.JarEntry;
+import java.util.jar.JarOutputStream;
+import java.util.jar.Manifest;
 
+import javax.management.Attribute;
+import javax.tools.Diagnostic;
+import javax.tools.DiagnosticCollector;
+import javax.tools.JavaCompiler;
+import javax.tools.JavaFileObject;
+import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
 import org.hl7.fhir.definitions.model.DefinedCode;
@@ -57,6 +69,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   private String javaDir;
   private String javaParserDir;
   private Definitions definitions;
+  private Logger logger;
 
   public String getName() {
     return "java";
@@ -71,6 +84,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     javaDir       =  implDir+"org.hl7.fhir.instance"+sl+"src"+ sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"model"+sl;
     javaParserDir =  implDir+"org.hl7.fhir.instance"+sl+"src"+sl+"org"+sl+"hl7"+sl+"fhir"+sl+"instance"+sl+"formats"+sl;
     this.definitions = definitions;
+    this.logger = logger;
 
     JavaFactoryGenerator jFactoryGen = new JavaFactoryGenerator(new FileOutputStream(javaDir+"ResourceFactory.java"));
     
@@ -175,33 +189,110 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
   public boolean c(String name) {
 	  char sc = File.separatorChar;
+
+	  
+	  
     int r = ToolProvider.getSystemJavaCompiler().run(null, null, null, rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"+sc+"org"+sc+"hl7"+sc+"fhir"+sc+"instance"+sc+"model"+sc+"Type.java");
     return r == 0;
   }
   
   public boolean compile(String rootDir, List<String> errors) throws Exception {
     this.rootDir = rootDir;
-    boolean ok = true;
-    for (String n : definitions.getResources().keySet()) 
-      ok = ok && c(javaDir+definitions.getResourceByName(n).getName()+".java");
-    for (ResourceDefn resource : definitions.getFutureResources().values()) 
-      ok = ok && c(javaDir+resource.getName()+".java");
-    for (String n : definitions.getInfrastructure().keySet()) 
-      ok = ok && c(javaDir+ definitions.getInfrastructure().get(n).getName()+".java");
-    for (String n : definitions.getTypes().keySet()) 
-      ok = ok && c(javaDir+ definitions.getTypes().get(n).getName()+".java");
-    for (DefinedCode cd : definitions.getConstraints().values()) 
-      ok = ok && c(javaDir+ cd.getCode()+".java");
-    for (String n : definitions.getStructures().keySet()) 
-      ok = ok && c(javaDir+ definitions.getStructures().get(n).getName()+".java");
+    char sc = File.separatorChar;
+    List<File> classes = new ArrayList<File>();
 
-    ok = ok && c(javaParserDir+"XmlParser.java");
-    ok = ok && c(javaParserDir+"XmlComposer.java");
-    ok = ok && c(javaDir+"ResourceFactory.java");
+    for (String n : definitions.getResources().keySet()) 
+      classes.add(new File(javaDir+definitions.getResourceByName(n).getName()+".java"));
+    for (ResourceDefn resource : definitions.getFutureResources().values()) 
+      classes.add(new File(javaDir+resource.getName()+".java"));
+    for (String n : definitions.getInfrastructure().keySet()) 
+      classes.add(new File(javaDir+ definitions.getInfrastructure().get(n).getName()+".java"));
+    for (String n : definitions.getTypes().keySet()) 
+      classes.add(new File(javaDir+ definitions.getTypes().get(n).getName()+".java"));
+    for (DefinedCode cd : definitions.getConstraints().values()) 
+      classes.add(new File(javaDir+ cd.getCode()+".java"));
+    for (String n : definitions.getStructures().keySet()) 
+      classes.add(new File(javaDir+ definitions.getStructures().get(n).getName()+".java"));
+
+    classes.add(new File(javaParserDir+"XmlParser.java"));
+    classes.add(new File(javaParserDir+"XmlComposer.java"));
+    classes.add(new File(javaParserDir+"JsonComposer.java"));
+    classes.add(new File(javaDir+"ResourceFactory.java"));
+
+    JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+    StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
     
-    return ok;
+    Iterable<? extends JavaFileObject> units = fileManager.getJavaFileObjectsFromFiles(classes);
+    DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
+    JavaCompiler.CompilationTask task = ToolProvider.getSystemJavaCompiler().getTask(null, null, diagnostics, null, null, units);
+    Boolean result = task.call();
+    if (!result) {
+      for (Diagnostic<? extends JavaFileObject> t : diagnostics.getDiagnostics()) {
+        logger.log(t.toString());
+      }
+    }
+
+    // now, we pack a jar with what we need for testing:
+    Manifest manifest = new Manifest();
+    manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
+    manifest.getMainAttributes().put(Attributes.Name.CLASS_PATH, ".");
+    manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "org.hl7.fhir.instance.test.RoundTrip");
+    
+    JarOutputStream jar = new JarOutputStream(new FileOutputStream(rootDir+File.separator+"publish"+File.separator+"javatest.zip"), manifest);
+    List<String> names = new ArrayList<String>();
+    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.utilities\\bin"), "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.utilities\\bin\\".length(), names);
+    // by adding source first, we add all the newly built classes, and these are not updated when the older stuff is included
+    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src"), "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src\\".length(), names);
+    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\org.hl7.fhir.instance\\bin"), "C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\org.hl7.fhir.instance\\bin\\".length(), names);
+    jar.close();
+    
+    return result;
   }
 
+  private static int BUFFER_SIZE = 10240;
+  private void AddToJar(JarOutputStream jar, File file, int rootLen, List<String> names) throws Exception {
+    if (file.isDirectory()) {
+      String name = file.getPath().replace("\\", "/");
+      if (!name.isEmpty())
+      {
+        if (!name.endsWith("/"))
+          name += "/";
+        String n = name.substring(rootLen);
+        if (n.length() > 0 && !names.contains(n)) {
+          names.add(n);
+          JarEntry entry = new JarEntry(n);
+          entry.setTime(file.lastModified());
+          jar.putNextEntry(entry);
+          jar.closeEntry();
+        }
+      }
+      for (File f: file.listFiles())
+        if (f.getName().endsWith(".class") || f.isDirectory())
+          AddToJar(jar, f, rootLen, names);    
+    } else {
+      String n = file.getPath().substring(rootLen);
+      if (!names.contains(n)) {
+        names.add(n);
+        JarEntry jarAdd = new JarEntry(n);
+        jarAdd.setTime(file.lastModified());
+        jar.putNextEntry(jarAdd);
+
+        // Write file to archive
+        byte buffer[] = new byte[BUFFER_SIZE];
+        FileInputStream in = new FileInputStream(file);
+        while (true) {
+          int nRead = in.read(buffer, 0, buffer.length);
+          if (nRead <= 0)
+            break;
+          jar.write(buffer, 0, nRead);
+        }
+        in.close();
+        jar.closeEntry();
+      }
+    }
+  }
+
+ 
   public boolean doesTest() {
     return true;
   }

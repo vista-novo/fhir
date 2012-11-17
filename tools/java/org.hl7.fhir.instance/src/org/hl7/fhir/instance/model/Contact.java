@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * All kinds of technology mediated contact details for a person or organisation, including telephone, email, etc.
@@ -106,7 +106,7 @@ public class Contact extends Type {
     /**
      * The actual contact details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).
      */
-    private String value;
+    private String_ value;
 
     /**
      * Identifies the context for the address
@@ -126,11 +126,11 @@ public class Contact extends Type {
       this.system = value;
     }
 
-    public String getValue() { 
+    public String_ getValue() { 
       return this.value;
     }
 
-    public void setValue(String value) { 
+    public void setValue(String_ value) { 
       this.value = value;
     }
 

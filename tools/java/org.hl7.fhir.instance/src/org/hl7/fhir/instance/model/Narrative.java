@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
@@ -72,26 +72,26 @@ public class Narrative extends Element {
         /**
          * Mime type of image
          */
-        private String mimeType;
+        private Code mimeType;
 
         /**
          * base64 image data
          */
-        private byte[] content;
+        private Base64Binary content;
 
-        public String getMimeType() { 
+        public Code getMimeType() { 
           return this.mimeType;
         }
 
-        public void setMimeType(String value) { 
+        public void setMimeType(Code value) { 
           this.mimeType = value;
         }
 
-        public byte[] getContent() { 
+        public Base64Binary getContent() { 
           return this.content;
         }
 
-        public void setContent(byte[] value) { 
+        public void setContent(Base64Binary value) { 
           this.content = value;
         }
 

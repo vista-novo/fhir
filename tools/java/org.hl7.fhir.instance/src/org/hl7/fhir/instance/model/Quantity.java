@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * A measured amount (or an amount that can potentially be measured). Note that measured amounts include amounts that are not precisely quantified, including amounts involving arbitrary units and floating currencies
@@ -68,7 +68,7 @@ public class Quantity extends Type {
     /**
      * The value of the measured amount. The value includes an implicit precision in the presentation of the value
      */
-    private java.math.BigDecimal value;
+    private Decimal value;
 
     /**
      * How the value should be understood and represented - whether the actual value is greater or less than the measure due to measurement issues
@@ -78,23 +78,23 @@ public class Quantity extends Type {
     /**
      * A human readable form of the units
      */
-    private String units;
+    private String_ units;
 
     /**
      * The identification of the system that provides the coded form of the unit
      */
-    private java.net.URI system;
+    private Uri system;
 
     /**
      * A computer processable form of the units in some unit representation system
      */
-    private String code;
+    private Code code;
 
-    public java.math.BigDecimal getValue() { 
+    public Decimal getValue() { 
       return this.value;
     }
 
-    public void setValue(java.math.BigDecimal value) { 
+    public void setValue(Decimal value) { 
       this.value = value;
     }
 
@@ -106,27 +106,27 @@ public class Quantity extends Type {
       this.range = value;
     }
 
-    public String getUnits() { 
+    public String_ getUnits() { 
       return this.units;
     }
 
-    public void setUnits(String value) { 
+    public void setUnits(String_ value) { 
       this.units = value;
     }
 
-    public java.net.URI getSystem() { 
+    public Uri getSystem() { 
       return this.system;
     }
 
-    public void setSystem(java.net.URI value) { 
+    public void setSystem(Uri value) { 
       this.system = value;
     }
 
-    public String getCode() { 
+    public Code getCode() { 
       return this.code;
     }
 
-    public void setCode(String value) { 
+    public void setCode(Code value) { 
       this.code = value;
     }
 

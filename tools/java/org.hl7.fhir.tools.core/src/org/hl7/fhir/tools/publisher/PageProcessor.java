@@ -974,7 +974,7 @@ public class PageProcessor implements Logger  {
     }
     
     String cnt = TextFile.fileToString(filename);
-    cnt = processPageIncludes(filename, cnt);
+    cnt = processPageIncludes(filename, cnt).trim()+"\r\n";
     if (cnt.startsWith("<div")) {
       if (!cnt.startsWith(HTML_PREFIX))
         throw new Exception("unable to process start xhtml content "+name+" : "+cnt.substring(0, HTML_PREFIX.length()));

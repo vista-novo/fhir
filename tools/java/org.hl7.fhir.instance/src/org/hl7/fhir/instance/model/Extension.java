@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ public class Extension extends Element {
     /**
      * Source of the definition for the extension code - a logical name or a URL
      */
-    private java.net.URI url;
+    private Uri url;
 
     /**
      * Internal reference to context of the extension - a pointer to an xml:id in the same resource
@@ -51,7 +51,7 @@ public class Extension extends Element {
     /**
      * If this element is set to true, then the containing resource element and its children are only safe to process if the reader understands this extension. 
      */
-    private java.lang.Boolean mustUnderstand;
+    private Boolean mustUnderstand;
 
     /**
      * Value of extension - may be a resource or one of a constraint set of the data types (see Extensibility in the spec for list)
@@ -63,11 +63,11 @@ public class Extension extends Element {
      */
     private List<Extension> extension = new ArrayList<Extension>();
 
-    public java.net.URI getUrl() { 
+    public Uri getUrl() { 
       return this.url;
     }
 
-    public void setUrl(java.net.URI value) { 
+    public void setUrl(Uri value) { 
       this.url = value;
     }
 
@@ -79,11 +79,11 @@ public class Extension extends Element {
       this.ref = value;
     }
 
-    public java.lang.Boolean getMustUnderstand() { 
+    public Boolean getMustUnderstand() { 
       return this.mustUnderstand;
     }
 
-    public void setMustUnderstand(java.lang.Boolean value) { 
+    public void setMustUnderstand(Boolean value) { 
       this.mustUnderstand = value;
     }
 

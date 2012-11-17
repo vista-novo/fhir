@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -80,8 +80,8 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("start", element.getStart());
-      composeString("end", element.getEnd());
+      composeDateTime("start", element.getStart());
+      composeDateTime("end", element.getEnd());
       xml.close(FHIR_NS, name);
     }
   }
@@ -91,8 +91,8 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
-      composeString("display", element.getDisplay());
+      composeCode("code", element.getCode());
+      composeString_("display", element.getDisplay());
       xml.close(FHIR_NS, name);
     }
   }
@@ -111,12 +111,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -125,7 +125,7 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       for (Choice.Option e : element.getOption()) 
         composeChoiceOption("option", e);
       composeBoolean("isOrdered", element.getIsOrdered());
@@ -137,8 +137,8 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeElementAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("code", element.getCode());
-      composeString("display", element.getDisplay());
+      composeCode("code", element.getCode());
+      composeString_("display", element.getDisplay());
       xml.close(FHIR_NS, name);
     }
   }
@@ -147,12 +147,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("contentType", element.getContentType());
-      composeBytes("data", element.getData());
+      composeCode("contentType", element.getContentType());
+      composeBase64Binary("data", element.getData());
       composeUri("url", element.getUrl());
-      composeInt("size", element.getSize());
-      composeBytes("hash", element.getHash());
-      composeString("title", element.getTitle());
+      composeInteger("size", element.getSize());
+      composeBase64Binary("hash", element.getHash());
+      composeString_("title", element.getTitle());
       xml.close(FHIR_NS, name);
     }
   }
@@ -171,10 +171,10 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeString("type", element.getType());
+      composeCode("type", element.getType());
       composeUri("id", element.getId());
       composeUri("version", element.getVersion());
-      composeString("display", element.getDisplay());
+      composeString_("display", element.getDisplay());
       xml.close(FHIR_NS, name);
     }
   }
@@ -185,7 +185,7 @@ public class XmlComposer extends XmlComposerBase {
       xml.open(FHIR_NS, name);
       for (Coding e : element.getCoding()) 
         composeCoding("coding", e);
-      composeString("text", element.getText());
+      composeString_("text", element.getText());
       composeString("primary", element.getPrimary());
       xml.close(FHIR_NS, name);
     }
@@ -196,7 +196,7 @@ public class XmlComposer extends XmlComposerBase {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
       composeUri("system", element.getSystem());
-      composeString("id", element.getId());
+      composeString_("id", element.getId());
       xml.close(FHIR_NS, name);
     }
   }
@@ -205,12 +205,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -219,12 +219,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -233,12 +233,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -247,12 +247,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -261,12 +261,12 @@ public class XmlComposer extends XmlComposerBase {
     if (element != null) {
       composeTypeAttributes(element);
       xml.open(FHIR_NS, name);
-      composeBigDecimal("value", element.getValue());
+      composeDecimal("value", element.getValue());
       if (element.getRange() != null)
         composeString("range", element.getRange().toCode());
-      composeString("units", element.getUnits());
+      composeString_("units", element.getUnits());
       composeUri("system", element.getSystem());
-      composeString("code", element.getCode());
+      composeCode("code", element.getCode());
       xml.close(FHIR_NS, name);
     }
   }
@@ -319,9 +319,9 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
       composeString_("text", element.getText());
-      for (String e : element.getPart()) 
+      for (String_ e : element.getPart()) 
         composeString_("part", e);
-      for (String e : element.getLine()) 
+      for (String_ e : element.getLine()) 
         composeString_("line", e);
       composeString_("city", element.getCity());
       composeString_("state", element.getState());
@@ -340,13 +340,13 @@ public class XmlComposer extends XmlComposerBase {
       if (element.getUse() != null)
         composeString("use", element.getUse().toCode());
       composeString_("text", element.getText());
-      for (String e : element.getFamily()) 
+      for (String_ e : element.getFamily()) 
         composeString_("family", e);
-      for (String e : element.getGiven()) 
+      for (String_ e : element.getGiven()) 
         composeString_("given", e);
-      for (String e : element.getPrefix()) 
+      for (String_ e : element.getPrefix()) 
         composeString_("prefix", e);
-      for (String e : element.getSuffix()) 
+      for (String_ e : element.getSuffix()) 
         composeString_("suffix", e);
       composePeriod("period", element.getPeriod());
       xml.close(FHIR_NS, name);

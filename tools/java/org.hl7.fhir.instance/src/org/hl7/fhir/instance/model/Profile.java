@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -1057,7 +1057,7 @@ public class Profile extends Resource {
     private String_ name;
 
     /**
-     * The official version of this profile - for external version specific references
+     * The official version of this profile - for external version specific references. This has an arbitrary value managed by the profile author manually
      */
     private String_ version;
 

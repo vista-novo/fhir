@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * For referring to data content defined in other formats.
@@ -39,78 +39,78 @@ public class Attachment extends Type {
     /**
      * Identifies the type of the data in the attachment and allows a method to be chosen to interpret or render the data. Includes mime type parameters such as charset where appropriate
      */
-    private String contentType;
+    private Code contentType;
 
     /**
      * The actual data of the attachment - a sequence of bytes. In XML, represented using base64
      */
-    private byte[] data;
+    private Base64Binary data;
 
     /**
      * An alternative location where the data can be accessed
      */
-    private java.net.URI url;
+    private Uri url;
 
     /**
      * The number of bytes of data that make up this attachment.
      */
-    private java.lang.Integer size;
+    private Integer size;
 
     /**
      * The calculated hash of the data using SHA-256. In XML, represented using base64
      */
-    private byte[] hash;
+    private Base64Binary hash;
 
     /**
      * A label or set of text to display in place of the data
      */
-    private String title;
+    private String_ title;
 
-    public String getContentType() { 
+    public Code getContentType() { 
       return this.contentType;
     }
 
-    public void setContentType(String value) { 
+    public void setContentType(Code value) { 
       this.contentType = value;
     }
 
-    public byte[] getData() { 
+    public Base64Binary getData() { 
       return this.data;
     }
 
-    public void setData(byte[] value) { 
+    public void setData(Base64Binary value) { 
       this.data = value;
     }
 
-    public java.net.URI getUrl() { 
+    public Uri getUrl() { 
       return this.url;
     }
 
-    public void setUrl(java.net.URI value) { 
+    public void setUrl(Uri value) { 
       this.url = value;
     }
 
-    public java.lang.Integer getSize() { 
+    public Integer getSize() { 
       return this.size;
     }
 
-    public void setSize(java.lang.Integer value) { 
+    public void setSize(Integer value) { 
       this.size = value;
     }
 
-    public byte[] getHash() { 
+    public Base64Binary getHash() { 
       return this.hash;
     }
 
-    public void setHash(byte[] value) { 
+    public void setHash(Base64Binary value) { 
       this.hash = value;
     }
 
-    public String getTitle() { 
+    public String_ getTitle() { 
       return this.title;
     }
 
-    public void setTitle(String value) { 
+    public void setTitle(String_ value) { 
       this.title = value;
     }
 

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * A reference to a code defined by a terminology system 
@@ -39,39 +39,39 @@ public class Coding extends Type {
     /**
      * The identification of the system that defines the meaning of the symbol in the code. Can be a simple list of enumerations, a list of codes with meanings or all the way to a complex semantic web such as SNOMED-CT, whether classification, terminology, or ontology
      */
-    private java.net.URI system;
+    private Uri system;
 
     /**
      * A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system
      */
-    private String code;
+    private Code code;
 
     /**
      * A representation of the meaning of the code in the system, following the rules laid out by the system. 
      */
-    private String display;
+    private String_ display;
 
-    public java.net.URI getSystem() { 
+    public Uri getSystem() { 
       return this.system;
     }
 
-    public void setSystem(java.net.URI value) { 
+    public void setSystem(Uri value) { 
       this.system = value;
     }
 
-    public String getCode() { 
+    public Code getCode() { 
       return this.code;
     }
 
-    public void setCode(String value) { 
+    public void setCode(Code value) { 
       this.code = value;
     }
 
-    public String getDisplay() { 
+    public String_ getDisplay() { 
       return this.display;
     }
 
-    public void setDisplay(String value) { 
+    public void setDisplay(String_ value) { 
       this.display = value;
     }
 

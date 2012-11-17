@@ -314,20 +314,26 @@ public class JavaComposerXmlGenerator extends JavaBaseGenerator {
   private String typeName(ElementDefn root, ElementDefn elem, JavaGenClass type, boolean formal) throws Exception {
     String t = elem.typeCode();
     if ((type == JavaGenClass.Type || type == JavaGenClass.Constraint) && definitions.getPrimitives().containsKey(t)) {
-      if (t.equals("boolean"))
-        return formal ? "boolean" : "java.lang.Boolean";
-      else if (t.equals("integer"))
-        return "int";
-      else if (t.equals("decimal"))
-        return formal ? "BigDecimal" : "BigDecimal";
-      else if (t.equals("base64Binary"))
-        return formal ? "byte[]" : "bytes";
-      else if (t.equals("instant"))
-        return formal ? "java.util.Calendar" : "Date";
-      else if (t.equals("uri"))
-        return formal ? "java.net.URI" : "Uri";
-      else 
+//      if (t.equals("boolean"))
+//        return "java.lang.Boolean";
+//      else if (t.equals("integer"))
+//        return "Integer";
+//      else if (t.equals("decimal"))
+//        return "Decimal";
+//      else if (t.equals("base64Binary"))
+//        return "Base64Binary";
+//      else if (t.equals("instant"))
+//        return "Instant";
+//      else if (t.equals("uri"))
+//        return "Uri";
+//      else 
+//        return "String";
+      if (t.equals("idref"))
         return "String";
+      else if (t.equals("string"))
+        return "String_";
+      else
+        return upFirst(t);
     } else if (elem.usesCompositeType()) { 
       if (typeNames.containsKey(elem) && typeNames.get(elem) != null)
         return typeNames.get(elem);

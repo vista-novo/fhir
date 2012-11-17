@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * An identifier that humans use. This is different from a system identifier because identifiers that humans use are regularly changed or retired due to human intervention and error. Note that a human identifier may be a system identifier on some master system but becomes a human identifier elsewhere due to how it is exchanged between humans. Driver's license numbers are a good example of this. Also, because human mediated identifiers are often invoked as implicit links to external business processes, such identifiers are often associated with multiple different resources. 
@@ -70,7 +70,7 @@ public class HumanId extends Type {
     /**
      * A label for the identifier that can be displayed to a human so they can recognise the identifier
      */
-    private String label;
+    private String_ label;
 
     /**
      * The identifier itself
@@ -95,11 +95,11 @@ public class HumanId extends Type {
       this.use = value;
     }
 
-    public String getLabel() { 
+    public String_ getLabel() { 
       return this.label;
     }
 
-    public void setLabel(String value) { 
+    public void setLabel(String_ value) { 
       this.label = value;
     }
 

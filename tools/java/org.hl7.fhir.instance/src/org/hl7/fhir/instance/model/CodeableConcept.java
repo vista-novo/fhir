@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class CodeableConcept extends Type {
     /**
      * A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user or concept
      */
-    private String text;
+    private String_ text;
 
     /**
      * Indicates which of the codes in the codings was chosen by a user, if one was chosen directly
@@ -57,11 +57,11 @@ public class CodeableConcept extends Type {
       return this.coding;
     }
 
-    public String getText() { 
+    public String_ getText() { 
       return this.text;
     }
 
-    public void setText(String value) { 
+    public void setText(String_ value) { 
       this.text = value;
     }
 

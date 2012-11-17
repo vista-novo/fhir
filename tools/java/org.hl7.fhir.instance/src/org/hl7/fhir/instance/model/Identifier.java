@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 /**
  * A technical identifier - identifies some entity uniquely and unambiguously
@@ -39,26 +39,26 @@ public class Identifier extends Type {
     /**
      * Establishes the namespace in which set of possible id values is unique.
      */
-    private java.net.URI system;
+    private Uri system;
 
     /**
      * The portion of the identifier typically displayed to the user and which is unique within the context of the system.
      */
-    private String id;
+    private String_ id;
 
-    public java.net.URI getSystem() { 
+    public Uri getSystem() { 
       return this.system;
     }
 
-    public void setSystem(java.net.URI value) { 
+    public void setSystem(Uri value) { 
       this.system = value;
     }
 
-    public String getId() { 
+    public String_ getId() { 
       return this.id;
     }
 
-    public void setId(String value) { 
+    public void setId(String_ value) { 
       this.id = value;
     }
 

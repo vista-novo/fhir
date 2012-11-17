@@ -422,8 +422,10 @@ public class Publisher {
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			if (gen.doesCompile()) {
 				log("Compile " + gen.getName() + " Reference Implementation");
-				if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>()))
-					log("Compile " + gen.getName() + " failed");
+				if (!gen.compile(page.getFolders().rootDir, new ArrayList<String>())) {
+//					log("Compile " + gen.getName() + " failed");
+					throw new Exception("Compile " + gen.getName() + " failed");
+				}
 			}
 		}
 

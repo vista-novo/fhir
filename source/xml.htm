@@ -102,11 +102,12 @@ content, but are delegated to the infrastructure:
   <tr><th>Metadata Item</th><th>Type</th><th>Usage</th></tr>
   <tr><td>Logical Id</td> <td><a href="datatypes.htm#id">id</a></td> <td>The identity of the resource. 
     Resources always have a known identity except in the case where a new resource is being submitted to a server to assign a resource to it. Resource identification is <a href="#Resource">discussed further below</a></td></tr>
-  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource.</td></tr>
+  <tr><td>Version Id</td><td><a href="datatypes.htm#id">id</a></td><td>Changed each time the content of the resource changes. Can be referenced in a resource reference (<a href="#Resource">see below</a>). Can be used to ensure that updates are based on the latest version of the resource. 
+  <br/>The version can be globally unique, or scoped by the Logical Id. Since version ids must be unique, they are generally either a serially incrementing id scoped by the logical id, or a uuid, though neither of these approaches is required</td></tr>
   <tr><td>Last Modified Date</td><td><a href="datatypes.htm#dateTime">dateTime</a></td><td>Changed each time the content of the resource changes. Can be used by a system or a human to judge the currency of the resource content.</td></tr>
 </table>
 <p>
-In any environment where the resources are used, the technical details of how these metadata elements are represents will need to be resolved. For further details, 
+In any environment where the resources are used, the technical details of how these metadata elements are represented will need to be resolved. For further details, 
 see <a href="implementation.htm">Implementation Details</a>, which also contains a discussion of how resource identity is maintained.
 </p>
 <p>

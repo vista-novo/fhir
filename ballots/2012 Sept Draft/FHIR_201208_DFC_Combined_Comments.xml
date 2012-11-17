@@ -7,7 +7,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Created>2006-09-16T00:00:00Z</Created>
-  <LastSaved>2012-11-13T21:03:35Z</LastSaved>
+  <LastSaved>2012-11-15T21:19:12Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -93,7 +93,8 @@
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="142.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="103.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="466.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="211.5" ss:Span="1"/>
+   <Column ss:StyleID="s62" ss:Hidden="1" ss:AutoFitWidth="0" ss:Width="211.5"
+    ss:Span="1"/>
    <Column ss:Index="11" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="89.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="115.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="90.75"/>
@@ -147,8 +148,11 @@
     <Cell ss:Index="11"><Data ss:Type="String">detailed design</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Wed Q2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">change to two elements &quot;use&quot; (based on other use elements) and label per discussion on list</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">3</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Lloyd McKenzie</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -168,7 +172,7 @@
     <Cell><Data ss:Type="String">removed DataAbsentReason altogether</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">4</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Lloyd McKenzie</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -186,7 +190,7 @@
     <Cell><Data ss:Type="String">removed default values</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="225" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="225">
     <Cell><Data ss:Type="Number">5</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Lloyd McKenzie</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -205,7 +209,7 @@
     <Cell><Data ss:Type="String">decided to allow events to be defined in profiles (same info as in standard, along with reference to IG)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="225" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="225">
     <Cell><Data ss:Type="Number">6</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Lloyd McKenzie</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -224,7 +228,7 @@
     <Cell><Data ss:Type="String">agred after much discussion on the list</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="Number">7</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Lloyd McKenzie</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -270,7 +274,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">N/A</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">10</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Grahame Grieve</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -285,7 +289,7 @@
     <Cell><Data ss:Type="String">Wed Q2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">see #2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">11</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Grahame Grieve</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -301,7 +305,7 @@
     <Cell><Data ss:Type="String">Tues Q1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">12</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Grahame Grieve</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -317,7 +321,7 @@
     <Cell><Data ss:Type="String">Tues Q1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="285" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="285">
     <Cell><Data ss:Type="Number">13</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -344,7 +348,7 @@
     <Cell><Data ss:Type="String">this will be taken up as a methodology question by the FHIR management and governance groups and found on the wiki</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">14</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -362,7 +366,7 @@
     <Cell><Data ss:Type="String">added a formal definition</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="Number">15</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -382,7 +386,7 @@
     <Cell><Data ss:Type="String">well, tried. Unfortunately it's not as simple as we'd like. Can be refined over time</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="Number">16</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -410,7 +414,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="180" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="180">
     <Cell><Data ss:Type="Number">17</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -431,7 +435,7 @@
     <Cell><Data ss:Type="String">a general life cycle management pattern is defined in the RIM, but the instantiation varies between resources. No need to reproduce the general pattern in FHIR. The profile status codes are vague, as is all existing work on templates &amp; repositories. As for versioning, see http://hl7.org/implement/standards/fhir/xml.htm#version</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="Number">18</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -449,7 +453,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="255" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="255">
     <Cell><Data ss:Type="Number">19</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Michael Rossman</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -473,7 +477,7 @@
     <Cell><Data ss:Type="String">we believe that this is met by a combination of Coding/CodeableConcept and the mapping infrastructure and mappings provided as part of the ballot and profiles. However this work is as yet incomplete, so this issue should be revisited - particularly by implementation experience - later</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">20</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Victor Chai</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -497,7 +501,7 @@
     <Cell><Data ss:Type="String">Run out of time for formal discussion (sorry) - Coding is a noun, and it's in this sense that it's used. Can re-raise in further ballot if desired</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">21</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Victor Chai</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -519,7 +523,7 @@
     <Cell><Data ss:Type="String">change to &quot;option&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="225" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="225">
     <Cell><Data ss:Type="Number">22</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Victor Chai</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -562,7 +566,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Mon Q3</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">24</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -585,7 +589,7 @@
     <Cell><Data ss:Type="String">Grahame/David H</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="285" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="285">
     <Cell><Data ss:Type="Number">25</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -607,7 +611,7 @@
     <Cell><Data ss:Type="String">Agree that the resourcesare not properly mapped at this time - this is an area that still needs further work, but is explicitly planned</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="Number">26</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -627,7 +631,7 @@
     <Cell><Data ss:Type="String">added exception clause</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">27</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -653,7 +657,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">28</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -673,7 +677,7 @@
     <Cell><Data ss:Type="String">changed as part of the revisiting the identification of resources</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">29</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -694,7 +698,7 @@
     <Cell><Data ss:Type="String">There is no version marker for the internal version of FHIR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="Number">30</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -714,7 +718,7 @@
     <Cell><Data ss:Type="String">removed this section</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">31</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -740,7 +744,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">32</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -759,7 +763,7 @@
     <Cell><Data ss:Type="String">after much discussion on list, stuck with existing approach, but documented handling of URI identification better</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">33</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -779,7 +783,7 @@
     <Cell><Data ss:Type="String">added a few extra works in the documentation to make the intent clearer</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="Number">34</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -799,7 +803,7 @@
     <Cell><Data ss:Type="String">though invalid combinations are not resolvable</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">35</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -820,7 +824,7 @@
     <Cell><Data ss:Type="String">changed to be more like vCard and added vCard mappings after discussion on the list</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">36</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -841,7 +845,7 @@
     <Cell><Data ss:Type="String">changed to be more like vCard and added vCard mappings after discussion on the list</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">37</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -867,7 +871,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">38</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -887,7 +891,7 @@
     <Cell><Data ss:Type="String">see #32 and removed oid and uuid - they are always URIs</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="Number">39</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -913,7 +917,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="Number">40</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -939,7 +943,7 @@
     <Cell><Data ss:Type="String">look into this at the next connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="225" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="225">
     <Cell><Data ss:Type="Number">41</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -961,7 +965,7 @@
     <Cell><Data ss:Type="String">mapping removed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="165" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="165">
     <Cell><Data ss:Type="Number">42</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1007,7 +1011,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Wed Q2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">44</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1029,7 +1033,7 @@
     <Cell><Data ss:Type="String">expected to be extensions in the rare case that they are used</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">45</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1051,7 +1055,7 @@
     <Cell><Data ss:Type="String">all extensions at the end, context by reference</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="Number">46</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Andy Bond</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1091,8 +1095,12 @@
     <Cell><Data ss:Type="String">conformance / profiles</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Mon Q3</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">answered here</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">The profile.version is under manual control of the profile author. It is up to the author how to make use of this attribute (note that it's not the resource version id - that changes as specified in the infrastructure)</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="210" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="210">
     <Cell><Data ss:Type="Number">48</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">William Goosen</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1105,10 +1113,8 @@
     <Cell ss:Index="11"><Data ss:Type="String">conceptual</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Mon Q3</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">no change</Data><NamedCell
-      ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">49</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1125,7 +1131,7 @@
     <Cell><Data ss:Type="String">referred to methodology</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">50</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1140,7 +1146,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">51</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1157,7 +1163,7 @@
     <Cell><Data ss:Type="String">still to do</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">52</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1173,7 +1179,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">53</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1190,7 +1196,7 @@
     <Cell><Data ss:Type="String">removed dataAbsentReason</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">54</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Woody Beeler</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1206,7 +1212,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="240">
     <Cell><Data ss:Type="Number">55</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1230,7 +1236,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="409.5" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="409.5">
     <Cell><Data ss:Type="Number">56</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1249,7 +1255,7 @@
     <Cell><Data ss:Type="String">added illustrative mapping between EHR-FM and FHIR</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="135" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="Number">59</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1270,7 +1276,7 @@
     <Cell><Data ss:Type="String">FHIR resources can be used transiently, but are intended to be persistable. But even if they weren't persistable, it would still be worth defining for it's other advantages </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="120" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="Number">60</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1290,7 +1296,7 @@
     <Cell><Data ss:Type="String">see provenance resource</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">61</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1309,7 +1315,7 @@
     <Cell><Data ss:Type="String">this is a matter of voting with feet. Currently, there is strong interest</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="90" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="Number">62</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1330,7 +1336,7 @@
     <Cell><Data ss:Type="String">acknowledgement the relevance of the requirements, but this is not yet dealt with - to be resolved in the future</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="Number">63</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1351,7 +1357,7 @@
     <Cell><Data ss:Type="String">FHIR is intended to be able to be used in a variety of environments.  In some cases it will be used merely for transmission of raw data from mobile devices to some central store.  In other cases it may be used for full records management.  FHIR should provide the pieces to support a full life cycle approach where needed without forcing that overhead on use-cases that don't need it.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="315" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="315">
     <Cell><Data ss:Type="Number">64</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1378,7 +1384,7 @@
     <Cell><Data ss:Type="String">used Lloyd's wording</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">65</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1398,7 +1404,7 @@
     <Cell><Data ss:Type="String">as above</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="45" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">66</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1416,7 +1422,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="240" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="240">
     <Cell><Data ss:Type="Number">67</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Gary Dickinson</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1437,7 +1443,7 @@
     <Cell><Data ss:Type="String">see left</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">66</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1452,7 +1458,7 @@
     <Cell><Data ss:Type="String">part of rework of id element</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">67</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1467,7 +1473,7 @@
     <Cell><Data ss:Type="String">followed applicable rfc</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="Number">68</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1482,7 +1488,7 @@
     <Cell><Data ss:Type="String">Document explicitly that servers are allowed to reject updates because of internally defined rules about update integrity, and list particular error codes</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">69</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1497,7 +1503,7 @@
     <Cell><Data ss:Type="String">conf-todo</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">70</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1512,7 +1518,7 @@
     <Cell><Data ss:Type="String">in implementation page</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="150" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="150">
     <Cell><Data ss:Type="Number">71</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1527,7 +1533,7 @@
     <Cell><Data ss:Type="String">Agree - document the difference between supportng vread and full version history, and make clear how to respond with &quot;this version is not known&quot;, and make clear that versioning is always an obligation. Atom link is version specific</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="29.25" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="29.25">
     <Cell><Data ss:Type="Number">72</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1549,7 +1555,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">done</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">73</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1562,7 +1568,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">74</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1578,7 +1584,7 @@
     <Cell><Data ss:Type="String">mistaken report</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">75</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1593,7 +1599,7 @@
     <Cell><Data ss:Type="String">allow &quot;xml&quot; or &quot;json&quot; or a full mimetype</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">76</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1608,7 +1614,7 @@
     <Cell><Data ss:Type="String">id removed altogether</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="27.75" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="27.75">
     <Cell><Data ss:Type="Number">77</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1630,7 +1636,7 @@
     <Cell><Data ss:Type="Number">0</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">done</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">78</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1647,7 +1653,7 @@
     <Cell><Data ss:Type="String">more experience at next connectathon?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">79</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1676,7 +1682,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">81</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1689,7 +1695,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">done</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="Number">82</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1704,7 +1710,7 @@
     <Cell><Data ss:Type="String">agree to describe nested searches</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">83</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1717,7 +1723,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">fixed</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">84</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1730,7 +1736,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">see #2</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="105" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell><Data ss:Type="Number">85</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1745,7 +1751,7 @@
     <Cell><Data ss:Type="String">POST operation on a hData section or a ResourceType using an application/atom+xml feed (or on the root url) is a bulk update according to the server rules</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">86</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1758,7 +1764,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">done</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">87</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1773,7 +1779,7 @@
     <Cell><Data ss:Type="String">Add $include and note that servers are not bound to implement</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">88</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1786,7 +1792,7 @@
     <Cell><Data ss:Type="String">Telecon</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">done</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">89</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Suggestion</Data><NamedCell
@@ -1799,7 +1805,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">90</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1810,7 +1816,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">91</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1821,7 +1827,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">done</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">92</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1833,7 +1839,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">removed for now</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">93</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1844,7 +1850,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">94</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1855,7 +1861,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">95</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1866,7 +1872,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">96</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1877,7 +1883,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">97</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1888,7 +1894,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">98</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1899,7 +1905,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">99</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1910,7 +1916,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">100</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1921,7 +1927,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">101</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1932,7 +1938,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">102</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1943,7 +1949,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">103</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Rik</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">Issue</Data><NamedCell
@@ -1954,7 +1960,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">104</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Committee</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1965,7 +1971,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">105</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Connectathon</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1978,7 +1984,7 @@
     <Cell><Data ss:Type="String">dataAbsentReason removed completely</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">106</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -1994,7 +2000,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">107</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2010,7 +2016,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">108</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2024,7 +2030,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">109</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2040,7 +2046,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">110</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2052,7 +2058,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">111</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2068,7 +2074,7 @@
     <Cell><Data ss:Type="String">allow &quot;there is no text representation&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">112</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2080,7 +2086,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">done</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">113</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2092,7 +2098,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">114</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2105,7 +2111,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">115</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2116,12 +2122,12 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Suggest instead that globally unique ID's be required so that collisions cannot occur. </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">no changed</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">no change</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">even if every xml:id is a UUID, there'll still be clashes when you view a history for a resource, or, more generally, when two versions of the same resource are floating around. So the base rule remains</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">116</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2135,7 +2141,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">added explanation</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">117</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2151,7 +2157,7 @@
     <Cell><Data ss:Type="String">no, because the url is still the id - it's just not portable in the same sense as if the logical id was explicit</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">118</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2162,10 +2168,12 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Doesn't this still leave processing ambiguity? Can't receivers then reject on the bases of mear existance of new elements which they aren't required to understand?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">no change</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">deferred</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
+    <Cell><Data ss:Type="String">discussion needed at Phoenix</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">119</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2181,7 +2189,7 @@
     <Cell ss:Index="13"><Data ss:Type="String">fixed</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">120</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2195,7 +2203,7 @@
     <Cell><Data ss:Type="String">works nicely in json, object models. XML escaping should be transparent?</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Hidden="1">
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">121</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Paul Knapp</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -2227,12 +2235,10 @@
    </Print>
    <Zoom>110</Zoom>
    <Selected/>
-   <LeftColumnVisible>2</LeftColumnVisible>
    <FreezePanes/>
    <FrozenNoSplit/>
-   <FilterOn/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>45</TopRowBottomPane>
    <ActivePane>2</ActivePane>
    <Panes>
     <Pane>
@@ -2240,8 +2246,7 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>0</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>46</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -2249,7 +2254,6 @@
   </WorksheetOptions>
   <AutoFilter x:Range="R1C1:R121C18"
    xmlns="urn:schemas-microsoft-com:office:excel">
-   <AutoFilterColumn x:Index="13" x:Type="Blanks"/>
   </AutoFilter>
  </Worksheet>
  <Worksheet ss:Name="Sheet2">

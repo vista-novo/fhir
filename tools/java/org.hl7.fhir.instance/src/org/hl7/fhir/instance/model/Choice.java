@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Wed, Nov 14, 2012 12:51+1100 for FHIR v0.06
+// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -42,26 +42,26 @@ public class Choice extends Type {
         /**
          * A possible code or value that the user could have chosen
          */
-        private String code;
+        private Code code;
 
         /**
          * A set of words associated with the code to give it meaning and displayed to the user
          */
-        private String display;
+        private String_ display;
 
-        public String getCode() { 
+        public Code getCode() { 
           return this.code;
         }
 
-        public void setCode(String value) { 
+        public void setCode(Code value) { 
           this.code = value;
         }
 
-        public String getDisplay() { 
+        public String_ getDisplay() { 
           return this.display;
         }
 
-        public void setDisplay(String value) { 
+        public void setDisplay(String_ value) { 
           this.display = value;
         }
 
@@ -70,7 +70,7 @@ public class Choice extends Type {
     /**
      * The code or value that the user selected from the list of possible codes
      */
-    private String code;
+    private Code code;
 
     /**
      * A list of possible values for the code
@@ -80,13 +80,13 @@ public class Choice extends Type {
     /**
      * Whether the order of the values has an assigned meaning
      */
-    private java.lang.Boolean isOrdered;
+    private Boolean isOrdered;
 
-    public String getCode() { 
+    public Code getCode() { 
       return this.code;
     }
 
-    public void setCode(String value) { 
+    public void setCode(Code value) { 
       this.code = value;
     }
 
@@ -94,11 +94,11 @@ public class Choice extends Type {
       return this.option;
     }
 
-    public java.lang.Boolean getIsOrdered() { 
+    public Boolean getIsOrdered() { 
       return this.isOrdered;
     }
 
-    public void setIsOrdered(java.lang.Boolean value) { 
+    public void setIsOrdered(Boolean value) { 
       this.isOrdered = value;
     }
 
