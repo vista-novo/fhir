@@ -26,8 +26,8 @@
     <system>http://xyz.com/codes/subplan</system>
     <id>123</id>
  </subplan>
- <instance>1</instance>
  <dependant>0</dependant>
+ <instance>1</instance>
  
  <planHolder>
 	<name>
