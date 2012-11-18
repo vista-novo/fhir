@@ -1818,7 +1818,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     return false;
   }
 
-  public void loadAndSave(String sourceFile, String destFile) {
+  public void loadAndSave(String rootDir, String sourceFile, String destFile) {
     
   }
 

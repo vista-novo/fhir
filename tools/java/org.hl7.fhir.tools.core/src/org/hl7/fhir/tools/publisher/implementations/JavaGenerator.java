@@ -38,6 +38,8 @@ import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.management.Attribute;
 import javax.tools.Diagnostic;
@@ -59,8 +61,10 @@ import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
+import org.hl7.fhir.utilities.CSFile;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.Logger;
+import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.ZipGenerator;
 
 public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
@@ -143,8 +147,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       jFactoryGen.registerType(n,  root.getName());
       jgen.close();
     }
-
-
     
     JavaParserXmlGenerator jParserGen = new JavaParserXmlGenerator(new FileOutputStream(javaParserDir+"XmlParser.java"));
     jParserGen.generate(definitions, version, genDate);    
@@ -236,18 +238,44 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     Manifest manifest = new Manifest();
     manifest.getMainAttributes().put(Attributes.Name.MANIFEST_VERSION, "1.0");
     manifest.getMainAttributes().put(Attributes.Name.CLASS_PATH, ".");
-    manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "org.hl7.fhir.instance.test.RoundTrip");
+    manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "org.hl7.fhir.instance.test.ToolsHelper");
     
-    JarOutputStream jar = new JarOutputStream(new FileOutputStream(rootDir+File.separator+"publish"+File.separator+"javatest.zip"), manifest);
+    JarOutputStream jar = new JarOutputStream(new FileOutputStream(rootDir+File.separator+"publish"+File.separator+"org.hl7.fhir.tools.jar"), manifest);
     List<String> names = new ArrayList<String>();
-    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.utilities\\bin"), "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.utilities\\bin\\".length(), names);
+    names.add("META-INF/");
+    names.add("META-INF/MANIFEST.MF");
+    AddJarToJar(jar, rootDir+"tools"+sc+"java"+sc+"imports"+sc+"xpp3-1.1.3.4.O.jar", names);
+    AddJarToJar(jar, rootDir+"tools"+sc+"java"+sc+"imports"+sc+"commons-codec-1.3.jar", names);
+    
+    AddToJar(jar, new File(rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"), (rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"+sc+"").length(), names);
     // by adding source first, we add all the newly built classes, and these are not updated when the older stuff is included
-    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src"), "C:\\workspace\\projects\\org.hl7.fhir\\implementations\\java\\org.hl7.fhir.instance\\src\\".length(), names);
-    AddToJar(jar, new File("C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\org.hl7.fhir.instance\\bin"), "C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\org.hl7.fhir.instance\\bin\\".length(), names);
+    AddToJar(jar, new File(rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"), (rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"+sc+"").length(), names);
+    AddToJar(jar, new File(rootDir+"tools"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"), (rootDir+"tools"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"+sc+"").length(), names);
     jar.close();
     
     return result;
   }
+
+  
+  private void AddJarToJar(JarOutputStream jar, String name, List<String> names) throws Exception {
+    ZipInputStream zip = new ZipInputStream(new FileInputStream(name));
+    ZipEntry ze = null;
+    while ((ze = zip.getNextEntry()) != null) {
+      String n = ze.getName();
+      if (!names.contains(n)) {
+        names.add(n);
+        JarEntry jarAdd = new JarEntry(n);
+        jarAdd.setTime(ze.getTime());
+        jar.putNextEntry(jarAdd);
+        for (int c = zip.read(); c != -1; c = zip.read()) {
+          jar.write(c);
+        }
+      }
+      zip.closeEntry();
+    }
+    zip.close();
+  }
+
 
   private static int BUFFER_SIZE = 10240;
   private void AddToJar(JarOutputStream jar, File file, int rootLen, List<String> names) throws Exception {
@@ -267,10 +295,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
         }
       }
       for (File f: file.listFiles())
-        if (f.getName().endsWith(".class") || f.isDirectory())
+        if (f.getName().endsWith(".class") || f.getName().endsWith(".jar") || f.isDirectory())
           AddToJar(jar, f, rootLen, names);    
     } else {
-      String n = file.getPath().substring(rootLen);
+      String n = file.getPath().substring(rootLen).replace("\\", "/");
       if (!names.contains(n)) {
         names.add(n);
         JarEntry jarAdd = new JarEntry(n);
@@ -297,17 +325,49 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     return true;
   }
 
-  public void loadAndSave(String sourceFile, String destFile) throws Exception {
-    // todo: what does it mean to load classes that have the same name as classes already in the build path?
-    // for now, we use what's bound in, even though it runs a cycle behind
-    FileInputStream in = new CSFileInputStream(sourceFile);
-    XmlParser p = new XmlParser();
-    ResourceOrFeed rf =  p.parseGeneral(in);
-    if (rf.getFeed() != null)
-      new AtomComposer().compose(new FileOutputStream(destFile), rf.getFeed(), true);
-    else
-      new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
+  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception {
+    // execute the jar file javatest.jar
+    // it will produce either the specified output file, or [output file].err with an exception
+    // 
+    File file = new File(destFile);
+    if (file.exists())
+      file.delete();
+    file = new File(destFile+".err");
+    if (file.exists())
+      file.delete();
     
+    List<String> command = new ArrayList<String>();
+    command.add("java");
+    command.add("-jar");
+    command.add("org.hl7.fhir.tools.jar");
+    command.add("round");
+    command.add(sourceFile);
+    command.add(destFile);
+
+    ProcessBuilder builder = new ProcessBuilder(command);
+    builder.directory(new File(rootDir));
+//    String cp = System.getProperty("java.class.path");
+//    cp += "C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\imports";
+//    builder.environment().put()
+
+    final Process process = builder.start();
+    process.waitFor();
+    if (new File(destFile+".err").exists())
+      throw new Exception(TextFile.fileToString(destFile+".err"));
+    if (!(new File(destFile).exists()))
+        throw new Exception("Neither output nor error file created");
+      
+    
+//    // todo: what does it mean to load classes that have the same name as classes already in the build path?
+//    // for now, we use what's bound in, even though it runs a cycle behind
+//    FileInputStream in = new CSFileInputStream(sourceFile);
+//    XmlParser p = new XmlParser();
+//    ResourceOrFeed rf =  p.parseGeneral(in);
+//    if (rf.getFeed() != null)
+//      new AtomComposer().compose(new FileOutputStream(destFile), rf.getFeed(), true);
+//    else
+//      new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
+//    
 //    if (rf.getFeed() != null)
 //      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getFeed());
 //    else

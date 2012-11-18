@@ -12,7 +12,7 @@ public class CSFile extends File {
 
   public CSFile(String pathname) {
     super(pathname);
-    if (exists()) {
+    if (exists() && getParent() != null) {
       String n = getName();
       File f = new File(getParent());
       String[] l = f.list();

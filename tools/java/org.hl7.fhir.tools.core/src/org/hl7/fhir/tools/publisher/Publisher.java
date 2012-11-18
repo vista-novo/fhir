@@ -1158,7 +1158,7 @@ public class Publisher {
 	private void validateRoundTrip(Schema schema, String n) throws Exception {
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			if (gen.doesTest()) {
-				gen.loadAndSave(page.getFolders().dstDir + n + ".xml",
+				gen.loadAndSave(page.getFolders().dstDir, page.getFolders().dstDir + n + ".xml",
 						page.getFolders().tmpResDir + "tmp.xml");
 				compareXml(n, gen.getName(), page.getFolders().dstDir + n
 						+ ".xml", page.getFolders().tmpResDir + "tmp.xml");
@@ -1198,13 +1198,12 @@ public class Publisher {
 
 		if (!TextFile.fileToString(tmp1.getAbsolutePath()).equals(
 				TextFile.fileToString(tmp2.getAbsolutePath()))) {
-			page.log("file " + t
-					+ " did not round trip perfectly in XML in platform " + n);
-			if (new CSFile(System.getenv("ProgramFiles")+sc+"WinMerge"+sc+"WinMergeU.exe")
+			page.log("file " + t+ " did not round trip perfectly in XML in platform " + n);
+			if (new CSFile(System.getenv("ProgramFiles(X86)")+sc+"WinMerge"+sc+"WinMergeU.exe")
 					.exists()) {
 
 				List<String> command = new ArrayList<String>();
-				command.add("\""+System.getenv("ProgramFiles")+sc+"WinMerge"+sc+"WinMergeU.exe"+"\" \""
+				command.add("\""+System.getenv("ProgramFiles(X86)")+sc+"WinMerge"+sc+"WinMergeU.exe"+"\" \""
 						+ tmp1.getAbsolutePath()
 						+ "\" \""
 						+ tmp2.getAbsolutePath() + "\"");

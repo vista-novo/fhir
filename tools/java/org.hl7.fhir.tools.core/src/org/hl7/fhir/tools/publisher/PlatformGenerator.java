@@ -116,5 +116,5 @@ public interface PlatformGenerator {
    * @param destFile
    * @throws Exception 
    */
-  public void loadAndSave(String sourceFile, String destFile) throws Exception;
+  public void loadAndSave(String rootDir, String sourceFile, String destFile) throws Exception;
 }

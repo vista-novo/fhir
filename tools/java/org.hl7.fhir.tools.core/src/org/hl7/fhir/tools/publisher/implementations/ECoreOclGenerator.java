@@ -82,7 +82,7 @@ public class ECoreOclGenerator extends BaseGenerator implements PlatformGenerato
     return false;
   }
 
-  public void loadAndSave(String sourceFile, String destFile) {
+  public void loadAndSave(String rootDir, String sourceFile, String destFile) {
    
   }
 
