@@ -334,6 +334,8 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
         if (f.getName().endsWith(".class") || f.getName().endsWith(".jar") || f.isDirectory())
           AddToJar(jar, f, rootLen, names);    
     } else {
+      logger.log("::"+file.getPath());
+      logger.log("--"+rootLen);
       String n = file.getPath().substring(rootLen).replace("\\", "/");
       if (!names.contains(n)) {
         names.add(n);
