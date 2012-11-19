@@ -21,7 +21,7 @@ namespace HL7.Fhir.Instance.Tests
         public void FullRoundtripOfAllExamples()
         {
             string examples = @"..\..\..\..\..\publish\examples.zip";
-            string path = Path.Combine(Path.GetTempPath(), "FHIRRountTripTest");
+            string path = Path.Combine(Path.GetTempPath(), "FHIRRoundTripTest");
             if (Directory.Exists(path)) Directory.Delete(path, true);
             Directory.CreateDirectory(path);
 
