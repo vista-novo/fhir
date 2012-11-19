@@ -210,19 +210,19 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     List<File> classes = new ArrayList<File>();
 
     for (String n : definitions.getResources().keySet()) 
-      classes.add(new File(javaDir+definitions.getResourceByName(n).getName()+".java"));
+      classes.add(new CSFile(javaDir+definitions.getResourceByName(n).getName()+".java"));
     for (ResourceDefn resource : definitions.getFutureResources().values()) 
-      classes.add(new File(javaDir+resource.getName()+".java"));
+      classes.add(new CSFile(javaDir+resource.getName()+".java"));
     for (String n : definitions.getInfrastructure().keySet()) 
-      classes.add(new File(javaDir+ definitions.getInfrastructure().get(n).getName()+".java"));
+      classes.add(new CSFile(javaDir+ definitions.getInfrastructure().get(n).getName()+".java"));
     for (String n : definitions.getTypes().keySet()) 
-      classes.add(new File(javaDir+ definitions.getTypes().get(n).getName()+".java"));
+      classes.add(new CSFile(javaDir+ definitions.getTypes().get(n).getName()+".java"));
     for (DefinedCode cd : definitions.getConstraints().values()) 
-      classes.add(new File(javaDir+ cd.getCode()+".java"));
+      classes.add(new CSFile(javaDir+ cd.getCode()+".java"));
     for (String n : definitions.getStructures().keySet()) 
-      classes.add(new File(javaDir+ definitions.getStructures().get(n).getName()+".java"));
+      classes.add(new CSFile(javaDir+ definitions.getStructures().get(n).getName()+".java"));
 
-    for (String n : new File(javaDir).list()) {
+    for (String n : new CSFile(javaDir).list()) {
       if (n.endsWith(".java")) {
         boolean found = false;
         String fn = javaDir+n;
@@ -230,10 +230,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
           found = found || f.getAbsolutePath().equals(fn);
         }
         if (!found) 
-          classes.add(new File(fn));
+          classes.add(new CSFile(fn));
       }
     }
-    for (String n : new File(javaParserDir).list()) {
+    for (String n : new CSFile(javaParserDir).list()) {
       if (n.endsWith(".java")) {
         String fn = javaParserDir+n;
         classes.add(new File(fn));
@@ -315,6 +315,9 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
   private static int BUFFER_SIZE = 10240;
   private void AddToJar(JarOutputStream jar, File file, int rootLen, List<String> names) throws Exception {
+    if (!file.exists())
+      return;
+    
     if (file.isDirectory()) {
       String name = file.getPath().replace("\\", "/");
       if (!name.isEmpty())
