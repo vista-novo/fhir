@@ -209,36 +209,9 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     char sc = File.separatorChar;
     List<File> classes = new ArrayList<File>();
 
-    for (String n : definitions.getResources().keySet()) 
-      classes.add(new CSFile(javaDir+definitions.getResourceByName(n).getName()+".java"));
-    for (ResourceDefn resource : definitions.getFutureResources().values()) 
-      classes.add(new CSFile(javaDir+resource.getName()+".java"));
-    for (String n : definitions.getInfrastructure().keySet()) 
-      classes.add(new CSFile(javaDir+ definitions.getInfrastructure().get(n).getName()+".java"));
-    for (String n : definitions.getTypes().keySet()) 
-      classes.add(new CSFile(javaDir+ definitions.getTypes().get(n).getName()+".java"));
-    for (DefinedCode cd : definitions.getConstraints().values()) 
-      classes.add(new CSFile(javaDir+ cd.getCode()+".java"));
-    for (String n : definitions.getStructures().keySet()) 
-      classes.add(new CSFile(javaDir+ definitions.getStructures().get(n).getName()+".java"));
-
-    for (String n : new CSFile(javaDir).list()) {
-      if (n.endsWith(".java")) {
-        boolean found = false;
-        String fn = javaDir+n;
-        for (File f : classes) {
-          found = found || f.getAbsolutePath().equals(fn);
-        }
-        if (!found) 
-          classes.add(new CSFile(fn));
-      }
-    }
-    for (String n : new CSFile(javaParserDir).list()) {
-      if (n.endsWith(".java")) {
-        String fn = javaParserDir+n;
-        classes.add(new File(fn));
-      }
-    }
+    addSourceFiles(classes, rootDir + sc+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities");
+    addSourceFiles(classes, rootDir + sc+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance");
+  
     
 //    classes.add(new File(javaParserDir+"XmlParser.java"));
 //    classes.add(new File(javaParserDir+"XmlComposer.java"));
@@ -283,7 +256,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     AddJarToJar(jar, rootDir+"tools"+sc+"java"+sc+"imports"+sc+"xpp3-1.1.3.4.O.jar", names);
     AddJarToJar(jar, rootDir+"tools"+sc+"java"+sc+"imports"+sc+"commons-codec-1.3.jar", names);
     
-    AddToJar(jar, new File(rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"), (rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"+sc+"").length(), names);
+//    AddToJar(jar, new File(rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"), (rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.utilities"+sc+"bin"+sc+"").length(), names);
     // by adding source first, we add all the newly built classes, and these are not updated when the older stuff is included
     AddToJar(jar, new File(rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"), (rootDir+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"src"+sc+"").length(), names);
     AddToJar(jar, new File(rootDir+"tools"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"), (rootDir+"tools"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"+sc+"").length(), names);
@@ -293,6 +266,18 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
 
   
+  private void addSourceFiles(List<File> classes, String name) {
+    File f = new File(name);
+    if (f.isDirectory()) {
+      for (String n : f.list()) {
+        addSourceFiles(classes, name+File.separator+n);
+      }
+    } else if (name.endsWith(".java")) {
+      classes.add(f);
+    }
+    
+  }
+
   private void AddJarToJar(JarOutputStream jar, String name, List<String> names) throws Exception {
     ZipInputStream zip = new ZipInputStream(new FileInputStream(name));
     ZipEntry ze = null;
@@ -337,8 +322,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
         if (f.getName().endsWith(".class") || f.getName().endsWith(".jar") || f.isDirectory())
           AddToJar(jar, f, rootLen, names);    
     } else {
-      logger.log("::"+file.getPath());
-      logger.log("--"+rootLen);
       String n = file.getPath().substring(rootLen).replace("\\", "/");
       if (!names.contains(n)) {
         names.add(n);
