@@ -234,7 +234,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     }
   //  path.append(";"+rootDir+sc+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"+sc+"org"+sc+"hl7"+sc+"fhir"+sc+"instance"+sc+"model");
     options.addAll(Arrays.asList("-classpath",path.toString()));
-
+    logger.log("Classpath: "+path.toString());
     JavaCompiler.CompilationTask task = ToolProvider.getSystemJavaCompiler().getTask(null, null, diagnostics, options, null, units);
     Boolean result = task.call();
     if (!result) {
