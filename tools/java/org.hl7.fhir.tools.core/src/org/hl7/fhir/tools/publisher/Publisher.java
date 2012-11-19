@@ -180,7 +180,6 @@ public class Publisher {
 	public void execute(String folder) throws Exception {
 
 		log("Publish FHIR in folder " + folder);
-
 		registerReferencePlatforms();
 
 		if (initialize(folder)) {
@@ -828,7 +827,7 @@ public class Publisher {
 
 		// generate the json version (use the java reference platform)
     try {
-      javaReferencePlatform.convertToJson(page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
+      javaReferencePlatform.convertToJson(page.getFolders().dstDir, page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
     } catch (Throwable t) {
       t.printStackTrace(System.err);
       TextFile.stringToFile(t.getMessage(), page.getFolders().dstDir + n + ".json");

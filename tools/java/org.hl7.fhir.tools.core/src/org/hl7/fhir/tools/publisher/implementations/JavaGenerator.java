@@ -34,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.jar.Attributes;
@@ -191,7 +192,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
   }
 
   public boolean doesCompile() {
-    return ToolProvider.getSystemJavaCompiler() != null;
+    return true; // ToolProvider.getSystemJavaCompiler() != null;
   }
 
   public boolean c(String name) {
@@ -227,15 +228,27 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     classes.add(new File(javaDir+"ResourceFactory.java"));
 
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+    if (compiler == null)
+      throw new Exception("Cannot continue build process as java compilation services are not available. Check that you are executing the build process using a jdk, not a jre");
+    
     StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
     
     Iterable<? extends JavaFileObject> units = fileManager.getJavaFileObjectsFromFiles(classes);
     DiagnosticCollector<JavaFileObject> diagnostics = new DiagnosticCollector<JavaFileObject>();
-    JavaCompiler.CompilationTask task = ToolProvider.getSystemJavaCompiler().getTask(null, null, diagnostics, null, null, units);
+    List<String> options = new ArrayList<String>();
+    StringBuilder path= new StringBuilder();
+    path.append(System.getProperty("java.class.path"));
+    for (String n : new File(rootDir+sc+"tools"+sc+"java"+sc+"imports").list()) {
+      path.append(";"+rootDir+sc+"tools"+sc+"java"+sc+"imports"+sc+n);
+    }
+    path.append(";"+rootDir+sc+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"+sc+"org"+sc+"hl7"+sc+"fhir"+sc+"instance"+sc+"model");
+    options.addAll(Arrays.asList("-classpath",path.toString()));
+
+    JavaCompiler.CompilationTask task = ToolProvider.getSystemJavaCompiler().getTask(null, null, diagnostics, options, null, units);
     Boolean result = task.call();
     if (!result) {
       for (Diagnostic<? extends JavaFileObject> t : diagnostics.getDiagnostics()) {
-        logger.log(t.toString());
+        logger.log("c: "+t.toString());
       }
     }
 
@@ -245,7 +258,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     manifest.getMainAttributes().put(Attributes.Name.CLASS_PATH, ".");
     manifest.getMainAttributes().put(Attributes.Name.MAIN_CLASS, "org.hl7.fhir.instance.test.ToolsHelper");
     
-    JarOutputStream jar = new JarOutputStream(new FileOutputStream(rootDir+File.separator+"publish"+File.separator+"org.hl7.fhir.tools.jar"), manifest);
+    JarOutputStream jar = new JarOutputStream(new FileOutputStream(rootDir+sc+"publish"+sc+"org.hl7.fhir.tools.jar"), manifest);
     List<String> names = new ArrayList<String>();
     names.add("META-INF/");
     names.add("META-INF/MANIFEST.MF");
@@ -360,7 +373,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
         throw new Exception("Neither output nor error file created");
   }
 
-  public void convertToJson(String sourceFile, String destFile) throws Exception {
+  public void convertToJson(String rootDir, String sourceFile, String destFile) throws Exception {
     // for debugging: do it in process
     if (IN_PROCESS) {
       ToolsHelper t = new ToolsHelper();
@@ -387,7 +400,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       command.add(destFile);
 
       ProcessBuilder builder = new ProcessBuilder(command);
-      builder.directory(new File(rootDir+File.separator+"publish"));
+      builder.directory(new File(rootDir));
 
       final Process process = builder.start();
       BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
