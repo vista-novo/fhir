@@ -4,12 +4,12 @@
 Notes:
 </p>
 <ul>
-<li>There are various types of people of interest - patients, employees, etc. Different types of people might come from different service end points.</li>
-<li>The administrative gender of the patient is that one that matters for the record. This may match the gender of birth or the current socially-reported gender.</li>
-<li>Qualifications covers both formal education gained in the past, and ongoing certification and accreditation often associated with healthcare providers.</li>
-<li>Various jurisdictions define their own qualification and/or codes, and some care about this more than others.</li>
-<li>The organization references are all optional, so can be replaced by simple text rather than a full resource reference</li>
-<li>A related person can be either reference to another resource using the id, or can provide what is known about the person directly</li>
+<li>The Person resource does justice to Person registries that keep track of Persons regardless of their role. 
+The Person resource is also a primary resource to point to for people acting in a particular role such as 
+SubjectofCare, Provider, and Agent. Very few attributes are specific to any role and so Person is kept lean. 
+Most attributes are expected to be tied to the role the Person plays rather than the Person himself. 
+Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Provider), 
+and multipleBirthInd (SubjectofCare)
 </ul>
 
 </div>

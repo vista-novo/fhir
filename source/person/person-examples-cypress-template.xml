@@ -1,13 +1,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Standard Person Examples</title>
   <updated>2012-05-29T23:45:32Z</updated>
-  <id>b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
-  <link href="http://www.hl7.org/fhir/patient-examples.xml" rel="self"/>
+  <id>urn:uuid:b248b1b2-1686-4b94-9936-37d7a5f94b51</id>
+  <link href="http://hl7.org/fhir/patient" rel="self"/>
 [%loop count=70%]
   <entry>
     <title>patient, female</title>
-    <link href="http://www.hl7.org/fhir/patient-examples.xml#[%count%]" rel="self"/>
-    <id>[%count%]</id>
+    <link href="http://hl7.org/fhir/patient/@[%count%]/history/@1" rel="self"/>
+    <id>http://hl7.org/fhir/patient/@[%count%]</id>
     <updated>2012-06-03T23:45:32Z</updated>
     <author>
       <name>Cypress Project</name>
