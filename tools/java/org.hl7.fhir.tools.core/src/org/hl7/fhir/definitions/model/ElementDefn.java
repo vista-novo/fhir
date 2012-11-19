@@ -311,9 +311,13 @@ public class ElementDefn {
 		return maxCardinality == null;
 	}
 
-	public boolean hasBinding() {
-		return bindingName != null && !bindingName.equals("");
-	}
+  public boolean hasBinding() {
+    return bindingName != null && !bindingName.equals("") && !bindingName.equals("!");
+  }
+
+  public boolean hasBindingOrOk() {
+    return bindingName != null && !bindingName.equals("");
+  }
 
 	// If an element with children explicitly declares a typename
 	// ('=<typename>' in Excel "Type" column), a resource-local type is

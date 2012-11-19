@@ -82,7 +82,6 @@ import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
-import org.hl7.fhir.definitions.validation.UMLValidator;
 import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.model.AtomEntry;
@@ -321,7 +320,11 @@ public class Publisher {
           List<Element> entries = new ArrayList<Element>();
           XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
           for (Element c : entries) {
-            b.append(XMLUtil.getNamedChild(c, "id").getTextContent()+", ");
+            String id = XMLUtil.getNamedChild(c, "id").getTextContent();
+            if (id.startsWith("http://hl7.org/fhir/") && id.contains("@"))
+              b.append(id.substring(id.indexOf("@")+1)+", ");
+            else
+              b.append(id+", ");
           }
         }
       }
@@ -331,18 +334,20 @@ public class Publisher {
   }
 
   private boolean resolveLink(ExampleReference ref) throws Exception {
+    if (!page.getDefinitions().hasResource(ref.getType()))
+      return false;
     ResourceDefn r = page.getDefinitions().getResourceByName(ref.getType());
-    if (r != null) {
-      for (Example e : r.getExamples()) {
-        if (ref.getId().equals(e.getId()))
-          return true;
-        if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
-          List<Element> entries = new ArrayList<Element>();
-          XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
-          for (Element c : entries) {
-            if (ref.getId().equals(XMLUtil.getNamedChild(c, "id").getTextContent()))
-              return true;
-          }
+    for (Example e : r.getExamples()) {
+      String id = ref.getId();
+      if (id.equals(e.getId()))
+        return true;
+      if (e.getXml().getDocumentElement().getLocalName().equals("feed")) {
+        List<Element> entries = new ArrayList<Element>();
+        XMLUtil.getNamedChildren(e.getXml().getDocumentElement(), "entry", entries);
+        for (Element c : entries) {
+          String _id = XMLUtil.getNamedChild(c, "id").getTextContent();
+          if (id.equals(_id) || _id.equals("http://hl7.org/fhir/"+ref.getType().toLowerCase()+"/@"+id))
+            return true;
         }
       }
     }
@@ -822,12 +827,24 @@ public class Publisher {
 		}
 
 		// generate the json version (use the java reference platform)
-    javaReferencePlatform.convertToJson(page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
+    try {
+      javaReferencePlatform.convertToJson(page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
+    } catch (Throwable t) {
+      t.printStackTrace(System.err);
+      TextFile.stringToFile(t.getMessage(), page.getFolders().dstDir + n + ".json");
+    }
+    String json;
+    try {
+      json = Utilities.escapeXml(new JSONObject(TextFile.fileToString(page.getFolders().dstDir + n + ".json")).toString(2));
+    } catch (Throwable t) {
+      t.printStackTrace(System.err);
+      json = t.getMessage();
+    }
+    
     String head = 
     "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\r\n<head>\r\n <title>"+Utilities.escapeXml(e.getDescription())+"</title>\r\n <link rel=\"Stylesheet\" href=\"fhir.css\" type=\"text/css\" media=\"screen\"/>\r\n"+
     "</head>\r\n<body>\r\n<p>&nbsp;</p>\r\n<div class=\"example\">\r\n<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n<pre class=\"json\">\r\n";
     String tail = "\r\n</pre>\r\n</div>\r\n</body>\r\n</html>\r\n";
-    String json = Utilities.escapeXml(new JSONObject(TextFile.fileToString(page.getFolders().dstDir + n + ".json")).toString(2));
     TextFile.stringToFile(head+json+tail, page.getFolders().dstDir + n + ".json.htm");
     e.setJson("<div class=\"example\">\r\n<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n<pre class=\"json\">\r\n"+json+"\r\n</pre>\r\n</div>\r\n");  
 

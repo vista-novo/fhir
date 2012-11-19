@@ -332,10 +332,9 @@ public class SpreadsheetParser {
 
 			cd.setName(sheet.getColumn(row, "Binding Name"));
 			cd.setDefinition(sheet.getColumn(row, "Definition"));
-			cd.setBinding(BindingsParser.readBinding(sheet.getColumn(row,
-					"Binding")));
-			cd.setBindingStrength(BindingsParser.readBindingStrength(sheet
-					.getColumn(row, "Binding Strength")));
+			cd.setBinding(BindingsParser.readBinding(sheet.getColumn(row, "Binding")));
+      cd.setBindingStrength(BindingsParser.readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+      cd.setExtensibility(BindingsParser.readExtensibility(sheet.getColumn(row, "Extensibility")));
 			cd.setReference(sheet.getColumn(row, "Reference"));
 			cd.setDescription(sheet.getColumn(row, "Description"));
 			cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
@@ -345,8 +344,7 @@ public class SpreadsheetParser {
 				Sheet codes = xls.getSheets().get(
 						cd.getReference().substring(1));
 				if (codes == null)
-					throw new Exception("code source sheet not found for "
-							+ cd.getName() + ": " + cd.getReference());
+					throw new Exception("code source sheet not found for "+ cd.getName() + ": " + cd.getReference());
 				parseCodes(cd.getCodes(), codes);
 			}
 			if (definitions.getBindingByName(cd.getName()) != null) {

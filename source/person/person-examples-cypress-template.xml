@@ -6,8 +6,8 @@
 [%loop count=70%]
   <entry>
     <title>patient, female</title>
-    <link href="http://hl7.org/fhir/patient/@[%count%]/history/@1" rel="self"/>
-    <id>http://hl7.org/fhir/patient/@[%count%]</id>
+    <link href="http://hl7.org/fhir/person/@[%count%]/history/@1" rel="self"/>
+    <id>http://hl7.org/fhir/person/@[%count%]</id>
     <updated>2012-06-03T23:45:32Z</updated>
     <author>
       <name>Cypress Project</name>

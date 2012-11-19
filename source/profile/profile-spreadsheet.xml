@@ -648,7 +648,7 @@
     <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">code</Data></Cell>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">ConstraintSeverity</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">error | warning</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Identifies the impact constraint violation has on the conformance of the instance.</Data></Cell>
@@ -875,18 +875,18 @@
     <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
+    <Cell><Data ss:Type="String">Profile.extensionDefn.id</Data></Cell>
     <Cell><Data ss:Type="Number">5</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="Number">5</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell><Data ss:Type="String" x:Ticked="1">code</Data></Cell>
+    <Cell><Data ss:Type="String" x:Ticked="1">id</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">identifies the extension in this profile</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">A unique code (within the profile) used to identify the extension.</Data></Cell>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">matches the portion of a reference to an extension after the # in the a url to the profile</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Profile.extensionDefn.contextType</Data></Cell>
@@ -995,6 +995,7 @@
     <Cell><Data ss:Type="String">Profile.binding.concept.code</Data></Cell>
     <Cell ss:Index="3"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
+    <Cell><Data ss:Type="String">!</Data></Cell>
     <Cell ss:Index="9"><Data ss:Type="String">Code to use for this concept</Data></Cell>
     <Cell><Data ss:Type="String">Identifies the code referenced or being defined as part of the binding</Data></Cell>
    </Row>
@@ -1052,7 +1053,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>64</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>2</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -1066,11 +1067,12 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>9</ActiveCol>
+     <ActiveRow>73</ActiveRow>
+     <ActiveCol>6</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -1117,9 +1119,9 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">5</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.code</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">Profile.extensionDefn.id</Data></Cell>
     <Cell><Data ss:Type="String">Codes must be unique in the context of a profile</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:code[.=current()])=1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:extensionDefn/f:id[.=current()])=1</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">6</Data></Cell>
@@ -1168,7 +1170,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>10</ActiveRow>
      <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
@@ -1311,7 +1313,7 @@
     <Cell><Data ss:Type="String">#extension-context</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">ConstraintSeverity</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">ConstraintSeverity</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Must applications comply with this constraint?</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">code list</Data></Cell>
     <Cell ss:StyleID="s76"><Data ss:Type="String">required</Data></Cell>

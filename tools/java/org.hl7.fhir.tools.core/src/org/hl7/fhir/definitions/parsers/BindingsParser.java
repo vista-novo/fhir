@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.utilities.XLSXmlParser;
 import org.hl7.fhir.utilities.XLSXmlParser.Sheet;
 
@@ -69,6 +70,7 @@ public class BindingsParser {
 		cd.setDefinition(sheet.getColumn(row, "Definition"));
     cd.setBinding(readBinding(sheet.getColumn(row, "Binding")));
     cd.setBindingStrength(readBindingStrength(sheet.getColumn(row, "Binding Strength")));
+    cd.setExtensibility(readExtensibility(sheet.getColumn(row, "Extensibility")));
     cd.setReference(sheet.getColumn(row, "Reference"));
     cd.setDescription(sheet.getColumn(row, "Description"));
     cd.setId(new BindingNameRegistry(root).idForName(cd.getName()));
@@ -76,7 +78,16 @@ public class BindingsParser {
 		results.add(cd);
 	}
 
-	public static BindingSpecification.Binding readBinding(String s) throws Exception {
+	public static BindingExtensibility readExtensibility(String s) throws Exception {
+    s = s.toLowerCase();
+    if (s == null || "".equals(s) || "complete".equals(s))
+      return BindingSpecification.BindingExtensibility.Complete;
+    if (s.equals("extensible"))
+      return BindingSpecification.BindingExtensibility.Extensible;
+    throw new Exception("Unknown Binding Extensibility: "+s);
+  }
+
+  public static BindingSpecification.Binding readBinding(String s) throws Exception {
 		s = s.toLowerCase();
 		if (s == null || "".equals(s) || "unbound".equals(s))
 			return BindingSpecification.Binding.Unbound;

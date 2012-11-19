@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -88,15 +89,18 @@ public class ModelValidator {
 //		rule(path, !"code".equals(e.typeCode()) || e.hasBinding(),
 //				"Must have a binding if type is 'code'");
 
+		if (e.typeCode().equals("code")) {
+		  rule(path, e.hasBindingOrOk(), "An element of type code must have a binding");
+		}
+		
 		if (e.hasBinding()) {
-			BindingSpecification cd = definitions.getBindingByName(e
-					.getBindingName());
-			rule(path, cd != null,
-					"Unable to resolve binding name " + e.getBindingName());
-			// if (cd != null)
-			// rule(path, (cd.getBinding() == ConceptDomain.Binding.CodeList &&
-			// (e.hasType("Coding") || e.hasType("CodeableConcept"))),
-			// "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
+		  rule(path, e.typeCode().equals("code") || e.typeCode().equals("Coding") || e.typeCode().equals("CodeableConcept"), "Can only specify bindings for coded data types");
+			BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
+			rule(path, cd != null, "Unable to resolve binding name " + e.getBindingName());
+			
+			if (cd != null) 
+			  rule(path, (cd.getExtensibility() != BindingExtensibility.Extensible || (e.hasType("Coding") || e.hasType("CodeableConcept"))),
+			        "A binding can only be extensible if an element has a type of Coding|CodeableConcept and the concept domain is bound directly to a code list.");
 		}
 		for (ElementDefn c : e.getElements()) {
 			checkElement(path + "." + c.getName(), c, parent);

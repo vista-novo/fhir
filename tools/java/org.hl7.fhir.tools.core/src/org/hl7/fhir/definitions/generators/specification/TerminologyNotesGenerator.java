@@ -105,13 +105,36 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		
 		Collections.sort(cds, new MyCompare());
 		write("<p>\r\nTerminology Bindings\r\n</p>\r\n<ul>\r\n");
+		// 1. new form
+    write("<table class=\"grid\">\r\n");
+    write(" <tr><th>Path</th><th>Details</th><th>Strength</th></tr>\r\n");
+    for (BindingSpecification cd : cds) {
+      String path;
+      List<CDUsage> list = txusages.get(cd);
+      for (int i = 2; i < list.size(); i++) {
+        if (!list.get(i).element.typeCode().equals(list.get(1).element.typeCode()))
+          throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process");
+      }
+      write(" <tr><td title=\""+cd.getName()+"\">");
+      boolean first = true;
+      for (int i = 1; i < list.size(); i++) {
+        if (!first)
+          write("<br/>");
+        first = false;
+        write(list.get(i).path);          
+      }
+      write(" </td>");
+      write("<td>"+describeBinding(cd)+"</td>");
+      write("<td>"+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
+             "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
+      write(" </tr>");
+    }
+    write("</table>\r\n");
+
+		// 2. old form
 		for (BindingSpecification cd : cds) {
 			String path;
 			List<CDUsage> list = txusages.get(cd);
-			for (int i = 2; i < list.size(); i++) {
-				if (!list.get(i).element.typeCode().equals(list.get(1).element.typeCode()))
-					throw new Exception("Mixed types on one concept domain in one type - not yet supported by the build process");
-			}
 
 			if (list.size() == 2)
 				path = list.get(1).path+" has the definition ";
@@ -128,6 +151,34 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 		write("</ul>\r\n");
 		
 	}
+
+  private String describeBinding(BindingSpecification cd) {
+    if (cd.getBinding() == BindingSpecification.Binding.Unbound) 
+      return cd.getDefinition()+" (not bound to any particular codes)";
+    if (cd.getBinding() == BindingSpecification.Binding.Special) {
+      if (cd.getName().equals("MessageEvent"))
+        return "the <a href=\"messageheader.htm#Events\">Event List in the messaging framework</a>";
+      else if (cd.getName().equals("ResourceType"))
+        return "<a href=\"terminologies.htm#ResourceType\">Any defined Resource Type name</a>";
+      else if (cd.getName().equals("FHIRContentType"))
+        return "<a href=\"terminologies.htm#fhircontenttypes\">Any defined Resource or Data Type name</a>";
+      else 
+        return "<a href=\"datatypes.htm\"> any defined data Type name</a> or a <a href=\"xml.htm#Resource\">Resource</a> name";
+    } 
+    if (cd.getBinding() == BindingSpecification.Binding.ValueSet) {
+      if (Utilities.noString(cd.getReference())) 
+        return cd.getDescription();
+      else
+        return "???";
+    }
+    if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
+      if (Utilities.noString(cd.getReference())) 
+        return cd.getDefinition()+" ("+cd.getDescription()+")";
+      else
+        return cd.getDefinition()+" (see <a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> for values)";
+    }
+    return "??";
+  }
 
   private void genBinding(BindingSpecification cd, String path, boolean isCode) throws Exception {
     if (cd.getName().equals("*unbound*")) {

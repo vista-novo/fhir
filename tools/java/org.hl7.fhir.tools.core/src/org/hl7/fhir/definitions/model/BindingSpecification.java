@@ -57,12 +57,17 @@ public class BindingSpecification {
     Suggested
   }
 
+  public enum BindingExtensibility {
+    Complete,
+    Extensible
+  }
   
   private String id;
   private String name;
 	private String definition;
 	private Binding binding;
   private BindingStrength bindingStrength;
+  private BindingExtensibility extensibility;
 	private String reference;
 	private String description;
 	private String source; // for useful error messages during build
@@ -160,6 +165,14 @@ public class BindingSpecification {
 
   public void setUseContexts(List<String> useContexts) {
     this.useContexts = useContexts;
+  }
+
+  public BindingExtensibility getExtensibility() {
+    return extensibility;
+  }
+
+  public void setExtensibility(BindingExtensibility extensibility) {
+    this.extensibility = extensibility;
   }
 
   
