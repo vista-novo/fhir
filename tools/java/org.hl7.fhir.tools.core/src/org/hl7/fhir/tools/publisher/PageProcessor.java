@@ -936,7 +936,10 @@ public class PageProcessor implements Logger  {
         if (!started)
           s.append("<p>Additional Examples:</p>\r\n<table class=\"list\">\r\n");
         started = true;
-        s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td><td><a href=\""+e.getFileTitle()+".xml\">source</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">formatted</a></td></tr>");
+        s.append("<tr><td>"+Utilities.escapeXml(e.getDescription())+"</td>");
+        s.append("<td><a href=\""+e.getFileTitle()+".xml\">XML</a></td><td><a href=\""+e.getFileTitle()+".xml.htm\">(for browser)</a></td>");
+        s.append("<td><a href=\""+e.getFileTitle()+".json\">JSON</a></td><td><a href=\""+e.getFileTitle()+".json.htm\">(for browser)</a></td>");
+        s.append("</tr>");
       }
     }
     if (started)
@@ -953,6 +956,8 @@ public class PageProcessor implements Logger  {
         s.append("<h3>"+Utilities.escapeXml(e.getName())+"</h3>\r\n");
         s.append("<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n");
         s.append(e.getXhtm());
+        s.append("<p>JSON Equivalent</p>\r\n");
+        s.append(e.getJson());
       }
     }
     return s.toString();

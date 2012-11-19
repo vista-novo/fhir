@@ -47,6 +47,7 @@ public class Example {
   private String description;
   private File path;
   private String xhtm;
+  private String json;
   private String type;
   private boolean inBook;
   private Document xml;
@@ -128,6 +129,12 @@ public class Example {
   }
   public Document getXml() {
     return xml;
+  }
+  public String getJson() {
+    return json;
+  }
+  public void setJson(String json) {
+    this.json = json;
   }
   
   

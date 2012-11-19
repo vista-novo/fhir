@@ -204,7 +204,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      composeBytes(name, value.getValue());
+      composeBytes("value", value.getValue());
       close();
     }
   }
@@ -213,7 +213,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -222,7 +222,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -231,7 +231,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -240,7 +240,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -249,7 +249,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue().toString());
+      prop("value", value.getValue().toString());
       close();
     }
   }
@@ -258,7 +258,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue().toString());
+      prop("value", value.getValue().toString());
       close();
     }
   }
@@ -272,7 +272,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue().toString());
+      prop("value", value.getValue().toString());
       close();
     }
   }
@@ -281,7 +281,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -290,7 +290,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.toString());
+      prop("value", value.toString());
       close();
     }
   }
@@ -298,7 +298,7 @@ public abstract class JsonComposerBase extends XmlBase {
   protected void composeBoolean(String name, java.lang.Boolean value) throws Exception {
     if (value != null) {
       open(name);
-      prop(name, value.toString());
+      prop("value", value.toString());
       close();
     }
   }
@@ -307,7 +307,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, dateToXml(value.getValue()));
+      prop("value", dateToXml(value.getValue()));
       close();
     }
   }
@@ -316,7 +316,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, java.lang.Integer.toString(value.getValue()));
+      prop("value", java.lang.Integer.toString(value.getValue()));
       close();
     }
   }
@@ -331,7 +331,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }
@@ -340,7 +340,7 @@ public abstract class JsonComposerBase extends XmlBase {
     if (value != null) {
       open(name);
       composeTypeAttributes(value);
-      prop(name, value.getValue());
+      prop("value", value.getValue());
       close();
     }
   }

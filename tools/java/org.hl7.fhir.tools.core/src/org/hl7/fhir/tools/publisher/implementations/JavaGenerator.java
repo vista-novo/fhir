@@ -27,10 +27,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 */
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,6 +61,7 @@ import org.hl7.fhir.instance.formats.AtomComposer;
 import org.hl7.fhir.instance.formats.XmlComposer;
 import org.hl7.fhir.instance.formats.XmlParser;
 import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
+import org.hl7.fhir.instance.test.ToolsHelper;
 import org.hl7.fhir.tools.publisher.PlatformGenerator;
 import org.hl7.fhir.tools.publisher.implementations.JavaResourceGenerator.JavaGenClass;
 import org.hl7.fhir.utilities.CSFile;
@@ -69,6 +72,8 @@ import org.hl7.fhir.utilities.ZipGenerator;
 
 public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
+  private static final boolean IN_PROCESS = false;
+  
   private String rootDir;
   private String javaDir;
   private String javaParserDir;
@@ -329,10 +334,10 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     // execute the jar file javatest.jar
     // it will produce either the specified output file, or [output file].err with an exception
     // 
-    File file = new File(destFile);
+    File file = new CSFile(destFile);
     if (file.exists())
       file.delete();
-    file = new File(destFile+".err");
+    file = new CSFile(destFile+".err");
     if (file.exists())
       file.delete();
     
@@ -346,9 +351,6 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
 
     ProcessBuilder builder = new ProcessBuilder(command);
     builder.directory(new File(rootDir));
-//    String cp = System.getProperty("java.class.path");
-//    cp += "C:\\workspace\\projects\\org.hl7.fhir\\tools\\java\\imports";
-//    builder.environment().put()
 
     final Process process = builder.start();
     process.waitFor();
@@ -356,21 +358,51 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
       throw new Exception(TextFile.fileToString(destFile+".err"));
     if (!(new File(destFile).exists()))
         throw new Exception("Neither output nor error file created");
-      
-    
-//    // todo: what does it mean to load classes that have the same name as classes already in the build path?
-//    // for now, we use what's bound in, even though it runs a cycle behind
-//    FileInputStream in = new CSFileInputStream(sourceFile);
-//    XmlParser p = new XmlParser();
-//    ResourceOrFeed rf =  p.parseGeneral(in);
-//    if (rf.getFeed() != null)
-//      new AtomComposer().compose(new FileOutputStream(destFile), rf.getFeed(), true);
-//    else
-//      new XmlComposer().compose(new FileOutputStream(destFile), rf.getResource(), true);
-//    
-//    if (rf.getFeed() != null)
-//      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getFeed());
-//    else
-//      new JsonComposer().compose(new FileOutputStream(sourceFile+".json"), rf.getResource());
+  }
+
+  public void convertToJson(String sourceFile, String destFile) throws Exception {
+    // for debugging: do it in process
+    if (IN_PROCESS) {
+      ToolsHelper t = new ToolsHelper();
+      String[] cmds = new String[] {"json", sourceFile, destFile};    
+      t.executeJson(cmds);
+    } else {
+
+      // execute the jar file javatest.jar
+      // it will produce either the specified output file, or [output file].err with an exception
+      // 
+      File file = new CSFile(destFile);
+      if (file.exists())
+        file.delete();
+      file = new CSFile(destFile+".err");
+      if (file.exists())
+        file.delete();
+
+      List<String> command = new ArrayList<String>();
+      command.add("java");
+      command.add("-jar");
+      command.add("org.hl7.fhir.tools.jar");
+      command.add("json");
+      command.add(sourceFile);
+      command.add(destFile);
+
+      ProcessBuilder builder = new ProcessBuilder(command);
+      builder.directory(new File(rootDir+File.separator+"publish"));
+
+      final Process process = builder.start();
+      BufferedReader stdError = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+      String s;
+      while ((s = stdError.readLine()) != null) {
+        System.err.println(s);
+      }    
+
+      process.waitFor();
+      if (new File(destFile+".err").exists())
+        throw new Exception(TextFile.fileToString(destFile+".err"));
+      if (!(new File(destFile).exists()))
+        throw new Exception("Neither output nor error file created doing json conversion");    
+      if (new File(destFile).length() == 0)
+        throw new Exception("Output file '"+destFile+"' empty");    
+    } 
   }
 }

@@ -111,6 +111,7 @@ import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.hl7.fhir.utilities.xml.XMLWriter;
 import org.hl7.fhir.utilities.xml.XhtmlGenerator;
 import org.hl7.fhir.utilities.xml.XmlGenerator;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -156,6 +157,7 @@ public class Publisher {
 	private ChmMaker chm;
 	private PageProcessor page = new PageProcessor();
 	private BookMaker book;
+  private JavaGenerator javaReferencePlatform;
 
 	private boolean isGenerate;
 	private boolean nobook;
@@ -221,7 +223,8 @@ public class Publisher {
 
 	private void registerReferencePlatforms() {
 		page.getReferenceImplementations().add(new DelphiGenerator());
-		page.getReferenceImplementations().add(new JavaGenerator());
+		javaReferencePlatform = new JavaGenerator();
+    page.getReferenceImplementations().add(javaReferencePlatform);
 		page.getReferenceImplementations().add(new CSharpGenerator());
 		page.getReferenceImplementations().add(new ECoreOclGenerator());
 	}
@@ -446,7 +449,7 @@ public class Publisher {
 		produceSchemaZip();
 		logNoEoln("Produce Specification");
 		produceSpec();
-    log("Produce Specification");
+    log("Produce Specification... done");
 
 		if (!nobook) {
 			log("Produce fhir.chm");
@@ -542,9 +545,13 @@ public class Publisher {
 		// Utilities.copyFile(new CSFile(page.getFolders().umlDir + "fhir.xmi"),
 		// new CSFile(page.getFolders().dstDir + "fhir.xmi"));
 
-		ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
-		zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
-		zip.close();
+    ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
+    zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
+    zip.close();
+
+    zip = new ZipGenerator(page.getFolders().dstDir + "examples-json.zip");
+    zip.addFiles(page.getFolders().dstDir, "", ".json");
+    zip.close();
 
 		produceZip();
 		book.produce();
@@ -612,7 +619,8 @@ public class Publisher {
 		  try {
 			  processExample(e);
 		  } catch (Exception ex) {
-		    throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
+		    throw new Exception("processing "+e.getFileTitle(), ex);
+//		    throw new Exception(ex.getMessage()+" processing "+e.getFileTitle());
 		  }
 		}
 
@@ -809,9 +817,19 @@ public class Publisher {
 		XmlGenerator xmlgen = new XmlGenerator();
 		if (xdoc.getDocumentElement().getLocalName().equals("feed"))
 		  xmlgen.generate(xdoc.getDocumentElement(), new CSFile(page.getFolders().dstDir + n + ".xml"), "http://www.w3.org/2005/Atom", xdoc.getDocumentElement().getLocalName());
-		else
+		else {
 		  xmlgen.generate(xdoc.getDocumentElement(), new CSFile(page.getFolders().dstDir + n + ".xml"), "http://hl7.org/fhir", xdoc.getDocumentElement().getLocalName());
+		}
 
+		// generate the json version (use the java reference platform)
+    javaReferencePlatform.convertToJson(page.getFolders().dstDir + n + ".xml", page.getFolders().dstDir + n + ".json");
+    String head = 
+    "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\r\n<head>\r\n <title>"+Utilities.escapeXml(e.getDescription())+"</title>\r\n <link rel=\"Stylesheet\" href=\"fhir.css\" type=\"text/css\" media=\"screen\"/>\r\n"+
+    "</head>\r\n<body>\r\n<p>&nbsp;</p>\r\n<div class=\"example\">\r\n<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n<pre class=\"json\">\r\n";
+    String tail = "\r\n</pre>\r\n</div>\r\n</body>\r\n</html>\r\n";
+    String json = Utilities.escapeXml(new JSONObject(TextFile.fileToString(page.getFolders().dstDir + n + ".json")).toString(2));
+    TextFile.stringToFile(head+json+tail, page.getFolders().dstDir + n + ".json.htm");
+    e.setJson("<div class=\"example\">\r\n<p>"+Utilities.escapeXml(e.getDescription())+"</p>\r\n<pre class=\"json\">\r\n"+json+"\r\n</pre>\r\n</div>\r\n");  
 
 		// reload it now, xml to xhtml of xml
 		builder = factory.newDocumentBuilder();
@@ -1158,10 +1176,8 @@ public class Publisher {
 	private void validateRoundTrip(Schema schema, String n) throws Exception {
 		for (PlatformGenerator gen : page.getReferenceImplementations()) {
 			if (gen.doesTest()) {
-				gen.loadAndSave(page.getFolders().dstDir, page.getFolders().dstDir + n + ".xml",
-						page.getFolders().tmpResDir + "tmp.xml");
-				compareXml(n, gen.getName(), page.getFolders().dstDir + n
-						+ ".xml", page.getFolders().tmpResDir + "tmp.xml");
+				gen.loadAndSave(page.getFolders().dstDir, page.getFolders().dstDir + n + ".xml", page.getFolders().tmpResDir + "tmp.xml");
+				compareXml(n, gen.getName(), page.getFolders().dstDir + n	+ ".xml", page.getFolders().tmpResDir + "tmp.xml");
 			}
 		}
 	}
