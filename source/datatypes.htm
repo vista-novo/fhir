@@ -741,11 +741,11 @@ from the period applies (e.g. "give to the patient between 2 and 4 pm").
 </p>
 [%dt Period%]
 <p>
-If the <i>low</i> element is  missing, the the start of the period is not
-known. If the <i>high</i> element is missing, it means that the period is ongoing.
+If the <i>start</i> element is  missing, the start of the period is not
+known. If the <i>end</i> element is missing, it means that the period is ongoing.
 </p>
 <p>
-The high value includes any matching date/time. For example, the period 
+The end value includes any matching date/time. For example, the period 
 2011-05-23 to 2011-05-27 includes all the times of 23rd May through to 
 the end of the 27th May.
 </p>
@@ -759,12 +759,8 @@ the end of the 27th May.
 <p>23rd May 2011 to 27th May, including 27th May:</p>
 <pre class="xml">
   &lt;coverage&gt;
-   &lt;low&gt;
-     &lt;date&gt;2011-05-23&lt;/date&gt;
-   &lt;/low&gt;
-   &lt;high&gt;
-     &lt;date&gt;2011-05-27&lt;/date&gt;
-   &lt;/high&gt;
+   &lt;start&gt;2011-05-23&lt;/start&gt;
+   &lt;end&gt;2011-05-27&lt;/end&gt;
   &lt;/coverage&gt;
 </pre>
 </div>

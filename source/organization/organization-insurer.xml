@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Organization.xsd">
+  <identifier>
+    <identifier>
+      <system>oid:2.16.840.1.113883.3.19.2.3</system>
+      <id>666666</id>
+    </identifier>
+  </identifier>
+  <name>
+    <value>XYZ Insurance</value>
+  </name>
+  	
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>XYZ Insurance</p>
+    </div>
+  </text>
+</Organization>
+
