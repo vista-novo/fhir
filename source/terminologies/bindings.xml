@@ -16,10 +16,10 @@
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>12585</WindowHeight>
-  <WindowWidth>27795</WindowWidth>
+  <WindowHeight>12588</WindowHeight>
+  <WindowWidth>17496</WindowWidth>
   <WindowTopX>480</WindowTopX>
-  <WindowTopY>105</WindowTopY>
+  <WindowTopY>108</WindowTopY>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -49,12 +49,12 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="7" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="157.80000000000001"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="229.8"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="64.8"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="96"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="219"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.25"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="245.39999999999998"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s63">
     <Cell><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
@@ -71,7 +71,7 @@
     <Cell><Data ss:Type="String">#boolean-yes-no</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">!DataAbsentReason</Data></Cell>
+    <Cell><Data ss:Type="String">DataAbsentReason</Data></Cell>
     <Cell><Data ss:Type="String">Used to specify why the normally expected content of the data element is missing</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
@@ -110,8 +110,7 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

@@ -434,6 +434,17 @@ public class GeneratorUtils {
 			}
 		}
 		
+		// An attribute cannot have the same name as a nested enum
+		for( BindingDefn binding : member.getParentType().getBindings() )
+		{
+			if( binding.getName().equals(result) )
+			{
+				result += "_";
+				break;
+			}
+		}
+
+		
 		// An attribute cannot have the same name as its enclosing type
 		if( result.equals( member.getParentType().getName() ) )
 				result += "_";

@@ -77,7 +77,7 @@ namespace HL7.Fhir.Instance.Support
                     Title = feed.Title != null && !String.IsNullOrWhiteSpace(feed.Title.Text) ?
                                 feed.Title.Text : null,
                     LastUpdated = (feed.LastUpdatedTime == DateTimeOffset.MinValue) ? (DateTimeOffset?)null : feed.LastUpdatedTime,
-                    Id = new Uri(feed.Id, UriKind.RelativeOrAbsolute),
+                    Id = new Uri(feed.Id, UriKind.Absolute),
                     SelfLink = getSelfLink(feed.Links),
                 };
             }
@@ -123,7 +123,7 @@ namespace HL7.Fhir.Instance.Support
    
                     if (eTag != null) de.VersionId = eTag.Value;
                     if (when != null) de.When = Instant.Parse(when.Value).Contents.Value;
-                    if (id != null) de.Id = new Uri(id.Value, UriKind.RelativeOrAbsolute);
+                    if (id != null) de.Id = new Uri(id.Value, UriKind.Absolute);
                     if (self != null && self.Attribute(XATOM_LINK_HREF) != null ) 
                                 de.SelfLink = new Uri(self.Attribute(XATOM_LINK_HREF).Value, UriKind.Absolute);
                 }
@@ -161,7 +161,7 @@ namespace HL7.Fhir.Instance.Support
                     result.Title = item.Title != null && !String.IsNullOrWhiteSpace(item.Title.Text) ?
                                     item.Title.Text : null;
                     result.SelfLink = getSelfLink(item.Links);
-                    result.Id = new Uri(item.Id,UriKind.RelativeOrAbsolute);
+                    result.Id = new Uri(item.Id,UriKind.Absolute);
                     result.LastUpdated = (item.LastUpdatedTime == DateTimeOffset.MinValue) ?
                                     (DateTimeOffset?)null : item.LastUpdatedTime;
                     result.Published = (item.PublishDate == DateTimeOffset.MinValue) ?

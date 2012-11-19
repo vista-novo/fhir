@@ -68,8 +68,8 @@ namespace HL7.Fhir.Instance.Support
             if (!Util.UriHasValue(Id))
                 errors.Add("Feed must have an id", context);
 
-            if (!Util.UriHasValue(SelfLink))
-                errors.Add("Feed must have a self-link", context);
+            if (!Id.IsAbsoluteUri)
+                errors.Add("Feed id must be an absolute URI", context);
 
             if (LastUpdated == null)
                 errors.Add("Feed must have a updated date", context);
@@ -105,8 +105,14 @@ namespace HL7.Fhir.Instance.Support
             //if (SelfLink == null || SelfLink.ToString() == String.Empty)
             //    errors.Add("Entry must have a link of type 'self'", context);
 
+            if (Util.UriHasValue(SelfLink) && !SelfLink.IsAbsoluteUri)
+                errors.Add("An entry self-link must be an absolute URI");
+
             if (Id == null || String.IsNullOrWhiteSpace(Id.ToString()))
                 errors.Add("Entry must have an id");
+
+            if (!Id.IsAbsoluteUri)
+                errors.Add("Entry id must be an absolute URI");
 
             return errors;
         }

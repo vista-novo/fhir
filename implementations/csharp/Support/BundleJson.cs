@@ -86,8 +86,8 @@ namespace HL7.Fhir.Instance.Support
                 {
                     Title = feed.Value<string>(JATOM_TITLE),
                     LastUpdated = feed.Value<DateTimeOffset?>(JATOM_UPDATED),
-                    Id = new Uri(feed.Value<string>(JATOM_ID), UriKind.RelativeOrAbsolute),
-                    SelfLink = getSelfLink(feed[JATOM_LINK])
+                    Id = new Uri(feed.Value<string>(JATOM_ID), UriKind.Absolute),
+                    SelfLink = new Uri(getSelfLink(feed[JATOM_LINK]),UriKind.RelativeOrAbsolute)
                 };
             }
             catch (Exception exc)
@@ -135,8 +135,8 @@ namespace HL7.Fhir.Instance.Support
                    
                     result.VersionId = item.Value<string>(JATOM_VERSION) != null ?
                                          item.Value<string>(JATOM_VERSION) : null;
-                    result.SelfLink = getSelfLink(item[JATOM_LINK]);
-                    result.Id = new Uri(id, UriKind.RelativeOrAbsolute);
+                    result.SelfLink = new Uri(getSelfLink(item[JATOM_LINK]),UriKind.Absolute);
+                    result.Id = new Uri(id, UriKind.Absolute);
                     
                     if( result is DeletedEntry )
                         ((DeletedEntry)result).When = item.Value<DateTimeOffset>(JATOM_DELETED);
@@ -347,17 +347,17 @@ namespace HL7.Fhir.Instance.Support
 
 
 
-        private static Uri getSelfLink( JToken token )
+        private static string getSelfLink( JToken token )
         {
             if (token as JArray != null)
             {
                 JArray links = (JArray)token;
 
-                 return new Uri((from link in links
+                 return (from link in links
                  where link.Value<string>("rel") != null &&
                          link.Value<string>("rel").ToLower() == "self" &&
                          link.Value<string>("href") != null
-                 select link.Value<string>("href")).FirstOrDefault());
+                 select link.Value<string>("href")).FirstOrDefault();
             }
             else
                 return null;
