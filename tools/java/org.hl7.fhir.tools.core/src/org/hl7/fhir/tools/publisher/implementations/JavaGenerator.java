@@ -222,10 +222,28 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     for (String n : definitions.getStructures().keySet()) 
       classes.add(new File(javaDir+ definitions.getStructures().get(n).getName()+".java"));
 
-    classes.add(new File(javaParserDir+"XmlParser.java"));
-    classes.add(new File(javaParserDir+"XmlComposer.java"));
-    classes.add(new File(javaParserDir+"JsonComposer.java"));
-    classes.add(new File(javaDir+"ResourceFactory.java"));
+    for (String n : new File(javaDir).list()) {
+      if (n.endsWith(".java")) {
+        boolean found = false;
+        String fn = javaDir+n;
+        for (File f : classes) {
+          found = found || f.getAbsolutePath().equals(fn);
+        }
+        if (!found) 
+          classes.add(new File(fn));
+      }
+    }
+    for (String n : new File(javaParserDir).list()) {
+      if (n.endsWith(".java")) {
+        String fn = javaParserDir+n;
+        classes.add(new File(fn));
+      }
+    }
+    
+//    classes.add(new File(javaParserDir+"XmlParser.java"));
+//    classes.add(new File(javaParserDir+"XmlComposer.java"));
+//    classes.add(new File(javaParserDir+"JsonComposer.java"));
+//    classes.add(new File(javaDir+"ResourceFactory.java"));
 
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
     if (compiler == null)
