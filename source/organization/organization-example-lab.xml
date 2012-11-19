@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Organization.xsd">
-  <name>
-    <value>Acme Org, Clinical Lab</value>
-  </name>
+  <name>Acme Org, Clinical Lab</name>
   
-  <contact>
+  <telecom>
     <system>phone</system>
     <value>+1 555 234 1234</value>
     <use>work</use>
-  </contact>
-  <contact>
+  </telecom>
+  <telecom>
     <system>email</system>
     <value>contact@labs.acme.org</value>
     <use>work</use>
-  </contact>
+  </telecom>
 	
   <text>
     <status>generated</status>

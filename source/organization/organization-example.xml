@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Organization.xsd">
+<Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Organization.xsd">
 
   <!-- Clinical Team "Gastroenterology" at Acme Hospital -->
   <identifier>
@@ -7,42 +8,38 @@
       <system>http://www.acme.org.au/units</system>
       <id>Gastro</id>
     </identifier>
-<!--
-    <assigner dataAbsentReason="asText">
-      <text>Acme Healthcare</text>
-    </assigner>
-    -->
   </identifier>
-
-  <name>
-    <value>Gastroenterology</value>
-  </name>
-  
-  <contact>
+  <name>Gastroenterology</name>
+  <telecom>
     <system>phone</system>
     <value>+1 555 234 3523</value>
     <use>mobile</use>
-  </contact>
-  <contact>
+  </telecom>
+  <telecom>
     <system>email</system>
     <value>gastro@acme.org</value>
     <use>work</use>
-  </contact>
-	
+  </telecom>
+
   <relatedOrganization>
-    <code>  
+    <organization>
+      <type>Organization</type>
+      <id>1</id>
+      <display>ACME Healthcare, Inc</display>
+    </organization>
+    <type>
       <coding>
         <system>oid:2.16.840.1.113883.5.110</system>
         <code>TERR</code>
       </coding>
-    </code>
-    <name>Acme Hospital</name>
+    </type>
   </relatedOrganization>
-	
-	<text>
+
+  <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: <a href="mailto:gastro@acme.org">gastro@acme.org</a></p>
+      <p>Gastroenterology @ Acme Hospital. ph: +1 555 234 3523, email: <a
+          href="mailto:gastro@acme.org">gastro@acme.org</a></p>
     </div>
   </text>
 </Organization>
