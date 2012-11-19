@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Paul Knapp</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-19T18:20:14Z</LastSaved>
+  <LastSaved>2012-11-19T20:26:03Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -79,7 +79,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="17" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="17" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="163.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -92,8 +92,7 @@
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
-   <Column ss:Index="18" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="124.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="243"/>
+   <Column ss:Index="18" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="243"/>
    <Row ss:AutoFitHeight="0" ss:Height="29.25" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -111,7 +110,6 @@
     <Cell><Data ss:Type="String">v2 Mapping</Data></Cell>
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
-    <Cell ss:Index="18"><Data ss:Type="String">Vocab</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage</Data></Cell>
@@ -129,14 +127,14 @@
     <Cell><Data ss:Type="String">Coverage.issuer</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organisation)</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan issuer</Data></Cell>
     <Cell><Data ss:Type="String">The program or plan underwriter or payor.</Data></Cell>
     <Cell><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
-    <Cell ss:Index="19"><Data ss:Type="String">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;Organization xmlns=&quot;http://hl7.org/fhir&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://hl7.org/fhir ..\..\schema\Organization.xsd&quot;&gt;&#10;  &lt;identifier&gt; &#10;    &lt;identifier&gt;&#10;      &lt;system&gt;oid:2.16.840.1.113883.3.19.2.3&lt;/system&gt;&#10;      &lt;id&gt;666666&lt;/id&gt;&#10;    &lt;/identifier&gt;&#10;  &lt;/identifier&gt;&#10;  &lt;name&gt;&#10;    &lt;value&gt;XYZ Insurance&lt;/value&gt;&#10;  &lt;/name&gt;&#10;   &#10;  &lt;text&gt;&#10;    &lt;status&gt;generated&lt;/status&gt;&#10;    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&#10;      &lt;p&gt;XYZ Insurance&lt;/p&gt;&#10;    &lt;/div&gt;&#10;  &lt;/text&gt;&#10;&lt;/Organization&gt;</Data></Cell>
+    <Cell ss:Index="18"><Data ss:Type="String">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;Organization xmlns=&quot;http://hl7.org/fhir&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://hl7.org/fhir ..\..\schema\Organization.xsd&quot;&gt;&#10;  &lt;identifier&gt; &#10;    &lt;identifier&gt;&#10;      &lt;system&gt;oid:2.16.840.1.113883.3.19.2.3&lt;/system&gt;&#10;      &lt;id&gt;666666&lt;/id&gt;&#10;    &lt;/identifier&gt;&#10;  &lt;/identifier&gt;&#10;  &lt;name&gt;&#10;    &lt;value&gt;XYZ Insurance&lt;/value&gt;&#10;  &lt;/name&gt;&#10;   &#10;  &lt;text&gt;&#10;    &lt;status&gt;generated&lt;/status&gt;&#10;    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&#10;      &lt;p&gt;XYZ Insurance&lt;/p&gt;&#10;    &lt;/div&gt;&#10;  &lt;/text&gt;&#10;&lt;/Organization&gt;</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.date</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.period</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
@@ -148,10 +146,10 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Type of coverage</Data></Cell>
+    <Cell><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
+    <Cell><Data ss:Type="String">Type of coverage</Data></Cell>
     <Cell><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data></Cell>
     <Cell><Data ss:Type="String">The order of application of coverages is dependant on the types of coverage.</Data></Cell>
-    <Cell ss:Index="18"><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.identifier</Data></Cell>
@@ -233,10 +231,10 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
+    <Cell><Data ss:Type="String">CoverageRoleType</Data></Cell>
+    <Cell><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
     <Cell><Data ss:Type="String">Patient relationship to the PolicyHolder, for example: Self, spousal or equivalent, dependent, none.</Data></Cell>
     <Cell><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
-    <Cell ss:Index="18"><Data ss:Type="String">CoverageRoleType</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Coverage.extension</Data></Cell>
@@ -263,12 +261,10 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>22</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>3</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -305,7 +301,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Events">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="4" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="63.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="138" ss:Span="1"/>
@@ -321,21 +317,10 @@
     <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="110.25">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">admin-notify</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">(see Person)</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Patient Links cannot be updated using admin-notify. The links element must be empty</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">Patient</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">patient-link</Data></Cell>
-    <Cell><Data ss:Type="String">Notification that two patient records actually identify the same patient</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Patient, Patient</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">patient-unlink?</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">patient-unlink</Data></Cell>
-    <Cell><Data ss:Type="String">Notification that previous advice that two patient records concern the same patient is now considered incorrect</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Patient, Patient</Data></Cell>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -349,7 +334,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>1</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R2C1:R4C6</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -509,7 +494,7 @@
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="168.75"/>
    <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="63.75"/>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Element</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Card.</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Inv.</Data></Cell>
@@ -530,7 +515,7 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Vocab</Data></Cell>
     <Cell ss:Index="20" ss:StyleID="s69"><Data ss:Type="String">Example</Data></Cell>
    </Row>
-   <Row ss:Height="105">
+   <Row ss:AutoFitHeight="0" ss:Height="105">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.planHolder.language</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -544,10 +529,10 @@
     <Cell ss:Index="19"><Data ss:Type="String">Was inside the planHolder </Data></Cell>
     <Cell ss:Index="21"><Data ss:Type="String">&lt;language&gt;</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:Index="21"><Data ss:Type="String">   &lt;system&gt;http://hl7.org/vocab/v3/Language&lt;/system&gt;</Data></Cell>
    </Row>
-   <Row ss:Height="270">
+   <Row ss:AutoFitHeight="0" ss:Height="270">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.exception</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -568,7 +553,7 @@
     <Cell ss:StyleID="s62"/>
     <Cell ss:Index="21"><Data ss:Type="String">   &lt;code&gt;EN&lt;/code&gt;</Data></Cell>
    </Row>
-   <Row ss:Height="330">
+   <Row ss:AutoFitHeight="0" ss:Height="330">
     <Cell ss:StyleID="s63"><Data ss:Type="String">Coverage.authorization</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s62"/>
@@ -598,11 +583,12 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <TopRowVisible>4</TopRowVisible>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>11</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <RangeSelection>R5C1:R5C13</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
