@@ -2,12 +2,15 @@
 <Coverage xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\coverage.xsd">
 
  <issuer>
-    <system>oid:2.16.840.1.113883.3.19.2.3</system>
-    <id>666666</id>
- </issuer>
+  <type>Organization</type>
+  <id>2</id>
+</issuer>
  
- <issuerName>XYZ Insurance</issuerName>
- 
+ <period> 
+   <start>2011-05-23</start>
+   <end>2012-05-23</end>
+ </period>
+
  <type>
       <system>http://hl7.org/vocab/v3/ActCoverageTypeCode</system>
       <code>EHCPOL</code>

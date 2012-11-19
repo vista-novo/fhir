@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Paul Knapp</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-16T04:00:11Z</LastSaved>
+  <LastSaved>2012-11-19T18:20:14Z</LastSaved>
   <Version>12.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -79,13 +79,13 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="17" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="19" ss:ExpandedRowCount="17" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="163.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="25.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="36.75" ss:Span="1"/>
-   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="90.75"/>
+   <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="126.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
    <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
@@ -93,6 +93,7 @@
    <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
    <Column ss:Index="18" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="124.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="243"/>
    <Row ss:AutoFitHeight="0" ss:Height="29.25" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -120,7 +121,7 @@
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Insurance or medical plan</Data></Cell>
-    <Cell><Data ss:Type="String">Financial instrument which pays for health care</Data></Cell>
+    <Cell><Data ss:Type="String">Financial instrument by which payment information for health care</Data></Cell>
     <Cell><Data ss:Type="String">Health care programs and insurers are significant payors of health service costs</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Coverage</Data></Cell>
    </Row>
@@ -128,17 +129,19 @@
     <Cell><Data ss:Type="String">Coverage.issuer</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Resource(Organisation)</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan issuer</Data></Cell>
     <Cell><Data ss:Type="String">The program or plan underwriter or payor.</Data></Cell>
     <Cell><Data ss:Type="String">Need to identify the issuer to target for processing and for coordination of benefit processing.</Data></Cell>
+    <Cell ss:Index="19"><Data ss:Type="String">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;Organization xmlns=&quot;http://hl7.org/fhir&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://hl7.org/fhir ..\..\schema\Organization.xsd&quot;&gt;&#10;  &lt;identifier&gt; &#10;    &lt;identifier&gt;&#10;      &lt;system&gt;oid:2.16.840.1.113883.3.19.2.3&lt;/system&gt;&#10;      &lt;id&gt;666666&lt;/id&gt;&#10;    &lt;/identifier&gt;&#10;  &lt;/identifier&gt;&#10;  &lt;name&gt;&#10;    &lt;value&gt;XYZ Insurance&lt;/value&gt;&#10;  &lt;/name&gt;&#10;   &#10;  &lt;text&gt;&#10;    &lt;status&gt;generated&lt;/status&gt;&#10;    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&#10;      &lt;p&gt;XYZ Insurance&lt;/p&gt;&#10;    &lt;/div&gt;&#10;  &lt;/text&gt;&#10;&lt;/Organization&gt;</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.issuerName</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.date</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The name of the issuer.</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Coverage start and end dates</Data></Cell>
+    <Cell><Data ss:Type="String">Time period during which the coverage is in force. A msiing start date indicates the start date isn't know, a missing end date means the coverage is continuing to be in force.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.type</Data></Cell>
@@ -260,11 +263,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>12</TopRowVisible>
+   <TopRowVisible>9</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>23</ActiveRow>
+     <ActiveRow>22</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -424,14 +428,14 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The type of insurance: public health, worker compensation; private accident, auto, private health, etc.)</Data></Cell>
+    <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
-    <Cell ss:StyleID="s67"/>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">CoverageRoleType</Data></Cell>
+    <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship of the patient to the PolicyHolder, such as: Self, Spouse or equivalent, dependant, over age dependant, special needs dependant.</Data></Cell>
+    <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"/>
@@ -449,8 +453,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2C1:R4C3</RangeSelection>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -492,8 +496,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>9</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
