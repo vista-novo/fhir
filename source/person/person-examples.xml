@@ -7,7 +7,7 @@
 	<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml"/>
 	<entry>
 		<title>patient, female</title>
-		<link rel="self" href="http://www.hl7.org/fhir/patient-examples.xml#1"/>
+		<link rel="self" href="http://hl7.org/fhir/person/@1/history/@1"/>
 		<id>http://hl7.org/fhir/person/@1</id>
 		<updated>2012-05-29T23:45:32Z</updated>
 		<author>
