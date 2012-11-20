@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.formats;
   
 */
 
-// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
+// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
 
 import org.hl7.fhir.instance.model.*;
 import org.hl7.fhir.instance.model.Integer;
@@ -1037,8 +1037,8 @@ public class JsonComposer extends JsonComposerBase {
       };
       if (element.getName().size() > 0) {
         openArray("name");
-        for (Organization.Name e : element.getName()) 
-          composeOrganizationName(null, e);
+        for (String_ e : element.getName()) 
+          composeString_(null, e);
         closeArray();
       };
       if (element.getAddress().size() > 0) {
@@ -1047,13 +1047,14 @@ public class JsonComposer extends JsonComposerBase {
           composeAddress(null, e);
         closeArray();
       };
-      if (element.getContact().size() > 0) {
-        openArray("contact");
-        for (Contact e : element.getContact()) 
+      if (element.getTelecom().size() > 0) {
+        openArray("telecom");
+        for (Contact e : element.getTelecom()) 
           composeContact(null, e);
         closeArray();
       };
-      composeCodeableConcept("code", element.getCode());
+      composeCodeableConcept("type", element.getType());
+      composeCoding("status", element.getStatus());
       composeCodeableConcept("industryCode", element.getIndustryCode());
       if (element.getAccreditation().size() > 0) {
         openArray("accreditation");
@@ -1061,10 +1062,11 @@ public class JsonComposer extends JsonComposerBase {
           composeOrganizationAccreditation(null, e);
         closeArray();
       };
-      if (element.getRelatedOrganization().size() > 0) {
-        openArray("relatedOrganization");
-        for (Organization.RelatedOrganization e : element.getRelatedOrganization()) 
-          composeOrganizationRelatedOrganization(null, e);
+      composeOrganizationRelatedOrganization("relatedOrganization", element.getRelatedOrganization());
+      if (element.getContactPerson().size() > 0) {
+        openArray("contactPerson");
+        for (Organization.ContactPerson e : element.getContactPerson()) 
+          composeOrganizationContactPerson(null, e);
         closeArray();
       };
       if (element.getExtensions().size() > 0) {
@@ -1074,16 +1076,6 @@ public class JsonComposer extends JsonComposerBase {
         closeArray();
       };
       composeNarrative("text", element.getText());
-      close();
-    }
-  }
-
-  private void composeOrganizationName(String name, Organization.Name element) throws Exception {
-    if (element != null) {
-      open(name);
-      composeElementAttributes(element);
-      composeString_("value", element.getValue());
-      composePeriod("period", element.getPeriod());
       close();
     }
   }
@@ -1104,22 +1096,25 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeHumanId("identifier", element.getIdentifier());
-      composeCodeableConcept("code", element.getCode());
-      composeString_("name", element.getName());
-      if (element.getAddress().size() > 0) {
-        openArray("address");
-        for (Address e : element.getAddress()) 
-          composeAddress(null, e);
-        closeArray();
-      };
-      if (element.getContact().size() > 0) {
-        openArray("contact");
-        for (Contact e : element.getContact()) 
+      composeResourceReference("organization", element.getOrganization());
+      composeCodeableConcept("type", element.getType());
+      close();
+    }
+  }
+
+  private void composeOrganizationContactPerson(String name, Organization.ContactPerson element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeAddress("address", element.getAddress());
+      if (element.getTelecom().size() > 0) {
+        openArray("telecom");
+        for (Contact e : element.getTelecom()) 
           composeContact(null, e);
         closeArray();
       };
-      composePeriod("period", element.getPeriod());
+      composeHumanName("name", element.getName());
+      composeResourceReference("person", element.getPerson());
       close();
     }
   }
@@ -1447,7 +1442,8 @@ public class JsonComposer extends JsonComposerBase {
       composeElementAttributes(element);
       composeId("id", element.getId());
       composeString_("name", element.getName());
-      composeCode("severity", element.getSeverity());
+      if (element.getSeverity() != null)
+        composeString("severity", element.getSeverity().toCode());
       composeString_("human", element.getHuman());
       composeString_("xpath", element.getXpath());
       composeString_("ocl", element.getOcl());
@@ -1483,7 +1479,7 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeCode("code", element.getCode());
+      composeId("id", element.getId());
       if (element.getContextType() != null)
         composeString("contextType", element.getContextType().toCode());
       if (element.getContext().size() > 0) {
@@ -1620,6 +1616,42 @@ public class JsonComposer extends JsonComposerBase {
       if (element.getOp() != null)
         composeString("op", element.getOp().toCode());
       composeCode("value", element.getValue());
+      close();
+    }
+  }
+
+  private void composeCoverage(String name, Coverage element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeResourceReference("issuer", element.getIssuer());
+      composePeriod("period", element.getPeriod());
+      composeCoding("type", element.getType());
+      composeIdentifier("identifier", element.getIdentifier());
+      composeIdentifier("plan", element.getPlan());
+      composeIdentifier("subplan", element.getSubplan());
+      composeInteger("dependant", element.getDependant());
+      composeInteger("instance", element.getInstance());
+      composeCoveragePlanHolder("planHolder", element.getPlanHolder());
+      if (element.getExtensions().size() > 0) {
+        openArray("extension");
+        for (Extension e : element.getExtensions()) 
+          composeExtension(null, e);
+        closeArray();
+      };
+      composeNarrative("text", element.getText());
+      close();
+    }
+  }
+
+  private void composeCoveragePlanHolder(String name, Coverage.PlanHolder element) throws Exception {
+    if (element != null) {
+      open(name);
+      composeElementAttributes(element);
+      composeHumanName("name", element.getName());
+      composeAddress("address", element.getAddress());
+      composeDate("birthdate", element.getBirthdate());
+      composeCoding("relationship", element.getRelationship());
       close();
     }
   }
@@ -2179,10 +2211,10 @@ public class JsonComposer extends JsonComposerBase {
     if (element != null) {
       open(name);
       composeElementAttributes(element);
-      composeCodeableConcept("languageCode", element.getLanguageCode());
-      composeCodeableConcept("modeCode", element.getModeCode());
-      composeCodeableConcept("proficiencyLevelCode", element.getProficiencyLevelCode());
-      composeBoolean("preferenceInd", element.getPreferenceInd());
+      composeCodeableConcept("language", element.getLanguage());
+      composeCodeableConcept("mode", element.getMode());
+      composeCodeableConcept("proficiencyLevel", element.getProficiencyLevel());
+      composeBoolean("preference", element.getPreference());
       close();
     }
   }
@@ -2357,6 +2389,8 @@ public class JsonComposer extends JsonComposerBase {
       composeProfile("Profile", (Profile)resource);
     else if (resource instanceof ValueSet)
       composeValueSet("ValueSet", (ValueSet)resource);
+    else if (resource instanceof Coverage)
+      composeCoverage("Coverage", (Coverage)resource);
     else if (resource instanceof Problem)
       composeProblem("Problem", (Problem)resource);
     else if (resource instanceof Test)

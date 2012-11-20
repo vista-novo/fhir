@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
+// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -37,35 +37,6 @@ import java.util.*;
  * For any company/corporation/institution/government department that has relevance to the care process
  */
 public class Organization extends Resource {
-
-    public class Name extends Element {
-        /**
-         * The actual name of the organization
-         */
-        private String_ value;
-
-        /**
-         * The period that this name was in use by the organization
-         */
-        private Period period;
-
-        public String_ getValue() { 
-          return this.value;
-        }
-
-        public void setValue(String_ value) { 
-          this.value = value;
-        }
-
-        public Period getPeriod() { 
-          return this.period;
-        }
-
-        public void setPeriod(Period value) { 
-          this.period = value;
-        }
-
-    }
 
     public class Accreditation extends Element {
         /**
@@ -124,73 +95,80 @@ public class Organization extends Resource {
 
     public class RelatedOrganization extends Element {
         /**
-         * Identifier the related organization - may be a full link to an Organization resource, or some other kind of identifier
+         * The organization that is related to this organization
          */
-        private HumanId identifier;
+        private ResourceReference organization;
 
         /**
          * Code that specifies how this organization is related to the subject. A code is required.
          */
-        private CodeableConcept code;
+        private CodeableConcept type;
+
+        public ResourceReference getOrganization() { 
+          return this.organization;
+        }
+
+        public void setOrganization(ResourceReference value) { 
+          this.organization = value;
+        }
+
+        public CodeableConcept getType() { 
+          return this.type;
+        }
+
+        public void setType(CodeableConcept value) { 
+          this.type = value;
+        }
+
+    }
+
+    public class ContactPerson extends Element {
+        /**
+         * Address to use when contacting the contact person for this organization
+         */
+        private Address address;
 
         /**
-         * A name should be specified for the related organization
+         * Telecom details for the contact person at this organization
          */
-        private String_ name;
+        private List<Contact> telecom = new ArrayList<Contact>();
 
         /**
-         * Postal addresses may be provided for the related organization
+         * Name of the contact person
          */
-        private List<Address> address = new ArrayList<Address>();
+        private HumanName name;
 
         /**
-         * Contact details (phone, email etc) may be provided for the related organization
+         * Link to the actual person that is a contact person for the organization
          */
-        private List<Contact> contact = new ArrayList<Contact>();
+        private ResourceReference person;
 
-        /**
-         * The period during which the organizations were related in this fashion
-         */
-        private Period period;
-
-        public HumanId getIdentifier() { 
-          return this.identifier;
-        }
-
-        public void setIdentifier(HumanId value) { 
-          this.identifier = value;
-        }
-
-        public CodeableConcept getCode() { 
-          return this.code;
-        }
-
-        public void setCode(CodeableConcept value) { 
-          this.code = value;
-        }
-
-        public String_ getName() { 
-          return this.name;
-        }
-
-        public void setName(String_ value) { 
-          this.name = value;
-        }
-
-        public List<Address> getAddress() { 
+        public Address getAddress() { 
           return this.address;
         }
 
-        public List<Contact> getContact() { 
-          return this.contact;
+        public void setAddress(Address value) { 
+          this.address = value;
         }
 
-        public Period getPeriod() { 
-          return this.period;
+        public List<Contact> getTelecom() { 
+          return this.telecom;
         }
 
-        public void setPeriod(Period value) { 
-          this.period = value;
+        public HumanName getName() { 
+          return this.name;
+        }
+
+        public void setName(HumanName value) { 
+          this.name = value;
+        }
+
+        public ResourceReference getPerson() { 
+          return this.person;
+        }
+
+        public void setPerson(ResourceReference value) { 
+          this.person = value;
         }
 
     }
@@ -203,7 +181,7 @@ public class Organization extends Resource {
     /**
      * A name associated with the organization
      */
-    private List<Name> name = new ArrayList<Name>();
+    private List<String_> name = new ArrayList<String_>();
 
     /**
      * An address for the organization
@@ -213,12 +191,17 @@ public class Organization extends Resource {
     /**
      * A contact detail for the organization
      */
-    private List<Contact> contact = new ArrayList<Contact>();
+    private List<Contact> telecom = new ArrayList<Contact>();
 
     /**
      * The kind of organization that this is
      */
-    private CodeableConcept code;
+    private CodeableConcept type;
+
+    /**
+     * Indication of whether this organization's record is still active.
+     */
+    private Coding status;
 
     /**
      * The industry that this organization is involved in
@@ -233,13 +216,18 @@ public class Organization extends Resource {
     /**
      * Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)
      */
-    private List<RelatedOrganization> relatedOrganization = new ArrayList<RelatedOrganization>();
+    private RelatedOrganization relatedOrganization;
+
+    /**
+     * Contact details for a person acting as a contact for the organization
+     */
+    private List<ContactPerson> contactPerson = new ArrayList<ContactPerson>();
 
     public List<HumanId> getIdentifier() { 
       return this.identifier;
     }
 
-    public List<Name> getName() { 
+    public List<String_> getName() { 
       return this.name;
     }
 
@@ -247,16 +235,24 @@ public class Organization extends Resource {
       return this.address;
     }
 
-    public List<Contact> getContact() { 
-      return this.contact;
+    public List<Contact> getTelecom() { 
+      return this.telecom;
     }
 
-    public CodeableConcept getCode() { 
-      return this.code;
+    public CodeableConcept getType() { 
+      return this.type;
     }
 
-    public void setCode(CodeableConcept value) { 
-      this.code = value;
+    public void setType(CodeableConcept value) { 
+      this.type = value;
+    }
+
+    public Coding getStatus() { 
+      return this.status;
+    }
+
+    public void setStatus(Coding value) { 
+      this.status = value;
     }
 
     public CodeableConcept getIndustryCode() { 
@@ -271,8 +267,16 @@ public class Organization extends Resource {
       return this.accreditation;
     }
 
-    public List<RelatedOrganization> getRelatedOrganization() { 
+    public RelatedOrganization getRelatedOrganization() { 
       return this.relatedOrganization;
+    }
+
+    public void setRelatedOrganization(RelatedOrganization value) { 
+      this.relatedOrganization = value;
+    }
+
+    public List<ContactPerson> getContactPerson() { 
+      return this.contactPerson;
     }
 
 

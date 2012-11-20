@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
+// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -70,6 +70,27 @@ public class Profile extends Resource {
             case production: return "production";
             case withdrawn: return "withdrawn";
             case superseded: return "superseded";
+            default: return "?";
+          }
+        }
+    }
+
+    public enum ConstraintSeverity {
+        error, // If the constraint is violated, the resource is not conformant
+        warning; // If the constraint is violated, the resource is conformant, but it is not necessarily following best practice.
+        public static ConstraintSeverity fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("error".equals(codeString))
+          return error;
+        if ("warning".equals(codeString))
+          return warning;
+        throw new Exception("Unknown ConstraintSeverity code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case error: return "error";
+            case warning: return "warning";
             default: return "?";
           }
         }
@@ -704,7 +725,7 @@ public class Profile extends Resource {
         /**
          * Identifies the impact constraint violation has on the conformance of the instance.
          */
-        private Code severity;
+        private ConstraintSeverity severity;
 
         /**
          * This is the text that describes the constraint in messages identifying that the constraint has been violated 
@@ -737,11 +758,11 @@ public class Profile extends Resource {
           this.name = value;
         }
 
-        public Code getSeverity() { 
+        public ConstraintSeverity getSeverity() { 
           return this.severity;
         }
 
-        public void setSeverity(Code value) { 
+        public void setSeverity(ConstraintSeverity value) { 
           this.severity = value;
         }
 
@@ -859,7 +880,7 @@ public class Profile extends Resource {
         /**
          * A unique code (within the profile) used to identify the extension.
          */
-        private Code code;
+        private Id id;
 
         /**
          * Identifies the type of context to which the extension applies
@@ -876,12 +897,12 @@ public class Profile extends Resource {
          */
         private Definition definition;
 
-        public Code getCode() { 
-          return this.code;
+        public Id getId() { 
+          return this.id;
         }
 
-        public void setCode(Code value) { 
-          this.code = value;
+        public void setId(Id value) { 
+          this.id = value;
         }
 
         public ExtensionContext getContextType() { 

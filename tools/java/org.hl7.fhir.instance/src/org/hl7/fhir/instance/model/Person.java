@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Sat, Nov 17, 2012 08:35+1100 for FHIR v0.06
+// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -42,53 +42,53 @@ public class Person extends Resource {
         /**
          * The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. "en" for English, or "en-US" for American English versus "en-EN" for England English
          */
-        private CodeableConcept languageCode;
+        private CodeableConcept language;
 
         /**
          * A value representing the person's method of expression of this language. Examples: expressed spoken, expressed written, expressed signed, received spoken, received written, received signed
          */
-        private CodeableConcept modeCode;
+        private CodeableConcept mode;
 
         /**
          * A code that describes how well the language is spoken
          */
-        private CodeableConcept proficiencyLevelCode;
+        private CodeableConcept proficiencyLevel;
 
         /**
          * Indicates whether or not the Person prefers this language (over other languages he masters up a certain level)
          */
-        private Boolean preferenceInd;
+        private Boolean preference;
 
-        public CodeableConcept getLanguageCode() { 
-          return this.languageCode;
+        public CodeableConcept getLanguage() { 
+          return this.language;
         }
 
-        public void setLanguageCode(CodeableConcept value) { 
-          this.languageCode = value;
+        public void setLanguage(CodeableConcept value) { 
+          this.language = value;
         }
 
-        public CodeableConcept getModeCode() { 
-          return this.modeCode;
+        public CodeableConcept getMode() { 
+          return this.mode;
         }
 
-        public void setModeCode(CodeableConcept value) { 
-          this.modeCode = value;
+        public void setMode(CodeableConcept value) { 
+          this.mode = value;
         }
 
-        public CodeableConcept getProficiencyLevelCode() { 
-          return this.proficiencyLevelCode;
+        public CodeableConcept getProficiencyLevel() { 
+          return this.proficiencyLevel;
         }
 
-        public void setProficiencyLevelCode(CodeableConcept value) { 
-          this.proficiencyLevelCode = value;
+        public void setProficiencyLevel(CodeableConcept value) { 
+          this.proficiencyLevel = value;
         }
 
-        public Boolean getPreferenceInd() { 
-          return this.preferenceInd;
+        public Boolean getPreference() { 
+          return this.preference;
         }
 
-        public void setPreferenceInd(Boolean value) { 
-          this.preferenceInd = value;
+        public void setPreference(Boolean value) { 
+          this.preference = value;
         }
 
     }
@@ -124,7 +124,7 @@ public class Person extends Resource {
     private Boolean deceased;
 
     /**
-     * An address for the person
+     * One or more address for the person
      */
     private List<Address> address = new ArrayList<Address>();
 

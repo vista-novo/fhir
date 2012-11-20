@@ -154,7 +154,7 @@ public class ProfileGenerator {
 
   private org.hl7.fhir.instance.model.Profile.ExtensionDefn generateExtensionDefn(ExtensionDefn src, Profile p) throws Exception {
     org.hl7.fhir.instance.model.Profile.ExtensionDefn dst = p.new ExtensionDefn();
-    dst.setCode(Factory.newCode(src.getCode()));
+    dst.setId(Factory.newId(src.getCode()));
     dst.getContext().add(Factory.newString_(src.getContext()));
     dst.setContextType(convertContextType(src.getType()));
     
