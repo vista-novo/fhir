@@ -279,12 +279,19 @@ public class PageProcessor implements Logger  {
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txdef"))
+        src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String generateCodeDefinition(String name) {
+    BindingSpecification cd = definitions.getBindingByReference("#"+name);
+    return Utilities.escapeXml(cd.getDefinition());
   }
 
   private String generateCodeTable(String name) {

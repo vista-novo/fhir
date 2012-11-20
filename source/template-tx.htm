@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title><%title%> - FHIR v<%version%></title>
+    <title>Codes defined in <%txurl%> - FHIR v<%version%></title>
     <link rel="Stylesheet" href="fhir.css" type="text/css"/>
     <link rel="Stylesheet" href="fhir-print.css" type="text/css" media="print" />
 </head>
@@ -14,10 +14,14 @@
 
 <div class="content">
 <%pageheader%>
-<h1>Codes in <%txurl%></h1>
+<h1>Codes defined in <%txurl%></h1>
 
 <p>
-The following codes are defined in the system <%txurl%>:
+<%txdef%>
+</p>
+
+<p>
+The following codes are defined:
 </p>
 
 <%txsummary%>

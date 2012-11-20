@@ -104,7 +104,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
 			return;
 		
 		Collections.sort(cds, new MyCompare());
-		write("<p>\r\nTerminology Bindings\r\n</p>\r\n<ul>\r\n");
+		write("<p>\r\nTerminology Bindings\r\n</p>\r\n");
 		// 1. new form
     write("<table class=\"grid\">\r\n");
     write(" <tr><th>Path</th><th>Details</th><th>Strength</th></tr>\r\n");
@@ -132,27 +132,28 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     write("</table>\r\n");
 
 		// 2. old form
-		for (BindingSpecification cd : cds) {
-			String path;
-			List<CDUsage> list = txusages.get(cd);
-
-			if (list.size() == 2)
-				path = list.get(1).path+" has the definition ";
-			else {
-				path = list.get(1).path;
-				for (int i = 2; i < list.size() - 1; i++) {
-					path = path+", "+list.get(i).path;
-				}
-				path = path+" and "+list.get(list.size()-1).path+" share the definition ";
-			}
-	
-			genBinding(cd, path, list.get(1).element.typeCode().equals("code"));
-		}
-		write("</ul>\r\n");
+//    write("<ul>\r\n");
+//		for (BindingSpecification cd : cds) {
+//			String path;
+//			List<CDUsage> list = txusages.get(cd);
+//
+//			if (list.size() == 2)
+//				path = list.get(1).path+" has the definition ";
+//			else {
+//				path = list.get(1).path;
+//				for (int i = 2; i < list.size() - 1; i++) {
+//					path = path+", "+list.get(i).path;
+//				}
+//				path = path+" and "+list.get(list.size()-1).path+" share the definition ";
+//			}
+//	
+//			genBinding(cd, path, list.get(1).element.typeCode().equals("code"));
+//		}
+//		write("</ul>\r\n");
 		
 	}
 
-  private String describeBinding(BindingSpecification cd) {
+  private String describeBinding(BindingSpecification cd) throws Exception {
     if (cd.getBinding() == BindingSpecification.Binding.Unbound) 
       return cd.getDefinition()+" (not bound to any particular codes)";
     if (cd.getBinding() == BindingSpecification.Binding.Special) {
@@ -174,8 +175,16 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
       if (Utilities.noString(cd.getReference())) 
         return cd.getDefinition()+" ("+cd.getDescription()+")";
-      else
+      else {
+        String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
+        if (!new File(s).exists()) {
+          generateCodeSystem(s, cd);
+        }
         return cd.getDefinition()+" (see <a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> for values)";
+      }
+    }
+    if (cd.getBinding() == BindingSpecification.Binding.Reference) {
+      return "see <a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a>";
     }
     return "??";
   }

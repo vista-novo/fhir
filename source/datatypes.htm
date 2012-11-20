@@ -645,7 +645,7 @@ is that the low or high boundaries are not known and therefore neither is the ra
 <p>
 The <i>range</i> flag on the <i>low</i> or <i>high</i> elements cannot be present. Note that the Range type should not be 
 used to represent measurements where the range flag might be used instead.
-</p>♠s
+</p>
 <p>
 The low and the high values are inclusive, and are assumed to have arbitrarily high precision. E.g. the range 1.5 to 2.5 
 includes 1.50, and 2.50 but not 1.49 or 2.51.
@@ -1066,6 +1066,7 @@ the Schedule will terminate on some criteria that are expressed elsewhere.
 <p>
 Note that the end date is inclusive like the high date of a Period.
 </p>
+</div>
 
 <a name="other"> </a>
 <h2>Other Types</h2>
@@ -1077,9 +1078,8 @@ The following types are defined as part of the data types, but are documented el
  <li><b><a href="xml.htm#metadata">Resource</a></b> - The conceptual base class for all resources</li>
  <li><b><a href="xml.thm#Resource">ResourceReference</a></b> - for references from one resource to another</li>
  <li><b><a href="extensibility.htm">Extension</a></b> - used to convey additional data in a resource</li>
- <li><b><a href="xml.htm#Narrative"></a></b> - Conveys a human readable representation of the content of a resource</li>
+ <li><b><a href="xml.htm#Narrative">Narrative</a></b> - Conveys a human readable representation of the content of a resource</li>
 </ul>
-</div>
 
 [%footer%]
 
