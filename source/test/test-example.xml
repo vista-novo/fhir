@@ -4,7 +4,7 @@
   editing the resource much easier, and it will get stripped out during the build process
 -->
 <Test xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\test.xsd">
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/test.xsd">
   <stringCorr>nice</stringCorr>
   <stringCorr id="09az">nice</stringCorr>
   <booleanCorr>false</booleanCorr>
