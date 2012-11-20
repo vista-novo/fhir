@@ -318,7 +318,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
           jar.putNextEntry(entry);
           jar.closeEntry();
         }
-      }
+      } 
       for (File f: file.listFiles())
         if (f.getName().endsWith(".class") || f.getName().endsWith(".jar") || f.isDirectory())
           AddToJar(jar, f, rootLen, names);    

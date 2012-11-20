@@ -10,11 +10,9 @@
      <given>D</given>
   </name>
   <gender>
-    <coding>
-      <system>http://hl7.org/fhir/sid/v2-0001</system>
-      <code>M</code>
-      <display>Male</display>
-    </coding>
+    <system>http://hl7.org/fhir/sid/v2-0001</system>
+    <code>M</code>
+    <display>Male</display>
   </gender>
  	
 	<text>
