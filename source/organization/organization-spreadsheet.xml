@@ -9,17 +9,18 @@
   <Author>Grahame</Author>
   <LastAuthor>Ewout Kramer</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-11-19T14:52:51Z</LastSaved>
+  <LastSaved>2012-11-19T22:59:43Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
-  <WindowHeight>6345</WindowHeight>
-  <WindowWidth>17490</WindowWidth>
+  <WindowHeight>6348</WindowHeight>
+  <WindowWidth>17496</WindowWidth>
   <WindowTopX>5520</WindowTopX>
-  <WindowTopY>6075</WindowTopY>
+  <WindowTopY>6072</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -85,19 +86,20 @@
  <Worksheet ss:Name="Data Elements">
   <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="24" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.25"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25" ss:Span="1"/>
-   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.25"
+   <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="197.4"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.4" ss:Span="1"/>
+   <Column ss:Index="4" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="35.4"
     ss:Span="1"/>
    <Column ss:Index="6" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="93"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.75" ss:Span="1"/>
-   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.25"
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.8"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="213.60000000000002"
+    ss:Span="1"/>
+   <Column ss:Index="10" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="161.4"
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="175.5"/>
-   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="121.5"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="175.8"/>
+   <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="121.8"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -178,31 +180,20 @@
     <Cell><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data></Cell>
     <Cell><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data></Cell>
     <Cell><Data ss:Type="String">.code</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s66"><Data ss:Type="String">Is &quot;clinical team&quot; an organization or a group? Do we require some more static or legal aspect for something to be an organization? Need clarity on this. All examples mentioned here cannot be found in the suggested binding to v3 Entity Code.</Data></Cell>
-    <Cell><Data ss:Type="String">Renamed from &quot;code&quot; since that is a technical detail, it is the &quot;type&quot; of organization we are interested in.</Data></Cell>
+    <Cell ss:Index="14" ss:StyleID="s66"/>
+    <Cell><Data ss:Type="String">Renamed from &quot;code&quot; since that is a technical detail, it is the &quot;type&quot; of organization we are interested in &#45;&#45;- All examples mentioned here cannot be found in the suggested binding to v3 Entity Code.</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="129.5625">
+   <Row ss:AutoFitHeight="0" ss:Height="129.44999999999999">
     <Cell><Data ss:Type="String">Organization.status</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">RecordStatus</Data></Cell>
     <Cell><Data ss:Type="String">the status of this organization's record</Data></Cell>
     <Cell><Data ss:Type="String">Indication of whether this organization's record is still active.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;active&quot;.</Data></Cell>
     <Cell><Data ss:Type="String">.status</Data></Cell>
     <Cell ss:Index="14" ss:StyleID="s66"><Data ss:Type="String">This isn't data we record about an organization but is data about this organization's record. I would argue about including this metadata here. It also implies effects on functionality, like not showing up in queries anymore, which cannot be guaranteed. All in all, this belongs to record infrastructure, not data</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Organization.industryCode</Data></Cell>
-    <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">Industry</Data></Cell>
-    <Cell><Data ss:Type="String">kind of industry</Data></Cell>
-    <Cell><Data ss:Type="String">The industry that this organization is involved in</Data></Cell>
-    <Cell><Data ss:Type="String">For some organization types, an industry code is required for statistical reporting requirements</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.standardIndustryClassCode</Data></Cell>
-    <Cell ss:Index="14" ss:StyleID="s66"><Data ss:Type="String">Is this really in the 80%??</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.accreditation</Data></Cell>
@@ -269,10 +260,10 @@
     <Cell><Data ss:Type="String">The organization that is related to this organization</Data></Cell>
     <Cell><Data ss:Type="String">Need to know to which organization a relationship exists</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="158.4375">
+   <Row ss:AutoFitHeight="0" ss:Height="158.55000000000001">
     <Cell><Data ss:Type="String">Organization.relatedOrganization.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
     <Cell><Data ss:Type="String">OrganizationRelationship</Data></Cell>
     <Cell><Data ss:Type="String">How the organizations are related</Data></Cell>
     <Cell><Data ss:Type="String">Code that specifies how this organization is related to the subject. A code is required.</Data></Cell>
@@ -286,6 +277,15 @@
     <Cell><Data ss:Type="String">Contact details for a person acting as a contact for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Apart from the address/contact of the organization itself, systems need to track which persons are acting as contact persons</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.contactParty</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30">
+    <Cell><Data ss:Type="String">Organization.contactPerson.type</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">ContactPersonType</Data></Cell>
+    <Cell><Data ss:Type="String">The type of contact person</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Indicates a purpose for which the person can be contacted.</Data></Cell>
+    <Cell><Data ss:Type="String">Need to distinguish between multiple contact persons.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.contactPerson.address</Data></Cell>
@@ -330,7 +330,7 @@
     <Cell ss:Index="8"><Data ss:Type="String">See Extensions</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">[varies]</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="28.6875">
+   <Row ss:AutoFitHeight="0" ss:Height="28.8">
     <Cell><Data ss:Type="String">Organization.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Narrative</Data></Cell>
@@ -345,8 +345,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
-   <TopRowVisible>12</TopRowVisible>
+   <TopRowVisible>16</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -360,9 +359,10 @@
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="111.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="105.75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="175.5"/>
+   <Column ss:Index="2" ss:StyleID="s67" ss:AutoFitWidth="0"
+    ss:Width="111.60000000000001"/>
+   <Column ss:StyleID="s67" ss:Width="129.6"/>
+   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="175.8"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -374,7 +374,8 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="Number">1</Data></Cell>
     <Cell><Data ss:Type="String">NameOrPersonRef</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">Either supply a name for a contactperson or a reference to a Person resource</Data></Cell>
+    <Cell><Data ss:Type="String">Organization.contactPerson</Data></Cell>
+    <Cell><Data ss:Type="String">Either supply a name for a contactperson or a reference to a Person resource</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -384,11 +385,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>6</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -398,9 +400,9 @@
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="93.75" ss:Span="1"/>
-   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.25"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.599999999999994"/>
+   <Column ss:AutoFitWidth="0" ss:Width="93.600000000000009" ss:Span="1"/>
+   <Column ss:Index="4" ss:AutoFitWidth="0" ss:Width="101.4"/>
    <Column ss:AutoFitWidth="0" ss:Width="111"/>
    <Column ss:AutoFitWidth="0" ss:Width="69"/>
    <Row ss:AutoFitHeight="0" ss:Height="22.5">
@@ -439,8 +441,8 @@
  <Worksheet ss:Name="Search">
   <Table ss:ExpandedColumnCount="4" ss:ExpandedRowCount="11" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="70.5"/>
-   <Column ss:AutoFitWidth="0" ss:Width="382.5"/>
+   <Column ss:AutoFitWidth="0" ss:Width="70.8"/>
+   <Column ss:AutoFitWidth="0" ss:Width="382.79999999999995"/>
    <Row ss:AutoFitHeight="0" ss:Height="16.5" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">Description</Data></Cell>
@@ -522,12 +524,12 @@
  <Worksheet ss:Name="Bindings">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s69" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.5"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.25"/>
-   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.25"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="130.80000000000001"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="294.60000000000002"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="65.400000000000006"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="84.600000000000009"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="89.4"/>
+   <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="287.39999999999998"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -544,21 +546,16 @@
     <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">SNOMED-CT Organization codes and the HL7 v3 Entity Code table</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Industry</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Code for the type of industry</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s68"><Data ss:Type="String">HL7 v3 OrganizationIndustryClass value set</Data></Cell>
-   </Row>
-   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s68"><Data ss:Type="String">OrganizationAccreditation</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">Accreditations an organization may be granted</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s68"><Data ss:Type="String">OrganizationRelationship</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">The relationship an organization has to the subject, including sub and super organizations, and other kind of relationships such as partner organisations</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The nature of the relationship between the organization and the related organization.</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">value set</Data></Cell>
+    <Cell><Data ss:Type="String">preferred</Data></Cell>
+    <Cell><Data ss:Type="String">#org-relationship-type</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RecordStatus</Data></Cell>
@@ -566,6 +563,11 @@
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#record-status</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">ContactPersonType</Data></Cell>
+    <Cell><Data ss:Type="String">The purpose for which you would contact a contact person</Data></Cell>
+    <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -578,7 +580,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>4</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -588,10 +591,10 @@
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="69.599999999999994"/>
    <Column ss:AutoFitWidth="0" ss:Width="141"/>
-   <Column ss:AutoFitWidth="0" ss:Width="59.25"/>
-   <Column ss:AutoFitWidth="0" ss:Width="330.75"/>
+   <Column ss:AutoFitWidth="0" ss:Width="59.4"/>
+   <Column ss:AutoFitWidth="0" ss:Width="330.6"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s70"><Data ss:Type="String">Name</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Description</Data></Cell>
@@ -649,8 +652,8 @@
  </Worksheet>
  <Worksheet ss:Name="record-status">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
-   x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="76.5"/>
+   x:FullRows="1" ss:DefaultRowHeight="14.55">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="76.8"/>
    <Column ss:Width="333"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s70"><Data ss:Type="String">Code</Data></Cell>
@@ -662,13 +665,11 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">active</Data></Cell>
-    <Cell><Data ss:Type="String">Active</Data></Cell>
-    <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently active.</Data></Cell>
+    <Cell><Data ss:Type="String">Active. The state representing the fact that the Entity record is currently active.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">inactive</Data></Cell>
-    <Cell><Data ss:Type="String">Inactive</Data></Cell>
-    <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently inactive.</Data></Cell>
+    <Cell><Data ss:Type="String">Inactive. The state representing the fact that the Entity record is currently inactive.</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -687,8 +688,54 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>6</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="org-relationship-type">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="14.55">
+   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="127.8"/>
+   <Column ss:Width="333"/>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+    <Cell ss:StyleID="s70"/>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">parent</Data></Cell>
+    <Cell><Data ss:Type="String">The organization is a parent for the related organization</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">child</Data></Cell>
+    <Cell><Data ss:Type="String">The organization is a child of the related organization</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Unsynced/>
+   <Print>
+    <ValidPrinterInfo/>
+    <PaperSizeIndex>9</PaperSizeIndex>
+    <HorizontalResolution>-3</HorizontalResolution>
+    <VerticalResolution>0</VerticalResolution>
+   </Print>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

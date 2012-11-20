@@ -1,5 +1,9 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- content goes here -->
-
+Ballot note: The Person resource does justice to Person registries that keep track of Persons regardless 
+of their role. The Person resource is also a primary resource to point to for people acting in a particular role
+such as SubjectofCare (formerly Patient), Provider, and Agent. Very few attributes are specific to any role and
+so Person is kept lean. Most attributes are expected to be tied to the role the Person plays rather than the 
+Person himself. Examples of that are Guardian (SubjectofCare), ContactParty (SubjectOfCare, Provider), 
+and multipleBirthInd (SubjectofCare).
 </div>

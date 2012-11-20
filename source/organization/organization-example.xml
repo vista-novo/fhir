@@ -28,10 +28,8 @@
       <display>ACME Healthcare, Inc</display>
     </organization>
     <type>
-      <coding>
-        <system>oid:2.16.840.1.113883.5.110</system>
-        <code>TERR</code>
-      </coding>
+		<system>oid:2.16.840.1.113883.5.110</system>
+		<code>TERR</code>
     </type>
   </relatedOrganization>
 
