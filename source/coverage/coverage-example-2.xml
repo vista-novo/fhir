@@ -7,8 +7,8 @@
 </issuer>
  
  <period> 
-   <start>2011-05-23</start>
-   <end>2012-05-23</end>
+   <start>2011-03-17</start>
+   <end>2012-03-17</end>
  </period>
 
  <type>
@@ -19,29 +19,27 @@
  
  <identifier>
     <system>http://xyz.com/codes/identifier</system>
-    <id>12345</id>
+    <id>AB9876</id>
  </identifier>
  
  <plan>
     <system>http://xyz.com/codes/plan</system>
-    <id>CBI35</id>
+    <id>11024</id>
  </plan>
  
  <subplan>
     <system>http://xyz.com/codes/subplan</system>
-    <id>123</id>
+    <id>D15C9</id>
  </subplan>
  
- <dependant>0</dependant>
- 
- <sequence>1</sequence>
- 
+ <dependant>1</dependant>
+  
  <planHolder>
 	<name>
 	<use>official</use>
 	 <family>Seebetter</family>
-	 <given>Wanda</given>
-	 <given>L</given>
+	 <given>Frank</given>
+	 <given>I</given>
 	</name>
 
 	<address>
@@ -53,7 +51,7 @@
 	 <country>CANADA</country>
 	</address>
 
-	<birthdate>1955-01-01</birthdate>
+	<birthdate>1952-06-26</birthdate>
 
   </planHolder>
   

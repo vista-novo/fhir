@@ -79,7 +79,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="17" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="18" ss:ExpandedRowCount="16" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="163.5"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="56.25"/>
@@ -186,12 +186,12 @@
     <Cell><Data ss:Type="String">For some coverage a single identifier is issued to the PolicyHolder and dependant number issues to each to each of their dependants to track and manage the plan.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
-    <Cell><Data ss:Type="String">Coverage.instance</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.sequence</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The instance counter</Data></Cell>
-    <Cell><Data ss:Type="String">An optional counter for a particilar instance of the identified coverage which increments upon each renewal.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The plan instance or sequence counter</Data></Cell>
+    <Cell><Data ss:Type="String">An optional counter for a particular instance of the identified coverage which increments upon each renewal.</Data></Cell>
     <Cell><Data ss:Type="String">Some coverage, for example social plans, may be offered in short time increments, for example for a week or a month at a time, so while the rest of the plan details and identifiers may remain constant over time, the instance is incremented with each renewal and provided to the covered party on their 'card'.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
@@ -226,16 +226,6 @@
     <Cell><Data ss:Type="String">The date of birth of the PolicyHolder</Data></Cell>
     <Cell><Data ss:Type="String">Used to validate coverage</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">Coverage.planHolder.relationship</Data></Cell>
-    <Cell><Data ss:Type="String">1..1</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">Coding</Data></Cell>
-    <Cell><Data ss:Type="String">CoverageRoleType</Data></Cell>
-    <Cell><Data ss:Type="String">Patient relationship to PolicyHolder</Data></Cell>
-    <Cell><Data ss:Type="String">Patient relationship to the PolicyHolder, for example: Self, spousal or equivalent, dependent, none.</Data></Cell>
-    <Cell><Data ss:Type="String">The order of application of coverages is dependant on the relationship of the patient to the PolicyHolder.</Data></Cell>
-   </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Coverage.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
@@ -261,10 +251,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
+   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>16</ActiveRow>
+     <ActiveCol>2</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -418,9 +410,8 @@
     <Cell><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s62"><Data ss:Type="String">CoverageRoleType</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship of the patient to the PolicyHolder, such as: Self, Spouse or equivalent, dependant, over age dependant, special needs dependant.</Data></Cell>
-    <Cell><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s62"/>
+    <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s67"/>
@@ -438,8 +429,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>8</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <RangeSelection>R3C1:R3C3</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -447,7 +438,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Examples">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:AutoFitWidth="0" ss:Width="150"/>
    <Column ss:AutoFitWidth="0" ss:Width="247.5"/>
@@ -464,10 +455,17 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">In Book</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">General</Data></Cell>
-    <Cell><Data ss:Type="String">General Person Example</Data></Cell>
+    <Cell><Data ss:Type="String">General-Primary</Data></Cell>
+    <Cell><Data ss:Type="String">General Person Primary Cooverage Example</Data></Cell>
     <Cell><Data ss:Type="String">9876B1</Data></Cell>
     <Cell><Data ss:Type="String">coverage-example.xml</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">General-Secondary</Data></Cell>
+    <Cell><Data ss:Type="String">General Person Seconday Coverage Example</Data></Cell>
+    <Cell><Data ss:Type="String">7546D</Data></Cell>
+    <Cell><Data ss:Type="String">coverage-example-2.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
    </Row>
   </Table>
@@ -481,8 +479,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>9</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
