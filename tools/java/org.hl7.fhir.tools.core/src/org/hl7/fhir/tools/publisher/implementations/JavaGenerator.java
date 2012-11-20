@@ -230,7 +230,7 @@ public class JavaGenerator extends BaseGenerator implements PlatformGenerator {
     StringBuilder path= new StringBuilder();
     path.append(System.getProperty("java.class.path"));
     for (String n : new File(rootDir+sc+"tools"+sc+"java"+sc+"imports").list()) {
-      path.append(";"+rootDir+"tools"+sc+"java"+sc+"imports"+sc+n);
+      path.append(File.pathSeparator+rootDir+"tools"+sc+"java"+sc+"imports"+sc+n);
     }
   //  path.append(";"+rootDir+sc+"implementations"+sc+"java"+sc+"org.hl7.fhir.instance"+sc+"bin"+sc+"org"+sc+"hl7"+sc+"fhir"+sc+"instance"+sc+"model");
     options.addAll(Arrays.asList("-classpath",path.toString()));
