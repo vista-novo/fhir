@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir file:///C:/workspace/projects/org.hl7.fhir/schema/person.xsd">
+<Person xmlns="http://hl7.org/fhir" xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/person.xsd">
   <name>
     <family>Doe</family>
     <given>John</given>

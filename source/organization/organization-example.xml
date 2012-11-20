@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Organization xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Organization.xsd">
+  xsi:schemaLocation="http://hl7.org/fhir ../../schema/organization.xsd">
 
   <!-- Clinical Team "Gastroenterology" at Acme Hospital -->
   <identifier>
@@ -28,8 +28,10 @@
       <display>ACME Healthcare, Inc</display>
     </organization>
     <type>
-		<system>oid:2.16.840.1.113883.5.110</system>
-		<code>TERR</code>
+      <coding>
+        <system>oid:2.16.840.1.113883.5.110</system>
+        <code>TERR</code>
+      </coding>
     </type>
   </relatedOrganization>
 
