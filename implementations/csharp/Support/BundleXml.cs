@@ -114,14 +114,12 @@ namespace HL7.Fhir.Instance.Support
 
                     if (id != null) errors.DefaultContext = String.Format("Entry '{0}'", id);
 
-                    XAttribute eTag = deletedExtension.Attribute(XName.Get(ETAG_LABEL, GDATA_NAMESPACE));
                     XAttribute when = deletedExtension.Attribute(XATOM_DELETED_WHEN);
 
                     XElement self = deletedExtension.Elements(XName.Get(XATOM_LINK,ATOMPUBNS))
                         .Where(el => el.Attribute(XATOM_LINK_REL) != null &&
                                     el.Attribute(XATOM_LINK_REL).Value == XATOM_LINK_SELF).FirstOrDefault();
    
-                    if (eTag != null) de.VersionId = eTag.Value;
                     if (when != null) de.When = Instant.Parse(when.Value).Contents.Value;
                     if (id != null) de.Id = new Uri(id.Value, UriKind.Absolute);
                     if (self != null && self.Attribute(XATOM_LINK_HREF) != null ) 
@@ -156,8 +154,6 @@ namespace HL7.Fhir.Instance.Support
                     else
                         result = new ResourceEntry();
 
-                    result.VersionId = item.AttributeExtensions.ContainsKey(ETAG) ?
-                                item.AttributeExtensions[ETAG] : null;
                     result.Title = item.Title != null && !String.IsNullOrWhiteSpace(item.Title.Text) ?
                                     item.Title.Text : null;
                     result.SelfLink = getSelfLink(item.Links);
@@ -290,9 +286,6 @@ namespace HL7.Fhir.Instance.Support
 
                 if (ce.Summary != null)
                     newItem.Summary = SyndicationContent.CreateXhtmlContent(ce.Summary);
-
-                if (entry.VersionId != null)
-                    newItem.AttributeExtensions.Add(ETAG, entry.VersionId);
 
                 if (entry is ResourceEntry)
                 {

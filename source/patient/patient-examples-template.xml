@@ -9,8 +9,8 @@
 [%loop%]
   <entry>
     <title>patient [%count%]</title>
-    <link href="http://www.hl7.org/fhir/patient-examples.xml#[%count%]" rel="self"/>
-    <id>[%patient%]</id>
+    <link href="http://hl7.org/fhir/patient/@[%patient%]/history/@1" rel="self"/>
+    <id>http://hl7.org/fhir/patient/@[%patient%]</id>
     <updated>2012-06-03T23:45:32Z</updated>
     <author>
       <name>Grahame Grieve / HL7 publishing committee</name>

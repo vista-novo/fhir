@@ -79,19 +79,15 @@ namespace HL7.Fhir.Instance.Support
             return errors;
         }
 
-        private const string GDATA_NAMESPACE = "http://schemas.google.com/g/2005";
         public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/sid/fhir/resource-types";
         public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
         public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
-        private const string ETAG_LABEL = "etag";
-        private readonly XmlQualifiedName ETAG = new XmlQualifiedName(ETAG_LABEL, GDATA_NAMESPACE);
     }
 
 
     public abstract class BundleEntry
     {
         public Uri SelfLink { get; set; }
-        public string VersionId { get; set; }
         public Uri Id { get; set; }
 
         public virtual ErrorList Validate()
@@ -200,13 +196,11 @@ namespace HL7.Fhir.Instance.Support
             get
             {
                 return _content;
-
             }
 
             set
             {
                 _content = value;
-
                 ResourceType = ModelInfo.FhirCsTypeToString[_content.GetType()];
             }
  

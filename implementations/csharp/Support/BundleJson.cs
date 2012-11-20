@@ -133,8 +133,6 @@ namespace HL7.Fhir.Instance.Support
                     else
                         result = new ResourceEntry();
                    
-                    result.VersionId = item.Value<string>(JATOM_VERSION) != null ?
-                                         item.Value<string>(JATOM_VERSION) : null;
                     result.SelfLink = new Uri(getSelfLink(item[JATOM_LINK]),UriKind.Absolute);
                     result.Id = new Uri(id, UriKind.Absolute);
                     
@@ -288,9 +286,6 @@ namespace HL7.Fhir.Instance.Support
 
                 if (entry.Summary != null)
                     newItem.Add(new JProperty(JATOM_SUMMARY, entry.Summary));
-
-                if (entry.VersionId != null)
-                    newItem.Add(new JProperty(JATOM_VERSION, entry.VersionId));
 
                 if(entry is ResourceEntry)
                 {

@@ -284,8 +284,8 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestCompositeWithPolymorphicElement()
         {
-            string xmlString = @"<extension xmlns='http://hl7.org/fhir'><code>name-qualifier</code>" +
-                "<profile>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090</profile>" +
+            string xmlString = @"<extension xmlns='http://hl7.org/fhir'>" +
+                "<url>http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier</url>" +
                 "<ref>n1</ref><valueCode>MID</valueCode></extension>";
 
             XmlReader xr = fromString(xmlString); xr.Read();
@@ -297,8 +297,8 @@ namespace HL7.Fhir.Instance.Tests
             Assert.AreEqual(typeof(Code), result.Value.GetType());
 
 
-            string jsonString = "{ \"extension\" : { \"code\" : \"name-qualifier\", " +
-                   "\"profile\":\"http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090\", " +
+            string jsonString = "{ \"extension\" : { " +
+                   "\"url\":\"http://hl7connect.healthintersections.com.au/svc/fhir/profile/@iso-21090#name-qualifier\", " +
                    "\"ref\":\"n1\", \"valueCode\" : \"MID\" } }";
 
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
@@ -348,18 +348,11 @@ namespace HL7.Fhir.Instance.Tests
 @"<Person xmlns='http://hl7.org/fhir'>
     <name>
       <use>official</use>  
-      <part id='n1'>
-        <type>prefix</type>
-        <value>Dr. phil..</value>
-      </part>
-      <part>
-        <type>given</type>
-        <value>Regina</value>
-      </part>
+      <given>Regina</given>
+      <prefix id='n1'>Dr.</prefix>
     </name>
     <extension>
-      <code>name-qualifier</code>
-      <profile>http://hl7.org/fhir/profile/@iso-20190</profile>
+      <url>http://hl7.org/fhir/profile/@iso-20190</url>
       <ref>n1</ref>
       <valueCoding>
         <system>oid:2.16.840.1.113883.5.1122</system>       

@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -525,6 +526,7 @@ public class Publisher {
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
 		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
+		profileFeed.setUpdated(Calendar.getInstance());
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
       logNoEoln("#");
 			produceResource(n);

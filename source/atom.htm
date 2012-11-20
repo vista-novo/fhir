@@ -132,13 +132,14 @@ The summary should be some equivalent to "Binary Resource" in an appropriate lan
 <p>
 Readers of the resources bundles should always look through the resources in the 
 atom feed when a <a href="xml.htm#Resource">resource reference</a> is encountered. 
-The resource reference may have the resource type and a relative url, which is the id of the target, like this:
+The resource reference may have the resource type and a relative url, 
+which is the id of the target, like this:
 </p>
 <div class="example">
 <pre class="xml">
   &lt;institution&gt;
     &lt;type&gt;Organization&lt;/type&gt;
-    &lt;id&gt;1145c09c-73d0-4297-9835-620e4afa9deb&lt;/id&gt;
+    &lt;id&gt;23&lt;/id&gt;
   &lt;/institution&gt;
 </pre>
 </div>
@@ -153,13 +154,12 @@ it would look like this:
    .. feed ..
   &lt;entry>
     .. 
-    &lt;id>1145c09c-73d0-4297-9835-620e4afa9deb&lt;id>
+    &lt;id>http://acme.com/fhir/organization/@23&lt;id>
     .. 
     &lt;category term="Organization" scheme="http://hl7.org/fhir/resource-types"/>
 
     &lt;content type="text/xml">
       &lt;Organization xmlns="http://hl7.org/fhir">
-         &lt;id&gt;1145c09c-73d0-4297-9835-620e4afa9deb&lt;/id&gt;
          &lt;!-- other Content for the resource --&gt;
       &lt;/Organization>
     &lt;/content>
@@ -167,8 +167,8 @@ it would look like this:
 </pre>
 </div>
 <p>
-It would also be possible to locate the resouce by an absolute url. In this case, the <i>id</i> 
-element contains a reference to the location of the resource:
+It would also be possible to locate the resouce by an absolute url. In this case, 
+the <i>id</i> element contains a reference to the location of the resource:
 </p>
 <div class="example">
 <pre class="xml">
@@ -178,30 +178,7 @@ element contains a reference to the location of the resource:
   &lt;/institution&gt;
 </pre>
 </div>
-<p>
-A reader trying to find this institution should always look through the entries in 
-the atom feed prior to looking anywhere else for the institution. If that 
-organization is in the feed, it would look like this:
-</p>
-<div class="example">
-<pre class="xml">
-   .. feed ..
-  &lt;entry>
-    .. 
-    &lt;link rel="self" href="http://acme.com/fhir/organization/@23"/&gt;
-    &lt;id>23&lt;id>
-    .. 
-    &lt;category term="Organization" scheme="http://hl7.org/fhir/resource-types"/>
 
-    &lt;content type="text/xml">
-      &lt;Organization xmlns="http://hl7.org/fhir">
-         &lt;id&gt;23&lt;/id&gt;
-         &lt;!-- other Content for the resource --&gt;
-      &lt;/Patient>
-    &lt;/content>
-  ... feed ...
-</pre>
-</div>
 <p>
 If there is no resource in the atom feed with an appropriate URL, then 
 the application may try accessing the provided URL directly or use some 
