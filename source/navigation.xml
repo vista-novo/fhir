@@ -101,6 +101,14 @@
         <name>Terminology Bindings</name>
       </entry>
       <entry>
+        <link>terminologies-codes</link>
+        <name>Terminology Code Namespaces</name>
+      </entry>
+      <entry>
+        <link>[codes]</link>
+        <name>CodesList</name>
+      </entry>
+      <entry>
         <link>xml-definitions</link>
         <name>XML</name>
       </entry> 

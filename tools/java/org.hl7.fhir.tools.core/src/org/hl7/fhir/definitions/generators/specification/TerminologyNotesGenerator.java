@@ -175,13 +175,8 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     if (cd.getBinding() == BindingSpecification.Binding.CodeList) {
       if (Utilities.noString(cd.getReference())) 
         return cd.getDefinition()+" ("+cd.getDescription()+")";
-      else {
-        String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
-        if (!new File(s).exists()) {
-          generateCodeSystem(s, cd);
-        }
+      else 
         return cd.getDefinition()+" (see <a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a> for values)";
-      }
     }
     if (cd.getBinding() == BindingSpecification.Binding.Reference) {
       return "see <a href=\""+cd.getReference()+"\">"+cd.getDescription()+"</a>";
@@ -201,10 +196,6 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
         //					if (!sids.contains(sid))
         //						sids.put(sid, new DefinedCode())
         sid = " system "+sid+"";
-        String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
-        if (!new File(s).exists()) {
-          generateCodeSystem(s, cd);
-        }
         if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Suggested))
           write("  <li>"+path+" <i>"+Utilities.escapeXml(cd.getName())+"</i>: \""+Utilities.escapeXml(cd.getDefinition())+"\" Example values are in the "+sid+".\r\n");
         else if (cd.getBindingStrength().equals(BindingSpecification.BindingStrength.Preferred))
@@ -264,9 +255,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     }
   }
 
-	private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
-    TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), filename);
-  }
+	
 
   private String ref(BindingSpecification cd) {
     if (cd.hasReference())

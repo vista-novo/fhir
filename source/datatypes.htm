@@ -398,13 +398,16 @@ particular context by <a href="terminologies.htm">binding</a> the element to a v
 
 <h3>Choosing Coding vs. CodeableConcept</h3>
 <p>
-A <b>Coding</b> is a simple direct reference to a code in a code system. The following type, <b>CodeableConcept</b>
-is a complex type that may include multiple <b>Coding</b> and/or a text representation. The interplay between one
-or more coding systems and a text representation is an extremely common pattern encountered in healthcare data and
-the CodeableConcept caters for the general case. Accordingly, it is usually used in resources in preference to
-the simpler Coding. Some resource definitions use <b>Coding</b> directly because the managing the interplay between 
-text and codes is done directly in the resource model. In such cases, these resource definitions have to make 
-allowance for the design issues associated with text and multiple codings directly.
+A <b>Coding</b> is a simple direct reference to a code in a code system. In practice, such a simple 
+reference is very difficult to use - if two different systems are using different terminologies, or
+one is using one and another text, the <b>Coding</b> type doesn't provide support for this. Since
+such situations are most common case, the type <b>CodeableConcept</b> is defined, which allows for 
+multiple <b>Coding</b> elements and/or a text representation. Because of this, the <b>CodeableConcept</b> 
+is usually used in resources in preference to the simpler <b>Coding</b>. <b>Coding</b> is generally used
+in profiles and extensions, in cases where the interplay between text and codes is done explicitly 
+rather than defaulting to the general <b>CodeableConcept</b> type, though it may also be used in 
+some resources. In such cases, these resource/extension/profile definitions have to make 
+allowance for the design issues associated with text and multiple codings in their own context directly.
 </p>
 
 <a name="CodeableConcept"></a>

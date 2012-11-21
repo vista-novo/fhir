@@ -37,6 +37,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hl7.fhir.definitions.model.BindingSpecification;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.utilities.TextFile;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -48,7 +50,6 @@ import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 public class BookMaker {
 
   private PageProcessor page;
-  private ChmMaker chm;
   private String target;
   
   private Map<String, XhtmlDocument> pages = new HashMap<String, XhtmlDocument>();
@@ -60,10 +61,9 @@ public class BookMaker {
 
   
   
-  public BookMaker(PageProcessor page, ChmMaker chm) {
+  public BookMaker(PageProcessor page) {
     super();
     this.page = page;
-    this.chm = chm;
   }
 
   private void produceBookForm() throws FileNotFoundException, Exception {
@@ -101,8 +101,10 @@ public class BookMaker {
             
           }
         }
-        else {
-          page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on "+a.allText());
+        else if (page.getDefinitions().getFutureResources().containsKey(a.allText())) {
+          a.addText(" (Broken Link: not done yet)");
+        } else {
+          page.log("unable to resolve reference to "+a.getAttributes().get("href").substring(1)+" on \""+a.allText()+"\"");
           a.addText(" (Known Broken Link - needs to be resolved)");
         }
       }
@@ -167,8 +169,23 @@ public class BookMaker {
         lvl.l2++;
         lvl.l3 = 0;
         if (n.getLink() != null) {
-          addPageContent(lvl, divS, n.getLink(), n.getName());
-          links.add(n.getLink());
+          if (n.getLink().equals("[codes]")) {
+            lvl.l2--;
+            List<String> names = new ArrayList<String>();
+            for (BindingSpecification bs : page.getDefinitions().getBindings().values()) {
+              if (bs.getBinding() == Binding.CodeList) 
+                names.add(bs.getReference());
+            }
+            Collections.sort(names);
+            for (String l : names) { 
+              addPageContent(lvl, divS, l.substring(1), page.getDefinitions().getBindingByReference(l).getName());
+//              links.add(l.substring(1));
+            }
+          }
+          else {
+            addPageContent(lvl, divS, n.getLink(), n.getName());
+            links.add(n.getLink());
+          }
         }
         for (Navigation.Entry g : n.getEntries()) {
           if (g.getLink() != null) {
@@ -262,19 +279,16 @@ public class BookMaker {
         if (!first)
           throw new Error("?? ("+link+".h1 repeated) ");
         first = false;
-        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h2");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+": ");
 
       } else if ("h2".equals(child.getName())) {
         lvl.l3++;
         lvl.l4 = 0;
-        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h3");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+": ");
       } else if ("h3".equals(child.getName())) {
         lvl.l4++;
-        chm.registerKeyWord(child.allText(), link+".htm", name);
         child.setName("h4");
         child.addText(0, Integer.toString(lvl.l1)+"."+Integer.toString(lvl.l2)+"."+Integer.toString(lvl.l3)+"."+Integer.toString(lvl.l4)+": ");
       } else if ("h4".equals(child.getName())) {
@@ -371,15 +385,17 @@ public class BookMaker {
       int i2 = 0;
       for (Navigation.Entry n : c.getEntries()) {
         if (n.getLink() != null) {
-          i2++;
-          p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
-          links.add(n.getLink());
+          if (!n.getLink().equals("[codes]")) {
+            i2++;
+            p.addText(XhtmlNode.NBSP+XhtmlNode.NBSP+Integer.toString(i1)+"."+Integer.toString(i2)+": ");
+            links.add(n.getLink());
 
-          a = p.addTag("a");
-          a.attribute("href", "#"+n.getLink());
-          a.addText(n.getName());
-          p.addTag("br");
-          p.addText("\r\n     ");
+            a = p.addTag("a");
+            a.attribute("href", "#"+n.getLink());
+            a.addText(n.getName());
+            p.addTag("br");
+            p.addText("\r\n     ");
+          }
         }
       }
       if (c.getEntries().size() ==0 && c.getLink().equals("resources")) {

@@ -75,11 +75,13 @@ import org.hl7.fhir.definitions.generators.specification.SchematronGenerator;
 import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerator;
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
+import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.Example;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
 import org.hl7.fhir.definitions.parsers.SourceParser;
 import org.hl7.fhir.definitions.validation.ModelValidator;
 import org.hl7.fhir.definitions.validation.ProfileValidator;
@@ -154,7 +156,6 @@ public class Publisher {
   }
 
   private SourceParser prsr;
-	private ChmMaker chm;
 	private PageProcessor page = new PageProcessor();
 	private BookMaker book;
   private JavaGenerator javaReferencePlatform;
@@ -409,8 +410,7 @@ public class Publisher {
   private void produceSpecification(String eCorePath) throws Exception {
 		page.setNavigation(new Navigation());
 		page.getNavigation().parse(page.getFolders().srcDir + "navigation.xml");
-		chm = new ChmMaker(page.getNavigation(), page.getFolders(), page.getDefinitions(), page);
-		book = new BookMaker(page, chm);
+		book = new BookMaker(page);
 
 		XMIResource resource = new XMIResourceImpl();
 		resource.load(new CSFileInputStream(eCorePath), null);
@@ -457,8 +457,6 @@ public class Publisher {
     log("Produce Specification... done");
 
 		if (!nobook) {
-			log("Produce fhir.chm");
-			chm.produce();
 			log("Produce HL7 copy");
 			new WebMaker(page.getFolders(), page.getVersion(), page.getIni()).produceHL7Copy();
 			log("Produce Archive copy");
@@ -522,7 +520,9 @@ public class Publisher {
 					new CSFile(page.getFolders().dstDir + n));
     logNoEoln(" ");
 
-		profileFeed = new AtomFeed();
+    generateCodeSystems();
+
+    profileFeed = new AtomFeed();
 		profileFeed.setId("http://hl7.org/fhir/profile/resources");
 		profileFeed.setTitle("Resources as Profiles");
 		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
@@ -539,6 +539,7 @@ public class Publisher {
 			producePage(n);
 		}
 
+		
 		for (String n : page.getDefinitions().getProfiles().keySet()) {
       logNoEoln("-");
 			produceProfile(n, page.getDefinitions().getProfiles().get(n));
@@ -1304,5 +1305,49 @@ public class Publisher {
   public void logNoEoln(String content) {
     page.logNoEoln(content);
   }
+
+  private void generateCodeSystems() throws Exception {
+    for (BindingSpecification bs : page.getDefinitions().getBindings().values())
+      if (bs.getBinding() == Binding.CodeList)
+        generateCodeSystem(bs.getReference().substring(1)+".htm", bs);
+  }
+  
+  private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
+    TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), page.getFolders().dstDir+filename);
+    String src = page.processPageIncludesForBook(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm"));
+    cachePage(filename, src);
+    
+  /*  
+    String src = TextFile.fileToString(page.getFolders().srcDir + file);
+    src = page.processPageIncludes(file, src);
+    TextFile.stringToFile(src, page.getFolders().dstDir + file);
+    src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
+    src = page.processPageIncludesForPrinting(file, src);
+    TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
+
+    src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
+        "<body>", "<body style=\"margin: 10px\">");
+    src = page.processPageIncludesForBook(file, src);
+    cachePage(file, src);
+*/
+//    pages.
+//    String fn = getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
+//    if (!new File(fn).exists()) {
+//      generateCodeSystem(fn, cd);
+//    }      
+    
+  }
+//  private void generateCodeSystem(String filename, BindingSpecification cd) throws Exception {
+//    TextFile.stringToFile(page.processPageIncludes(filename, TextFile.fileToString(page.getFolders().srcDir+"template-tx.htm")), filename);
+//  }  
+//  String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
+//  if (!new File(s).exists()) {
+//    generateCodeSystem(s, cd);
+//  }
+//  
+//  String s = page.getFolders().dstDir+File.separator+cd.getReference().substring(1)+".htm";
+//  if (!new File(s).exists()) {
+//    generateCodeSystem(s, cd);
+//  }
 
 }

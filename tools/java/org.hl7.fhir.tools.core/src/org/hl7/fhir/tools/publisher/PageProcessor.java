@@ -42,6 +42,7 @@ import org.hl7.fhir.definitions.generators.specification.TerminologyNotesGenerat
 import org.hl7.fhir.definitions.generators.specification.XmlSpecGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.BindingSpecification.Binding;
+import org.hl7.fhir.definitions.model.BindingSpecification.BindingExtensibility;
 import org.hl7.fhir.definitions.model.BindingSpecification.BindingStrength;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.Definitions;
@@ -271,6 +272,10 @@ public class PageProcessor implements Logger  {
         src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("bindingtable"))
+        src = s1 + genBindingsTable() + s3;
+      else if (com[0].equals("codeslist"))
+        src = s1 + genCodeSystemsTable() + s3;
       else if (com[0].equals("bindingtable-others"))
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
@@ -281,12 +286,47 @@ public class PageProcessor implements Logger  {
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private String generateBSUsage(String name) {
+    BindingSpecification cd = definitions.getBindingByReference("#"+name);
+    StringBuilder b = new StringBuilder();
+    for (ResourceDefn r : definitions.getResources().values())
+      scanForUsage(b, cd, r.getRoot(), r.getName().toLowerCase()+".htm#def");
+    for (ElementDefn e : definitions.getInfrastructure().values())
+      scanForUsage(b, cd, e, "xml.htm#"+e.getName());
+    for (ElementDefn e : definitions.getTypes().values())
+      scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
+    for (ElementDefn e : definitions.getStructures().values())
+      scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
+
+    if (b.length() == 0)
+      return "<p>\r\nThese codes are not currently used\r\n</p>\r\n";
+    else
+      return "<p>\r\nThese codes are used in the follow places:\r\n</p>\r\n<ul>\r\n"+b.toString()+"</ul>\r\n";
+  }
+
+  private void scanForUsage(StringBuilder b, BindingSpecification cd, ElementDefn e, String ref) {
+    scanForUsage(b, cd, e, "", ref);
+    
+  }
+
+  private void scanForUsage(StringBuilder b, BindingSpecification cd, ElementDefn e, String path, String ref) {
+    path = path.equals("") ? e.getName() : path+"."+e.getName();
+    if (e.hasBinding() && e.getBindingName().equals(cd.getName())) {
+      b.append(" <li><a href=\""+ref+"\">"+path+"</a></li>\r\n");
+    }
+    for (ElementDefn c : e.getElements()) {
+      scanForUsage(b, cd, c, path, ref);
+    }
   }
 
   private String generateCodeDefinition(String name) {
@@ -460,6 +500,10 @@ public class PageProcessor implements Logger  {
       b.append("<li class=\"selected\"><span>Content</span></li>");
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    if ("codes".equals(mode))
+      b.append("<li class=\"selected\"><span>Defined Codes</span></li>");
+    else
+      b.append("<li class=\"nselected\"><span><a href=\""+n+"-codes.htm\">Defined Codes</a></span></li>");
     if ("bindings".equals(mode))
       b.append("<li class=\"selected\"><span>Bindings</span></li>");
     else
@@ -541,6 +585,64 @@ public class PageProcessor implements Logger  {
     return b.toString();
   }
 
+  private String genCodeSystemsTable() throws Exception {
+    StringBuilder s = new StringBuilder();
+    s.append("<table class=\"codes\">\r\n");
+    List<String> names = new ArrayList<String>();
+    for (String n : definitions.getBindings().keySet()) {
+      if (definitions.getBindingByName(n).getBinding() == Binding.CodeList)
+       names.add(n);
+    }
+    Collections.sort(names);
+    for (String n : names) {
+      BindingSpecification cd = definitions.getBindingByName(n);
+      s.append(" <tr><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td></tr>\r\n");
+    }
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+
+
+  private String genBindingsTable() {
+    StringBuilder s = new StringBuilder();
+    s.append("<table class=\"codes\">\r\n");
+    s.append(" <tr><th>Name</th><th>Definition</th><th>Strength</th><th>Reference</th></tr>\r\n");
+    List<String> names = new ArrayList<String>();
+    for (String n : definitions.getBindings().keySet()) {
+      names.add(n);
+    }
+    Collections.sort(names);
+    for (String n : names) {
+      if (!n.startsWith("*")) {
+        BindingSpecification cd = definitions.getBindingByName(n);
+        s.append(" <tr><td>"+Utilities.escapeXml(cd.getName())+"</td><td>"+Utilities.escapeXml(cd.getDefinition())+"</td><td>"+Utilities.escapeXml(cd.getBindingStrength().toString()));
+        if (cd.getExtensibility() != BindingExtensibility.Complete)
+          s.append(" (Extensible)");
+        if (cd.getBinding() == Binding.Special) {
+          
+          if (cd.getName().equals("MessageEvent"))
+            s.append("</td><td><a href=\"messageheader.htm#Events\">Message Event List</a></td></tr>\r\n");
+          else if (cd.getName().equals("ResourceType"))
+            s.append("</td><td><a href=\"terminologies.htm#ResourceType\">Resource Type names</a></td></tr>\r\n");
+          else if (cd.getName().equals("FHIRContentType"))
+            s.append("</td><td><a href=\"terminologies.htm#fhircontenttypes\">Resource or Data Type name</a></td></tr>\r\n");
+          else 
+            s.append("</td><td>???</td></tr>\r\n");
+                    
+        } else if (cd.getBinding() == Binding.CodeList)
+          s.append("</td><td><a href=\""+cd.getReference().substring(1)+".htm\">http://hl7.org/fhir/"+cd.getReference().substring(1)+"</a></td></tr>\r\n");          
+        else if (cd.hasReference())
+          s.append("</td><td><a href=\""+cd.getReference()+"\">"+Utilities.escapeXml(cd.getDescription())+"</a></td></tr>\r\n");
+        else if (Utilities.noString(cd.getDescription()))
+          s.append("</td><td style=\"color: grey\">"+Utilities.escapeXml(cd.getBinding().toString())+"</td></tr>\r\n");
+        else
+          s.append("</td><td>"+Utilities.escapeXml(cd.getBinding().toString())+": "+Utilities.escapeXml(cd.getDescription())+"</td></tr>\r\n");
+      }
+    }
+    s.append("</table>\r\n");
+    return s.toString();
+  }
+  
   private String genBindingTable(boolean codelists) {
     StringBuilder s = new StringBuilder();
     s.append("<table class=\"codes\">\r\n");
@@ -752,12 +854,24 @@ public class PageProcessor implements Logger  {
         src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("bindingtable"))
+        src = s1 + genBindingsTable() + s3;
       else if (com[0].equals("bindingtable-others"))
         src = s1 + genBindingTable(false) + s3;
+      else if (com[0].equals("codeslist"))
+        src = s1 + genCodeSystemsTable() + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
+      else if (com[0].equals("txurl"))
+        src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txdef"))
+        src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txsummary"))
+        src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
@@ -813,12 +927,24 @@ public class PageProcessor implements Logger  {
         src = s1 + genDTCodes() + s3;
       else if (com[0].equals("bindingtable-codelists"))
         src = s1 + genBindingTable(true) + s3;
+      else if (com[0].equals("codeslist"))
+        src = s1 + genCodeSystemsTable() + s3;
+      else if (com[0].equals("bindingtable"))
+        src = s1 + genBindingsTable() + s3;
       else if (com[0].equals("bindingtable-others"))
         src = s1 + genBindingTable(false) + s3;
       else if (com[0].equals("resimplall"))
         src = s1 + genResImplList() + s3;
       else if (com[0].equals("impllist"))
         src = s1 + genReferenceImplList() + s3;
+      else if (com[0].equals("txurl"))
+        src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("txdef"))
+        src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txusage"))
+        src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("txsummary"))
+        src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
