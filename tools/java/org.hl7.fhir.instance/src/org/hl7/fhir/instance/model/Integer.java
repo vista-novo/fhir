@@ -38,14 +38,24 @@ package org.hl7.fhir.instance.model;
 public class Integer extends Type {
 
 	private int value;
-
+	private String original;
+	
 	public int getValue() {
 		return value;
 	}
 
 	public void setValue(int value) {
 		this.value = value;
-	} 
+		this.original = null;
+	}
+
+  public String getOriginal() {
+    return original;
+  }
+
+  public void setOriginal(String original) {
+    this.original = original;
+  } 
 	
 	
 }

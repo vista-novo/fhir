@@ -25,7 +25,7 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWIS
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 POSSIBILITY OF SUCH DAMAGE.
 
-*/
+ */
 /**
  * 
  */
@@ -39,14 +39,24 @@ import java.math.BigDecimal;
  */
 public class Decimal extends Type {
 
-	private BigDecimal value;
+  private BigDecimal value;
+  private String original;
 
-	public BigDecimal getValue() {
-		return value;
-	}
+  public BigDecimal getValue() {
+    return value;
+  }
 
-	public void setValue(BigDecimal value) {
-		this.value = value;
-	} 
-	
+  public void setValue(BigDecimal value) {
+    this.value = value;
+    this.original = null;
+  } 
+
+  public String getOriginal() {
+    return original;
+  }
+
+  public void setOriginal(String original) {
+    this.original = original;
+  } 
+
 }

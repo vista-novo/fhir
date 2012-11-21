@@ -212,7 +212,10 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeDecimal(String name, Decimal value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, value.getValue().toString());
+      if (value.getOriginal() != null)
+        xml.element(FHIR_NS, name, value.getOriginal());
+      else
+        xml.element(FHIR_NS, name, value.getValue().toString());
     }
   }
   
@@ -226,7 +229,10 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeBoolean(String name, Boolean value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
+      if (value.getOriginal() != null)
+        xml.element(FHIR_NS, name, value.getOriginal());
+      else
+        xml.element(FHIR_NS, name, java.lang.Boolean.toString(value.getValue()));
     }
   }
   
@@ -246,7 +252,10 @@ public abstract class XmlComposerBase extends XmlBase {
   protected void composeInteger(String name, Integer value) throws Exception {
     if (value != null) {
       composeTypeAttributes(value);
-      xml.element(FHIR_NS, name, java.lang.Integer.toString(value.getValue()));
+      if (value.getOriginal() != null)
+        xml.element(FHIR_NS, name, value.getOriginal());
+      else
+        xml.element(FHIR_NS, name, java.lang.Integer.toString(value.getValue()));
     }
   }
   

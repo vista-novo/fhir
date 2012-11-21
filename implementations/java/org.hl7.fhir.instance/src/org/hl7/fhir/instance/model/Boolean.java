@@ -38,14 +38,24 @@ package org.hl7.fhir.instance.model;
 public class Boolean extends Type {
 
 	private boolean value;
-
+	private String original;
+	
 	public boolean getValue() {
 		return value;
 	}
 
 	public void setValue(boolean value) {
-		this.value = value;
-	} 
+	  this.value = value;
+	  this.original = null;
+	}
+
+  public String getOriginal() {
+    return original;
+  }
+
+  public void setOriginal(String original) {
+    this.original = original;
+  } 
 	
 	
 }

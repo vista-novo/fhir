@@ -454,7 +454,7 @@ public class Publisher {
 		produceSchemaZip();
 		logNoEoln("Produce Specification");
 		produceSpec();
-    log("Produce Specification... done");
+    log("\r\nProduce Specification... done");
 
 		if (!nobook) {
 			log("Produce HL7 copy");

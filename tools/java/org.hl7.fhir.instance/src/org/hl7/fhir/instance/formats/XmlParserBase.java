@@ -158,7 +158,7 @@ public abstract class XmlParserBase extends XmlBase {
   protected Instant parseInstant(XmlPullParser xpp) throws Exception {
 	    Instant result = new Instant();
 	    parseTypeAttributes(xpp, result);
-	    result.setValue(xmlToDate(parseString(xpp)));
+	    result.setValue(xmlToDate(parseString(xpp)));	    
 	    return result;    
 	  }
 	  
@@ -182,20 +182,17 @@ public abstract class XmlParserBase extends XmlBase {
   }
 
   protected Integer parseInteger(XmlPullParser xpp) throws Exception {
-    String id = xpp.getAttributeValue(null, "xml:Id");	      
     Integer result = new Integer();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseInt(xpp));
-    if (id != null) 
-        idMap.put(id, result);
+    String s = parseString(xpp);
+    result.setValue(new java.lang.Integer(s.startsWith("+") ? s.substring(1) : s));
+    result.setOriginal(s);
     return result;    
   }
  
-  protected java.lang.Integer parseInt(XmlPullParser xpp) throws Exception {
-    String s = parseString(xpp);
-    return new java.lang.Integer(s.startsWith("+") ? s.substring(1) : s);
-  }
-   
+//  protected java.lang.Integer parseInt(XmlPullParser xpp) throws Exception {
+//  }
+//   
   protected Boolean parseBool(XmlPullParser xpp) throws Exception {
     return parseBoolean(xpp);
   }
@@ -203,7 +200,9 @@ public abstract class XmlParserBase extends XmlBase {
   protected Boolean parseBoolean(XmlPullParser xpp) throws Exception {
     Boolean result = new Boolean();
     parseTypeAttributes(xpp, result);
-    result.setValue(java.lang.Boolean.valueOf(parseString(xpp)));
+    String s = parseString(xpp);
+    result.setValue(java.lang.Boolean.valueOf(s));
+    result.setOriginal(s);
     return result;    
   }
 
@@ -231,7 +230,9 @@ public abstract class XmlParserBase extends XmlBase {
   protected Decimal parseDecimal(XmlPullParser xpp) throws Exception {
     Decimal result = new Decimal();
     parseTypeAttributes(xpp, result);
-    result.setValue(parseBigDecimal(xpp));
+    String s = parseString(xpp);
+    result.setValue(new BigDecimal(s));
+    result.setOriginal(s);
     return result;
   }
   protected Uri parseUri(XmlPullParser xpp) throws Exception {
