@@ -244,12 +244,18 @@ public class CompositeTypeConverter
 				!element.getBindingName().equals("") &&
 				!element.getBindingName().equals("*unbound*") )
 		{
-			// Bindings only work for non-polymorphic types,
-			// since we currently have only one binding name.
-			if( result.getTypes().size() == 1)
-				result.getTypes().get(0).setBindingRef(element.getBindingName());
-			else
-				throw new Exception("Cannot specify binding for a polymorphic element");
+			if( result.getTypes().size() >= 1)
+			{
+				for( TypeRef tr : result.getTypes() )
+				{
+					if( tr.isBindable() )
+						tr.setBindingRef(element.getBindingName());
+				}
+			}
+//			else
+//			{
+//				throw new Exception("Cannot specify binding for a polymorphic element");
+//			}			
 		}
 
 		if( element.getInvariant() != null )

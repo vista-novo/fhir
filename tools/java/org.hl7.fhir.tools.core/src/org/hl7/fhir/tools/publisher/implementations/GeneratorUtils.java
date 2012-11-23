@@ -516,7 +516,7 @@ public class GeneratorUtils {
 			return newTypeRef("Data");
 	}
 		
-		
+	
 	public static boolean isCodeWithCodeList( Definitions defs, TypeRef ref )
 	{
 		if( ref.getFullBindingRef() == null ) return false;

@@ -94,7 +94,8 @@ public class ModelValidator {
 		}
 		
 		if (e.hasBinding()) {
-		  rule(path, e.typeCode().equals("code") || e.typeCode().equals("Coding") || e.typeCode().equals("CodeableConcept"), "Can only specify bindings for coded data types");
+		  rule(path, e.typeCode().contains("code") || e.typeCode().contains("Coding") 
+				  || e.typeCode().contains("CodeableConcept"), "Can only specify bindings for coded data types");
 			BindingSpecification cd = definitions.getBindingByName(e.getBindingName());
 			rule(path, cd != null, "Unable to resolve binding name " + e.getBindingName());
 			

@@ -156,6 +156,10 @@
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CL03ua_CEeGrAaDwyEdjfA"/>
     </children>
     <children xmi:type="notation:Node" xmi:id="_CL03uq_CEeGrAaDwyEdjfA" type="5002">
+      <children xmi:type="notation:Node" xmi:id="_AoOl8TWJEeKXgLx52jldLw" type="2002">
+        <element xmi:type="ecore:EOperation" href="FHIR.ecore#//TypeRef/isBindable"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_AoOl8jWJEeKXgLx52jldLw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CL03u6_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CL03vK_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CL03va_CEeGrAaDwyEdjfA"/>

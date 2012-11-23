@@ -260,7 +260,8 @@ return a 410 error and that the resource is no longer found through search opera
 refuses to delete resources of that type on principle, then it should return the status code 
 405 method not allowed. If the server refuses to delete a resource because of reasons specific 
 to that resource, such as referential integrity, it should return the status code 409 Conflict.
-Resources may be undeleted by PUTting an update to them subsequent to the deletion. 
+Resources may be undeleted by PUTting an update to them subsequent to the deletion. Performing
+this operation on a resource that is already deleted has no effect.
 </p>
 <p>
 Many resources have a status element that overlaps with the idea of deletion. Each resource type
