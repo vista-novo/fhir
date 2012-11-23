@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SimpleObservation xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\simpleobservation.xsd">
+  <identifier>
+    <system>urn:ietf:rfc:3986</system>
+    <id>187e0c12-8dd2-67e2-99b2-bf273c878281</id>
+  </identifier>
+  <type>
+    <coding>
+      <system>http://loinc.org</system>
+      <code>55284-4</code>
+      <display>Blood pressure systolic and diastolic</display>
+    </coding>
+  </type>
+  <validDate>2012-09-17</validDate>
+  <subject>
+    <type>Patient</type>
+    <id>a23</id>
+  </subject>
+  <performer>
+    <type>Agent</type>
+    <id>example</id>
+  </performer>
+  <interpretation>
+    <coding>
+      <system>http://hl7.org/v3/ObservationInterpretation</system>
+      <code>N</code>
+      <display>normal</display>
+    </coding>
+  </interpretation>
+  <component>
+    <type>
+      <coding>
+        <system>http://loinc.org</system>
+        <code>8580-6</code>
+        <display>Systolic blood pressure</display>
+      </coding>
+    </type>
+    <valueQuantity>
+      <value>107</value>
+      <units>mm[Hg]</units>
+    </valueQuantity>
+  </component>
+  <component>
+    <type>
+      <coding>
+        <system>http://loinc.org</system>
+        <code>8462-4</code>
+        <display>Diastolic blood pressure</display>
+      </coding>
+    </type>
+    <valueQuantity>
+      <value>65</value>
+      <units>mm[Hg]</units>
+    </valueQuantity>
+  </component>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">Sept 17, 2012: Blood pressure 107/65 (normal)</div>
+  </text>
+</SimpleObservation>

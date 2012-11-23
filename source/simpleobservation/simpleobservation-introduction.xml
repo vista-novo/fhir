@@ -1,0 +1,19 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<p>This resource is a place-holder.  It has not yet been vetted by the Orders &amp; Observations Work Group.</p>
+
+<p>Observations are a central element in healthcare.  They are used to diagnose, monitor progress, determine baselines and patterns 
+and even capture demographic characteristics.  FHIR provides several resources such as <a href="./labreport.htm">LabReport</a> to capture
+complex observations.  However, most observations are simple name-value-pair assertions with little complexity.  This is the resource to
+use for such use-cases.  Possibilities include:</p>
+
+<ul>
+  <li>Personal characteristics: height, weight, eye-color</li>
+  <li>Vital signs: temperature, blood pressure, respiration rate</li>
+  <li>Diagnoses (Note: trackable conditions, allergies, adverse reactions and more complex structures are handled elsewhere)</li>
+  <li>Social history: tobacco use, family supports, cognitive status</li>
+  <li>Core characteristics: pregnancy status, death assertion</li>
+  <li>Simple scores: APGAR</li>
+</ul>
+
+</div>
