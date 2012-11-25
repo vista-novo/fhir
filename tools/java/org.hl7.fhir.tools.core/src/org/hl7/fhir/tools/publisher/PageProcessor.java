@@ -244,6 +244,8 @@ public class PageProcessor implements Logger  {
         src = s1+atomHeader(name, com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
+      else if (com[0].equals("resheader"))
+        src = s1+resHeader("document", "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
       else if (com[0].equals("pageheader"))
@@ -560,6 +562,16 @@ public class PageProcessor implements Logger  {
       b.append("<li class=\"selected\"><span>Content</span></li>");
     else
       b.append("<li class=\"nselected\"><span><a href=\""+n+".htm\">Content</a></span></li>");
+    String pages = ini.getStringProperty("resource-pages", title.toLowerCase());
+    if (!Utilities.noString(pages)) {
+      for (String p : pages.split(",")) {
+        String t = ini.getStringProperty("page-titles", p);
+        if (t.equals(mode)) 
+          b.append("<li class=\"selected\"><span>"+t+"</span></li>");
+        else
+          b.append("<li class=\"nselected\"><span><a href=\""+p+"\">"+t+"</a></span></li>");
+      }
+    }
     if ("examples".equals(mode))
       b.append("<li class=\"selected\"><span>Examples</span></li>");
     else
@@ -621,7 +633,7 @@ public class PageProcessor implements Logger  {
         if (cd.getBinding() == Binding.Special) {
           
           if (cd.getName().equals("MessageEvent"))
-            s.append("</td><td><a href=\"messageheader.htm#Events\">Message Event List</a></td></tr>\r\n");
+            s.append("</td><td><a href=\"message.htm#Events\">Message Event List</a></td></tr>\r\n");
           else if (cd.getName().equals("ResourceType"))
             s.append("</td><td><a href=\"terminologies.htm#ResourceType\">Resource Type names</a></td></tr>\r\n");
           else if (cd.getName().equals("FHIRContentType"))
@@ -699,7 +711,7 @@ public class PageProcessor implements Logger  {
           s.append("See <a href=\""+cd.getReference()+"\">"+cd.getReference()+"</a>");
         } else if (cd.getBinding() == Binding.Special) {
           if (cd.getName().equals("MessageEvent"))
-            s.append("See the <a href=\"messageheader.htm#Events\"> Event List </a>in the messaging framework");
+            s.append("See the <a href=\"message.htm#Events\"> Event List </a>in the messaging framework");
           else if (cd.getName().equals("ResourceType"))
             s.append("See the <a href=\"terminologies.htm#ResourceType\"> list of defined Resource Types</a>");
           else if (cd.getName().equals("FHIRContentType"))
@@ -826,6 +838,8 @@ public class PageProcessor implements Logger  {
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
         src = s1+s3;
+      else if (com[0].equals("resheader"))
+        src = s1+resHeader(name, "Document", com.length > 1 ? com[1] : null)+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
       else if (com.length != 1)
@@ -898,6 +912,8 @@ public class PageProcessor implements Logger  {
       else if (com.length == 2 && com[0].equals("dictionary"))
         src = s1+dictForDt(com[1])+s3;
       else if (com[0].equals("pageheader") || com[0].equals("dtheader") || com[0].equals("xmlheader") || com[0].equals("extheader") || com[0].equals("txheader") || com[0].equals("atomheader"))
+        src = s1+s3;
+      else if (com[0].equals("resheader"))
         src = s1+s3;
       else if (com[0].equals("codelist"))
         src = s1+codelist(name, com.length > 1 ? com[1] : null)+s3;
@@ -1189,7 +1205,7 @@ public class PageProcessor implements Logger  {
   }
 
   private boolean isAggregationEndpoint(String name) {
-    return definitions.getAggregationEndpoints().contains(name);
+    return definitions.getAggregationEndpoints().contains(name.toLowerCase());
   }   
 
 

@@ -531,6 +531,10 @@ public class Publisher {
       logNoEoln("#");
 			produceResource(n);
 		}
+		for (org.hl7.fhir.definitions.model.ElementDefn n : page.getDefinitions().getStructures().values()) {
+      logNoEoln("*");
+      generateDiagram(n);
+		}
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
 		Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
 		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
@@ -683,7 +687,7 @@ public class Publisher {
     while (queue.size() > 0) {
       org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
       queue.remove(0);
-      generateDiagramClass(r, queue, names, s, s2, r == resource.getRoot());
+      generateDiagramClass(r, queue, names, s, s2, r == resource.getRoot(), true);
     }  
     s.append("\r\n"+s2);
     s.append("hide methods\r\n");
@@ -698,8 +702,41 @@ public class Publisher {
 //    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
 	}
 	
+  private void generateDiagram(org.hl7.fhir.definitions.model.ElementDefn element) throws Exception {
+    StringBuilder s = new StringBuilder();
+    StringBuilder s2 = new StringBuilder();
+    s.append("@startuml\r\n");
+    s.append("title "+element.getName()+"\r\n");
+    s.append("skinparam nodesep 10\r\n");
+    s.append("skinparam ranksep 10\r\n");
+    s.append("skinparam classBackgroundColor Aliceblue\r\n\r\n");
+    s.append("skinparam classBorderColor Gray\r\n\r\n");
+    s.append("skinparam classArrowColor Navy\r\n\r\n");
+
+    List<org.hl7.fhir.definitions.model.ElementDefn> queue = new ArrayList<org.hl7.fhir.definitions.model.ElementDefn>();
+    Map<org.hl7.fhir.definitions.model.ElementDefn, String> names = new HashMap<org.hl7.fhir.definitions.model.ElementDefn, String>(); 
+    queue.add(element);
+    names.put(element, element.getName());
+    while (queue.size() > 0) {
+      org.hl7.fhir.definitions.model.ElementDefn r = queue.get(0);
+      queue.remove(0);
+      generateDiagramClass(r, queue, names, s, s2, r == element, false);
+    }  
+    s.append("\r\n"+s2);
+    s.append("hide methods\r\n");
+    s.append("@enduml\r\n");
+    TextFile.stringToFile(s.toString(), page.getFolders().rootDir+"temp"+File.separator+"diagram"+File.separator+element.getName().toLowerCase()+".plantuml-source");
+    SourceStringReader rdr = new SourceStringReader(s.toString());
+    FileOutputStream png = new FileOutputStream(page.getFolders().dstDir + element.getName().toLowerCase() + ".png");
+    rdr.generateImage(png);
+//    FileOutputStream svg = new FileOutputStream(page.getFolders().dstDir + n + ".svg");
+//    rdr.generateImage(svg, new FileFormatOption(FileFormat.SVG));
+//    FileOutputStream xmi = new FileOutputStream(page.getFolders().dstDir + n + ".xmi");
+//    rdr.generateImage(xmi, new FileFormatOption(FileFormat.XMI_STANDARD));
+  }
+  
 	
-	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, boolean entry) throws Exception {
+	private void generateDiagramClass(org.hl7.fhir.definitions.model.ElementDefn r, List<org.hl7.fhir.definitions.model.ElementDefn> queue, Map<org.hl7.fhir.definitions.model.ElementDefn, String> names, StringBuilder s, StringBuilder s2, boolean entry, boolean resource) throws Exception {
 	  String rn; 
     if (names.keySet().contains(r))
       rn = names.get(r);
@@ -716,10 +753,12 @@ public class Publisher {
 	        names.put(e, n);
 	        queue.add(e);
 	      }
-	      if (entry)
+	      if (!entry)
+          s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+	      else if (resource)
           s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
 	      else
-	        s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+          s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
 	    }
 	  }
 	  if (entry)

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/document.xsd">
+  <id>
+    <system>http://healthintersections.com.au/test</system>
+    <id>1</id> <!-- todo -->
+  </id>
+  <information>
+    <instant>2012-01-04T09:10:14Z</instant>
+    <type>
+      <coding>
+        <system>http://loinc.org</system>
+        <code>11488-4</code>
+        <display>Consultation note</display>
+      </coding>
+    </type>
+    <confidentialityCode>
+      <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
+      <code>1.3.6.1.4.1.21367.2006.7.101</code>
+      <display>Clinical-Staff</display>
+    </confidentialityCode>
+    <subject>
+      <type>Patient</type>
+      <id>xcda</id>
+      <display>Henry Levin the 7th</display>
+    </subject>
+    <author>
+      <type>Person</type>
+      <id>xcda</id>
+      <display>Robert Dolin MD</display>
+    </author>
+    <attester>
+      <mode>legal</mode>
+      <party>
+        <type>Person</type>
+        <id>xcda</id>
+        <display>Robert Dolin MD</display>
+      </party>
+    </attester>
+    <custodian>
+      <type>Organization</type>
+      <id>2.16.840.1.113883.19.5</id>
+      <display>Good Health Clinic</display>
+    </custodian>
+  </information>
+  <section>
+    <type>
+      <coding>
+        <system>http://loinc.org</system>
+        <code>10164-2</code>
+      </coding>
+    </type>
+    <content>
+      <!-- we really need a different resource here, but it's not yet defined -->
+      <type>Prescription</type> 
+      <id>example</id>
+    </content>
+  </section>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Consultation note for Henry Levin the 7th</p>
+    </div>
+  </text>
+</Document>

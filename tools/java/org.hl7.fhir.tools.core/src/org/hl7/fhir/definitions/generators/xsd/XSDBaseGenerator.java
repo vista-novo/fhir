@@ -241,6 +241,8 @@ private void genXmlIdRef() throws Exception {
 		}
 		write("    </xs:sequence>\r\n");
     write("    <xs:attribute name=\"id\" type=\"id-simple\"/>\r\n");
+    if (elem.getName().equals("Attachment"))
+      write("    <xs:attribute ref=\"xml:lang\"/>\r\n");      
 		write("  </xs:complexType>\r\n");
 		// write("  <xs:complexType name=\""+name+"\">\r\n");
 		// write("    <xs:complexContent>\r\n");

@@ -158,7 +158,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       return cd.getDefinition()+" (not bound to any particular codes)";
     if (cd.getBinding() == BindingSpecification.Binding.Special) {
       if (cd.getName().equals("MessageEvent"))
-        return "the <a href=\"messageheader.htm#Events\">Event List in the messaging framework</a>";
+        return "the <a href=\"message.htm#Events\">Event List in the messaging framework</a>";
       else if (cd.getName().equals("ResourceType"))
         return "<a href=\"terminologies.htm#ResourceType\">Any defined Resource Type name</a>";
       else if (cd.getName().equals("FHIRContentType"))
@@ -237,7 +237,7 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
     	
     } else if (cd.getBinding() == BindingSpecification.Binding.Special) {
       if (cd.getName().equals("MessageEvent"))
-        write("<li>"+path+" of the <a href=\"messageheader.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
+        write("<li>"+path+" of the <a href=\"message.htm#Events\"> Event List in the messaging framework</a></li>\r\n");
       else if (cd.getName().equals("ResourceType"))
         write("  <li>"+path+" of <a href=\"terminologies.htm#ResourceType\"> any defined Resource Type name</a></li>\r\n");
       else if (cd.getName().equals("FHIRContentType"))

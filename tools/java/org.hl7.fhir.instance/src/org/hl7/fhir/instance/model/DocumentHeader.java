@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
+// Generated on Sun, Nov 25, 2012 13:46+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -38,77 +38,6 @@ import java.util.*;
  */
 public class DocumentHeader extends Resource {
 
-    public enum DocumentAuthenticationMode {
-        personal, // The person authenticated the document in their personal capacity
-        professional, // The person authenticated the document in their professional capacity
-        legal, // The person authenticated the document and accepted legal responsibility for its content
-        official; // The organization authenticated the document as consistent with their policies and procedures
-        public static DocumentAuthenticationMode fromCode(String codeString) throws Exception {
-            if (codeString == null || "".equals(codeString))
-                return null;
-        if ("personal".equals(codeString))
-          return personal;
-        if ("professional".equals(codeString))
-          return professional;
-        if ("legal".equals(codeString))
-          return legal;
-        if ("official".equals(codeString))
-          return official;
-        throw new Exception("Unknown DocumentAuthenticationMode code '"+codeString+"'");
-        }
-        public String toCode() {
-          switch (this) {
-            case personal: return "personal";
-            case professional: return "professional";
-            case legal: return "legal";
-            case official: return "official";
-            default: return "?";
-          }
-        }
-    }
-
-    public class Attester extends Element {
-        /**
-         * The type of attestation the authenticator offers
-         */
-        private DocumentAuthenticationMode mode;
-
-        /**
-         * When document was attested by the party
-         */
-        private DateTime time;
-
-        /**
-         * Who attested the document in the specified way
-         */
-        private ResourceReference party;
-
-        public DocumentAuthenticationMode getMode() { 
-          return this.mode;
-        }
-
-        public void setMode(DocumentAuthenticationMode value) { 
-          this.mode = value;
-        }
-
-        public DateTime getTime() { 
-          return this.time;
-        }
-
-        public void setTime(DateTime value) { 
-          this.time = value;
-        }
-
-        public ResourceReference getParty() { 
-          return this.party;
-        }
-
-        public void setParty(ResourceReference value) { 
-          this.party = value;
-        }
-
-    }
-
     public class Section extends Element {
         /**
          * A code identifying the kind of content contained within the section
@@ -116,39 +45,14 @@ public class DocumentHeader extends Resource {
         private CodeableConcept type;
 
         /**
-         * Identifies when the content of the section was created
-         */
-        private Instant instant;
-
-        /**
-         * Identifies who is responsible for the information in the section.  (Not necessarily who typed it in.)
-         */
-        private ResourceReference author;
-
-        /**
-         * The person or device that performed the data entry leading to this section. Where there is more than one candidate, pick the most proximal to the document creation. 
-         */
-        private ResourceReference enterer;
-
-        /**
          * Identifies the primary subject of the section.  
          */
         private ResourceReference subject;
 
         /**
-         * Identifies the source that recounted the information recorded
-         */
-        private ResourceReference informant;
-
-        /**
          * Identifies the discrete data that provides the content for the section.
          */
         private ResourceReference content;
-
-        /**
-         * Provides the text view of the section.
-         */
-        private Narrative text;
 
         /**
          * Identifies a subtopic within the section as part of the document's table of contents
@@ -163,44 +67,12 @@ public class DocumentHeader extends Resource {
           this.type = value;
         }
 
-        public Instant getInstant() { 
-          return this.instant;
-        }
-
-        public void setInstant(Instant value) { 
-          this.instant = value;
-        }
-
-        public ResourceReference getAuthor() { 
-          return this.author;
-        }
-
-        public void setAuthor(ResourceReference value) { 
-          this.author = value;
-        }
-
-        public ResourceReference getEnterer() { 
-          return this.enterer;
-        }
-
-        public void setEnterer(ResourceReference value) { 
-          this.enterer = value;
-        }
-
         public ResourceReference getSubject() { 
           return this.subject;
         }
 
         public void setSubject(ResourceReference value) { 
           this.subject = value;
-        }
-
-        public ResourceReference getInformant() { 
-          return this.informant;
-        }
-
-        public void setInformant(ResourceReference value) { 
-          this.informant = value;
         }
 
         public ResourceReference getContent() { 
@@ -211,14 +83,6 @@ public class DocumentHeader extends Resource {
           this.content = value;
         }
 
-        public Narrative getText() { 
-          return this.text;
-        }
-
-        public void setText(Narrative value) { 
-          this.text = value;
-        }
-
         public List<Section> getSection() { 
           return this.section;
         }
@@ -226,69 +90,14 @@ public class DocumentHeader extends Resource {
     }
 
     /**
-     * the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created.
-     */
-    private Instant instant;
-
-    /**
-     * Specifying the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note)
-     */
-    private CodeableConcept type;
-
-    /**
-     * Official human-readable label for the document
-     */
-    private String_ title;
-
-    /**
      * Identifies the document this document supersedes, if any.
      */
     private Id replaces;
 
     /**
-     * The person or device that performed the data entry leading to this document. Where there is more than one candidate, pick the most proximal to the document creation or capture on a per-section basis. 
+     * Additional provenance about the document and the resources that are the sections
      */
-    private ResourceReference enterer;
-
-    /**
-     * Identifies the primary subject of the document.  
-     */
-    private ResourceReference subject;
-
-    /**
-     * Identifies the source that recounted the information recorded
-     */
-    private ResourceReference informant;
-
-    /**
-     * Identifies who is responsible for the information in the document.  (Not necessarily who typed it in.)
-     */
-    private List<ResourceReference> author = new ArrayList<ResourceReference>();
-
-    /**
-     * A participant who has attested to the accuracy of the document
-     */
-    private List<Attester> attester = new ArrayList<Attester>();
-
-    /**
-     * Identifies the people and organisations for whom the document is intended
-     */
-    private List<ResourceReference> recipient = new ArrayList<ResourceReference>();
-
-    /**
-     * Identifies the organization or group who is responsible for ongoing maintenance of and access to the document.
-     */
-    private ResourceReference custodian;
-
-    /**
-     * The main Act, such as a colonoscopy or an appendectomy, being documented
-     */
-    private ResourceReference context;
-
-    /**
-     * Describes the clinical encounter or type of care this document is associated with.
-     */
-    private ResourceReference encounter;
+    private List<ResourceReference> provenance = new ArrayList<ResourceReference>();
 
     /**
      * A fixed stylesheet to use when rendering the documents
@@ -305,30 +114,6 @@ public class DocumentHeader extends Resource {
      */
     private List<Section> section = new ArrayList<Section>();
 
-    public Instant getInstant() { 
-      return this.instant;
-    }
-
-    public void setInstant(Instant value) { 
-      this.instant = value;
-    }
-
-    public CodeableConcept getType() { 
-      return this.type;
-    }
-
-    public void setType(CodeableConcept value) { 
-      this.type = value;
-    }
-
-    public String_ getTitle() { 
-      return this.title;
-    }
-
-    public void setTitle(String_ value) { 
-      this.title = value;
-    }
-
     public Id getReplaces() { 
       return this.replaces;
     }
@@ -337,64 +122,8 @@ public class DocumentHeader extends Resource {
       this.replaces = value;
     }
 
-    public ResourceReference getEnterer() { 
-      return this.enterer;
-    }
-
-    public void setEnterer(ResourceReference value) { 
-      this.enterer = value;
-    }
-
-    public ResourceReference getSubject() { 
-      return this.subject;
-    }
-
-    public void setSubject(ResourceReference value) { 
-      this.subject = value;
-    }
-
-    public ResourceReference getInformant() { 
-      return this.informant;
-    }
-
-    public void setInformant(ResourceReference value) { 
-      this.informant = value;
-    }
-
-    public List<ResourceReference> getAuthor() { 
-      return this.author;
-    }
-
-    public List<Attester> getAttester() { 
-      return this.attester;
-    }
-
-    public List<ResourceReference> getRecipient() { 
-      return this.recipient;
-    }
-
-    public ResourceReference getCustodian() { 
-      return this.custodian;
-    }
-
-    public void setCustodian(ResourceReference value) { 
-      this.custodian = value;
-    }
-
-    public ResourceReference getContext() { 
-      return this.context;
-    }
-
-    public void setContext(ResourceReference value) { 
-      this.context = value;
-    }
-
-    public ResourceReference getEncounter() { 
-      return this.encounter;
-    }
-
-    public void setEncounter(ResourceReference value) { 
-      this.encounter = value;
+    public List<ResourceReference> getProvenance() { 
+      return this.provenance;
     }
 
     public Attachment getStylesheet() { 

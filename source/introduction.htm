@@ -86,8 +86,8 @@ The implementation section explains how resources are used in various contexts:
 <ul>
   <li><b><a href="implementation.htm">Implementation</a></b>: General requirements for using resources and various useful things including schema packs and reference implementations</li>
   <li><b><a href="http.htm">REST (HTTP)</a></b>: Defines a lightweight HTTP based paradigm for using resources</li>
-  <li><b><a href="messageheader.htm">Messaging</a></b>: A simple request/response message based transactional framework (equivalent to HL7 v2)</li>
-  <li><b><a href="documentheader.htm">Documents</a></b>: Clinical documents contain attested content that are both human readable and computer processable and can be exchanged and signed as single bundles (equivalent to CDA)</li>
+  <li><b><a href="message.htm">Messaging</a></b>: A simple request/response message based transactional framework (equivalent to HL7 v2)</li>
+  <li><b><a href="document.htm">Documents</a></b>: Clinical documents contain attested content that are both human readable and computer processable and can be exchanged and signed as single bundles (equivalent to CDA)</li>
   <li><b><a href="issuereport.htm">Errors &amp; Warnings</a></b>: Describes how issues are communicated when RESTful, messaging or SOA operations are unsuccessful or encounter problems</li>
   <li><b><a href="hdata.htm">hData Integration</a></b>: An explanation of how to use resources in the context of an hData RESTful service</li>
   <li><b><a href="atom.htm">Atom Feeds</a></b>: Atom feeds are used to gather a set of resources into a single XML document when they are transferred as a group - these are called "bundles"</li>
@@ -179,11 +179,11 @@ The EHR functional model describes several modes for interaction between systems
 </p>
 <table class="list">
 <tr><th>Interaction Modes</th><th>FHIR Options</th></tr>
-<tr><td>Unsolicited Notifications<br/>e.g. a patient has arrived for a clinic appointment </td><td><ul><li>create/update new resource via http</li><li>push resources using atom</li><li>Send FHIR <a href="messageheader.htm">Message</a> (if appropriate event is defined)</li></ul></td></tr>
+<tr><td>Unsolicited Notifications<br/>e.g. a patient has arrived for a clinic appointment </td><td><ul><li>create/update new resource via http</li><li>push resources using atom</li><li>Send FHIR <a href="message.htm">Message</a> (if appropriate event is defined)</li></ul></td></tr>
 <tr><td>Query/Response<br/>e.g., Is Adam Everyman known to the system? Yes, MRN is 12345678.</td><td><ul><li>search with parameters</li><li>A query message (though not defined yet)</li></ul></td></tr>
 <tr><td>Service Request and Response<br/>e.g., Laboratory Order for �Fasting Blood Sugar� and a response containing the results of the test.  </td><td>Could be supported either through Messaging or SOA solutionsRequest/Response support is not yet defined</td></tr>
 <tr><td>Information Interchange between organizations (e.g. in a RHIO, or in a National Health System)  </td><td><ul><li>pub/sub using atom (push or pull)</li><li>RESTful interface</li><li>FHIR messaging</li></ul></td></tr>
-<tr><td>Structured / Unstructured clinical document, e.g., dictated surgical note </td><td>See the <a href="documentheader.htm">Documents</a></td></tr>
+<tr><td>Structured / Unstructured clinical document, e.g., dictated surgical note </td><td>See the <a href="document.htm">Documents</a></td></tr>
 </table>
 <p>
 The combination of a properly secured and managed FHIR server, along with enforced use of the <a href="securityevent.htm">SecurityEvent</a> and <a href="provenance.htm">Provenance</a> resources

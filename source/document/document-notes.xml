@@ -1,0 +1,77 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+
+<h2>Presenting a Document</h2>
+<p>
+The human display of the Document is the collated narrative portions of following resources (in order):
+</p>
+<ol>
+ <li>The Document itself</li>
+ <li>The Subject resource</li>
+ <li>Resources referenced in the <i>section.content</i></li>
+</ol>
+<p>
+The document narrative should summarise the important parts of the document header that are required 
+to establish clinical context for the document (other than the subject, which is displayed in its own 
+right). To actually build the combined narrative, simply append all the narrative &lt;div&gt; fragments. 
+</p>
+
+<a name="css"></a>
+<h3>Styling Documents</h3>
+<p>
+In addition to the <a href="xml.htm#css">basic style rules</a>, which must be followed, a document can 
+contain a style sheet that contains additional styles that apply to the collated narrative. Unless
+otherwise agreed in local trading partner agreements, applications displaying the collated narrative 
+should use the style sheet provided in the document. Parties entering into such a trading agreement
+should consider the implications it will have on their long term scope for document exchange 
+very carefully. 
+</p>
+
+<h2>Document Handling Obligations</h2>
+<p>
+The authors and users of Clinical Documents, whether human or software, have 
+obligations that they must satisfy. 
+</p>
+
+<h3>Author Obligations</h3>
+<p>
+A document author is an application that creates a document resource. The author may create 
+new content resources and/or assemble already existing content resources while doing so. A document author 
+has the following responsibilities:
+</p>
+<ul>
+ <li>Build a valid document header that conforms to the Document rules explained here and that only links to other valid resources</li>
+ <li>Ensure that the content of the document and other resources conforms to any declared <a href="profile.htm">Profiles</a>.</li>
+ <li>Ensure that the presentation of the document is properly attested according to the information supplied in the <i>attesters</i>.</li>
+</ul>
+
+<h3>User Obligations</h3>
+<p>
+A document user is an application that receives or presents documents, or extracts data from them, or makes decisions because of them. 
+The documents may be received directly from a document author or accessed via a document management system. 
+The document user is responsible for ensuring that received documents are processed and/or rendered in accordance 
+to this specification. A document recipient has the following obligations:
+</p>
+<ul>
+ <li>When storing/transmitting a document, any method may be used as long as the bundled document can be (re-)assembled with sufficient integrity to validate a digital signature (i.e. it is legitimate to unbundle the resources and store them on a FHIR RESTful server, but this is not required)</li>
+ <li>When presenting the narrative of the document, the rules described above must be followed</li>
+ <li>A user is allowed to extract resources or data from the document for other use, but such data is no longer considered to be attested by the document author</li>
+ <li>Wherever the data (or information derived from it) is displayed to a user, there should always be a way for the user to access a presentation of the original document</li>
+ <li>It must correctly determine when a document has been superseded (according the statements made in the 
+    <i>setId</i>, <i>version</i> or <i>replaces</i> elements of received documents or those in the 
+    source document management system) and either withdraw data extracted from superseded documents, 
+    or warn users when they view the document</li>
+</ul>
+
+<a name="rest"></a>
+<h2>Implementation Notes</h2>
+<ul>
+ <li>Documents may be signed using digital signatures following the rules laid out in 
+     the <a href="http://tools.ietf.org/html/rfc4287" target="_blank">Atom specification</a>. 
+     The signature SHOULD be provided by a listed attester of the document and the signature 
+     SHOULD contain a <a href="http://www.w3.org/TR/xmldsig-core/#sec-KeyInfo" target="_blank">KeyInfo 
+     element</a> that contains a KeyName element whose value is a URI that matches the Atom <i>link</i> 
+     element value for the matching attester resource.</li>
+</ul>
+
+</div>

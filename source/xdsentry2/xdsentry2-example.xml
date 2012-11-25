@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegister.b_Transaction.
+  <homeCommunity>1.2.36.1.1001.1.1.1.1</homeCommunity>
+  <comments>Annual physical</comments>
+-->
+<XdsEntry2 xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/xdsentry2.xsd">
+  <id>
+    <system>urn:ietf:rfc:3986</system>
+    <id>urn:oid:1.3.6.1.4.1.21367.2005.3.7</id>
+  </id>
+  <information>
+    <instant>2005-12-24T09:35:00+11:00</instant>
+    <class>
+      <system>http://ihe.net/xds/connectathon/classCodes</system>
+      <code>History and Physical</code>
+      <display>History and Physical</display>
+    </class>
+    <type>
+      <coding>
+        <system>http://loinc.org</system>
+        <code>34108-1</code>
+        <display>Outpatient Evaluation And Management</display>
+      </coding>
+    </type>
+    <title>Physical</title>
+    <confidentialityCode>
+      <system>http://ihe.net/xds/connectathon/confidentialityCodes</system>
+      <code>1.3.6.1.4.1.21367.2006.7.101</code>
+      <display>Clinical-Staff</display>
+    </confidentialityCode>
+    <subject>
+      <type>Person</type>
+      <id>xcda</id>
+    </subject>
+  <!--
+  <author>
+    <name>
+      <family>Dopplemeyer</family>
+      <given>Sherry</given>
+    </name>
+    <role>Primary Surgon</role>
+    <specialty>Orthopedic</specialty>
+    <institution>
+      <name>Cleveland Clinic</name>
+    </institution>
+    <institution>
+      <name>Berea Community</name>
+    </institution>
+    <contact>
+      <system>phone</system>
+      <value>john.doe@healthcare.example.org</value>
+    </contact>
+  </author>
+  <author>
+    <name>
+      <family>Smitty</family>
+      <given>Gerald</given>
+    </name>
+    <role>Attending</role>
+    <specialty>Orthopedic</specialty>
+    <institution>
+      <name>Cleveland Clinic</name>
+    </institution>
+    <institution>
+      <name>Parma Community</name>
+    </institution>
+    <contact>
+      <system>phone</system>
+      <value>john.doe@healthcare.example.org</value>
+    </contact>
+  </author>
+
+  <authenticator>
+    <name>
+      <family>Welby</family>
+      <given>Marcus</given>
+      <prefix>Dr</prefix>
+      <suffix>MD</suffix>
+    </name>
+  </authenticator>
+-->
+    <author>
+      <type>Agent</type>
+      <id>xds-author-1</id>
+    </author>
+    <author>
+      <type>Person</type>
+      <id>xds-author-2</id>
+    </author>
+    <attester>
+      <mode>professional</mode>
+      <party>
+         <type>Person</type>
+         <id>xds-attester</id>
+      </party>      
+    </attester>
+    <event>
+      <code>
+        <coding>
+          <system>http://ihe.net/xds/connectathon/eventCodes</system>
+          <code>todo</code>
+          <display>to do</display>
+        </coding>
+      </code>
+      <period>
+        <start>2004-12-23T08:00:00</start>
+        <end>2004-12-23T08:01:00</end>
+      </period>
+    </event>
+    <facilityType>
+      <coding>
+        <system>http://www.ihe.net/xds/connetathon/healthcareFacilityTypeCodes</system>
+        <code>Outpatient</code>
+        <display>Outpatient</display>
+      </coding>
+    </facilityType>
+    <practiceSetting>
+      <coding>
+        <system>http://www.ihe.net/xds/connetathon/practiceSettingCodes</system>
+        <code>General Medicine</code>
+        <display>General Medicine</display>
+      </coding>
+    </practiceSetting>
+  </information>
+  <format>
+    <system>http://ihe.net/xds/connectathon/formatCodes</system>
+    <code>CDAR2/IHE 1.0</code>
+    <display>CDAR2/IHE 1.0</display>
+  </format>
+  <availability>Approved</availability>
+  <folder>
+    <type>XdsFolder</type>
+    <id>1.2.36.90146595217.4.2.1</id>
+  </folder>
+  <originalSubject>
+    <type>Person</type>
+    <id>xcda</id>
+  </originalSubject>
+  <content xml:lang="en-us">
+    <contentType>text/plain</contentType>
+    <size>3654</size>
+    <hash>da39a3ee5e6b4b0d3255bfef95601890afd80709</hash>
+  </content>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">Text</div>
+  </text>
+</XdsEntry2>

@@ -276,7 +276,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           prsr = "parseResourceReference(xpp)";
         else if (tn.contains("("))
           prsr = "parse"+PrepGenericName(tn)+"(xpp)";
-        else if (tn.startsWith(context) && !tn.equals(context)) {
+        else if (tn.startsWith(context) && !tn.equals(context) && !definitions.hasType(tn)) {
           if (bUseOwner)
             prsr = "parse"+upFirst(tn)+"(xpp, owner)";
           else
@@ -285,7 +285,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
           if ("Uri".equals(tn))
             prsr = "parseURI(xpp)";
           else if ("Instant".equals(tn))
-            prsr = "parseInstantSimple(xpp)";
+            prsr = "parseInstant(xpp)";
           else
             prsr = "parse"+upFirst(tn)+"(xpp)";
       }

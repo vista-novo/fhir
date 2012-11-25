@@ -176,10 +176,10 @@
     <Cell><Data ss:Type="String">Attachment.hash</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">base64Binary</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">sha-256 hash of the data (base64 )</Data></Cell>
-    <Cell><Data ss:Type="String">The calculated hash of the data using SHA-256. In XML, represented using base64</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">sha-1 hash of the data (base64 )</Data></Cell>
+    <Cell><Data ss:Type="String">The calculated hash of the data using SHA-1. Represented using base64</Data></Cell>
     <Cell ss:Index="10"><Data ss:Type="String">Included so that applications can verify that the contents of a location have not changed, and also so that a signature of the xml content can implicitly sign the content of an image without having to include the data in the instance or reference the url in the signature</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.integrityCheck[parent::ED/integrityCheckAlgorithm=&quot;SHA-256&quot;]</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.integrityCheck[parent::ED/integrityCheckAlgorithm=&quot;SHA-1&quot;]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">!Attachment.lang</Data></Cell>
@@ -218,11 +218,12 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
+   <TopRowVisible>2</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>11</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

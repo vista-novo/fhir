@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
+// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -111,7 +111,7 @@ public class Person extends Resource {
     /**
      * Administrative Gender
      */
-    private CodeableConcept gender;
+    private Coding gender;
 
     /**
      * The birth date for the person.
@@ -150,11 +150,11 @@ public class Person extends Resource {
       return this.telecom;
     }
 
-    public CodeableConcept getGender() { 
+    public Coding getGender() { 
       return this.gender;
     }
 
-    public void setGender(CodeableConcept value) { 
+    public void setGender(Coding value) { 
       this.gender = value;
     }
 

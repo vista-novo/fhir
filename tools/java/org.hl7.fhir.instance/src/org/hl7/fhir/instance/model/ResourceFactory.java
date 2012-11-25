@@ -29,33 +29,31 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
+// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
 public class ResourceFactory {
 
     public static Resource createResource(String name) throws Exception {
         if ("Provenance".equals(name))
             return new Provenance();
-        if ("DocumentHeader".equals(name))
-            return new DocumentHeader();
+        if ("SimpleObservation".equals(name))
+            return new SimpleObservation();
         if ("Device".equals(name))
             return new Device();
         if ("Animal".equals(name))
             return new Animal();
-        if ("Prescription".equals(name))
-            return new Prescription();
         if ("Organization".equals(name))
             return new Organization();
+        if ("Prescription".equals(name))
+            return new Prescription();
         if ("Group".equals(name))
             return new Group();
         if ("ValueSet".equals(name))
             return new ValueSet();
-        if ("Coverage".equals(name))
-            return new Coverage();
         if ("Test".equals(name))
             return new Test();
-        if ("MessageHeader".equals(name))
-            return new MessageHeader();
+        if ("Coverage".equals(name))
+            return new Coverage();
         if ("SecurityEvent".equals(name))
             return new SecurityEvent();
         if ("AssessmentScale".equals(name))
@@ -68,14 +66,18 @@ public class ResourceFactory {
             return new Conformance();
         if ("XdsEntry".equals(name))
             return new XdsEntry();
+        if ("Document".equals(name))
+            return new Document();
         if ("AssessmentDefinition".equals(name))
             return new AssessmentDefinition();
+        if ("Message".equals(name))
+            return new Message();
         if ("Agent".equals(name))
             return new Agent();
-        if ("Profile".equals(name))
-            return new Profile();
         if ("Location".equals(name))
             return new Location();
+        if ("Profile".equals(name))
+            return new Profile();
         if ("Admission".equals(name))
             return new Admission();
         if ("InterestOfCare".equals(name))
@@ -135,6 +137,8 @@ public class ResourceFactory {
             return new ResourceReference();
         if ("CodeableConcept".equals(name))
             return new CodeableConcept();
+        if ("DocumentInformation".equals(name))
+            return new DocumentInformation();
         if ("Identifier".equals(name))
             return new Identifier();
         if ("Narrative".equals(name))

@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
+// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -54,11 +54,6 @@ public class Coverage extends Resource {
          */
         private Date birthdate;
 
-        /**
-         * Patient relationship to the PolicyHolder, for example: Self, spousal or equivalent, dependent, none.
-         */
-        private Coding relationship;
-
         public HumanName getName() { 
           return this.name;
         }
@@ -81,14 +76,6 @@ public class Coverage extends Resource {
 
         public void setBirthdate(Date value) { 
           this.birthdate = value;
-        }
-
-        public Coding getRelationship() { 
-          return this.relationship;
-        }
-
-        public void setRelationship(Coding value) { 
-          this.relationship = value;
         }
 
     }
@@ -129,9 +116,9 @@ public class Coverage extends Resource {
     private Integer dependant;
 
     /**
-     * An optional counter for a particilar instance of the identified coverage which increments upon each renewal.
+     * An optional counter for a particular instance of the identified coverage which increments upon each renewal.
      */
-    private Integer instance;
+    private Integer sequence;
 
     /**
      * Planholder information
@@ -194,12 +181,12 @@ public class Coverage extends Resource {
       this.dependant = value;
     }
 
-    public Integer getInstance() { 
-      return this.instance;
+    public Integer getSequence() { 
+      return this.sequence;
     }
 
-    public void setInstance(Integer value) { 
-      this.instance = value;
+    public void setSequence(Integer value) { 
+      this.sequence = value;
     }
 
     public PlanHolder getPlanHolder() { 

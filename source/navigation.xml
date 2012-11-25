@@ -35,11 +35,11 @@
       <name>REST (HTTP)</name>
     </entry>
     <entry>
-      <link>messageheader</link>
+      <link>message</link>
       <name>Messaging</name>
     </entry>
     <entry>
-      <link>documentheader</link>
+      <link>document</link>
       <name>Documents</name>
     </entry>
     <entry>

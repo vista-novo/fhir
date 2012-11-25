@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Tue, Nov 20, 2012 11:09+1100 for FHIR v0.06
+// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -37,6 +37,27 @@ import java.util.*;
  * For any company/corporation/institution/government department that has relevance to the care process
  */
 public class Organization extends Resource {
+
+    public enum RecordStatus {
+        active, // Active. The state representing the fact that the Entity record is currently active.
+        inactive; // Inactive. The state representing the fact that the Entity record is currently inactive.
+        public static RecordStatus fromCode(String codeString) throws Exception {
+            if (codeString == null || "".equals(codeString))
+                return null;
+        if ("active".equals(codeString))
+          return active;
+        if ("inactive".equals(codeString))
+          return inactive;
+        throw new Exception("Unknown RecordStatus code '"+codeString+"'");
+        }
+        public String toCode() {
+          switch (this) {
+            case active: return "active";
+            case inactive: return "inactive";
+            default: return "?";
+          }
+        }
+    }
 
     public class Accreditation extends Element {
         /**
@@ -124,6 +145,11 @@ public class Organization extends Resource {
 
     public class ContactPerson extends Element {
         /**
+         * Indicates a purpose for which the person can be contacted.
+         */
+        private CodeableConcept type;
+
+        /**
          * Address to use when contacting the contact person for this organization
          */
         private Address address;
@@ -142,6 +168,14 @@ public class Organization extends Resource {
          * Link to the actual person that is a contact person for the organization
          */
         private ResourceReference person;
+
+        public CodeableConcept getType() { 
+          return this.type;
+        }
+
+        public void setType(CodeableConcept value) { 
+          this.type = value;
+        }
 
         public Address getAddress() { 
           return this.address;
@@ -201,12 +235,7 @@ public class Organization extends Resource {
     /**
      * Indication of whether this organization's record is still active.
      */
-    private Coding status;
-
-    /**
-     * The industry that this organization is involved in
-     */
-    private CodeableConcept industryCode;
+    private RecordStatus status;
 
     /**
      * The qualifications/certifications an organisation has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organisation may play in a healthcare environment
@@ -247,20 +276,12 @@ public class Organization extends Resource {
       this.type = value;
     }
 
-    public Coding getStatus() { 
+    public RecordStatus getStatus() { 
       return this.status;
     }
 
-    public void setStatus(Coding value) { 
+    public void setStatus(RecordStatus value) { 
       this.status = value;
-    }
-
-    public CodeableConcept getIndustryCode() { 
-      return this.industryCode;
-    }
-
-    public void setIndustryCode(CodeableConcept value) { 
-      this.industryCode = value;
     }
 
     public List<Accreditation> getAccreditation() { 

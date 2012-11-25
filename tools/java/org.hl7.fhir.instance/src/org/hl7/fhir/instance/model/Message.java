@@ -29,7 +29,7 @@ package org.hl7.fhir.instance.model;
   
 */
 
-// Generated on Mon, Jul 16, 2012 06:00+1000 for FHIR v0.04
+// Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
 import java.util.*;
 
@@ -40,9 +40,9 @@ public class Message extends Resource {
 
     public enum ResponseCode {
         ok, // The message was accepted and processed without error
-        error, // Some internal unexpected error occured - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
-        rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is
-        rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response data must clarify what the change would be, as described by the event definition
+        error, // Some internal unexpected error occurred - wait and try again. Note - this is usually used for things like database unavailable, which may be expected to resolve, though human intervention may be required
+        rejection, // The message was rejected because of some content in it. There is no point in re-sending without change. The response narrative must describe what the issue is.
+        rules, // The message was rejected because of some event-specific business rules, and it may be possible to modify the request and re-submit (as a different request). The response must include an Issue report that describes what problem is
         undeliverable; // A middleware agent was unable to deliver the message to its intended destination
         public static ResponseCode fromCode(String codeString) throws Exception {
             if (codeString == null || "".equals(codeString))
@@ -75,7 +75,7 @@ public class Message extends Resource {
         /**
          * The id of the message that this a response to
          */
-        private String id;
+        private Id id;
 
         /**
          * Code that identifies the type of response to the message - whether it was successful or not, and whether it should be resent or not
@@ -83,15 +83,15 @@ public class Message extends Resource {
         private ResponseCode code;
 
         /**
-         * True if this is not the first response, because the identical request message has been received more than once
+         * Full details of any issues found in the message
          */
-        private java.lang.Boolean duplicate;
+        private ResourceReference details;
 
-        public String getId() { 
+        public Id getId() { 
           return this.id;
         }
 
-        public void setId(String value) { 
+        public void setId(Id value) { 
           this.id = value;
         }
 
@@ -103,55 +103,55 @@ public class Message extends Resource {
           this.code = value;
         }
 
-        public java.lang.Boolean getDuplicate() { 
-          return this.duplicate;
+        public ResourceReference getDetails() { 
+          return this.details;
         }
 
-        public void setDuplicate(java.lang.Boolean value) { 
-          this.duplicate = value;
+        public void setDetails(ResourceReference value) { 
+          this.details = value;
         }
 
     }
 
     public class Source extends Element {
         /**
-         * Formal name for the target system
+         * Human readable name for the target system
          */
-        private String name;
+        private String_ name;
 
         /**
-         * Name of software running the system
+         * May include configuration or other information useful in debugging.
          */
-        private String software;
+        private String_ software;
 
         /**
-         * Version of software running
+         * Can convey versions of multiple systems in situations where a message passes through multiple hands.
          */
         private String_ version;
 
         /**
-         * Human contact for problems
+         * An e-mail, phone, website or other contact point to use to resolve issues with message communications.
          */
         private Contact contact;
 
         /**
-         * Actual message source address (if applicable)
+         * Identifies the routing target to send acknowledgements to.
          */
-        private java.net.URI endpoint;
+        private Uri endpoint;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
-        public String getSoftware() { 
+        public String_ getSoftware() { 
           return this.software;
         }
 
-        public void setSoftware(String value) { 
+        public void setSoftware(String_ value) { 
           this.software = value;
         }
 
@@ -171,11 +171,11 @@ public class Message extends Resource {
           this.contact = value;
         }
 
-        public java.net.URI getEndpoint() { 
+        public Uri getEndpoint() { 
           return this.endpoint;
         }
 
-        public void setEndpoint(java.net.URI value) { 
+        public void setEndpoint(Uri value) { 
           this.endpoint = value;
         }
 
@@ -183,25 +183,25 @@ public class Message extends Resource {
 
     public class Destination extends Element {
         /**
-         * Name of system
+         * Human readable name for the source system
          */
-        private String name;
+        private String_ name;
 
         /**
-         * particular delivery destination within the destination
+         * Identifies the target end system in situations where the initial message transmission is to an intermediary system.
          */
         private ResourceReference target;
 
         /**
-         * Actual destination address (if applicable)
+         * Indicates where the message should be routed to.
          */
-        private java.net.URI endpoint;
+        private Uri endpoint;
 
-        public String getName() { 
+        public String_ getName() { 
           return this.name;
         }
 
-        public void setName(String value) { 
+        public void setName(String_ value) { 
           this.name = value;
         }
 
@@ -213,33 +213,33 @@ public class Message extends Resource {
           this.target = value;
         }
 
-        public java.net.URI getEndpoint() { 
+        public Uri getEndpoint() { 
           return this.endpoint;
         }
 
-        public void setEndpoint(java.net.URI value) { 
+        public void setEndpoint(Uri value) { 
           this.endpoint = value;
         }
 
     }
 
     /**
-     * Id of the thread - a series of messages that pertain to the same logical sequence, and are all identified by the same thread identifier
+     * The identifier of this message
      */
-    private String threadId;
+    private Id id;
 
     /**
      * Instant the message was sent
      */
-    private java.util.Calendar instant;
+    private Instant instant;
 
     /**
      * Code that identifies the event this message represents, and connects it with the event definition in the FHIR specification
      */
-    private String event;
+    private Code event;
 
     /**
-     * Information about the the message that this message is a response to.  Only present if this message is a response.
+     * Information about the message that this message is a response to.  Only present if this message is a response.
      */
     private Response response;
 
@@ -254,17 +254,22 @@ public class Message extends Resource {
     private Destination destination;
 
     /**
-     * The person or device that performed the data entry leading to this message. Where there is more than one candidate, pick the most proximal to the message. Can provide other enterers in extensions
+     * The person or device that performed the data entry leading to this Message. Where there is more than one candidate, pick the most proximal to the Message. Can provide other enterers in extensions
      */
     private ResourceReference enterer;
 
     /**
-     * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the message. Can provide other authors in extensions
+     * The logical author of the message - the person or device that decided the described event should happen. Where there is more than one candidate, pick the most proximal to the Message. Can provide other authors in extensions
      */
     private ResourceReference author;
 
     /**
-     * The person or organization that accepts overall responsbility for the contents of the message. The implication is that the message event happened under the policies of the responsible party
+     * Allows data conveyed by a message to be addressed to a particular person or department when routing to a specific application isn't sufficient.
+     */
+    private ResourceReference receiver;
+
+    /**
+     * The person or organization that accepts overall responsibility for the contents of the Message. The implication is that the message event happened under the policies of the responsible party
      */
     private ResourceReference responsible;
 
@@ -279,31 +284,31 @@ public class Message extends Resource {
     private CodeableConcept reason;
 
     /**
-     * The actual data of the message - a reference to the focus class of the message. 
+     * The actual data of the message - a reference to the root/focus class of the event. 
      */
     private List<ResourceReference> data = new ArrayList<ResourceReference>();
 
-    public String getThreadId() { 
-      return this.threadId;
+    public Id getId() { 
+      return this.id;
     }
 
-    public void setThreadId(String value) { 
-      this.threadId = value;
+    public void setId(Id value) { 
+      this.id = value;
     }
 
-    public java.util.Calendar getInstant() { 
+    public Instant getInstant() { 
       return this.instant;
     }
 
-    public void setInstant(java.util.Calendar value) { 
+    public void setInstant(Instant value) { 
       this.instant = value;
     }
 
-    public String getEvent() { 
+    public Code getEvent() { 
       return this.event;
     }
 
-    public void setEvent(String value) { 
+    public void setEvent(Code value) { 
       this.event = value;
     }
 
@@ -345,6 +350,14 @@ public class Message extends Resource {
 
     public void setAuthor(ResourceReference value) { 
       this.author = value;
+    }
+
+    public ResourceReference getReceiver() { 
+      return this.receiver;
+    }
+
+    public void setReceiver(ResourceReference value) { 
+      this.receiver = value;
     }
 
     public ResourceReference getResponsible() { 
