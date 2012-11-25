@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\list.xsd">
+  <code>
+    <coding>
+      <system>http://snomed.info</system>
+      <code>182836005</code>
+      <display>Review of medication</display>
+    </coding>
+    <text>Medication Review</text>
+  </code>
+  <source>
+    <type>Person</type>
+    <id>grahame</id>
+  </source>
+  <date>2012-11-26T07:30:23+11:00</date>
+
+  <emptyReason>
+    <coding>
+      <system>http://hl7.org/fhir/special-values</system>
+      <code>nil known</code>
+      <display>The are no known applicable values in this context</display>
+    </coding>
+    <text>The patient is not on any medications</text>
+  </emptyReason>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>The patient is not on any medications</p>
+    </div>
+  </text>
+</List>

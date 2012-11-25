@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <List xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\list.xsd">
+  <!-- this list doesn't have a code. in actual fact, 
+    it's a problem list produced at the end of a visit 
+    to a regular primary care provider. But the only way
+    to know this is to hunt down the place it is used 
+    and find out -->
   <source>
     <type>Person</type>
     <id>grahame</id>
