@@ -3,7 +3,7 @@
 <p>This resource is a place-holder.  It has not yet been vetted by the Orders &amp; Observations Work Group.</p>
 
 <p>Observations are a central element in healthcare.  They are used to diagnose, monitor progress, determine baselines and patterns 
-and even capture demographic characteristics.  FHIR provides several resources such as <a href="./labreport.htm">LabReport</a> to capture
+and even capture demographic characteristics.  There are several resources such as <a href="labreport.htm">LabReport</a> to capture
 complex observations.  However, most observations are simple name-value-pair assertions with little complexity.  This is the resource to
 use for such use-cases.  Possibilities include:</p>
 

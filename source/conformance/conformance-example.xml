@@ -51,15 +51,6 @@
       <operation>
         <code>updates</code>
       </operation>
-      <search>
-        <!-- this list is incomplete - there's more parameters than name, but this suffices for an example -->
-        <param>
-          <name>name</name>
-          <type>string</type>
-          <repeats>union</repeats>
-          <documentation>Search for a person by name (any part of their name)</documentation>
-        </param>
-      </search>
     </resource>
   </rest>
 
