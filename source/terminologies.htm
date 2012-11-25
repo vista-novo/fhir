@@ -228,14 +228,16 @@ All the codes in these code systems have their own uri of the format http://hl7.
 <h2>Special Values</h2>
 <p>
 Internally defined codes useful throughout the specification where <a href="datatypes.htm#Coding">Coding</a> or <a href="datatypes.htm#CodeableConcept">CodeableConcept</a> is used.
-These are defined by the code system "http://hl7.org/fhir/sid/special-values" which has OID 2.16.840.1.113883.6.305. 
+These are defined by the code system "http://hl7.org/fhir/special-values" which has OID 2.16.840.1.113883.6.305. 
 </p>
 <table class="codes">
-  <tr><td>true</td><td>Boolean true</td></tr>
-  <tr><td>false</td><td>Boolean false</td></tr>
-  <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified (used in formulations)</td></tr>
-  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. (e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )</td></tr>
-  <tr><td>withdrawn</td><td>The value is no longer available</td></tr>
+  <tr><th>code</th><th>Display / Print Name</th><th>Comment</th></tr>
+  <tr><td>true</td><td>Boolean true</td><td></td></tr>
+  <tr><td>false</td><td>Boolean false</td><td></td></tr>
+  <tr><td>trace</td><td>The content is greater than zero, but too small to be quantified</td><td>used in formulations</td></tr>
+  <tr><td>sufficient</td><td>The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material.</td><td>(e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' This code would be used to express the quantity of water. )</td></tr>
+  <tr><td>withdrawn</td><td>The value is no longer available</td><td></td></tr>
+  <tr><td>nil known</td><td>The are no known applicable values in this context</td><td>e.g. No known allergies / No known Medical History / No known medications</td></tr>
 </table>
 
 <a name="resourcetypes"/>

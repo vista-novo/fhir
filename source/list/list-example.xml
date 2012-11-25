@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\list.xsd">
+  <source>
+    <type>Person</type>
+    <id>grahame</id>
+  </source>
+  <date>2012-11-25T22:17:00+11:00</date>
+  <entry>
+    <status>deleted</status>
+    <item>
+      <type>Problem</type>
+      <id>example</id>
+    </item>
+  </entry>
+  <entry>
+    <status>added</status>
+    <item>
+      <type>Problem</type>
+      <id>example2</id>
+    </item>
+  </entry>
+  
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <table>
+        <thead>
+          <tr>
+            <th>Problem</th>
+            <th>Severity</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Burnt Ear</td>
+            <td>Severe</td>
+            <td>24-May 2012</td>
+            <td>Left Ear</td>
+            <td>deleted</td>
+          </tr>
+          <tr>
+            <td>Asthma</td>
+            <td>Mild</td>
+            <td>21-Nov 2012</td>
+            <td>--</td>
+            <td>added</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </text>
+</List>

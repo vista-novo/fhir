@@ -110,7 +110,8 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     
     for (ResourceDefn n : definitions.getResources().values()) {
       generate(n.getRoot(), false, true, true);
-      reg.append("    else if (resource instanceof "+n.getName()+")\r\n      compose"+n.getName()+"(\""+n.getName()+"\", ("+n.getName()+")resource);\r\n");
+      String nn = javaClassName(n.getName());
+      reg.append("    else if (resource instanceof "+nn+")\r\n      compose"+nn+"(\""+n.getName()+"\", ("+nn+")resource);\r\n");
 //      regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
@@ -127,6 +128,13 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     }
     
     finish();
+  }
+
+  private String javaClassName(String name) {
+    if (name.equals("List"))
+      return "List_";
+    else 
+      return name;
   }
 
   private String upFirst(String n) {
@@ -176,10 +184,11 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
     enums.clear();
     strucs.clear();
     enumNames.clear();
+    String nn = javaClassName(n.getName());
     for (ElementDefn e : n.getElements()) {
-        scanNestedTypes(n, n.getName(), e);
+        scanNestedTypes(n, nn, e);
     }
-    context = n.getName();
+    context = nn;
 
     genInner(n, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
     
@@ -212,7 +221,7 @@ public class JavaComposerJsonGenerator extends OutputStreamWriter {
   }
 
   private void genInner(ElementDefn n, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws IOException, Exception {
-    String tn = typeNames.containsKey(n) ? typeNames.get(n) : n.getName();
+    String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
     
     write("  private void compose"+upFirst(tn).replace(".", "").replace("<", "_").replace(">", "")+"(String name, "+tn+" element) throws Exception {\r\n");
     write("    if (element != null) {\r\n");

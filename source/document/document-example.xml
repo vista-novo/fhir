@@ -43,12 +43,12 @@
     </custodian>
   </information>
   <section>
-    <type>
+    <code>
       <coding>
         <system>http://loinc.org</system>
         <code>10164-2</code>
       </coding>
-    </type>
+    </code>
     <content>
       <!-- we really need a different resource here, but it's not yet defined -->
       <type>Prescription</type> 

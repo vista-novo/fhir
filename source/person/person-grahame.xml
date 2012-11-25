@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Person xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/person.xsd">
+	
+  <name>
+    <use>official</use>
+     <family>Grieve</family>
+     <given>Grahame</given>
+  </name>
+
+  <telecom>
+    <system>email</system>
+    <value>grahame@healthintersections.com.au</value>
+    <use>work</use>
+  </telecom>
+  
+  <gender>   
+    <system>http://hl7.org/fhir/sid/v2-0001</system>
+    <code>M</code>
+    <display>Male</display>
+  </gender>
+
+  <deceased>false</deceased>
+   	
+	<text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <a href="mailto:grahame@healthintersections.com.au">Grahame Grieve</a>
+    </div>
+  </text>
+</Person>

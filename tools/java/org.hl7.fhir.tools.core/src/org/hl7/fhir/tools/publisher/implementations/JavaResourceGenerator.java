@@ -62,7 +62,7 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		return typeNames;
 	}
 
-	public void generate(ElementDefn root, Map<String, BindingSpecification> conceptDomains, JavaGenClass clss, DefinedCode cd, Date genDate, String version) throws Exception {
+	public void generate(ElementDefn root, String name, Map<String, BindingSpecification> conceptDomains, JavaGenClass clss, DefinedCode cd, Date genDate, String version) throws Exception {
 		typeNames.clear();
 		typeNameStrings.clear();
 		enums.clear();
@@ -85,13 +85,13 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 		write(" * "+root.getDefinition()+"\r\n");
 		write(" */\r\n");
 		if (clss == JavaGenClass.Resource)
-			write("public class "+upFirst(root.getName())+" extends Resource {\r\n");
+			write("public class "+upFirst(name)+" extends Resource {\r\n");
 		else if (clss == JavaGenClass.Structure)
-			write("public class "+upFirst(root.getName())+" extends Element {\r\n");
+			write("public class "+upFirst(name)+" extends Element {\r\n");
 		else if (clss == JavaGenClass.Constraint)
 			write("public class "+upFirst(cd.getCode())+" extends "+upFirst(root.getName())+" {\r\n");
 		else  if (root.typeCode().equals("GenericType")) {
-			write("public class "+upFirst(root.getName())+"<T extends Ordered> extends Type {\r\n");
+			write("public class "+upFirst(name)+"<T extends Ordered> extends Type {\r\n");
 			write("  private String type;\r\n");
 			write("  public String getType() {\r\n");
 			write("    return type;\r\n");
@@ -103,9 +103,9 @@ public class JavaResourceGenerator extends JavaBaseGenerator {
 			write("  };\r\n");
 			write("  \r\n");
 		} else if (root.getName().equals("Quantity"))
-			write("public class "+upFirst(root.getName())+" extends Type {\r\n");
+			write("public class "+upFirst(name)+" extends Type {\r\n");
 		else
-			write("public class "+upFirst(root.getName())+" extends Type {\r\n");
+			write("public class "+upFirst(name)+" extends Type {\r\n");
 		write("\r\n");
 
 		if (clss != JavaGenClass.Constraint) {

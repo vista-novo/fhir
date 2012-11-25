@@ -74,7 +74,8 @@ public class PageProcessor implements Logger  {
   private List<PlatformGenerator> referenceImplementations = new ArrayList<PlatformGenerator>();
   private IniFile ini;
   private Calendar genDate = Calendar.getInstance();
-  
+  private Date start = new Date();
+  private boolean notime;
   
   private String dictForDt(String dt) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
@@ -1271,11 +1272,22 @@ public class PageProcessor implements Logger  {
   }
 
   public void log(String content) {
-    System.out.println(content);        
+    if (notime) {
+      System.out.println(content);
+      notime = false;
+    } else {
+      Date stop = new Date();
+      long l1 = start.getTime();
+      long l2 = stop.getTime();
+      long diff = l2 - l1;
+      long secs = diff / 1000;
+      System.out.println(String.format("%1$-74s", content)+" "+String.format("%1$3s", Long.toString(secs))+"sec");
+    }
   }
   
   public void logNoEoln(String content) {
-    System.out.print(content);        
+    System.out.print(content);  
+    notime = true;
   }
 
   

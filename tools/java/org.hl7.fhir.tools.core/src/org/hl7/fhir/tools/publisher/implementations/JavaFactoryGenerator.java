@@ -63,7 +63,7 @@ public class JavaFactoryGenerator extends OutputStreamWriter {
 		write("    public static Resource createResource(String name) throws Exception {\r\n");
 		for (String name : resources.keySet()) {
 			write("        if (\""+name+"\".equals(name))\r\n");
-			write("            return new "+resources.get(name)+"();\r\n");
+			write("            return new "+javaClassName(resources.get(name))+"();\r\n");
 		}
 		
 		write("        else\r\n");
@@ -89,4 +89,11 @@ public class JavaFactoryGenerator extends OutputStreamWriter {
 		close();
 	}
 	
+	private String javaClassName(String name) {
+    if (name.equals("List"))
+      return "List_";
+    else 
+      return name;
+  }
+
 }

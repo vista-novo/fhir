@@ -110,7 +110,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     
     for (ResourceDefn n : definitions.getResources().values()) {
       generate(n.getRoot(), false, true, true);
-      reg.append("    else if (xpp.getName().equals(\""+n.getName()+"\"))\r\n      return parse"+n.getName()+"(xpp);\r\n");
+      reg.append("    else if (xpp.getName().equals(\""+n.getName()+"\"))\r\n      return parse"+javaClassName(n.getName())+"(xpp);\r\n");
       regn.append("    if (xpp.getName().equals(prefix+\""+n.getName()+"\"))\r\n      return true;\r\n");
     }
     
@@ -172,10 +172,11 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
     enums.clear();
     strucs.clear();
     enumNames.clear();
+    String nn = javaClassName(n.getName());
     for (ElementDefn e : n.getElements()) {
-        scanNestedTypes(n, n.getName(), e);
+        scanNestedTypes(n, nn, e);
     }
-    context = n.getName();
+    context = nn;
 
     genInner(n, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
     
@@ -183,6 +184,13 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
       genInner(e, hasDataAbsentReason, contentsHaveDataAbsentReason, listsAreWrapped);
     }
 
+  }
+
+  private String javaClassName(String name) {
+    if (name.equals("List"))
+      return "List_";
+    else 
+      return name;
   }
 
   private void generateConstraint(DefinedCode cd, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws Exception {
@@ -208,7 +216,7 @@ public class JavaParserXmlGenerator extends JavaBaseGenerator {
   }
 
   private void genInner(ElementDefn n, boolean hasDataAbsentReason, boolean contentsHaveDataAbsentReason, boolean listsAreWrapped) throws IOException, Exception {
-    String tn = typeNames.containsKey(n) ? typeNames.get(n) : n.getName();
+    String tn = typeNames.containsKey(n) ? typeNames.get(n) : javaClassName(n.getName());
     boolean bUseOwner = false;
     
     String pn = tn.contains("<") ? "\""+tn.substring(tn.indexOf('<')+1).replace(">", "") + "\"" : "";

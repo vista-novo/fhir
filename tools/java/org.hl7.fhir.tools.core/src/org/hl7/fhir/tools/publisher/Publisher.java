@@ -452,7 +452,7 @@ public class Publisher {
 		sg.close();
 		
 		produceSchemaZip();
-		logNoEoln("Produce Specification");
+		logNoEoln("Produce Content");
 		produceSpec();
 
 		if (!nobook) {

@@ -1,0 +1,68 @@
+<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- insert xhtml content here -->
+<a name="status"> </a>
+<h2>Item Status</h2>
+
+<p>
+Each entry in the list includes a status. The status code can be one of the following values:
+</p>
+<%codelist ListEntryStatus%>
+<p>
+The status values are not instructions about what should happen, but a record of what did happen. 
+The context of the list must be known in order to understand the meaning of changes to the list. 
+For example, if the list concerns current patient medications, then a deleted medication means 
+the patient was instructed not to take the medication. 
+</p>
+<p>
+It is not necessary to label an item with a status, however systems must ensure that an
+item with no status code is not deleted.
+</p>
+
+
+<a name="status"> </a>
+<h2>Narrative Content</h2>
+
+<p>
+The narrative portion of the List resource should contain a summary 
+of key properties of the items in the list, along with their status 
+as indicated in the entry.
+</p>
+<p>
+An HTML table is the recommended approach, though this is not required.
+There should be a representation in the narrative for each item in the 
+list, and vice versa, along with clear use of visual hints (borders, 
+lines, bullet marks, etc) to ensure that human readers do not get 
+confused about which status belongs with which item on space-poor displays.
+</p>
+
+<a name="status"> </a>
+<h2>Empty Reason</h2>
+
+<p>
+If the list is empty, there could be several different reasons why this is so. For example:
+</p>
+<ul>
+ <li>There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history)</li>
+ <li>The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons)</li>
+ <li>The source system doesn't support these type of entries</li>
+</ul>
+<p>
+Given these possibilities, and the common and significant first case, source systems SHOULD 
+provide an empty reason if the list is empty. Because of the importance of this case, the 
+<a href="terminologies.htm#specialvalues">special value "nil known"</a> should be used when 
+there are no (significant) entries in this context of care. Note that this concept is 
+sometimes described differently, such as "patient denies taking medications", or 
+"patient was unable to identify any relevant medical history".
+</p>
+<p>
+When receiving a list, systems should not assume the the list is complete (some entries may 
+have been withheld for a variety of reasons), unless there are specific trading partner
+arrangements in place, or, if the list is empty, that there are actually nil known, 
+unless the "nil known" code is present.
+</p>
+<p>
+If the list is empty, the narrative should contain text equivalent to the empty reason.
+</p>
+
+</div>
