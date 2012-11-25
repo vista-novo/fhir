@@ -29,6 +29,9 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileOutputStream;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryMXBean;
+import java.lang.management.MemoryUsage;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -1281,7 +1284,10 @@ public class PageProcessor implements Logger  {
       long l2 = stop.getTime();
       long diff = l2 - l1;
       long secs = diff / 1000;
-      System.out.println(String.format("%1$-74s", content)+" "+String.format("%1$3s", Long.toString(secs))+"sec");
+      MemoryMXBean mem = ManagementFactory.getMemoryMXBean();
+      // mem.gc();
+      long used = mem.getHeapMemoryUsage().getUsed() / (1024 * 1024);
+      System.out.println(String.format("%1$-74s", content)+" "+String.format("%1$3s", Long.toString(secs))+"sec "+String.format("%1$4s", Long.toString(used))+"MB");
     }
   }
   
