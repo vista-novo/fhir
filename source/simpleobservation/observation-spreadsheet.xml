@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:12:07Z</Created>
-  <LastSaved>2012-11-23T03:43:06Z</LastSaved>
+  <LastSaved>2012-11-25T02:55:31Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -25,6 +25,14 @@
  </ExcelWorkbook>
  <Styles>
   <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s118" ss:Name="Normal 2">
    <Alignment ss:Vertical="Bottom"/>
    <Borders/>
    <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
@@ -85,13 +93,13 @@
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
    <Interior/>
   </Style>
-  <Style ss:ID="s73">
+  <Style ss:ID="s72">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s75">
+  <Style ss:ID="s74">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s76">
+  <Style ss:ID="s75">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
@@ -153,7 +161,7 @@
     <Cell><Data ss:Type="String">CCDA: Vital Sign Observation</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">SimpleObservation</Data></Cell>
+    <Cell><Data ss:Type="String">Observation</Data></Cell>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
     <Cell ss:StyleID="s66"/>
@@ -193,7 +201,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">SimpleObservation.identifier</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -231,7 +239,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">SimpleObservation.type</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -269,7 +277,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">SimpleObservation.bodySite</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.bodySite</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -309,14 +317,14 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">SimpleObservation.method</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.method</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">SimpleObservationMethod</Data></Cell>
-    <Cell><Data ss:Type="String">How was it done</Data></Cell>
+    <Cell><Data ss:Type="String">How it was done</Data></Cell>
     <Cell><Data ss:Type="String">Indicates the mechanism used to perform the observation</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"><Data ss:Type="String">In some cases, method can impact results and is thus for determing whether results can be compared or determining significance of results</Data></Cell>
     <Cell><Data ss:Type="String">Only used if not implicit in code for SimpleObservation.result.type</Data></Cell>
@@ -327,7 +335,7 @@
     <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
-    <Cell><Data ss:Type="String">SimpleObservation.valid[x]</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.valid[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -343,7 +351,7 @@
     <Cell ss:Index="17" ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="165">
-    <Cell><Data ss:Type="String">SimpleObservation.subject</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.subject</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -381,7 +389,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="165">
-    <Cell><Data ss:Type="String">SimpleObservation.performer</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.performer</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -391,7 +399,8 @@
     <Cell><Data ss:Type="String">Who did the observation</Data></Cell>
     <Cell><Data ss:Type="String">Who was responsible for asserting the observed value as &quot;true&quot;</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"><Data ss:Type="String">May give a degree of confidence in the observation and also indicates where follow-up questions should be directed.</Data></Cell>
-    <Cell ss:Index="13" ss:StyleID="s68"><Data ss:Type="String">unique(./participation[isHighest(priorityCode) and typeCode=&quot;PRF&quot; and isNormalParticipation()]/role&#10;or&#10;./participation[isHighest(priorityCode) and typeCode=&quot;PRF&quot; and isNormalParticipation()]/role/entity]</Data></Cell>
+    <Cell><Data ss:Type="String">This would only be &quot;Device&quot; if the device takes responsibility for the measurement, not to capture the device used by a human to make the measurement.  (The latter could be captured as an extension.)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unique(./participation[isHighest(priorityCode) and typeCode=&quot;PRF&quot; and isNormalParticipation()]/role&#10;or&#10;./participation[isHighest(priorityCode) and typeCode=&quot;PRF&quot; and isNormalParticipation()]/role/entity]</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">OBX.15</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:Index="17" ss:StyleID="s67"/>
@@ -419,7 +428,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">SimpleObservation.value[x]</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -458,7 +467,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="105">
-    <Cell><Data ss:Type="String">SimpleObservation.interpretation</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.interpretation</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -496,14 +505,14 @@
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="180">
-    <Cell><Data ss:Type="String">SimpleObservation.normalRange</Data></Cell>
-    <Cell><Data ss:Type="String">0..*</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.normalValue[x]</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">2</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">Range</Data></Cell>
+    <Cell><Data ss:Type="String">Range|string</Data></Cell>
     <Cell ss:StyleID="s67"/>
-    <Cell><Data ss:Type="String">Expected normal result range</Data></Cell>
+    <Cell><Data ss:Type="String">Expected normal value range</Data></Cell>
     <Cell><Data ss:Type="String">For numeric results, indicates the boundaries within which &quot;normal&quot; values should occur</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s68"><Data ss:Type="String">Knowing what values are considered &quot;normal&quot; can help evaluate the significance of a particular result.</Data></Cell>
     <Cell><Data ss:Type="String">This might be generic or be specific to the patient's age, gender, weight and other factors.</Data></Cell>
@@ -535,7 +544,7 @@
     <Cell ss:StyleID="s62"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="150">
-    <Cell><Data ss:Type="String">SimpleObservation.component</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.component</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="Number">1</Data></Cell>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -550,7 +559,7 @@
     <Cell ss:Index="17" ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
-    <Cell><Data ss:Type="String">SimpleObservation.component.type</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.component.type</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -588,7 +597,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
-    <Cell><Data ss:Type="String">SimpleObservation.component.value[x]</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.component.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"><Data ss:Type="String">y</Data></Cell>
@@ -628,7 +637,7 @@
     <Cell ss:StyleID="s71"><Data ss:Type="String">y</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell><Data ss:Type="String">SimpleObservation.extension</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.extension</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -642,7 +651,7 @@
     <Cell ss:StyleID="s67"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="String">SimpleObservation.text</Data></Cell>
+    <Cell><Data ss:Type="String">Observation.text</Data></Cell>
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell ss:StyleID="s67"/>
@@ -668,7 +677,7 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>8</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -681,11 +690,9 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>10</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -694,13 +701,13 @@
  </Worksheet>
  <Worksheet ss:Name="Invariants">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s73" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s73" ss:Width="14.25"/>
-   <Column ss:StyleID="s73" ss:Width="126"/>
-   <Column ss:StyleID="s73" ss:Width="96"/>
-   <Column ss:StyleID="s73" ss:Width="234.75"/>
-   <Column ss:StyleID="s73" ss:AutoFitWidth="0" ss:Width="139.5"/>
-   <Column ss:StyleID="s73" ss:Width="320.25"/>
+   x:FullRows="1" ss:StyleID="s72" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s72" ss:Width="14.25"/>
+   <Column ss:StyleID="s72" ss:Width="126"/>
+   <Column ss:StyleID="s72" ss:Width="96"/>
+   <Column ss:StyleID="s72" ss:Width="234.75"/>
+   <Column ss:StyleID="s72" ss:AutoFitWidth="0" ss:Width="139.5"/>
+   <Column ss:StyleID="s72" ss:Width="320.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
     <Cell><Data ss:Type="String">Id</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
@@ -793,10 +800,10 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
-    <Cell ss:StyleID="s75"><Data ss:Type="String">simpleobservation-provide</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">Provide a simple observation or update a previously provided simple observation</Data></Cell>
-    <Cell ss:Index="4" ss:StyleID="s75"><Data ss:Type="String">SimpleObservation</Data></Cell>
-    <Cell ss:StyleID="s75"><Data ss:Type="String">.subjectPatient&#10;.subjectPatient.person&#10;.subjectGroup&#10;.subjectDevice&#10;.subjectAnimal&#10;.performerAgent&#10;.performerAgent.person&#10;.performerPatient&#10;.performerPerson</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">simpleobservation-provide</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Provide a simple observation or update a previously provided simple observation</Data></Cell>
+    <Cell ss:Index="4" ss:StyleID="s74"><Data ss:Type="String">SimpleObservation</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">.subjectPatient&#10;.subjectPatient.person&#10;.subjectGroup&#10;.subjectDevice&#10;.subjectAnimal&#10;.performerAgent&#10;.performerAgent.person&#10;.performerPatient&#10;.performerPerson</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -1011,7 +1018,7 @@
    <Column ss:Width="249.75"/>
    <Column ss:Width="47.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="90"/>
-   <Column ss:AutoFitWidth="0" ss:Width="106.5"/>
+   <Column ss:Width="132.75"/>
    <Column ss:AutoFitWidth="0" ss:Width="274.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="15.75">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
@@ -1024,50 +1031,50 @@
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ObservationBodySite</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes for human and animal body sites</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT body sites</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleObservationMethod</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Methods for simple observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">unbound</Data></Cell>
-    <Cell ss:StyleID="s76"/>
-    <Cell ss:StyleID="s76"/>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s75"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleObservationType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes identifying types of simple observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:StyleID="s76"/>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">suggested</Data></Cell>
+    <Cell ss:StyleID="s75"/>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleObservationResult</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes providing results of simple observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleObservationInterpretation</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes identifying interpretations of observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
-    <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">HL7 Observation Interpretation codes</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
+    <Cell><Data ss:Type="String">required</Data></Cell>
+    <Cell><Data ss:Type="String">observation-interpretation</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleSubObservationType</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes identifying types of simple sub-observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s76"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s75"><Data ss:Type="String">LOINC codes filtered to exclude lab, document,imaging and other complex codes</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">SimpleSubObservationResult</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">Codes providing results of simple sub-observations</Data></Cell>
-    <Cell ss:StyleID="s76"><Data ss:Type="String">value set</Data></Cell>
+    <Cell ss:StyleID="s75"><Data ss:Type="String">value set</Data></Cell>
     <Cell><Data ss:Type="String">suggested</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">SNOMED-CT observation value codes</Data></Cell>
    </Row>
@@ -1098,9 +1105,53 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>6</ActiveRow>
-     <ActiveCol>5</ActiveCol>
-     <RangeSelection>R7C6:R8C6</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="observation-interpretation">
+  <Table ss:ExpandedColumnCount="3" ss:ExpandedRowCount="5" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Column ss:Width="55.5"/>
+   <Column ss:Width="561"/>
+   <Column ss:Width="249.75"/>
+   <Row>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Code</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">System</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">N</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Normal</Data></Cell>
+    <Cell><Data ss:Type="String">http://hl7.org/v3/vocab/ObservationInterpretation</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">A</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Abnormal</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">L</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Low</Data></Cell>
+   </Row>
+   <Row>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">H</Data></Cell>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">High</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+     <RangeSelection>R2C2:R5C2</RangeSelection>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
