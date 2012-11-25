@@ -41,6 +41,10 @@
     <entry>
       <link>document</link>
       <name>Documents</name>
+      <entry>
+        <link>documentinformation</link>
+        <name>Document Information</name>
+      </entry>
     </entry>
     <entry>
       <link>issuereport</link>

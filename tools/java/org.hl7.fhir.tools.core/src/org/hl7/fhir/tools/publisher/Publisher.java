@@ -454,7 +454,6 @@ public class Publisher {
 		produceSchemaZip();
 		logNoEoln("Produce Specification");
 		produceSpec();
-    log("\r\nProduce Specification... done");
 
 		if (!nobook) {
 			log("Produce HL7 copy");
@@ -563,6 +562,9 @@ public class Publisher {
     zip = new ZipGenerator(page.getFolders().dstDir + "examples-json.zip");
     zip.addFiles(page.getFolders().dstDir, "", ".json");
     zip.close();
+
+    log("... done");
+    log("Produce Book Form");
 
 		produceZip();
 		book.produce();
