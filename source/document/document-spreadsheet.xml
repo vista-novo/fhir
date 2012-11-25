@@ -20,6 +20,7 @@
   <WindowWidth>15570</WindowWidth>
   <WindowTopX>5040</WindowTopX>
   <WindowTopY>5505</WindowTopY>
+  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -199,11 +200,11 @@
     <Cell ss:Index="12"><Data ss:Type="String">./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[moodCode=&quot;EVN&quot; and classCode=&quot;DOCSECT&quot; and isNormalAct]</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Document.section.type</Data></Cell>
+    <Cell><Data ss:Type="String">Document.section.code</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">DocumentSectionType</Data></Cell>
-    <Cell><Data ss:Type="String">Type of section (recommended)</Data></Cell>
+    <Cell><Data ss:Type="String">DocumentSectionCode</Data></Cell>
+    <Cell><Data ss:Type="String">Classification of section (recommended)</Data></Cell>
     <Cell><Data ss:Type="String">A code identifying the kind of content contained within the section</Data></Cell>
     <Cell><Data ss:Type="String">Provides computable standardized labels to topics within the document.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">./code</Data></Cell>
@@ -314,11 +315,10 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>10</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -331,11 +331,11 @@
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>0</ActiveCol>
+     <ActiveCol>9</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -495,8 +495,8 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s70"><Data ss:Type="String">DocumentSectionType</Data></Cell>
-    <Cell ss:StyleID="s70"><Data ss:Type="String">Type of a clinical document section</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">DocumentSectionCode</Data></Cell>
+    <Cell ss:StyleID="s70"><Data ss:Type="String">Classification of a clinical document section</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">preferred</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s70"><Data ss:Type="String">LOINC Section Types</Data></Cell>
@@ -509,11 +509,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <RangeSelection>R2:R3</RangeSelection>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
