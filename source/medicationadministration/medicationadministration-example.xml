@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MedicationAdministration xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\medicationAdministration.xsd"> 
+
+<administrationEventStatus>completed</administrationEventStatus>
+<effectiveTime>
+  <start>2012-06-01T14:30:00</start>
+  <end>2012-06-01T14:30:00</end>
+</effectiveTime>
+  <route>
+    <coding>
+      <system>http://snomed.info</system>
+      <code>363743006</code>
+      <display>oral administration of treatment</display>
+    </coding>  
+  </route>
+  <administeredDose>
+    <value>10</value>
+    <units>ml</units>
+    <system>http://unitsofmeasure.org</system>
+    <code>ml</code>
+  </administeredDose>
+  <prescription>
+    <type>Prescription</type>
+    <id>example</id>
+  </prescription>
+  <patient>
+    <type>Patient</type>
+    <id>a23</id>
+  </patient>
+  <medication>
+    <coding>
+      <system>http://snomed.info</system>
+      <code>123456789</code>
+      <display>Penicillin VK oral suspension 125mg/5ml</display>
+    </coding>  
+  </medication>
+  <text>
+    <status>generated</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Penicillin VK 10ml suspension administered by oral route at 14:30 on 1 June 2012</p>
+      <p>on the authority of prescription ref: example</p>
+      <p>to patient ref: a23</p>
+    </div>
+  </text>
+</MedicationAdministration>
