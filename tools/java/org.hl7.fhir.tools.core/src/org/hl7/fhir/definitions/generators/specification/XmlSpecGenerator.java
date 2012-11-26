@@ -99,7 +99,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		write("&gt;\r\n");
   }
 
-	public void generate(ProfileDefn profile, Definitions definitions) throws Exception {
+	public void generate(ProfileDefn profile) throws Exception {
     write("<pre class=\"spec\">\r\n");
     
     if (profile.getResources().size() > 0) {
