@@ -28,65 +28,65 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface CompositeTypeDefn extends TypeDefn, NameScope {
 	/**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn}.
-	 * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}'.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+   * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn}.
+   * It is bidirectional and its opposite is '{@link org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType <em>Parent Type</em>}'.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_Elements()
-	 * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType
-	 * @model opposite="parentType" containment="true"
-	 *        extendedMetaData="name='element'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Elements</em>' containment reference list.
+   * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_Elements()
+   * @see org.hl7.fhir.definitions.ecore.fhir.ElementDefn#getParentType
+   * @model opposite="parentType" containment="true"
+   *        extendedMetaData="name='element'"
+   * @generated
+   */
 	EList<ElementDefn> getElements();
 
 	/**
-	 * Returns the value of the '<em><b>Invariants</b></em>' containment reference list.
-	 * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.Invariant}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Invariants</b></em>' containment reference list.
+   * The list contents are of type {@link org.hl7.fhir.definitions.ecore.fhir.Invariant}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Invariants</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Invariants</em>' containment reference list.
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_Invariants()
-	 * @model containment="true"
-	 *        extendedMetaData="name='invariant'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Invariants</em>' containment reference list.
+   * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_Invariants()
+   * @model containment="true"
+   *        extendedMetaData="name='invariant'"
+   * @generated
+   */
 	EList<Invariant> getInvariants();
 
 	/**
-	 * Returns the value of the '<em><b>Unnamed Element Group</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Unnamed Element Group</b></em>' attribute.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unnamed Element Group</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unnamed Element Group</em>' attribute.
-	 * @see #setUnnamedElementGroup(boolean)
-	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_UnnamedElementGroup()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Unnamed Element Group</em>' attribute.
+   * @see #setUnnamedElementGroup(boolean)
+   * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getCompositeTypeDefn_UnnamedElementGroup()
+   * @model
+   * @generated
+   */
 	boolean isUnnamedElementGroup();
 
 	/**
-	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isUnnamedElementGroup <em>Unnamed Element Group</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn#isUnnamedElementGroup <em>Unnamed Element Group</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unnamed Element Group</em>' attribute.
-	 * @see #isUnnamedElementGroup()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Unnamed Element Group</em>' attribute.
+   * @see #isUnnamedElementGroup()
+   * @generated
+   */
 	void setUnnamedElementGroup(boolean value);
 
 } // CompositeTypeDefn

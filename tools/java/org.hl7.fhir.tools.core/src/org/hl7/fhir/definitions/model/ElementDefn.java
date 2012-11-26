@@ -42,7 +42,7 @@ public class ElementDefn {
 
 	private Integer minCardinality;
 	private Integer maxCardinality;
-	private Invariant invariant; // a reference to an invariant defined on another element, but which constrains this one
+	private List<Invariant> statedInvariants = new ArrayList<Invariant>(); // a reference to an invariant defined on another element, but which constrains this one
 	private boolean mustUnderstand;
 	private boolean mustSupport;
 
@@ -81,7 +81,7 @@ public class ElementDefn {
 
 		minCardinality = pattern.minCardinality;
 		maxCardinality = pattern.maxCardinality;
-		invariant = pattern.invariant;
+		statedInvariants.addAll(pattern.statedInvariants);
 		mustUnderstand = pattern.mustUnderstand;
 		mustSupport = pattern.mustSupport;
 
@@ -461,12 +461,8 @@ public class ElementDefn {
 		return typeCode().equals("code") && hasBinding();
 	}
 
-	public Invariant getInvariant() {
-		return invariant;
-	}
-
-	public void setInvariant(Invariant invariant) {
-		this.invariant = invariant;
+	public List<Invariant> getStatedInvariants() {
+		return statedInvariants;
 	}
 
 	public boolean isMustSupport() {

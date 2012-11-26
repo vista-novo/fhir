@@ -75,8 +75,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//ElementDefn"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" lowerBound="1"
         eType="#//Annotations" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="invariant" eType="#//InvariantRef"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="invariants" upperBound="-1"
+        eType="#//InvariantRef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentType" eType="#//CompositeTypeDefn"
         eOpposite="#//CompositeTypeDefn/elements"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parentElement" eType="#//ElementDefn"/>

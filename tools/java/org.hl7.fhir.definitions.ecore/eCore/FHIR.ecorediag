@@ -929,7 +929,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_yyr0MbmOEeGokubgOwjgwQ" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_yyr0MrmOEeGokubgOwjgwQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="FHIR.ecore#//ElementDefn/invariant"/>
+    <element xmi:type="ecore:EReference" href="FHIR.ecore#//ElementDefn/invariants"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yyr0M7mOEeGokubgOwjgwQ" points="[-3, 16, 20, -105]$[-21, 109, 2, -12]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yyx60LmOEeGokubgOwjgwQ" id="(0.1646090534979424,0.9186046511627907)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yyx60bmOEeGokubgOwjgwQ" id="(0.8181818181818182,0.2698412698412698)"/>

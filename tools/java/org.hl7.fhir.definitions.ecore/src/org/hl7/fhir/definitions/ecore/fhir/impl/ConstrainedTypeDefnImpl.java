@@ -42,186 +42,186 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
  */
 public class ConstrainedTypeDefnImpl extends TypeDefnImpl implements ConstrainedTypeDefn {
 	/**
-	 * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getBaseType() <em>Base Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBaseType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getBaseType()
+   * @generated
+   * @ordered
+   */
 	protected TypeRef baseType;
 
 	/**
-	 * The cached value of the '{@link #getDetails() <em>Details</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDetails() <em>Details</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDetails()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDetails()
+   * @generated
+   * @ordered
+   */
 	protected EList<Invariant> details;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ConstrainedTypeDefnImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FhirPackage.Literals.CONSTRAINED_TYPE_DEFN;
-	}
+    return FhirPackage.Literals.CONSTRAINED_TYPE_DEFN;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public TypeRef getBaseType() {
-		return baseType;
-	}
+    return baseType;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public NotificationChain basicSetBaseType(TypeRef newBaseType, NotificationChain msgs) {
-		TypeRef oldBaseType = baseType;
-		baseType = newBaseType;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, oldBaseType, newBaseType);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
+    TypeRef oldBaseType = baseType;
+    baseType = newBaseType;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, oldBaseType, newBaseType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setBaseType(TypeRef newBaseType) {
-		if (newBaseType != baseType) {
-			NotificationChain msgs = null;
-			if (baseType != null)
-				msgs = ((InternalEObject)baseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
-			if (newBaseType != null)
-				msgs = ((InternalEObject)newBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
-			msgs = basicSetBaseType(newBaseType, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, newBaseType, newBaseType));
-	}
+    if (newBaseType != baseType) {
+      NotificationChain msgs = null;
+      if (baseType != null)
+        msgs = ((InternalEObject)baseType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
+      if (newBaseType != null)
+        msgs = ((InternalEObject)newBaseType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, null, msgs);
+      msgs = basicSetBaseType(newBaseType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE, newBaseType, newBaseType));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EList<Invariant> getDetails() {
-		if (details == null) {
-			details = new EObjectContainmentEList<Invariant>(Invariant.class, this, FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS);
-		}
-		return details;
-	}
+    if (details == null) {
+      details = new EObjectContainmentEList<Invariant>(Invariant.class, this, FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS);
+    }
+    return details;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return basicSetBaseType(null, msgs);
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
-				return ((InternalEList<?>)getDetails()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+        return basicSetBaseType(null, msgs);
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
+        return ((InternalEList<?>)getDetails()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return getBaseType();
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
-				return getDetails();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+        return getBaseType();
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
+        return getDetails();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				setBaseType((TypeRef)newValue);
-				return;
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
-				getDetails().clear();
-				getDetails().addAll((Collection<? extends Invariant>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+        setBaseType((TypeRef)newValue);
+        return;
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
+        getDetails().clear();
+        getDetails().addAll((Collection<? extends Invariant>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				setBaseType((TypeRef)null);
-				return;
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
-				getDetails().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+        setBaseType((TypeRef)null);
+        return;
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
+        getDetails().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
-				return baseType != null;
-			case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
-				return details != null && !details.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__BASE_TYPE:
+        return baseType != null;
+      case FhirPackage.CONSTRAINED_TYPE_DEFN__DETAILS:
+        return details != null && !details.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //ConstrainedTypeDefnImpl

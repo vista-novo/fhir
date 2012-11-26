@@ -36,8 +36,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hl7.fhir.definitions.Config;
 import org.hl7.fhir.definitions.generators.specification.DictHTMLGenerator;
@@ -78,7 +81,12 @@ public class PageProcessor implements Logger  {
   private IniFile ini;
   private Calendar genDate = Calendar.getInstance();
   private Date start = new Date();
-  private boolean notime;
+  private String prevSidebar;
+  private List<String> orderedResources = new ArrayList<String>();
+  private Map<String, SectionTracker> sectionTrackerCache = new HashMap<String, SectionTracker>(); 
+  private Map<String, TocEntry> toc = new HashMap<String, TocEntry>();
+  
+//  private boolean notime;
   
   private String dictForDt(String dt) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
@@ -140,6 +148,8 @@ public class PageProcessor implements Logger  {
   }
 
   private String generateSideBar() throws Exception {
+    if (prevSidebar != null)
+      return prevSidebar;
     List<String> links = new ArrayList<String>();
     
     StringBuilder s = new StringBuilder();
@@ -171,6 +181,7 @@ public class PageProcessor implements Logger  {
           for (String rn : list) {
             if (!links.contains(rn.toLowerCase())) {
               ResourceDefn r = definitions.getResourceByName(rn);
+              orderedResources.add(r.getName());
               s.append("    <li><a href=\""+rn.toLowerCase()+".htm\">"+Utilities.escapeXml(r.getName())+"</a></li>\r\n");
             }
           }
@@ -183,7 +194,8 @@ public class PageProcessor implements Logger  {
     s.append("<p><a href=\"http://hl7.org\"><img border=\"0\" src=\"hl7logo.png\"/></a></p>\r\n");
 
     s.append("</div>\r\n");
-    return s.toString();
+    prevSidebar = s.toString();
+    return prevSidebar;
   }
 
   private String combineNotes(List<String> followUps, String notes) {
@@ -289,6 +301,8 @@ public class PageProcessor implements Logger  {
         src = s1 + genReferenceImplList() + s3;
       else if (com[0].equals("txurl"))
         src = s1 + "http://hl7.org/fhir/"+Utilities.fileTitle(file) + s3;
+      else if (com[0].equals("toc"))
+        src = s1 + generateToc() + s3;
       else if (com[0].equals("txdef"))
         src = s1 + generateCodeDefinition(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txusage"))
@@ -299,6 +313,45 @@ public class PageProcessor implements Logger  {
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
     return src;
+  }
+
+  private class TocSort implements Comparator<String> {
+
+    public int compare(String arg0, String arg1) {
+      String[] a0 = arg0.split("\\.");
+      String[] a1 = arg1.split("\\.");
+      for (int i = 0; i < Math.min(a0.length, a1.length); i++) {
+        int i0 = Integer.parseInt(a0[i]);
+        int i1 = Integer.parseInt(a1[i]);
+        if (i0 != i1)
+          return i0-i1;
+      }
+      return (a0.length - a1.length);
+    }
+  }
+  
+  private String generateToc() {
+    List<String> entries = new ArrayList<String>();
+    entries.addAll(toc.keySet());
+    
+    Collections.sort(entries, new TocSort());
+    
+    StringBuilder b = new StringBuilder();
+    for (String s : entries) {
+      int i = 0;
+      for (char c : s.toCharArray()) {
+        if (c == '.')
+          i++;
+      }
+      TocEntry t = toc.get(s); 
+      if (i < 3) {
+        for (int j = 0; j < i; j++)
+          b.append("&nbsp;&nbsp;");
+        b.append("<a href=\""+t.getLink()+"#"+t.getValue()+"\">"+t.getValue()+"</a> "+Utilities.escapeXml(t.getText())+"<br/>\r\n");
+      }
+    }
+
+    return "<p>"+b.toString()+"</p>\r\n";
   }
 
   private String generateBSUsage(String name) {
@@ -894,6 +947,8 @@ public class PageProcessor implements Logger  {
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("toc"))
+        src = s1 + generateToc() + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
@@ -969,6 +1024,8 @@ public class PageProcessor implements Logger  {
         src = s1 + generateBSUsage(Utilities.fileTitle(file)) + s3;
       else if (com[0].equals("txsummary"))
         src = s1 + generateCodeTable(Utilities.fileTitle(file)) + s3;
+      else if (com[0].equals("toc"))
+        src = s1 + generateToc() + s3;
       else 
         throw new Exception("Instruction <%"+s2+"%> not understood parsing page "+file);
     }
@@ -1275,10 +1332,10 @@ public class PageProcessor implements Logger  {
   }
 
   public void log(String content) {
-    if (notime) {
-      System.out.println(content);
-      notime = false;
-    } else {
+//    if (notime) {
+//      System.out.println(content);
+//      notime = false;
+//    } else {
       Date stop = new Date();
       long l1 = start.getTime();
       long l2 = stop.getTime();
@@ -1288,17 +1345,29 @@ public class PageProcessor implements Logger  {
       // mem.gc();
       long used = mem.getHeapMemoryUsage().getUsed() / (1024 * 1024);
       System.out.println(String.format("%1$-74s", content)+" "+String.format("%1$3s", Long.toString(secs))+"sec "+String.format("%1$4s", Long.toString(used))+"MB");
-    }
+//    }
   }
   
-  public void logNoEoln(String content) {
-    System.out.print(content);  
-    notime = true;
-  }
+//  public void logNoEoln(String content) {
+//    System.out.print(content);  
+//    notime = true;
+//  }
 
   
   public void setNavigation(Navigation navigation) {
     this.navigation = navigation;
+  }
+
+  public List<String> getOrderedResources() {
+    return orderedResources;
+  }
+
+  public Map<String, SectionTracker> getSectionTrackerCache() {
+    return sectionTrackerCache;
+  }
+
+  public Map<String, TocEntry> getToc() {
+    return toc;
   }
 
 }

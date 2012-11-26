@@ -43,7 +43,8 @@ public class Navigation {
   
   public class Entry {
     private String name;    
-    private String link;    
+    private String link;   
+    private String index;
     private List<Entry> entries = new ArrayList<Entry>();
     public String getName() {
       return name;
@@ -60,12 +61,19 @@ public class Navigation {
     public List<Entry> getEntries() {
       return entries;
     }
+    public String getIndex() {
+      return index;
+    }
+    public void setIndex(String index) {
+      this.index = index;
+    }
     
   }
   public class Category {
     private String name;
     private String link;
     private String mode;
+    private String index;
     private List<Entry> entries = new ArrayList<Entry>();
     public String getName() {
       return name;
@@ -87,6 +95,12 @@ public class Navigation {
     }
     public void setLink(String link) {
       this.link = link;
+    }
+    public String getIndex() {
+      return index;
+    }
+    public void setIndex(String index) {
+      this.index = index;
     }
     
   }
@@ -137,6 +151,9 @@ public class Navigation {
      if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("entry")) {
        c.getEntries().add(parseEntry(child));
      }
+     if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("index")) {
+       c.setIndex(child.getTextContent());
+     }
      child = child.getNextSibling();
    }
    return c;    
@@ -149,6 +166,9 @@ public class Navigation {
       if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("name")) {
         c.setName(child.getTextContent());
       }
+      if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("index")) {
+        c.setIndex(child.getTextContent());
+      }
       if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals("link")) {
         c.setLink(child.getTextContent());
       }
@@ -159,4 +179,17 @@ public class Navigation {
     }
     return c;    
   }
+
+  public String getIndexPrefixForFile(String file) {
+    for (Category c : getCategories()) {
+      if (c.getLink() != null && file.equals(c.getLink()+".htm"))
+        return c.getIndex();
+      for (Entry e : c.getEntries()) {
+        if (e.getLink() != null && file.equals(e.getLink()+".htm"))
+          return e.getIndex();
+      }
+    }
+    return null;
+  }
+  
 }

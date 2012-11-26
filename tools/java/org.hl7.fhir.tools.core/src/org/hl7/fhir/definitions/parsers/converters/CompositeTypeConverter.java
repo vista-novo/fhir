@@ -258,11 +258,11 @@ public class CompositeTypeConverter
 //			}			
 		}
 
-		if( element.getInvariant() != null )
+		for (org.hl7.fhir.definitions.model.Invariant i : element.getStatedInvariants()) 
 		{
 			InvariantRef inv = FhirFactory.eINSTANCE.createInvariantRef();
-			inv.setName( element.getInvariant().getId() );
-			result.setInvariant( inv );
+			inv.setName( i.getId() );
+			result.getInvariants().add(inv);
 		}
 			
 		return result;

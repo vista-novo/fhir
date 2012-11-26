@@ -428,3 +428,11 @@ div.sidebar p.note
   font-size: 10px;
   padding-top: 0px;
 }
+
+
+span.sectioncount {
+color: silver;
+position: absolute;
+right: 0;
+margin-right: 30px;
+}

@@ -2,45 +2,56 @@
   <category>
     <name>Introduction</name>
     <link>index</link>
+	<index>1.0</index>
     <entry>
       <link>introduction</link>
       <name>Roadmap</name>
+  	  <index>1.1</index>
     </entry>
     <entry>
       <link>xml</link>
       <name>Resource Format</name>
+  	  <index>1.2</index>
     </entry>
     <entry>
       <link>datatypes</link>
       <name>Data Types</name>
+  	  <index>1.3</index>
     </entry>
     <entry>
       <link>terminologies</link>
       <name>Using Codes</name>
+  	  <index>1.4</index>
     </entry>
     <entry>
       <link>extensibility</link>
       <name>Extensibility</name>
+  	  <index>1.5</index>
     </entry>
     <entry>
       <link>profile</link>
       <name>Resource Profiles</name>
+  	  <index>1.6</index>
     </entry>
   </category>
   <category>
     <name>Implementation</name>
     <link>implementation</link>
+	<index>2.0</index>
     <entry>
       <link>http</link>
       <name>REST (HTTP)</name>
+  	  <index>2.1</index>
     </entry>
     <entry>
       <link>message</link>
       <name>Messaging</name>
+  	  <index>2.2</index>
     </entry>
     <entry>
       <link>document</link>
       <name>Documents</name>
+  	  <index>2.3</index>
       <entry>
         <link>documentinformation</link>
         <name>Document Information</name>
@@ -49,35 +60,43 @@
     <entry>
       <link>issuereport</link>
       <name>Errors &amp; Warnings</name>
+  	  <index>2.4</index>
     </entry>
     <entry>
       <link>hdata</link>
       <name>hData Integration</name>
+  	  <index>2.5</index>
     </entry>
     <entry>
       <link>atom</link>
       <name>Atom Feeds</name>
+  	  <index>2.6</index>
     </entry>
     <entry>
       <link>json</link>
       <name>JSON format</name>
+  	  <index>2.7</index>
     </entry>
     <entry>
       <link>valueset</link>
       <name>Value Set</name>
+  	  <index>2.8</index>
     </entry>
     <entry>
       <link>conformance</link>
       <name>Conformance</name>
+  	  <index>2.9</index>
     </entry>
     <entry>
       <link>security</link>
       <name>Security</name>
+  	  <index>2.10</index>
     </entry>
   </category>
   <category>
     <name>Resources</name>
     <link>resources</link>
+  	<index>3.0</index>
   </category>
   <category>
     <name>Examples</name>

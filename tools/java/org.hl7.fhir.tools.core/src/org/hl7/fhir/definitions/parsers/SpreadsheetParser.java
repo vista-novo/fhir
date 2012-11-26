@@ -573,11 +573,12 @@ public class SpreadsheetParser {
 			throw new Exception("Found Condition in spreadsheet "+ getLocation(row));
 		s = sheet.getColumn(row, "Inv.");
 		if (s != null && !s.equals("")) {
-			Invariant inv = invariants.get(s);
-			if (inv == null)
-				throw new Exception("unable to find Invariant '" + s + "' "
-						+ getLocation(row));
-			e.setInvariant(inv);
+		  for (String sn : s.split(",")) {
+		    Invariant inv = invariants.get(sn);
+		    if (inv == null)
+		      throw new Exception("unable to find Invariant '" + sn + "' "   + getLocation(row));
+		    e.getStatedInvariants().add(inv);
+		  }
 		}
 
 		String t = sheet.getColumn(row, "Type");

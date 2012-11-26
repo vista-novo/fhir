@@ -31,194 +31,194 @@ import org.hl7.fhir.definitions.ecore.fhir.PrimitiveTypeDefn;
  */
 public class PrimitiveTypeDefnImpl extends TypeDefnImpl implements PrimitiveTypeDefn {
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPattern()
+   * @generated
+   * @ordered
+   */
 	protected static final String PATTERN_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPattern()
+   * @generated
+   * @ordered
+   */
 	protected String pattern = PATTERN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getXsdtype() <em>Xsdtype</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getXsdtype() <em>Xsdtype</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getXsdtype()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getXsdtype()
+   * @generated
+   * @ordered
+   */
 	protected static final String XSDTYPE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getXsdtype() <em>Xsdtype</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getXsdtype() <em>Xsdtype</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getXsdtype()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getXsdtype()
+   * @generated
+   * @ordered
+   */
 	protected String xsdtype = XSDTYPE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PrimitiveTypeDefnImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FhirPackage.Literals.PRIMITIVE_TYPE_DEFN;
-	}
+    return FhirPackage.Literals.PRIMITIVE_TYPE_DEFN;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getPattern() {
-		return pattern;
-	}
+    return pattern;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setPattern(String newPattern) {
-		String oldPattern = pattern;
-		pattern = newPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN, oldPattern, pattern));
-	}
+    String oldPattern = pattern;
+    pattern = newPattern;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN, oldPattern, pattern));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getXsdtype() {
-		return xsdtype;
-	}
+    return xsdtype;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void setXsdtype(String newXsdtype) {
-		String oldXsdtype = xsdtype;
-		xsdtype = newXsdtype;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE, oldXsdtype, xsdtype));
-	}
+    String oldXsdtype = xsdtype;
+    xsdtype = newXsdtype;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE, oldXsdtype, xsdtype));
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
-				return getPattern();
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
-				return getXsdtype();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
+        return getPattern();
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
+        return getXsdtype();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
-				setPattern((String)newValue);
-				return;
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
-				setXsdtype((String)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
+        setPattern((String)newValue);
+        return;
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
+        setXsdtype((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
-				setPattern(PATTERN_EDEFAULT);
-				return;
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
-				setXsdtype(XSDTYPE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
+        setPattern(PATTERN_EDEFAULT);
+        return;
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
+        setXsdtype(XSDTYPE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
-			case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
-				return XSDTYPE_EDEFAULT == null ? xsdtype != null : !XSDTYPE_EDEFAULT.equals(xsdtype);
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__PATTERN:
+        return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+      case FhirPackage.PRIMITIVE_TYPE_DEFN__XSDTYPE:
+        return XSDTYPE_EDEFAULT == null ? xsdtype != null : !XSDTYPE_EDEFAULT.equals(xsdtype);
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (pattern: ");
-		result.append(pattern);
-		result.append(", xsdtype: ");
-		result.append(xsdtype);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (pattern: ");
+    result.append(pattern);
+    result.append(", xsdtype: ");
+    result.append(xsdtype);
+    result.append(')');
+    return result.toString();
+  }
 
 } //PrimitiveTypeDefnImpl

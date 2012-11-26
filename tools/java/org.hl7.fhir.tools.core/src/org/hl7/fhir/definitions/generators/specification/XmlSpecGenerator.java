@@ -36,6 +36,7 @@ import java.io.UnsupportedEncodingException;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ExtensionDefn;
+import org.hl7.fhir.definitions.model.Invariant;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -415,16 +416,29 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 	}
 
 	private void writeCardinality(ElementDefn elem) throws IOException {
-		if (elem.getInvariant() != null)
+		if (elem.getStatedInvariants().size() > 0)
 			write(" <span style=\"color: deeppink\" title=\""
-					+ Utilities.escapeXml(elem.getInvariant().getEnglish())
+					+ Utilities.escapeXml(getInvariants(elem))
 					+ "\"><b>" + elem.describeCardinality() + "</b></span>");
 		else
 			write(" <span style=\"color: brown\"><b>"
 					+ elem.describeCardinality() + "</b></span>");
 	}
 
-	private String renderCodeableConcept(int indent, String value)
+	private String getInvariants(ElementDefn elem) {
+    StringBuilder b = new StringBuilder();
+    boolean first = true;
+    for (Invariant i : elem.getStatedInvariants()) {
+      if (!first)
+        b.append("; ");
+      first = false;
+      b.append(i.getEnglish());
+    }
+    
+    return b.toString();
+  }
+
+  private String renderCodeableConcept(int indent, String value)
 			throws Exception {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < indent; i++)

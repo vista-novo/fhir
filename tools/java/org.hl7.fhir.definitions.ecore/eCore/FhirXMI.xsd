@@ -48,7 +48,7 @@
       <xsd:element name="mappings" type="fhir:Mapping"/>
       <xsd:element name="content" type="fhir:ElementDefn"/>
       <xsd:element name="annotation" type="fhir:Annotations"/>
-      <xsd:element name="invariant" type="fhir:InvariantRef"/>
+      <xsd:element name="invariants" type="fhir:InvariantRef"/>
       <xsd:element name="parentType" type="fhir:CompositeTypeDefn"/>
       <xsd:element name="parentElement" type="fhir:ElementDefn"/>
       <xsd:element ref="xmi:Extension"/>

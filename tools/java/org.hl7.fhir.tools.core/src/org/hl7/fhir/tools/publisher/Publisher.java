@@ -255,7 +255,7 @@ public class Publisher {
 			Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
-			Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
+			//!print Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
 			//Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 			for (String n : page.getIni().getPropertyNames("support"))
@@ -452,7 +452,7 @@ public class Publisher {
 		sg.close();
 		
 		produceSchemaZip();
-		logNoEoln("Produce Content");
+		log("Produce Content");
 		produceSpec();
 
 		if (!nobook) {
@@ -517,7 +517,6 @@ public class Publisher {
 		for (String n : page.getIni().getPropertyNames("images"))
 			Utilities.copyFile(new CSFile(page.getFolders().imgDir + n),
 					new CSFile(page.getFolders().dstDir + n));
-    logNoEoln(" ");
 
     generateCodeSystems();
 
@@ -527,27 +526,28 @@ public class Publisher {
 		profileFeed.setLink("http://hl7.org/implement/standards/fhir/profiles-resources.xml");
 		profileFeed.setUpdated(Calendar.getInstance());
 		for (ResourceDefn n : page.getDefinitions().getResources().values()) {
-      logNoEoln("#");
+      log(" ...resource "+n.getName());
 			produceResource(n);
 		}
 		for (org.hl7.fhir.definitions.model.ElementDefn n : page.getDefinitions().getStructures().values()) {
-      logNoEoln("*");
+      log(" ...diagram "+n.getName());
       generateDiagram(n);
 		}
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
 		Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
 		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
 		for (String n : page.getIni().getPropertyNames("pages")) {
-		  logNoEoln("+");
-			producePage(n);
+		  log(" ...page "+n);
+			producePage(n, page.getIni().getStringProperty("pages", n));
 		}
 
 		
 		for (String n : page.getDefinitions().getProfiles().keySet()) {
-      logNoEoln("-");
+      log(" ...profile "+n);
 			produceProfile(n, page.getDefinitions().getProfiles().get(n));
 		}
 
+    log(" ...summaries");
 		produceCombinedDictionary();
 		Utilities.copyFile(new CSFile(page.getFolders().umlDir + "fhir.eap"),
 				new CSFile(page.getFolders().dstDir + "fhir.eap"));
@@ -555,6 +555,7 @@ public class Publisher {
 		// Utilities.copyFile(new CSFile(page.getFolders().umlDir + "fhir.xmi"),
 		// new CSFile(page.getFolders().dstDir + "fhir.xmi"));
 
+    log(" ...zips");
     ZipGenerator zip = new ZipGenerator(page.getFolders().dstDir + "examples.zip");
     zip.addFiles(page.getFolders().dstDir + "examples" + File.separator, "", null);
     zip.close();
@@ -563,12 +564,11 @@ public class Publisher {
     zip.addFiles(page.getFolders().dstDir, "", ".json");
     zip.close();
 
-    log("... done");
-    log("Produce Book Form");
-
-		produceZip();
-		book.produce();
-
+    log(" ...zip");
+    produceZip();
+    
+    // log("Produce Book Form");
+    // book.produce();
 	}
 
 	private void produceZip() throws Exception {
@@ -637,20 +637,35 @@ public class Publisher {
 		  }
 		}
 
-		String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + ".htm");
+    String prefix = page.getNavigation().getIndexPrefixForFile(n+".htm");
+    if (Utilities.noString(prefix))
+      prefix = "3."+Integer.toString(page.getOrderedResources().indexOf(resource.getName())+1);
+    SectionTracker st = new SectionTracker(prefix);
+    page.getSectionTrackerCache().put(n, st);
+
+    String src = TextFile.fileToString(page.getFolders().srcDir+ "template.htm");
+		src = insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n+".htm");
+		TextFile.stringToFile(src, page.getFolders().dstDir + n + ".htm");
+			
+    String pages = page.getIni().getStringProperty("resource-pages", n);
+    if (!Utilities.noString(pages)) {
+      for (String p : pages.split(",")) {
+        producePage(p, n);
+      }
+    }
+		
 		src = TextFile.fileToString(page.getFolders().srcDir+ "template-examples.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-examples.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-examples.htm"), page.getFolders().dstDir + n + "-examples.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-definitions.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-definitions.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-definitions.htm"), page.getFolders().dstDir + n + "-definitions.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-explanations.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-explanations.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-explanations.htm"), page.getFolders().dstDir + n + "-explanations.htm");
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + n + "-profiles.htm");
+		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-profiles.htm"), page.getFolders().dstDir + n + "-profiles.htm");
 
-		src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
-		TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
-
+	//!print src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
+	//!print TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
+/*
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
@@ -660,7 +675,7 @@ public class Publisher {
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + "Defn.htm", src);
-
+*/
 		// xml to json
 		// todo - fix this up
 		// JsonGenerator jsongen = new JsonGenerator();
@@ -1075,21 +1090,59 @@ public class Publisher {
 		}
 	}
 
-	private void producePage(String file) throws Exception {
+	private void producePage(String file, String logicalName) throws Exception {
 		String src = TextFile.fileToString(page.getFolders().srcDir + file);
 		src = page.processPageIncludes(file, src);
-		TextFile.stringToFile(src, page.getFolders().dstDir + file);
-		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
-		src = page.processPageIncludesForPrinting(file, src);
-		TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
+		// before we save this page out, we're going to figure out what it's index is, and number the headers if we can
+		
+		if (!Utilities.noString(logicalName)) {
+		  if (!page.getSectionTrackerCache().containsKey(logicalName)) {
+		    String prefix = page.getNavigation().getIndexPrefixForFile(logicalName+".htm");
+		    if (Utilities.noString(prefix))
+		      throw new Exception("No indexing home for logical place "+logicalName);
+		    page.getSectionTrackerCache().put(logicalName, new SectionTracker(prefix));
+		  }
+		  src = insertSectionNumbers(src, page.getSectionTrackerCache().get(logicalName), file);
+		}
+		TextFile.stringToFile(src, page.getFolders().dstDir + file);		
+	//!print src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
+	//!print src = page.processPageIncludesForPrinting(file, src);
+	//!print TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
 
-		src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
-				"<body>", "<body style=\"margin: 10px\">");
-		src = page.processPageIncludesForBook(file, src);
-		cachePage(file, src);
+	//!book	src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
+	//!book "<body>", "<body style=\"margin: 10px\">");
+			//!book  	src = page.processPageIncludesForBook(file, src);
+			//!book  	cachePage(file, src);
 	}
 
-	private void cachePage(String filename, String source) throws Exception {
+	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception {
+	  XhtmlDocument doc = new XhtmlParser().parse(src); 
+	  insertSectionNumbersInNode(doc, st, link);
+    return new XhtmlComposer().compose(doc);
+  }
+
+  private void insertSectionNumbersInNode(XhtmlNode node, SectionTracker st, String link) throws Exception {
+    if (node.getNodeType() == NodeType.Element && (node.getName().equals("h1") || node.getName().equals("h2") || node.getName().equals("h3") ||
+         node.getName().equals("h4") || node.getName().equals("h5") || node.getName().equals("h6"))) {
+      String v = st.getIndex(Integer.parseInt(node.getName().substring(1)));
+      TocEntry t = new TocEntry(v, node.allText(), link);
+      page.getToc().put(v, t);      
+      node.addText(" ");
+      XhtmlNode span = node.addTag("span");
+      span.setAttribute("class", "sectioncount");
+      span.addText(v);
+      XhtmlNode a = span.addTag("a");
+      a.setAttribute("name", v);
+      a.addText(" "); // bug in some browsers?
+    }
+    if (node.getNodeType() == NodeType.Document || (node.getNodeType() == NodeType.Element && !(node.getName().equals("div") && "sidebar".equals(node.getAttribute("class"))))) {
+      for (XhtmlNode n : node.getChildNodes()) {
+        insertSectionNumbersInNode(n, st, link);
+      }
+    }
+  }
+
+  private void cachePage(String filename, String source) throws Exception {
 		try {
 			// log("parse "+filename);
 			book.getPages().put(filename, new XhtmlParser().parse(source));
@@ -1343,9 +1396,9 @@ public class Publisher {
     page.log(content);
   }
 
-  public void logNoEoln(String content) {
-    page.logNoEoln(content);
-  }
+//  public void logNoEoln(String content) {
+//    page.logNoEoln(content);
+//  }
 
   private void generateCodeSystems() throws Exception {
     for (BindingSpecification bs : page.getDefinitions().getBindings().values())
