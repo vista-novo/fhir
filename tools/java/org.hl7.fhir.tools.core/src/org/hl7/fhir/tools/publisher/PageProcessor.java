@@ -130,7 +130,9 @@ public class PageProcessor implements Logger  {
   private String xmlForDt(String dt, String pn) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
 	  tmp.deleteOnExit();
-	  XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null);
+	  XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), 
+			  pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", 
+					  null, definitions);
 	  TypeParser tp = new TypeParser();
 	  TypeRef t = tp.parse(dt).get(0);
 	  ElementDefn e = definitions.getElementDefn(t.getName());
@@ -826,7 +828,12 @@ public class PageProcessor implements Logger  {
     Collections.sort(names);
     for (String n : names) {
       DefinedCode c = definitions.getKnownResources().get(n);
-      html.append("  <tr><td><a href=\""+c.getComment()+".htm\">"+c.getCode()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+      String htmlFilename = c.getComment();
+      
+      if( definitions.getFutureResources().containsKey(c.getCode()) )
+    	  htmlFilename = "resources";
+      
+      html.append("  <tr><td><a href=\""+htmlFilename+".htm\">"+c.getCode()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
     }       
     return html.toString();
   }

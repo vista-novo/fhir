@@ -601,7 +601,8 @@ public class Publisher {
 		tmp.deleteOnExit();
 		String n = resource.getName().toLowerCase();
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm", null);
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm",
+				null, page.getDefinitions());
 		gen.generate(resource.getRoot());
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
@@ -982,8 +983,9 @@ public class Publisher {
 		// base resource to fill out all the missing bits
 		validateProfile(profile);
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), null, "http://hl7.org/fhir/");
-		gen.generate(profile, page.getDefinitions());
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), 
+				null, "http://hl7.org/fhir/", page.getDefinitions());
+		gen.generate(profile);
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
 
