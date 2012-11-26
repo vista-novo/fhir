@@ -255,7 +255,6 @@ public class Publisher {
 			Utilities.checkFile("required", page.getFolders().srcDir, "footer.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template.htm", errors);
 			Utilities.checkFile("required", page.getFolders().srcDir, "template-book.htm", errors);
-			//!print Utilities.checkFile("required", page.getFolders().srcDir, "template-print.htm", errors);
 			//Utilities.checkFolder(page.getFolders().dstDir, errors);
 
 			for (String n : page.getIni().getPropertyNames("support"))
@@ -567,8 +566,8 @@ public class Publisher {
     log(" ...zip");
     produceZip();
     
-    // log("Produce Book Form");
-    // book.produce();
+    log("Produce Book Form");
+    book.produce();
 	}
 
 	private void produceZip() throws Exception {
@@ -663,9 +662,6 @@ public class Publisher {
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-profiles.htm");
 		TextFile.stringToFile(insertSectionNumbers(page.processResourceIncludes(n, resource, xml, tx, dict, src), st, n + "-profiles.htm"), page.getFolders().dstDir + n + "-profiles.htm");
 
-	//!print src = TextFile.fileToString(page.getFolders().srcDir + "template-print.htm").replace("<body>", "<body class=\"book\">");
-	//!print TextFile.stringToFile(page.processResourceIncludes(n, resource, xml, tx, dict, src), page.getFolders().dstDir + "print-" + n + ".htm");
-/*
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + ".htm", src);
@@ -675,7 +671,7 @@ public class Publisher {
 		src = TextFile.fileToString(page.getFolders().srcDir + "template-book-defn.htm").replace("<body>", "<body style=\"margin: 10px\">");
 		src = page.processResourceIncludes(n, resource, xml, tx, dict, src);
 		cachePage(n + "Defn.htm", src);
-*/
+
 		// xml to json
 		// todo - fix this up
 		// JsonGenerator jsongen = new JsonGenerator();
@@ -1105,14 +1101,10 @@ public class Publisher {
 		  src = insertSectionNumbers(src, page.getSectionTrackerCache().get(logicalName), file);
 		}
 		TextFile.stringToFile(src, page.getFolders().dstDir + file);		
-	//!print src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body class=\"book\">");
-	//!print src = page.processPageIncludesForPrinting(file, src);
-	//!print TextFile.stringToFile(src, page.getFolders().dstDir + "print-" + file);
 
-	//!book	src = TextFile.fileToString(page.getFolders().srcDir + file).replace(
-	//!book "<body>", "<body style=\"margin: 10px\">");
-			//!book  	src = page.processPageIncludesForBook(file, src);
-			//!book  	cachePage(file, src);
+		src = TextFile.fileToString(page.getFolders().srcDir + file).replace("<body>", "<body style=\"margin: 10px\">");
+		src = page.processPageIncludesForBook(file, src);
+		cachePage(file, src);
 	}
 
 	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception {
