@@ -256,11 +256,13 @@ is performed by an HTTP DELETE operation as shown:
 </pre>
 <p>
 A delete operation means that <a href="#read">non-version specific reads</a> of a resource 
-return a 410 error and that the resource is no longer found through search operations. If a server 
-refuses to delete resources of that type on principle, then it should return the status code 
+return a 410 error and that the resource is no longer found through search operations. Upon successful
+deletion the server should return 204 (No Content). If the server refuses to delete resources of 
+that type on principle, then it should return the status code 
 405 method not allowed. If the server refuses to delete a resource because of reasons specific 
 to that resource, such as referential integrity, it should return the status code 409 Conflict.
-Performing this operation on a resource that is already deleted has no effect.
+If the resource cannot be deleted because it does not existe on the server, the server must return 404 (Not found).
+Performing this operation on a resource that is already deleted has no effect, and should return 204.
 Resources may be undeleted by PUTting an update to them subsequent to the deletion. 
 </p>
 <p>
@@ -270,7 +272,8 @@ deletion operation should be understood as deleting the record of the resource, 
 about the state of the real-world corresponding resource implied.
 </p>
 <p>
-The following resources may require special handling on the server when deleted (whether directly or as part of a batch):
+The following resources may require special handling on the server when deleted 
+(whether directly or as part of a batch):
 </p>
 <ul>
  <li><a href="patient.htm">Patient</a></li>

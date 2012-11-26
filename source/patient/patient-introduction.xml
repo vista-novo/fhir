@@ -1,5 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<!-- content goes here -->
+Note: while the <i>content</i> of the current Patient resource is not yet under ballot, 
+the Patient Administration workgroup would like to draw your opinions about the intended 
+rename of "Patient" to "SubjectOfCare". This input will be taken into account when
+preparing the May 2013 ballot, which will contain Patient/SubjectOfCare.
 
 </div>
