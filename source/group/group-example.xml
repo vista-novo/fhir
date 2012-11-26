@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Group xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ..\..\schema\Group.xsd">
+  <type>animal</type>
+  <actual>true</actual>
+  <code>
+    <text>Horse</text>
+  </code>
+  <name>John's herd</name>
+  <quantity>25</quantity>
+  <characteristic>
+    <type>
+      <text>gender</text>
+    </type>
+    <valueString>mixed</valueString>
+  </characteristic>
+  <characteristic>
+    <type>
+      <text>owner</text>
+    </type>
+    <valueString>John Smith</valueString>
+  </characteristic>
+  <text>
+    <status>additional</status>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <p>Herd of 25 horses</p>
+      <p>Gender: mixed</p>
+      <p>Owner: John Smith</p>
+    </div>
+  </text>
+</Group>
