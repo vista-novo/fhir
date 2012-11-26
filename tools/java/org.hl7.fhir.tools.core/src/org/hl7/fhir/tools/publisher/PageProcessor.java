@@ -130,9 +130,7 @@ public class PageProcessor implements Logger  {
   private String xmlForDt(String dt, String pn) throws Exception {
 	  File tmp = File.createTempFile("tmp", ".tmp");
 	  tmp.deleteOnExit();
-	  XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), 
-			  pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", 
-					  null, definitions);
+	  XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), pn == null ? null : pn.substring(0, pn.indexOf("."))+"-definitions.htm", null, definitions);
 	  TypeParser tp = new TypeParser();
 	  TypeRef t = tp.parse(dt).get(0);
 	  ElementDefn e = definitions.getElementDefn(t.getName());

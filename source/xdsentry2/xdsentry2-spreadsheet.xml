@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-11-25T05:29:30Z</LastSaved>
+  <LastSaved>2012-11-26T22:18:20Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
-  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -148,6 +147,8 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Document metadata that is used for searching for the document</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">The document metadata reflects what is in the document itself and is never updated once the entry is created</Data><NamedCell
+      ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="225">
     <Cell><Data ss:Type="String">XdsEntry2.format</Data><NamedCell
@@ -189,16 +190,16 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="285">
-    <Cell><Data ss:Type="String">XdsEntry2.originalSubject</Data><NamedCell
+    <Cell><Data ss:Type="String">XdsEntry2.subject</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Person|Patient|Group|Device)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">subject of care in the source document</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">current subject of care</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The subject of care information from the original document, as opposed to the subject details the document is currently indexed under</Data><NamedCell
+    <Cell><Data ss:Type="String">The subject of care information that the document is about. This is different from the documentInformation.subject because that never changes from what the document says. This value may be updated if the subject details are updated (e.g. merged) and will then differ from the original document</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="11"><Data ss:Type="String">The system is the &quot;Authority Domain Id&quot; (enforced by the Registry), and the identifier is an Id in the above domain. The originalSubject is not intended to be updated once the Document is registered (just as the Document content and metadata itself will not be &#10;updated without replacing the previous document). As this sourcePatientId may have been merged by the source actor, it may no longer be in use within the Document Source (EHR-CR). It is only intended as an audit/checking mechanism and has occasional use for &#10;Document Consumer Actors.</Data><NamedCell
+    <Cell ss:Index="11"><Data ss:Type="String">The system is the &quot;Authority Domain Id&quot; (enforced by the Registry), and the identifier is an Id in the above domain. This subject is intended to be updated after the Document is registered (where as the Document content and Document.information.subject itself will not be &#10;updated without changing the whole document). </Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -264,12 +265,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>8</TopRowVisible>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>12</ActiveRow>
-     <ActiveCol>1</ActiveCol>
+     <ActiveRow>7</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -316,7 +317,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>

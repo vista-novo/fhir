@@ -601,8 +601,7 @@ public class Publisher {
 		tmp.deleteOnExit();
 		String n = resource.getName().toLowerCase();
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm",
-				null, page.getDefinitions());
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), n + "-definitions.htm", null, page.getDefinitions());
 		gen.generate(resource.getRoot());
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
@@ -758,34 +757,47 @@ public class Publisher {
       rn = Utilities.capitalize(r.getName());
 
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
-	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@")) {
+	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@") || dataTypeIsSharedInfo(e.typeCode())) {
 	      String n;
+	      org.hl7.fhir.definitions.model.ElementDefn t = null;
 	      if (names.keySet().contains(e))
 	        n = names.get(e);
-	      else {
+	      else if (dataTypeIsSharedInfo(e.typeCode())) {
+	        n = e.typeCode();
+	        t = page.getDefinitions().getElementDefn(n);
+          names.put(t, n);
+          queue.add(t);
+	      } else {
 	        n = Utilities.capitalize(e.getName());
 	        names.put(e, n);
-	        queue.add(e);
+          queue.add(e);
 	      }
+	      String ta = t != null ? "(S, #FFD700)" : "(E, Lemonchiffon)";
 	      if (!entry)
-          s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+          s.append(rn+" << (E, Lemonchiffon) >>  *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	      else if (resource)
-          s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+          s.append(rn+" << (R, #FF7700) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	      else
-          s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << (E, Lemonchiffon) >> : "+e.getName()+"\r\n");
+          s.append(rn+" << (D, #FFA500) >> *-"+e.getDir()+"- \""+e.describeCardinality()+"\" "+n+"  << "+ta+" >> : "+e.getName()+"\r\n");
 	    }
 	  }
 	  if (entry)
 	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
+	  else if (dataTypeIsSharedInfo(r.typeCode()))
+	    s2.append("class "+rn+" << (S, #FFD700) >> {\r\n");
 	  else
 	    s2.append("class "+rn+" << (E, Lemonchiffon) >> {\r\n");
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
-	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@")) {
+	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !dataTypeIsSharedInfo(e.typeCode())) {
 	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");
 	    }
 	  }
 	  s2.append("  --\r\n}\r\n\r\n");
 	}
+
+  private boolean dataTypeIsSharedInfo(String name) throws Exception {
+    return page.getDefinitions().hasElementDefn(name) && page.getDefinitions().getElementDefn(name).typeCode().equals("SharedDefinition");
+  }
 
 /*
  * Candidate diagram source for Alex Henket. Retired for now
@@ -983,8 +995,7 @@ public class Publisher {
 		// base resource to fill out all the missing bits
 		validateProfile(profile);
 
-		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), 
-				null, "http://hl7.org/fhir/", page.getDefinitions());
+		XmlSpecGenerator gen = new XmlSpecGenerator(new FileOutputStream(tmp), null, "http://hl7.org/fhir/", page.getDefinitions());
 		gen.generate(profile);
 		gen.close();
 		String xml = TextFile.fileToString(tmp.getAbsolutePath());
