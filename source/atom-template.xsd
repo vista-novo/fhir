@@ -46,6 +46,8 @@
       <xs:element name="id" type="atom:IdType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="link" type="atom:LinkType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="entry" type="atom:EntryType" minOccurs="0" maxOccurs="unbounded"/>
+	  <xs:any namespace="http://purl.org/atompub/tombstones/1.0" 
+			processContents="lax" minOccurs="0" maxOccurs="unbounded" />
 	  <!-- todo: add digital signature -->
     </xs:choice>
     <xs:attributeGroup ref="atom:CommonAttributes"/>
