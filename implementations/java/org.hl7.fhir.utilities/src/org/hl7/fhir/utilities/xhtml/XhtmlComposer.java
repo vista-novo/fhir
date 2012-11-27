@@ -120,7 +120,7 @@ public class XhtmlComposer {
   }
 
   private void writeComment(String indent, XhtmlNode node) throws IOException {
-    dst.append(indent + "<!-- " + node.getContent() + " -->" + (isPretty() ? "\r\n" : ""));
+    dst.append(indent + "<!-- " + node.getContent().trim() + " -->" + (isPretty() ? "\r\n" : ""));
 }
 
   private void writeDocType(XhtmlNode node) throws IOException {

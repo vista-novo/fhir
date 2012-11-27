@@ -284,9 +284,12 @@ public class XhtmlParser {
         readChar();
         if (peekChar() == '-') {
           readChar();
-          if (peekChar() == '-') 
+          if (peekChar() == '-') {
+            readChar();
+            if (peekChar() == ' ')
+              readChar();
             focus.addComment(readToCommentEnd());
-          else 
+          } else 
             throw new Exception("unrecognised element type <!"+peekChar()+descLoc());
         } else
           focus.addDocType(readToCommentEnd());
@@ -373,6 +376,8 @@ public class XhtmlParser {
       simple = peekChar() != '-';
       if (simple)
         s.append('-');
+      else
+        readChar();
     }
     
     boolean done = false;
