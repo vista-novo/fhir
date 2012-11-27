@@ -12,19 +12,12 @@ The provenance resource may be used in several different ways:
 </ul>
 <p>
 When used in a document bundle, the <i>references</i> are often not explicitly versioned, but they always impliclty pertain to the version of the 
-resource found in the document. On a RESTful system, the target resource reference should be version specific.
-</p>
-<p>Transactions on RESTful resources</p>
-<p>
-Because the Provenance resource points to the target it relates to, and because the version is often not knowable until 
-after the target resource has been updated, this can create an integrity problem for the system - what if the 
-provenance resource cannot be created after the target resource has been updated? 
-</p>
-<p>
-To work around this, the target resource and the provenance resources are submitted as a pair using 
-a <a href="http.htm#batch">batch transaction</a>. When a server is processing a batch that contains 
-a provenance resource with a reference to another resource in the batch, the server must update 
-the target reference to a version specific reference, since the client will be unable to do so. 
+resource found in the document. On a RESTful system, the target resource reference should be version specific, but this
+requires special care: For new resources that need to have a corresponding Provenance resource, the version-specific
+reference is often not knowable until after the target resource has been updated. This can create an 
+integrity problem for the system - what if the provenance resource cannot be created after the target 
+resource has been updated? To avoid any such integrity problems, the target resource and the provenance resources should be submitted 
+as a pair using a <a href="http.htm#batch">batch transaction</a>. 
 </p>
 
 <h3>Digital Signatures</h3>

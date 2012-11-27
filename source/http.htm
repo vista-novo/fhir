@@ -514,10 +514,10 @@ The interaction is performed by an HTTP POST operation as shown:
 <p>
 The content of the post submission is a resource bundle in either <a href="atom.htm">XML</a> or 
 <a href="json.htm#json-bundles">JSON</a>. The resources in the bundle are each processed separately
-as if they were an individual <a href="#create">create</a> or <a href="#update">update</a> appropriately, along with the normal processing
-for each (such as version aware updates). Servers SHALL either accept all resources and return a 200 OK, along with a response bundle, or 
-reject all resources and return an HTTP 400 or 500 type response. It is not an error if the 
-submitted bundle has no resources in it.
+as if they were an individual <a href="#create">create</a> or <a href="#update">update</a> appropriately, 
+along with the normal processing for each (such as version aware updates). Servers SHALL either accept
+all resources and return a 200 OK, along with a response bundle, or reject all resources and return an 
+HTTP 400 or 500 type response. It is not an error if the submitted bundle has no resources in it.
 </p>
 <p>
 When a bundle is submitted in a batch operation, all the resources must be identified. If the 
@@ -525,14 +525,21 @@ identity of the resource matches an existing or possible resource location on th
 the server should treat this entry as an <a href="#update">update operation</a> (i.e. PUT to the given resource). 
 If the identity is not one that the server recognises, the server should treat the operation
 as a <a href="#create">create operation</a> (i.e. POST to the given resource manager), and 
-create a new identity for the submitted resource. If the server must assign a new identity 
-when it accepts the resource, the it must also update any references to that resource in
-the same batch as they are processed.
-</p>
-<p>
+create a new identity for the submitted resource. 
+</p><p>
+If the server must assign a new identity when it accepts the resource, it must also update 
+any references to that resource in the same batch as they are processed. References to resources
+that are not part of the batch are left untouched. If a resource in the batch carries a 
+version-specific id (using its self-link), any version-specific references to it must also be updated.
+</p><p>
+Note that this allows clients to assign temporary (version-specific) ids to new resources and refer to
+them from within the batch, the server will update these temporary ids after their creation. This
+is especially useful in RESTful scenario's where one would otherwise need multiple operations, possibly
+leading to loss of referential integrity (e.g. when storing a Provenance resource and its 
+corresponding target resource).
+</p><p>
 In order to allow the client to know how newly created resources are now identified, the 
-server must return a bundle containing the same resources in the order that they were submitted.
-This allows the client to determine the new identities correctly. 
+server must return a bundle containing the same resources in the order that they were submitted. 
 </p>
 
 <h2>Binary Support</h2>
