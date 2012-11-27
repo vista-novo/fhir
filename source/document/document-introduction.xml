@@ -18,17 +18,12 @@ of the document into a single XML document which may be signed and managed as re
 include both human and computer readable portions.
 </p>
 <p>
-The document header identifies the document and its purpose, sets the context of the document and 
+The document resource identifies the document and its purpose, sets the context of the document and 
 carries key information such as the subject and author. It also divides the document up into a 
 series of sections that contain other resources identified in this specification that 
 carry the content. Any resource referenced directly in the Document resource must be included
 in the bundle when the document is assembled. Other resources that these referenced resources refer to
 may also be included in the bundle if the document originator chooses to. 
-</p>
-<p>
-The <i>Document.id</i> identifies the logical document.  Multiple versions of the document 
-may exist, each with their own unique bundle identifier (Atom feed.id). The means the <i>Document.id</i>
-maps to CDA ClinicalDocument.setId and the <i>feed.id</i> to ClinicalDocument.id.
 </p>
 <p>
 <a href="profile.htm">Document profiles</a> can make additional rules about which resources
@@ -48,6 +43,7 @@ statements</a> that identify particular documents they support.
 </ul>
 <p>
 Note: While these end-points are defined for use with document resources and document bundles, 
-it is not necessary to use them. Documents may be transferred between systems using any method desired.
+it is not necessary to use them. Documents may be transferred between systems by using the 
+<a href="message.htm#mailbox">MailBox</a> target, or by using any other method desired. 
 </p>
 </div>

@@ -84,7 +84,7 @@ public class Definitions {
 
   // Returns true if the root ElementDefn of a CompositeType or Resource can be found, 
   // excluding future Resources (as they don't have definitions yet).
-  public boolean hasElementDefn(String name) throws Exception {
+  public boolean hasElementDefn(String name) {
     ElementDefn root = null;
     if (types.containsKey(name))
       root = types.get(name);
@@ -221,4 +221,14 @@ public class Definitions {
     }
     return null;
   }
+  
+  public boolean dataTypeIsSharedInfo(String name)  {
+    try {
+      return hasElementDefn(name) && getElementDefn(name).typeCode().equals("SharedDefinition");
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
 }

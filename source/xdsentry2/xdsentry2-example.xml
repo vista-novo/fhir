@@ -79,7 +79,7 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
       <suffix>MD</suffix>
     </name>
   </authenticator>
--->
+
     <author>
       <type>Agent</type>
       <id>xds-author-1</id>
@@ -94,7 +94,11 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
          <type>Person</type>
          <id>xds-attester</id>
       </party>      
-    </attester>
+    </attester>-->
+    <author>
+      <type>Agent</type>
+      <id>example</id>
+    </author>
     <event>
       <code>
         <coding>
@@ -133,10 +137,10 @@ source data from http://wiki.ihe.net/index.php?title=Annotated_ProvideAndRegiste
     <type>XdsFolder</type>
     <id>1.2.36.90146595217.4.2.1</id>
   </folder>
-  <originalSubject>
+  <subject>
     <type>Person</type>
     <id>xcda</id>
-  </originalSubject>
+  </subject>
   <content xml:lang="en-us">
     <contentType>text/plain</contentType>
     <size>3654</size>

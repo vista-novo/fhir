@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/document.xsd">
-  <id>
-    <system>http://healthintersections.com.au/test</system>
-    <id>1</id> <!-- todo -->
-  </id>
   <information>
+    <id>
+      <system>http://healthintersections.com.au/test</system>
+      <id>1</id>
+    </id>
+    <versionId>
+      <system>urn:ietf:rfc:3986</system>
+      <id>urn:uuid:72391709-b9ae-4053-b888-4bee268bf5da</id> 
+    </versionId>
     <instant>2012-01-04T09:10:14Z</instant>
     <type>
       <coding>

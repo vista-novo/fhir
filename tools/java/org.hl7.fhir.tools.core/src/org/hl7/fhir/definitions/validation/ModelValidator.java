@@ -112,9 +112,13 @@ public class ModelValidator {
 	private void checkType(String path, ElementDefn e, ResourceDefn parent) {
 		if (e.getTypes().size() == 0) {
 			rule(path, path.contains("."), "Must have a type on a base element");
-			rule(path, e.getName().equals("extension")
-					|| e.getElements().size() > 0,
-					"Must have a type unless sub-elements exist");
+			rule(path, e.getName().equals("extension") || e.getElements().size() > 0, "Must have a type unless sub-elements exist");
+		} else if (definitions.dataTypeIsSharedInfo(e.typeCode())) {
+		  try {
+        e.getElements().addAll(definitions.getElementDefn(e.typeCode()).getElements());
+      } catch (Exception e1) {
+        rule(path, false, e1.getMessage());
+      }
 		} else {
 			for (TypeRef t : e.getTypes()) 
 			{

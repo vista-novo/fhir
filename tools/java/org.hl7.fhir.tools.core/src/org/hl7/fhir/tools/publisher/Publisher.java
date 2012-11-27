@@ -757,12 +757,12 @@ public class Publisher {
       rn = Utilities.capitalize(r.getName());
 
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
-	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@") || dataTypeIsSharedInfo(e.typeCode())) {
+	    if (e.getTypes().size() == 0 || e.typeCode().startsWith("@") || page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
 	      String n;
 	      org.hl7.fhir.definitions.model.ElementDefn t = null;
 	      if (names.keySet().contains(e))
 	        n = names.get(e);
-	      else if (dataTypeIsSharedInfo(e.typeCode())) {
+	      else if (page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
 	        n = e.typeCode();
 	        t = page.getDefinitions().getElementDefn(n);
           names.put(t, n);
@@ -783,21 +783,18 @@ public class Publisher {
 	  }
 	  if (entry)
 	    s2.append("class "+rn+" << (R, #FF7700) >> {\r\n");
-	  else if (dataTypeIsSharedInfo(r.typeCode()))
+	  else if (page.getDefinitions().dataTypeIsSharedInfo(r.typeCode()))
 	    s2.append("class "+rn+" << (S, #FFD700) >> {\r\n");
 	  else
 	    s2.append("class "+rn+" << (E, Lemonchiffon) >> {\r\n");
 	  for (org.hl7.fhir.definitions.model.ElementDefn e : r.getElements()) {
-	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !dataTypeIsSharedInfo(e.typeCode())) {
+	    if (e.getTypes().size() > 0 && !e.typeCode().startsWith("@") && !page.getDefinitions().dataTypeIsSharedInfo(e.typeCode())) {
 	      s2.append("  "+e.getName()+" : "+e.typeCode()+" "+e.describeCardinality()+"\r\n");
 	    }
 	  }
 	  s2.append("  --\r\n}\r\n\r\n");
 	}
 
-  private boolean dataTypeIsSharedInfo(String name) throws Exception {
-    return page.getDefinitions().hasElementDefn(name) && page.getDefinitions().getElementDefn(name).typeCode().equals("SharedDefinition");
-  }
 
 /*
  * Candidate diagram source for Alex Henket. Retired for now
@@ -1120,10 +1117,14 @@ public class Publisher {
 		cachePage(file, src);
 	}
 
-	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception {
-	  XhtmlDocument doc = new XhtmlParser().parse(src); 
-	  insertSectionNumbersInNode(doc, st, link);
-    return new XhtmlComposer().compose(doc);
+	private String insertSectionNumbers(String src, SectionTracker st, String link) throws Exception  {
+    try {
+      XhtmlDocument doc = new XhtmlParser().parse(src);
+      insertSectionNumbersInNode(doc, st, link);
+      return new XhtmlComposer().compose(doc);
+    } catch (Exception e) {
+      throw new Exception("Exception processing "+link+": "+e.getMessage(), e);
+    } 
   }
 
   private void insertSectionNumbersInNode(XhtmlNode node, SectionTracker st, String link) throws Exception {

@@ -1,23 +1,7 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
-
 <p>
-This is a draft for what XDS might look like if provided as a set of FHIR resources. 
-This is work in progress performed collaboratively between HL7 and IHE for the MHD/mHealth initiatives. 
-Neither HL7 nor IHE is committed to pursuing this path - it is simply being evaluated as a possibility.
+See the description on the <a href="xdsentry.htm">XdsEntry resource</a>
 </p>
-<p>
-Things to note about the current design:
-</p>
-<ul>
-  <li>Because this is part of the FHIR framework, the technical details are different to the existing MHD proposal. .e.g the encoding differs a little, either XML or json is allowed, the url structure and parameter names differ etc</li>
-  <li>There most important question is what resources to create. This draft creates XdsEntry and XdsFolder resources; the way this works is discussed below. More or less granular resource models are possible, each with their own strengths and weaknesses. Discussion is welcome</li>
-  <li>The FHIR profile doesn't require the patientId parameter on the URL, but an MHD profile based on FHIR may still choose to require that for the same reasons it is already required</li>
-  <li>It is not clear exactly how deprecated should work - the current MHD design says that a deprecated document should behave like a deleted resource (http status code 410) but this seems to be inconsistent with basic XDS rules in the general XDS. Further discussion required.</li>
-  <li>Note that as a restFul specification, there is no "submission set" idea here - entries and folders are acted on directly. Note that a multi-resource transaction is possible by posting a <a href="atom.htm">bundle</a> with multiple resources.</li>
-  <li>Associations are not explicitly modeled. The XDS documentation is a little unclear quite how they are used in practice - the xdsEntry/xdsFolder structure appears to serve the known use cases</li>
-  <li>Digital Signature Issues are still be to be resolved.</li>
-  <li>One issue that is not resolved is how the actual document binaries associated with the entries are made available</li>
-</ul>
 
 
 <a name="resource"></a>

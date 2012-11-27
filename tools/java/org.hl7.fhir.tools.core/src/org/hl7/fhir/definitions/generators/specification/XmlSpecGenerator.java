@@ -288,7 +288,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 						+ elem.getProfileName()
 						+ "\"</span>  <span style=\"color: Gray\"> --&gt;</span>");
 
-			boolean sharedDT = dataTypeIsSharedInfo(elem.typeCode());
+			boolean sharedDT = definitions.dataTypeIsSharedInfo(elem.typeCode());
 
 			// For simple elements without nested content, render the
 			// optionality etc. within a comment
@@ -607,10 +607,5 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 	}
 
-	private boolean dataTypeIsSharedInfo(String name) throws Exception {
-		return definitions.hasElementDefn(name)
-				&& definitions.getElementDefn(name).typeCode()
-						.equals("SharedDefinition");
-	}
 
 }

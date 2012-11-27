@@ -41,6 +41,7 @@ The following rules apply to the mailbox:
  <li>The mailbox only accepts POST transactions - any other HTTP method will result in an HTTP error</li>
  <li>The request content type submitted is always a bundle (i.e. an <a href="atom.htm">atom feed</a>) containing a message or document resource as the first resource</li>
  <li>The response content type returned is always an HTTP error, a bundle (i.e. an <a href="atom.htm">atom feed</a>) containing a message as the first resource, or empty (if a document was received)</li>
+ <li>If the response is an error, the body SHOULD be an <a href="issuereport.htm">Errors &amp; Warning</a> resource with full details</li> 
  <li>The URL never takes any parameters</li>
  <li>The mailbox may be authenticated using standard HTTP authentication methods, including OAuth</li>
 </ul>

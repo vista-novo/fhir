@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Grahame</LastAuthor>
   <Created>2012-03-19T11:22:15Z</Created>
-  <LastSaved>2012-11-26T20:01:25Z</LastSaved>
+  <LastSaved>2012-11-27T07:19:51Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -73,7 +73,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="24" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="15" ss:ExpandedRowCount="26" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s63" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s64" ss:AutoFitWidth="0" ss:Width="171.75"/>
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="41.25" ss:Span="1"/>
@@ -113,7 +113,27 @@
     <Cell ss:Index="8"><Data ss:Type="String">Context and Searchable Metadata for a document</Data></Cell>
     <Cell><Data ss:Type="String">Describes a document: the context and searchable metadata for a document</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">This information is shared between a document and an document index entry</Data></Cell>
-    <Cell><Data ss:Type="String">EN</Data></Cell>
+    <Cell><Data ss:Type="String">Document</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">DocumentInformation.id</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">logical identifier for document (version-independent)</Data></Cell>
+    <Cell><Data ss:Type="String">Logical Identifier for the document, assigned when created. This identifier stays constant when subsequent versions of the document are created</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
+    <Cell><Data ss:Type="String">Document.id / Document.setId</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">DocumentInformation.versionId</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">version-specific identifier for document</Data></Cell>
+    <Cell><Data ss:Type="String">Version specific identifier for the document, assigned when created. This identifier changes when subsequent versions of the document are created</Data></Cell>
+    <Cell ss:Index="11"><Data ss:Type="String">see discussion in resource definition for how these relate</Data></Cell>
+    <Cell><Data ss:Type="String">Document.id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="135">
     <Cell><Data ss:Type="String">DocumentInformation.instant</Data></Cell>
@@ -472,12 +492,11 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
-   <TopRowVisible>6</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

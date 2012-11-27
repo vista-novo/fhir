@@ -52,10 +52,6 @@
       <link>document</link>
       <name>Documents</name>
   	  <index>2.3</index>
-      <entry>
-        <link>documentinformation</link>
-        <name>Document Information</name>
-      </entry>
     </entry>
     <entry>
       <link>issuereport</link>
