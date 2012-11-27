@@ -365,7 +365,7 @@ public class PageProcessor implements Logger  {
       scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
     for (ElementDefn e : definitions.getStructures().values())
       if (e.getName().equals("DocumentInformation"))
-        scanForUsage(b, cd, e, "documentinformation.htm");
+        scanForUsage(b, cd, e, "document.htm");
       else
         scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
       
@@ -844,20 +844,22 @@ public class PageProcessor implements Logger  {
     names.addAll(definitions.getInfrastructure().keySet());
     Collections.sort(names);
     for (String n : names) {
-      ElementDefn c = definitions.getTypes().get(n);
-      if (c == null)
-        c = definitions.getStructures().get(n);
-      if (c == null)
-        c = definitions.getInfrastructure().get(n);
-      if (c.getName().equals("Extension"))
-        html.append("  <tr><td><a href=\"extensibility.htm\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-      else if (c.getName().equals("DocumentInformation"))
-        html.append("  <tr><td><a href=\"documentinformation.htm\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-      else if (c.getName().equals("Narrative") || c.getName().equals("ResourceReference") )
-        html.append("  <tr><td><a href=\"xml.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-      else
-        html.append("  <tr><td><a href=\"datatypes.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
-    }       
+      if (!definitions.dataTypeIsSharedInfo(n)) {
+        ElementDefn c = definitions.getTypes().get(n);
+        if (c == null)
+          c = definitions.getStructures().get(n);
+        if (c == null)
+          c = definitions.getInfrastructure().get(n);
+        if (c.getName().equals("Extension"))
+          html.append("  <tr><td><a href=\"extensibility.htm\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+        else if (c.getName().equals("DocumentInformation"))
+          html.append("  <tr><td><a href=\"documentinformation.htm\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+        else if (c.getName().equals("Narrative") || c.getName().equals("ResourceReference") )
+          html.append("  <tr><td><a href=\"xml.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+        else
+          html.append("  <tr><td><a href=\"datatypes.htm#"+c.getName()+"\">"+c.getName()+"</a></td><td>"+Utilities.escapeXml(c.getDefinition())+"</td></tr>");
+      }       
+    }
     return html.toString();
   }
 

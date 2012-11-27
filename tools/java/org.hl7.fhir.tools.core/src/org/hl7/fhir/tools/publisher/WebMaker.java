@@ -81,6 +81,8 @@ public class WebMaker {
         String src = TextFile.fileToString(folders.dstDir+f);
         if (src.contains("<!--archive-->")) {
           src = src.replace("<!--archive-->", makeArchives());
+        } else if (src.contains("<!-- archive -->")) {
+          src = src.replace("<!-- archive -->", makeArchives());
         }
         if (src.contains(SEARCH_FORM_HOLDER)) 
           src = src.replace(SEARCH_FORM_HOLDER, googleSearch());
