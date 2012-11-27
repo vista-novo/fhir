@@ -88,8 +88,9 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 		nl("(IFhirReader reader, ErrorList errors)");
 		bs("{");
 			ln("string refId;");
-			ln("string dar;");
-        	ln("string contents = reader.ReadPrimitiveElementContents(out refId, out dar);");
+//			ln("string dar;");
+//        	ln("string contents = reader.ReadPrimitiveElementContents(out refId, out dar);");
+        	ln("string contents = reader.ReadPrimitiveElementContents(out refId);");
 			
 			ln();
 			ln("try");
@@ -99,7 +100,7 @@ public class CSharpPrimitiveParserGenerator extends GenBlock {
 				ln();
 				ln("// Read id/dar from element's attributes");
                 ln("result.ReferralId = refId;");
-                ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
+         //       ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
 				ln();	
                 ln("return result;");
             es("}");

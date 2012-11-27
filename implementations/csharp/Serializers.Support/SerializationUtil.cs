@@ -45,7 +45,7 @@ namespace HL7.Fhir.Instance.Serializers
             return elementName + Support.Util.Capitalize(typeName);
         }
 
-        public static void SerializeAttributes(JsonWriter writer, Data elem)
+        public static void SerializeIdAttribute(JsonWriter writer, Data elem)
         {
             if (elem.ReferralId != null)
             {
@@ -53,21 +53,21 @@ namespace HL7.Fhir.Instance.Serializers
                 writer.WriteValue(elem.ReferralId);
             }
 
-            if (elem.Dar.HasValue)
-            {
-                writer.WritePropertyName("dataAbsentReason");
-                writer.WriteValue(EnumHelper.EnumToString(elem.Dar.Value,
-                    typeof(DataAbsentReason)));
-            }
+            //if (elem.Dar.HasValue)
+            //{
+            //    writer.WritePropertyName("dataAbsentReason");
+            //    writer.WriteValue(EnumHelper.EnumToString(elem.Dar.Value,
+            //        typeof(DataAbsentReason)));
+            //}
         }
 
-        public static void SerializeAttributes(IFhirWriter writer, Data elem)
+        public static void SerializeIdAttribute(IFhirWriter writer, Data elem)
         {
             if (elem.ReferralId != null)
                 writer.WriteRefId(elem.ReferralId);
 
-            if (elem.Dar.HasValue)
-                writer.WriteDar(EnumHelper.EnumToString(elem.Dar.Value,typeof(DataAbsentReason)));
+            //if (elem.Dar.HasValue)
+            //    writer.WriteDar(EnumHelper.EnumToString(elem.Dar.Value,typeof(DataAbsentReason)));
         }
     }
 }

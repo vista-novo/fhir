@@ -127,16 +127,16 @@ namespace HL7.Fhir.Instance.Parsers
             // Nothing
         }
 
-        public string ReadPrimitiveElementContents(out string refid, out string dar)
+        public string ReadPrimitiveElementContents(out string refid)
         {
-            readAttributes(out refid, out dar);
+            readAttributes(out refid);
 
             return readContents();
         }
 
-        public bool ReadStartComplexContent(out string refid, out string dar)
+        public bool ReadStartComplexContent(out string refid)
         {
-            readAttributes(out refid, out dar);
+            readAttributes(out refid);
 
             if (!xr.IsEmptyElement)
             {
@@ -166,10 +166,10 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        private void readAttributes(out string id, out string dar)
+        private void readAttributes(out string id)
         {
             id = null;
-            dar = null;
+        //    dar = null;
 
             string elementName = xr.LocalName;
 
@@ -179,8 +179,8 @@ namespace HL7.Fhir.Instance.Parsers
                 {
                     if (xr.LocalName == Util.IDATTR)
                         id = xr.Value;
-                    else if (xr.LocalName == Util.DARATTR)
-                        dar = xr.Value;
+                 //   else if (xr.LocalName == Util.DARATTR)
+                //        dar = xr.Value;
                     else
                     {
                         if (xr.NamespaceURI == Util.XMLNS)

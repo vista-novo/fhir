@@ -56,7 +56,6 @@
     <Compile Include="Model.Support\Oid.cs" />
     <Compile Include="Model.Support\FhirUri.cs" />
     <Compile Include="Model.Support\FhirString.cs" />
-    <Compile Include="Model.Support\Absentable.cs" />
     <Compile Include="Model.Support\Code.cs" />
     <Compile Include="Model.Support\Date.cs" />
     <Compile Include="Model.Support\FhirTypes.cs" />

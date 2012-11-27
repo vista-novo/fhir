@@ -57,7 +57,7 @@ namespace HL7.Fhir.Instance.Serializers
             {
                 writer.WriteStartComplexContent();
 
-                SerializationUtil.SerializeAttributes(writer, value);
+                SerializationUtil.SerializeIdAttribute(writer, value);
 
                 if (value.ToString() != null)
                     writer.WriteSimpleContent(value.ToString());

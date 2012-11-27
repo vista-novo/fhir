@@ -44,7 +44,7 @@ namespace HL7.Fhir.Instance.Support
         public const string XHTMLNS = "http://www.w3.org/1999/xhtml";
         public const string XMLNS = "http://www.w3.org/2000/xmlns/";
         public const string DIVELEM = "div";
-        public static string DARATTR = "dataAbsentReason";
+    //    public static string DARATTR = "dataAbsentReason";
 
         public static string Capitalize(string s)
         {

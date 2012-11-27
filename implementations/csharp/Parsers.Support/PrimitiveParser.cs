@@ -63,8 +63,8 @@ namespace HL7.Fhir.Instance.Parsers
             where T : struct, IConvertible
         {
             string refId;
-            string dar;
-            var contents = reader.ReadPrimitiveElementContents(out refId, out dar);
+         //   string dar;
+            var contents = reader.ReadPrimitiveElementContents(out refId);
 
             try
             {
@@ -72,7 +72,7 @@ namespace HL7.Fhir.Instance.Parsers
 
                 // Read id/dar from element's attributes
                 result.ReferralId = refId;
-                result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);
+            //    result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);
 
                 return result;
             }

@@ -45,7 +45,7 @@ namespace HL7.Fhir.Instance.Parsers
         bool IsAtStartElement();
         bool IsAtEndElement();
 
-        bool ReadStartComplexContent(out string refid, out string dar);
+        bool ReadStartComplexContent(out string refid);
         void ReadEndComplexContent();
 
         void SkipContents(string name);
@@ -60,6 +60,6 @@ namespace HL7.Fhir.Instance.Parsers
         bool IsAtArrayElement();
         void ReadEndArray();
 
-        string ReadPrimitiveElementContents(out string refid, out string dar);
+        string ReadPrimitiveElementContents(out string refid);
     }
 }

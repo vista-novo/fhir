@@ -160,10 +160,10 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public string ReadPrimitiveElementContents(out string refid, out string dar)
+        public string ReadPrimitiveElementContents(out string refid)
         {
             refid = null;
-            dar = null;
+        //    dar = null;
             string elementName = CurrentElementName;
             
             // Read away property name
@@ -174,7 +174,7 @@ namespace HL7.Fhir.Instance.Parsers
                 // read StartObject
                 jr.Read();
 
-                readAttributes(out refid, out dar);
+                readAttributes(out refid);
 
                 string value = null;
 
@@ -214,7 +214,7 @@ namespace HL7.Fhir.Instance.Parsers
         }
 
 
-        public bool ReadStartComplexContent(out string refid, out string dar)
+        public bool ReadStartComplexContent(out string refid)
         {
             // Read away the complex property's name, if it is there
             skipPropertyName();
@@ -225,15 +225,15 @@ namespace HL7.Fhir.Instance.Parsers
             jr.Read();
 
             // Check the attributes
-            readAttributes(out refid, out dar);
+            readAttributes(out refid);
 
             return true;
         }
 
-        private void readAttributes(out string refid, out string dar)
+        private void readAttributes(out string refid)
         {
             refid = null;
-            dar = null;
+        //    dar = null;
 
             if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "_id")
             {
@@ -241,11 +241,11 @@ namespace HL7.Fhir.Instance.Parsers
                 jr.Read();
             }
 
-            if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "dataAbsentReason")
-            {
-                dar = jr.ReadAsString();
-                jr.Read();
-            }
+            //if (jr.TokenType == JsonToken.PropertyName && (string)jr.Value == "dataAbsentReason")
+            //{
+            //    dar = jr.ReadAsString();
+            //    jr.Read();
+            //}
 
             return;
         }

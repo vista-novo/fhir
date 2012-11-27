@@ -243,7 +243,8 @@ public class CSharpResourceSerializerGenerator extends GenBlock
 			if( !composite.isResource() )
 			{
 				ln("// Serialize element's id/dar attributes");
-				ln("SerializationUtil.SerializeAttributes(writer, value);");
+//				ln("SerializationUtil.SerializeAttributes(writer, value);");
+				ln("SerializationUtil.SerializeIdAttribute(writer, value);");
 				ln();
 			}
   		

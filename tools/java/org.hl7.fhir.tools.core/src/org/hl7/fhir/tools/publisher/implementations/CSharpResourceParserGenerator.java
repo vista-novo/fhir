@@ -326,12 +326,16 @@ public class CSharpResourceParserGenerator extends GenBlock
 		ln();
 
         ln("// Read id/dar from element's attributes and read starttag");
-        ln("string refId; string dar;");
-        ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
+        ln("string refId;"); 
+//        ln("string dar;");
+
+//		ln("bool hasContent = reader.ReadStartComplexContent(out refId, out dar);");
+        ln("bool hasContent = reader.ReadStartComplexContent(out refId);");
+        
         if( !composite.isResource() )
         {
 	        ln("result.ReferralId = refId;");
-	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
+//	        ln("result.Dar = (DataAbsentReason?)Code<DataAbsentReason>.Parse(dar);");
 	    }
 		ln();            
 		ln("// If this is an empty (xml) node, return immediately");

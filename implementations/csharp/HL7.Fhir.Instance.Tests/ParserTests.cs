@@ -40,7 +40,7 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseEmptyPrimitive()
         {
-            string xmlString = "<someElem dataAbsentReason='asked' />";
+            string xmlString = "<someElem id='4' />";
 
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
@@ -49,40 +49,40 @@ namespace HL7.Fhir.Instance.Tests
             FhirBoolean result = PrimitiveParser.ParseFhirBoolean(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(result);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
             Assert.IsNull(result.Contents);
 
             //TODO: Is this a '' value, or an empty/null value?
-            string xmlString2 = "<someElem dataAbsentReason='asked'></someElem>";
+            string xmlString2 = "<someElem id='4'></someElem>";
             xr = fromString(xmlString2); xr.Read();
             r = new XmlFhirReader(xr);
 
             errors.Clear();
             result = PrimitiveParser.ParseFhirBoolean(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
             Assert.IsNotNull(result);
             Assert.IsNull(result.Contents);
 
 
 
-            string jsonString = "{ \"someElem\" : { \"dataAbsentReason\" : \"asked\" } }";
+            string jsonString = "{ \"someElem\" : { \"_id\" : \"4\" } }";
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
             errors.Clear();
             result = PrimitiveParser.ParseFhirBoolean(new JsonFhirReader(jr), errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(result);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
             Assert.IsNull(result.Contents);
 
-            jsonString = "{ \"someElem\" : { \"dataAbsentReason\" : \"asked\", \"value\" : \"\" } }";
+            jsonString = "{ \"someElem\" : { \"_id\" : \"4\", \"value\" : \"\" } }";
             jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
             errors.Clear();
             result = PrimitiveParser.ParseFhirBoolean(new JsonFhirReader(jr), errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
             Assert.IsNotNull(result);
             Assert.IsNull(result.Contents);
         }
@@ -91,7 +91,7 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseEmptyComposite()
         {
-            string xmlString = @"<x dataAbsentReason='asked' xmlns='http://hl7.org/fhir' />";
+            string xmlString = @"<x id='4' xmlns='http://hl7.org/fhir' />";
 
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
@@ -100,24 +100,26 @@ namespace HL7.Fhir.Instance.Tests
             Coding result = CodingParser.ParseCoding(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(result);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
 
-            string jsonString = "{ \"someElem\" : { \"dataAbsentReason\" : \"asked\" } }";
+            string jsonString = "{ \"someElem\" : { \"_id\" : \"4\" } }";
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
             errors.Clear();
             result = CodingParser.ParseCoding(new JsonFhirReader(jr), errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.IsNotNull(result);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+            Assert.AreEqual("4", result.ReferralId);
         }
 
 
         [TestMethod]
         public void TestAttributesParsing()
         {
+            //string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " +
+            //                        "dataAbsentReason='asked'>1234</someElem>";
             string xmlString = "<someElem xmlns='http://hl7.org/fhir' id='12' " +
-                                    "dataAbsentReason='asked'>1234</someElem>";
+                                ">1234</someElem>";
 
             XmlReader xr = fromString(xmlString); xr.Read();
             XmlFhirReader r = new XmlFhirReader(xr);
@@ -127,9 +129,11 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual("1234", result.Contents);
             Assert.AreEqual("12", result.ReferralId);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+       //     Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
 
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"12\", \"dataAbsentReason\" : \"asked\", \"value\" : \"1234\" } }";
+//            string jsonString = "{ \"someElem\" : { \"_id\" : \"12\", \"dataAbsentReason\" : \"asked\", \"value\" : \"1234\" } }";
+            string jsonString = "{ \"someElem\" : { \"_id\" : \"12\", \"value\" : \"1234\" } }";
+
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
             jr.Read(); jr.Read();
             errors.Clear();
@@ -137,7 +141,7 @@ namespace HL7.Fhir.Instance.Tests
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual("1234", result.Contents);
             Assert.AreEqual("12", result.ReferralId);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+         //   Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
         }
 
         private XmlReader fromString(string s)
@@ -213,7 +217,7 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseSimpleComposite()
         {
-            string xmlString = @"<x id='x4' dataAbsentReason='asked' xmlns='http://hl7.org/fhir'>
+            string xmlString = @"<x id='x4' xmlns='http://hl7.org/fhir'>
                                     <system>http://hl7.org/fhir/sid/icd-10</system>
                                     <code>G44.1</code>
                                  </x>";
@@ -225,12 +229,12 @@ namespace HL7.Fhir.Instance.Tests
             Coding result = CodingParser.ParseCoding(r, errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual("x4", result.ReferralId);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+         //   Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
             Assert.AreEqual("G44.1", result.Code.Contents);
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
 
-            string jsonString = "{ \"someElem\" : { \"_id\" : \"x4\", \"dataAbsentReason\" : \"asked\", " +
+            string jsonString = "{ \"someElem\" : { \"_id\" : \"x4\", " +
                     "\"system\": \"http://hl7.org/fhir/sid/icd-10\", \"code\": \"G44.1\" } }";
 
             JsonTextReader jr = new JsonTextReader(new StringReader(jsonString));
@@ -239,7 +243,7 @@ namespace HL7.Fhir.Instance.Tests
             result = CodingParser.ParseCoding(new JsonFhirReader(jr), errors);
             Assert.IsTrue(errors.Count() == 0, errors.ToString());
             Assert.AreEqual("x4", result.ReferralId);
-            Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
+        //    Assert.AreEqual(DataAbsentReason.Asked, result.Dar);
             Assert.AreEqual("G44.1", result.Code.Contents);
             Assert.AreEqual("http://hl7.org/fhir/sid/icd-10", result.System.Contents.ToString());
             Assert.IsNull(result.Display);
