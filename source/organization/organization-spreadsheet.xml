@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Ewout Kramer</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:15:30Z</Created>
-  <LastSaved>2012-11-19T22:59:43Z</LastSaved>
+  <LastSaved>2012-11-28T17:18:39Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -20,7 +20,6 @@
   <WindowWidth>17490</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
-  <ActiveSheet>4</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -145,7 +144,7 @@
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">string</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">name used for the organization</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Name used for the organization</Data></Cell>
     <Cell><Data ss:Type="String">A name associated with the organization</Data></Cell>
     <Cell><Data ss:Type="String">Need to use the name as the label of the organization</Data></Cell>
     <Cell><Data ss:Type="String">Don't use HumanName since that has many non-organization things in it</Data></Cell>
@@ -177,7 +176,7 @@
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">OrganizationType</Data></Cell>
-    <Cell><Data ss:Type="String">kind of organization</Data></Cell>
+    <Cell><Data ss:Type="String">Kind of organization</Data></Cell>
     <Cell><Data ss:Type="String">The kind of organization that this is</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track the kind of organization that this is - different organization types have different uses</Data></Cell>
     <Cell><Data ss:Type="String">Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes</Data></Cell>
@@ -191,7 +190,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">code</Data></Cell>
     <Cell><Data ss:Type="String">RecordStatus</Data></Cell>
-    <Cell><Data ss:Type="String">the status of this organization's record</Data></Cell>
+    <Cell><Data ss:Type="String">The status of this organization's record</Data></Cell>
     <Cell><Data ss:Type="String">Indication of whether this organization's record is still active.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;active&quot;.</Data></Cell>
     <Cell><Data ss:Type="String">.status</Data></Cell>
@@ -200,7 +199,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Organization.accreditation</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">formal certifications that convey authority</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Formal certifications that convey authority</Data></Cell>
     <Cell><Data ss:Type="String">The qualifications/certifications an organization has, including format educational achievements, accreditations, and current certifications. All these qualifications may be used to determine what roles the organization may play in a healthcare environment</Data></Cell>
     <Cell><Data ss:Type="String">For many organizations in healthcare, it is necessary to track the qualifications an organization has - formal.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.plays[Role](classCode='QUAL')</Data></Cell>
@@ -229,8 +228,8 @@
     <Cell><Data ss:Type="String">Organization.accreditation.institution</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Organization)</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Who conferred it</Data></Cell>
-    <Cell><Data ss:Type="String">The organization that confered/confers the accreditation</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Who conferred accreditation</Data></Cell>
+    <Cell><Data ss:Type="String">The organization that conferred/confers the accreditation</Data></Cell>
     <Cell><Data ss:Type="String">May determine the significance of the qualification, and allows a link back to a qualification registry, if one exists</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.scopedBy[Organization]</Data></Cell>
     <Cell ss:Index="14"><Data ss:Type="String">Do we need jurisdiction as well?  (The jurisdiction is often more relevant than the accrediting org.)</Data></Cell>
@@ -248,8 +247,8 @@
     <Cell><Data ss:Type="String">Organization.relatedOrganization</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">sub-, super-, and partner organizations</Data></Cell>
-    <Cell><Data ss:Type="String">Other organizations who are related to this person. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Sub-, super-, and partner organizations</Data></Cell>
+    <Cell><Data ss:Type="String">Other organizations that are related to this organization. The relationship might be one of several types: sub- or super- orgnizations (i.e. ward in a hospital, owning corporation of a hospital) or partner organizations (i.e. the operating corporation for a hospital)</Data></Cell>
     <Cell><Data ss:Type="String">Need to be able to track many kinds of organizational relationships and use to determine roles and mediate workflows</Data></Cell>
     <Cell ss:Index="14" ss:StyleID="s66"><Data ss:Type="String">TODO: No more &quot;contains&quot; or &quot;part of&quot;?</Data></Cell>
    </Row>
@@ -275,7 +274,7 @@
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Organization.contactPerson</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contactperson for the organization</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Contact person for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Contact details for a person acting as a contact for the organization</Data></Cell>
     <Cell><Data ss:Type="String">Apart from the address/contact of the organization itself, systems need to track which persons are acting as contact persons</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.contactParty</Data></Cell>
@@ -347,12 +346,14 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <TopRowVisible>15</TopRowVisible>
+   <Selected/>
+   <TopRowVisible>7</TopRowVisible>
+   <LeftColumnVisible>6</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>21</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>14</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -433,8 +434,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>1</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -454,61 +455,61 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name in any name part</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of name in any name part</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of name using some kind of phonetic matching algorithm</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">type</Data></Cell>
-    <Cell><Data ss:Type="String">a code for the type of organization</Data></Cell>
+    <Cell><Data ss:Type="String">A code for the type of organization</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
-    <Cell><Data ss:Type="String">an identifier for the organization</Data></Cell>
+    <Cell><Data ss:Type="String">An identifier for the organization</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">telecom</Data></Cell>
-    <Cell><Data ss:Type="String">the value in any kind of telecom information for the organization</Data></Cell>
+    <Cell><Data ss:Type="String">The value in any kind of telecom information for the organization</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">address</Data></Cell>
-    <Cell><Data ss:Type="String">an address in any kind of address/part for the organization</Data></Cell>
+    <Cell><Data ss:Type="String">An address in any kind of address/part for the organization</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">cname</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of the name of any contact person</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of the name of any contact person</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">ctelecom</Data></Cell>
-    <Cell><Data ss:Type="String">the value in any kind of telecom information for any contact person of the organization</Data></Cell>
+    <Cell><Data ss:Type="String">The value in any kind of telecom information for any contact person of the organization</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">caddress</Data></Cell>
-    <Cell><Data ss:Type="String">an address in any kind of address/part for any contact person of the organization</Data></Cell>
+    <Cell><Data ss:Type="String">An address in any kind of address/part for any contact person of the organization</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">related</Data></Cell>
-    <Cell><Data ss:Type="String">an identifier for any of the related organizations</Data></Cell>
+    <Cell><Data ss:Type="String">An identifier for any of the related organizations</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">single</Data></Cell>
    </Row>
@@ -520,6 +521,13 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>1</ActiveCol>
+    </Pane>
+   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -586,7 +594,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
@@ -594,9 +601,9 @@
  <Worksheet ss:Name="Examples">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
-   <Column ss:AutoFitWidth="0" ss:Width="69.75"/>
-   <Column ss:AutoFitWidth="0" ss:Width="141"/>
-   <Column ss:AutoFitWidth="0" ss:Width="59.25"/>
+   <Column ss:Width="54.75"/>
+   <Column ss:Width="92.25"/>
+   <Column ss:Width="194.25"/>
    <Column ss:AutoFitWidth="0" ss:Width="330.75"/>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell ss:StyleID="s71"><Data ss:Type="String">Name</Data></Cell>
@@ -656,7 +663,7 @@
  <Worksheet ss:Name="record-status">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="76.5"/>
+   <Column ss:Index="2" ss:Width="398.25"/>
    <Column ss:Width="333"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">Code</Data></Cell>
@@ -668,11 +675,11 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">active</Data></Cell>
-    <Cell><Data ss:Type="String">Active. The state representing the fact that the Entity record is currently active.</Data></Cell>
+    <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently active.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">inactive</Data></Cell>
-    <Cell><Data ss:Type="String">Inactive. The state representing the fact that the Entity record is currently inactive.</Data></Cell>
+    <Cell><Data ss:Type="String">The state representing the fact that the Entity record is currently inactive.</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -702,7 +709,7 @@
  <Worksheet ss:Name="org-relationship-type">
   <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="3" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="14.4375">
-   <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="127.5"/>
+   <Column ss:Index="2" ss:Width="270"/>
    <Column ss:Width="333"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s71"><Data ss:Type="String">Code</Data></Cell>
