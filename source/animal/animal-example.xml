@@ -3,25 +3,17 @@
 	
   <!-- Dog tag, under Maroondah City council -->
   <identifier>
-<!--
-    <type>
-      <system>http://hl7.org/fhir/sid/fhir/identifier-type</system>
-      <code>microchip</code>
-    </type>
--->
     <label>Dog Tag</label>
     <identifier>
       <system>http://www.maroondah.vic.gov.au/AnimalRegFees.aspx</system>
-      <id>1234123123312332</id>	    
+      <id>1234123</id>	    
     </identifier>
     <period>
       <start>2010-05-31</start>
     </period>
-<!-- todo: this is currently broken, and needs to be fixed.
-    <assigner dataAbsentReason="asText">
-      <text>Maroondah City Council</text>
+    <assigner>
+      <display>Maroondah City Council</display>
     </assigner>
-    -->
   </identifier>
 
   <!-- Dog's name: Kenzi -->
@@ -31,20 +23,20 @@
   </name>
     
   <dob>2010-03-23</dob> 
-  <!-- todo: how do you code a species? -->
+
   <species>
     <coding>
       <system>http://en.wikipedia.org/wiki/Biological_classification</system>
       <code>Canis lupus familiaris</code>
     </coding>
   </species>
-  <strain>
+  <breed>
     <coding>
       <system>http://snomed.info</system>
       <code>58108001</code>              
       <display>Golden retriever</display>  
     </coding>      
-  </strain>
+  </breed>
   <gender>
     <coding>
       <code>F</code>
@@ -74,9 +66,6 @@
       <zip>3999</zip>
     </address>
     <contact>
-      <use>home</use>
-    </contact>
-    <contact>
       <system>phone</system>
       <value>(03) 5555 6473</value>
       <use>work</use>
@@ -98,11 +87,11 @@
           </tr>
           <tr>
             <td>Contacts</td>
-            <td>Home: unknown. Work: (03) 5555 6473</td>
+            <td>Work: (03) 5555 6473</td>
           </tr>
           <tr>
             <td>Id</td>
-            <td>Microchip: 1234123123312332 (Maroondah City Council)</td>
+            <td>Dog Tag: 1234123 (Maroondah City Council)</td>
           </tr>
         </tbody>
       </table>

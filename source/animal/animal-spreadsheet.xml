@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:25:53Z</Created>
-  <LastSaved>2012-05-26T22:15:34Z</LastSaved>
+  <LastSaved>2012-11-29T01:47:56Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -57,18 +57,23 @@
     ss:WrapText="1"/>
    <Interior ss:Color="#D9D9D9" ss:Pattern="Solid"/>
   </Style>
-  <Style ss:ID="s66">
+  <Style ss:ID="s67">
    <Alignment ss:Vertical="Bottom" ss:ShrinkToFit="1" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s67">
+  <Style ss:ID="s68">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
   </Style>
-  <Style ss:ID="s68">
+  <Style ss:ID="s69">
+   <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s70">
    <Alignment ss:Vertical="Top"/>
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="16" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="16" ss:ExpandedRowCount="17" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s62" ss:DefaultRowHeight="15">
    <Column ss:StyleID="s63" ss:AutoFitWidth="0" ss:Width="150.75"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="39" ss:Span="1"/>
@@ -81,6 +86,7 @@
     ss:Span="1"/>
    <Column ss:Index="12" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="114"/>
    <Column ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="135" ss:Span="1"/>
+   <Column ss:Index="15" ss:StyleID="s62" ss:AutoFitWidth="0" ss:Width="82.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="30" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Element</Data></Cell>
     <Cell><Data ss:Type="String">Card.</Data></Cell>
@@ -98,18 +104,19 @@
     <Cell><Data ss:Type="String">To Do</Data></Cell>
     <Cell><Data ss:Type="String">Committee Notes</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="60">
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Animal</Data></Cell>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An animal involved in the healthcare process</Data></Cell>
-    <Cell><Data ss:Type="String">An animal that has relevance to the care process - usually this is for animals that are patients</Data></Cell>
-    <Cell><Data ss:Type="String">Need to be able to track animals - vetinary medicine is an active user of HL7 standards</Data></Cell>
-    <Cell><Data ss:Type="String">Animals differ because you need to track species and strain, and also different kind of relationships - owners</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Animal involved in healthcare</Data></Cell>
+    <Cell><Data ss:Type="String">An animal (non-human) that has relevance to the care process</Data></Cell>
+    <Cell><Data ss:Type="String">Need to be able to track animals - veterinary medicine is an active user of HL7 standards.  Animals are also relevant in clinical studies, as &quot;animal helpers&quot;, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Animals differ from Persons because you need to track species and strain, and also different kind of relationships - owners</Data></Cell>
     <Cell><Data ss:Type="String">NonPersonLivingSubject(classCode=ANM, determinerCode=INST)</Data></Cell>
+    <Cell><Data ss:Type="String">PID</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
     <Cell><Data ss:Type="String">Animal.identifier</Data></Cell>
@@ -120,16 +127,20 @@
     <Cell><Data ss:Type="String">Identifier for the animal that is used to identify the person across multiple disparate systems and also for face to face identification of the person</Data></Cell>
     <Cell><Data ss:Type="String">Animals are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the animal</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.scopes[Role](classCode=IDENT)</Data></Cell>
+    <Cell><Data ss:Type="String">PID.3</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Animal.name</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">A name associated with the animal</Data></Cell>
-    <Cell><Data ss:Type="String">A name associated with the animal. The use code maiden does not apply.</Data></Cell>
+    <Cell><Data ss:Type="String">A label assigned by humans to this specific individual animal</Data></Cell>
     <Cell><Data ss:Type="String">Some animals have names, which are assigned by humans for human reasons, and follow human naming patterns</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.name</Data></Cell>
+    <Cell><Data ss:Type="String">PID.5</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">Are multiple names in the 80%?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Animal.dob</Data></Cell>
@@ -137,10 +148,12 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">The birth date for the animal</Data></Cell>
-    <Cell><Data ss:Type="String">The birth date for the animal</Data></Cell>
+    <Cell><Data ss:Type="String">The year, date or date-time on which the animal was born</Data></Cell>
     <Cell><Data ss:Type="String">Age of the animal drives many clinical processes.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">.dateOfBirth</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">RIM change to support human date (time only - but is this needed in this context?)</Data></Cell>
+    <Cell><Data ss:Type="String">PID.7</Data></Cell>
+    <Cell><Data ss:Type="String">RIM change to support human date (time only - but is this needed in this context?)</Data></Cell>
+    <Cell><Data ss:Type="String">Is time needed or is date sufficient?</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Animal.species</Data></Cell>
@@ -148,22 +161,24 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell><Data ss:Type="String">Species for the Animal</Data></Cell>
-    <Cell><Data ss:Type="String">Species for the animal</Data></Cell>
+    <Cell><Data ss:Type="String">E.g. Dog, Cow</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the high level categorization of the kind of animal</Data></Cell>
     <Cell><Data ss:Type="String">Need to know what kind of animal</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.playedRole[classCode=GEN].scoper[classCode=ANM, determinerCode=KIND].code</Data></Cell>
+    <Cell><Data ss:Type="String">PID.35</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
-    <Cell><Data ss:Type="String">Animal.strain</Data></Cell>
+    <Cell><Data ss:Type="String">Animal.breed</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
-    <Cell><Data ss:Type="String">AnimalStrain</Data></Cell>
-    <Cell><Data ss:Type="String">Strain for the Animal</Data></Cell>
-    <Cell><Data ss:Type="String">Strain for the animal</Data></Cell>
+    <Cell><Data ss:Type="String">AnimalBreed</Data></Cell>
+    <Cell><Data ss:Type="String">E.g. Poodle, Angus</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies the detailed categorization of the kind of animal.</Data></Cell>
     <Cell><Data ss:Type="String">May need to know the specific kind within the species</Data></Cell>
-    <Cell ss:Index="12"><Data ss:Type="String">.strainText</Data></Cell>
-    <Cell ss:Index="14"><Data ss:Type="String">Not sure why this is ED in the RIM.  Should probably change to SC.</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
+    <Cell><Data ss:Type="String">PID.37</Data></Cell>
+    <Cell><Data ss:Type="String">Not sure why this is ED in the RIM.  Should probably change to SC.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Animal.gender</Data></Cell>
@@ -171,23 +186,48 @@
     <Cell ss:Index="4"><Data ss:Type="String">Y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">AnimalGender</Data></Cell>
+    <Cell><Data ss:Type="String">E.g. Male, Female</Data></Cell>
     <Cell><Data ss:Type="String">Gender for the Animal</Data></Cell>
-    <Cell><Data ss:Type="String">Gender for the Animal</Data></Cell>
-    <Cell><Data ss:Type="String">For managing the animal</Data></Cell>
-    <Cell><Data ss:Type="String">Note that some animals have additional gender not encountered in humans?</Data></Cell>
+    <Cell><Data ss:Type="String">For managing the animal, including appropriate housing.</Data></Cell>
+    <Cell><Data ss:Type="String">Note that some animals have additional genders not encountered in humans</Data></Cell>
     <Cell><Data ss:Type="String">.administrativeGenderCode</Data></Cell>
+    <Cell><Data ss:Type="String">PID.8</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
+    <Cell><Data ss:Type="String">Animal.genderStatus</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
+    <Cell><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
+    <Cell><Data ss:Type="String">E.g. Neutered, Intact</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates the current state of the animal's reproductive organs</Data></Cell>
+    <Cell><Data ss:Type="String">Gender status can affect housing and animal behavior</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.genderStatusCode</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="75">
     <Cell><Data ss:Type="String">Animal.relatedEntity</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
-    <Cell ss:Index="5"><Data ss:Type="String">right</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Kin, owner, care giver etc</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">right</Data></Cell>
+    <Cell ss:StyleID="Default"/>
+    <Cell ss:StyleID="Default"/>
+    <Cell><Data ss:Type="String">Kin, owner, care giver, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">People and animals that hold a relevant relationship to the animal</Data></Cell>
+    <Cell><Data ss:Type="String">Genetic relationships between animals can be relevant for some use-cases, but the primary use-case is to identify the humans affiliated with an animal</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.scopes[Role](classCode=REL).player</Data></Cell>
+    <Cell><Data ss:Type="String">ROL</Data></Cell>
+    <Cell ss:Index="15"><Data ss:Type="String">Is there a use-case for linking to Animal or Person resource directly?</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="String">Animal.relatedEntity.identifier</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Identifier for the entity</Data></Cell>
+    <Cell><Data ss:Type="String">Human-displayable identifier associated with the referenced entity</Data></Cell>
+    <Cell><Data ss:Type="String">Allows reliable identification of and potentially retrieval of additional information about the related entity</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.id</Data></Cell>
+    <Cell><Data ss:Type="String">ROL.4</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Animal.relatedEntity.role</Data></Cell>
@@ -195,24 +235,42 @@
     <Cell ss:Index="6"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell><Data ss:Type="String">AnimalRelationship</Data></Cell>
     <Cell><Data ss:Type="String">Type of relationship</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies how the referenced entity is related to the animal</Data></Cell>
+    <Cell><Data ss:Type="String">Allows choosing between multiple related entities</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.code</Data></Cell>
+    <Cell><Data ss:Type="String">ROL.3</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Animal.relatedEntity.name</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">HumanName</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Name of the related entity</Data></Cell>
+    <Cell><Data ss:Type="String">Name of the related entity</Data></Cell>
+    <Cell><Data ss:Type="String">This is the human-recognizable label for the entity and indicates how to address a human</Data></Cell>
+    <Cell ss:Index="12"><Data ss:Type="String">.name</Data></Cell>
+    <Cell><Data ss:Type="String">ROL.4</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Animal.relatedEntity.address</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Address</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">An address (usually human, but may be kin)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Physical or postal address</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates where the related entity can be found or reached</Data></Cell>
+    <Cell><Data ss:Type="String">Allows contacting the related entity</Data></Cell>
+    <Cell><Data ss:Type="String">Usually for human related entities, but could be the address of a related animal</Data></Cell>
+    <Cell><Data ss:Type="String">.addr</Data></Cell>
+    <Cell><Data ss:Type="String">ROL.11</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Animal.relatedEntity.contact</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Contact</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Contact details (usually for humans)</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">Phone, e-mail, etc.</Data></Cell>
+    <Cell><Data ss:Type="String">Indicates how the related entity can be contacted</Data></Cell>
+    <Cell><Data ss:Type="String">Allows contacting the related entity</Data></Cell>
+    <Cell><Data ss:Type="String">Usually for human related entities</Data></Cell>
+    <Cell><Data ss:Type="String">.telecom</Data></Cell>
+    <Cell><Data ss:Type="String">ROL.12</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Animal.extension</Data></Cell>
@@ -239,11 +297,25 @@
    </PageSetup>
    <Unsynced/>
    <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>1</SplitVertical>
+   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -251,14 +323,27 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Invariants">
-  <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="1" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s66" ss:DefaultRowHeight="15">
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="2" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s67" ss:Width="14.25"/>
+   <Column ss:StyleID="s67" ss:Width="67.5"/>
+   <Column ss:StyleID="s67" ss:Width="117"/>
+   <Column ss:StyleID="s67" ss:Width="149.25"/>
+   <Column ss:Index="6" ss:StyleID="s67" ss:Width="98.25"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s64">
     <Cell><Data ss:Type="String">Id</Data></Cell>
+    <Cell><Data ss:Type="String">Context</Data></Cell>
     <Cell><Data ss:Type="String">Name</Data></Cell>
     <Cell><Data ss:Type="String">English</Data></Cell>
     <Cell><Data ss:Type="String">OCL</Data></Cell>
     <Cell><Data ss:Type="String">XPath</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="Number">1</Data></Cell>
+    <Cell><Data ss:Type="String">Animal.name</Data></Cell>
+    <Cell><Data ss:Type="String">NoAnimalMaidenName</Data></Cell>
+    <Cell><Data ss:Type="String">Name use cannot be &quot;maiden&quot;</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">not(f:use='maiden')</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -268,11 +353,25 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <SplitVertical>2</SplitVertical>
+   <LeftColumnRightPane>2</LeftColumnRightPane>
+   <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>4</ActiveCol>
+    </Pane>
+    <Pane>
+     <Number>1</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+    </Pane>
+    <Pane>
+     <Number>0</Number>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -281,22 +380,22 @@
  </Worksheet>
  <Worksheet ss:Name="Events">
   <Table ss:ExpandedColumnCount="5" ss:ExpandedRowCount="2" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s67" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="60"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="165"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="75"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="80.25"/>
-   <Column ss:StyleID="s67" ss:AutoFitWidth="0" ss:Width="85.5"/>
+   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="60"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="165"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="75"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="80.25"/>
+   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="85.5"/>
    <Row ss:AutoFitHeight="0" ss:Height="34.5">
-    <Cell><Data ss:Type="String">Event Code</Data></Cell>
-    <Cell><Data ss:Type="String">Description</Data></Cell>
-    <Cell><Data ss:Type="String">Request Resources</Data></Cell>
-    <Cell><Data ss:Type="String">Response Resources</Data></Cell>
-    <Cell><Data ss:Type="String">Follow Ups</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Event Code</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Description</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Request Resources</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Response Resources</Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="String">Follow Ups</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="102">
     <Cell><Data ss:Type="String">admin-notify</Data></Cell>
-    <Cell><Data ss:Type="String">(see Person)</Data></Cell>
+    <Cell><Data ss:Type="String">Notification of a change to an administrative resource (either create or update). Note that there is no delete, though some administrative resources have status or period elements for this use</Data></Cell>
     <Cell><Data ss:Type="String">Animal</Data></Cell>
    </Row>
   </Table>
@@ -311,12 +410,12 @@
     <ValidPrinterInfo/>
     <PaperSizeIndex>9</PaperSizeIndex>
     <HorizontalResolution>600</HorizontalResolution>
-    <VerticalResolution>0</VerticalResolution>
+    <VerticalResolution>600</VerticalResolution>
    </Print>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
+     <ActiveRow>2</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -337,31 +436,31 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">name</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name in any name part</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of the name in any name part</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">species</Data></Cell>
-    <Cell><Data ss:Type="String">the species, including by subsumption if the coding supports this</Data></Cell>
+    <Cell><Data ss:Type="String">The species, including by subsumption if the coding supports this</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">phonetic</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of name using some kind of phonetic matching algorithm</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of name using some kind of phonetic matching algorithm</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">related</Data></Cell>
-    <Cell><Data ss:Type="String">a portion of any part of a related entity's name</Data></Cell>
+    <Cell><Data ss:Type="String">A portion of any part of a related entity's name</Data></Cell>
     <Cell><Data ss:Type="String">string</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">identifier</Data></Cell>
-    <Cell><Data ss:Type="String">an identifier for the animal</Data></Cell>
+    <Cell><Data ss:Type="String">An identifier for the animal</Data></Cell>
     <Cell><Data ss:Type="String">qtoken</Data></Cell>
     <Cell><Data ss:Type="String">union</Data></Cell>
    </Row>
@@ -377,7 +476,7 @@
     <Pane>
      <Number>3</Number>
      <ActiveRow>6</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -385,14 +484,14 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="Bindings">
-  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="5" x:FullColumns="1"
-   x:FullRows="1" ss:StyleID="s68" ss:DefaultRowHeight="15">
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="111"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="223.5"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="51"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="84.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="132.75"/>
-   <Column ss:StyleID="s68" ss:AutoFitWidth="0" ss:Width="288"/>
+  <Table ss:ExpandedColumnCount="6" ss:ExpandedRowCount="6" x:FullColumns="1"
+   x:FullRows="1" ss:StyleID="s70" ss:DefaultRowHeight="15">
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="111"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="223.5"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="51"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="84.75"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="132.75"/>
+   <Column ss:StyleID="s70" ss:AutoFitWidth="0" ss:Width="288"/>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s64"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s64"><Data ss:Type="String">Definition</Data></Cell>
@@ -402,24 +501,29 @@
     <Cell ss:StyleID="s64"><Data ss:Type="String">Description</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalGender</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The gender of an animal</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AnimalGender</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The gender of an animal</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
+   </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AnimalGenderStatus</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The state of the animal's reproductive organs</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalRelationship</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AnimalRelationship</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The relationship of an animal to another entity (person, corporation, or other animal)</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalSpecies</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The species of an animal</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AnimalSpecies</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The species of an animal</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s67"><Data ss:Type="String">AnimalStrain</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">The strain of an animal</Data></Cell>
-    <Cell ss:StyleID="s67"><Data ss:Type="String">unbound</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">AnimalBreed</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">The breed of an animal</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">unbound</Data></Cell>
    </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
@@ -429,13 +533,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Panes>
-    <Pane>
-     <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>1</ActiveCol>
-    </Pane>
-   </Panes>
    <ProtectObjects>False</ProtectObjects>
    <ProtectScenarios>False</ProtectScenarios>
   </WorksheetOptions>
