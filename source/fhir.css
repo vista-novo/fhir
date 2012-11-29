@@ -199,7 +199,7 @@ h4 {
 
 div.content {
 	background-color: #fff;
-	margin-left: 150px;
+	margin-left: 160px;
 	padding: 5px;
 	border-left: 1px solid #dcdcdc;
 }
@@ -263,7 +263,7 @@ div.sidebar li {
 
 div.sidebar {
 	position: absolute;
-	width: 150px;
+	width: 160px;
 	left: 0px;
 }
 
@@ -359,7 +359,7 @@ li.spacerright
   border-bottom: 1px solid #adcbb9;
   margin: 0px;
   padding: 0px;
-  width: 150px;
+  width: 160px;
 }
 
 li.nselected 

@@ -364,9 +364,7 @@ public class PageProcessor implements Logger  {
     for (ElementDefn e : definitions.getTypes().values())
       scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
     for (ElementDefn e : definitions.getStructures().values())
-      if (e.getName().equals("DocumentInformation"))
-        scanForUsage(b, cd, e, "document.htm");
-      else
+      if (!e.getName().equals("DocumentInformation"))
         scanForUsage(b, cd, e, "datatypes.htm#"+e.getName());
       
     if (b.length() == 0)
@@ -1122,7 +1120,7 @@ public class PageProcessor implements Logger  {
       for (SearchParameter p : resource.getSearchParams()) {
         if (p.getType() == SearchType.date) {
           b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>date equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");
-          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td>single<td></td></tr>\r\n");
+          b.append("<tr><td>"+p.getCode()+"-before : "+p.getType()+"</td><td>date before or equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");
           b.append("<tr><td>"+p.getCode()+"-after : "+p.getType()+"</td><td>date after or equal to "+Utilities.escapeXml(p.getDescription())+"</td><td>single</td></tr>\r\n");          
         } else
           b.append("<tr><td>"+p.getCode()+" : "+p.getType()+"</td><td>"+Utilities.escapeXml(p.getDescription())+"</td><td>"+p.getRepeatMode().toString()+"</td></tr>\r\n");
