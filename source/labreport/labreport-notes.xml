@@ -13,10 +13,10 @@ document which entirely contains narrative, sometimes it is purely atomic data r
 Results are grouped by either a specimen or a code that indicates that nature of the grouping (e.g. organism isolate/sensitivity or antibody functional testing). 
 While many common lab reports don't need or benefit directly from the group structure, this lab report model imposes the group structure anyway. This means that these 
 lab reports have a single group which has no code on it, and which contains all the results. The advantage of this model is that all the results are found 
-at the same point in the heirarchy, and there is a single point on the heirarchy - the group - that may influence the meaning of the test.</li>
+at the same point in the hierarchy, and there is a single point on the hierarchy - the group - that may influence the meaning of the test.</li>
 <li>The element that contains the actual value of the result has a variable name depending on the type. The name is "value" + the type name, ignoring parameters, with a capital on the first letter, e.g. valueInterval or valueString</li>
 <li>The clinical information associated with a request can be a simple text summary, or a reference to another resource</li>
-<li>The <i>diagnosticTime</i> can be inferred from the specimens, if they are provided, but specimen details are often not provided, and the value of <i>diagnosticTime</i> is always important. The value of the <i>diagnosticTime</i> element must be consistent with the speciment collection times</li>
+<li>The <i>diagnosticTime</i> can be inferred from the specimens, if they are provided, but specimen details are often not provided, and the value of <i>diagnosticTime</i> is always important. The value of the <i>diagnosticTime</i> element must be consistent with the specimen collection times</li>
 <li>Applications consuming lab reports must take careful note of updates to lab reports, and particularly note withdrawn reports. 
 A report shouldn't be final until all the results are final or amended. If a report is withdrawn, all the results must be 
 withdrawn by replacing every result value with the Concept "withdrawn" in the internal terminology <a href="terminologies.htm">"Special values"</a> 
@@ -33,7 +33,7 @@ while others focus on the clinical utility of the data item.
 Some practical examples:
 </p>
 <ul>
-<li>Tumour dimensions in synoptic reports</li>
+<li>Tumor dimensions in synoptic reports</li>
 <li>Injection volumes in radiology reports</li>
 <li>Phenotypes and genotypes in pathology reports</li>
 <li>Images (Scatter plots, electrophoresis photos, slide photos, chromatograms)</li>
