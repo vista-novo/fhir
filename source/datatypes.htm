@@ -56,7 +56,7 @@ be exchanged.
 <img id="dtmap1" src="dt-map.png" usemap="#dtmap2" border="0" height="408" width="450" alt="Data Types Concept Map"/>
 </p>
 <p>
-The data types defined on this page on this page are categorised as "Primitive Types", "Types" or "Structures". 
+The data types defined on this page on this page are categorized as "Primitive Types", "Types" or "Structures". 
 Primitive Types are those either drawn from W3C Schema types or directly derived from them.  Types and Structures
 are more complex, made up of multiple properties.
 "Structures" are higher level concepts that some systems internally treat differently from Types. 
@@ -74,7 +74,7 @@ The data types are available as a <a href="fhir-base.xsd">W3C Schema</a>.
 </p>
 <a name="imports"></a>
 <p>
-The following table summarises the primitive types that are used by
+The following table summarizes the primitive types that
 are used in the exchange specifications. The possible values for 
 these types are based on those specified in the W3C Schema specification part 2, with additional constraints marked in bold. 
 </p>
@@ -179,7 +179,7 @@ and other mime type extensions as appropriate. The actual content of the
 Attachment can be conveyed directly using the <i>data</i> element
 or a <i>url</i> reference can be provided. If both are provided, the reference must 
 point to the same content as found in the data. The reference can never be reused to point to
-some different different data (i.e. the reference is version specific). The
+some different data (i.e. the reference is version specific). The
 <i>url</i> reference must point to a location that resolves to actual data; some
 uris such as cid: meet this requirement.
 </p>
@@ -236,10 +236,10 @@ An identifier defined by some external system.
 </p>
 [%dt Identifier%]
 <p>
-The <i>system</i> referred to by means of a URI defines how the identifier is made defined (i.e. made unique). 
-It might be a specific application or a recognised standard/specification for a set or identifiers
+The <i>system</i> referred to by means of a URI defines how the identifier is defined (i.e. made unique). 
+It might be a specific application or a recognized standard/specification for a set or identifiers
 or a way of making identifiers unique. The <i>id</i> must be unique within the defined <i>system</i>
-and have a consistent meaning whereever it appears. Ids are always case sensitive.
+and have a consistent meaning wherever it appears. Ids are always case sensitive.
 </p>
 <p>
 FHIR defines <a href="terminologies.htm">some useful URIs directly</a>. OIDs (urn:oid:) and UUIDs (urn:uuid:) 
@@ -685,7 +685,7 @@ A ratio of two Quantity values - a numerator and a denominator.
 <p>
 Common factors in the numerator and denominator are not automatically cancelled out. The Ratio 
 data type is used for titers (e.g., "1:128") and other quantities produced by laboratories that 
-truly represent ratios. Ratios are not simply "structured numerics" and blood pressure measurements 
+truly represent ratios. Ratios are not simply "structured numerics" - for example blood pressure measurements 
 (e.g. "120/60") are not ratios. In addition, ratios are used where common factors in the numerator 
 and denominator do not cancel out. The most common example of this is where the ratio represents a 
 unit cost, and the numerator is a currency.
@@ -917,7 +917,7 @@ Address
 </h2>
 <p>
 A postal address. There are a variety of postal address formats defined around the world. 
-Postal addresses are often used to record a location that can be
+Postal addresses are often also used to record a location that can be
 visited to find a patient or person.
 </p>
 
