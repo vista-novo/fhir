@@ -19,7 +19,7 @@
       <name>Lipids</name>
       <definition>
         <short>Lipid Lab Report</short>
-        <formal>The findings and interpretation of a general lipd lab profile</formal>
+        <formal>The findings and interpretation of a general lipid lab profile</formal>
         <comments>Not to be used for reporting on non-pathology test results e.g. diagnostic imaging, ECG or respiratory function tests. Not to be used to represent an entire cumulative report. This Pathology test result archetype represents only one of the result sets that is usually viewed as a vertical in a cumulative test report. A cumulative report is a view that is constructed from the results represented by multiple OBSERVATION archetypes. This archetype is suitable for representation of general pathology test results, but not intended to cover full synoptic reports. For these, additional resources are required to represent the data properly</comments>
         <min>1</min>
         <max>1</max>
@@ -205,7 +205,7 @@
       <path>LabReport.requestDetail.requester</path>
       <definition>
         <short>Responsible for request</short>
-        <formal>Details of the clinician or organisation requesting the laboratory test.</formal>
+        <formal>Details of the clinician or organization requesting the laboratory test.</formal>
         <min>0</min>
         <max>1</max>
         <type>
@@ -234,9 +234,9 @@
     <element>
       <path>LabReport.reportName</path>
       <definition>
-        <short>Loinc Code for Lipid Report with LDL</short>
-        <formal>Loinc Code for Lipid Report with LDL</formal>
-        <comments>Loinc code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</comments>
+        <short>LOINC Code for Lipid Report with LDL</short>
+        <formal>LOINC Code for Lipid Report with LDL</formal>
+        <comments>LOINC code includes &quot;direct&quot; LDL - does this mean LDL derived by measuring VLDL by ultracentrifugation? This panel includes both measured and calculated LDL</comments>
         <min>1</min>
         <max>1</max>
         <type>
@@ -251,8 +251,8 @@
     <element>
       <path>LabReport.service</path>
       <definition>
-        <short>Biochemistry, Haematology etc</short>
-        <formal>The diagnostic service that performs the examination e.g. biochemistry, haematology.</formal>
+        <short>Biochemistry, Hematology, etc.</short>
+        <formal>The diagnostic service that performs the examination e.g. biochemistry, hematology.</formal>
         <min>0</min>
         <max>1</max>
         <type>
@@ -740,7 +740,7 @@
       <path>LabReport.resultGroup.result.name</path>
       <definition>
         <short>LDL Cholesterol. LOINC code defines measured or calc</short>
-        <formal>Group of elements for LDL Cholesterol. Loinc code defines whether LDL is measured or calculated</formal>
+        <formal>Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated</formal>
         <comments>results are fundamentally a name - value pair with additional clarifying information</comments>
         <min>1</min>
         <max>1</max>
@@ -749,7 +749,7 @@
         </type>
         <mustSupport>false</mustSupport>
         <mustUnderstand>true</mustUnderstand>
-        <binding>Loinc 35198-1 | Loinc 13457-7</binding>
+        <binding>LOINC 35198-1 | LOINC 13457-7</binding>
       </definition>
       <closed>false</closed>
     </element>
@@ -925,7 +925,7 @@
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
       <pre>
-&lt;<a title="The findings and interpretation of a general lipd lab profile" class="dict" href="#LabReport">
+&lt;<a title="The findings and interpretation of a general lipid lab profile" class="dict" href="#LabReport">
           <b>LabReport</b>
         </a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
  <i class="inherited">&lt;<a title="Master Resource Id, always first in all resources" class="dict" href="#LabReport.id">
@@ -1040,7 +1040,7 @@
             </span>
             <span style="color: navy">Test Requested</span>
             <span style="color: Gray"> --&gt;</span>&lt;/requestTest&gt;</i>
-          <i class="inherited">&lt;<a title="Details of the clinician or organisation requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester">
+          <i class="inherited">&lt;<a title="Details of the clinician or organization requesting the laboratory test." class="dict" href="#LabReport.requestDetail.requester">
               <b>requester</b>
             </a>&gt;<span style="color: Gray">&lt;!--</span>
             <span style="color: brown">
@@ -1061,16 +1061,16 @@
             <span style="color: navy">Clinical information provided</span>
             <span style="color: Gray"> --&gt;</span>&lt;/clinicalInfo&gt;</i>
  &lt;/requestDetail&gt;</i>
- &lt;<a title="Loinc Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#LabReport.reportName">
+ &lt;<a title="LOINC Code for Lipid Report with LDL (this element must be supported or understood)" class="dict" href="#LabReport.reportName">
           <span style="text-decoration: underline">reportName</span>
         </a>&gt;
    &lt;coding&gt;
      &lt;code&gt;57698-3&lt;/code&gt;
-     &lt;system&gt;http://loinc.org&lt;/system&gt;
+     &lt;system&gt;http://LOINC.org&lt;/system&gt;
      &lt;display&gt;Lipid panel with direct LDL&lt;/display&gt;
    &lt;/coding&gt;
  &lt;reportName/&gt;
- <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, haematology." class="dict" href="#LabReport.service">
+ <i class="inherited">&lt;<a title="The diagnostic service that performs the examination e.g. biochemistry, hematology." class="dict" href="#LabReport.service">
             <b>service</b>
           </a>&gt;<span style="color: Gray">&lt;!--</span>
           <span style="color: brown">
@@ -1079,7 +1079,7 @@
           <span style="color: darkgreen">
             <a href="datatypes.htm#CodeableConcept">CodeableConcept</a>
           </span>
-          <span style="color: navy">Biochemistry, Haematology etc</span>
+          <span style="color: navy">Biochemistry, Hematology, etc.</span>
           <span style="color: Gray"> --&gt;</span>&lt;/service&gt;</i>
         <i class="inherited">&lt;<a title="The diagnostically relevant time for this report" class="dict" href="#LabReport.diagnosticTime">
             <b>diagnosticTime</b>
@@ -1143,7 +1143,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35200-5&lt;/code&gt;
-       &lt;system&gt;http://loinc.org&lt;/system&gt;
+       &lt;system&gt;http://LOINC.org&lt;/system&gt;
        &lt;display&gt;Cholesterol&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1235,7 +1235,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;35217-9&lt;/code&gt;
-       &lt;system&gt;http://loinc.org&lt;/system&gt;
+       &lt;system&gt;http://LOINC.org&lt;/system&gt;
        &lt;display&gt;Triglyceride&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1316,7 +1316,7 @@
         </a>&gt;
      &lt;coding&gt;
        &lt;code&gt;2085-9&lt;/code&gt;
-       &lt;system&gt;http://loinc.org&lt;/system&gt;
+       &lt;system&gt;http://LOINC.org&lt;/system&gt;
        &lt;display&gt;Cholesterol.in HDL&lt;/display&gt;
      &lt;/coding&gt;
    &lt;name/&gt;
@@ -1392,7 +1392,7 @@
         <span style="color: blue">&quot;LDL Cholesteral Group&quot;</span>
         <span style="color: Gray"> --&gt;</span>
         <span style="color: Gray">&lt;!-- LDL Cholesterol result, if reported --&gt;</span>
-   &lt;<a title="Group of elements for LDL Cholesterol. Loinc code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
+   &lt;<a title="Group of elements for LDL Cholesterol. LOINC code defines whether LDL is measured or calculated (this element must be supported or understood)" class="dict" href="#LabReport.resultGroup.result.name">
           <span style="text-decoration: underline">
             <b>name</b>
           </span>
