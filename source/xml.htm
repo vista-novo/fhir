@@ -33,7 +33,7 @@ either XML or JSON according to the rules defined in this specification. Other r
 are not described by this specification.
 </p>
 <p>
-This page documents how the content of the resources is described and controlled. 
+This page documents how the content of the resources <span lang="en-gb">are</span> described and controlled. 
 </p>
 
 <h2>XML Content Models</h2>
@@ -61,18 +61,20 @@ Notes:
  <li>The elements are assigned one or more types. All of the types are defined in <a href="datatypes.htm">the data types</a> except for "Resource" and "Narrative" that are documented below. The type names are hyperlinked.</li>
  <li>Each element name in the pseudo-syntax is also a hyperlink to the formal definition of the element in the data dictionary that underlies the exchange formats. 
    If the element name is underlined, then applications are required to support and/or understand it.</li>
- <li>The XML character set is always unicode. Specifying the character encoding is optional but recommended (default value is UTF-8, as for XML). Any encoding that is round trip compatible with unicode is allowed.</li>
+ <li>The XML character set is always <span lang="en-gb">U</span>nicode. Specifying the character encoding is optional but recommended (default value is UTF-8, as for XML). Any encoding that is round trip compatible with 
+ <span lang="en-gb">U</span>nicode is allowed.</li>
  <li>FHIR elements are always in the namespace <a href="http://hl7.org/fhir">http://hl7.org/fhir</a>.  This is usually specified as the default namespace on the root element. 
    The only other namespaces that occur in FHIR resources are where some external content model is explicitly introduced into the resource content model. For example, XHTML is found in every resource - see below.</li>
  <li>Any of the XML elements may have an id attribute to serve as <a href="#idref">the target of an internal reference</a>. The id attribute is not shown in this format.</li>
- <li>FHIR elements are never empty. If an element is present in the resource, it must have either text or child elements as defined for it's type, or an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a> or <a href="extensibility.htm">extensions</a></li>
+ <li>FHIR elements are never empty. If an element is present in the resource, it must have either text or child elements as defined for its type, or an id attribute that is the <a href="#idref">link target</a> of <a href="#narrative">narrative</a> or <a href="extensibility.htm">extensions</a></li>
  <li>The xml:lang attribute may appear on the root element, where it specifies the base language of the resource. It may also appear on <a href="datatypes.htm#Attachment">attachments</a> and in the XHTML content, but nowhere else</li>
- <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema, Schematron. The formats Relax NG schema, RDF and eCore are planned.</li>
+ <li>In addition to this descriptive syntax, other definitional forms are available, including W3C schema<span lang="en-gb"> 
+ and</span> Schematron. The formats Relax NG schema, RDF and eCore are planned.</li>
 </ul>
 <p>
 When represented as XML, resources may be validated by schema and schemas are provided, but 
 operational systems are not required to do so (though the XML must always be 
-valid against this specification and the schema and schematron). In addition to 
+valid against this specification and the schema and Schematron). In addition to 
 the simple XML description, W3C Schema, UML models, and other definitional models 
 are provided that may be a useful aid for system implementation. Resources may 
 also be represented using <a href="json.htm">JSON</a>.
@@ -81,7 +83,7 @@ also be represented using <a href="json.htm">JSON</a>.
 <a name="metadata"></a>
 <h2>Resource Data and Metadata items</h2>
 <p>
-All resources contain with extensions and then a narrative section at the end:
+All resources contain extensions and then a narrative section at the end:
 </p>
 <pre class="spec">
 &lt;<a href="#ResourceDefn" title="A Resource Definition for FHIR" class="dict"><b>[Name]</b></a> xmlns="http://hl7.org/fhir"&gt;
@@ -114,7 +116,7 @@ see <a href="implementation.htm">Implementation Details</a>, which also contains
 The logical id and version id of a Resource are of type <a href="datatypes.htm#id">id</a> which is up to 36 characters long and contains:
 </p>
 <table class="list">
-  <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex</td></tr>
+  <tr><td>A whole number in the range 0 to 2^64-1. May be represented in hex<span lang="en-gb">adecimal</span></td></tr>
   <tr><td>A uuid (guid) (in lowercase, without wrapping with the characters "{}[]" which sometimes occur)</td></tr>
   <tr><td>An <a href="http://en.wikipedia.org/wiki/Object_identifier">ISO OID</a></td></tr>
   <tr><td>Any other combination of letters, numerals, "-" and "."</td></tr>
@@ -143,7 +145,7 @@ the structured data, including human-edited content. Such additional information
 in the scope of the definition of the resource. In small, closed trading partner environments,
 there may be no need for a narrative text. In such cases, implementations are allowed to 
 populate the narrative with text equivalent to "No human readable text provided for this resource" (other languages are allowed). 
-Implementers should note that small, closed traing partner environments are very likely 
+Implementers should note that small, closed tra<span lang="en-gb">d</span>ing partner environments are very likely 
 to open up during the lifetime of the resources they define.
 </p>
 <p>
@@ -182,7 +184,7 @@ The image source may be a local reference within the resource:
   &lt;img src="#a5"/&gt;
 </pre>
 <p>
-This is a <a href="#idref">internal reference</a> to an id attribute on an element in the same resource, either in the image attachments on the text element 
+This is a<span lang="en-gb">n</span> <a href="#idref">internal reference</a> to an id attribute on an element in the same resource, either in the image attachments on the text element 
 directly, or an element of type "<a href="datatypes.htm#Attachment">Attachment</a>".
 </p>
 <div class="example">
@@ -222,7 +224,7 @@ may fix the following styling aspects of the content:
 <ul>
   <li>bold, italic, underline, strikethrough</li>
   <li>font color, family, and size</li>
-  <li>background colour, text alignment</li>
+  <li>background color, text alignment</li>
   <li>whitespace interpretation</li>
   <li>ordered list number format (since it may be referred to in text)</li>
 </ul>
@@ -300,7 +302,7 @@ The "Resource" type indicates a reference from one resource to another.
 <p>
 The reference must specify the resource type, whether or not the type of the resource reference is fixed for the element in the resource definition.
 A resource reference may contain either a version independent reference (<i>"id"</i>) or a version dependent reference (<i>"version"</i>)
-or both. If both are provided, it is at the descretion of the processor of the data whether to access the version specific of version independent reference. 
+or both. If both are provided, it is at the d<span lang="en-gb">i</span>scretion of the processor of the data whether to access the version specific o<span lang="en-gb">r</span> version independent reference. 
 </p>
 <p>
 Both the id and the version are URL references - they must be literal URLs that resolve to the location of the resource.
@@ -340,7 +342,7 @@ A short display text that provides a human readable identification of the resour
 <div class="example">
 <pre class="xml">
   &lt;id&gt;
-    &lt;type&gt;Organisation&lt;/type&gt;
+    &lt;type&gt;Organi<span lang="en-gb">z</span>ation&lt;/type&gt;
     &lt;id&gt;1234&lt;/id&gt;
     &lt;display&gt;HL7, Inc&lt;/display&gt;
   &lt;id&gt;
@@ -369,8 +371,8 @@ a healthcare context, many application vendors are unwilling to
 consider this approach because of concerns about clinical risk or 
 technical limitations in their software (i.e. schema based processing). 
 Applications are not required to ignore unknown elements, but must
-declare whether they will do so in their conformance statements using the
-<i>acceptUnknown</i> element.
+declare whether they will do so in their conformance statements using the<span lang="en-gb">
+</span><i>acceptUnknown</i> element.
 </p>
 <p>
 Note that the version of FHIR supported is a mandatory element in the
@@ -382,9 +384,9 @@ applications conformance profile.
 This specification provides schema definitions for all of the content models described here. 
 The base schema is called "<a href="fhir-base.xsd">fhir-base.xsd</a>" and defines all of the 
 datatypes and also the base infrastructure types described on this page. In addition, there 
-is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a>
-that includes all the resource schemas.  A customized atom schema <a href="fhir-atom.xsd">fhir-atom.xsd</a>
-is provided for validating <a href="atom.htm">bundles</a>.
+is a schema for each resource and a common schema <a href="fhir-all.xsd">fhir-all.xsd</a><span lang="en-gb">
+</span>that includes all the resource schemas.  A customized atom schema <a href="fhir-atom.xsd">fhir-atom.xsd</a><span lang="en-gb">
+</span>is provided for validating <a href="atom.htm">bundles</a>.
 </p>
 <p>
 In addition to the w3c schema files, this specification also provides Schematron files that
@@ -394,7 +396,8 @@ that incorporates the rules for all resources.
 </p>
 <p>
 XML that is exchanged must be valid against the w3c schema and Schematron, though there is no requirement to
-validate instances against either, nor is being valid against the schema and Schematron sufficient 
+validate instances against either, nor is being valid against the schema and 
+Schematron sufficient 
 to be a conformant instance. (This specification makes several rules that cannot be checked 
 by either mechanism.) Exchanged content must not specify the schema or even the schema instance 
 namespace in the resource itself. 
