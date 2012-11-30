@@ -1,6 +1,6 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<h3>Metadata Notes:</h3>
+<h2>Metadata Notes:</h2>
 <ul>
 <li>The name of the profile is not required to be globally unique, but the name should have some scoping information (i.e. Acme Inc. (USA), Allergy List)</li>
 <li>Multiple codes may be assigned to the profile. These may either describe the template, the focus of the template or both. They are solely to help find the profile by searching for structured concepts.</li>
@@ -11,7 +11,7 @@ Any extensions and bindings that are defined in other resources must have import
 
 </ul>  
 
-<h3>Interpretation Notes:</h3>
+<h2>Interpretation Notes:</h2>
 <ul>
 <li>The name of a resource constraint (Profile.resource.name) is only used as a logical target for .element.resource.profile. A reference may reference another resource 
   constraint in the same Resource Profile by Profile.resource.name as #[name] or a different resource constraint in another profile by an absolute uri. In the case of an absolute uri, it 

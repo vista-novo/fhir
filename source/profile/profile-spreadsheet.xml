@@ -9,7 +9,7 @@
   <Author>Grahame</Author>
   <LastAuthor>Lloyd McKenzie</LastAuthor>
   <Created>2012-03-19T11:19:17Z</Created>
-  <LastSaved>2012-11-30T05:09:54Z</LastSaved>
+  <LastSaved>2012-11-30T06:16:19Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -268,7 +268,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Profile.resource</Data></Cell>
-    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">left</Data></Cell>
     <Cell><Data ss:Type="String">A constraint on a resource or a data type</Data></Cell>
@@ -551,17 +551,16 @@
     <Cell><Data ss:Type="String">Profile.resource.element.definition.type.profile</Data></Cell>
     <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:Index="5" ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">uri</Data></Cell>
-    <Cell ss:Index="9"><Data ss:Type="String">Profile to apply (Resource only)</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Identifies a profile that must hold for resources referenced as the type of this element</Data></Cell>
+    <Cell ss:Index="9"><Data ss:Type="String">Profile to apply</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">Identifies a profile that must hold for resources or datatypes referenced as the type of this element</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">The reference might be a simple name in the form #[name], which is a reference to another named constraint in a resource - where the resource contains more than one constraint, or a URL which is a reference to a resource Profile</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
-    <Cell ss:StyleID="s68"><Data ss:Type="String">Consider relaxing the constraint that this can only apply to resources</Data></Cell>
+    <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -583,7 +582,7 @@
     <Cell><Data ss:Type="String">Profile.resource.element.definition.value[x]</Data></Cell>
     <Cell><Data ss:Type="Number">10</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s65"><Data ss:Type="Number">10</Data></Cell>
+    <Cell ss:StyleID="s65"><Data ss:Type="String">2,10</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">*</Data></Cell>
     <Cell ss:StyleID="s68"/>
@@ -593,7 +592,6 @@
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s68"><Data ss:Type="String">To specify a fixed value for a complex data type, include the child elements for the type and specify fixed values for each property independently</Data></Cell>
-    <Cell ss:Index="16"><Data ss:Type="String">Add 10 as an additional invariant when tooling supports it.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="String">Profile.resource.element.definition.maxLength</Data></Cell>
@@ -888,7 +886,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">Profile.extensionDefn</Data></Cell>
-    <Cell><Data ss:Type="Number">12</Data></Cell>
+    <Cell><Data ss:Type="Number">8</Data></Cell>
     <Cell><Data ss:Type="String">0..*</Data></Cell>
     <Cell ss:Index="5" ss:StyleID="s68"/>
     <Cell><Data ss:Type="String" x:Ticked="1"></Data></Cell>
@@ -1163,9 +1161,9 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell><Data ss:Type="Number">8</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">Profile.resource.element.definition.type</Data></Cell>
-    <Cell><Data ss:Type="String">Profile is only allowed if code is a resource</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">not(exists(f:profile)) or starts-with(f:code, 'Resource(')</Data></Cell>
+    <Cell ss:Index="3"><Data ss:Type="String">Profile</Data></Cell>
+    <Cell><Data ss:Type="String">Must define at least one resource constraint, extension definition or binding</Data></Cell>
+    <Cell ss:Index="6"><Data ss:Type="String">f:resource or f:extensionDefn or f:binding</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
     <Cell><Data ss:Type="Number">9</Data></Cell>
@@ -1185,12 +1183,7 @@
     <Cell><Data ss:Type="String">Binding name must be unique in the context of a profile</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">count(ancestor::f:Profile/f:binding/f:name[.=current()])=1</Data></Cell>
    </Row>
-   <Row ss:AutoFitHeight="0" ss:Height="30">
-    <Cell><Data ss:Type="Number">12</Data></Cell>
-    <Cell ss:Index="3"><Data ss:Type="String">Profile</Data></Cell>
-    <Cell><Data ss:Type="String">Must define at least one resource constraint, extension definition or binding</Data></Cell>
-    <Cell ss:Index="6"><Data ss:Type="String">f:resource or f:extensionDefn or f:binding</Data></Cell>
-   </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="30"/>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -1199,11 +1192,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <TopRowVisible>1</TopRowVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>1</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>9</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
