@@ -75,7 +75,7 @@ same bundle with the same atom feed.id.
 <p>
 Applications may only claim to be conformant to "FHIR messaging" if they
 publish a conformance statement so the claim may be verified. A conformance
-statemnt lists all the message events 
+statement lists all the message events 
 they support, either as sender or listener, and for each event, a 
 profile that states which resources are bundled (sender), or 
 are required to be bundled (listener), and any rules about the 

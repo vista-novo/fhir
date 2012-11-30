@@ -26,7 +26,7 @@
        the Acme Message Gateway doesn't know who person 34 is. 
 
        Of course, it doesn't make sense to send a person update message to a particular 
-       person, but it might very well make sense to do this with targetted clinical content -->
+       person, but it might very well make sense to do this with targeted clinical content -->
     <target>
       <type>Person</type>
       <id>101</id>
@@ -47,7 +47,7 @@
   <text>
     <status>generated</status>
     <div xmlns="http://www.w3.org/1999/xhtml">
-      <p>Update Person resource for Peter James CHALMERS ("Jim"), MRN: 12345 (Acme Healthcare)</p>
+      <p>Update Person resource for Peter James CHALMERS (Jim), MRN: 12345 (Acme Healthcare)</p>
     </div>
   </text>
 </Message>
