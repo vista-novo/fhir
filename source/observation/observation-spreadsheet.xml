@@ -430,18 +430,18 @@
    <Row ss:AutoFitHeight="0" ss:Height="120">
     <Cell><Data ss:Type="String">Observation.value[x]</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="Number">1</Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">1,2</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Period|string</Data></Cell>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">SimpleObservationResult</Data></Cell>
     <Cell><Data ss:Type="String">Actual result</Data></Cell>
     <Cell><Data ss:Type="String">The information determined as a result of making the observation</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s69"><Data ss:Type="String">A result with no value isn't much use.  (Though an exceptional value such as 'unknown' may still be useful.)</Data></Cell>
     <Cell><Data ss:Type="String">Result value set should allow for Unkown and other exceptional values.  The datatype for this element should be determined by SimpleObservation.result.type</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">./value</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">OBX.5, OBX.6</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Add &quot;2&quot; as an invariant; Add SimpleObservationResult as binding</Data></Cell>
+    <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
     <Cell ss:StyleID="s63"/>
     <Cell ss:StyleID="s72"><Data ss:Type="String">y</Data></Cell>
@@ -555,7 +555,7 @@
     <Cell><Data ss:Type="String">In most cases, this is only expected to recurse to a maximum of one level</Data></Cell>
     <Cell><Data ss:Type="String">./outboundRelationship[typeCode=&quot;COMP&quot; and isNormalActRelationship()]/target[isNormalAct() and subsumesCode(&quot;ActClass#OBS&quot;, classCode) and moodCode=&quot;EVN&quot; and fromDomain(code, &quot;SimpleObservationSubType&quot;)]</Data></Cell>
     <Cell ss:StyleID="s69"/>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Add &quot;3&quot; as an invariant</Data></Cell>
+    <Cell ss:StyleID="s69"/>
     <Cell ss:Index="17" ss:StyleID="s68"/>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="75">
@@ -603,14 +603,14 @@
     <Cell ss:StyleID="s68"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell><Data ss:Type="String">Quantity|CodeableConcept|Attachment|Ratio|Choice|Period|string</Data></Cell>
-    <Cell ss:StyleID="s68"/>
+    <Cell ss:StyleID="s68"><Data ss:Type="String">SimpleSubObservationResult</Data></Cell>
     <Cell><Data ss:Type="String">Actual componentresult</Data></Cell>
     <Cell><Data ss:Type="String">The information determined as a result of making the sub-observation</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s69"><Data ss:Type="String">A result with no value isn't much use.  (Though an exceptional value such as 'unknown' may still be useful.)</Data></Cell>
     <Cell><Data ss:Type="String">Result value set should allow for Unkown and other exceptional values.  The datatype for this element should be determined by SimpleObservation.result.type</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">./value</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">OBX.5, OBX.6</Data></Cell>
-    <Cell ss:StyleID="s69"><Data ss:Type="String">Add SimpleSubObservationResult as binding</Data></Cell>
+    <Cell ss:StyleID="s69"/>
     <Cell><Data ss:Type="String">Do we need the full set of data types for sub-observations?</Data></Cell>
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s63"/>
