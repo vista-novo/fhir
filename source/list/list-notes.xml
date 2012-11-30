@@ -15,7 +15,7 @@ For example, if the list concerns current patient medications, then a deleted me
 the patient was instructed not to take the medication. 
 </p>
 <p>
-It is not necessary to label an item with a status, however systems must ensure that an
+It is not necessary to label an item with a status. However systems must ensure that an
 item with no status code is not deleted.
 </p>
 
@@ -32,7 +32,7 @@ as indicated in the entry.
 An HTML table is the recommended approach, though this is not required.
 There should be a representation in the narrative for each item in the 
 list, and vice versa, along with clear use of visual hints (borders, 
-lines, bullet marks, etc) to ensure that human readers do not get 
+lines, bullet marks, etc.) to ensure that human readers do not get 
 confused about which status belongs with which item on space-poor displays.
 </p>
 
@@ -46,6 +46,7 @@ If the list is empty, there could be several different reasons why this is so. F
  <li>There are no appropriate entries for the list (i.e. the patient has no known medications/allergies/history)</li>
  <li>The sender (human or system) deemed that these were not related to this context of patient care (usually for privacy related reasons)</li>
  <li>The source system doesn't support these type of entries</li>
+ <li>The information to populate the list wasn't gathered - i.e. "Not asked"</li>
 </ul>
 <p>
 Given these possibilities, and the common and significant first case, source systems SHOULD 
@@ -56,9 +57,9 @@ sometimes described differently, such as "patient denies taking medications", or
 "patient was unable to identify any relevant medical history".
 </p>
 <p>
-When receiving a list, systems should not assume the the list is complete (some entries may 
+When receiving a list, systems should not assume that the list is complete (some entries may 
 have been withheld for a variety of reasons), unless there are specific trading partner
-arrangements in place, or, if the list is empty, that there are actually nil known, 
+arrangements in place or, if the list is empty, that there are actually nil known, 
 unless the "nil known" code is present.
 </p>
 <p>
