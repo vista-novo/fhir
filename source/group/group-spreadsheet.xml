@@ -144,7 +144,7 @@
     <Cell><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s67"/>
     <Cell><Data ss:Type="String">Group of multiple entities</Data></Cell>
-    <Cell><Data ss:Type="String">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization.</Data></Cell>
+    <Cell><Data ss:Type="String">Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized.  I.e. A collection of entities that isn't an Organization</Data></Cell>
     <Cell ss:Index="11" ss:StyleID="s67"/>
     <Cell ss:Index="13" ss:StyleID="s67"><Data ss:Type="String">Entity[determinerCode=&quot;GRP&quot; or determinerCode=&quot;GRP_KIND&quot;]</Data></Cell>
     <Cell ss:StyleID="s67"/>
@@ -399,6 +399,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
