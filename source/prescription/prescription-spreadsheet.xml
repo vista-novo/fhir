@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Lloyd McKenzie</LastAuthor>
+  <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:12:40Z</Created>
-  <LastSaved>2012-07-16T03:07:21Z</LastSaved>
+  <LastSaved>2012-11-30T23:42:21Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -153,7 +153,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Prescriptions are almost always assigned specific numerical identifiers</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">.id</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">SubstanceAdministration.id</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -170,7 +170,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Actual status of the prescription</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="13"><Data ss:Type="String">.statusCode</Data><NamedCell
+    <Cell ss:Index="13"><Data ss:Type="String">SubstanceAdministration.statusCode</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -249,9 +249,9 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Resource(Agent|Organization)</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Person to fullfil the requested dispense</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Person to fulfill the requested dispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Person to fullfil the requested dispense</Data><NamedCell
+    <Cell><Data ss:Type="String">Person to fulfill the requested dispense</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -260,7 +260,7 @@
     <Cell><Data ss:Type="String">1..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Prescribed medicine</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">The one single medicatine, vaccine or therapeutic good prescribed in this prescription.</Data><NamedCell
+    <Cell><Data ss:Type="String">The one single medicine, vaccine or other product prescribed in this prescription.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="120">
@@ -362,7 +362,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Instructions for use</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Instructions for the use of the medication. Includes details about the timing schedule, dosis amounts and additional usage instructions.</Data><NamedCell
+    <Cell><Data ss:Type="String">Instructions for the use of the medication. Includes details about the timing schedule, dose amounts and additional usage instructions.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -379,16 +379,16 @@
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
-    <Cell><Data ss:Type="String">Prescription.administrationRequest.totalPeriodicDosis</Data><NamedCell
+    <Cell><Data ss:Type="String">Prescription.administrationRequest.totalPeriodicDose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Ratio</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Total periodic dosis</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Total periodic dose</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Total dose per day/week or other period when more specific information is missing or cannot be expressed using the timing specifications.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">It should be possible, as a last resort, to specify e.g. a daily dosis, even if more specific details are unknown</Data><NamedCell
+    <Cell><Data ss:Type="String">It should be possible, as a last resort, to specify e.g. a daily dose, even if more specific details are unknown</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -398,7 +398,7 @@
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Startdate for administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">Start date for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">First moment on which medication should be taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -410,7 +410,7 @@
     <Cell><Data ss:Type="Number">1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">dateTime</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Enddate for administration</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">End date for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell><Data ss:Type="String">Last moment on which medication should be taken</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -469,9 +469,9 @@
     <Cell><Data ss:Type="String">0..1</Data><NamedCell ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">boolean</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">Pro re nate: Yes|No</Data><NamedCell
+    <Cell ss:Index="8"><Data ss:Type="String">As required : Yes|No</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Pro re nate, &quot;If necessary&quot;: Specifies whether administration depens on the state and symptoms of the patient</Data><NamedCell
+    <Cell><Data ss:Type="String">As required (from Latin Pro Re Nate): Specifies whether administration is given to a fixed schedule (No) or only when the the state and symptoms of the patient at the time require it (Yes).</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Default is &quot;false&quot;</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -536,7 +536,7 @@
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Schedule for administration</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
-    <Cell><Data ss:Type="String">Schedule for administration. If multiple are given, they are considered to be active in parrallel</Data><NamedCell
+    <Cell><Data ss:Type="String">Schedule for administration. If multiple are given, they are considered to be active in parallel</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Will submit proposal to change Schedule type.</Data><NamedCell
       ss:Name="_FilterDatabase"/></Cell>
@@ -584,9 +584,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>25</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>7</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -594,15 +594,16 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>0</ActiveRow>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>33</ActiveRow>
+     <ActiveCol>8</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -751,7 +752,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">The kind of medication, vaccine or therapeutic material</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australie)</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard (Netherlands), AMT (Australia)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">AdministrationInstruction</Data></Cell>
@@ -772,7 +773,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Route by which a medication is administered</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">preferred</Data></Cell>
-    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard subtable 0007</Data></Cell>
+    <Cell ss:Index="6" ss:StyleID="s69"><Data ss:Type="String">G-Standaard sub-table 0007</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">PrescriptionReason</Data></Cell>
@@ -792,8 +793,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>7</ActiveRow>
-     <RangeSelection>R8</RangeSelection>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>5</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

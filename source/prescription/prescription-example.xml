@@ -85,7 +85,7 @@
   <administrationRequest>
     <description>250 mg po tid x 10 days</description>
    
-    <totalPeriodicDosis>
+    <totalPeriodicDose>
       <numerator>
         <value>750</value>
         <units>mg</units>
@@ -98,7 +98,7 @@
         <system>http://unitsofmeasure.org</system>
         <code>d</code>
       </denominator>
-    </totalPeriodicDosis>
+    </totalPeriodicDose>
     
     <duration>
       <value>10</value>
