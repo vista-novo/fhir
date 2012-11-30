@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>When returned in response to a RESTful action, the issue might or might not not be persisted and accessible by its own REST call.
 I.e. Issues can be created on the fly and returned without being otherwise accessible.</li> 

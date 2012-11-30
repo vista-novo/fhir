@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>The content of the value set is a union of all the import and include statements and then with any excluded codes eliminated</li>
 <li>A value set needs to do something.  It can't simply include an existing value set without also including additional content or excluding content</li>

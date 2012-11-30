@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>At its simplest, these resource instances can consist of only a type and a value.  The relevance of other properties will vary based
 on the type of observation.  Normal range may be useful for systolic blood pressure, but has little relevance for something like "pregnancy status"</li>

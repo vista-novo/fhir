@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>Links: linking patient records is an assertion that they both are about the same actual person. If any
  patient record is linked to another, then the other must be linked back to the source record. 

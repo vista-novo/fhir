@@ -1,8 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>The resource references enterer, author and responsible may 
   all be included in the bundle or left out on the basis that the recipient (and any intermediaries) are able to locate/resolve the resources

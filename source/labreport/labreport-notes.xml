@@ -1,9 +1,8 @@
 <div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
-﻿<div xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/1999/xhtml ../../schema/xhtml1-strict.xsd" xmlns="http://www.w3.org/1999/xhtml">
 
-<p>
+<h2>
 Notes:
-</p>
+</h2>
 <ul>
 <li>About naming: a laboratory produces "reports" that is a collection of "tests" that produce "results". Clinical consumers call the whole 
 collection "the results". There is much potential confusion around these names. The confusion is worsened because "the report" is sometimes a 
@@ -44,5 +43,4 @@ as they have a formal code or name that has a clinical meaning, and some kind of
 </p>
 
 
-</div>
 </div>
