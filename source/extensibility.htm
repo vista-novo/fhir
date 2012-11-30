@@ -18,34 +18,34 @@
 
 <p>
 This exchange specification is based on generally agreed common
-requirements across healthcare - covering many jurisdications, domains, and 
-different functional approaches. As such, it is common for 
+requirements across healthcare - covering many jurisdictions, domains, and
+different functional approaches. As such, it is common for
 specific implementations to have valid requirements that will not
-be directly included in this specification. Incorporating all of these requirements 
+be directly included in this specification. Incorporating all of these requirements
 would make this specification very cumbersome and difficult to
 implement. Instead, this specification expects that these additional
 distinct requirements will be implemented as extensions.
-</p> 
+</p>
 <p>
-As such, extensibility is a fundamental part of the design of this 
-specification. Every resource includes an extension section that 
-may be used to represent additional information that is not part of 
+As such, extensibility is a fundamental part of the design of this
+specification. Every resource includes an extension section that
+may be used to represent additional information that is not part of
 the basic definition of the resource. Conformant applications are not
 allowed to reject resources because they contain extensions, though
 they may need to reject resources because of the specific contents of
 the extensions.
 </p>
 <p>
-Note that, unlike in many other specifications, there can be no stigma 
-associated with the use of extensions by any application, project, or 
+Note that, unlike in many other specifications, there can be no stigma
+associated with the use of extensions by any application, project, or
 standard - regardless of the institution or jurisdiction that uses or defines the
-extensions.  The use of extensions is what allows the FHIR specification to retain a core 
+extensions.  The use of extensions is what allows the FHIR specification to retain a core
 simplicity for everyone.
 </p>
 <p>
-In order to make the use of extensions safe and manageable, there is a 
+In order to make the use of extensions safe and manageable, there is a
 strict governance applied to the definition and use of extensions. Though
-any implementer is allowed to define an extension, there is a set of requirements 
+any implementer is allowed to define an extension, there is a set of requirements
 that must be met as part of the definition of the extension.
 </p>
 <a name="Extension"></a>
@@ -91,8 +91,8 @@ The <i>value[x]</i> element has the [x] replaced with the name of one of the def
  <li>Resource - a reference to another resource</li>
 </ul>
 <p>
-Some of the <a href="datatypes.htm#primitive">primitive</a> datatypes are not included in this list.  Extensions that might
-wish to use one of the ommitted primitives are expected to use one of the more complex types in their place.  For example, 
+Some of the <a href="datatypes.htm#primitive">primitive</a> data types are not included in this list.  Extensions that might
+wish to use one of the omitted primitives are expected to use one of the more complex types in their place.  For example,
 <a href="datatypes.htm#decimal">decimal</a> and <a href="datatypes.htm#integer">integer</a> are handed by <a href="datatypes.htm#Quantity">Quantity</a>,
 <a href="datatypes.htm#base64Binary">base64Binary</a> by <a href="datatypes.htm#Attachment">Attachment</a>, etc.
 </p>
@@ -102,39 +102,39 @@ Nested extensions cannot have a <i>ref</i> element. The <i>[type]</i> element is
 <h2>MustUnderstand</h2>
 
 <p>
-As well as providing additional information, extensions may be used to qualify the meaning of 
-other existing elements or even to negate their meanings. This behavior makes these particular 
-extensions unsafe to ignore. Such extensions must have an attribute <i>mustUnderstand</i> = true. 
+As well as providing additional information, extensions may be used to qualify the meaning of
+other existing elements or even to negate their meanings. This behavior makes these particular
+extensions unsafe to ignore. Such extensions must have an attribute <i>mustUnderstand</i> = true.
 </p>
 
 <p>
-<b>Any application processing the data of a resource must check for extensions labeled "mustUnderstand".</b> 
+<b>Any application processing the data of a resource must check for extensions labeled "mustUnderstand".</b>
 </p>
 
 <p>
-If the application does not recognise the code on an extension that is labeled "mustUnderstand", and 
-where the extension either has no internal reference, or it references data processed by the application, 
-the application SHALL either refuse to process the data,  or carry a warning concerning the data 
-along with any action or output that results from processing the data. 
+If the application does not recognize the code on an extension that is labeled "mustUnderstand", and
+where the extension either has no internal reference, or it references data processed by the application,
+the application SHALL either refuse to process the data,  or carry a warning concerning the data
+along with any action or output that results from processing the data.
 </p>
 
 <p>
-Note that it must always be safe to show the narrative to humans; any extension that is 
-labelled as "mustUnderstand" must be represented in the narrative. Applications are required 
-to ignore extensions that they do not recognise if their "mustUnderstand" element is 
+Note that it must always be safe to show the narrative to humans; any extension that is
+labeled as "mustUnderstand" must be represented in the narrative. Applications are required
+to ignore extensions that they do not recognize if their "mustUnderstand" element is
 missing or set to false.
 </p>
 
 <p>
-Extensions labelled "mustUnderstand" SHALL be attached to reference points within an instance such that
-all data elements whose meaning may be impacted by the extension are contained within the element to 
+Extensions labeled "mustUnderstand" SHALL be attached to reference points within an instance such that
+all data elements whose meaning may be impacted by the extension are contained within the element to
 which the extension is attached.
 </p>
 
 <p>
 Note that servers and background process that move resources around are not "processing the data
 of the resource", and these applications are not required to check for unknown extensions. Any
-process that copies data out of a resource for use in another context (display to a human, 
+process that copies data out of a resource for use in another context (display to a human,
 decision support, exchange in another format that doesn't support extensions) is processing
 the data.
 </p>
@@ -143,19 +143,19 @@ the data.
 <h2>Defining Extensions</h2>
 
 <p>
-Extensions may be defined by any project or jurisdication, up to and including international standards organisations such as HL7 itself, and are published
+Extensions may be defined by any project or jurisdiction, up to and including international standards organizations such as HL7 itself, and are published
 as part of a <a href="profile.htm">Resource Profile</a>. Extensions are always defined against some particular context. The following are possible contexts for an extension:
 </p>
 <table class="codes">
  <tr><th>Context type</th><th>Context format</th><th>Examples</th></tr>
  <tr><td>A particular element (including the root) in a single resource</td><td>The element path for that element</td><td>Profile.resource.element; Person</td></tr>
- <tr><td>A particular element (including the root) in a particular data type</td><td>The datatype name for primitive types or the element path for complex datatypes</td><td>Address.part.value; string</td></tr>
+ <tr><td>A particular element (including the root) in a particular data type</td><td>The data type name for primitive types or the element path for complex data types</td><td>Address.part.value; string</td></tr>
  <tr><td>A particular context in one of the mapped reference models</td><td>The name of the reference model followed by the mapping path</td><td>RIM: Act[moodCode="EVN"]</td></tr>
  <tr><td>Another extension</td><td>The profile uri of the extension followed b the extension code</td><td>http://myextensions.org someExtension</td></tr>
  <tr><td>A set of some combination of the above</td><td>As above, separated by ';'</td><td>Address; Contact</td></tr>
 </table>
 <p>
-In addition, an extension definition might apply additional constraints with 
+In addition, an extension definition might apply additional constraints with
 regards to particular element values of the target that make its use appropriate.
 Extensions SHALL only be used on a target for which they are defined.
 </p>
@@ -184,49 +184,49 @@ Notes:
  <li>Mappings are not required to be computable (i.e. executable logic). Mappings to other specifications can also be provided.</li>
 </ul>
 <p>
-Whenever resources containing extensions are exchanged, the definitions of the extensions must be available to all the parties that share the resources. 
-Each extension contains a URI that references the source of the definitions as a Resource Profile. The source SHOULD be a literal reference, such as an 
-http: url that refers to an end-point that responds with the contents of the definitions - preferably a <a href="http.htm">FHIR RESTful server</a> 
+Whenever resources containing extensions are exchanged, the definitions of the extensions must be available to all the parties that share the resources.
+Each extension contains a URI that references the source of the definitions as a Resource Profile. The source SHOULD be a literal reference, such as an
+http: url that refers to an end-point that responds with the contents of the definitions - preferably a <a href="http.htm">FHIR RESTful server</a>
 supporting the Resources Profile, or a logical reference (e.g. using a urn:) - for instance, to a national published
-standard. 
+standard.
 </p>
 <h2>Control of extensions</h2>
 <p>
 As well as defining the base element structure for resources, HL7 also publishes extensions. HL7 publishes data definitions
-as extensions rather than as part of the base resource structure in order to keep the base 
-resource structure simple and concise, and to allow implementors not to engage with an entire world's
-worth of functionality up front. Note that HL7 extensions are never flagged as must-understand - if 
-HL7 publishes resource content that <i>must</i> be understood, it will be part of the resource 
+as extensions rather than as part of the base resource structure in order to keep the base
+resource structure simple and concise, and to allow implementers not to engage with an entire world's
+worth of functionality up front. Note that HL7 extensions are never flagged as must-understand - if
+HL7 publishes resource content that <i>must</i> be understood, it will be part of the resource
 content itself, since everyone has to understand the extension anyway.
 </p>
 <p>
-Before extensions can be used in instances, they must be published. HL7 maintains two 
-extension registries, and users are encouraged to register their extensions there. But 
-this is not required; all that is required is that the extension is published in a 
+Before extensions can be used in instances, they must be published. HL7 maintains two
+extension registries, and users are encouraged to register their extensions there. But
+this is not required; all that is required is that the extension is published in a
 context that is available for users of the extension. So, for example, if a particular
 extension is used exchanged within a single institution, the definition of the extension
-can be placed on the instition's intranet. However since, by their nature, resources
+can be placed on the institution's intranet. However since, by their nature, resources
 tend to travel well, it's always better to use the HL7 extension registries.
 </p>
 <p>
-HL7 provides two extension registries. The first is for HL7 approved extensions. These 
+HL7 provides two extension registries. The first is for HL7 approved extensions. These
 have been approved by an appropriate part of the HL7 community following a review process,
 and have formal standing. The other registry is provided as a service to the community,
-and anyone can register an extension on it. 
+and anyone can register an extension on it.
 </p>
 <table class="codes">
  <tr><th>Registry</th><th>Search</th><th>Submit</th></tr>
- <tr><td>HL7 Approved</td><td>[tbd]</td><td>[tbd]</td></tr>
- <tr><td>Community</td><td>[tbd]</td><td>[tbd]</td></tr>
+ <tr><td>HL7 Approved</td><td>[TBD]</td><td>[TBD]</td></tr>
+ <tr><td>Community</td><td>[TBD]</td><td>[TBD]</td></tr>
  <tr><td>Interim</td><td><a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/search">http://hl7connect.healthintersections.com.au/svc/fhir/profile/search</a></td>
  <td><a href="http://hl7connect.healthintersections.com.au/svc/fhir/profile/upload">http://hl7connect.healthintersections.com.au/svc/fhir/profile/upload</a></td></tr>
 </table>
 <p>
 HL7 profiles defining extensions may be balloted alongside resource content as part of the FHIR specification or may
-be published as part of separate specifications. 
-When HL7  publishes extensions as part of the FHIR specification, these extensions SHALL 
+be published as part of separate specifications.
+When HL7  publishes extensions as part of the FHIR specification, these extensions SHALL
 be used for this data whenever the data is represented in instances. Applications SHOULD use other
-HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability. 
+HL7-defined extensions published to represent equivalent data in the interest of maximum interoperability.
 If referencing a profile that defines extensions, implementations declaring conformance with the profile SHALL
 use the profile-defined and imported extensions when conveying equivalent data elements.
 </p>
@@ -240,17 +240,17 @@ purpose is to define extensions expected to be needed by implementers in a parti
 to map a particular set of v2 segments or a v3 model.
 </p>
 <p>
-Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work 
+Implementations are encouraged to share their extensions with HL7 and register them with the HL7 extension registry. The domain committees will work
 to elevate the extensions into HL7 published extensions or, if adopted by a broad enough portion of the implementer community, the into the base resource structure itself.
 </p>
 <!-- Todo: point to actual registry once it's up and running -->
 <p>To avoid interoperability issues, extensions SHALL NOT change their definition once published.  (Small clarifications to descriptions
-that do not affect interoperability are permitted.)  Rather than modifying an existing extension, a new extension should be introduced.  
+that do not affect interoperability are permitted.)  Rather than modifying an existing extension, a new extension should be introduced.
 Revisions to an extension may extend the set of contexts in which the extension apply but may not remove or constrain any context previously listed</p>
 <!-- Todo: Figure out how to manage "deprecating" extensions and pointing at their new versions -->
 
 <%footer%>
 
-<%/maindiv%>    
+<%/maindiv%>
 </body>
 </html>
