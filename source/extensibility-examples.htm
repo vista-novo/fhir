@@ -23,11 +23,11 @@ This page contains two examples that demonstrate how to use extensions
 <h3>Patient Name Parts</h3>
 
 <p>
-ISO 21090 (Healthcare Data Types) defines a concept called a "name part qualifier" that contains extra 
+ISO 21090 (Healthcare Data Types) defines a concept called a "name part qualifier" that contains extra
 information about how a particular name part should be used or interpreted. In practice, this field
-is used rarely, except in particular cultural contexts, where certain part qualifiers are used as a 
-matter of practice. Following the <a href="extensibility.htm">FHIR design policy</a>, such a field 
-is not included in the overall definition of the core name data type, instead is it added as an 
+is used rarely, except in particular cultural contexts, where certain part qualifiers are used as a
+matter of practice. Following the <a href="extensibility.htm">FHIR design policy</a>, such a field
+is not included in the overall definition of the core name data type, instead is it added as an
 extension.
 </p>
 <p>
@@ -39,12 +39,12 @@ In order to use an extension, there is a three step process:
   <li>Use it in the instance</li>
 </ol>
 <p>
-In practice, for cases such as these in ISO 21090, HL7 provides common extensions, and these 
-are defined at [location still to be finalised].
+In practice, for cases such as these in ISO 21090, HL7 provides common extensions, and these
+are defined at [location still to be finalized].
 </p>
 <h4>Define the Extension</h4>
 <p>
-For each extension, the first thing to do is to fill out the <a href="extensibility.htm#define">definitional properties of the 
+For each extension, the first thing to do is to fill out the <a href="extensibility.htm#define">definitional properties of the
 extension</a>:
 </p>
 <table class="codes">
@@ -62,11 +62,11 @@ extension</a>:
  <tr><td>Binding</td><td>Bound to a subset of the codes specified for  <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2 in ISO 21090</a> </td></tr>
 </table>
 <p>
-Not all the codes of the EntityNamePartQualifierR2 are required in this context, 
-because prefix and suffix are explicitly part of the name types. Rather than 
-simply refer to the OID for EntityNamePartQualifierR2 (2.16.840.1.113883.5.1122), 
-in this case we enumerate the available codes, and set the type of the extension to 
-code. The type of "code" is only allowed if the profile itself defines the codes that 
+Not all the codes of the EntityNamePartQualifierR2 are required in this context,
+because prefix and suffix are explicitly part of the name types. Rather than
+simply refer to the OID for EntityNamePartQualifierR2 (2.16.840.1.113883.5.1122),
+in this case we enumerate the available codes, and set the type of the extension to
+code. The type of "code" is only allowed if the profile itself defines the codes that
 can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v3ballot/html/infrastructure/vocabulary/EntityNamePartQualifierR2.html">EntityNamePartQualifierR2</a> reference for the full definitions):
 </p>
 <table class="codes">
@@ -84,7 +84,7 @@ can be used. Here is a table of the codes (see the <a href="http://www.hl7.org/v
 </table>
 
 <p>
-This is all then represented formally in a profile. Such profiles do not need to include constraint statements of resources; instead, they include just extension declarations 
+This is all then represented formally in a profile. Such profiles do not need to include constraint statements of resources; instead, they include just extension declarations
 and their associated bindings. In this case, the profile looks like this:
 </p>
 
@@ -98,9 +98,9 @@ and their associated bindings. In this case, the profile looks like this:
     &lt;contextType>datatype&lt;/contextType>
     &lt;definition>
       &lt;short>AD | SP | BR | CL | IN | LS | MID | PFX | SFX&lt;/short>
-      &lt;formal>A set of codes each of which specifies a certain subcategory 
+      &lt;formal>A set of codes each of which specifies a certain subcategory
           of the name part in addition to the main name part type&lt;/formal>
-      &lt;comments>Used to indicate additional information about the 
+      &lt;comments>Used to indicate additional information about the
              name part and how it should be used&lt;/comments>
       &lt;min>0&lt;/min>
       &lt;max>*&lt;/max>
@@ -117,7 +117,7 @@ and their associated bindings. In this case, the profile looks like this:
 
   &lt;binding>
     &lt;name>EntityNamePartQualifier&lt;/name>
-    &lt;definition>A set of codes each of which specifies a certain subcategory 
+    &lt;definition>A set of codes each of which specifies a certain subcategory
         of the name part in addition to the main name part type&lt;/definition>
     &lt;type>codelist&lt;/type>
     &lt;strength>required&lt;/strength>
@@ -131,8 +131,8 @@ and their associated bindings. In this case, the profile looks like this:
     &lt;-- snip other codes -->
   &lt;/binding>
   &lt;-- snip narrative -->
-&lt;/Profile>  
-  
+&lt;/Profile>
+
 </pre>
 <p>
 Note that usually you would build the actual profile using some tool. This example was built from a spreadsheet definition by the FHIR build tooling.
@@ -144,12 +144,12 @@ This is the url that will appear in the definition element when the extension is
 </p>
 <h4>Use it in the instance</h4>
 <p>
-To using the extension in an instance, you firstly mark the name part that is being extended with 
+To using the extension in an instance, you firstly mark the name part that is being extended with
 an id attribute, so that the extension can be connected to it:
 </p>
 <pre class="xml">
 &lt;name&gt;
-  &lt;use&gt;official&lt;/use&gt;  
+  &lt;use&gt;official&lt;/use&gt;
   &lt;part id="n1"&gt;
     &lt;type&gt;given&lt;/type&gt;
     &lt;value&gt;Östlund&lt;/value&gt;
@@ -172,6 +172,6 @@ This particular example is a Scandavian mellannamn. See <a href="datatypes-examp
 
 <%footer%>
 
-<%/maindiv%>    
+<%/maindiv%>
 </body>
 </html>
