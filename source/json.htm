@@ -22,7 +22,7 @@ the JSON representation, the standard JSON representation for resources is only 
 
 <p>
 Though the formal representation of FHIR resources is in XML, many systems wish to use 
-JSON to exchange the resources and it is useful to standardise a single JSON format for 
+JSON to exchange the resources and it is useful to standardize a single JSON format for 
 this use. The JSON format for the resources follows the standard XML format closely so
 XPath queries can easily be mapped to query the JSON structures:</p>
 <ul>
@@ -42,7 +42,7 @@ the case, even if they do not repeat in the actual instance.</li>
 <li>The XHTML &lt;div&gt; element in the Narrative datatype is represented as a single escaped string of XHTML</li>
 </ul>
 <p>These differences - particularly the repeating element one, which cannot be avoided - mean that generic XML --&gt; JSON converters are not 
-able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality that accomodates these FHIR-specific characteristics.</p>
+able to perform correctly. The reference platforms will provide XML &lt;--&gt; JSON conversion functionality that accommodates these FHIR-specific characteristics.</p>
 
 <h2>JSON representation of primitive types</h2>
 <p>
@@ -72,7 +72,7 @@ contains the actual primitive value as string:</p>
 </pre>
 
 <h2>Repeating elements</h2>
-<p>Repeating elements are rendered withing a JSON array with the name of the element, so a repeating
+<p>Repeating elements are rendered within a JSON array with the name of the element, so a repeating
 &lt;dob&gt; element in</p>
 <pre class="xml">
  &lt;<b>dob</b>&gt;2011-11-30&lt;/<b>dob</b>&gt;
@@ -145,7 +145,7 @@ as an escaped string in the value property in JSON. The xhtml's root element nee
 
 <a name="json-bundles"></a>
 <h2>JSON Bundles (Atom feeds)</h2>
-<p>There are several initiatives to define a JSON format for <a href="atom.htm">Atom</a>, all of which are are suffering from having to simulate properties, 
+<p>There are several initiatives to define a JSON format for <a href="atom.htm">Atom</a>, all of which are suffering from having to simulate properties, 
 namespaces and other xml-specific features. Instead, FHIR defines a JSON format that is tailored to the specific needs for bundles.
 Each element in the Xml feed definition has a JSON corresponding JSON object member with the same name. Here is an example feed returning search results for a person query:</p>
 
@@ -184,7 +184,7 @@ Each element in the Xml feed definition has a JSON corresponding JSON object mem
 </pre>
 
 <p>
-Note that property names for elements that can repeat are not pluralised for consistency of overall approach.
+Note that property names for elements that can repeat are not pluralized for consistency of overall approach.
 </p>
 
 <h2>Bundling versions - deletion</h2>
