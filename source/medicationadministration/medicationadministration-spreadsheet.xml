@@ -20,6 +20,7 @@
   <WindowWidth>22755</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6075</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -81,6 +82,7 @@
   </Style>
   <Style ss:ID="s71" ss:Parent="s63">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
    <Interior/>
   </Style>
   <Style ss:ID="s72">
@@ -98,7 +100,6 @@
   </Style>
   <Style ss:ID="s74" ss:Parent="s63">
    <Alignment ss:Vertical="Top" ss:WrapText="1"/>
-   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>
    <Interior/>
   </Style>
   <Style ss:ID="s76">
@@ -207,7 +208,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s70"><Data ss:Type="String">Administration of medication to a patient</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#10;&#10;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care provider</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Describes the event of a patient being given a dose of a medication.  This may be as simple as swallowing a tablet or it may be a long running infusion.&#10;&#10;Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care provider</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:Index="12" ss:StyleID="s72"><Data ss:Type="String">SubstanceAdministration</Data></Cell>
     <Cell ss:StyleID="s72"/>
@@ -223,7 +224,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">code</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationStatus</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Administration event status</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">Will generally be set to show that the administration has been completed.  For some long running administrations such as infusions it is possible for an administration to be started but not completed or it may be paused while some other process is under way.</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"/>
     <Cell><Data ss:Type="String">SubstanceAdministration.statusCode</Data></Cell>
@@ -237,7 +238,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">boolean</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Is event negated</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">Set this to true if the record is saying that the medication was NOT administered.</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">Set this to true if the record is saying that the medication was NOT administered.</Data></Cell>
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"/>
     <Cell ss:StyleID="s72"><Data ss:Type="String">SubstanceAdministration.actionNegationInd</Data></Cell>
@@ -251,7 +252,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationNegationReason</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Reason event is negated</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A code indicating why the administration has been negated.&#10;&#10;Use only if isNegated is set to TRUE</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A code indicating why the administration has been negated.&#10;&#10;Use only if isNegated is set to TRUE</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;Reason-&gt;Observation-&gt;Value</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -263,7 +264,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Effective time</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">An interval of time during which the administration takes place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">An interval of time during which the administration takes place.  For many administrations, such as swallowing a tablet the lower and upper values of the interval will be the same.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.effectiveTime</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="90">
@@ -275,7 +276,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Administration method</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#10;&#10;Terminologies used often pre-coordinate this term with the route and or form of administration.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  Examples:  Slow Push; Deep IV.&#10;&#10;Terminologies used often pre-coordinate this term with the route and or form of administration.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.methodCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -287,7 +288,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Approach site</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">A coded value indicating the location on the body where the medication is introduced into or onto the body.   Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the location.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">A coded value indicating the location on the body where the medication is introduced into or onto the body.   Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the location.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.approachSIteCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -299,7 +300,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s69"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Route of administration</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A coded value indicating the path in or on the body by which the medication is introduced into or onto the body.  Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the route.</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A coded value indicating the path in or on the body by which the medication is introduced into or onto the body.  Where the code system indicates laterality by means of a separate coded concept this must be post-coordinated with the code indicating the route.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.routeCode</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -311,7 +312,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Administered dose</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">The amount of a medication administered to the patient as a single amount.</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">The amount of a medication administered to the patient as a single amount.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">(??Need to check work for Puffs.)</Data></Cell>
     <Cell><Data ss:Type="String">SubstanceAdministration.doseQuantity</Data></Cell>
    </Row>
@@ -324,7 +325,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Quantity</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Dose rate</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">The amount of a medication administered to the patient over a period of time.&#10;&#10;Example 250ml/30min</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">The amount of a medication administered to the patient over a period of time.&#10;&#10;Example 250ml/30min</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">(??Need to check work for Puffs.)</Data></Cell>
     <Cell><Data ss:Type="String">SubstanceAdministration.doseRate</Data></Cell>
    </Row>
@@ -337,7 +338,7 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">id</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">External identifier - FHIR will generate its own internal IDs (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration.id</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -349,7 +350,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Resource(Prescription)</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Prescription</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A link to a resource that provides the original request, instruction and authority to perform the administration.</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A link to a resource that provides the original request, instruction and authority to perform the administration.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;InFullfillmentOf-&gt;SubstanceAdministration</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -361,7 +362,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">Resource(Patient)</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Patient</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">A link to a resource representing the person to whom the medication was given.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">A link to a resource representing the person to whom the medication was given.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;subject-&gt;Patient</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -373,7 +374,7 @@
     <Cell ss:StyleID="s69"><Data ss:Type="String">CodeableConcept</Data></Cell>
     <Cell ss:StyleID="s70"><Data ss:Type="String">AMedicinesTerminology</Data></Cell>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Medication</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;consumable-&gt;ManufacturedProduct</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
@@ -385,7 +386,7 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">HumanId</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Encounter</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">An identifier or a link to a resource that identifies the particular occurrence of contact between patient and health care provider.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;component-&gt;EncounterEvent</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
@@ -397,7 +398,7 @@
     <Cell ss:StyleID="s70"><Data ss:Type="String">Resource(Device)</Data></Cell>
     <Cell ss:StyleID="s69"/>
     <Cell ss:StyleID="s73"><Data ss:Type="String">Administration device</Data></Cell>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">An identifier or a link to a resource that identifies a device used in administering the medication to the patient.</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">An identifier or a link to a resource that identifies a device used in administering the medication to the patient.</Data></Cell>
     <Cell ss:Index="12"><Data ss:Type="String">SubstanceAdministration-&gt;device-&gt;Access  OR SubstanceAdministration-&gt;device-&gt;AssignedDevice</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -429,7 +430,6 @@
     <HorizontalResolution>300</HorizontalResolution>
     <VerticalResolution>300</VerticalResolution>
    </Print>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -475,7 +475,7 @@
     <Cell ss:StyleID="s78"><Data ss:Type="String">MedicationAdministration</Data></Cell>
     <Cell ss:StyleID="s77"><Data ss:Type="String">Must have at least one of administeredDose and doseRate</Data></Cell>
     <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s74"><Data ss:Type="String">exists(f:administeredDose) or exists(f:doseRate)</Data></Cell>
+    <Cell ss:StyleID="s71"><Data ss:Type="String">exists(f:administeredDose) or exists(f:doseRate)</Data></Cell>
     <Cell ss:StyleID="s79"><Data ss:Type="String">Need to be sure this works</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="60">
@@ -484,7 +484,7 @@
     <Cell ss:StyleID="s68"/>
     <Cell ss:StyleID="s77"/>
     <Cell ss:StyleID="s77"/>
-    <Cell ss:StyleID="s74"/>
+    <Cell ss:StyleID="s71"/>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s77"/>
@@ -559,7 +559,7 @@
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="45">
     <Cell ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration-Complete</Data></Cell>
-    <Cell><Data ss:Type="String">Change the staus of a Medication Administration to show thata it is complete.</Data></Cell>
+    <Cell><Data ss:Type="String">Change the stauts of a Medication Administration to show that it is complete.</Data></Cell>
     <Cell ss:Index="4" ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">MedicationAdministration</Data></Cell>
    </Row>
@@ -577,10 +577,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
+     <ActiveRow>3</ActiveRow>
      <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
@@ -813,21 +814,21 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationMethod</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A set of codes indicating the method by which the medication is introduced into or onto the body. </Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A set of codes indicating the method by which the medication is introduced into or onto the body. </Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s81"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">MedicationAdministrationSite</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A set of codes indicating the location on the body where the medication is introduced into or onto the body..</Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A set of codes indicating the location on the body where the medication is introduced into or onto the body..</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s81"><Data ss:Type="String">to be completed</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s69"><Data ss:Type="String">RouteOfAdministration</Data></Cell>
-    <Cell ss:StyleID="s71"><Data ss:Type="String">A set of codes indicating the path in or on the body by which the medication is introduced into or onto the body. </Data></Cell>
+    <Cell ss:StyleID="s74"><Data ss:Type="String">A set of codes indicating the path in or on the body by which the medication is introduced into or onto the body. </Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">value set</Data></Cell>
     <Cell ss:StyleID="s81"><Data ss:Type="String">required</Data></Cell>
     <Cell ss:Index="6" ss:StyleID="s81"><Data ss:Type="String">to be completed</Data></Cell>
