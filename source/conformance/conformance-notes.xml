@@ -27,7 +27,7 @@ Notes:
  </li>
  <li>Document conformance rules:
   <ul class="dense">
-   <li>Ideally, the criteria in different document profile should be able to distinguish between multiple document profiles, 
+   <li>Ideally, the criteria in different document profiles should be able to distinguish between multiple document profiles, 
     so that there is no ambiguity concerning which profile any given document conforms to. However this is not always possible</li>
   </ul>  
  </li>

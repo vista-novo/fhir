@@ -21,8 +21,7 @@
   
   <!-- in a real conformance statement, it's unlikely that a single conformance statement 
     would declare conformance for REST, messaging, and documents, though it is legal. 
-    This example does so in order to show all the parts of a  
-   conformance statement -->
+    This example does so in order to show all the parts of a conformance statement -->
   <rest>
     <!-- this is a server conformance statement. Note that servers are required to provide 
       one of these. It can easily be edited by hand - copy this, replace the metadata above, 
@@ -77,8 +76,7 @@
     <mode>consumer</mode>
     <documentation>Basic rules for all documents in the EHR system</documentation>
     <!-- this is the important element: a reference to a published document profile 
-       note that this is a version specific reference.
-      -->
+       note that this is a version specific reference.-->
     <profile>http://fhir.hl7.org/base/profile/@bc054d23-75e1-4dc6-aca5-838b6b1ac81d/history/@b5fdd9fc-b021-4ea1-911a-721a60663796</profile>
   </document>  
   <text>
