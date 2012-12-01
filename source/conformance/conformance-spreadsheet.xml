@@ -21,7 +21,6 @@
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1065</WindowTopY>
   <TabRatio>612</TabRatio>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -121,7 +120,7 @@
     <Cell><Data ss:Type="String">1..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">Resource</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">A conformance statement</Data></Cell>
-    <Cell><Data ss:Type="String">A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation.</Data></Cell>
+    <Cell><Data ss:Type="String">A conformance statement about how an application or implementation supports FHIR or the set of requirements for a desired implementation</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">N/A</Data></Cell>
     <Cell ss:Index="13"><Data ss:Type="String">Need to capture wire format (XML vs. JSON) and character set.  Probably separately for each rest, messaging &amp; document repetition.</Data></Cell>
    </Row>
@@ -540,10 +539,11 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>20</TopRowBottomPane>
+   <TopRowBottomPane>1</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
    <LeftColumnRightPane>1</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
@@ -556,11 +556,9 @@
     </Pane>
     <Pane>
      <Number>2</Number>
-     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>23</ActiveRow>
      <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
@@ -710,7 +708,7 @@
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="86.25"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="178.5"/>
    <Column ss:StyleID="s69" ss:AutoFitWidth="0" ss:Width="324"/>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding Name</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Definition</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Binding</Data></Cell>
@@ -718,14 +716,14 @@
     <Cell ss:StyleID="s65"><Data ss:Type="String">Reference</Data></Cell>
     <Cell ss:StyleID="s65"><Data ss:Type="String">Description</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulConformanceMode</Data></Cell>
     <Cell><Data ss:Type="String">The mode of a restful conformance statement</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#restful-conformance-mode</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">RestfulOperation</Data></Cell>
     <Cell><Data ss:Type="String">Operations supported by REST</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
@@ -739,14 +737,14 @@
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#message-conformance-event-mode</Data></Cell>
    </Row>
-   <Row>
+   <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">MessageTransport</Data></Cell>
     <Cell><Data ss:Type="String">How messages are delivered</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
     <Cell><Data ss:Type="String">required</Data></Cell>
     <Cell><Data ss:Type="String">#message-transport</Data></Cell>
    </Row>
-   <Row ss:Height="30">
+   <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">DocumentMode</Data></Cell>
     <Cell><Data ss:Type="String">Whether the application produces or consumes documents</Data></Cell>
     <Cell><Data ss:Type="String">code list</Data></Cell>
@@ -760,7 +758,7 @@
     <Footer x:Margin="0.3"/>
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
-   <Selected/>
+   <Unsynced/>
    <Panes>
     <Pane>
      <Number>3</Number>
