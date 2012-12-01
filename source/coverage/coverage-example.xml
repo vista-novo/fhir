@@ -32,7 +32,7 @@
     <id>123</id>
  </subplan>
  
- <dependant>0</dependant>
+ <dependent>0</dependent>
  
  <sequence>1</sequence>
  

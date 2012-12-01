@@ -32,7 +32,7 @@
     <id>D15C9</id>
  </subplan>
  
- <dependant>1</dependant>
+ <dependent>1</dependent>
   
  <planHolder>
 	<name>

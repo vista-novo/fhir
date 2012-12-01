@@ -7,10 +7,10 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Paul Knapp</LastAuthor>
+  <LastAuthor>Lorraine Constable</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
-  <LastSaved>2012-11-19T20:26:03Z</LastSaved>
-  <Version>12.00</Version>
+  <LastSaved>2012-11-30T23:41:01Z</LastSaved>
+  <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
   <AllowPNG/>
@@ -139,7 +139,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Period</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">Coverage start and end dates</Data></Cell>
-    <Cell><Data ss:Type="String">Time period during which the coverage is in force. A msiing start date indicates the start date isn't know, a missing end date means the coverage is continuing to be in force.</Data></Cell>
+    <Cell><Data ss:Type="String">Time period during which the coverage is in force. A missing start date indicates the start date isn't known, a missing end date means the coverage is continuing to be in force.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="30">
     <Cell><Data ss:Type="String">Coverage.type</Data></Cell>
@@ -149,7 +149,7 @@
     <Cell><Data ss:Type="String">ActCoverageTypeCode</Data></Cell>
     <Cell><Data ss:Type="String">Type of coverage</Data></Cell>
     <Cell><Data ss:Type="String">The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health. </Data></Cell>
-    <Cell><Data ss:Type="String">The order of application of coverages is dependant on the types of coverage.</Data></Cell>
+    <Cell><Data ss:Type="String">The order of application of coverages is dependent on the types of coverage.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.identifier</Data></Cell>
@@ -166,7 +166,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the plan</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example my be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.subplan</Data></Cell>
@@ -174,16 +174,16 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">Identifier</Data></Cell>
     <Cell ss:Index="8"><Data ss:Type="String">An identifier for the subsection of the plan</Data></Cell>
-    <Cell><Data ss:Type="String">Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example my be used to identify a specific employer group within a class of employers. May be refered to as a Section or Divsiion ID.</Data></Cell>
+    <Cell><Data ss:Type="String">Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a specific employer group within a class of employers. May be referred to as a Section or Division ID.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
-    <Cell><Data ss:Type="String">Coverage.dependant</Data></Cell>
+    <Cell><Data ss:Type="String">Coverage.dependent</Data></Cell>
     <Cell><Data ss:Type="String">0..1</Data></Cell>
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">integer</Data></Cell>
-    <Cell ss:Index="8"><Data ss:Type="String">The dependant number</Data></Cell>
-    <Cell><Data ss:Type="String">A unique identifier for a dependant under the coverage.</Data></Cell>
-    <Cell><Data ss:Type="String">For some coverage a single identifier is issued to the PolicyHolder and dependant number issues to each to each of their dependants to track and manage the plan.</Data></Cell>
+    <Cell ss:Index="8"><Data ss:Type="String">The dependent number</Data></Cell>
+    <Cell><Data ss:Type="String">A unique identifier for a dependent under the coverage.</Data></Cell>
+    <Cell><Data ss:Type="String">For some coverage a single identifier is issued to the PolicyHolder and dependent number issues to each to each of their dependents to track and manage the plan.</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0" ss:Height="49.5">
     <Cell><Data ss:Type="String">Coverage.sequence</Data></Cell>
@@ -251,12 +251,13 @@
     <VerticalResolution>0</VerticalResolution>
    </Print>
    <Selected/>
-   <TopRowVisible>6</TopRowVisible>
+   <TopRowVisible>1</TopRowVisible>
+   <LeftColumnVisible>6</LeftColumnVisible>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>16</ActiveRow>
-     <ActiveCol>2</ActiveCol>
+     <ActiveRow>8</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -456,7 +457,7 @@
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell><Data ss:Type="String">General-Primary</Data></Cell>
-    <Cell><Data ss:Type="String">General Person Primary Cooverage Example</Data></Cell>
+    <Cell><Data ss:Type="String">General Person Primary Coverage Example</Data></Cell>
     <Cell><Data ss:Type="String">9876B1</Data></Cell>
     <Cell><Data ss:Type="String">coverage-example.xml</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">y</Data></Cell>
@@ -479,8 +480,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>2</ActiveRow>
-     <ActiveCol>3</ActiveCol>
+     <ActiveRow>4</ActiveRow>
+     <ActiveCol>1</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
