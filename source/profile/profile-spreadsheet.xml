@@ -129,7 +129,7 @@
     <Cell><Data ss:Type="String">UML</Data></Cell>
     <Cell><Data ss:Type="String">Short Name</Data></Cell>
     <Cell><Data ss:Type="String">Definition</Data></Cell>
-    <Cell><Data ss:Type="String">Alias</Data></Cell>
+    <Cell><Data ss:Type="String">Aliases</Data></Cell>
     <Cell><Data ss:Type="String">Requirements</Data></Cell>
     <Cell><Data ss:Type="String">Comments</Data></Cell>
     <Cell><Data ss:Type="String">RIM Mapping</Data></Cell>
@@ -1097,6 +1097,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
+     <ActiveCol>10</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
