@@ -7,9 +7,9 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Hugh Glover</LastAuthor>
   <Created>2012-03-19T11:25:18Z</Created>
-  <LastSaved>2012-05-26T22:09:59Z</LastSaved>
+  <LastSaved>2012-12-01T00:17:05Z</LastSaved>
   <Version>14.00</Version>
  </DocumentProperties>
  <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
@@ -17,10 +17,9 @@
  </OfficeDocumentSettings>
  <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
   <WindowHeight>12330</WindowHeight>
-  <WindowWidth>27795</WindowWidth>
+  <WindowWidth>25440</WindowWidth>
   <WindowTopX>480</WindowTopX>
   <WindowTopY>90</WindowTopY>
-  <ActiveSheet>3</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -103,8 +102,8 @@
     <Cell ss:StyleID="s65"/>
     <Cell ss:StyleID="s65"/>
     <Cell><Data ss:Type="String">Resource</Data></Cell>
-    <Cell ss:Index="7"><Data ss:Type="String">A person acting on behalf of an organisation</Data></Cell>
-    <Cell><Data ss:Type="String">A person who represents an organisation, and is authorised to perform actions on its behalf</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">A person acting on behalf of an organization</Data></Cell>
+    <Cell><Data ss:Type="String">A person who represents an organization, and is authorized to perform actions on its behalf</Data></Cell>
     <Cell><Data ss:Type="String">Need to track doctors, staff, locums etc for both healthcare providers, funders, etc.</Data></Cell>
     <Cell ss:Index="11"><Data ss:Type="String">Role</Data></Cell>
     <Cell><Data ss:Type="String">PRD (as one example)</Data></Cell>
@@ -208,11 +207,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>5</ActiveRow>
-     <ActiveCol>6</ActiveCol>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
@@ -322,7 +322,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
