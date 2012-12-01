@@ -119,7 +119,7 @@ Each resource has an associated set of <a href="xml.htm#metadata">resource metad
 For this specification, normal HTTP security and authentication rules apply. The Service Root URL will specify 
 whether SSL is required. HTTP authentication may be required by the server, possibly including the requirement for 
 client certificates. It is a matter of application requirements and local configuration whether all 
-interactions run under the account of a trusted system user whether each interaction runs under the 
+interactions run under the account of a trusted system user, whether each interaction runs under the 
 account of the individual user or whether some other arrangement is required. 
 </p>
 <p>
@@ -356,24 +356,11 @@ Parameter values are not case-sensitive. In addition, the following common searc
   <tr><td>$include : <a href="datatypes.htm#id">token</a></td><td><i>union</i></td><td>See below</td></tr>
 </table>
 
-<%codelist SearchParamType%>
 <h3>Search Parameter Types</h3>
-<table class="codes">
- <tr><td>integer</td><td>search parameter must be a simple whole number</td></tr>
- <tr><td>string</td><td>search parameter is a simple string, like a name part (search usually functions on partial matches)</td></tr>
- <tr><td>text</td><td>search parameter is into a long string (i.e. a text filter type search)</td></tr>
- <tr><td>date</td><td>search parameter is onto a date (and should support -before and -after variants). </td></tr>
- <tr><td>token</td><td>search parameter is on a fixed value string (i.e. search has an exact match)</td></tr>
- <tr><td>qtoken</td><td>search parameter is a pair of fixed value strings, namespace and value, separated by a "#". The namespace is usually a uri, such as <a href="terminologies.htm">one of the defined code systems</a> and is optional when searching</td></tr>
-</table>
+<%codelist SearchParamType%>
 
-<%codelist SearchRepeatBehavior%>
 <h3>Search Parameter Repeat Behaviour</h3>
-<table class="codes">
- <tr><td>single</td><td>the search parameter may only be used once</td></tr>
- <tr><td>union</td><td>when the search parameter is used more than once, match resources with any of the values</td></tr>
- <tr><td>intersection</td><td>when the search parameter is used more than once, match resources with all of the values</td></tr>
-</table>
+<%codelist SearchRepeatBehavior%>
 
 <h4>Parameter Chaining</h4>
 <p>
@@ -418,7 +405,7 @@ the server may elect to include the target of the url reference in the returned 
 Servers have considerable discretion with regards to supporting to search:
 </p>
 <ul>
- <li>Servers can choose which parameters to support (other than $id below)</li>
+ <li>Servers can choose which parameters to support (other than $id above)</li>
  <li>Servers can choose when and where to implement parameter chaining, and when and where they support the $include parameter</li>
  <li>Servers are able to declare additional parameters in their conformance statements</li>
  <li>Servers are not required to enforce case sensitivity on parameter names, though the names are case sensitive (and URLs are generally case-sensitive)</li>
