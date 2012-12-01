@@ -21,29 +21,29 @@
   </activity>
   <!-- author -->
   <party>
+    <role>
+      <system>http://hl7.org/fhir/provenance-participant-role</system>
+      <code>author</code>
+    </role>
     <type>
       <system>http://hl7.org/fhir/provenance-participant-type</system>
       <code>person</code>
     </type>
     <id>mailto:grahame@healthintersections.com.au</id>
     <description>Grahame Grieve</description>
-    <role>
-      <system>http://hl7.org/fhir/provenance-participant-role</system>
-      <code>author</code>
-    </role>
   </party>
   <!-- actually, this example was extracted from ISO 21090 -->
   <party>
+    <role>
+      <system>http://hl7.org/fhir/provenance-participant-role</system>
+      <code>source</code>
+    </role>
     <type>
       <system>http://hl7.org/fhir/provenance-participant-type</system>
       <code>document</code>
     </type>
     <id>urn:iso:std:21090</id>
     <description>ISO 21090</description>
-    <role>
-      <system>http://hl7.org/fhir/provenance-participant-role</system>
-      <code>source</code>
-    </role>
   </party>
   
   <text>
