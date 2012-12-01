@@ -127,9 +127,9 @@ public class TerminologyNotesGenerator extends OutputStreamWriter {
       write("<td>"+describeBinding(cd)+"</td>");
       write("<td>"+(cd.getExtensibility() == null ? "--" : "<a href=\"terminologies.htm#extensibility\">"+cd.getExtensibility().toString().toLowerCase())+"</a>/"+
              "<a href=\"terminologies.htm#conformance\">"+(cd.getBindingStrength() == null ? "--" : cd.getBindingStrength().toString().toLowerCase())+"</a></td>");
-      write(" </tr>");
+      write(" </tr>\r\n");
     }
-    write("</table>\r\n");
+    write("</table>\r\n<p> </p>\r\n");
 
 		// 2. old form
 //    write("<ul>\r\n");

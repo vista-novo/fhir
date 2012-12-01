@@ -39,6 +39,7 @@ import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.DefinedCode;
 import org.hl7.fhir.definitions.model.ElementDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -69,7 +70,9 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 			   generateElement(root.getName(), e);
 			}
 			
-			write("    </elementDefinitions>\r\n");
+      write("    </elementDefinitions>\r\n");
+      for (SearchParameter s : resource.getSearchParams())
+        generateSearchparam(s);
 			write("  </resourceDefinition>\r\n");
 		}
 		if (conceptDomains != null) {
@@ -82,7 +85,16 @@ public class DictXMLGenerator  extends OutputStreamWriter {
 		flush();
 	}
 
-	private void generateConceptDomain(BindingSpecification cd) throws Exception {
+	private void generateSearchparam(SearchParameter s) throws IOException {
+    write("    <searchParameter>\r\n");
+    write("    <name>"+s.getCode()+"</name>\r\n");
+    write("    <description>"+s.getDescription()+"</description>\r\n");
+    write("    <type>"+s.getType().toString()+"</type>\r\n");
+    write("    <repeatMode>"+s.getRepeatMode()+"</repeatMode>\r\n");
+    write("    </searchParameter>\r\n");      
+  }
+
+  private void generateConceptDomain(BindingSpecification cd) throws Exception {
 		write("  <conceptDomain>\r\n");
 		write("    <name>"+Utilities.escapeXml(cd.getName())+"</name>\r\n");
 		write("    <definition>"+Utilities.escapeXml(cd.getDefinition())+"</definition>\r\n");
