@@ -5,4 +5,14 @@
 -->
 <xs:schema xmlns="http://hl7.org/fhir" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hl7.org/fhir" elementFormDefault="qualified" version="<%version%>">
 <!--%resources%-->
+  <xs:element name="Binary" type="xs:base64Binary"/>
+  <xs:simpleType name="ResourceNamesPlusBinary">
+    <xs:union memberTypes="ResourceType">
+      <xs:simpleType>
+        <xs:restriction base="xs:NMTOKEN">
+          <xs:enumeration value="Binary"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
 </xs:schema>
