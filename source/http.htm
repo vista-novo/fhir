@@ -520,7 +520,7 @@ that are not part of the batch are left untouched. If a resource in the batch ca
 version-specific id (using its self-link), any version-specific references to it must also be updated.
 </p><p>
 Note that this allows clients to assign temporary (version-specific) ids to new resources and refer to
-them from within the batch, the server will update these temporary ids after their creation. This
+them from within the batch while the server will update these temporary ids after their creation. This
 is especially useful in RESTful scenario's where one would otherwise need multiple operations, possibly
 leading to loss of referential integrity (e.g. when storing a Provenance resource and its 
 corresponding target resource).
