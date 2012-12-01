@@ -20,6 +20,7 @@
   <WindowWidth>9570</WindowWidth>
   <WindowTopX>5520</WindowTopX>
   <WindowTopY>6315</WindowTopY>
+  <ActiveSheet>1</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -611,7 +612,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
@@ -658,7 +658,7 @@
     <Cell><Data ss:Type="Number">3</Data></Cell>
     <Cell><Data ss:Type="String">Source</Data></Cell>
     <Cell ss:StyleID="s63"><Data ss:Type="String">XdsEntry</Data></Cell>
-    <Cell><Data ss:Type="String">A rul or a repositoryId must be provided</Data></Cell>
+    <Cell><Data ss:Type="String">A url or a repositoryId must be provided</Data></Cell>
     <Cell ss:Index="6"><Data ss:Type="String">exists(f:url) or exists(f:repositoryId) </Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
@@ -675,11 +675,12 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveRow>4</ActiveRow>
-     <ActiveCol>5</ActiveCol>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>3</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
