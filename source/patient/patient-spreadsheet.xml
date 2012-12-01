@@ -7,7 +7,7 @@
  xmlns:html="http://www.w3.org/TR/REC-html40">
  <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
   <Author>Grahame</Author>
-  <LastAuthor>Grahame</LastAuthor>
+  <LastAuthor>Lorraine Constable</LastAuthor>
   <Created>2012-03-19T11:15:11Z</Created>
   <LastSaved>2012-06-04T13:12:58Z</LastSaved>
   <Version>14.00</Version>
@@ -118,7 +118,7 @@
     <Cell ss:Index="4"><Data ss:Type="String">y</Data></Cell>
     <Cell><Data ss:Type="String">Resource(Patient)</Data></Cell>
     <Cell ss:Index="7"><Data ss:Type="String">Other patients linked to this resource</Data></Cell>
-    <Cell><Data ss:Type="String">A linked patient record is a record that concerns the same patient. Records are linked after it is realised that at least one was created in error.</Data></Cell>
+    <Cell><Data ss:Type="String">A linked patient record is a record that concerns the same patient. Records are linked after it is realized that at least one was created in error.</Data></Cell>
     <Cell><Data ss:Type="String">Due to the clerical errors associated with the difficulties of identifying humans consistently, duplicate patient records are frequently created in error</Data></Cell>
     <Cell><Data ss:Type="String">More then two patient records may be linked. Note that there is a special transaction for linking patient records in the RESTful context, as record linking consistency must be maintained</Data></Cell>
    </Row>
@@ -213,8 +213,8 @@
    <Panes>
     <Pane>
      <Number>3</Number>
-     <ActiveCol>3</ActiveCol>
-     <RangeSelection>C4</RangeSelection>
+     <ActiveRow>3</ActiveRow>
+     <ActiveCol>7</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>
