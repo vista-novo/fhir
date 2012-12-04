@@ -28,6 +28,12 @@
       <xsd:enumeration value="qtoken"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="BindingExtensibility">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="Complete"/>
+      <xsd:enumeration value="Extensible"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="Definitions">
     <xsd:complexContent>
       <xsd:extension base="fhir:NameScope">
@@ -105,8 +111,9 @@
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="fullName" type="xsd:string"/>
     <xsd:attribute name="binding" type="fhir:BindingType" use="required"/>
+    <xsd:attribute name="extensibility" type="fhir:BindingExtensibility"/>
     <xsd:attribute name="strength" type="fhir:BindingStrength" use="required"/>
-    <xsd:attribute name="artifactName" type="xsd:string" use="required"/>
+    <xsd:attribute name="reference" type="xsd:string" use="required"/>
     <xsd:attribute name="source" type="xsd:string" use="required">
       <xsd:annotation>
         <xsd:documentation>for useful error messages during the build process</xsd:documentation>
@@ -158,6 +165,9 @@
     <xsd:attributeGroup ref="xmi:ObjectAttribs"/>
     <xsd:attribute name="code" type="xsd:string" use="required"/>
     <xsd:attribute name="definition" type="xsd:string" use="required"/>
+    <xsd:attribute name="comment" type="xsd:string"/>
+    <xsd:attribute name="display" type="xsd:string"/>
+    <xsd:attribute name="system" type="xsd:string"/>
   </xsd:complexType>
   <xsd:element name="DefinedCode" type="fhir:DefinedCode"/>
   <xsd:complexType name="PrimitiveTypeDefn">

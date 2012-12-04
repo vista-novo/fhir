@@ -34,6 +34,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.BindingDefn;
+import org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility;
 import org.hl7.fhir.definitions.ecore.fhir.BindingStrength;
 import org.hl7.fhir.definitions.ecore.fhir.BindingType;
 import org.hl7.fhir.definitions.ecore.fhir.CompositeTypeDefn;
@@ -79,12 +80,13 @@ public class BindingConverter
 		
 		result.setBinding( BindingType.get(spec.getBinding().ordinal()) );
 		result.setStrength( BindingStrength.get(spec.getBindingStrength().ordinal()) );
-
+		result.setExtensibility(( BindingExtensibility.get(spec.getExtensibility().ordinal())));
+		
 		String artifact = spec.getReference();
 		if( artifact != null && artifact.startsWith("#"))
 			artifact = artifact.substring(1);
 		
-		result.setArtifactName( artifact );
+		result.setReference( artifact );
 		result.setSource( spec.getSource() );
 	
 		for( org.hl7.fhir.definitions.model.DefinedCode code : spec.getCodes() )
@@ -103,6 +105,9 @@ public class BindingConverter
 		
 		result.setCode( code.getCode() );
 		result.setDefinition( Utilities.cleanupTextString(code.getDefinition()) );
+		result.setDisplay( code.getDisplay());
+		result.setSystem(code.getSystem());
+		result.setComment(code.getComment());
 //		result.setAnnotations( FhirFactory.eINSTANCE.createAnnotations() );		
 //		result.getAnnotations().setDefinition(Utilities.cleanupTextString(code.getDefinition()));
 //		result.getAnnotations().setComment( Utilities.cleanupTextString(code.getComment()));

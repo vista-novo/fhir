@@ -59,231 +59,231 @@ import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
  */
 public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	/**
-   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getTypes()
-   * @generated
-   * @ordered
-   */
+	 * @see #getTypes()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<TypeDefn> types;
 
 	/**
-   * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getBindings() <em>Bindings</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getBindings()
-   * @generated
-   * @ordered
-   */
+	 * @see #getBindings()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<BindingDefn> bindings;
 
 	/**
-   * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getDate()
-   * @generated
-   * @ordered
-   */
+	 * @see #getDate()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final Date DATE_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getDate()
-   * @generated
-   * @ordered
-   */
+	 * @see #getDate()
+	 * @generated
+	 * @ordered
+	 */
 	protected Date date = DATE_EDEFAULT;
 
 	/**
-   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getVersion()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String VERSION_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getVersion()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
 	protected String version = VERSION_EDEFAULT;
 
 	/**
-   * The cached value of the '{@link #getProfiles() <em>Profiles</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getProfiles() <em>Profiles</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getProfiles()
-   * @generated
-   * @ordered
-   */
+	 * @see #getProfiles()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ProfileDefn> profiles;
 
 	/**
-   * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getEvents()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEvents()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<EventDefn> events;
 
 	/**
-   * The default value of the '{@link #isInternal() <em>Internal</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isInternal()
-   * @generated
-   * @ordered
-   */
+	 * @see #isInternal()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final boolean INTERNAL_EDEFAULT = false;
 
 	/**
-   * The cached value of the '{@link #isInternal() <em>Internal</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isInternal()
-   * @generated
-   * @ordered
-   */
+	 * @see #isInternal()
+	 * @generated
+	 * @ordered
+	 */
 	protected boolean internal = INTERNAL_EDEFAULT;
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected DefinitionsImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return FhirPackage.Literals.DEFINITIONS;
-  }
+		return FhirPackage.Literals.DEFINITIONS;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public EList<BindingDefn> getBindings() {
-    if (bindings == null) {
-      bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.DEFINITIONS__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
-    }
-    return bindings;
-  }
+		if (bindings == null) {
+			bindings = new EObjectContainmentWithInverseEList<BindingDefn>(BindingDefn.class, this, FhirPackage.DEFINITIONS__BINDINGS, FhirPackage.BINDING_DEFN__PARENT);
+		}
+		return bindings;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Date getDate() {
-    return date;
-  }
+		return date;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void setDate(Date newDate) {
-    Date oldDate = date;
-    date = newDate;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__DATE, oldDate, date));
-  }
+		Date oldDate = date;
+		date = newDate;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__DATE, oldDate, date));
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String getVersion() {
-    return version;
-  }
+		return version;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void setVersion(String newVersion) {
-    String oldVersion = version;
-    version = newVersion;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__VERSION, oldVersion, version));
-  }
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__VERSION, oldVersion, version));
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public EList<TypeDefn> getTypes() {
-    if (types == null) {
-      types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
-    }
-    return types;
-  }
+		if (types == null) {
+			types = new EObjectContainmentWithInverseEList<TypeDefn>(TypeDefn.class, this, FhirPackage.DEFINITIONS__TYPES, FhirPackage.TYPE_DEFN__SCOPE);
+		}
+		return types;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public EList<EventDefn> getEvents() {
-    if (events == null) {
-      events = new EObjectContainmentEList<EventDefn>(EventDefn.class, this, FhirPackage.DEFINITIONS__EVENTS);
-    }
-    return events;
-  }
+		if (events == null) {
+			events = new EObjectContainmentEList<EventDefn>(EventDefn.class, this, FhirPackage.DEFINITIONS__EVENTS);
+		}
+		return events;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean isInternal() {
-    return internal;
-  }
+		return internal;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void setInternal(boolean newInternal) {
-    boolean oldInternal = internal;
-    internal = newInternal;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__INTERNAL, oldInternal, internal));
-  }
+		boolean oldInternal = internal;
+		internal = newInternal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.DEFINITIONS__INTERNAL, oldInternal, internal));
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -359,17 +359,17 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public EList<ProfileDefn> getProfiles() {
-    if (profiles == null) {
-      profiles = new EObjectContainmentEList<ProfileDefn>(ProfileDefn.class, this, FhirPackage.DEFINITIONS__PROFILES);
-    }
-    return profiles;
-  }
+		if (profiles == null) {
+			profiles = new EObjectContainmentEList<ProfileDefn>(ProfileDefn.class, this, FhirPackage.DEFINITIONS__PROFILES);
+		}
+		return profiles;
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -413,184 +413,184 @@ public class DefinitionsImpl extends EObjectImpl implements Definitions {
 	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getBindings()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
-      case FhirPackage.DEFINITIONS__PROFILES:
-        return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
-      case FhirPackage.DEFINITIONS__EVENTS:
-        return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return ((InternalEList<?>)getBindings()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__PROFILES:
+				return ((InternalEList<?>)getProfiles()).basicRemove(otherEnd, msgs);
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        return getTypes();
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        return getBindings();
-      case FhirPackage.DEFINITIONS__DATE:
-        return getDate();
-      case FhirPackage.DEFINITIONS__VERSION:
-        return getVersion();
-      case FhirPackage.DEFINITIONS__PROFILES:
-        return getProfiles();
-      case FhirPackage.DEFINITIONS__EVENTS:
-        return getEvents();
-      case FhirPackage.DEFINITIONS__INTERNAL:
-        return isInternal();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				return getTypes();
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return getBindings();
+			case FhirPackage.DEFINITIONS__DATE:
+				return getDate();
+			case FhirPackage.DEFINITIONS__VERSION:
+				return getVersion();
+			case FhirPackage.DEFINITIONS__PROFILES:
+				return getProfiles();
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return getEvents();
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				return isInternal();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        getTypes().clear();
-        getTypes().addAll((Collection<? extends TypeDefn>)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        getBindings().clear();
-        getBindings().addAll((Collection<? extends BindingDefn>)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__DATE:
-        setDate((Date)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__VERSION:
-        setVersion((String)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__PROFILES:
-        getProfiles().clear();
-        getProfiles().addAll((Collection<? extends ProfileDefn>)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__EVENTS:
-        getEvents().clear();
-        getEvents().addAll((Collection<? extends EventDefn>)newValue);
-        return;
-      case FhirPackage.DEFINITIONS__INTERNAL:
-        setInternal((Boolean)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				getTypes().clear();
+				getTypes().addAll((Collection<? extends TypeDefn>)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				getBindings().clear();
+				getBindings().addAll((Collection<? extends BindingDefn>)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__DATE:
+				setDate((Date)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__VERSION:
+				setVersion((String)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__PROFILES:
+				getProfiles().clear();
+				getProfiles().addAll((Collection<? extends ProfileDefn>)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__EVENTS:
+				getEvents().clear();
+				getEvents().addAll((Collection<? extends EventDefn>)newValue);
+				return;
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				setInternal((Boolean)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        getTypes().clear();
-        return;
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        getBindings().clear();
-        return;
-      case FhirPackage.DEFINITIONS__DATE:
-        setDate(DATE_EDEFAULT);
-        return;
-      case FhirPackage.DEFINITIONS__VERSION:
-        setVersion(VERSION_EDEFAULT);
-        return;
-      case FhirPackage.DEFINITIONS__PROFILES:
-        getProfiles().clear();
-        return;
-      case FhirPackage.DEFINITIONS__EVENTS:
-        getEvents().clear();
-        return;
-      case FhirPackage.DEFINITIONS__INTERNAL:
-        setInternal(INTERNAL_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				getTypes().clear();
+				return;
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				getBindings().clear();
+				return;
+			case FhirPackage.DEFINITIONS__DATE:
+				setDate(DATE_EDEFAULT);
+				return;
+			case FhirPackage.DEFINITIONS__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
+			case FhirPackage.DEFINITIONS__PROFILES:
+				getProfiles().clear();
+				return;
+			case FhirPackage.DEFINITIONS__EVENTS:
+				getEvents().clear();
+				return;
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				setInternal(INTERNAL_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case FhirPackage.DEFINITIONS__TYPES:
-        return types != null && !types.isEmpty();
-      case FhirPackage.DEFINITIONS__BINDINGS:
-        return bindings != null && !bindings.isEmpty();
-      case FhirPackage.DEFINITIONS__DATE:
-        return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
-      case FhirPackage.DEFINITIONS__VERSION:
-        return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
-      case FhirPackage.DEFINITIONS__PROFILES:
-        return profiles != null && !profiles.isEmpty();
-      case FhirPackage.DEFINITIONS__EVENTS:
-        return events != null && !events.isEmpty();
-      case FhirPackage.DEFINITIONS__INTERNAL:
-        return internal != INTERNAL_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case FhirPackage.DEFINITIONS__TYPES:
+				return types != null && !types.isEmpty();
+			case FhirPackage.DEFINITIONS__BINDINGS:
+				return bindings != null && !bindings.isEmpty();
+			case FhirPackage.DEFINITIONS__DATE:
+				return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
+			case FhirPackage.DEFINITIONS__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
+			case FhirPackage.DEFINITIONS__PROFILES:
+				return profiles != null && !profiles.isEmpty();
+			case FhirPackage.DEFINITIONS__EVENTS:
+				return events != null && !events.isEmpty();
+			case FhirPackage.DEFINITIONS__INTERNAL:
+				return internal != INTERNAL_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (date: ");
-    result.append(date);
-    result.append(", version: ");
-    result.append(version);
-    result.append(", internal: ");
-    result.append(internal);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (date: ");
+		result.append(date);
+		result.append(", version: ");
+		result.append(version);
+		result.append(", internal: ");
+		result.append(internal);
+		result.append(')');
+		return result.toString();
+	}
 	
 	
 	public static Definitions build( Date date, String version )
