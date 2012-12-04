@@ -29,6 +29,7 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 import java.io.InputStream;
+import java.io.StringReader;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.HashMap;
@@ -41,6 +42,7 @@ import org.hl7.fhir.instance.model.Integer;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.hl7.fhir.utilities.xhtml.XhtmlParser;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 public abstract class XmlParserBase extends XmlBase {
 
@@ -265,5 +267,6 @@ public abstract class XmlParserBase extends XmlBase {
     result.setValue(parseString(xpp));
     return result;
   }
+ 
   
 }

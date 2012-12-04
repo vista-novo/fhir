@@ -31,6 +31,9 @@ package org.hl7.fhir.instance.formats;
 
 // Generated on Sun, Nov 25, 2012 14:16+1100 for FHIR v0.06
 
+import java.io.StringReader;
+
+import org.hl7.fhir.instance.formats.XmlParserBase.ResourceOrFeed;
 import org.hl7.fhir.instance.model.*;
 import org.xmlpull.v1.*;
 
@@ -3337,6 +3340,85 @@ public class XmlParser extends XmlParserBase {
     if (xpp.getName().equals(prefix+"Instant"))
       return true;
     return false;
+  }
+
+  public Element parseFragment(StringReader rdr, String className) throws Exception {
+    XmlPullParser xpp = loadXml(rdr);
+    if (!xpp.getNamespace().equals(FHIR_NS))
+      throw new Exception("This does not appear to be a FHIR fragment (wrong namespace '"+xpp.getNamespace()+"') (@ /)");
+
+    if (className.equals("Period"))
+      return parsePeriod(xpp);
+    else if (className.equals("Coding"))
+      return parseCoding(xpp);
+    else if (className.equals("Range"))
+      return parseRange(xpp);
+    else if (className.equals("Quantity"))
+      return parseQuantity(xpp);
+    else if (className.equals("Choice"))
+      return parseChoice(xpp);
+    else if (className.equals("Attachment"))
+      return parseAttachment(xpp);
+    else if (className.equals("Ratio"))
+      return parseRatio(xpp);
+    else if (className.equals("ResourceReference"))
+      return parseResourceReference(xpp);
+    else if (className.equals("CodeableConcept"))
+      return parseCodeableConcept(xpp);
+    else if (className.equals("Identifier"))
+      return parseIdentifier(xpp);
+    else if (className.equals("Age"))
+      return parseAge(xpp);
+    else if (className.equals("Count"))
+      return parseCount(xpp);
+    else if (className.equals("Money"))
+      return parseMoney(xpp);
+    else if (className.equals("Distance"))
+      return parseDistance(xpp);
+    else if (className.equals("Duration"))
+      return parseDuration(xpp);
+    else if (className.equals("Schedule"))
+      return parseSchedule(xpp);
+    else if (className.equals("Contact"))
+      return parseContact(xpp);
+    else if (className.equals("Address"))
+      return parseAddress(xpp);
+    else if (className.equals("HumanName"))
+      return parseHumanName(xpp);
+    else if (className.equals("DocumentInformation"))
+      return parseDocumentInformation(xpp);
+    else if (className.equals("HumanId"))
+      return parseHumanId(xpp);
+    else if (className.equals("Sid"))
+      return parseSid(xpp);
+    else if (className.equals("DateTime"))
+      return parseDateTime(xpp);
+    else if (className.equals("Integer"))
+      return parseInteger(xpp);
+    else if (className.equals("Code"))
+      return parseCode(xpp);
+    else if (className.equals("Date"))
+      return parseDate(xpp);
+    else if (className.equals("Decimal"))
+      return parseDecimal(xpp);
+    else if (className.equals("Uri"))
+      return parseUri(xpp);
+    else if (className.equals("Id"))
+      return parseId(xpp);
+    else if (className.equals("Base64Binary"))
+      return parseBase64Binary(xpp);
+    else if (className.equals("Oid"))
+      return parseOid(xpp);
+    else if (className.equals("String"))
+      return parseString_(xpp);
+    else if (className.equals("Boolean"))
+      return parseBoolean(xpp);
+    else if (className.equals("Uuid"))
+      return parseUuid(xpp);
+    else if (className.equals("Instant"))
+      return parseInstant(xpp);
+    throw new Exception("Unknown type "+xpp.getName());
+    
   }
 }
 

@@ -40,5 +40,7 @@ public abstract class Element {
 		this.xmlId = xmlId;
 	}
 	
-	
+	public String getClassName() {
+	  return getClass().getSimpleName();
+	}
 }

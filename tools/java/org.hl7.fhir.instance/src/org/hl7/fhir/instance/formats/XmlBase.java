@@ -31,6 +31,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.StringReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,6 +50,16 @@ public class XmlBase {
     factory.setNamespaceAware(true);
     XmlPullParser xpp = factory.newPullParser();
     xpp.setInput(input, "UTF-8");
+    xpp.next();
+    
+    return xpp;
+  }
+ 
+  protected XmlPullParser loadXml(StringReader rdr) throws Exception {
+    XmlPullParserFactory factory = XmlPullParserFactory.newInstance(System.getProperty(XmlPullParserFactory.PROPERTY_NAME), null);
+    factory.setNamespaceAware(true);
+    XmlPullParser xpp = factory.newPullParser();
+    xpp.setInput(rdr);
     xpp.next();
     
     return xpp;

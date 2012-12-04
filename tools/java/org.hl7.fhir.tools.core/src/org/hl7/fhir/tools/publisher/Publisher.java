@@ -1073,8 +1073,8 @@ public class Publisher {
 		for (ResourceDefn c : profile.getResources()) {
 			Profile resource = loadResourceProfile(c.getName());
 			ProfileValidator v = new ProfileValidator();
-			v.setProfile(c);
-			v.setResource(resource);
+			v.setCandidate(c);
+			v.setProfile(resource);
 			List<String> errors = v.evaluate();
 			if (errors.size() > 0)
 				throw new Exception("Error validating "+ profile.metadata("name") + ": " + errors.toString());

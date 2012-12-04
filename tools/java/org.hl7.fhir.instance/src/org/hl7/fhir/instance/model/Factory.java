@@ -103,5 +103,25 @@ public class Factory {
     res.setValue(value);
     return res;
   }
+
+  public static CodeableConcept newCodeableConcept(String text) {
+    CodeableConcept code = new CodeableConcept();
+    code.setText(newString_(text));
+    return code;
+  }
+
+  public static CodeableConcept newCodeableConcept(String system, String code, String display) throws URISyntaxException {
+    CodeableConcept c = new CodeableConcept();
+    c.getCoding().add(newCoding(system, code, display));
+    return c;
+  }
+
+  private static Coding newCoding(String system, String code, String display) throws URISyntaxException {
+    Coding c = new Coding();
+    c.setSystem(newUri(system));
+    c.setCode(newCode(code));
+    c.setDisplay(newString_(display));
+    return null;
+  }
   
 }

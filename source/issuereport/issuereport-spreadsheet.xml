@@ -92,7 +92,7 @@
   </Style>
  </Styles>
  <Worksheet ss:Name="Data Elements">
-  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="8" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="9" x:FullColumns="1"
    x:FullRows="1" ss:StyleID="s64" ss:DefaultColumnWidth="65.25"
    ss:DefaultRowHeight="15">
    <Column ss:StyleID="s65" ss:Width="239.25"/>
@@ -163,6 +163,16 @@
     <Cell><Data ss:Type="String">ERR-3, ERR-5</Data></Cell>
     <Cell><Data ss:Type="String">Do we want to define an initial set of codes, or should we leave all of this to profiles?</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0" ss:Height="150">
+    <Cell ss:StyleID="s68"><Data ss:Type="String">IssueReport.issue.details</Data></Cell>
+    <Cell><Data ss:Type="String">0..1</Data></Cell>
+    <Cell ss:Index="5"><Data ss:Type="String">string</Data></Cell>
+    <Cell ss:Index="7"><Data ss:Type="String">Additional description of the issue</Data></Cell>
+    <Cell><Data ss:Type="String">Additional description of the issue</Data></Cell>
+    <Cell ss:Index="10"><Data ss:Type="String">typically this field is used to provide details human readable information about the error</Data></Cell>
+    <Cell><Data ss:Type="String">./text[parent::AcknowledgmentDetail]</Data></Cell>
+    <Cell><Data ss:Type="String">ERR-8</Data></Cell>
+   </Row>
    <Row ss:AutoFitHeight="0" ss:Height="140.0625">
     <Cell ss:StyleID="s68"><Data ss:Type="String">IssueReport.issue.location</Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String">0..*</Data></Cell>
@@ -206,9 +216,9 @@
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
-   <TopRowBottomPane>1</TopRowBottomPane>
+   <TopRowBottomPane>4</TopRowBottomPane>
    <SplitVertical>1</SplitVertical>
-   <LeftColumnRightPane>1</LeftColumnRightPane>
+   <LeftColumnRightPane>7</LeftColumnRightPane>
    <ActivePane>0</ActivePane>
    <Panes>
     <Pane>
@@ -216,14 +226,16 @@
     </Pane>
     <Pane>
      <Number>1</Number>
+     <ActiveCol>1</ActiveCol>
     </Pane>
     <Pane>
      <Number>2</Number>
+     <ActiveRow>1</ActiveRow>
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
-     <ActiveCol>8</ActiveCol>
+     <ActiveRow>5</ActiveRow>
+     <ActiveCol>12</ActiveCol>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

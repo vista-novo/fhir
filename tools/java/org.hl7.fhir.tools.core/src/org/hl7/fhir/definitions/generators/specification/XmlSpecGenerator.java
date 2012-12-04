@@ -217,30 +217,14 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 
 		if (defPage == null) {
 			if (elem.isMustUnderstand() || elem.isMustSupport())
-				write("&lt;<span style=\"text-decoration: underline\" title=\""
-						+ Utilities
-								.escapeXml(elem.getDefinition()
-										+ " (this element must be supported or understood)")
-						+ "\">");
+				write("&lt;<span style=\"text-decoration: underline\" title=\"" + Utilities.escapeXml(elem.getDefinition() + " (this element must be supported or understood)")	+ "\">");
 			else
-				write("&lt;<span title=\""
-						+ Utilities.escapeXml(elem.getDefinition()) + "\">");
+				write("&lt;<span title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\">");
 		} else if (elem.isMustUnderstand() || elem.isMustSupport())
-			write("&lt;<a href=\""
-					+ defPage
-					+ "#"
-					+ pathName
-					+ "."
-					+ en
-					+ "\" title=\""
-					+ Utilities
-							.escapeXml(elem.getDefinition()
-									+ " (this element must be supported or understood)")
-					+ "\" class=\"dict\"><span style=\"text-decoration: underline\">");
+			write("&lt;<a href=\"" + defPage + "#" + pathName + "." + en + "\" title=\"" + Utilities .escapeXml(elem.getDefinition() + " (this element must be supported or understood)") 
+			     + "\" class=\"dict\"><span style=\"text-decoration: underline\">");
 		else
-			write("&lt;<a href=\"" + defPage + "#" + pathName + "." + en
-					+ "\" title=\"" + Utilities.escapeXml(elem.getDefinition())
-					+ "\" class=\"dict\">");
+			write("&lt;<a href=\"" + defPage + "#" + pathName + "." + en + "\" title=\"" + Utilities.escapeXml(elem.getDefinition()) + "\" class=\"dict\">");
 
 		// element contains xhtml
 		if (!elem.getTypes().isEmpty() && elem.getTypes().get(0).isXhtml()) {
@@ -255,18 +239,16 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 		// element has a constraint which fixes its value
 		else if (elem.hasValue()) {
 			if (defPage == null) {
-				write("</span>");
+				write(en+"</span>&gt;");
 			} else if (elem.isMustUnderstand() || elem.isMustSupport())
 				write(en + "</span></a>&gt;");
 			else
 				write(en + "</a>&gt;");
 
 			if (elem.typeCode().equals("CodeableConcept"))
-				write(renderCodeableConcept(indent, elem.getValue()) + "&lt;"
-						+ en + "/&gt;\r\n");
+				write(renderCodeableConcept(indent, elem.getValue()) + "&lt;/" + en + "&gt;\r\n");
 			else if (elem.typeCode().equals("Quantity"))
-				write(renderQuantity(indent, elem.getValue()) + "&lt;" + en
-						+ "/&gt;\r\n");
+				write(renderQuantity(indent, elem.getValue()) + "&lt;" + en + "/&gt;\r\n");
 			else
 				write(elem.getValue() + "&lt;" + en + "/&gt;\r\n");
 		} else {
@@ -284,9 +266,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 			// If this is an unrolled element, show its profile name
 			if (elem.getProfileName() != null
 					&& !elem.getProfileName().equals(""))
-				write(" <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: blue\">\""
-						+ elem.getProfileName()
-						+ "\"</span>  <span style=\"color: Gray\"> --&gt;</span>");
+				write(" <span style=\"color: Gray\">&lt;!--</span> <span style=\"color: blue\">\"" + elem.getProfileName() + "\"</span>  <span style=\"color: Gray\"> --&gt;</span>");
 
 			boolean sharedDT = definitions.dataTypeIsSharedInfo(elem.typeCode());
 
@@ -386,9 +366,7 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 							+ "</span></a> ");
 				} else {
 					// if (!elem.isXmlIDRef())
-					write("<span style=\"color: navy\">"
-							+ Utilities.escapeXml(elem.getShortDefn())
-							+ "</span>");
+					write("<span style=\"color: navy\">" + Utilities.escapeXml(elem.getShortDefn()) + "</span>");
 				}
 			} else {
 				if (elem.unbounded() && !listed) { // isNolist()) {
@@ -407,10 +385,11 @@ public class XmlSpecGenerator extends OutputStreamWriter {
 						writeCardinality(elem);
 						write(" --&gt;</span>");
 					}
-				} else if (elem.hasShortDefn())
-					write(" <span style=\"color: Gray\">&lt;!-- "
-							+ Utilities.escapeXml(elem.getShortDefn())
-							+ " --&gt;</span>");
+				} else if (elem.hasShortDefn()) {
+					  write(" <span style=\"color: Gray\">&lt;!--");
+            writeCardinality(elem);
+            write(" "+Utilities.escapeXml(elem.getShortDefn())+" --&gt;</span>");
+				}
 				write("\r\n");
 
 				if (sharedDT) {

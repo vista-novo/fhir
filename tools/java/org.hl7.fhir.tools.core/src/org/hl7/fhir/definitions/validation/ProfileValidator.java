@@ -39,40 +39,50 @@ import org.hl7.fhir.instance.model.Profile;
 import org.hl7.fhir.instance.model.Profile.Element_;
 import org.hl7.fhir.instance.model.Profile.Type;
 
+/**
+ * Given a candidate profile, and the actual base profile for a resource, check that the candidate is valid.
+ * 
+ * Note that this is only appropriate for use during the build process. For a general purpose profile validator,
+ * see org.hl7.fhir.instance.validation
+ * 
+ * Rules for 
+ * @author Grahame
+ *
+ */
 public class ProfileValidator {
 
   private Map<Profile.Element_, ArrayList<ElementDefn>> map = new HashMap<Profile.Element_, ArrayList<ElementDefn>>();
   
-  private ResourceDefn profile;
-  private Profile resource;
+  private ResourceDefn candidate;
+  private Profile profile;
   private ArrayList<String> errors;
 
-  public void setProfile(ResourceDefn profile) {
-    this.profile = profile; 
+  public void setCandidate(ResourceDefn candidate) {
+    this.candidate = candidate; 
   }
 
-  public void setResource(Profile resource) {
-    this.resource = resource;
+  public void setProfile(Profile profile) {
+    this.profile = profile;
   }
 
   public List<String> evaluate() {
     map.clear();
     errors = new ArrayList<String>();
-     if (profile == null)
+     if (candidate == null)
+       errors.add("no base resource provided");
+     else if (profile == null) 
        errors.add("no profile provided");
-     else if (resource == null) 
-       errors.add("no resouce provided");
      else {
        // what we need to do is map the profile definitions against the resource
        // first, we check the stated names against the resource names, and map to the backbone
-       matchElement(profile, profile.getRoot(), profile.getName());
+       matchElement(candidate, candidate.getRoot(), candidate.getName());
        
        // now, we run through the resource, adding anything that the profile omitted back to the profile
        // (because profiles are open)
-       fillOutElement(profile.getRoot(), profile.getName());
+       fillOutElement(candidate.getRoot(), candidate.getName());
        
        // then we walk the profile checking that the constraints are valid
-       inspectConstraints(profile, profile.getName());
+       inspectConstraints(candidate, candidate.getName());
 
        // finally, we walk the resource ensuring that anything that is mandatory is not constrained out in the profile
      }
@@ -114,7 +124,7 @@ public class ProfileValidator {
 
   private List<Element_> collectChildren(String path) {
     List<Element_> results = new ArrayList<Element_>();
-    for (Element_ r : resource.getResource().get(0).getElement())
+    for (Element_ r : profile.getResource().get(0).getElement())
       if (r.getPath().getValue().startsWith(path+".") && !r.getPath().getValue().substring(path.length()+1).contains(".")) 
         results.add(r);
     return results;
@@ -189,7 +199,7 @@ public class ProfileValidator {
   }
 
   private Element_ getConstraintByPath(String path) {
-    for (Element_ e : resource.getResource().get(0).getElement())
+    for (Element_ e : profile.getResource().get(0).getElement())
       if (e.getPath().getValue().equals(path))
         return e;
     return null;
