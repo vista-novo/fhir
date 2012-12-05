@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getRepeats <em>Repeats</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,11 +91,9 @@ public interface SearchParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchType
-	 * @see #isSetType()
-	 * @see #unsetType()
 	 * @see #setType(SearchType)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getSearchParameter_Type()
-	 * @model unsettable="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	SearchType getType();
@@ -105,34 +104,38 @@ public interface SearchParameter extends EObject {
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' attribute.
 	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchType
-	 * @see #isSetType()
-	 * @see #unsetType()
 	 * @see #getType()
 	 * @generated
 	 */
 	void setType(SearchType value);
 
 	/**
-	 * Unsets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}' attribute.
+	 * Returns the value of the '<em><b>Repeats</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Repeats</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #isSetType()
-	 * @see #getType()
-	 * @see #setType(SearchType)
+	 * @return the value of the '<em>Repeats</em>' attribute.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode
+	 * @see #setRepeats(SearchRepeatMode)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getSearchParameter_Repeats()
+	 * @model required="true"
 	 * @generated
 	 */
-	void unsetType();
+	SearchRepeatMode getRepeats();
 
 	/**
-	 * Returns whether the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getType <em>Type</em>}' attribute is set.
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getRepeats <em>Repeats</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Type</em>' attribute is set.
-	 * @see #unsetType()
-	 * @see #getType()
-	 * @see #setType(SearchType)
+	 * @param value the new value of the '<em>Repeats</em>' attribute.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode
+	 * @see #getRepeats()
 	 * @generated
 	 */
-	boolean isSetType();
+	void setRepeats(SearchRepeatMode value);
 
 } // SearchParameter

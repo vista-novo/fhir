@@ -993,13 +993,31 @@ public interface FhirPackage extends EPackage {
 	int EXAMPLE__IN_BOOK = 3;
 
 	/**
+	 * The feature id for the '<em><b>Identity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__IDENTITY = 4;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE__TYPE = 5;
+
+	/**
 	 * The number of structural features of the '<em>Example</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_FEATURE_COUNT = 4;
+	int EXAMPLE_FEATURE_COUNT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Code</b></em>' attribute.
@@ -1430,13 +1448,22 @@ public interface FhirPackage extends EPackage {
 	int SEARCH_PARAMETER__TYPE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Repeats</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_PARAMETER__REPEATS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Search Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEARCH_PARAMETER_FEATURE_COUNT = 3;
+	int SEARCH_PARAMETER_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.AnnotationsImpl <em>Annotations</em>}' class.
@@ -1778,6 +1805,28 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	int BINDING_EXTENSIBILITY = 25;
+
+
+	/**
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode <em>Search Repeat Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchRepeatMode()
+	 * @generated
+	 */
+	int SEARCH_REPEAT_MODE = 26;
+
+
+	/**
+	 * The meta object id for the '{@link org.hl7.fhir.definitions.ecore.fhir.ExampleType <em>Example Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ExampleType
+	 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getExampleType()
+	 * @generated
+	 */
+	int EXAMPLE_TYPE = 27;
 
 
 	/**
@@ -2398,6 +2447,28 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getExample_InBook();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getIdentity <em>Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Identity</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Example#getIdentity()
+	 * @see #getExample()
+	 * @generated
+	 */
+	EAttribute getExample_Identity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.Example#getType()
+	 * @see #getExample()
+	 * @generated
+	 */
+	EAttribute getExample_Type();
 
 	/**
 	 * Returns the meta object for class '{@link org.hl7.fhir.definitions.ecore.fhir.DefinedCode <em>Defined Code</em>}'.
@@ -3079,6 +3150,17 @@ public interface FhirPackage extends EPackage {
 	EAttribute getSearchParameter_Type();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getRepeats <em>Repeats</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Repeats</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchParameter#getRepeats()
+	 * @see #getSearchParameter()
+	 * @generated
+	 */
+	EAttribute getSearchParameter_Repeats();
+
+	/**
 	 * Returns the meta object for enum '{@link org.hl7.fhir.definitions.ecore.fhir.BindingType <em>Binding Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3117,6 +3199,26 @@ public interface FhirPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getBindingExtensibility();
+
+	/**
+	 * Returns the meta object for enum '{@link org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode <em>Search Repeat Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Search Repeat Mode</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode
+	 * @generated
+	 */
+	EEnum getSearchRepeatMode();
+
+	/**
+	 * Returns the meta object for enum '{@link org.hl7.fhir.definitions.ecore.fhir.ExampleType <em>Example Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Example Type</em>'.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ExampleType
+	 * @generated
+	 */
+	EEnum getExampleType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3611,6 +3713,22 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute EXAMPLE__IN_BOOK = eINSTANCE.getExample_InBook();
+
+		/**
+		 * The meta object literal for the '<em><b>Identity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXAMPLE__IDENTITY = eINSTANCE.getExample_Identity();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EXAMPLE__TYPE = eINSTANCE.getExample_Type();
 
 		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.impl.DefinedCodeImpl <em>Defined Code</em>}' class.
@@ -4145,6 +4263,14 @@ public interface FhirPackage extends EPackage {
 		EAttribute SEARCH_PARAMETER__TYPE = eINSTANCE.getSearchParameter_Type();
 
 		/**
+		 * The meta object literal for the '<em><b>Repeats</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SEARCH_PARAMETER__REPEATS = eINSTANCE.getSearchParameter_Repeats();
+
+		/**
 		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.BindingType <em>Binding Type</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4183,6 +4309,26 @@ public interface FhirPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum BINDING_EXTENSIBILITY = eINSTANCE.getBindingExtensibility();
+
+		/**
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode <em>Search Repeat Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getSearchRepeatMode()
+		 * @generated
+		 */
+		EEnum SEARCH_REPEAT_MODE = eINSTANCE.getSearchRepeatMode();
+
+		/**
+		 * The meta object literal for the '{@link org.hl7.fhir.definitions.ecore.fhir.ExampleType <em>Example Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.hl7.fhir.definitions.ecore.fhir.ExampleType
+		 * @see org.hl7.fhir.definitions.ecore.fhir.impl.FhirPackageImpl#getExampleType()
+		 * @generated
+		 */
+		EEnum EXAMPLE_TYPE = eINSTANCE.getExampleType();
 
 	}
 

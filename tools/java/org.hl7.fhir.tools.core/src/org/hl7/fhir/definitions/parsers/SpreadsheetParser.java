@@ -50,6 +50,7 @@ import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
 import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
 import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
@@ -218,6 +219,19 @@ public class SpreadsheetParser {
 		return root;
 	}
 
+	  private ExampleType parseExampleType(String s, int row) throws Exception {
+			if (s==null || "".equals(s))
+				return ExampleType.XmlFile;
+			if ("tool".equals(s))
+				return ExampleType.Tool;
+			if ("xml".equals(s))
+				return ExampleType.XmlFile;
+			if ("csv".equals(s))
+				return ExampleType.CsvFile;
+			throw new Exception("Unknown Example Type '" + s + "': " + getLocation(row));
+		}
+
+	  
 	private void readProfiles(ResourceDefn defn, Sheet sheet) throws Exception {
     if (sheet != null) {
       for (int row = 0; row < sheet.rows.size(); row++) {
@@ -286,7 +300,7 @@ public class SpreadsheetParser {
 				if (!sheet.hasColumn(row, "Type"))
 					throw new Exception("Search Param has no type "+ getLocation(row));
 				String n = sheet.getColumn(row, "Name");
-				if (n.endsWith("-before") || n.endsWith("-before"))
+				if (n.endsWith("-before") || n.endsWith("-after"))
 					throw new Exception("Search Param includes relative time "+ getLocation(row));
 				String d = sheet.getColumn(row, "Description");
 				SearchType t = readSearchType(sheet.getColumn(row, "Type"), row);
@@ -449,7 +463,9 @@ public class SpreadsheetParser {
 					String type = sheet.getColumn(row, "Type");
 					if (!file.exists() && !"tool".equals(type))
 						throw new Exception("Example " + name + " file '" + file.getAbsolutePath() + "' not found parsing " + this.name);
-					defn.getExamples().add(new Example(name, id, desc, file, type, parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
+					defn.getExamples().add(new Example(name, id, desc, file, 
+							parseExampleType(type, row),
+							parseBoolean(sheet.getColumn(row, "In Book"), row, false)));
 				}
 			}
 		}
@@ -459,7 +475,7 @@ public class SpreadsheetParser {
 				throw new Exception("Example (file '" + file.getAbsolutePath()
 						+ "') not found parsing " + this.name);
 			defn.getExamples().add(
-					new Example("General", "example", "Example of " + title, file, null,
+					new Example("General", "example", "Example of " + title, file, ExampleType.XmlFile,
 							true));
 		}		
 	}

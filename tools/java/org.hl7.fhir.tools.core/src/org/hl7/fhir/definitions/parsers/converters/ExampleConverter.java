@@ -34,6 +34,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.Example;
+import org.hl7.fhir.definitions.ecore.fhir.ExampleType;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -58,6 +59,8 @@ public class ExampleConverter
 		Example result = FhirFactory.eINSTANCE.createExample();
 		
 		result.setName( example.getName() );
+		result.setIdentity( example.getId() );
+		result.setType( ExampleType.get( example.getType().ordinal() ) );
 		result.setDescription( Utilities.cleanupTextString(example.getDescription()) );
 		result.setPath( example.getPath().getName() );
 		result.setInBook( example.isInBook() );

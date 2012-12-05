@@ -189,6 +189,8 @@
         <details key="kind" value="attribute"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//ExampleType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="BindingType">
     <eLiterals name="Unbound"/>
@@ -292,8 +294,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="SearchParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//SearchType"
-        unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="#//SearchType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repeats" lowerBound="1"
+        eType="#//SearchRepeatMode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SearchType">
     <eLiterals name="integer"/>
@@ -414,5 +417,15 @@
   <eClassifiers xsi:type="ecore:EEnum" name="BindingExtensibility">
     <eLiterals name="Complete"/>
     <eLiterals name="Extensible" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SearchRepeatMode">
+    <eLiterals name="Single"/>
+    <eLiterals name="Union" value="1"/>
+    <eLiterals name="Intersection" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ExampleType">
+    <eLiterals name="Xml"/>
+    <eLiterals name="Csv" value="1"/>
+    <eLiterals name="Tool" value="2"/>
   </eClassifiers>
 </ecore:EPackage>

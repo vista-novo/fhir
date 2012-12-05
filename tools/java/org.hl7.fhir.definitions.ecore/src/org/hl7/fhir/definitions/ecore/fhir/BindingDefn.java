@@ -157,7 +157,7 @@ public interface BindingDefn extends EObject {
 	 * @see org.hl7.fhir.definitions.ecore.fhir.BindingExtensibility
 	 * @see #setExtensibility(BindingExtensibility)
 	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getBindingDefn_Extensibility()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	BindingExtensibility getExtensibility();

@@ -35,6 +35,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.utilities.CSFileInputStream;
 import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.Utilities;
@@ -48,11 +49,18 @@ public class Example {
   private File path;
   private String xhtm;
   private String json;
-  private String type;
+  private ExampleType type;
   private boolean inBook;
   private Document xml;
   
-  public Example(String name, String id, String description, File path, String type, boolean inBook) throws Exception {
+  public enum ExampleType {
+	    XmlFile,
+	    CsvFile,
+	    Tool
+	  }
+  
+  
+  public Example(String name, String id, String description, File path, ExampleType type, boolean inBook) throws Exception {
     super();
     this.name = name;
     this.id = id;
@@ -61,7 +69,7 @@ public class Example {
     this.type = type;
     this.inBook = inBook;
     
-    if ("csv".equals(type)) {
+    if( type == ExampleType.CsvFile ) {
       CSVProcessor csv = new CSVProcessor();
       csv.setSource(new CSFileInputStream(path));
       csv.setData(new CSFileInputStream(Utilities.changeFileExt(path.getAbsolutePath(), ".csv")));
@@ -112,10 +120,10 @@ public class Example {
   public String getXhtm() {
     return xhtm;
   }
-  public String getType() {
+  public ExampleType getType() {
     return type;
   }
-  public void setType(String type) {
+  public void setType(ExampleType type) {
     this.type = type;
   }
   public boolean isInBook() {

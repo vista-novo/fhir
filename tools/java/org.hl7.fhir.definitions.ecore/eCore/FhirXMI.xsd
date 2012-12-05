@@ -34,6 +34,20 @@
       <xsd:enumeration value="Extensible"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="SearchRepeatMode">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="Single"/>
+      <xsd:enumeration value="Union"/>
+      <xsd:enumeration value="Intersection"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExampleType">
+    <xsd:restriction base="xsd:NCName">
+      <xsd:enumeration value="Xml"/>
+      <xsd:enumeration value="Csv"/>
+      <xsd:enumeration value="Tool"/>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:complexType name="Definitions">
     <xsd:complexContent>
       <xsd:extension base="fhir:NameScope">
@@ -111,7 +125,7 @@
     <xsd:attribute name="name" type="xsd:string" use="required"/>
     <xsd:attribute name="fullName" type="xsd:string"/>
     <xsd:attribute name="binding" type="fhir:BindingType" use="required"/>
-    <xsd:attribute name="extensibility" type="fhir:BindingExtensibility"/>
+    <xsd:attribute name="extensibility" type="fhir:BindingExtensibility" use="required"/>
     <xsd:attribute name="strength" type="fhir:BindingStrength" use="required"/>
     <xsd:attribute name="reference" type="xsd:string" use="required"/>
     <xsd:attribute name="source" type="xsd:string" use="required">
@@ -155,6 +169,8 @@
     <xsd:attribute name="description" type="xsd:string"/>
     <xsd:attribute name="path" type="xsd:string" use="required"/>
     <xsd:attribute name="inBook" type="xsd:boolean"/>
+    <xsd:attribute name="identity" type="xsd:string"/>
+    <xsd:attribute name="type" type="fhir:ExampleType" use="required"/>
   </xsd:complexType>
   <xsd:element name="Example" type="fhir:Example"/>
   <xsd:complexType name="DefinedCode">
@@ -244,6 +260,7 @@
     <xsd:attribute name="name" type="xsd:string"/>
     <xsd:attribute name="description" type="xsd:string"/>
     <xsd:attribute name="type" type="fhir:SearchType" use="required"/>
+    <xsd:attribute name="repeats" type="fhir:SearchRepeatMode" use="required"/>
   </xsd:complexType>
   <xsd:element name="SearchParameter" type="fhir:SearchParameter"/>
   <xsd:complexType abstract="true" name="TypeDefn">

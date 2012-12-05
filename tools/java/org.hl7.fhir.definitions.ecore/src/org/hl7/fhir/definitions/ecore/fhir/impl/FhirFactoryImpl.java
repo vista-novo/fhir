@@ -102,6 +102,10 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return createSearchTypeFromString(eDataType, initialValue);
 			case FhirPackage.BINDING_EXTENSIBILITY:
 				return createBindingExtensibilityFromString(eDataType, initialValue);
+			case FhirPackage.SEARCH_REPEAT_MODE:
+				return createSearchRepeatModeFromString(eDataType, initialValue);
+			case FhirPackage.EXAMPLE_TYPE:
+				return createExampleTypeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -123,6 +127,10 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return convertSearchTypeToString(eDataType, instanceValue);
 			case FhirPackage.BINDING_EXTENSIBILITY:
 				return convertBindingExtensibilityToString(eDataType, instanceValue);
+			case FhirPackage.SEARCH_REPEAT_MODE:
+				return convertSearchRepeatModeToString(eDataType, instanceValue);
+			case FhirPackage.EXAMPLE_TYPE:
+				return convertExampleTypeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -425,6 +433,46 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * @generated
 	 */
 	public String convertBindingExtensibilityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SearchRepeatMode createSearchRepeatModeFromString(EDataType eDataType, String initialValue) {
+		SearchRepeatMode result = SearchRepeatMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSearchRepeatModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleType createExampleTypeFromString(EDataType eDataType, String initialValue) {
+		ExampleType result = ExampleType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertExampleTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

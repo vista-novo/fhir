@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode;
 import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 
 /**
@@ -27,6 +28,7 @@ import org.hl7.fhir.definitions.ecore.fhir.SearchType;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.SearchParameterImpl#getRepeats <em>Repeats</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,13 +96,24 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	protected SearchType type = TYPE_EDEFAULT;
 
 	/**
-	 * This is true if the Type attribute has been set.
+	 * The default value of the '{@link #getRepeats() <em>Repeats</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see #getRepeats()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean typeESet;
+	protected static final SearchRepeatMode REPEATS_EDEFAULT = SearchRepeatMode.SINGLE;
+
+	/**
+	 * The cached value of the '{@link #getRepeats() <em>Repeats</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepeats()
+	 * @generated
+	 * @ordered
+	 */
+	protected SearchRepeatMode repeats = REPEATS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,10 +199,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	public void setType(SearchType newType) {
 		SearchType oldType = type;
 		type = newType == null ? TYPE_EDEFAULT : newType;
-		boolean oldTypeESet = typeESet;
-		typeESet = true;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, type, !oldTypeESet));
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, type));
 	}
 
 	/**
@@ -197,14 +208,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void unsetType() {
-		SearchType oldType = type;
-		boolean oldTypeESet = typeESet;
-		type = TYPE_EDEFAULT;
-		typeESet = false;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.UNSET, FhirPackage.SEARCH_PARAMETER__TYPE, oldType, TYPE_EDEFAULT, oldTypeESet));
+	public SearchRepeatMode getRepeats() {
+		return repeats;
 	}
 
 	/**
@@ -212,9 +217,11 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public boolean isSetType() {
-		return typeESet;
+	public void setRepeats(SearchRepeatMode newRepeats) {
+		SearchRepeatMode oldRepeats = repeats;
+		repeats = newRepeats == null ? REPEATS_EDEFAULT : newRepeats;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.SEARCH_PARAMETER__REPEATS, oldRepeats, repeats));
 	}
 
 	/**
@@ -231,6 +238,8 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 				return getDescription();
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
 				return getType();
+			case FhirPackage.SEARCH_PARAMETER__REPEATS:
+				return getRepeats();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,6 +261,9 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
 				setType((SearchType)newValue);
 				return;
+			case FhirPackage.SEARCH_PARAMETER__REPEATS:
+				setRepeats((SearchRepeatMode)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -271,7 +283,10 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
-				unsetType();
+				setType(TYPE_EDEFAULT);
+				return;
+			case FhirPackage.SEARCH_PARAMETER__REPEATS:
+				setRepeats(REPEATS_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -290,7 +305,9 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 			case FhirPackage.SEARCH_PARAMETER__DESCRIPTION:
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case FhirPackage.SEARCH_PARAMETER__TYPE:
-				return isSetType();
+				return type != TYPE_EDEFAULT;
+			case FhirPackage.SEARCH_PARAMETER__REPEATS:
+				return repeats != REPEATS_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -310,7 +327,9 @@ public class SearchParameterImpl extends EObjectImpl implements SearchParameter 
 		result.append(", description: ");
 		result.append(description);
 		result.append(", type: ");
-		if (typeESet) result.append(type); else result.append("<unset>");
+		result.append(type);
+		result.append(", repeats: ");
+		result.append(repeats);
 		result.append(')');
 		return result.toString();
 	}

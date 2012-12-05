@@ -28,6 +28,7 @@ import org.hl7.fhir.definitions.ecore.fhir.ElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.EventDefn;
 import org.hl7.fhir.definitions.ecore.fhir.EventUsage;
 import org.hl7.fhir.definitions.ecore.fhir.Example;
+import org.hl7.fhir.definitions.ecore.fhir.ExampleType;
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 import org.hl7.fhir.definitions.ecore.fhir.Invariant;
@@ -40,6 +41,7 @@ import org.hl7.fhir.definitions.ecore.fhir.ProfileDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ProfiledElementDefn;
 import org.hl7.fhir.definitions.ecore.fhir.ResourceDefn;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode;
 import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 import org.hl7.fhir.definitions.ecore.fhir.TypeDefn;
 import org.hl7.fhir.definitions.ecore.fhir.TypeRef;
@@ -233,6 +235,20 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * @generated
 	 */
 	private EEnum bindingExtensibilityEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum searchRepeatModeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum exampleTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -859,6 +875,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	@Override
 	public EAttribute getExample_InBook() {
 		return (EAttribute)exampleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExample_Identity() {
+		return (EAttribute)exampleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getExample_Type() {
+		return (EAttribute)exampleEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1493,6 +1527,15 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getSearchParameter_Repeats() {
+		return (EAttribute)searchParameterEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EEnum getBindingType() {
 		return bindingTypeEEnum;
@@ -1525,6 +1568,24 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 	 */
 	public EEnum getBindingExtensibility() {
 		return bindingExtensibilityEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getSearchRepeatMode() {
+		return searchRepeatModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getExampleType() {
+		return exampleTypeEEnum;
 	}
 
 	/**
@@ -1620,6 +1681,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(exampleEClass, EXAMPLE__DESCRIPTION);
 		createEAttribute(exampleEClass, EXAMPLE__PATH);
 		createEAttribute(exampleEClass, EXAMPLE__IN_BOOK);
+		createEAttribute(exampleEClass, EXAMPLE__IDENTITY);
+		createEAttribute(exampleEClass, EXAMPLE__TYPE);
 
 		definedCodeEClass = createEClass(DEFINED_CODE);
 		createEAttribute(definedCodeEClass, DEFINED_CODE__CODE);
@@ -1661,6 +1724,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__NAME);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__DESCRIPTION);
 		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__TYPE);
+		createEAttribute(searchParameterEClass, SEARCH_PARAMETER__REPEATS);
 
 		typeDefnEClass = createEClass(TYPE_DEFN);
 		createEAttribute(typeDefnEClass, TYPE_DEFN__NAME);
@@ -1703,6 +1767,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		bindingStrengthEEnum = createEEnum(BINDING_STRENGTH);
 		searchTypeEEnum = createEEnum(SEARCH_TYPE);
 		bindingExtensibilityEEnum = createEEnum(BINDING_EXTENSIBILITY);
+		searchRepeatModeEEnum = createEEnum(SEARCH_REPEAT_MODE);
+		exampleTypeEEnum = createEEnum(EXAMPLE_TYPE);
 	}
 
 	/**
@@ -1799,7 +1865,7 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getBindingDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingDefn_FullName(), ecorePackage.getEString(), "fullName", null, 0, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingDefn_Binding(), this.getBindingType(), "binding", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBindingDefn_Extensibility(), this.getBindingExtensibility(), "extensibility", null, 0, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBindingDefn_Extensibility(), this.getBindingExtensibility(), "extensibility", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingDefn_Strength(), this.getBindingStrength(), "strength", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingDefn_Reference(), ecorePackage.getEString(), "reference", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBindingDefn_Source(), ecorePackage.getEString(), "source", null, 1, 1, BindingDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1824,6 +1890,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEAttribute(getExample_Description(), ecorePackage.getEString(), "description", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExample_Path(), ecorePackage.getEString(), "path", null, 1, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getExample_InBook(), ecorePackage.getEBoolean(), "inBook", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExample_Identity(), ecorePackage.getEString(), "identity", null, 0, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getExample_Type(), this.getExampleType(), "type", null, 1, 1, Example.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(definedCodeEClass, DefinedCode.class, "DefinedCode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDefinedCode_Code(), ecorePackage.getEString(), "code", null, 1, 1, DefinedCode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1864,7 +1932,8 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEClass(searchParameterEClass, SearchParameter.class, "SearchParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSearchParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSearchParameter_Description(), ecorePackage.getEString(), "description", null, 0, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 1, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParameter_Type(), this.getSearchType(), "type", null, 1, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSearchParameter_Repeats(), this.getSearchRepeatMode(), "repeats", null, 1, 1, SearchParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeDefnEClass, TypeDefn.class, "TypeDefn", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTypeDefn_Name(), ecorePackage.getEString(), "name", null, 1, 1, TypeDefn.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1945,6 +2014,16 @@ public class FhirPackageImpl extends EPackageImpl implements FhirPackage {
 		initEEnum(bindingExtensibilityEEnum, BindingExtensibility.class, "BindingExtensibility");
 		addEEnumLiteral(bindingExtensibilityEEnum, BindingExtensibility.COMPLETE);
 		addEEnumLiteral(bindingExtensibilityEEnum, BindingExtensibility.EXTENSIBLE);
+
+		initEEnum(searchRepeatModeEEnum, SearchRepeatMode.class, "SearchRepeatMode");
+		addEEnumLiteral(searchRepeatModeEEnum, SearchRepeatMode.SINGLE);
+		addEEnumLiteral(searchRepeatModeEEnum, SearchRepeatMode.UNION);
+		addEEnumLiteral(searchRepeatModeEEnum, SearchRepeatMode.INTERSECTION);
+
+		initEEnum(exampleTypeEEnum, ExampleType.class, "ExampleType");
+		addEEnumLiteral(exampleTypeEEnum, ExampleType.XML);
+		addEEnumLiteral(exampleTypeEEnum, ExampleType.CSV);
+		addEEnumLiteral(exampleTypeEEnum, ExampleType.TOOL);
 
 		// Create resource
 		createResource(eNS_URI);

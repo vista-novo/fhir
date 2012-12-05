@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getPath <em>Path</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#isInBook <em>In Book</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getIdentity <em>Identity</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.Example#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -133,6 +135,61 @@ public interface Example extends EObject {
 	 * @generated
 	 */
 	void setInBook(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Identity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Identity</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Identity</em>' attribute.
+	 * @see #setIdentity(String)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Identity()
+	 * @model
+	 * @generated
+	 */
+	String getIdentity();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getIdentity <em>Identity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Identity</em>' attribute.
+	 * @see #getIdentity()
+	 * @generated
+	 */
+	void setIdentity(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.hl7.fhir.definitions.ecore.fhir.ExampleType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Type</em>' attribute.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ExampleType
+	 * @see #setType(ExampleType)
+	 * @see org.hl7.fhir.definitions.ecore.fhir.FhirPackage#getExample_Type()
+	 * @model required="true"
+	 * @generated
+	 */
+	ExampleType getType();
+
+	/**
+	 * Sets the value of the '{@link org.hl7.fhir.definitions.ecore.fhir.Example#getType <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' attribute.
+	 * @see org.hl7.fhir.definitions.ecore.fhir.ExampleType
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(ExampleType value);
 
 	String getFileTitle();
 } // Example

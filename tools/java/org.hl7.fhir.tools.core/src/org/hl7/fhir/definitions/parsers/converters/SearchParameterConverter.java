@@ -35,6 +35,7 @@ import java.util.List;
 
 import org.hl7.fhir.definitions.ecore.fhir.FhirFactory;
 import org.hl7.fhir.definitions.ecore.fhir.SearchParameter;
+import org.hl7.fhir.definitions.ecore.fhir.SearchRepeatMode;
 import org.hl7.fhir.definitions.ecore.fhir.SearchType;
 import org.hl7.fhir.utilities.Utilities;
 
@@ -62,7 +63,7 @@ public class SearchParameterConverter
 		result.setName( searchParameter.getCode() );
 		result.setDescription( Utilities.cleanupTextString(searchParameter.getDescription()) );
 		result.setType( SearchType.get( searchParameter.getType().ordinal() ) );
-		
+		result.setRepeats( SearchRepeatMode.get( searchParameter.getRepeatMode().ordinal() ));
 		return result;
 	}
 }

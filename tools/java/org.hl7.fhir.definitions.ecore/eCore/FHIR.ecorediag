@@ -242,7 +242,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_CL-ona_CEeGrAaDwyEdjfA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="FHIR.ecore#//ResourceDefn"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CL-onq_CEeGrAaDwyEdjfA" x="705" y="45"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CL-onq_CEeGrAaDwyEdjfA" x="705" y="15"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_CL-orK_CEeGrAaDwyEdjfA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_CL-or6_CEeGrAaDwyEdjfA" type="4001"/>
@@ -250,6 +250,10 @@
       <children xmi:type="notation:Node" xmi:id="_CL-ouK_CEeGrAaDwyEdjfA" type="2001">
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//Example/name"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CL-oua_CEeGrAaDwyEdjfA"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_dppLkT4tEeKy-thAtOrrYQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//Example/identity"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_dppLkj4tEeKy-thAtOrrYQ"/>
       </children>
       <children xmi:type="notation:Node" xmi:id="_CL-ouq_CEeGrAaDwyEdjfA" type="2001">
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//Example/description"/>
@@ -263,6 +267,10 @@
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//Example/inBook"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CL-ov6_CEeGrAaDwyEdjfA"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_pjo4YD4tEeKy-thAtOrrYQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//Example/type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_pjpfcD4tEeKy-thAtOrrYQ"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CL-osa_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CL-osq_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CL-os6_CEeGrAaDwyEdjfA"/>
@@ -274,7 +282,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_CL-ora_CEeGrAaDwyEdjfA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="FHIR.ecore#//Example"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CL-orq_CEeGrAaDwyEdjfA" x="465" y="105"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CL-orq_CEeGrAaDwyEdjfA" x="435" y="75"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_CL-owK_CEeGrAaDwyEdjfA" type="1005">
     <children xmi:type="notation:Node" xmi:id="_CMHycK_CEeGrAaDwyEdjfA" type="4010"/>
@@ -489,6 +497,10 @@
         <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//SearchParameter/type"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CMbUia_CEeGrAaDwyEdjfA"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_9l1XAD4PEeKSs_CUeAePLQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="FHIR.ecore#//SearchParameter/repeats"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_9l1XAT4PEeKSs_CUeAePLQ"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_CMbUfa_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_CMbUfq_CEeGrAaDwyEdjfA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_CMbUf6_CEeGrAaDwyEdjfA"/>
@@ -500,7 +512,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_CMbUea_CEeGrAaDwyEdjfA" fontColor="4210752" fontName="Segoe UI" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="FHIR.ecore#//SearchParameter"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CMbUeq_CEeGrAaDwyEdjfA" x="180" y="60"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CMbUeq_CEeGrAaDwyEdjfA" x="90" y="30"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_CMbUiq_CEeGrAaDwyEdjfA" type="1005">
     <children xmi:type="notation:Node" xmi:id="_CMbUja_CEeGrAaDwyEdjfA" type="4010"/>
@@ -722,7 +734,53 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_Mz4rQT1wEeKGobP7ts-7qw" fontColor="4210752" fontName="Segoe UI" fontHeight="10" lineColor="8421504"/>
     <element xmi:type="ecore:EEnum" href="FHIR.ecore#//BindingExtensibility"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mz4rQj1wEeKGobP7ts-7qw" x="1095" y="885"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mz4rQj1wEeKGobP7ts-7qw" x="975" y="930"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_kJzokT4PEeKSs_CUeAePLQ" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_kJzolD4PEeKSs_CUeAePLQ" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_kJzolT4PEeKSs_CUeAePLQ" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_rsk2cD4PEeKSs_CUeAePLQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//SearchRepeatMode/Single"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_rsk2cT4PEeKSs_CUeAePLQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_tkpLUD4PEeKSs_CUeAePLQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//SearchRepeatMode/Union"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_tkpLUT4PEeKSs_CUeAePLQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_wdavQD4PEeKSs_CUeAePLQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//SearchRepeatMode/Intersection"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wdavQT4PEeKSs_CUeAePLQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_kJzolj4PEeKSs_CUeAePLQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_kJzolz4PEeKSs_CUeAePLQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_kJzomD4PEeKSs_CUeAePLQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_kJzokj4PEeKSs_CUeAePLQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="FHIR.ecore#//SearchRepeatMode"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kJzokz4PEeKSs_CUeAePLQ" x="1185" y="915"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_2Jfo0D4xEeKy-thAtOrrYQ" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_2JheAD4xEeKy-thAtOrrYQ" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_2JiFED4xEeKy-thAtOrrYQ" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_4A-u4D4xEeKy-thAtOrrYQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//ExampleType/Xml"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_4A-u4T4xEeKy-thAtOrrYQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_-kKIAD4xEeKy-thAtOrrYQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//ExampleType/Csv"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-kKIAT4xEeKy-thAtOrrYQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="__-KA0D4xEeKy-thAtOrrYQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="FHIR.ecore#//ExampleType/Tool"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__-KA0T4xEeKy-thAtOrrYQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_2JiFET4xEeKy-thAtOrrYQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2JiFEj4xEeKy-thAtOrrYQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2JiFEz4xEeKy-thAtOrrYQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_2Jfo0T4xEeKy-thAtOrrYQ" fontColor="4210752" fontName="Segoe UI" fontHeight="10" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="FHIR.ecore#//ExampleType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2Jfo0j4xEeKy-thAtOrrYQ" x="1395" y="930"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_CLh8ka_CEeGrAaDwyEdjfA"/>
   <element xmi:type="ecore:EPackage" href="FHIR.ecore#/"/>

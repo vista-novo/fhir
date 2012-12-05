@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.hl7.fhir.definitions.ecore.fhir.Example;
+import org.hl7.fhir.definitions.ecore.fhir.ExampleType;
 import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
 
 /**
@@ -27,6 +28,8 @@ import org.hl7.fhir.definitions.ecore.fhir.FhirPackage;
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#isInBook <em>In Book</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getIdentity <em>Identity</em>}</li>
+ *   <li>{@link org.hl7.fhir.definitions.ecore.fhir.impl.ExampleImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,6 +115,46 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * @ordered
 	 */
 	protected boolean inBook = IN_BOOK_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIdentity() <em>Identity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentity()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IDENTITY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIdentity() <em>Identity</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIdentity()
+	 * @generated
+	 * @ordered
+	 */
+	protected String identity = IDENTITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ExampleType TYPE_EDEFAULT = ExampleType.XML;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected ExampleType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,6 +272,48 @@ public class ExampleImpl extends EObjectImpl implements Example {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getIdentity() {
+		return identity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentity(String newIdentity) {
+		String oldIdentity = identity;
+		identity = newIdentity;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.EXAMPLE__IDENTITY, oldIdentity, identity));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExampleType getType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(ExampleType newType) {
+		ExampleType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.EXAMPLE__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -240,6 +325,10 @@ public class ExampleImpl extends EObjectImpl implements Example {
 				return getPath();
 			case FhirPackage.EXAMPLE__IN_BOOK:
 				return isInBook();
+			case FhirPackage.EXAMPLE__IDENTITY:
+				return getIdentity();
+			case FhirPackage.EXAMPLE__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -263,6 +352,12 @@ public class ExampleImpl extends EObjectImpl implements Example {
 				return;
 			case FhirPackage.EXAMPLE__IN_BOOK:
 				setInBook((Boolean)newValue);
+				return;
+			case FhirPackage.EXAMPLE__IDENTITY:
+				setIdentity((String)newValue);
+				return;
+			case FhirPackage.EXAMPLE__TYPE:
+				setType((ExampleType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -288,6 +383,12 @@ public class ExampleImpl extends EObjectImpl implements Example {
 			case FhirPackage.EXAMPLE__IN_BOOK:
 				setInBook(IN_BOOK_EDEFAULT);
 				return;
+			case FhirPackage.EXAMPLE__IDENTITY:
+				setIdentity(IDENTITY_EDEFAULT);
+				return;
+			case FhirPackage.EXAMPLE__TYPE:
+				setType(TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -308,6 +409,10 @@ public class ExampleImpl extends EObjectImpl implements Example {
 				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 			case FhirPackage.EXAMPLE__IN_BOOK:
 				return inBook != IN_BOOK_EDEFAULT;
+			case FhirPackage.EXAMPLE__IDENTITY:
+				return IDENTITY_EDEFAULT == null ? identity != null : !IDENTITY_EDEFAULT.equals(identity);
+			case FhirPackage.EXAMPLE__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -330,6 +435,10 @@ public class ExampleImpl extends EObjectImpl implements Example {
 		result.append(path);
 		result.append(", inBook: ");
 		result.append(inBook);
+		result.append(", identity: ");
+		result.append(identity);
+		result.append(", type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}

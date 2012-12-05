@@ -78,6 +78,7 @@ import org.hl7.fhir.definitions.generators.xsd.SchemaGenerator;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.Definitions;
 import org.hl7.fhir.definitions.model.Example;
+import org.hl7.fhir.definitions.model.Example.ExampleType;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.RegisteredProfile;
 import org.hl7.fhir.definitions.model.ResourceDefn;
@@ -869,7 +870,7 @@ public class Publisher {
 	}
 
 	private void processExample(Example e) throws Exception {
-		if ("tool".equals(e.getType()))
+		if (e.getType() == ExampleType.Tool)
 			return;
 
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
