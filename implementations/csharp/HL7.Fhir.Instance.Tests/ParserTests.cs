@@ -384,12 +384,7 @@ namespace HL7.Fhir.Instance.Tests
         [TestMethod]
         public void TestParseLargeComposite()
         {
-            var settings = new XmlReaderSettings();
-            settings.IgnoreComments = true;
-            settings.IgnoreProcessingInstructions = true;
-            settings.IgnoreWhitespace = true;
-
-            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"), settings);
+            XmlReader xr = XmlReader.Create(new StreamReader(@"..\..\..\..\..\publish\labreport-example.xml"));
             IFhirReader r = new XmlFhirReader(xr);
 
             ErrorList errors = new ErrorList();
