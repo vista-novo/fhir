@@ -18,6 +18,16 @@ namespace HL7.Fhir.Instance.Tests
     public class RoundtripTest
     {
         [TestMethod]
+        public void RoundtripDavid()
+        {
+            string file = @"..\..\..\..\..\dhSample\meddocument.xml";
+
+            string baseFilename = Path.Combine(Path.GetDirectoryName(file), "meddocument");
+
+            testFeed(file, baseFilename);
+        }
+
+        [TestMethod]
         public void FullRoundtripOfAllExamples()
         {
             string examples = @"..\..\..\..\..\publish\examples.zip";
@@ -37,14 +47,14 @@ namespace HL7.Fhir.Instance.Tests
             foreach (string file in files.Where(p=>!p.Contains("-roundtrip")))
             {
                 string filename = Path.GetFileNameWithoutExtension(file);                    
-                baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
+                string baseFilename = Path.Combine(Path.GetDirectoryName(file), filename);
 
                 Debug.WriteLine("Roundtripping " + filename);
 
                 if( !isFeed(file) )
-                    testSingleResource(file);
+                    testSingleResource(file, baseFilename);
                 else
-                    testFeed(file);
+                    testFeed(file, baseFilename);
 
                 string actualFile = baseFilename + "-roundtrip.xml";
 
@@ -82,9 +92,9 @@ namespace HL7.Fhir.Instance.Tests
             }
         }
 
-        private string baseFilename;
+        //private string baseFilename;
 
-        private void testFeed(string file)
+        private void testFeed(string file, string baseFilename)
         {
             Support.Bundle bundleResult;
             Support.ErrorList errors = new Support.ErrorList();
@@ -146,7 +156,7 @@ namespace HL7.Fhir.Instance.Tests
             }
         }
 
-        private void testSingleResource(string file)
+        private void testSingleResource(string file, string baseFilename)
         {
             Model.Resource singleResult;
             Support.ErrorList errors = new Support.ErrorList();
