@@ -2,7 +2,7 @@
 <Provenance xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../../schema/provenance.xsd">
   <target>
     <type>Person</type>
-    <id>101</id>
+    <id>101a</id>
     <!-- we assume that the version of that persion resource is 1 -->
     <version>1</version>
   </target>

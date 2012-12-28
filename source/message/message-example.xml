@@ -29,7 +29,7 @@
        person, but it might very well make sense to do this with targeted clinical content -->
     <target>
       <type>Person</type>
-      <id>101</id>
+      <id>101a</id>
     </target>
     <endpoint>llp:10.11.12.14:5432</endpoint>
   </destination>
@@ -41,7 +41,7 @@
   <!-- Here's the payload, the resource that this admin-update concerns -->
   <data>
     <type>Person</type>
-    <id>101</id>
+    <id>101a</id>
   </data>
   
   <text>

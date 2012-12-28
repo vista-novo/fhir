@@ -273,6 +273,11 @@ public class Utilities {
   }
 
 
+  public static String normaliseEolns(String value) {
+    return value.replace("\r\n", "\r").replace("\n", "\r").replace("\r", "\r\n");
+  }
+
+
 //  public static void checkCase(String filename) {
 //    File f = new CSFile(filename);
 //    if (!f.getName().equals(filename))

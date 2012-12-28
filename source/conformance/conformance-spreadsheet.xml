@@ -21,6 +21,7 @@
   <WindowTopX>1200</WindowTopX>
   <WindowTopY>1065</WindowTopY>
   <TabRatio>612</TabRatio>
+  <ActiveSheet>5</ActiveSheet>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -539,7 +540,6 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
-   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -820,7 +820,7 @@
   </WorksheetOptions>
  </Worksheet>
  <Worksheet ss:Name="restful-operation">
-  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="9" x:FullColumns="1"
+  <Table ss:ExpandedColumnCount="2" ss:ExpandedRowCount="10" x:FullColumns="1"
    x:FullRows="1" ss:DefaultRowHeight="15">
    <Column ss:Index="2" ss:AutoFitWidth="0" ss:Width="435.75"/>
    <Row ss:AutoFitHeight="0" ss:StyleID="s65">
@@ -859,6 +859,10 @@
     <Cell><Data ss:Type="String">create</Data></Cell>
     <Cell><Data ss:Type="String">Create a new resource with a server assigned id</Data></Cell>
    </Row>
+   <Row ss:AutoFitHeight="0">
+    <Cell><Data ss:Type="String">search</Data></Cell>
+    <Cell><Data ss:Type="String">Supports search operations using the parameters described in the profile</Data></Cell>
+   </Row>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
    <PageSetup>
@@ -867,6 +871,7 @@
     <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
    </PageSetup>
    <Unsynced/>
+   <Selected/>
    <FreezePanes/>
    <FrozenNoSplit/>
    <SplitHorizontal>1</SplitHorizontal>
@@ -886,7 +891,7 @@
     </Pane>
     <Pane>
      <Number>0</Number>
-     <ActiveRow>3</ActiveRow>
+     <ActiveRow>5</ActiveRow>
     </Pane>
    </Panes>
    <ProtectObjects>False</ProtectObjects>

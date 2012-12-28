@@ -534,7 +534,8 @@ public class Publisher {
       generateDiagram(n);
 		}
 		new AtomComposer().compose(new FileOutputStream(page.getFolders().dstDir + "profiles-resources.xml"), profileFeed, true, false);
-		Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
+		// all the profiles are already individually in the examples, so no need to add this one to them as well
+		// Utilities.copyFile(new CSFile(page.getFolders().dstDir + "profiles-resources.xml"), new CSFile(page.getFolders().dstDir + "examples" + File.separator + "profiles-resources.xml"));
 		cloneToXhtml("profiles-resources", "Base Resources defined as profiles (implementation assistance, for derivation and product development)");
 		for (String n : page.getIni().getPropertyNames("pages")) {
 		  log(" ...page "+n);
@@ -971,7 +972,7 @@ public class Publisher {
 
 	private void addToResourceFeed(Profile profile, String id) {
 		AtomEntry e = new AtomEntry();
-		e.setId("http://hl7.org/fhir/profile/" + id);
+		e.setId("http://hl7.org/fhir/profile/@" + id);
 		e.setLink("http://hl7.org/implement/standards/fhir/" + id+ ".profile.xml");
 		e.setTitle("Resource \"" + id+ "\" as a profile (to help derivation)");
 		e.setUpdated(page.getGenDate());

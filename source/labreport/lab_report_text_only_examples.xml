@@ -6,8 +6,8 @@
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@13/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@13</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@103/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@103</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -89,8 +89,8 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@14/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@14</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@104/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@104</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -196,8 +196,8 @@ Comment: *PLEASE NOTE AMENDED REPORT*
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@15/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@15</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@105/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@105</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -298,8 +298,8 @@ Note: Reference Ranges shown are for arterial blood only.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@16/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@16</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@106/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@106</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -375,8 +375,8 @@ Anti-Factor Xa Comment:
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@17/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@17</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@107/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@107</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -446,8 +446,8 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@18/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@18</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@108/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@108</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -525,8 +525,8 @@ From 9.12.2010 APTT normal range 23 - 36 seconds.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@19/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@19</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@109/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@109</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -2945,8 +2945,8 @@ Note: Reference Ranges shown are for arterial blood only.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@135/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@135</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@135a/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@135a</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>
@@ -19265,8 +19265,8 @@ No Growth After 2 Days.
 
   <entry>
     <title>Example Lab Report</title>
-    <link rel="self" href="http://hl7.org/fhir/labreport/@1240/history/@1"/>
-    <id>http://hl7.org/fhir/labreport/@1240</id>
+    <link rel="self" href="http://hl7.org/fhir/labreport/@1240a/history/@1"/>
+    <id>http://hl7.org/fhir/labreport/@1240a</id>
     <updated>2012-04-14T10:35:23Z</updated>
     <author>
       <name>FHIR Project Team</name>

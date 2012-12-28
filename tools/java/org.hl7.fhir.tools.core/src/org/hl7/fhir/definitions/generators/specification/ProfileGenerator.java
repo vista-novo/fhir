@@ -37,6 +37,9 @@ import org.hl7.fhir.definitions.model.ExtensionDefn.ContextType;
 import org.hl7.fhir.definitions.model.BindingSpecification;
 import org.hl7.fhir.definitions.model.ProfileDefn;
 import org.hl7.fhir.definitions.model.ResourceDefn;
+import org.hl7.fhir.definitions.model.SearchParameter;
+import org.hl7.fhir.definitions.model.SearchParameter.RepeatMode;
+import org.hl7.fhir.definitions.model.SearchParameter.SearchType;
 import org.hl7.fhir.definitions.model.TypeRef;
 import org.hl7.fhir.instance.formats.XmlComposer;
 //import org.hl7.fhir.instance.model.Factory;
@@ -51,6 +54,9 @@ import org.hl7.fhir.instance.model.Profile.Concept;
 import org.hl7.fhir.instance.model.Profile.Definition;
 import org.hl7.fhir.instance.model.Profile.ExtensionContext;
 import org.hl7.fhir.instance.model.Profile.Mapping;
+import org.hl7.fhir.instance.model.Profile.SearchParam;
+import org.hl7.fhir.instance.model.Profile.SearchParamType;
+import org.hl7.fhir.instance.model.Profile.SearchRepeatBehavior;
 import org.hl7.fhir.instance.model.Profile.Status;
 import org.hl7.fhir.instance.model.Profile.Type;
 import org.hl7.fhir.utilities.xhtml.NodeType;
@@ -92,6 +98,10 @@ public class ProfileGenerator {
         c.setName(Factory.newString_(resource.getRoot().getProfileName()));
       // no purpose element here
       defineElement(p, c, resource.getRoot(), resource.getName());
+      
+      for (SearchParameter i : resource.getSearchParams()) {
+        c.getSearchParam().add(makeSearchParam(p, i));
+      }
     }
     for (ExtensionDefn ex : profile.getExtensions())
       p.getExtensionDefn().add(generateExtensionDefn(ex, p));
@@ -108,6 +118,37 @@ public class ProfileGenerator {
     comp.compose(stream, p, true, false);
     
     return p;
+  }
+
+  private SearchParam makeSearchParam(Profile p, SearchParameter i) {
+    SearchParam result = p.new SearchParam();
+    result.setName(Factory.newString_(i.getCode()));
+    result.setType(getSearchParamType(i.getType()));
+    result.setRepeats(getSearchParamRepeats(i.getRepeatMode()));
+    result.setDocumentation(Factory.newString_(i.getDescription()));    
+    return result;
+  }
+
+  
+  private SearchRepeatBehavior getSearchParamRepeats(RepeatMode repeatMode) {
+    switch (repeatMode) {
+    case single: return SearchRepeatBehavior.single;
+    case union: return SearchRepeatBehavior.union;
+    case intersection: return SearchRepeatBehavior.intersection;
+    }
+    return null;
+  }
+
+  private SearchParamType getSearchParamType(SearchType type) {
+    switch (type) {
+    case integer: return SearchParamType.integer;
+    case string: return SearchParamType.string;
+    case text: return SearchParamType.text;
+    case date: return SearchParamType.date;
+    case token: return SearchParamType.token;
+    case qtoken: return SearchParamType.qtoken;
+    }
+    return null;
   }
 
   private Binding generateBinding(BindingSpecification src, Profile p) throws Exception {

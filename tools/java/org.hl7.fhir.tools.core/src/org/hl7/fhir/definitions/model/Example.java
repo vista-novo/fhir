@@ -29,7 +29,9 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,6 +43,7 @@ import org.hl7.fhir.utilities.CSVProcessor;
 import org.hl7.fhir.utilities.Utilities;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 public class Example {
   private String name;
@@ -83,8 +86,12 @@ public class Example {
     if (!path.getName().equals("profiles-resources.xml")) {//profiles-resources is going to produced later and is a feed
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       factory.setNamespaceAware(true);
-      DocumentBuilder builder = factory.newDocumentBuilder();
-      xml = builder.parse(new CSFileInputStream(path.getAbsolutePath()));
+      try {
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        xml = builder.parse(new CSFileInputStream(path.getAbsolutePath()));
+      } catch (Exception e) {
+        throw new Exception("unable to read "+path.getAbsolutePath()+": "+e.getMessage(), e);
+      }
     }
     if (Utilities.noString(id) && xml != null) { 
       if (!xml.getDocumentElement().getLocalName().equals("feed"))

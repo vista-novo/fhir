@@ -69,6 +69,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private Definitions definitions;
   
   private Map<ElementDefn, String> typeNames = new HashMap<ElementDefn, String>();
+  private List<String> enumsDone = new ArrayList<String>();
 
   private List<ElementDefn> enums = new ArrayList<ElementDefn>();
   private List<String> enumNames = new ArrayList<String>();
@@ -146,7 +147,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+root.getDefinition()+"\r\n");
+    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
@@ -254,7 +255,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+root.getDefinition()+"\r\n");
+    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
@@ -360,7 +361,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     }
 
     def.append("  {@Class "+tn+" : "+superClass+"\r\n");
-    def.append("    "+root.getDefinition()+"\r\n");
+    def.append("    "+Utilities.normaliseEolns(root.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class ("+superClass+")\r\n");
@@ -445,50 +446,52 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     String tn = "TSearchParams"+r.getName();
     String prefix = "sp"+r.getName()+"_";
 
-    def.append("  {@Enum "+tn+"\r\n");
-    def.append("    Search Parameters for "+r.getName()+"\r\n");
-    def.append("  }\r\n");
-    def.append("  "+tn+" = (\r\n");
-    
-    con3.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
-    con4.append("  TYPES_"+tn+" : Array["+tn+"] of TSearchParamType = (");
-    con5.append("  REPEATS_"+tn+" : Array["+tn+"] of TSearchRepeatBehavior = (");
-    con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
-    con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
+    if (!enumsDone.contains(prefix)) {
+      enumsDone.add(prefix);
+      def.append("  {@Enum "+tn+"\r\n");
+      def.append("    Search Parameters for "+r.getName()+"\r\n");
+      def.append("  }\r\n");
+      def.append("  "+tn+" = (\r\n");
 
-    int l = r.getSearchParams().size();
-    int i = 0;
+      con3.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
+      con4.append("  TYPES_"+tn+" : Array["+tn+"] of TSearchParamType = (");
+      con5.append("  REPEATS_"+tn+" : Array["+tn+"] of TSearchRepeatBehavior = (");
+      con.append("  DESC_"+tn+" : Array["+tn+"] of String = (");
+      con2.append("//  CHECK_"+tn+" : Array["+tn+"] of "+tn+" = (");
 
-    for (SearchParameter p : r.getSearchParams()) {
-      i++;
-      String n = p.getCode().replace("$", "_");
-      String d = p.getDescription();
-      String nf = n.replace("-", "_");
-      if (i == l) {
-        def.append("    "+prefix+getTitle(nf)+"); {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
-        con.append("'"+defCodeType.escape(d)+"');");
-        con2.append(" "+prefix+getTitle(nf)+");");
-        con4.append(" tspt"+getTitle(p.getType().toString())+");");
-        con3.append("'"+defCodeType.escape(n)+"');");
-        con5.append(" tsrb"+getTitle(p.getRepeatMode().toString())+");");
+      int l = r.getSearchParams().size();
+      int i = 0;
+
+      for (SearchParameter p : r.getSearchParams()) {
+        i++;
+        String n = p.getCode().replace("$", "_");
+        String d = Utilities.normaliseEolns(p.getDescription());
+        String nf = n.replace("-", "_");
+        if (i == l) {
+          def.append("    "+prefix+getTitle(nf)+"); {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
+          con.append("'"+defCodeType.escape(d)+"');");
+          con2.append(" "+prefix+getTitle(nf)+");");
+          con4.append(" SearchParamType"+getTitle(p.getType().toString())+");");
+          con3.append("'"+defCodeType.escape(n)+"');");
+          con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+");");
+        }
+        else {
+          def.append("    "+prefix+getTitle(nf)+", {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
+          con.append("'"+defCodeType.escape(d)+"', ");
+          con2.append(" "+prefix+getTitle(nf)+", ");
+          con4.append(" SearchParamType"+getTitle(p.getType().toString())+", ");
+          con3.append("'"+defCodeType.escape(n)+"', ");
+          con5.append(" SearchRepeatBehavior"+getTitle(p.getRepeatMode().toString())+", ");
+        }
       }
-      else {
-        def.append("    "+prefix+getTitle(nf)+", {@enum.value "+prefix+getTitle(nf)+" "+d+" }\r\n");
-        con.append("'"+defCodeType.escape(d)+"', ");
-        con2.append(" "+prefix+getTitle(nf)+", ");
-        con4.append(" tspt"+getTitle(p.getType().toString())+", ");
-        con3.append("'"+defCodeType.escape(n)+"', ");
-        con5.append(" tsrb"+getTitle(p.getRepeatMode().toString())+", ");
-      }
+
+      defCodeType.enumDefs.add(def.toString());
+      defCodeType.enumConsts.add(con3.toString());
+      defCodeType.enumConsts.add(con5.toString());
+      defCodeType.enumConsts.add(con4.toString());
+      defCodeType.enumConsts.add(con.toString());
+      defCodeType.enumConsts.add(con2.toString());
     }
-
-    defCodeType.enumDefs.add(def.toString());
-    defCodeType.enumConsts.add(con3.toString());
-    defCodeType.enumConsts.add(con5.toString());
-    defCodeType.enumConsts.add(con4.toString());
-    defCodeType.enumConsts.add(con.toString());
-    defCodeType.enumConsts.add(con2.toString());
-    
   }
   
   private void generateEnum(ElementDefn e) throws Exception {
@@ -496,43 +499,47 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     BindingSpecification cd = getConceptDomain(e.getBindingName());
     
     
-    StringBuilder pfx = new StringBuilder();
-    for (char c : tn.toCharArray()) {
-      if (Character.isUpperCase(c))
-        pfx.append(c);
-    }
-    String prefix = pfx.toString().toLowerCase();
-    StringBuilder def = new StringBuilder();
-    StringBuilder con = new StringBuilder();
-    def.append("  {@Enum "+tn+"\r\n");
-    def.append("    "+cd.getDefinition()+"\r\n");
-    def.append("  }\r\n");
-    def.append("  "+tn+" = (\r\n");
-    con.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
-    
-    int l = cd.getCodes().size();
-    int i = 0;
-    def.append("    "+prefix+"Unknown,  {@enum.value "+prefix+"Unknown Value is unknown }\r\n");
-    con.append("'', ");
-    for (DefinedCode c : cd.getCodes()) {
-      i++;
-      String cc = c.getCode();
-      cc = cc.replace("-", "Minus").replace("+", "Plus").replace(">=", "greaterOrEquals").replace("<=", "lessOrEquals").replace("<", "lessThan").replace(">", "greaterThan").replace("=", "equal");
+//    StringBuilder pfx = new StringBuilder();
+//    for (char c : tn.toCharArray()) {
+//      if (Character.isUpperCase(c))
+//        pfx.append(c);
+//    }
+//    String prefix = pfx.toString().toLowerCase();
+    String prefix = tn.substring(1);
+    if (!enumsDone.contains(prefix)) {
+      enumsDone.add(prefix);
+      StringBuilder def = new StringBuilder();
+      StringBuilder con = new StringBuilder();
+      def.append("  {@Enum "+tn+"\r\n");
+      def.append("    "+Utilities.normaliseEolns(cd.getDefinition())+"\r\n");
+      def.append("  }\r\n");
+      def.append("  "+tn+" = (\r\n");
+      con.append("  CODES_"+tn+" : Array["+tn+"] of String = (");
 
-      cc = prefix + getTitle(cc);
-      if (GeneratorUtils.isDelphiReservedWord(cc))
-        cc = cc + "_";
-      if (i == l) {
-        def.append("    "+cc+"); {@enum.value "+cc+" "+c.getDefinition()+" }\r\n");
-        con.append("'"+c.getCode()+"');");
+      int l = cd.getCodes().size();
+      int i = 0;
+      def.append("    "+prefix+"Unknown,  {@enum.value "+prefix+"Unknown Value is unknown }\r\n");
+      con.append("'', ");
+      for (DefinedCode c : cd.getCodes()) {
+        i++;
+        String cc = c.getCode();
+        cc = cc.replace("-", "Minus").replace("+", "Plus").replace(">=", "greaterOrEquals").replace("<=", "lessOrEquals").replace("<", "lessThan").replace(">", "greaterThan").replace("=", "equal");
+
+        cc = prefix + getTitle(cc);
+        if (GeneratorUtils.isDelphiReservedWord(cc))
+          cc = cc + "_";
+        if (i == l) {
+          def.append("    "+cc+"); {@enum.value "+cc+" "+Utilities.normaliseEolns(c.getDefinition())+" }\r\n");
+          con.append("'"+c.getCode()+"');");
+        }
+        else {
+          def.append("    "+cc+", {@enum.value "+cc+" "+Utilities.normaliseEolns(c.getDefinition())+" }\r\n");
+          con.append("'"+c.getCode()+"', ");
+        }
       }
-      else {
-        def.append("    "+cc+", {@enum.value "+cc+" "+c.getDefinition()+" }\r\n");
-        con.append("'"+c.getCode()+"', ");
-      }
+      defCodeType.enumDefs.add(def.toString());
+      defCodeType.enumConsts.add(con.toString());
     }
-    defCodeType.enumDefs.add(def.toString());
-    defCodeType.enumConsts.add(con.toString());
   }
 
   private void generateType(ElementDefn e, boolean listsAreWrapped, ClassCategory category) throws Exception {
@@ -559,7 +566,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     StringBuilder getprops = new StringBuilder();
     
     def.append("  {@Class "+tn+" : TFHIRElement\r\n");
-    def.append("    "+e.getDefinition()+"\r\n");
+    def.append("    "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
     def.append("  }\r\n");
     def.append("  {!.Net HL7Connect.Fhir."+tn.substring(1)+"}\r\n");
     def.append("  "+tn+" = class (TFHIRElement)\r\n");
@@ -754,7 +761,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     s = workingComposerJ.toString();
     prsrImpl.append(
             "procedure TFHIRJsonComposer.Compose"+tn.substring(1)+"(json : TJSONWriter; name : string; elem : "+tn+");\r\n");
-    if (s.contains("for i := "))
+    if (s.contains("for i := ") || isResource)
       prsrImpl.append("var\r\n  i : integer;\r\n");
     prsrImpl.append(
             "begin\r\n"+
@@ -896,9 +903,9 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       } else if (tn.equals("Boolean")) {
         parse = "StringToBoolean(child.text)";
         propV = "booleanToString("+propV+ ")";
-      } else if (tn.equals("TDateTime")) {
-        parse = "XMLDateTimeStringToDateTime(child.text)";
-        propV = "DateTimeToXMLDateTimeString("+propV+")";
+      } else if (tn.equals("TDateAndTime")) {
+        parse = "TDateAndTime.createXml(child.text)";
+        propV = propV+".AsXML";
       } else if (tn.equals("TFhirXHtmlNode"))
         parse = "ParseXhtml(child)";
 //      else if (tn.equals("TXmlIdReference"))
@@ -918,8 +925,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         parseJ = "StringToInteger32(json.itemValue)";
       else if (tn.equals("Boolean"))
         parseJ = "StringToBoolean(json.itemValue)";
-      else if (tn.equals("TDateTime"))
-        parseJ = "XMLDateTimeStringToDateTime(json.itemValue)";
+      else if (tn.equals("TDateAndTime"))
+        parseJ = "TDateAndTime.createXml(json.itemValue)";
       else if (tn.equals("TFhirXHtmlNode"))
         parseJ = "ParseXhtml()";
       else
@@ -935,8 +942,8 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
         srls = "IntegerToString(#)";
       } else if (tn.equals("Boolean")) {
         srls = "BooleanToString(#)";
-      } else if (tn.equals("TDateTime")) {
-        srls = "DateTimeToXMLDateTimeString(#)";
+      } else if (tn.equals("TDateAndTime")) {
+        srls = "#.AsXml";
       };
     }
     
@@ -953,7 +960,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       s = s+"List";
       defPriv1.append("    F"+s+" : "+tnl+";\r\n");
       defPub.append("    {@member "+s+"\r\n");
-      defPub.append("      "+e.getDefinition()+"\r\n");
+      defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
       defPub.append("    }\r\n");
       defPub.append("    property "+s+" : "+tnl+" read F"+getTitle(s)+";\r\n");
       defPub.append("\r\n");
@@ -1000,7 +1007,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       defPriv1.append("    F"+getTitle(s)+" : "+tn+";\r\n");
       defPriv2.append("    Procedure Set"+getTitle(s)+"(value : "+tn+");\r\n");
       defPub.append("    {@member "+s+"\r\n");
-      defPub.append("      "+e.getDefinition()+"\r\n");
+      defPub.append("      "+Utilities.normaliseEolns(e.getDefinition())+"\r\n");
       defPub.append("    }\r\n");
       defPub.append("    property "+s+" : "+tn+" read F"+getTitle(s)+" write Set"+getTitle(s)+";\r\n");
       defPub.append("\r\n");
@@ -1294,7 +1301,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
   private boolean typeIsSimple(String tn) {
     if (tn == null)
       return false;
-    return tn.equals("String") || tn.equals("Integer") || tn.equals("Boolean") || tn.equals("TDateTime") || tn.equals("TFhirXHtmlNode")  || tn.equals("TXmlIdReference") || enumNames.contains(tn);
+    return tn.equals("String") || tn.equals("Integer") || tn.equals("Boolean") || tn.equals("TDateAndTime") || tn.equals("TFhirXHtmlNode")  || tn.equals("TXmlIdReference") || enumNames.contains(tn);
   }
 
   private String getTitle(String name) {
@@ -1350,7 +1357,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     } else if (tn.equals("integer")) {
       return complex ? "TFHIRInteger" : "Integer";
     } else if (tn.equals("instant")) {
-      return complex ? "TFHIRInstant" : "TDateTime";
+      return complex ? "TFHIRInstant" : "TDateAndTime";
     } else if (tn.equals("boolean")) {
       return complex ? "TFHIRBoolean" : "Boolean";
     } else if (tn.equals("dateTime")) {
@@ -1418,6 +1425,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     defCodeType.uses.add("FHIRBase");
     defCodeType.uses.add("AdvBuffers");
     defCodeType.uses.add("SysUtils");
+    defCodeType.uses.add("MSSEWrap");
     defCodeType.uses.add("DecimalSupport");
     defCodeType.uses.add("StringSupport");
     defCodeType.uses.add("Classes");
@@ -1510,7 +1518,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
       String s2 = prefix + getTitle(s);
       if (GeneratorUtils.isDelphiReservedWord(s2))
         s2 = s2 + "_";
-      def.append("    "+s2+", {@enum.value "+definitions.getResourceByName(s).getDefinition()+" }\r\n");
+      def.append("    "+s2+", {@enum.value "+Utilities.normaliseEolns(definitions.getResourceByName(s).getDefinition())+" }\r\n");
       con.append("'"+s+"', ");
     }
     def.append("    "+prefix+"Binary); {@enum.value Binary Resource }\r\n");
@@ -1603,6 +1611,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     def.append("  public\r\n");
     def.append("    Constructor create; Overload; Override;\r\n");
     def.append("    Destructor Destroy; Override;\r\n");
+    def.append("  published\r\n");
     def.append("    Property Content : TAdvBuffer read FContent;\r\n");
     def.append("    Property ContentType : string read FContentType write FContentType;\r\n");
     def.append("  end;\r\n");
@@ -1701,6 +1710,7 @@ public class DelphiGenerator extends BaseGenerator implements PlatformGenerator 
     prsrCode.uses.add("DateSupport");
     prsrCode.uses.add("IdSoapMsXml");
     prsrCode.uses.add("FHIRParserBase");
+    prsrCode.uses.add("MSSEWrap");
     prsrCode.uses.add("FHIRBase");
     prsrCode.uses.add("FHIRResources");
     prsrCode.uses.add("FHIRComponents");
