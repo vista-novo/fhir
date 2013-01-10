@@ -79,7 +79,7 @@ namespace HL7.Fhir.Instance.Support
             return errors;
         }
 
-        public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/sid/fhir/resource-types";
+        public static string ATOM_CATEGORY_NAMESPACE = "http://hl7.org/fhir/resource-types";
         public static string ATOMPUB_TOMBSTONES_NS = "http://purl.org/atompub/tombstones/1.0";
         public static string ATOMPUBNS = "http://www.w3.org/2005/Atom";
     }
